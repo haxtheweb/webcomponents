@@ -18,16 +18,19 @@
       <h3>Basic dropdown-select demo</h3>
       <demo-snippet>
         <template>
-          <dropdown-select id="example" value="" label="Select an animal." placeholder="none">
+          <dropdown-select 
+            id="example" 
+            label="Select an animal." 
+            placeholder="Select an Animal">
             <paper-item value="bird">Bird</paper-item>
             <paper-item value="cat">Cat</paper-item>
             <paper-item value="dog">Dog</paper-item>
             <paper-item value="fish">Fish</paper-item>
           </dropdown-select>
           <script>
-            document.getElementById('example').addEventListener('dropdown-select-changed', function (e) {
-              alert('You picked '+e.detail.value+'.');
-            });
+              document.getElementById('example').addEventListener('value-changed',(e) => {
+                if(typeof e.detail.value !== typeof undefined) alert(`You picked ${e.detail.value}.`);
+              });
           </script>
         </template>
       </demo-snippet>
@@ -35,12 +38,21 @@
       <h3>dropdown-select demo with initial value set</h3>
       <demo-snippet>
         <template>
-          <dropdown-select id="example" value="fish" label="Select an animal." placeholder="none">
+          <dropdown-select 
+            id="example2" 
+            value="fish" 
+            label="Select an animal." 
+            placeholder="Select an Animal">
             <paper-item value="bird">Bird</paper-item>
             <paper-item value="cat">Cat</paper-item>
             <paper-item value="dog">Dog</paper-item>
             <paper-item value="fish">Fish</paper-item>
           </dropdown-select>
+          <script>
+            document.getElementById('example2').addEventListener('value-changed',(e) => {
+              if(typeof e.detail.oldValue !== typeof undefined) alert(`You picked ${e.detail.value}.`);
+            });
+          </script>
         </template>
       </demo-snippet>
     </div>

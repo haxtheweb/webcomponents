@@ -253,7 +253,9 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
     return "self-check";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title.
        */
@@ -300,10 +302,6 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

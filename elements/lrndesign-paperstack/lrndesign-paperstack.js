@@ -143,7 +143,9 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
     return "lrndesign-paperstack";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title
        */
@@ -159,10 +161,6 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
         value: "lrn:assignment"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     return {

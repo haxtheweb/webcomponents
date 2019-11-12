@@ -1,40 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
-`dropdown-select`
-An easy to use, works as expected dropdown menu. Add slotted items like follows:
-
-<dropdown-select
-  allow-outside-scroll
-  always-float-label
-  dynamic-align
-  error-message="Required."
-  horizontal-align="left"
-  label="Select an item." 
-  no-animations
-  no-label-float
-  placeholder="none" 
-  restore-focus-on-close 
-  vertical-align="bottom" 
-  vertical-offset="10">
-  <paper-item value="100">100 things</paper-item>
-  <paper-item value="1000">Another value</paper-item>
-  <paper-item value="10">Value is 10, but you will see this text</paper-item>
-</dropdown-select>
-
-* @demo demo/index.html
-
-*/
-class DropdownSelect extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
-  }
-  static get template() {
-    return html`
-      <style>
+ * `dropdown-select`
+ * an easy to use, works as expected dropdown menu.
+ *
+ * @demo demo/index.html
+ */
+class DropdownSelect extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -45,32 +19,35 @@ class DropdownSelect extends PolymerElement {
           min-height: 32px;
           vertical-align: text-top;
           line-height: 32px;
-          @apply --dropdown-select-items;
         }
-        paper-listbox paper-listbox {
-          @apply --dropdown-listbox;
-        }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-dropdown-menu
         id="menu"
-        allow-outside-scroll\$="[[allowOutsideScroll]]"
-        always-float-label\$="[[alwaysFloatLabel]]"
-        dynamic-align\$="[[dynamicAlign]]"
-        error-message\$="[[errorMessage]]"
-        horizontal-align\$="[[horizontalAlign]]"
-        label\$="[[label]]"
-        no-animations\$="[[noAnimations]]"
-        no-label-float\$="[[noLabelFloat]]"
-        on-selected-item-changed="_getSelectedValue"
-        placeholder\$="[[placeholder]]"
-        restore-focus-on-close\$="[[restoreFocusOnClose]]"
-        vertical-align\$="[[verticalAlign]]"
-        vertical-offset\$="[[verticalOffset]]"
+        error-message="${this.errorMessage}"
+        horizontal-align="${this.horizontalAlign}"
+        label="${this.label}"
+        placeholder="${this.placeholder}"
+        vertical-align="${this.verticalAlign}"
+        vertical-offset="${this.verticalOffset}"
+        ?allow-outside-scroll="${this.allowOutsideScroll}"
+        ?always-float-label="${this.alwaysFloatLabel}"
+        ?dynamic-align="${this.dynamicAlign}"
+        ?no-animations="${this.noAnimations}"
+        ?no-label-float="${this.noLabelFloat}"
+        ?restore-focus-on-close="${this.restoreFocusOnClose}"
+        @paper-dropdown-open="${this._onOpen}"
+        @paper-dropdown-close="${this.onClose}"
+        @selected-item-changed="${this._dropDownChanged}"
       >
         <paper-listbox
           id="listbox"
           slot="dropdown-content"
           class="dropdown-content"
+          .selected="${this.selectedItemIndex}"
         >
           <slot id="content"></slot>
         </paper-listbox>
@@ -81,37 +58,45 @@ class DropdownSelect extends PolymerElement {
   static get tag() {
     return "dropdown-select";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this._valueChanged(this.value);
-      this.addEventListener("paper-dropdown-open", this._onOpen.bind(this));
-      this.addEventListener("paper-dropdown-close", this._onClose.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("paper-dropdown-open", this._onOpen.bind(this));
-    this.removeEventListener("paper-dropdown-close", this._onClose.bind(this));
-    super.disconnectedCallback();
+  constructor() {
+    super();
+    this.allowOutsideScroll = false;
+    this.alwaysFloatLabel = false;
+    this.dynamicAlign = false;
+    this.horizontalAlign = "right";
+    this.label = "Select an option.";
+    this.noAnimations = false;
+    this.noLabelFloat = false;
+    this.opened = false;
+    this.restoreFocusOnClose = true;
+    this.selectedItemIndex = null;
+    this.selectedItemLabel = null;
+    this.value = null;
+    this.verticalAlign = "top";
+    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
   }
 
   static get properties() {
     return {
       /**
+       * @property {boolean} allowOutsideScroll
+       *
        * Set to true in order to prevent scroll from being constrained
        * to the dropdown when it opens.
        */
       allowOutsideScroll: {
-        type: Boolean,
-        value: false
+        attribute: "allow-outside-scroll",
+        type: Boolean
       },
 
       /**
        * Set to true to always float the label.
        */
       alwaysFloatLabel: {
-        type: Boolean,
-        value: false
+        attribute: "always-float-label",
+        type: Boolean
       },
 
       /**
@@ -121,6 +106,7 @@ class DropdownSelect extends PolymerElement {
        * the area of the dropdown falling outside of `fitInto`.
        */
       dynamicAlign: {
+        attribute: "dynamic-align",
         type: Boolean
       },
 
@@ -128,6 +114,7 @@ class DropdownSelect extends PolymerElement {
        * The error message to display when invalid.
        */
       errorMessage: {
+        attribute: "error-message",
         type: String
       },
 
@@ -136,16 +123,15 @@ class DropdownSelect extends PolymerElement {
        * horizontally relative to the dropdown trigger.
        */
       horizontalAlign: {
-        type: String,
-        value: "right"
+        attribute: "horizontal-align",
+        type: String
       },
 
       /**
        * The label of the select menu
        */
       label: {
-        type: String,
-        value: "Select an option."
+        type: String
       },
 
       /**
@@ -153,24 +139,23 @@ class DropdownSelect extends PolymerElement {
        * dropdown.
        */
       noAnimations: {
-        type: Boolean,
-        value: false
+        attribute: "no-animations",
+        type: Boolean
       },
 
       /**
        * Set to true to disable the floating label.
        */
       noLabelFloat: {
-        type: Boolean,
-        value: false
+        attribute: "no-label-float",
+        type: Boolean
       },
 
       /**
        * True if the dropdown is open. Otherwise, false.
        */
       opened: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
 
       /**
@@ -184,14 +169,15 @@ class DropdownSelect extends PolymerElement {
        * Whether focus should be restored to the dropdown when the menu closes.
        */
       restoreFocusOnClose: {
-        type: Boolean,
-        value: true
+        attribute: "restore-focus-on-close",
+        type: Boolean
       },
 
       /**
        * The last selected item.
        */
       selectedItem: {
+        attribute: "selected-item",
         type: Object
       },
 
@@ -199,16 +185,16 @@ class DropdownSelect extends PolymerElement {
        * The index of the selected item
        */
       selectedItemIndex: {
-        type: Number,
-        value: null
+        attribute: "selected-item-index",
+        type: Number
       },
 
       /**
        * The label of the selected item
        */
       selectedItemLabel: {
-        type: String,
-        value: null
+        attribute: "selected-item-label",
+        type: String
       },
 
       /**
@@ -216,10 +202,7 @@ class DropdownSelect extends PolymerElement {
        */
       value: {
         type: String,
-        value: null,
-        notify: true,
-        reflectToAttribute: true,
-        observer: "_valueChanged"
+        reflect: true
       },
 
       /**
@@ -227,8 +210,8 @@ class DropdownSelect extends PolymerElement {
        * vertically relative to the dropdown trigger.
        */
       verticalAlign: {
-        type: String,
-        value: "top"
+        attribute: "vertical-align",
+        type: String
       },
 
       /**
@@ -236,26 +219,75 @@ class DropdownSelect extends PolymerElement {
        * _computeMenuVerticalOffset.
        */
       verticalOffset: {
+        attribute: "vertical-offset",
         type: Number
       }
     };
   }
 
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value") this._valueChanged(this.value, oldValue);
+    });
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { value: this.value }
+      })
+    );
+  }
+
   /**
-   * Get the value of the selected item.
+   * Sets the opened property to true
    */
-  _getSelectedValue(e) {
-    if (e.detail.value !== null) {
-      this.value = e.detail.value.getAttribute("value");
-      this._setSelectedValues();
+  _onOpen() {
+    this.opened = true;
+  }
+
+  /**
+   * Sets the opened property to false
+   */
+  _onClose() {
+    this.opened = false;
+  }
+  /**
+   * updates value when dropdown-menu's selected item changes
+   * @param {event} e change event
+   */
+  _dropDownChanged(e) {
+    this.value = e.detail.value ? e.detail.value.getAttribute("value") : null;
+  }
+  /**
+   * Notice value has changed and ensure data model is accurate
+   * @param {string} newValue
+   * @param {string} oldValue
+   * @fires dropdown-select-changed
+   * @fires value-changed
+   */
+  _valueChanged(newValue, oldValue) {
+    let items = Array.prototype.slice.call(this.querySelectorAll(`paper-item`));
+    this.selectedItem = this.querySelector(`paper-item[value="${newValue}"]`);
+    this.selectedItemLabel = this.selectedItem
+      ? this.selectedItem.innerHTML
+      : null;
+    this.selectedItemIndex = this.selectedItem
+      ? items.indexOf(this.selectedItem)
+      : null;
+    if (typeof oldValue !== typeof undefined) {
       this.dispatchEvent(
-        new CustomEvent("change", {
+        new CustomEvent("value-changed", {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: { value: this.value }
+          target: this,
+          detail: {
+            value: newValue,
+            oldValue: oldValue
+          }
         })
-      ); //support for old version
+      );
       this.dispatchEvent(
         new CustomEvent("dropdown-select-changed", {
           bubbles: true,
@@ -268,42 +300,25 @@ class DropdownSelect extends PolymerElement {
   }
 
   /**
-   * Sets the opened property to true
+   * @event awesome-change
+   *
+   * Fired when `element` changes its awesomeness level.
    */
-  _onOpen(e) {
-    this.opened = true;
-  }
 
   /**
-   * Sets the opened property to false
+   * @event value-changed
+   *
+   * fired when value has changed
+   * @param {object} target dropdown-select instance
+   * @param {object} detail `{ value: newValue, oldValue: oldValue }`
    */
-  _onClose(e) {
-    this.opened = false;
-  }
+
   /**
-   * Get the value of the selected item.
+   * @event dropdown-select-changed
+   *
+   * fired when value has changed (deprecated)
+   * @param {object} detail dropdown-select instance
    */
-  _setSelectedValues() {
-    this.selectedItem = this.shadowRoot.querySelector("#menu").selectedItem;
-    this.selectedItemLabel = this.shadowRoot.querySelector(
-      "#menu"
-    ).selectedItemLabel;
-    this.selectedItemIndex = this.shadowRoot.querySelector("#listbox").selected;
-  }
-  /**
-   * Notice value has changed and ensure data model is accurate
-   */
-  _valueChanged(newValue, oldValue) {
-    let children = this.querySelectorAll("paper-item");
-    if (children !== undefined && children !== null) {
-      for (let i = 0; i < children.length; i++) {
-        if (this.value === children[i].getAttribute("value")) {
-          this.shadowRoot.querySelector("#listbox").selected = i;
-          this._setSelectedValues();
-        }
-      }
-    }
-  }
 }
 window.customElements.define(DropdownSelect.tag, DropdownSelect);
 export { DropdownSelect };

@@ -44,8 +44,9 @@ class SimpleLogin extends PolymerElement {
     --simple-camera-snap-height: var(--login-form-image-height, 200px);
     --simple-camera-snap-background: var(--login-form-background, white);
     --simple-camera-snap-border-radius: var(--login-form-image-bnorder-radius,100%);
-    @apply --shadow-elevation-12dp;
-    @apply --login-form;
+    box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
+                    0 4px 22px 3px rgba(0, 0, 0, 0.12),
+                    0 6px 7px -4px rgba(0, 0, 0, 0.4);
 }
 
 #loginformcontent {
@@ -121,7 +122,10 @@ paper-progress {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Title of the loginscreen
    */
@@ -192,10 +196,6 @@ paper-progress {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

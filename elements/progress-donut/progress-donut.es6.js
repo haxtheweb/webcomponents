@@ -2,383 +2,905 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
 /**
  * `progress-donut`
- * `Showing progression in a circle shape w/ hollow middle`
+ * shows progress in as a rounded shape w/ hollow middle
+ *
+ * @customElement
+ * @extends ChartistRender
+ * @see @lrnwebcomponents/chartist-render/chartist-render.js
+ * @extends SimpleColors
+ * @see @lrnwebcomponents/simple-colors/simple-colors.js
+ * @extends SchemaBehaviors
+ * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
  *
  * @demo demo/index.html
- *
- * @microcopy - the mental model for this element
- *  -
  */
-class ProgressDonut extends SchemaBehaviors(PolymerElement) {
-  static get template() {
+class ProgressDonut extends SchemaBehaviors(SimpleColors) {
+  
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
+  --chartist-color-1: var(--simple-colors-default-theme-red-8);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-5: var(--simple-colors-default-theme-green-8);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-7);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-9: var(--simple-colors-default-theme-red-9);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-13: var(--simple-colors-default-theme-green-9);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-9); }
+
+:host([dark]) {
+  --chartist-color-1: var(--simple-colors-default-theme-red-4);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-5: var(--simple-colors-default-theme-green-4);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-5);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-9: var(--simple-colors-default-theme-red-3);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-13: var(--simple-colors-default-theme-green-3);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-3); }
+
+:host([accent-color="red"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-red-8);
+  --chartist-color-2: var(--simple-colors-default-theme-pink-9);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-orange-10);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-5: var(--simple-colors-default-theme-orange-9);
+  --chartist-color-6: var(--simple-colors-default-theme-red-10);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-10: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-11: var(--simple-colors-default-theme-red-9);
+  --chartist-color-12: var(--simple-colors-default-theme-pink-10);
+  --chartist-color-13: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-15: var(--simple-colors-default-theme-orange-10); }
+
+:host([dark][accent-color="red"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-red-4);
+  --chartist-color-2: var(--simple-colors-default-theme-pink-3);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-orange-2);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-5: var(--simple-colors-default-theme-orange-3);
+  --chartist-color-6: var(--simple-colors-default-theme-red-2);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-10: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-11: var(--simple-colors-default-theme-red-3);
+  --chartist-color-12: var(--simple-colors-default-theme-pink-2);
+  --chartist-color-13: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-15: var(--simple-colors-default-theme-orange-2); }
+
+:host([accent-color="pink"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-2: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-3: var(--simple-colors-default-theme-red-10);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-5: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-6: var(--simple-colors-default-theme-pink-10);
+  --chartist-color-7: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-8: var(--simple-colors-default-theme-red-9);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-10: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-11: var(--simple-colors-default-theme-pink-9);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-13: var(--simple-colors-default-theme-red-8);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-orange-10); }
+
+:host([dark][accent-color="pink"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-2: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-3: var(--simple-colors-default-theme-red-2);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-5: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-6: var(--simple-colors-default-theme-pink-2);
+  --chartist-color-7: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-8: var(--simple-colors-default-theme-red-3);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-10: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-11: var(--simple-colors-default-theme-pink-3);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-13: var(--simple-colors-default-theme-red-4);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-orange-2); }
+
+:host([accent-color="purple"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-2: var(--simple-colors-default-theme-deep-purple-9);
+  --chartist-color-3: var(--simple-colors-default-theme-pink-10);
+  --chartist-color-4: var(--simple-colors-default-theme-indigo-8);
+  --chartist-color-5: var(--simple-colors-default-theme-red-9);
+  --chartist-color-6: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-7: var(--simple-colors-default-theme-deep-purple-8);
+  --chartist-color-8: var(--simple-colors-default-theme-pink-9);
+  --chartist-color-9: var(--simple-colors-default-theme-indigo-10);
+  --chartist-color-10: var(--simple-colors-default-theme-red-8);
+  --chartist-color-11: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-purple-10);
+  --chartist-color-13: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-14: var(--simple-colors-default-theme-indigo-9);
+  --chartist-color-15: var(--simple-colors-default-theme-red-10); }
+
+:host([dark][accent-color="purple"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-2: var(--simple-colors-default-theme-deep-purple-3);
+  --chartist-color-3: var(--simple-colors-default-theme-pink-2);
+  --chartist-color-4: var(--simple-colors-default-theme-indigo-4);
+  --chartist-color-5: var(--simple-colors-default-theme-red-3);
+  --chartist-color-6: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-7: var(--simple-colors-default-theme-deep-purple-4);
+  --chartist-color-8: var(--simple-colors-default-theme-pink-3);
+  --chartist-color-9: var(--simple-colors-default-theme-indigo-2);
+  --chartist-color-10: var(--simple-colors-default-theme-red-4);
+  --chartist-color-11: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-purple-2);
+  --chartist-color-13: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-14: var(--simple-colors-default-theme-indigo-3);
+  --chartist-color-15: var(--simple-colors-default-theme-red-2); }
+
+:host([accent-color="deep-purple"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-deep-purple-8);
+  --chartist-color-2: var(--simple-colors-default-theme-indigo-9);
+  --chartist-color-3: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-4: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-5: var(--simple-colors-default-theme-pink-9);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-purple-10);
+  --chartist-color-7: var(--simple-colors-default-theme-indigo-8);
+  --chartist-color-8: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-9: var(--simple-colors-default-theme-blue-10);
+  --chartist-color-10: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-11: var(--simple-colors-default-theme-deep-purple-9);
+  --chartist-color-12: var(--simple-colors-default-theme-indigo-10);
+  --chartist-color-13: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-14: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-10); }
+
+:host([dark][accent-color="deep-purple"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-deep-purple-4);
+  --chartist-color-2: var(--simple-colors-default-theme-indigo-3);
+  --chartist-color-3: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-4: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-5: var(--simple-colors-default-theme-pink-3);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-purple-2);
+  --chartist-color-7: var(--simple-colors-default-theme-indigo-4);
+  --chartist-color-8: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-9: var(--simple-colors-default-theme-blue-2);
+  --chartist-color-10: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-11: var(--simple-colors-default-theme-deep-purple-3);
+  --chartist-color-12: var(--simple-colors-default-theme-indigo-2);
+  --chartist-color-13: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-14: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-2); }
+
+:host([accent-color="indigo"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-indigo-8);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-purple-10);
+  --chartist-color-4: var(--simple-colors-default-theme-light-blue-8);
+  --chartist-color-5: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-6: var(--simple-colors-default-theme-indigo-10);
+  --chartist-color-7: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-purple-9);
+  --chartist-color-9: var(--simple-colors-default-theme-light-blue-10);
+  --chartist-color-10: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-11: var(--simple-colors-default-theme-indigo-9);
+  --chartist-color-12: var(--simple-colors-default-theme-blue-10);
+  --chartist-color-13: var(--simple-colors-default-theme-deep-purple-8);
+  --chartist-color-14: var(--simple-colors-default-theme-light-blue-9);
+  --chartist-color-15: var(--simple-colors-default-theme-purple-10); }
+
+:host([dark][accent-color="indigo"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-indigo-4);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-purple-2);
+  --chartist-color-4: var(--simple-colors-default-theme-light-blue-4);
+  --chartist-color-5: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-6: var(--simple-colors-default-theme-indigo-2);
+  --chartist-color-7: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-purple-3);
+  --chartist-color-9: var(--simple-colors-default-theme-light-blue-2);
+  --chartist-color-10: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-11: var(--simple-colors-default-theme-indigo-3);
+  --chartist-color-12: var(--simple-colors-default-theme-blue-2);
+  --chartist-color-13: var(--simple-colors-default-theme-deep-purple-4);
+  --chartist-color-14: var(--simple-colors-default-theme-light-blue-3);
+  --chartist-color-15: var(--simple-colors-default-theme-purple-2); }
+
+:host([accent-color="blue"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-2: var(--simple-colors-default-theme-light-blue-9);
+  --chartist-color-3: var(--simple-colors-default-theme-indigo-10);
+  --chartist-color-4: var(--simple-colors-default-theme-cyan-8);
+  --chartist-color-5: var(--simple-colors-default-theme-deep-purple-9);
+  --chartist-color-6: var(--simple-colors-default-theme-blue-10);
+  --chartist-color-7: var(--simple-colors-default-theme-light-blue-8);
+  --chartist-color-8: var(--simple-colors-default-theme-indigo-9);
+  --chartist-color-9: var(--simple-colors-default-theme-cyan-10);
+  --chartist-color-10: var(--simple-colors-default-theme-deep-purple-8);
+  --chartist-color-11: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-12: var(--simple-colors-default-theme-light-blue-10);
+  --chartist-color-13: var(--simple-colors-default-theme-indigo-8);
+  --chartist-color-14: var(--simple-colors-default-theme-cyan-9);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-purple-10); }
+
+:host([dark][accent-color="blue"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-2: var(--simple-colors-default-theme-light-blue-3);
+  --chartist-color-3: var(--simple-colors-default-theme-indigo-2);
+  --chartist-color-4: var(--simple-colors-default-theme-cyan-4);
+  --chartist-color-5: var(--simple-colors-default-theme-deep-purple-3);
+  --chartist-color-6: var(--simple-colors-default-theme-blue-2);
+  --chartist-color-7: var(--simple-colors-default-theme-light-blue-4);
+  --chartist-color-8: var(--simple-colors-default-theme-indigo-3);
+  --chartist-color-9: var(--simple-colors-default-theme-cyan-2);
+  --chartist-color-10: var(--simple-colors-default-theme-deep-purple-4);
+  --chartist-color-11: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-12: var(--simple-colors-default-theme-light-blue-2);
+  --chartist-color-13: var(--simple-colors-default-theme-indigo-4);
+  --chartist-color-14: var(--simple-colors-default-theme-cyan-3);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-purple-2); }
+
+:host([accent-color="light-blue"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-light-blue-8);
+  --chartist-color-2: var(--simple-colors-default-theme-cyan-9);
+  --chartist-color-3: var(--simple-colors-default-theme-blue-10);
+  --chartist-color-4: var(--simple-colors-default-theme-teal-8);
+  --chartist-color-5: var(--simple-colors-default-theme-indigo-9);
+  --chartist-color-6: var(--simple-colors-default-theme-light-blue-10);
+  --chartist-color-7: var(--simple-colors-default-theme-cyan-8);
+  --chartist-color-8: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-9: var(--simple-colors-default-theme-teal-10);
+  --chartist-color-10: var(--simple-colors-default-theme-indigo-8);
+  --chartist-color-11: var(--simple-colors-default-theme-light-blue-9);
+  --chartist-color-12: var(--simple-colors-default-theme-cyan-10);
+  --chartist-color-13: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-14: var(--simple-colors-default-theme-teal-9);
+  --chartist-color-15: var(--simple-colors-default-theme-indigo-10); }
+
+:host([dark][accent-color="light-blue"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-light-blue-4);
+  --chartist-color-2: var(--simple-colors-default-theme-cyan-3);
+  --chartist-color-3: var(--simple-colors-default-theme-blue-2);
+  --chartist-color-4: var(--simple-colors-default-theme-teal-4);
+  --chartist-color-5: var(--simple-colors-default-theme-indigo-3);
+  --chartist-color-6: var(--simple-colors-default-theme-light-blue-2);
+  --chartist-color-7: var(--simple-colors-default-theme-cyan-4);
+  --chartist-color-8: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-9: var(--simple-colors-default-theme-teal-2);
+  --chartist-color-10: var(--simple-colors-default-theme-indigo-4);
+  --chartist-color-11: var(--simple-colors-default-theme-light-blue-3);
+  --chartist-color-12: var(--simple-colors-default-theme-cyan-2);
+  --chartist-color-13: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-14: var(--simple-colors-default-theme-teal-3);
+  --chartist-color-15: var(--simple-colors-default-theme-indigo-2); }
+
+:host([accent-color="cyan"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-cyan-8);
+  --chartist-color-2: var(--simple-colors-default-theme-teal-9);
+  --chartist-color-3: var(--simple-colors-default-theme-light-blue-10);
+  --chartist-color-4: var(--simple-colors-default-theme-green-8);
+  --chartist-color-5: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-6: var(--simple-colors-default-theme-cyan-10);
+  --chartist-color-7: var(--simple-colors-default-theme-teal-8);
+  --chartist-color-8: var(--simple-colors-default-theme-light-blue-9);
+  --chartist-color-9: var(--simple-colors-default-theme-green-10);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-11: var(--simple-colors-default-theme-cyan-9);
+  --chartist-color-12: var(--simple-colors-default-theme-teal-10);
+  --chartist-color-13: var(--simple-colors-default-theme-light-blue-8);
+  --chartist-color-14: var(--simple-colors-default-theme-green-9);
+  --chartist-color-15: var(--simple-colors-default-theme-blue-10); }
+
+:host([dark][accent-color="cyan"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-cyan-4);
+  --chartist-color-2: var(--simple-colors-default-theme-teal-3);
+  --chartist-color-3: var(--simple-colors-default-theme-light-blue-2);
+  --chartist-color-4: var(--simple-colors-default-theme-green-4);
+  --chartist-color-5: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-6: var(--simple-colors-default-theme-cyan-2);
+  --chartist-color-7: var(--simple-colors-default-theme-teal-4);
+  --chartist-color-8: var(--simple-colors-default-theme-light-blue-3);
+  --chartist-color-9: var(--simple-colors-default-theme-green-2);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-11: var(--simple-colors-default-theme-cyan-3);
+  --chartist-color-12: var(--simple-colors-default-theme-teal-2);
+  --chartist-color-13: var(--simple-colors-default-theme-light-blue-4);
+  --chartist-color-14: var(--simple-colors-default-theme-green-3);
+  --chartist-color-15: var(--simple-colors-default-theme-blue-2); }
+
+:host([accent-color="teal"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-teal-8);
+  --chartist-color-2: var(--simple-colors-default-theme-green-9);
+  --chartist-color-3: var(--simple-colors-default-theme-cyan-10);
+  --chartist-color-4: var(--simple-colors-default-theme-light-green-8);
+  --chartist-color-5: var(--simple-colors-default-theme-light-blue-9);
+  --chartist-color-6: var(--simple-colors-default-theme-teal-10);
+  --chartist-color-7: var(--simple-colors-default-theme-green-8);
+  --chartist-color-8: var(--simple-colors-default-theme-cyan-9);
+  --chartist-color-9: var(--simple-colors-default-theme-light-green-10);
+  --chartist-color-10: var(--simple-colors-default-theme-light-blue-8);
+  --chartist-color-11: var(--simple-colors-default-theme-teal-9);
+  --chartist-color-12: var(--simple-colors-default-theme-green-10);
+  --chartist-color-13: var(--simple-colors-default-theme-cyan-8);
+  --chartist-color-14: var(--simple-colors-default-theme-light-green-9);
+  --chartist-color-15: var(--simple-colors-default-theme-light-blue-10); }
+
+:host([dark][accent-color="teal"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-teal-4);
+  --chartist-color-2: var(--simple-colors-default-theme-green-3);
+  --chartist-color-3: var(--simple-colors-default-theme-cyan-2);
+  --chartist-color-4: var(--simple-colors-default-theme-light-green-4);
+  --chartist-color-5: var(--simple-colors-default-theme-light-blue-3);
+  --chartist-color-6: var(--simple-colors-default-theme-teal-2);
+  --chartist-color-7: var(--simple-colors-default-theme-green-4);
+  --chartist-color-8: var(--simple-colors-default-theme-cyan-3);
+  --chartist-color-9: var(--simple-colors-default-theme-light-green-2);
+  --chartist-color-10: var(--simple-colors-default-theme-light-blue-4);
+  --chartist-color-11: var(--simple-colors-default-theme-teal-3);
+  --chartist-color-12: var(--simple-colors-default-theme-green-2);
+  --chartist-color-13: var(--simple-colors-default-theme-cyan-4);
+  --chartist-color-14: var(--simple-colors-default-theme-light-green-3);
+  --chartist-color-15: var(--simple-colors-default-theme-light-blue-2); }
+
+:host([accent-color="green"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-green-8);
+  --chartist-color-2: var(--simple-colors-default-theme-light-green-9);
+  --chartist-color-3: var(--simple-colors-default-theme-teal-10);
+  --chartist-color-4: var(--simple-colors-default-theme-lime-8);
+  --chartist-color-5: var(--simple-colors-default-theme-cyan-9);
+  --chartist-color-6: var(--simple-colors-default-theme-green-10);
+  --chartist-color-7: var(--simple-colors-default-theme-light-green-8);
+  --chartist-color-8: var(--simple-colors-default-theme-teal-9);
+  --chartist-color-9: var(--simple-colors-default-theme-lime-10);
+  --chartist-color-10: var(--simple-colors-default-theme-cyan-8);
+  --chartist-color-11: var(--simple-colors-default-theme-green-9);
+  --chartist-color-12: var(--simple-colors-default-theme-light-green-10);
+  --chartist-color-13: var(--simple-colors-default-theme-teal-8);
+  --chartist-color-14: var(--simple-colors-default-theme-lime-9);
+  --chartist-color-15: var(--simple-colors-default-theme-cyan-10); }
+
+:host([dark][accent-color="green"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-green-4);
+  --chartist-color-2: var(--simple-colors-default-theme-light-green-3);
+  --chartist-color-3: var(--simple-colors-default-theme-teal-2);
+  --chartist-color-4: var(--simple-colors-default-theme-lime-4);
+  --chartist-color-5: var(--simple-colors-default-theme-cyan-3);
+  --chartist-color-6: var(--simple-colors-default-theme-green-2);
+  --chartist-color-7: var(--simple-colors-default-theme-light-green-4);
+  --chartist-color-8: var(--simple-colors-default-theme-teal-3);
+  --chartist-color-9: var(--simple-colors-default-theme-lime-2);
+  --chartist-color-10: var(--simple-colors-default-theme-cyan-4);
+  --chartist-color-11: var(--simple-colors-default-theme-green-3);
+  --chartist-color-12: var(--simple-colors-default-theme-light-green-2);
+  --chartist-color-13: var(--simple-colors-default-theme-teal-4);
+  --chartist-color-14: var(--simple-colors-default-theme-lime-3);
+  --chartist-color-15: var(--simple-colors-default-theme-cyan-2); }
+
+:host([accent-color="light-green"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-light-green-8);
+  --chartist-color-2: var(--simple-colors-default-theme-lime-9);
+  --chartist-color-3: var(--simple-colors-default-theme-green-10);
+  --chartist-color-4: var(--simple-colors-default-theme-amber-8);
+  --chartist-color-5: var(--simple-colors-default-theme-teal-9);
+  --chartist-color-6: var(--simple-colors-default-theme-light-green-10);
+  --chartist-color-7: var(--simple-colors-default-theme-lime-8);
+  --chartist-color-8: var(--simple-colors-default-theme-green-9);
+  --chartist-color-9: var(--simple-colors-default-theme-amber-10);
+  --chartist-color-10: var(--simple-colors-default-theme-teal-8);
+  --chartist-color-11: var(--simple-colors-default-theme-light-green-9);
+  --chartist-color-12: var(--simple-colors-default-theme-lime-10);
+  --chartist-color-13: var(--simple-colors-default-theme-green-8);
+  --chartist-color-14: var(--simple-colors-default-theme-amber-9);
+  --chartist-color-15: var(--simple-colors-default-theme-teal-10); }
+
+:host([dark][accent-color="light-green"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-light-green-4);
+  --chartist-color-2: var(--simple-colors-default-theme-lime-3);
+  --chartist-color-3: var(--simple-colors-default-theme-green-2);
+  --chartist-color-4: var(--simple-colors-default-theme-amber-4);
+  --chartist-color-5: var(--simple-colors-default-theme-teal-3);
+  --chartist-color-6: var(--simple-colors-default-theme-light-green-2);
+  --chartist-color-7: var(--simple-colors-default-theme-lime-4);
+  --chartist-color-8: var(--simple-colors-default-theme-green-3);
+  --chartist-color-9: var(--simple-colors-default-theme-amber-2);
+  --chartist-color-10: var(--simple-colors-default-theme-teal-4);
+  --chartist-color-11: var(--simple-colors-default-theme-light-green-3);
+  --chartist-color-12: var(--simple-colors-default-theme-lime-2);
+  --chartist-color-13: var(--simple-colors-default-theme-green-4);
+  --chartist-color-14: var(--simple-colors-default-theme-amber-3);
+  --chartist-color-15: var(--simple-colors-default-theme-teal-2); }
+
+:host([accent-color="lime"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-lime-8);
+  --chartist-color-2: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-3: var(--simple-colors-default-theme-light-green-10);
+  --chartist-color-4: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-5: var(--simple-colors-default-theme-green-9);
+  --chartist-color-6: var(--simple-colors-default-theme-lime-10);
+  --chartist-color-7: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-8: var(--simple-colors-default-theme-light-green-9);
+  --chartist-color-9: var(--simple-colors-default-theme-orange-10);
+  --chartist-color-10: var(--simple-colors-default-theme-green-8);
+  --chartist-color-11: var(--simple-colors-default-theme-lime-9);
+  --chartist-color-12: var(--simple-colors-default-theme-yellow-10);
+  --chartist-color-13: var(--simple-colors-default-theme-light-green-8);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-9);
+  --chartist-color-15: var(--simple-colors-default-theme-green-10); }
+
+:host([dark][accent-color="lime"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-lime-4);
+  --chartist-color-2: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-3: var(--simple-colors-default-theme-light-green-2);
+  --chartist-color-4: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-5: var(--simple-colors-default-theme-green-3);
+  --chartist-color-6: var(--simple-colors-default-theme-lime-2);
+  --chartist-color-7: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-8: var(--simple-colors-default-theme-light-green-3);
+  --chartist-color-9: var(--simple-colors-default-theme-orange-2);
+  --chartist-color-10: var(--simple-colors-default-theme-green-4);
+  --chartist-color-11: var(--simple-colors-default-theme-lime-3);
+  --chartist-color-12: var(--simple-colors-default-theme-yellow-2);
+  --chartist-color-13: var(--simple-colors-default-theme-light-green-4);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-3);
+  --chartist-color-15: var(--simple-colors-default-theme-green-2); }
+
+:host([accent-color="yellow"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-2: var(--simple-colors-default-theme-amber-9);
+  --chartist-color-3: var(--simple-colors-default-theme-lime-10);
+  --chartist-color-4: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-5: var(--simple-colors-default-theme-light-green-9);
+  --chartist-color-6: var(--simple-colors-default-theme-yellow-10);
+  --chartist-color-7: var(--simple-colors-default-theme-amber-8);
+  --chartist-color-8: var(--simple-colors-default-theme-lime-9);
+  --chartist-color-9: var(--simple-colors-default-theme-deep-orange-10);
+  --chartist-color-10: var(--simple-colors-default-theme-light-green-8);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-12: var(--simple-colors-default-theme-amber-10);
+  --chartist-color-13: var(--simple-colors-default-theme-lime-8);
+  --chartist-color-14: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-15: var(--simple-colors-default-theme-light-green-10); }
+
+:host([dark][accent-color="yellow"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-2: var(--simple-colors-default-theme-amber-3);
+  --chartist-color-3: var(--simple-colors-default-theme-lime-2);
+  --chartist-color-4: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-5: var(--simple-colors-default-theme-light-green-3);
+  --chartist-color-6: var(--simple-colors-default-theme-yellow-2);
+  --chartist-color-7: var(--simple-colors-default-theme-amber-4);
+  --chartist-color-8: var(--simple-colors-default-theme-lime-3);
+  --chartist-color-9: var(--simple-colors-default-theme-deep-orange-2);
+  --chartist-color-10: var(--simple-colors-default-theme-light-green-4);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-12: var(--simple-colors-default-theme-amber-2);
+  --chartist-color-13: var(--simple-colors-default-theme-lime-4);
+  --chartist-color-14: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-15: var(--simple-colors-default-theme-light-green-2); }
+
+:host([accent-color="amber"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-amber-8);
+  --chartist-color-2: var(--simple-colors-default-theme-orange-9);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-10);
+  --chartist-color-4: var(--simple-colors-default-theme-red-8);
+  --chartist-color-5: var(--simple-colors-default-theme-lime-9);
+  --chartist-color-6: var(--simple-colors-default-theme-amber-10);
+  --chartist-color-7: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-8: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-9: var(--simple-colors-default-theme-red-10);
+  --chartist-color-10: var(--simple-colors-default-theme-lime-8);
+  --chartist-color-11: var(--simple-colors-default-theme-amber-9);
+  --chartist-color-12: var(--simple-colors-default-theme-orange-10);
+  --chartist-color-13: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-14: var(--simple-colors-default-theme-red-9);
+  --chartist-color-15: var(--simple-colors-default-theme-lime-10); }
+
+:host([dark][accent-color="amber"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-amber-4);
+  --chartist-color-2: var(--simple-colors-default-theme-orange-3);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-2);
+  --chartist-color-4: var(--simple-colors-default-theme-red-4);
+  --chartist-color-5: var(--simple-colors-default-theme-lime-3);
+  --chartist-color-6: var(--simple-colors-default-theme-amber-2);
+  --chartist-color-7: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-8: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-9: var(--simple-colors-default-theme-red-2);
+  --chartist-color-10: var(--simple-colors-default-theme-lime-4);
+  --chartist-color-11: var(--simple-colors-default-theme-amber-3);
+  --chartist-color-12: var(--simple-colors-default-theme-orange-2);
+  --chartist-color-13: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-14: var(--simple-colors-default-theme-red-3);
+  --chartist-color-15: var(--simple-colors-default-theme-lime-2); }
+
+:host([accent-color="orange"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-2: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-3: var(--simple-colors-default-theme-amber-10);
+  --chartist-color-4: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-5: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-10);
+  --chartist-color-7: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-8: var(--simple-colors-default-theme-amber-9);
+  --chartist-color-9: var(--simple-colors-default-theme-pink-10);
+  --chartist-color-10: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-11: var(--simple-colors-default-theme-orange-9);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-orange-10);
+  --chartist-color-13: var(--simple-colors-default-theme-amber-8);
+  --chartist-color-14: var(--simple-colors-default-theme-pink-9);
+  --chartist-color-15: var(--simple-colors-default-theme-yellow-10); }
+
+:host([dark][accent-color="orange"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-2: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-3: var(--simple-colors-default-theme-amber-2);
+  --chartist-color-4: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-5: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-2);
+  --chartist-color-7: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-8: var(--simple-colors-default-theme-amber-3);
+  --chartist-color-9: var(--simple-colors-default-theme-pink-2);
+  --chartist-color-10: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-11: var(--simple-colors-default-theme-orange-3);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-orange-2);
+  --chartist-color-13: var(--simple-colors-default-theme-amber-4);
+  --chartist-color-14: var(--simple-colors-default-theme-pink-3);
+  --chartist-color-15: var(--simple-colors-default-theme-yellow-2); }
+
+:host([accent-color="deep-orange"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-2: var(--simple-colors-default-theme-red-9);
+  --chartist-color-3: var(--simple-colors-default-theme-orange-10);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-5: var(--simple-colors-default-theme-amber-9);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-orange-10);
+  --chartist-color-7: var(--simple-colors-default-theme-red-8);
+  --chartist-color-8: var(--simple-colors-default-theme-orange-9);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-10);
+  --chartist-color-10: var(--simple-colors-default-theme-amber-8);
+  --chartist-color-11: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-12: var(--simple-colors-default-theme-red-10);
+  --chartist-color-13: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-15: var(--simple-colors-default-theme-amber-10); }
+
+:host([dark][accent-color="deep-orange"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-2: var(--simple-colors-default-theme-red-3);
+  --chartist-color-3: var(--simple-colors-default-theme-orange-2);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-5: var(--simple-colors-default-theme-amber-3);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-orange-2);
+  --chartist-color-7: var(--simple-colors-default-theme-red-4);
+  --chartist-color-8: var(--simple-colors-default-theme-orange-3);
+  --chartist-color-9: var(--simple-colors-default-theme-purple-2);
+  --chartist-color-10: var(--simple-colors-default-theme-amber-4);
+  --chartist-color-11: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-12: var(--simple-colors-default-theme-red-2);
+  --chartist-color-13: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-14: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-15: var(--simple-colors-default-theme-amber-2); }
+
+:host([accent-color="brown"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-brown-8);
+  --chartist-color-2: var(--simple-colors-default-theme-red-9);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-orange-10);
+  --chartist-color-4: var(--simple-colors-default-theme-brown-11);
+  --chartist-color-5: var(--simple-colors-default-theme-red-12);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-7: var(--simple-colors-default-theme-brown-9);
+  --chartist-color-8: var(--simple-colors-default-theme-red-10);
+  --chartist-color-9: var(--simple-colors-default-theme-deep-orange-11);
+  --chartist-color-10: var(--simple-colors-default-theme-brown-12);
+  --chartist-color-11: var(--simple-colors-default-theme-red-8);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-orange-9);
+  --chartist-color-13: var(--simple-colors-default-theme-brown-10);
+  --chartist-color-14: var(--simple-colors-default-theme-red-11);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-orange-12); }
+
+:host([dark][accent-color="brown"]) {
+  --chartist-color-1: var(--simple-colors-default-theme-brown-4);
+  --chartist-color-2: var(--simple-colors-default-theme-red-3);
+  --chartist-color-3: var(--simple-colors-default-theme-deep-orange-2);
+  --chartist-color-4: var(--simple-colors-default-theme-brown-1);
+  --chartist-color-5: var(--simple-colors-default-theme-red-0);
+  --chartist-color-6: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-7: var(--simple-colors-default-theme-brown-3);
+  --chartist-color-8: var(--simple-colors-default-theme-red-2);
+  --chartist-color-9: var(--simple-colors-default-theme-deep-orange-1);
+  --chartist-color-10: var(--simple-colors-default-theme-brown-0);
+  --chartist-color-11: var(--simple-colors-default-theme-red-4);
+  --chartist-color-12: var(--simple-colors-default-theme-deep-orange-3);
+  --chartist-color-13: var(--simple-colors-default-theme-brown-2);
+  --chartist-color-14: var(--simple-colors-default-theme-red-1);
+  --chartist-color-15: var(--simple-colors-default-theme-deep-orange-0); }
+
+:host {
+  overflow: visible;
+  display: flex;
+  margin: 15px; }
+
+:host #wrapper {
+  margin: 0 auto;
+  position: relative;
+  padding-top: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around; }
+
+:host #wrapper > * {
+  position: absolute; }
+
+:host #chart {
+  left: 0;
+  top: 0;
+  flex: 1 1 100%; }
+
+:host #wrapper,
+:host #chart {
+  width: 100%; }
+
+:host #image {
+  left: 15%;
+  top: 15%;
+  width: 70%;
+  height: 70%;
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%); }
+      `
+    ];
+  }
+  // render function
+  render() {
     return html`
-      <style include="simple-colors-shared-styles-polymer">
-        :host {
-          background-color: var(--simple-colors-background1, #ffffff);
-          overflow: visible;
-          display: block;
-        }
-        :host #wrapper {
-          margin: 0 auto;
-          position: relative;
-        }
-        :host #wrapper > * {
-          position: absolute;
-        }
-        :host #wrapper #chart {
-          left: 0;
-          top: 0;
-        }
-        :host #wrapper,
-        :host #wrapper #chart {
-          width: 250px;
-          height: 250px;
-        }
-        :host([size="xs"]) #wrapper,
-        :host([size="xs"]) #wrapper #chart {
-          width: 150px;
-          height: 150px;
-        }
-        :host([size="sm"]) #wrapper,
-        :host([size="sm"]) #wrapper #chart {
-          width: 200px;
-          height: 200px;
-        }
-        :host([size="lg"]) #wrapper,
-        :host([size="lg"]) #wrapper #chart {
-          width: 300px;
-          height: 300px;
-        }
-        :host([size="xl"]) #wrapper,
-        :host([size="xl"]) #wrapper #chart {
-          width: 400px;
-          height: 400px;
-        }
-        :host #wrapper > #image {
-          left: 20%;
-          top: 20%;
-          width: 60%;
-          height: 60%;
-          -webkit-clip-path: circle(50% at 50% 50%);
-          clip-path: circle(50% at 50% 50%);
-        }
-      </style>
-      <div id="wrapper">
-        <img
-          id="image"
-          alt\$="[[imageAlt]]"
-          aria-hidden="true"
-          hidden\$="[[!imageSrc]]"
-          src\$="[[imageSrc]]"
-          style\$="[[imageStyle]]"
-        />
-        <chartist-render
-          id="chart"
-          data\$="[[data]]"
-          chart-desc\$="[[desc]]"
-          chart-title="[[title]]"
-          scale="ct-square"
-          options\$="[[options]]"
-          title\$="[[title]]"
-          type="pie"
-        >
-        </chartist-render>
-      </div>
-    `;
+
+<div id="wrapper">
+  <img
+    id="image"
+    alt="${this.imageAlt}"
+    aria-hidden="true"
+    src="${this.imageSrc}"
+    ?hidden="${!this.imageSrc || this.imageSrc == ''}"
+  />
+  <chartist-render
+    id="chart"
+    type="pie"
+    scale="ct-square"
+    .chart-title="${this.title}"
+    .chart-desc="${this.desc}"
+    @chartist-render-draw="${this._onCreated}"
+  >
+  </chartist-render>
+</div>`;
   }
 
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Progress Donut",
+    "description": "The user will be able to see this for selection in a UI.",
+    "icon": "av:play-circle-filled",
+    "color": "grey",
+    "groups": ["Video", "Media"],
+    "handles": [
+      {
+        "type": "image",
+        "url": "source"
+      }
+    ],
+    "meta": {
+      "author": "Your organization on github"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "animated",
+        "title": "Animated",
+        "description": "Whether progress animates on first load",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "complete",
+        "title": "Complete",
+        "description": "An array of completed values.",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "title": "Number",
+            "description": "Completed number.",
+            "inputMethod": "number"
+          }
+        ]
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total when all items are complete.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "startAngle",
+        "title": "Start Angle",
+        "description": "Donut angle where progress starts",
+        "inputMethod": "number"
+      }
+    ],
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "The title of the element",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "desc",
+        "title": "Description",
+        "description": "Accessible long description",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "imageSrc",
+        "title": "Image Source",
+        "description": "Source of image inside donut.",
+        "inputMethod": "haxupload",
+        "icon": "link",
+        "validationType": "url"
+      },
+      {
+        "property": "imageAlt",
+        "title": "Image Alt Text",
+        "description": "Alt text for image.",
+        "inputMethod": "alt"
+      },
+      {
+        "property": "animated",
+        "title": "Animated",
+        "description": "Whether progress animates on first load",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "complete",
+        "title": "Complete",
+        "description": "An array of completed values.",
+        "inputMethod": "array"
+      },
+      {
+        "property": "total",
+        "title": "Total",
+        "description": "Total when all items are complete.",
+        "inputMethod": "arrnumberay"
+      },
+      {
+        "property": "startAngle",
+        "title": "Start Angle",
+        "description": "Donut angle where progress starts",
+        "inputMethod": "number"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    return {
+  
+  ...super.properties,
+  
+  /**
+   * Whether progress animates on first load
+   */
+  "animated": {
+    "type": Boolean
+  },
+  /**
+   * An array of completed values
+   */
+  "complete": {
+    "type": Array
+  },
+  /**
+   * Accessible long description
+   */
+  "desc": {
+    "type": String
+  },
+  /**
+   * Source of image in the center of the object.
+   */
+  "imageSrc": {
+    "attribute": "image-src",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Alt text for image.
+   */
+  "imageAlt": {
+    "attribute": "image-alt",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Donut angle where progress starts
+   */
+  "startAngle": {
+    "attribute": "start-angle",
+    "type": Number
+  },
+  /**
+   * Title of donut
+   */
+  "title": {
+    "type": String
+  },
+  /**
+   * Array of incomplete values
+   */
+  "total": {
+    "type": Number
+  }
+}
+;
+  }
+
+  constructor() {
+    super();
+    this.animated = false;
+    this.accentColor = "grey";
+    this.dark = false;
+    this.complete = [];
+    this.desc = "";
+    this.title = "";
+    this.imageSrc = "";
+    this.imageAlt = "";
+    this.total = 100;
+  }
   static get tag() {
     return "progress-donut";
   }
-  static get properties() {
-    let props = {
-      /**
-       * An array of completed values
-       */
-      complete: {
-        type: Array,
-        value: []
-      },
-      /**
-       * The thickness of the donut from 0-100
-       */
-      donutThickness: {
-        type: Number
-      },
-      /**
-       * An array of hex codes to use as colors for each section.
-       * If null, colors are determined by accentColor & dark properties
-       */
-      colors: {
-        type: Array,
-        value: null
-      },
-      /**
-       * An array of data for the donut chart
-       */
-      data: {
-        type: Array,
-        computed: "_getData(complete)"
-      },
-      /**
-       * Accessible long description
-       */
-      desc: {
-        type: String,
-        value: null
-      },
-      /**
-       * An array of data for the donut chart
-       */
-      options: {
-        type: Array,
-        computed: "_getOptions(complete,total,size,colors,accentColor,dark)"
-      },
-      /**
-       * The source of the image in the center of the object.
-       */
-      imageSrc: {
-        type: String,
-        value: null,
-        reflectToAttribute: true
-      },
-      /**
-       * The alt text for the image.
-       */
-      imageAlt: {
-        type: String,
-        value: null,
-        reflectToAttribute: true
-      },
-      /**
-       * The style for the image based on the size of the donut
-       */
-      imageStyle: {
-        type: String,
-        computed: "_getImageStyle(size)"
-      },
-      /**
-       * The size of the progress-donut: sx, sm, md, lg, or xl. Default is md
-       */
-      size: {
-        type: String,
-        value: "md",
-        reflectToAttribute: true
-      },
-      /**
-       * Title
-       */
-      title: {
-        type: String
-      },
-      /**
-       * a selected accent-color: grey, red, pink, purple, etc.
-       */
-      accentColor: {
-        type: String,
-        value: "grey",
-        reflectToAttribute: true
-      },
-      /**
-       * An array of incomplete values
-       */
-      total: {
-        type: Number,
-        value: 100
-      }
-    };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
-  }
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Sample gizmo",
-        description: "The user will be able to see this for selection in a UI.",
-        icon: "av:play-circle-filled",
-        color: "grey",
-        groups: ["Video", "Media"],
-        handles: [
-          {
-            type: "video",
-            url: "source"
-          }
-        ],
-        meta: {
-          author: "Your organization on github"
-        }
-      },
-      settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
-          }
-        ],
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
-          }
-        ],
-        advanced: []
-      }
-    };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("chartist-render-draw", this._onCreated.bind(this));
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "chartist-render-draw",
-      this._onCreated.bind(this)
-    );
-    super.disconnectedCallback();
-  }
-  /**
-   * Makes chart and returns the chart object.
-   */
-  _getData(complete) {
-    return { series: complete };
-  }
 
-  /**
-   * Makes chart and returns the chart object.
-   */
-  _getImageStyle(size) {
-    let offset = "22%",
-      diameter = "56%";
-    if (this.size === "xs") {
-      offset = "32%";
-      diameter = "36%";
-    } else if (this.size === "sm") {
-      offset = "26%";
-      diameter = "48%";
-    } else if (this.size === "lg") {
-      offset = "20%";
-      diameter = "60%";
-    } else if (this.size === "xl") {
-      offset = "17%";
-      diameter = "66%";
-    }
-    return (
-      "left: " +
-      offset +
-      "; top: " +
-      offset +
-      "; width: " +
-      diameter +
-      "; height: " +
-      diameter +
-      ";"
-    );
-  }
-
-  /**
-   * Makes chart and returns the chart object.
-   */
-  _getOptions(complete, total, size, colors, accentColor, dark) {
-    let sum = 0;
-    for (let i = 0; i < complete.length; i++) {
-      sum += parseFloat(complete[i]);
-    }
-    return {
-      donut: true,
-      showLabel: false,
-      startAngle: 0,
-      total: Math.max(sum, total)
-    };
+  updated(changedProperties) {
+    this.makeChart();
   }
 
   /**
    * Handles chart creation event.
+   * @param {event} e create event
    */
   _onCreated(e) {
-    this.__chart = e.detail;
-    this.makeChart(this.__chart);
-  }
-
-  /**
-   * Makes chart and returns the chart object.
-   */
-  makeChart(chart) {
-    if (chart !== undefined) {
-      let colors = this.colors,
-        strokeWidth = "10%",
-        hex = SimpleColorsPolymer.colors,
-        accent =
-          this.accentColor !== null
-            ? this.accentColor.replace(/-([a-z])/g, function(g) {
-                return g[1].toUpperCase();
-              })
-            : null;
-      if (colors === undefined || colors === null || colors.length === 0) {
-        if (accent !== null && hex[accent] !== null) {
-          colors = this.dark
-            ? [
-                hex[accent][9],
-                hex[accent][6],
-                hex[accent][3],
-                hex[accent][7],
-                hex[accent][4]
-              ]
-            : [
-                hex[accent][0],
-                hex[accent][3],
-                hex[accent][5],
-                hex[accent][2],
-                hex[accent][4]
-              ];
-        } else {
-          colors = this.dark
-            ? [
-                hex.orange[6],
-                hex.pink[4],
-                hex.purple[5],
-                hex.cyan[6],
-                hex.lime[5]
-              ]
-            : [
-                hex.pink[5],
-                hex.deepPurple[4],
-                hex.blue[3],
-                hex.teal[4],
-                hex.yellow[5]
-              ];
-        }
-      }
-
-      if (this.size === "xs") {
-        strokeWidth = "8%";
-      } else if (this.size === "sm") {
-        strokeWidth = "9%";
-      } else if (this.size === "lg") {
-        strokeWidth = "11%";
-      } else if (this.size === "xl") {
-        strokeWidth = "12%";
-      }
-      // From chartist.js docs:
-      chart.on("draw", function(data) {
-        data.element._node.style.strokeWidth = strokeWidth;
-        data.element._node.style.stroke = colors[data.index % colors.length];
+    if (this.animated)
+      e.detail.on("draw", function(data) {
         if (data.type === "slice") {
           var pathLength = data.element._node.getTotalLength();
           data.element.attr({
@@ -402,8 +924,32 @@ class ProgressDonut extends SchemaBehaviors(PolymerElement) {
           data.element.animate(animationDefinition, false);
         }
       });
-      return chart;
+  }
+
+  /**
+   * refreshes the chart
+   */
+  makeChart() {
+    let sum = 0,
+      chart = this.shadowRoot.querySelector("#chart");
+    for (let i = 0; i < this.complete.length; i++) {
+      sum += parseFloat(this.complete[i]);
     }
+    if (chart) {
+      chart.data = { series: this.complete };
+      chart.options = {
+        donut: true,
+        donutWidth: "25%",
+        chartPadding: 0,
+        showLabel: false,
+        startAngle: 0,
+        total: Math.max(sum, this.total)
+      };
+      this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
+      chart.makeChart();
+    }
+    this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
+    return chart;
   }
 }
 window.customElements.define(ProgressDonut.tag, ProgressDonut);

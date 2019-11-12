@@ -11,8 +11,7 @@ import { LrndesignChart } from "../lrndesign-chart.js";
  * @customElement
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js
- *
- * @demo ../demo/bar.html
+ * @demo ./demo/bar.html
  *
  */
 class LrndesignBar extends LrndesignChart {
@@ -23,7 +22,9 @@ class LrndesignBar extends LrndesignChart {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return Object.assign(super.properties, super.lineBarProperties, {
+    return {
+      ...super.properties,
+      ...super.lineBarProperties,
       /**
        * Use only integer values (whole numbers) for the scale steps
        */
@@ -95,7 +96,7 @@ class LrndesignBar extends LrndesignChart {
         attribute: "stack-mode",
         type: Boolean
       }
-    });
+    };
   }
 
   /**

@@ -40,9 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/iron-iconset": "^3.0.1",
-    "@polymer/iron-iconset-svg": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/iron-iconset-svg": "^3.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

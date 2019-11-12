@@ -83,7 +83,9 @@ class SimpleToast extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Opened state of the toast, use event to change
        */
@@ -140,10 +142,6 @@ class SimpleToast extends LitElement {
         attribute: "close-button"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

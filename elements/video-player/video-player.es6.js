@@ -145,7 +145,10 @@ class VideoPlayer extends MediaBehaviorsVideo(
   static get haxProperties() {
     return {
   "canScale": true,
-  "canPosition": true,
+  "canPosition": {
+    "min": 25,
+    "step": 12.5
+  },
   "canEditSource": false,
   "gizmo": {
     "title": "Video player",
@@ -352,7 +355,10 @@ class VideoPlayer extends MediaBehaviorsVideo(
   }
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Is the media an audio file only?
    */
@@ -599,10 +605,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -445,7 +445,9 @@ class HexagonLoader extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Color to make the loader
        */
@@ -484,10 +486,6 @@ class HexagonLoader extends LitElement {
         attribute: "item-count"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

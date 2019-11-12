@@ -152,7 +152,9 @@ class CodeSample extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
         type: Boolean,
@@ -175,10 +177,6 @@ class CodeSample extends PolymerElement {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

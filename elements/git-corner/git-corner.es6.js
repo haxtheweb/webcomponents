@@ -46,7 +46,10 @@ class GitCorner extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * source to point to
    */
@@ -79,10 +82,6 @@ class GitCorner extends LitElement {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

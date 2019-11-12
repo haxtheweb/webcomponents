@@ -39,7 +39,9 @@ class AbsolutePositionBehavior extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Element is positioned from connected to disconnected?
        * Otherwise setPosition and unsetPosition must be called manually.
@@ -90,10 +92,6 @@ class AbsolutePositionBehavior extends LitElement {
         type: Object
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

@@ -69,7 +69,9 @@ class JsonEditor extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * label for the text area
        */
@@ -134,10 +136,6 @@ class JsonEditor extends PolymerElement {
         computed: "_computeCurrentData(value)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

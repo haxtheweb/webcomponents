@@ -76,7 +76,9 @@ class CircleProgress extends mixinBehaviors(
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Value of circular progress bar.
        */
@@ -149,10 +151,6 @@ class CircleProgress extends mixinBehaviors(
         computed: "_computeDashOffset(value, max, _dasharray)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   connectedCallback() {
     super.connectedCallback();

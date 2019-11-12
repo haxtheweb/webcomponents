@@ -6,7 +6,9 @@
 export const SchemaBehaviors = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
-      let props = {
+      return {
+        ...super.properties,
+
         /**
          * Unique Resource ID, generated when schemaMap processes.
          */
@@ -33,10 +35,6 @@ export const SchemaBehaviors = function(SuperClass) {
           observer: "_schemaMapChanged"
         }
       };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
     /**
      * Generate a uinque ID

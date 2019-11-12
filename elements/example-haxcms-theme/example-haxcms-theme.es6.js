@@ -64,7 +64,10 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Edit mode which will be updated whenever HAXcms store
    * has been updated. It's also reflected to attribute which
@@ -85,10 +88,6 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

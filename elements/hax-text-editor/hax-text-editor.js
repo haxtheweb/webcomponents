@@ -28,7 +28,7 @@ class HaxTextEditor extends RichTextEditor {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return { ...super.properties };
   }
   constructor() {
     super();

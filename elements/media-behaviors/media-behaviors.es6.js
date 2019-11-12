@@ -31,7 +31,8 @@ window.MediaBehaviors.Video = {
    * Check source of the video, potentially correcting bad links.
    */
   cleanVideoSource(input, type) {
-    if (type != "local") {
+    // ensure we are NOT local and do a sanity check
+    if (type != "local" && typeof input === "string") {
       // strip off the ? modifier for youtube/vimeo so we can build ourselves
       var tmp = input.split("?");
       var v = "";

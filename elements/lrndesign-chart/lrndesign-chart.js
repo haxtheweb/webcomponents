@@ -18,10 +18,10 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @extends SchemaBehaviors
  * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
  *
- * @demo demo/index.html
- * @demo demo/pie.html pie charts
- * @demo demo/bar.html bar charts
- * @demo demo/line.html line charts
+ * @demo ./demo/index.html
+ * @demo ./demo/pie.html pie charts
+ * @demo ./demo/bar.html bar charts
+ * @demo ./demo/line.html line charts
  *
  */
 class LrndesignChart extends SimpleColors {
@@ -800,7 +800,9 @@ class LrndesignChart extends SimpleColors {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Location of the CSV file.
        */
@@ -836,10 +838,6 @@ class LrndesignChart extends SimpleColors {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   constructor() {
@@ -1175,15 +1173,28 @@ class LrndesignChart extends SimpleColors {
       ]
     };
   }
-
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      /**
+       * Fired when data source changes.
+       *
+       * @event data-source-changed
+       * @param {string} dataSource data source of the chart
+       *
+       */
       if (propName === "dataSource")
         this.dispatchEvent(
           new CustomEvent("data-source-changed", {
             detail: this
           })
         );
+      /**
+       * Fired when raw data changes.
+       *
+       * @event raw-data-changed
+       * @param {string} rawData raw CSV data for the chart which will be converted into an array
+       *
+       */
       if (propName === "rawData")
         this.dispatchEvent(
           new CustomEvent("raw-data-changed", {
@@ -1203,8 +1214,21 @@ class LrndesignChart extends SimpleColors {
     let chart = this.shadowRoot.querySelector("#chartist");
     if (chart) {
       chart.options = this._getOptions();
+      /**
+       * Fired when chart options change.
+       *
+       * @event options-changed
+       * @param {object} chart options
+       *
+       */
       this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
       chart.makeChart();
+      /**
+       * Fired when chart changes.
+       *
+       * @event chart-changed
+       *
+       */
       this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
     }
   }

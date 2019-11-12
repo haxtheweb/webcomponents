@@ -21,7 +21,8 @@ class LrndesignPie extends LrndesignChart {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return Object.assign(super.properties, {
+    return {
+      ...super.properties,
       /**
        * Padding of chart drawing area to container element and labels
        */
@@ -107,7 +108,7 @@ class LrndesignPie extends LrndesignChart {
       total: {
         type: Number
       }
-    });
+    };
   }
 
   /**

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>A11yMediaPlayer: a11y-media-player Demo</title>
+    <title>a11y-collapse-group Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
@@ -43,36 +43,16 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>a11y-collapse-group</h1>
-      <p>With the <tt>radio</tt> attribute, only one item can be expanded at a time.</p>
-      <demo-snippet>
-        <template>
-          <a11y-collapse-group radio>
-            <h2>Secondary Colors List</h2>
-            <a11y-collapse accordion>
-              <p slot="heading">Purple</p>
-              <div slot="content">Blue and red make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse accordion>
-              <p slot="heading">Green</p>
-              <div slot="content">Blue and yellow make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse accordion>
-              <p slot="heading">Orange</p>
-              <div slot="content">Yellow and red make purple.</div>
-            </a11y-collapse>
-          </a11y-collapse-group>
-        </template>
-      </demo-snippet>
+      <h1>a11y-collapse-group Demo</h1>
       
-      <h2>a11y-collapse-groups demo with global options and a disabled item</h2>
-      <p>
-        The following options can be set in the <tt>global-options</tt> attribute to apply to all a11y-collapse items in a group:
-        icon, icon-expanded, label, label-expanded, tooltip, tooltip-expanded.
-      </p>
+      <h2>Basic a11y-collapse-group</h2>
       <demo-snippet>
         <template>
-          <a11y-collapse-group radio global-options="{&quot;icon&quot;: &quot;arrow-drop-down&quot;, &quot;tooltip&quot;: &quot;show more info&quot;, &quot;tooltipExpanded&quot;: &quot;show less info&quot;}">
+          <a11y-collapse-group 
+            accordion
+            expanded 
+            tooltip="show more info" 
+            tooltip-expanded="show less info">
             <h2>Secondary Colors</h2>
             <a11y-collapse>
               <p slot="heading">Purple</p>
@@ -83,6 +63,29 @@
               <div slot="content">Blue and yellow make purple.</div>
             </a11y-collapse>
             <a11y-collapse disabled>
+              <p slot="heading">Orange</p>
+              <div slot="content">Yellow and red make purple.</div>
+            </a11y-collapse>
+          </a11y-collapse-group>
+        </template>
+      </demo-snippet>
+
+      <h2>Radio a11y-collapse-groups</h2>
+      <demo-snippet>
+        <template>
+          <a11y-collapse-group 
+            radio
+            icon="arrow-drop-down" >
+            <h2>Secondary Colors List</h2>
+            <a11y-collapse >
+              <p slot="heading">Purple</p>
+              <div slot="content">Blue and red make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse>
+              <p slot="heading">Green</p>
+              <div slot="content">Blue and yellow make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse>
               <p slot="heading">Orange</p>
               <div slot="content">Yellow and red make purple.</div>
             </a11y-collapse>

@@ -71,7 +71,9 @@ class SimpleFields extends MutableData(PolymerElement) {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * automatically set focus on the first field if that field has autofocus
        */
@@ -114,10 +116,6 @@ class SimpleFields extends MutableData(PolymerElement) {
         }
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

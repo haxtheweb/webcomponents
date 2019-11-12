@@ -1,13 +1,11 @@
 export const mtzMarkedControlLineBehaviorImpl = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
-      let props = {
+      return {
+        ...super.properties,
+
         syntaxPrefix: String // Must implement
       };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
     /**
      * Toggles a syntax prefix at the start of selected lines

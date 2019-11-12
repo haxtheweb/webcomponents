@@ -625,6 +625,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     static get properties() {
     
     return {
+  
+  ...super.properties,
+  
   /**
    * Allow this media to play concurrently with other a11y-media-players?
    * Default is to pause this a11y-media-player when other a11y-media-player starts playing.

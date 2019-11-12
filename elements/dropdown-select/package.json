@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/dropdown-select",
   "wcfactory": {
     "className": "DropdownSelect",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "dropdown-select",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
@@ -34,12 +34,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.1",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-listbox": "^3.0.0",
-    "@polymer/polymer": "^3.2.0",
-    "web-animations-js": "^2.3.1"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
@@ -47,6 +45,9 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
+    "web-component-analyzer": "0.1.17",
+    "@polymer/neon-animation": "^3.0.0",
+    "web-animations-js": "^2.3.1",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",

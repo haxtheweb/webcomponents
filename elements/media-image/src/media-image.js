@@ -127,7 +127,9 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
     return "media-image";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Image source.
        */
@@ -217,10 +219,6 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
         value: ""
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   // Observe the name sub-property on the user object

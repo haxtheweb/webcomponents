@@ -104,7 +104,9 @@ class RelativeHeading extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
        */
@@ -197,10 +199,6 @@ class RelativeHeading extends PolymerElement {
         computed: "_isLevel(level,6)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

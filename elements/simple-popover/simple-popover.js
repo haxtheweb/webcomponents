@@ -151,7 +151,9 @@ class SimplePopover extends AbsolutePositionBehavior {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Tthe margin styles to offset the pointer
        */
@@ -160,10 +162,6 @@ class SimplePopover extends AbsolutePositionBehavior {
         computed: "_getMargins(__positions)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   constructor() {
     super();

@@ -54,7 +54,9 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
     return "lrn-vocab";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Term to highlight / display
        */
@@ -63,10 +65,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Request the singleton dialog open

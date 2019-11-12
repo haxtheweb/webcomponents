@@ -71,7 +71,9 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
     return "lrndesign-panelcard";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title of the panel
        */
@@ -97,10 +99,6 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     return {

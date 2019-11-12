@@ -105,7 +105,10 @@ ol {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   "appStore": {
     "name": "appStore",
     "type": String,
@@ -113,10 +116,6 @@ ol {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**
@@ -181,7 +180,6 @@ ol {
    * which HAX will react to an load the data it finds.
    */
   storeReady(e) {
-    console.log("ready");
     if (e.detail) {
       window.HaxStore.instance.appStore = JSON.parse(
         this.getAttribute("app-store")

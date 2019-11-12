@@ -75,7 +75,9 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Image
        */
@@ -93,10 +95,6 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   static get observers() {

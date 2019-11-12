@@ -99,6 +99,9 @@ lrn-vocab {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+  
+  ...super.properties,
+  
   "name": {
     "name": "name",
     "type": String,

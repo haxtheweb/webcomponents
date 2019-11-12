@@ -37,8 +37,15 @@ gulp.task("merge", () => {
           rawprops = fs.readFileSync(
             path.join("./", packageJson.wcfactory.files.properties)
           );
-          let props = `${rawprops}`;
-          props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
+          let props = `${rawprops}`,
+            comma = props
+              .replace(/\/\*[\s\S]*?\*\//g, "")
+              .replace(/\/\/.*/g, "")
+              .replace(/[\{\s\n\}]/g, "");
+          (props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1')),
+            (superprops =
+              comma === "" ? `...super.properties` : `...super.properties,`);
+          props = props.replace(/\{([\s\n]*)/, `{$1$1${superprops}$1$1`);
           let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
@@ -102,11 +109,7 @@ ${html}\`;
 ${haxString}
   // properties available to the custom element for data binding
     static get properties() {
-    let props = ${props};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
+    return ${props};
   }`;
         }
       )

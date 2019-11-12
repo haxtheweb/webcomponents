@@ -87,7 +87,9 @@ class HaxItemButtonInner extends SimpleColors {
     });
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * label
        */
@@ -107,10 +109,6 @@ class HaxItemButtonInner extends SimpleColors {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   _getAccentColor(color) {

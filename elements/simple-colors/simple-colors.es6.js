@@ -1055,7 +1055,10 @@ class SimpleColors extends LitElement {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * a selected accent-"color": grey, red, pink, purple, etc.
    */
@@ -1081,10 +1084,6 @@ class SimpleColors extends LitElement {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   constructor() {
@@ -1096,7 +1095,7 @@ class SimpleColors extends LitElement {
   }
 
   static get tag() {
-    return "simple-colors";
+    return "simple-colors-lit";
   }
 
   /**

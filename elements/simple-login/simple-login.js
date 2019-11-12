@@ -46,8 +46,9 @@ class SimpleLogin extends PolymerElement {
             --login-form-image-bnorder-radius,
             100%
           );
-          @apply --shadow-elevation-12dp;
-          @apply --login-form;
+          box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
+            0 4px 22px 3px rgba(0, 0, 0, 0.12),
+            0 6px 7px -4px rgba(0, 0, 0, 0.4);
         }
 
         #loginformcontent {
@@ -165,7 +166,9 @@ class SimpleLogin extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title of the loginscreen
        */
@@ -235,10 +238,6 @@ class SimpleLogin extends PolymerElement {
         value: "Login"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

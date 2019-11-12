@@ -122,7 +122,9 @@ class MicroCopyHeading extends LitElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Heading / call to action to display
        */
@@ -140,10 +142,6 @@ class MicroCopyHeading extends LitElement {
         value: "//"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

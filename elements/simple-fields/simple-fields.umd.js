@@ -71,7 +71,10 @@ eco-json-schema-object .hax-code-editor {
   }
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * automatically set focus on the first field if that field has autofocus
    */
@@ -115,10 +118,6 @@ eco-json-schema-object .hax-code-editor {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

@@ -51,8 +51,9 @@ Custom property | Description | Default
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
 
  * @customElement
+ * @polymer
  * @extends SchemaBehaviors
- * @demo demo/index.html
+ * @demo demo/index.html 
  *
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
@@ -78,6 +79,12 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("chartistLib", location);
+    /**
+     * Fired once once chart is ready.
+     *
+     * @event chartist-render-ready
+     *
+     */
     this.dispatchEvent(
       new CustomEvent("chartist-render-ready", {
         bubbles: true,
@@ -179,6 +186,12 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           this.responsiveOptions
         );
       }
+      /**
+       * Fired when chart is being drawn.
+       *
+       * @event chartist-render-draw
+       *
+       */
       this.dispatchEvent(
         new CustomEvent("chartist-render-draw", {
           bubbles: true,
@@ -189,6 +202,12 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
       );
       chart.on("created", () => {
         this.addA11yFeatures(chart.container.children[0]);
+        /**
+         * Fired once chart is created and accessibility features are added.
+         *
+         * @event chartist-render-created
+         *
+         */
         this.dispatchEvent(
           new CustomEvent("chartist-render-created", {
             bubbles: true,

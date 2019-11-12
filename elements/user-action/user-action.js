@@ -87,7 +87,9 @@ class UserAction extends HTMLElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       track: {
         name: "track",
         type: String,
@@ -109,10 +111,6 @@ class UserAction extends HTMLElement {
         value: 0.5
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

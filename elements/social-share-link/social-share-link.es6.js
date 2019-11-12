@@ -108,7 +108,10 @@ class SocialShareLink extends PolymerElement {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * display link as a button
    */
@@ -196,10 +199,6 @@ class SocialShareLink extends PolymerElement {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

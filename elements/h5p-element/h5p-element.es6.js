@@ -78,7 +78,10 @@ class H5PElement extends LitElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Source of the .h5p file
    */
@@ -88,10 +91,6 @@ class H5PElement extends LitElement {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

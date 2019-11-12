@@ -525,7 +525,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.__followUpPosts = e.detail.value;
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       manifest: {
         type: Object
       },
@@ -550,10 +552,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         type: Array
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   __extraPostsChanged(e) {
     this.__extraPosts = e.detail.value;

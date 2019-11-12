@@ -198,7 +198,9 @@ class GrafittoFilter extends mixinBehaviors(
     return "grafitto-filter";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * These are the items to be filtered
        */
@@ -252,10 +254,6 @@ class GrafittoFilter extends mixinBehaviors(
         notify: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   static get observers() {

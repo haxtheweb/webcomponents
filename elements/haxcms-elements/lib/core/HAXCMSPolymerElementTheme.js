@@ -9,7 +9,9 @@ import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
  */
 class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Class for the color
        */
@@ -59,10 +61,6 @@ class HAXCMSPolymerElementTheme extends HAXCMSTheme(PolymerElement) {
         observer: "_locationChanged"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   connectedCallback() {
     super.connectedCallback();

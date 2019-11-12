@@ -22,7 +22,9 @@ class LrndesignLine extends LrndesignChart {
   }
 
   static get properties() {
-    return Object.assign(super.properties, super.lineBarProperties, {
+    return {
+      ...super.properties,
+      ...super.lineBarProperties,
       /**
        * The base for the area chart that will be used
        * to close the area shape (is normally 0).
@@ -81,7 +83,7 @@ class LrndesignLine extends LrndesignChart {
         attribute: "show-point",
         type: Boolean
       }
-    });
+    };
   }
 
   /**

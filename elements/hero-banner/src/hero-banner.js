@@ -139,7 +139,9 @@ class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title
        */
@@ -174,10 +176,6 @@ class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   static get haxProperties() {

@@ -146,7 +146,9 @@ class SimpleDrawer extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * heading / label of the modal
        */
@@ -197,10 +199,6 @@ class SimpleDrawer extends PolymerElement {
         type: Object
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

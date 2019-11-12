@@ -100,6 +100,9 @@ class FigureLabel extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+  
+  ...super.properties,
+  
   "title": {
     "name": "title",
     "type": String,

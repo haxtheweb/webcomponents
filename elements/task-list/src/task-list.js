@@ -44,7 +44,9 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
     return ["_valueChanged(tasks.*)"];
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Name of this task list
        */
@@ -71,10 +73,6 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
         computed: "_generateResourceLink(relatedResource)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   _generateResourceLink(relatedResource) {
     if (this._resourceLink) {
