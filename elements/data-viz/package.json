@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/polymer": "^3.0.5",
-    "@lrnwebcomponents/chartist-render": "^2.1.10"
+    "@lrnwebcomponents/chartist-render": "^2.1.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

@@ -46,7 +46,7 @@
     "@lrnwebcomponents/simple-icon-picker": "^2.1.10",
     "@lrnwebcomponents/simple-picker": "^2.1.10",
     "@lrnwebcomponents/hax-body": "^2.1.10",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.5",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",

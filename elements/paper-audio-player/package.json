@@ -42,7 +42,7 @@
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@lrnwebcomponents/simple-colors": "^2.1.10",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
-    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.2",
