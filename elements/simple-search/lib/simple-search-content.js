@@ -25,7 +25,7 @@ export { SimpleSearchContent };
  *
  * @polymer
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimpleSearchContent extends PolymerElement {
   static get is() {

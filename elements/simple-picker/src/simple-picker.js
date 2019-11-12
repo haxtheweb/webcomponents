@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `simple-picker`
- * a simple picker for options, icons, etc.`
+ * a simple picker for options, icons, etc.
  *
 ### Styling
 
@@ -49,7 +49,7 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimplePicker extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -112,26 +112,16 @@ class SimplePicker extends LitElement {
       }
     }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-  /*attributeChangedCallback(name, oldval, newval) {
-    super.attributeChangedCallback(name, oldval, newval);
-  }*/
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "value") this._valueChanged(this.value, oldValue);
       if (propName === "options") this._optionsChanged(this.value, oldValue);
     });
+    /**
+     * Fires when properties change
+     * @event changed
+     */
     this.dispatchEvent(
       new CustomEvent("changed", {
         detail: this
@@ -176,34 +166,41 @@ class SimplePicker extends LitElement {
 
   /**
    * handles listbox click event
-   *
    * @param {event} e event
-   * @param {string} type type of event
    * @returns {void}
    */
   _handleListboxClick(e) {
+    /**
+     * handles listbox click event
+     * @event click
+     */
     this.dispatchEvent(new CustomEvent("click", { detail: this }));
     this._toggleListbox();
   }
 
   /**
-   * handles listbox click event
-   *
+   * handles listbox mousedown event
    * @param {event} e event
-   * @param {string} type type of event
    * @returns {void}
    */
   _handleListboxMousedown(e) {
+    /**
+     * fires with listbox mousedown event
+     * @event mousedown
+     */
     this.dispatchEvent(new CustomEvent("mousedown", { detail: this }));
   }
 
   /**
    * handles listbox keyboard events
-   *
    * @param {event} e event
    * @returns {void}
    */
   _handleListboxKeydown(e) {
+    /**
+     * fires with listbox keyboard events
+     * @event keydown
+     */
     this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
     let coords = this.__activeDesc.split("-"),
       rownum = parseInt(coords[1]),
@@ -244,7 +241,6 @@ class SimplePicker extends LitElement {
 
   /**
    * handles option focus event and sets active descendant
-   *
    * @param {event} e event
    * @returns {void}
    */
@@ -254,12 +250,15 @@ class SimplePicker extends LitElement {
 
   /**
    * sets  active descendant to a given option's id
-   *
    * @param {string} id option id
    * @returns {void}
    */
   _setActiveOption(id) {
     this.__activeDesc = id;
+    /**
+     * fires when active descendant changes
+     * @event option-focus
+     */
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 
@@ -272,6 +271,10 @@ class SimplePicker extends LitElement {
    */
   _valueChanged(newValue, oldValue) {
     this._setSelectedOption(newValue, oldValue);
+    /**
+     * fires when value changes
+     * @event value-changed
+     */
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         detail: this
@@ -281,7 +284,6 @@ class SimplePicker extends LitElement {
 
   /**
    * handles change in options
-   *
    * @param {object} newValue new options for picker
    * @param {object} oldValue old options for picker
    * @returns {void}
@@ -321,6 +323,11 @@ class SimplePicker extends LitElement {
     }
     if (sel === null) this.value = null;
     this.__selectedOption = sel;
+
+    /**
+     * fires when options or value changes
+     * @event change
+     */
     this.dispatchEvent(
       new CustomEvent("change", { bubbles: true, detail: this })
     );
@@ -338,9 +345,17 @@ class SimplePicker extends LitElement {
     this.expanded = open;
     if (open) {
       if (active !== null) active.focus();
+      /**
+       * fires when listbox is expanded
+       * @event expand
+       */
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
     } else {
       if (active !== null) this.value = active.getAttribute("value");
+      /**
+       * fires when listbox is collapsed
+       * @event collapse
+       */
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
   }

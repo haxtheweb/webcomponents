@@ -13,7 +13,7 @@ import "../simple-modal.js";
  *
  * @customElement
  * @polymer
- * @demo demo/template.html
+ * @demo ./demo/template.html
  */
 class SimpleModalTemplate extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

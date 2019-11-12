@@ -6,14 +6,14 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
- * `A popover alertdialog that is positioned next to a target element`
+ * a popover alertdialog that is positioned next to a target element
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -49,10 +49,6 @@ class SimplePopover extends AbsolutePositionBehavior {
       style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
     return style;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimplePopover.tag, SimplePopover);
 export { SimplePopover };

@@ -86,7 +86,7 @@ export { SimpleSearch };
  *
  * @polymer
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  *
  */
 class SimpleSearch extends PolymerElement {

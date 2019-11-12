@@ -44,7 +44,7 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */var SimplePicker=/*#__PURE__*/function(_LitElement){babelHelpers.inherits(SimplePicker,_LitElement);babelHelpers.createClass(SimplePicker,[{key:"render",// render function
 value:function render(){var _this2=this;return(0,_litElement.html)(_templateObject_9db0379004b311ea8b8f41b4d0b5fa38(),!this.label||""===this.label.trim(),this.label&&""!==this.label.trim()?this.label.trim():"",this.__activeDesc,this.ariaLabelledby,this.disabled,this._handleListboxClick,this._handleListboxMousedown,this._handleListboxKeydown,this.hideOptionLabels,this.titleAsHtml,this.__selectedOption?this.__selectedOption.icon:!1,this.__selectedOption?this.__selectedOption.alt:!1,this.__selectedOption?this.__selectedOption.style:!1,this.__options?this.__options.map(function(row,rownum){return(0,_litElement.html)(_templateObject2_9db0379004b311ea8b8f41b4d0b5fa38(),row?row.map(function(option,colnum){return(0,_litElement.html)(_templateObject3_9db0379004b311ea8b8f41b4d0b5fa38(),_this2._handleOptionFocus,_this2._handleSetSelectedOption,"".concat(_this2.__activeDesc)==="option-".concat(rownum,"-").concat(colnum),_this2.hideOptionLabels,!_this2.allowNull&&!option.value,_this2.value===option.value,_this2.titleAsHtml,_this2.data,option.icon,rownum,colnum,option.alt,option.style,_this2.value===option.value?"true":"false",option.value)}):"")}):"")}// properties available to the custom element for data binding
 }],[{key:"styles",//styles function

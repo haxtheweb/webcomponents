@@ -11,11 +11,11 @@ import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-style
 See demo of "all of the colors" (`demo/colors.html`) for styling.
  *
  * @customElement
- * @demo demo/index.html demo
- * @demo demo/how.html getting started
- * @demo demo/colors.html all of the colors
- * @demo demo/picker.html simple-colors-picker
- * @demo demo/extending.html extending simple-colors
+ * @demo ./demo/index.html demo
+ * @demo ./demo/how.html getting started
+ * @demo ./demo/colors.html all of the colors
+ * @demo ./demo/picker.html simple-colors-picker
+ * @demo ./demo/extending.html extending simple-colors
  */
 class SimpleColors extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -29,7 +29,7 @@ class SimpleColors extends LitElement {
   }
 
   static get tag() {
-    return "simple-colors-lit";
+    return "simple-colors";
   }
 
   /**

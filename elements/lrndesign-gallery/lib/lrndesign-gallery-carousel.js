@@ -39,7 +39,7 @@ export { LrndesignGalleryCarousel };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
+ * @demo ./demo/index.html demo
  */
 class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   /**

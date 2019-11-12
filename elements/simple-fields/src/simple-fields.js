@@ -18,7 +18,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -38,7 +38,8 @@ class SimpleFields extends MutableData(PolymerElement) {
     import("./lib/simple-fields-imports.js");
   }
   /**
-   * when form changes, sets focus on the first field if this has auto-focus
+   * Fires when form changes to set focus on the first field if this has auto-focus
+   * @event fields-changed
    */
   _formFieldsChanged(e) {
     this.dispatchEvent(
@@ -58,6 +59,10 @@ class SimpleFields extends MutableData(PolymerElement) {
   _valueChanged(newValue, oldValue) {
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
+      /**
+       * Fires when value changes
+       * @event value-changed
+       */
       this.dispatchEvent(
         new CustomEvent("value-changed", {
           bubbles: true,

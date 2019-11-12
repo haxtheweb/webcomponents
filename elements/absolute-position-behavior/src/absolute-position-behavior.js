@@ -13,7 +13,7 @@ import "./lib/absolute-position-state-manager";
  *  -
  *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class AbsolutePositionBehavior extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

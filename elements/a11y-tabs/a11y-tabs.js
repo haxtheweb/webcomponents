@@ -23,7 +23,7 @@ Custom property | Description | Default
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class A11yTabs extends LitElement {
   //styles function

@@ -15,7 +15,7 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * `editable-table-editor-rowcol`
  * `A header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).`
  *
- * @demo demo/editor.html
+ * @demo ./demo/editor.html
  *
  * @polymer
  * @customElement

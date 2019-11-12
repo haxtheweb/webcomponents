@@ -17,7 +17,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * @customElement
  * @polymer
  * @polymerLegacy
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class CsvRender extends SimpleColorsPolymer {
   constructor() {

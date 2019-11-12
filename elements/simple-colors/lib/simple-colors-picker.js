@@ -15,7 +15,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
 * 
  * @extends SimpleColors
  * @customElement
- * @demo demo/picker.html demo
+ * @demo ./demo/picker.html demo
  * @see "../simple-colors.js"
  * @see "./demo/simple-colors-picker-demo.js"
  */
@@ -75,21 +75,17 @@ class SimpleColorsPicker extends SimpleColors {
         this.options = this._getOptions(this.colors, this.shades, this.dark);
       if (propName === "dark")
         this.options = this._getOptions(this.colors, this.shades, this.dark);
-      if (propName === "value")
-        this.dispatchEvent(
-          new CustomEvent("value-changed", {
-            detail: this
-          })
-        );
-      this.dispatchEvent(
-        new CustomEvent("change", { bubbles: true, detail: this })
-      );
+      if (propName === "value") this._fireValueChangedEvent();
+
+      this._fireChangeEvent();
     });
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
+
       /**
        * Optional. Sets the aria-labelledby attribute
        */
@@ -216,18 +212,39 @@ class SimpleColorsPicker extends SimpleColors {
   }
 
   /**
+   * Fires with any property change.
+   *
+   * @event value-changed
+   */
+  _fireValueChangedEvent() {
+    this.dispatchEvent(
+      new CustomEvent("value-changed", { bubbles: true, detail: this })
+    );
+  }
+
+  /**
+   * Fires with any property change.
+   *
+   * @event change
+   */
+  _fireChangeEvent() {
+    this.dispatchEvent(
+      new CustomEvent("change", { bubbles: true, detail: this })
+    );
+  }
+
+  /**
    * handles when the picker's value changes
    */
   _handleChange(e) {
     this.value = e.detail.value;
-    if (this.__ready !== undefined)
-      this.dispatchEvent(
-        new CustomEvent("change", { bubbles: true, detail: this })
-      );
+    if (this.__ready !== undefined) this._fireChangeEvent();
   }
 
   /**
-   * handles when the picker collapses
+   * Fires when the picker collapses.
+   *
+   * @event collapse
    */
   _handleCollapse() {
     if (this.__ready !== undefined)
@@ -235,7 +252,9 @@ class SimpleColorsPicker extends SimpleColors {
   }
 
   /**
-   * handles when the picker expands
+   * Fires when the picker expands.
+   *
+   * @event expand
    */
   _handleExpand() {
     if (this.__ready !== undefined)
@@ -243,7 +262,9 @@ class SimpleColorsPicker extends SimpleColors {
   }
 
   /**
-   * handles when the picker's focus changes
+   * Fires when the picker's focus changes
+   *
+   * @event option-focus
    */
   _handleOptionFocus(e) {
     if (this.__ready !== undefined)
