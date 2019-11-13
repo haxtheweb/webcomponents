@@ -2,18 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-
+import { html, css } from "lit-element/lit-element.js";
+import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
  *
  * @customElement
- * @polymerElement
  * @demo demo/index.html
  */
-class LearnTwoTheme extends HAXCMSPolymerElementTheme {
+class LearnTwoTheme extends HAXCMSLitElementTheme {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
@@ -43,15 +45,16 @@ class LearnTwoTheme extends HAXCMSPolymerElementTheme {
    * Mix in an opened status
    */
   static get properties() {
-    let props = super.properties;
-    props.opened = {
-      type: Boolean,
-      reflectToAttribute: true
+    return {
+      ...super.properties,
+      opened: {
+        type: Boolean,
+        reflect: true
+      }
     };
-    props.cd = {
-      type: String
-    };
-    return props;
+  }
+  __openedChanged(e) {
+    this.opened = e.detail.value;
   }
   toggleDrawer(e) {
     this.shadowRoot.querySelector("app-drawer").toggle();

@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/learn-two-theme",
   "wcfactory": {
     "className": "LearnTwoTheme",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "learn-two-theme",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": false,
