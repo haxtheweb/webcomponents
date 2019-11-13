@@ -142,11 +142,9 @@ class SiteSearch extends LitElement {
               >
             </div>
             <div class="date">
-              <simple-datetime
-                format="M jS"
-                timestamp="${item.created}"
-                unix
-              ></simple-datetime>
+              <simple-datetime format="M jS" .timestamp="${item.created}" unix
+                >${item.created}</simple-datetime
+              >
             </div>
             <p>${item.description}..</p>
           </a>

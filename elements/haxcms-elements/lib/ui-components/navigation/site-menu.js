@@ -2,32 +2,26 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
  *
  * @customElement
- * @polymer
- * @demo demo/index.html
  */
-class SiteMenu extends PolymerElement {
+class SiteMenu extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "site-menu";
-  }
-  constructor() {
-    super();
-    import("@lrnwebcomponents/map-menu/map-menu.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           height: 100vh;
@@ -39,12 +33,6 @@ class SiteMenu extends PolymerElement {
         }
         map-menu:not(:defined) {
           display: none;
-        }
-        map-menu {
-          @apply --site-menu;
-          --map-menu-active-color: var(--site-menu-active-color);
-          --map-menu-container: var(--site-menu-container);
-          --map-menu-item-active-item: var(--site-menu-item-active-item);
         }
 
         map-menu::-webkit-scrollbar-track {
@@ -62,18 +50,71 @@ class SiteMenu extends PolymerElement {
           -webkit-box-shadow: inset 0 0 4px var(--site-menu-bg-shadow, #747474);
           background-color: var(--site-menu-bg-color, #383f45);
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-menu";
+  }
+  /**
+   * HTMLElement life cycle
+   */
+  constructor() {
+    super();
+    import("@lrnwebcomponents/map-menu/map-menu.js");
+    this.hideActiveIndicator = false;
+    this.preventAutoScroll = false;
+    this.trackIcon = "";
+    this.__disposer = [];
+    autorun(reaction => {
+      this.routerManifest = Object.assign({}, toJS(store.routerManifest));
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+  }
+  /**
+   * LitElement life cycle - render callback
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          map-menu {
+            @apply --site-menu;
+            --map-menu-active-color: var(--site-menu-active-color);
+            --map-menu-container: var(--site-menu-container);
+            --map-menu-item-active-item: var(--site-menu-item-active-item);
+          }
+        </style>
+      </custom-style>
       <map-menu
-        disabled="[[editMode]]"
-        selected="[[activeId]]"
-        manifest="[[routerManifest]]"
-        active-indicator="[[!hideActiveIndicator]]"
-        auto-scroll="[[!preventAutoScroll]]"
+        ?disabled="${this.editMode}"
+        .selected="${this.activeId}"
+        .manifest="${this.routerManifest}"
+        ?active-indicator="${!this.hideActiveIndicator}"
+        selected="${this.activeId}"
+        ?auto-scroll="${!this.preventAutoScroll}"
       ></map-menu>
     `;
   }
+  firstUpdated(changedProperties) {
+    this.shadowRoot
+      .querySelector("map-menu")
+      .addEventListener("active-item", this.mapMenuActiveChanged.bind(this));
+    // executing this here ensures that the timing is correct with highlighting the active item in the menu
+    autorun(reaction => {
+      this.activeId = toJS(store.activeId);
+      this.__disposer.push(reaction);
+    });
+  }
   /**
-   * Props
+   * LitElement life cycle - properties definition
    */
   static get properties() {
     return {
@@ -87,59 +128,41 @@ class SiteMenu extends PolymerElement {
        * acitvely selected item
        */
       activeId: {
-        type: String
+        type: String,
+        attribute: "active-id"
       },
       /**
        * Binding for active indicator and auto scrolling
        */
       hideActiveIndicator: {
         type: Boolean,
-        value: false
+        attribute: "hide-active-indicator"
       },
       /**
        * prevent the automatic scrolling when items become active
        */
       preventAutoScroll: {
         type: Boolean,
-        value: false
+        attribute: "prevent-auto-scroll"
       },
       /**
        * allow for visualizing the tracking of page requests
        */
       trackIcon: {
         type: String,
-        value: ""
+        attribute: "track-icon"
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.__disposer = autorun(() => {
-      this.routerManifest = Object.assign({}, toJS(store.routerManifest));
-    });
-    // silly but delay to ensure highlighting happens
-    setTimeout(() => {
-      this.__disposer2 = autorun(() => {
-        this.activeId = toJS(store.activeId);
-      });
-    }, 100);
-    this.__disposer3 = autorun(() => {
-      this.editMode = toJS(store.editMode);
-    });
-    this.shadowRoot
-      .querySelector("map-menu")
-      .addEventListener("active-item", this.mapMenuActiveChanged.bind(this));
-  }
+
   disconnectedCallback() {
-    super.disconnectedCallback();
-    this.__disposer();
-    this.__disposer3();
-    if (this.__disposer2) {
-      this.__disposer2();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
     }
     this.shadowRoot
       .querySelector("map-menu")
       .removeEventListener("active-item", this.mapMenuActiveChanged.bind(this));
+    super.disconnectedCallback();
   }
   /**
    * When map menu changes let's set a track icon internal to it.

@@ -1,11 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-class MapMenuItem extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class MapMenuItem extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           transition: 0.2s all ease-in-out;
@@ -16,7 +19,7 @@ class MapMenuItem extends PolymerElement {
         }
         :host([active]) {
           background: var(--map-menu-active-color);
-          @apply --map-menu-item-active-item;
+          color: var(--site-menu-item-active-item-color, #000000);
         }
         paper-button {
           width: 100%;
@@ -66,15 +69,25 @@ class MapMenuItem extends PolymerElement {
         #wrapper {
           font-size: var(--map-menu-font-size, 16px);
         }
-      </style>
-      <a tabindex="-1" href$="[[url]]">
+      `
+    ];
+  }
+  /**
+   * LitElement life cycle - render callback
+   */
+  render() {
+    return html`
+      <a tabindex="-1" href="${this.url}">
         <paper-button id="wrapper" role="link" noink>
-          <iron-icon hidden$="[[__hasIcon(icon)]]" icon="[[icon]]"></iron-icon>
-          <span class="title">[[title]]</span>
+          <iron-icon
+            ?hidden="${this.icon ? true : false}"
+            icon="${this.icon}"
+          ></iron-icon>
+          <span class="title">${this.title}</span>
           <iron-icon
             id="track"
-            hidden$="[[__hasIcon(trackIcon)]]"
-            icon="[[trackIcon]]"
+            ?hidden="${this.trackIcon ? true : false}"
+            icon="${this.trackIcon}"
           ></iron-icon>
         </paper-button>
       </a>
@@ -83,45 +96,59 @@ class MapMenuItem extends PolymerElement {
   static get tag() {
     return "map-menu-item";
   }
-
+  constructor() {
+    super();
+    this.icon = "";
+    this.trackIcon = "";
+    this.title = "";
+    this.url = "";
+    this.active = false;
+  }
+  /**
+   * LitElement life cycle - properties definition
+   */
   static get properties() {
     return {
       icon: {
-        type: String,
-        value: ""
+        type: String
       },
       trackIcon: {
-        stype: String,
-        value: "",
-        observer: "_trackIconChanged"
+        type: String,
+        attribute: "track-icon"
       },
       title: {
-        type: String,
-        value: ""
+        type: String
       },
       url: {
-        type: String,
-        value: ""
+        type: String
       },
       icon: {
         type: String
       },
       id: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       active: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       selected: {
         type: String
       }
     };
   }
-
-  static get observers() {
-    return ["__selectedChanged(selected, id)"];
+  /**
+   * LitElement life cycle - properties changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "trackIcon") {
+        this._trackIconChanged(this[propName], oldValue);
+      }
+      if (["id", "selected"].includes(propName)) {
+        this.__selectedChanged(this.selected, this.id);
+      }
+    });
   }
   _trackIconChanged(newValue, oldValue) {
     if (newValue) {
@@ -152,22 +179,6 @@ class MapMenuItem extends PolymerElement {
         detail: { id: this.id }
       })
     );
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.dispatchEvent(
-      new CustomEvent("child-attached", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: { id: this.id }
-      })
-    );
-  }
-
-  __hasIcon(icon) {
-    return icon || icon === "" ? true : false;
   }
 }
 window.customElements.define(MapMenuItem.tag, MapMenuItem);
