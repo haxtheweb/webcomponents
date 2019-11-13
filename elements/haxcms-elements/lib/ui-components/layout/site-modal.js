@@ -2,10 +2,14 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-modal`
  * `A basic site dialog`
@@ -14,7 +18,19 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteModal extends PolymerElement {
+class SiteModal extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+      `
+    ];
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -23,35 +39,38 @@ class SiteModal extends PolymerElement {
   }
   constructor() {
     super();
+    this.title = "Dialog";
+    this.icon = "icons:menu";
+    this.buttonLabel = "Open dialog";
+    this.position = "bottom";
     import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   // render function
-  static get template() {
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
-        paper-icon-button {
-          @apply --site-modal-icon;
-        }
-        paper-tooltip {
-          @apply --site-modal-tooltip;
-        }
-        simple-modal-template {
-          @apply --site-modal-modal;
-        }
-      </style>
+      <custom-style>
+        <style>
+          paper-icon-button {
+            @apply --site-modal-icon;
+          }
+          paper-tooltip {
+            @apply --site-modal-tooltip;
+          }
+          simple-modal-template {
+            @apply --site-modal-modal;
+          }
+        </style>
+      </custom-style>
       <paper-icon-button
-        disabled$="[[disabled]]"
+        ?disabled="${this.editMode}"
         id="btn"
-        icon="[[icon]]"
-        title="[[buttonLabel]]"
+        .icon="${this.icon}"
+        .title="${this.buttonLabel}"
       ></paper-icon-button>
-      <paper-tooltip for="btn" position="[[position]]" offset="14">
-        [[buttonLabel]]
+      <paper-tooltip for="btn" .position="${this.position}" offset="14">
+        ${this.buttonLabel}
       </paper-tooltip>
-      <simple-modal-template id="smt" title="[[title]]">
+      <simple-modal-template id="smt" .title="${this.title}">
         <div id="content" slot="content"></div>
       </simple-modal-template>
     `;
@@ -60,28 +79,24 @@ class SiteModal extends PolymerElement {
     return {
       disabled: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       title: {
-        type: String,
-        value: "Dialog"
+        type: String
       },
       icon: {
-        type: String,
-        value: "icons:menu"
+        type: String
       },
       buttonLabel: {
         type: String,
-        value: "Open dialog"
+        attribute: "button-label"
       },
       position: {
-        type: String,
-        value: "bottom"
+        type: String
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
     this.shadowRoot
       .querySelector("#smt")
       .associateEvents(this.shadowRoot.querySelector("#btn"));
@@ -89,9 +104,6 @@ class SiteModal extends PolymerElement {
     for (var i in nodes) {
       this.shadowRoot.querySelector("#content").appendChild(nodes[i]);
     }
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteModal.tag, SiteModal);
