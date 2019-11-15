@@ -8,8 +8,19 @@ import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-be
  * `simple-popover`
  * a popover alertdialog that is positioned next to a target element
  *
- * @microcopy - language worth noting:
- *  -
+### Styling
+
+`<simple-popover>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-popover-border-radius` | popover border-radius | 3px
+`--simple-popover-color` | popover text color| #222
+`--simple-popover-padding` | popover padding | 10px
+`--simple-popover-background-color` | popover background-color | white
+`--simple-popover-border-color` | popover border-color | #bbb
+`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
  *
  * @customElement
  * @demo ./demo/index.html

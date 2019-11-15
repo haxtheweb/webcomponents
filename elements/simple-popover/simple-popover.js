@@ -8,8 +8,19 @@ import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-be
  * `simple-popover`
  * a popover alertdialog that is positioned next to a target element
  *
- * @microcopy - language worth noting:
- *  -
+### Styling
+
+`<simple-popover>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-popover-border-radius` | popover border-radius | 3px
+`--simple-popover-color` | popover text color| #222
+`--simple-popover-padding` | popover padding | 10px
+`--simple-popover-background-color` | popover background-color | white
+`--simple-popover-border-color` | popover border-color | #bbb
+`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
  *
  * @customElement
  * @demo ./demo/index.html
@@ -19,14 +30,6 @@ class SimplePopover extends AbsolutePositionBehavior {
   static get styles() {
     return [
       css`
-        :host {
-          --simple-popover-border-radius: 3px;
-          --simple-popover-color: #222;
-          --simple-popover-padding: 10px;
-          --simple-popover-background-color: white;
-          --simple-popover-border-color: #bbb;
-          --simple-popover-box-shadow: rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
-        }
         :host([hidden]) {
           display: none;
         }
@@ -54,33 +57,36 @@ class SimplePopover extends AbsolutePositionBehavior {
         :host([position="right"]) > div > * {
           width: unset;
         }
-        :host #content {
+        #content {
           margin: 0;
-          padding: var(--simple-popover-padding);
-          color: var(--simple-popover-color);
-          background-color: var(--simple-popover-background-color);
-          border: 1px solid var(--simple-popover-border-color);
+          padding: var(--simple-popover-padding, 10px);
+          color: var(--simple-popover-color, #222);
+          background-color: var(--simple-popover-background-color, white);
+          border: 1px solid var(--simple-popover-border-color, #bbb);
           min-height: 20px;
-          border-radius: var(--simple-popover-border-radius);
-          box-shadow: var(--simple-popover-box-shadow);
+          border-radius: var(--simple-popover-border-radius, 3px);
+          box-shadow: var(
+            --simple-popover-box-shadow,
+            rgba(60, 64, 67, 0.3) 0px 4px 8px 3px
+          );
         }
-        :host #pointer-outer {
+        #pointer-outer {
           margin: -1px;
         }
-        :host #pointer {
+        #pointer {
           width: 20px;
           height: 20px;
           position: relative;
           overflow: hidden;
           flex: 0 0 20px;
         }
-        :host #pointer:after {
+        #pointer:after {
           content: "";
           position: absolute;
           width: 10px;
           height: 10px;
-          background-color: var(--simple-popover-background-color);
-          border: 1px solid var(--simple-popover-border-color);
+          background-color: var(--simple-popover-background-color, white);
+          border: 1px solid var(--simple-popover-border-color, #bbb);
           transform: rotate(45deg);
           top: 15px;
           left: 5px;
@@ -154,9 +160,7 @@ class SimplePopover extends AbsolutePositionBehavior {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
-      ...super.properties
-    };
+    return { ...super.properties };
   }
   constructor() {
     super();
