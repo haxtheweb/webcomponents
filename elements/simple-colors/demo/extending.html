@@ -33,7 +33,7 @@
         class <em>MyElement</em> <strong>extends SimpleColors</strong> {
           static get styles() {
             return [
-              <strong>super.styles, //required to get colors</strong>
+              <strong>...super.styles, //required to get colors</strong>
               css`
                 :host {
                   display: block;<em>
