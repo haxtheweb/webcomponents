@@ -16,7 +16,7 @@ Custom property | Description | Default
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */class A11yTabs extends LitElement{//styles function
 static get styles(){return[css`
 :host {
@@ -148,7 +148,7 @@ static get styles(){return[css`
       `]}// render function
 render(){return html`
 
-<ul id="tabs" class="${this._showIcons(this.__hasIcons,this.iconBreakpoint,this.layoutBreakpoint,this.responsiveSize)}">
+<ul id="tabs" .class="${this._showIcons(this.__hasIcons,this.iconBreakpoint,this.layoutBreakpoint,this.responsiveSize)}">
   ${this.__items.map(tab=>html`
     <li>
       <paper-button 
@@ -181,7 +181,7 @@ render(){return html`
 <div id="content">
   <slot></slot>
 </div>`}// haxProperty definition
-static get haxProperties(){return}// properties available to the custom element for data binding
+static get haxProperties(){return{}}// properties available to the custom element for data binding
 static get properties(){return{...super.properties,/**
    * the id of the active tab
    */activeTab:{type:String,attribute:"active-tab"},/**
@@ -217,7 +217,7 @@ static get properties(){return{...super.properties,/**
    * life cycle, element is afixed to the DOM
    */connectedCallback(){super.connectedCallback()}/**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){if(this.__observer&&this.__observer.disconnect)this.__observer.disconnect();this.removeEventListener("a11y-tab-changed",e=>this.updateItems());window.dispatchEvent(new CustomEvent("responsive-element-deleted",{bubbles:!0,cancelable:!0,composed:!0,detail:this}));super.disconnectedCallback()}updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{if("id"===propName)this._idChanged(this.id,oldValue);if("activeTab"===propName)this.selectTab(this.activeTab);if("iconBreakpoint"===propName)this._breakpointChanged();if("layoutBreakpoint"===propName)this._breakpointChanged();if("responsiveSize"===propName)this._setVertical()})}/**
+   */disconnectedCallback(){if(this.__observer&&this.__observer.disconnect)this.__observer.disconnect();this.removeEventListener("a11y-tab-changed",e=>this.updateItems());this._unsetBreakpoints();super.disconnectedCallback()}updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{if("id"===propName)this._idChanged(this.id,oldValue);if("activeTab"===propName)this.selectTab(this.activeTab);if("iconBreakpoint"===propName)this._breakpointChanged();if("layoutBreakpoint"===propName)this._breakpointChanged();if("responsiveSize"===propName)this._setVertical()})}/**
    * selects a tab
    * @param {string} id the active tab's id
    */selectTab(id){let tabs=this.querySelectorAll("a11y-tab"),selected=id&&this.querySelector(`a11y-tab#${id}`)?this.querySelector(`a11y-tab#${id}`):this.querySelector("a11y-tab");if(selected&&selected.id!==id){this.activeTab=selected.id;return}else if(tabs&&0<tabs.length){tabs.forEach(tab=>{tab.hidden=tab.id!==id})}}/**
@@ -228,7 +228,7 @@ static get properties(){return{...super.properties,/**
    */_activeTabChanged(newValue){this.selectTab(newValue)}/**
    * handles any breakpoint changes
    * @param {event} e the tab change event
-   */_breakpointChanged(){let root=this,v=-1<this.layoutBreakpoint?this.layoutBreakpoint:0,i=-1<this.iconBreakpoint?this.iconBreakpoint:0,sm=i>v?v:i,md=i>v?i:v,lg=Math.max(i,v)+1,xl=Math.max(i,v)+2;window.dispatchEvent(new CustomEvent("responsive-element-deleted",{bubbles:!0,cancelable:!0,composed:!0,detail:root}));window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"responsive-size",relativeToParent:!0,sm:sm,md:md,lg:lg,xl:xl}}));this._setVertical()}/**
+   */_breakpointChanged(){this._unsetBreakpoints();this._setBreakpoints();this._setVertical()}/**
    * generates a unique id
    * @returns {string } unique id
    */_generateUUID(){return"ss-s-s-s-sss".replace(/s/g,Math.floor(65536*(1+Math.random())).toString(16).substring(1))}/**
@@ -239,6 +239,10 @@ static get properties(){return{...super.properties,/**
    * @param {string} newValue the new id
    * @param {string} oldValue the old id
    */_idChanged(newValue,oldValue){if(!newValue)this.id="a11y-tabs"+this._generateUUID()}/**
+   * Fires when element is ready to request  breakpoint tracking from repsonsive  utility.
+   *
+   * @event responsive-element
+   */_setBreakpoints(){let v=-1<this.layoutBreakpoint?this.layoutBreakpoint:0,i=-1<this.iconBreakpoint?this.iconBreakpoint:0,sm=i>v?v:i,md=i>v?i:v,lg=Math.max(i,v)+1,xl=Math.max(i,v)+2;window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:this,attribute:"responsive-size",relativeToParent:!0,sm:sm,md:md,lg:lg,xl:xl}}))}/**
    * determines if tabs should be in a vertical layout
    * @param {number} icon breakpoint for icon-only view
    * @param {number} layout breakpoint for vertical layout
@@ -250,4 +254,8 @@ static get properties(){return{...super.properties,/**
    * @param {number} layout breakpoint for vertical layout
    * @param {string} size the responsive size
    * @returns {boolean} if tabs should be in a vertical layout
-   */_showIcons(hasIcons,icon,layout,size){return hasIcons&&-1!==icon&&("xs"===size||icon>layout&&"sm"===size)?"icons-only":""}}window.customElements.define(A11yTabs.tag,A11yTabs);export{A11yTabs};
+   */_showIcons(hasIcons,icon,layout,size){return hasIcons&&-1!==icon&&("xs"===size||icon>layout&&"sm"===size)?"icons-only":""}/**
+   * Fires when element is rno longer needs specific breakpoints tracked.
+   *
+   * @event responsive-element-deleted
+   */_unsetBreakpoints(){window.dispatchEvent(new CustomEvent("responsive-element-deleted",{bubbles:!0,cancelable:!0,composed:!0,detail:this}))}}window.customElements.define(A11yTabs.tag,A11yTabs);export{A11yTabs};

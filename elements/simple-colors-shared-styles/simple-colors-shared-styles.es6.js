@@ -7,7 +7,7 @@
  *
  *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 
@@ -560,10 +560,11 @@ html {
    * Each color contains an array of shades as hex codes from lightest to darkest.
    */
   "colors": {
+    "attribute": "colors",
     "type": Object
   },
   /**
-   * Object with information on which color combinations are WCAG 2.0AA compliant, "eg": ```
+   * Object with information on which color combinations are WCAG 2.0AA compliant, "eg": 
     {
       "greyColor": {          //if either the color or its contrast will be a grey
         "aaLarge": [          //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
@@ -576,9 +577,10 @@ html {
         "aa": [ ... ]         //if bold text < 14pt, or text < 18pt
       },
       "colorColor": { ... }   //if neither the color nor its contrast are grey
-    }```
+    }
   */
   "contrasts": {
+    "attribute": "contrasts",
     "type": Object
   }
 }

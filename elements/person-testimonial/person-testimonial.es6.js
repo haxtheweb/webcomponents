@@ -150,7 +150,9 @@ class PersonTestimonial extends SimpleColorsPolymer {
     return "person-testimonial";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Visual height of the card.
        */
@@ -178,10 +180,6 @@ class PersonTestimonial extends SimpleColorsPolymer {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     return {

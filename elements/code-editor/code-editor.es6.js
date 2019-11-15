@@ -104,7 +104,9 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title
        */
@@ -201,10 +203,6 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
  * `simple-picker`
- * a simple picker for options, icons, etc.`
+ * a simple picker for options, icons, etc.
  *
 ### Styling
 
@@ -47,7 +47,7 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */class SimplePicker extends LitElement{//styles function
 static get styles(){return[css`
 :host {
@@ -332,7 +332,7 @@ static get properties(){return{...super.properties,/**
    */hideSample:{type:Boolean,reflect:!0,attribute:"hide-sample"},/**
    * Optional. Label for picker input
    */label:{type:String},/**
-   * An array of options for picker, eg.: `
+   * An array of options for picker, eg.: 
 [
   [
     {
@@ -342,7 +342,7 @@ static get properties(){return{...super.properties,/**
       ...                                 //Optional. Any other properties that should be captured as part of selected option's value
     },...
   ]
-]`
+]
    */options:{type:Array},/**
    * Renders html as title. (Good for titles with HTML in them.)
    */titleAsHtml:{type:Boolean,attribute:"title-as-html"},/**
@@ -370,15 +370,10 @@ static get properties(){return{...super.properties,/**
 constructor(){super();import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./lib/simple-picker-option.js");this.tag=SimplePicker.tag;this.allowNull=!1;this.alignRight=!1;this.ariaLabelledby=null;this.blockLabel=!1;this.disabled=!1;this.expanded=!1;this.hideOptionLabels=!1;this.hideSample=!1;this.label=null;this.__options=[[]];this.options=[[{icon:null,style:null,alt:null,value:null}]];this.titleAsHtml=!1;this.value=null;this.__activeDesc="option-0-0";this.__hasLabel=!0;this.__selectedOption={};this.addEventListener("blur",function(e){this.expanded=!1});// map our imported properties json to real props on the element
 // @notice static getter of properties is built via tooling
 // to edit modify src/test-lit-properties.json
-let obj=SimplePicker.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{if(p.reflect)this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}}/**
-   * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback()}// static get observedAttributes() {
-//   return [];
-// }
-// disconnectedCallback() {}
-/*attributeChangedCallback(name, oldval, newval) {
-    super.attributeChangedCallback(name, oldval, newval);
-  }*/updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{if("value"===propName)this._valueChanged(this.value,oldValue);if("options"===propName)this._optionsChanged(this.value,oldValue)});this.dispatchEvent(new CustomEvent("changed",{detail:this}))}/**
+let obj=SimplePicker.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{if(p.reflect)this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}}updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{if("value"===propName)this._valueChanged(this.value,oldValue);if("options"===propName)this._optionsChanged(this.value,oldValue)});/**
+     * Fires when properties change
+     * @event changed
+     */this.dispatchEvent(new CustomEvent("changed",{detail:this}))}/**
    * returns value of selected option.
    *
    * @param {array} options array of options
@@ -396,22 +391,26 @@ let obj=SimplePicker.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(t
 target.focus();active.tabindex=-1;//prevent tabbing between options.
 }}/**
    * handles listbox click event
-   *
    * @param {event} e event
-   * @param {string} type type of event
    * @returns {void}
-   */_handleListboxClick(e){this.dispatchEvent(new CustomEvent("click",{detail:this}));this._toggleListbox()}/**
-   * handles listbox click event
-   *
+   */_handleListboxClick(e){/**
+     * handles listbox click event
+     * @event click
+     */this.dispatchEvent(new CustomEvent("click",{detail:this}));this._toggleListbox()}/**
+   * handles listbox mousedown event
    * @param {event} e event
-   * @param {string} type type of event
    * @returns {void}
-   */_handleListboxMousedown(e){this.dispatchEvent(new CustomEvent("mousedown",{detail:this}))}/**
+   */_handleListboxMousedown(e){/**
+     * fires with listbox mousedown event
+     * @event mousedown
+     */this.dispatchEvent(new CustomEvent("mousedown",{detail:this}))}/**
    * handles listbox keyboard events
-   *
    * @param {event} e event
    * @returns {void}
-   */_handleListboxKeydown(e){this.dispatchEvent(new CustomEvent("keydown",{detail:this}));let coords=this.__activeDesc.split("-"),rownum=parseInt(coords[1]),colnum=parseInt(coords[2]);if(32===e.keyCode){//spacebar
+   */_handleListboxKeydown(e){/**
+     * fires with listbox keyboard events
+     * @event keydown
+     */this.dispatchEvent(new CustomEvent("keydown",{detail:this}));let coords=this.__activeDesc.split("-"),rownum=parseInt(coords[1]),colnum=parseInt(coords[2]);if(32===e.keyCode){//spacebar
 e.preventDefault();this._toggleListbox()}else if(this.expanded&&[9,35,36,38,40].includes(e.keyCode)){e.preventDefault();if(35===e.keyCode){//end
 let lastrow=this.options.length-1,lastcol=this.options[lastrow].length-1;this._goToOption(lastrow,lastcol);//move to last option
 }else if(36===e.keyCode){//home
@@ -424,23 +423,26 @@ if(colnum<this.options[rownum].length-1){//move down to next column
 this._goToOption(rownum,colnum+1)}else if(rownum<this.options.length-1){//move down to beginning of next row
 this._goToOption(rownum+1,[0])}}}}/**
    * handles option focus event and sets active descendant
-   *
    * @param {event} e event
    * @returns {void}
    */_handleOptionFocus(e){this._setActiveOption(e.detail.id)}/**
    * sets  active descendant to a given option's id
-   *
    * @param {string} id option id
    * @returns {void}
-   */_setActiveOption(id){this.__activeDesc=id;this.dispatchEvent(new CustomEvent("option-focus",{detail:this}))}/**
+   */_setActiveOption(id){this.__activeDesc=id;/**
+     * fires when active descendant changes
+     * @event option-focus
+     */this.dispatchEvent(new CustomEvent("option-focus",{detail:this}))}/**
    * handles change in value
    *
    * @param {object} newValue new value for picker
    * @param {object} oldValue old value for picker
    * @returns {void}
-   */_valueChanged(newValue,oldValue){this._setSelectedOption(newValue,oldValue);this.dispatchEvent(new CustomEvent("value-changed",{detail:this}))}/**
+   */_valueChanged(newValue,oldValue){this._setSelectedOption(newValue,oldValue);/**
+     * fires when value changes
+     * @event value-changed
+     */this.dispatchEvent(new CustomEvent("value-changed",{detail:this}))}/**
    * handles change in options
-   *
    * @param {object} newValue new options for picker
    * @param {object} oldValue old options for picker
    * @returns {void}
@@ -450,12 +452,21 @@ this._goToOption(rownum+1,[0])}}}}/**
    */_setSelectedOption(newVal,oldVal){let sel=!this.allowNull&&0<this.options.length&&0<this.options[0].length?this.options[0][0].value:null;if(this.options){this.__options="string"===typeof this.options?JSON.parse(this.options):this.options.slice();//if nulls are allowed, set active descendant to first not null option
 this.__activeDesc=this.allowNull?"option-0-0":null;for(var i=0;i<this.__options.length;i++){for(var j=0;j<this.__options[i].length;j++){//if unset, set active descendant to first not null option
 if(null!==this.value&&null===this.__activeDesc)this.__activeDesc=`option-${i}-${j}`;if(`${this.value}`===`${this.__options[i][j].value}`){//set active descendant to option that matches value
-this.__activeDesc=`option-${i}-${j}`;sel=this.__options[i][j]}}}}if(null===sel)this.value=null;this.__selectedOption=sel;this.dispatchEvent(new CustomEvent("change",{bubbles:!0,detail:this}))}/**
+this.__activeDesc=`option-${i}-${j}`;sel=this.__options[i][j]}}}}if(null===sel)this.value=null;this.__selectedOption=sel;/**
+     * fires when options or value changes
+     * @event change
+     */this.dispatchEvent(new CustomEvent("change",{bubbles:!0,detail:this}))}/**
    * toggles listbox
    *
    * @param {boolean} open whether to open
    * @returns {void}
-   */_toggleListbox(open=!this.expanded){if(this.disabled)return;let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=open;if(open){if(null!==active)active.focus();this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this.value=active.getAttribute("value");this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}/**
+   */_toggleListbox(open=!this.expanded){if(this.disabled)return;let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=open;if(open){if(null!==active)active.focus();/**
+       * fires when listbox is expanded
+       * @event expand
+       */this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this.value=active.getAttribute("value");/**
+       * fires when listbox is collapsed
+       * @event collapse
+       */this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}/**
    * sets options for picker
    *
    * @param {array} options nested array of options

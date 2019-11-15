@@ -24,7 +24,9 @@ class ResponsiveUtility extends mixinBehaviors(
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Stores
        */
@@ -33,10 +35,6 @@ class ResponsiveUtility extends mixinBehaviors(
         value: []
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   connectedCallback() {
     super.connectedCallback();

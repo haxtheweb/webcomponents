@@ -2,23 +2,25 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-
+import { html, css } from "lit-element/lit-element.js";
+import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
  *
  * @customElement
- * @polymerElement
  * @demo demo/index.html
  */
-class LearnTwoTheme extends HAXCMSPolymerElementTheme {
+class LearnTwoTheme extends HAXCMSLitElementTheme {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host {
   --__learn-two-theme-default-font-family: var(--learn-two-theme-default-font-family,"Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif");
   --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #ffffff);
@@ -74,59 +76,11 @@ h6 {
   padding: 0rem 1rem 2rem 1rem;
 }
 
-site-active-title {
-  --site-active-title-heading: {
-    font-family: var(--__learn-two-theme-default-font-family);
-    font-size: 52px;
-    line-height: 78px;
-    margin-bottom: 27.2px;
-    margin-top: 13.6px;
-    text-align: center;
-    text-rendering: optimizelegibility;
-    font-weight: 100;
-  }
-}
 site-git-corner {
   top: 0;
   right: 0;
   position: absolute;
   z-index: 1000;
-}
-site-title {
-  position: relative;
-  overflow: hidden;
-  --site-title-link: {
-    display: inline-block;
-    color: #fafafa;
-    text-decoration: none;
-  }
-  --site-title-heading: {
-    font-family: var(--__learn-two-theme-default-font-family);
-    font-size: 28px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    text-rendering: optimizelegibility;
-    font-weight: 100;
-  }
-}
-site-menu {
-  background-color: #383f45;
-  color: #ffffff;
-  padding: 0;
-  overflow: scroll;
-  max-height: calc(100vh - 200px);
-  --site-menu-active-color: #ffffff;
-  --site-menu: {
-    background-color: #383f45;
-  }
-  --site-menu-container: {
-    padding: 0;
-    background-color: #2d3237;
-  }
-  --site-menu-item-active-item: {
-    color: #2d3237;
-  }
 }
 
 site-menu::-webkit-scrollbar-track {
@@ -142,18 +96,6 @@ site-menu::-webkit-scrollbar-thumb {
   border-radius: 1px;
   -webkit-box-shadow: inset 0 0 4px #747474;
   background-color: #383f45;
-}
-app-drawer-layout {
-  min-height: 100vh;
-  min-height: -moz-available;
-  min-height: -webkit-fill-available;
-  min-height: fill-available;
-  --app-drawer-width: 300px;
-  --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
-  --app-drawer-content-container: {
-    overflow: hidden;
-    background-color: #383f45;
-  }
 }
 .rss-buttons {
   justify-content: space-evenly;
@@ -213,33 +155,6 @@ app-drawer-layout[narrow] .header {
 :host([is-logged-in]) site-menu-button[type="prev"] {
   left: 348px;
 }
-site-menu-button {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 300px;
-  z-index: 1;
-  --site-menu-button-icon: {
-    width: 64px;
-    height: 64px;
-    color: #2d3237;
-  }
-  --site-menu-button-button: {
-    background-color: rgba(0, 0, 0, 0);
-    width: 64px;
-    height: 100vh;
-    border-radius: 0;
-    transition: 0.4s all ease-in-out;
-    transition-delay: 0.2s;
-    margin: 0;
-    padding: 0;
-    opacity: 0.8;
-    -webkit-transition: 0.4s all ease-in-out;
-    -moz-transition: 0.4s all ease-in-out;
-    -ms-transition: 0.4s all ease-in-out;
-    -o-transition: 0.4s all ease-in-out;
-  }
-}
 site-menu-button:not([disabled]):hover,
 site-menu-button:not([disabled]):active,
 site-menu-button:not([disabled]):focus {
@@ -248,15 +163,6 @@ site-menu-button:not([disabled]):focus {
 }
 app-drawer-layout[narrow] site-menu {
   max-height: calc(100vh - 160px);
-}
-app-drawer-layout[narrow] site-menu-button {
-  bottom: 0;
-  top: unset;
-  --site-menu-button-button: {
-    background-color: transparent !important;
-    width: 64px;
-    height: 64px;
-  }
 }
 site-menu-button[type="next"] {
   right: 0;
@@ -273,43 +179,150 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   site-menu-button[type="next"] {
   display: none;
 }
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
 
-site-menu,
-map-menu,
-map-menu * {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  --map-menu-container: {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-  }
-  --map-menu-items-list: {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-  }
-}
-        </style>
-<style include="simple-colors-shared-styles-polymer"></style>
+<custom-style>
+  <style>
+    site-active-title {
+      --site-active-title-heading: {
+        font-family: var(--__learn-two-theme-default-font-family);
+        font-size: 52px;
+        line-height: 78px;
+        margin-bottom: 27.2px;
+        margin-top: 13.6px;
+        text-align: center;
+        text-rendering: optimizelegibility;
+        font-weight: 100;
+      }
+    }
+    site-title {
+      position: relative;
+      overflow: hidden;
+      --site-title-link: {
+        display: inline-block;
+        color: #fafafa;
+        text-decoration: none;
+      }
+      --site-title-heading: {
+        font-family: var(--__learn-two-theme-default-font-family);
+        font-size: 28px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-rendering: optimizelegibility;
+        font-weight: 100;
+      }
+    }
+    site-menu {
+      background-color: #383f45;
+      color: #ffffff;
+      padding: 0;
+      overflow: scroll;
+      max-height: calc(100vh - 200px);
+      --site-menu-active-color: #ffffff;
+      --site-menu: {
+        background-color: #383f45;
+      }
+      --site-menu-container: {
+        padding: 0;
+        background-color: #2d3237;
+      }
+      --site-menu-item-active-item-color: #2d3237;
+    }
+    app-drawer-layout {
+      min-height: 100vh;
+      min-height: -moz-available;
+      min-height: -webkit-fill-available;
+      min-height: fill-available;
+      --app-drawer-width: 300px;
+      --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+      --app-drawer-content-container: {
+        overflow: hidden;
+        background-color: #383f45;
+      }
+    }
+    site-print-button {
+      --site-print-button-button: {
+        color: white;
+      }
+    }
+    site-menu-button {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 300px;
+      z-index: 1;
+      --site-menu-button-icon: {
+        width: 64px;
+        height: 64px;
+        color: #2d3237;
+      }
+      --site-menu-button-button: {
+        background-color: rgba(0, 0, 0, 0);
+        width: 64px;
+        height: 100vh;
+        border-radius: 0;
+        transition: 0.4s all ease-in-out;
+        transition-delay: 0.2s;
+        margin: 0;
+        padding: 0;
+        opacity: 0.8;
+        -webkit-transition: 0.4s all ease-in-out;
+        -moz-transition: 0.4s all ease-in-out;
+        -ms-transition: 0.4s all ease-in-out;
+        -o-transition: 0.4s all ease-in-out;
+      }
+    }
+    app-drawer-layout[narrow] site-menu-button {
+      bottom: 0;
+      top: unset;
+      --site-menu-button-button: {
+        background-color: transparent !important;
+        width: 64px;
+        height: 64px;
+      }
+    }
+    site-menu,
+    map-menu,
+    map-menu * {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      --map-menu-container: {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+      --map-menu-items-list: {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+    }
+  </style>
+</custom-style>
 <app-drawer-layout responsive-width="900px">
-  <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
-  <app-drawer swipe-open slot="drawer" opened="{{opened}}">
-    <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
+  <paper-icon-button id="menubutton" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></paper-icon-button>
+  <app-drawer swipe-open slot="drawer" .opened="${this.opened}" @opened="${this.__openedChanged}">
+    <paper-icon-button id="menubutton2" icon="menu" @click="${this.toggleDrawer}" title="Toggle site menu"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
-        <site-title disabled$="[[editMode]]"></site-title>
-        <site-modal disabled$="[[editMode]]" icon="icons:search" title="Search site" button-label="Search">
+        <site-title ?disabled="${this.editMode}"></site-title>
+        <site-modal ?disabled="${this.editMode}" icon="icons:search" title="Search site" button-label="Search">
           <site-search></site-search>
         </site-modal>
       </div>
     </div>
     <site-menu></site-menu>
     <div class="rss-buttons">
-      <site-rss-button disabled$="[[editMode]]" type="atom"></site-rss-button>
-      <site-rss-button disabled$="[[editMode]]" type="rss"></site-rss-button>
-      <site-print-button disabled$="[[editMode]]" position="top"></site-print-button>
+      <site-rss-button ?disabled="${this.editMode}" type="atom"></site-rss-button>
+      <site-rss-button ?disabled="${this.editMode}" type="rss"></site-rss-button>
+      <site-print-button ?disabled="${this.editMode}" position="top"></site-print-button>
     </div>
   </app-drawer>
   <div>
@@ -360,15 +373,16 @@ map-menu * {
    * Mix in an opened status
    */
   static get properties() {
-    let props = super.properties;
-    props.opened = {
-      type: Boolean,
-      reflectToAttribute: true
+    return {
+      ...super.properties,
+      opened: {
+        type: Boolean,
+        reflect: true
+      }
     };
-    props.cd = {
-      type: String
-    };
-    return props;
+  }
+  __openedChanged(e) {
+    this.opened = e.detail.value;
   }
   toggleDrawer(e) {
     this.shadowRoot.querySelector("app-drawer").toggle();

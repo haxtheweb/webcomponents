@@ -1,67 +1,69 @@
-import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `self-check`
- * @demo demo/index.html
- * @microcopy - the mental model for this element
- * CSS Variables that override accent color:
- * --self-check-question-color //overrides the question background color
- * --self-check-question-text //overrides the question text color
- * --self-check-heading-color //overrides the heading background color
- * --self-check-heading-text //overrides the heading text color
- * --self-check-answer-color //overrides the answer background color
- * --self-check-answer-text //overrides the answer text color
+ * 
+### Styling
+
+`<self-check>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0
+`--self-check-question-color` | question background color | var(--simple-colors-default-theme-grey-1, #fff)
+`--self-check-question-text` | question text color  | var(--simple-colors-default-theme-grey-12, #000)
+`--self-check-heading-color` | heading background color | var(--simple-colors-default-theme-accent-8, #444)
+`--self-check-heading-text` | heading text color | var(--simple-colors-default-theme-grey-1, #fff)
+`--self-check-answer-color` | answer background color | var(--simple-colors-default-theme-light-green-8, #00762e)
+`--self-check-answer-text` | answer text color | var(--simple-colors-default-theme-grey-1, #fff)
+ * 
+ * @customElement
+ * @extends LitElement
+ * @extends SimpleColors
+ * @extends SchemaBehaviors
+ * @demo ./demo/index.html
+ * 
  */
-class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
+class SelfCheck extends SchemaBehaviors(SimpleColors) {
   constructor() {
     super();
+    this.correct = false;
+    this.alt = "";
+    this.image = "";
+    this.question = "";
+    this.title = "Self-Check";
+    import("@lrnwebcomponents/user-action/user-action.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
   }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           margin: 15px 0;
-          --self-check-question-color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --self-check-question-text: var(
-            --simple-colors-default-theme-grey-12,
-            #000
-          );
-          --self-check-heading-color: var(
-            --simple-colors-default-theme-accent-8,
-            #444
-          );
-          --self-check-heading-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
-          --self-check-answer-color: var(
-            --simple-colors-default-theme-light-green-8,
-            #00762e
-          );
-          --self-check-answer-text: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
         }
-        [hidden] {
+        :host([hidden]),
+        *[hidden] {
           display: none !important;
         }
 
         paper-card {
           width: 100%;
-          color: var(--self-check-question-text);
-          background-color: var(--self-check-question-color);
+          color: var(
+            --self-check-question-text,
+            var(--simple-colors-default-theme-grey-12, #000)
+          );
+          background-color: var(
+            --self-check-question-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           overflow: hidden;
         }
 
@@ -95,27 +97,45 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
           width: 35px;
           height: 35px;
           padding: 5px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(
+            --self-check-heading-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
         }
 
         .heading {
           text-transform: uppercase;
           font-size: 22px;
           margin: 10px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(
+            --self-check-heading-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
         }
 
         #header_wrap {
-          color: var(--self-check-heading-text);
-          background-color: var(--self-check-heading-color);
+          color: var(
+            --self-check-heading-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
+          background-color: var(
+            --self-check-heading-color,
+            var(--simple-colors-default-theme-accent-8, #444)
+          );
           display: inline-flex;
           width: 100%;
           margin: -20px 0 0;
         }
 
         #question_wrap {
-          color: var(--self-check-question-text);
-          background-color: var(--self-check-question-color);
+          color: var(
+            --self-check-question-text,
+            var(--simple-colors-default-theme-grey-12, #000)
+          );
+          background-color: var(
+            --self-check-question-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           position: relative;
         }
 
@@ -131,9 +151,19 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
         #answer_wrap {
           visibility: hidden;
           opacity: 0;
-          color: var(--self-check-answer-text);
-          background-color: var(--self-check-answer-color);
-          border-top: 2px solid var(--self-check-answer-text);
+          color: var(
+            --self-check-answer-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
+          background-color: var(
+            --self-check-answer-color,
+            var(--simple-colors-default-theme-light-green-8, #00762e)
+          );
+          border-top: 2px solid
+            var(
+              --self-check-answer-text,
+              var(--simple-colors-default-theme-grey-1, #fff)
+            );
           width: 100%;
           top: 0;
           transition: all 0.2s ease;
@@ -168,7 +198,11 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
           height: 0;
           border-left: 20px solid transparent;
           border-right: 20px solid transparent;
-          border-bottom: 20px solid var(--self-check-heading-color);
+          border-bottom: 20px solid
+            var(
+              --self-check-heading-color,
+              var(--simple-colors-default-theme-accent-8, #444)
+            );
           position: relative;
           top: -20px;
           left: -1px;
@@ -179,21 +213,28 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
         }
 
         .more_info a {
-          color: var(--self-check-answer-text);
+          color: var(
+            --self-check-answer-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
         }
 
         .more_info a:hover {
           text-decoration: none;
         }
-      </style>
-      <paper-card image$="[[image]]" alt$="[[alt]]">
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-card image="${this.image}" alt="${this.alt}">
         <div class="triangle"></div>
         <div id="header_wrap">
           <iron-icon id="questionmark" icon="icons:help"></iron-icon>
-          <div class="heading">[[title]]</div>
+          <div class="heading">${this.title}</div>
         </div>
         <div id="question_wrap">
-          <div class="question" aria-hidden$="[[correct]]">
+          <div class="question" aria-hidden="${this.correct}">
             <slot name="question"></slot>
             <div class="check_button">
               <paper-icon-button
@@ -201,36 +242,40 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
                 aria-label="Reveal Answer"
                 id="checkBtn"
                 icon="icons:check-circle"
-                on-click="openAnswer"
                 noink
+                @click="${this.openAnswer}"
               ></paper-icon-button>
               <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
               </paper-tooltip>
             </div>
           </div>
-          <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
+          <div
+            id="answer_wrap"
+            aria-hidden="${this.correct ? "false" : "true"}"
+            aria-live="polite"
+          >
             <div class="answer">
               <user-action track="visibility">
                 <slot></slot>
               </user-action>
-              <dom-if if="[[link]]">
-                <template>
-                  <div class="more_info" hidden$="[[!link]]">
-                    <user-action track="click" every
-                      ><a href$="[[link]]" target="_blank"
-                        >More info...</a
-                      ></user-action
-                    >
-                  </div>
-                </template>
-              </dom-if>
+              ${this.link
+                ? html`
+                    <div class="more_info">
+                      <user-action track="click" every
+                        ><a href="${this.link}" target="_blank"
+                          >More info...</a
+                        ></user-action
+                      >
+                    </div>
+                  `
+                : ``}
               <div class="close_button">
                 <paper-icon-button
                   aria-label="Close"
                   id="closeBtn"
                   icon="icons:close"
-                  on-click="openAnswer"
+                  @click="${this.openAnswer}"
                   noink
                 >
                 </paper-icon-button>
@@ -253,57 +298,50 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
     return "self-check";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title.
        */
       title: {
-        type: String,
-        value: "Self-Check"
+        type: String
       },
       /**
        * Question.
        */
       question: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * Image.
        */
       image: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Alt text for image.
        */
       alt: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Link for more information.
        */
       link: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Property for toggling "checkbtn".
        */
       correct: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**
@@ -422,11 +460,6 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
         advanced: []
       }
     };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    import("@lrnwebcomponents/user-action/user-action.js");
   }
 }
 window.customElements.define(SelfCheck.tag, SelfCheck);

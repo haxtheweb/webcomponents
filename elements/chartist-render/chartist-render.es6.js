@@ -53,7 +53,7 @@ Custom property | Description | Default
  * @customElement
  * @polymer
  * @extends SchemaBehaviors
- * @demo demo/index.html 
+ * @demo ./demo/index.html 
  *
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
@@ -954,6 +954,12 @@ Container class	Ratio
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("chartistLib", location);
+    /**
+     * Fired once once chart is ready.
+     *
+     * @event chartist-render-ready
+     *
+     */
     this.dispatchEvent(
       new CustomEvent("chartist-render-ready", {
         bubbles: true,
@@ -1055,6 +1061,12 @@ Container class	Ratio
           this.responsiveOptions
         );
       }
+      /**
+       * Fired when chart is being drawn.
+       *
+       * @event chartist-render-draw
+       *
+       */
       this.dispatchEvent(
         new CustomEvent("chartist-render-draw", {
           bubbles: true,
@@ -1065,6 +1077,12 @@ Container class	Ratio
       );
       chart.on("created", () => {
         this.addA11yFeatures(chart.container.children[0]);
+        /**
+         * Fired once chart is created and accessibility features are added.
+         *
+         * @event chartist-render-created
+         *
+         */
         this.dispatchEvent(
           new CustomEvent("chartist-render-created", {
             bubbles: true,

@@ -57,7 +57,9 @@ class LrndesignAbbreviation extends SchemaBehaviors(PolymerElement) {
     return "lrndesign-abbreviation";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Abbreviation text.
        */
@@ -75,10 +77,6 @@ class LrndesignAbbreviation extends SchemaBehaviors(PolymerElement) {
         notify: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Attached to the DOM, now fire.

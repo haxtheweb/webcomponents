@@ -306,7 +306,9 @@ class PaperAudioPlayer extends mixinBehaviors(
   }
   // Define public properties
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       src: {
         type: String,
         observer: "_srcChanged"
@@ -348,10 +350,6 @@ class PaperAudioPlayer extends mixinBehaviors(
         value: 0
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   static get keyBindings() {
