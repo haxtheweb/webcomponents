@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-popover",
   "wcfactory": {
     "className": "SimplePopover",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-popover",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
@@ -40,7 +40,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/absolute-position-behavior": "^2.1.7",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

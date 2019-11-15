@@ -43,7 +43,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class VideoPlayer extends MediaBehaviorsVideo(
   A11yBehaviors(SchemaBehaviors(SimpleColorsPolymer))

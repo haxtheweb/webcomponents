@@ -7,7 +7,7 @@
  *
  *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 

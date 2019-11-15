@@ -21,7 +21,7 @@ Custom property | Description | Default
  * 
  * @extends SimpleColors
  * @customElement
- * @demo demo/colors.html demo
+ * @demo ./demo/colors.html demo
  * @see "../../simple-colors.js"
  * @see "../simple-colors-picker.js"
  */
@@ -144,7 +144,11 @@ class simpleColorsSwatches extends SimpleColors {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "swatchId")
+      if (
+        propName === "swatchId" &&
+        this.shadowRoot.querySelector("#modal") &&
+        this.shadowRoot.querySelector("#modal").openModal
+      )
         this.shadowRoot
           .querySelector("#modal")
           .openModal(this.shadowRoot.querySelector("#" + this.swatchId));

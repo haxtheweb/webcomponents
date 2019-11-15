@@ -24,7 +24,6 @@ Custom property | Description | Default
  * @customElement
  * @polymer
  * @see ../simple-picker.js
- * @see ../simple-color-picker-row.js
  */
 class SimplePickerOption extends LitElement {
   //styles

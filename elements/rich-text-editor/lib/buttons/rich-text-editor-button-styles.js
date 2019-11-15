@@ -10,7 +10,7 @@
  *
  * @pseudoElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 const styleElement = document.createElement("dom-module");

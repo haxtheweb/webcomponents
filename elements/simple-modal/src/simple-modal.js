@@ -40,10 +40,10 @@ window.SimpleModal.requestAvailability = () => {
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
- * @demo demo/css.html styling simple-modal via CSS
- * @demo demo/details.html styling simple-modal via event details
- * @demo demo/template.html using simple-modal-template
+ * @demo ./demo/index.html demo
+ * @demo ./demo/css.html styling simple-modal via CSS
+ * @demo ./demo/details.html styling simple-modal via event details
+ * @demo ./demo/template.html using simple-modal-template
  */
 class SimpleModal extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

@@ -15,7 +15,7 @@ import "./editable-table-styles.js";
 /**
  * `editable-table-display`
  * ` An editor interface for editable-table`
- * @demo demo/editor.html
+ * @demo ./demo/editor.html
  *
  * @polymer
  * @customElement

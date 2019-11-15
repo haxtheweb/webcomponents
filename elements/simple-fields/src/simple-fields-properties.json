@@ -3,21 +3,21 @@
    * automatically set focus on the first field if that field has autofocus
    */
   "autofocus": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * hide code-editor line numbers
    */
   "hideLineNumbers": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * Fields to convert toJSON Schema.
    */
   "fields": {
-    "type": Array,
+    "type": "Array",
     "value": [],
     "observer": "_formFieldsChanged"
   },
@@ -25,7 +25,7 @@
    * Returned value from the form input.
    */
   "value": {
-    "type": Object,
+    "type": "Object",
     "notify": true,
     "value": {},
     "observer": "_valueChanged"
@@ -34,7 +34,7 @@
    * Fields to convert to JSON Schema.
    */
   "__validatedSchema": {
-    "type": Array,
+    "type": "Array",
     "notify": true,
     "value": {
       "properties": {}

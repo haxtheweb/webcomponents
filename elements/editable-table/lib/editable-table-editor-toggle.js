@@ -23,7 +23,7 @@ import "./editable-table-iconset.js";
   value="true">                    //The value of this toggle.
 </editable-table-editor-toggle>```
  *  
- * @demo demo/editor.html
+ * @demo ./demo/editor.html
  * 
  * @polymer
  * @customElement

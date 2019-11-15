@@ -14,7 +14,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  *
  * @customElement
  * @polymer
- * @demo demo/mini.html mini floating toolbar
+ * @demo ./demo/mini.html mini floating toolbar
  */
 class RichTextEditorToolbarMini extends RichTextEditorToolbar {
   constructor() {

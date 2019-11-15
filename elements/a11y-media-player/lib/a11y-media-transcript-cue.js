@@ -155,11 +155,9 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
           --simple-search-match-border-color: var(
             --a11y-media-transcript-match-border-color
           );
-          --simple-search-match: {
-            border: none;
-            border-radius: 4px;
-            font-weight: normal;
-          }
+          --simple-search-match-border: none;
+          --simple-search-match-border-radius: 4px;
+          --simple-search-match-font-weight: normal;
         }
         @media print {
           :host,
@@ -174,7 +172,7 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
       </style>
       <span id="time">[[cue.start]] - [[cue.end]]</span>
       <span id="text">
-        <simple-search-content id="content" content="[[cue.text]]">
+        <simple-search-content id="content">
           [[cue.text]]
         </simple-search-content>
       </span>

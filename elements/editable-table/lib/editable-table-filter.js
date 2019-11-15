@@ -12,7 +12,7 @@ import "./editable-table-iconset.js";
  * `editable-table-editor-filter`
  * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
  *
- * @demo demo/display.html
+ * @demo ./demo/display.html
  *
  * @polymer
  * @customElement

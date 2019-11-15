@@ -122,9 +122,9 @@ import "./lib/a11y-media-youtube.js";
  * @extends SimpleColorsPolymer
  * @polymer
  * @customElement
- * @demo demo/index.html video demo
- * @demo demo/audio.html audio demo
- * @demo demo/youtube.html YouTube demo
+ * @demo ./demo/index.html video demo
+ * @demo ./demo/audio.html audio demo
+ * @demo ./demo/youtube.html YouTube demo
  *
  */
 class A11yMediaPlayer extends A11yMediaBehaviors {

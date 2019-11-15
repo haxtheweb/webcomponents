@@ -93,9 +93,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
             --simple-colors-default-theme-grey-3
           );
           --paper-input-container-input-color: var(--a11y-media-color);
-          --simple-search-container: {
-            padding: 0 15px;
-          }
+          --simple-search-padding: 0 15px;
         }
         :host #searchbar {
           display: flex;

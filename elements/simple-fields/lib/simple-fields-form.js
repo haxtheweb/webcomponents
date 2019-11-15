@@ -6,7 +6,7 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
  *
  * @customElement
  * @polymer
- * @demo demo/form.html
+ * @demo ./demo/form.html
  */
 class SimpleFieldsForm extends LitElement {
   static get styles() {
@@ -53,7 +53,10 @@ class SimpleFieldsForm extends LitElement {
         this.shadowRoot.querySelector(
           "#fields"
         ).value = this.loadResponse.data.value;
-        // fire event for things to react to about the response
+        /**
+         * fires event for things to react to about the response
+         * @event response
+         */
         this.dispatchEvent(
           new CustomEvent("response", {
             bubbles: true,
@@ -78,6 +81,10 @@ class SimpleFieldsForm extends LitElement {
     ).then(data => {
       this.loading = false;
       this.loadResponse = data;
+      /**
+       * fires event when forma data is loaded
+       * @event simple-fields-form-data-loaded
+       */
       this.dispatchEvent(
         new CustomEvent("simple-fields-form-data-loaded", {
           detail: {

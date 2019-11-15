@@ -1,0 +1,38 @@
+<paper-input
+    id="input"
+    label="${this.searchInputLabel}"
+    ?always-float-label="${this.alwaysFloatLabel}"
+    ?no-label-float="${this.noLabelFloat}"
+    @change="${this._handleChange}"
+  >
+    <iron-icon icon="${this.searchInputIcon}" slot="prefix"></iron-icon>
+  </paper-input>
+  <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
+    ${this._getResultsSpan(this.resultPointer, this.resultCount)}
+  </div>
+  <div ?shrink-hide="${this._hasNoResults(this.resultCount)}">
+    <button
+      id="prev"
+      aria-label="${this.prevButtonLabel}"
+      aria-role="button"
+      controls="${this.controls}"
+      tabindex="0"
+      ?disabled="${this.__hidePrev}"
+      @click="${this._navigateResults}"
+    >
+      <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
+    </button>
+    <paper-tooltip for="prev">${this.prevButtonLabel}</paper-tooltip>
+    <button
+      id="next"
+      aria-label="${this.nextButtonLabel}"
+      aria-role="button"
+      controls="${this.controls}"
+      tabindex="0"
+      ?disabled="${this.__hideNext}"
+      @click="${this._navigateResults}"
+    >
+      <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
+    </button>
+    <paper-tooltip for="next">${this.nextButtonLabel}</paper-tooltip>
+  </div>

@@ -53,7 +53,7 @@ Custom property | Description | Default
  * @customElement
  * @polymer
  * @extends SchemaBehaviors
- * @demo demo/index.html 
+ * @demo ./demo/index.html 
  *
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {

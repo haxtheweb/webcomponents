@@ -28,8 +28,8 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
- * @demo demo/config.html custom configuration
+ * @demo ./demo/index.html demo
+ * @demo ./demo/config.html custom configuration
  */
 class RichTextEditorToolbar extends PolymerElement {
   // render function for styles

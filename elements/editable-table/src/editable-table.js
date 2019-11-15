@@ -63,12 +63,12 @@ Custom property | Description | Default
 `--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }
 `--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
  *
- * @demo demo/index.html
- * @demo demo/editmode.html Edit Mode
- * @demo demo/display.html Display Only
- * @demo demo/importing.html Importing Data
- * @demo demo/exporting.html Exporting Data
- * @demo demo/advanced.html Advanced Features
+ * @demo ./demo/index.html
+ * @demo ./demo/editmode.html Edit Mode
+ * @demo ./demo/display.html Display Only
+ * @demo ./demo/importing.html Importing Data
+ * @demo ./demo/exporting.html Exporting Data
+ * @demo ./demo/advanced.html Advanced Features
  * 
  * @customElement
  * @polymer

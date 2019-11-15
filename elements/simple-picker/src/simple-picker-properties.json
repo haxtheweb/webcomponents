@@ -81,7 +81,7 @@
   },
 
   /**
-   * An array of options for picker, eg.: `
+   * An array of options for picker, eg.: 
 [
   [
     {
@@ -91,7 +91,7 @@
       ...                                 //Optional. Any other properties that should be captured as part of selected option's value
     },...
   ]
-]`
+]
    */
   "options": {
     "type": "Array"

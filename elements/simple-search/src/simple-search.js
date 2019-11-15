@@ -2,359 +2,86 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lib/simple-search-content.js";
-
-export { SimpleSearch };
+import "./lib/simple-search-match.js";
 /**
  * `simple-search`
- * `A button used in simple-search`
+ * a button used in simple-search
+ * 
+### Styling
+
+`<simple-search>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-search-button-color` | text color for button | #111
+`--simple-search-button-bg-color` | background-color for button | #eee
+`--simple-search-button-border-color` | border-color for button | #ccc
+`--simple-search-button-disabled-color` | background-color for disabled seach button | #999
+`--simple-search-button-disabled-bg-color` | text color for disabled seach button | #eee
+`--simple-search-button-disabled-border-color` | border-color for disabled seach button | #ccc
+`--simple-search-button-hover-color` | text color for button when hovered or focused | #000
+`--simple-search-button-hover-bg-color` | background-color for button when hovered or focused | #fff
+`--simple-search-button-hover-border-color` | border-color for button when hovered or focused | #ddd
+`--simple-search-input-placeholder-color` | text-color for search input's placeholder | #222
+`--simple-search-container-padding` | search input's padding | unset
+`--simple-search-margin` | search input's margin | unset
  *
- *
- * @microcopy - the mental model for this element
- *
- * ```<simple-search
- *   case-sensitive$="[[caseSensitive]]"     // is search case sensitive?
- *   controls$="[[controls]]">
- * </simple-search>```
- *
- *   The searchTerms property provides an array of search terms entered in to the input.
- *   The findMatches function returns an array of parsed results.
- *   For example if I searched for the with
- *   `findMatches("The quick brown fox jumps over the lazy dog.")`,
- *   the array would be:
- *   ``[
- *     {
- *       "matched": true,
- *       "matchNumber": 1,
- *       "text": "The"
- *     },{
- *       "matched": false,
- *       "text": " quick brown fox jumps over "
- *     },{
- *       "matched": true,
- *       "matchNumber": 2,
- *       "text": "the"
- *     },{
- *       "matched": false,
- *       "text": " lazy dog."
- *     }
- *   ]```
- *   or `findMatches("The quick brown fox jumps over the lazy dog.",true)`,
- *   the array would be:
- *   ```[
- *     {
- *       "matched": false,
- *       "text": "The quick brown fox jumps over "
- *     },{
- *       "matched": true,
- *       "matchNumber": 1,
- *       "text": "the"
- *     },{
- *       "matched": false,
- *       "text": " lazy dog."
- *     }
- *   ]```
- *
- *   CSS Variables:
- *   For the input field...
- *   ```--paper-input-container-input-color: var(--simple-search-input-color, #111);
- *   --paper-input-container-focus-color: var(--simple-search-input-placeholder-color, #000);
- *   --paper-input-container-color: var(--simple-search-input-line-color, #fff);
- *   @apply --simple-search-container;```
- *
- *   For buttons:
- *   ```color: var(--simple-search-button-color, #111);
- *   background-color: var(--simple-search-button-bg-color, #eee);
- *   border-color: var(--simple-search-button-border-color, #ccc);
- *   @apply --simple-search-button;`
- *
- *   For buttons on hover:
- *   ```color: var(--simple-search-button-hover-color, #000);
- *   background-color: var(--simple-search-button-hover-bg-color, #fff);
- *   border-color: var(--simple-search-button-hover-border-color, #ddd);
- *   @apply --simple-search-button-hover;```
- *
- *   For disabled buttons:
- *   ```color: var(--simple-search-button-disabled-color, #666);
- *   background-color: var(--simple-search-button-disabled-bg-color, #ccc);
- *   border-color: var(--simple-search-button-disabled-border-color, #aaa);
- *   @apply --simple-search-button-disabled;```
- *
- * @polymer
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  *
  */
-class SimpleSearch extends PolymerElement {
-  static get is() {
+class SimpleSearch extends LitElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+
+  static get tag() {
     return "simple-search";
   }
-
-  static get properties() {
-    return {
-      /**
-       * always float the label
-       */
-      alwaysFloatLabel: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Is the search case-sensitive
-       */
-      caseSensitive: {
-        type: Boolean,
-        value: null
-      },
-      /**
-       * The id of the container element that the navigation buttons control
-       */
-      controls: {
-        type: String,
-        value: null
-      },
-      /**
-       * is the previous next button disabled
-       */
-      nextButtonDisabled: {
-        type: Boolean,
-        computed:
-          "_isNavButtonDisabled(resultPointer,resultCount,resultsSpan,1)"
-      },
-      /**
-       * label for next result icon
-       */
-      nextButtonIcon: {
-        type: String,
-        value: "arrow-forward"
-      },
-      /**
-       * label for next result button
-       */
-      nextButtonLabel: {
-        type: String,
-        value: "next result"
-      },
-      /**
-       * never float the label
-       */
-      noLabelFloat: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * are there any results to navigate?
-       */
-      noResults: {
-        type: Boolean,
-        computed: "_hasNoResults(resultCount)"
-      },
-      /**
-       * is there an active search?
-       */
-      noSearch: {
-        type: Boolean,
-        computed: "_hasNoSearch(searchTerms)"
-      },
-      /**
-       * is the previous result button disabled
-       */
-      prevButtonDisabled: {
-        type: Boolean,
-        computed:
-          "_isNavButtonDisabled(resultPointer,resultCount,resultsSpan,-1)"
-      },
-      /**
-       * label for previous result icon
-       */
-      prevButtonIcon: {
-        type: String,
-        value: "arrow-back"
-      },
-      /**
-       * label for previous result button
-       */
-      prevButtonLabel: {
-        type: String,
-        value: "previous result"
-      },
-      /**
-       * Number of results.
-       */
-
-      resultCount: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Which result are we currently on?
-       */
-      resultPointer: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Number of results.
-       */
-      resultsSpan: {
-        type: String,
-        computed: "_getResultsSpan(noSearch,resultPointer,resultCount,__ready)"
-      },
-      __ready: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * label for search icon
-       */
-      searchInputIcon: {
-        type: String,
-        value: "search"
-      },
-      /**
-       * label for search input
-       */
-      searchInputLabel: {
-        type: String,
-        value: "search"
-      },
-      /**
-       * an array of search terms
-       */
-      searchTerms: {
-        type: Array,
-        value: []
-      },
-      /**
-       * The container element that the navigation buttons control
-       */
-      target: {
-        type: Object,
-        value: null
-      }
-    };
+  constructor() {
+    super();
+    this.alwaysFloatLabel = false;
+    this.caseSensitive = null;
+    this.controls = null;
+    this.nextButtonIcon = "arrow-forward";
+    this.nextButtonLabel = "next result";
+    this.noLabelFloat = false;
+    this.prevButtonIcon = "arrow-back";
+    this.prevButtonLabel = "previous result";
+    this.resultCount = 0;
+    this.resultPointer = 0;
+    this.searchInputIcon = "search";
+    this.searchInputLabel = "search";
+    this.searchTerms = [];
+    this.target = null;
+    this.__hideNext = true;
+    this.__hidePrev = true;
   }
 
-  // render function
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          width: 100%;
-        }
-        :host #input {
-          flex-grow: 2;
-          margin-right: 4px;
-          --paper-input-container-input-color: var(
-            --simple-search-input-text-color,
-            #000
-          );
-          --paper-input-container-shared-input-style_-_color: var(
-            --simple-search-input-text-color,
-            #000
-          );
-          --paper-input-container-focus-color: var(
-            --simple-search-input-line-color,
-            #000
-          );
-          --paper-input-container-color: var(
-            --simple-search-input-placeholder-color,
-            #222
-          );
-          color: var(--simple-search-input-placeholder-color, #222);
-          @apply --simple-search-container;
-        }
-        :host #xofy {
-          margin: 8px;
-        }
-        :host button {
-          margin: 8px 0 8px;
-          color: var(--simple-search-button-color, #111);
-          background-color: var(--simple-search-button-bg-color, #eee);
-          border-color: var(--simple-search-button-border-color, #ccc);
-          @apply --simple-search-button;
-        }
-        :host button:not([disabled]):focus,
-        :host button:not([disabled]):hover {
-          cursor: pointer;
-          color: var(--simple-search-button-hover-color, #000);
-          background-color: var(--simple-search-button-hover-bg-color, #fff);
-          border-color: var(--simple-search-button-hover-border-color, #ddd);
-          @apply --simple-search-button-hover;
-        }
-        :host button[disabled] {
-          cursor: not-allowed;
-          color: var(--simple-search-button-disabled-color, #999);
-          background-color: var(--simple-search-button-disabled-bg-color, #eee);
-          border-color: var(--simple-search-button-disabled-border-color, #ccc);
-          @apply --simple-search-button-disabled;
-        }
-        :host button:not([controls]) {
-          display: none;
-        }
-        :host [shrink-hide] {
-          display: none;
-        }
-      </style>
-      <paper-input
-        id="input"
-        always-float-label\$="[[alwaysFloatLabel]]"
-        label="[[searchInputLabel]]"
-        no-label-float\$="[[noLabelFloat]]"
-        on-change="_handleChange"
-      >
-        <iron-icon icon="[[searchInputIcon]]" slot="prefix"></iron-icon>
-      </paper-input>
-      <div id="xofy" shrink-hide\$="[[noSearch]]"></div>
-      <div shrink-hide\$="[[noResults]]">
-        <button
-          id="prev"
-          aria-label="[[prevButtonLabel]]"
-          aria-role="button"
-          controls\$="[[controls]]"
-          disabled\$="[[prevButtonDisabled]]"
-          on-click="_navigateResults"
-          tabindex="0"
-        >
-          <iron-icon icon="[[prevButtonIcon]]"></iron-icon>
-        </button>
-        <paper-tooltip for="prev">[[prevButtonLabel]]</paper-tooltip>
-        <button
-          id="next"
-          aria-label="[[nextButtonLabel]]"
-          aria-role="button"
-          controls\$="[[controls]]"
-          disabled\$="[[nextButtonDisabled]]"
-          on-click="_navigateResults"
-          tabindex="0"
-        >
-          <iron-icon icon\$="[[nextButtonIcon]]"></iron-icon>
-        </button>
-        <paper-tooltip for="next">[[nextButtonLabel]]</paper-tooltip>
-      </div>
-    `;
-  }
-
-  ready() {
-    super.ready();
-    this.__ready = true;
-    this._getSearchText(this.shadowRoot.querySelector("#input").value);
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "resultPointer" || propName === "resultCount")
+        this._getNavDisabled(this.resultPointer, this.resultCount);
+    });
   }
 
   /**
    * are there any results to navigate?
    */
   _handleChange(e) {
-    this._getSearchText(this.shadowRoot.querySelector("#input").value);
+    this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
+
+    /**
+     * Fires when search changes (detail = { search: this, content: event })
+     *
+     * @event simple-search
+     */
     this.dispatchEvent(
       new CustomEvent("simple-search", { detail: { search: this, content: e } })
     );
@@ -366,8 +93,8 @@ class SimpleSearch extends PolymerElement {
    * @param {number} total number of results
    * @returns {boolean} whether or not there are results
    */
-  _hasNoResults(resultCount) {
-    return resultCount < 1;
+  _hasNoResults(count) {
+    return count < 1;
   }
 
   /**
@@ -376,8 +103,8 @@ class SimpleSearch extends PolymerElement {
    * @param {array} array of search terms
    * @returns {boolean} whether or not there are search terms
    */
-  _hasNoSearch(searchTerms) {
-    return searchTerms.length < 1;
+  _hasNoSearch(terms) {
+    return terms.length < 1;
   }
 
   /**
@@ -388,25 +115,19 @@ class SimpleSearch extends PolymerElement {
    * @param {number} the total number of search results
    * @returns {string} "y results" or "x/y" text
    */
-  _getResultsSpan(noSearch, resultPointer, resultCount, __ready) {
-    if (__ready) {
-      let html = "";
-      if (resultCount > 0 && resultPointer > 0) {
-        html = resultPointer + "/" + resultCount;
-      } else {
-        html = " " + resultCount;
-      }
-      this.shadowRoot.querySelector("#xofy").innerHTML = html;
-      return this.shadowRoot.querySelector("#xofy").innerHTML;
-    }
+  _getResultsSpan(pointer, count) {
+    return count > 0 && pointer > 0
+      ? pointer + "/" + count
+      : count > 0
+      ? count
+      : "";
   }
 
   /**
    * navigate results
    */
   _navigateResults(e) {
-    let root = this,
-      increment = e.currentTarget.id === "next" ? 1 : -1;
+    let increment = e.currentTarget.id === "next" ? 1 : -1;
     if (
       this.resultPointer + increment > 0 &&
       this.resultPointer + increment <= this.resultCount
@@ -417,12 +138,16 @@ class SimpleSearch extends PolymerElement {
       );
     }
   }
+  _getNavDisabled(pointer, count) {
+    this.__hidePrev = this._isNavButtonDisabled(pointer, count, -1);
+    this.__hideNext = this._isNavButtonDisabled(pointer, count);
+  }
 
   /**
    * navigate results
    */
-  _isNavButtonDisabled(pointer, count, span, inc) {
-    return span == "" || pointer + inc <= 0 || pointer + inc > count;
+  _isNavButtonDisabled(pointer, count, inc = 1) {
+    return !count || count === 0 || pointer + inc <= 0 || pointer + inc > count;
   }
 
   /**
@@ -430,8 +155,9 @@ class SimpleSearch extends PolymerElement {
    *
    * @param {string} a string of search text
    */
-  _getSearchText(find) {
-    let temp = new Array();
+  _getSearchText() {
+    let find = this.shadowRoot.querySelector("#input").value,
+      temp = new Array();
     if (find !== undefined && find !== null) {
       temp = find.split(/[\"\']/gm);
       for (let i = 0; i < temp.length; i++) {
@@ -439,8 +165,8 @@ class SimpleSearch extends PolymerElement {
         if (temp[i] === "") temp.splice(i, 1);
       }
     }
-    this.set("searchTerms", []);
-    this.set("searchTerms", temp.slice(0));
+    //this.searchTerms = [];
+    this.searchTerms = temp.slice(0);
   }
 
   /**
@@ -492,52 +218,23 @@ class SimpleSearch extends PolymerElement {
    * @param {array} an array of search terms
    * @returns {array} an array of search results
    */
-  findMatches(content) {
-    let root = this,
-      terms = root.searchTerms,
-      modifier = this.caseSensitive ? "gm" : "gim",
-      results = content.slice(0),
-      updateResults = function(find) {
-        for (let i = 0; i < results.length; i++) {
-          if (results[i].matched === false) {
-            let regex = new RegExp("\\b" + find + "\\b", modifier),
-              text = results[i].text,
-              start = text.search(regex),
-              end = start + find.length;
-            if (start > -1) {
-              root.resultCount += 1;
-              let pre = text.slice(0, start),
-                match = text.slice(start, end),
-                post = text.slice(end, text.length),
-                update = results.splice(
-                  i,
-                  1,
-                  {
-                    matched: false,
-                    text: pre,
-                    searchObject: root
-                  },
-                  {
-                    matched: true,
-                    matchNumber: root.resultCount,
-                    text: match,
-                    searchObject: root
-                  },
-                  {
-                    matched: false,
-                    text: post,
-                    searchObject: root
-                  }
-                );
-            }
-          }
-        }
-      };
-    for (let i = 0; i < terms.length; i++) {
-      updateResults(terms[i]);
-    }
-    root.resultPointer = 0;
+  findMatches(results) {
+    this.resultPointer = 0;
+    results = results.replace(/<\/?simple-search-match[^>]*>/g, "");
+    this.searchTerms.forEach(term => {
+      let modifier = this.caseSensitive ? "gm" : "gim",
+        regex = new RegExp("\\b(" + term + ")\\b", modifier),
+        replacer = match => {
+          this.resultCount++;
+          return `<simple-search-match tabindex="0" match-number="${
+            this.resultCount
+          }">${match}</simple-search-match>`;
+        };
+      results = results.replace(regex, replacer);
+    });
     return results;
   }
 }
-customElements.define(SimpleSearch.is, SimpleSearch);
+customElements.define(SimpleSearch.tag, SimpleSearch);
+
+export { SimpleSearch };

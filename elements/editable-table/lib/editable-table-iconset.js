@@ -11,7 +11,7 @@
  *
  * @polymer
  * @pseudoElement editable-table-iconset
- * @demo demo/display.html
+ * @demo ./demo/display.html
  */
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";

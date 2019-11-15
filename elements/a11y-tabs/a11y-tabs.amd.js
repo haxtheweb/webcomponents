@@ -13,7 +13,7 @@ Custom property | Description | Default
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */var A11yTabs=/*#__PURE__*/function(_LitElement){babelHelpers.inherits(A11yTabs,_LitElement);babelHelpers.createClass(A11yTabs,[{key:"render",// render function
 value:function render(){var _this2=this;return(0,_litElement.html)(_templateObject_c34c835004b311ea8e21ff5e38ed6ab6(),this._showIcons(this.__hasIcons,this.iconBreakpoint,this.layoutBreakpoint,this.responsiveSize),this.__items.map(function(tab){return(0,_litElement.html)(_templateObject2_c34c835004b311ea8e21ff5e38ed6ab6(),tab.id,tab.id,function(e){return _this2._handleTab("".concat(tab.id))},tab.id===_this2.activeTab,tab.flag,!tab.flagIcon,tab.flagIcon,tab.label,!tab.flag,tab.flag,!tab.icon,tab.icon,tab.id,tab.label)}))}// haxProperty definition
 }],[{key:"styles",//styles function
