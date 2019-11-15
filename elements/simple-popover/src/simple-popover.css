@@ -42,7 +42,6 @@
   min-height: 20px;
   border-radius: var(--simple-popover-border-radius);
   box-shadow: var(--simple-popover-box-shadow);
-  @apply --simple-popover-content;
 }
 :host #pointer-outer {
   margin: -1px;

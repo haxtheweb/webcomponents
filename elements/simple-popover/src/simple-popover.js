@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
@@ -12,7 +12,6 @@ import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-be
  *  -
  *
  * @customElement
- * @polymer
  * @demo ./demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {
@@ -37,17 +36,19 @@ class SimplePopover extends AbsolutePositionBehavior {
    * @returns {string} a string with margin styles to offset pointer
    */
   _getMargins(positions) {
-    //this.fitToVisibleBounds = true;
-    let self = this.getBoundingClientRect(),
-      h = this.position === "bottom" || this.position === "top",
-      max = h ? self.width : self.height,
-      sStart = h ? self.left : self.top,
-      tStart = h ? positions.target.left : positions.target.top,
-      tHalf = h ? positions.target.width / 2 : positions.target.height / 2,
-      center = tStart + tHalf - 10,
-      margin = Math.min(max - 20, Math.max(0, center - sStart)),
-      style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
-    return style;
+    if (positions && positions.target) {
+      let self = this.getBoundingClientRect(),
+        h = this.position === "bottom" || this.position === "top",
+        max = h ? self.width : self.height,
+        sStart = h ? self.left : self.top,
+        tStart = h ? positions.target.left : positions.target.top,
+        tHalf = h ? positions.target.width / 2 : positions.target.height / 2,
+        center = tStart + tHalf - 10,
+        margin = Math.min(max - 20, Math.max(0, center - sStart)),
+        style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
+      return style;
+    }
+    return ``;
   }
 }
 window.customElements.define(SimplePopover.tag, SimplePopover);

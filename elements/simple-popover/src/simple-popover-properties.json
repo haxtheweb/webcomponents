@@ -1,9 +1,1 @@
-{
-  /**
-   * Margin styles to offset pointer
-   */
-  "__pointerOffSetStyle": {
-    "type": "Object",
-    "computed": "_getMargins(__positions)"
-  }
-}
+{}

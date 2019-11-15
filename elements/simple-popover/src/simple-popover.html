@@ -3,6 +3,6 @@
     <slot></slot>
   </div>
   <div id="pointer-outer">
-    <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+    <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
   </div>
 </div>
