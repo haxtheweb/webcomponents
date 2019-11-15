@@ -342,9 +342,9 @@ class SiteQuery extends MutableData(PolymerElement) {
    * Disconnected life cycle
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteQuery.tag, SiteQuery);

@@ -2,18 +2,35 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-title`
  * `Title of the site`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class SiteTitle extends PolymerElement {
+class SiteTitle extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          text-rendering: optimizelegibility;
+          position: relative;
+        }
+      `
+    ];
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,41 +39,57 @@ class SiteTitle extends PolymerElement {
   }
   constructor() {
     super();
+    this.__disposer = [];
+    this.label = "Home";
+    this.notitle = false;
     import("@polymer/iron-icon/iron-icon.js");
+    autorun(reaction => {
+      this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.homeLink = toJS(store.homeLink);
+      this.__disposer.push(reaction);
+    });
   }
-  // render function
-  static get template() {
+  /**
+   * LitElement
+   */
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-          text-rendering: optimizelegibility;
-          position: relative;
-        }
-        a {
-          @apply --site-title-link;
-        }
-        a:hover,
-        a:focus,
-        a:active {
-          @apply --site-title-link-hover;
-        }
-        a h1 {
-          text-rendering: optimizelegibility;
-          @apply --site-title-heading;
-        }
-        iron-icon {
-          @apply --site-title-icon;
-        }
-      </style>
+      <custom-style>
+        <style>
+          a {
+            @apply --site-title-link;
+          }
+          a:hover,
+          a:focus,
+          a:active {
+            @apply --site-title-link-hover;
+          }
+          a h1 {
+            text-rendering: optimizelegibility;
+            @apply --site-title-heading;
+          }
+          iron-icon {
+            @apply --site-title-icon;
+          }
+        </style>
+      </custom-style>
       <a
-        id="btn"
-        href$="[[homeLink]]"
-        title$="[[label]]"
-        disabled$="[[disabled]]"
+        href="${this.homeLink}"
+        title="${this.label}"
+        ?disabled="${this.disabled}"
       >
-        <iron-icon hidden$="[[!icon]]" icon="[[icon]]"></iron-icon>
-        <h1 hidden$="[[notitle]]">[[siteTitle]]</h1>
+        <iron-icon
+          ?hidden="${this.icon ? false : true}"
+          icon="${this.icon}"
+        ></iron-icon>
+        ${this.notitle
+          ? html``
+          : html`
+              <h1>${this.siteTitle}</h1>
+            `}
       </a>
     `;
   }
@@ -67,61 +100,48 @@ class SiteTitle extends PolymerElement {
     return {
       disabled: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Site title
        */
       siteTitle: {
-        type: String
+        type: String,
+        attribute: "site-title"
       },
       /**
        * HREF to the home page
        */
       homeLink: {
-        type: String
+        type: String,
+        attribute: "home-link"
       },
       /**
        * Label
        */
       label: {
-        type: String,
-        value: "Home"
+        type: String
       },
       /**
        * optional icon
        */
       icon: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * If the title should be displayed or not
        */
       notitle: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.__disposer = [];
-    autorun(reaction => {
-      this.siteTitle = toJS(store.siteTitle);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.homeLink = toJS(store.homeLink);
-      this.__disposer.push(reaction);
-    });
-  }
   disconnectedCallback() {
-    super.disconnectedCallback();
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteTitle.tag, SiteTitle);

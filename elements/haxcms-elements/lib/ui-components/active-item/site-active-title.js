@@ -2,28 +2,27 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-active-title`
  * `Title of the active page in the site`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class SiteActiveTitle extends PolymerElement {
+class SiteActiveTitle extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement
    */
-  static get tag() {
-    return "site-active-title";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           transition: 0.2s opacity linear;
@@ -36,43 +35,67 @@ class SiteActiveTitle extends PolymerElement {
           text-rendering: optimizelegibility;
           font-family: sans-serif;
           color: var(--site-active-title-color, #383f45);
-          @apply --site-active-title-heading;
         }
-      </style>
-      <h2>[[__title]]</h2>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-active-title";
+  }
+  /**
+   * LitElement
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          h2 {
+            @apply --site-active-title-heading;
+          }
+        </style>
+      </custom-style>
+      <h2>${this.__title}</h2>
     `;
   }
   /**
-   * Props
+   * LitElement life cycle - property changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "dynamicMethodology") {
+        this.__title = this._makeTitle(
+          this.dynamicMethodology,
+          this.activeTitle,
+          this.parentTitle,
+          this.ancestorTitle
+        );
+      }
+    });
+  }
+  /**
+   * LitElement / popular convention
    */
   static get properties() {
     return {
-      /**
-       * Turn off the title fallback to avoid empty titles
-       */
-      noFallback: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * How we should obtain the parent who's children we should show
-       * options are active, parent, or ancestor
-       */
-      dynamicMethodology: {
-        type: String,
-        value: "active"
-      },
       __title: {
-        type: String,
-        computed:
-          "_makeTitle(dynamicMethodology, activeTitle, parentTitle, ancestorTitle)"
+        type: String
+      },
+      dynamicMethodology: {
+        type: String
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "edit-mode"
       }
     };
   }
+  /**
+   * Generate title based on context
+   */
   _makeTitle(dynamicMethodology, activeTitle, parentTitle, ancestorTitle) {
     switch (dynamicMethodology) {
       case "above":
@@ -92,8 +115,14 @@ class SiteActiveTitle extends PolymerElement {
         break;
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.noFallback = false;
+    this.dynamicMethodology = "active";
+    this.__title = "";
     this.__disposer = [];
     autorun(reaction => {
       this.editMode = toJS(store.editMode);
@@ -101,17 +130,38 @@ class SiteActiveTitle extends PolymerElement {
     });
     autorun(reaction => {
       this.activeTitle = toJS(store.activeTitle);
+      this.__title = this._makeTitle(
+        this.dynamicMethodology,
+        this.activeTitle,
+        this.parentTitle,
+        this.ancestorTitle
+      );
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       this.ancestorTitle = toJS(store.ancestorTitle);
+      this.__title = this._makeTitle(
+        this.dynamicMethodology,
+        this.activeTitle,
+        this.parentTitle,
+        this.ancestorTitle
+      );
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       this.parentTitle = toJS(store.parentTitle);
+      this.__title = this._makeTitle(
+        this.dynamicMethodology,
+        this.activeTitle,
+        this.parentTitle,
+        this.ancestorTitle
+      );
       this.__disposer.push(reaction);
     });
   }
+  /**
+   * HTMLElement
+   */
   disconnectedCallback() {
     // clean up state
     for (var i in this.__disposer) {
