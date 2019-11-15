@@ -2,12 +2,15 @@
   "name": "@lrnwebcomponents/simple-search",
   "wcfactory": {
     "className": "SimpleSearch",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-search",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": false,
     "useSass": false,
     "files": {
+      "properties": "src/simple-search-properties.json",
+      "html": "src/simple-search.html",
+      "css": "src/simple-search.css",
       "js": "src/simple-search.js"
     }
   },
@@ -37,7 +40,7 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

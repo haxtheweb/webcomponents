@@ -24,16 +24,13 @@
         --simple-search-input-placeholder-color: #222;
       }
     
-      #container simple-search-content {
+      simple-search-content {
         --simple-search-match-text-color: #111;
         --simple-search-match-bg-color: #dcebff;
         --simple-search-match-border-color: #b0d5ff;
-    
-        --simple-search-match: {
-          padding: 0.16px 4px;
-          border-radius: 0.16px;
-          font-family: monospace;
-        };
+        --simple-search-match-padding: 0.16px 4px;
+        --simple-search-match-border-radius: 0.16px;
+        --simple-search-match-font-family: monospace;
       }
     </style>
     </head>
@@ -43,7 +40,7 @@
       <demo-snippet>
         <template>
             <script>
-              let content = document.querySelectorAll('#container simple-search-content');
+              let content = document.querySelectorAll('simple-search-content');
               for (let i = 0; i < content.length; i++) {
                 content[i].enableSearch(document.querySelector('simple-search#search'));
               }
@@ -62,7 +59,7 @@
               <p>
                 <simple-search-content>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de
                   grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams.
-                  Pestilentia est plague haec decaying ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor
+                  Pestilentia est plague haec <em>decaying</em> ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor
                   plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof
                   reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere
                   crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.</simple-search-content>
