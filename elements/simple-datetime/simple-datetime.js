@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/date.format.js";
 /**
  * `simple-datetime`
@@ -7,23 +7,44 @@ import "./lib/date.format.js";
  * @microcopy - the mental model for this element
  * - passing in a timestamp from unix and having it be php based date formatting to render is super helpful
  */
-class SimpleDatetime extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class SimpleDatetime extends LitElement {
+  /**
+   * HTMLElement life cycle
+   */
+  constructor() {
+    super();
+    this.format = "M jS, Y";
+    this.unix = false;
+  }
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-size: 14px;
           color: #b3b3b1;
           line-height: 30px;
         }
-      </style>
-      <time datetime$="[[date]]">[[date]]</time>
+      `
+    ];
+  }
+  /**
+   * LitElement life cycle - render callback
+   */
+  render() {
+    return html`
+      <time datetime="${this.date}">${this.date}</time>
     `;
   }
   static get tag() {
     return "simple-datetime";
   }
+  /**
+   * LitElement life cycle -  properties definitions
+   */
   static get properties() {
     return {
       /**
@@ -36,24 +57,31 @@ class SimpleDatetime extends PolymerElement {
        * Format to output, see https://github.com/jacwright/date.format#supported-identifiers
        */
       format: {
-        type: String,
-        value: "M jS, Y"
+        type: String
       },
       /**
        * Date, generated from timestamp + format
        */
       date: {
-        type: String,
-        computed: "formatDate(timestamp, format, unix)"
+        type: String
       },
       /**
        * Support for UNIX timestamp conversion on the fly
        */
       unix: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
+  }
+  /**
+   * LitElement life cycle - property changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["timestamp", "format", "unix"].includes(propName)) {
+        this.date = this.formatDate(this.timestamp, this.format, this.unix);
+      }
+    });
   }
   /**
    * Figure out the date

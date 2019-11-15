@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./map-menu-item.js";
 import "./map-menu-submenu.js";
 /**
@@ -7,10 +7,13 @@ A LRN element
 
 * @demo demo/index.html
 */
-class MapMenuContainer extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class MapMenuContainer extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -20,7 +23,14 @@ class MapMenuContainer extends PolymerElement {
         :host > ::slotted(map-menu-submenu + map-menu-submenu) {
           margin-top: 16px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement life cycle - render
+   */
+  render() {
+    return html`
       <slot></slot>
     `;
   }

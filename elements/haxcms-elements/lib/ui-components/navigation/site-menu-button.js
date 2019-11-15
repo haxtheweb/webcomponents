@@ -209,18 +209,8 @@ class SiteMenuButton extends LitElement {
         this.disabled = this.pageLinkStatus(
           this.type,
           this.activeRouterManifestIndex,
-          this.routerManifest.items
-        );
-      }
-      if (
-        ["type", "activeRouterManifestIndex", "routerManifest"].includes(
-          propName
-        )
-      ) {
-        this.disabled = this.pageLinkStatus(
-          this.type,
-          this.activeRouterManifestIndex,
-          this.routerManifest.items
+          this.routerManifest.items,
+          this.editMode
         );
       }
     });

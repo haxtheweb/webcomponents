@@ -1,26 +1,28 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
-
+import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `map-menu`
  * `A series of elements that generate a hierarchical menu`
  *
  * @demo demo/index.html
  */
-class MapMenu extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/map-menu/lib/map-menu-container.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class MapMenu extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           --map-menu-active-color: rgba(0, 0, 0, 0.1);
           --map-menu-size: 1;
@@ -33,39 +35,71 @@ class MapMenu extends PolymerElement {
           opacity: 1;
           background-color: transparent;
         }
-
-        #itemslist {
-          @apply --map-menu-items-list;
-        }
-
-        #activeIndicator {
+        #activeindicator {
           background: var(--map-menu-active-color);
           transition: all 0.3s ease-in-out;
           position: absolute;
-          @apply --map-menu-active-indicator;
         }
 
         map-menu-container {
           padding: var(--map-menu-container-padding, 0);
-          @apply --map-menu-container;
         }
 
         /* turn default active color if indicator is on */
         :host([active-indicator]) map-menu-builder {
           --map-menu-active-color: transparent;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.disabled = false;
+    this.title = "Content outline";
+    this.data = null;
+    this.items = [];
+    this.autoScroll = false;
+    this.activeIndicator = false;
+    this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
+    this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
+    this.addEventListener("active-item", this.__activeItemHandler.bind(this));
+    this.addEventListener(
+      "map-meu-item-hidden-check",
+      this._mapMeuItemHiddenCheckHandler.bind(this)
+    );
+  }
+  /**
+   * LitElement life cycle - render
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          #itemslist {
+            @apply --map-menu-items-list;
+          }
+          #activeindicator {
+            @apply --map-menu-active-indicator;
+          }
+          map-menu-container {
+            @apply --map-menu-container;
+          }
+        </style>
+      </custom-style>
       <div id="itemslist">
         <map-menu-container>
-          <div id="activeIndicator"></div>
+          <div id="activeindicator"></div>
           <map-menu-builder
             id="builder"
-            items="[[items]]"
-            selected="[[selected]]"
+            .items="${this.items}"
+            .selected="${this.selected}"
           ></map-menu-builder>
         </map-menu-container>
       </div>
-      <smooth-scroll id="smoothScroll"></smooth-scroll>
+      <smooth-scroll id="smoothscroll"></smooth-scroll>
     `;
   }
 
@@ -77,135 +111,129 @@ class MapMenu extends PolymerElement {
     return {
       disabled: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       title: {
-        type: String,
-        value: "Content Outline"
+        type: String
       },
       data: {
-        type: Array,
-        value: null
+        type: Array
       },
       /**
        * Support for JSON Outline Schema manifest format
        */
       manifest: {
-        type: Object,
-        notify: true,
-        observer: "_manifestChanged"
+        type: Object
       },
       items: {
-        type: Array,
-        value: null,
-        notify: true
+        type: Array
       },
       /**
        * Current selected item.
        */
       selected: {
-        type: String,
-        notify: true
+        type: String
+      },
+      activeItem: {
+        type: Object
       },
       /**
        * Auto scroll an active element if not in view
        */
       autoScroll: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Show active indicator animation
        */
       activeIndicator: {
         type: Boolean,
-        value: false
+        reflect: true,
+        attribute: "active-indicator"
       }
     };
   }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "link-clicked",
-        this.__linkClickedHandler.bind(this)
-      );
-      this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
-      this.addEventListener("active-item", this.__activeItemHandler.bind(this));
-      this.addEventListener(
-        "map-meu-item-hidden-check",
-        this._mapMeuItemHiddenCheckHandler.bind(this)
-      );
+  /**
+   * LitElement life cycle - properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "data") {
+        this._dataChanged(this[propName]);
+      }
+      if (propName == "manifest") {
+        this._manifestChanged(this[propName]);
+      }
+      if (propName == "activeItem") {
+        this.refreshActiveChildren(this[propName], oldValue);
+      }
+      // notify
+      if (["manifest", "items", "selected"].includes(propName)) {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
     });
   }
-  static get observers() {
-    return ["_dataChanged(data)"];
-  }
   __activeItemHandler(e) {
-    const target = e.detail;
-    this.refreshActiveChildren(target);
+    this.activeItem = e.detail;
   }
 
   _mapMeuItemHiddenCheckHandler(e) {
     const action = e.detail.action;
-    const target = e.detail.target;
     const hiddenChild = e.detail.hiddenChild;
     if (action === "closed" && hiddenChild === true) {
-      this.__updateActiveIndicator(this._activeItem, 200, true);
+      this.__updateActiveIndicator(this.activeItem, true);
     } else {
-      this.__updateActiveIndicator(this._activeItem, 200, false);
+      this.__updateActiveIndicator(this.activeItem, false);
     }
   }
 
   /**
    * Set and unset active properties on children
    * @param {string} activeItem
-   * @param {number} timeoutTime
    */
-  refreshActiveChildren(activeItem, timeoutTime = 200) {
-    const oldActiveItem = this._activeItem;
-    const newActiveItem = activeItem;
-
-    if (newActiveItem && newActiveItem !== "") {
+  refreshActiveChildren(newValue, oldValue) {
+    if (newValue) {
       // set the new active attribute to the item
-      newActiveItem.setAttribute("active", true);
+      newValue.setAttribute("active", "active");
       // move the highlight thingy
       if (this.activeIndicator) {
-        this.__updateActiveIndicator(newActiveItem, timeoutTime);
+        this.__updateActiveIndicator(newValue);
       }
       // if auto scroll enabled then scroll element into view
       if (this.autoScroll) {
         // kick off smooth scroll
-        this.shadowRoot.querySelector("#smoothScroll").scroll(newActiveItem, {
-          duration: 300,
+        this.shadowRoot.querySelector("#smoothscroll").scroll(newValue, {
+          duration: 100,
           scrollElement: this
         });
       }
     }
 
-    if (oldActiveItem) {
-      oldActiveItem.removeAttribute("active");
-      this.__updateActiveIndicator(newActiveItem, timeoutTime);
+    if (oldValue) {
+      oldValue.removeAttribute("active");
+      this.__updateActiveIndicator(newValue);
     }
-
-    this._activeItem = newActiveItem;
   }
 
-  _manifestChanged(newValue, oldValue) {
+  _manifestChanged(newValue) {
     if (newValue) {
-      this.set("data", newValue.items);
+      this.data = newValue.items;
     }
   }
-
   /**
-   * Set data property
+   * LitElement life cycle - ready
    */
-  setData(data) {
-    this.set("data", []);
-    this.set("data", data);
+  firstUpdated(changedProperties) {
+    if (this.activeItem) {
+      this.refreshActiveChildren(this.activeItem, false);
+    }
   }
-
   /**
    * Convert data from a linear array
    * to a nested array for template rendering
@@ -225,8 +253,7 @@ class MapMenu extends PolymerElement {
       this._setChildren(item, data);
     });
     // Update items array
-    this.set("items", []);
-    this.set("items", items);
+    this.items = [...items];
   }
 
   /**
@@ -278,8 +305,8 @@ class MapMenu extends PolymerElement {
   __toggleUpdated(e) {
     const action = e.detail.opened ? "opened" : "closed";
     const target = e.path[0];
-    if (typeof this._activeItem !== "undefined") {
-      this._activeItem.dispatchEvent(
+    if (typeof this.activeItem !== "undefined") {
+      this.activeItem.dispatchEvent(
         new CustomEvent("map-menu-item-hidden-check", {
           bubbles: true,
           cancelable: true,
@@ -328,23 +355,18 @@ class MapMenu extends PolymerElement {
   /**
    * Move the highlight widget over active element
    */
-  __updateActiveIndicator(element, timeoutTime = 200, hidden = false) {
+  __updateActiveIndicator(element, hidden = false) {
     // run it through to set time just to let stuff set up
-    setTimeout(() => {
-      const activeIndicator = this.shadowRoot.querySelector("#activeIndicator");
-      const left = element.offsetLeft;
-      const bottom = element.offsetBottom;
-      const top = element.offsetTop;
-      const width = element.offsetWidth;
-      // if the element is hidden the set the indicator height to zero to make it disapear
-      const height = !hidden ? element.offsetHeight : 0;
-      // if the height is zero then make the timeoutTime faster
-      timeoutTime = height > 0 ? timeoutTime : 10;
-      activeIndicator.setAttribute(
-        "style",
-        `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
-      );
-    }, timeoutTime);
+    const activeindicator = this.shadowRoot.querySelector("#activeindicator");
+    const left = element.offsetLeft;
+    const top = element.offsetTop;
+    const width = element.offsetWidth;
+    // if the element is hidden the set the indicator height to zero to make it disapear
+    const height = !hidden ? element.offsetHeight : 0;
+    activeindicator.setAttribute(
+      "style",
+      `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
+    );
   }
   /**
    * Find out if any parents of the item are collapsed

@@ -2,8 +2,11 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-list/iron-list.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -12,25 +15,13 @@ import "@polymer/iron-list/iron-list.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteSearch extends PolymerElement {
+class SiteSearch extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "site-search";
-  }
-  constructor() {
-    super();
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/lunr-search/lunr-search.js");
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-size: 16px;
@@ -44,7 +35,6 @@ class SiteSearch extends PolymerElement {
           color: #222222;
           border: 1px solid black;
           padding: 16px;
-          @apply --site-search-result;
         }
         .result:hover,
         .result:focus {
@@ -52,13 +42,11 @@ class SiteSearch extends PolymerElement {
           color: black;
           color: var(--site-search-link-color-hover, #000000);
           text-decoration: underline;
-          @apply --site-search-result-hover;
         }
         .result .title {
           font-size: 28px;
           margin: 0 0 8px 0;
           line-height: 1;
-          @apply --site-search-link-text;
         }
         .result {
           color: var(--site-search-link-color, #444444);
@@ -69,7 +57,6 @@ class SiteSearch extends PolymerElement {
           color: var(--site-search-link-text-color, #999999);
           font-style: italic;
           padding-left: 8px;
-          @apply --site-search-link-text;
         }
         #search {
           flex-grow: 2;
@@ -92,43 +79,88 @@ class SiteSearch extends PolymerElement {
           );
           color: var(--site-search-placeholder-color, #222);
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-search";
+  }
+  constructor() {
+    super();
+    this.search = "";
+    this.__results = [];
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@lrnwebcomponents/lunr-search/lunr-search.js");
+    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+  }
+  // render function
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          .result {
+            @apply --site-search-result;
+          }
+          .result:hover,
+          .result:focus {
+            @apply --site-search-result-hover;
+          }
+          .result .title {
+            @apply --site-search-link-text;
+          }
+          .result .link-text {
+            @apply --site-search-link-text;
+          }
+        </style>
+      </custom-style>
       <paper-input
         id="search"
         always-float-label
         label="Search"
-        value="{{search}}"
+        @value-changed="${this._searchValueChanged}"
       >
         <iron-icon icon="search" slot="prefix"></iron-icon>
       </paper-input>
-      <template is="dom-if" if="[[search]]">
-        Found [[__results.length]] results.
-      </template>
-      <lunr-search
-        data-source="[[dataSource]]"
-        search="[[search]]"
-        results="{{__results}}"
-      ></lunr-search>
-      <iron-list items="[[__results]]">
-        <template>
-          <a class="result" href$="[[item.location]]">
+      ${this.search.length > 0
+        ? html`
+            Found ${this.__results.length} results.
+          `
+        : html``}
+      <lunr-search id="lunr"></lunr-search>
+
+      ${this.__results.map(
+        item => html`
+          <a class="result" .href="${item.location}">
             <div class="title">
-              [[item.title]]<span class="link-text" aria-hidden="true"
-                >([[item.location]])</span
+              ${item.title}<span class="link-text" aria-hidden="true"
+                >(${item.location})</span
               >
             </div>
             <div class="date">
-              <simple-datetime
-                format="M jS"
-                timestamp="[[item.created]]"
-                unix
-              ></simple-datetime>
+              <simple-datetime format="M jS" .timestamp="${item.created}" unix
+                >${item.created}</simple-datetime
+              >
             </div>
-            <p>[[item.description]]..</p>
+            <p>${item.description}..</p>
           </a>
-        </template>
-      </iron-list>
+        `
+      )}
     `;
+  }
+  _searchValueChanged(e) {
+    this.search = e.detail.value;
+  }
+  __resultsChanged(e) {
+    if (e.detail.value) {
+      this.__results = [...e.detail.value];
+    } else {
+      this.__results = [];
+    }
   }
   /**
    * Mix in an opened status
@@ -136,16 +168,38 @@ class SiteSearch extends PolymerElement {
   static get properties() {
     return {
       dataSource: {
-        type: String
+        type: String,
+        attribute: "data-source"
       },
       search: {
-        type: String,
-        observer: "_searchChanged"
+        type: String
       },
       __results: {
         type: Array
       }
     };
+  }
+  /**
+   * LitElement life cycle - ready callback
+   */
+  firstUpdated(changedProperties) {
+    this.shadowRoot
+      .querySelector("#lunr")
+      .addEventListener("results-changed", this.__resultsChanged.bind(this));
+  }
+  /**
+   * LitElement life cycle - properties changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "search") {
+        this._searchChanged(this[propName], oldValue);
+        this.shadowRoot.querySelector("#lunr").search = this[propName];
+      }
+      if (propName == "dataSource") {
+        this.shadowRoot.querySelector("#lunr").dataSource = this[propName];
+      }
+    });
   }
   /**
    * Notice search term changed and let's fire up some results

@@ -253,9 +253,7 @@ class OutlinePlayer extends HAXCMSPolymerElementTheme {
             background-color: #ffffff;
             color: #000000;
           }
-          --site-menu-item-active-item: {
-            color: #000000;
-          }
+          --site-menu-item-active-item-color: #000000;
         }
         site-menu-button {
           --site-menu-button-button: {
