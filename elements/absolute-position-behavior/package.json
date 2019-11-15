@@ -16,7 +16,7 @@
       "hax": "src/absolute-position-behavior-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.2.0",
   "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element":"^2.2.1",
-    "@polymer/iron-resizable-behavior": "^3.0.0"
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

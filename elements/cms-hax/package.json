@@ -11,7 +11,7 @@
       "js": "src/cms-hax.js"
     }
   },
-  "version": "2.1.10",
+  "version": "2.2.0",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -34,10 +34,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.1.10",
-    "@lrnwebcomponents/simple-toast": "^2.1.6",
-    "@lrnwebcomponents/hax-body": "^2.1.10",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.5",
+    "@lrnwebcomponents/h-a-x": "^2.2.0",
+    "@lrnwebcomponents/hax-body": "^2.2.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.2.0",
+    "@lrnwebcomponents/simple-toast": "^2.2.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

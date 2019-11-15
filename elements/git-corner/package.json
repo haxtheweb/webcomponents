@@ -16,7 +16,7 @@
       "hax": "src/git-corner-hax.json"
     }
   },
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",
