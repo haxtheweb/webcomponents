@@ -35,6 +35,9 @@ class HAXCMSBackendNodeJS extends LitElement {
       ></jwt-login>
     `;
   }
+  jwtChanged(e) {
+    this.jwt = e.detail.value;
+  }
   /**
    * HTMLElement
    */
