@@ -46,9 +46,40 @@ class HAXCMSBackendNodeJS extends LitElement {
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
   }
   /**
+   * LitElement / popular convention
+   */
+  static get properties() {
+    return {
+      /**
+       * Location of what endpoint to hit for
+       */
+      jwtLoginLocation: {
+        type: String,
+        attribute: "jwt-login-location"
+      },
+      /**
+       * Location of what endpoint to hit for logging out
+       */
+      jwtLogoutLocation: {
+        type: String,
+        attribute: "jwt-logout-location"
+      },
+      /**
+       * JSON Web token, it'll come from a global call if it's available
+       */
+      jwt: {
+        type: String
+      }
+    };
+  }
+  /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
+    if (window.appSettings) {
+      this.jwtLoginLocation = window.appSettings.login;
+      this.jwtLogoutLocation = window.appSettings.logout;
+    }
     if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
       this.dynamicallyImportEditor();
     } else {
