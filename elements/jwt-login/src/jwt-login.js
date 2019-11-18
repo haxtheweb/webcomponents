@@ -28,6 +28,7 @@ class JwtLogin extends LitElement {
     this.method = "GET";
     this.body = {};
     this.key = "jwt";
+    this.jwt = null;
   }
   /**
    * LitElement
@@ -41,7 +42,7 @@ class JwtLogin extends LitElement {
         url="${this.url}"
         handle-as="json"
         content-type="application/json"
-        @response-changed="${this.loginResponse}"
+        @response="${this.loginResponse}"
       >
       </iron-ajax>
     `;
@@ -107,9 +108,6 @@ class JwtLogin extends LitElement {
           })
         );
       }
-      if (propName == "body" && this[propName] != {} && this.shadowRoot) {
-        this.shadowRoot.querySelector("#loginrequest").body = { ...this.body };
-      }
     });
   }
   _jwtChanged(newValue, oldValue) {
@@ -155,7 +153,6 @@ class JwtLogin extends LitElement {
   firstUpdated(changedProperties) {
     // set jwt from local storage bin
     this.jwt = localStorage.getItem(this.key);
-    this.shadowRoot.querySelector("#loginrequest").body = this.body;
   }
   /**
    * Request a user login if we need one or log out
@@ -163,6 +160,7 @@ class JwtLogin extends LitElement {
   toggleLogin() {
     // null is default, if we don't have anything go get one
     if (this.jwt == null) {
+      this.shadowRoot.querySelector("#loginrequest").body = { ...this.body };
       this.shadowRoot.querySelector("#loginrequest").generateRequest();
     } else {
       // we were told to logout, reset body
