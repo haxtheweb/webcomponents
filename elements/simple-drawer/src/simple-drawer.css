@@ -5,26 +5,13 @@
 :host([hidden]) {
   display: none;
 }
-
-app-drawer {
-  --app-drawer-width: var(--simple-drawer-width, 256px);
-  --app-drawer-content-container: {
-    padding: 0;
-    overflow-y: scroll;
-    position: fixed;
-    color: var(--simple-drawer-color, #222222);
-    background-color: var(--simple-drawer-background-color, #FFFFFF);
-  }
-}
-:host ::slotted(*) {
+:host div::slotted(*) {
   font-size: 14px;
-  @apply --simple-drawer-content;
 }
 
 .content {
   text-align: left;
   padding: 8px 24px;
-  @apply --simple-drawer-content-container;
 }
 
 .top ::slotted(*) {
@@ -67,7 +54,6 @@ app-drawer {
   justify-content: space-between;
   background-color: var(--simple-drawer-header-background, #20427b);
   color: var(--simple-drawer-header-color, #ffffff);
-  @apply --simple-drawer-header;
 }
 
 .top h2 {
@@ -77,5 +63,4 @@ app-drawer {
   padding: 0;
   line-height: 32px;
   margin: 8px;
-  @apply --simple-drawer-heading;
 }

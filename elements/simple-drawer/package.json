@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-drawer",
   "wcfactory": {
     "className": "SimpleDrawer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-drawer",
     "generator-wcfactory-version": "0.5.0",
     "useHAX": false,
