@@ -1,19 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
 import {
   encapScript,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
 import "./lib/hax-input-mixer.js";
-import "./lib/hax-shared-styles.js";
-
 /**
  * `hax-body`
  * `Manager of the body area that can be modified`
@@ -22,19 +19,32 @@ import "./lib/hax-shared-styles.js";
  *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
  *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
  */
-class HaxBody extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/iron-a11y-keys/iron-a11y-keys.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@lrnwebcomponents/grid-plate/grid-plate.js");
-  }
-  static get tag() {
-    return "hax-body";
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer hax-shared-styles">
+class HaxBody extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host,
+        :host * ::slotted(*) {
+          line-height: 1.8;
+        }
+        :host ul,
+        :host * ::slotted(ul),
+        :host ol,
+        :host * ::slotted(ol) {
+          padding-left: 20px;
+          margin-left: 20px;
+        }
+        :host ul,
+        :host * ::slotted(ul) {
+          list-style-type: disc;
+        }
+        :host li,
+        :host * ::slotted(li) {
+          margin-bottom: 6px;
+        }
         :host {
           display: block;
           min-height: 32px;
@@ -205,7 +215,31 @@ class HaxBody extends PolymerElement {
           float: right;
           line-height: 2;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.editMode = false;
+    this.globalPreferences = {};
+    this.haxRayMode = false;
+    this.activeNode = null;
+    this.activeContainerNode = null;
+    import("@polymer/iron-a11y-keys/iron-a11y-keys.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@lrnwebcomponents/grid-plate/grid-plate.js");
+  }
+  static get tag() {
+    return "hax-body";
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div id="bodycontainer" class="ignore-activation">
         <slot id="body"></slot>
       </div>
@@ -227,6 +261,9 @@ class HaxBody extends PolymerElement {
       ></hax-input-mixer>
     `;
   }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       /**
@@ -234,51 +271,41 @@ class HaxBody extends PolymerElement {
        */
       editMode: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: "_editModeChanged"
-      },
-      /**
-       * Access to the global properties object.
-       */
-      globalPreferences: {
-        type: Object,
-        value: {},
-        observer: "_globalPreferencesUpdated"
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * Bust out the HAX Ray mode
        */
       haxRayMode: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "hax-ray-mode"
+      },
+      /**
+       * Access to the global properties object.
+       */
+      globalPreferences: {
+        type: Object
       },
       /**
        * A reference to the active node in the slot.
        */
       activeNode: {
-        type: Object,
-        value: null,
-        notify: true,
-        observer: "_activeNodeChanged"
+        type: Object
       },
       /**
        * A reference to the active node in the slot.
        */
       activeContainerNode: {
-        type: Object,
-        value: null,
-        notify: true,
-        observer: "_activeContainerNodeChanged"
+        type: Object
       }
     };
   }
   /**
-   * Ready state to tee everything up.
+   * LitElement life cycle - ready
    */
-  ready() {
-    super.ready();
+  firstUpdated(changedProperties) {
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,
@@ -383,18 +410,49 @@ class HaxBody extends PolymerElement {
     window.addEventListener("scroll", this._keepContextVisible.bind(this));
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("mousedown", this._focusIn.bind(this));
-  }
-  /**
-   * Attached to the DOM; now we can fire event to the store that
-   * we exist and are the thing being edited.
-   */
-  connectedCallback() {
-    super.connectedCallback();
     // in case we miss this on the initial setup. possible in auto opening environments.
     this.editMode = window.HaxStore.instance.editMode;
     // ensure this resets every append
     this.__tabTrap = false;
   }
+  /**
+   * LitElement life cycle - properties changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editMode") {
+        this._editModeChanged(this[propName], oldValue);
+      }
+      if (propName == "globalPreferences") {
+        this._globalPreferencesUpdated(this[propName], oldValue);
+      }
+      if (propName == "activeNode") {
+        this._activeNodeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-node-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "activeContainerNode") {
+        this._activeContainerNodeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-container-node-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  /**
+   * HTMLElement
+   */
   disconnectedCallback() {
     if (this._observer) {
       this._observer.disconnect();
@@ -765,10 +823,7 @@ class HaxBody extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
-      }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
   /**
@@ -914,8 +969,8 @@ class HaxBody extends PolymerElement {
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
-    this.set("activeNode", null);
-    this.set("activeContainerNode", null);
+    this.activeNode = null;
+    this.activeContainerNode = null;
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
     let children =
@@ -1154,7 +1209,7 @@ class HaxBody extends PolymerElement {
     // Switch, try loop in case we screwed up elsewhere
     try {
       // test for slots to match
-      if (node.getAttribute("slot") != null) {
+      if (node && node.getAttribute && node.getAttribute("slot") != null) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
       if (node == null) {
@@ -1269,8 +1324,8 @@ class HaxBody extends PolymerElement {
     ) {
       this.activeContainerNode.nextElementSibling.focus();
     } else {
-      this.set("activeNode", null);
-      this.set("activeContainerNode", null);
+      this.activeNode = null;
+      this.activeContainerNode = null;
       window.HaxStore.write("activeNode", null, this);
       window.HaxStore.write("activeContainerNode", null, this);
     }
@@ -1440,8 +1495,8 @@ class HaxBody extends PolymerElement {
         );
         break;
       case "close-menu":
-        this.set("activeNode", null);
-        this.set("activeContainerNode", null);
+        this.activeNode = null;
+        this.activeContainerNode = null;
         window.HaxStore.write("activeNode", null, this);
         window.HaxStore.write("activeContainerNode", null, this);
         break;
@@ -1851,7 +1906,11 @@ class HaxBody extends PolymerElement {
    */
   _activeNodeChanged(newValue, oldValue) {
     // clean up the older one
-    if (typeof oldValue !== typeof undefined && oldValue != null) {
+    if (
+      typeof oldValue !== typeof undefined &&
+      oldValue &&
+      oldValue.classList
+    ) {
       oldValue.classList.remove("hax-active");
     }
     if (
@@ -1947,7 +2006,7 @@ class HaxBody extends PolymerElement {
       this.__typeLock = false;
     }
     setTimeout(() => {
-      async.microTask.run(this._keepContextVisible());
+      this._keepContextVisible();
     }, 100);
   }
   /**
