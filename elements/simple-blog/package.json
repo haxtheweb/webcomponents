@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.2.0",
+    "@lrnwebcomponents/haxcms-elements": "^2.2.1",
     "@lrnwebcomponents/schema-behaviors": "^2.2.0",
     "@lrnwebcomponents/simple-colors": "^2.2.0",
     "@lrnwebcomponents/simple-datetime": "^2.2.0",

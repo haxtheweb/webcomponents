@@ -16,7 +16,7 @@
       "hax": "src/lrn-calendar-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Render a calendar from an ical file",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/lrnsys-layout": "^2.2.0",
+    "@lrnwebcomponents/lrnsys-layout": "^2.2.1",
     "@lrnwebcomponents/materializecss-styles": "^2.2.0",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icon": "^3.0.1",

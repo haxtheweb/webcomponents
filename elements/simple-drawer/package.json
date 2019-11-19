@@ -16,7 +16,7 @@
       "hax": "src/simple-drawer-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "a singleton drawer element",
   "repository": {
     "type": "git",

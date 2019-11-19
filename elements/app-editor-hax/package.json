@@ -16,7 +16,7 @@
       "hax": "src/app-editor-hax-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "HAX but for mobile / desktop application development",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.2.0",
+    "@lrnwebcomponents/h-a-x": "^2.2.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

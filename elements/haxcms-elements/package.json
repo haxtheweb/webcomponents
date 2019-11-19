@@ -16,7 +16,7 @@
       "hax": "src/haxcms-elements-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.2.0",
     "@lrnwebcomponents/dropdown-select": "^2.2.0",
-    "@lrnwebcomponents/hax-body": "^2.2.0",
+    "@lrnwebcomponents/hax-body": "^2.2.1",
     "@lrnwebcomponents/hax-body-behaviors": "^2.2.0",
-    "@lrnwebcomponents/jwt-login": "^2.2.0",
+    "@lrnwebcomponents/jwt-login": "^2.2.1",
     "@lrnwebcomponents/lunr-search": "^2.2.0",
     "@lrnwebcomponents/magazine-cover": "^2.2.0",
-    "@lrnwebcomponents/map-menu": "^2.2.0",
+    "@lrnwebcomponents/map-menu": "^2.2.1",
     "@lrnwebcomponents/schema-behaviors": "^2.2.0",
     "@lrnwebcomponents/simple-colors": "^2.2.0",
     "@lrnwebcomponents/simple-icon-picker": "^2.2.0",

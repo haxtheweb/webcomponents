@@ -16,7 +16,7 @@
       "hax": "src/smooth-scroll-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Start of smooth-scroll",
   "repository": {
     "type": "git",
