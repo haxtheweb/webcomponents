@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/hal-9000",
   "wcfactory": {
     "className": "Hal9000",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hal-9000",
     "generator-wcfactory-version": "0.6.4",
     "useHAX": false,

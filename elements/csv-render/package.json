@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/csv-render",
   "wcfactory": {
     "className": "CsvRender",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "csv-render",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
