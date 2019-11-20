@@ -22,6 +22,7 @@ body, html, :root {
   --hax-preview-button-bg: var(--haxcms-system-bg, black);
   --hax-preview-button-color: white;
   --hax-ink-color: var(--haxcms-system-bg, black);
+  --hax-panel-padding: 8px 0 8px 80px;
   --hax-panel-item-active: #FFFFFF;
   --hax-panel-item-active-border-color:#444444;
   --hax-panel-item-border-color: #444444;
@@ -74,6 +75,12 @@ body, html, :root {
   --lumo-primary-text-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-focus-color: var(--haxcms-color, --haxcms-system-bg);
+}
+
+@media screen and (max-width: 600px) {
+  body, html, :root {
+      --hax-panel-padding: 8px 0 8px 50px;
+  }
 }
 
 body, html {

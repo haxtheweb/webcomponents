@@ -9,6 +9,10 @@ import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 /**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+/**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
  *
@@ -141,15 +145,12 @@ class HAXCMSSiteEditorUI extends LitElement {
           opacity: 1;
         }
         paper-tooltip {
-          width: 100px;
           --paper-tooltip-background: #000000;
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
-          --paper-tooltip-border-radius: 0;
-          --paper-tooltip: {
-            border-radius: 0;
-          }
+          --paper-tooltip-duration-in: 200ms;
+          --paper-tooltip-duration-out: 0;
         }
       `
     ];
@@ -214,6 +215,17 @@ class HAXCMSSiteEditorUI extends LitElement {
   // render function
   render() {
     return html`
+      <custom-style>
+        <style>
+          paper-tooltip {
+            --paper-tooltip: {
+              border-radius: 0;
+              font-size: 14px;
+              width: 145px;
+            }
+          }
+        </style>
+      </custom-style>
       <paper-avatar
         id="username"
         .label="${this.userName}"
@@ -225,6 +237,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         icon="${this.__editIcon}"
         @click="${this._editButtonTap}"
         title="${this.__editText}"
+        voice-command="edit (this) page"
       ></paper-fab>
       <paper-fab
         id="cancelbutton"
@@ -232,57 +245,63 @@ class HAXCMSSiteEditorUI extends LitElement {
         @click="${this._cancelButtonTap}"
         .hidden="${!this.editMode}"
         title="Cancel editing"
+        voice-command="cancel (editing)"
       ></paper-fab>
       <paper-fab
         id="editdetails"
         icon="icons:fingerprint"
         @click="${this._editDetailsButtonTap}"
         title="Edit page details"
+        voice-command="edit (page) details"
       ></paper-fab>
       <paper-icon-button
         id="addbutton"
         icon="icons:add"
         @click="${this._addButtonTap}"
         title="Add new page"
+        voice-command="add page"
       ></paper-icon-button>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
         @click="${this._deleteButtonTap}"
-        title="Delete current page"
+        title="Delete this page"
+        voice-command="delete page"
       ></paper-fab>
       <paper-icon-button
         id="outlinebutton"
         icon="icons:list"
         @click="${this._outlineButtonTap}"
         title="Edit site outline"
+        voice-command="edit site outline"
       ></paper-icon-button>
       <paper-icon-button
         id="manifestbutton"
         icon="${this.icon}"
         @click="${this._manifestButtonTap}"
         title="${this.__settingsText}"
+        voice-command="edit site settings"
       ></paper-icon-button>
       <paper-tooltip for="username" position="right" offset="14"
         >${this.userName}</paper-tooltip
       >
       <paper-tooltip for="cancelbutton" position="right" offset="14"
-        >Cancel</paper-tooltip
+        >Cancel editing</paper-tooltip
       >
       <paper-tooltip for="editbutton" position="right" offset="14"
         >${this.__editText}</paper-tooltip
       >
       <paper-tooltip for="editdetails" position="right" offset="14"
-        >Page details</paper-tooltip
+        >Edit page details</paper-tooltip
       >
       <paper-tooltip for="deletebutton" position="right" offset="14"
-        >Delete page</paper-tooltip
+        >Delete this page</paper-tooltip
       >
       <paper-tooltip for="addbutton" position="right" offset="14"
-        >Add page</paper-tooltip
+        >Add new page</paper-tooltip
       >
       <paper-tooltip for="outlinebutton" position="right" offset="14"
-        >Site outline</paper-tooltip
+        >Organize site outline</paper-tooltip
       >
       <paper-tooltip for="manifestbutton" position="right" offset="14"
         >${this.__settingsText}</paper-tooltip
@@ -301,6 +320,47 @@ class HAXCMSSiteEditorUI extends LitElement {
         detail: true
       })
     );
+    this.shadowRoot.querySelectorAll("[voice-command]").forEach(el => {
+      if (el.getAttribute("id") == "editbutton") {
+        this.dispatchEvent(
+          new CustomEvent("hax-add-voice-command", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              command: ":name: save (this) page",
+              context: el,
+              callback: "click"
+            }
+          })
+        );
+      } else if (el.getAttribute("id") == "manifestbutton") {
+        this.dispatchEvent(
+          new CustomEvent("hax-add-voice-command", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              command: ":name: cancel site settings",
+              context: el,
+              callback: "click"
+            }
+          })
+        );
+      }
+      this.dispatchEvent(
+        new CustomEvent("hax-add-voice-command", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            command: ":name: " + el.getAttribute("voice-command"),
+            context: el,
+            callback: "click"
+          }
+        })
+      );
+    });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -405,10 +465,10 @@ class HAXCMSSiteEditorUI extends LitElement {
   }
   _dashboardOpenedChanged(newValue, oldValue) {
     if (newValue) {
-      this.__settingsText = "Close";
+      this.__settingsText = "Close site settings";
       this.icon = "icons:cancel";
     } else if (!newValue) {
-      this.__settingsText = "Site settings";
+      this.__settingsText = "Edit site settings";
       this.icon = varGet(
         this.manifest,
         "manifest.metadata.theme.variables.icon",
@@ -667,11 +727,11 @@ class HAXCMSSiteEditorUI extends LitElement {
     if (newValue) {
       // enable it some how
       this.__editIcon = "icons:save";
-      this.__editText = "Save page";
+      this.__editText = "Save this page";
     } else {
       // disable it some how
       this.__editIcon = "editor:mode-edit";
-      this.__editText = "Edit page";
+      this.__editText = "Edit this page";
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

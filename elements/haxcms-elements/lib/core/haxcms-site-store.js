@@ -579,5 +579,11 @@ autorun(() => {
       })
     );
     window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
+    // @todo hack to keep voice controls active if enabled
+    if (window.HaxStore.instance.globalPreferences.haxVoiceCommands) {
+      setTimeout(() => {
+        window.HaxStore.instance.__hal.auto = true;
+      }, 10);
+    }
   }
 });

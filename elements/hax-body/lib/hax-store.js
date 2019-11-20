@@ -38,7 +38,11 @@ class HaxStore extends HAXElement(LitElement) {
         handle-as="json"
         @last-response-changed="${this.__appStoreDataChanged}"
       ></iron-ajax>
-      <hal-9000 id="hal" .debug="${this.voiceDebug}"></hal-9000>
+      <hal-9000
+        id="hal"
+        .responds-to="${this.voiceRespondsTo}"
+        .debug="${this.voiceDebug}"
+      ></hal-9000>
     `;
   }
   __appStoreDataChanged(e) {
@@ -53,6 +57,10 @@ class HaxStore extends HAXElement(LitElement) {
       {
         voiceDebug: {
           type: Boolean
+        },
+        voiceRespondsTo: {
+          type: String,
+          attribute: "voice-responses-to"
         },
         /**
          * skipHAXConfirmation
@@ -805,53 +813,52 @@ class HaxStore extends HAXElement(LitElement) {
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
       // initialize voice commands
-      this.__hal.commands = this._initVoiceCommands();
+      this._initVoiceCommands();
+      this.__hal.commands = { ...this.voiceCommands };
     }
   }
   /**
    * Build a list of common voice commands
    */
   _initVoiceCommands() {
-    var commands = {};
-    commands[`${this.__hal.respondsTo} scroll up`] = () => {
+    this.__voiceInit = true;
+    this.voiceCommands[`scroll up ${this.voiceRespondsTo}`] = () => {
       window.scrollBy({
         top: -(window.innerHeight * 0.5),
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[`${this.__hal.respondsTo} scroll (down)`] = () => {
+    this.voiceCommands[`scroll (down) ${this.voiceRespondsTo}`] = () => {
       window.scrollBy({
         top: window.innerHeight * 0.5,
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[`hey ${this.__hal.respondsTo}`] = () => {
+    // trolling
+    this.voiceCommands[`hey ${this.voiceRespondsTo}`] = () => {
       this.__hal.speak("Yeah what do you want");
     };
-    commands[`${this.__hal.respondsTo} find media`] = () => {
-      window.HaxStore.write("activeHaxElement", {}, window.HaxStore.instance);
-      window.HaxStore.instance.haxManager.resetManager(1);
-      window.HaxStore.instance.haxManager.toggleDialog(false);
+    this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
+      window.HaxStore.instance.closeAllDrawers();
     };
-    return commands;
   }
   /**
    * allow uniform method of adding voice commands
    */
-  addVoiceCommand(command) {
-    if (this.__hal.push) {
-      this.__hal.push("commands", command);
-    } else {
-      this.__hal.commands.push(command);
+  addVoiceCommand(command, context, callback) {
+    command = command.replace(":name:", this.voiceRespondsTo).toLowerCase();
+    this.voiceCommands[command] = context[callback].bind(context);
+    if (this.__voiceInit) {
+      this.__hal.commands = { ...this.voiceCommands };
     }
   }
   /**
    * event driven version
    */
   _addVoiceCommand(e) {
-    this.addVoiceCommand(e.detail);
+    this.addVoiceCommand(e.detail.command, e.detail.context, e.detail.callback);
   }
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -1027,6 +1034,8 @@ class HaxStore extends HAXElement(LitElement) {
    */
   constructor() {
     super();
+    this.voiceRespondsTo = "(worker)";
+    this.voiceCommands = {};
     this.skipHAXConfirmation = false;
     this.storageData = {};
     this.appStore = {};
