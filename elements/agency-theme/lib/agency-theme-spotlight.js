@@ -94,7 +94,7 @@ class AgencyThemeSpotlight extends PolymerElement {
       </style>
       <div class="inner">
         <div class="image">
-          <img src="[[image]]" alt="" />
+          <img loading="lazy" src="[[image]]" alt="" />
         </div>
         <div class="content">
           <div class="title"><slot name="title"></slot></div>

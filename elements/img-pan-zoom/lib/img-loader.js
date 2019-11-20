@@ -7,7 +7,7 @@ all `img-loader` code comes from <a href="https://github.com/PolymerElements/iro
 class ImgLoader extends PolymerElement {
   static get template() {
     return html`
-      <img id="img" hidden="" src="[[src]]" />
+      <img loading="lazy" id="img" hidden="" src="[[src]]" />
     `;
   }
 

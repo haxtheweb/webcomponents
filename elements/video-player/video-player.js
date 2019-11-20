@@ -209,6 +209,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             inputMethod: "haxupload",
             icon: "link",
             required: true,
+            noCamera: true,
             validationType: "url"
           },
           {
@@ -224,7 +225,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             property: "thumbnailSrc",
             title: "Thumbnail image",
             description: "Optional. The URL for a thumbnail/poster image.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"

@@ -1208,7 +1208,18 @@ class HaxStore extends HAXElement(LitElement) {
             validationType: "url"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            attribute: "loading",
+            title: "Loading method",
+            description: "Whether or not to lazy load this",
+            inputMethod: "select",
+            options: {
+              lazy: "Load when visible",
+              auto: "Automatic"
+            }
+          }
+        ]
       }
     };
     this.setHaxProperties(iframe, "iframe");
@@ -1285,7 +1296,18 @@ class HaxStore extends HAXElement(LitElement) {
             icon: "icons:swap-vert"
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            attribute: "loading",
+            title: "Loading method",
+            description: "Whether or not to lazy load this",
+            inputMethod: "select",
+            options: {
+              lazy: "Load when visible",
+              auto: "Automatic"
+            }
+          }
+        ]
       }
     };
     this.setHaxProperties(img, "img");
