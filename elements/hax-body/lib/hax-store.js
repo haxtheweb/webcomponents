@@ -1218,7 +1218,7 @@ class HaxStore extends HAXElement(LitElement) {
         step: 5
       },
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Image",
         description: "A basic img tag",
@@ -1243,15 +1243,6 @@ class HaxStore extends HAXElement(LitElement) {
       },
       settings: {
         quick: [
-          {
-            attribute: "src",
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url"
-          },
           {
             attribute: "alt",
             title: "Alt text",

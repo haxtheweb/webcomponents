@@ -806,6 +806,20 @@ export class HAXWiring {
                   }
                 };
                 break;
+              case "slider":
+                props[settings[value].property].component = {
+                  name: "paper-slider",
+                  valueProperty: "immediateValue",
+                  properties: {
+                    pin: true,
+                    required: settings[value].required,
+                    disabled: settings[value].disabled,
+                    min: settings[value].min,
+                    max: settings[value].max,
+                    step: settings[value].step
+                  }
+                };
+                break;
             }
             if (settings[value].hidden !== typeof undefined) {
               props[settings[value].property].hidden = settings[value].hidden;
@@ -958,6 +972,20 @@ export class HAXWiring {
                   }
                 };
                 break;
+              case "slider":
+                props[settings[value].attribute].component = {
+                  name: "paper-slider",
+                  valueProperty: "immediateValue",
+                  properties: {
+                    pin: true,
+                    required: settings[value].required,
+                    disabled: settings[value].disabled,
+                    min: settings[value].min,
+                    max: settings[value].max,
+                    step: settings[value].step
+                  }
+                };
+                break;
             }
             if (settings[value].description !== typeof undefined) {
               props[settings[value].attribute].description =
@@ -1026,6 +1054,7 @@ export class HAXWiring {
             return "boolean";
             break;
           case "number":
+          case "slider":
             return "number";
             break;
           case "select":
@@ -1060,6 +1089,7 @@ export class HAXWiring {
         "textarea",
         "datepicker",
         "haxupload",
+        "slider",
         "markup",
         "colorpicker",
         "iconpicker",
