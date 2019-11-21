@@ -16,7 +16,7 @@
       "hax": "src/paper-avatar-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.2",
   "description": "Automated conversion of paper-avatar/",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-item": "^3.0.1",

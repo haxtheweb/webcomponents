@@ -16,7 +16,7 @@
       "hax": "src/learn-two-theme-hax.json"
     }
   },
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Learn2 theme for HAXcms",
   "repository": {
     "type": "git",
@@ -39,9 +39,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.2.1",
-    "@lrnwebcomponents/map-menu": "^2.2.1",
-    "@lrnwebcomponents/simple-colors": "^2.2.0",
+    "@lrnwebcomponents/haxcms-elements": "^2.2.2",
+    "@lrnwebcomponents/map-menu": "^2.2.2",
+    "@lrnwebcomponents/simple-colors": "^2.2.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-tooltip": "^3.0.1",

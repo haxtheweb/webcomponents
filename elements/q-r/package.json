@@ -16,7 +16,7 @@
       "hax": "src/q-r-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.2.2",
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
