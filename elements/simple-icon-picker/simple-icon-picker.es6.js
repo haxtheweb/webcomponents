@@ -8,15 +8,16 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 
 /**
  * `simple-icon-picker`
- * `Uses simple-picker to create an icon picker`
+ * Uses simple-picker to create an icon picker
  *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
   //styles function
   static get styles() {
-    let styles = [
+    return [
+      super.styles,
       css`
         :host(simple-icon-picker) #collapse {
           width: 300px;
@@ -29,15 +30,13 @@ class SimpleIconPicker extends SimplePicker {
         }
       `
     ];
-    if (super.styles) {
-      styles = Object.assign(styles, super.styles);
-    }
-    return styles;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Allow a null option to be selected?
        */
@@ -91,10 +90,6 @@ class SimpleIconPicker extends SimplePicker {
         type: Array
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**
@@ -127,7 +122,10 @@ class SimpleIconPicker extends SimplePicker {
         this._getOptions(this[propName], oldValue);
       }
       if (propName == "value") {
-        // notify
+        /**
+         * fires when value changes
+         * @event value-changed
+         */
         this.dispatchEvent(
           new CustomEvent("value-changed", {
             detail: {

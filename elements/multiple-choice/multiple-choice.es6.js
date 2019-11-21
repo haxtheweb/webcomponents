@@ -186,7 +186,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
     `;
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title
        */
@@ -299,10 +301,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
         value: false
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Notice an answer has changed and update the DOM.

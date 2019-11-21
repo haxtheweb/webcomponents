@@ -40,8 +40,8 @@ export { LrndesignGallery };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html carousel demo
- * @demo demo/grid.html grid demo
+ * @demo ./demo/index.html carousel demo
+ * @demo ./demo/grid.html grid demo
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
   /**

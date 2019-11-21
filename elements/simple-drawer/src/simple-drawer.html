@@ -1,15 +1,41 @@
-<style include="simple-colors-shared-styles-polymer"></style>
-<app-drawer tabindex="0" id="drawer" opened="{{opened}}" align="[[align]]" role="dialog">
+<custom-style>
+  <style>
+  app-drawer {
+    --app-drawer-content-container: {
+      padding: 0;
+      overflow-y: scroll;
+      position: fixed;
+      color: var(--simple-drawer-color, #222222);
+      background-color: var(--simple-drawer-background-color, #FFFFFF);
+    }
+  }
+  :host ::slotted(*) {
+    @apply --simple-drawer-content;
+  }
+
+  .content {
+    @apply --simple-drawer-content-container;
+  }
+  .top {
+    @apply --simple-drawer-header;
+  }
+
+  .top h2 {
+    @apply --simple-drawer-heading;
+  }
+  </style>
+</custom-style>
+<app-drawer tabindex="0" id="drawer" ?opened="${this.opened}" @opened-changed="${this.__openedChanged}" .align="${this.align}" role="dialog">
   <div class="wrapper">
     <div class="top">
-      <h2 hidden$="[[!title]]">[[title]]</h2>
+      ${this.title ? html`<h2>${this.title}</h2>` : ''}
       <slot name="header"></slot>
     </div>
     <div class="content">
       <slot name="content"></slot>
     </div>
-    <paper-button id="close" on-click="close">
-      <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
+    <paper-button id="close" @click="${this.close}">
+      <iron-icon icon="${this.closeIcon}"></iron-icon> ${this.closeLabel}
     </paper-button>
   </div>
 </app-drawer>

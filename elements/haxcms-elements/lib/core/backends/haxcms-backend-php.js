@@ -1,10 +1,10 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-php`
  * `a simple element to check for and fetch JWTs`
@@ -14,68 +14,45 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class HAXCMSBackendPHP extends PolymerElement {
+class HAXCMSBackendPHP extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "haxcms-backend-php";
   }
-  // render function
-  static get template() {
+  /**
+   * LitElement
+   */
+  render() {
     return html`
       <jwt-login
         id="jwt"
-        url="[[jwtLoginLocation]]"
-        url-logout="[[jwtLogoutLocation]]"
-        jwt="{{jwt}}"
+        url="${this.jwtLoginLocation}"
+        url-logout="${this.jwtLogoutLocation}"
+        jwt="${this.jwt}"
+        @jwt-changed="${this.jwtChanged}"
       ></jwt-login>
     `;
   }
-  static get properties() {
-    return {
-      /**
-       * Location of what endpoint to hit for
-       */
-      jwtLoginLocation: {
-        type: String,
-        value: function() {
-          if (window.appSettings) {
-            return window.appSettings.login;
-          }
-        }
-      },
-      /**
-       * Location of what endpoint to hit for logging out
-       */
-      jwtLogoutLocation: {
-        type: String,
-        value: function() {
-          if (window.appSettings) {
-            return window.appSettings.logout;
-          }
-        }
-      },
-      /**
-       * JSON Web token, it'll come from a global call if it's available
-       */
-      jwt: {
-        type: String
-      }
-    };
+  jwtChanged(e) {
+    this.jwt = e.detail.value;
   }
   /**
-   * created life cycle
+   * HTMLElement
    */
   constructor() {
     super();
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
   }
   /**
-   * Attached life cycle
+   * LitElement life cycle - ready
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (window.appSettings) {
+      this.jwtLoginLocation = window.appSettings.login;
+      this.jwtLogoutLocation = window.appSettings.logout;
+    }
     if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
       this.dynamicallyImportEditor();
     } else {
@@ -113,6 +90,33 @@ class HAXCMSBackendPHP extends PolymerElement {
     if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
       this.dynamicallyImportEditor();
     }
+  }
+  /**
+   * LitElement / popular convention
+   */
+  static get properties() {
+    return {
+      /**
+       * Location of what endpoint to hit for
+       */
+      jwtLoginLocation: {
+        type: String,
+        attribute: "jwt-login-location"
+      },
+      /**
+       * Location of what endpoint to hit for logging out
+       */
+      jwtLogoutLocation: {
+        type: String,
+        attribute: "jwt-logout-location"
+      },
+      /**
+       * JSON Web token, it'll come from a global call if it's available
+       */
+      jwt: {
+        type: String
+      }
+    };
   }
   /**
    * Import the editor

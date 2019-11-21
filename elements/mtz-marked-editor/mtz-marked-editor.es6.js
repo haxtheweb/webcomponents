@@ -27,7 +27,9 @@ class MtzMarkedEditor extends mixinBehaviors(
     return "mtz-marked-editor";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       autofocus: Boolean,
       readonly: Boolean,
       textareaSelector: {
@@ -36,10 +38,6 @@ class MtzMarkedEditor extends mixinBehaviors(
       },
       __textarea: Object
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   constructor() {
     super();

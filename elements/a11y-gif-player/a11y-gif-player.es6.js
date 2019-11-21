@@ -31,7 +31,7 @@ Custom property | Description | Default
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   constructor() {
@@ -158,7 +158,9 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     return "a11y-gif-player";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Alt text of gif
        */
@@ -204,10 +206,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         type: Boolean
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * plays the animation regarless of previous state

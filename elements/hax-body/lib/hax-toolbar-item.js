@@ -125,6 +125,8 @@ class HaxToolbarItem extends LitElement {
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
+          --paper-tooltip-duration-in: 200ms;
+          --paper-tooltip-duration-out: 0;
         }
       `
     ];
@@ -136,6 +138,7 @@ class HaxToolbarItem extends LitElement {
           paper-tooltip {
             --paper-tooltip: {
               border-radius: 0;
+              font-size: 14px;
             }
           }
         </style>
@@ -155,6 +158,7 @@ class HaxToolbarItem extends LitElement {
         <slot></slot>
       </paper-button>
       <paper-tooltip
+        ?hidden="${this.tooltip == "" ? true : false}"
         id="tooltip"
         offset="10"
         position="${this.tooltipDirection}"

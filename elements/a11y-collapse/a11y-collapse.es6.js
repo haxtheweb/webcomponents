@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "./lib/a11y-collapse-accordion-button.js";
-import "./lib/a11y-collapse-icon-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `a11y-collapse`
  * an accessible expand collapse
@@ -26,8 +27,8 @@ Custom property | Description | Default
 `--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset
  *
  * @customElement
- * @demo demo/index.html demo
- * @demo demo/accordion.html collapse groups
+ * @demo ./demo/index.html demo
+ * @demo ./demo/group.html collapse groups
  */
 class A11yCollapse extends LitElement {
   static get styles() {
@@ -39,7 +40,50 @@ class A11yCollapse extends LitElement {
           border: var(--a11y-collapse-border, 1px solid);
           transition: all 0.5s;
         }
-
+        :host(:not(:first-of-type)) {
+          border-top: var(
+            --a11y-collapse-border-between,
+            var(--a11y-collapse-border, 1px solid)
+          );
+        }
+        :host([disabled]) {
+          opacity: 0.5;
+        }
+        *[aria-controls="content"][disabled] {
+          cursor: not-allowed;
+        }
+        #heading {
+          display: flex;
+          justify-content: stretch;
+          align-items: center;
+          padding: 0
+            var(
+              --a11y-collapse-padding-right,
+              var(--a11y-collapse-horizontal-padding, 16px)
+            )
+            0
+            var(
+              --a11y-collapse-padding-left,
+              var(--a11y-collapse-horizontal-padding, 16px)
+            );
+          font-weight: var(--a11y-collapse-heading-font-weight, bold);
+          margin: var(--a11y-collapse-margin, unset);
+          color: var(--a11y-collapse-heading-color, unset);
+          background-color: var(
+            --a11y-collapse-heading-background-color,
+            unset
+          );
+        }
+        #text {
+          flex-grow: 1;
+        }
+        #expand {
+          transition: transform 0.5s;
+          padding: (--a11y-collapse-icon-padding, unset);
+        }
+        #expand[rotated] {
+          transform: rotate(-90deg);
+        }
         #content {
           max-height: 0;
           overflow: hidden;
@@ -56,18 +100,8 @@ class A11yCollapse extends LitElement {
           border-top: 0px solid rgba(255, 255, 255, 0);
           transition: all 0.5s ease-in-out;
         }
-        :host(:not(:first-of-type)) {
-          border-top: var(
-            --a11y-collapse-border-between,
-            var(--a11y-collapse-border, 1px solid)
-          );
-        }
-        :host([disabled]) {
-          opacity: 0.5;
-        }
-        :host([disabled]:not([accordion])) #expand,
-        :host([disabled][accordion]) #heading {
-          cursor: not-allowed;
+        :host #content-inner {
+          overflow: hidden;
         }
         :host([expanded]) #content {
           max-height: unset;
@@ -90,67 +124,33 @@ class A11yCollapse extends LitElement {
             );
           border-top: var(--a11y-collapse-border, 1px solid);
         }
-        :host(:not([expanded])) #content-inner {
-          overflow: hidden;
+        :host([expanded]) #content-inner {
+          overflow: unset;
         }
       `
     ];
   }
   render() {
-    let heading = this.accordion
-      ? html`
-          <a11y-collapse-accordion-button
-            id="accordionbutton"
-            ?disabled="${this.disabled}"
-            ?expanded="${this.expanded}"
-            ?rotated="${!this.expanded && this.iconExpanded === null}"
-            .label="${this.expanded && this.labelExpanded
-              ? this.labelExpanded
-              : this.label}"
-            .icon="${this.expanded && this.iconlExpanded
-              ? this.iconExpanded
-              : this.icon}"
-            .tooltip="${this.expanded && this.tooltiplExpanded
-              ? this.tooltipExpanded
-              : this.tooltip}"
-          >
-            <slot name="heading"></slot>
-          </a11y-collapse-accordion-button>
-        `
-      : html`
-          <a11y-collapse-icon-button
-            id="iconbutton"
-            ?disabled="${this.disabled}"
-            ?expanded="${this.expanded}"
-            ?rotated="${!this.expanded && this.iconExpanded === null}"
-            .label="${this.expanded && this.labelExpanded
-              ? this.labelExpanded
-              : this.label}"
-            .icon="${this.expanded && this.iconlExpanded
-              ? this.iconExpanded
-              : this.icon}"
-            .tooltip="${this.expanded && this.tooltiplExpanded
-              ? this.tooltipExpanded
-              : this.tooltip}"
-          >
-            <slot name="heading"></slot>
-          </a11y-collapse-icon-button>
-        `;
     return html`
-      ${heading}
+      ${this.accordion ? this._makeAccordionButton() : this._makeIconButton()}
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"
         aria-labelledby="heading"
         aria-live="polite"
       >
-        <div id="content-inner"><slot name="content"></slot><slot></slot></div>
+        <div id="content-inner">
+          <slot name="content"></slot>
+          <slot></slot>
+        </div>
       </div>
     `;
   }
+
   static get tag() {
     return "a11y-collapse";
   }
+
   static get properties() {
     return {
       /**
@@ -215,6 +215,7 @@ class A11yCollapse extends LitElement {
       }
     };
   }
+
   constructor() {
     super();
     this.accordion = false;
@@ -226,12 +227,11 @@ class A11yCollapse extends LitElement {
     this.labelExpanded = null;
     this.tooltip = "toggle expand/collapse";
     this.tooltipExpanded = null;
-  }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
+    /**
+     * Fires when constructed, so that parent radio group can listen for it.
+     *
+     * @event a11y-collapse-attached
+     */
     this.dispatchEvent(
       new CustomEvent("a11y-collapse-attached", {
         bubbles: true,
@@ -240,7 +240,6 @@ class A11yCollapse extends LitElement {
         detail: this
       })
     );
-    this.addEventListener("a11y-collapse-tap", this._onTap.bind(this));
   }
   static get haxProperties() {
     return {
@@ -252,14 +251,42 @@ class A11yCollapse extends LitElement {
         description: "A single instance of an expand collapse.",
         icon: "view-day",
         color: "grey",
-        groups: ["Text"],
-        meta: {
-          author: "Your organization on github"
-        }
+        groups: ["Text"]
       },
       settings: {
-        quick: [],
+        quick: [
+          {
+            property: "accordion",
+            title: "Heading Button",
+            description: "Make entire heading clickble.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "expanded",
+            title: "Expanded",
+            description: "Expand by default",
+            inputMethod: "boolean"
+          }
+        ],
         configure: [
+          {
+            slot: "heading",
+            title: "Heading",
+            description: "The heading for the collapse.",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "content",
+            title: "Content",
+            description: "The content for the collapse.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "accordion",
+            title: "Heading Button",
+            description: "Make entire heading clickble.",
+            inputMethod: "boolean"
+          },
           {
             property: "expanded",
             title: "Expanded",
@@ -267,33 +294,43 @@ class A11yCollapse extends LitElement {
             inputMethod: "boolean"
           },
           {
+            property: "icon",
+            title: "Icon",
+            description: "The icon for the toggle expand/collapse button.",
+            inputMethod: "textfield"
+          },
+          {
+            property: "iconExpanded",
+            title: "Icon (when expanded)",
+            description:
+              "Optional: The icon for the toggle expand/collapse button when expanded",
+            inputMethod: "textfield"
+          },
+          {
             property: "label",
             title: "Label",
             description: "The label of the toggle expand/collapse button",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            inputMethod: "textfield"
+          },
+          {
+            property: "labelExpanded",
+            title: "Label (when expanded)",
+            description:
+              "The label of the toggle expand/collapse button when expanded.",
+            inputMethod: "textfield"
           },
           {
             property: "tooltip",
             title: "Tooltip",
             description: "The tooltip for the toggle expand/collapse button",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            inputMethod: "textfield"
           },
           {
-            property: "icon",
-            title: "Icon",
-            description: "The icon for the toggle expand/collapse button",
-            inputMethod: "textfield",
-            icon: "editor:title"
-          },
-          {
-            property: "iconExpanded",
-            title: "Expanded Icon",
+            property: "tooltipExpanded",
+            title: "Tooltip (when expanded)",
             description:
-              "Optional: The icon for the toggle expand/collapse button when expanded",
-            inputMethod: "textfield",
-            icon: "editor:title"
+              "The tooltip for the toggle expand/collapse button when expanded",
+            inputMethod: "textfield"
           }
         ],
         advanced: []
@@ -305,6 +342,11 @@ class A11yCollapse extends LitElement {
    * Let the group know that this is gone.
    */
   disconnectedCallback() {
+    /**
+     * Fires when detatched, so that parent radio group will no longer listen for it.
+     *
+     * @event a11y-collapse-detached
+     */
     this.dispatchEvent(
       new CustomEvent("a11y-collapse-detached", {
         bubbles: true,
@@ -313,7 +355,6 @@ class A11yCollapse extends LitElement {
         detail: this
       })
     );
-    this.removeEventListener("a11y-collapse-tap", this._onTap.bind(this));
     super.disconnectedCallback();
   }
   /**
@@ -348,6 +389,11 @@ class A11yCollapse extends LitElement {
    * Fires toggling events
    */
   _fireToggleEvents() {
+    /**
+     * Fires when toggled.
+     *
+     * @event toggle
+     */
     this.dispatchEvent(
       new CustomEvent("toggle", {
         bubbles: true,
@@ -356,7 +402,11 @@ class A11yCollapse extends LitElement {
         detail: this
       })
     );
-    //supports legacy version
+    /**
+     * Deprecated. Fires when toggled.
+     *
+     * @event a11y-collapse-toggle
+     */
     this.dispatchEvent(
       new CustomEvent("a11y-collapse-toggle", {
         bubbles: true,
@@ -366,6 +416,11 @@ class A11yCollapse extends LitElement {
       })
     );
     if (this.expanded) {
+      /**
+       * Fires when expanded.
+       *
+       * @event expand
+       */
       this.dispatchEvent(
         new CustomEvent("expand", {
           bubbles: true,
@@ -375,6 +430,11 @@ class A11yCollapse extends LitElement {
         })
       );
     } else {
+      /**
+       * Fires when collapsed.
+       *
+       * @event collapse
+       */
       this.dispatchEvent(
         new CustomEvent("collapse", {
           bubbles: true,
@@ -385,13 +445,106 @@ class A11yCollapse extends LitElement {
       );
     }
   }
+  /**
+   * determines the property based on expanded state
+   * @param {string} defaultProp default property
+   * @param {string} expandedProp property when expanded
+   * @param {boolean} expanded whether a11y-collapse is expanded
+   * @returns {string} property based on expanded state
+   */
+  _getExpanded(defaultProp, expandedProp, expanded) {
+    return expanded && expandedProp !== null ? expandedProp : defaultProp;
+  }
+  /**
+   * renders collapse item where only entire heading is clickable button
+   * @returns {object} html template for a heading as a clickable button
+   */
+  _makeAccordionButton() {
+    return html`
+      <div
+        id="heading"
+        aria-controls="content"
+        aria-expanded="${this.expanded ? "true" : "false"}"
+        role="button"
+        @click="${this._onClick}"
+        ?disabled="${this.disabled}"
+        .label="${this._getExpanded(
+          this.label,
+          this.labelExpanded,
+          this.expanded
+        )}"
+      >
+        <div id="text"><slot name="heading"></slot></div>
+        <iron-icon
+          id="expand"
+          ?rotated="${!this.expanded && this.iconExpanded === null}"
+          .icon="${this._getExpanded(
+            this.icon,
+            this.iconExpanded,
+            this.expanded
+          )}"
+          aria-hidden="true"
+        >
+        </iron-icon>
+      </div>
+      <paper-tooltip for="heading"
+        >${this._getExpanded(
+          this.tooltip,
+          this.tooltipExpanded,
+          this.expanded
+        )}</paper-tooltip
+      >
+    `;
+  }
+  /**
+   * renders collapse item where only icon is a clickable button
+   * @returns {object} html template for a heading with an icon button
+   */
+  _makeIconButton() {
+    return html`
+      <div id="heading">
+        <div id="text"><slot name="heading"></slot></div>
+        <paper-icon-button
+          id="expand"
+          @click="${this._onClick}"
+          ?disabled="${this.disabled}"
+          ?rotated="${!this.expanded && this.iconExpanded === null}"
+          .label="${this._getExpanded(
+            this.label,
+            this.labelExpanded,
+            this.expanded
+          )}"
+          .icon="${this._getExpanded(
+            this.icon,
+            this.iconExpanded,
+            this.expanded
+          )}"
+          aria-controls="content"
+          aria-expanded="${this.expanded ? "true" : "false"}"
+        >
+        </paper-icon-button>
+        <paper-tooltip for="expand"
+          >${this._getExpanded(
+            this.tooltip,
+            this.tooltipExpanded,
+            this.expanded
+          )}</paper-tooltip
+        >
+      </div>
+    `;
+  }
 
   /**
-   * Handle tap
+   * Handle click
    */
-  _onTap() {
+  _onClick() {
     if (!this.disabled) {
       this.toggle();
+      /**
+       * Fires when clicked.
+       *
+       * @event a11y-collapse-click
+       */
       this.dispatchEvent(
         new CustomEvent("a11y-collapse-click", {
           bubbles: true,

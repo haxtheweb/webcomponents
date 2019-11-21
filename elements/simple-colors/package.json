@@ -16,7 +16,7 @@
       "hax": "src/simple-colors-hax.json"
     }
   },
-  "version": "2.1.10",
+  "version": "2.2.0",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -39,17 +39,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-picker": "^2.1.10",
+    "@lrnwebcomponents/simple-picker": "^2.2.0",
     "@polymer/iron-icons": "^3.0.1",
+    "@polymer/polymer": "^3.2.0",
     "@rhelements/rh-sass": "*",
-    "lit-element":"2.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.6",
-    "@lrnwebcomponents/simple-modal": "^2.1.5",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.2",    
+    "@lrnwebcomponents/simple-colors-shared-styles": "^2.2.0",
+    "@lrnwebcomponents/simple-modal": "^2.2.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
@@ -57,8 +57,8 @@
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
     "lodash": "4.17.13",
-    "polymer-cli": "1.9.9",
     "polymer-build": "3.1.2",
+    "polymer-cli": "1.9.9",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.1"
   },

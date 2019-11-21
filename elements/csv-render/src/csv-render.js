@@ -2,11 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `csv-render`
  * `Remote render a CSV file in place as an accessible table.`
@@ -15,28 +12,15 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  *  - CSV is comma separated values
  *
  * @customElement
- * @polymer
- * @polymerLegacy
  * @demo ./demo/index.html
  */
-class CsvRender extends SimpleColorsPolymer {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-    import("@polymer/iron-ajax/iron-ajax.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      import("@polymer/paper-button/paper-button.js");
-      import("@polymer/paper-tooltip/paper-tooltip.js");
-    });
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class CsvRender extends SimpleColors {
+  /**
+   * LitElement style construction
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -127,23 +111,55 @@ class CsvRender extends SimpleColorsPolymer {
           color: var(--simple-colors-default-theme-accent-8);
           outline: 2px solid var(--simple-colors-default-theme-accent-6);
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.table = [];
+    this.tableHeadings = [];
+    this.tableData = "";
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("@polymer/iron-ajax/iron-ajax.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
+  /**
+   * LitElement life cycle - property changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "color") {
+        this._getAccentColor(this[propName], oldValue);
+      }
+    });
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <iron-ajax
         auto
-        url="[[dataSource]]"
+        url="${this.dataSource}"
         handle-as="text"
         debounce-duration="500"
-        last-response="{{tableData}}"
-        on-response="handleResponse"
+        @last-response-changed="${this.tableDataChanged}"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <hexagon-loader
         id="loading"
-        accent-color="[[accentColor]]"
+        accent-color="${this.accentColor}"
         loading
         item-count="4"
         size="small"
       ></hexagon-loader>
-      <a href="[[dataSource]]" id="download" tabindex="-1">
+      <a href="${this.dataSource}" id="download" tabindex="-1">
         <paper-button
           ><iron-icon icon="file-download"></iron-icon
         ></paper-button>
@@ -151,27 +167,36 @@ class CsvRender extends SimpleColorsPolymer {
       <paper-tooltip for="download" animation-delay="200" offset="14"
         >Download table data</paper-tooltip
       >
-      <table class="table" summary="[[summary]]">
-        <template is="dom-if" if="[[caption]]">
-          <caption>
-            [[caption]]
-          </caption>
-        </template>
+      <table class="table" summary="${this.summary}">
+        ${this.caption
+          ? html`
+              <caption>
+                ${this.caption}
+              </caption>
+            `
+          : ""}
         <thead>
           <tr>
-            <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
-              <th scope="col">[[heading]]</th>
-            </template>
+            ${this.tableHeadings.map(
+              heading =>
+                html`
+                  <th scope="col">${this.heading}</th>
+                `
+            )}
           </tr>
         </thead>
         <tbody>
-          <template is="dom-repeat" items="[[table]]" as="row">
-            <tr>
-              <template is="dom-repeat" items="[[row]]" as="col">
-                <td>[[col]]</td>
-              </template>
-            </tr>
-          </template>
+          ${this.table.map(
+            row => html`
+              <tr>
+                ${row.map(
+                  col => html`
+                    <td>${col}</td>
+                  `
+                )}
+              </tr>
+            `
+          )}
         </tbody>
       </table>
     `;
@@ -180,13 +205,17 @@ class CsvRender extends SimpleColorsPolymer {
   static get tag() {
     return "csv-render";
   }
+  tableDataChanged(e) {
+    this.tableData = e.detail.value;
+  }
   static get properties() {
     return {
       /**
        * Location of the CSV file.
        */
       dataSource: {
-        type: String
+        type: String,
+        attribute: "data-source"
       },
 
       /**
@@ -205,29 +234,26 @@ class CsvRender extends SimpleColorsPolymer {
        * Table busted out as an array.
        */
       table: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Headings from the first row of the csv
        */
       tableHeadings: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Raw data pulled in from the csv file.
        */
       tableData: {
         type: String,
-        value: ""
+        attribute: "table-data"
       },
       /**
        * Color class work to apply
        */
       color: {
-        type: String,
-        observer: "_getAccentColor"
+        type: String
       }
     };
   }

@@ -245,9 +245,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
               padding: 0;
               background-color: #2d3237;
             }
-            --site-menu-item-active-item: {
-              color: #2d3237;
-            }
+            --site-menu-item-active-item-color: #2d3237;
           }
           app-drawer-layout {
             min-height: 100vh;

@@ -161,9 +161,14 @@ class HaxToolbar extends LitElement {
         </paper-tooltip>
         <slot name="primary"></slot>
         <hax-context-item
+          .hidden="${this.hideTransform}"
+          icon="hax:bricks"
+          label="Change type"
+          event-name="grid-plate-convert"
+        ></hax-context-item>
+        <hax-context-item
           .hidden="${this.inline}"
           icon="delete"
-          icon-class="red-text text-darken-1"
           label="Remove"
           event-name="grid-plate-delete"
         ></hax-context-item>
@@ -177,21 +182,11 @@ class HaxToolbar extends LitElement {
         >
           <paper-item value="" hidden></paper-item>
           <slot name="more"></slot>
-          <hax-context-item
+          <hax-context-item-textop
             menu
             icon="icons:content-copy"
-            icon-class="green-text"
             event-name="grid-plate-duplicate"
-            >Duplicate</hax-context-item
-          >
-          <hax-context-item
-            .hidden="${this.hideTransform}"
-            menu
-            icon="image:transform"
-            class="convert-button"
-            icon-class="orange-text"
-            event-name="grid-plate-convert"
-            >Transform to..</hax-context-item
+            >Duplicate</hax-context-item-textop
           >
         </hax-context-item-menu>
       </div>

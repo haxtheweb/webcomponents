@@ -285,7 +285,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
             background-color: #ffffff;
             color: #000000;
           }
-          --site-menu-item-active-item-color: color: #000000;
+          --site-menu-item-active-item-color: #000000;
         }
         site-menu-button {
           --site-menu-button-button: {

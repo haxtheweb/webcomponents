@@ -41,7 +41,7 @@ class HaxPanel extends SimpleColors {
         app-drawer {
           z-index: 100001;
           height: 40px;
-          padding: 8px 16px;
+          padding: var(--hax-panel-padding, 8px 16px);
           left: 0;
           top: 0;
           align-items: center;
@@ -163,6 +163,7 @@ class HaxPanel extends SimpleColors {
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel-item.js");
+    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     this.addEventListener(
       "hax-item-selected",
       this._processItemEvent.bind(this)
@@ -204,7 +205,7 @@ class HaxPanel extends SimpleColors {
               right: 0;
               background-color: var(--hax-color-bg);
               border-bottom: 1px solid black;
-              padding: 0 16px;
+              padding: var(--hax-panel-padding, 0px 16px);
               display: flex;
               touch-action: auto;
               overflow-x: auto;
@@ -249,79 +250,84 @@ class HaxPanel extends SimpleColors {
           id="haxcancelbutton"
           label="Cancel"
           event-name="cancel"
-          voice-command="cancel hax"
+          voice-command="cancel"
         ></hax-panel-item>
         <hax-panel-item
-          icon="image:add-to-photos"
-          label="Add"
+          icon="icons:file-upload"
+          label="Upload media"
           event-name="hax-manager-open"
           value="0"
+          voice-command="(upload)(add) media"
         ></hax-panel-item>
         <hax-panel-item
           icon="search"
-          label="Find"
+          label="Search for media"
           event-name="hax-manager-open"
           value="1"
+          voice-command="(search)(find) media"
         ></hax-panel-item>
         <hax-panel-item
-          icon="hardware:toys"
-          label="Make"
+          icon="hax:add-brick"
+          label="Create page element"
           event-name="hax-manager-open"
+          voice-command="create (page) (element)(widget)"
           value="2"
         ></hax-panel-item>
         <hax-panel-item
-          icon="view-quilt"
-          label="Layouts"
+          icon="icons:view-column"
+          label="Insert layout block"
           event-name="hax-blox-picker-open"
-          voice-command="insert block"
+          voice-command="insert (page) layout"
         ></hax-panel-item>
         <hax-panel-item
-          icon="view-agenda"
-          label="Templates"
+          icon="icons:view-stream"
+          label="Insert template"
           event-name="hax-stax-picker-open"
-          voice-command="insert stack"
+          voice-command="insert (page) template"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:short-text"
-          label="Paragraph"
+          icon="hax:paragraph"
+          label="Insert paragraph"
           event-name="text"
-          voice-command="insert text"
+          voice-command="insert (text)(paragraph)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:title"
-          label="Heading"
+          icon="hax:h2"
+          label="Insert heading"
           event-name="header"
-          voice-command="insert heading"
+          voice-command="insert (header)(heading)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:space-bar"
-          label="Divider"
+          icon="hax:hr"
+          label="Insert horizontal line"
           event-name="divider"
-          voice-command="insert divider"
+          voice-command="insert (divider)(horizontal line)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="image:transform"
-          label="Placeholder"
+          icon="hax:placeholder"
+          label="Insert media placeholder"
           event-name="placeholder"
-          voice-command="insert placeholder"
+          voice-command="insert (image) placeholder"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
           ?hidden="${this.hideExportButton}"
-          @click="${this._htmlExportDialog}"
+          event-name="open-export-dialog"
           icon="code"
-          label="Source view"
+          label="View page source"
+          voice-command="view (page) source"
         ></hax-panel-item>
         <slot></slot>
         <hax-panel-item
           right
           ?hidden="${this.hidePreferencesButton}"
-          @click="${this._preferencesDialogClick}"
+          event-name="open-preferences-dialog"
           icon="settings"
-          label="Preferences"
+          label="Editor preferences"
+          voice-command="open (editor) preferences"
         ></hax-panel-item>
         <div class="editing-mode-active">${this.editModeName}</div>
       </app-drawer>
@@ -485,6 +491,12 @@ class HaxPanel extends SimpleColors {
           })
         );
         break;
+      case "open-preferences-dialog":
+        window.HaxStore.instance.haxPreferences.toggleDialog();
+        break;
+      case "open-export-dialog":
+        window.HaxStore.instance.haxExport.toggleDialog();
+        break;
       case "divider":
         detail.tag = "hr";
         detail.content = "";
@@ -569,10 +581,10 @@ class HaxPanel extends SimpleColors {
    */
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && newValue) {
-      this.__tipText = "Save";
+      this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";
     } else {
-      this.__tipText = "Edit";
+      this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
     }
   }
@@ -611,20 +623,6 @@ class HaxPanel extends SimpleColors {
         detail: {}
       })
     );
-  }
-
-  /**
-   * HTML Export trigger.
-   */
-  _htmlExportDialog(e) {
-    window.HaxStore.instance.haxExport.toggleDialog();
-  }
-
-  /**
-   * Preferences trigger.
-   */
-  _preferencesDialogClick(e) {
-    window.HaxStore.instance.haxPreferences.toggleDialog();
   }
 
   /**

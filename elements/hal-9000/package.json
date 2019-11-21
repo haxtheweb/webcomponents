@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/hal-9000",
   "wcfactory": {
     "className": "Hal9000",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hal-9000",
     "generator-wcfactory-version": "0.6.4",
     "useHAX": false,
@@ -16,7 +16,7 @@
       "hax": "src/hal-9000-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.2.1",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

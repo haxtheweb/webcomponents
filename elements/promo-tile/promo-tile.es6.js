@@ -197,7 +197,9 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Image source
        */
@@ -247,10 +249,6 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Attached to the DOM, now fire.

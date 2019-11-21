@@ -18,7 +18,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo ./demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
   
@@ -67,7 +67,8 @@ eco-json-schema-object .hax-code-editor {
 
   // haxProperty definition
   static get haxProperties() {
-    return ;
+    return {}
+;
   }
   // properties available to the custom element for data binding
     static get properties() {
@@ -135,7 +136,8 @@ eco-json-schema-object .hax-code-editor {
     import("./lib/simple-fields-imports.js");
   }
   /**
-   * when form changes, sets focus on the first field if this has auto-focus
+   * Fires when form changes to set focus on the first field if this has auto-focus
+   * @event fields-changed
    */
   _formFieldsChanged(e) {
     this.dispatchEvent(
@@ -155,6 +157,10 @@ eco-json-schema-object .hax-code-editor {
   _valueChanged(newValue, oldValue) {
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
+      /**
+       * Fires when value changes
+       * @event value-changed
+       */
       this.dispatchEvent(
         new CustomEvent("value-changed", {
           bubbles: true,

@@ -110,12 +110,7 @@ class SiteMenuButton extends LitElement {
           }
         </style>
       </custom-style>
-      <a
-        tabindex="-1"
-        .href="${this.link}"
-        ?disabled="${this.disabled}"
-        .title="${this.label}"
-      >
+      <a tabindex="-1" ?disabled="${this.disabled}" .title="${this.label}">
         <paper-button
           id="menulink"
           noink
@@ -161,7 +156,8 @@ class SiteMenuButton extends LitElement {
       },
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "disabled"
       },
       label: {
         type: String
@@ -181,6 +177,9 @@ class SiteMenuButton extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "type") {
         this._typeChanged(this[propName], oldValue);
+      }
+      if (propName == "link") {
+        this._linkChanged(this[propName]);
       }
       if (
         ["type", "activeRouterManifestIndex", "routerManifest"].includes(
@@ -203,17 +202,26 @@ class SiteMenuButton extends LitElement {
           "type",
           "activeRouterManifestIndex",
           "routerManifest",
-          "editMode"
+          "editMode",
+          "link"
         ].includes(propName)
       ) {
         this.disabled = this.pageLinkStatus(
           this.type,
           this.activeRouterManifestIndex,
           this.routerManifest.items,
-          this.editMode
+          this.editMode,
+          this.link
         );
       }
     });
+  }
+  _linkChanged(newValue) {
+    if (newValue == null) {
+      this.shadowRoot.querySelector("a").removeAttribute("href");
+    } else {
+      this.shadowRoot.querySelector("a").setAttribute("href", newValue);
+    }
   }
   _typeChanged(newValue) {
     if (newValue === "prev") {
@@ -260,8 +268,11 @@ class SiteMenuButton extends LitElement {
       return null;
     }
   }
-  pageLinkStatus(type, activeRouterManifestIndex, items, editMode) {
-    if (editMode) {
+  /**
+   * true is disabled
+   */
+  pageLinkStatus(type, activeRouterManifestIndex, items, editMode, link) {
+    if (editMode || link == null) {
       return true;
     }
     if (type === "prev") {

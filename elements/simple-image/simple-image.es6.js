@@ -232,7 +232,9 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
     return "simple-image";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * image source
        */
@@ -258,10 +260,6 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     return {

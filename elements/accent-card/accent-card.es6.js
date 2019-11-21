@@ -29,12 +29,12 @@ Custom property | Description | Default
  *
  * @extends SimpleColors
  * @customElement
- * @demo demo/index.html demo
- * @demo demo/colors.html colors
- * @demo demo/orientation.html card orientation
- * @demo demo/borders.html borders and shadow
- * @demo demo/images.html image aligmnent
- * @demo demo/variables.html css variables
+ * @demo ./demo/index.html demo
+ * @demo ./demo/colors.html colors
+ * @demo ./demo/orientation.html card orientation
+ * @demo ./demo/borders.html borders and shadow
+ * @demo ./demo/images.html image aligmnent
+ * @demo ./demo/variables.html css variables
  */
 class AccentCard extends SimpleColors {
   /**
@@ -388,7 +388,9 @@ class AccentCard extends SimpleColors {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Apply accent color to card background
        */
@@ -466,10 +468,6 @@ class AccentCard extends SimpleColors {
         reflect: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 }
 window.customElements.define(AccentCard.tag, AccentCard);

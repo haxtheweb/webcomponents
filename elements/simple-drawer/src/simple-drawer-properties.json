@@ -4,16 +4,14 @@
    */
   "title": {
     "name": "title",
-    "type": String,
-    "value": ""
+    "type": String
   },
   /**
    * alignment of the drawer
    */
   "align": {
     "name": "align",
-    "type": String,
-    "value": "left"
+    "type": String
   },
   /**
    * open state
@@ -21,25 +19,21 @@
   "opened": {
     "name": "opened",
     "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true,
-    "observer": "_openedChanged"
+    "reflect": true
   },
   /**
    * Close label
    */
   "closeLabel": {
     "name": "closeLabel",
-    "type": String,
-    "value": "Close"
+    "type": String
   },
   /**
    * Close icon
    */
   "closeIcon": {
     "name": "closeIcon",
-    "type": String,
-    "value": "cancel"
+    "type": String
   },
   /**
    * The element that invoked this. This way we can track our way back accessibly

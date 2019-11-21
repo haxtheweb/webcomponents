@@ -23,6 +23,7 @@ class HAXPanelItem extends LitElement {
     this.label = "editor:text-fields";
     this.eventName = "button";
     this.value = "";
+    this.addEventListener("click", this._fireEvent);
   }
   static get properties() {
     return {
@@ -152,15 +153,20 @@ class HAXPanelItem extends LitElement {
           border: solid #0085ba 1px;
         }
         paper-tooltip {
+          font-size: 16px;
           --paper-tooltip-background: #000000;
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
+          --paper-tooltip-duration-in: 200ms;
+          --paper-tooltip-duration-out: 0;
         }
       `
     ];
   }
-
+  /**
+   * LitElement render
+   */
   render() {
     return html`
       <custom-style>
@@ -168,6 +174,7 @@ class HAXPanelItem extends LitElement {
           paper-tooltip {
             --paper-tooltip: {
               border-radius: 0;
+              font-size: 14px;
             }
           }
         </style>
@@ -178,6 +185,7 @@ class HAXPanelItem extends LitElement {
         </div>
       </paper-button>
       <paper-tooltip
+        fit-to-visible-bounds
         animation-delay="0"
         for="button"
         position="bottom"
@@ -187,9 +195,26 @@ class HAXPanelItem extends LitElement {
       </paper-tooltip>
     `;
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("click", this._fireEvent);
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "voiceCommand") {
+        this.dispatchEvent(
+          new CustomEvent("hax-add-voice-command", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              command: ":name: " + this[propName],
+              context: this,
+              callback: "_fireEvent"
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.

@@ -802,7 +802,22 @@ export class HAXWiring {
                   properties: {
                     formDataName: "file-upload",
                     disabled: settings[value].disabled,
-                    required: settings[value].required
+                    required: settings[value].required,
+                    noCamera: settings[value].noCamera
+                  }
+                };
+                break;
+              case "slider":
+                props[settings[value].property].component = {
+                  name: "paper-slider",
+                  valueProperty: "immediateValue",
+                  properties: {
+                    pin: true,
+                    required: settings[value].required,
+                    disabled: settings[value].disabled,
+                    min: settings[value].min,
+                    max: settings[value].max,
+                    step: settings[value].step
                   }
                 };
                 break;
@@ -819,11 +834,13 @@ export class HAXWiring {
               title: settings[value].title,
               type: target.getHaxJSONSchemaType(settings[value].inputMethod)
             };
-            // special support for className
+            // special support for className, style, and lazy loading
             if (settings[value].attribute === "class") {
               props[settings[value].attribute].value = target.className;
             } else if (settings[value].attribute === "style") {
               props[settings[value].attribute].value = target.style.cssText;
+            } else if (settings[value].attribute === "loading") {
+              props[settings[value].attribute].value = "lazy";
             } else if (
               typeof target.attributes[settings[value].attribute] !==
               typeof undefined
@@ -954,7 +971,22 @@ export class HAXWiring {
                   properties: {
                     formDataName: "file-upload",
                     required: settings[value].required,
-                    disabled: settings[value].disabled
+                    disabled: settings[value].disabled,
+                    noCamera: settings[value].noCamera
+                  }
+                };
+                break;
+              case "slider":
+                props[settings[value].attribute].component = {
+                  name: "paper-slider",
+                  valueProperty: "immediateValue",
+                  properties: {
+                    pin: true,
+                    required: settings[value].required,
+                    disabled: settings[value].disabled,
+                    min: settings[value].min,
+                    max: settings[value].max,
+                    step: settings[value].step
                   }
                 };
                 break;
@@ -1026,6 +1058,7 @@ export class HAXWiring {
             return "boolean";
             break;
           case "number":
+          case "slider":
             return "number";
             break;
           case "select":
@@ -1060,6 +1093,7 @@ export class HAXWiring {
         "textarea",
         "datepicker",
         "haxupload",
+        "slider",
         "markup",
         "colorpicker",
         "iconpicker",

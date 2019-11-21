@@ -10,21 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../hal-9000.js';
-    </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic hal-9000 demo</h3>
-      <demo-snippet>
-        <template>
-          <hal-9000 id="hal" debug="debug" responds-to="(jeff)"></hal-9000>
-        </template>
-      </demo-snippet>
-    </div>
-    <script>
-      setTimeout(() => {
+      import('../hal-9000.js').then(() => {
         window.hal = document.getElementById('hal');
         // turn hal on
         window.hal.enabled = true;
@@ -46,15 +32,20 @@
         commands[`hey ${window.hal.respondsTo}`] = () => {
           window.hal.speak('Yeah what do you want');
         };
-        commands['click the button'] = {
-          object: window.hal.$.button,
-          callback: window.hal._clickObject.bind(window.hal),
-          phrase: 'click the button',
-          regexp: /^click the button$/
-        };
         window.hal.commands = commands;
-      }, 1000);
+      });
     </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic hal-9000 demo</h3>
+      <demo-snippet>
+        <template>
+          <hal-9000 id="hal" debug="debug" responds-to="(jeff)"></hal-9000>
+        </template>
+      </demo-snippet>
+    </div>
         <p>white space</p>
     <p>white space</p>
     <p>white space</p>

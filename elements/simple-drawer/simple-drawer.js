@@ -2,9 +2,13 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/paper-button/paper-button.js";
@@ -33,11 +37,11 @@ window.SimpleDrawer.requestAvailability = () => {
  * @polymer
  * @demo demo/index.html
  */
-class SimpleDrawer extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class SimpleDrawer extends SimpleColors {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           z-index: 1000;
@@ -45,26 +49,13 @@ class SimpleDrawer extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-
-        app-drawer {
-          --app-drawer-width: var(--simple-drawer-width, 256px);
-          --app-drawer-content-container: {
-            padding: 0;
-            overflow-y: scroll;
-            position: fixed;
-            color: var(--simple-drawer-color, #222222);
-            background-color: var(--simple-drawer-background-color, #ffffff);
-          }
-        }
-        :host ::slotted(*) {
+        :host div::slotted(*) {
           font-size: 14px;
-          @apply --simple-drawer-content;
         }
 
         .content {
           text-align: left;
           padding: 8px 24px;
-          @apply --simple-drawer-content-container;
         }
 
         .top ::slotted(*) {
@@ -107,7 +98,6 @@ class SimpleDrawer extends PolymerElement {
           justify-content: space-between;
           background-color: var(--simple-drawer-header-background, #20427b);
           color: var(--simple-drawer-header-color, #ffffff);
-          @apply --simple-drawer-header;
         }
 
         .top h2 {
@@ -117,27 +107,62 @@ class SimpleDrawer extends PolymerElement {
           padding: 0;
           line-height: 32px;
           margin: 8px;
-          @apply --simple-drawer-heading;
         }
-      </style>
-      <style include="simple-colors-shared-styles-polymer"></style>
+      `
+    ];
+  }
+  // LitElement
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          app-drawer {
+            --app-drawer-content-container: {
+              padding: 0;
+              overflow-y: scroll;
+              position: fixed;
+              color: var(--simple-drawer-color, #222222);
+              background-color: var(--simple-drawer-background-color, #ffffff);
+            }
+          }
+          :host ::slotted(*) {
+            @apply --simple-drawer-content;
+          }
+
+          .content {
+            @apply --simple-drawer-content-container;
+          }
+          .top {
+            @apply --simple-drawer-header;
+          }
+
+          .top h2 {
+            @apply --simple-drawer-heading;
+          }
+        </style>
+      </custom-style>
       <app-drawer
         tabindex="0"
         id="drawer"
-        opened="{{opened}}"
-        align="[[align]]"
+        ?opened="${this.opened}"
+        @opened-changed="${this.__openedChanged}"
+        .align="${this.align}"
         role="dialog"
       >
         <div class="wrapper">
           <div class="top">
-            <h2 hidden$="[[!title]]">[[title]]</h2>
+            ${this.title
+              ? html`
+                  <h2>${this.title}</h2>
+                `
+              : ""}
             <slot name="header"></slot>
           </div>
           <div class="content">
             <slot name="content"></slot>
           </div>
-          <paper-button id="close" on-click="close">
-            <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
+          <paper-button id="close" @click="${this.close}">
+            <iron-icon icon="${this.closeIcon}"></iron-icon> ${this.closeLabel}
           </paper-button>
         </div>
       </app-drawer>
@@ -154,16 +179,14 @@ class SimpleDrawer extends PolymerElement {
        */
       title: {
         name: "title",
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * alignment of the drawer
        */
       align: {
         name: "align",
-        type: String,
-        value: "left"
+        type: String
       },
       /**
        * open state
@@ -171,25 +194,21 @@ class SimpleDrawer extends PolymerElement {
       opened: {
         name: "opened",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: "_openedChanged"
+        reflect: true
       },
       /**
        * Close label
        */
       closeLabel: {
         name: "closeLabel",
-        type: String,
-        value: "Close"
+        type: String
       },
       /**
        * Close icon
        */
       closeIcon: {
         name: "closeIcon",
-        type: String,
-        value: "cancel"
+        type: String
       },
       /**
        * The element that invoked this. This way we can track our way back accessibly
@@ -209,20 +228,31 @@ class SimpleDrawer extends PolymerElement {
     return "simple-drawer";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.title = "";
+    this.align = "left";
+    this.opened = false;
+    this.closeLabel = "Close";
+    this.closeIcon = "icons:cancel";
+  }
+  /**
+   * LitElement life cycle - ready
+   */
+  firstUpdated(changedProperties) {
     window.addEventListener("simple-drawer-hide", this.close.bind(this));
     window.addEventListener("simple-drawer-show", this.showEvent.bind(this));
   }
   /**
-   * Ensure everything is visible in what's been expanded.
+   * LitElement life cycle - properties changed callback
    */
-  _resizeContent(e) {
-    // fake a resize event to make contents happy
-    async.microTask.run(() => {
-      window.dispatchEvent(new Event("resize"));
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "opened") {
+        this._openedChanged(this[propName], oldValue);
+      }
     });
   }
   /**
@@ -267,10 +297,13 @@ class SimpleDrawer extends PolymerElement {
     size = "256px",
     clone = false
   ) {
-    this.set("invokedBy", invokedBy);
+    this.invokedBy = invokedBy;
     this.title = title;
     this.align = align;
-    this.updateStyles({ "--simple-drawer-width": size });
+    // @todo this is a bit of a hack specific to polymer elements in app- world
+    this.shadowRoot
+      .querySelector("#drawer")
+      .updateStyles({ "--app-drawer-width": size });
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
@@ -289,7 +322,8 @@ class SimpleDrawer extends PolymerElement {
     // minor delay to help the above happen prior to opening
     setTimeout(() => {
       this.opened = true;
-      this._resizeContent();
+      // fake a resize event to make contents happy
+      window.dispatchEvent(new Event("resize"));
     }, 100);
   }
   /**
@@ -314,7 +348,11 @@ class SimpleDrawer extends PolymerElement {
    * Close the drawer and do some clean up
    */
   close() {
-    this.shadowRoot.querySelector("#drawer").close();
+    this.opened = false;
+  }
+  // event bubbling up from drawer
+  __openedChanged(e) {
+    this.opened = e.detail.value;
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {
@@ -345,9 +383,9 @@ class SimpleDrawer extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("simple-drawer-hide", this.close.bind(this));
     window.removeEventListener("simple-drawer-show", this.showEvent.bind(this));
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SimpleDrawer.tag, SimpleDrawer);

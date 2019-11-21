@@ -7,106 +7,104 @@ class HaxUploadField extends SimpleColors {
    * LitElement life cycle - styles addition
    */
   static get styles() {
-    let styles = [];
-    if (super.styles) {
-      styles = super.styles;
-    }
-    styles.push(css`
-      :host {
-        display: block;
-        visibility: visible;
-        transition: 0.3s all ease;
-        box-sizing: border-box;
-        pointer-events: all;
-        overflow: visible;
-        --simple-camera-snap-width: 300px;
-        --simple-camera-snap-height: calc(300px * 9 / 16);
-        --simple-camera-snap-color: var(--eco-json-form-color, #222);
-        --simple-camera-snap-background: var(--eco-json-form-bg, white);
-        --simple-camera-snap-border-radius: 2px;
-        --lumo-font-family: var(
-          --eco-json-form-font-family,
-          var(--paper-font-caption_-_font-family, unset)
-        );
-        --lumo-base-color: var(
-          --eco-json-form-bg,
-          var(--primary-background-color, #fff)
-        );
-        --lumo-primary-contrast-color: var(
-          --eco-json-form-bg,
-          var(--primary-background-color, #fff)
-        );
-        --lumo-primary-color: var(
-          --eco-json-form-active-color,
-          var(--primary-color, #000)
-        );
-        --lumo-primary-text-color: var(
-          --eco-json-form-color,
-          var(--primary-text-color, #222)
-        );
-        --lumo-body-text-color: var(
-          --eco-json-form-color,
-          var(--primary-text-color, #222)
-        );
-        --lumo-header-text-color: var(
-          --eco-json-form-color,
-          var(--primary-text-color, #222)
-        );
-        --lumo-secondary-text-color: var(
-          --eco-json-form-faded-color,
-          var(--secondary-text-color, #888)
-        );
-        --lumo-disabled-text-color: var(
-          --eco-json-form-faded-color,
-          var(--secondary-text-color, #888)
-        );
-        background-color: var(
-          --eco-json-form-bg,
-          var(--primary-background-color, #fff)
-        );
-      }
-      :host #legend {
-        transition: all 0.5s;
-        color: var(
-          --eco-json-form-faded-color,
-          var(--secondary-text-color, #888)
-        );
-      }
-      :host(:focus-within) #legend {
-        color: var(--eco-json-form-active-color, var(--primary-color, #000));
-      }
-      :host #fieldset {
-        border-radius: 2px;
-        transition: all 0.5s;
-        border: 1px solid
-          var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
-      }
-      :host #fieldset > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      :host #fieldset > div > *:not(#picker) {
-        flex: 1 1 auto;
-      }
-      #picker {
-        margin-bottom: 0;
-        margin-right: 5px;
-      }
-      vaadin-upload {
-        padding: 0;
-        margin: 0;
-      }
-      simple-camera-snap {
-        position: relative;
-        --simple-camera-snap-button-container-position: absolute;
-        --simple-camera-snap-button-container-bottom: 2px;
-        --simple-camera-snap-button-container-z-index: 5;
-        --simple-camera-snap-button-border-radius: 100%;
-        --simple-camera-snap-button-opacity: 0.7;
-      }
-    `);
-    return styles;
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: block;
+          visibility: visible;
+          transition: 0.3s all ease;
+          box-sizing: border-box;
+          pointer-events: all;
+          overflow: visible;
+          --simple-camera-snap-width: 300px;
+          --simple-camera-snap-height: calc(300px * 9 / 16);
+          --simple-camera-snap-color: var(--eco-json-form-color, #222);
+          --simple-camera-snap-background: var(--eco-json-form-bg, white);
+          --simple-camera-snap-border-radius: 2px;
+          --lumo-font-family: var(
+            --eco-json-form-font-family,
+            var(--paper-font-caption_-_font-family, unset)
+          );
+          --lumo-base-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-contrast-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --lumo-primary-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-body-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-header-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-secondary-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          --lumo-disabled-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          background-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+        }
+        :host #legend {
+          transition: all 0.5s;
+          color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+        }
+        :host(:focus-within) #legend {
+          color: var(--eco-json-form-active-color, var(--primary-color, #000));
+        }
+        :host #fieldset {
+          border-radius: 2px;
+          transition: all 0.5s;
+          border: 1px solid
+            var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
+        }
+        :host #fieldset > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        :host #fieldset > div > *:not(#picker) {
+          flex: 1 1 auto;
+        }
+        #picker {
+          margin-bottom: 0;
+          margin-right: 5px;
+        }
+        vaadin-upload {
+          padding: 0;
+          margin: 0;
+        }
+        simple-camera-snap {
+          position: relative;
+          --simple-camera-snap-button-container-position: absolute;
+          --simple-camera-snap-button-container-bottom: 2px;
+          --simple-camera-snap-button-container-z-index: 5;
+          --simple-camera-snap-button-border-radius: 100%;
+          --simple-camera-snap-button-opacity: 0.7;
+        }
+      `
+    ];
   }
   /**
    * HTMLElement life cycle
@@ -114,6 +112,7 @@ class HaxUploadField extends SimpleColors {
   constructor() {
     super();
     this.label = null;
+    this.noCamera = false;
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
@@ -181,6 +180,9 @@ class HaxUploadField extends SimpleColors {
       }
     });
   }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       label: {
@@ -194,6 +196,13 @@ class HaxUploadField extends SimpleColors {
       },
       options: {
         type: Array
+      },
+      /**
+       * Used when we want to ensure there is not a web cam option like video upload.
+       */
+      noCamera: {
+        type: Boolean,
+        attribute: "no-camera"
       }
     };
   }
@@ -319,12 +328,12 @@ class HaxUploadField extends SimpleColors {
     this.__allowUpload = true;
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
+  /**
+   * Set the input options as far as url, upload, or webcam input
+   */
+  _setInputOptions() {
     // hide the button if this environment can't support it anyway
-    if (!navigator.mediaDevices) {
+    if (!navigator.mediaDevices || this.noCamera) {
       this.options = [
         [
           {
@@ -367,12 +376,23 @@ class HaxUploadField extends SimpleColors {
         ]
       ];
     }
+  }
+  /**
+   * LitElement
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // test on load for if we have a media device
+    this._setInputOptions();
     // default to URL if we have a value of any kind
     if (this.value) {
       this.option = "url";
     } else {
       this.option = "fileupload";
     }
+    // event handlers for file work
     this.shadowRoot
       .querySelector("#fileupload")
       .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
@@ -394,7 +414,7 @@ class HaxUploadField extends SimpleColors {
     );
   }
   /**
-   * life cycle, ensure body isnt listened to anymore here
+   * HTMLElement
    */
   disconnectedCallback() {
     document.body.removeEventListener(

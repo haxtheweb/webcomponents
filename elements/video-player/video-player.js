@@ -43,7 +43,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  *
  * @customElement
  * @polymer
- * @demo ./demo/index.html
+ * @demo demo/index.html
  */
 class VideoPlayer extends MediaBehaviorsVideo(
   A11yBehaviors(SchemaBehaviors(SimpleColorsPolymer))
@@ -209,6 +209,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             inputMethod: "haxupload",
             icon: "link",
             required: true,
+            noCamera: true,
             validationType: "url"
           },
           {
@@ -224,7 +225,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             property: "thumbnailSrc",
             title: "Thumbnail image",
             description: "Optional. The URL for a thumbnail/poster image.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"

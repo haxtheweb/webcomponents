@@ -16,7 +16,7 @@
       "hax": "src/chartist-render-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Rendering Chartist",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "chartist": "^0.11.0",
-    "lit-element":"2.0.1"
+    "lit-element": "2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

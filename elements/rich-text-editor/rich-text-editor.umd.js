@@ -17,10 +17,10 @@ import "./lib/toolbars/rich-text-editor-toolbar-full.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
- * @demo demo/mini.html mini floating toolbar
- * @demo demo/full.html toolbar with breadcrumb
- * @demo demo/config.html custom configuration
+ * @demo ./demo/index.html demo
+ * @demo ./demo/mini.html mini floating toolbar
+ * @demo ./demo/full.html toolbar with breadcrumb
+ * @demo ./demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
   

@@ -1,14 +1,10 @@
-import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `smooth-scroll`
  * @demo demo/index.html
  * @microcopy - this is element provides methods to be called for smooth scrolling
  * - scroll()
  */
-class SmoothScroll extends PolymerElement {
-  static get tag() {
-    return "smooth-scroll";
-  }
+export class SmoothScroll {
   /**
    * Smooth scroll an elment into view
    * @target {Node} DOM node object
@@ -79,5 +75,3 @@ class SmoothScroll extends PolymerElement {
     requestAnimationFrame(animation);
   }
 }
-window.customElements.define(SmoothScroll.tag, SmoothScroll);
-export { SmoothScroll };

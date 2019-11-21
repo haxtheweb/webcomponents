@@ -16,7 +16,7 @@
       "hax": "src/data-viz-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "display pouch-db data using graphs",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.5",
-    "@lrnwebcomponents/chartist-render": "^2.1.5"
+    "@lrnwebcomponents/chartist-render": "^2.2.0",
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

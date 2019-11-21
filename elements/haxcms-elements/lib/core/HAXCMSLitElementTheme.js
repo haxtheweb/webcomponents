@@ -16,7 +16,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Class for the color
        */

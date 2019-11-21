@@ -2,37 +2,31 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-
 /**
  * `hal-9000`
  * `Robot assistant tag, hopefully not evil`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class Hal9000 extends PolymerElement {
+class Hal9000 extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host {
   display: block;
 }
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
 
-:host([hidden]) {
-  display: none;
-}
-[hidden] {
-  display: none;
-}
-        </style>
 <slot></slot>`;
   }
 
@@ -47,9 +41,7 @@ class Hal9000 extends PolymerElement {
    */
   "commands": {
     "name": "commands",
-    "type": Object,
-    "value": {},
-    "observer": "_commandsChanged"
+    "type": Object
   },
   /**
    * The name that HAL 9000 should respond to.
@@ -57,17 +49,14 @@ class Hal9000 extends PolymerElement {
   "respondsTo": {
     "name": "respondsTo",
     "type": String,
-    "value": "(hal)",
-    "observer": "_respondsToChanged"
+    "attribute": "responds-to"
   },
   /**
    * Debug mode for annyang
    */
   "debug": {
     "name": "debug",
-    "type": Boolean,
-    "value": false,
-    "observer": "_debugChanged"
+    "type": Boolean
   },
   /**
    * Start automatically
@@ -75,8 +64,7 @@ class Hal9000 extends PolymerElement {
   "auto": {
     "name": "auto",
     "type": Boolean,
-    "reflectToAttribute": true,
-    "observer": "_autoChanged"
+    "reflect": true
   },
   /**
    * Status of listening
@@ -84,8 +72,7 @@ class Hal9000 extends PolymerElement {
   "enabled": {
     "name": "enabled",
     "type": Boolean,
-    "reflectToAttribute": true,
-    "observer": "_enabledChanged"
+    "reflect": true
   },
   /**
    * Pitch of speech
@@ -93,8 +80,7 @@ class Hal9000 extends PolymerElement {
   "pitch": {
     "name": "pitch",
     "type": Number,
-    "reflectToAttribute": true,
-    "value": 0.9
+    "reflect": true
   },
   /**
    * Rate of speech
@@ -102,8 +88,7 @@ class Hal9000 extends PolymerElement {
   "rate": {
     "name": "rate",
     "type": Number,
-    "reflectToAttribute": true,
-    "value": 0.9
+    "reflect": true
   },
   /**
    * Language of the speaker
@@ -111,8 +96,7 @@ class Hal9000 extends PolymerElement {
   "language": {
     "name": "language",
     "type": String,
-    "reflectToAttribute": true,
-    "value": "en-US"
+    "reflect": true
   }
 }
 ;
@@ -134,6 +118,15 @@ class Hal9000 extends PolymerElement {
    */
   constructor() {
     super();
+    this.commands = {};
+    this.respondsTo = "(hal)";
+    this.debug = false;
+    this.pitch = 0.9;
+    this.rate = 0.9;
+    this.language = "en-US";
+    // ensure singleton is set
+    window.Hal9000 = window.Hal9000 || {};
+    window.Hal9000.instance = this;
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/annyang/annyang.min.js`;
     window.addEventListener(
@@ -152,15 +145,6 @@ class Hal9000 extends PolymerElement {
         }
       }
     }
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    // ensure singleton is set
-    window.Hal9000 = window.Hal9000 || {};
-    window.Hal9000.instance = this;
   }
   /**
    * Callback for clicking on whatever was just said
@@ -244,7 +228,7 @@ class Hal9000 extends PolymerElement {
         commands[i] = this.commands[i];
       }
     }
-    this.set("commands", commands);
+    this.commands = [...commands];
   }
   /**
    * Notice auto state changed so we start listening
@@ -278,6 +262,28 @@ class Hal9000 extends PolymerElement {
     if (this.annyang) {
       this.annyang.debug(newValue);
     }
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "commands") {
+        this._commandsChanged(this[propName], oldValue);
+      }
+      if (propName == "respondsTo") {
+        this._respondsToChanged(this[propName], oldValue);
+      }
+      if (propName == "debug") {
+        this._debugChanged(this[propName], oldValue);
+      }
+      if (propName == "auto") {
+        this._autoChanged(this[propName], oldValue);
+      }
+      if (propName == "enabled") {
+        this._enabledChanged(this[propName], oldValue);
+      }
+    });
   }
   /**
    * life cycle, element is removed from the DOM

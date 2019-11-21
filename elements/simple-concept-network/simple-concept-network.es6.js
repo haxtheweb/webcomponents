@@ -85,7 +85,9 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
     return ["_valueChanged(nodes.*)"];
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Type of visualization
        */
@@ -117,10 +119,6 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
         notify: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     return {

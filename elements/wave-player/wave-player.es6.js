@@ -213,7 +213,9 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
     return "wave-player";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * The source of the audio file to be played
        *
@@ -308,10 +310,6 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
         notify: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Source changed, let's test if we should update wavesurfer

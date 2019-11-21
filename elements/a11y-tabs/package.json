@@ -16,7 +16,7 @@
       "hax": "src/a11y-tabs-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "accessible and responsive tabbed interface",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^2.1.4",
+    "@lrnwebcomponents/responsive-utility": "^2.2.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",

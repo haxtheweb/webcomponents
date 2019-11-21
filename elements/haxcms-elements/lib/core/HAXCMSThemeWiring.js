@@ -5,7 +5,6 @@
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 
 /**
@@ -97,7 +96,7 @@ const HAXCMSTheme = function(SuperClass) {
       if (!newValue || typeof newValue.route === "undefined") return;
       const location = newValue;
       const name = location.route.name;
-      if (name === "home" || name === "404") {
+      if (name == "home" || name == "404") {
         // if we are on the homepage then load the first item in the manifest
         // and set it active
         const firstItem = store.routerManifest.items.find(
@@ -172,15 +171,13 @@ const HAXCMSTheme = function(SuperClass) {
         this.__disposer.push(reaction);
       });
       autorun(reaction => {
-        this._location = store.location;
+        this._location = toJS(store.location);
         this.__disposer.push(reaction);
       });
     }
     __styleReapply() {
       // trick browser into thinking we just reized
       window.dispatchEvent(new Event("resize"));
-      // forcibly update styles via css variables
-      updateStyles();
     }
     /**
      * Disconnect the wiring for the theme and clean up state

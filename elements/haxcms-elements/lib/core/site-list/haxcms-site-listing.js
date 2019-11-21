@@ -283,7 +283,6 @@ class HAXCMSSiteListing extends PolymerElement {
         <jwt-login
           id="jwt"
           method="[[method]]"
-          body="[[jwtBody]]"
           url="[[__loginPath]]"
           logout-url="[[__logoutPath]]"
           jwt="{{jwt}}"
@@ -474,8 +473,8 @@ class HAXCMSSiteListing extends PolymerElement {
             </paper-button>
             <paper-button
               hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
-              on-click="_loginUserRoutine"
               id="login"
+              on-click="_loginUserRoutine"
               ><iron-icon icon="[[__loginIcon]]"></iron-icon>
               [[__loginText]]</paper-button
             >
@@ -740,11 +739,6 @@ class HAXCMSSiteListing extends PolymerElement {
       __loading: {
         type: Boolean
       },
-      jwtBody: {
-        type: Object,
-        value: {}
-      },
-
       /**
        * Object, JSON Outline Schema format
        */
@@ -1030,13 +1024,6 @@ class HAXCMSSiteListing extends PolymerElement {
     }
   }
   /**
-   * Request a user login if we need one or log out
-   */
-
-  _loginUserRoutine(e) {
-    this.shadowRoot.querySelector("#jwt").toggleLogin();
-  }
-  /**
    * Toggle edit state
    */
 
@@ -1197,13 +1184,16 @@ class HAXCMSSiteListing extends PolymerElement {
   }
 
   loginPromptEvent(e) {
-    this.set("jwtBody", {});
-    this.set("jwtBody", {
+    let l = {
       u: e.detail.u,
       p: e.detail.p
-    });
-
+    };
+    this.shadowRoot.querySelector("#jwt").body = {};
+    this.shadowRoot.querySelector("#jwt").body = { ...l };
     this._loginUserRoutine(e);
+  }
+  _loginUserRoutine(e) {
+    this.shadowRoot.querySelector("#jwt").toggleLogin();
   }
   /**
    * queue up the site creation form

@@ -156,7 +156,9 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
     };
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Image
        */
@@ -261,10 +263,6 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
         value: false
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 }
 window.customElements.define(TeamMember.tag, TeamMember);
