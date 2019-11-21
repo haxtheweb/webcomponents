@@ -1148,7 +1148,7 @@ class HaxBody extends SimpleColors {
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        -31,
+        -39,
         0
       );
       // special case for node not matching container
@@ -1197,7 +1197,7 @@ class HaxBody extends SimpleColors {
       } else {
         container.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 50);
+    }, 5);
     return true;
   }
   /**
@@ -1406,7 +1406,7 @@ class HaxBody extends SimpleColors {
       case "blockquote":
       case "code":
         // trigger the default selected value in context menu to match
-        this.shadowRoot.querySelector("#textcontextmenu").selectedValue =
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
           detail.eventName;
         window.HaxStore.write(
           "activeContainerNode",
@@ -1552,6 +1552,7 @@ class HaxBody extends SimpleColors {
         this.activeNode.style.float = null;
         this.activeNode.style.margin = null;
         this.activeNode.style.display = null;
+        // animation forces us to have to wait to position
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
         }, 200);
@@ -1560,6 +1561,7 @@ class HaxBody extends SimpleColors {
         this.activeNode.style.float = null;
         this.activeNode.style.margin = "0 auto";
         this.activeNode.style.display = "block";
+        // animation forces us to have to wait to position
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
         }, 200);
@@ -1567,12 +1569,13 @@ class HaxBody extends SimpleColors {
       case "hax-size-change":
         if (this.activeNode) {
           this.activeNode.style.width = detail.value + "%";
+          // animation forces us to have to wait to position
           setTimeout(() => {
             this.positionContextMenus(
               this.activeNode,
               this.activeContainerNode
             );
-          }, 200);
+          }, 100);
         }
         break;
       // settings button selected from hax-ce-context bar
@@ -1671,6 +1674,14 @@ class HaxBody extends SimpleColors {
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
       let containerNode = target;
+      // edge case, thing selected is inside a paragraph tag
+      // HTML is stupid and allows this
+      if (
+        containerNode.tagName === "SPAN" &&
+        window.HaxStore.instance.isTextElement(target.parentNode)
+      ) {
+        containerNode = target.parentNode;
+      }
       let activeNode = null;
       // ensure this is valid
       if (
@@ -1934,7 +1945,7 @@ class HaxBody extends SimpleColors {
         newValue.removeAttribute("contenteditable");
         this.removeAttribute("contenteditable");
       }
-      this.shadowRoot.querySelector("#textcontextmenu").selectedValue = tag;
+      this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue = tag;
       // position the operations / in context element
       setTimeout(() => {
         this.positionContextMenus(

@@ -280,7 +280,7 @@ class HaxPanel extends SimpleColors {
           voice-command="insert (page) layout"
         ></hax-panel-item>
         <hax-panel-item
-          icon="icons:view-stream"
+          icon="hax:templates"
           label="Insert template"
           event-name="hax-stax-picker-open"
           voice-command="insert (page) template"

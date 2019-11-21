@@ -125,7 +125,7 @@ class HaxGizmoBrowser extends LitElement {
     };
   }
   filteredChanged(e) {
-    this.filtered = e.detail.value;
+    this.filtered = [...e.detail.value];
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
@@ -162,7 +162,8 @@ class HaxGizmoBrowser extends LitElement {
    * Reset this browser.
    */
   resetBrowser() {
-    this.__gizmoList = window.HaxStore.instance.gizmoList;
+    this.__gizmoList = [...window.HaxStore.instance.gizmoList];
+    this.filtered = [...this.__gizmoList];
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "title";
     this.shadowRoot.querySelector("#filter").value = "";

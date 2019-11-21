@@ -184,13 +184,7 @@ class HAXPanelItem extends LitElement {
           <iron-icon icon="${this.icon}"></iron-icon>
         </div>
       </paper-button>
-      <paper-tooltip
-        fit-to-visible-bounds
-        animation-delay="0"
-        for="button"
-        position="bottom"
-        offset="10"
-      >
+      <paper-tooltip for="button" position="bottom" offset="10">
         ${this.label}
       </paper-tooltip>
     `;

@@ -66,6 +66,7 @@ class HaxToolbarMenu extends LitElement {
         <paper-listbox
           id="listbox"
           slot="dropdown-content"
+          .selected="${this.selected}"
           @selected-changed="${this.selectedChanged}"
         >
           <slot></slot>
@@ -86,7 +87,7 @@ class HaxToolbarMenu extends LitElement {
     this.resetOnSelect = false;
     this.tooltip = "";
     this.tooltipDirection = "";
-    this.selected = "";
+    this.selected = 0;
   }
   static get properties() {
     return {
@@ -115,7 +116,7 @@ class HaxToolbarMenu extends LitElement {
         attribute: "tooltip-direction"
       },
       selected: {
-        type: String
+        type: Number
       }
     };
   }

@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-toast/paper-toast.js";
-import "@polymer/paper-button/paper-button.js";
 
 // register globally so we can make sure there is only one
 window.SimpleToast = window.SimpleToast || {};
@@ -32,116 +30,110 @@ window.SimpleToast.requestAvailability = () => {
  * @demo demo/index.html
  */
 class SimpleToast extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        paper-toast {
-          width: var(--simple-toast-width, inherit);
-          height: var(--simple-toast-height, inherit);
-          color: var(--simple-toast-color, white);
-          background-color: var(--simple-toast-bg, black);
-          top: var(--simple-toast-top, inherit);
-          margin: var(--simple-toast-margin, 16px);
-          padding: var(--simple-toast-padding, 16px);
-          left: var(--simple-toast-left, inherit);
-          bottom: var(--simple-toast-bottom, inherit);
-          right: var(--simple-toast-right, inherit);
-          border: var(--simple-toast-border, inherit);
-          z-index: var(--simple-toast-z-index, inherit);
-          font-size: var(--simple-toast-font-size, inherit);
-        }
+paper-toast {
+  width: var(--simple-toast-width, inherit);
+  height: var(--simple-toast-height, inherit);
+  color: var(--simple-toast-color, white);
+  background-color: var(--simple-toast-bg, black);
+  top: var(--simple-toast-top, inherit);
+  margin: var(--simple-toast-margin, 16px);
+  padding: var(--simple-toast-padding, 16px);
+  left: var(--simple-toast-left, inherit);
+  bottom: var(--simple-toast-bottom, inherit);
+  right: var(--simple-toast-right, inherit);
+  border: var(--simple-toast-border, inherit);
+  z-index: var(--simple-toast-z-index, inherit);
+  font-size: var(--simple-toast-font-size, inherit);
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <paper-toast
-        id="toast"
-        text="${this.text}"
-        duration="${this.duration}"
-        opened="${this.opened}"
-        @opened-changed="${this.openedChanged}"
-        .class="${this.classStyle}"
-      >
-        <slot></slot>
-        <paper-button .hidden="${!this.closeButton}" @click="${this.hide}"
-          >${this.closeText}</paper-button
-        >
-      </paper-toast>
-    `;
+
+<paper-toast id="toast" text="${this.text}" duration="${this.duration}" ?opened="${this.opened}" @opened-changed="${this.openedChanged}" .class="${this.classStyle}">
+  <slot></slot>
+  <paper-button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</paper-button>
+</paper-toast>`;
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Opened state of the toast, use event to change
-       */
-      opened: {
-        name: "opened",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * Plain text based message to display
-       */
-      text: {
-        name: "text",
-        type: String
-      },
-      /**
-       * Class name, fit-bottom being a useful one
-       */
-      classStyle: {
-        name: "classStyle",
-        type: String,
-        attribute: "class-style"
-      },
-      /**
-       * Text for the close button
-       */
-      closeText: {
-        name: "closeText",
-        type: String,
-        attribute: "close-text"
-      },
-      /**
-       * How long the toast message should be displayed
-       */
-      duration: {
-        name: "duration",
-        type: Number
-      },
-      /**
-       * Event callback when hide is called
-       */
-      eventCallback: {
-        name: "eventCallback",
-        type: String,
-        attribute: "event-callback"
-      },
-      /**
-       * If there should be a close button shown
-       */
-      closeButton: {
-        name: "closeButton",
-        type: Boolean,
-        reflect: true,
-        attribute: "close-button"
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Opened state of the toast, use event to change
+   */
+  "opened": {
+    "name": "opened",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * Plain text based message to display
+   */
+  "text": {
+    "name": "text",
+    "type": String
+  },
+  /**
+   * Class name, fit-bottom being a useful one
+   */
+  "classStyle": {
+    "name": "classStyle",
+    "type": String,
+    "attribute": "class-style"
+  },
+  /**
+   * Text for the close button
+   */
+  "closeText": {
+    "name": "closeText",
+    "type": String,
+    "attribute": "close-text"
+  },
+  /**
+   * How long the toast message should be displayed
+   */
+  "duration": {
+    "name": "duration",
+    "type": Number
+  },
+  /**
+   * Event callback when hide is called
+   */
+  "eventCallback": {
+    "name": "eventCallback",
+    "type": String,
+    "attribute": "event-callback"
+  },
+  /**
+   * If there should be a close button shown
+   */
+  "closeButton": {
+    "name": "closeButton",
+    "type": Boolean,
+    "reflect": true,
+    "attribute": "close-button"
+  }
+}
+;
   }
 
   /**
@@ -156,12 +148,7 @@ class SimpleToast extends LitElement {
    */
   constructor() {
     super();
-    this.opened = false;
-    this.text = "Saved";
-    this.classStyle = "";
-    this.closeText = "Close";
-    this.duration = 4000;
-    this.closeButton = true;
+    this.setDefaultToast();
     window.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -170,6 +157,8 @@ class SimpleToast extends LitElement {
       "simple-toast-show",
       this.showSimpleToast.bind(this)
     );
+    import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/paper-button/paper-button.js");
   }
   /**
    * life cycle, element is removed from the DOM
@@ -194,10 +183,24 @@ class SimpleToast extends LitElement {
   openedChanged(e) {
     this.opened = e.detail.value;
   }
+  setDefaultToast() {
+    this.opened = false;
+    this.text = "Saved";
+    this.classStyle = "";
+    this.closeText = "Close";
+    this.duration = 4000;
+    this.eventCallback = null;
+    this.closeButton = true;
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
+    }
+  }
   /**
    * Show / available callback
    */
   showSimpleToast(e) {
+    // establish defaults and then let event change settings
+    this.setDefaultToast();
     // add your code to run when the singleton is called for
     if (e.detail.duration) {
       this.duration = e.detail.duration;
@@ -217,30 +220,28 @@ class SimpleToast extends LitElement {
     if (e.detail.eventCallback) {
       this.eventCallback = e.detail.eventCallback;
     }
-    while (this.firstChild !== null) {
-      this.removeChild(this.firstChild);
-    }
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
     }
     setTimeout(() => {
       this.show();
-    }, 25);
+    }, 5);
   }
 
-  show() {
-    this.shadowRoot.querySelector("#toast").show();
+  show(e) {
+    this.opened = true;
   }
-  hide() {
+  hide(e) {
     if (this.eventCallback) {
       const evt = new CustomEvent(this.eventCallback, {
         bubbles: true,
         cancelable: true,
-        detail: true
+        detail: true,
+        composed: true
       });
       this.dispatchEvent(evt);
     }
-    this.shadowRoot.querySelector("#toast").hide();
+    this.opened = false;
   }
 }
 window.customElements.define(SimpleToast.tag, SimpleToast);

@@ -101,17 +101,17 @@ class HaxAppBrowser extends LitElement {
       ${this.filtered.map(
         app => html`
           <hax-app-browser-item
-            .index="${app.index}"
-            .title="${app.details.title}"
-            .icon="${app.details.icon}"
-            .image="${app.details.tag}"
-            .color="${app.details.color}"
-            .meta="${app.details.meta}"
-            .groups="${app.details.groups}"
-            .handles="${app.details.handles}"
-            .description="${app.details.description}"
-            .rating="${app.details.rating}"
-            .tags="${app.details.tags}"
+            index="${app.index}"
+            title="${app.details.title}"
+            icon="${app.details.icon}"
+            image="${app.details.tag}"
+            color="${app.details.color}"
+            meta="${app.details.meta}"
+            groups="${app.details.groups}"
+            handles="${app.details.handles}"
+            description="${app.details.description}"
+            rating="${app.details.rating}"
+            tags="${app.details.tags}"
           ></hax-app-browser-item>
         `
       )}
@@ -169,7 +169,7 @@ class HaxAppBrowser extends LitElement {
     };
   }
   filteredChanged(e) {
-    this.filtered = e.detail.value;
+    this.filtered = [...e.detail.value];
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
@@ -230,8 +230,8 @@ class HaxAppBrowser extends LitElement {
    */
   resetBrowser() {
     this.searching = false;
-    this.__appList = window.HaxStore.instance.appList;
-    this.filtered = this.__appList;
+    this.__appList = [...window.HaxStore.instance.appList];
+    this.filtered = [...this.__appList];
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";

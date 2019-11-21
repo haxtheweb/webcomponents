@@ -61,10 +61,10 @@ class HaxTextContext extends LitElement {
       "hax-context-item-selected",
       this._haxContextOperation.bind(this)
     );
-    this.selectedValue = "p";
+    this.realSelectedValue = "p";
     this.selection = false;
+    this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
-    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("is-safari-changed", {
@@ -80,11 +80,11 @@ class HaxTextContext extends LitElement {
       <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
           slot="primary"
-          selected-value="${this.selectedValue}"
+          .selected-value="${this.selectedValue}"
           @selected-value-changed="${this.selectedValueChanged}"
           id="formatsize"
-          icon="text-format"
-          label="Format"
+          icon="${this.formatIcon}"
+          label="Text formatting"
           event-name="text-tag"
         >
           <paper-item value="p"
@@ -144,16 +144,16 @@ class HaxTextContext extends LitElement {
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-list-bulleted"
-          event-name="text-list-bulleted"
+          event-name="ul"
           label="Bulleted list"
-          .hidden="${!this._showIndent}"
+          .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-list-numbered"
           label="Numbered list"
-          event-name="text-list-numbered"
-          .hidden="${!this._showIndent}"
+          event-name="ol"
+          .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
@@ -177,15 +177,15 @@ class HaxTextContext extends LitElement {
         ></hax-context-item-textop>
         <hax-context-item
           slot="primary"
-          icon="device:graphic-eq"
-          label="Advanced item"
+          icon="hax:add-brick"
+          label="Add element to selection"
           event-name="insert-inline-gizmo"
           .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
           slot="primary"
-          icon="device:graphic-eq"
-          label="Advanced item"
+          icon="hax:add-brick"
+          label="Add element to selection"
           event-name="insert-inline-gizmo"
           .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
@@ -231,19 +231,17 @@ class HaxTextContext extends LitElement {
       _showIndent: {
         type: Boolean
       },
-      /**
-       * Polyfill safe; this helps remove options from polyfilled platforms
-       * as far as text manipulation operations.
-       */
-      polyfillSafe: {
-        type: Boolean,
-        attribute: "polyfill-safe"
+      _showLists: {
+        type: Boolean
+      },
+      realSelectedValue: {
+        type: String
       },
       /**
        * Selected value to match format of the tag currently.
        */
       selectedValue: {
-        type: String,
+        type: Number,
         attribute: "selected-value"
       },
       /**
@@ -251,6 +249,13 @@ class HaxTextContext extends LitElement {
        */
       selection: {
         type: Boolean
+      },
+      /**
+       * Selected item icon
+       */
+      formatIcon: {
+        type: String,
+        attribute: "format-icon"
       },
       /**
        * Is this safari
@@ -265,13 +270,37 @@ class HaxTextContext extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // computed based on these changing
-      if (propName == "selectedValue" || propName == "polyfillSafe") {
-        this._showIndent = this._computeShowIndent(
-          this.selectedValue,
-          this.polyfillSafe
-        );
+      if (
+        this.realSelectedValue &&
+        propName == "realSelectedValue" &&
+        this.shadowRoot
+      ) {
+        this._showIndent = this._computeShowIndent(this.realSelectedValue);
+        if (this._showIndent || this.realSelectedValue == "p") {
+          this._showLists = true;
+        } else {
+          this._showLists = false;
+        }
+        for (var i in this.shadowRoot.querySelector("#formatsize").children) {
+          if (
+            this.shadowRoot.querySelector("#formatsize").children[i] &&
+            this.shadowRoot.querySelector("#formatsize").children[i]
+              .getAttribute &&
+            this.shadowRoot
+              .querySelector("#formatsize")
+              .children[i].getAttribute("value") == this.realSelectedValue
+          ) {
+            this.selectedValue = i;
+          }
+        }
       }
       if (propName == "selectedValue") {
+        this.realSelectedValue = this.shadowRoot
+          .querySelector("#formatsize")
+          .children[this.selectedValue].getAttribute("value");
+        this.formatIcon = this.shadowRoot
+          .querySelector("#formatsize")
+          .children[this[propName]].querySelector("iron-icon").icon;
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-value-changed", {
@@ -281,9 +310,14 @@ class HaxTextContext extends LitElement {
       }
     });
   }
-
-  _computeShowIndent(selectedValue, polyfillSafe) {
-    if (polyfillSafe && (selectedValue === "ol" || selectedValue === "ul")) {
+  /**
+   * Show indentation on lists
+   */
+  _computeShowIndent(realSelectedValue) {
+    if (
+      window.HaxStore.instance.computePolyfillSafe() &&
+      (realSelectedValue == "ol" || realSelectedValue == "ul")
+    ) {
       return true;
     }
     return false;
@@ -459,20 +493,6 @@ class HaxTextContext extends LitElement {
         document.execCommand("outdent");
         e.preventDefault();
         e.stopPropagation();
-        break;
-      case "text-list-numbered":
-        try {
-          document.execCommand("insertOrderedList");
-          e.preventDefault();
-          e.stopPropagation();
-        } catch (e) {}
-        break;
-      case "text-list-bulleted":
-        try {
-          document.execCommand("insertUnorderedList");
-          e.preventDefault();
-          e.stopPropagation();
-        } catch (e) {}
         break;
     }
   }

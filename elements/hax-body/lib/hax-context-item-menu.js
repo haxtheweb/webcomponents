@@ -49,6 +49,7 @@ class HaxContextItemMenu extends LitElement {
         .tooltip="${this.label}"
         .tooltip-direction="${this.direction}"
         @selected-changed="${this.selectedValueChanged}"
+        .selected="${this.selectedValue}"
         .reset-on-select="${this.resetOnSelect}"
       >
         <slot></slot>
@@ -63,9 +64,6 @@ class HaxContextItemMenu extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selectedValue") {
-        this.__staxList = this[propName];
-      }
       if (propName == "selectedValue") {
         // observer
         this._selectedUpdated(this[propName], oldValue);

@@ -28,16 +28,14 @@ class HaxPlateContext extends HTMLElement {
     <style>
     :host {
       display: block;
-      width: 32px;
+      width: 40px;
+      margin-top: -2px;
     }
     hax-context-item {
       display: block;
-      margin: 6px 0;
-      width: 28px;
-      height: 24px;
     }
     .area {
-      width: 32px;
+      width: 40px;
       float: left;
       visibility: visible;
       transition: 0.3s all ease;
@@ -45,7 +43,6 @@ class HaxPlateContext extends HTMLElement {
     </style>
     <div class="area">
       <hax-context-item
-        mini
         light
         icon="hardware:keyboard-arrow-up"
         label="Move up"
@@ -53,7 +50,6 @@ class HaxPlateContext extends HTMLElement {
         direction="left"
       ></hax-context-item>
       <hax-context-item
-        mini
         light
         icon="hardware:keyboard-arrow-down"
         label="Move down"

@@ -145,24 +145,25 @@ class HaxToolbarItem extends LitElement {
       </custom-style>
       <paper-button
         .disabled="${this.disabled}"
-        id="buttoncontainer"
+        id="btn"
         tabindex="0"
         .title="${this.tooltip}"
       >
         <iron-icon
-          id="button"
           icon="${this.icon}"
-          .hidden="${!this.icon}"
+          ?hidden="${this.icon == "" ? true : false}"
         ></iron-icon>
-        <span id="label" .hidden="${!this.label}">${this.label}</span>
+        <span id="label" ?hidden="${this.label == "" ? true : false}"
+          >${this.label}</span
+        >
         <slot></slot>
       </paper-button>
       <paper-tooltip
+        for="btn"
         ?hidden="${this.tooltip == "" ? true : false}"
         id="tooltip"
         offset="10"
         position="${this.tooltipDirection}"
-        animation-delay="0"
       >
         ${this.tooltip}
       </paper-tooltip>
@@ -178,8 +179,8 @@ class HaxToolbarItem extends LitElement {
     this.dark = false;
     this.menu = false;
     this.mini = false;
-    this.icon = false;
-    this.label = false;
+    this.icon = "";
+    this.label = "";
     this.tooltip = "";
     this.tooltipDirection = "top";
     this.default = false;
@@ -251,25 +252,6 @@ class HaxToolbarItem extends LitElement {
         reflect: true
       }
     };
-  }
-  /**
-   * Life cycle callback
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (
-        propName == "tooltip" &&
-        (this[propName] == "" || this[propName] == null)
-      ) {
-        this.shadowRoot
-          .querySelector("#tooltip")
-          .setAttribute("aria-hidden", "true");
-      } else {
-        this.shadowRoot
-          .querySelector("#tooltip")
-          .setAttribute("aria-hidden", "false");
-      }
-    });
   }
 }
 window.customElements.define(HaxToolbarItem.tag, HaxToolbarItem);

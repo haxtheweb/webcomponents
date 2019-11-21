@@ -49,6 +49,7 @@ class HaxContextItemTextop extends LitElement {
     this.inputMethod = null;
     this.propertyToBind = null;
     this.slotToBind = null;
+    this.value = "";
   }
   render() {
     return html`
@@ -83,6 +84,13 @@ class HaxContextItemTextop extends LitElement {
       light: {
         type: Boolean,
         value: false
+      },
+      /**
+       * an optional value to send along in the press. Allows for
+       * reusing events more easily
+       */
+      value: {
+        type: String
       },
       /**
        * Mini theme for making things small and round.
@@ -183,7 +191,8 @@ class HaxContextItemTextop extends LitElement {
         composed: true,
         detail: {
           target: this,
-          eventName: this.eventName
+          eventName: this.eventName,
+          value: this.value
         }
       })
     );

@@ -721,11 +721,11 @@ class HAXCMSSiteEditorUI extends LitElement {
     if (newValue) {
       // enable it some how
       this.__editIcon = "icons:save";
-      this.__editText = "Save content";
+      this.__editText = "Save page content";
     } else {
       // disable it some how
       this.__editIcon = "hax:page-edit";
-      this.__editText = "Edit content";
+      this.__editText = "Edit page content";
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

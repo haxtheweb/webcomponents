@@ -1,5 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+/**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
  a decision to be made. This is used when multiple things match either on upload
@@ -42,33 +46,34 @@ class HaxAppPicker extends LitElement {
           height: 40px;
           min-width: unset;
         }
-        #ironlist {
-          width: 100%;
-          min-height: 400px;
-          padding-bottom: 50px;
-        }
         .repeat-item {
           display: inline-flex;
         }
+        .scroll-wrap {
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+        }
         #dialog {
           min-width: 400px;
-          min-height: 400px;
+          min-height: 200px;
           max-height: 60vh;
           max-width: 50vw;
           overflow: hidden;
           border-radius: 16px;
           z-index: 1000000;
           border: 2px solid var(--hax-color-border-outline);
-          @apply --hax-app-picker-dialog;
           background-color: #ffffff;
+          overflow: scroll;
         }
         #buttonlist {
           display: block;
           text-align: left;
           margin: 0px;
+          max-width: 50vw;
+          min-height: 100px;
           overflow-x: hidden;
           overflow-y: auto;
-          min-height: 400px;
         }
         #title,
         .element-button > div {
@@ -81,18 +86,13 @@ class HaxAppPicker extends LitElement {
           width: calc(100% - 32px);
           background-color: var(--hax-color-menu-heading-bg, #eeeeee);
           color: var(--hax-color-menu-heading-color, black);
-          @apply --paper-font-title;
-          @apply --hax-app-picker-dialog-title;
-        }
-        .scroll-wrap {
-          margin-bottom: 64px;
-          min-height: 200px;
         }
         .element-button {
           display: inline-block;
-          width: 70px;
-          margin: 8px 4px;
           text-align: center;
+          width: 96px;
+          margin: 5px 0px;
+          padding: 0;
         }
       `
     ];
@@ -109,33 +109,43 @@ class HaxAppPicker extends LitElement {
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-dialog/paper-dialog.js");
-    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
     this.addEventListener("iron-overlay-canceled", this.close.bind(this));
     this.addEventListener("iron-overlay-closed", this.close.bind(this));
   }
   render() {
     return html`
+      <custom-style>
+        <style>
+          #dialog {
+            @apply --hax-app-picker-dialog;
+          }
+          #title {
+            @apply --paper-font-title;
+            @apply --hax-app-picker-dialog-title;
+          }
+        </style>
+      </custom-style>
       <paper-dialog id="dialog">
         <h3 id="title">${this.title}</h3>
-        <paper-dialog-scrollable id="buttonlist">
+        <div id="buttonlist">
           <div class="scroll-wrap">
             ${this.selectionList.map(
               (element, index) => html`
                 <div class="repeat-item">
                   <hax-app-picker-item
-                    .id="picker-item-${index}"
+                    id="picker-item-${index}"
                     class="element-button"
                     @click="${this._selected}"
                     data-selected="${index}"
-                    .label="${element.title}"
-                    .icon="${element.icon}"
-                    .color="${element.color}"
+                    label="${element.title}"
+                    icon="${element.icon}"
+                    color="${element.color}"
                   ></hax-app-picker-item>
                 </div>
               `
             )}
           </div>
-        </paper-dialog-scrollable>
+        </div>
         <paper-button id="closedialog" @click="${this.close}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
@@ -221,6 +231,7 @@ class HaxAppPicker extends LitElement {
       if (this.shadowRoot.querySelector("#dialog").close) {
         this.shadowRoot.querySelector("#dialog").close();
       }
+      this.selectionList = [];
       document.body.style.overflow = null;
     }
   }
@@ -269,8 +280,7 @@ class HaxAppPicker extends LitElement {
         break;
     }
     this._elements = elements;
-    this.selectionList = [];
-    this.selectionList = tmp;
+    this.selectionList = [...tmp];
     this.opened = true;
     // try to focus on option 0
     setTimeout(() => {

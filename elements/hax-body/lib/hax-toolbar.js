@@ -107,7 +107,7 @@ class HaxToolbar extends LitElement {
         mini
         light
         icon="close"
-        label="Close"
+        label="Hide menu"
         event-name="close-menu"
         class="close-cap"
         direction="left"
