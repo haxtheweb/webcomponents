@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
+import { SmoothScroll } from "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
 /**
@@ -99,7 +99,6 @@ class MapMenu extends LitElement {
           ></map-menu-builder>
         </map-menu-container>
       </div>
-      <smooth-scroll id="smoothscroll"></smooth-scroll>
     `;
   }
 
@@ -208,7 +207,7 @@ class MapMenu extends LitElement {
       // if auto scroll enabled then scroll element into view
       if (this.autoScroll) {
         // kick off smooth scroll
-        this.shadowRoot.querySelector("#smoothscroll").scroll(newValue, {
+        SmoothScroll.scroll(newValue, {
           duration: 100,
           scrollElement: this
         });

@@ -136,7 +136,9 @@ class LrndesignContactcard extends PolymerElement {
         }
       </style>
       <paper-card>
-        <div id="img_wrap"><img class="profile-image" src="[[image]]" /></div>
+        <div id="img_wrap">
+          <img loading="lazy" class="profile-image" src="[[image]]" />
+        </div>
         <div class="name">
           <template is="dom-if" if="[[name]]">
             <div>[[name]]</div>

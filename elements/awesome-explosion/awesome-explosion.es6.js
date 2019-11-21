@@ -62,7 +62,7 @@ class AwesomeExplosion extends PolymerElement {
           height: 240px;
         }
       </style>
-      <img src="[[image]]" id="image" class="image-tag" alt="" />
+      <img loading="lazy" src="[[image]]" id="image" class="image-tag" alt="" />
     `;
   }
 

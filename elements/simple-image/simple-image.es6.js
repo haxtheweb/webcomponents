@@ -174,7 +174,9 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
               <paper-tooltip for="closearea" position="bottom" offset="14">
                 close modal
               </paper-tooltip>
-              <div class="content"><img src\$="[[src]]" alt\$="[[alt]]" /></div>
+              <div class="content">
+                <img loading="lazy" src\$="[[src]]" alt\$="[[alt]]" />
+              </div>
 
               <div class="meta">
                 <div class="credit">[[credit]]</div>

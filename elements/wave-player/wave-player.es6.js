@@ -202,7 +202,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
       </paper-material>
       <div id="container" class="waveContainer" elevation="0"></div>
       <div id="albuminfo" class="albuminfo">
-        <img class="coverart" src="[[coverart]]" />
+        <img loading="lazy" class="coverart" src="[[coverart]]" />
         <span class="title">[[title]]</span>
         <span class="subtitle">[[subtitle]]</span>
       </div>

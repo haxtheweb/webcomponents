@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `jwt-login`
@@ -7,23 +7,42 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class JwtLogin extends PolymerElement {
-  static get template() {
-    return html`
+class JwtLogin extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
       <style>
         :host {
-          visibility: hidden;
+          display: none;
         }
       </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.auto = false;
+    this.method = "GET";
+    this.body = {};
+    this.key = "jwt";
+    this.jwt = null;
+  }
+  /**
+   * LitElement
+   */
+  render() {
+    return html`
       <iron-ajax
-        auto="[[auto]]"
+        ?auto="${this.auto}"
         id="loginrequest"
-        method="[[method]]"
-        body="[[body]]"
-        url="[[url]]"
+        method="${this.method}"
+        url="${this.url}"
         handle-as="json"
         content-type="application/json"
-        on-response="loginResponse"
+        @response="${this.loginResponse}"
       >
       </iron-ajax>
     `;
@@ -39,8 +58,7 @@ class JwtLogin extends PolymerElement {
        * auto, useful for demos
        */
       auto: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * url
@@ -52,32 +70,45 @@ class JwtLogin extends PolymerElement {
        * Request method
        */
       method: {
-        type: String,
-        value: "GET"
+        type: String
       },
       /**
        * Optional body, useful when doing posts
        */
       body: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Key that contains the token in local storage
        */
       key: {
-        type: String,
-        value: "jwt"
+        type: String
       },
       /**
        * JSON Web token to securely pass around
        */
       jwt: {
-        type: String,
-        notify: true,
-        observer: "_jwtChanged"
+        type: String
       }
     };
+  }
+  /**
+   * LitElement life cycle - properties changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "jwt") {
+        this._jwtChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("jwt-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   _jwtChanged(newValue, oldValue) {
     if (
@@ -117,10 +148,9 @@ class JwtLogin extends PolymerElement {
     }
   }
   /**
-   * Ready life cycle
+   * LitElement life cycle - ready
    */
-  ready() {
-    super.ready();
+  firstUpdated(changedProperties) {
     // set jwt from local storage bin
     this.jwt = localStorage.getItem(this.key);
   }
@@ -130,10 +160,11 @@ class JwtLogin extends PolymerElement {
   toggleLogin() {
     // null is default, if we don't have anything go get one
     if (this.jwt == null) {
+      this.shadowRoot.querySelector("#loginrequest").body = { ...this.body };
       this.shadowRoot.querySelector("#loginrequest").generateRequest();
     } else {
       // we were told to logout, reset body
-      this.set("body", {});
+      this.body = {};
       // reset jwt which will do all the events / local storage work
       this.jwt = null;
     }

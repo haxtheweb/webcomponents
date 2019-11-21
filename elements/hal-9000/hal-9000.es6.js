@@ -228,7 +228,9 @@ class Hal9000 extends LitElement {
         commands[i] = this.commands[i];
       }
     }
-    this.commands = [...commands];
+    if (commands.length > 0) {
+      this.commands = { ...commands };
+    }
   }
   /**
    * Notice auto state changed so we start listening

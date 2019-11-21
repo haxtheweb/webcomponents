@@ -107,7 +107,7 @@ class FullScreenImage extends PolymerElement {
           icon="hardware:keyboard-arrow-down"
         ></paper-icon-button>
         <div class="image-wrapper">
-          <img id="img" src="[[source]]" />
+          <img loading="lazy" id="img" src="[[source]]" />
         </div>
       </div>
     `;

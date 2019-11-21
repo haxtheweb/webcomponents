@@ -572,7 +572,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     </a>
     <div class="print-only media-caption">[[printCaption]]</div>
   </div>
-  <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
+  <img loading="lazy" id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
   <div id="outertranscript" hidden$="[[standAlone]]">
     <div id="innertranscript" hidden$="[[hideTranscript]]">
       <a11y-media-transcript-controls id="tcontrols"
