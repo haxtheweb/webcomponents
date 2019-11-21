@@ -185,6 +185,7 @@ class HAXPanelItem extends LitElement {
         </div>
       </paper-button>
       <paper-tooltip
+        fit-to-visible-bounds
         animation-delay="0"
         for="button"
         position="bottom"

@@ -2,12 +2,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
 import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/paper-fab/paper-fab.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -190,11 +184,7 @@ class HAXCMSSiteEditorUI extends LitElement {
     });
     autorun(reaction => {
       this.manifest = toJS(store.manifest);
-      this.icon = varGet(
-        this.manifest,
-        "manifest.metadata.theme.variables.icon",
-        "icons:settings"
-      );
+      this.icon = "hax:site-settings";
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
@@ -249,14 +239,14 @@ class HAXCMSSiteEditorUI extends LitElement {
       ></paper-fab>
       <paper-fab
         id="editdetails"
-        icon="icons:fingerprint"
+        icon="hax:page-details"
         @click="${this._editDetailsButtonTap}"
         title="Edit page details"
         voice-command="edit (page) details"
       ></paper-fab>
       <paper-icon-button
         id="addbutton"
-        icon="icons:add"
+        icon="hax:add-page"
         @click="${this._addButtonTap}"
         title="Add new page"
         voice-command="add page"
@@ -270,7 +260,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       ></paper-fab>
       <paper-icon-button
         id="outlinebutton"
-        icon="icons:list"
+        icon="hax:site-map"
         @click="${this._outlineButtonTap}"
         title="Edit site outline"
         voice-command="edit site outline"
@@ -301,7 +291,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         >Add new page</paper-tooltip
       >
       <paper-tooltip for="outlinebutton" position="right" offset="14"
-        >Organize site outline</paper-tooltip
+        >Organize site content</paper-tooltip
       >
       <paper-tooltip for="manifestbutton" position="right" offset="14"
         >${this.__settingsText}</paper-tooltip
@@ -311,6 +301,14 @@ class HAXCMSSiteEditorUI extends LitElement {
   firstUpdated(changedProperties) {
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
+    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/simple-modal/simple-modal.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/paper-fab/paper-fab.js");
+    import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
+
     // load user data
     this.dispatchEvent(
       new CustomEvent("haxcms-load-user-data", {
@@ -469,11 +467,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       this.icon = "icons:cancel";
     } else if (!newValue) {
       this.__settingsText = "Edit site settings";
-      this.icon = varGet(
-        this.manifest,
-        "manifest.metadata.theme.variables.icon",
-        "icons:settings"
-      );
+      this.icon = "hax:site-settings";
     }
   }
   /**
@@ -727,11 +721,11 @@ class HAXCMSSiteEditorUI extends LitElement {
     if (newValue) {
       // enable it some how
       this.__editIcon = "icons:save";
-      this.__editText = "Save this page";
+      this.__editText = "Save content";
     } else {
       // disable it some how
-      this.__editIcon = "editor:mode-edit";
-      this.__editText = "Edit this page";
+      this.__editIcon = "hax:page-edit";
+      this.__editText = "Edit content";
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

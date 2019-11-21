@@ -18,6 +18,118 @@ import { html } from "@polymer/polymer/lib/utils/html-tag.js";
 
 const template = html`
   <iron-iconset-svg size="24" name="hax">
+    <!-- placeholder -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="placeholder">
+          <path d="M4 3H5V5H3V4C3 3.5 3.5 3 4 3M20 3C20.5 3 21 3.5 21 4V5H19V3H20M15 5V3H17V5H15M11 5V3H13V5H11M7 5V3H9V5H7M21 12C21 12.5 20.5 13 20 13H19V11H21V12M15 13V11H17V13H15M11 13V11H13V13H11M7 13V11H9V13H7M4 13C3.5 13 3 12.5 3 12V11H5V13H4M3 7H5V9H3V7M21 7V9H19V7H21M7 16L12 21L17 16H7Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- site map -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="site-map">
+          <path d="M9,2V8H11V11H5C3.89,11 3,11.89 3,13V16H1V22H7V16H5V13H11V16H9V22H15V16H13V13H19V16H17V22H23V16H21V13C21,11.89 20.11,11 19,11H13V8H15V2H9Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- add item -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="add-item">
+          <path d="M2,2H11V11H2V2M17.5,2C20,2 22,4 22,6.5C22,9 20,11 17.5,11C15,11 13,9 13,6.5C13,4 15,2 17.5,2M6.5,14L11,22H2L6.5,14M19,17H22V19H19V22H17V19H14V17H17V14H19V17Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- page details -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="page-details">
+          <path d="M6 2C4.89 2 4 2.89 4 4V20A2 2 0 0 0 6 22H12.68A7 7 0 0 1 12 19A7 7 0 0 1 19 12A7 7 0 0 1 20 12.08V8L14 2H6M13 3.5L18.5 9H13V3.5M18 14C17.87 14 17.76 14.09 17.74 14.21L17.55 15.53C17.25 15.66 16.96 15.82 16.7 16L15.46 15.5C15.35 15.5 15.22 15.5 15.15 15.63L14.15 17.36C14.09 17.47 14.11 17.6 14.21 17.68L15.27 18.5C15.25 18.67 15.24 18.83 15.24 19C15.24 19.17 15.25 19.33 15.27 19.5L14.21 20.32C14.12 20.4 14.09 20.53 14.15 20.64L15.15 22.37C15.21 22.5 15.34 22.5 15.46 22.5L16.7 22C16.96 22.18 17.24 22.35 17.55 22.47L17.74 23.79C17.76 23.91 17.86 24 18 24H20C20.11 24 20.22 23.91 20.24 23.79L20.43 22.47C20.73 22.34 21 22.18 21.27 22L22.5 22.5C22.63 22.5 22.76 22.5 22.83 22.37L23.83 20.64C23.89 20.53 23.86 20.4 23.77 20.32L22.7 19.5C22.72 19.33 22.74 19.17 22.74 19C22.74 18.83 22.73 18.67 22.7 18.5L23.76 17.68C23.85 17.6 23.88 17.47 23.82 17.36L22.82 15.63C22.76 15.5 22.63 15.5 22.5 15.5L21.27 16C21 15.82 20.73 15.65 20.42 15.53L20.23 14.21C20.22 14.09 20.11 14 20 14H18M19 17.5C19.83 17.5 20.5 18.17 20.5 19C20.5 19.83 19.83 20.5 19 20.5C18.16 20.5 17.5 19.83 17.5 19C17.5 18.17 18.17 17.5 19 17.5Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- add page -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="add-page">
+          <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M11,15V12H9V15H6V17H9V20H11V17H14V15H11Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- h2 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="h2">
+          <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M21,18H15A2,2 0 0,1 13,16C13,15.47 13.2,15 13.54,14.64L18.41,9.41C18.78,9.05 19,8.55 19,8A2,2 0 0,0 17,6A2,2 0 0,0 15,8H13A4,4 0 0,1 17,4A4,4 0 0,1 21,8C21,9.1 20.55,10.1 19.83,10.83L15,16H21V18Z" />
+        </g>
+      </defs>
+    </svg>
+        <!-- h3 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="h3">
+          <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
+        </g>
+      </defs>
+    </svg>
+        <!-- h4 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="h4">
+    <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M18,18V13H13V11L18,4H20V11H21V13H20V18H18M18,11V7.42L15.45,11H18Z" />
+        </g>
+      </defs>
+    </svg>
+        <!-- h5 -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="h5">
+    <path d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H20V6H15V10H17A4,4 0 0,1 21,14A4,4 0 0,1 17,18H15A2,2 0 0,1 13,16V15H15V16H17A2,2 0 0,0 19,14A2,2 0 0,0 17,12H15A2,2 0 0,1 13,10V6A2,2 0 0,1 15,4Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- bricks -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="bricks">
+          <path d="M3,16H12V21H3V16M2,10H8V15H2V10M9,10H15V15H9V10M16,10H22V15H16V10M13,16H21V21H13V16M3,4H11V9H3V4M12,4H21V9H12V4Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- hr -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="hr">
+          <path d="M19,13H5V11H19V13Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- site settings -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="site-settings">
+          <path d="M4,14V17C4,19 7.05,20.72 11,21V18.11L11.13,18C7.12,17.76 4,16.06 4,14M12,13C7.58,13 4,11.21 4,9V12C4,14.21 7.58,16 12,16C12.39,16 12.77,16 13.16,16L17,12.12C15.4,12.72 13.71,13 12,13M12,3C7.58,3 4,4.79 4,7C4,9.21 7.58,11 12,11C16.42,11 20,9.21 20,7C20,4.79 16.42,3 12,3M21,11.13C20.85,11.13 20.71,11.19 20.61,11.3L19.61,12.3L21.66,14.3L22.66,13.3C22.87,13.1 22.88,12.76 22.66,12.53L21.42,11.3C21.32,11.19 21.18,11.13 21.04,11.13M19.04,12.88L13,18.94V21H15.06L21.12,14.93L19.04,12.88Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- add brick -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="add-brick">
+           <path d="M19 6V5A2 2 0 0 0 17 3H15A2 2 0 0 0 13 5V6H11V5A2 2 0 0 0 9 3H7A2 2 0 0 0 5 5V6H3V20H13.09A5.47 5.47 0 0 1 13 19A6 6 0 0 1 21 13.34V6M20 15V18H23V20H20V23H18V20H15V18H18V15Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- page edit -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="page-edit">
+          <path d="M6 2C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H10V20.1L20 10.1V8L14 2H6M13 3.5L18.5 9H13V3.5M20.1 13C20 13 19.8 13.1 19.7 13.2L18.7 14.2L20.8 16.3L21.8 15.3C22 15.1 22 14.7 21.8 14.5L20.5 13.2C20.4 13.1 20.3 13 20.1 13M18.1 14.8L12 20.9V23H14.1L20.2 16.9L18.1 14.8Z" />
+        </g>
+      </defs>
+    </svg>
     <!-- paragraph -->
     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
       <defs>
@@ -118,27 +230,27 @@ const template = html`
     </svg>
     <!-- basic layout bar icons -->
     <svg>
-        <g id="12" style="fill:#CCCCCC;" height="20">
+        <g id="12" height="20">
           <rect x="0" y="0" width="24" height="100%"></rect>
         </g>  
-        <g id="8/4" style="fill:#CCCCCC;" height="20">
+        <g id="8/4" height="20">
           <rect x="0" y="0" width="16" height="100%"></rect>
           <rect x="18" y="0" width="6" height="100%"></rect>
         </g>
-        <g id="6/6" style="fill:#CCCCCC;" height="20">
+        <g id="6/6" height="20">
           <rect x="0" y="0" width="11" height="100%"></rect>
           <rect x="12" y="0" width="11" height="100%"></rect>
         </g>
-        <g id="4/8" style="fill:#CCCCCC;" height="20">
+        <g id="4/8" height="20">
           <rect x="0" y="0" width="6" height="100%"></rect>
           <rect x="8" y="0" width="16" height="100%"></rect>
         </g>
-        <g id="4/4/4" style="fill:#CCCCCC;" height="20">
+        <g id="4/4/4" height="20">
           <rect x="0" y="0" width="7" height="100%"></rect>
           <rect x="8" y="0" width="7" height="100%"></rect>
           <rect x="16" y="0" width="7" height="100%"></rect>
         </g>
-        <g id="3/3/3/3" style="fill:#CCCCCC;" height="20">
+        <g id="3/3/3/3" height="20">
           <rect x="0" y="0" width="5" height="100%"></rect>
           <rect x="6" y="0" width="5" height="100%"></rect>
           <rect x="12" y="0" width="5" height="100%"></rect>

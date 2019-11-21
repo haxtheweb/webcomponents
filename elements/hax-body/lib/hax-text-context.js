@@ -88,43 +88,34 @@ class HaxTextContext extends LitElement {
           event-name="text-tag"
         >
           <paper-item value="p"
-            ><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon
-            >Normal text <strong>&lt;P&gt;</strong></paper-item
+            ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
           >
           <paper-item value="ul"
             ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
-            list <strong>&lt;UL&gt;</strong></paper-item
+            list</paper-item
           >
           <paper-item value="ol"
             ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered
-            list <strong>&lt;OL&gt;</strong></paper-item
+            list</paper-item
           >
           <paper-item value="h2"
-            ><iron-icon icon="editor:title"></iron-icon>Title
-            <strong>&lt;H2&gt;</strong></paper-item
-          >
+            ><iron-icon icon="hax:h2"></iron-icon>Title
+          </paper-item>
           <paper-item value="h3"
-            ><iron-icon icon="editor:title"></iron-icon>Content heading
-            <strong>&lt;H3&gt;</strong></paper-item
-          >
+            ><iron-icon icon="hax:h3"></iron-icon>Content heading
+          </paper-item>
           <paper-item value="h4"
-            ><iron-icon icon="editor:text-fields"></iron-icon>Subheading
-            <strong>&lt;H4&gt;</strong></paper-item
-          >
+            ><iron-icon icon="hax:h4"></iron-icon>Subheading
+          </paper-item>
           <paper-item value="h5"
-            ><iron-icon icon="editor:text-fields"></iron-icon>Deeper subheading
-            <strong>&lt;H5&gt;</strong></paper-item
-          >
+            ><iron-icon icon="hax:h5"></iron-icon>Deeper subheading
+          </paper-item>
           <paper-item value="blockquote"
-            ><iron-icon icon="editor:format-quote"></iron-icon>Quote<strong
-              >&lt;blockquote&gt;</strong
-            ></paper-item
-          >
+            ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote
+          </paper-item>
           <paper-item value="code"
-            ><iron-icon icon="icons:code"></iron-icon>Code block<strong
-              >&lt;code&gt;</strong
-            ></paper-item
-          >
+            ><iron-icon icon="icons:code"></iron-icon>Code
+          </paper-item>
         </hax-context-item-menu>
         <hax-context-item-textop
           slot="primary"
@@ -143,6 +134,12 @@ class HaxTextContext extends LitElement {
           icon="editor:insert-link"
           label="Link"
           event-name="text-link"
+        ></hax-context-item-textop>
+        <hax-context-item-textop
+          slot="primary"
+          icon="mdextra:unlink"
+          label="Remove link"
+          event-name="text-unlink"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
@@ -192,14 +189,6 @@ class HaxTextContext extends LitElement {
           event-name="insert-inline-gizmo"
           .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
-
-        <hax-context-item-textop
-          menu
-          slot="more"
-          icon="mdextra:unlink"
-          event-name="text-unlink"
-          >Remove link</hax-context-item-textop
-        >
         <hax-context-item-textop
           menu
           slot="more"

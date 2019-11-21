@@ -39,6 +39,7 @@ class HaxContextItemTextop extends LitElement {
   }
   constructor() {
     super();
+    this.label = "";
     this.light = false;
     this.mini = false;
     this.menu = false;

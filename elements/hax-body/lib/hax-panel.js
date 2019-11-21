@@ -163,6 +163,7 @@ class HaxPanel extends SimpleColors {
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel-item.js");
+    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     this.addEventListener(
       "hax-item-selected",
       this._processItemEvent.bind(this)
@@ -252,61 +253,61 @@ class HaxPanel extends SimpleColors {
           voice-command="cancel"
         ></hax-panel-item>
         <hax-panel-item
-          icon="image:add-to-photos"
-          label="Upload content"
+          icon="icons:file-upload"
+          label="Upload media"
           event-name="hax-manager-open"
           value="0"
           voice-command="(upload)(add) media"
         ></hax-panel-item>
         <hax-panel-item
           icon="search"
-          label="Search content"
+          label="Search for media"
           event-name="hax-manager-open"
           value="1"
           voice-command="(search)(find) media"
         ></hax-panel-item>
         <hax-panel-item
-          icon="hardware:toys"
+          icon="hax:add-brick"
           label="Create page element"
           event-name="hax-manager-open"
           voice-command="create (page) (element)(widget)"
           value="2"
         ></hax-panel-item>
         <hax-panel-item
-          icon="view-quilt"
-          label="Insert Layout"
+          icon="icons:view-column"
+          label="Insert layout block"
           event-name="hax-blox-picker-open"
           voice-command="insert (page) layout"
         ></hax-panel-item>
         <hax-panel-item
-          icon="view-agenda"
-          label="Insert page template"
+          icon="icons:view-stream"
+          label="Insert template"
           event-name="hax-stax-picker-open"
           voice-command="insert (page) template"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:short-text"
+          icon="hax:paragraph"
           label="Insert paragraph"
           event-name="text"
           voice-command="insert (text)(paragraph)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:title"
+          icon="hax:h2"
           label="Insert heading"
           event-name="header"
           voice-command="insert (header)(heading)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:space-bar"
+          icon="hax:hr"
           label="Insert horizontal line"
           event-name="divider"
           voice-command="insert (divider)(horizontal line)"
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="image:transform"
+          icon="hax:placeholder"
           label="Insert media placeholder"
           event-name="placeholder"
           voice-command="insert (image) placeholder"
