@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.A11yMediaYoutube = window.A11yMediaYoutube || {};
@@ -21,16 +21,11 @@ window.A11yMediaYoutube.requestAvailability = () => {
 };
 /**
  * `a11y-media-youtube`
- * `A utility that manages multiple instances of a11y-media-player on a single page.`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
+ * Handles YouTube as source for a11y-media-player.
+ * 
  * @polymer
  */
-class A11yMediaYoutube extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+class A11yMediaYoutube extends LitElement {
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -43,19 +38,18 @@ class A11yMediaYoutube extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /**
        * whether or not the YouTube API is ready
        */
       apiReady: {
-        type: Boolean,
-        value: window.YT !== undefined
+        type: Boolean
       },
       /**
        * a counter for creating unique ideas for each YouTube player container
        */
       counter: {
-        type: Number,
-        value: 0
+        type: Number
       }
     };
   }
@@ -64,17 +58,18 @@ class A11yMediaYoutube extends PolymerElement {
    * life cycle, element is afixed to the DOM
    * Makes sure there is a utility ready and listening for elements.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.apiReady = window.YT !== undefined;
+    this.counter = 0;
     let root = this,
       api = document.createElement("script");
     api.setAttribute("src", "https://www.youtube.com/iframe_api");
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
     window.onYouTubeIframeAPIReady = () => {
-      var event = new CustomEvent("youtube-api-ready");
       root.apiReady = true;
-      document.dispatchEvent(event);
+      window.dispatchEvent(new CustomEvent("youtube-api-ready"));
     };
   }
 

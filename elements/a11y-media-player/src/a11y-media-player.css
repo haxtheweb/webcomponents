@@ -75,7 +75,7 @@
   --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
 }
 :host,
-:host #outerplayer {
+#outerplayer {
   color: var(--simple-colors-default-theme-grey-12);
   background-color: var(--simple-colors-default-theme-grey-2);
 }
@@ -83,88 +83,88 @@
   transition: all 0.5s;
 }
 :host,
-:host #outerplayer,
-:host #player,
-:host #outertranscript,
-:host #innertranscript {
+#outerplayer,
+#player,
+#outertranscript,
+#innertranscript {
   display: flex;
   flex-flow: column;
   align-items: stretch;
   align-content: stretch;
 } 
-:host #captionlink:link {
+#captionlink:link {
   text-decoration: none;
 }
-:host #innerplayer {
+#innerplayer {
   display: flex;
 }
 :host([hidden]),
-:host *[hidden] {
+*[hidden] {
   display: none !important;
 }
-:host #innerplayer,
-:host #player, 
-:host #player > *,
-:host #customcc,
-:host #customcctxt,
-:host #slider,
-:host #controls,
-:host #outertranscript,
-:host #innertranscript {
+#innerplayer,
+#player, 
+#player > *,
+#customcc,
+#customcctxt,
+#slider,
+#controls,
+#outertranscript,
+#innertranscript {
   width: 100%;
 }
-:host #innertranscript > * {
+#innertranscript > * {
   width: calc(100% - 1px);
 }
 :host > *,
-:host #innerplayer,
-:host #player,
-:host #player > *,
-:host #customcctxt {
+#innerplayer,
+#player,
+#player > *,
+#customcctxt {
   flex: 1 1 auto;
 }
-:host #controls,
-:host #tcontrols {
+#controls,
+#searchbar {
   flex: 0 0 44px;
 }
-:host #innerplayer {
+#innerplayer {
   margin: 0 auto;
 }
-:host #player {
+#player {
   height: 400px;
   position: relative;
 }
-:host #player > * {
+#player > * {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
 }
-:host #playbutton,
-:host #slider,
-:host #controls {
+#playbutton,
+#slider,
+#controls {
   z-index: 2;
 }
 :host([audio-only]) #playbutton {
   opacity: 0;
 }
-:host #slider {
+#slider {
   flex: 0 0 32px;
   height: 32px;
 }
 :host([thumbnail-src]) #youtube {
   opacity: 0;
 }
-:host #youtube[elapsed] {
+#youtube[elapsed] {
   opacity: 1;
   transition: opacity 0.5s;
 }
-:host #customcc:not([hidden]) {
+#customcc:not([hidden]) {
   font-size: 20px;
   transition: font-size 0.25s;
   display: flex;
 }
-:host #customcctxt:not(:empty) {
+#customcctxt:not(:empty) {
   align-self: flex-end;
   font-family: sans-serif;
   color: white;
@@ -179,36 +179,89 @@
   color: var(--a11y-media-color);
   background-color: transparent;
 }
-:host #printthumb {
+#printthumb {
   width: 100%;
   margin: 0;
   display: block;
   border-top: 1px solid #aaaaaa;
 }
-:host .media-caption:not(:empty) {
+.media-caption:not(:empty) {
   width: calc(100% - 30px);
   padding: 5px 15px;
 }
-:host .media-type {
+.media-type {
   font-style: italic;
 }
-:host #outertranscript {
+#searchbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 44px;
+  max-height: 44px;
+  min-height: 44px;
+  width: 100%;
+  color: var(--a11y-media-color);
+  background-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-hover-bg-color: var(
+    --a11y-media-transcript-bg-color
+  );
+  --simple-search-input-text-color: var(--a11y-media-color);
+  --simple-search-input-line-color: var(--a11y-media-accent-color);
+  --simple-search-input-placeholder-color: var(
+    --a11y-media-transcript-color
+  );
+  --simple-search-button-color: var(--a11y-media-accent-color);
+  --simple-search-button-hover-color: var(
+    --a11y-media-faded-accent-color
+  );
+  --simple-search-button-bg-color: var(--a11y-media-bg-color);
+  --simple-search-button-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-disabled-color: var(
+    --simple-colors-default-theme-grey-5
+  );
+  --simple-search-button-disabled-bg-color: var(
+    --simple-colors-default-theme-grey-2
+  );
+  --simple-search-button-disabled-border-color: var(
+    --simple-colors-default-theme-grey-3
+  );
+  --paper-input-container-input-color: var(--a11y-media-color);
+  --simple-search-padding: 0 15px;
+}
+#searching {
+  flex-grow: 2;
+}
+#autoscroll {
+  padding-right: 8px;
+}
+#scrolling,
+#printing {
+  display: flex;
+  align-items: center;
+}
+#outertranscript {
   padding: 0 1px 0 0;
 }
-:host #innertranscript {
+#innertranscript {
   flex: 1 0 194px;
 }
-:host #transcript {
+#transcript {
   flex: 1 0 150px;
   overflow-y: scroll;
 }
-:host .sr-only {
+.sr-only {
   position: absolute;
   left: -9999px;
   font-size: 0;
   height: 0;
   width: 0;
   overflow: hidden;
+}
+paper-tooltip:not(:defined), 
+paper-toast:not(:defined) {
+  display: none;
 }
 @media screen {
   :host([flex-layout]:not([responsive-size="xs"])) {
@@ -218,7 +271,7 @@
   :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
     flex: 1 0 auto;
   }
-  :host #printthumb,
+  #printthumb,
   :host([height]) #outertranscript,
   :host([stand-alone]) #outertranscript,
   :host([hide-transcript]) #outertranscript {
@@ -246,7 +299,7 @@
     width: 50%;
     flex: 1 1 auto;
   }
-  :host #innertranscript {
+  #innertranscript {
     position: relative;
   }
   :host([hide-transcript]) #outerplayer {
@@ -305,17 +358,17 @@
   :host([sticky]:not([sticky-corner="none"])) #customcc {
     display: none;
   }
-  :host .media-caption {
+  .media-caption {
     color: var(--a11y-media-bg-color);
     background-color: var(--a11y-media-accent-color);
   }
-  :host #audio-only {
+  #audio-only {
     text-align: center;
     font-style: italic;
     width: 100%;
     line-height: 160%;
   }
-  :host .print-only {
+  .print-only {
     display: none;
   }
 }
@@ -326,15 +379,13 @@
     outline: 1px solid #aaaaaa;
     background-color: #ffffff;
   }
-  :host .screen-only,
-  :host #printthumb:not([src]),
+  .screen-only,
+  #searchbar,
+  #printthumb:not([src]),
   :host(:not([thumbnail-src])) #player {
     display: none;
   }
-  :host #searchbar {
-    display: none;
-  }
-  :host .media-caption {
+  .media-caption {
     background-color: #cccccc;
     color: #000000;
     font-size: 120%;

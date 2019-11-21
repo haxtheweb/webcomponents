@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
@@ -21,20 +21,14 @@ window.A11yMediaStateManager.requestAvailability = () => {
 };
 /**
  * `a11y-media-state-manager`
- * `A utility that manages the state of multiple a11y-media-players on a single page.`
- *
- * @microcopy - language worth noting:
- *  -
- *
+ * A utility that manages the state of multiple a11y-media-players on a single page.
+ * 
  * @customElement
- * @polymer
  */
-class A11yMediaStateManager extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+class A11yMediaStateManager extends LitElement {
 
   /**
    * Store the tag name to make it easier to obtain directly.
-
    */
   static get tag() {
     return "a11y-media-state-manager";
@@ -43,26 +37,24 @@ class A11yMediaStateManager extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Stores an array of all the players on the page.
        */
       players: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Is the screenfull library loaded and screenfull constant set.
        */
       screenfullLoaded: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Manages which player is sticky.
        */
       stickyPlayer: {
-        type: Object,
-        value: null
+        type: Object
       }
     };
   }
@@ -72,41 +64,29 @@ class A11yMediaStateManager extends PolymerElement {
    */
   constructor() {
     super();
+    this.players = [];
+    this.screenfullLoaded = false;
+    this.stickyPlayer = null;
     let root = this;
-    root.__playerLoader = function(e) {
-      root.players.push(e.detail);
-    };
+    this.__stickyManager = (e) => root.setStickyPlayer(e.detail);
+    this.__scrollChecker = (e) => root._checkScroll(e);
+    this.__playerLoader = (e) => root.players.push(e.detail);
 
     // sets the instance to the current instance
     if (!window.A11yMediaStateManager.instance) {
       window.A11yMediaStateManager.instance = this;
 
+      // listen for a player that starts playing,
+      // make it the player that can be sticky,
+      // and check for concurrent players
+      window.addEventListener("a11y-player-playing", root.__stickyManager);
+  
+      // listen for scrolling and find out if a player is off-screen
+      window.addEventListener("scroll", root.__scrollChecker);
+
       // listen for a players added to the page
       window.addEventListener("a11y-player", root.__playerLoader);
     }
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   * Makes sure there is a utility ready and listening for elements.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
-    this.__stickyManager = function(e) {
-      root.setStickyPlayer(e.detail);
-    };
-    this.__scrollChecker = function(e) {
-      root._checkScroll();
-    };
-
-    // listen for a player that starts playing,
-    // make it the player that can be sticky,
-    // and check for concurrent players
-    window.addEventListener("a11y-player-playing", root.__stickyManager);
-
-    // listen for scrolling and find out if a player is off-screen
-    window.addEventListener("scroll", root.__scrollChecker);
   }
 
   /**

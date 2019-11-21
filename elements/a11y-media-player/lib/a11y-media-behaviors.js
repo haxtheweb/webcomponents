@@ -2,21 +2,17 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
  * `a11y-media-behaviors`
  * `A set of properties common to player and transcript a11y-media components.`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
- * @polymer
  */
-class A11yMediaBehaviors extends SimpleColorsPolymer {
+class A11yMediaBehaviors extends SimpleColors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -27,15 +23,15 @@ class A11yMediaBehaviors extends SimpleColorsPolymer {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return Object.assign(SimpleColorsPolymer.properties, {
+    return {
+      ...super.properties,
       /**
        * Is this an audio file?
        */
       audioOnly: {
-        name: "audioOnly",
+        attribute: "audio-only",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
@@ -43,293 +39,159 @@ class A11yMediaBehaviors extends SimpleColorsPolymer {
        * but generally not recommended for a11y
        */
       autoplay: {
-        name: "autoplay",
-        type: Boolean,
-        value: false
+        attribute: "autoplay",
+        type: Boolean
       },
 
       /**
        * show closed captions
        */
       cc: {
-        name: "cc",
-        type: Boolean,
-        value: false
+        attribute: "cc",
+        type: Boolean
       },
 
       /**
        * disable transcript print button
        */
       disablePrintButton: {
-        name: "disablePrintButton",
-        type: Boolean,
-        value: false
+        attribute: "disable-print-button",
+        type: Boolean
       },
 
       /**
        * disable transcript search feature
        */
       disableSearch: {
-        name: "disableSearch",
-        type: Boolean,
-        value: false
+        attribute: "disable-search",
+        type: Boolean
       },
 
       /**
        * disable autoscrolling as transcript plays
        */
       disableScroll: {
-        name: "disableScroll",
-        type: Boolean,
-        value: false
+        attribute: "disable-scroll",
+        type: Boolean
       },
 
       /**
        * disables seeking
        */
       disableSeek: {
-        name: "disableSeek",
-        type: Boolean,
-        value: false
+        attribute: "disable-seek",
+        type: Boolean
       },
 
       /**
        * Does the player have an interactive transcript?
        */
       hasTranscript: {
-        name: "hasTranscript",
-        type: Boolean,
-        value: false
+        attribute: "has-transcript",
+        type: Boolean
       },
 
       /**
        * The height of the media player.
        */
       height: {
-        name: "height",
-        type: String,
-        value: null
+        attribute: "height",
+        type: String
       },
 
       /**
        * is YouTube?
        */
       isYoutube: {
-        name: "isYoutube",
-        type: Boolean,
-        computed: "_hasAttribute(youtubeId)"
+        attribute: "is-youtube",
+        type: Boolean
       },
 
       /**
        * Language
        */
       lang: {
-        name: "lang",
-        type: String,
-        value: "en"
+        attribute: "lang",
+        type: String
       },
 
       /**
        * has link button
        */
       linkable: {
-        name: "linkable",
-        type: Boolean,
-        value: false
+        attribute: "linkable",
+        type: Boolean
       },
 
       /**
        * custom localization settings
        */
       localization: {
-        name: "localization",
-        type: Object,
-        value: {}
-      },
-
-      /**
-       * default localization settings
-       */
-      localizationDefaults: {
-        name: "localizationDefaults",
-        type: Object,
-        value: {
-          audio: { label: "Audio" },
-          autoScroll: {
-            label: "Scroll transcript with video.",
-            icon: "swap-vert"
-          },
-          captions: {
-            label: "Closed Captions",
-            icon: "av:closed-caption",
-            off: "Off"
-          },
-          download: {
-            label: "Download the transcript.",
-            icon: "file-download"
-          },
-          forward: {
-            label: "Forward",
-            icon: "av:fast-forward"
-          },
-          fullscreen: {
-            label: "Fullscreen",
-            icon: "fullscreen"
-          },
-          copyLink: {
-            label: "Copy Media Link",
-            icon: "link"
-          },
-          closeLink: {
-            label: "Close",
-            icon: "close"
-          },
-          loading: {
-            label: "Loading..."
-          },
-          loop: {
-            label: "Loop Playback"
-          },
-          mute: {
-            label: "Mute",
-            icon: "av:volume-up"
-          },
-          nextResult: {
-            label: "Next",
-            icon: "arrow-forward"
-          },
-          pause: {
-            label: "Pause",
-            icon: "av:pause"
-          },
-          play: {
-            label: "Play",
-            icon: "av:play-arrow"
-          },
-          prevResult: {
-            label: "Previous",
-            icon: "arrow-back"
-          },
-          print: {
-            label: "Print the transcript.",
-            icon: "print"
-          },
-          restart: {
-            label: "Restart",
-            icon: "av:replay"
-          },
-          rewind: {
-            label: "Backward",
-            icon: "av:fast-rewind"
-          },
-          search: {
-            label: "Search the transcript.",
-            icon: "search"
-          },
-          seekSlider: {
-            label: "Seek Slider"
-          },
-          settings: {
-            label: "Settings",
-            icon: "settings"
-          },
-          speed: {
-            label: "Speed %"
-          },
-          transcript: {
-            label: "Transcript",
-            icon: "description",
-            loading: "Loading the transcript(s)...",
-            skip: "Skip to the transcript."
-          },
-          unmute: {
-            label: "Unmute",
-            icon: "av:volume-off"
-          },
-          video: {
-            label: "Video"
-          },
-          volume: {
-            label: "Volume"
-          },
-          youTubeLoading: {
-            label: "Ready."
-          },
-          youTubeTranscript: {
-            label: "Transcript will load once media plays."
-          }
-        },
-        readOnly: true
+        attribute: "localization",
+        type: Object
       },
 
       /**
        * Loop the video?
        */
       loop: {
-        name: "loop",
-        type: Boolean,
-        value: false
+        attribute: "loop",
+        type: Boolean
       },
 
       /**
        * Dash.js manifest source?
        */
       manifest: {
-        name: "manifest",
-        type: String,
-        value: null
+        attribute: "manifest",
+        type: String
       },
 
       /**
        * the media to be manipulated
        */
       media: {
-        name: "media",
-        type: Object,
-        value: null
+        attribute: "media",
+        type: Object
       },
 
       /**
        * optional title of media (shows when printed)
        */
       mediaTitle: {
-        name: "mediaTitle",
-        type: String,
-        value: ""
+        attribute: "media-title",
+        type: String
       },
 
       /**
        * Is audio muted?
        */
       muted: {
-        name: "muted",
-        type: Boolean,
-        value: false
+        attribute: "muted",
+        type: Boolean
       },
 
       /**
        * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
        */
       playbackRate: {
-        name: "playbackRate",
-        type: Number,
-        value: 1
+        attribute: "playback-rate",
+        type: Number
       },
 
       /**
        * Is media playing?
        */
       playing: {
-        name: "playing",
-        type: Boolean,
-        value: false
+        attribute: "playing",
+        type: Boolean
       },
 
       /**
        * play/pause button
        */
       playPause: {
-        name: "playPause",
+        attribute: "play-pause",
         type: Object
       },
 
@@ -337,113 +199,261 @@ class A11yMediaBehaviors extends SimpleColorsPolymer {
        * Preload the "sources": auto, metadata (default), or none.
        */
       preload: {
-        name: "preload",
-        type: String,
-        value: "metadata"
+        attribute: "preload",
+        type: String
       },
 
       /**
        * the search tool for the transcript
        */
       search: {
-        name: "search",
-        type: Object,
-        value: null
+        attribute: "search",
+        type: Object
       },
 
       /**
        * the selected track
        */
       selectedTrack: {
-        name: "selectedTrack",
-        type: Object,
-        value: null
+        attribute: "selected-track",
+        type: Object
       },
 
       /**
        * id of the selected track
        */
-      selectedTrackID: {
-        name: "selectedTrackID",
-        type: Number,
-        value: null
+      selectedTrackId: {
+        attribute: "selected-track-id",
+        type: Number
       },
 
       /**
        * Is stand-alone player (without transcript)?
        */
       standAlone: {
-        name: "standAlone",
+        attribute: "stand-alone",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
        * status
        */
       status: {
-        name: "status",
-        type: String,
-        value: "loading..."
+        attribute: "status",
+        type: String
       },
 
       /**
        * target of the controls
        */
       target: {
-        name: "target",
-        type: Object,
-        value: null
+        attribute: "target",
+        type: Object
       },
       /**
        * array of tracks and cues
        */
       tracks: {
-        name: "tracks",
-        type: Array,
-        value: null
+        attribute: "tracks",
+        type: Array
       },
+
       /**
        * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
        */
       volume: {
-        name: "volume",
-        type: Number,
-        value: 70
+        attribute: "volume",
+        type: Number
       },
+
       /**
        * The width of the media player.
        */
       width: {
-        name: "width",
-        type: String,
-        value: null
+        attribute: "width",
+        type: String
       },
+
       /**
        * the id for the video
        */
       youtubeId: {
-        name: "youtubeId",
-        type: String,
-        value: null
+        attribute: "youtube-id",
+        type: String
       },
       /**
        * the YouTube player object
        */
-      youTube: {
-        name: "youTube",
-        type: Object,
-        value: {}
+      youtube: {
+        attribute: "youtube",
+        type: Object
+      },
+
+      /**
+       * default localization settings
+       */
+      __localizationDefaults: {
+        type: Object
       }
-    });
+    };
   }
 
-  /**
-   * gets behaviors
-   */
-  static get behaviors() {
-    return [ResponsiveUtility];
+  constructor(){
+    super();
+    this.audioOnly = false;
+    this.autoplay = false;
+    this.cc = false;
+    this.disablePrintButton = false;
+    this.disableSearch = false;
+    this.disableScroll = false;
+    this.disableSeek = false;
+    this.hasTranscript = false;
+    this.height = null;
+    this.lang = "en";
+    this.linkable = false;
+    this.localization = {};
+    /**
+     * TODO
+     */
+    this.__localizationDefaults = {
+      "audio":{ 
+        "label":"Audio",
+        "notSupported": "HTML5 video is not supported." 
+      },
+      "autoScroll":{
+        "label":"Scroll transcript with video.",
+        "icon":"swap-vert"
+      },
+      "captions":{
+        "label":"Closed Captions",
+        "icon":"av:closed-caption",
+        "off":"Off"
+      },
+      "download":{
+        "label":"Download the transcript.",
+        "icon":"file-download"
+      },
+      "forward":{
+        "label":"Forward",
+        "icon":"av:fast-forward"
+      },
+      "fullscreen":{
+        "label":"Fullscreen",
+        "icon":"fullscreen"
+      },
+      "copyLink":{
+        "label":"Copy Media Link",
+        "icon":"link"
+      },
+      "closeLink":{
+        "label":"Close",
+        "icon":"close"
+      },
+      "loading":{
+        "label":"Loading..."
+      },
+      "loop":{
+        "label":"Loop Playback"
+      },
+      "mute":{
+        "label":"Mute",
+        "icon":"av:volume-up"
+      },
+      "nextResult":{
+        "label":"Next",
+        "icon":"arrow-forward"
+      },
+      "pause":{
+        "label":"Pause",
+        "icon":"av:pause"
+      },
+      "play":{
+        "label":"Play",
+        "icon":"av:play-arrow"
+      },
+      "prevResult":{
+        "label":"Previous",
+        "icon":"arrow-back"
+      },
+      "print":{
+        "label":"Print the transcript.",
+        "icon":"print"
+      },
+      "restart":{
+        "label":"Restart",
+        "icon":"av:replay"
+      },
+      "rewind":{
+        "label":"Backward",
+        "icon":"av:fast-rewind"
+      },
+      "search":{
+        "label":"Search the transcript.",
+        "icon":"search"
+      },
+      "seekSlider":{
+        "label":"Seek Slider"
+      },
+      "settings":{
+        "label":"Settings",
+        "icon":"settings"
+      },
+      "speed":{
+        "label":"Speed %"
+      },
+      "transcript":{
+        "label":"Transcript",
+        "icon":"description",
+        "loading":"Loading the transcript(s)...",
+        "skip":"Skip to the transcript."
+      },
+      "unmute":{
+        "label":"Unmute",
+        "icon":"av:volume-off"
+      },
+      "video":{
+        "label":"Video",
+        "notSupported": "HTML5 video is not supported."
+      },
+      "volume":{
+        "label":"Volume"
+      },
+      "youTubeLoading":{
+        "label":"Ready."
+      },
+      "youTubeTranscript":{
+        "label":"Transcript will load once media plays."
+      }
+    };
+    this.loop = false;
+    this.manifest = null;
+    this.media = null;
+    this.mediaTitle = "";
+    this.muted = false;
+    this.playbackRate = 1;
+    this.playing = false;
+    this.preload = "metadata";
+    this.search = null;
+    this.selectedTrack = null;
+    this.selectedTrackId = null;
+    this.standAlone = false;
+    this.status = "loading...";
+    this.target = null;
+    this.tracks = null;
+    this.volume = 70;
+    this.width = null;
+    this.youtubeId = null;
+    this.youtube= {};
+    this.isYoutube = this._hasAttribute(this.youtubeId);
+    this.seekSlider = {
+      "label": this._getLocal("seekSlider", "label")
+    }
+    this.playPause = {
+      "label": this._getLocal("play", "label"),
+      "icon": this._getLocal("play", "icon"),
+      "action": "play"
+    };
   }
 
   /**
@@ -561,11 +571,11 @@ class A11yMediaBehaviors extends SimpleColorsPolymer {
     ) {
       local = localization[key][subkey];
     } else if (
-      this.localizationDefaults !== undefined &&
-      this.localizationDefaults[key] !== undefined &&
-      this.localizationDefaults[key][subkey] !== undefined
+      this.__localizationDefaults !== undefined &&
+      this.__localizationDefaults[key] !== undefined &&
+      this.__localizationDefaults[key][subkey] !== undefined
     ) {
-      local = this.localizationDefaults[key][subkey];
+      local = this.__localizationDefaults[key][subkey];
     }
     return local;
   }

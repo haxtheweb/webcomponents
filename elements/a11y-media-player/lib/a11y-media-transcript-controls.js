@@ -2,43 +2,28 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./a11y-media-button.js";
 
 /**
  * `a11y-media-transcript-controls`
- * `A controls for the transcript element.`
- *
- * @microcopy - language worth noting:
-```<a11y-media-transcript-controls 
-  accent-color$="[[accentColor]]"                 // Optional accent color highlighted cues, 
-                                                  // using the following materialize colors: 
-                                                  // red, pink, purple, deep-purple, indigo, blue, 
-                                                  // light blue, cyan, teal, green, light green, lime, 
-                                                  // yellow, amber, orange, deep-orange, and brown. 
-                                                  // Default is null. 
-  custom-microcopy$="[[customMicrocopy]]"         // Optional customization or text and icons
-  disable-print-button$="[[disablePrintButton]]"  // Disable the print button?
-  disable-scroll$="[[disableScroll]]"             // Disable autoscrolling transcript as video plays? 
-  disable-search$="[[disableSearch]]"             // Disable transcript search? 
-</a11y-media-transcript-controls>```
+ * A controls for the transcript element.
  *
  * @extends A11yMediaBehaviors
  * @customElement
- * @polymer
  */
 class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /**
        * target of the controls
        */
-      target: {
-        type: Object,
-        value: null
+      search: {
+        type: Object
       }
     };
   }
@@ -54,12 +39,17 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
+    this.search = this.shadowRoot.querySelector("#simplesearch");
+    this.dispatchEvent(
+      new CustomEvent("searchbar-added", { detail: this.search })
+    );
   }
 
   //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: flex;
           height: 44px;
@@ -95,20 +85,20 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
           --paper-input-container-input-color: var(--a11y-media-color);
           --simple-search-padding: 0 15px;
         }
-        :host #searchbar {
+        #searchbar {
           display: flex;
           align-items: stretch;
           justify-content: space-between;
           width: 100%;
         }
-        :host #searching {
+        #searching {
           flex-grow: 2;
         }
-        :host #autoscroll {
+        #autoscroll {
           padding-right: 8px;
         }
-        :host #scrolling,
-        :host #printing {
+        #scrolling,
+        #printing {
           display: flex;
           align-items: center;
         }
@@ -117,22 +107,24 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
             display: none;
           }
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div id="searchbar">
         <div id="searching">
-          <simple-search
-            id="simplesearch"
+          <simple-search id="simplesearch"
             controls="transcript"
-            disabled$="[[disableSearch]]"
-            hidden$="[[disableSearch]]"
             no-label-float
-            next-button-icon$="[[_getLocal('nextResult','icon')]]"
-            next-button-label$="[[_getLocal('nextResult','label')]]"
-            prev-button-icon$="[[_getLocal('prevResult','icon')]]"
-            prev-button-label$="[[_getLocal('prevResult','label')]]"
-            search-input-icon$="[[_getLocal('search','icon')]]"
-            search-input-label$="[[_getLocal('search','label')]]"
-            target="[[target]]"
+            next-button-icon="${this._getLocal('nextResult','icon')}"
+            next-button-label="${this._getLocal('nextResult','label')}"
+            prev-button-icon="${this._getLocal('prevResult','icon')}"
+            prev-button-label="${this._getLocal('prevResult','label')}"
+            search-input-icon="${this._getLocal('search','icon')}"
+            search-input-label="${this._getLocal('search','label')}"
+            ?disabled="${this.disableSearch}"
+            ?hidden="${this.disableSearch}"
           >
           </simple-search>
         </div>
@@ -140,32 +132,32 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
           <a11y-media-button
             id="scroll"
             controls="transcript"
-            icon="[[_getLocal('autoScroll','icon')]]"
-            label="[[_getLocal('autoScroll','label')]]"
-            on-tap="_handleScrollClick"
-            toggle$="[[!disableScroll]]"
+            icon="${this._getLocal('autoScroll','icon')}"
+            label="${this._getLocal('autoScroll','label')}"
+            @click="${this._handleScrollClick}"
+            ?toggle="${!this.disableScroll}"
           >
           </a11y-media-button>
         </div>
         <div
           id="printing"
-          hidden$="[[disablePrintButton]]"
-          disabled$="[[disablePrintButton]]"
+          ?hidden="${this.disablePrintButton}"
+          ?disabled="${this.disablePrintButton}"
         >
           <a11y-media-button
             id="download"
             controls="transcript"
-            icon$="[[_getLocal('download','icon')]]"
-            label="[[_getLocal('download','label')]]"
-            on-tap="_handleDownloadClick"
+            icon="${this._getLocal('download','icon')}"
+            label="${this._getLocal('download','label')}"
+            @click="${this._handleDownloadClick}"
           >
           </a11y-media-button>
           <a11y-media-button
             id="print"
             controls="transcript"
-            icon$="[[_getLocal('print','icon')]]"
-            label="[[_getLocal('print','label')]]"
-            on-tap="_handlePrintClick"
+            icon="${this._getLocal('print','icon')}"
+            label="${this._getLocal('print','label')}"
+            @click="${this._handlePrintClick}"
           >
           </a11y-media-button>
         </div>
@@ -174,22 +166,24 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * handles the transcript scroll button toggle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
-    root.search = root.shadowRoot.querySelector("#simplesearch");
-    root.dispatchEvent(
-      new CustomEvent("searchbar-added", { detail: root.search })
-    );
+  _handleScrollClick(e) {
+    this.dispatchEvent(new CustomEvent("toggle-scroll", { detail: this }));
   }
 
   /**
    * handles the transcript scroll button toggle
    */
-  _handleScrollClick(e) {
-    this.dispatchEvent(new CustomEvent("toggle-scroll", { detail: this }));
+  _handlePrintClick(e) {
+    this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
+  }
+
+  /**
+   * handles the transcript scroll button toggle
+   */
+  _handleDownloadClick(e) {
+    this.dispatchEvent(new CustomEvent("download-transcript", { detail: this }));
   }
 }
 window.customElements.define(

@@ -2,100 +2,81 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 
 export { A11yMediaHtml5 };
 /**
  * `a11y-media-html5`
- * `Loads HTML5 audio or video. `
- *
- * @microcopy - language worth noting:
-```<a11y-media-html5>                   
-    <source src="/path/to/video.mp4" type="video/mp4">
-    <source src="/path/to/video.webm" type="video/webm">
-    <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
-    <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
-    <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
-  </a11y-media-html5>```
+ * loads HTML5 audio or video. 
  *
  * @extends A11yMediaBehaviors
  * @customElement
- * @polymer
  */
 class A11yMediaHtml5 extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /*
        * id of element button controls
        */
       controls: {
-        type: String,
-        value: "video"
+        type: String
       },
       /**
        * crossorigin attribute for <video> and <audio> tags
        */
       crossorigin: {
-        type: String,
-        value: null
+        type: String
       },
       /*
        * Is it disabled?
        */
       disabled: {
-        type: Boolean,
-        value: null
+        type: Boolean
       },
       /*
        * iron-icon type
        */
       icon: {
-        type: String,
-        value: null
+        type: String
       },
       /*
        * button label
        */
       label: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * the language of the media (if different from user interface language)
        */
       mediaLang: {
-        name: "mediaLang",
-        type: String,
-        value: "en"
+        attribute: "media-lang",
+        type: String
       },
       /*
        * Is it paused?
        */
       paused: {
-        type: Boolean,
-        value: true
+        attribute: "paused",
+        type: Boolean
       },
       /*
        * the seekable range of the media
        */
       seekable: {
-        type: Object,
-        value: {
-          length: 0,
-          start: null,
-          stop: null
-        }
+        attribute: "seekable",
+        type: Object
       },
       /**
        * Source of optional thumbnail image
        */
       thumbnailSrc: {
-        name: "thumbnailSrc",
+        attribute: "thumbnail-src",
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
@@ -111,12 +92,27 @@ class A11yMediaHtml5 extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
+    this.controls = "video";
+    this.disabled = false;
+    this.icon = "";
+    this.label = "";
+    this.mediaLang = "en";
+    this.paused = true;
+    this.seekable = {
+      length: 0,
+      start: null,
+      stop: null
+    };
+    this.media =
+    this.shadowRoot.querySelector("#video") !== undefined && !this.audioOnly
+        ? this.shadowRoot.querySelector("#video")
+        : this.shadowRoot.querySelector("#audio");
   }
 
-  //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           height: 100%;
           display: flex;
@@ -130,73 +126,57 @@ class A11yMediaHtml5 extends A11yMediaBehaviors {
           width: 100%;
           max-width: 100%;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <video
         id="video"
-        aria-hidden$="[[isYoutube]]"
-        autoplay$="[[autoplay]]"
-        crossorigin$="[[crossorigin]]"
-        hidden$="[[audioOnly]]"
-        lang$="[[mediaLang]]"
-        on-loadedmetadata="_handleMetadata"
-        poster$="[[thumbnailSrc]]"
-        src$="[[manifest]]"
+        crossorigin="${ifDefined(this.crossorigin)}"
+        lang="${this.mediaLang}"
+        poster=${ifDefined(this.thumbnailSrc)}
         preload="metadata"
+        @loadedmetadata="${this._handleMetadata}"
+        ?autoplay="${this.autoplay}"
+        ?cc="${this.cc && !this.audioOnly}"
+        ?hidden="${this.audioOnly || this.isYoutube}"
       >
-        HTML5 video not supported
+        ${this._getLocal('video','notSupported')}
       </video>
       <audio
         id="audio"
-        autoplay$="[[autoplay]]"
-        crossorigin$="[[crossorigin]]"
-        hidden$="[[!audioOnly]]"
-        lang$="[[mediaLang]]"
-        on-loadedmetadata="_handleMetadata"
-        poster$="[[thumbnailSrc]]"
+        crossorigin="${ifDefined(this.crossorigin)}"
+        lang="${this.mediaLang}"
+        poster=${ifDefined(this.thumbnailSrc)}
         preload="metadata"
+        @loadedmetadata="${this._handleMetadata}"
+        ?autoplay="${this.autoplay}"
+        ?cc="${this.cc && this.audioOnly}"
+        ?hidden="${!this.audioOnly || this.isYoutube}"
       >
-        HTML5 audio not supported
+        ${this._getLocal('audio','notSupported')}
       </audio>
     `;
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    root.media =
-      root.shadowRoot.querySelector("#video") !== undefined && !root.audioOnly
-        ? root.shadowRoot.querySelector("#video")
-        : root.shadowRoot.querySelector("#audio");
   }
 
   /**
    * handles the loaded metadata
    */
   _handleMetadata() {
-    let root = this;
-    root.duration = root.media.duration > 0 ? root.media.duration : 0;
-    root.tracks = [];
-    root.volume = root.muted ? 0 : Math.max(this.volume, 10);
-    root.seekable = root.media.seekable;
-    root.setVolume(root.volume);
-    root.setMute(root.muted);
-    root.setCC(root.cc);
-    root.setLoop(root.loop);
-    root.setPlaybackRate(root.playbackRate);
+    this.duration = this.media.duration > 0 ? this.media.duration : 0;
+    this.tracks = [];
+    this.volume = this.muted ? 0 : Math.max(this.volume, 10);
+    this.seekable = this.media.seekable;
+    this.setVolume(this.volume);
+    this.setMute(this.muted);
+    this.setCC(this.cc);
+    this.setLoop(this.loop);
+    this.setPlaybackRate(this.playbackRate);
 
     // adjusts aspect ratio
-    root.aspectRatio = root.media.videoWidth / root.media.videoHeight;
-    root.dispatchEvent(new CustomEvent("media-loaded", { detail: root }));
+    this.aspectRatio = this.media.videoWidth / this.media.videoHeight;
+    this.dispatchEvent(new CustomEvent("media-loaded", { detail: this }));
   }
 
   /**
@@ -279,7 +259,6 @@ class A11yMediaHtml5 extends A11yMediaBehaviors {
    *
    */
   setCC(mode) {
-    this.media.cc = mode === true;
     if (this.selectedTrack !== undefined && mode == true) {
       this.selectedTrack.mode = "showing";
       this.shadowRoot.querySelector(

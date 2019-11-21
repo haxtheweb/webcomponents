@@ -2,16 +2,12 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 
-export { A11yMediaPlayButton };
 /**
  * `a11y-media-play-button`
- * `A giant play button that overlays the media in a11y-media-player.`
- *
- * @microcopy - language worth noting:
+ * a giant play button that overlays the media in a11y-media-player.
 ```
 Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
@@ -19,32 +15,35 @@ Custom styles:
  *
  * @extends A11yMediaBehaviors
  * @customElement
- * @polymer
  */
 class A11yMediaPlayButton extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /**
        * is button action to send as an event
        */
       action: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * is button disabled
        */
       disabled: {
-        type: Boolean,
-        value: false
+        type: Boolean
+      },
+      /**
+       * button label
+       */
+      label: {
+        type: String
       },
       /**
        * is media playing
        */
       playing: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
@@ -57,15 +56,10 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     return "a11y-media-play-button";
   }
 
-  //inherit styles from a11y-media-player or a11y-media-transcript
-  constructor() {
-    super();
-  }
-
-  //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           opacity: 1;
@@ -76,76 +70,84 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           opacity: 0;
         }
         :host,
-        :host #thumbnail,
-        :host #background,
-        :host #button {
+        #thumbnail,
+        #background,
+        #button {
           width: 100%;
           top: 0;
           left: 0;
           opacity: 1;
           transition: opacity 0.5s;
         }
-        :host #thumbnail,
-        :host #background,
-        :host #button {
+        #thumbnail,
+        #background,
+        #button {
           position: absolute;
           height: 100%;
           padding: 0;
           margin: 0;
           border: none;
         }
-        :host #thumbnail {
+        #thumbnail {
           height: auto;
           overflow: hidden;
         }
-        :host #button {
+        #button {
           overflow: hidden;
           background: transparent;
         }
-        :host #button:hover {
+        #button:hover {
           cursor: pointer;
         }
-        :host #background {
+        #background {
           opacity: 0.3;
           background: var(--a11y-play-button-bg-color);
         }
-        :host #button:focus #background,
-        :host #button:hover #background {
+        #button:focus #background,
+        #button:hover #background {
           background: var(--a11y-play-button-focus-bg-color);
           opacity: 0.1;
         }
-        :host #arrow {
+        #arrow {
           stroke: #ffffff;
           fill: #000000;
         }
-        :host #text {
+        #text {
           fill: #ffffff;
         }
-        :host .sr-only {
+        .sr-only {
           font-size: 0;
+        }
+        paper-tooltip:not(:defined) {
+          display: none;
         }
         @media print {
           :host(:not([thumbnail-src])),
-          :host #background,
-          :host #svg {
+          #background,
+          #svg {
             display: none;
           }
         }
-      </style>
+      `
+    ];
+  }
+
+  //render function 
+  render() {
+    return html`
       <button
         id="button"
-        aria-pressed$="[[playing]]"
-        aria-hidden$="[[disabled]]"
+        aria-pressed="${this.playing ? 'true' : 'false'}"
+        aria-hidden="${this.disabled ? 'true' : 'false'}"
         controls="video"
-        disabled$="[[disabled]]"
-        label="[[playPause.label]]"
-        on-click="_handleButtonClick"
+        label="${this.label}"
         tabindex="0"
-        title$="[[label]]"
+        @click="${this._handleButtonClick}"
+        ?disabled="${this.disabled}"
       >
         <svg
           id="svg"
-          aria-hidden
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 200"
           width="30%"
@@ -168,7 +170,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
               fill="#ffffff"
               font-size="30px"
             >
-              [[playPause.label]]
+              ${this.label}
             </text>
           </g>
         </svg>
@@ -176,20 +178,13 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     `;
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.shadowRoot.querySelector("#text").innerText = this.playLabel;
-  }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-    this.target = this.shadowRoot.querySelector("#button");
+  constructor(){
+    super();
+    this.action = null;
+    this.disabled = false;
+    this.label = "";
+    this.__playing = false;
+    import("@polymer/paper-tooltip/paper-tooltip.js");
   }
 
   /**
@@ -200,3 +195,4 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
   }
 }
 window.customElements.define(A11yMediaPlayButton.tag, A11yMediaPlayButton);
+export { A11yMediaPlayButton };

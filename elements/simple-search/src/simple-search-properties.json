@@ -92,7 +92,7 @@
     "type": "Array"
   },
   /**
-   * The container element that the navigation buttons control
+   * If set, search will be automated and restricted to this object.
    */
   "target": {
     "type": "Object"

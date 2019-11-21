@@ -101,8 +101,8 @@ ${cssResult}
 
           return `${litResult}
   // render function
-  static get template() {
-    return html\`
+  render() {
+    return html\`
 ${styleResult}
 ${html}\`;
   }

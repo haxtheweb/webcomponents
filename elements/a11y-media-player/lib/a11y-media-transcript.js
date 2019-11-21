@@ -2,118 +2,76 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "./a11y-media-transcript-cue.js";
-
-export { A11yMediaTranscript };
 /**
  * `a11y-media-transcript`
- * `A transcript element to pair with a11y-media-player.`
- *
- * @microcopy - language worth noting:
-```<a11y-media-transcript 
-  accent-color$="[[accentColor]]"                 // Optional accent color highlighted cues, 
-                                                  // using the following materialize colors: 
-                                                  // red, pink, purple, deep-purple, indigo, blue, 
-                                                  // light blue, cyan, teal, green, light green, lime, 
-                                                  // yellow, amber, orange, deep-orange, and brown. 
-                                                  // Default is null. 
-  custom-microcopy$="[[customMicrocopy]]"         // Optional customization or text and icons
-  disable-interactive$="[[disableInteractive]]"   // Disable interactive transcript cues?
-  disable-scroll$="[[disableScroll]]"             // Disable autoscrolling transcript as video plays? 
-  disable-search$="[[disableSearch]]"             // Disable transcript search? 
-  hide-timestamps$="[[hideTimestamps]]"           // Hide cue timestamps?
-  media-id=""                                     // The id of the player
-  selected-transcript$="[[selectedTranscript]]">  // The index of the current track
-</a11y-media-transcript>```
- *
+ * a transcript element to pair with a11y-media-player.
+ * 
  * @extends A11yMediaBehaviors
  * @customElement
- * @polymer
  */
 class A11yMediaTranscript extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties,
       /**
        * array of cues
        */
       activeCues: {
-        type: Array,
-        value: null,
-        reflectToAttribute: true,
-        notify: true
+        attribute: "active-cues",
+        type: Array
       },
       /**
        * disable interactive mode that makes the transcript clickable
        */
       disableInteractive: {
-        name: "disableInteractive",
-        type: Boolean,
-        value: false
+        attribute: "disable-interactive",
+        type: Boolean
       },
       /**
        * show cue's start and end time
        */
       hideTimestamps: {
-        name: "hideTimestamps",
-        type: Boolean,
-        value: false
+        attribute: "hide-timestamps",
+        type: Boolean
       },
       /**
        * Language
        */
       lang: {
+        attribute: "lang",
         type: String,
-        value: "en",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * the id of media
        */
       mediaId: {
-        type: String,
-        value: null
-      },
-      /**
-       * tabindex of cues
-       */
-      tabIndex: {
-        type: Number,
-        computed: "_getTabIndex(disableInteractive)"
-      },
-      /**
-       * tabindex of cues
-       */
-      role: {
-        type: Number,
-        computed: "_getRole(disableInteractive)"
+        attribute: "media-id",
+        type: String
       },
       /**
        * selected transcript track id
        */
       selectedTranscript: {
-        type: String,
-        value: "0"
+        attribute: "selected-transcript",
+        type: String
       },
       /**
        * the status of the transcript loading
        */
       status: {
-        type: String,
-        computed: "_stampLoadingStatus(disableSeek, __ready)"
-      },
-      __ready: {
-        type: Boolean,
-        value: false
+        attribute: "status",
+        type: String
       },
       /**
        * array of cues
        */
       tracks: {
-        type: Array,
-        value: null
+        type: Array
       }
     };
   }
@@ -127,9 +85,10 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   }
 
   //render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
@@ -138,20 +97,20 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
         :host([hidden]) {
           display: none !important;
         }
-        :host .transcript-from-track {
+        .transcript-from-track {
           display: none;
           width: calc(100% - 30px);
           padding: 0 15px 15px;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
         }
-        :host .transcript-from-track[active] {
+        .transcript-from-track[active] {
           display: table;
         }
-        :host .transcript-from-track[active][hideTimestamps] {
+        .transcript-from-track[active][hideTimestamps] {
           display: block;
         }
-        :host .sr-only:not(:focus) {
+        .sr-only:not(:focus) {
           position: absolute;
           left: -99999;
           top: 0;
@@ -167,57 +126,63 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
             border-top: 1px solid #aaa;
           }
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <a id="transcript-desc" class="sr-only" href="#bottom">
-        [[_getLocal('transcript','skip')]]
+        ${this._getLocal('transcript','skip')}
       </a>
-      <div
+      <div id="loading"
         aria-live="polite"
-        id="loading"
-        active$="[[_isLoading(selectedTranscript, tracks)]]"
-        class="transcript-from-track"
-      >
-        [[status]]
+        class="transcript-from-track">
+        ${this.status}
       </div>
-      <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
+      ${this.tracks.map(track => {
+        return html`
         <div
           aria-live="polite"
           id="track"
           class="transcript-from-track"
-          lang="{{track.language}}"
-          active$="[[_isActive(selectedTranscript,index)]]"
+          lang="${track.language}"
+          ?active="${this.selectedTranscript && parseInt(this.selectedTranscript) === parseInt(index)}"
         >
-          <template is="dom-repeat" items="{{track.cues}}" as="cue">
-            <a11y-media-transcript-cue
-              accent-color$="[[accentColor]]"
-              active-cues$="[[activeCues]]"
-              controls$="[[mediaId]]"
-              cue$="{{cue}}"
-              disabled$="[[disableCue]]"
-              disable-search$="[[disableSearch]]"
-              hide-timestamps$="[[hideTimestamps]]"
-              on-cue-seek="_handleCueSeek"
-              order$="{{cue.order}}"
-              role="button"
-              search="[[search]]"
-              tabindex="0"
-            >
-            </a11y-media-transcript-cue>
-          </template>
+          ${track.cues.map(cue => {
+            return html`
+              <a11y-media-transcript-cue
+                accent-color="${this.accentColor}"
+                controls="${this.mediaId}"
+                end="${cue.end}"
+                order="${cue.order}"
+                role="button"
+                start="${cue.start}"
+                tabindex="0"
+                text="${cue.text}"
+                @click="${e => this._handleCueSeek(cue)}"
+                ?active="${this.activeCues && this.activeCues.includes(cue.order.toString())}"
+                ?disabled="${this.disableInteractive || this.disableSeek}"
+                ?hide-timestamps="${this.hideTimestamps}"
+              >
+              </a11y-media-transcript-cue>
+            `
+          })}
         </div>
-      </template>
-      <template is="dom-repeat" items="{{tracks}}" as="track">
-        <div
-          id="download"
-          class="downloadable-track"
-          hidden
-          active$="[[_isActive(selectedTranscript,index)]]"
-        >
-          <template is="dom-repeat" items="{{track.cues}}" as="cue">
-            [[cue.start]] - [[cue.end]]: [[cue.text]]
-          </template>
-        </div>
-      </template>
+        `
+      })}
+      ${this.tracks.map(track => {
+        return html`
+          <div
+            id="download"
+            class="downloadable-track"
+            hidden
+            ?active="${this.selectedTranscript && parseInt(this.selectedTranscript) === parseInt(index)}"
+          >
+            ${track.cues.map(cue => `${cue.start} - ${cue.end}: ${cue.text}\n`)}
+          </div>
+        `
+      })}
       <div id="bottom" class="sr-only"></div>
     `;
   }
@@ -225,17 +190,33 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.activeCues = null;
+    this.disableInteractive = false;
+    this.hideTimestamps = false;
+    this.lang = "en";
+    this.mediaId = null;
+    this.selectedTranscript = "0";
+    this.tracks = [];
+    this.status = this._getLocal("transcript", "loading");
+    this.tabindex = 0;
     this.dispatchEvent(new CustomEvent("transcript-ready", { detail: this }));
   }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-    this.__ready = true;
+    
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === 'disableInteractive') this.tabindex = this._getTabIndex(this.disableInteractive);
+      if(
+        propName === 'localization' 
+        || propName === 'tracks' 
+        || propName === 'disableSeek'
+      ) this.status = this.tracks.length > 0 
+          ? "" 
+          : this.disableSeek 
+            ? this._getLocal("youTubeTranscript", "loading")
+            : this._getLocal("transcript", "loading");
+    });
   }
 
   /**
@@ -244,8 +225,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    * @param {string} the title of the media
    */
   download(mediaTitle) {
-    let root = this,
-      a = document.createElement("a"),
+    let a = document.createElement("a"),
       title =
         mediaTitle !== null && mediaTitle !== ""
           ? mediaTitle
@@ -254,7 +234,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
         mediaTitle !== null && mediaTitle !== ""
           ? mediaTitle.replace(/[^\w\d]/g, "")
           : "Transcript",
-      track = root.shadowRoot.querySelector("#download[active]"),
+      track = this.shadowRoot.getElementById("download[active]"),
       data = track !== null ? track.innerText : "";
     a.setAttribute(
       "href",
@@ -273,7 +253,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    */
   print(mediaTitle) {
     let root = this,
-      track = root.shadowRoot.querySelector("#track[active]").cloneNode(true),
+      track = this.shadowRoot.getElementById("track[active]").cloneNode(true),
       css = html`
         <style>
           a11y-media-transcript-cue {
@@ -334,36 +314,34 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    * @param {array} an array of cues
    */
   setActiveCues(cues) {
-    let root = this,
-      offset =
-        root.shadowRoot.querySelector("#track") !== null &&
-        root.shadowRoot.querySelector("#track") !== undefined
-          ? root.shadowRoot.querySelector("#track").offsetTop
+    let track = this.shadowRoot.getElementById("track"),
+      offset = track !== null && track !== undefined
+          ? track.offsetTop
           : 0,
-      cue = root.shadowRoot.querySelector(
-        "#track a11y-media-transcript-cue[active]"
+      cue = this.shadowRoot.getElementById(
+        "track a11y-media-transcript-cue[active]"
       );
-    root.set("activeCues", cues.slice(0));
+      this.set("activeCues", cues.slice(0));
     if (
-      !root.disableScroll &&
+      !this.disableScroll &&
       cue !== undefined &&
       cue !== null &&
-      root.activeCues !== undefined &&
-      cue.getAttribute("order") !== root.activeCues[0]
+      this.activeCues !== undefined &&
+      cue.getAttribute("order") !== this.activeCues[0]
     ) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
-      let scrollingTo = function(element, to, duration) {
+      let scrollingTo = (element, to, duration) => {
         if (duration <= 0) return;
         var difference = to - element.scrollTop;
         var perTick = (difference / duration) * 10;
 
-        setTimeout(function() {
+        setTimeout(() => {
           element.scrollTop = element.scrollTop + perTick;
           if (element.scrollTop === to) return;
           scrollingTo(element, to, duration - 10);
         }, 10);
       };
-      scrollingTo(root, cue.offsetTop - offset, 250);
+      scrollingTo(this, cue.offsetTop - offset, 250);
     }
   }
 
@@ -386,7 +364,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     this.set("tracks", tracks.slice(0));
     this.notifyPath("tracks");
     if (this.tracks !== undefined && this.tracks.length > 0)
-      this.shadowRoot.querySelector("#tracks").render();
+      this.shadowRoot.getElementById("tracks").render();
   }
 
   /**
@@ -395,8 +373,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    * @param {boolean} Hide transcript? `true` is hidden, `false` is visible, and `null` toggles based on current state.
    */
   toggleHidden(mode) {
-    let root = this,
-      inner = document.getElementById("inner"),
+    let inner = document.getElementById("inner"),
       active =
         inner !== null && inner !== undefined
           ? inner.querySelector("a11y-media-transcript-cue[active]")
@@ -420,37 +397,14 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   }
 
   /**
-   * gets the role of cues based on whether or not interactive cues are disabled
-   *
-   * @param {boolean} Is the interactive transcript mode disabled?
-   * @returns {string} the role of the cue, `button` or `null`
-   */
-  _getRole(disableInteractive) {
-    return disableInteractive ? null : "button";
-  }
-
-  /**
    * forwards the listener for transcript cue click to seek accordingly
    */
-  _handleCueSeek(e) {
+  _handleCueSeek(cue) {
     if (!this.disableInteractive) {
       this.dispatchEvent(
-        new CustomEvent("transcript-seek", { detail: e.detail })
+        new CustomEvent("transcript-seek", { detail: cue.seek })
       );
     }
-  }
-
-  /**
-   * determines if this is the currently selected transcript to show or hide
-   *
-   * @param {integer} the index of the transcript
-   */
-  _isActive(selectedTranscript, index) {
-    return (
-      selectedTranscript !== undefined &&
-      selectedTranscript !== null &&
-      parseInt(selectedTranscript) === parseInt(index)
-    );
   }
 
   /**
@@ -467,15 +421,6 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
       tracks.length === 0
     );
   }
-
-  _stampLoadingStatus(disableSeek, __ready) {
-    if (__ready) {
-      this.shadowRoot.querySelector("#loading").innerHTML =
-        disableSeek === false
-          ? this._getLocal("transcript", "label")
-          : this._getLocal("youTubeTranscript", "label");
-      return this.shadowRoot.querySelector("#loading").innerHTML;
-    }
-  }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);
+export { A11yMediaTranscript };

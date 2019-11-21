@@ -2,17 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/paper-slider/paper-slider.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./a11y-media-button.js";
 
 export { A11yMediaControls };
@@ -30,104 +23,102 @@ class A11yMediaControls extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      ...super.properties, 
       /**
        * Use compact controls?
        */
       compactControls: {
-        name: "compactControls",
-        type: Boolean,
-        computed: "_getCompactControls(responsiveSize)"
+        attribute: "compact-controls",
+        type: Boolean
       },
       /**
        * Is the player a fixed height (iframe mode) so that theure is no transcript toggle?
        */
       fixedHeight: {
-        type: Boolean,
-        value: false
+        attribute: "fixed-height",
+        type: Boolean
       },
       /**
        * Is fullscreen mode?
        */
       fullscreen: {
-        name: "fullscreen",
-        type: Boolean,
-        value: false
+        attribute: "fullscreen",
+        type: Boolean
       },
       /**
        * show the FullscreenButton?
        */
       fullscreenButton: {
-        name: "fullscreenButton",
-        type: Boolean,
-        value: false,
-        nofity: true
+        attribute: "fullscreen-button",
+        type: Boolean
       },
 
       /**
        * Does the player have tracks?
        */
       hasCaptions: {
-        name: "hasCaptions",
-        type: Boolean,
-        value: false,
-        notify: true
+        attribute: "has-captions",
+        type: Boolean
       },
 
       /**
        * initially hide the transcript?
        */
       hideTranscript: {
-        name: "hideTranscript",
-        type: Boolean,
-        value: false
+        attribute: "hide-transcript",
+        type: Boolean
       },
 
       /**
        * hide the transcript toggle menu item?
        */
       hideTranscriptButton: {
-        type: Boolean,
-        computed: "_hideTranscriptButton(noTranscriptToggle,compactControls)"
+        attribute: "hide-transcript-button",
+        type: Boolean
       },
 
       /**
        * url for deeplinking
        */
       linkUrl: {
-        type: String,
-        value: "test"
+        attribute: "link-url",
+        type: String
       },
 
       /**
        * mute/unmute button
        */
       muteUnmute: {
-        name: "muteUnmute",
+        attribute: "mute-unmute",
         type: Object
       },
       /**
        * hide the print transcript feature available?
        */
       noPrinting: {
+        attribute: "no-printing",
         type: Boolean,
-        computed: "_noPrinting(standAlone,fixedHeight)"
       },
       /**
        * Is the transctipt toggle feature available?
        */
       noTranscriptToggle: {
+        attribute: "no-transcript-toggle",
         type: Boolean,
-        computed: "_noTranscriptToggle(standAlone,fixedHeight,hasTranscript)"
       },
       /**
        * Size of the a11y media element for responsive styling
        */
       responsiveSize: {
-        name: "responsiveSize",
+        attribute: "responsive-size",
         type: String,
-        notify: true,
-        value: "xs",
-        reflectToAttribute: true
+        reflect: true
+      }, 
+      /**
+       * show volume slider 
+       */
+      __volumeSlider: {
+        type: Boolean
       }
     };
   }
@@ -142,12 +133,59 @@ class A11yMediaControls extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player
   constructor() {
     super();
+    this.compactControls = true;
+    this.fixedHeight = false;
+    this.fullscreen = false;
+    this.fullscreenButton = false;
+    this.hasCaptions = false;
+    this.hideTranscript = false;
+    this.hideTranscriptButton = true;
+    this.linkUrl = "test";
+    this.muteUnmute = {
+      "action": "",
+      "icon": "",
+      "label": ""
+    }
+    this.noPrinting = true;
+    this.noTranscriptToggle = true;
+    this.responsiveSize = "xs";
+    this.status = this._getLocal("loading", "label");
+    this.tracks = [];
+    this.__volumeSlider = false;
+    this._addResponsiveUtility({
+      element: this,
+      attribute: "responsive-size",
+      relativeToParent: true,
+      sm: 300,
+      md: 600,
+      lg: 900,
+      xl: 1200
+    });
+    
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
+    
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === "localization") this.status = this._getLocal("loading", "label");
+      if(propName === "responsiveSize") this.compactControls = ["xs","sm"].includes(this.responsiveSize);
+      if(["noTranscriptToggle","compactControls"].includes(propName)) this.hideTranscriptButton = this.noTranscriptToggle || this.compactControls;
+      if(["standAlone","fixedHeight"].includes(propName)) this.noPrinting = this.standAlone || !this.fixedHeight;
+      if(["standAlone","fixedHeight","hasTranscript"].includes(propName)) this.noTranscriptToggle = this.standAlone || this.fixedHeight || !this.hasTranscript;
+    });
   }
 
-  //render function
-  static get template() {
-    return html`
-      <style is="custom-style" include="simple-colors-shared-styles-polymer">
+
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           width: 100%;
@@ -190,69 +228,65 @@ class A11yMediaControls extends A11yMediaBehaviors {
           right: 0;
           top: -2px;
         }
-        :host paper-menu-button,
-        :host dropdown-select {
+        paper-menu-button,
+        dropdown-select {
           padding: 0;
         }
-        :host paper-icon-button {
+        paper-icon-button {
           background-color: var(--a11y-media-settings-menu-bg-color);
           color: var(--a11y-media-settings-menu-color);
         }
-        :host paper-icon-button:active,
-        :host paper-icon-button:focus,
-        :host paper-icon-button:hover {
+        paper-icon-button:active,
+        paper-icon-button:focus,
+        paper-icon-button:hover {
           background-color: var(--a11y-media-settings-menu-bg-color);
           color: var(--a11y-media-settings-menu-color);
         }
-        :host paper-item {
+        paper-item {
           min-height: 40;
         }
-        :host paper-slider {
-          @apply --a11y-media-slider;
-        }
-        :host .play-status,
-        :host paper-icon-button {
+        .play-status,
+        paper-icon-button {
           border: none;
           position: relative;
         }
-        :host .play-status {
+        .play-status {
           font-size: 85%;
         }
-        :host .play-status.control-bar {
+        .play-status.control-bar {
           padding: 8px 13px 8px;
         }
         :host([hide-play-status]) .play-status {
           display: none;
         }
-        :host .setting {
+        .setting {
           display: flex;
           justify-content: space-between;
           align-items: center;
           width: 100%;
         }
-        :host .setting-text {
+        .setting-text {
           min-width: 125px;
         }
-        :host .setting-control {
+        .setting-control {
           max-width: 100px;
         }
-        :host .setting-slider {
+        .setting-slider {
           width: 130px;
           margin-left: -15px;
           margin-right: -15px;
-          @apply --a11y-media-slider;
         }
-        :host #speed {
+        #speed {
           --paper-slider-knob-start-color: var(--a11y-media-accent-color);
           --paper-slider-knob-start-border-color: var(--a11y-media-accent-color);
           --paper-slider-knob-end-color: var(--a11y-media-accent-color);
           --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
         }
-        :host #showvolume {
+        #showvolume {
           display: inline;
           position: relative;
         }
-        :host #volume {
+        #volume {
           z-index: 1;
           position: absolute;
           left: 30px;
@@ -266,13 +300,13 @@ class A11yMediaControls extends A11yMediaBehaviors {
           --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
 
         }
-        :host #volume:active,
-        :host #volume:focus,
-        :host #volume:hover,
-        :host #volume.focus,
-        :host #showvolume:active #volume,
-        :host #showvolume:focus #volume,
-        :host #showvolume:hover #volume {
+        #volume:active,
+        #volume:focus,
+        #volume:hover,
+        #volume.focus,
+        #showvolume:active #volume,
+        #showvolume:focus #volume,
+        #showvolume:hover #volume {
           overflow: visible;
           width: 100px;
         }
@@ -283,10 +317,10 @@ class A11yMediaControls extends A11yMediaBehaviors {
         :host([responsive-size="xs"]) #showvolume:active #volume,
         :host([responsive-size="xs"]) #showvolume:focus #volume,
         :host([responsive-size="xs"]) #showvolume:hover #volume {
-          top: -35px
+          top: -35px;
           border-radius: 4px;
         }
-        :host .sr-only {
+        .sr-only {
           position: absolute;
           left: -99999;
           top: 0;
@@ -294,177 +328,188 @@ class A11yMediaControls extends A11yMediaBehaviors {
           width: 0;
           overflow: hidden;
         }
-      </style>
+        paper-tooltip:not(:defined) {
+          display: none;
+        }
+      `
+    ];
+  }
+  render() {
+    return html`
       <div id="controls-left">
         <a11y-media-button
-          action$="[[playPause.action]]"
-          icon$="[[playPause.icon]]"
-          label$="[[playPause.label]]"
-          on-click="_onButtonTap"
+          action="${this.playPause.action}"
+          icon="${this.playPause.icon}"
+          label="${this.playPause.label}"
+          @click="${this._onButtonClick}"
         ></a11y-media-button>
         <a11y-media-button
           action="rewind"
-          disabled$="[[disableSeek]]"
-          hidden$="[[compactControls]]"
-          icon$="[[_getLocal('rewind','icon')]]"
-          label$="[[_getLocal('rewind','label')]]"
-          on-click="_onButtonTap"
+          icon="${this._getLocal('rewind','icon')}"
+          label="${this._getLocal('rewind','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${this.disableSeek}"
+          ?hidden="${this.compactControls}"
         ></a11y-media-button>
         <a11y-media-button
           action="forward"
-          disabled$="[[disableSeek]]"
-          hidden$="[[compactControls]]"
-          icon$="[[_getLocal('forward','icon')]]"
-          label$="[[_getLocal('forward','label')]]"
-          on-click="_onButtonTap"
+          icon="${this._getLocal('forward','icon')}"
+          label="${this._getLocal('forward','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${this.disableSeek}"
+          ?hidden="${this.compactControls}"
         ></a11y-media-button>
         <a11y-media-button
           action="restart"
-          disabled$="[[disableSeek]]"
-          hidden$="[[compactControls]]"
-          icon$="[[_getLocal('restart','icon')]]"
-          label$="[[_getLocal('restart','label')]]"
-          on-click="_onButtonTap"
+          icon="${this._getLocal('restart','icon')}"
+          label="${this._getLocal('restart','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${this.disableSeek}"
+          ?hidden="${this.compactControls}"
         ></a11y-media-button>
         <div id="showvolume">
           <a11y-media-button
             id="mute"
-            action$="[[muteUnmute.action]]"
-            icon$="[[muteUnmute.icon]]"
-            label$="[[muteUnmute.label]]"
-            on-click="_onButtonTap"
+            action="${this.muteUnmute.action}"
+            icon="${this.muteUnmute.icon}"
+            label="${this.muteUnmute.label}"
+            @click="${this._onButtonClick}"
+            @focus="${(e) => this.__volumeSlider === true}"
+            @blur="${(e) => this.__volumeSlider === false}"
           ></a11y-media-button>
           <paper-slider
             id="volume"
             aria-labelledby="volume-slider-label"
-            label$="[[volumeLabel]]"
+            label="${this.volumeLabel}"
             min="0"
             max="100"
-            on-change="_onSettingsChanged"
             pin
             step="10"
-            value$="[[volume]]"
+            @change="${this._onSettingsChanged}"
+            .value="${this.volume}"
+            ?focus="${this.__volumeSlider}"
           ></paper-slider>
         </div>
         <span aria-live="polite" class="play-status control-bar">
-          <span id="statbar"></span>
+          <span id="statbar">${this.status}</span>
         </span>
       </div>
       <div id="controls-right">
         <a11y-media-button
           action="captions"
-          disabled$="[[!hasCaptions]]"
-          hidden$="[[!hasCaptions]]"
-          icon$="[[_getLocal('captions','icon')]]"
-          label$="[[_getLocal('captions','label')]]"
-          on-click="_onButtonTap"
-          toggle$="[[cc]]"
+          icon="${this._getLocal('captions','icon')}"
+          label="${this._getLocal('captions','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${!this.hasCaptions}"
+          ?hidden="${!this.hasCaptions}"
+          ?toggle="${this.cc}"
         >
         </a11y-media-button>
         <a11y-media-button
           action="transcript"
           controls="transcript"
-          disabled$="[[hideTranscriptButton]]"
-          hidden$="[[hideTranscriptButton]]"
-          icon$="[[_getLocal('transcript','icon')]]"
-          label$="[[_getLocal('transcript','label')]]"
-          on-click="_onButtonTap"
-          toggle$="[[hideTranscript]]"
+          icon="${this._getLocal('transcript','icon')}"
+          label="${this._getLocal('transcript','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${this.hideTranscriptButton}"
+          ?hidden="${this.hideTranscriptButton}"
+          ?toggle="${this.hideTranscript}"
         >
         </a11y-media-button>
         <a11y-media-button
           action="linkable"
-          disabled$="[[!linkable]]"
-          hidden$="[[!linkable]]"
-          icon="[[_getLocal('copyLink','icon')]]"
-          label="[[_getLocal('copyLink','label')]]"
-          on-click="_onButtonTap"
+          icon="${this._getLocal('copyLink','icon')}"
+          label="${this._getLocal('copyLink','label')}"
+          @click="${this._onButtonClick}"
+          ?disabled="${!this.linkable}"
+          ?hidden="${!this.linkable}"
         ></a11y-media-button>
         <a11y-media-button
           action="print"
-          disabled$="[[noPrinting]]"
-          hidden$="[[noPrinting]]"
-          icon$="[[_getLocal('print','icon')]]"
-          label="[[_getLocal('print','label')]]"
-          on-click="_handlePrintClick"
+          icon="${this._getLocal('print','icon')}"
+          label="${this._getLocal('print','label')}"
+          @click="${this._handlePrintClick}"
+          ?disabled="${this.noPrinting}"
+          ?hidden="${this.noPrinting}"
         >
         </a11y-media-button>
         <a11y-media-button
           action="download"
-          disabled$="[[noPrinting]]"
-          hidden$="[[noPrinting]]"
-          icon$="[[_getLocal('download','icon')]]"
-          label="[[_getLocal('download','label')]]"
-          on-click="_handleDownloadClick"
+          icon="${this._getLocal('download','icon')}"
+          label="${this._getLocal('download','label')}"
+          @click="${this._handleDownloadClick}"
+          ?disabled="${this.noPrinting}"
+          ?hidden="${this.noPrinting}"
         >
         </a11y-media-button>
-        <template is="dom-if" if="[[fullscreenButton]]">
-          <a11y-media-button
-            action="fullscreen"
-            hidden$="[[audioNoThumb]]"
-            icon$="[[_getLocal('fullscreen','icon')]]"
-            label$="[[_getLocal('fullscreen','label')]]"
-            on-click="_onButtonTap"
-            toggle$="[[fullscreen]]"
-            step="1"
-          >
-          </a11y-media-button>
-        </template>
+        <a11y-media-button
+          action="fullscreen"
+          step="1"
+          icon="${this._getLocal('fullscreen','icon')}"
+          label="${this._getLocal('fullscreen','label')}"
+          @click="${this._onButtonClick}"
+          ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
+          ?disabled="${!this.fullscreenButton}"
+          ?toggle="${this.fullscreen}"
+        >
+        </a11y-media-button>
         <paper-menu-button
           id="settings"
           allow-outside-scroll
           horizontal-align="right"
           ignore-select
-          on-change="_onSettingsChanged"
-          on-iron-activate="_handleSettingsActivate"
-          on-iron-select="_handleSettingsSelect"
           vertical-align="bottom"
+          @change="${this._onSettingsChanged}"
+          @iron-activate="${this._handleSettingsActivate}"
+          @iron-select="${this._handleSettingsSelect}"
         >
           <paper-icon-button
             action="settings"
-            alt$="[[_getLocal('settings','label')]]"
-            icon$="[[_getLocal('settings','icon')]]"
+            alt="${this._getLocal('settings','label')}"
+            icon="${this._getLocal('settings','icon')}"
             slot="dropdown-trigger"
           >
           </paper-icon-button>
           <paper-listbox id="settingslist" slot="dropdown-content">
-            <paper-item hidden$="[[!hasCaptions]]">
+            <paper-item ?hidden="${!this.hasCaptions}">
               <div class="setting">
                 <div class="setting-text">
-                  [[_getLocal('captions','label')]]
+                  ${this._getLocal('captions','label')}
                 </div>
                 <div class="setting-control">
                   <dropdown-select
                     id="tracks"
-                    disabled$="[[!hasCaptions]]"
                     no-label-float
-                    on-change="_handleTrackChange"
                     value
+                    @change="${this._handleTrackChange}"
+                    ?disabled="${!this.hasCaptions}"
                   >
-                    <paper-item value=""
-                      >[[_getLocal('captions','off')]]</paper-item
+                    <paper-item value
+                      >${this._getLocal('captions','off')}</paper-item
                     >
-                    <template is="dom-repeat" items="{{tracks}}" as="option">
-                      <paper-item value$="{{option.value}}"
-                        >{{option.text}}</paper-item
-                      >
-                    </template>
+                    ${this.tracks.map(option => {
+                      return html`
+                        <paper-item .value="${option.value}">
+                          ${option.text}
+                        </paper-item>
+                      `
+                    })}
                   </dropdown-select>
                 </div>
               </div>
             </paper-item>
-            <paper-item hidden$="[[noTranscriptToggle]]">
+            <paper-item ?hidden="${this.noTranscriptToggle}">
               <div class="setting">
                 <div id="transcript-label" class="setting-text">
-                  [[_getLocal('transcript','label')]]
+                  ${this._getLocal('transcript','label')}
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
                     id="transcript-toggle"
                     aria-labelledby="transcript-label"
-                    checked$="[[!hideTranscript]]"
                     controls="transcript"
-                    disabled$="[[noTranscriptToggle]]"
+                    ?checked="${!this.hideTranscript}"
+                    ?disabled="${this.noTranscriptToggle}"
                   >
                   </paper-toggle-button>
                 </div>
@@ -473,13 +518,13 @@ class A11yMediaControls extends A11yMediaBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="loop-label" class="setting-text">
-                  [[_getLocal('loop','label')]]
+                  ${this._getLocal('loop','label')}
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
                     id="loop"
                     aria-labelledby="loop-label"
-                    checked$="[[loop]]"
+                    ?checked="${this.loop}"
                   ></paper-toggle-button>
                 </div>
               </div>
@@ -487,7 +532,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="speed-label" class="setting-text">
-                  [[_getLocal('speed','label')]]
+                  ${this._getLocal('speed','label')}
                 </div>
                 <div class="setting-control">
                   <paper-slider
@@ -499,7 +544,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
                     pin
                     step="0.5"
                     tab-index="-1"
-                    value$="[[playbackRate]]"
+                    .value="${this.playbackRate}"
                   ></paper-slider>
                 </div>
               </div>
@@ -507,58 +552,10 @@ class A11yMediaControls extends A11yMediaBehaviors {
           </paper-listbox>
         </paper-menu-button>
         <paper-tooltip for="settings">
-          [[_getLocal('settings','label')]]
+          ${this._getLocal('settings','label')}
         </paper-tooltip>
       </div>
     `;
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
-    root._addResponsiveUtility({
-      element: root,
-      attribute: "responsive-size",
-      relativeToParent: true,
-      sm: 300,
-      md: 600,
-      lg: 900,
-      xl: 1200
-    });
-  }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    // when the mute button is in focus,
-    // add focus class to make the volume slider appear
-    root.shadowRoot
-      .querySelector("#mute")
-      .shadowRoot.querySelector("#button").onfocus = function() {
-      root.shadowRoot.querySelector("#volume").classList.add("focus");
-    };
-    // when the mute button is blurred,
-    // remove focus class to make the volume slider disappear
-    root.shadowRoot
-      .querySelector("#mute")
-      .shadowRoot.querySelector("#button").onblur = function() {
-      root.shadowRoot.querySelector("#volume").classList.remove("focus");
-    };
-  }
-
-  /**
-   * updates the play status of the media
-   *
-   * @param {string} the status, eg., `Loading...` or `00:02:01/00:11:43`
-   */
-  setStatus(status) {
-    this.shadowRoot.querySelector("#statbar").innerText = status;
   }
 
   /**
@@ -572,40 +569,26 @@ class A11yMediaControls extends A11yMediaBehaviors {
   }
 
   /**
-   * returns true if player is xs or sm and needs to use compact controls
-   *
-   * @param {string} the size of the player: `xs`,`sm`,`md`,`lg`, or `xl`
-   * @returns {boolean} Should the player use compact controls?
-   */
-  _getCompactControls(responsiveSize) {
-    return (
-      this._testAttribute(responsiveSize, "xs") ||
-      this._testAttribute(responsiveSize, "sm")
-    );
-  }
-
-  /**
    * handles when the tracks dropdown selection changes
    * (when the tracks dropdown-select changes, update track and CC button)
    */
   _handleTrackChange(e) {
-    let root = this;
-    if (root.__selectedTrack !== null) {
+    if (this.__selectedTrack !== null) {
       if (e.detail.value !== "") {
-        root.dispatchEvent(
+        this.dispatchEvent(
           new CustomEvent("select-track", {
-            detail: { control: root, value: e.detail.value }
+            detail: { control: this, value: e.detail.value }
           })
         );
-        root.dispatchEvent(
+        this.dispatchEvent(
           new CustomEvent("toggle-cc", {
-            detail: { control: root, value: true }
+            detail: { control: this, value: true }
           })
         );
       } else {
-        root.dispatchEvent(
+        this.dispatchEvent(
           new CustomEvent("toggle-cc", {
-            detail: { control: root, value: false }
+            detail: { control: this, value: false }
           })
         );
       }
@@ -613,23 +596,9 @@ class A11yMediaControls extends A11yMediaBehaviors {
   }
 
   /**
-   * prevent settings menu from being closed before action is taken
-   */
-  _handleSettingsSelect(e) {
-    //e.preventDefault();
-  }
-
-  /**
-   * prevent settings menu from being closed before action is taken
-   */
-  _handleSettingsActivate(e) {
-    //if (e.target == this.shadowRoot.querySelector('#settingslist')) e.preventDefault();
-  }
-
-  /**
    * determine which button was clicked and act accordingly
    */
-  _onButtonTap(e) {
+  _onButtonClick(e) {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
@@ -644,39 +613,6 @@ class A11yMediaControls extends A11yMediaBehaviors {
       new CustomEvent("controls-change", { detail: e.target })
     );
     this.shadowRoot.querySelector("#settings").close();
-  }
-
-  /**
-   * Determines if the transcript button should be hidden.
-   *
-   * @param {boolean} Is this feature available?
-   * @param {boolean} Is the player too small to fit the extra controls?
-   * @returns {boolean} Show the transcript button?
-   */
-  _hideTranscriptButton(noTranscriptToggle, compactControls) {
-    return noTranscriptToggle || compactControls;
-  }
-
-  /**
-   * Determines if the print transcript feature is available from the controls.
-   *
-   * @param {boolean} Is the player in stand-alone mode?
-   * @param {boolean} Is the player in fixed-height/iframe mode?
-   * @returns {boolean} Should print transcript be unavailable from controls?
-   */
-  _noPrinting(standAlone, fixedHeight) {
-    return standAlone || !fixedHeight;
-  }
-
-  /**
-   * Determines if the transcript toggle feature is available.
-   *
-   * @param {boolean} Is the player in stand-alone mode?
-   * @param {boolean} Is the player in fixed-height/iframe mode?
-   * @returns {boolean} Should transcript toggle be unavailable?
-   */
-  _noTranscriptToggle(standAlone, fixedHeight, hasTranscript) {
-    return standAlone || fixedHeight || !hasTranscript;
   }
 }
 window.customElements.define(A11yMediaControls.tag, A11yMediaControls);
