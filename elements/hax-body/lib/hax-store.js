@@ -2072,7 +2072,7 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           if (newNode.set) {
             newNode.set(attributeName, properties[property]);
           } else {
-            newNode[attributeName] = properties[property];
+            newNode[attributeName] = [...properties[property]];
           }
         }
       } else if (
@@ -2090,7 +2090,7 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           if (newNode.set) {
             newNode.set(attributeName, properties[property]);
           } else {
-            newNode[attributeName] = properties[property];
+            newNode[attributeName] = { ...properties[property] };
           }
         }
       } else {

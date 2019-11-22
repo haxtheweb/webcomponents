@@ -1,7 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-media-query/iron-media-query.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-preview`
  * `An element that can generate a form`
@@ -9,32 +13,13 @@ import "@polymer/iron-media-query/iron-media-query.js";
  *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form
  *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
  */
-class HaxPreview extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-tabs/paper-tabs.js");
-    import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
-    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@polymer/paper-input/paper-textarea.js");
-    import("app-datepicker/app-datepicker.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
-    import("@lrnwebcomponents/simple-picker/simple-picker.js");
-    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxPreview extends LitElement {
+  /**
+   * LitElement render styles
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           background-color: #ffffff;
@@ -61,6 +46,8 @@ class HaxPreview extends PolymerElement {
         }
         eco-json-schema-object {
           width: 50%;
+          --eco-json-field-margin: var(--hax-field-margin, 0 0 4px);
+          color: var(--hax-text-color);
         }
 
         .vaadin-split-layout-panel {
@@ -70,11 +57,6 @@ class HaxPreview extends PolymerElement {
           margin: 0;
           height: 100%;
           overflow: hidden;
-        }
-        #form {
-          --eco-json-schema-object-form: {
-            display: block !important;
-          }
         }
         #preview {
           padding: 16px;
@@ -120,7 +102,6 @@ class HaxPreview extends PolymerElement {
             left: -9999px;
           }
         }
-
         #modetabs {
           height: 64px;
           padding: 0px;
@@ -133,18 +114,11 @@ class HaxPreview extends PolymerElement {
           display: block;
           justify-content: space-evenly;
           --paper-tabs-selection-bar-color: var(--hax-color-accent1);
-          --paper-tabs: {
-            background: transparent;
-          }
         }
-
         #modetabs paper-tab {
           display: inline-flex;
           height: 100%;
           --paper-tab-ink: var(--hax-color-accent1);
-          --paper-tab: {
-            font-size: 16px;
-          }
         }
         #modetabs paper-tab paper-button {
           min-width: unset;
@@ -161,17 +135,6 @@ class HaxPreview extends PolymerElement {
           margin: 16px 0 0 0;
           text-align: center;
           box-sizing: content-box;
-        }
-        eco-json-schema-object {
-          --eco-json-field-margin: var(--hax-field-margin, 0 0 4px);
-          color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
         }
         .preview-buttons paper-button {
           min-width: unset;
@@ -202,24 +165,103 @@ class HaxPreview extends PolymerElement {
           height: 50%;
           max-height: 60%;
         }
-      </style>
-      <vaadin-split-layout class="panel-wrapper" orientation="[[orientation]]">
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.responsiveWidth = "800px";
+    this.orientation = "horizontal";
+    this.orientationDirection = "width";
+    this.previewNode = {};
+    this.value = {};
+    this.modeTab = "configure";
+    this.editTitle = "Update";
+    this.schema = {
+      schema: {}
+    };
+    this.activeHaxElement = {};
+    this.advancedForm = false;
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-tabs/paper-tabs.js");
+    import("@polymer/paper-tabs/paper-tab.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/code-editor/code-editor.js");
+    import("@polymer/paper-input/paper-textarea.js");
+    import("app-datepicker/app-datepicker.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
+    import("@lrnwebcomponents/simple-picker/simple-picker.js");
+    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
+    setTimeout(() => {
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+    }, 0);
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          #form {
+            --eco-json-schema-object-form: {
+              display: block !important;
+            }
+          }
+          #modetabs {
+            --paper-tabs: {
+              background: transparent;
+            }
+          }
+          #modetabs paper-tab {
+            --paper-tab: {
+              font-size: 16px;
+            }
+          }
+          eco-json-schema-object {
+            --eco-json-schema-object-form : {
+              -ms-flex: unset;
+              -webkit-flex: unset;
+              flex: unset;
+              -webkit-flex-basis: unset;
+              flex-basis: unset;
+            }
+          }
+        </style>
+      </custom-style>
+      <vaadin-split-layout
+        class="panel-wrapper"
+        orientation="${this.orientation}"
+      >
         <div
           id="ppanel1"
-          class$="vaadin-split-layout-panel vaadin-layout-[[orientationDirection]]"
+          class="vaadin-split-layout-panel vaadin-layout-${this
+            .orientationDirection}"
         >
           <div class="preview-buttons">
-            <paper-button id="insert" raised on-click="insert"
-              >[[editTitle]]</paper-button
+            <paper-button id="insert" raised @click="${this.insert}"
+              >${this.editTitle}</paper-button
             >
-            <paper-button id="cancel" raised on-click="cancel"
+            <paper-button id="cancel" raised @click="${this.cancel}"
               >Cancel</paper-button
             >
           </div>
           <div class="preview-text hide-on-mobile">
             <iron-icon icon="icons:arrow-drop-down"></iron-icon
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon
-            ><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]]
+            ><iron-icon icon="icons:arrow-drop-down"></iron-icon>${this
+              .humanName}
             preview<iron-icon icon="icons:arrow-drop-down"></iron-icon
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon>
@@ -236,12 +278,14 @@ class HaxPreview extends PolymerElement {
         </div>
         <div
           id="ppanel2"
-          class$="vaadin-split-layout-panel vaadin-layout-[[orientationDirection]]"
+          class="vaadin-split-layout-panel vaadin-layout-${this
+            .orientationDirection}"
         >
           <paper-tabs
-            hidden\$="[[!haspreviewNode]]"
+            .hidden="${!this.haspreviewNode}"
             id="modetabs"
-            selected="{{modeTab}}"
+            selected="${this.modeTab}"
+            @selected-changed="${this.__modeTabChanged}"
             attr-for-selected="data-mode"
           >
             <paper-tab id="configurebutton" data-mode="configure"
@@ -258,117 +302,169 @@ class HaxPreview extends PolymerElement {
           <paper-card class="form-wrapper">
             <eco-json-schema-object
               id="form"
-              schema="[[schema]]"
-              value="{{value}}"
+              .schema="${this.schema}"
+              .value="${this.value}"
+              @value-changed="${this.__valueChangedEvent}"
             ></eco-json-schema-object>
           </paper-card>
         </div>
       </vaadin-split-layout>
       <iron-media-query
-        query="[[_computeMediaQuery(responsiveWidth)]]"
-        on-query-matches-changed="_onQueryMatchesChanged"
+        query="${this._computeMediaQuery(this.responsiveWidth)}"
+        @query-matches-changed="${this._onQueryMatchesChanged}"
       ></iron-media-query>
     `;
+  }
+  /**
+   * Notice change in eco and bubble up
+   * @todo this needs replaced with simple-fields
+   */
+  __valueChangedEvent(e) {
+    this.value = { ...e.detail.value };
+  }
+  /**
+   * Tab change
+   */
+  __modeTabChanged(e) {
+    this.modeTab = e.detail.value;
   }
   static get tag() {
     return "hax-preview";
   }
-  static get observers() {
-    return ["_valueChanged(value.*)"];
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value") {
+        this._valueChanged(this[propName]);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName === "previewNode") {
+        this._previewNodeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("preview-node-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName === "activeHaxElement") {
+        this._activeHaxElementChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-hax-element-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName === "modeTab") {
+        this._editorModeChanged(this[propName], oldValue);
+      }
+      if (propName === "formKey") {
+        this._formKeyChanged(this[propName], oldValue);
+      }
+      if (propName === "advancedForm") {
+        this.formKey = this._computedFormKey(this[propName]);
+      }
+      if (propName === "formKey") {
+        this.canEditSource = this._computedEditSource(this[propName]);
+      }
+      if (propName === "previewNode") {
+        this.haspreviewNode = this._computedHasPreviewNode(this[propName]);
+      }
+    });
   }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       responsiveWidth: {
         type: String,
-        value: "800px"
+        attribute: "responsive-width"
       },
       orientation: {
-        type: String,
-        value: "horizontal"
+        type: String
       },
       orientationDirection: {
         type: String,
-        value: "width"
+        attribute: "orientation-direction"
       },
       /**
        * A reference to the previewNode so we can do data binding correctly.
        */
       previewNode: {
-        type: Object,
-        value: {},
-        notify: true,
-        observer: "_previewNodeChanged"
+        type: Object
       },
       /**
        * Returned value from the form input.
        */
       value: {
-        type: Object,
-        notify: true,
-        value: {}
+        type: Object
       },
       /**
        * State of mode tabs.
        */
       modeTab: {
-        type: String,
-        value: "configure",
-        observer: "_editorModeChanged"
+        type: String
       },
       /**
        * Edit title since it can change based on the operation
        */
       editTitle: {
-        type: String,
-        value: "Update"
+        type: String
       },
       /**
        * The element to work against expressing the structure of the DOM element
        * to create in the preview area.
        */
       activeHaxElement: {
-        type: Object,
-        notify: true,
-        observer: "_activeHaxElementChanged"
+        type: Object
       },
       /**
        * Boolean association for a preview node existing.
        */
       haspreviewNode: {
-        type: Boolean,
-        computed: "_computedHasPreviewNode(previewNode)"
+        type: Boolean
       },
       /**
        * JSON Schema.
        */
       schema: {
-        type: Object,
-        value: {
-          schema: {}
-        }
+        type: Object
       },
       /**
        * If this is the advancedForm or not. Default to not but slider allows
        * switching mode for the form to be presented.
        */
       advancedForm: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * If we should show source view or not.
        */
       canEditSource: {
         type: Boolean,
-        computed: "_computedEditSource(formKey)"
+        attribute: "can-edit-source"
       },
       /**
        * Form key from hax to target.
        */
       formKey: {
         type: String,
-        computed: "_computedFormKey(advancedForm)",
-        observer: "_formKeyChanged"
+        attribute: "form-key"
       },
       /**
        * Active Name from the properties
@@ -462,7 +558,6 @@ class HaxPreview extends PolymerElement {
           this.previewNode.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
-        let element = this.activeHaxElement;
         let props =
           window.HaxStore.instance.elementList[
             this.previewNode.tagName.toLowerCase()
@@ -476,58 +571,64 @@ class HaxPreview extends PolymerElement {
         } else {
           schema = window.HaxStore.instance.getHaxJSONSchema(newValue, props);
         }
-        for (var property in element.properties) {
-          if (element.properties.hasOwnProperty(property)) {
+        for (var property in this.activeHaxElement.properties) {
+          if (this.activeHaxElement.properties.hasOwnProperty(property)) {
             if (typeof schema.properties[property] !== typeof undefined) {
-              schema.properties[property].value = element.properties[property];
+              schema.properties[
+                property
+              ].value = this.activeHaxElement.properties[property];
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
                   typeof undefined &&
                 schema.properties[property].component.properties
               ) {
-                schema.properties[property].component.properties.value =
-                  element.properties[property];
+                schema.properties[
+                  property
+                ].component.properties.value = this.activeHaxElement.properties[
+                  property
+                ];
               }
               // attempt to set the property in the preview node
               if (
                 property != "prefix" &&
-                element.properties[property] != null &&
-                !element.properties[property].readOnly
+                this.activeHaxElement.properties[property] != null &&
+                !this.activeHaxElement.properties[property].readOnly
               ) {
                 if (typeof this.previewNode.set === "function") {
                   // attempt to set it, should be no problem but never know
                   try {
                     this.previewNode.set(
                       property,
-                      element.properties[property]
+                      this.activeHaxElement.properties[property]
                     );
                   } catch (e) {
                     console.warn(`${property} is busted some how`);
                     console.warn(e);
                   }
                 } else if (this.previewNode[property]) {
-                  this.previewNode[property] = element.properties[property];
+                  this.previewNode[property] = this.activeHaxElement.properties[
+                    property
+                  ];
                 } else {
                   // set attribute, this doesn't have the Polymer convention
                   // this is Vanilla, Lit, etc
                   // set is powerful though for objects and arrays so they will reflect instantly
                   this.previewNode.setAttribute(
                     property,
-                    element.properties[property]
+                    this.activeHaxElement.properties[property]
                   );
                 }
               } else if (property === "prefix") {
                 this.previewNode.setAttribute(
                   "prefix",
-                  element.properties[property]
+                  this.activeHaxElement.properties[property]
                 );
               } else {
                 console.warn(`${property} is busted some how`);
               }
             }
-            this.set("value." + property, element.properties[property]);
-            this.notifyPath("value." + property);
+            this.value[property] = this.activeHaxElement.properties[property];
           }
         }
         var slotsApplied = false;
@@ -558,21 +659,15 @@ class HaxPreview extends PolymerElement {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
                   ].value = previewNodeChildren[i].innerHTML;
-                  this.set(
-                    "value." + props.settings[this.formKey][prop].slot,
-                    previewNodeChildren[i].innerHTML
-                  );
-                  this.notifyPath(
-                    "value." + props.settings[this.formKey][prop].slot
-                  );
+                  this.value[props.settings[this.formKey][prop].slot] =
+                    previewNodeChildren[i].innerHTML;
                 }
               }
             }
           }
         }
       }
-      this.set("schema", {});
-      this.set("schema", schema);
+      this.schema = { ...schema };
     }
   }
   /**
@@ -585,8 +680,9 @@ class HaxPreview extends PolymerElement {
       e.detail.property
     ) {
       if (e.detail.property == "activeHaxElement") {
-        this.set(e.detail.property, {});
-        this.set(e.detail.property, e.detail.value);
+        this.activeHaxElement = { ...e.detail.value };
+        // ensure we don't get an empty properties object here
+        this.activeHaxElement.properties = { ...e.detail.value.properties };
       }
     }
   }
@@ -603,7 +699,6 @@ class HaxPreview extends PolymerElement {
           newValue.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
-        const element = this.activeHaxElement;
         let props =
           window.HaxStore.instance.elementList[newValue.tagName.toLowerCase()];
         let schema = {};
@@ -626,24 +721,29 @@ class HaxPreview extends PolymerElement {
           this.humanName = props.gizmo.title;
         }
         // first, allow element properties to dictate defaults
-        for (var property in element.properties) {
-          if (element.properties.hasOwnProperty(property)) {
+        for (var property in this.activeHaxElement.properties) {
+          if (this.activeHaxElement.properties.hasOwnProperty(property)) {
             if (typeof schema.properties[property] !== typeof undefined) {
-              schema.properties[property].value = element.properties[property];
+              schema.properties[
+                property
+              ].value = this.activeHaxElement.properties[property];
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
                   typeof undefined &&
                 schema.properties[property].component.properties
               ) {
-                schema.properties[property].component.properties.value =
-                  element.properties[property];
+                schema.properties[
+                  property
+                ].component.properties.value = this.activeHaxElement.properties[
+                  property
+                ];
               }
             }
             // ensure this isn't read only
             if (
-              element.properties[property] != null &&
-              !element.properties[property].readOnly
+              this.activeHaxElement.properties[property] != null &&
+              !this.activeHaxElement.properties[property].readOnly
             ) {
               // make sure slot is NEVER set in the preview
               // or it'll not show up and we'll get inconsistency with it
@@ -653,43 +753,53 @@ class HaxPreview extends PolymerElement {
                 // temp prop we use
                 property = "data-hax-slot";
                 // move it over
-                element.properties[property] = element.properties["slot"];
+                this.activeHaxElement.properties[
+                  property
+                ] = this.activeHaxElement.properties["slot"];
                 // delete the slot
-                delete element.properties["slot"];
-                if (element.properties[property] != null) {
+                delete this.activeHaxElement.properties["slot"];
+                if (this.activeHaxElement.properties[property] != null) {
                   newValue.setAttribute(
                     "data-hax-slot",
-                    element.properties[property]
+                    this.activeHaxElement.properties[property]
                   );
                 }
               }
               // prefix is a special attribute and must be handled this way
               else if (property === "prefix") {
-                newValue.setAttribute("prefix", element.properties[property]);
+                newValue.setAttribute(
+                  "prefix",
+                  this.activeHaxElement.properties[property]
+                );
               }
               // set is a Polymer convention but help w/ data binding there a lot
               else if (typeof newValue.set === "function") {
                 // just to be safe
                 try {
-                  newValue.set(property, element.properties[property]);
+                  newValue.set(
+                    property,
+                    this.activeHaxElement.properties[property]
+                  );
                 } catch (e) {
                   console.warn(e);
                 }
               }
               // vanilla / anything else we should just be able to set the prop
               else if (newValue[property]) {
-                newValue[property] = element.properties[property];
+                newValue[property] = this.activeHaxElement.properties[property];
               } else {
                 // @todo may need to bind differently for vanilla elements
                 try {
-                  newValue.setAttribute(property, element.properties[property]);
+                  newValue.setAttribute(
+                    property,
+                    this.activeHaxElement.properties[property]
+                  );
                 } catch (e) {
                   console.warn(e);
                 }
               }
             }
-            this.set("value." + property, element.properties[property]);
-            this.notifyPath("value." + property);
+            this.value[property] = this.activeHaxElement.properties[property];
           }
         }
         // then, let the node itself dictate defaults if things are not set
@@ -711,8 +821,7 @@ class HaxPreview extends PolymerElement {
               schema.properties[property].component.properties.value =
                 newValue.properties[property].value;
             }
-            this.set("value." + property, newValue.properties[property].value);
-            this.notifyPath("value." + property);
+            this.value[property] = newValue.properties[property].value;
           }
         }
         // need to specifically walk through slots if there is anything
@@ -737,20 +846,14 @@ class HaxPreview extends PolymerElement {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
                   ].value = newValueChildren[i].innerHTML;
-                  this.set(
-                    "value." + props.settings[this.formKey][prop].slot,
-                    newValueChildren[i].innerHTML
-                  );
-                  this.notifyPath(
-                    "value." + props.settings[this.formKey][prop].slot
-                  );
+                  this.value[props.settings[this.formKey][prop].slot] =
+                    newValueChildren[i].innerHTML;
                 }
               }
             }
           }
         }
-        this.set("schema", {});
-        this.set("schema", schema);
+        this.schema = { ...schema };
       }
     }
   }
@@ -762,7 +865,12 @@ class HaxPreview extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
       wipeSlot(this, "*");
-      this.set("previewNode", {});
+      this.previewNode = {};
+      this.value = {};
+      this.schema = {};
+      this.schema = {
+        schema: {}
+      };
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
       if (
@@ -784,11 +892,11 @@ class HaxPreview extends PolymerElement {
         // send this into the root, which should filter it back down into the slot
         this.appendChild(newNode);
         // need to let append propagate, it probably takes like no time
-        this.set("previewNode", newNode);
+        this.previewNode = newNode;
       }
     } else {
       this.modeTab = "advanced";
-      this.set("previewNode", {});
+      this.previewNode = {};
     }
   }
   /**
@@ -803,7 +911,7 @@ class HaxPreview extends PolymerElement {
         node.tagName.toLowerCase()
       ] !== typeof undefined
     ) {
-      for (var path in valueChange.base) {
+      for (var path in valueChange) {
         // load up the property bindings we care about from the store
         let props =
           window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
@@ -823,82 +931,74 @@ class HaxPreview extends PolymerElement {
           if (propData.attribute) {
             let attributeName = window.HaxStore.camelToDash(propData.attribute);
             // special supporting for boolean because html is weird :p
-            if (valueChange.base[path] === true) {
+            if (valueChange[path] === true) {
               node.setAttribute(attributeName, attributeName);
-            } else if (valueChange.base[path] === false) {
+            } else if (valueChange[path] === false) {
               node.removeAttribute(attributeName);
             } else {
               // special support for innerText which is an html attribute...sorta
               if (attributeName === "inner-text") {
-                node.innerText = valueChange.base[path];
+                node.innerText = valueChange[path];
                 node.removeAttribute("innertext");
               } else if (
-                valueChange.base[path] !== null &&
-                valueChange.base[path] !== "null"
+                valueChange[path] !== null &&
+                valueChange[path] !== "null"
               ) {
-                node.setAttribute(attributeName, valueChange.base[path]);
+                node.setAttribute(attributeName, valueChange[path]);
               }
             }
-            this.set(
-              "element.properties." + propData.attribute,
-              valueChange.base[path]
-            );
-            this.notifyPath("element.properties." + propData.attribute);
+            this.activeHaxElement.properties[propData.attribute] =
+              valueChange[path];
           } else if (propData.property) {
-            if (
-              valueChange.base[path] === true ||
-              valueChange.base[path] === false
-            ) {
-              node[propData.property] = valueChange.base[path];
+            if (valueChange[path] === true || valueChange[path] === false) {
+              node[propData.property] = valueChange[path];
             } else {
               // account for a splice because... ugh
               if (
-                valueChange.base[path] != null &&
-                valueChange.base[path].indexSplices &&
-                valueChange.base[path].indexSplices[0]
+                valueChange[path] != null &&
+                valueChange[path].indexSplices &&
+                valueChange[path].indexSplices[0]
               ) {
                 // dirty check, if this is a vanillaJS element w/ array splices
                 // it might get PO'ed but time will tell
+                // @notice polymer specific
                 if (typeof node.set === "function") {
                   node.set(
                     propData.property,
-                    valueChange.base[path].indexSplices[0].object
+                    valueChange[path].indexSplices[0].object
                   );
                   node.notifyPath(propData.property + ".*");
                 } else {
                   node[propData.property] =
-                    valueChange.base[path].indexSplices[0].object;
+                    valueChange[path].indexSplices[0].object;
                 }
               }
               // account for Array based values on initial set
               else if (
-                valueChange.base[path] != null &&
-                valueChange.base[path].constructor === Array
+                valueChange[path] != null &&
+                valueChange[path].constructor === Array
               ) {
                 // look for polymer setter to notify paths correctly
                 if (typeof node.set === "function") {
                   node.set(
                     propData.property,
-                    window.HaxStore.toArray(valueChange.base[path])
+                    window.HaxStore.toArray(valueChange[path])
                   );
                 } else {
                   node[propData.property] = window.HaxStore.toArray(
-                    valueChange.base[path]
+                    valueChange[path]
                   );
                 }
               } else {
                 if (typeof node.set === "function") {
-                  node.set(propData.property, valueChange.base[path]);
+                  node.set(propData.property, valueChange[path]);
                 } else {
-                  node[propData.property] = valueChange.base[path];
+                  node[propData.property] = valueChange[path];
                 }
               }
             }
-            this.set(
-              "element.properties." + propData.property,
-              valueChange.base[path]
-            );
-            this.notifyPath("element.properties." + propData.property);
+            this.activeHaxElement.properties[propData.property] =
+              valueChange[path];
           } else if (typeof propData.slot !== typeof undefined) {
             let slotTag = "span";
             if (propData.slotWrapper) {
@@ -916,7 +1016,7 @@ class HaxPreview extends PolymerElement {
             if (propData.slot !== "") {
               tmpel.slot = propData.slot;
             }
-            tmpel.innerHTML = valueChange.base[path];
+            tmpel.innerHTML = valueChange[path];
             const cloneIt = tmpel.cloneNode(true);
             // inject the slotted content but use text nodes if this is a text element
             if (window.HaxStore.instance.isTextElement(node)) {
@@ -926,11 +1026,8 @@ class HaxPreview extends PolymerElement {
               wipeSlot(node, propData.slot);
               node.appendChild(cloneIt);
             }
-            this.set(
-              "element.content",
-              "<template>" + cloneIt.outerHTML + "</template>"
-            );
-            this.notifyPath("element.content");
+            this.activeHaxElement.content =
+              "<template>" + cloneIt.outerHTML + "</template>";
           }
         }
       }

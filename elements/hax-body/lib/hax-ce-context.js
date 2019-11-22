@@ -93,6 +93,15 @@ class HaxCeContext extends LitElement {
       haxProperties: {
         type: Object,
         attribute: "hax-properties"
+      },
+      __hasSettingsForm: {
+        type: Boolean
+      },
+      __hasParentSettingsForm: {
+        type: Boolean
+      },
+      __parentName: {
+        type: String
       }
     };
   }

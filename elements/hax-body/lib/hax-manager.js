@@ -677,6 +677,7 @@ class HaxManager extends SimpleColors {
       this.shadowRoot.querySelector("#preview").advancedForm = false;
       if (newValue && typeof newValue.tag === typeof undefined) {
         this.resetManager(this.activePage);
+        this.shadowRoot.querySelector("#preview").activeHaxElement = {};
       } else {
         // reset files so it doesn't bloat up
         this.shadowRoot.querySelector("#fileupload").set("files", []);

@@ -1082,6 +1082,9 @@ class HaxBody extends SimpleColors {
     if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
       haxElement = node.preProcessHaxInsertContent(haxElement);
     }
+    if (haxElement.content == haxElement.properties.innerHTML) {
+      delete haxElement.properties.innerHTML;
+    }
     // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
     // correctly and that we get a brand new object
     var nodeClone = window.HaxStore.haxElementToNode(
@@ -1108,7 +1111,7 @@ class HaxBody extends SimpleColors {
         window.HaxStore.write("activeContainerNode", nodeClone, this);
       }
       window.HaxStore.write("activeNode", nodeClone, this);
-    }, 50);
+    }, 100);
     return true;
   }
   /**

@@ -217,9 +217,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @event value-changed
    */
   _fireValueChangedEvent() {
-    this.dispatchEvent(
-      new CustomEvent("value-changed", { bubbles: true, detail: this })
-    );
+    this.dispatchEvent(new CustomEvent("value-changed", { detail: this }));
   }
 
   /**
