@@ -1,6 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-blog-overview`
  * `Overview / preview of the text of the post with title`
@@ -10,22 +9,14 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  *  - a posting has only text preview
  *
  */
-class SimpleBlogOverview extends PolymerElement {
+class SimpleBlogOverview extends SimpleColors {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement render style
    */
-  static get tag() {
-    return "simple-blog-overview";
-  }
-  constructor() {
-    super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style includes="simple-colors-shared-styles">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           outline: none;
@@ -79,10 +70,38 @@ class SimpleBlogOverview extends PolymerElement {
         a:active {
           color: inherit;
         }
-      </style>
-
-      <a href$="[[link]]" itemprop="url" title$="[[title]]">
-        <paper-card elevation="[[elevation]]">
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "simple-blog-overview";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.elevation = 0;
+    import("@polymer/paper-card/paper-card.js");
+    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    setTimeout(() => {
+      this.addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.addEventListener("focusin", this.tapEventOn.bind(this));
+      this.addEventListener("focusout", this.tapEventOff.bind(this));
+    }, 0);
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <a href="${this.link}" itemprop="url" title="${this.title}">
+        <paper-card elevation="${this.elevation}">
           <article
             class="post"
             itemtype="http://schema.org/BlogPosting"
@@ -90,15 +109,15 @@ class SimpleBlogOverview extends PolymerElement {
           >
             <div class="article-item">
               <header class="post-header">
-                <h3 class="post-title" itemprop="name">[[title]]</h3>
+                <h3 class="post-title" itemprop="name">${this.title}</h3>
               </header>
               <section class="post-excerpt" itemprop="description">
-                <p>[[description]]</p>
+                <p>${this.description}</p>
               </section>
               <div class="post-meta">
                 <simple-datetime
                   format="M jS, Y"
-                  timestamp="[[changed]]"
+                  timestamp="${this.changed}"
                   unix=""
                 ></simple-datetime>
               </div>
@@ -108,33 +127,19 @@ class SimpleBlogOverview extends PolymerElement {
       </a>
     `;
   }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.removeEventListener("focusin", this.tapEventOn.bind(this));
-    this.removeEventListener("focusout", this.tapEventOff.bind(this));
-    super.disconnectedCallback();
-  }
-
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
+      ...super.properties,
       /**
        * ID of this item, this is used for selection UX when back button hit, leave this here
        */
       itemId: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "item-id"
       },
       /**
        * Title
@@ -165,8 +170,7 @@ class SimpleBlogOverview extends PolymerElement {
        */
       elevation: {
         type: Number,
-        value: 0,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

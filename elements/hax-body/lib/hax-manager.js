@@ -163,7 +163,7 @@ class HaxManager extends SimpleColors {
     super();
     this.opened = false;
     this.editExistingNode = false;
-    this.addTitle = "Add content";
+    this.addTitle = "Upload media";
     this.activeStep = 0;
     this.searching = false;
     this.activePage = 0;
@@ -250,7 +250,10 @@ class HaxManager extends SimpleColors {
                 fallback-selection="link"
               >
                 <div class="page-area add-area">
-                  <h3 class="title">${this.addTitle}</h3>
+                  <h3 class="title">
+                    <iron-icon icon="icons:file-upload"></iron-icon> ${this
+                      .addTitle}
+                  </h3>
                   <div class="add-area-content-wrapper">
                     <div class="add-url-area">
                       <paper-input

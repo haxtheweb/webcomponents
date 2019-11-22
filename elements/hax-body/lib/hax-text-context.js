@@ -84,7 +84,7 @@ class HaxTextContext extends LitElement {
           @selected-value-changed="${this.selectedValueChanged}"
           id="formatsize"
           icon="${this.formatIcon}"
-          label="Text formatting"
+          label="Text format"
           event-name="text-tag"
         >
           <paper-item value="p"

@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
@@ -8,15 +7,11 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 class LrnappGalleryGrid extends PolymerElement {
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("click", this._triggerDialog.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._triggerDialog.bind(this));
-    super.disconnectedCallback();
+    }, 0);
   }
   static get template() {
     return html`

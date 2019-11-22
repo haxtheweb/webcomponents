@@ -82,12 +82,14 @@ class HaxToolbarMenu extends LitElement {
   }
   constructor() {
     super();
-    this.addEventListener("click", this._menubuttonTap.bind(this));
     this.corner = "";
     this.resetOnSelect = false;
     this.tooltip = "";
     this.tooltipDirection = "";
     this.selected = 0;
+    setTimeout(() => {
+      this.addEventListener("click", this._menubuttonTap.bind(this));
+    }, 0);
   }
   static get properties() {
     return {

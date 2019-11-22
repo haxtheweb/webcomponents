@@ -175,7 +175,7 @@ class HaxToolbar extends LitElement {
         <hax-context-item-menu
           .hidden="${this.hideMode}"
           icon="more-vert"
-          label="More"
+          label="More operations"
           id="moremenu"
           event-name="grid-plate-op"
           reset-on-select
@@ -291,6 +291,11 @@ class HaxToolbar extends LitElement {
   _haxPropertiesChanged(newValue, oldValue) {
     // value doesn't matter, just look at what's active
     if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
+      if (window.HaxStore.instance.activeNode.tagName == "HR") {
+        this.hideTransform = true;
+      } else {
+        this.hideTransform = false;
+      }
       if (window.HaxStore.instance.activeNode.style.width != "") {
         this.size = window.HaxStore.instance.activeNode.style.width.replace(
           "%",

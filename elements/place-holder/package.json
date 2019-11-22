@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/place-holder",
   "wcfactory": {
     "className": "PlaceHolder",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "place-holder",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

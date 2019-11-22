@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-list/iron-list.js";
@@ -84,15 +83,11 @@ class LrnappMediaGrid extends PolymerElement {
   static get tag() {
     return "lrnapp-media-grid";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("click", this._triggerDialog.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._triggerDialog.bind(this));
-    super.disconnectedCallback();
+    }, 0);
   }
   static get properties() {
     return {

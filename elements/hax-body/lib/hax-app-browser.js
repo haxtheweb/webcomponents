@@ -49,7 +49,7 @@ class HaxAppBrowser extends LitElement {
   }
   constructor() {
     super();
-    this.title = "Find";
+    this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
     this.__appList = [];
@@ -71,7 +71,7 @@ class HaxAppBrowser extends LitElement {
   }
   render() {
     return html`
-      <h3 class="title">${this.title}</h3>
+      <h3 class="title"><iron-icon icon="search"></iron-icon> ${this.title}</h3>
       <div class="toolbar-inner">
         <dropdown-select
           id="filtertype"
@@ -230,8 +230,8 @@ class HaxAppBrowser extends LitElement {
    */
   resetBrowser() {
     this.searching = false;
-    this.__appList = [...window.HaxStore.instance.appList];
-    this.filtered = [...this.__appList];
+    this.__appList = window.HaxStore.instance.appList;
+    this.filtered = this.__appList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";

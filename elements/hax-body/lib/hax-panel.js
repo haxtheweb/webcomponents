@@ -275,7 +275,7 @@ class HaxPanel extends SimpleColors {
         ></hax-panel-item>
         <hax-panel-item
           icon="icons:view-column"
-          label="Insert layout block"
+          label="Insert layout"
           event-name="hax-blox-picker-open"
           voice-command="insert (page) layout"
         ></hax-panel-item>

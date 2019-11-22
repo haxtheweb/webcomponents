@@ -46,7 +46,7 @@ class HaxGizmoBrowser extends LitElement {
   }
   constructor() {
     super();
-    this.title = "Make";
+    this.title = "Create page element";
     this.__gizmoList = [];
     this.filtered = [];
     import("@polymer/paper-input/paper-input.js");
@@ -59,7 +59,9 @@ class HaxGizmoBrowser extends LitElement {
   }
   render() {
     return html`
-      <h3 class="title">${this.title}</h3>
+      <h3 class="title">
+        <iron-icon icon="hax:add-brick"></iron-icon> ${this.title}
+      </h3>
       <div class="toolbar-inner">
         <dropdown-select
           id="filtertype"
@@ -162,8 +164,8 @@ class HaxGizmoBrowser extends LitElement {
    * Reset this browser.
    */
   resetBrowser() {
-    this.__gizmoList = [...window.HaxStore.instance.gizmoList];
-    this.filtered = [...this.__gizmoList];
+    this.__gizmoList = window.HaxStore.instance.gizmoList;
+    this.filtered = this.__gizmoList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "title";
     this.shadowRoot.querySelector("#filter").value = "";

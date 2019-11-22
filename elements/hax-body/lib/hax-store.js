@@ -1440,10 +1440,10 @@ class HaxStore extends HAXElement(LitElement) {
     this.setHaxProperties(p, "p");
     let hr = {
       canScale: {
-        min: 10,
-        step: 5
+        min: 25,
+        step: 25
       },
-      canPosition: true,
+      canPosition: false,
       canEditSource: false,
       settings: {
         quick: [],

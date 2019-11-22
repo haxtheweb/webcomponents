@@ -66,7 +66,7 @@ class HaxPreferencesDialog extends SimpleColors {
   }
   constructor() {
     super();
-    this.title = "Preferences";
+    this.title = "Editor preferences";
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-button/paper-button.js");
@@ -122,7 +122,9 @@ class HaxPreferencesDialog extends SimpleColors {
         </style>
       </custom-style>
       <app-drawer id="dialog" align="right" transition-duration="300">
-        <h3 class="title">${this.title}</h3>
+        <h3 class="title">
+          <iron-icon icon="icons:settings"></iron-icon> ${this.title}
+        </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <eco-json-schema-object
             .schema="${this.schema}"

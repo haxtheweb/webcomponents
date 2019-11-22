@@ -94,7 +94,9 @@ class HaxPicker extends LitElement {
   render() {
     return html`
       <app-drawer id="dialog" align="left" transition-duration="300">
-        <h3 class="title">${this.title}</h3>
+        <h3 class="title">
+          <iron-icon icon="${this.icon}"></iron-icon> ${this.title}
+        </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <slot></slot>
         </div>
@@ -111,6 +113,9 @@ class HaxPicker extends LitElement {
        * Header so it's variable
        */
       title: {
+        type: String
+      },
+      icon: {
         type: String
       }
     };
@@ -143,7 +148,8 @@ class HaxBloxPicker extends HaxPicker {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
-    this.title = "Layouts";
+    this.title = "Insert layout";
+    this.icon = "icons:view-column";
     // this sets everything else in motion correctly
     this.setupPicker("haxBloxPicker", "hax-blox-browser");
   }

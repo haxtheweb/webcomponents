@@ -23,7 +23,9 @@ class HAXPanelItem extends LitElement {
     this.label = "editor:text-fields";
     this.eventName = "button";
     this.value = "";
-    this.addEventListener("click", this._fireEvent);
+    setTimeout(() => {
+      this.addEventListener("click", this._fireEvent);
+    }, 0);
   }
   static get properties() {
     return {

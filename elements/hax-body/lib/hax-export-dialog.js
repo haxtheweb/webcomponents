@@ -103,7 +103,9 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
   render() {
     return html`
       <paper-dialog id="dialog">
-        <h3 class="title">${this.title}</h3>
+        <h3 class="title">
+          <iron-icon icon="icons:code"></iron-icon> ${this.title}
+        </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <div id="wrapper">
             <textarea id="hiddentextarea" hidden></textarea>
@@ -340,7 +342,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
   }
   constructor() {
     super();
-    this.title = "Source view";
+    this.title = "View page source";
     this.fileTypes = {
       CSV: "text/csv",
       JSON: "text/json",

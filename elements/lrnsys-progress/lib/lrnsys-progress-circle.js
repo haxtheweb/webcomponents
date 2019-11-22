@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -479,22 +478,6 @@ class LrnsysProgressCircle extends PolymerElement {
       "75": false
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.focusOn.bind(this));
-      this.addEventListener("mouseout", this.focusOff.bind(this));
-      this.addEventListener("focused-changed", this.focusEvent.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.focusOn.bind(this));
-    this.removeEventListener("mouseout", this.focusOff.bind(this));
-    this.removeEventListener("focused-changed", this.focusEvent.bind(this));
-    super.disconnectedCallback();
-  }
   /**
    * Test if the value = max meaning that we hit complete from available
    */
@@ -541,6 +524,15 @@ class LrnsysProgressCircle extends PolymerElement {
       );
       this._bubbleProgress["25"] = true;
     }
+  }
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("click", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.focusOn.bind(this));
+      this.addEventListener("mouseout", this.focusOff.bind(this));
+      this.addEventListener("focused-changed", this.focusEvent.bind(this));
+    }, 0);
   }
   /**
    * Focus event for UX consistency.

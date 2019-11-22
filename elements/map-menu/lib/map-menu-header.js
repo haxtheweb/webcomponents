@@ -138,6 +138,10 @@ class MapMenuHeader extends LitElement {
     this.active = false;
     this.__collapseIcon = "arrow-drop-up";
     this.__collapseAria = "expand menu";
+    setTimeout(() => {
+      this.addEventListener("click", this.__tap.bind(this));
+      this.addEventListener("keypress", this.__keypress.bind(this));
+    }, 0);
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -220,22 +224,6 @@ class MapMenuHeader extends LitElement {
         })
       );
     }
-  }
-
-  /**
-   * LitElement life cycle - ready
-   */
-  firstUpdated(changedProperties) {
-    this.addEventListener("click", this.__tap.bind(this));
-    this.addEventListener("keypress", this.__keypress.bind(this));
-  }
-  /**
-   * HTMLElement life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener("click", this.__tap.bind(this));
-    this.removeEventListener("keypress", this.__keypress.bind(this));
-    super.disconnectedCallback();
   }
 
   __tap(e) {
