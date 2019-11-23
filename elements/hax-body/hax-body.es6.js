@@ -140,25 +140,30 @@ class HaxBody extends SimpleColors {
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {
-          outline: 1px solid rgba(145, 151, 162, 0.25);
+          outline: 1px solid rgba(145, 151, 162, 0.5);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]:hover) {
           cursor: text !important;
-          outline: 1px solid rgba(145, 151, 162, 0.25);
+          outline: 1px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*[data-editable] .hax-active:hover) {
           cursor: text !important;
-          outline: 1px solid rgba(145, 151, 162, 0.25);
+          outline: 1px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(code.hax-active[data-editable]) {
           display: block;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active[data-editable]) {
+          outline: 1px solid rgba(145, 151, 162, 0.25);
         }
         :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
           height: 2px;
@@ -1077,6 +1082,9 @@ class HaxBody extends SimpleColors {
     if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
       haxElement = node.preProcessHaxInsertContent(haxElement);
     }
+    if (haxElement.content == haxElement.properties.innerHTML) {
+      delete haxElement.properties.innerHTML;
+    }
     // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
     // correctly and that we get a brand new object
     var nodeClone = window.HaxStore.haxElementToNode(
@@ -1103,7 +1111,7 @@ class HaxBody extends SimpleColors {
         window.HaxStore.write("activeContainerNode", nodeClone, this);
       }
       window.HaxStore.write("activeNode", nodeClone, this);
-    }, 50);
+    }, 100);
     return true;
   }
   /**
