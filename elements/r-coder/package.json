@@ -16,7 +16,7 @@
       "hax": "src/r-coder-hax.json"
     }
   },
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "R coder interface for the r-service backend.",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.2.2",
+    "@lrnwebcomponents/code-editor": "^2.2.3",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },

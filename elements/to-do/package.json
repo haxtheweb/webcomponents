@@ -16,7 +16,7 @@
       "hax": "src/to-do-hax.json"
     }
   },
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Start of to-do",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^2.2.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.2.3",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

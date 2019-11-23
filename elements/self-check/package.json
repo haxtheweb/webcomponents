@@ -16,7 +16,7 @@
       "hax": "src/self-check-hax.json"
     }
   },
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -39,9 +39,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^2.2.2",
-    "@lrnwebcomponents/schema-behaviors": "^2.2.2",
-    "@lrnwebcomponents/simple-colors": "^2.2.2",
+    "@lrnwebcomponents/a11y-behaviors": "^2.2.3",
+    "@lrnwebcomponents/schema-behaviors": "^2.2.3",
+    "@lrnwebcomponents/simple-colors": "^2.2.3",
     "@lrnwebcomponents/user-action": "^2.2.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-comment-hax.json"
     }
   },
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Automated conversion of lrndesign-comment/",
   "repository": {
     "type": "git",
@@ -39,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.2.2",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.2.3",
     "@polymer/polymer": "^3.2.0",
     "time-elements": "1.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

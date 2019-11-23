@@ -16,7 +16,7 @@
       "hax": "src/lrn-content-hax.json"
     }
   },
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Simple content wrapper for OER Schema meta-data",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
