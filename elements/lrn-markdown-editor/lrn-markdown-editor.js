@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -17,10 +17,13 @@ import "./lib/lrn-markdown-editor-editor.js";
  * @customElement
  * @demo demo/index.html
  */
-class LrnMarkdownEditor extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnMarkdownEditor extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -38,7 +41,7 @@ class LrnMarkdownEditor extends PolymerElement {
           background: lightblue;
         }
 
-        paper-card {
+        div.pane {
           padding: 16px;
           width: calc(100% - 32px);
         }
@@ -73,48 +76,79 @@ class LrnMarkdownEditor extends PolymerElement {
           background: #fff;
           border-left: solid #dcdcdc 1px;
         }
-      </style>
-
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div class="mtz-toolbar">
-        <paper-tabs selected="{{selected}}">
+        <paper-tabs
+          selected="${this.selected}"
+          @selected-changed="${this.__selectedChanged}"
+        >
           <paper-tab>Write</paper-tab>
           <paper-tab>Preview</paper-tab>
           <paper-tab>Split View</paper-tab>
         </paper-tabs>
       </div>
 
-      <iron-pages selected="{{selected}}">
+      <iron-pages
+        selected="${this.selected}"
+        @selected-changed="${this.__selectedChanged}"
+      >
         <section>
-          <paper-card>
+          <div class="pane">
             <lrn-markdown-editor-editor
-              content="{{content}}"
+              content="${this.content}"
+              @content-changed="${this.__contentChanged}"
             ></lrn-markdown-editor-editor>
-          </paper-card>
+          </div>
         </section>
 
         <section>
-          <paper-card>
-            <marked-element markdown="{{content}}"></marked-element>
-          </paper-card>
+          <div class="pane">
+            <marked-element
+              markdown="${this.content}"
+              @markdown-changed="${this.__contentChanged}"
+            ></marked-element>
+          </div>
         </section>
 
         <section class="split-pane">
-          <paper-card>
+          <div class="pane">
             <div class="container-flex">
               <lrn-markdown-editor-editor
-                content="{{content}}"
+                content="${this.content}"
+                @content-changed="${this.__contentChanged}"
               ></lrn-markdown-editor-editor>
               <marked-element
                 class="preview-pane"
-                markdown="{{content}}"
+                markdown="${this.content}"
+                @markdown-changed="${this.__contentChanged}"
               ></marked-element>
             </div>
-          </paper-card>
+          </div>
         </section>
       </iron-pages>
     `;
   }
-
+  __selectedChanged(e) {
+    this.selected = e.detail.value;
+  }
+  __contentChanged(e) {
+    this.content = e.detail.value;
+  }
+  constructor() {
+    super();
+    this.selected = "0";
+    this.layout = "0";
+    this.content = "";
+    this.cookies = true;
+    this.elReady = false;
+  }
   static get tag() {
     return "lrn-markdown-editor";
   }
@@ -122,46 +156,60 @@ class LrnMarkdownEditor extends PolymerElement {
   static get properties() {
     return {
       content: {
-        type: String,
-        notify: true
+        type: String
       },
       selected: {
         type: String,
-        value: "0",
-        reflectToAttribute: true
+        reflect: true
       },
       layout: {
-        type: String,
-        value: 0
+        type: String
       },
       cookies: {
-        type: Boolean,
-        value: true
+        type: Boolean
       },
       elReady: {
         type: Boolean,
-        value: false
+        attribute: "el-ready"
       }
     };
   }
-
+  /**
+   * LitElement properties notice
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "selected") {
+        this._selectedChanged(this[propName]);
+      }
+      if (propName === "content") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("content-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   static get observers() {
     return ["_selectedChanged(selected)"];
   }
 
   _selectedChanged(selected) {
-    var root = this;
-    var cookieName = root._getCookieName();
+    var cookieName = this._getCookieName();
     // get current cookies
     // if the 'split-view' pane is selected
     if (selected === 2) {
       // add a cookie for lrn-markdown-editor-splitview
-      root._createCookie(cookieName, "true", "30");
-    } else if (selected !== 2 && root.elReady === true) {
+      this._createCookie(cookieName, "true", "30");
+    } else if (selected !== 2 && this.elReady === true) {
       /**
        * @todo: this is erasing the cookie erroneously
        */
-      root._eraseCookie(cookieName);
+      this._eraseCookie(cookieName);
     }
   }
 
@@ -194,18 +242,16 @@ class LrnMarkdownEditor extends PolymerElement {
     return "lrnmarkdowneditorsplitview";
   }
 
-  ready() {
-    super.ready();
-    var root = this;
+  firstUpdated(changedProperties) {
     // tell others we are ready
-    root.elReady = true;
+    this.elReady = true;
     // get the cookie for splitview
-    var cookieName = root._getCookieName();
-    var cookie = root._readCookie(cookieName);
+    var cookieName = this._getCookieName();
+    var cookie = this._readCookie(cookieName);
     // if there is a cookie set for splitview
     if (cookie && cookie === "true") {
       // show splitview pane
-      root.selected = 2;
+      this.selected = 2;
     }
   }
 }

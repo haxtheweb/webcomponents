@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -126,7 +126,7 @@ ol {
     return "h-a-x";
   }
   /**
-   * life cycle
+   * HTMLElement
    */
   constructor(delayRender = false) {
     super();

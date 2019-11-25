@@ -1,6 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-styles/color.js";
-import "@polymer/paper-styles/typography.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
 A material design [chip](https://www.google.com/design/spec/components/chips.html)
 ### Example
@@ -17,10 +15,13 @@ Custom property | Description | Default
 `--paper-chip-color-selectable` | The text color hover of the chip | `white`
 @demo demo/chip.html
 */
-class PaperChip extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class PaperChip extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-block;
           background-color: var(--paper-chip-background, var(--paper-grey-300));
@@ -30,8 +31,6 @@ class PaperChip extends PolymerElement {
           border-radius: 16px;
           color: var(--paper-chip-color, var(--primary-text-color));
           font-size: 13px !important;
-          @apply --paper-font-body1;
-          @apply --paper-chip;
         }
         :host([selectable]) {
           cursor: pointer;
@@ -42,19 +41,38 @@ class PaperChip extends PolymerElement {
             var(--paper-grey-400)
           );
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <slot></slot>
     `;
   }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.selectable = false;
+  }
+  /**
+   * our concept
+   */
   static get tag() {
     return "paper-chip";
   }
+  /**
+   * LitElement / popular concept
+   */
   static get properties() {
     return {
       selectable: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

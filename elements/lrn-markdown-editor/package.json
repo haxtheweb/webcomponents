@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrn-markdown-editor",
   "wcfactory": {
     "className": "LrnMarkdownEditor",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrn-markdown-editor",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
