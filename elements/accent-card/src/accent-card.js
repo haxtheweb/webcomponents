@@ -371,6 +371,9 @@ class AccentCard extends SimpleColors {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"]
       }
     };
   }

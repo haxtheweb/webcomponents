@@ -328,7 +328,7 @@ class PlaceHolder extends SimpleColors {
         advanced: []
       },
       saveOptions: {
-        unsetAttributes: ["icon-from-type", "calc-text"],
+        unsetAttributes: ["icon-from-type", "calc-text", "colors"],
         wipeSlot: true
       }
     };

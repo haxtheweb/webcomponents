@@ -458,6 +458,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"]
       }
     };
   }
