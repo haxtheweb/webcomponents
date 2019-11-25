@@ -117,7 +117,11 @@ class LrnappCisCourseCard extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style include="materializecss-styles"></style>
+        <style include="materializecss-styles">
+          :host {
+            display: block;
+          }
+        </style>
       </custom-style>
       <paper-card elevation="${this.elevation}">
         <div class="card-content card-control-height card-control-center">

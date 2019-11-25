@@ -112,7 +112,11 @@ class MoocContent extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style include="materializecss-styles"></style>
+        <style include="materializecss-styles">
+          :host {
+            display: block;
+          }
+        </style>
       </custom-style>
       <div id="hackycontainer"><style id="hackycsspotterhates"></style></div>
       <iron-ajax
