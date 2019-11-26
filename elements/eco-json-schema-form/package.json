@@ -11,7 +11,7 @@
       "js": "src/eco-json-schema-form.js"
     }
   },
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.2.3",
     "@lrnwebcomponents/a11y-tabs": "^2.2.3",
-    "@lrnwebcomponents/hax-body": "^2.2.3",
+    "@lrnwebcomponents/hax-body": "^2.2.4",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-material": "^3.0.1",

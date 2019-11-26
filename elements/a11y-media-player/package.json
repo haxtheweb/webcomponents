@@ -16,7 +16,7 @@
       "hax": "src/a11y-media-player-hax.json"
     }
   },
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@lrnwebcomponents/dropdown-select": "^2.2.3",
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
     "@lrnwebcomponents/responsive-utility": "^2.2.3",
-    "@lrnwebcomponents/simple-colors": "^2.2.3",
+    "@lrnwebcomponents/simple-colors": "^2.2.4",
     "@lrnwebcomponents/simple-search": "^2.2.3",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
@@ -64,7 +64,7 @@
     "screenfull": "^4.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

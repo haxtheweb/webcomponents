@@ -16,7 +16,7 @@
       "hax": "src/hax-bookmarklet-hax.json"
     }
   },
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^2.2.3",
+    "@lrnwebcomponents/cms-hax": "^2.2.4",
     "@lrnwebcomponents/hax-body-behaviors": "^2.2.3",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.2.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
