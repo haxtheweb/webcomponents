@@ -46,9 +46,8 @@ class HAXCMSSiteListing extends PolymerElement {
           --paper-icon-button-ink-color: var(--haxcms-system-action-color);
         }
         app-toolbar div.main-title {
-          margin-left: 8px;
+          margin-left: 50px;
           font-size: 24px;
-          min-width: 50px;
         }
         app-header {
           color: var(--haxcms-site-listing-color-light);
@@ -202,11 +201,10 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         .operations paper-button {
           font-weight: 500;
-          font-size: 20px;
+          font-size: 18px;
           color: var(--haxcms-site-listing-color-light);
           margin: 0;
           padding: 8px;
-          min-width: 100px;
           width: auto;
           display: inline-flex;
           height: 48px;
@@ -216,6 +214,11 @@ class HAXCMSSiteListing extends PolymerElement {
         .operations paper-button:focus {
           background-color: var(--haxcms-site-listing-color-light);
           color: var(--haxcms-site-listing-color-hover);
+        }
+        .operations.right {
+          right: 0;
+          position: absolute;
+          display: inline-flex;
         }
         #add {
           background-color: var(--haxcms-site-listing-color-hover);
@@ -234,9 +237,9 @@ class HAXCMSSiteListing extends PolymerElement {
           display: inline-flex;
           visibility: visible;
           opacity: 1;
-          border-left: 2px solid var(--haxcms-site-listing-color-light);
-          border-right: 2px solid var(--haxcms-site-listing-color-light);
-          height: 64px;
+          align-content: center;
+          justify-content: space-evenly;
+          width: 100%;
         }
         .selected-operations[data-hidden] {
           visibility: hidden;
@@ -276,6 +279,27 @@ class HAXCMSSiteListing extends PolymerElement {
         #configform {
           --eco-json-schema-object-form: {
             display: block !important;
+          }
+        }
+        #userphoto {
+          width: 40px;
+          height: 40px;
+          margin-right: 4px;
+          border-radius: 50%;
+        }
+        @media screen and (max-width: 1080px) {
+          .selected-operations .small-hide {
+            display:none;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          .main-title {
+            display:none;
+          }
+        }
+        @media screen and (max-width: 700px) {
+          .small-hide {
+            display:none;
           }
         }
       </style>
@@ -424,60 +448,115 @@ class HAXCMSSiteListing extends PolymerElement {
               id="add"
               raised
               hidden$="[[!loggedIn]]"
+              title="Create new site"
             >
-              <iron-icon icon="icons:add"></iron-icon> Create
+              <iron-icon icon="icons:add"></iron-icon>
+              <span class="small-hide">Create</span>
             </paper-button>
             <paper-button
               on-click="_importTap"
               id="import"
               raised
               hidden$="[[!loggedIn]]"
+              title="Import site"
             >
-              <iron-icon icon="icons:cloud-download"></iron-icon> Import
+              <iron-icon icon="icons:cloud-download"></iron-icon>
+              <span class="small-hide">Import</span>
             </paper-button>
           </div>
           <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
-          <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
-            <paper-button on-click="_bulkSitesConfirm" id="publish" raised>
-              <iron-icon icon="editor:publish"></iron-icon> Publish
+          <div class="operations right">
+            <paper-button
+              on-click="_settingsTap"
+              id="settings"
+              raised
+              title="Settings"
+              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
+            >
+              <iron-icon icon="icons:settings"></iron-icon>
+              <span class="small-hide">Settings</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="sync" raised>
-              <iron-icon icon="notification:sync"></iron-icon> Sync
+            <paper-button
+              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
+              id="login"
+              on-click="_loginUserRoutine"
+              title="Logout"
+            >
+              <template is="dom-if" if="[[!logoutPhoto]]">
+                <iron-icon
+                  icon="[[__loginIcon]]"
+                  class="small-hide"
+                ></iron-icon>
+              </template>
+              <template is="dom-if" if="[[logoutPhoto]]">
+                <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
+              </template>
+              [[__loginText]]</paper-button
+            >
+          </div>
+        </app-toolbar>
+      </app-header>
+      <app-header
+        class="selected-operations"
+        data-hidden$="[[!hasSelectedItems]]"
+      >
+        <app-toolbar>
+          <div>
+            <paper-button
+              title="Publish"
+              on-click="_bulkSitesConfirm"
+              id="publish"
+              raised
+            >
+              <iron-icon icon="editor:publish"></iron-icon>
+              <span class="small-hide">Publish site</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="clone" raised>
-              <iron-icon icon="icons:content-copy"></iron-icon> Clone
+            <paper-button
+              title="Sync git"
+              on-click="_bulkSitesConfirm"
+              id="sync"
+              raised
+            >
+              <iron-icon icon="notification:sync"></iron-icon>
+              <span class="small-hide">Sync git</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="download" raised>
-              <iron-icon icon="icons:file-download"></iron-icon> Download
+            <paper-button
+              title="Copy site"
+              on-click="_bulkSitesConfirm"
+              id="clone"
+              raised
+            >
+              <iron-icon icon="icons:content-copy"></iron-icon>
+              <span class="small-hide">Copy site</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="archive" raised>
-              <iron-icon icon="icons:archive"></iron-icon> Archive
+            <paper-button
+              title="Download zip"
+              on-click="_bulkSitesConfirm"
+              id="download"
+              raised
+            >
+              <iron-icon icon="icons:file-download"></iron-icon>
+              <span class="small-hide">Download zip</span>
+            </paper-button>
+            <paper-button
+              title="Archive"
+              on-click="_bulkSitesConfirm"
+              id="archive"
+              raised
+            >
+              <iron-icon icon="icons:archive"></iron-icon>
+              <span class="small-hide">Archive site</span>
             </paper-button>
             <paper-button
               on-click="_bulkSitesConfirm"
               id="delete"
               raised
               class="danger"
+              title="Delete forever"
             >
-              <iron-icon icon="icons:delete-forever"></iron-icon> Delete
+              <iron-icon icon="icons:delete-forever"></iron-icon>
+              <span class="small-hide">Delete forever</span>
             </paper-button>
-          </div>
-          <div class="operations">
-            <paper-button
-              on-click="_settingsTap"
-              id="settings"
-              raised
-              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
-            >
-              <iron-icon icon="icons:settings"></iron-icon> Settings
-            </paper-button>
-            <paper-button
-              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
-              id="login"
-              on-click="_loginUserRoutine"
-              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
-              [[__loginText]]</paper-button
-            >
           </div>
         </app-toolbar>
       </app-header>
@@ -805,7 +884,8 @@ class HAXCMSSiteListing extends PolymerElement {
       },
       userData: {
         type: Object,
-        value: {}
+        value: {},
+        observer: "_userDataChanged"
       },
 
       /**
@@ -896,8 +976,21 @@ class HAXCMSSiteListing extends PolymerElement {
       hideCamera: {
         type: Boolean,
         value: false
+      },
+      logoutPhoto: {
+        type: String,
+        value: false
       }
     };
+  }
+
+  _userDataChanged(newValue) {
+    if (newValue.userName) {
+      this.title = newValue.userName + " sites";
+    }
+    if (newValue.userPicture) {
+      this.logoutPhoto = newValue.userPicture;
+    }
   }
   /**
    * Show the login button if we have cause
