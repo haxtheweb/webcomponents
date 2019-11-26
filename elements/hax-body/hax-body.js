@@ -324,72 +324,6 @@ class HaxBody extends SimpleColors {
       })
     );
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
-    // mutation observer that ensures state of hax applied correctly
-    this._observer = new MutationObserver(mutations => {
-      var mutFind = false;
-      mutations.forEach(mutation => {
-        // if we've got new nodes, we have to react to that
-        if (mutation.addedNodes.length > 0) {
-          mutation.addedNodes.forEach(node => {
-            if (this._haxElementTest(node)) {
-              if (this._HTMLPrimativeTest(node)) {
-                node.contentEditable = this.editMode;
-              }
-              // this does the real targetting
-              node.setAttribute("data-editable", this.editMode);
-              let haxRay = node.tagName.replace("-", " ").toLowerCase();
-              let i = window.HaxStore.instance.gizmoList.findIndex(
-                j => j.tag === node.tagName.toLowerCase()
-              );
-              if (i !== -1) {
-                haxRay = window.HaxStore.instance.gizmoList[i].title;
-              }
-              node.setAttribute("data-hax-ray", haxRay);
-              this.dispatchEvent(
-                new CustomEvent("hax-body-tag-added", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: { node: node }
-                })
-              );
-              // set new nodes to be the active one
-              // only if we didn't just do a grid plate move
-              // if multiple mutations, only accept the 1st one in a group
-              if (!this.___moveLock && !mutFind) {
-                mutFind = true;
-                this.activeNode = node;
-                window.HaxStore.write("activeNode", node, this);
-              } else {
-                this.___moveLock = false;
-              }
-            }
-          });
-        }
-        // if we dropped nodes via the UI (delete event basically)
-        if (mutation.removedNodes.length > 0) {
-          // handle removing items... not sure we need to do anything here
-          mutation.removedNodes.forEach(node => {
-            if (
-              this._haxElementTest(node) &&
-              !node.classList.contains("hax-active")
-            ) {
-              this.dispatchEvent(
-                new CustomEvent("hax-body-tag-removed", {
-                  bubbles: true,
-                  cancelable: true,
-                  composed: true,
-                  detail: { node: node }
-                })
-              );
-            }
-          });
-        }
-      });
-    });
-    this._observer.observe(this, {
-      childList: true
-    });
     this.addEventListener(
       "hax-context-item-selected",
       this._haxContextOperation.bind(this)
@@ -409,8 +343,6 @@ class HaxBody extends SimpleColors {
     } catch (e) {
       console.warn(e);
     }
-    window.addEventListener("keydown", this._onKeyDown.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.shadowRoot
       .querySelector("slot")
       .addEventListener("mousemove", this.hoverEvent.bind(this));
@@ -426,11 +358,6 @@ class HaxBody extends SimpleColors {
         console.warn(e);
       }
     });
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.addEventListener("scroll", this._keepContextVisible.bind(this));
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("mousedown", this._focusIn.bind(this));
     // in case we miss this on the initial setup. possible in auto opening environments.
@@ -473,11 +400,94 @@ class HaxBody extends SimpleColors {
       }
     });
   }
+  _dragstart(e) {
+    this.__dragTarget = e.target;
+  }
+  /**
+   * HTMLElement
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new MutationObserver(mutations => {
+      var mutFind = false;
+      mutations.forEach(mutation => {
+        // if we've got new nodes, we have to react to that
+        if (mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach(node => {
+            if (this._validElementTest(node)) {
+              if (this._HTMLPrimativeTest(node)) {
+                node.contentEditable = this.editMode;
+              }
+              // this does the real targetting
+              node.setAttribute("data-editable", this.editMode);
+              let haxRay = node.tagName.replace("-", " ").toLowerCase();
+              let i = window.HaxStore.instance.gizmoList.findIndex(
+                j => j.tag === node.tagName.toLowerCase()
+              );
+              if (i !== -1) {
+                haxRay = window.HaxStore.instance.gizmoList[i].title;
+              }
+              node.setAttribute("data-hax-ray", haxRay);
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-added", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
+              // set new nodes to be the active one
+              // only if we didn't just do a grid plate move
+              // if multiple mutations, only accept the 1st one in a group
+              if (!this.___moveLock && !mutFind) {
+                mutFind = true;
+                this.activeNode = node;
+                window.HaxStore.write("activeNode", node, this);
+              } else {
+                this.___moveLock = false;
+              }
+            }
+          });
+        }
+        // if we dropped nodes via the UI (delete event basically)
+        if (mutation.removedNodes.length > 0) {
+          // handle removing items... not sure we need to do anything here
+          mutation.removedNodes.forEach(node => {
+            if (
+              this._validElementTest(node) &&
+              !node.classList.contains("hax-active")
+            ) {
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-removed", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
+            }
+          });
+        }
+      });
+    });
+    this._observer.observe(this, {
+      childList: true
+    });
+    window.addEventListener("dragstart", this._dragstart.bind(this));
+    window.addEventListener("keydown", this._onKeyDown.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("scroll", this._keepContextVisible.bind(this));
+  }
   /**
    * HTMLElement
    */
   disconnectedCallback() {
-    this._observer.disconnect();
+    window.removeEventListener("dragstart", this._dragstart.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     document.body.removeEventListener(
@@ -485,6 +495,7 @@ class HaxBody extends SimpleColors {
       this._haxStorePropertyUpdated.bind(this)
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
+    this._observer.disconnect();
     super.disconnectedCallback();
   }
   /**
@@ -1011,7 +1022,7 @@ class HaxBody extends SimpleColors {
     var content = "";
     for (var i = 0, len = children.length; i < len; i++) {
       // some mild front-end sanitization
-      if (this._haxElementTest(children[i])) {
+      if (this._validElementTest(children[i])) {
         children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
         children[i].contentEditable = false;
@@ -1715,7 +1726,7 @@ class HaxBody extends SimpleColors {
       let activeNode = null;
       // ensure this is valid
       if (
-        this._haxElementTest(containerNode) &&
+        this._validElementTest(containerNode) &&
         containerNode.parentNode != null
       ) {
         // keep looking til we are juuuust below the container
@@ -1822,8 +1833,9 @@ class HaxBody extends SimpleColors {
   }
   /**
    * Test if this is a HAX element or not
+   * true means its a valid element for selection
    */
-  _haxElementTest(node) {
+  _validElementTest(node) {
     if (
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) !== "HAX-"
@@ -1879,8 +1891,8 @@ class HaxBody extends SimpleColors {
             }
           }
         } else {
-          children[i].removeAttribute("data-editable", status);
           children[i].removeAttribute("contenteditable", status);
+          children[j].removeAttribute("data-editable", status);
           if (children[i].querySelectorAll("a").length > 0) {
             let links = children[i].querySelectorAll("a");
             for (var j = 0, len2 = links.length; j < len2; j++) {
@@ -1896,9 +1908,8 @@ class HaxBody extends SimpleColors {
         }
       }
       // this does the real targetting
-      if (this._haxElementTest(children[i])) {
+      if (this._validElementTest(children[i])) {
         if (status) {
-          children[i].setAttribute("data-editable", status);
           let haxRay = children[i].tagName.replace("-", " ").toLowerCase();
           let l = window.HaxStore.instance.gizmoList.findIndex(
             j => j.tag === children[i].tagName.toLowerCase()
@@ -1906,8 +1917,14 @@ class HaxBody extends SimpleColors {
           if (l !== -1) {
             haxRay = window.HaxStore.instance.gizmoList[l].title;
           }
+          // oooooo snap, drag and drop..
+          children[i].setAttribute("draggable", true);
+          children[i].setAttribute("data-draggable", true);
+          children[i].setAttribute("data-editable", status);
           children[i].setAttribute("data-hax-ray", haxRay);
         } else {
+          children[i].removeAttribute("draggable");
+          children[i].removeAttribute("data-draggable");
           children[i].removeAttribute("data-editable");
           children[i].removeAttribute("data-hax-ray");
         }
@@ -2126,7 +2143,7 @@ class HaxBody extends SimpleColors {
       } else {
         if (node != null) {
           // step back ignoring hax- prefixed elements
-          while (node != null && !this._haxElementTest(node)) {
+          while (node != null && !this._validElementTest(node)) {
             node = node.previousSibling;
           }
         }

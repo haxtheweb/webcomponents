@@ -205,11 +205,11 @@ class GridPlate extends LitElement {
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
           padding: var(--grid-plate-item-margin);
+          max-width: calc(100% - 60px);
+          max-width: -webkit-fill-available;
         }
         :host([edit-mode]) .column ::slotted(img) {
           display: block;
-          max-width: calc(100% - 60px);
-          max-width: -webkit-fill-available;
         }
         :host([edit-mode]) .column ::slotted(.mover) {
           outline: 2px dashed var(--grid-plate-editable-border-color);
@@ -400,6 +400,14 @@ class GridPlate extends LitElement {
       node.getAttribute("slot")
     );
   }
+  _dragstart(e) {
+    // leverage closest thing to the drag 1st
+    if (e.path[0]) {
+      this.__dragTarget = e.path[0];
+    } else {
+      this.__dragTarget = e.target;
+    }
+  }
   /**
    * HTMLElement
    */
@@ -464,6 +472,9 @@ class GridPlate extends LitElement {
     this.observer.observe(this, {
       childList: true
     });
+    // need to do some global drag tracking to know the DOM node moved
+    window.addEventListener("dragstart", this._dragstart.bind(this));
+    // capture keydown events
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     // listen for HAX if it's around
     window.addEventListener(
@@ -553,6 +564,7 @@ class GridPlate extends LitElement {
    * life cycle
    */
   disconnectedCallback() {
+    window.removeEventListener("dragstart", this._dragstart.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     // listen for HAX if it's around
     window.removeEventListener(
@@ -1171,18 +1183,22 @@ class GridPlate extends LitElement {
    */
   dropEvent(e) {
     if (this.editMode) {
+      let target = this.activeItem;
+      if (this.__dragTarget) {
+        target = this.__dragTarget;
+      }
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        typeof this.activeItem !== typeof undefined &&
-        this.activeItem !== null &&
+        typeof target !== typeof undefined &&
+        target !== null &&
         typeof local !== typeof undefined &&
         local.getAttribute("slot") != null &&
-        this.activeItem !== local
+        target !== local
       ) {
-        this.activeItem.setAttribute("slot", local.getAttribute("slot"));
-        this.insertBefore(this.activeItem, local);
+        target.setAttribute("slot", local.getAttribute("slot"));
+        this.insertBefore(target, local);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1191,8 +1207,8 @@ class GridPlate extends LitElement {
       // which could involve a miss on the column
       else if (local.tagName === "DIV" && local.classList.contains("column")) {
         var col = local.id.replace("col", "");
-        this.activeItem.setAttribute("slot", "col-" + col);
-        this.appendChild(this.activeItem);
+        target.setAttribute("slot", "col-" + col);
+        this.appendChild(target);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1210,9 +1226,9 @@ class GridPlate extends LitElement {
         }
       }
       // position arrows / set focus in case the DOM got updated above
-      if (this.activeItem && typeof this.activeItem.focus === "function") {
-        this.positionArrows(this.activeItem);
-        this.activeItem.focus();
+      if (target && typeof target.focus === "function") {
+        this.positionArrows(target);
+        target.focus();
       }
     }
   }
