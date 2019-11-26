@@ -211,12 +211,6 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(img) {
           display: block;
         }
-        :host([edit-mode]) .column ::slotted(.mover) {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
-        }
-        :host([edit-mode]) .column.mover {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
-        }
         :host([edit-mode]) .column ::slotted(.grid-plate-active-item) {
           outline: 2px dashed var(--grid-plate-active-border-color);
           background-color: var(--grid-plate-selected-background-color);
@@ -225,6 +219,12 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
           cursor: move;
+        }
+        :host([edit-mode]) .column ::slotted(.mover) {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+        }
+        :host([edit-mode]) .column.mover {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(.mover) {
           background-color: var(--grid-plate-possible-target-background-color);
@@ -401,12 +401,23 @@ class GridPlate extends LitElement {
     );
   }
   _dragstart(e) {
+    let target;
+    // @todo this MUST validate that we are 1 below this element
     // leverage closest thing to the drag 1st
+    // THIS IS HOW WE CAN MAKE A GRIP HANDLE!!!!!
     if (e.path[0]) {
-      this.__dragTarget = e.path[0];
+      target = e.path[0];
     } else {
-      this.__dragTarget = e.target;
+      target = e.target;
     }
+    // special support for HAXStore
+    if (window.HaxStore && window.HaxStore.ready) {
+      window.HaxStore.instance.__dragTarget = target;
+    } else {
+      this.__dragTarget = target;
+    }
+    e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.setDragImage(target, 25, 25);
   }
   /**
    * HTMLElement
@@ -1187,6 +1198,22 @@ class GridPlate extends LitElement {
       if (this.__dragTarget) {
         target = this.__dragTarget;
       }
+      // support global hax store target
+      if (
+        window.HaxStore &&
+        window.HaxStore.ready &&
+        window.HaxStore.instance.__dragTarget
+      ) {
+        target = window.HaxStore.instance.__dragTarget;
+      }
+      // edge case, something caused this to drag and it tried to do
+      // itself into itself
+      if (target === this) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      }
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
@@ -1202,6 +1229,7 @@ class GridPlate extends LitElement {
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
       }
       // special case for dropping on an empty column or between items
       // which could involve a miss on the column
@@ -1212,6 +1240,7 @@ class GridPlate extends LitElement {
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
       }
       let children = this.children;
       // walk the children and apply the draggable state needed
@@ -1226,9 +1255,16 @@ class GridPlate extends LitElement {
         }
       }
       // position arrows / set focus in case the DOM got updated above
-      if (target && typeof target.focus === "function") {
+      if (
+        target &&
+        typeof target.focus === "function" &&
+        target.parentNode === this
+      ) {
         this.positionArrows(target);
         target.focus();
+      } else {
+        // element moved outside of this grid plate, lose focus
+        this.positionArrows(null);
       }
     }
   }

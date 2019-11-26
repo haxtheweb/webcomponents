@@ -10,6 +10,8 @@ class HaxPlateContext extends HTMLElement {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
@@ -38,7 +40,7 @@ class HaxPlateContext extends HTMLElement {
       width: 40px;
       float: left;
       visibility: visible;
-      transition: 0.3s all ease;
+      transition: 0.2s all linear;
     }
     </style>
     <div class="area">
@@ -47,6 +49,14 @@ class HaxPlateContext extends HTMLElement {
         icon="hardware:keyboard-arrow-up"
         label="Move up"
         event-name="grid-plate-up"
+        direction="left"
+      ></hax-context-item>
+      <hax-context-item
+        id="drag"
+        light
+        icon="editor:drag-handle"
+        label="Drag"
+        draggable="true"
         direction="left"
       ></hax-context-item>
       <hax-context-item
@@ -66,6 +76,30 @@ class HaxPlateContext extends HTMLElement {
       window.ShadyCSS.prepareTemplate(this.template, this.tag);
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+  }
+  connectedCallback() {
+    this.shadowRoot
+      .querySelector("#drag")
+      .addEventListener("dragstart", this._dragstart);
+  }
+  disconnectedCallback() {
+    this.shadowRoot
+      .querySelector("#drag")
+      .removeEventListener("dragstart", this._dragstart);
+  }
+  /**
+   * Drag start so we know what target to set
+   */
+  _dragstart(e) {
+    let target = window.HaxStore.instance.activeNode;
+    if (window.HaxStore.instance.activeContainerNode) {
+      target = window.HaxStore.instance.activeContainerNode;
+    }
+    window.HaxStore.instance.__dragTarget = target;
+    e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.setDragImage(target, 25, 25);
+    e.stopPropagation();
+    e.stopImmediatePropagation();
   }
 }
 window.customElements.define(HaxPlateContext.tag, HaxPlateContext);

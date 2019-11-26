@@ -44,6 +44,12 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
+          --hax-body-editable-border-color: #bbbbbb;
+          --hax-body-active-border-color: #000000;
+          --hax-body-target-background-color: var(
+            --simple-colors-default-theme-blue-1
+          );
+          --hax-body-possible-target-background-color: transparent;
         }
         .hax-context-menu {
           padding: 0;
@@ -217,6 +223,19 @@ class HaxBody extends SimpleColors {
           margin: -16px 0 0 0;
           float: right;
           line-height: 2;
+        }
+        /* drag and drop */
+        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
+          outline: 2px dashed var(--hax-body-editable-border-color);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
+          background-color: var(--hax-body-possible-target-background-color);
+          padding: 16px;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(.hovered) {
+          background-color: var(--hax-body-target-background-color) !important;
+          outline: dashed 2px var(--hax-body-active-border-color);
+          z-index: 2;
         }
       `
     ];
@@ -400,9 +419,6 @@ class HaxBody extends SimpleColors {
       }
     });
   }
-  _dragstart(e) {
-    this.__dragTarget = e.target;
-  }
   /**
    * HTMLElement
    */
@@ -474,7 +490,6 @@ class HaxBody extends SimpleColors {
     this._observer.observe(this, {
       childList: true
     });
-    window.addEventListener("dragstart", this._dragstart.bind(this));
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     document.body.addEventListener(
@@ -487,7 +502,6 @@ class HaxBody extends SimpleColors {
    * HTMLElement
    */
   disconnectedCallback() {
-    window.removeEventListener("dragstart", this._dragstart.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     document.body.removeEventListener(
@@ -576,7 +590,6 @@ class HaxBody extends SimpleColors {
                 } else {
                   this.removeAttribute("contenteditable");
                 }
-                console.log(rng.commonAncestorContainer);
                 rng.commonAncestorContainer.focus();
                 this.__focusLogic(rng.commonAncestorContainer);
               }
@@ -1918,15 +1931,111 @@ class HaxBody extends SimpleColors {
             haxRay = window.HaxStore.instance.gizmoList[l].title;
           }
           // oooooo snap, drag and drop..
-          children[i].setAttribute("draggable", true);
           children[i].setAttribute("data-draggable", true);
           children[i].setAttribute("data-editable", status);
           children[i].setAttribute("data-hax-ray", haxRay);
+          children[i].addEventListener("drop", this.dropEvent.bind(this));
+          children[i].addEventListener("dragenter", this.dragEnter.bind(this));
+          children[i].addEventListener("dragleave", this.dragLeave.bind(this));
+          children[i].addEventListener("dragend", this.dragEnd.bind(this));
+          children[i].addEventListener("dragover", function(e) {
+            e.preventDefault();
+          });
         } else {
-          children[i].removeAttribute("draggable");
           children[i].removeAttribute("data-draggable");
           children[i].removeAttribute("data-editable");
           children[i].removeAttribute("data-hax-ray");
+          children[i].removeAttribute("drop", this.dropEvent.bind(this));
+          children[i].removeAttribute("dragenter", this.dragEnter.bind(this));
+          children[i].removeAttribute("dragleave", this.dragLeave.bind(this));
+          children[i].removeAttribute("dragend", this.dragEnd.bind(this));
+          children[i].removeAttribute("dragover", function(e) {
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  }
+  /**
+   * Drop an item onto another
+   */
+  dropEvent(e) {
+    if (this.editMode) {
+      var target = window.HaxStore.instance.__dragTarget;
+      var local = e.target;
+      // if we have a slot on what we dropped into then we need to mirror that item
+      // and place ourselves below it in the DOM
+      if (
+        (typeof target !== typeof undefined &&
+          target !== null &&
+          typeof local !== typeof undefined &&
+          target !== local &&
+          target !== local.parentNode &&
+          target.parentNode === this) ||
+        local.parentNode === this
+      ) {
+        // incase this came from a grid plate, drop the slot so it works
+        target.removeAttribute("slot");
+        this.insertBefore(target, local);
+        // ensure that if we caught this event we process it
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover");
+        }
+      }
+      // position arrows / set focus in case the DOM got updated above
+      if (target && typeof target.focus === "function") {
+        target.focus();
+      }
+    }
+  }
+  /**
+   * Enter an element, meaning we've over it while dragging
+   */
+  dragEnter(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.target.classList.add("hovered");
+    }
+  }
+  /**
+   * Leaving an element while dragging.
+   */
+  dragLeave(e) {
+    if (this.editMode) {
+      e.target.classList.remove("hovered");
+    }
+  }
+  /**
+   * Start a drag event, this is an element being dragged
+   */
+  dragStart(e) {
+    if (this.editMode) {
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.add("mover");
+        }
+      }
+    }
+  }
+
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  dragEnd(e) {
+    if (this.editMode) {
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover", "hovered");
         }
       }
     }

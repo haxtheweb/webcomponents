@@ -1,2 +1,2272 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("lit-element/lit-element.js"),require("@lrnwebcomponents/simple-colors/simple-colors.js"),require("@polymer/polymer/lib/utils/wrap.js"),require("@polymer/polymer/lib/utils/flattened-nodes-observer.js"),require("@polymer/polymer/lib/utils/flush.js"),require("@lrnwebcomponents/hax-body/lib/haxutils.js"),require("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js")):"function"==typeof define&&define.amd?define(["exports","lit-element/lit-element.js","@lrnwebcomponents/simple-colors/simple-colors.js","@polymer/polymer/lib/utils/wrap.js","@polymer/polymer/lib/utils/flattened-nodes-observer.js","@polymer/polymer/lib/utils/flush.js","@lrnwebcomponents/hax-body/lib/haxutils.js","@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js"],t):t((e=e||self).HaxBody={},e.litElement_js,e.simpleColors_js,e.wrap_js,e.flattenedNodesObserver_js,e.flush_js,e.haxutils_js)}(this,function(e,t,n,o,i,a,r){"use strict";function s(e){return(s="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function c(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function d(e,t,n){return t&&c(e.prototype,t),n&&c(e,n),e}function u(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&p(e,t)}function h(e){return(h=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function p(e,t){return(p=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function m(e,t,n){return(m=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Date.prototype.toString.call(Reflect.construct(Date,[],function(){})),!0}catch(e){return!1}}()?Reflect.construct:function(e,t,n){var o=[null];o.push.apply(o,t);var i=new(Function.bind.apply(e,o));return n&&p(i,n.prototype),i}).apply(null,arguments)}function x(e){var t="function"==typeof Map?new Map:void 0;return(x=function(e){if(null===e||(n=e,-1===Function.toString.call(n).indexOf("[native code]")))return e;var n;if("function"!=typeof e)throw new TypeError("Super expression must either be null or a function");if(void 0!==t){if(t.has(e))return t.get(e);t.set(e,o)}function o(){return m(e,arguments,h(this).constructor)}return o.prototype=Object.create(e.prototype,{constructor:{value:o,enumerable:!1,writable:!0,configurable:!0}}),p(o,e)})(e)}function v(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function f(e,t){return!t||"object"!=typeof t&&"function"!=typeof t?v(e):t}function b(e,t,n){return(b="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var o=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=h(e)););return e}(e,t);if(o){var i=Object.getOwnPropertyDescriptor(o,t);return i.get?i.get.call(n):i.value}})(e,t,n||e)}function g(e,t){return t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}function y(){var e=g(['\n      <hax-toolbar .selected="','" hide-transform id="toolbar">\n        <hax-context-item-menu\n          slot="primary"\n          .selected-value="','"\n          @selected-value-changed="','"\n          id="formatsize"\n          icon="','"\n          label="Text format"\n          event-name="text-tag"\n        >\n          <paper-item value="p"\n            ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item\n          >\n          <paper-item value="ul"\n            ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted\n            list</paper-item\n          >\n          <paper-item value="ol"\n            ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered\n            list</paper-item\n          >\n          <paper-item value="h2"\n            ><iron-icon icon="hax:h2"></iron-icon>Title\n          </paper-item>\n          <paper-item value="h3"\n            ><iron-icon icon="hax:h3"></iron-icon>Content heading\n          </paper-item>\n          <paper-item value="h4"\n            ><iron-icon icon="hax:h4"></iron-icon>Subheading\n          </paper-item>\n          <paper-item value="h5"\n            ><iron-icon icon="hax:h5"></iron-icon>Deeper subheading\n          </paper-item>\n          <paper-item value="blockquote"\n            ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote\n          </paper-item>\n          <paper-item value="code"\n            ><iron-icon icon="icons:code"></iron-icon>Code\n          </paper-item>\n        </hax-context-item-menu>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-bold"\n          label="Bold"\n          event-name="text-bold"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-italic"\n          label="Italic"\n          event-name="text-italic"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:insert-link"\n          label="Link"\n          event-name="text-link"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="mdextra:unlink"\n          label="Remove link"\n          event-name="text-unlink"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-list-bulleted"\n          event-name="ul"\n          label="Bulleted list"\n          .hidden="','"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-list-numbered"\n          label="Numbered list"\n          event-name="ol"\n          .hidden="','"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-indent-decrease"\n          label="Outdent"\n          event-name="text-outdent"\n          .hidden="','"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-indent-increase"\n          label="Indent"\n          event-name="text-indent"\n          .hidden="','"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          slot="primary"\n          icon="editor:format-clear"\n          label="Remove format"\n          event-name="text-remove-format"\n        ></hax-context-item-textop>\n        <hax-context-item\n          slot="primary"\n          icon="hax:add-brick"\n          label="Add element to selection"\n          event-name="insert-inline-gizmo"\n          .hidden="','"\n        ></hax-context-item>\n        <hax-context-item-textop\n          slot="primary"\n          icon="hax:add-brick"\n          label="Add element to selection"\n          event-name="insert-inline-gizmo"\n          .hidden="','"\n        ></hax-context-item-textop>\n        <hax-context-item-textop\n          menu\n          slot="more"\n          icon="mdextra:subscript"\n          event-name="text-subscript"\n          >Subscript</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          menu\n          slot="more"\n          icon="mdextra:superscript"\n          event-name="text-superscript"\n          >Superscript</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          menu\n          slot="more"\n          icon="editor:format-underlined"\n          event-name="text-underline"\n          >Underline</hax-context-item-textop\n        >\n        <hax-context-item-textop\n          menu\n          slot="more"\n          icon="editor:format-strikethrough"\n          event-name="text-strikethrough"\n          >Cross out</hax-context-item-textop\n        >\n      </hax-toolbar>\n    ']);return y=function(){return e},e}function w(){var e=g(["\n        :host {\n          display: block;\n          pointer-events: none;\n        }\n        :host [hidden] {\n          display: none;\n        }\n        paper-item {\n          -webkit-justify-content: flex-start;\n          justify-content: flex-start;\n          height: 36px;\n          padding: 0 8px;\n          min-height: 36px;\n        }\n        paper-item:hover {\n          background-color: #d3d3d3;\n          cursor: pointer;\n        }\n        iron-icon {\n          padding: 8px;\n        }\n        paper-item strong {\n          padding: 8px;\n          font-size: 12px;\n        }\n        :host(.hax-context-pin-top) hax-toolbar {\n          position: fixed;\n          top: 64px;\n          opacity: 0.95;\n        }\n        :host(.hax-context-pin-bottom) hax-toolbar {\n          position: fixed;\n          bottom: 0;\n          opacity: 0.95;\n        }\n      "]);return w=function(){return e},e}var S=function(e){function n(){var e;return l(this,n),e=f(this,h(n).call(this)),import("@polymer/paper-item/paper-item.js"),import("@polymer/iron-icons/iron-icons.js"),import("@polymer/iron-icon/iron-icon.js"),import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js"),import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js"),e.addEventListener("hax-context-item-selected",e._haxContextOperation.bind(v(e))),e.realSelectedValue="p",e.selection=!1,e.formatIcon="hax:format-textblock",e.isSafari=e._isSafari(),e.dispatchEvent(new CustomEvent("is-safari-changed",{bubbles:!0,cancelable:!0,composed:!0,detail:e.isSafari})),e}return u(n,t.LitElement),d(n,null,[{key:"styles",get:function(){return[t.css(w())]}}]),d(n,[{key:"render",value:function(){return t.html(y(),this.selection,this.selectedValue,this.selectedValueChanged,this.formatIcon,!this._showLists,!this._showLists,!this._showIndent,!this._showIndent,this.isSafari,!this.isSafari)}},{key:"selectedValueChanged",value:function(e){this.selectedValue=e.detail}},{key:"updated",value:function(e){var t=this;e.forEach(function(e,n){if(t.realSelectedValue&&"realSelectedValue"==n&&t.shadowRoot)for(var o in t._showIndent=t._computeShowIndent(t.realSelectedValue),t._showIndent||"p"==t.realSelectedValue?t._showLists=!0:t._showLists=!1,t.shadowRoot.querySelector("#formatsize").children)t.shadowRoot.querySelector("#formatsize").children[o]&&t.shadowRoot.querySelector("#formatsize").children[o].getAttribute&&t.shadowRoot.querySelector("#formatsize").children[o].getAttribute("value")==t.realSelectedValue&&(t.selectedValue=o);"selectedValue"==n&&(t.realSelectedValue=t.shadowRoot.querySelector("#formatsize").children[t.selectedValue].getAttribute("value"),t.formatIcon=t.shadowRoot.querySelector("#formatsize").children[t[n]].querySelector("iron-icon").icon,t.dispatchEvent(new CustomEvent("selected-value-changed",{detail:t[n]})))})}},{key:"_computeShowIndent",value:function(e){return!(!window.HaxStore.instance.computePolyfillSafe()||"ol"!=e&&"ul"!=e)}},{key:"_haxContextOperation",value:function(e){var t=this,n=e.detail,o=window.HaxStore.getSelection();switch(n.eventName){case"close-menu":setTimeout(function(){t.shadowRoot.querySelector("#formatsize").shadowRoot.querySelector("#menu").hideMenu()},200);break;case"insert-inline-gizmo":if(window.HaxStore._tmpSelection&&window.HaxStore.instance.editMode){var i=!1;try{"HAX-BODY"!==window.HaxStore._tmpRange.startContainer.parentNode.parentNode.tagName&&"HAX-BODY"!==window.HaxStore._tmpRange.startContainer.parentNode.parentNode.parentNode.tagName||(window.HaxStore.write("activePlaceHolder",window.HaxStore._tmpRange,this),i=window.HaxStore._tmpRange)}catch(e){}}if(i||null!=window.HaxStore.instance.activePlaceHolder){var a={text:window.HaxStore.instance.activePlaceHolder.toString()},r=window.HaxStore.guessGizmo("inline",a);r.length>0&&window.HaxStore.instance.haxAppPicker.presentOptions(r,"inline","Transform selected text to..","gizmo")}break;case"text-bold":document.execCommand("bold"),e.preventDefault(),e.stopPropagation();break;case"text-italic":document.execCommand("italic"),e.preventDefault(),e.stopPropagation();break;case"text-underline":document.execCommand("underline"),e.preventDefault(),e.stopPropagation(),this.shadowRoot.querySelector("#toolbar").shadowRoot.querySelector("#moremenu").shadowRoot.querySelector("#menu").hideMenu();break;case"text-subscript":document.execCommand("subscript"),e.preventDefault(),e.stopPropagation(),this.shadowRoot.querySelector("#toolbar").shadowRoot.querySelector("#moremenu").shadowRoot.querySelector("#menu").hideMenu();break;case"text-superscript":document.execCommand("superscript"),e.preventDefault(),e.stopPropagation(),this.shadowRoot.querySelector("#toolbar").shadowRoot.querySelector("#moremenu").shadowRoot.querySelector("#menu").hideMenu();break;case"text-remove-format":document.execCommand("removeFormat"),e.preventDefault(),e.stopPropagation();break;case"text-strikethrough":document.execCommand("strikeThrough"),e.preventDefault(),e.stopPropagation(),this.shadowRoot.querySelector("#toolbar").shadowRoot.querySelector("#moremenu").shadowRoot.querySelector("#menu").hideMenu();break;case"text-link":var l="";"undefined"!==s(o.focusNode.parentNode.href)&&(l=o.focusNode.parentNode.href);var c=prompt("Enter a URL:",l);c&&(document.execCommand("createLink",!1,c),o.focusNode.parentNode&&(o.focusNode.parentNode.setAttribute("contenteditable",!0),o.focusNode.parentNode.setAttribute("data-editable",!0),o.focusNode.parentNode.removeEventListener("click",function(e){e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}),o.focusNode.parentNode.addEventListener("click",function(e){e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()})),e.preventDefault(),e.stopPropagation());break;case"text-unlink":document.execCommand("unlink"),e.preventDefault(),e.stopPropagation();break;case"text-indent":document.execCommand("indent"),e.preventDefault(),e.stopPropagation();break;case"text-outdent":document.execCommand("outdent"),e.preventDefault(),e.stopPropagation()}}},{key:"_isSafari",value:function(){var e=navigator.userAgent.toLowerCase();return!(-1==e.indexOf("safari")||e.indexOf("chrome")>-1)}}],[{key:"tag",get:function(){return"hax-text-context"}},{key:"properties",get:function(){return{_showIndent:{type:Boolean},_showLists:{type:Boolean},realSelectedValue:{type:String},selectedValue:{type:Number,attribute:"selected-value"},selection:{type:Boolean},formatIcon:{type:String,attribute:"format-icon"},isSafari:{type:Boolean,attribute:"is-safari"}}}}]),n}();function N(){var e=g(['\n      <hax-toolbar\n        id="toolbar"\n        size="','"\n        @size-changed="','"\n      >\n        <slot slot="primary"></slot>\n        <hax-context-item\n          slot="primary"\n          icon="icons:settings"\n          label="Settings"\n          event-name="hax-manager-configure"\n          .hidden="','"\n        ></hax-context-item>\n        <hax-context-item\n          slot="primary"\n          icon="icons:view-quilt"\n          label="','"\n          event-name="hax-manager-configure-container"\n          .hidden="','"\n        ></hax-context-item>\n      </hax-toolbar>\n    ']);return N=function(){return e},e}function _(){var e=g(["\n        :host *[hidden] {\n          display: none;\n        }\n        :host {\n          display: block;\n          height: 36px;\n        }\n        hax-context-item {\n          margin: 0;\n          height: 36px;\n        }\n        :host(.hax-context-pin-top) hax-toolbar {\n          position: fixed;\n          top: 64px;\n          opacity: 0.9;\n        }\n        :host(.hax-context-pin-bottom) hax-toolbar {\n          position: fixed;\n          bottom: 0;\n          opacity: 0.9;\n        }\n        :host(.hax-context-pin-top) hax-toolbar:hover,\n        :host(.hax-context-pin-bottom) hax-toolbar:hover {\n          opacity: 1;\n        }\n      "]);return _=function(){return e},e}window.customElements.define(S.tag,S);var C=function(e){function n(){var e;return l(this,n),(e=f(this,h(n).call(this))).ceSize=100,e.haxProperties={},import("@lrnwebcomponents/hax-body/lib/hax-context-item.js"),import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js"),e}return u(n,t.LitElement),d(n,null,[{key:"styles",get:function(){return[t.css(_())]}}]),d(n,[{key:"render",value:function(){return t.html(N(),this.ceSize,this.ceSizeChanged,!this.__hasSettingsForm,this.__parentName,!this.__hasParentSettingsForm)}},{key:"updated",value:function(e){var t=this;e.forEach(function(e,n){"haxProperties"==n&&(t.shadowRoot.querySelector("#toolbar").haxProperties=t[n],t._haxPropertiesChanged(t[n],e)),"ceSize"==n&&t._ceSizeChanged(t[n],e)})}},{key:"ceSizeChanged",value:function(e){this.ceSize=e.detail}},{key:"setHaxProperties",value:function(e){this.haxProperties=e}},{key:"_ceSizeChanged",value:function(e,t){"undefined"!==s(e)&&"undefined"!==s(t)&&this.dispatchEvent(new CustomEvent("hax-context-item-selected",{bubbles:!0,cancelable:!0,composed:!0,detail:{eventName:"hax-size-change",value:e}}))}},{key:"_haxPropertiesChanged",value:function(e,t){if("undefined"!==s(t)&&"undefined"!==s(e.settings)){for(;null!==this.firstChild;)this.removeChild(this.firstChild);var n,o=e.settings.quick,i=e.settings.configure,a=e.settings.advanced;if((i.length||a.length)&&"HR"!==e.element.tagName?this.__hasSettingsForm=!0:this.__hasSettingsForm=!1,this.__hasParentSettingsForm=!1,window.HaxStore.instance.activeContainerNode!==window.HaxStore.instance.activeNode&&null!==window.HaxStore.instance.activeContainerNode)switch(this.__hasParentSettingsForm=!0,window.HaxStore.instance.activeContainerNode.tagName){case"P":case"UL":case"OL":case"DIV":this.__parentName="Text block settings";break;case"GRID-PLATE":this.__parentName="Layout settings";break;default:this.__parentName=window.HaxStore.instance.activeContainerNode.tagName.replace("-"," ").toLowerCase()}for(var r=0;r<o.length;r++){var l=o[r];(n=document.createElement("hax-context-item")).eventName="hax-edit-property",n.label=l.title,n.options=l.options,n.icon=l.icon,n.inputMethod=l.inputMethod,n.required=l.required,n.options=l.options,n.validation=l.validation,n.validationType=l.validationType,n.description=l.description,"undefined"!==s(l.property)?n.propertyToBind=l.property:"undefined"!==s(l.attribute)?n.propertyToBind=l.attribute:n.slotToBind=l.slot,this.appendChild(n)}}}}],[{key:"tag",get:function(){return"hax-ce-context"}},{key:"properties",get:function(){return{ceSize:{type:Number,attribute:"ce-size"},haxProperties:{type:Object,attribute:"hax-properties"},__hasSettingsForm:{type:Boolean},__hasParentSettingsForm:{type:Boolean},__parentName:{type:String}}}}]),n}();window.customElements.define(C.tag,C);var k=function(e){function t(){var e,n=arguments.length>0&&void 0!==arguments[0]&&arguments[0];return l(this,t),e=f(this,h(t).call(this)),import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item.js"),e.tag=t.tag,e.template=document.createElement("template"),e.attachShadow({mode:"open"}),n||e.render(),e}return u(t,x(HTMLElement)),d(t,[{key:"render",value:function(){this.shadowRoot.innerHTML=null,this.template.innerHTML=this.html,window.ShadyCSS&&window.ShadyCSS.prepareTemplate(this.template,this.tag),this.shadowRoot.appendChild(this.template.content.cloneNode(!0))}},{key:"html",get:function(){return'\n    <style>\n    :host {\n      display: block;\n      width: 40px;\n      margin-top: -2px;\n    }\n    hax-context-item {\n      display: block;\n    }\n    .area {\n      width: 40px;\n      float: left;\n      visibility: visible;\n      transition: 0.3s all ease;\n    }\n    </style>\n    <div class="area">\n      <hax-context-item\n        light\n        icon="hardware:keyboard-arrow-up"\n        label="Move up"\n        event-name="grid-plate-up"\n        direction="left"\n      ></hax-context-item>\n      <hax-context-item\n        light\n        icon="hardware:keyboard-arrow-down"\n        label="Move down"\n        event-name="grid-plate-down"\n        direction="left"\n      ></hax-context-item>\n    </div>'}}],[{key:"tag",get:function(){return"hax-plate-context"}}]),t}();function H(){var e=g([""]);return H=function(){return e},e}function L(){var e=g(["\n                <span>",'</span>\n                <simple-colors-picker\n                  id="input"\n                  .value="','"\n                  @value-changed="','"\n                ></simple-colors-picker>\n              ']);return L=function(){return e},e}function E(){var e=g([""]);return E=function(){return e},e}function M(){var e=g(['\n                <paper-checkbox\n                  id="input"\n                  .checked="','"\n                  @checked-changed="','"\n                  >',"</paper-checkbox\n                >\n              "]);return M=function(){return e},e}function T(){var e=g([""]);return T=function(){return e},e}function R(){var e=g(['\n                <paper-checkbox\n                  id="input"\n                  .checked="','"\n                  @checked-changed="','"\n                  >',"</paper-checkbox\n                >\n              "]);return R=function(){return e},e}function A(){var e=g([""]);return A=function(){return e},e}function P(){var e=g(['\n                <paper-input\n                  id="input"\n                  type="','"\n                  label="','"\n                  .value="','"\n                  @value-changed="','"\n                  auto-validate=""\n                  pattern="','"\n                  required="','"\n                ></paper-input>\n              ']);return P=function(){return e},e}function q(){var e=g([""]);return q=function(){return e},e}function j(){var e=g(['\n                <paper-textarea\n                  id="input"\n                  label="','"\n                  .value="','"\n                  @value-changed="','"\n                  auto-validate=""\n                  pattern="','"\n                  required="','"\n                ></paper-textarea>\n              ']);return j=function(){return e},e}function z(){var e=g([""]);return z=function(){return e},e}function O(){var e=g(['\n              <span class="input-mixer-label">','</span>\n              <hax-context-item-menu\n                selected-value="','"\n                @selected-value-changed="','"\n                .icon="','"\n                id="input"\n              >\n                <slot></slot>\n              </hax-context-item-menu>\n            ']);return O=function(){return e},e}function I(){var e=g(['\n      <custom-style>\n        <style>\n          paper-textarea,\n          paper-input {\n            --paper-input-container: {\n              padding: 0;\n              font-size: 14px;\n            }\n            --paper-input-container-label-floating: {\n              color: var(--hax-color-text);\n              font-size: 12px;\n            }\n            --paper-input-container-underline: {\n              margin: 0;\n            }\n            --paper-input-container-color: var(--hax-color-text);\n            --paper-input-container-focus-color: var(--hax-color-text);\n            --paper-input-container-invalid-color: var(--hax-color-text);\n            --paper-input-container-input-color: var(--hax-color-text);\n            --paper-input-container-shared-input-style: {\n              color: var(--hax-color-text);\n              background: transparent;\n              margin: 0;\n              padding: 0;\n              line-height: 14px;\n              font-size: 14px;\n              outline: none;\n              border: none;\n            }\n          }\n        </style>\n      </custom-style>\n      <div class="wrapper">\n        ','\n        <span class="input-method">\n          ',"\n          ","\n          ","\n          ","\n          ",'\n        </span>\n        <paper-tooltip for="input" position="top" offset="14">\n          ','\n        </paper-tooltip>\n        <hax-context-item\n          id="updatebutton"\n          icon="subdirectory-arrow-right"\n          label="Update ','"\n          event-name="hax-update-tap"\n        ></hax-context-item>\n      </div>\n    ']);return I=function(){return e},e}function B(){var e=g(["\n        :host {\n          display: block;\n          margin: 0;\n          border: none;\n          padding: 0;\n          border: 1px solid var(--hax-color-border-outline);\n        }\n        .wrapper {\n          background-color: #ffffff;\n          color: #222222;\n          display: flex;\n          align-items: center;\n          justify-content: space-between;\n        }\n        hax-context-item {\n          margin: 0;\n        }\n        #elementoptions {\n          height: inherit;\n        }\n        #input {\n          color: var(--hax-color-text);\n        }\n        paper-checkbox {\n          --paper-checkbox-label-color: var(--hax-color-text);\n        }\n        paper-textarea,\n        paper-input {\n          height: 40px;\n          font-size: 14px;\n          margin-bottom: 6px;\n        }\n        .input-method {\n          color: var(--hax-color-text);\n          padding: 0 8px;\n          width: 80%;\n        }\n        #updatebutton {\n          outline: 1px solid black;\n        }\n        #updatebutton:hover {\n          border: none;\n        }\n      "]);return B=function(){return e},e}window.customElements.define(k.tag,k);var D=function(e){function n(){var e;return l(this,n),(e=f(this,h(n).call(this))).value=null,e.options={},e.icon="android",e.inputMethod=null,e.__inputtextarea=!1,e.__inputtextfield=!1,e.__inputboolean=!1,e.__inputcolorpicker=!1,e.__inputflipboolean=!1,import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js"),import("@polymer/paper-input/paper-textarea.js"),import("@polymer/paper-input/paper-input.js"),import("@polymer/paper-checkbox/paper-checkbox.js"),import("@polymer/paper-tooltip/paper-tooltip.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js"),import("@lrnwebcomponents/hax-body/lib/hax-context-item.js"),e}return u(n,t.LitElement),d(n,null,[{key:"styles",get:function(){return[t.css(B())]}}]),d(n,[{key:"render",value:function(){return t.html(I(),this.__inputselect?t.html(O(),this.label,this.__selectedValue,this.__selectedValueChanged,this.icon):t.html(z()),this.__inputtextarea?t.html(j(),this.label,this.value,this.valueChanged,this.validation,this.required):t.html(q()),this.__inputtextfield?t.html(P(),this.validationType,this.label,this.value,this.valueChanged,this.validation,this.required):t.html(A()),this.__inputboolean?t.html(R(),this.value,this.valueChanged,this.label):t.html(T()),this.__inputflipboolean?t.html(M(),this.value,this.valueChanged,this.label):t.html(E()),this.__inputcolorpicker?t.html(L(),this.label,this.value,this.valueChanged):t.html(H()),this.description,this.label)}},{key:"__selectedValueChanged",value:function(e){this.__selectedValue=e.detail.value}},{key:"valueChanged",value:function(e){"undefined"!==s(e.detail.value)?this.value=e.detail.value:this.value=e.detail}},{key:"updated",value:function(e){var t=this;e.forEach(function(e,n){"inputMethod"==n&&t._inputMethodChanged(t[n],e)})}},{key:"firstUpdated",value:function(e){this._resetInputMethods(),this.addEventListener("hax-context-item-selected",this._haxContextOperation.bind(this))}},{key:"_inputMethodChanged",value:function(e,t){var n=this;if(null!=e){var o=e;if(this.validInputMethods().includes(o)){for(this._resetInputMethods(),this["__input"+o]=!0;null!==this.firstChild;)this.removeChild(this.firstChild);var i;if("select"===o&&"undefined"!==s(this.options))for(var a in this.options)(i=document.createElement("paper-item")).attributes.value=a,i.innerHTML=this.options[a],this.appendChild(i.cloneNode(!0));setTimeout(function(){n.shadowRoot.querySelector("#input")&&"function"==typeof n.shadowRoot.querySelector("#input").hideMenu&&n.shadowRoot.querySelector("#input").hideMenu(),n.shadowRoot.querySelector("#input").focus()},500)}}}},{key:"validInputMethods",value:function(){return["flipboolean","boolean","select","textfield","textarea","datepicker","haxupload","colorpicker","iconpicker","alt","number","code-editor","array"]}},{key:"_resetInputMethods",value:function(){for(var e=this.validInputMethods(),t=0;t<e.length;t++)this["__input"+e[t]]=!1}},{key:"_haxContextOperation",value:function(e){switch(e.detail.eventName){case"hax-update-tap":if("boolean"==this.inputMethod)this.value=this.value;else if("flipboolean"==this.inputMethod)this.value=!this.value;else if("select"==this.inputMethod){var t=0;for(var n in this.options)t==this.__selectedValue&&(this.value=n),t++}var o={value:this.value,propertyToBind:this.propertyToBind,slotToBind:this.slotToBind};this.dispatchEvent(new CustomEvent("hax-input-mixer-update",{bubbles:!0,cancelable:!0,composed:!0,detail:{inputMixer:o}}))}}}],[{key:"tag",get:function(){return"hax-input-mixer"}},{key:"properties",get:function(){return{value:{type:String},label:{type:String,reflect:!0},validation:{type:String,reflect:!0},validationType:{type:String,reflect:!0,attribute:"validation-type"},required:{type:Boolean,reflect:!0},options:{type:Object},icon:{type:String,reflect:!0},description:{type:String,reflect:!0},inputMethod:{type:String,reflect:!0},propertyToBind:{type:String,reflect:!0,attribute:"property-to-bind"},slotToBind:{type:String,reflect:!0,attribute:"slot-to-bind"},__inputflipboolean:{type:Boolean},__inputcolorpicker:{type:Boolean},__inputboolean:{type:Boolean},__inputtextfield:{type:Boolean},__inputtextarea:{type:Boolean}}}}]),n}();function V(){var e=g(['\n      <div id="bodycontainer" class="ignore-activation">\n        <slot id="body"></slot>\n      </div>\n      <hax-text-context\n        id="textcontextmenu"\n        class="hax-context-menu ignore-activation"\n      ></hax-text-context>\n      <hax-ce-context\n        id="cecontextmenu"\n        class="hax-context-menu ignore-activation"\n      ></hax-ce-context>\n      <hax-plate-context\n        id="platecontextmenu"\n        class="hax-context-menu ignore-activation"\n      ></hax-plate-context>\n      <hax-input-mixer\n        id="haxinputmixer"\n        class="hax-context-menu ignore-activation"\n      ></hax-input-mixer>\n    ']);return V=function(){return e},e}function F(){var e=g(['\n        :host,\n        :host * ::slotted(*) {\n          line-height: 1.8;\n        }\n        :host ul,\n        :host * ::slotted(ul),\n        :host ol,\n        :host * ::slotted(ol) {\n          padding-left: 20px;\n          margin-left: 20px;\n        }\n        :host ul,\n        :host * ::slotted(ul) {\n          list-style-type: disc;\n        }\n        :host li,\n        :host * ::slotted(li) {\n          margin-bottom: 6px;\n        }\n        :host {\n          display: block;\n          min-height: 32px;\n          min-width: 32px;\n          outline: none;\n        }\n        .hax-context-menu {\n          padding: 0;\n          margin-left: -5000px;\n          position: absolute;\n          visibility: hidden;\n          opacity: 0;\n          z-index: 1000;\n          float: left;\n          display: block;\n          pointer-events: none;\n          transition: 0.8s opacity ease-in-out, 0.8s visibility ease-in-out;\n        }\n        #haxinputmixer {\n          z-index: 10000000;\n        }\n        .hax-context-visible.hax-active-hover {\n          visibility: visible;\n          opacity: 1;\n          pointer-events: all;\n          margin-left: unset;\n        }\n        :host #bodycontainer ::slotted(h1) {\n          font-size: var(--hax-base-styles-h1-font-size, 2.5em);\n          line-height: var(--hax-base-styles-h1-line-height, 2.5em);\n        }\n        :host #bodycontainer ::slotted(h2) {\n          font-size: var(--hax-base-styles-h2-font-size, 2em);\n        }\n        :host #bodycontainer ::slotted(h3) {\n          font-size: var(--hax-base-styles-h3-font-size, 1.75em);\n        }\n        :host #bodycontainer ::slotted(h4) {\n          font-size: var(--hax-base-styles-h4-font-size, 1.5em);\n        }\n        :host #bodycontainer ::slotted(h5) {\n          font-size: var(--hax-base-styles-h5-font-size, 1.25em);\n        }\n        :host #bodycontainer ::slotted(h6) {\n          font-size: var(--hax-base-styles-h6-font-size, 1.25em);\n        }\n        :host #bodycontainer ::slotted(p) {\n          min-height: var(--hax-base-styles-p-min-height, 43px);\n          font-size: var(--hax-base-styles-p-font-size, 24px);\n          line-height: var(--hax-base-styles-p-line-height, 1.8);\n          letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);\n        }\n        :host #bodycontainer ::slotted(a) {\n          color: var(--hax-base-styles-a-color, #000);\n          font-size: var(--hax-base-styles-a-font-size, 24px);\n          font-weight: var(--hax-base-styles-a-font-weight, normal);\n        }\n        :host #bodycontainer ::slotted(a:visited) {\n          color: var(--hax-base-styles-a-color-visited, #2196f3);\n        }\n        :host #bodycontainer ::slotted(a:active),\n        :host #bodycontainer ::slotted(a:focus),\n        :host #bodycontainer ::slotted(a:hover) {\n          color: var(--hax-base-styles-a-color-active, #2196f3);\n          font-weight: var(--hax-base-styles-a-font-weight-active, normal);\n        }\n        :host #bodycontainer ::slotted(ol),\n        :host #bodycontainer ::slotted(ul),\n        :host #bodycontainer ::slotted(li) {\n          padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);\n          line-height: var(--hax-base-styles-list-line-height, 40px);\n          font-size: var(--hax-base-styles-list-font-size, 24px);\n          max-width: var(--hax-base-styles-list-max-width, 28em);\n        }\n        :host #bodycontainer ::slotted(ol > li:last-child),\n        :host #bodycontainer ::slotted(ul > li:last-child) {\n          padding-bottom: var(\n            --hax-base-styles-list-last-child-padding-bottom,\n            1em\n          );\n        }\n        :host #bodycontainer ::slotted(ul),\n        :host #bodycontainer ::slotted(ol) {\n          padding-left: var(--hax-base-styles-list-padding-left, 20px);\n          padding-left: var(--hax-base-styles-list-margin-left, 20px);\n        }\n\n        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {\n          outline: none;\n          outline-offset: 2px;\n          transition: 0.2s width ease-in-out, 0.2s height ease-in-out,\n            0.2s margin ease-in-out;\n          caret-color: var(--hax-color-text);\n        }\n        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {\n          outline: 1px solid rgba(145, 151, 162, 0.5);\n          caret-color: #000000;\n        }\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*.hax-active[data-editable]:hover) {\n          cursor: text !important;\n          outline: 1px solid rgba(145, 151, 162, 0.5);\n        }\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*[data-editable] .hax-active:hover) {\n          cursor: text !important;\n          outline: 1px solid rgba(145, 151, 162, 0.5);\n        }\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(code.hax-active[data-editable]) {\n          display: block;\n        }\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*.hax-active[data-editable]) {\n          outline: 1px solid rgba(145, 151, 162, 0.25);\n        }\n        :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {\n          height: 2px;\n          background-color: #eeeeee;\n          padding-top: 4px;\n          padding-bottom: 4px;\n        }\n        /** Fix to support safari as it defaults to none */\n        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {\n          -webkit-user-select: text;\n          cursor: pointer;\n        }\n\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*[data-editable]::-moz-selection),\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*[data-editable] *::-moz-selection) {\n          background-color: var(--hax-body-highlight, --paper-yellow-300);\n          color: black;\n        }\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*[data-editable]::selection),\n        :host([edit-mode])\n          #bodycontainer\n          ::slotted(*[data-editable] *::selection) {\n          background-color: var(--hax-body-highlight, --paper-yellow-300);\n          color: black;\n        }\n        #bodycontainer {\n          -webkit-user-select: text;\n          user-select: text;\n        }\n        :host([edit-mode][hax-ray-mode])\n          #bodycontainer\n          ::slotted(*[data-editable]):before {\n          content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "\n            attr(property) " " attr(content);\n          font-size: 10px;\n          font-style: italic;\n          left: unset;\n          right: unset;\n          top: unset;\n          background-color: #d3d3d3;\n          color: #000000;\n          bottom: unset;\n          width: auto;\n          padding: 8px;\n          margin: 0;\n          z-index: 1;\n          margin: -16px 0 0 0;\n          float: right;\n          line-height: 2;\n        }\n      ']);return F=function(){return e},e}window.customElements.define(D.tag,D);var U=function(e){function c(){var e;return l(this,c),(e=f(this,h(c).call(this))).editMode=!1,e.globalPreferences={},e.haxRayMode=!1,e.activeNode=null,e.activeContainerNode=null,import("@polymer/iron-a11y-keys/iron-a11y-keys.js"),import("@polymer/paper-item/paper-item.js"),import("@lrnwebcomponents/grid-plate/grid-plate.js"),e}return u(c,n.SimpleColors),d(c,null,[{key:"styles",get:function(){return[t.css(F())]}}]),d(c,[{key:"render",value:function(){return t.html(V())}},{key:"firstUpdated",value:function(e){var t=this;this.dispatchEvent(new CustomEvent("hax-register-body",{bubbles:!0,cancelable:!0,composed:!0,detail:this})),this.polyfillSafe=window.HaxStore.instance.computePolyfillSafe(),this._observer=new i.FlattenedNodesObserver(this,function(e){a.flush(),e.addedNodes.length>0&&e.addedNodes.map(function(e){if(t._haxElementTest(e)){t._HTMLPrimativeTest(e)&&(e.contentEditable=t.editMode),e.setAttribute("data-editable",t.editMode);var n=e.tagName.replace("-"," ").toLowerCase(),o=window.HaxStore.instance.gizmoList.findIndex(function(t){return t.tag===e.tagName.toLowerCase()});-1!==o&&(n=window.HaxStore.instance.gizmoList[o].title),e.setAttribute("data-hax-ray",n),t.dispatchEvent(new CustomEvent("hax-body-tag-added",{bubbles:!0,cancelable:!0,composed:!0,detail:{node:e}}))}}),e.removedNodes.length>0&&e.removedNodes.map(function(e){t._haxElementTest(e)&&!e.classList.contains("hax-active")&&t.dispatchEvent(new CustomEvent("hax-body-tag-removed",{bubbles:!0,cancelable:!0,composed:!0,detail:{node:e}}))})}),this.addEventListener("hax-context-item-selected",this._haxContextOperation.bind(this)),this.addEventListener("hax-input-mixer-update",this._haxInputMixerOperation.bind(this)),this.addEventListener("place-holder-replace",this.replacePlaceholder.bind(this));try{document.execCommand("enableObjectResizing",!1,!1),document.execCommand("defaultParagraphSeparator",!1,"p")}catch(e){console.warn(e)}window.addEventListener("keydown",this._onKeyDown.bind(this)),window.addEventListener("keypress",this._onKeyPress.bind(this)),this.shadowRoot.querySelector("slot").addEventListener("mousemove",this.hoverEvent.bind(this)),this.shadowRoot.querySelector("slot").addEventListener("mouseup",function(e){var t=window.HaxStore.getSelection();window.HaxStore._tmpSelection=t;try{var n=window.HaxStore.getRange();n.cloneRange&&(window.HaxStore._tmpRange=n.cloneRange())}catch(e){console.warn(e)}}),document.body.addEventListener("hax-store-property-updated",this._haxStorePropertyUpdated.bind(this)),window.addEventListener("scroll",this._keepContextVisible.bind(this)),this.addEventListener("focusin",this._focusIn.bind(this)),this.addEventListener("mousedown",this._focusIn.bind(this)),this.editMode=window.HaxStore.instance.editMode,this.__tabTrap=!1}},{key:"updated",value:function(e){var t=this;e.forEach(function(e,n){"editMode"==n&&t._editModeChanged(t[n],e),"globalPreferences"==n&&t._globalPreferencesUpdated(t[n],e),"activeNode"==n&&(t._activeNodeChanged(t[n],e),t.dispatchEvent(new CustomEvent("active-node-changed",{detail:{value:t[n]}}))),"activeContainerNode"==n&&(t._activeContainerNodeChanged(t[n],e),t.dispatchEvent(new CustomEvent("active-container-node-changed",{detail:{value:t[n]}})))})}},{key:"disconnectedCallback",value:function(){this._observer&&(this._observer.disconnect(),this._observer=null),b(h(c.prototype),"disconnectedCallback",this).call(this)}},{key:"_keepContextVisible",value:function(e){var t=!1;this.shadowRoot.querySelector("#textcontextmenu").classList.contains("hax-context-visible")?t=this.shadowRoot.querySelector("#textcontextmenu"):this.shadowRoot.querySelector("#cecontextmenu").classList.contains("hax-context-visible")&&(t=this.shadowRoot.querySelector("#cecontextmenu")),t&&(this.elementInViewport(t)?t.classList.remove("hax-context-pin-bottom","hax-context-pin-top"):this.__OffBottom?t.classList.add("hax-context-pin-top"):t.classList.add("hax-context-pin-bottom"))}},{key:"_onKeyDown",value:function(e){var t=this;if(this.editMode&&this.getAttribute("contenteditable")){var n=window.HaxStore.getRange();switch(e.key){case"Tab":window.HaxStore.instance.isTextElement(this.activeContainerNode)&&(e.detail.keyboardEvent&&(e.detail.keyboardEvent.preventDefault(),e.detail.keyboardEvent.stopPropagation(),e.detail.keyboardEvent.stopImmediatePropagation()),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation(),e.shiftKey?this._tabBackKeyPressed():this._tabKeyPressed());break;case"Enter":this.setAttribute("contenteditable",!0),setTimeout(function(){n.commonAncestorContainer&&"function"==typeof n.commonAncestorContainer.focus&&(n.commonAncestorContainer.focus(),t.__focusLogic(n.commonAncestorContainer))},900);break;case"ArrowUp":case"ArrowDown":case"ArrowLeft":case"ArrowRight":n.commonAncestorContainer&&this.activeNode!==n.commonAncestorContainer&&"function"==typeof n.commonAncestorContainer.focus?"HAX-BODY"!==n.commonAncestorContainer.tagName&&(window.HaxStore.instance.isTextElement(n.commonAncestorContainer)?this.setAttribute("contenteditable",!0):this.removeAttribute("contenteditable"),setTimeout(function(){n.commonAncestorContainer.focus(),t.__focusLogic(n.commonAncestorContainer)},900)):n.commonAncestorContainer&&n.commonAncestorContainer.parentNode&&this.activeNode!==n.commonAncestorContainer.parentNode&&"function"==typeof n.commonAncestorContainer.parentNode.focus&&"HAX-BODY"!==n.commonAncestorContainer.parentNode.tagName&&(window.HaxStore.instance.isTextElement(n.commonAncestorContainer.parentNode)?this.setAttribute("contenteditable",!0):this.removeAttribute("contenteditable"),setTimeout(function(){n.commonAncestorContainer.parentNode.focus(),t.__focusLogic(n.commonAncestorContainer.parentNode)},900))}this.shadowRoot.querySelector("#platecontextmenu").classList.contains("hax-active-hover")&&this.__dropActiveHover()}}},{key:"_onKeyPress",value:function(e){this.editMode&&this.shadowRoot.querySelector("#platecontextmenu").classList.contains("hax-active-hover")&&this.__dropActiveHover()}},{key:"hoverEvent",value:function(e){if(this.editMode&&(e.target&&null!=e.target.getAttribute("data-hax-ray")?(this.__activeHover=e.target,this.dispatchEvent(new CustomEvent("hax-active-hover-name",{bubbles:!0,cancelable:!0,composed:!0,detail:e.target.getAttribute("data-hax-ray")}))):e.target&&e.target.parentNode&&null!=e.target.parentNode.getAttribute("data-hax-ray")&&(this.__activeHover=e.target.parentNode,this.dispatchEvent(new CustomEvent("hax-active-hover-name",{bubbles:!0,cancelable:!0,composed:!0,detail:e.target.parentNode.getAttribute("data-hax-ray")}))),!this.shadowRoot.querySelector("#platecontextmenu").classList.contains("hax-active-hover"))){var t=e.target;e.target===this.shadowRoot.querySelector("#cecontextmenu")||e.target===this.shadowRoot.querySelector("#textcontextmenu")||e.target===this.shadowRoot.querySelector("#platecontextmenu")||t===this.activeNode||t===this.activeContainerNode||e.target===this.activeNode||e.target===this.activeContainerNode||t.parentNode===this.activeContainerNode||t.parentNode.parentNode===this.activeContainerNode||t.parentNode.parentNode.parentNode===this.activeContainerNode?(this.__addActiveHover(),this.__typeLock=!1):this.__dropActiveHover()}}},{key:"__addActiveHover",value:function(){this.shadowRoot.querySelector("#cecontextmenu").classList.add("hax-active-hover"),this.shadowRoot.querySelector("#textcontextmenu").classList.add("hax-active-hover"),this.shadowRoot.querySelector("#platecontextmenu").classList.add("hax-active-hover")}},{key:"__dropActiveHover",value:function(){this.shadowRoot.querySelector("#cecontextmenu").classList.remove("hax-active-hover"),this.shadowRoot.querySelector("#textcontextmenu").classList.remove("hax-active-hover"),this.shadowRoot.querySelector("#platecontextmenu").classList.remove("hax-active-hover")}},{key:"elementInViewport",value:function(e){for(var t=e.offsetTop-32-window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer").offsetHeight,n=e.offsetLeft,o=e.offsetWidth,i=e.offsetHeight;e.offsetParent;)t+=(e=e.offsetParent).offsetTop,n+=e.offsetLeft;return this.__OffBottom=t<window.pageYOffset+window.innerHeight,t<window.pageYOffset+window.innerHeight&&n<window.pageXOffset+window.innerWidth&&t+i>window.pageYOffset&&n+o>window.pageXOffset}},{key:"replacePlaceholder",value:function(e){var t=this;if("text"===e.detail){var n=document.createElement("p");n.innerHTML="<br/>",this.haxReplaceNode(this.activeNode,n,this.activeNode.parentNode),setTimeout(function(){t.activeNode=n,window.HaxStore.write("activeNode",n,t),t.activeContainerNode.setAttribute("contenteditable",!0),n.focus(),t.__focusLogic(n)},210)}else this.replaceElementWorkflow()}},{key:"replaceElementWorkflow",value:function(){var e=window.HaxStore.nodeToHaxElement(this.activeNode,null),t="*",n=!1;"place-holder"===e.tag&&"undefined"!==s(e.properties.type)&&(t=e.properties.type,n=!0);var o={};if("undefined"!==s(window.HaxStore.instance.elementList[e.tag])&&!1!==window.HaxStore.instance.elementList[e.tag].gizmo&&"undefined"!==s(window.HaxStore.instance.elementList[e.tag].gizmo.handles)&&window.HaxStore.instance.elementList[e.tag].gizmo.handles.length>0)for(var i=window.HaxStore.instance.elementList[e.tag].gizmo,a=0;a<i.handles.length;a++)for(var r in i.handles[a])"type"!==r&&"undefined"!==s(e.properties[i.handles[a][r]])&&(o[r]=e.properties[i.handles[a][r]]);var l=window.HaxStore.guessGizmo(t,o,n);if(l.length>0){var c=this.activeNode.tagName.toLowerCase(),d=c.replace("-"," ");"undefined"!==s(window.HaxStore.instance.elementList[c])&&!1!==window.HaxStore.instance.elementList[c].gizmo&&(d=window.HaxStore.instance.elementList[c].gizmo.title),window.HaxStore.instance.haxAppPicker.presentOptions(l,"__convert","Transform ".concat(d," to.."),"gizmo")}else window.HaxStore.toast("Sorry, this can not be transformed!",5e3)}},{key:"_globalPreferencesUpdated",value:function(e,t){"undefined"!==s(e)&&null!=e&&(this.haxRayMode=e.haxRayMode)}},{key:"_haxStorePropertyUpdated",value:function(e){e.detail&&"undefined"!==s(e.detail.value)&&e.detail.property&&(this[e.detail.property]=e.detail.value)}},{key:"haxClearBody",value:function(){var e=!0;(!(arguments.length>0&&void 0!==arguments[0])||arguments[0])&&(e=prompt("Are you sure you want to delete all content?")),e&&r.wipeSlot(this)}},{key:"haxInsert",value:function(e,t){var n=this,o=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=!(arguments.length>3&&void 0!==arguments[3])||arguments[3];this.__activeHover=null;var a=document.createElement(e);a.innerHTML=t;var r=a.cloneNode(!0);for(var l in o){var c=window.HaxStore.camelToDash(l);o.hasOwnProperty(l)&&(!0===o[l]?r.setAttribute(c,c):!1===o[l]?r.removeAttribute(c):null!=o[l]&&o[l].constructor===Array?r.properties&&r.properties[l].readOnly||(r.set?r.set(c,o[l]):r[c]=o[l]):null!=o[l]&&o[l].constructor===Object?r.properties&&r.properties[l].readOnly||(r.set?r.set(c,o[l]):r[c]=o[l]):r.setAttribute(c,o[l]))}return null!==window.HaxStore.instance.activePlaceHolder&&"undefined"!==s(window.HaxStore.instance.activePlaceHolder.style)?(r.style.width=window.HaxStore.instance.activePlaceHolder.style.width,r.style.float=window.HaxStore.instance.activePlaceHolder.style.float,r.style.margin=window.HaxStore.instance.activePlaceHolder.style.margin,r.style.display=window.HaxStore.instance.activePlaceHolder.style.display,this.haxReplaceNode(window.HaxStore.instance.activePlaceHolder,r,window.HaxStore.instance.activePlaceHolder.parentNode),window.HaxStore.instance.activePlaceHolder=null):null!=this.activeContainerNode?"GRID-PLATE"!==r.tagName&&"GRID-PLATE"===this.activeContainerNode.tagName&&this.activeContainerNode!==this.activeNode?(null!=this.activeNode.getAttribute("slot")&&r.setAttribute("slot",this.activeNode.getAttribute("slot")),this.activeContainerNode.insertBefore(r,this.activeNode)):this.insertBefore(r,this.activeContainerNode.nextElementSibling):this.appendChild(r),this.shadowRoot.querySelector("#textcontextmenu").highlightOps=!1,this.__updateLockFocus=r,i&&setTimeout(function(){n.breakUpdateLock()},50),!0}},{key:"breakUpdateLock",value:function(){window.HaxStore.write("activeContainerNode",this.__updateLockFocus,this),window.HaxStore.write("activeNode",this.__updateLockFocus,this),this.__updateLockFocus.focus(),"function"==typeof this.__updateLockFocus.scrollIntoViewIfNeeded?this.__updateLockFocus.scrollIntoViewIfNeeded(!0):this.__updateLockFocus.scrollIntoView({behavior:"smooth",inline:"center"})}},{key:"haxToContent",value:function(){this.hideContextMenus();var e=this.activeNode;this.activeNode=null,this.activeContainerNode=null,window.HaxStore.write("activeNode",null,this),window.HaxStore.write("activeContainerNode",null,this);var t="slot"===this.shadowRoot.querySelector("#body").localName?o.wrap(this.shadowRoot.querySelector("#body")).assignedNodes({flatten:!0}):[];this.globalPreferences.haxDeveloperMode&&console.warn(t);for(var n="",i=0,a=t.length;i<a;i++)this._haxElementTest(t[i])?(t[i].removeAttribute("data-editable"),t[i].removeAttribute("data-hax-ray"),t[i].contentEditable=!1,n+=window.HaxStore.nodeToContent(t[i]),"grid-plate"===t[i].tagName.toLowerCase()&&this._applyContentEditable(this.editMode,t[i])):8===t[i].nodeType?n+="\x3c!-- "+t[i].textContent+" --\x3e":1!==t[i].nodeType&&"undefined"!==s(t[i].textContent)&&"undefined"!==t[i].textContent&&(n+=t[i].textContent);if(n=(n=(n=(n=(n=(n=(n=(n=(n=n.replace(/\scontenteditable=\"false\"/g,"")).replace(/\sdata-editable=\"true\"/g,"")).replace(/\sdata-editable=\"false\"/g,"")).replace(/\sdata-editable=\""/g,"")).replace(/\sdata-editable/g,"")).replace(/\scontenteditable/g,"")).replace(/\sdraggable/g,"")).replace(/\sdata-draggable/g,"")).replace(/\sdata-hax-ray=\".*?\"/g,""),this.parentNode.tagName){var l=this.parentNode.tagName.toLowerCase(),c="style-scope "+l+" x-scope",d=new RegExp(c,"g");n=n.replace(d,""),c="style-scope "+l,d=new RegExp(c,"g"),n=n.replace(d,""),c="x-scope "+l+"-0",d=new RegExp(c,"g"),n=n.replace(d,"");var u=window.HaxStore.instance.validTagList;for(var i in u.push("hax-preview"),u)c="style-scope "+u[i],d=new RegExp(c,"g"),n=n.replace(d,""),c="x-scope "+u[i]+"-0 ",d=new RegExp(c,"g"),n=n.replace(d,""),c="x-scope "+u[i]+"-0",d=new RegExp(c,"g"),n=n.replace(d,"")}return n=(n=n.replace(/\sclass=\"\"/g,"")).replace(/\sclass=\"\s\"/g,""),this._applyContentEditable(this.editMode),window.HaxStore.write("activeNode",e,this),window.HaxStore.write("activeContainerNode",e,this),n=r.encapScript(n),this.globalPreferences.haxDeveloperMode&&console.warn(n),n}},{key:"haxDuplicateNode",value:function(e){var t=this,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this;this.hideContextMenus();var o=window.HaxStore.nodeToHaxElement(e,null);"undefined"!==s(e.preProcessHaxInsertContent)&&(o=e.preProcessHaxInsertContent(o)),o.content==o.properties.innerHTML&&delete o.properties.innerHTML;var i=window.HaxStore.haxElementToNode(o.tag,o.content,o.properties);return"webview"===i.tagName.toLowerCase()&&window.HaxStore.instance._isSandboxed&&"undefined"!==s(i.guestinstance)&&delete i.guestinstance,null!==e?n.insertBefore(i,e.nextSibling):n.appendChild(i),setTimeout(function(){n===t&&window.HaxStore.write("activeContainerNode",i,t),window.HaxStore.write("activeNode",i,t)},100),!0}},{key:"hideContextMenus",value:function(){this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu")),this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu")),this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu")),this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer")),this.shadowRoot.querySelector("#textcontextmenu").highlightOps=!1}},{key:"positionContextMenus",value:function(e,t){if(e){var n=e.tagName.toLowerCase();window.HaxStore.instance._isSandboxed&&"webview"===n&&(n="iframe");var o=window.HaxStore.instance.elementList[n];"undefined"===s(o)||window.HaxStore.instance.isTextElement(e)?this.__activeContextType=this.shadowRoot.querySelector("#textcontextmenu"):(this.__activeContextType=this.shadowRoot.querySelector("#cecontextmenu"),o.element=e,this.__activeContextType.setHaxProperties(o)),this._positionContextMenu(this.__activeContextType,t,-39,-39),this._positionContextMenu(this.shadowRoot.querySelector("#platecontextmenu"),t,-39,0),t&&!this._HTMLPrimativeTest(e)&&e!==t?t.contentEditable=!1:t&&this._HTMLPrimativeTest(t)&&(t.contentEditable=!0)}}},{key:"haxMoveGridPlate",value:function(e,t,n){var o=this;switch(e){case"first":null!==n.previousElementSibling&&this.insertBefore(n,this.firstChild);break;case"up":null!==n.previousElementSibling&&this.insertBefore(n,n.previousElementSibling);break;case"down":null!==n.nextElementSibling&&this.insertBefore(n.nextElementSibling,n);break;case"last":null!==n.nextElementSibling&&this.appendChild(n)}return setTimeout(function(){o.positionContextMenus(t,n),"function"==typeof n.scrollIntoViewIfNeeded?n.scrollIntoViewIfNeeded(!0):n.scrollIntoView({behavior:"smooth",inline:"center"})},5),!0}},{key:"haxReplaceNode",value:function(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:this;this.hideContextMenus();try{e&&e.getAttribute&&null!=e.getAttribute("slot")&&t.setAttribute("slot",e.getAttribute("slot")),null==e&&(e=this.__oldActiveNode,n=this.__oldActiveNode.parentNode),n.replaceChild(t,e)}catch(e){console.warn(e)}return t}},{key:"haxChangeTagName",value:function(e,t,n){this.hideContextMenus();for(var o=document.createElement(t),a=0,r=e.attributes.length;a<r;++a){var s=e.attributes.item(a).nodeName,l=e.attributes.item(a).value;o.setAttribute(s,l)}o.innerHTML=e.innerHTML.trim(),"ul"==t||"ol"==t?""==o.innerHTML?o.innerHTML="<li></li>":"ul"!=e.tagName.toLowerCase()&&"ol"!=e.tagName.toLowerCase()&&(o.innerHTML="<li>"+e.innerHTML.trim().replace(/<br\/>/g,"</li>\n<li>").replace(/<br>/g,"</li>\n<li>")+"</li>"):"ul"!=e.tagName.toLowerCase()&&"ol"!=e.tagName.toLowerCase()||(o.innerHTML=o.innerHTML.replace(/<ul>/g,"").replace(/<\/ul>/g,"").replace(/<li><\/li>/g,"").replace(/<li>/g,"").replace(/<\/li>/g,"<br/>"));try{this.replaceChild(o,e),setTimeout(function(){var e=i.FlattenedNodesObserver.getFlattenedNodes(o);e[0]&&e.tagName?e[0].focus():o.focus()},50)}catch(t){console.warn(t),console.warn(o),console.warn(e)}return o}},{key:"haxDeleteNode",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this;if(this.hideContextMenus(),null!=this.activeContainerNode&&null!==this.activeContainerNode.previousElementSibling){if(this.activeContainerNode.previousElementSibling.focus(),null!=this.activeContainerNode&&window.HaxStore.instance.isTextElement(this.activeContainerNode)&&""!==this.activeContainerNode.textContent)try{var n=document.createRange(),o=window.HaxStore.getSelection();n.setStart(this.activeContainerNode,1),n.collapse(!0),o.removeAllRanges(),o.addRange(n),this.activeContainerNode.focus()}catch(e){console.warn(e)}}else null!=this.activeContainerNode&&null!==this.activeContainerNode.nextElementSibling?this.activeContainerNode.nextElementSibling.focus():(this.activeNode=null,this.activeContainerNode=null,window.HaxStore.write("activeNode",null,this),window.HaxStore.write("activeContainerNode",null,this));try{return t.removeChild(e)}catch(e){console.warn(e)}}},{key:"importContent",value:function(e){var t=this;(!(arguments.length>1&&void 0!==arguments[1])||arguments[1])&&r.wipeSlot(this,"*"),setTimeout(function(){e=r.encapScript(e);var n=document.createElement("div");for(n.insertAdjacentHTML("beforeend",e);null!==n.firstChild;)if("undefined"!==s(n.firstChild.tagName))if(window.HaxStore.instance._isSandboxed&&"iframe"===n.firstChild.tagName.toLowerCase()){for(var o=document.createElement("webview"),i=0,a=n.firstChild.attributes.length;i<a;++i){var l=n.firstChild.attributes.item(i).nodeName,c=n.firstChild.attributes.item(i).value;"height"!==l&&"width"!==l||o.style[l],o.setAttribute(l,c)}t.appendChild(o)}else t.appendChild(n.firstChild);else n.removeChild(n.firstChild)},50)}},{key:"_haxContextOperation",value:function(e){var t,n=this,o=e.detail;switch(o.eventName){case"p":case"ol":case"ul":case"h2":case"h3":case"h4":case"h5":case"h6":case"blockquote":case"code":this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue=o.eventName,window.HaxStore.write("activeContainerNode",this.haxChangeTagName(this.activeContainerNode,o.eventName),this),this.positionContextMenus(this.activeNode,this.activeContainerNode);break;case"text-align-left":this.activeNode.style.textAlign=null,this.positionContextMenus(this.activeNode,this.activeContainerNode);break;case"grid-plate-convert":this.replaceElementWorkflow();break;case"grid-plate-duplicate":this.activeNode===this.activeContainerNode?this.haxDuplicateNode(this.activeNode):this.haxDuplicateNode(this.activeNode,this.activeContainerNode);break;case"grid-plate-delete":if(null!=this.activeNode){var i=this.activeNode.tagName.toLowerCase(),a=i.replace("-"," ");"undefined"!==s(window.HaxStore.instance.elementList[i])&&!1!==window.HaxStore.instance.elementList[i].gizmo&&(a=window.HaxStore.instance.elementList[i].gizmo.title),window.HaxStore.instance.haxAppPicker.presentOptions([{icon:"thumb-up",color:"green",title:"Yes"},{icon:"thumb-down",color:"red",title:"No"}],"","Remove this `".concat(a,"`?"),"delete")}break;case"grid-plate-first":this.haxMoveGridPlate("first",this.activeNode,this.activeContainerNode);break;case"grid-plate-up":this.haxMoveGridPlate("up",this.activeNode,this.activeContainerNode);break;case"hax-manager-open":window.HaxStore.write("activeHaxElement",{},this),window.HaxStore.instance.haxManager.resetManager(parseInt(o.value)),window.HaxStore.instance.haxManager.toggleDialog();break;case"grid-plate-down":this.haxMoveGridPlate("down",this.activeNode,this.activeContainerNode);break;case"grid-plate-last":this.haxMoveGridPlate("last",this.activeNode,this.activeContainerNode);break;case"close-menu":this.activeNode=null,this.activeContainerNode=null,window.HaxStore.write("activeNode",null,this),window.HaxStore.write("activeContainerNode",null,this);break;case"hax-edit-property":var r=this.shadowRoot.querySelector("#haxinputmixer");r.label=o.target.label,r.options=o.target.options,r.icon=o.target.icon,r.description=o.target.description,r.required=o.target.required,r.validation=o.target.validation,r.validationType=o.target.validationType,r.inputMethod=o.target.inputMethod,r.value="","undefined"!==s(o.target.propertyToBind)&&null!=o.target.propertyToBind&&0!=o.target.propertyToBind&&(r.propertyToBind=o.target.propertyToBind,"undefined"!==s(this.activeNode[o.target.propertyToBind])?r.value=this.activeNode[o.target.propertyToBind]:r.value=this.activeNode.getAttribute(o.target.propertyToBind)),this._positionContextMenu(r,this.activeContainerNode,-1,-38);var l=this.shadowRoot.querySelector("#cecontextmenu").currentStyle||window.getComputedStyle(this.shadowRoot.querySelector("#cecontextmenu"));r.style.width=l.width.replace("px","")-40+"px";break;case"hax-align-left":this.activeNode.style.float=null,this.activeNode.style.margin=null,this.activeNode.style.display=null,setTimeout(function(){n.positionContextMenus(n.activeNode,n.activeContainerNode)},200);break;case"hax-align-center":this.activeNode.style.float=null,this.activeNode.style.margin="0 auto",this.activeNode.style.display="block",setTimeout(function(){n.positionContextMenus(n.activeNode,n.activeContainerNode)},200);break;case"hax-size-change":this.activeNode&&(this.activeNode.style.width=o.value+"%",setTimeout(function(){n.positionContextMenus(n.activeNode,n.activeContainerNode)},100));break;case"hax-manager-configure":this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer")),window.HaxStore.instance.haxManager.resetManager(),t=window.HaxStore.nodeToHaxElement(this.activeNode),window.HaxStore.write("activeHaxElement",t,this),window.HaxStore.instance.haxManager.editExistingNode=!0,window.HaxStore.instance.haxManager.selectStep("configure"),window.HaxStore.instance.haxManager.toggleDialog(),setTimeout(function(){window.HaxStore.instance.haxManager.shadowRoot.querySelector("#preview").shadowRoot.querySelector("#configurebutton").focus()},100);break;case"hax-manager-configure-container":window.HaxStore.write("activeNode",window.HaxStore.instance.activeContainerNode,this),this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer")),window.HaxStore.instance.haxManager.resetManager(),t=window.HaxStore.nodeToHaxElement(window.HaxStore.instance.activeNode),window.HaxStore.write("activeHaxElement",t,this),window.HaxStore.instance.haxManager.editExistingNode=!0,window.HaxStore.instance.haxManager.selectStep("configure"),window.HaxStore.instance.haxManager.toggleDialog(),setTimeout(function(){window.HaxStore.instance.haxManager.shadowRoot.querySelector("#preview").shadowRoot.querySelector("#configurebutton").focus()},100)}}},{key:"_haxInputMixerOperation",value:function(e){var t=e.detail.inputMixer;null!=t.propertyToBind?this.activeNode[t.propertyToBind]=t.value:null!=t.slotToBind&&(item=document.createElement("span"),item.style.height="inherit",item.innerHTML=t.value,item.slot=t.slotToBind,this.activeNode.appendChild(item)),this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"))}},{key:"_focusIn",value:function(e){this.__focusLogic(e.target)&&e.stopPropagation()}},{key:"__focusLogic",value:function(e){var t=!1;if(this.editMode&&!this.__tabTrap){var n=e;"SPAN"===n.tagName&&window.HaxStore.instance.isTextElement(e.parentNode)&&(n=e.parentNode);var o=null;if(this._haxElementTest(n)&&null!=n.parentNode){for(;"HAX-BODY"!=n.parentNode.tagName;)null===o&&"LI"!==n.tagName&&"B"!==n.tagName&&"I"!==n.tagName&&"STRONG"!==n.tagName&&"EM"!==n.tagName&&(o=n),n=n.parentNode;null===o?o=n:window.HaxStore.instance.isGridPlateElement(n)?["UL","OL","LI","P","GRID-PLATE"].includes(n.tagName)&&["UL","OL","LI"].includes(o.tagName)&&(o=n):o=n,this.activeContainerNode===n||n.classList.contains("ignore-activation")?n.classList.contains("ignore-activation")&&(t=!0):(this.hideContextMenus(),this.activeContainerNode=n,window.HaxStore.write("activeContainerNode",n,this),t=!0),this.activeNode===o||o.classList.contains("ignore-activation")||(this.activeNode=o,window.HaxStore.write("activeNode",o,this),this.positionContextMenus(o,n),t=!0)}}else this.__tabTrap=!1;return t}},{key:"_editModeChanged",value:function(e,t){"undefined"!==s(t)&&(this._applyContentEditable(e),this.setAttribute("tabindex","-1"),!1!==e&&"undefined"!==s(this.activeNode)&&null!==this.activeNode&&this.positionContextMenus(this.activeNode,this.activeContainerNode)),!1===e&&(this.removeAttribute("contenteditable"),this.hideContextMenus())}},{key:"_haxResolvePreviousElement",value:function(e){for(e=e.previousElementSibling;null!=e&&"undefined"!==s(e.tagName)&&"HAX-"===e.tagName.substring(0,4);)e=e.previousElementSibling;return e}},{key:"_haxElementTest",value:function(e){return"undefined"!==s(e.tagName)&&"HAX-"!==e.tagName.substring(0,4)}},{key:"_HTMLPrimativeTest",value:function(e){return null!=e&&"undefined"!==s(e.tagName)&&-1==e.tagName.indexOf("-")}},{key:"_applyContentEditable",value:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:this.shadowRoot.querySelector("#body"),n="slot"===t.localName?o.wrap(t).assignedNodes({flatten:!0}):[];0===n.length&&(n=i.FlattenedNodesObserver.getFlattenedNodes(t));for(var a=0,r=n.length;a<r;a++){if(this._HTMLPrimativeTest(n[a]))if(e){if(n[a].setAttribute("contenteditable",e),n[a].setAttribute("data-editable",e),n[a].querySelectorAll("a").length>0)for(var s=n[a].querySelectorAll("a"),l=0,c=s.length;l<c;l++)s[l].setAttribute("contenteditable",e),s[l].setAttribute("data-editable",e),s[l].addEventListener("click",function(e){e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()})}else if(n[a].removeAttribute("data-editable",e),n[a].removeAttribute("contenteditable",e),n[a].querySelectorAll("a").length>0){var d=n[a].querySelectorAll("a");for(l=0,c=d.length;l<c;l++)d[l].removeAttribute("data-editable",e),d[l].removeAttribute("contenteditable",e),d[l].removeEventListener("click",function(e){e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()})}if(this._haxElementTest(n[a]))if(e){n[a].setAttribute("data-editable",e);var u=n[a].tagName.replace("-"," ").toLowerCase(),h=window.HaxStore.instance.gizmoList.findIndex(function(e){return e.tag===n[a].tagName.toLowerCase()});-1!==h&&(u=window.HaxStore.instance.gizmoList[h].title),n[a].setAttribute("data-hax-ray",u)}else n[a].removeAttribute("data-editable"),n[a].removeAttribute("data-hax-ray")}}},{key:"_activeContainerNodeChanged",value:function(e,t){this.editMode&&"undefined"!==s(e)&&null!=e&&null!=e.tagName&&(window.HaxStore.instance.isTextElement(e)||window.HaxStore.instance.isGridPlateElement(e)?(e.setAttribute("contenteditable",!0),this.setAttribute("contenteditable",!0)):(e.removeAttribute("contenteditable"),this.removeAttribute("contenteditable")),"grid-plate"===e.tagName.toLowerCase()&&(e.editMode=this.editMode,this._applyContentEditable(this.editMode,e)))}},{key:"_activeNodeChanged",value:function(e,t){var n=this;if("undefined"!==s(t)&&t&&t.classList&&t.classList.remove("hax-active"),this.editMode&&"undefined"!==s(e)&&null!==e){var o=e.tagName.toLowerCase();e.classList.add("hax-active"),window.HaxStore.instance.isTextElement(e)||window.HaxStore.instance.isGridPlateElement(e)?(e.setAttribute("contenteditable",!0),this.setAttribute("contenteditable",!0)):(e.removeAttribute("contenteditable"),this.removeAttribute("contenteditable")),this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue=o,setTimeout(function(){n.positionContextMenus(e,window.HaxStore.instance.activeContainerNode)},100),"left"==e.style.textAlign?(this.shadowRoot.querySelector("#textcontextmenu").justifyIcon="editor:format-align-left",this.shadowRoot.querySelector("#textcontextmenu").justifyValue="text-align-left"):"left"==e.style.float?(this.shadowRoot.querySelector("#cecontextmenu").justifyIcon="editor:format-align-left",this.shadowRoot.querySelector("#cecontextmenu").justifyValue="hax-align-left"):"0 auto"==e.style.margin&&(this.shadowRoot.querySelector("#cecontextmenu").justifyIcon="editor:format-align-center",this.shadowRoot.querySelector("#cecontextmenu").justifyValue="hax-align-center")}else null===e&&(this.hideContextMenus(),this.__oldActiveNode=t,this.shadowRoot.querySelector("#textcontextmenu").justifyIcon="editor:format-align-left",this.shadowRoot.querySelector("#textcontextmenu").justifyValue="text-align-left")}},{key:"_getPosition",value:function(e){return{x:e.offsetLeft-e.scrollLeft+e.clientLeft,y:e.offsetTop-e.scrollTop+e.clientTop}}},{key:"_positionContextMenu",value:function(e,t,n,o){var i=this;if(null!=t){var a=this._getPosition(t);e.style.left=null!=n?a.x+n+"px":a.x+"px",e.style.top=null!=o?a.y+o+"px":a.y+"px"}e.classList.add("hax-context-visible"),this.__activeHover&&(e.classList.add("hax-active-hover"),e.style.marginLeft="",this.__typeLock=!1),setTimeout(function(){i._keepContextVisible()},100)}},{key:"_hideContextMenu",value:function(e){e.classList.remove("hax-context-visible","hax-context-pin-top","hax-context-pin-bottom"),e.style.left="-100px"}},{key:"_tabKeyPressed",value:function(){var e=!1,t=this.activeContainerNode,n=this.activeContainerNode.tagName;try{var o=window.HaxStore.getRange().cloneRange(),i=o.commonAncestorContainer.tagName;if("undefined"===s(i)&&(i=o.commonAncestorContainer.parentNode.tagName),["UL","OL","LI"].includes(n)||["UL","OL","LI"].includes(i))this.polyfillSafe&&(document.execCommand("indent"),this.__tabTrap=!0);else for(;!e;)null==t.nextSibling?e=!0:"function"===t.nextSibling.focus?(t.nextSibling.focus(),e=!0):t=t.nextSibling}catch(e){console.warn(e)}}},{key:"_tabBackKeyPressed",value:function(){var e=this.activeContainerNode,t=this.activeContainerNode.tagName;try{var n=window.HaxStore.getRange().cloneRange(),o=n.commonAncestorContainer.tagName;if("undefined"===s(o)&&(o=n.commonAncestorContainer.parentNode.tagName),["UL","OL","LI"].includes(t)||["UL","OL","LI"].includes(o))this.polyfillSafe&&(document.execCommand("outdent"),this.__tabTrap=!0);else{if(null!=e)for(;null!=e&&!this._haxElementTest(e);)e=e.previousSibling;null!=e&&setTimeout(function(){e.focus()},50)}}catch(e){console.warn(e)}}}],[{key:"tag",get:function(){return"hax-body"}},{key:"properties",get:function(){return{editMode:{type:Boolean,reflect:!0,attribute:"edit-mode"},haxRayMode:{type:Boolean,reflect:!0,attribute:"hax-ray-mode"},globalPreferences:{type:Object},activeNode:{type:Object},activeContainerNode:{type:Object}}}}]),c}();window.customElements.define(U.tag,U),e.HaxBody=U,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=hax-body.umd.js.map
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import {
+  encapScript,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+/**
+ * `hax-body`
+ * `Manager of the body area that can be modified`
+ * @microcopy - the mental model for this element
+ *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
+ *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
+ *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
+ */
+class HaxBody extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        :host,
+        :host * ::slotted(*) {
+          line-height: 1.8;
+        }
+        :host ul,
+        :host * ::slotted(ul),
+        :host ol,
+        :host * ::slotted(ol) {
+          padding-left: 20px;
+          margin-left: 20px;
+        }
+        :host ul,
+        :host * ::slotted(ul) {
+          list-style-type: disc;
+        }
+        :host li,
+        :host * ::slotted(li) {
+          margin-bottom: 6px;
+        }
+        :host {
+          display: block;
+          min-height: 32px;
+          min-width: 32px;
+          outline: none;
+          --hax-body-editable-border-color: #bbbbbb;
+          --hax-body-active-border-color: #000000;
+          --hax-body-target-background-color: var(
+            --simple-colors-default-theme-blue-1
+          );
+          --hax-body-possible-target-background-color: transparent;
+        }
+        .hax-context-menu {
+          padding: 0;
+          margin-left: -5000px;
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+          z-index: 1000;
+          float: left;
+          display: block;
+          pointer-events: none;
+          transition: 0.2s opacity ease-in-out, 0.2s visibility ease-in-out;
+        }
+        #textcontextmenu.hax-context-menu {
+          z-index: 1001;
+        }
+        #haxinputmixer {
+          z-index: 10000000;
+        }
+        .hax-context-visible.hax-active-hover {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: all;
+          margin-left: unset;
+        }
+        :host #bodycontainer ::slotted(h1) {
+          font-size: var(--hax-base-styles-h1-font-size, 2.5em);
+          line-height: var(--hax-base-styles-h1-line-height, 2.5em);
+        }
+        :host #bodycontainer ::slotted(h2) {
+          font-size: var(--hax-base-styles-h2-font-size, 2em);
+        }
+        :host #bodycontainer ::slotted(h3) {
+          font-size: var(--hax-base-styles-h3-font-size, 1.75em);
+        }
+        :host #bodycontainer ::slotted(h4) {
+          font-size: var(--hax-base-styles-h4-font-size, 1.5em);
+        }
+        :host #bodycontainer ::slotted(h5) {
+          font-size: var(--hax-base-styles-h5-font-size, 1.25em);
+        }
+        :host #bodycontainer ::slotted(h6) {
+          font-size: var(--hax-base-styles-h6-font-size, 1.25em);
+        }
+        :host #bodycontainer ::slotted(p) {
+          min-height: var(--hax-base-styles-p-min-height, 43px);
+          font-size: var(--hax-base-styles-p-font-size, 24px);
+          line-height: var(--hax-base-styles-p-line-height, 1.8);
+          letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);
+        }
+        :host #bodycontainer ::slotted(a) {
+          color: var(--hax-base-styles-a-color, #000);
+          font-size: var(--hax-base-styles-a-font-size, 24px);
+          font-weight: var(--hax-base-styles-a-font-weight, normal);
+        }
+        :host #bodycontainer ::slotted(a:visited) {
+          color: var(--hax-base-styles-a-color-visited, #2196f3);
+        }
+        :host #bodycontainer ::slotted(a:active),
+        :host #bodycontainer ::slotted(a:focus),
+        :host #bodycontainer ::slotted(a:hover) {
+          color: var(--hax-base-styles-a-color-active, #2196f3);
+          font-weight: var(--hax-base-styles-a-font-weight-active, normal);
+        }
+        :host #bodycontainer ::slotted(ol),
+        :host #bodycontainer ::slotted(ul),
+        :host #bodycontainer ::slotted(li) {
+          padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
+          line-height: var(--hax-base-styles-list-line-height, 40px);
+          font-size: var(--hax-base-styles-list-font-size, 24px);
+          max-width: var(--hax-base-styles-list-max-width, 28em);
+        }
+        :host #bodycontainer ::slotted(ol > li:last-child),
+        :host #bodycontainer ::slotted(ul > li:last-child) {
+          padding-bottom: var(
+            --hax-base-styles-list-last-child-padding-bottom,
+            1em
+          );
+        }
+        :host #bodycontainer ::slotted(ul),
+        :host #bodycontainer ::slotted(ol) {
+          padding-left: var(--hax-base-styles-list-padding-left, 20px);
+          padding-left: var(--hax-base-styles-list-margin-left, 20px);
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+          outline: none;
+          transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
+            0.2s margin ease-in-out;
+          caret-color: var(--hax-color-text);
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*:not(grid-plate)[data-editable]:hover) {
+          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          caret-color: #000000;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active[data-editable]:hover) {
+          cursor: text !important;
+          outline: 2px dashed rgba(145, 151, 162, 0.5);
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
+          cursor: text !important;
+          outline: 2px dashed rgba(145, 151, 162, 0.5);
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(code.hax-active[data-editable]) {
+          display: block;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active[data-editable]) {
+          outline: 2px dashed rgba(145, 151, 162, 0.25);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
+          height: 2px;
+          background-color: #eeeeee;
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+        /** Fix to support safari as it defaults to none */
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+          -webkit-user-select: text;
+          cursor: pointer;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]::-moz-selection),
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable] *::-moz-selection) {
+          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          color: black;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]::selection),
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable] *::selection) {
+          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          color: black;
+        }
+        #bodycontainer {
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        :host([edit-mode][hax-ray-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]):before {
+          content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
+            attr(property) " " attr(content);
+          font-size: 10px;
+          font-style: italic;
+          left: unset;
+          right: unset;
+          top: unset;
+          background-color: #d3d3d3;
+          color: #000000;
+          bottom: unset;
+          width: auto;
+          padding: 8px;
+          margin: 0;
+          z-index: 1;
+          margin: -16px 0 0 0;
+          float: right;
+          line-height: 2;
+        }
+        /* drag and drop */
+        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
+          outline: 2px dashed var(--hax-body-editable-border-color);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
+          background-color: var(--hax-body-possible-target-background-color);
+          padding: 16px;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(.hovered) {
+          background-color: var(
+            --hax-body-target-background-color
+          ) !important;
+          outline: dashed 2px var(--hax-body-active-border-color);
+          z-index: 2;
+        }
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.___moveLock = false;
+    this.editMode = false;
+    this.globalPreferences = {};
+    this.haxRayMode = false;
+    this.activeNode = null;
+    this.activeContainerNode = null;
+    setTimeout(() => {
+      import("./lib/hax-text-context.js");
+      import("./lib/hax-ce-context.js");
+      import("./lib/hax-plate-context.js");
+      import("./lib/hax-input-mixer.js");
+      import("@lrnwebcomponents/grid-plate/grid-plate.js");
+    }, 0);
+  }
+  static get tag() {
+    return "hax-body";
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <div id="bodycontainer" class="ignore-activation">
+        <slot id="body"></slot>
+      </div>
+      <hax-text-context
+        id="textcontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-text-context>
+      <hax-ce-context
+        id="cecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-ce-context>
+      <hax-plate-context
+        id="platecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-plate-context>
+      <hax-input-mixer
+        id="haxinputmixer"
+        class="hax-context-menu ignore-activation"
+      ></hax-input-mixer>
+    `;
+  }
+  /**
+   * LitElement / popular convention
+   */
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * State of if we are editing or not.
+       */
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode"
+      },
+      /**
+       * Bust out the HAX Ray mode
+       */
+      haxRayMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hax-ray-mode"
+      },
+      /**
+       * Access to the global properties object.
+       */
+      globalPreferences: {
+        type: Object
+      },
+      /**
+       * A reference to the active node in the slot.
+       */
+      activeNode: {
+        type: Object
+      },
+      /**
+       * A reference to the active node in the slot.
+       */
+      activeContainerNode: {
+        type: Object
+      }
+    };
+  }
+  /**
+   * LitElement life cycle - ready
+   */
+  firstUpdated(changedProperties) {
+    this.dispatchEvent(
+      new CustomEvent("hax-register-body", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
+    this.addEventListener(
+      "hax-input-mixer-update",
+      this._haxInputMixerOperation.bind(this)
+    );
+    this.addEventListener(
+      "place-holder-replace",
+      this.replacePlaceholder.bind(this)
+    );
+    // try to normalize paragraph insert on enter
+    try {
+      document.execCommand("enableObjectResizing", false, false);
+      document.execCommand("defaultParagraphSeparator", false, "p");
+    } catch (e) {
+      console.warn(e);
+    }
+    this.shadowRoot
+      .querySelector("slot")
+      .addEventListener("mousemove", this.hoverEvent.bind(this));
+    this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
+      const tmp = window.HaxStore.getSelection();
+      window.HaxStore._tmpSelection = tmp;
+      try {
+        const range = window.HaxStore.getRange();
+        if (range.cloneRange) {
+          window.HaxStore._tmpRange = range.cloneRange();
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+    });
+    this.addEventListener("focusin", this._focusIn.bind(this));
+    this.addEventListener("mousedown", this._focusIn.bind(this));
+    // in case we miss this on the initial setup. possible in auto opening environments.
+    this.editMode = window.HaxStore.instance.editMode;
+    // ensure this resets every append
+    this.__tabTrap = false;
+  }
+  /**
+   * LitElement life cycle - properties changed callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editMode") {
+        this._editModeChanged(this[propName], oldValue);
+      }
+      if (propName == "globalPreferences") {
+        this._globalPreferencesUpdated(this[propName], oldValue);
+      }
+      if (propName == "activeNode") {
+        this._activeNodeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-node-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "activeContainerNode") {
+        this._activeContainerNodeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-container-node-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  /**
+   * HTMLElement
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new MutationObserver(mutations => {
+      var mutFind = false;
+      mutations.forEach(mutation => {
+        // if we've got new nodes, we have to react to that
+        if (mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach(node => {
+            if (this._validElementTest(node)) {
+              if (this._HTMLPrimativeTest(node)) {
+                node.contentEditable = this.editMode;
+              }
+              // this does the real targetting
+              node.setAttribute("data-editable", this.editMode);
+              let haxRay = node.tagName.replace("-", " ").toLowerCase();
+              let i = window.HaxStore.instance.gizmoList.findIndex(
+                j => j.tag === node.tagName.toLowerCase()
+              );
+              if (i !== -1) {
+                haxRay = window.HaxStore.instance.gizmoList[i].title;
+              }
+              node.setAttribute("data-hax-ray", haxRay);
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-added", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
+              // set new nodes to be the active one
+              // only if we didn't just do a grid plate move
+              // if multiple mutations, only accept the 1st one in a group
+              if (!this.___moveLock && !mutFind) {
+                mutFind = true;
+                this.activeNode = node;
+                window.HaxStore.write("activeNode", node, this);
+              } else {
+                this.___moveLock = false;
+              }
+            }
+          });
+        }
+        // if we dropped nodes via the UI (delete event basically)
+        if (mutation.removedNodes.length > 0) {
+          // handle removing items... not sure we need to do anything here
+          mutation.removedNodes.forEach(node => {
+            if (
+              this._validElementTest(node) &&
+              !node.classList.contains("hax-active")
+            ) {
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-removed", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
+            }
+          });
+        }
+      });
+    });
+    this._observer.observe(this, {
+      childList: true
+    });
+    window.addEventListener("keydown", this._onKeyDown.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("scroll", this._keepContextVisible.bind(this));
+  }
+  /**
+   * HTMLElement
+   */
+  disconnectedCallback() {
+    window.removeEventListener("keydown", this._onKeyDown.bind(this));
+    window.removeEventListener("keypress", this._onKeyPress.bind(this));
+    document.body.removeEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.removeEventListener("scroll", this._keepContextVisible.bind(this));
+    this._observer.disconnect();
+    super.disconnectedCallback();
+  }
+  /**
+   * Keep the context menu visible if needed
+   */
+  _keepContextVisible(e) {
+    // see if the text context menu is visible
+    let el = false;
+    if (
+      this.shadowRoot
+        .querySelector("#textcontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
+      el = this.shadowRoot.querySelector("#textcontextmenu");
+    } else if (
+      this.shadowRoot
+        .querySelector("#cecontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
+      el = this.shadowRoot.querySelector("#cecontextmenu");
+    }
+    // if we see it, ensure we don't have the pin
+    if (el) {
+      if (this.elementInViewport(el)) {
+        el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
+      } else {
+        if (this.__OffBottom) {
+          el.classList.add("hax-context-pin-top");
+        } else {
+          el.classList.add("hax-context-pin-bottom");
+        }
+      }
+    }
+  }
+  _onKeyDown(e) {
+    if (this.editMode && this.getAttribute("contenteditable")) {
+      switch (e.key) {
+        case "Tab":
+          if (
+            window.HaxStore.instance.isTextElement(this.activeContainerNode)
+          ) {
+            if (e.detail.keyboardEvent) {
+              e.detail.keyboardEvent.preventDefault();
+              e.detail.keyboardEvent.stopPropagation();
+              e.detail.keyboardEvent.stopImmediatePropagation();
+            }
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            if (e.shiftKey) {
+              this._tabBackKeyPressed();
+            } else {
+              this._tabKeyPressed();
+            }
+          }
+          break;
+        case "Enter":
+          this.setAttribute("contenteditable", true);
+          break;
+        case "ArrowUp":
+        case "ArrowDown":
+        case "ArrowLeft":
+        case "ArrowRight":
+          setTimeout(() => {
+            const rng = window.HaxStore.getRange();
+            if (
+              rng.commonAncestorContainer &&
+              this.activeNode !== rng.commonAncestorContainer &&
+              typeof rng.commonAncestorContainer.focus === "function"
+            ) {
+              if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                rng.commonAncestorContainer.focus();
+                this.__focusLogic(rng.commonAncestorContainer);
+              }
+            }
+            // need to check on the parent too if this was a text node
+            else if (
+              rng.commonAncestorContainer &&
+              rng.commonAncestorContainer.parentNode &&
+              this.activeNode !== rng.commonAncestorContainer.parentNode &&
+              typeof rng.commonAncestorContainer.parentNode.focus === "function"
+            ) {
+              if (
+                rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
+              ) {
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer.parentNode
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                rng.commonAncestorContainer.parentNode.focus();
+                this.__focusLogic(rng.commonAncestorContainer.parentNode);
+              }
+            }
+          }, 50);
+          break;
+      }
+      if (
+        this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
+        this.__dropActiveHover();
+      }
+    }
+  }
+  _onKeyPress(e) {
+    if (
+      this.editMode &&
+      this.shadowRoot
+        .querySelector("#platecontextmenu")
+        .classList.contains("hax-active-hover")
+    ) {
+      this.__dropActiveHover();
+    } else if (this.editMode && this.activeNode) {
+      // If the user has paused for awhile, show the menu
+      clearTimeout(this.positionContextTimer);
+      this.positionContextTimer = setTimeout(() => {
+        // always on active if we were just typing
+        this.positionContextMenus(this.activeNode, this.activeNode);
+      }, 2000);
+    }
+  }
+  /**
+   * on mouse over then fire the hax ray value if we have one
+   */
+  hoverEvent(e) {
+    if (this.editMode) {
+      if (e.target && e.target.getAttribute("data-hax-ray") != null) {
+        this.__activeHover = e.target;
+        this.dispatchEvent(
+          new CustomEvent("hax-active-hover-name", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e.target.getAttribute("data-hax-ray")
+          })
+        );
+      } else if (
+        e.target &&
+        e.target.parentNode &&
+        e.target.parentNode.getAttribute("data-hax-ray") != null
+      ) {
+        this.__activeHover = e.target.parentNode;
+        this.dispatchEvent(
+          new CustomEvent("hax-active-hover-name", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e.target.parentNode.getAttribute("data-hax-ray")
+          })
+        );
+      }
+      if (
+        !this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
+        let local = e.target;
+        // see if the target is relevent when showing the edit menu operations
+        if (
+          e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#textcontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#platecontextmenu") ||
+          local === this.activeNode ||
+          local === this.activeContainerNode ||
+          e.target === this.activeNode ||
+          e.target === this.activeContainerNode ||
+          local.parentNode === this.activeContainerNode ||
+          local.parentNode.parentNode === this.activeContainerNode ||
+          local.parentNode.parentNode.parentNode === this.activeContainerNode
+        ) {
+          this.__addActiveHover();
+          this.__typeLock = false;
+        } else {
+          this.__dropActiveHover();
+        }
+      }
+    }
+  }
+  __addActiveHover() {
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.add("hax-active-hover");
+  }
+  __dropActiveHover() {
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.remove("hax-active-hover");
+  }
+  /**
+   * Check if part of the passed element is int he viewport
+   */
+  elementInViewport(el) {
+    let top =
+      el.offsetTop -
+      32 -
+      window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer")
+        .offsetHeight;
+    let left = el.offsetLeft;
+    let width = el.offsetWidth;
+    let height = el.offsetHeight;
+    while (el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+      left += el.offsetLeft;
+    }
+    this.__OffBottom = top < window.pageYOffset + window.innerHeight;
+    return (
+      top < window.pageYOffset + window.innerHeight &&
+      left < window.pageXOffset + window.innerWidth &&
+      top + height > window.pageYOffset &&
+      left + width > window.pageXOffset
+    );
+  }
+  /**
+   * Replace place holder after an event has called for it in the element itself
+   */
+  replacePlaceholder(e) {
+    // generate a paragraph of text here on click
+    if (e.detail === "text") {
+      // make sure text just escalates to a paragraph tag
+      let p = document.createElement("p");
+      p.innerHTML = "<br/>";
+      this.haxReplaceNode(this.activeNode, p, this.activeNode.parentNode);
+      // allow swap out to happen
+      setTimeout(() => {
+        // set active to this p tag
+        this.activeNode = p;
+        window.HaxStore.write("activeNode", p, this);
+        this.activeContainerNode.setAttribute("contenteditable", true);
+        // focus on it
+        p.focus();
+        this.__focusLogic(p);
+      }, 210);
+    } else {
+      this.replaceElementWorkflow();
+    }
+  }
+  /**
+   * Whole workflow of replacing something in place contextually.
+   * This can fire for things like events needing this workflow to
+   * invoke whether it's a "convert" event or a "replace placeholder" event
+   */
+  replaceElementWorkflow() {
+    let element = window.HaxStore.nodeToHaxElement(this.activeNode, null);
+    let type = "*";
+    let skipPropMatch = false;
+    // special support for place holder which defines exactly
+    // what the user wants this replaced with
+    if (
+      element.tag === "place-holder" &&
+      typeof element.properties["type"] !== typeof undefined
+    ) {
+      type = element.properties["type"];
+      skipPropMatch = true;
+    }
+    var props = {};
+    // see if we have a gizmo as it's not a requirement to registration
+    // as well as having handlers since mapping is not required either
+    if (
+      typeof window.HaxStore.instance.elementList[element.tag] !==
+        typeof undefined &&
+      window.HaxStore.instance.elementList[element.tag].gizmo !== false &&
+      typeof window.HaxStore.instance.elementList[element.tag].gizmo.handles !==
+        typeof undefined &&
+      window.HaxStore.instance.elementList[element.tag].gizmo.handles.length > 0
+    ) {
+      // get the haxProperties for this item
+      let gizmo = window.HaxStore.instance.elementList[element.tag].gizmo;
+      // walk through each handler
+      for (var i = 0; i < gizmo.handles.length; i++) {
+        // walk the properties defined as they would be to the
+        // left side of the ledger and tell us which property to
+        // mesh with. This effectively rehydrates / inverts that
+        // relationship where we have an element and want to say
+        // "oh ya, but what could have handled this" so that we
+        // can use that translation to offer up convertion to a
+        // new element. This is insane.
+        for (var prop in gizmo.handles[i]) {
+          // type is a reserved handler but any other property
+          // which we actually have in our element let's go for it
+          if (
+            prop !== "type" &&
+            typeof element.properties[gizmo.handles[i][prop]] !==
+              typeof undefined
+          ) {
+            // The cake is a lie... oh wait... no it's not.
+            // This will completely bend your mind when it comes to
+            // what HTML is, how it should operate and what universe
+            // we can now contort as a result. This effectively allows
+            // reverse engineering any element on the page into any
+            // other compatible element based on the properties in
+            // each element claiming to be compatible.
+            props[prop] = element.properties[gizmo.handles[i][prop]];
+          }
+        }
+      }
+    }
+    let haxElements = window.HaxStore.guessGizmo(type, props, skipPropMatch);
+    // see if we got anything
+    if (haxElements.length > 0) {
+      // hand off to hax-app-picker to deal with the rest of this
+      let tag = this.activeNode.tagName.toLowerCase();
+      let humanName = tag.replace("-", " ");
+      if (
+        typeof window.HaxStore.instance.elementList[tag] !== typeof undefined &&
+        window.HaxStore.instance.elementList[tag].gizmo !== false
+      ) {
+        humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+      }
+      window.HaxStore.instance.haxAppPicker.presentOptions(
+        haxElements,
+        "__convert",
+        `Transform ${humanName} to..`,
+        "gizmo"
+      );
+    } else {
+      window.HaxStore.toast("Sorry, this can not be transformed!", 5000);
+    }
+  }
+  /**
+   * Global prefs updated, let's visualize stuff from hax-ray
+   */
+  _globalPreferencesUpdated(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined && newValue != null) {
+      this.haxRayMode = newValue.haxRayMode;
+    }
+  }
+  /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (
+      e.detail &&
+      typeof e.detail.value !== typeof undefined &&
+      e.detail.property
+    ) {
+      this[e.detail.property] = e.detail.value;
+    }
+  }
+  /**
+   * Clear area.
+   */
+  haxClearBody(confirm = true) {
+    let status = true;
+    // only confirm if asked so we can support wipes without it
+    if (confirm) {
+      status = prompt("Are you sure you want to delete all content?");
+    }
+    // ensure they said yes
+    if (status) {
+      wipeSlot(this);
+    }
+  }
+  /**
+   * Insert new tag + content into the local DOM as a node.
+   */
+  haxInsert(tag, content, properties = {}, waitForLock = true) {
+    this.__activeHover = null;
+    // verify this tag is a valid one
+    // create a new element fragment w/ content in it
+    // if this is a custom-element it won't expand though
+    var frag = document.createElement(tag);
+    // set text forcibly
+    //frag.innerText = content;
+    // now set html forcibly which would overwrite the other one
+    frag.innerHTML = content;
+    // clone the fragment which will force an escalation to full node
+    var newNode = frag.cloneNode(true);
+    // support for properties if they exist
+    for (var property in properties) {
+      let attributeName = window.HaxStore.camelToDash(property);
+      if (properties.hasOwnProperty(property)) {
+        // special supporting for boolean because html is weird :p
+        if (properties[property] === true) {
+          newNode.setAttribute(attributeName, attributeName);
+        } else if (properties[property] === false) {
+          newNode.removeAttribute(attributeName);
+        } else if (
+          properties[property] != null &&
+          properties[property].constructor === Array
+        ) {
+          if (newNode.properties && newNode.properties[property].readOnly) {
+          } else {
+            if (newNode.set) {
+              newNode.set(attributeName, properties[property]);
+            } else {
+              newNode[attributeName] = properties[property];
+            }
+          }
+        } else if (
+          properties[property] != null &&
+          properties[property].constructor === Object
+        ) {
+          if (newNode.properties && newNode.properties[property].readOnly) {
+          } else {
+            if (newNode.set) {
+              newNode.set(attributeName, properties[property]);
+            } else {
+              newNode[attributeName] = properties[property];
+            }
+          }
+        } else {
+          newNode.setAttribute(attributeName, properties[property]);
+        }
+      }
+    }
+    // special support for a drag and drop into a place-holder tag
+    // as this is a more aggressive operation then the others
+    if (
+      window.HaxStore.instance.activePlaceHolder !== null &&
+      typeof window.HaxStore.instance.activePlaceHolder.style !==
+        typeof undefined
+    ) {
+      // replicate styles so that it doesn't jar the UI
+      newNode.style.width =
+        window.HaxStore.instance.activePlaceHolder.style.width;
+      newNode.style.float =
+        window.HaxStore.instance.activePlaceHolder.style.float;
+      newNode.style.margin =
+        window.HaxStore.instance.activePlaceHolder.style.margin;
+      newNode.style.display =
+        window.HaxStore.instance.activePlaceHolder.style.display;
+      this.haxReplaceNode(
+        window.HaxStore.instance.activePlaceHolder,
+        newNode,
+        window.HaxStore.instance.activePlaceHolder.parentNode
+      );
+      window.HaxStore.instance.activePlaceHolder = null;
+    }
+    // insert at active insert point if we have one
+    else if (this.activeContainerNode != null) {
+      // allow for inserting things into things but not grid plate
+      if (
+        newNode.tagName !== "GRID-PLATE" &&
+        this.activeContainerNode.tagName === "GRID-PLATE" &&
+        this.activeContainerNode !== this.activeNode
+      ) {
+        if (this.activeNode.getAttribute("slot") != null) {
+          newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
+        }
+        this.activeContainerNode.insertBefore(newNode, this.activeNode);
+      } else {
+        this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
+      }
+    } else {
+      // send this into the root, which should filter it back down into the slot
+      this.appendChild(newNode);
+    }
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
+    this.__updateLockFocus = newNode;
+    // wait so that the DOM can have the node to then attach to
+    if (waitForLock) {
+      setTimeout(() => {
+        this.breakUpdateLock();
+      }, 50);
+    }
+    return true;
+  }
+
+  breakUpdateLock() {
+    window.HaxStore.write("activeContainerNode", this.__updateLockFocus, this);
+    window.HaxStore.write("activeNode", this.__updateLockFocus, this);
+    // attempt to focus on the new node, may not always work
+    this.__updateLockFocus.focus();
+    // scroll to it
+    if (typeof this.__updateLockFocus.scrollIntoViewIfNeeded === "function") {
+      this.__updateLockFocus.scrollIntoViewIfNeeded(true);
+    } else {
+      this.__updateLockFocus.scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
+    }
+  }
+  /**
+   * Return the current hax content area as text that could be
+   * inserted into something.
+   */
+  haxToContent() {
+    this.hideContextMenus();
+    var __active = this.activeNode;
+    // null this to drop hax based classes
+    this.activeNode = null;
+    this.activeContainerNode = null;
+    window.HaxStore.write("activeNode", null, this);
+    window.HaxStore.write("activeContainerNode", null, this);
+    let children =
+      this.shadowRoot.querySelector("#body").localName === "slot"
+        ? this.shadowRoot.querySelector("#body").assignedNodes({
+            flatten: true
+          })
+        : [];
+    if (this.globalPreferences.haxDeveloperMode) {
+      console.warn(children);
+    }
+    var content = "";
+    for (var i = 0, len = children.length; i < len; i++) {
+      // some mild front-end sanitization
+      if (this._validElementTest(children[i])) {
+        children[i].removeAttribute("data-editable");
+        children[i].removeAttribute("data-hax-ray");
+        children[i].contentEditable = false;
+        content += window.HaxStore.nodeToContent(children[i]);
+        if (children[i].tagName.toLowerCase() === "grid-plate") {
+          this._applyContentEditable(this.editMode, children[i]);
+        }
+      }
+      // keep comments with a special case since they need wrapped
+      else if (children[i].nodeType === 8) {
+        content += "<!-- " + children[i].textContent + " -->";
+      }
+      // keep everything NOT an element at this point, this helps
+      // preserve whitespace because we're crazy about accuracy
+      else if (
+        children[i].nodeType !== 1 &&
+        typeof children[i].textContent !== typeof undefined &&
+        children[i].textContent !== "undefined"
+      ) {
+        content += children[i].textContent;
+      }
+    }
+    // remove the contenteditable attribute
+    content = content.replace(/\scontenteditable=\"false\"/g, "");
+    // remove the data-editable attribute
+    content = content.replace(/\sdata-editable=\"true\"/g, "");
+    content = content.replace(/\sdata-editable=\"false\"/g, "");
+    content = content.replace(/\sdata-editable=\""/g, "");
+    // remove other attributes that can linger in slots
+    content = content.replace(/\sdata-editable/g, "");
+    content = content.replace(/\scontenteditable/g, "");
+    content = content.replace(/\sdraggable/g, "");
+    content = content.replace(/\sdata-draggable/g, "");
+    // clean up stray hax-ray leftovers
+    content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
+    // remove HAX specific classes / scoping classes
+    if (this.parentNode.tagName) {
+      let parentTag = this.parentNode.tagName.toLowerCase();
+      let string = "style-scope " + parentTag + " x-scope";
+      let re = new RegExp(string, "g");
+      content = content.replace(re, "");
+      // remove without the deeeper scope as well for primitives
+      string = "style-scope " + parentTag;
+      re = new RegExp(string, "g");
+      content = content.replace(re, "");
+      // remove the last common one unpacked
+      string = "x-scope " + parentTag + "-0";
+      re = new RegExp(string, "g");
+      content = content.replace(re, "");
+      // now all tags we have defined as valid
+      let tags = window.HaxStore.instance.validTagList;
+      tags.push("hax-preview");
+      for (var i in tags) {
+        string = "style-scope " + tags[i];
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0 ";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+      }
+    }
+    // remove empty class structures
+    content = content.replace(/\sclass=\"\"/g, "");
+    content = content.replace(/\sclass=\"\s\"/g, "");
+    // re-apply contenteditable if needed
+    this._applyContentEditable(this.editMode);
+    // set active again
+    window.HaxStore.write("activeNode", __active, this);
+    window.HaxStore.write("activeContainerNode", __active, this);
+    // oh one last thing. escape all script/style tags
+    content = encapScript(content);
+    if (this.globalPreferences.haxDeveloperMode) {
+      console.warn(content);
+    }
+    return content;
+  }
+  /**
+   * Duplicate node into the local DOM below the current item if we can.
+   */
+  haxDuplicateNode(node, parent = this) {
+    // move the context menu before duplicating!!!!
+    this.hideContextMenus();
+    // convert the node to a hax element
+    let haxElement = window.HaxStore.nodeToHaxElement(node, null);
+    // support for deep API call to clean up special elements
+    if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
+      haxElement = node.preProcessHaxInsertContent(haxElement);
+    }
+    if (haxElement.content == haxElement.properties.innerHTML) {
+      delete haxElement.properties.innerHTML;
+    }
+    // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
+    // correctly and that we get a brand new object
+    var nodeClone = window.HaxStore.haxElementToNode(
+      haxElement.tag,
+      haxElement.content,
+      haxElement.properties
+    );
+    if (
+      nodeClone.tagName.toLowerCase() === "webview" &&
+      window.HaxStore.instance._isSandboxed &&
+      typeof nodeClone.guestinstance !== typeof undefined
+    ) {
+      delete nodeClone.guestinstance;
+    }
+    // shouldn't be possible but might as well check
+    if (node !== null) {
+      parent.insertBefore(nodeClone, node.nextSibling);
+    } else {
+      parent.appendChild(nodeClone);
+    }
+    setTimeout(() => {
+      // test for a grid plate clone
+      if (parent === this) {
+        window.HaxStore.write("activeContainerNode", nodeClone, this);
+      }
+      window.HaxStore.write("activeNode", nodeClone, this);
+    }, 100);
+    return true;
+  }
+  /**
+   * Hide all context menus.
+   */
+  hideContextMenus() {
+    // primary context menus
+    this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
+    // secondary menus and clean up areas
+    this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
+    // force context menu state to closed
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
+  }
+  /**
+   * Reposition context menus to match an element.
+   */
+  positionContextMenus(node, container) {
+    if (node) {
+      let tag = node.tagName.toLowerCase();
+      if (window.HaxStore.instance._isSandboxed && tag === "webview") {
+        tag = "iframe";
+      }
+      let props = window.HaxStore.instance.elementList[tag];
+      // try and work against anything NOT a P tag
+      if (
+        typeof props !== typeof undefined &&
+        !window.HaxStore.instance.isTextElement(node)
+      ) {
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#cecontextmenu"
+        );
+        props.element = node;
+        this.__activeContextType.setHaxProperties(props);
+      } else {
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#textcontextmenu"
+        );
+      }
+      this._positionContextMenu(this.__activeContextType, node, -39, -39);
+      this._positionContextMenu(
+        this.shadowRoot.querySelector("#platecontextmenu"),
+        container,
+        -39,
+        0
+      );
+      // special case for node not matching container
+      if (container && !this._HTMLPrimativeTest(node) && node !== container) {
+        container.contentEditable = false;
+      } else if (container) {
+        container.contentEditable = true;
+      }
+    }
+  }
+  /**
+   * Move grid plate around
+   */
+  haxMoveGridPlate(direction, node, container) {
+    // menu is actually in the element for render purposes
+    // support moving things multiple directions
+    this.___moveLock = true;
+    switch (direction) {
+      case "first":
+        // ensure we can go up, first being a mode of up
+        if (container.previousElementSibling !== null) {
+          this.insertBefore(container, this.firstChild);
+        }
+        break;
+      case "up":
+        // ensure we can go up
+        if (container.previousElementSibling !== null) {
+          this.insertBefore(container, container.previousElementSibling);
+        }
+        break;
+      case "down":
+        if (container.nextElementSibling !== null) {
+          this.insertBefore(container.nextElementSibling, container);
+        }
+        break;
+      case "last":
+        if (container.nextElementSibling !== null) {
+          this.appendChild(container);
+        }
+        break;
+      // @todo support other directions for when inside of an element
+    }
+    setTimeout(() => {
+      this.positionContextMenus(node, container);
+      if (typeof container.scrollIntoViewIfNeeded === "function") {
+        container.scrollIntoViewIfNeeded(true);
+      } else {
+        container.scrollIntoView({ behavior: "smooth", inline: "center" });
+      }
+    }, 5);
+    return true;
+  }
+  /**
+   * Convert an element from one tag to another.
+   */
+  haxReplaceNode(node, replacement, parent = this) {
+    // ensure we're not in the document tree for the replaced node
+    this.hideContextMenus();
+    // Switch, try loop in case we screwed up elsewhere
+    try {
+      // test for slots to match
+      if (node && node.getAttribute && node.getAttribute("slot") != null) {
+        replacement.setAttribute("slot", node.getAttribute("slot"));
+      }
+      if (node == null) {
+        node = this.__oldActiveNode;
+        parent = this.__oldActiveNode.parentNode;
+      }
+      parent.replaceChild(replacement, node);
+    } catch (e) {
+      console.warn(e);
+    }
+    return replacement;
+  }
+  /**
+   * Convert an element from one tag to another.
+   */
+  haxChangeTagName(node, tagName, newNode) {
+    // ensure we're not in the document tree for the replaced node
+    this.hideContextMenus();
+    // Create a replacement tag of the desired type
+    var replacement = document.createElement(tagName);
+    // Grab all of the original's attributes, and pass them to the replacement
+    for (var i = 0, l = node.attributes.length; i < l; ++i) {
+      var nodeName = node.attributes.item(i).nodeName;
+      var value = node.attributes.item(i).value;
+      replacement.setAttribute(nodeName, value);
+    }
+    // Persist contents
+    // account for empty list and ordered list items
+    replacement.innerHTML = node.innerHTML.trim();
+    if (tagName == "ul" || tagName == "ol") {
+      if (replacement.innerHTML == "") {
+        replacement.innerHTML = "<li></li>";
+      } else if (
+        !(
+          node.tagName.toLowerCase() == "ul" ||
+          node.tagName.toLowerCase() == "ol"
+        )
+      ) {
+        replacement.innerHTML =
+          "<li>" +
+          node.innerHTML
+            .trim()
+            .replace(/<br\/>/g, "</li>\n<li>")
+            .replace(/<br>/g, "</li>\n<li>") +
+          "</li>";
+      }
+    } else if (
+      node.tagName.toLowerCase() == "ul" ||
+      node.tagName.toLowerCase() == "ol"
+    ) {
+      // if we're coming from ul or ol strip out the li tags
+      replacement.innerHTML = replacement.innerHTML
+        .replace(/<ul>/g, "")
+        .replace(/<\/ul>/g, "")
+        .replace(/<li><\/li>/g, "")
+        .replace(/<li>/g, "")
+        .replace(/<\/li>/g, "<br/>");
+    }
+    // Switch!
+    try {
+      this.replaceChild(replacement, node);
+      // focus on the thing switched to
+      setTimeout(() => {
+        let children = replacement.children;
+        // see if there's a child element and focus that instead if there is
+        if (children[0] && children.tagName) {
+          children[0].focus();
+        } else {
+          replacement.focus();
+        }
+      }, 50);
+    } catch (e) {
+      console.warn(e);
+      console.warn(replacement);
+      console.warn(node);
+    }
+    return replacement;
+  }
+  /**
+   * Delete the node passed in
+   */
+  haxDeleteNode(node, parent = this) {
+    // move the context menu before deleting!!!!
+    this.hideContextMenus();
+    // shift active to a viable replacement
+    if (
+      this.activeContainerNode != null &&
+      this.activeContainerNode.previousElementSibling !== null
+    ) {
+      this.activeContainerNode.previousElementSibling.focus();
+      // cursor at the END of the element assuming not empty
+      if (
+        this.activeContainerNode != null &&
+        window.HaxStore.instance.isTextElement(this.activeContainerNode) &&
+        this.activeContainerNode.textContent !== ""
+      ) {
+        try {
+          var range = document.createRange();
+          var sel = window.HaxStore.getSelection();
+          range.setStart(this.activeContainerNode, 1);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
+          this.activeContainerNode.focus();
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    } else if (
+      this.activeContainerNode != null &&
+      this.activeContainerNode.nextElementSibling !== null
+    ) {
+      this.activeContainerNode.nextElementSibling.focus();
+    } else {
+      this.activeNode = null;
+      this.activeContainerNode = null;
+      window.HaxStore.write("activeNode", null, this);
+      window.HaxStore.write("activeContainerNode", null, this);
+    }
+    // @todo figure out why this is complaining
+    try {
+      return parent.removeChild(node);
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  /**
+   * Bulk import HTML with option to clear what is currently
+   * in the slot of this tag. This also validates tags
+   * that are being inserted for security based on the
+   * internal whitelist.
+   */
+  importContent(html, clear = true) {
+    // kill the slot of the active body, all of it
+    if (clear) {
+      wipeSlot(this, "*");
+    }
+    // pause quickly to ensure wipe goes through successfully
+    setTimeout(() => {
+      html = encapScript(html);
+      let fragment = document.createElement("div");
+      fragment.insertAdjacentHTML("beforeend", html);
+      while (fragment.firstChild !== null) {
+        if (typeof fragment.firstChild.tagName !== typeof undefined) {
+          // ensure import doesn't import non-sandbox safe things!
+          if (
+            window.HaxStore.instance._isSandboxed &&
+            fragment.firstChild.tagName.toLowerCase() === "iframe"
+          ) {
+            // Create a replacement tag of the desired type
+            var replacement = document.createElement("webview");
+            // Grab all of the original's attributes, and pass them to the replacement
+            for (
+              var j = 0, l = fragment.firstChild.attributes.length;
+              j < l;
+              ++j
+            ) {
+              var nodeName = fragment.firstChild.attributes.item(j).nodeName;
+              var value = fragment.firstChild.attributes.item(j).value;
+              if (nodeName === "height" || nodeName === "width") {
+                replacement.style[nodeName] == value;
+              }
+              replacement.setAttribute(nodeName, value);
+            }
+            this.appendChild(replacement);
+          } else {
+            this.appendChild(fragment.firstChild);
+          }
+        } else {
+          // @todo might want to support appending or keeping track of comments / non tags
+          // but this is not a must have
+          fragment.removeChild(fragment.firstChild);
+        }
+      }
+    }, 50);
+  }
+  /**
+   * Respond to hax operations.
+   */
+  _haxContextOperation(e) {
+    let detail = e.detail;
+    var haxElement;
+    // support a simple insert event to bubble up or everything else
+    switch (detail.eventName) {
+      // text based operations for primatives
+      case "p":
+      case "ol":
+      case "ul":
+      case "h2":
+      case "h3":
+      case "h4":
+      case "h5":
+      case "h6":
+      case "blockquote":
+      case "code":
+        // trigger the default selected value in context menu to match
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
+          detail.eventName;
+        window.HaxStore.write(
+          "activeContainerNode",
+          this.haxChangeTagName(this.activeContainerNode, detail.eventName),
+          this
+        );
+        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        break;
+      case "text-align-left":
+        this.activeNode.style.textAlign = null;
+        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        break;
+      // grid plate based operations
+      // allow for transforming this haxElement into another one
+      case "grid-plate-convert":
+        this.replaceElementWorkflow();
+        break;
+      // duplicate the active item or container
+      case "grid-plate-duplicate":
+        if (this.activeNode === this.activeContainerNode) {
+          this.haxDuplicateNode(this.activeNode);
+        } else {
+          this.haxDuplicateNode(this.activeNode, this.activeContainerNode);
+        }
+        break;
+      case "grid-plate-delete":
+        if (this.activeNode != null) {
+          let options = [
+            {
+              icon: "thumb-up",
+              color: "green",
+              title: "Yes"
+            },
+            {
+              icon: "thumb-down",
+              color: "red",
+              title: "No"
+            }
+          ];
+          let tag = this.activeNode.tagName.toLowerCase();
+          let humanName = tag.replace("-", " ");
+          if (
+            typeof window.HaxStore.instance.elementList[tag] !==
+              typeof undefined &&
+            window.HaxStore.instance.elementList[tag].gizmo !== false
+          ) {
+            humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+          }
+          window.HaxStore.instance.haxAppPicker.presentOptions(
+            options,
+            "",
+            `Remove this \`${humanName}\`?`,
+            "delete"
+          );
+        }
+        break;
+      case "grid-plate-first":
+        this.haxMoveGridPlate(
+          "first",
+          this.activeNode,
+          this.activeContainerNode
+        );
+        break;
+      case "grid-plate-up":
+        this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
+        break;
+      case "hax-manager-open":
+        window.HaxStore.write("activeHaxElement", {}, this);
+        window.HaxStore.instance.haxManager.resetManager(
+          parseInt(detail.value)
+        );
+        window.HaxStore.instance.haxManager.toggleDialog();
+        break;
+      case "grid-plate-down":
+        this.haxMoveGridPlate(
+          "down",
+          this.activeNode,
+          this.activeContainerNode
+        );
+        break;
+      case "grid-plate-last":
+        this.haxMoveGridPlate(
+          "last",
+          this.activeNode,
+          this.activeContainerNode
+        );
+        break;
+      case "close-menu":
+        this.activeNode = null;
+        this.activeContainerNode = null;
+        window.HaxStore.write("activeNode", null, this);
+        window.HaxStore.write("activeContainerNode", null, this);
+        break;
+      case "hax-edit-property":
+        let haxInputMixer = this.shadowRoot.querySelector("#haxinputmixer");
+        haxInputMixer.label = detail.target.label;
+        haxInputMixer.options = detail.target.options;
+        haxInputMixer.icon = detail.target.icon;
+        haxInputMixer.description = detail.target.description;
+        haxInputMixer.required = detail.target.required;
+        haxInputMixer.validation = detail.target.validation;
+        haxInputMixer.validationType = detail.target.validationType;
+        haxInputMixer.inputMethod = detail.target.inputMethod;
+        haxInputMixer.value = "";
+        // see if response should bind to the slot or property
+        if (
+          typeof detail.target.propertyToBind !== typeof undefined &&
+          detail.target.propertyToBind != null &&
+          detail.target.propertyToBind != false
+        ) {
+          haxInputMixer.propertyToBind = detail.target.propertyToBind;
+          if (
+            typeof this.activeNode[detail.target.propertyToBind] !==
+            typeof undefined
+          ) {
+            haxInputMixer.value = this.activeNode[detail.target.propertyToBind];
+          }
+          // try to get an attribute bind
+          else {
+            haxInputMixer.value = this.activeNode.getAttribute(
+              detail.target.propertyToBind
+            );
+          }
+          // @todo need to be able to support slot binding
+        }
+        // make input mixer show up
+        this._positionContextMenu(
+          haxInputMixer,
+          this.activeContainerNode,
+          -1,
+          -38
+        );
+        let style =
+          this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||
+          window.getComputedStyle(
+            this.shadowRoot.querySelector("#cecontextmenu")
+          );
+        // force input mixes to match width of the ce context menu currently
+        haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
+        break;
+      // directional / proportion operations
+      case "hax-align-left":
+        this.activeNode.style.float = null;
+        this.activeNode.style.margin = null;
+        this.activeNode.style.display = null;
+        // animation forces us to have to wait to position
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 200);
+        break;
+      case "hax-align-center":
+        this.activeNode.style.float = null;
+        this.activeNode.style.margin = "0 auto";
+        this.activeNode.style.display = "block";
+        // animation forces us to have to wait to position
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 200);
+        break;
+      case "hax-size-change":
+        if (this.activeNode) {
+          this.activeNode.style.width = detail.value + "%";
+          // animation forces us to have to wait to position
+          setTimeout(() => {
+            this.positionContextMenus(
+              this.activeNode,
+              this.activeContainerNode
+            );
+          }, 100);
+        }
+        break;
+      // settings button selected from hax-ce-context bar
+      // which means we should skip to the settings page after
+      // we set the thing selected as the active element to work
+      // on in the manager
+      case "hax-manager-configure":
+        // make sure input mixer is closed
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
+        // reset the manager
+        window.HaxStore.instance.haxManager.resetManager();
+        // write activeElement updated so it'll go into the preview
+        haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
+        window.HaxStore.write("activeHaxElement", haxElement, this);
+        // clean up the manager before opening
+        window.HaxStore.instance.haxManager.editExistingNode = true;
+        window.HaxStore.instance.haxManager.selectStep("configure");
+        window.HaxStore.instance.haxManager.toggleDialog();
+        // accessibility enhancement to keyboard focus configure button
+        setTimeout(() => {
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
+        }, 100);
+        break;
+      // container / layout settings button has been activated
+      case "hax-manager-configure-container":
+        window.HaxStore.write(
+          "activeNode",
+          window.HaxStore.instance.activeContainerNode,
+          this
+        );
+        // make sure input mixer is closed
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
+        // reset the manager
+        window.HaxStore.instance.haxManager.resetManager();
+        // write activeElement updated so it'll go into the preview
+        haxElement = window.HaxStore.nodeToHaxElement(
+          window.HaxStore.instance.activeNode
+        );
+        window.HaxStore.write("activeHaxElement", haxElement, this);
+        // clean up the manager before opening
+        window.HaxStore.instance.haxManager.editExistingNode = true;
+        window.HaxStore.instance.haxManager.selectStep("configure");
+        window.HaxStore.instance.haxManager.toggleDialog();
+        // accessibility enhancement to keyboard focus configure button
+        setTimeout(() => {
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
+        }, 100);
+        break;
+    }
+  }
+  /**
+   * Respond to an input mixer call.
+   */
+  _haxInputMixerOperation(e) {
+    // this is a big deal how simple this part is in the end
+    let mixer = e.detail.inputMixer;
+    // if we have a property to bind, set that value from the
+    // widget that was dictated by the element itself
+    if (mixer.propertyToBind != null) {
+      this.activeNode[mixer.propertyToBind] = mixer.value;
+    }
+    // if we're told instead to do a slot bind, make a span tag
+    // with height same as parent and then mix in the innerHTML
+    else if (mixer.slotToBind != null) {
+      item = document.createElement("span");
+      item.style.height = "inherit";
+      item.innerHTML = mixer.value;
+      //item.attribute.slot = mixer.slotToBind;
+      item.slot = mixer.slotToBind;
+      this.activeNode.appendChild(item);
+    }
+    // hide mixer
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
+  }
+  /**
+   * Item has gained focus, change active element to match
+   */
+  _focusIn(e) {
+    if (this.__focusLogic(e.target)) {
+      e.stopPropagation();
+    }
+  }
+  /**
+   * Focus a target and update the data model to reflect this.
+   * This helps ensure that keyboard and non click based focusing
+   * registers the same as click events
+   */
+  __focusLogic(target) {
+    let stopProp = false;
+    // only worry about these when we are in edit mode
+    if (this.editMode && !this.__tabTrap) {
+      let containerNode = target;
+      // edge case, thing selected is inside a paragraph tag
+      // HTML is stupid and allows this
+      if (
+        containerNode.tagName === "SPAN" &&
+        window.HaxStore.instance.isTextElement(target.parentNode)
+      ) {
+        containerNode = target.parentNode;
+      }
+      let activeNode = null;
+      // ensure this is valid
+      if (
+        this._validElementTest(containerNode) &&
+        containerNode.parentNode != null
+      ) {
+        // keep looking til we are juuuust below the container
+        // @todo this is where we force a selection on highest level
+        // of the document
+        while (containerNode.parentNode.tagName != "HAX-BODY") {
+          // make sure active is set after closest legit element
+          if (
+            activeNode === null &&
+            containerNode.tagName !== "LI" &&
+            containerNode.tagName !== "B" &&
+            containerNode.tagName !== "I" &&
+            containerNode.tagName !== "STRONG" &&
+            containerNode.tagName !== "EM"
+          ) {
+            activeNode = containerNode;
+          }
+          containerNode = containerNode.parentNode;
+        }
+        // case with simple element
+        if (activeNode === null) {
+          activeNode = containerNode;
+        }
+        // we only allow disconnected node from container when
+        // the container is a grid plate
+        else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
+          activeNode = containerNode;
+        }
+        // won't deal with lists inside of p tags
+        else if (
+          ["UL", "OL", "LI", "P", "GRID-PLATE"].includes(
+            containerNode.tagName
+          ) &&
+          ["UL", "OL", "LI"].includes(activeNode.tagName)
+        ) {
+          activeNode = containerNode;
+        }
+        // ensure this is a tag we care about / have support for and
+        // that it is a new value
+        if (
+          this.activeContainerNode !== containerNode &&
+          !containerNode.classList.contains("ignore-activation")
+        ) {
+          this.hideContextMenus();
+          this.activeContainerNode = containerNode;
+          window.HaxStore.write("activeContainerNode", containerNode, this);
+          stopProp = true;
+        } else if (containerNode.classList.contains("ignore-activation")) {
+          stopProp = true;
+        }
+        // test for active node changing
+        if (
+          this.activeNode !== activeNode &&
+          !activeNode.classList.contains("ignore-activation")
+        ) {
+          this.activeNode = activeNode;
+          window.HaxStore.write("activeNode", activeNode, this);
+          this.hideContextMenus();
+          this.positionContextMenus(activeNode, containerNode);
+          stopProp = true;
+        }
+      }
+    } else {
+      this.__tabTrap = false;
+    }
+
+    return stopProp;
+  }
+  /**
+   * Notice the change between states for editing.
+   */
+  _editModeChanged(newValue, oldValue) {
+    // fire above that we have changed states so things can react if needed
+    if (typeof oldValue !== typeof undefined) {
+      this._applyContentEditable(newValue);
+      this.setAttribute("tabindex", "-1");
+      if (
+        newValue !== false &&
+        typeof this.activeNode !== typeof undefined &&
+        this.activeNode !== null
+      ) {
+        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+      }
+    }
+    // hide menus when state changes
+    if (newValue === false) {
+      this.removeAttribute("contenteditable");
+      this.hideContextMenus();
+    }
+  }
+  /**
+   * Test if this is a HAX element or not
+   */
+  _haxResolvePreviousElement(node) {
+    node = node.previousElementSibling;
+    while (
+      node != null &&
+      typeof node.tagName !== typeof undefined &&
+      node.tagName.substring(0, 4) === "HAX-"
+    ) {
+      node = node.previousElementSibling;
+    }
+    return node;
+  }
+  /**
+   * Test if this is a HAX element or not
+   * true means its a valid element for selection
+   */
+  _validElementTest(node) {
+    if (
+      typeof node.tagName !== typeof undefined &&
+      node.tagName.substring(0, 4) !== "HAX-"
+    ) {
+      return true;
+    }
+    return false;
+  }
+  /**
+   * Test if this is an HTML primative
+   */
+  _HTMLPrimativeTest(node) {
+    if (
+      node != null &&
+      typeof node.tagName !== typeof undefined &&
+      node.tagName.indexOf("-") == -1
+    ) {
+      return true;
+    }
+    return false;
+  }
+  /**
+   * Walk everything we find and either enable or disable editable state.
+   */
+  _applyContentEditable(
+    status,
+    target = this.shadowRoot.querySelector("#body")
+  ) {
+    let children =
+      target.localName === "slot"
+        ? target.assignedNodes({ flatten: true })
+        : [];
+    // fallback for content nodes if not polymer managed nodes above
+    if (children.length === 0) {
+      children = target.children;
+    }
+    for (var i = 0, len = children.length; i < len; i++) {
+      // we have to tell the browser that primatives are editable
+      if (this._HTMLPrimativeTest(children[i])) {
+        if (status) {
+          children[i].setAttribute("contenteditable", status);
+          children[i].setAttribute("data-editable", status);
+          if (children[i].querySelectorAll("a").length > 0) {
+            let links = children[i].querySelectorAll("a");
+            for (var j = 0, len2 = links.length; j < len2; j++) {
+              links[j].setAttribute("contenteditable", status);
+              links[j].setAttribute("data-editable", status);
+              links[j].addEventListener("click", e => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              });
+            }
+          }
+        } else {
+          children[i].removeAttribute("contenteditable", status);
+          children[j].removeAttribute("data-editable", status);
+          if (children[i].querySelectorAll("a").length > 0) {
+            let links = children[i].querySelectorAll("a");
+            for (var j = 0, len2 = links.length; j < len2; j++) {
+              links[j].removeAttribute("data-editable", status);
+              links[j].removeAttribute("contenteditable", status);
+              links[j].removeEventListener("click", e => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              });
+            }
+          }
+        }
+      }
+      // this does the real targetting
+      if (this._validElementTest(children[i])) {
+        if (status) {
+          let haxRay = children[i].tagName.replace("-", " ").toLowerCase();
+          let l = window.HaxStore.instance.gizmoList.findIndex(
+            j => j.tag === children[i].tagName.toLowerCase()
+          );
+          if (l !== -1) {
+            haxRay = window.HaxStore.instance.gizmoList[l].title;
+          }
+          // oooooo snap, drag and drop..
+          children[i].setAttribute("data-draggable", true);
+          children[i].setAttribute("data-editable", status);
+          children[i].setAttribute("data-hax-ray", haxRay);
+          children[i].addEventListener("drop", this.dropEvent.bind(this));
+          children[i].addEventListener("dragenter", this.dragEnter.bind(this));
+          children[i].addEventListener("dragleave", this.dragLeave.bind(this));
+          children[i].addEventListener("dragend", this.dragEnd.bind(this));
+          children[i].addEventListener("dragover", function (e) {
+            e.preventDefault();
+          });
+        } else {
+          children[i].removeAttribute("data-draggable");
+          children[i].removeAttribute("data-editable");
+          children[i].removeAttribute("data-hax-ray");
+          children[i].removeAttribute("drop", this.dropEvent.bind(this));
+          children[i].removeAttribute("dragenter", this.dragEnter.bind(this));
+          children[i].removeAttribute("dragleave", this.dragLeave.bind(this));
+          children[i].removeAttribute("dragend", this.dragEnd.bind(this));
+          children[i].removeAttribute("dragover", function (e) {
+            e.preventDefault();
+          });
+        }
+      }
+    }
+  }
+  /**
+   * Drop an item onto another
+   */
+  dropEvent(e) {
+    if (this.editMode) {
+      var target = window.HaxStore.instance.__dragTarget;
+      var local = e.target;
+      // if we have a slot on what we dropped into then we need to mirror that item
+      // and place ourselves below it in the DOM
+      if (
+        typeof target !== typeof undefined &&
+        target !== null &&
+        typeof local !== typeof undefined &&
+        target !== local &&
+        target !== local.parentNode &&
+        target.parentNode === this || local.parentNode === this
+      ) {
+        // incase this came from a grid plate, drop the slot so it works
+        target.removeAttribute("slot");
+        this.insertBefore(target, local);
+        // ensure that if we caught this event we process it
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover");
+        }
+      }
+      // position arrows / set focus in case the DOM got updated above
+      if (target && typeof target.focus === "function") {
+        target.focus();
+      }
+    }
+  }
+  /**
+    * Enter an element, meaning we've over it while dragging
+    */
+  dragEnter(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.target.classList.add("hovered");
+    }
+  }
+  /**
+   * Leaving an element while dragging.
+   */
+  dragLeave(e) {
+    if (this.editMode) {
+      e.target.classList.remove("hovered");
+    }
+  }
+  /**
+   * Start a drag event, this is an element being dragged
+   */
+  dragStart(e) {
+    if (this.editMode) {
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.add("mover");
+        }
+      }
+    }
+  }
+
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  dragEnd(e) {
+    if (this.editMode) {
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover", "hovered");
+        }
+      }
+    }
+  }
+  /**
+   * Container has changed
+   */
+  _activeContainerNodeChanged(newValue, oldValue) {
+    if (
+      this.editMode &&
+      typeof newValue !== typeof undefined &&
+      newValue != null &&
+      newValue.tagName != null
+    ) {
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
+        newValue.setAttribute("contenteditable", true);
+        this.setAttribute("contenteditable", true);
+      } else {
+        newValue.removeAttribute("contenteditable");
+        this.removeAttribute("contenteditable");
+      }
+      // @todo this is a bit of a state hack between grid plate and hax
+      // this forces the active item to be dropped so that we can
+      // correctly regain focus with the keyboard
+      if (oldValue && oldValue.tagName == "GRID-PLATE") {
+        oldValue.activeItem = null;
+      }
+      let tag = newValue.tagName.toLowerCase();
+      // special case for the grid plate since it brings in nodes
+      // nested in it and needs to be put into an editMode
+      if (tag === "grid-plate") {
+        newValue.editMode = this.editMode;
+        this._applyContentEditable(this.editMode, newValue);
+      }
+    }
+  }
+  /**
+   * React to a new node being set to active.
+   */
+  _activeNodeChanged(newValue, oldValue) {
+    // remove anything currently with the active class
+    this.querySelectorAll(".hax-active").forEach(el => {
+      el.classList.remove("hax-active");
+    });
+    // clean up the older one
+    if (
+      this.editMode &&
+      typeof newValue !== typeof undefined &&
+      newValue !== null
+    ) {
+      let tag = newValue.tagName.toLowerCase();
+      // remove the menu, establish the new active, then reapply
+      // this is nessecary because the context menu gets appended into
+      // the document
+      // only hide if we change containers
+      newValue.classList.add("hax-active");
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
+        newValue.setAttribute("contenteditable", true);
+        this.setAttribute("contenteditable", true);
+        // position the operations / in context element
+        clearTimeout(this.positionContextTimer);
+        this.positionContextTimer = setTimeout(() => {
+          this.positionContextMenus(newValue, newValue);
+        }, 1000);
+      } else {
+        newValue.removeAttribute("contenteditable");
+        this.removeAttribute("contenteditable");
+      }
+      this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue = tag;
+      if (newValue.style.textAlign == "left") {
+        this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+          "text-align-left";
+      } else if (newValue.style.float == "left") {
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-left";
+      } else if (newValue.style.margin == "0 auto") {
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-center";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-center";
+      }
+    }
+    // just hide menus if we don't have an active item
+    else if (newValue === null) {
+      this.hideContextMenus();
+      this.__oldActiveNode = oldValue;
+      this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+        "editor:format-align-left";
+      this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+        "text-align-left";
+    }
+  }
+  /**
+   * walk parents and find the correct position from top of document
+   * https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
+   */
+  _getPosition(element) {
+    let xPosition =
+      element.offsetLeft - element.scrollLeft + element.clientLeft;
+    let yPosition = element.offsetTop - element.scrollTop + element.clientTop;
+    return { x: xPosition, y: yPosition };
+  }
+  /**
+   * Handle display and position of the context menu
+   */
+  _positionContextMenu(menu, target, xoffset, yoffset) {
+    // make it account for the offset if it's floated over to one side
+    // or inside of something that's over that way
+    if (target != null) {
+      let pos = this._getPosition(target);
+      if (xoffset != null) {
+        menu.style["left"] = pos.x + xoffset + "px";
+      } else {
+        menu.style["left"] = pos.x + "px";
+      }
+      if (yoffset != null) {
+        menu.style["top"] = pos.y + yoffset + "px";
+      } else {
+        menu.style["top"] = pos.y + "px";
+      }
+    }
+    menu.classList.add("hax-context-visible");
+    // text we want to operate this way
+    if (this.__activeHover) {
+      menu.classList.add("hax-active-hover");
+      menu.style.marginLeft = "";
+      this.__typeLock = false;
+    }
+    setTimeout(() => {
+      this._keepContextVisible();
+    }, 100);
+  }
+  /**
+   * Simple hide / reset of whatever menu it's handed.
+   */
+  _hideContextMenu(menu) {
+    menu.classList.remove(
+      "hax-context-visible",
+      "hax-context-pin-top",
+      "hax-context-pin-bottom"
+    );
+    menu.style.left = "-100px";
+  }
+  /**
+   * Find the next thing to tab forward to.
+   */
+  _tabKeyPressed() {
+    let focus = false;
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
+      }
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("indent");
+          this.__tabTrap = true;
+        }
+      } else {
+        while (!focus) {
+          // do nothing
+          if (node.nextSibling == null) {
+            focus = true;
+          } else if (node.nextSibling.focus === "function") {
+            node.nextSibling.focus();
+            focus = true;
+          } else {
+            node = node.nextSibling;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  /**
+   * Move back through things when tab back pressed
+   */
+  _tabBackKeyPressed() {
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
+      }
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("outdent");
+          this.__tabTrap = true;
+        }
+      } else {
+        if (node != null) {
+          // step back ignoring hax- prefixed elements
+          while (node != null && !this._validElementTest(node)) {
+            node = node.previousSibling;
+          }
+        }
+        if (node != null) {
+          setTimeout(() => {
+            node.focus();
+          }, 50);
+        }
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+}
+window.customElements.define(HaxBody.tag, HaxBody);
+export { HaxBody };
