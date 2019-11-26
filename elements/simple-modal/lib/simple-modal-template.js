@@ -161,8 +161,16 @@ class SimpleModalTemplate extends PolymerElement {
    * @returns {object} a clone of the slotted content (or false if there is no slotted content)
    */
   _getSlot(slotName) {
-    let slot = this.querySelector('[slot="' + slotName + '"]');
-    return slot !== null ? slot.cloneNode(true) : false;
+    let slot = this.querySelectorAll('[slot="' + slotName + '"]');
+    // account for slot passing down from parent element
+    if (slot && slot[0] && slot[0].tagName == "SLOT") {
+      slot = slot[0].assignedNodes({ flatten: true });
+    }
+    let container = document.createElement("div");
+    slot.forEach(el => {
+      container.appendChild(el.cloneNode(true));
+    });
+    return slot !== null ? container.cloneNode(true) : false;
   }
 }
 window.customElements.define(SimpleModalTemplate.tag, SimpleModalTemplate);
