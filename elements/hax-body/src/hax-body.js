@@ -41,6 +41,7 @@ class HaxBody extends SimpleColors {
         }
         :host {
           display: block;
+          position: relative;
           min-height: 32px;
           min-width: 32px;
           outline: none;
@@ -236,6 +237,9 @@ class HaxBody extends SimpleColors {
           background-color: var(--hax-body-target-background-color) !important;
           outline: dashed 2px var(--hax-body-active-border-color);
           z-index: 2;
+        }
+        .hax-context-menu:not(:defined) {
+          display: none;
         }
       `
     ];

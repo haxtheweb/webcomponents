@@ -257,6 +257,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
             --app-drawer-content-container: {
               overflow: hidden;
               background-color: #383f45;
+              position: relative;
             }
           }
           site-print-button {
