@@ -207,9 +207,10 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this[e.detail.property] = null;
+        this[e.detail.property] = { ...e.detail.value };
+      } else {
+        this[e.detail.property] = e.detail.value;
       }
-      this[e.detail.property] = e.detail.value;
     }
   }
 
