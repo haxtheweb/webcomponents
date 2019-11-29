@@ -12,11 +12,13 @@ import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-beh
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 /**
  * `video-player`
+ * @customElement video-player
  * `A simple responsive video player with ridiculously powerful backing`
  *
  * @microcopy - language worth noting:
  * - `video source` - url / link to the video file
- * ```
+ *
+```
 <video-player 
   accent-color$="[[accentColor]]"                 // Optional accent color for controls, 
                                                   // using the following materialize colors: 
@@ -39,9 +41,10 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
   thumbnail-src$="[[thumbnailSrc]]"               // Optional thumbanil/cover image url
   width$="[[width]]">                              // The width of the media             
   <div slot="caption">Optional caption info.</div>
-</video-player>```
+</video-player>
+```
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */
