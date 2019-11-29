@@ -103,7 +103,7 @@ class HaxToolbar extends LitElement {
   render() {
     return html`
       <hax-context-item
-        .hidden="${this.inline}"
+        ?hidden="${this.inline}"
         mini
         light
         icon="close"
@@ -114,7 +114,7 @@ class HaxToolbar extends LitElement {
       ></hax-context-item>
       <div class="wrapper">
         <hax-context-item-menu
-          .hidden="${!this.haxProperties.canPosition}"
+          ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
           icon="${this.justifyIcon}"
@@ -152,7 +152,7 @@ class HaxToolbar extends LitElement {
           @value-changed="${this.sizeChanged}"
         ></paper-slider>
         <paper-tooltip
-          .hidden="${this.inline}"
+          ?hidden="${this.inline}"
           for="slider"
           position="top"
           offset="10"
@@ -161,19 +161,19 @@ class HaxToolbar extends LitElement {
         </paper-tooltip>
         <slot name="primary"></slot>
         <hax-context-item
-          .hidden="${this.hideTransform}"
+          ?hidden="${this.hideTransform}"
           icon="hax:bricks"
           label="Change type"
           event-name="grid-plate-convert"
         ></hax-context-item>
         <hax-context-item
-          .hidden="${this.inline}"
+          ?hidden="${this.inline}"
           icon="delete"
           label="Remove"
           event-name="grid-plate-delete"
         ></hax-context-item>
         <hax-context-item-menu
-          .hidden="${this.hideMode}"
+          ?hidden="${this.hideMode}"
           icon="more-vert"
           label="More operations"
           id="moremenu"
@@ -291,7 +291,12 @@ class HaxToolbar extends LitElement {
   _haxPropertiesChanged(newValue, oldValue) {
     // value doesn't matter, just look at what's active
     if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
-      if (window.HaxStore.instance.activeNode.tagName == "HR") {
+      if (
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        ) ||
+        window.HaxStore.instance.activeNode.tagName == "HR"
+      ) {
         this.hideTransform = true;
       } else {
         this.hideTransform = false;
