@@ -16,7 +16,7 @@
       "hax": "src/drag-n-drop-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "drag and drop elements and manager",
   "repository": {
     "type": "git",

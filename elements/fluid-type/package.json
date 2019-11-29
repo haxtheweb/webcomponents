@@ -16,7 +16,7 @@
       "hax": "src/fluid-type-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",

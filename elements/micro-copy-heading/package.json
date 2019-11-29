@@ -16,7 +16,7 @@
       "hax": "src/micro-copy-heading-hax.json"
     }
   },
-  "version": "2.2.3",
+  "version": "2.3.0",
   "description": "small call to action / attention that acts as a heading too",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

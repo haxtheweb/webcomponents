@@ -16,7 +16,7 @@
       "hax": "src/scroll-button-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",

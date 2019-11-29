@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-gallery-hax.json"
     }
   },
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "Start of lrndesign-gallery",
   "repository": {
     "type": "git",
@@ -39,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/image-inspector": "^2.2.3",
-    "@lrnwebcomponents/img-pan-zoom": "^2.2.3",
-    "@lrnwebcomponents/lrnsys-button": "^2.2.3",
-    "@lrnwebcomponents/lrnsys-layout": "^2.2.4",
-    "@lrnwebcomponents/responsive-utility": "^2.2.3",
-    "@lrnwebcomponents/schema-behaviors": "^2.2.3",
-    "@lrnwebcomponents/simple-colors": "^2.2.4",
+    "@lrnwebcomponents/image-inspector": "^2.3.0",
+    "@lrnwebcomponents/img-pan-zoom": "^2.3.0",
+    "@lrnwebcomponents/lrnsys-button": "^2.3.0",
+    "@lrnwebcomponents/lrnsys-layout": "^2.3.0",
+    "@lrnwebcomponents/responsive-utility": "^2.3.0",
+    "@lrnwebcomponents/schema-behaviors": "^2.3.0",
+    "@lrnwebcomponents/simple-colors": "^2.3.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.4",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

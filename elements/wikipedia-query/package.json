@@ -16,7 +16,7 @@
       "hax": "src/wikipedia-query-hax.json"
     }
   },
-  "version": "2.2.3",
+  "version": "2.3.0",
   "description": "Automated conversion of wikipedia-query/",
   "repository": {
     "type": "git",
@@ -39,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/citation-element": "^2.2.3",
+    "@lrnwebcomponents/citation-element": "^2.3.0",
     "@polymer/iron-ajax": "^3.0.0",
     "lit-element": "2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

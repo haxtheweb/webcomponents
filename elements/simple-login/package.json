@@ -16,7 +16,7 @@
       "hax": "src/simple-login-hax.json"
     }
   },
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "a simple login form",
   "repository": {
     "type": "git",
