@@ -114,7 +114,7 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
         groups: ["Content", "Instructional"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

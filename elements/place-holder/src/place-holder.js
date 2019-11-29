@@ -297,7 +297,7 @@ class PlaceHolder extends SimpleColors {
         groups: ["Placeholder"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

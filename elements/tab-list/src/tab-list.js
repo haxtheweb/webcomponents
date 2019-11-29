@@ -112,7 +112,7 @@ class TabList extends LitElement {
         groups: ["Presentation", "Links"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

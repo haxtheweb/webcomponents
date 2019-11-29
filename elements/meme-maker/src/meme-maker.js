@@ -143,7 +143,7 @@ class MemeMaker extends LitElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

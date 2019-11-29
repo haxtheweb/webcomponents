@@ -104,7 +104,7 @@ class QR extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

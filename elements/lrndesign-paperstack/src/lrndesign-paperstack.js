@@ -175,7 +175,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
         groups: ["Video", "Media"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

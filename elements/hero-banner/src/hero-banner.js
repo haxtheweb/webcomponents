@@ -200,7 +200,7 @@ class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

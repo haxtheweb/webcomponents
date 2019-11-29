@@ -164,7 +164,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         groups: ["List"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -434,7 +434,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
         groups: ["Instructional"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -120,7 +120,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

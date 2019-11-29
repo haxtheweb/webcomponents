@@ -371,7 +371,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

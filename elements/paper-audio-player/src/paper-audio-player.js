@@ -382,7 +382,7 @@ class PaperAudioPlayer extends mixinBehaviors(
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
