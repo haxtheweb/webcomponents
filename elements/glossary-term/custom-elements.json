@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`",
+      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`",
+      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "definition",
+          "type": "string"
+        },
+        {
+          "name": "display",
+          "type": "string"
+        },
+        {
+          "name": "service-type",
+          "type": "string"
+        },
+        {
+          "name": "endpoint",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "definition",
+          "type": "string"
+        },
+        {
+          "name": "display",
+          "type": "string"
+        },
+        {
+          "name": "serviceType",
+          "type": "string"
+        },
+        {
+          "name": "endpoint",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`",
+      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

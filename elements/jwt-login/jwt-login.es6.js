@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `jwt-login`
+ * @customElement jwt-login
  * `a simple element to check for and fetch JWTs`
  * @demo demo/index.html
  * @microcopy - the mental model for this element

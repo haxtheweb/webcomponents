@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "description": "`select-menu`",
+      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selected-index",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selectedIndex",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "description": "`select-menu`",
+      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selected-index",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selectedIndex",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "description": "`select-menu`",
+      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selected-index",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "jsDoc": "/**\n       * The label of the select menu\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "jsDoc": "/**\n       * The default value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "selectedIndex",
+          "description": "The index of the selected item",
+          "jsDoc": "/**\n       * The index of the selected item\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "description": "`tab-list`",
+      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "description": "`tab-list`",
+      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "description": "`tab-list`",
+      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "jsDoc": "/**\n       * List of tabs\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

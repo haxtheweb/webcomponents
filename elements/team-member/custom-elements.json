@@ -1,0 +1,578 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "team-member\n`A simple presentation of a team member and basic info`",
+      "description": "`team-member`",
+      "jsDoc": "/**\n * `team-member`\n * @customElement team-member\n * `A simple presentation of a team member and basic info`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "secondLine",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "team-member\n`A simple presentation of a team member and basic info`",
+      "description": "`team-member`",
+      "jsDoc": "/**\n * `team-member`\n * @customElement team-member\n * `A simple presentation of a team member and basic info`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "secondLine",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "team-member\n`A simple presentation of a team member and basic info`",
+      "description": "`team-member`",
+      "jsDoc": "/**\n * `team-member`\n * @customElement team-member\n * `A simple presentation of a team member and basic info`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "description": "Full name of the team member",
+          "jsDoc": "/**\n       * Full name of the team member\n       */",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "description": "first line",
+          "jsDoc": "/**\n       * first line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "secondLine",
+          "description": "second line",
+          "jsDoc": "/**\n       * second line\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "jsDoc": "/**\n       * dribble\n       */",
+          "type": "string"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "jsDoc": "/**\n       * facebook\n       */",
+          "type": "string"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "jsDoc": "/**\n       * github\n       */",
+          "type": "string"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "jsDoc": "/**\n       * google\n       */",
+          "type": "string"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "jsDoc": "/**\n       * instagram\n       */",
+          "type": "string"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "jsDoc": "/**\n       * linkedin\n       */",
+          "type": "string"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "jsDoc": "/**\n       * pinterest\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "jsDoc": "/**\n       * tumblr\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "jsDoc": "/**\n       * twitch\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "jsDoc": "/**\n       * twitter\n       */",
+          "type": "string"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "jsDoc": "/**\n       * whatsapp\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

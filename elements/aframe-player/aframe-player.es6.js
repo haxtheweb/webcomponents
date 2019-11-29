@@ -7,6 +7,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `aframe-player`
+ * @customElement aframe-player
  * `A wrapper to do data binding into aframe`
  *
  * @demo demo/index.html
@@ -141,7 +142,7 @@ class AframePlayer extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

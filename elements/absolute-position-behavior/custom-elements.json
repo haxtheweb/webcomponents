@@ -1,0 +1,155 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "absolute-position-state-manager\nmanages state of multiple absolute-positioned elements on a page",
+      "description": "`absolute-position-state-manager`",
+      "jsDoc": "/**\n * `absolute-position-state-manager`\n * @customElement absolute-position-state-manager\n * manages state of multiple absolute-positioned elements on a page\n *\n\n * @polymer\n */",
+      "attributes": [
+        {
+          "name": "elements",
+          "type": "never[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "elements",
+          "type": "never[]"
+        },
+        {
+          "name": "ancestor",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "description": "`absolute-position-behavior`",
+      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean"
+        },
+        {
+          "name": "for",
+          "type": "null"
+        },
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "null"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "description": "`absolute-position-behavior`",
+      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "fit-to-visible-bounds",
+          "type": "boolean"
+        },
+        {
+          "name": "for",
+          "type": "null"
+        },
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean"
+        },
+        {
+          "name": "for",
+          "type": "null"
+        },
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "null"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "description": "`absolute-position-behavior`",
+      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean"
+        },
+        {
+          "name": "for",
+          "type": "null"
+        },
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "null"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

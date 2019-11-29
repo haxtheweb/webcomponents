@@ -1,0 +1,66 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "scroll-button\n`button to scroll to an area or back to top`",
+      "description": "`scroll-button`",
+      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "scroll-button\n`button to scroll to an area or back to top`",
+      "description": "`scroll-button`",
+      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "target",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "target",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "scroll-button\n`button to scroll to an area or back to top`",
+      "description": "`scroll-button`",
+      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

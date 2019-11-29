@@ -1,0 +1,206 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "wikipedia-query\n`Query and present information from wikipedia.`",
+      "description": "`wikipedia-query`",
+      "jsDoc": "/**\n * `wikipedia-query`\n * @customElement wikipedia-query\n * `Query and present information from wikipedia.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hideTitle",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "renderAs",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "wikipedia-query\n`Query and present information from wikipedia.`",
+      "description": "`wikipedia-query`",
+      "jsDoc": "/**\n * `wikipedia-query`\n * @customElement wikipedia-query\n * `Query and present information from wikipedia.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hideTitle",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "renderAs",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "wikipedia-query\n`Query and present information from wikipedia.`",
+      "description": "`wikipedia-query`",
+      "jsDoc": "/**\n * `wikipedia-query`\n * @customElement wikipedia-query\n * `Query and present information from wikipedia.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "hideTitle",
+          "description": "hideTitle",
+          "jsDoc": "/**\n       * hideTitle\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "jsDoc": "/**\n       * Search string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "renderAs",
+          "description": "Render the response as..",
+          "jsDoc": "/**\n       * Render the response as..\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "jsDoc": "/**\n       * Response to parse.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

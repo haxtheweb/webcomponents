@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `parallax-image`
+ * @customElement parallax-image
  * @demo demo/index.html
  */
 class ParallaxImage extends SchemaBehaviors(PolymerElement) {

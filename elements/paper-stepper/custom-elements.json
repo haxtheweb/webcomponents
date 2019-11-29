@@ -1,0 +1,278 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "paper-stepper\n`steps to completion in a vertical display`",
+      "description": "`paper-stepper`",
+      "jsDoc": "/**\n * `paper-stepper`\n * @customElement paper-stepper\n * `steps to completion in a vertical display`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progressBar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "backLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "nextLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disablePrevious",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disableNext",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "noButtons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-stepper\n`steps to completion in a vertical display`",
+      "description": "`paper-stepper`",
+      "jsDoc": "/**\n * `paper-stepper`\n * @customElement paper-stepper\n * `steps to completion in a vertical display`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progressBar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "backLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "nextLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disablePrevious",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disableNext",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "noButtons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-stepper\n`steps to completion in a vertical display`",
+      "description": "`paper-stepper`",
+      "jsDoc": "/**\n * `paper-stepper`\n * @customElement paper-stepper\n * `steps to completion in a vertical display`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number"
+        },
+        {
+          "name": "progressBar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "jsDoc": "/**\n       * True if a progress bar is shown instead of dots.\n       *\n       * Use a progress bar when there are many steps, or if there are\n       * steps that need to be inserted during the process (based o\n       * responses to earlier steps).\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "backLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "nextLabel",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "jsDoc": "/**\n       * Text for the back button. Use this property to localize the element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disablePrevious",
+          "description": "Boolean for disabling the previous button.",
+          "jsDoc": "/**\n       * Boolean for disabling the previous button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disableNext",
+          "description": "Boolean for disabling the next button.",
+          "jsDoc": "/**\n       * Boolean for disabling the next button.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "noButtons",
+          "description": "Hide back/next buttons",
+          "jsDoc": "/**\n       * Hide back/next buttons\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

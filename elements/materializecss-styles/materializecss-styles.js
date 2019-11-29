@@ -7,6 +7,7 @@ import "./lib/shapes.js";
 
 /**
  * `materializecss-styles`
+ * @customElement materializecss-styles
  * `MaterializeCSSBehaviors.ColorBehaviors` some basic but annoying transforms to go
  * from a color code to the materializeCSS color name or the reverse, to go from
  * a css class name back to a color value. These are especially useful when needing

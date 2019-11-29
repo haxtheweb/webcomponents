@@ -1,0 +1,446 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "pie-menu\nSVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus",
+      "description": "`pie-menu`",
+      "jsDoc": "/**\n * `pie-menu`\n * @customElement pie-menu\n * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.\n * - pie-menu - a circular menu that has been proven to be easier to use as a navigational element than a rectangular menu.\n * - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.\n */",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerLabel",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topLabel",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftLabel",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomLabel",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightLabel",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerIcon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topIcon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftIcon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomIcon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightIcon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "pie-menu\nSVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus",
+      "description": "`pie-menu`",
+      "jsDoc": "/**\n * `pie-menu`\n * @customElement pie-menu\n * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.\n * - pie-menu - a circular menu that has been proven to be easier to use as a navigational element than a rectangular menu.\n * - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.\n */",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerLabel",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topLabel",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftLabel",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomLabel",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightLabel",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerIcon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topIcon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftIcon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomIcon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightIcon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "pie-menu\nSVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus",
+      "description": "`pie-menu`",
+      "jsDoc": "/**\n * `pie-menu`\n * @customElement pie-menu\n * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.\n * - pie-menu - a circular menu that has been proven to be easier to use as a navigational element than a rectangular menu.\n * - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.\n */",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "description": "hide label text below icons",
+          "jsDoc": "/**\n       * hide label text below icons\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerLabel",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topLabel",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftLabel",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomLabel",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightLabel",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "centerIcon",
+          "description": "center button label",
+          "jsDoc": "/**\n       * center button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "topIcon",
+          "description": "top button label",
+          "jsDoc": "/**\n       * top button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "leftIcon",
+          "description": "left button label",
+          "jsDoc": "/**\n       * left button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomIcon",
+          "description": "bottom button label",
+          "jsDoc": "/**\n       * bottom button label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "rightIcon",
+          "description": "right button label",
+          "jsDoc": "/**\n       * right button label\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

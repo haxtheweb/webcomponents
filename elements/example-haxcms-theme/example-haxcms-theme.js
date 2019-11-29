@@ -13,12 +13,13 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `example-haxcms-theme`
+ * @customElement example-haxcms-theme
  * `A basic, well documented example theme for HAXcms`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A content management system that builds state of the art one page apps via GUI
  *
- * @customElement
+
  * @polymerElement
  * @demo demo/index.html
  */

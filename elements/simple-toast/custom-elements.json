@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-toast\n`A singular toast / message for conistency`",
+      "description": "`simple-toast`",
+      "jsDoc": "/**\n * `simple-toast`\n * @customElement simple-toast\n * `A singular toast / message for conistency`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-toast\n`A singular toast / message for conistency`",
+      "description": "`simple-toast`",
+      "jsDoc": "/**\n * `simple-toast`\n * @customElement simple-toast\n * `A singular toast / message for conistency`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "jsDoc": "/**\n       * Opened state of the toast, use event to change\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "text",
+          "description": "Plain text based message to display",
+          "jsDoc": "/**\n       * Plain text based message to display\n       */",
+          "type": "string"
+        },
+        {
+          "name": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "jsDoc": "/**\n       * Class name, fit-bottom being a useful one\n       */",
+          "type": "string"
+        },
+        {
+          "name": "close-text",
+          "description": "Text for the close button",
+          "jsDoc": "/**\n       * Text for the close button\n       */",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "description": "How long the toast message should be displayed",
+          "jsDoc": "/**\n       * How long the toast message should be displayed\n       */",
+          "type": "number"
+        },
+        {
+          "name": "event-callback",
+          "description": "Event callback when hide is called",
+          "jsDoc": "/**\n       * Event callback when hide is called\n       */",
+          "type": "string"
+        },
+        {
+          "name": "close-button",
+          "description": "If there should be a close button shown",
+          "jsDoc": "/**\n       * If there should be a close button shown\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "jsDoc": "/**\n       * Opened state of the toast, use event to change\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "text",
+          "description": "Plain text based message to display",
+          "jsDoc": "/**\n       * Plain text based message to display\n       */",
+          "type": "string"
+        },
+        {
+          "name": "classStyle",
+          "description": "Class name, fit-bottom being a useful one",
+          "jsDoc": "/**\n       * Class name, fit-bottom being a useful one\n       */",
+          "type": "string"
+        },
+        {
+          "name": "closeText",
+          "description": "Text for the close button",
+          "jsDoc": "/**\n       * Text for the close button\n       */",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "description": "How long the toast message should be displayed",
+          "jsDoc": "/**\n       * How long the toast message should be displayed\n       */",
+          "type": "number"
+        },
+        {
+          "name": "eventCallback",
+          "description": "Event callback when hide is called",
+          "jsDoc": "/**\n       * Event callback when hide is called\n       */",
+          "type": "string"
+        },
+        {
+          "name": "closeButton",
+          "description": "If there should be a close button shown",
+          "jsDoc": "/**\n       * If there should be a close button shown\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-toast\n`A singular toast / message for conistency`",
+      "description": "`simple-toast`",
+      "jsDoc": "/**\n * `simple-toast`\n * @customElement simple-toast\n * `A singular toast / message for conistency`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

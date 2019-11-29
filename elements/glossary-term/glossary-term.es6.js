@@ -7,12 +7,11 @@ import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 
 /**
  * `glossary-term`
- * ``
- *
+ * @customElement glossary-term
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

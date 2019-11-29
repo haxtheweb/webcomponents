@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "json-editor\n`simple JSON blob data binding to a text area`",
+      "description": "`json-editor`",
+      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "json-editor\n`simple JSON blob data binding to a text area`",
+      "description": "`json-editor`",
+      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "label for the text area",
+          "jsDoc": "/**\n       * label for the text area\n       */",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "description": "State of being valid JSON object",
+          "jsDoc": "/**\n       * State of being valid JSON object\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "toggling disabled state of the editor",
+          "jsDoc": "/**\n       * toggling disabled state of the editor\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "max-rows",
+          "description": "max rows in the textarea",
+          "jsDoc": "/**\n       * max rows in the textarea\n       */",
+          "type": "number"
+        },
+        {
+          "name": "value",
+          "description": "String based value of the editor, use this to set initial value",
+          "jsDoc": "/**\n       * String based value of the editor, use this to set initial value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "format-test",
+          "description": "format test to update value so it's pretty printed",
+          "jsDoc": "/**\n       * format test to update value so it's pretty printed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "current-data",
+          "description": "The current data object",
+          "jsDoc": "/**\n       * The current data object\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "label for the text area",
+          "jsDoc": "/**\n       * label for the text area\n       */",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "description": "State of being valid JSON object",
+          "jsDoc": "/**\n       * State of being valid JSON object\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "toggling disabled state of the editor",
+          "jsDoc": "/**\n       * toggling disabled state of the editor\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "maxRows",
+          "description": "max rows in the textarea",
+          "jsDoc": "/**\n       * max rows in the textarea\n       */",
+          "type": "number"
+        },
+        {
+          "name": "value",
+          "description": "String based value of the editor, use this to set initial value",
+          "jsDoc": "/**\n       * String based value of the editor, use this to set initial value\n       */",
+          "type": "string"
+        },
+        {
+          "name": "formatTest",
+          "description": "format test to update value so it's pretty printed",
+          "jsDoc": "/**\n       * format test to update value so it's pretty printed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "currentData",
+          "description": "The current data object",
+          "jsDoc": "/**\n       * The current data object\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "json-editor\n`simple JSON blob data binding to a text area`",
+      "description": "`json-editor`",
+      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

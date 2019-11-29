@@ -3,6 +3,7 @@ import "@lrnwebcomponents/cms-hax/cms-hax.js";
 
 /**
  * `wysiwyg-hax`
+ * @customElement wysiwyg-hax
  * `Integration of wysiwyg edit form for a page with HAX.`
  */
 class WysiwygHax extends PolymerElement {

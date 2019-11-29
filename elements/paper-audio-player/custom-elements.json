@@ -1,0 +1,290 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "jsDoc": "/**\nA custom audio player with material paper style and clean design.\n\nExample:\n\n    <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n    <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n    paper-audio-player {\n       --paper-audio-player-color: #e91e63;\n    }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\n@element paper-audio-player\n* @demo demo/index.html\n*/",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "isPlaying",
+          "type": "boolean"
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "jsDoc": "/**\nA custom audio player with material paper style and clean design.\n\nExample:\n\n    <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n    <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n    paper-audio-player {\n       --paper-audio-player-color: #e91e63;\n    }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\n@element paper-audio-player\n* @demo demo/index.html\n*/",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "isPlaying",
+          "type": "boolean"
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "jsDoc": "/**\nA custom audio player with material paper style and clean design.\n\nExample:\n\n    <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n    <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n    paper-audio-player {\n       --paper-audio-player-color: #e91e63;\n    }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet\n\n@element paper-audio-player\n* @demo demo/index.html\n*/",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "type": "string"
+        },
+        {
+          "name": "currentTime",
+          "type": "number"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number"
+        },
+        {
+          "name": "isPlaying",
+          "type": "boolean"
+        },
+        {
+          "name": "autoplay",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

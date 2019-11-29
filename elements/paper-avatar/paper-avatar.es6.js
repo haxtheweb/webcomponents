@@ -124,6 +124,7 @@ class PaperAvatar extends LitElement {
         ? html`
             <img
               id="img"
+              loading="lazy"
               src="${this.src}"
               title="${this.label}"
               @load="${this._onImgLoad}"

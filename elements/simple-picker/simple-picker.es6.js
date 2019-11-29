@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
  * `simple-picker`
+ * @customElement simple-picker
  * a simple picker for options, icons, etc.
  *
 ### Styling
@@ -46,7 +47,7 @@ Custom property | Description | Default
 `--simple-picker-options-background-color` | Background color for listbox. | #fff
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
- * @customElement
+
  * @demo ./demo/index.html
  */class SimplePicker extends LitElement{//styles function
 static get styles(){return[css`

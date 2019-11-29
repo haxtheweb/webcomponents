@@ -10,12 +10,13 @@ import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
+ * @customElement rich-text-editor
  * `a standalone rich text editor`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar
@@ -140,8 +141,8 @@ class RichTextEditor extends PolymerElement {
 
   /**
    * The type of editor toolbar, i.e.
-   * `full` for full toolbar with breadcrumb,
-   * `mini` for mini floating toolbar, or
+   * full - full for full toolbar with breadcrumb,
+   * mini - mini for mini floating toolbar, or
    * the default toolbar if neither.
    */
   "type": {

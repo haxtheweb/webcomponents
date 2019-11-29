@@ -8,12 +8,13 @@ import "@polymer/iron-list/iron-list.js";
 import "./lib/editable-list-item.js";
 /**
  * `editable-list`
+ * @customElement editable-list
  * `a listing of items that can be edited in place with operations`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

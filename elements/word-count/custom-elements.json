@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "word-count\n`Count the words on whatever this wraps`",
+      "description": "`word-count`",
+      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "word-count\n`Count the words on whatever this wraps`",
+      "description": "`word-count`",
+      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "word-count\n`Count the words on whatever this wraps`",
+      "description": "`word-count`",
+      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

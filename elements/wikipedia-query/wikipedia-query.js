@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `wikipedia-query`
+ * @customElement wikipedia-query
  * `Query and present information from wikipedia.`
  *
  * @demo demo/index.html
@@ -163,7 +164,7 @@ class WikipediaQuery extends LitElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

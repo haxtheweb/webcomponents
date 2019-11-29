@@ -1,0 +1,146 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "outline-player\n`A basic outline presentation`",
+      "description": "`outline-player`",
+      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "closed-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "outline-player\n`A basic outline presentation`",
+      "description": "`outline-player`",
+      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "closed-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "outline-player\n`A basic outline presentation`",
+      "description": "`outline-player`",
+      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean"
+        },
+        {
+          "name": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "narrow",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "closed-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

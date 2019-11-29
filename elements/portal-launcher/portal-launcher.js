@@ -5,12 +5,13 @@
 
 /**
  * `portal-launcher`
+ * @customElement portal-launcher
  * `silly thing to play with portal tag and progressive enhancement`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class PortalLauncher extends HTMLElement {

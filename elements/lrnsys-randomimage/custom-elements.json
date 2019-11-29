@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`",
+      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`",
+      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`",
+      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "images",
+          "description": "An array of images to pick from at random.",
+          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

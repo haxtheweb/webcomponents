@@ -1,0 +1,323 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "map-menu\n`A series of elements that generate a hierarchical menu`",
+      "description": "`map-menu`",
+      "jsDoc": "/**\n * `map-menu`\n * @customElement map-menu\n * `A series of elements that generate a hierarchical menu`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeIndicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "map-menu-item-hidden-check"
+        },
+        {
+          "name": "selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "map-menu\n`A series of elements that generate a hierarchical menu`",
+      "description": "`map-menu`",
+      "jsDoc": "/**\n * `map-menu`\n * @customElement map-menu\n * `A series of elements that generate a hierarchical menu`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeIndicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "map-menu-item-hidden-check"
+        },
+        {
+          "name": "selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "map-menu\n`A series of elements that generate a hierarchical menu`",
+      "description": "`map-menu`",
+      "jsDoc": "/**\n * `map-menu`\n * @customElement map-menu\n * `A series of elements that generate a hierarchical menu`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "jsDoc": "/**\n       * Support for JSON Outline Schema manifest format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "any[]"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "jsDoc": "/**\n       * Current selected item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "{}"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "jsDoc": "/**\n       * Auto scroll an active element if not in view\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeIndicator",
+          "description": "Show active indicator animation",
+          "jsDoc": "/**\n       * Show active indicator animation\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "map-menu-item-hidden-check"
+        },
+        {
+          "name": "selected"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

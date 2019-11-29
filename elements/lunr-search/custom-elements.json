@@ -1,0 +1,130 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lunr-search\n`LunrJS search element`",
+      "description": "`lunr-search`",
+      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lunr-search\n`LunrJS search element`",
+      "description": "`lunr-search`",
+      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "data-source",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "method",
+          "type": "string"
+        },
+        {
+          "name": "search",
+          "type": "string"
+        },
+        {
+          "name": "results",
+          "type": "any[]"
+        },
+        {
+          "name": "no-stop-words",
+          "type": "boolean"
+        },
+        {
+          "name": "fields",
+          "type": "any[]"
+        },
+        {
+          "name": "index-no-stop-words",
+          "type": "{}"
+        },
+        {
+          "name": "index",
+          "type": "{}"
+        },
+        {
+          "name": "limit",
+          "type": "number"
+        },
+        {
+          "name": "min-score",
+          "type": "number"
+        },
+        {
+          "name": "log",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "any[]"
+        },
+        {
+          "name": "method",
+          "type": "string"
+        },
+        {
+          "name": "search",
+          "type": "string"
+        },
+        {
+          "name": "results",
+          "type": "any[]"
+        },
+        {
+          "name": "noStopWords",
+          "type": "boolean"
+        },
+        {
+          "name": "fields",
+          "type": "any[]"
+        },
+        {
+          "name": "indexNoStopWords",
+          "type": "{}"
+        },
+        {
+          "name": "index",
+          "type": "{}"
+        },
+        {
+          "name": "limit",
+          "type": "number"
+        },
+        {
+          "name": "minScore",
+          "type": "number"
+        },
+        {
+          "name": "log",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lunr-search\n`LunrJS search element`",
+      "description": "`lunr-search`",
+      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -6,12 +6,13 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `filtered-image`
+ * @customElement filtered-image
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  * @demo demo/filters.html Filters

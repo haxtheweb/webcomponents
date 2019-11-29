@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "description": "`full-screen-image`",
+      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "description": "`full-screen-image`",
+      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "description": "`full-screen-image`",
+      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

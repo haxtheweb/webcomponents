@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "pouch-db\n`read and write localized data elements`",
+      "description": "`pouch-db`",
+      "jsDoc": "/**\n * `pouch-db`\n * @customElement pouch-db\n * `read and write localized data elements`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "show-data"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "pouch-db\n`read and write localized data elements`",
+      "description": "`pouch-db`",
+      "jsDoc": "/**\n * `pouch-db`\n * @customElement pouch-db\n * `read and write localized data elements`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "show-data"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "",
+      "description": "`pouch-db`\n`read and write localized data elements`",
+      "jsDoc": "/**\n * `pouch-db`\n * `read and write localized data elements`\n *\n * @microcopy - language worth noting:\n *  -\n *\n * @customElement\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "pouch-db\n`read and write localized data elements`",
+      "description": "`pouch-db`",
+      "jsDoc": "/**\n * `pouch-db`\n * @customElement pouch-db\n * `read and write localized data elements`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "show-data"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

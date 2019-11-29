@@ -9,6 +9,7 @@ import "@lrnwebcomponents/sites-listing/lib/site-card.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `sites-listing`
+ * @customElement sites-listing
  * @demo demo/index.html
  */
 class SitesListing extends PolymerElement {

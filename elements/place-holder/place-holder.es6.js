@@ -2,6 +2,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { html, css } from "lit-element/lit-element.js";
 /**
  * `place-holder`
+ * @customElement place-holder
  * Placeholder for a piece of media in the future
  *
  * @demo demo/index.html
@@ -297,7 +298,7 @@ class PlaceHolder extends SimpleColors {
         groups: ["Placeholder"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
@@ -328,7 +329,7 @@ class PlaceHolder extends SimpleColors {
         advanced: []
       },
       saveOptions: {
-        unsetAttributes: ["icon-from-type", "calc-text"],
+        unsetAttributes: ["icon-from-type", "calc-text", "colors"],
         wipeSlot: true
       }
     };

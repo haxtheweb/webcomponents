@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
+      "description": "`haxschema-builder`",
+      "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
+      "description": "`haxschema-builder`",
+      "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hax-schema",
+          "description": "schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * schema to extract for whatever you wanted it for\n       */",
+          "type": "string"
+        },
+        {
+          "name": "configure-schema",
+          "description": "configure form schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * configure form schema to extract for whatever you wanted it for\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advanced-schema",
+          "description": "advanced form schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * advanced form schema to extract for whatever you wanted it for\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "source",
+          "description": "Optional remote source to pull in",
+          "jsDoc": "/**\n       * Optional remote source to pull in\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "String based value passed between the elements to stitch together",
+          "jsDoc": "/**\n       * String based value passed between the elements to stitch together\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "haxSchema",
+          "description": "schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * schema to extract for whatever you wanted it for\n       */",
+          "type": "string"
+        },
+        {
+          "name": "configureSchema",
+          "description": "configure form schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * configure form schema to extract for whatever you wanted it for\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advancedSchema",
+          "description": "advanced form schema to extract for whatever you wanted it for",
+          "jsDoc": "/**\n       * advanced form schema to extract for whatever you wanted it for\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "source",
+          "description": "Optional remote source to pull in",
+          "jsDoc": "/**\n       * Optional remote source to pull in\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "String based value passed between the elements to stitch together",
+          "jsDoc": "/**\n       * String based value passed between the elements to stitch together\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
+      "description": "`haxschema-builder`",
+      "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

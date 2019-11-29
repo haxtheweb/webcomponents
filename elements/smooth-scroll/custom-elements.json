@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "smooth-scroll",
+      "description": "`smooth-scroll`",
+      "jsDoc": "/**\n * `smooth-scroll`\n * @customElement smooth-scroll\n * @demo demo/index.html\n * @microcopy - this is element provides methods to be called for smooth scrolling\n * - scroll()\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "smooth-scroll",
+      "description": "`smooth-scroll`",
+      "jsDoc": "/**\n * `smooth-scroll`\n * @customElement smooth-scroll\n * @demo demo/index.html\n * @microcopy - this is element provides methods to be called for smooth scrolling\n * - scroll()\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "smooth-scroll",
+      "description": "`smooth-scroll`",
+      "jsDoc": "/**\n * `smooth-scroll`\n * @customElement smooth-scroll\n * @demo demo/index.html\n * @microcopy - this is element provides methods to be called for smooth scrolling\n * - scroll()\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

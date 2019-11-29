@@ -3,6 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
 /**
  * `citation-element`
+ * @customElement citation-element
  * An element dedicated to presenting and managing a correct citation on the web
  * both visually as well as semantically with simple inputs.
  * @demo demo/index.html
@@ -247,7 +248,7 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

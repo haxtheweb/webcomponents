@@ -28,6 +28,7 @@ import "./lib/sortable-list.js";
 import { pagemap } from "./lib/pagemap.js";
 /**
  * `outline-designer`
+ * @customElement outline-designer
  * `tools to modify and visualize JSON Outline Schema for editing`
  *
  * @microcopy - language worth noting:
@@ -39,7 +40,7 @@ step down the hierarchy
 mode vs resolution (3 levels)
 
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

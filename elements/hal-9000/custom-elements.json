@@ -1,0 +1,168 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "description": "`hal-9000`",
+      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "commands",
+          "type": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "type": "string"
+        },
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "pitch",
+          "type": "number"
+        },
+        {
+          "name": "rate",
+          "type": "number"
+        },
+        {
+          "name": "language",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "description": "`hal-9000`",
+      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "auto",
+          "description": "Start automatically",
+          "jsDoc": "/**\n       * Start automatically\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "enabled",
+          "description": "Status of listening",
+          "jsDoc": "/**\n       * Status of listening\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "commands",
+          "type": "{}"
+        },
+        {
+          "name": "responds-to",
+          "type": "string"
+        },
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "pitch",
+          "type": "number"
+        },
+        {
+          "name": "rate",
+          "type": "number"
+        },
+        {
+          "name": "language",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "auto",
+          "description": "Start automatically",
+          "jsDoc": "/**\n       * Start automatically\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "enabled",
+          "description": "Status of listening",
+          "jsDoc": "/**\n       * Status of listening\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "commands",
+          "type": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "type": "string"
+        },
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "pitch",
+          "type": "number"
+        },
+        {
+          "name": "rate",
+          "type": "number"
+        },
+        {
+          "name": "language",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "description": "`hal-9000`",
+      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "commands",
+          "type": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "type": "string"
+        },
+        {
+          "name": "debug",
+          "type": "boolean"
+        },
+        {
+          "name": "pitch",
+          "type": "number"
+        },
+        {
+          "name": "rate",
+          "type": "number"
+        },
+        {
+          "name": "language",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

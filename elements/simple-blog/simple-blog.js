@@ -8,6 +8,7 @@ import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
 /**
  * `simple-blog`
+ * @customElement simple-blog
  * `A simple blog and associated elements`
  * @demo demo/index.html
  */

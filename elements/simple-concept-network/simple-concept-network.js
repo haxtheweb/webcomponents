@@ -142,7 +142,7 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

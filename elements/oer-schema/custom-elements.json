@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "description": "`oer-schema`",
+      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oerProperty",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "relatedResource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "description": "`oer-schema`",
+      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oerProperty",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "relatedResource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "description": "`oer-schema`",
+      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "jsDoc": "/**\n       * Text to wire into the middle of the element.\n       * This is easier to manage then slotted data though\n       * this supports both methods.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "oerProperty",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "jsDoc": "/**\n       * Property value for this oer resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "relatedResource",
+          "description": "Related Resource ID",
+          "jsDoc": "/**\n       * Related Resource ID\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -10,12 +10,13 @@ import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
 /**
  * `haxschema-builder`
+ * @customElement haxschema-builder
  * `dynamically build and visualize HAXschema`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

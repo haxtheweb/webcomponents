@@ -1,0 +1,494 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "description": "`wysiwyg-hax`",
+      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "type": "string"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-value",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "field-class",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "type": "string"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "fieldClass",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldId",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldName",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "description": "`wysiwyg-hax`",
+      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "type": "string"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-value",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "field-class",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "type": "string"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "fieldClass",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldId",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldName",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "description": "`wysiwyg-hax`",
+      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "type": "string"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-value",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "field-class",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "type": "string"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
+          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Data binding of a hidden text area with the value from the hax-body tag",
+          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "fieldClass",
+          "description": "class on the field",
+          "jsDoc": "/**\n       * class on the field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldId",
+          "description": "fieldId, id value on the input field.",
+          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "fieldName",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

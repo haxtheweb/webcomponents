@@ -5,12 +5,13 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `full-width-image`
+ * @customElement full-width-image
  * `full width image that flows beyond boundaries`
  *
  * @microcopy - language worth noting:
  *  - images are best used when stretched across content
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

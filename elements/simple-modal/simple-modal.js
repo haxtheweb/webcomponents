@@ -20,6 +20,7 @@ window.SimpleModal.requestAvailability = () => {
 };
 /**
  * `simple-modal`
+ * @customElement simple-modal
  * `A simple modal that ensures accessibility and stack order context appropriately`
  *
  * @microcopy - language worth noting:
@@ -38,7 +39,7 @@ window.SimpleModal.requestAvailability = () => {
 --simple-modal-button-background: var(--simple-modal-buttons-background-color);
 ```
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/css.html styling simple-modal via CSS

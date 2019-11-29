@@ -142,6 +142,7 @@ class GridPlateLayoutOptions {
 }
 /**
  * `grid-plate`
+ * @customElement grid-plate
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
  */
@@ -304,9 +305,14 @@ class GridPlate extends LitElement {
     this.responsiveSize = "xs";
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/hardware-icons.js");
-    this.addEventListener("focusin", this._focusIn.bind(this));
+    setTimeout(() => {
+      this.addEventListener("focusin", this._focusIn.bind(this));
+    }, 0);
     window.ResponsiveUtility.requestAvailability();
   }
+  /**
+   * LitElement render
+   */
   render() {
     return html`
       <div class="button-holding-pen">
@@ -413,8 +419,7 @@ class GridPlate extends LitElement {
     // special support for HAXStore
     if (window.HaxStore && window.HaxStore.ready) {
       window.HaxStore.instance.__dragTarget = target;
-    }
-    else {
+    } else {
       this.__dragTarget = target;
     }
     e.dataTransfer.dropEffect = "move";
@@ -1200,7 +1205,11 @@ class GridPlate extends LitElement {
         target = this.__dragTarget;
       }
       // support global hax store target
-      if (window.HaxStore && window.HaxStore.ready && window.HaxStore.instance.__dragTarget) {
+      if (
+        window.HaxStore &&
+        window.HaxStore.ready &&
+        window.HaxStore.instance.__dragTarget
+      ) {
         target = window.HaxStore.instance.__dragTarget;
       }
       // edge case, something caused this to drag and it tried to do
@@ -1252,11 +1261,14 @@ class GridPlate extends LitElement {
         }
       }
       // position arrows / set focus in case the DOM got updated above
-      if (target && typeof target.focus === "function" && target.parentNode === this) {
+      if (
+        target &&
+        typeof target.focus === "function" &&
+        target.parentNode === this
+      ) {
         this.positionArrows(target);
         target.focus();
-      }
-      else {
+      } else {
         // element moved outside of this grid plate, lose focus
         this.positionArrows(null);
       }

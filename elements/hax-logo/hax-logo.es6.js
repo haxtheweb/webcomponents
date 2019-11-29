@@ -4,12 +4,13 @@
  */
 /**
  * `hax-logo`
+ * @customElement hax-logo
  * `logo element for hax, obviously as a hax capable element.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HaxLogo extends HTMLElement {

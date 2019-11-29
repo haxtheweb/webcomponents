@@ -8,12 +8,13 @@ import "@lrnwebcomponents/code-editor/code-editor.js";
 
 /**
  * `r-coder`
+ * @customElement r-coder
  * `R coder interface for the r-service backend.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

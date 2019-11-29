@@ -10,6 +10,7 @@ import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-res
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 /**
  * `circle-progress`
+ * @customElement circle-progress
  * `Polymer-based web component displaying a circular progress bar.`
  *
  * @demo demo/index.html
@@ -152,17 +153,12 @@ class CircleProgress extends mixinBehaviors(
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("iron-resize", this._onIronResize.bind(this));
-    });
+    }, 0);
   }
-  disconnectedCallback() {
-    this.removeEventListener("iron-resize", this._onIronResize.bind(this));
-    super.disconnectedCallback();
-  }
-
   _computeDashArray(radius) {
     return 2 * Math.PI * radius;
   }

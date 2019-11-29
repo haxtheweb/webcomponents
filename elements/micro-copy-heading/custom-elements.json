@@ -1,0 +1,72 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "description": "`micro-copy-heading`",
+      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "description": "`micro-copy-heading`",
+      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "heading",
+          "description": "Heading / call to action to display",
+          "jsDoc": "/**\n       * Heading / call to action to display\n       */",
+          "type": "string"
+        },
+        {
+          "name": "endcap",
+          "description": "ending cap to the statement, possibly a character, icon, etc",
+          "jsDoc": "/**\n       * ending cap to the statement, possibly a character, icon, etc\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "heading",
+          "description": "Heading / call to action to display",
+          "jsDoc": "/**\n       * Heading / call to action to display\n       */",
+          "type": "string"
+        },
+        {
+          "name": "endcap",
+          "description": "ending cap to the statement, possibly a character, icon, etc",
+          "jsDoc": "/**\n       * ending cap to the statement, possibly a character, icon, etc\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "description": "`micro-copy-heading`",
+      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-concept-network-node\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.",
+      "description": "`simple-concept-network-node`",
+      "jsDoc": "/**\n * `simple-concept-network-node`\n * @customElement simple-concept-network-node\n * A small but effective little data visualizer for topics surrounding\n * a central concept, much like the ELMS:LN snowflake icon.\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - ELMS:LN - The ELMS: Learning Network \"snowflake\" is a network diagram\n */",
+      "attributes": [
+        {
+          "name": "colored-text",
+          "description": "make the default theme dark?",
+          "jsDoc": "/**\n       * make the default theme dark?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "visualization",
+          "description": "Visualization reflected to attribute for styling",
+          "jsDoc": "/**\n       * Visualization reflected to attribute for styling\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present",
+          "jsDoc": "/**\n       * Icon to present\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "image to present",
+          "jsDoc": "/**\n       * image to present\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "jsDoc": "/**\n       * disabled status\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "title / label text",
+          "jsDoc": "/**\n       * title / label text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Longer description used for more info",
+          "jsDoc": "/**\n       * Longer description used for more info\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "source for a link",
+          "jsDoc": "/**\n       * source for a link\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "coloredText",
+          "description": "make the default theme dark?",
+          "jsDoc": "/**\n       * make the default theme dark?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "visualization",
+          "description": "Visualization reflected to attribute for styling",
+          "jsDoc": "/**\n       * Visualization reflected to attribute for styling\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present",
+          "jsDoc": "/**\n       * Icon to present\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "image to present",
+          "jsDoc": "/**\n       * image to present\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "jsDoc": "/**\n       * disabled status\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "title / label text",
+          "jsDoc": "/**\n       * title / label text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Longer description used for more info",
+          "jsDoc": "/**\n       * Longer description used for more info\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "source for a link",
+          "jsDoc": "/**\n       * source for a link\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

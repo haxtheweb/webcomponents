@@ -1,0 +1,156 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-blog-card\n`a card commonly found on a blogging website`",
+      "description": "`simple-blog-card`",
+      "jsDoc": "/**\n * `simple-blog-card`\n * @customElement simple-blog-card\n * `a card commonly found on a blogging website`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "shadow",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-card\n`a card commonly found on a blogging website`",
+      "description": "`simple-blog-card`",
+      "jsDoc": "/**\n * `simple-blog-card`\n * @customElement simple-blog-card\n * `a card commonly found on a blogging website`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "authorimage",
+          "type": "string"
+        },
+        {
+          "name": "authorlink",
+          "type": "string"
+        },
+        {
+          "name": "readtime",
+          "type": "number"
+        },
+        {
+          "name": "timestamp",
+          "type": "number"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "shadow",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "authorimage",
+          "type": "string"
+        },
+        {
+          "name": "authorlink",
+          "type": "string"
+        },
+        {
+          "name": "readtime",
+          "type": "number"
+        },
+        {
+          "name": "timestamp",
+          "type": "number"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "shadow",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-card\n`a card commonly found on a blogging website`",
+      "description": "`simple-blog-card`",
+      "jsDoc": "/**\n * `simple-blog-card`\n * @customElement simple-blog-card\n * `a card commonly found on a blogging website`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "placeholder",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "shadow",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

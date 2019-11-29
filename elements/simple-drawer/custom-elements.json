@@ -1,0 +1,149 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-drawer\n`a singleton drawer element`",
+      "description": "`simple-drawer`",
+      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "closeIcon",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-opened"
+        },
+        {
+          "name": "simple-drawer-closed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-drawer\n`a singleton drawer element`",
+      "description": "`simple-drawer`",
+      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "invokedBy",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "closeIcon",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "invokedBy",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "closeIcon",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-opened"
+        },
+        {
+          "name": "simple-drawer-closed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-drawer\n`a singleton drawer element`",
+      "description": "`simple-drawer`",
+      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string"
+        },
+        {
+          "name": "closeIcon",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-opened"
+        },
+        {
+          "name": "simple-drawer-closed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

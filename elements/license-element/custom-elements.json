@@ -1,0 +1,374 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
+      "description": "`license-element`",
+      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLabel",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
+      "description": "`license-element`",
+      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLabel",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
+      "description": "`license-element`",
+      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "jsDoc": "/**\n       * Title of the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "jsDoc": "/**\n       * Person or group that owns / created the work.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "jsDoc": "/**\n       * Original Source of the work in question\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "jsDoc": "/**\n       * License name, calculated or supplied by the end user if we don't have them.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "description": "License link for more details",
+          "jsDoc": "/**\n       * License link for more details\n       */",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "jsDoc": "/**\n       * License short hand. Options cc0,\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLabel",
+          "description": "More details label",
+          "jsDoc": "/**\n       * More details label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "description": "More details link",
+          "jsDoc": "/**\n       * More details link\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "description": "See if we have more things to point to",
+          "jsDoc": "/**\n       * See if we have more things to point to\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

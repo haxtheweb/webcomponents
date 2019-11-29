@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-blockquote\n`A structured blockquote element`",
+      "description": "`lrndesign-blockquote`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-blockquote\n`A structured blockquote element`",
+      "description": "`lrndesign-blockquote`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-blockquote\n`A structured blockquote element`",
+      "description": "`lrndesign-blockquote`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "jsDoc": "/**\n       * Source being cited\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "jsDoc": "/**\n       * Optional image to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "jsDoc": "/**\n       * Optional author of the quote\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "description": "Optional source that links to where the quote is from",
+          "jsDoc": "/**\n       * Optional source that links to where the quote is from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "description": "Funny 1900s vision.",
+          "jsDoc": "/**\n       * Funny 1900s vision.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

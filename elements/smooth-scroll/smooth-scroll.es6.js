@@ -1,5 +1,6 @@
 /**
  * `smooth-scroll`
+ * @customElement smooth-scroll
  * @demo demo/index.html
  * @microcopy - this is element provides methods to be called for smooth scrolling
  * - scroll()

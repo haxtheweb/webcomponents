@@ -20,12 +20,13 @@ window.SimpleToast.requestAvailability = () => {
 
 /**
  * `simple-toast`
+ * @customElement simple-toast
  * `A singular toast / message for conistency`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

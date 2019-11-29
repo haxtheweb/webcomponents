@@ -1,0 +1,157 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "description": "`filtered-image`",
+      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "description": "`filtered-image`",
+      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "type": "string"
+        },
+        {
+          "name": "viewBox",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "strength",
+          "type": "number"
+        },
+        {
+          "name": "contrast",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "type": "string"
+        },
+        {
+          "name": "viewBox",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "strength",
+          "type": "number"
+        },
+        {
+          "name": "contrast",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "filtered-image-filters\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "description": "`filtered-image-filters`",
+      "jsDoc": "/**\n * `filtered-image-filters`\n * @customElement filtered-image-filters\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "type": "string"
+        },
+        {
+          "name": "filter1",
+          "type": "string"
+        },
+        {
+          "name": "filters",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "type": "string"
+        },
+        {
+          "name": "filter1",
+          "type": "string"
+        },
+        {
+          "name": "filters",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "description": "`filtered-image`",
+      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "haxor-slevin\n`Tech blogger theme`",
+      "description": "`haxor-slevin`",
+      "jsDoc": "/**\n * `haxor-slevin`\n * @customElement haxor-slevin\n * `Tech blogger theme`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "haxor-slevin\n`Tech blogger theme`",
+      "description": "`haxor-slevin`",
+      "jsDoc": "/**\n * `haxor-slevin`\n * @customElement haxor-slevin\n * `Tech blogger theme`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "haxor-slevin\n`Tech blogger theme`",
+      "description": "`haxor-slevin`",
+      "jsDoc": "/**\n * `haxor-slevin`\n * @customElement haxor-slevin\n * `Tech blogger theme`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "type": "{}"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

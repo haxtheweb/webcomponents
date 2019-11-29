@@ -9,6 +9,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `item-overlay-ops`
+ * @customElement item-overlay-ops
  * `Overlayed editing ops on whatever the current item slotted in is`
  *
  * @demo demo/index.html

@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "chemical-element-visualisation\n`A Visualisation of chemical Elements`",
+      "description": "`chemical-element-visualisation`",
+      "jsDoc": "/**\n * `chemical-element-visualisation`\n * @customElement chemical-element-visualisation\n * `A Visualisation of chemical Elements`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "chemical-element-visualisation\n`A Visualisation of chemical Elements`",
+      "description": "`chemical-element-visualisation`",
+      "jsDoc": "/**\n * `chemical-element-visualisation`\n * @customElement chemical-element-visualisation\n * `A Visualisation of chemical Elements`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "chemical-element-visualisation\n`A Visualisation of chemical Elements`",
+      "description": "`chemical-element-visualisation`",
+      "jsDoc": "/**\n * `chemical-element-visualisation`\n * @customElement chemical-element-visualisation\n * `A Visualisation of chemical Elements`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "symbol",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

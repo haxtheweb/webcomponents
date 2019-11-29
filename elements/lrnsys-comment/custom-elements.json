@@ -1,0 +1,131 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrnsys-comment-list\n`A listing and event handling for comments.`",
+      "description": "`lrnsys-comment-list`",
+      "jsDoc": "/**\n * `lrnsys-comment-list`\n * @customElement lrnsys-comment-list\n * `A listing and event handling for comments.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "csrf-token",
+          "description": "CSRF Token",
+          "jsDoc": "/**\n       * CSRF Token\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ops-request-method",
+          "description": "Request methods",
+          "jsDoc": "/**\n       * Request methods\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "active-comment",
+          "description": "Comment currently in scope",
+          "jsDoc": "/**\n       * Comment currently in scope\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "new-comment",
+          "description": "New stub comment from backend.",
+          "jsDoc": "/**\n       * New stub comment from backend.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "comments",
+          "description": "An object containing all comments to render in the list",
+          "jsDoc": "/**\n       * An object containing all comments to render in the list\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "source-path",
+          "description": "Source to pull the comments from",
+          "jsDoc": "/**\n       * Source to pull the comments from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "comment-ops-base",
+          "description": "Base for ops calls",
+          "jsDoc": "/**\n       * Base for ops calls\n       */",
+          "type": "string"
+        },
+        {
+          "name": "create-stub-url",
+          "description": "Source to get stub comments from",
+          "jsDoc": "/**\n       * Source to get stub comments from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "req-url",
+          "description": "Source for CRUD ops against individual comments.",
+          "jsDoc": "/**\n       * Source for CRUD ops against individual comments.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "csrfToken",
+          "description": "CSRF Token",
+          "jsDoc": "/**\n       * CSRF Token\n       */",
+          "type": "string"
+        },
+        {
+          "name": "opsRequestMethod",
+          "description": "Request methods",
+          "jsDoc": "/**\n       * Request methods\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeComment",
+          "description": "Comment currently in scope",
+          "jsDoc": "/**\n       * Comment currently in scope\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "newComment",
+          "description": "New stub comment from backend.",
+          "jsDoc": "/**\n       * New stub comment from backend.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "comments",
+          "description": "An object containing all comments to render in the list",
+          "jsDoc": "/**\n       * An object containing all comments to render in the list\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sourcePath",
+          "description": "Source to pull the comments from",
+          "jsDoc": "/**\n       * Source to pull the comments from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "commentOpsBase",
+          "description": "Base for ops calls",
+          "jsDoc": "/**\n       * Base for ops calls\n       */",
+          "type": "string"
+        },
+        {
+          "name": "createStubUrl",
+          "description": "Source to get stub comments from",
+          "jsDoc": "/**\n       * Source to get stub comments from\n       */",
+          "type": "string"
+        },
+        {
+          "name": "reqUrl",
+          "description": "Source for CRUD ops against individual comments.",
+          "jsDoc": "/**\n       * Source for CRUD ops against individual comments.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

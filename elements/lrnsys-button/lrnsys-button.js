@@ -9,6 +9,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
  * `lrnsys-button`
+ * @customElement lrnsys-button
  * `A simple button for use in systems`
  * @demo demo/index.html
  */

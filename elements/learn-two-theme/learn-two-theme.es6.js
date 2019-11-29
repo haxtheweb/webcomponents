@@ -10,9 +10,10 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `learn-two-theme`
+ * @customElement learn-two-theme
  * `Learn2 theme for HAXcms`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class LearnTwoTheme extends HAXCMSLitElementTheme {
@@ -244,6 +245,7 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
       --app-drawer-content-container: {
         overflow: hidden;
         background-color: #383f45;
+        position: relative;
       }
     }
     site-print-button {

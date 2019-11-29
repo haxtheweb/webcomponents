@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `lrndesign-avatar`
+ * @customElement lrndesign-avatar
  * `Visualize a user account eitehr with an image, a label, or as abstract art.`
  * @demo demo/index.html
  */

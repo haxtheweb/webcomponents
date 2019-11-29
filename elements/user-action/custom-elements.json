@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "user-action\n`track user actions and allow them to talk to xAPI stores easily`",
+      "description": "`user-action`",
+      "jsDoc": "/**\n * `user-action`\n * @customElement user-action\n * `track user actions and allow them to talk to xAPI stores easily`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "track",
+          "type": "any"
+        },
+        {
+          "name": "eventname",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "UserActionBroker",
+          "type": "any"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "user-action\n`track user actions and allow them to talk to xAPI stores easily`",
+      "description": "`user-action`",
+      "jsDoc": "/**\n * `user-action`\n * @customElement user-action\n * `track user actions and allow them to talk to xAPI stores easily`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "every",
+          "type": "boolean"
+        },
+        {
+          "name": "visiblelimit",
+          "type": "number"
+        },
+        {
+          "name": "track",
+          "type": "string"
+        },
+        {
+          "name": "eventname",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "every",
+          "type": "boolean"
+        },
+        {
+          "name": "visiblelimit",
+          "type": "number"
+        },
+        {
+          "name": "UserActionBroker",
+          "type": "any"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "track",
+          "type": "string"
+        },
+        {
+          "name": "eventname",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "user-action\n`track user actions and allow them to talk to xAPI stores easily`",
+      "description": "`user-action`",
+      "jsDoc": "/**\n * `user-action`\n * @customElement user-action\n * `track user actions and allow them to talk to xAPI stores easily`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "track",
+          "type": "any"
+        },
+        {
+          "name": "eventname",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "UserActionBroker",
+          "type": "any"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

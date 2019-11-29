@@ -5,12 +5,13 @@
 import { UserActionBroker } from "./lib/UserActionBroker.js";
 /**
  * `user-action`
+ * @customElement user-action
  * `track user actions and allow them to talk to xAPI stores easily`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class UserAction extends HTMLElement {

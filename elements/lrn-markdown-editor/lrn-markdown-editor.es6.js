@@ -9,12 +9,13 @@ import "@polymer/iron-pages/iron-pages.js";
 import "./lib/lrn-markdown-editor-editor.js";
 /**
  * `lrn-markdown-editor`
+ * @customElement lrn-markdown-editor
  * `Side by side markdown to HTML editor + preview pane`
  *
  * @microcopy - language worth noting:
  *  - often used for quick field editing interfaces w/ minimal input allowed
  * @polymer
- * @customElement
+
  * @demo demo/index.html
  */
 class LrnMarkdownEditor extends LitElement {
@@ -24,58 +25,58 @@ class LrnMarkdownEditor extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-      }
+        :host {
+          display: block;
+        }
 
-      #split-pane {
-        display: flex;
-      }
+        #split-pane {
+          display: flex;
+        }
 
-      .split-pane > * {
-        flex: 1 1 auto;
-        min-height: 160px;
-      }
+        .split-pane > * {
+          flex: 1 1 auto;
+          min-height: 160px;
+        }
 
-      .preview-pane {
-        background: lightblue;
-      }
+        .preview-pane {
+          background: lightblue;
+        }
 
-      div.pane {
-        padding: 16px;
-        width: calc(100% - 32px);
-      }
+        div.pane {
+          padding: 16px;
+          width: calc(100% - 32px);
+        }
 
-      paper-tabs {
-        background: #f5f5f5;
-        border-style: solid;
-        border-color: #dcdcdc;
-        border-width: 1px;
-        min-width: 500px;
-      }
+        paper-tabs {
+          background: #f5f5f5;
+          border-style: solid;
+          border-color: #dcdcdc;
+          border-width: 1px;
+          min-width: 500px;
+        }
 
-      marked-element.lrn-markdown-editor {
-        width: 100%;
-        word-wrap: break-word;
-      }
+        marked-element.lrn-markdown-editor {
+          width: 100%;
+          word-wrap: break-word;
+        }
 
-      .container-flex {
-        display: flex;
-        flex-wrap: nowrap;
-      }
+        .container-flex {
+          display: flex;
+          flex-wrap: nowrap;
+        }
 
-      .split-pane .container-flex > * {
-        width: 50%;
-      }
+        .split-pane .container-flex > * {
+          width: 50%;
+        }
 
-      .split-pane marked-element {
-        width: calc(100% - 32px);
-        min-width: 150px;
-        margin: 0 16px;
-        padding: 0 16px;
-        background: #fff;
-        border-left: solid #dcdcdc 1px;
-      }
+        .split-pane marked-element {
+          width: calc(100% - 32px);
+          min-width: 150px;
+          margin: 0 16px;
+          padding: 0 16px;
+          background: #fff;
+          border-left: solid #dcdcdc 1px;
+        }
       `
     ];
   }
@@ -87,16 +88,18 @@ class LrnMarkdownEditor extends LitElement {
       <div class="mtz-toolbar">
         <paper-tabs
           selected="${this.selected}"
-          @selected-changed="${this.__selectedChanged}">
+          @selected-changed="${this.__selectedChanged}"
+        >
           <paper-tab>Write</paper-tab>
           <paper-tab>Preview</paper-tab>
           <paper-tab>Split View</paper-tab>
         </paper-tabs>
       </div>
 
-      <iron-pages 
-      selected="${this.selected}"
-      @selected-changed="${this.__selectedChanged}">
+      <iron-pages
+        selected="${this.selected}"
+        @selected-changed="${this.__selectedChanged}"
+      >
         <section>
           <div class="pane">
             <lrn-markdown-editor-editor
@@ -110,7 +113,8 @@ class LrnMarkdownEditor extends LitElement {
           <div class="pane">
             <marked-element
               markdown="${this.content}"
-              @markdown-changed="${this.__contentChanged}"></marked-element>
+              @markdown-changed="${this.__contentChanged}"
+            ></marked-element>
           </div>
         </section>
 
@@ -140,9 +144,9 @@ class LrnMarkdownEditor extends LitElement {
   }
   constructor() {
     super();
-    this.selected = "0"
-    this.layout = "0"
-    this.content = '';
+    this.selected = "0";
+    this.layout = "0";
+    this.content = "";
     this.cookies = true;
     this.elReady = false;
   }
@@ -153,21 +157,21 @@ class LrnMarkdownEditor extends LitElement {
   static get properties() {
     return {
       content: {
-        type: String,
+        type: String
       },
       selected: {
         type: String,
         reflect: true
       },
       layout: {
-        type: String,
+        type: String
       },
       cookies: {
-        type: Boolean,
+        type: Boolean
       },
       elReady: {
         type: Boolean,
-        attribute: 'el-ready'
+        attribute: "el-ready"
       }
     };
   }
@@ -176,15 +180,15 @@ class LrnMarkdownEditor extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'selected') {
+      if (propName == "selected") {
         this._selectedChanged(this[propName]);
       }
-      if (propName === 'content') {
+      if (propName === "content") {
         // notify
         this.dispatchEvent(
           new CustomEvent("content-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );

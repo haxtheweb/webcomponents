@@ -1,0 +1,134 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-comment\nA LRN element",
+      "description": "`lrndesign-comment`",
+      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-comment\nA LRN element",
+      "description": "`lrndesign-comment`",
+      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-comment\nA LRN element",
+      "description": "`lrndesign-comment`",
+      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "type": "{}"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

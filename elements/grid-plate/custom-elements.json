@@ -1,0 +1,560 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "grid-plate\n`A grid plate based on a layout that manipulates it.`",
+      "description": "`grid-plate`",
+      "jsDoc": "/**\n * `grid-plate`\n * @customElement grid-plate\n * `A grid plate based on a layout that manipulates it.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignore-hax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpoint-sm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-md",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-lg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-xl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-mode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-item",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "column-widths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignoreHax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpointSm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointMd",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointLg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointXl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableResponsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editMode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsiveSize",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "columnWidths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        },
+        {
+          "name": "before",
+          "type": "1 | -1"
+        }
+      ],
+      "events": [
+        {
+          "name": "grid-plate-add-item"
+        },
+        {
+          "name": "disable-responsive-changed"
+        },
+        {
+          "name": "responsive-element"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "grid-plate\n`A grid plate based on a layout that manipulates it.`",
+      "description": "`grid-plate`",
+      "jsDoc": "/**\n * `grid-plate`\n * @customElement grid-plate\n * `A grid plate based on a layout that manipulates it.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignore-hax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpoint-sm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-md",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-lg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-xl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-mode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-item",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "column-widths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignoreHax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpointSm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointMd",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointLg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointXl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableResponsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editMode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsiveSize",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "columnWidths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        },
+        {
+          "name": "before",
+          "type": "1 | -1"
+        }
+      ],
+      "events": [
+        {
+          "name": "grid-plate-add-item"
+        },
+        {
+          "name": "disable-responsive-changed"
+        },
+        {
+          "name": "responsive-element"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "grid-plate\n`A grid plate based on a layout that manipulates it.`",
+      "description": "`grid-plate`",
+      "jsDoc": "/**\n * `grid-plate`\n * @customElement grid-plate\n * `A grid plate based on a layout that manipulates it.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignore-hax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpoint-sm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-md",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-lg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpoint-xl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-mode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-item",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "column-widths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "droppable",
+          "type": "boolean"
+        },
+        {
+          "name": "ignoreHax",
+          "type": "boolean"
+        },
+        {
+          "name": "breakpointSm",
+          "description": "Custom small breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom small breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointMd",
+          "description": "Custom medium breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom medium breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointLg",
+          "description": "Custom large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "breakpointXl",
+          "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+          "jsDoc": "/**\n       * Custom extra-large breakpoint for the layouts; only updated on attached\n       */",
+          "type": "number"
+        },
+        {
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
+          "jsDoc": "/**\n       * number of columns at this layout / responsive size\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableResponsive",
+          "description": "disables responsive layouts for HAX preview",
+          "jsDoc": "/**\n       * disables responsive layouts for HAX preview\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editMode",
+          "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
+          "jsDoc": "/**\n       * If the grid plate is in a state where its items\n       * can be modified as far as order or column placement.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
+          "jsDoc": "/**\n       * an object with a layout's column sizes\n       * at the current responsive width\n       */",
+          "type": "string"
+        },
+        {
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+          "jsDoc": "/**\n       * Predefined layouts of column sizes and various responsive widths. \n       * For example:```\n  {\n    \"1-1-1-1\": {                         //the name of the layout\n      \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n      \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n      \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n      \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n      \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n    },\n    {...}\n  }```\n      */",
+          "type": "{}"
+        },
+        {
+          "name": "responsiveSize",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+          "jsDoc": "/**\n       * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "description": "Track active item",
+          "jsDoc": "/**\n       * Track active item\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "columnWidths",
+          "description": "name of selected layout",
+          "jsDoc": "/**\n       * name of selected layout\n       */",
+          "type": "string"
+        },
+        {
+          "name": "before",
+          "type": "1 | -1"
+        }
+      ],
+      "events": [
+        {
+          "name": "grid-plate-add-item"
+        },
+        {
+          "name": "disable-responsive-changed"
+        },
+        {
+          "name": "responsive-element"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

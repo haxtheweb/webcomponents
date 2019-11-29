@@ -10,6 +10,7 @@ import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
  * `simple-search`
+ * @customElement simple-search
  * a button used in simple-search
  * 
 ### Styling
@@ -32,7 +33,7 @@ Custom property | Description | Default
 `--simple-search-container-padding` | search input's padding | unset
 `--simple-search-margin` | search input's margin | unset
  *
- * @customElement
+
  * @demo ./demo/index.html
  *
  */

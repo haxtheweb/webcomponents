@@ -7,6 +7,7 @@ import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `hero-banner`
+ * @customElement hero-banner
  * `That thing no one wants to make over and over again yet always does...`
  * @demo demo/index.html
  */
@@ -200,7 +201,7 @@ class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

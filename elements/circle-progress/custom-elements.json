@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
+      "description": "`circle-progress`",
+      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
+      "description": "`circle-progress`",
+      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
+      "description": "`circle-progress`",
+      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "Value of circular progress bar.",
+          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "max",
+          "description": "Maximum of value.",
+          "jsDoc": "/**\n       * Maximum of value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Stroke width of circle.",
+          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "angle",
+          "description": "Starting angle of the progress.",
+          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

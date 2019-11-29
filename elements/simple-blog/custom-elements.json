@@ -1,0 +1,265 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-blog\n`A simple blog and associated elements`",
+      "description": "`simple-blog`",
+      "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-blog\n`A simple blog and associated elements`",
+      "description": "`simple-blog`",
+      "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-footer\n`Footer to blog posts`",
+      "description": "`simple-blog-footer`",
+      "jsDoc": "/**\n * `simple-blog-footer`\n * @customElement simple-blog-footer\n * `Footer to blog posts`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - footer of the page for blog posts relating back to the main overview page\n */",
+      "attributes": [
+        {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "jsDoc": "/**\n       * active manifest index, key to location in the manifest itemsarray\n       */",
+          "type": "number"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest, JSON Outline Schema object",
+          "jsDoc": "/**\n       * Manifest, JSON Outline Schema object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeManifestIndex",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "jsDoc": "/**\n       * active manifest index, key to location in the manifest itemsarray\n       */",
+          "type": "number"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest, JSON Outline Schema object",
+          "jsDoc": "/**\n       * Manifest, JSON Outline Schema object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-header\n`A simple blog header to the front of the site`",
+      "description": "`simple-blog-header`",
+      "jsDoc": "/**\n * `simple-blog-header`\n * @customElement simple-blog-header\n * `A simple blog header to the front of the site`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-listing\n`A simple blog and associated elements`",
+      "description": "`simple-blog-listing`",
+      "jsDoc": "/**\n * `simple-blog-listing`\n * @customElement simple-blog-listing\n * `A simple blog and associated elements`\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-overview\n`Overview / preview of the text of the post with title`",
+      "description": "`simple-blog-overview`",
+      "jsDoc": "/**\n * `simple-blog-overview`\n * @customElement simple-blog-overview\n * `Overview / preview of the text of the post with title`\n *\n *  @microcopy - the mental model for this element\n *  - this is one post in a listing of many most likely\n *  - a posting has only text preview\n *\n */",
+      "attributes": [
+        {
+          "name": "item-id",
+          "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+          "jsDoc": "/**\n       * ID of this item, this is used for selection UX when back button hit, leave this here\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "description": "Body of text",
+          "jsDoc": "/**\n       * Body of text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "description": "Link referencing the page content.",
+          "jsDoc": "/**\n       * Link referencing the page content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "changed",
+          "description": "timestamp (unix) of last time changed",
+          "jsDoc": "/**\n       * timestamp (unix) of last time changed\n       */",
+          "type": "number"
+        },
+        {
+          "name": "elevation",
+          "description": "elevation",
+          "jsDoc": "/**\n       * elevation\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "itemId",
+          "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+          "jsDoc": "/**\n       * ID of this item, this is used for selection UX when back button hit, leave this here\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "description": "Body of text",
+          "jsDoc": "/**\n       * Body of text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "description": "Link referencing the page content.",
+          "jsDoc": "/**\n       * Link referencing the page content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "changed",
+          "description": "timestamp (unix) of last time changed",
+          "jsDoc": "/**\n       * timestamp (unix) of last time changed\n       */",
+          "type": "number"
+        },
+        {
+          "name": "elevation",
+          "description": "elevation",
+          "jsDoc": "/**\n       * elevation\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog-post\n`A simple blog and associated elements`",
+      "description": "`simple-blog-post`",
+      "jsDoc": "/**\n * `simple-blog-post`\n * @customElement simple-blog-post\n * `A simple blog and associated elements`\n */",
+      "attributes": [
+        {
+          "name": "has-image",
+          "description": "calculate if we have a header image.",
+          "jsDoc": "/**\n       * calculate if we have a header image.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hasImage",
+          "description": "calculate if we have a header image.",
+          "jsDoc": "/**\n       * calculate if we have a header image.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editMode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-blog\n`A simple blog and associated elements`",
+      "description": "`simple-blog`",
+      "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

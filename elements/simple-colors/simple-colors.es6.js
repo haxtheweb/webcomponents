@@ -1185,11 +1185,12 @@ const SimpleColorsSuper = function(SuperClass) {
 };
 /**
  * `simple-colors`
+ * @customElement simple-colors
  * a shared set of styles for `@lrnwebcomponents`
 ### Styling
 See demo of "all of the colors" (`demo/colors.html`) for styling.
  *
- * @customElement
+
  * @demo ./demo/index.html demo
  * @demo ./demo/how.html getting started
  * @demo ./demo/colors.html all of the colors

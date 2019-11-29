@@ -204,7 +204,7 @@ class MathTex extends HTMLElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

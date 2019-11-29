@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "description": "`mtz-marked-editor`",
+      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textarea-selector",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textareaSelector",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "description": "`mtz-marked-editor`",
+      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textarea-selector",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textareaSelector",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "description": "`mtz-marked-editor`",
+      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textarea-selector",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "autofocus",
+          "type": "boolean"
+        },
+        {
+          "name": "readonly",
+          "type": "boolean"
+        },
+        {
+          "name": "textareaSelector",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

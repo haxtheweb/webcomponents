@@ -6,12 +6,13 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `git-corner`
+ * @customElement git-corner
  * `display a quick link with styling to a repo to help with contributions`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @lit-element
  * @demo demo/index.html
  */

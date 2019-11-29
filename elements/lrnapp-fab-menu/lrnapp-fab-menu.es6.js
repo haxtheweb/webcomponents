@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-styles/paper-styles.js";
 /**
  * `lrnapp-fab-menu`
+ * @customElement lrnapp-fab-menu
  * `floating action button with menu`
  *
  * @demo demo/index.html

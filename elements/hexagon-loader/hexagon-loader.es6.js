@@ -6,10 +6,11 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/hex-a-gon.js";
 /**
  * `hexagon-loader`
+ * @customElement hexagon-loader
  * `a simple element that is for showing something is loading`
  *
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HexagonLoader extends LitElement {

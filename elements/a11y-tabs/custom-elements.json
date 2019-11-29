@@ -1,0 +1,201 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "a11y-tab\na single tab within `a11y-tabs`\n\n### Styling\n`<a11y-tab>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`",
+      "description": "`a11y-tab`",
+      "jsDoc": "/**\n * `a11y-tab`\n * @customElement a11y-tab\n * a single tab within `a11y-tabs`\n * \n### Styling\n\n`<a11y-tab>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`\n *\n\n * @demo ./demo/index.html\n * @see ../a11y-tabs.js\n */",
+      "attributes": [
+        {
+          "name": "flag",
+          "type": "null"
+        },
+        {
+          "name": "flag-icon",
+          "type": "null"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "null"
+        },
+        {
+          "name": "id",
+          "type": "null"
+        },
+        {
+          "name": "label",
+          "type": "null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "flag",
+          "type": "null"
+        },
+        {
+          "name": "flagIcon",
+          "type": "null"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "null"
+        },
+        {
+          "name": "id",
+          "type": "null"
+        },
+        {
+          "name": "label",
+          "type": "null"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-tab-changed",
+          "description": "handles any change in the tab attributes",
+          "jsDoc": "/**\n     * handles any change in the tab attributes\n     *\n     * @event a11y-tab-changed\n     */"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "a11y-tabs\nan accessible and responsive tabbed interface\n\n### Styling\n`<a11y-tabs>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`",
+      "description": "`a11y-tabs`",
+      "jsDoc": "/**\n * `a11y-tabs`\n * @customElement a11y-tabs\n * an accessible and responsive tabbed interface\n * \n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n *\n\n * @polymer\n * @demo ./demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "type": "null"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "icon-breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "id",
+          "type": "null"
+        },
+        {
+          "name": "layout-breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "responsive-size",
+          "type": "string"
+        },
+        {
+          "name": "vertical",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeTab",
+          "type": "null"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "iconBreakpoint",
+          "type": "number"
+        },
+        {
+          "name": "id",
+          "type": "null"
+        },
+        {
+          "name": "layoutBreakpoint",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "type": "string"
+        },
+        {
+          "name": "vertical",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element-deleted"
+        },
+        {
+          "name": "responsive-element"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "a11y-tabs\nan accessible and responsive tabbed interface\n\n### Styling\n`<a11y-tabs>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`",
+      "description": "`a11y-tabs`",
+      "jsDoc": "/**\n * `a11y-tabs`\n * @customElement a11y-tabs\n * an accessible and responsive tabbed interface\n * \n### Styling\n\n`<a11y-tabs>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`\n *\n\n * @polymer\n * @demo ./demo/index.html\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "activeTab",
+          "type": "null"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "iconBreakpoint",
+          "type": "number"
+        },
+        {
+          "name": "id",
+          "type": "null"
+        },
+        {
+          "name": "layoutBreakpoint",
+          "type": "number"
+        },
+        {
+          "name": "responsiveSize",
+          "type": "string"
+        },
+        {
+          "name": "vertical",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element-deleted"
+        },
+        {
+          "name": "responsive-element"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

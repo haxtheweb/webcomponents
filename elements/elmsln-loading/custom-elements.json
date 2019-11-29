@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "description": "`elmsln-loading`",
+      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "description": "`elmsln-loading`",
+      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "description": "`elmsln-loading`",
+      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "materialize class names for color",
+          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "tiny, small, medium, large, epic sizing.",
+          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

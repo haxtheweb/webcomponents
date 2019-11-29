@@ -1,0 +1,455 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "item-overlay-ops\n`Overlayed editing ops on whatever the current item slotted in is`",
+      "description": "`item-overlay-ops`",
+      "jsDoc": "/**\n * `item-overlay-ops`\n * @customElement item-overlay-ops\n * `Overlayed editing ops on whatever the current item slotted in is`\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeTitle",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixedHeight",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-option-selected"
+        },
+        {
+          "name": "item-overlay-op-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "item-overlay-ops\n`Overlayed editing ops on whatever the current item slotted in is`",
+      "description": "`item-overlay-ops`",
+      "jsDoc": "/**\n * `item-overlay-ops`\n * @customElement item-overlay-ops\n * `Overlayed editing ops on whatever the current item slotted in is`\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeTitle",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixedHeight",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-option-selected"
+        },
+        {
+          "name": "item-overlay-op-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "item-overlay-ops\n`Overlayed editing ops on whatever the current item slotted in is`",
+      "description": "`item-overlay-ops`",
+      "jsDoc": "/**\n * `item-overlay-ops`\n * @customElement item-overlay-ops\n * `Overlayed editing ops on whatever the current item slotted in is`\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "jsDoc": "/**\n       * Edit mode whether it is shown or not\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeTitle",
+          "description": "Title to present of active option",
+          "jsDoc": "/**\n       * Title to present of active option\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "description": "Active operation",
+          "jsDoc": "/**\n       * Active operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "jsDoc": "/**\n       * Add opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "jsDoc": "/**\n       * Edit opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "jsDoc": "/**\n       * Move opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "fixedHeight",
+          "description": "Allow height to be defined rather than calculated",
+          "jsDoc": "/**\n       * Allow height to be defined rather than calculated\n       */",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "jsDoc": "/**\n       * Ability to disable height setting. Useful if using CSS vars.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "jsDoc": "/**\n       * Remove opertaions\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "jsDoc": "/**\n       * Duplicate opertaions\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-option-selected"
+        },
+        {
+          "name": "item-overlay-op-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

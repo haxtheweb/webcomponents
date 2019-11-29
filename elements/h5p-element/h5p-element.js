@@ -11,12 +11,13 @@ window.__H5PBridgeTimeOut = function() {
 };
 /**
  * `h5p-element`
+ * @customElement h5p-element
  * `h5p wrapper for loading and presenting .h5p files`
  *
  * @microcopy - language worth noting:
  *  - h5p is it's own eco system, we're just trying to wrap it a bit
  *
- * @customElement
+
  * @lit-element
  * @demo demo/index.html
  */

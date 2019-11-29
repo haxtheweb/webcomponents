@@ -1,0 +1,1004 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`",
+      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowed-tags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sync-body",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hide-message",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowedTags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "syncBody",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hideMessage",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirectOnSave",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "hax-body-content-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`",
+      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowed-tags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sync-body",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hide-message",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowedTags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "syncBody",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hideMessage",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirectOnSave",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "hax-body-content-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "cms-block\n`Render and process a  / block from a content management system.`",
+      "description": "`cms-block`",
+      "jsDoc": "/**\n * `cms-block`\n * @customElement cms-block\n * `Render and process a  / block from a content management system.`\n */",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "block-module",
+          "description": "Module supplying the block",
+          "jsDoc": "/**\n       * Module supplying the block\n       */",
+          "type": "string"
+        },
+        {
+          "name": "block-delta",
+          "description": "A delta value relative to the module",
+          "jsDoc": "/**\n       * A delta value relative to the module\n       */",
+          "type": "string"
+        },
+        {
+          "name": "block-end-point",
+          "description": "block end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * block end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-data",
+          "description": "Body data which is just block with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just block with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "block-data",
+          "description": "block data from the end point.",
+          "jsDoc": "/**\n       * block data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "block-prefix",
+          "description": "Prefix for the block to be processed",
+          "jsDoc": "/**\n       * Prefix for the block to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "block-suffix",
+          "description": "Suffix for the block to be processed",
+          "jsDoc": "/**\n       * Suffix for the block to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "blockModule",
+          "description": "Module supplying the block",
+          "jsDoc": "/**\n       * Module supplying the block\n       */",
+          "type": "string"
+        },
+        {
+          "name": "blockDelta",
+          "description": "A delta value relative to the module",
+          "jsDoc": "/**\n       * A delta value relative to the module\n       */",
+          "type": "string"
+        },
+        {
+          "name": "blockEndPoint",
+          "description": "block end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * block end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyData",
+          "description": "Body data which is just block with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just block with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "blockData",
+          "description": "block data from the end point.",
+          "jsDoc": "/**\n       * block data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "blockPrefix",
+          "description": "Prefix for the block to be processed",
+          "jsDoc": "/**\n       * Prefix for the block to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "blockSuffix",
+          "description": "Suffix for the block to be processed",
+          "jsDoc": "/**\n       * Suffix for the block to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "cms-entity\n`Render and process a  / entity from a content management system.`",
+      "description": "`cms-entity`",
+      "jsDoc": "/**\n * `cms-entity`\n * @customElement cms-entity\n * `Render and process a  / entity from a content management system.`\n */",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "entity-type",
+          "description": "Type of entity to load",
+          "jsDoc": "/**\n       * Type of entity to load\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entity-id",
+          "description": "ID of the item to load",
+          "jsDoc": "/**\n       * ID of the item to load\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entity-display-mode",
+          "description": "Display mode of the entity",
+          "jsDoc": "/**\n       * Display mode of the entity\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entity-end-point",
+          "description": "entity end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * entity end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-data",
+          "description": "Body data which is just entity with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just entity with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "entity-data",
+          "description": "entity data from the end point.",
+          "jsDoc": "/**\n       * entity data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entity-prefix",
+          "description": "Prefix for the entity to be processed",
+          "jsDoc": "/**\n       * Prefix for the entity to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entity-suffix",
+          "description": "Suffix for the entity to be processed",
+          "jsDoc": "/**\n       * Suffix for the entity to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "entityType",
+          "description": "Type of entity to load",
+          "jsDoc": "/**\n       * Type of entity to load\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entityId",
+          "description": "ID of the item to load",
+          "jsDoc": "/**\n       * ID of the item to load\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entityDisplayMode",
+          "description": "Display mode of the entity",
+          "jsDoc": "/**\n       * Display mode of the entity\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entityEndPoint",
+          "description": "entity end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * entity end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyData",
+          "description": "Body data which is just entity with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just entity with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "entityData",
+          "description": "entity data from the end point.",
+          "jsDoc": "/**\n       * entity data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entityPrefix",
+          "description": "Prefix for the entity to be processed",
+          "jsDoc": "/**\n       * Prefix for the entity to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "entitySuffix",
+          "description": "Suffix for the entity to be processed",
+          "jsDoc": "/**\n       * Suffix for the entity to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "cms-views\n`Render and process a  / views from a content management system.`",
+      "description": "`cms-views`",
+      "jsDoc": "/**\n * `cms-views`\n * @customElement cms-views\n * `Render and process a  / views from a content management system.`\n */",
+      "attributes": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "views-name",
+          "description": "Name of the views to render",
+          "jsDoc": "/**\n       * Name of the views to render\n       */",
+          "type": "string"
+        },
+        {
+          "name": "views-display",
+          "description": "Display from the views",
+          "jsDoc": "/**\n       * Display from the views\n       */",
+          "type": "string"
+        },
+        {
+          "name": "views-end-point",
+          "description": "views end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * views end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "body-data",
+          "description": "Body data which is just views with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just views with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "views-data",
+          "description": "views data from the end point.",
+          "jsDoc": "/**\n       * views data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "views-prefix",
+          "description": "Prefix for the views to be processed",
+          "jsDoc": "/**\n       * Prefix for the views to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "views-suffix",
+          "description": "Suffix for the views to be processed",
+          "jsDoc": "/**\n       * Suffix for the views to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "jsDoc": "/**\n       * Loading state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "viewsName",
+          "description": "Name of the views to render",
+          "jsDoc": "/**\n       * Name of the views to render\n       */",
+          "type": "string"
+        },
+        {
+          "name": "viewsDisplay",
+          "description": "Display from the views",
+          "jsDoc": "/**\n       * Display from the views\n       */",
+          "type": "string"
+        },
+        {
+          "name": "viewsEndPoint",
+          "description": "views end point updated, change the way we do processing.",
+          "jsDoc": "/**\n       * views end point updated, change the way we do processing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bodyData",
+          "description": "Body data which is just views with some encapsulation.",
+          "jsDoc": "/**\n       * Body data which is just views with some encapsulation.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "viewsData",
+          "description": "views data from the end point.",
+          "jsDoc": "/**\n       * views data from the end point.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "viewsPrefix",
+          "description": "Prefix for the views to be processed",
+          "jsDoc": "/**\n       * Prefix for the views to be processed\n       */",
+          "type": "string"
+        },
+        {
+          "name": "viewsSuffix",
+          "description": "Suffix for the views to be processed",
+          "jsDoc": "/**\n       * Suffix for the views to be processed\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`",
+      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "open-default",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowed-tags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "end-point",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "edit-mode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sync-body",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hide-message",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirect-location",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-hax-body",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openDefault",
+          "description": "Default the panel to open",
+          "jsDoc": "/**\n       * Default the panel to open\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hideExportButton",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "jsDoc": "/**\n       * Hide the export button, showing it is good for developers\n       * or those doing QA testing of new elements.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "align",
+          "description": "Direction to align the hax edit panel",
+          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
+          "type": "string"
+        },
+        {
+          "name": "allowedTags",
+          "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "endPoint",
+          "description": "Location to save content to.",
+          "jsDoc": "/**\n       * Location to save content to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "method",
+          "description": "Method to save content.",
+          "jsDoc": "/**\n       * Method to save content.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "updatePageData",
+          "description": "Page data, body of text as a string.",
+          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "appStoreConnection",
+          "description": "Connection object for talking to an app store.",
+          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "editMode",
+          "description": "State of the panel",
+          "jsDoc": "/**\n       * State of the panel\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "syncBody",
+          "description": "syncBody",
+          "jsDoc": "/**\n       * syncBody\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "bodyValue",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "jsDoc": "/**\n       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hideMessage",
+          "description": "Flag to hide the toast.",
+          "jsDoc": "/**\n       * Flag to hide the toast.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "redirectLocation",
+          "description": "Optional URL to redirect to once we save.",
+          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "redirectOnSave",
+          "description": "Option to redirect once we save successfully",
+          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "Reference to activeBody.",
+          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "hax-body-content-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

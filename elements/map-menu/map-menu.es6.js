@@ -12,6 +12,7 @@ import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `map-menu`
+ * @customElement map-menu
  * `A series of elements that generate a hierarchical menu`
  *
  * @demo demo/index.html

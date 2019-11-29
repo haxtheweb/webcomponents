@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "flash-card",
+      "description": "`flash-card`",
+      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "flash-card",
+      "description": "`flash-card`",
+      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "flash-card",
+      "description": "`flash-card`",
+      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

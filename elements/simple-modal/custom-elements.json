@@ -1,0 +1,178 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-modal\n`A simple modal that ensures accessibility and stack order context appropriately`",
+      "description": "`simple-modal`",
+      "jsDoc": "/**\n * `simple-modal`\n * @customElement simple-modal\n * `A simple modal that ensures accessibility and stack order context appropriately`\n *\n * @microcopy - language worth noting:\n *  -\n * \n * CSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n *\n\n * @polymer\n * @demo ./demo/index.html demo\n * @demo ./demo/css.html styling simple-modal via CSS\n * @demo ./demo/details.html styling simple-modal via event details\n * @demo ./demo/template.html using simple-modal-template\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-modal-opened"
+        },
+        {
+          "name": "simple-modal-closed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-modal\n`A simple modal that ensures accessibility and stack order context appropriately`",
+      "description": "`simple-modal`",
+      "jsDoc": "/**\n * `simple-modal`\n * @customElement simple-modal\n * `A simple modal that ensures accessibility and stack order context appropriately`\n *\n * @microcopy - language worth noting:\n *  -\n * \n * CSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n *\n\n * @polymer\n * @demo ./demo/index.html demo\n * @demo ./demo/css.html styling simple-modal via CSS\n * @demo ./demo/details.html styling simple-modal via event details\n * @demo ./demo/template.html using simple-modal-template\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "heading / label of the modal",
+          "jsDoc": "/**\n       * heading / label of the modal\n       */",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "description": "open state",
+          "jsDoc": "/**\n       * open state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "close-label",
+          "description": "Close label",
+          "jsDoc": "/**\n       * Close label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "close-icon",
+          "description": "Close icon",
+          "jsDoc": "/**\n       * Close icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "invoked-by",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modal",
+          "description": "support for modal flag",
+          "jsDoc": "/**\n       * support for modal flag\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "heading / label of the modal",
+          "jsDoc": "/**\n       * heading / label of the modal\n       */",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "description": "open state",
+          "jsDoc": "/**\n       * open state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "closeLabel",
+          "description": "Close label",
+          "jsDoc": "/**\n       * Close label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "closeIcon",
+          "description": "Close icon",
+          "jsDoc": "/**\n       * Close icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "invokedBy",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modal",
+          "description": "support for modal flag",
+          "jsDoc": "/**\n       * support for modal flag\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-opened"
+        },
+        {
+          "name": "simple-modal-closed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-modal-template\n`A simple modal that ensures accessibility and stack order context appropriately`",
+      "description": "`simple-modal-template`",
+      "jsDoc": "/**\n * `simple-modal-template`\n * @customElement simple-modal-template\n * `A simple modal that ensures accessibility and stack order context appropriately`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo ./demo/template.html\n */",
+      "attributes": [
+        {
+          "name": "modal-id",
+          "description": "the desired id for the modal",
+          "jsDoc": "/**\n       * the desired id for the modal\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modal",
+          "description": "the simple-modal",
+          "jsDoc": "/**\n       * the simple-modal\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "title",
+          "description": "the modal title",
+          "jsDoc": "/**\n       * the modal title\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "modalId",
+          "description": "the desired id for the modal",
+          "jsDoc": "/**\n       * the desired id for the modal\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modal",
+          "description": "the simple-modal",
+          "jsDoc": "/**\n       * the simple-modal\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "title",
+          "description": "the modal title",
+          "jsDoc": "/**\n       * the modal title\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-modal\n`A simple modal that ensures accessibility and stack order context appropriately`",
+      "description": "`simple-modal`",
+      "jsDoc": "/**\n * `simple-modal`\n * @customElement simple-modal\n * `A simple modal that ensures accessibility and stack order context appropriately`\n *\n * @microcopy - language worth noting:\n *  -\n * \n * CSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n *\n\n * @polymer\n * @demo ./demo/index.html demo\n * @demo ./demo/css.html styling simple-modal via CSS\n * @demo ./demo/details.html styling simple-modal via event details\n * @demo ./demo/template.html using simple-modal-template\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-modal-opened"
+        },
+        {
+          "name": "simple-modal-closed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

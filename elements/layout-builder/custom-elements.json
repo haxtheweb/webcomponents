@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "layout-builder\n`A new UI for adding content to layouts`",
+      "description": "`layout-builder`",
+      "jsDoc": "/**\n * `layout-builder`\n * @customElement layout-builder\n * `A new UI for adding content to layouts`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "layout-builder\n`A new UI for adding content to layouts`",
+      "description": "`layout-builder`",
+      "jsDoc": "/**\n * `layout-builder`\n * @customElement layout-builder\n * `A new UI for adding content to layouts`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "type",
+          "type": "boolean"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "type": "boolean"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "layout-builder\n`A new UI for adding content to layouts`",
+      "description": "`layout-builder`",
+      "jsDoc": "/**\n * `layout-builder`\n * @customElement layout-builder\n * `A new UI for adding content to layouts`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

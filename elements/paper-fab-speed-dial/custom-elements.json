@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "paper-fab-speed-dial\n`A speed dial setup for a floating action button`",
+      "description": "`paper-fab-speed-dial`",
+      "jsDoc": "/**\n * `paper-fab-speed-dial`\n * @customElement paper-fab-speed-dial\n * `A speed dial setup for a floating action button`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-fab-speed-dial\n`A speed dial setup for a floating action button`",
+      "description": "`paper-fab-speed-dial`",
+      "jsDoc": "/**\n * `paper-fab-speed-dial`\n * @customElement paper-fab-speed-dial\n * `A speed dial setup for a floating action button`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "paper-fab-speed-dial\n`A speed dial setup for a floating action button`",
+      "description": "`paper-fab-speed-dial`",
+      "jsDoc": "/**\n * `paper-fab-speed-dial`\n * @customElement paper-fab-speed-dial\n * `A speed dial setup for a floating action button`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

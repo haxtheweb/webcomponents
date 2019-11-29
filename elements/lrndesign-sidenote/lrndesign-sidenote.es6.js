@@ -28,7 +28,7 @@ class LrndesignSidenote extends LitElement {
         color: "blue",
         groups: [""],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

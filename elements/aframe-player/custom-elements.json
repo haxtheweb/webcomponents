@@ -1,0 +1,362 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
+      "description": "`aframe-player`",
+      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sky-color",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "skyColor",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
+      "description": "`aframe-player`",
+      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sky-color",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "skyColor",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
+      "description": "`aframe-player`",
+      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "sky-color",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "jsDoc": "/**\n       * height of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "jsDoc": "/**\n       * width of the element\n       */",
+          "type": "string"
+        },
+        {
+          "name": "skyColor",
+          "description": "Color of the sky / background.",
+          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "jsDoc": "/**\n       * x position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "jsDoc": "/**\n       * y position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "jsDoc": "/**\n       * z position for the AR element.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

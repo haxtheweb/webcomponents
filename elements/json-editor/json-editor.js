@@ -7,12 +7,13 @@ import "@polymer/paper-input/paper-textarea.js";
 
 /**
  * `json-editor`
+ * @customElement json-editor
  * `simple JSON blob data binding to a text area`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

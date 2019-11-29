@@ -4,6 +4,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 /**
  * `task-list`
+ * @customElement task-list
  * Visual listing of tasks with different design components that is
  * OER Schema capable!
  * @demo demo/index.html
@@ -114,7 +115,7 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
         groups: ["Content", "Instructional"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

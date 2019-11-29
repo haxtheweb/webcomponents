@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "type": "string"
+        },
+        {
+          "name": "variant2",
+          "type": "string"
+        },
+        {
+          "name": "editable",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

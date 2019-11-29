@@ -20,12 +20,13 @@ window.JSONOutlineSchema.requestAvailability = () => {
 };
 /**
  * `json-outline-schema`
+ * @customElement json-outline-schema
  * `JS based state management helper for the json outline schema spec`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 

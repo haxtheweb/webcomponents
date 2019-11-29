@@ -18,10 +18,12 @@ import "./lib/a11y-media-transcript-controls.js";
 import "./lib/a11y-media-youtube.js";
 /**
  * `a11y-media-player`
+ * @customElement a11y-media-player
  * An accessible video player
  *
  * @microcopy - the mental model for this element
- * ```
+ * ``
+ * @customElement `
 <a11y-media-player
   accent-color$="[[accentColor]]"              // Optional accent color for controls,
                                                // using the following materialize colors:
@@ -62,7 +64,8 @@ import "./lib/a11y-media-youtube.js";
 </a11y-media-player>```
  *
  * Intermediate customization of player:
- * ```
+ * ``
+ * @customElement `
 --a11y-media-text-color: text color, default is --simple-colors-default-theme-grey-11
 --a11y-media-bg-color: background color, default is --simple-colors-default-theme-grey-2
 --a11y-media-hover-color: text color on hover, default is --simple-colors-default-theme-grey-12
@@ -72,7 +75,8 @@ import "./lib/a11y-media-youtube.js";
 --a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color```
  *
  * Intermediate customization of transcript:
- * ```
+ * ``
+ * @customElement `
  --a11y-media-transcript-color: transcript color, default is --simple-colors-default-theme-grey-12
 --a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-default-theme-grey-1
 --a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-default-theme-grey-12
@@ -83,14 +87,16 @@ import "./lib/a11y-media-youtube.js";
 --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-default-theme-grey-12```
  *
  * Advanced styles for settings menu:
- * ```
+ * ``
+ * @customElement `
 --a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
 --a11y-media-settings-menu-bg-color: settings menu background color, default is --a11y-media-bg-color
 --a11y-media-settings-menu-hover-color: settings menu text color on hover, default is --a11y-media-hover-color
 --a11y-media-settings-menu-hover-bg-color: settings menu background color on hover, default is --a11y-media-hover-bg-color```
  *
  * Advanced styles for buttons:
- * ```
+ * ``
+ * @customElement `
 --a11y-media-button-color: button text color, default is --a11y-media-text-color
 --a11y-media-button-bg-color: button background color, default is --a11y-media-bg-color
 --a11y-media-button-hover-color: button text color when focused/hovered, default is --a11y-media-hover-color
@@ -98,14 +104,16 @@ import "./lib/a11y-media-youtube.js";
 --a11y-media-button-toggle-color: button text color when tggled on, default is --a11y-media-faded-accent-color```
  *
  * Advanced styles for toggles:
- * ```
+ * ``
+ * @customElement `
 --paper-toggle-button-unchecked-bar-color: color of toggle button when off, default is --a11y-media-color
 --paper-toggle-button-unchecked-button-color: color of toggle button when off, default is --a11y-media-color
 --paper-toggle-button-checked-bar-color: color of toggle button when on, default is --a11y-media-accent-color
 --paper-toggle-button-checked-button-color: color of toggle button when on, default is --a11y-media-accent-color```
  *
  * Advanced styles for sliders:
- * ```
+ * ``
+ * @customElement `
 --a11y-media-slider-primary-color: primary slider color, default is --a11y-media-accent-color
 --a11y-media-slider-secondary-color: slider buffer color, default is --a11y-media-faded-accent-color
 --a11y-media-slider-pin-color: color of the pin that shows slider value, default is --a11y-media-faded-bg-color
@@ -121,7 +129,7 @@ import "./lib/a11y-media-youtube.js";
  * @extends A11yMediaBehaviors
  * @extends SimpleColorsPolymer
  * @polymer
- * @customElement
+
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo

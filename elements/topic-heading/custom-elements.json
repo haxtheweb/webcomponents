@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "topic-heading\n`Semantic and visual meaning behind a heading break`",
+      "description": "`topic-heading`",
+      "jsDoc": "/**\n * `topic-heading`\n * @customElement topic-heading\n * `Semantic and visual meaning behind a heading break`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "topic-heading\n`Semantic and visual meaning behind a heading break`",
+      "description": "`topic-heading`",
+      "jsDoc": "/**\n * `topic-heading`\n * @customElement topic-heading\n * `Semantic and visual meaning behind a heading break`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "topic-heading\n`Semantic and visual meaning behind a heading break`",
+      "description": "`topic-heading`",
+      "jsDoc": "/**\n * `topic-heading`\n * @customElement topic-heading\n * `Semantic and visual meaning behind a heading break`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

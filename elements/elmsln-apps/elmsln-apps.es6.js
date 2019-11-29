@@ -4,6 +4,7 @@
  */
 /**
  * `elmsln-apps`
+ * @customElement elmsln-apps
  * `This is basically here just for the tooling to be happy but shouldn't be used`
  */
 import "./lib/elmsmedia-dashboard/elmsmedia-dashboard.js";

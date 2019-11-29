@@ -1,0 +1,241 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-imagemap\ncreates an accessible image map",
+      "description": "`lrndesign-imagemap`",
+      "jsDoc": "/**\n * `lrndesign-imagemap`\n * @customElement lrndesign-imagemap\n * creates an accessible image map\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopic-of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopicOf",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-imagemap\ncreates an accessible image map",
+      "description": "`lrndesign-imagemap`",
+      "jsDoc": "/**\n * `lrndesign-imagemap`\n * @customElement lrndesign-imagemap\n * creates an accessible image map\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopic-of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopicOf",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-imagemap-hotspot\ncreates an accessible image map",
+      "description": "`lrndesign-imagemap-hotspot`",
+      "jsDoc": "/**\n * `lrndesign-imagemap-hotspot`\n * @customElement lrndesign-imagemap-hotspot\n * creates an accessible image map\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the hotspot",
+          "jsDoc": "/**\n       * Label for the hotspot\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-id",
+          "description": "Id of hotspot element inside the SVG",
+          "jsDoc": "/**\n       * Id of hotspot element inside the SVG\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "Label for the hotspot",
+          "jsDoc": "/**\n       * Label for the hotspot\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspotId",
+          "description": "Id of hotspot element inside the SVG",
+          "jsDoc": "/**\n       * Id of hotspot element inside the SVG\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-imagemap\ncreates an accessible image map",
+      "description": "`lrndesign-imagemap`",
+      "jsDoc": "/**\n * `lrndesign-imagemap`\n * @customElement lrndesign-imagemap\n * creates an accessible image map\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopic-of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "jsDoc": "/**\n       * Label for the imagemap\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "description": "The path of the SVG",
+          "jsDoc": "/**\n       * The path of the SVG\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "subtopicOf",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

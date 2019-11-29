@@ -1,0 +1,194 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "description": "`simple-timer`",
+      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "currentTime",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "countUp",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "description": "`simple-timer`",
+      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "currentTime",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "countUp",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "description": "`simple-timer`",
+      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "description": "Start time for the timer in seconds",
+          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "currentTime",
+          "description": "Current time of the timer, in seconds",
+          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "description": "True if the timer is currently running",
+          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "countUp",
+          "description": "Set to true to have timer count up",
+          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

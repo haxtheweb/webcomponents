@@ -8,6 +8,7 @@ import "@polymer/neon-animation/neon-animation.js";
 
 /**
  * `chemical-element-visualisation`
+ * @customElement chemical-element-visualisation
  * `A Visualisation of chemical Elements`
  *
  * @demo demo/index.html

@@ -1,0 +1,1022 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrnsys-progress-circle\n`circle that the outline grows as the percentage ticks up`",
+      "description": "`lrnsys-progress-circle`",
+      "jsDoc": "/**\n * `lrnsys-progress-circle`\n * @customElement lrnsys-progress-circle\n * `circle that the outline grows as the percentage ticks up`\n *\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Current value.",
+          "jsDoc": "/**\n       * Current value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "tool-tip",
+          "description": "Whether to add a tooltip on hover.",
+          "jsDoc": "/**\n       * Whether to add a tooltip on hover.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "list-view",
+          "description": "If this is in a list view, expand the output.",
+          "jsDoc": "/**\n       * If this is in a list view, expand the output.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon.",
+          "jsDoc": "/**\n       * Icon.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon-complete",
+          "description": "Special icon to use when the item has been completed.",
+          "jsDoc": "/**\n       * Special icon to use when the item has been completed.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loading-icon",
+          "description": "Loading icon",
+          "jsDoc": "/**\n       * Loading icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finished-icon",
+          "description": "Finished icon",
+          "jsDoc": "/**\n       * Finished icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-icon",
+          "description": "Current value.",
+          "jsDoc": "/**\n       * Current value.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "step",
+          "description": "Array position within a larger body of items.",
+          "jsDoc": "/**\n       * Array position within a larger body of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "active",
+          "description": "If this item is active or not in the larger list",
+          "jsDoc": "/**\n       * If this item is active or not in the larger list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
+          "jsDoc": "/**\n       * Status of the progression.\n       * Possible values are disabled, loading, available, complete\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Correctly disable the button if it's status is such.",
+          "jsDoc": "/**\n       * Correctly disable the button if it's status is such.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "description": "Calculate if something is in a loading status which invokes a swirl.",
+          "jsDoc": "/**\n       * Calculate if something is in a loading status which invokes a swirl.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "finished",
+          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
+          "jsDoc": "/**\n       * Boolean to invoke \"finished\" state. Useful for the last circle\n       * in a series.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "description": "Max progression for doing math against.",
+          "jsDoc": "/**\n       * Max progression for doing math against.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "URL to link to on click.",
+          "jsDoc": "/**\n       * URL to link to on click.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "data-url",
+          "description": "Data url to bubble up for more advanced implementations.",
+          "jsDoc": "/**\n       * Data url to bubble up for more advanced implementations.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Stroke width.",
+          "jsDoc": "/**\n       * Stroke width.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
+          "jsDoc": "/**\n       * Tracks if focus state is applied for element consistency\n       * when dealing with focus vs hover states.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "play-sound",
+          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
+          "jsDoc": "/**\n       * Play sound status; if this should play sound\n       * when it hits certain milestones or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "play-finish-sound",
+          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
+          "jsDoc": "/**\n       * Play sound at end; if this should play sound\n       * when it hits certain milestones or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "Current value.",
+          "jsDoc": "/**\n       * Current value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "toolTip",
+          "description": "Whether to add a tooltip on hover.",
+          "jsDoc": "/**\n       * Whether to add a tooltip on hover.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "listView",
+          "description": "If this is in a list view, expand the output.",
+          "jsDoc": "/**\n       * If this is in a list view, expand the output.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon.",
+          "jsDoc": "/**\n       * Icon.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "iconComplete",
+          "description": "Special icon to use when the item has been completed.",
+          "jsDoc": "/**\n       * Special icon to use when the item has been completed.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loadingIcon",
+          "description": "Loading icon",
+          "jsDoc": "/**\n       * Loading icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finishedIcon",
+          "description": "Finished icon",
+          "jsDoc": "/**\n       * Finished icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeIcon",
+          "description": "Current value.",
+          "jsDoc": "/**\n       * Current value.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "step",
+          "description": "Array position within a larger body of items.",
+          "jsDoc": "/**\n       * Array position within a larger body of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "active",
+          "description": "If this item is active or not in the larger list",
+          "jsDoc": "/**\n       * If this item is active or not in the larger list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "status",
+          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
+          "jsDoc": "/**\n       * Status of the progression.\n       * Possible values are disabled, loading, available, complete\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Correctly disable the button if it's status is such.",
+          "jsDoc": "/**\n       * Correctly disable the button if it's status is such.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "description": "Calculate if something is in a loading status which invokes a swirl.",
+          "jsDoc": "/**\n       * Calculate if something is in a loading status which invokes a swirl.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "finished",
+          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
+          "jsDoc": "/**\n       * Boolean to invoke \"finished\" state. Useful for the last circle\n       * in a series.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "description": "Max progression for doing math against.",
+          "jsDoc": "/**\n       * Max progression for doing math against.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "URL to link to on click.",
+          "jsDoc": "/**\n       * URL to link to on click.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dataUrl",
+          "description": "Data url to bubble up for more advanced implementations.",
+          "jsDoc": "/**\n       * Data url to bubble up for more advanced implementations.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Stroke width.",
+          "jsDoc": "/**\n       * Stroke width.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "focusState",
+          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
+          "jsDoc": "/**\n       * Tracks if focus state is applied for element consistency\n       * when dealing with focus vs hover states.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "playSound",
+          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
+          "jsDoc": "/**\n       * Play sound status; if this should play sound\n       * when it hits certain milestones or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "playFinishSound",
+          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
+          "jsDoc": "/**\n       * Play sound at end; if this should play sound\n       * when it hits certain milestones or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "completeSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "node-status-change"
+        },
+        {
+          "name": "node-is-active"
+        },
+        {
+          "name": "node-percent-milestone"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-progress\n`track progression as a circle and series of circles`",
+      "description": "`lrnsys-progress`",
+      "jsDoc": "/**\n * `lrnsys-progress`\n * @customElement lrnsys-progress\n * `track progression as a circle and series of circles`\n *\n * @demo demo/index.html\n * @microcopy\n *  - node / circle - A progress circle on the line\n *  - nodes / items - the list of items in the progress bar\n *  - bubble - reserved for when events fire out of an element or value is tracking events\n *  - percentage - amount complete either in the bar or the nodes themselves\n *  - bar - the underlayed bar that's tracking overall progression\n */",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "soundFinish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "completeSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "keyItems",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressiveUnlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "node-load-failed"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "progress-state-change"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-progress\n`track progression as a circle and series of circles`",
+      "description": "`lrnsys-progress`",
+      "jsDoc": "/**\n * `lrnsys-progress`\n * @customElement lrnsys-progress\n * `track progression as a circle and series of circles`\n *\n * @demo demo/index.html\n * @microcopy\n *  - node / circle - A progress circle on the line\n *  - nodes / items - the list of items in the progress bar\n *  - bubble - reserved for when events fire out of an element or value is tracking events\n *  - percentage - amount complete either in the bar or the nodes themselves\n *  - bar - the underlayed bar that's tracking overall progression\n */",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "soundFinish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "completeSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "keyItems",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressiveUnlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "node-load-failed"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "progress-state-change"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-progress\n`track progression as a circle and series of circles`",
+      "description": "`lrnsys-progress`",
+      "jsDoc": "/**\n * `lrnsys-progress`\n * @customElement lrnsys-progress\n * `track progression as a circle and series of circles`\n *\n * @demo demo/index.html\n * @microcopy\n *  - node / circle - A progress circle on the line\n *  - nodes / items - the list of items in the progress bar\n *  - bubble - reserved for when events fire out of an element or value is tracking events\n *  - percentage - amount complete either in the bar or the nodes themselves\n *  - bar - the underlayed bar that's tracking overall progression\n */",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "jsDoc": "/**\n       * Disable internal ajax calls as something is handling them above.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "jsDoc": "/**\n       * Items to display to visualize the progression.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "jsDoc": "/**\n       * Play sounds whenever an item is complete.\n       * This can get pretty annoying though unless the items\n       * won't be completed for awhile.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "soundFinish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "jsDoc": "/**\n       * Play sound when the user finishes the progression. This\n       * could also be annoying but far less so :)\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "completeSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "description": "Play sound on complete.",
+          "jsDoc": "/**\n       * Play sound on complete.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "jsDoc": "/**\n       * Title of this progression, primarily for accessibility.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "keyItems",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "jsDoc": "/**\n       * Items displayed at specific points on the progression.\n       * These aren't filled up but place points along the progression\n       * which can help people see where they are relative to other\n       * factors such as % complete as a tick mark or icon.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "jsDoc": "/**\n       * ID of the active item.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "progressiveUnlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "jsDoc": "/**\n       * Whether to automatically make disabled items available\n       * or not when the previous one was just complete.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "jsDoc": "/**\n       * State of progress in the current progression\n       */",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "description": "How far is the user through this series of items.",
+          "jsDoc": "/**\n       * How far is the user through this series of items.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "jsDoc": "/**\n       * Active response from the node selected.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "description": "Error.",
+          "jsDoc": "/**\n       * Error.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "jsDoc": "/**\n       * Flag to be vertical instead of horizontal.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "jsDoc": "/**\n       * Size to make everything, small, medium, large, and epic\n       * are available class names; default medium.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "strokeWidth",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "jsDoc": "/**\n       * Calculate width based on the size since we have to convert em to px.\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [
+        {
+          "name": "node-load-failed"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "progress-state-change"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

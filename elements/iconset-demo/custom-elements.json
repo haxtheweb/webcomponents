@@ -1,0 +1,58 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "description": "`iconset-demo`",
+      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "description": "`iconset-demo`",
+      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "include-sets",
+          "description": "a space-separated whitelist of iconsets by name",
+          "jsDoc": "/**\n       * a space-separated whitelist of iconsets by name\n       */",
+          "type": "string"
+        },
+        {
+          "name": "exclude-sets",
+          "description": "a space-separated blacklist of iconsets by name",
+          "jsDoc": "/**\n       * a space-separated blacklist of iconsets by name\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "includeSets",
+          "description": "a space-separated whitelist of iconsets by name",
+          "jsDoc": "/**\n       * a space-separated whitelist of iconsets by name\n       */",
+          "type": "string"
+        },
+        {
+          "name": "excludeSets",
+          "description": "a space-separated blacklist of iconsets by name",
+          "jsDoc": "/**\n       * a space-separated blacklist of iconsets by name\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "description": "`iconset-demo`",
+      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

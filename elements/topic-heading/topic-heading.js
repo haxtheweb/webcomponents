@@ -8,12 +8,13 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/relative-heading/relative-heading.js";
 /**
  * `topic-heading`
+ * @customElement topic-heading
  * `Semantic and visual meaning behind a heading break`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

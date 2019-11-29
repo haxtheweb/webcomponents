@@ -3,18 +3,23 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 /**
  * `awesome-explosion`
  * `An awesome, explosion.`
  *
- * @customElement
- * @polymer
- * @polymerLegacy
  * @silly
  * @demo demo/index.html
+ * @customElement awesome-explosion
  */
 class AwesomeExplosion extends PolymerElement {
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("click", this._setPlaySound.bind(this));
+      this.addEventListener("mouseover", this._setPlaySound.bind(this));
+      this.addEventListener("mouseout", this._setStopSound.bind(this));
+    }, 0);
+  }
   static get template() {
     return html`
       <style>
@@ -68,20 +73,6 @@ class AwesomeExplosion extends PolymerElement {
 
   static get tag() {
     return "awesome-explosion";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._setPlaySound.bind(this));
-      this.addEventListener("mouseover", this._setPlaySound.bind(this));
-      this.addEventListener("mouseout", this._setStopSound.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._setPlaySound.bind(this));
-    this.removeEventListener("mouseover", this._setPlaySound.bind(this));
-    this.removeEventListener("mouseout", this._setStopSound.bind(this));
-    super.disconnectedCallback();
   }
 
   static get properties() {

@@ -28,12 +28,13 @@ window.SimpleDrawer.requestAvailability = () => {
 };
 /**
  * `simple-drawer`
+ * @customElement simple-drawer
  * `a singleton drawer element`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

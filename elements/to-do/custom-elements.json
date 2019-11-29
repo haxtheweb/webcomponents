@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabledList",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabledList",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "description": "Allow for hiding the input form for new data.",
+          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabledList",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "jsDoc": "/**\n       * Name of this to do list\n       */",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "jsDoc": "/**\n       * Items\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

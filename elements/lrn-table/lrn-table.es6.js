@@ -7,12 +7,13 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 
 /**
  * `lrn-table`
+ * @customElement lrn-table
  * `Accessibly render a HTML table from a csv file`
  *
  * @microcopy - language worth noting:
  *  - CSV - Comma separated values
  *
- * @customElement
+
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html
@@ -92,7 +93,7 @@ class LrnTable extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "description": "Image",
+          "jsDoc": "/**\n       * Image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "Url",
+          "jsDoc": "/**\n       * Url\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

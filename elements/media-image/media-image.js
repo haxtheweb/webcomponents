@@ -10,6 +10,7 @@ import "@lrnwebcomponents/figure-label/figure-label.js";
 
 /**
  * `media-image`
+ * @customElement media-image
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  */
@@ -269,7 +270,7 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
@@ -388,6 +389,7 @@ window.customElements.define(MediaImage.tag, MediaImage);
 
 /**
  * `media-image-citation`
+ * @customElement media-image-citation
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  */
@@ -417,6 +419,7 @@ window.customElements.define(MediaImageCitation.tag, MediaImageCitation);
 
 /**
  * `media-image-caption`
+ * @customElement media-image-caption
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  */

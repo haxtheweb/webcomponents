@@ -8,12 +8,13 @@ import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 
 /**
  * `social-share-link`
+ * @customElement social-share-link
  * `a link to share content on social`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

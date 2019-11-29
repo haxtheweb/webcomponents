@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "description": "`lrndesign-avatar`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "description": "`lrndesign-avatar`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "description": "`lrndesign-avatar`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "jsDoc": "/**\n       * text to use for avatar\n       */",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "jsDoc": "/**\n       * link to an image, optional\n       */",
+          "type": "string"
+        },
+        {
+          "name": "twoChars",
+          "description": "Mode for presenting 1st two letters",
+          "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "jsDoc": "/**\n       * Form abstract art from hash of label\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "jsDoc": "/**\n * `lrndesign-drawer`\n * @customElement lrndesign-drawer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "jsDoc": "/**\n * `lrndesign-drawer`\n * @customElement lrndesign-drawer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "jsDoc": "/**\n * `lrndesign-drawer`\n * @customElement lrndesign-drawer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "jsDoc": "/**\n       * State for if it is currently open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "jsDoc": "/**\n       * Icon to present for clicking.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "jsDoc": "/**\n       * Side of the screen to align the flyout (right or left)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "jsDoc": "/**\n       * Alt / hover text for this link\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "sites-listing",
+      "description": "`sites-listing`",
+      "jsDoc": "/**\n * `sites-listing`\n * @customElement sites-listing\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "sites-response",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "data-source",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "load-location",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sitesResponse",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dataSource",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loadLocation",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "sites-listing-item-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "sites-listing",
+      "description": "`sites-listing`",
+      "jsDoc": "/**\n * `sites-listing`\n * @customElement sites-listing\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "sites-response",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "data-source",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "load-location",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sitesResponse",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dataSource",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loadLocation",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "sites-listing-item-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "site-card\n`A simple card for representing a site`",
+      "description": "`site-card`",
+      "jsDoc": "/**\n * `site-card`\n * @customElement site-card\n * `A simple card for representing a site`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Scale of the card.",
+          "jsDoc": "/**\n       * Scale of the card.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Cover image src.",
+          "jsDoc": "/**\n       * Cover image src.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to use if image isn't there.",
+          "jsDoc": "/**\n       * Icon to use if image isn't there.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "name of the course like sing100",
+          "jsDoc": "/**\n       * name of the course like sing100\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "title of the course like Intro to studies",
+          "jsDoc": "/**\n       * title of the course like Intro to studies\n       */",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "jsDoc": "/**\n       * Visual elevation of the item off the UI via paper element height\n       */",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "size",
+          "description": "Scale of the card.",
+          "jsDoc": "/**\n       * Scale of the card.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Cover image src.",
+          "jsDoc": "/**\n       * Cover image src.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to use if image isn't there.",
+          "jsDoc": "/**\n       * Icon to use if image isn't there.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "name of the course like sing100",
+          "jsDoc": "/**\n       * name of the course like sing100\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "title of the course like Intro to studies",
+          "jsDoc": "/**\n       * title of the course like Intro to studies\n       */",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "jsDoc": "/**\n       * Visual elevation of the item off the UI via paper element height\n       */",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "sites-listing",
+      "description": "`sites-listing`",
+      "jsDoc": "/**\n * `sites-listing`\n * @customElement sites-listing\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "sites-response",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "data-source",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "load-location",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sitesResponse",
+          "description": "Object, JSON Outline Schema format",
+          "jsDoc": "/**\n       * Object, JSON Outline Schema format\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "sites",
+          "description": "Array of site objects",
+          "jsDoc": "/**\n       * Array of site objects\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "size",
+          "description": "Size of the cards",
+          "jsDoc": "/**\n       * Size of the cards\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dataSource",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "jsDoc": "/**\n       * Data Source to power the loading of sites in JSON Outline Schema format.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loadLocation",
+          "description": "Allow for loading the location in the array rather than firing an event",
+          "jsDoc": "/**\n       * Allow for loading the location in the array rather than firing an event\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "sites-listing-item-selected"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

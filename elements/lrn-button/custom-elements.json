@@ -1,0 +1,222 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrn-button\n`Simple button wrapper with a few options`",
+      "description": "`lrn-button`",
+      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrn-button\n`Simple button wrapper with a few options`",
+      "description": "`lrn-button`",
+      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "jsDoc": "/**\n       * Standard href pass down\n       */",
+          "type": "string"
+        },
+        {
+          "name": "show-href",
+          "description": "What to display for the resource",
+          "jsDoc": "/**\n       * What to display for the resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "jsDoc": "/**\n       * Label to place in the text area\n       */",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "jsDoc": "/**\n       * Inner container classes.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "materializeCSS color class",
+          "jsDoc": "/**\n       * materializeCSS color class\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data on hover",
+          "jsDoc": "/**\n       * Allow for prefetch data on hover\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "jsDoc": "/**\n       * Disabled state.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "jsDoc": "/**\n       * Standard href pass down\n       */",
+          "type": "string"
+        },
+        {
+          "name": "showHref",
+          "description": "What to display for the resource",
+          "jsDoc": "/**\n       * What to display for the resource\n       */",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "jsDoc": "/**\n       * Label to place in the text area\n       */",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "description": "Inner container classes.",
+          "jsDoc": "/**\n       * Inner container classes.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "materializeCSS color class",
+          "jsDoc": "/**\n       * materializeCSS color class\n       */",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "description": "materializeCSS color class for text",
+          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data on hover",
+          "jsDoc": "/**\n       * Allow for prefetch data on hover\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "jsDoc": "/**\n       * Disabled state.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "focusState",
+          "description": "Tracks if focus state is applied",
+          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "lrn-button\n`Simple button wrapper with a few options`",
+      "description": "`lrn-button`",
+      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

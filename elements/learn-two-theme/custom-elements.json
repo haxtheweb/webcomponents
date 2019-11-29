@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "description": "`learn-two-theme`",
+      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "description": "`learn-two-theme`",
+      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "description": "`learn-two-theme`",
+      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

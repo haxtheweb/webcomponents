@@ -1,5 +1,6 @@
 /**
  * `secure-request`
+ * @customElement secure-request
  * `Wrapper behavior to provide the basis for a secure XHR`
  *
  * @demo demo/index.html

@@ -10,12 +10,13 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 
 /**
  * `lrn-button`
+ * @customElement lrn-button
  * `Simple button wrapper with a few options`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

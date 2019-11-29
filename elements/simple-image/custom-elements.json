@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "description": "`simple-image`",
+      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "description": "`simple-image`",
+      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "description": "`simple-image`",
+      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "description": "image source",
+          "jsDoc": "/**\n       * image source\n       */",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt data",
+          "jsDoc": "/**\n       * alt data\n       */",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "caption on the image",
+          "jsDoc": "/**\n       * caption on the image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "credit",
+          "description": "photo credit / copyright info",
+          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

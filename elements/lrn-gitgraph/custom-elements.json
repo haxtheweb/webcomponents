@@ -1,0 +1,188 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "description": "`lrn-gitgraph`",
+      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverseArrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "description": "`lrn-gitgraph`",
+      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverseArrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "description": "`lrn-gitgraph`",
+      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "type": "any[]"
+        },
+        {
+          "name": "template",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "type": "string"
+        },
+        {
+          "name": "reverseArrow",
+          "type": "boolean"
+        },
+        {
+          "name": "config",
+          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -52,6 +52,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `license-element`
+ * @customElement license-element
  * `A simple way of applying a semantically accurate license to work.`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
@@ -246,7 +247,7 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -12,12 +12,13 @@ import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 
 /**
  * `editable-outline`
+ * @customElement editable-outline
  * `a simple outline thats contenteditable in nature`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

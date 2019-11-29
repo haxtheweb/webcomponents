@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `lrn-aside`
+ * @customElement lrn-aside
  * A content aside as a panel
  *
  * @demo demo/index.html
@@ -92,7 +93,7 @@ class LrnAside extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

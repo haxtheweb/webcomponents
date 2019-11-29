@@ -7,12 +7,13 @@ import { CountUp } from "countup.js";
 
 /**
  * `count-up`
+ * @customElement count-up
  * `count up js wrapper with minimal styling`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @lit-element
  * @demo demo/index.html
  */

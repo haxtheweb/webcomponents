@@ -7,6 +7,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `accent-card`
+ * @customElement accent-card
  * a card with optional accent stylings.
  * 
 ### Styling
@@ -28,7 +29,7 @@ Custom property | Description | Default
 * Overrides colors set by accent-color and dark attributes.
  *
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/index.html demo
  * @demo ./demo/colors.html colors
  * @demo ./demo/orientation.html card orientation
@@ -371,6 +372,9 @@ class AccentCard extends SimpleColors {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"]
       }
     };
   }

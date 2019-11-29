@@ -1,9 +1,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `select-menu`
+ * @customElement select-menu
  * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item
  *
- * @customElement
+
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html

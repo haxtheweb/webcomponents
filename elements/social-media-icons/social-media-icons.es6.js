@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * `social-media-iconset` is a iconset for the Material Design Icons collection
+ * `social-media-iconset`
+ * @customElement social-media-iconset is a iconset for the Material Design Icons collection
  *
  * Example:
  *   <script>import "@lrnwebcomponents/social-media-icons/social-media-iconset.js";</script>

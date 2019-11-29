@@ -1,0 +1,275 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
+      "description": "`json-outline-schema`",
+      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "template",
+          "type": "any"
+        },
+        {
+          "name": "metadata",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-unready"
+        },
+        {
+          "name": "json-outline-schema-ready"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
+      "description": "`json-outline-schema`",
+      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "template",
+          "type": "any"
+        },
+        {
+          "name": "metadata",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-unready"
+        },
+        {
+          "name": "json-outline-schema-ready"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
+      "description": "`json-outline-schema`",
+      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "template",
+          "type": "any"
+        },
+        {
+          "name": "metadata",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null"
+        },
+        {
+          "name": "author",
+          "type": "string | null"
+        },
+        {
+          "name": "description",
+          "type": "string | null"
+        },
+        {
+          "name": "license",
+          "type": "string | null"
+        },
+        {
+          "name": "debug",
+          "type": "string | null"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-unready"
+        },
+        {
+          "name": "json-outline-schema-ready"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

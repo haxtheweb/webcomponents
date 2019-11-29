@@ -1,11 +1,211 @@
 {
   "schema_version": "1.0.0",
-  "classes": [
+  "elements": [
     {
-      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+      "description": "`aframe-player`",
       "summary": "",
       "path": "aframe-player.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "source",
+          "type": "string | null | undefined",
+          "description": "Source to reference for the 3D object",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 53,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "height",
+          "type": "string | null | undefined",
+          "description": "height of the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 60,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"480px\""
+        },
+        {
+          "name": "width",
+          "type": "string | null | undefined",
+          "description": "width of the element",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 6
+            },
+            "end": {
+              "line": 67,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"640px\""
+        },
+        {
+          "name": "skyColor",
+          "type": "string | null | undefined",
+          "description": "Color of the sky / background.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 6
+            },
+            "end": {
+              "line": 74,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"#DCDCDC\""
+        },
+        {
+          "name": "ar",
+          "type": "boolean | null | undefined",
+          "description": "If this is for augmented reality or not.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 81,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "x",
+          "type": "string | null | undefined",
+          "description": "x position for the AR element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"0\""
+        },
+        {
+          "name": "y",
+          "type": "string | null | undefined",
+          "description": "y position for the AR element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 6
+            },
+            "end": {
+              "line": 95,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"0\""
+        },
+        {
+          "name": "z",
+          "type": "string | null | undefined",
+          "description": "z position for the AR element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"0\""
+        },
+        {
+          "name": "position",
+          "type": "Object | null | undefined",
+          "description": "Generate a position object when coordinates change.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 106,
+              "column": 6
+            },
+            "end": {
+              "line": 110,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_positionChanged\"",
+              "readOnly": true,
+              "attributeType": "Object"
+            }
+          }
+        }
+      ],
       "methods": [
         {
           "name": "_attachDom",
@@ -13,11 +213,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 118,
               "column": 3
             }
           },
@@ -37,11 +237,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 119,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 125,
               "column": 3
             }
           },
@@ -57,11 +257,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 231,
               "column": 3
             }
           },
@@ -77,11 +277,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 233,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 240,
               "column": 3
             }
           },
@@ -101,11 +301,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 3
             }
           },
@@ -134,11 +334,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 255,
+              "line": 256,
               "column": 2
             },
             "end": {
-              "line": 258,
+              "line": 259,
               "column": 3
             }
           },
@@ -158,25 +358,175 @@
         {
           "url": "demo/index.html",
           "description": ""
-        },
-        {
-          "url": "demo/index.html",
-          "description": ""
         }
       ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 13,
+          "line": 14,
           "column": 0
         },
         "end": {
-          "line": 259,
+          "line": 260,
           "column": 1
         }
       },
       "privacy": "public",
-      "name": "AframePlayer"
+      "superclass": "HTMLElement",
+      "name": "AframePlayer",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "Source to reference for the 3D object",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 53,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "height",
+          "description": "height of the element",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 60,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "width",
+          "description": "width of the element",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 6
+            },
+            "end": {
+              "line": 67,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "sky-color",
+          "description": "Color of the sky / background.",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 6
+            },
+            "end": {
+              "line": 74,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 6
+            },
+            "end": {
+              "line": 81,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "x",
+          "description": "x position for the AR element.",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 6
+            },
+            "end": {
+              "line": 88,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "y",
+          "description": "y position for the AR element.",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 6
+            },
+            "end": {
+              "line": 95,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "sourceRange": {
+            "start": {
+              "line": 106,
+              "column": 6
+            },
+            "end": {
+              "line": 110,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "aframe-player\n`A wrapper to do data binding into aframe`"
     }
   ]
 }

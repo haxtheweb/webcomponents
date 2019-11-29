@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `beaker-broker`
+ * @customElement beaker-broker
  * `An element to help check for and broker calls to read and write beaker browser dat sites.
  * This allows for data binding and figuring out if we're in an environment that we can even use this.`
  *
@@ -12,7 +13,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *  - beaker browser - a transformative, decentralized platform
  *  - dat - a communication protocol for serving sites up p2p
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

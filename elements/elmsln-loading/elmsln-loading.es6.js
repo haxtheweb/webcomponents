@@ -8,13 +8,14 @@ import "@polymer/iron-icon/iron-icon.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `elmsln-loading`
+ * @customElement elmsln-loading
  * A spinner to tell the user that something is loading.
  * This is just the spinner though and doesn't provide any text or anything else.
  *
  * @microcopy - language worth noting:
  *  - elmsln - an open source NGDLE to save education
  *
- * @customElement
+
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html

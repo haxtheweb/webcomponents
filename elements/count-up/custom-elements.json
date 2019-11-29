@@ -1,0 +1,174 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "count-up\n`count up js wrapper with minimal styling`",
+      "description": "`count-up`",
+      "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "count-up\n`count up js wrapper with minimal styling`",
+      "description": "`count-up`",
+      "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "start",
+          "description": "Starting point for counting",
+          "jsDoc": "/**\n       * Starting point for counting\n       */",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "description": "End point for counting stopping",
+          "jsDoc": "/**\n       * End point for counting stopping\n       */",
+          "type": "number"
+        },
+        {
+          "name": "duration",
+          "description": "Duration to count",
+          "jsDoc": "/**\n       * Duration to count\n       */",
+          "type": "number"
+        },
+        {
+          "name": "noeasing",
+          "description": "Disable easing animation",
+          "jsDoc": "/**\n       * Disable easing animation\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "decimalplaces",
+          "description": "decimal places to show",
+          "jsDoc": "/**\n       * decimal places to show\n       */",
+          "type": "number"
+        },
+        {
+          "name": "separator",
+          "description": "separator for 100s groupings",
+          "jsDoc": "/**\n       * separator for 100s groupings\n       */",
+          "type": "string"
+        },
+        {
+          "name": "decimal",
+          "description": "decimal point character",
+          "jsDoc": "/**\n       * decimal point character\n       */",
+          "type": "string"
+        },
+        {
+          "name": "prefixtext",
+          "description": "prefix string before the number counting",
+          "jsDoc": "/**\n       * prefix string before the number counting\n       */",
+          "type": "string"
+        },
+        {
+          "name": "suffixtext",
+          "description": "suffix string after the number counting",
+          "jsDoc": "/**\n       * suffix string after the number counting\n       */",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "type": "any[]"
+        },
+        {
+          "name": "root-margin",
+          "type": "string"
+        },
+        {
+          "name": "ratio",
+          "type": "number"
+        },
+        {
+          "name": "visible-limit",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "start",
+          "description": "Starting point for counting",
+          "jsDoc": "/**\n       * Starting point for counting\n       */",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "description": "End point for counting stopping",
+          "jsDoc": "/**\n       * End point for counting stopping\n       */",
+          "type": "number"
+        },
+        {
+          "name": "duration",
+          "description": "Duration to count",
+          "jsDoc": "/**\n       * Duration to count\n       */",
+          "type": "number"
+        },
+        {
+          "name": "noeasing",
+          "description": "Disable easing animation",
+          "jsDoc": "/**\n       * Disable easing animation\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "decimalplaces",
+          "description": "decimal places to show",
+          "jsDoc": "/**\n       * decimal places to show\n       */",
+          "type": "number"
+        },
+        {
+          "name": "separator",
+          "description": "separator for 100s groupings",
+          "jsDoc": "/**\n       * separator for 100s groupings\n       */",
+          "type": "string"
+        },
+        {
+          "name": "decimal",
+          "description": "decimal point character",
+          "jsDoc": "/**\n       * decimal point character\n       */",
+          "type": "string"
+        },
+        {
+          "name": "prefixtext",
+          "description": "prefix string before the number counting",
+          "jsDoc": "/**\n       * prefix string before the number counting\n       */",
+          "type": "string"
+        },
+        {
+          "name": "suffixtext",
+          "description": "suffix string after the number counting",
+          "jsDoc": "/**\n       * suffix string after the number counting\n       */",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "type": "any[]"
+        },
+        {
+          "name": "rootMargin",
+          "type": "string"
+        },
+        {
+          "name": "ratio",
+          "type": "number"
+        },
+        {
+          "name": "visibleLimit",
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "count-up\n`count up js wrapper with minimal styling`",
+      "description": "`count-up`",
+      "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "material-word\n`Outputs word in material alphabet`",
+      "description": "`material-word`",
+      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "halfLetters",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "material-word\n`Outputs word in material alphabet`",
+      "description": "`material-word`",
+      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "halfLetters",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "material-word\n`Outputs word in material alphabet`",
+      "description": "`material-word`",
+      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "any[]"
+        },
+        {
+          "name": "halfLetters",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`",
+      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "download-label",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "downloadLabel",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`",
+      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "download-label",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "downloadLabel",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`",
+      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "download-label",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title prior to the PDF",
+          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
+          "type": "string"
+        },
+        {
+          "name": "card",
+          "description": "Whether or not to present this as a card.",
+          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "downloadLabel",
+          "description": "Download Label.",
+          "jsDoc": "/**\n       * Download Label.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "description": "Active Page",
+          "jsDoc": "/**\n       * Active Page\n       */",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "File to present",
+          "jsDoc": "/**\n       * File to present\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

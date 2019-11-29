@@ -1,0 +1,95 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "figure-label",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "figure-label\n`Figure label element to mark media assets within content.`",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "figure-label",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "figure-label\n`Figure label element to mark media assets within content.`",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "figure-label",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "figure-label\n`Figure label element to mark media assets within content.`",
+      "description": "`figure-label`",
+      "jsDoc": "/**\n * `figure-label`\n * @customElement figure-label\n * `Figure label element to mark media assets within content.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

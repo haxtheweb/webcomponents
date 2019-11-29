@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-contentblock\n`An incredibly basic content block`",
+      "description": "`lrndesign-contentblock`",
+      "jsDoc": "/**\n * `lrndesign-contentblock`\n * @customElement lrndesign-contentblock\n * `An incredibly basic content block`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-contentblock\n`An incredibly basic content block`",
+      "description": "`lrndesign-contentblock`",
+      "jsDoc": "/**\n * `lrndesign-contentblock`\n * @customElement lrndesign-contentblock\n * `An incredibly basic content block`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-contentblock\n`An incredibly basic content block`",
+      "description": "`lrndesign-contentblock`",
+      "jsDoc": "/**\n * `lrndesign-contentblock`\n * @customElement lrndesign-contentblock\n * `An incredibly basic content block`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Heading for this block",
+          "jsDoc": "/**\n       * Heading for this block\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

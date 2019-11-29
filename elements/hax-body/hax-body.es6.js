@@ -1,4 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
+// LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import {
   encapScript,
@@ -6,6 +7,7 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `hax-body`
+ * @customElement hax-body
  * `Manager of the body area that can be modified`
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
@@ -41,6 +43,7 @@ class HaxBody extends SimpleColors {
         }
         :host {
           display: block;
+          position: relative;
           min-height: 32px;
           min-width: 32px;
           outline: none;
@@ -233,11 +236,12 @@ class HaxBody extends SimpleColors {
           padding: 16px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(.hovered) {
-          background-color: var(
-            --hax-body-target-background-color
-          ) !important;
+          background-color: var(--hax-body-target-background-color) !important;
           outline: dashed 2px var(--hax-body-active-border-color);
           z-index: 2;
+        }
+        .hax-context-menu:not(:defined) {
+          display: none;
         }
       `
     ];
@@ -247,9 +251,12 @@ class HaxBody extends SimpleColors {
    */
   constructor() {
     super();
+    // lock to ensure we don't flood events on hitting the up / down arrows
+    // as we use a mutation observer to manage draggable bindings
     this.___moveLock = false;
     this.editMode = false;
     this.globalPreferences = {};
+    // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
     this.activeNode = null;
     this.activeContainerNode = null;
@@ -1940,7 +1947,7 @@ class HaxBody extends SimpleColors {
           children[i].addEventListener("dragenter", this.dragEnter.bind(this));
           children[i].addEventListener("dragleave", this.dragLeave.bind(this));
           children[i].addEventListener("dragend", this.dragEnd.bind(this));
-          children[i].addEventListener("dragover", function (e) {
+          children[i].addEventListener("dragover", function(e) {
             e.preventDefault();
           });
         } else {
@@ -1951,7 +1958,7 @@ class HaxBody extends SimpleColors {
           children[i].removeAttribute("dragenter", this.dragEnter.bind(this));
           children[i].removeAttribute("dragleave", this.dragLeave.bind(this));
           children[i].removeAttribute("dragend", this.dragEnd.bind(this));
-          children[i].removeAttribute("dragover", function (e) {
+          children[i].removeAttribute("dragover", function(e) {
             e.preventDefault();
           });
         }
@@ -1968,12 +1975,13 @@ class HaxBody extends SimpleColors {
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        typeof target !== typeof undefined &&
-        target !== null &&
-        typeof local !== typeof undefined &&
-        target !== local &&
-        target !== local.parentNode &&
-        target.parentNode === this || local.parentNode === this
+        (typeof target !== typeof undefined &&
+          target !== null &&
+          typeof local !== typeof undefined &&
+          target !== local &&
+          target !== local.parentNode &&
+          target.parentNode === this) ||
+        local.parentNode === this
       ) {
         // incase this came from a grid plate, drop the slot so it works
         target.removeAttribute("slot");
@@ -1986,7 +1994,7 @@ class HaxBody extends SimpleColors {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover");
+          children[i].classList.remove("mover", "hovered");
         }
       }
       // position arrows / set focus in case the DOM got updated above
@@ -1996,8 +2004,8 @@ class HaxBody extends SimpleColors {
     }
   }
   /**
-    * Enter an element, meaning we've over it while dragging
-    */
+   * Enter an element, meaning we've over it while dragging
+   */
   dragEnter(e) {
     if (this.editMode) {
       e.preventDefault();
@@ -2140,8 +2148,11 @@ class HaxBody extends SimpleColors {
     }
   }
   /**
-   * walk parents and find the correct position from top of document
-   * https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
+   * Get position from top and left of the page based on position:relative; being
+   * set in a parent.
+   *
+   * @notice This only works correctly across browsers because hax-body
+   * is position:relative in :host.
    */
   _getPosition(element) {
     let xPosition =

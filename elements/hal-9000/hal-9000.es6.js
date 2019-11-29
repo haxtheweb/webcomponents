@@ -6,9 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `hal-9000`
+ * @customElement hal-9000
  * `Robot assistant tag, hopefully not evil`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class Hal9000 extends LitElement {

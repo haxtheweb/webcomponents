@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "lrndesign-course-banner",
+      "description": "`lrndesign-course-banner`",
+      "jsDoc": "/**\n * `lrndesign-course-banner`\n * @customElement lrndesign-course-banner\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-course-banner",
+      "description": "`lrndesign-course-banner`",
+      "jsDoc": "/**\n * `lrndesign-course-banner`\n * @customElement lrndesign-course-banner\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "lrndesign-course-banner",
+      "description": "`lrndesign-course-banner`",
+      "jsDoc": "/**\n * `lrndesign-course-banner`\n * @customElement lrndesign-course-banner\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "description": "Text representation of the color like red or blue",
+          "jsDoc": "/**\n       * Text representation of the color like red or blue\n       */",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Banner image",
+          "jsDoc": "/**\n       * Banner image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the course",
+          "jsDoc": "/**\n       * Name of the course\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the course, longer description.",
+          "jsDoc": "/**\n       * Title of the course, longer description.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

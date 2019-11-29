@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "data-viz\n`display pouch-db data using graphs`",
+      "description": "`data-viz`",
+      "jsDoc": "/**\n * `data-viz`\n * @customElement data-viz\n * `display pouch-db data using graphs`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "data-viz\n`display pouch-db data using graphs`",
+      "description": "`data-viz`",
+      "jsDoc": "/**\n * `data-viz`\n * @customElement data-viz\n * `display pouch-db data using graphs`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "data-viz\n`display pouch-db data using graphs`",
+      "description": "`data-viz`",
+      "jsDoc": "/**\n * `data-viz`\n * @customElement data-viz\n * `display pouch-db data using graphs`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

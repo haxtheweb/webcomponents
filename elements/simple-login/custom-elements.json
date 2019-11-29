@@ -1,0 +1,196 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-login\n`a simple login form`",
+      "description": "`simple-login`",
+      "jsDoc": "/**\n * `simple-login`\n * @customElement simple-login\n * `a simple login form`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-login\n`a simple login form`",
+      "description": "`simple-login`",
+      "jsDoc": "/**\n * `simple-login`\n * @customElement simple-login\n * `a simple login form`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the loginscreen",
+          "jsDoc": "/**\n       * Title of the loginscreen\n       */",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "jsDoc": "/**\n       * Subtitle of the loginscreen\n       */",
+          "type": "string"
+        },
+        {
+          "name": "error-msg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "jsDoc": "/**\n       * Error message to show (example : \"Invalid username\")\n       */",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "description": "Content of the username field",
+          "jsDoc": "/**\n       * Content of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "description": "Content of the password field",
+          "jsDoc": "/**\n       * Content of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "jsDoc": "/**\n       * When true, all fields are disabled and the progress bar is visible\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "user-input-label",
+          "description": "Placeholder of the username field",
+          "jsDoc": "/**\n       * Placeholder of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "user-input-err-msg",
+          "description": "Error message of the username field",
+          "jsDoc": "/**\n       * Error message of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "password-input-label",
+          "description": "Placeholder of the password field",
+          "jsDoc": "/**\n       * Placeholder of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "password-input-err-msg",
+          "description": "Error message of the password field",
+          "jsDoc": "/**\n       * Error message of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "login-btn-text",
+          "description": "Login button label",
+          "jsDoc": "/**\n       * Login button label\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title of the loginscreen",
+          "jsDoc": "/**\n       * Title of the loginscreen\n       */",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "jsDoc": "/**\n       * Subtitle of the loginscreen\n       */",
+          "type": "string"
+        },
+        {
+          "name": "errorMsg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "jsDoc": "/**\n       * Error message to show (example : \"Invalid username\")\n       */",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "description": "Content of the username field",
+          "jsDoc": "/**\n       * Content of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "description": "Content of the password field",
+          "jsDoc": "/**\n       * Content of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "jsDoc": "/**\n       * When true, all fields are disabled and the progress bar is visible\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "userInputLabel",
+          "description": "Placeholder of the username field",
+          "jsDoc": "/**\n       * Placeholder of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "userInputErrMsg",
+          "description": "Error message of the username field",
+          "jsDoc": "/**\n       * Error message of the username field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "passwordInputLabel",
+          "description": "Placeholder of the password field",
+          "jsDoc": "/**\n       * Placeholder of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "passwordInputErrMsg",
+          "description": "Error message of the password field",
+          "jsDoc": "/**\n       * Error message of the password field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loginBtnText",
+          "description": "Login button label",
+          "jsDoc": "/**\n       * Login button label\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-login-avatar\nInspiration from https://clicknathan.com/web-design/css-avatar-icons/",
+      "description": "`simple-login-avatar`",
+      "jsDoc": "/**\n * `simple-login-avatar`\n * @customElement simple-login-avatar\n * Inspiration from https://clicknathan.com/web-design/css-avatar-icons/\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "template",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-login\n`a simple login form`",
+      "description": "`simple-login`",
+      "jsDoc": "/**\n * `simple-login`\n * @customElement simple-login\n * `a simple login form`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

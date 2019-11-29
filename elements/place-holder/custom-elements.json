@@ -1,0 +1,227 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "place-holder\nPlaceholder for a piece of media in the future",
+      "description": "`place-holder`",
+      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
+      "attributes": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "drag-over",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "dragOver",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "place-holder-file-drop"
+        },
+        {
+          "name": "place-holder-replace"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "place-holder\nPlaceholder for a piece of media in the future",
+      "description": "`place-holder`",
+      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
+      "attributes": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "drag-over",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "dragOver",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "place-holder-file-drop"
+        },
+        {
+          "name": "place-holder-replace"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "place-holder\nPlaceholder for a piece of media in the future",
+      "description": "`place-holder`",
+      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
+      "attributes": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "drag-over",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "dragOver",
+          "type": "boolean"
+        },
+        {
+          "name": "directions",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "place-holder-file-drop"
+        },
+        {
+          "name": "place-holder-replace"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

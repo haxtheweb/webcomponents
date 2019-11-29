@@ -9,12 +9,13 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `haxor-slevin`
+ * @customElement haxor-slevin
  * `Tech blogger theme`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

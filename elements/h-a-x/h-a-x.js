@@ -5,13 +5,14 @@
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `h-a-x`
+ * @customElement h-a-x
  * `Single tag to transform authoring`
  *
  * @microcopy - language worth noting:
  *  - HAX - Headless Authoring eXperience
  *  - Body - the editable area that can be worked on and gets saved as a string / blob
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {

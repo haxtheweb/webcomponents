@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "they-live",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "they-live\n`To demonstrate the hidden reality behind the component`",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "truth",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "truth",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "they-live\n`To demonstrate the hidden reality behind the component`",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "truth",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "truth",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "they-live\n`To demonstrate the hidden reality behind the component`",
+      "description": "`they-live`",
+      "jsDoc": "/**\n * `they-live`\n * @customElement they-live\n * `To demonstrate the hidden reality behind the component`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-html\n * @lit-element\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -1,0 +1,510 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "game-show-quiz-modal\n`Modal for the quiz show`",
+      "description": "`game-show-quiz-modal`",
+      "jsDoc": "/**\n * `game-show-quiz-modal`\n * @customElement game-show-quiz-modal\n * `Modal for the quiz show`\n *  @microcopy - the mental model for this element\n *  - game show - a display board in the style of Jeopardy\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "description": "`game-show-quiz`",
+      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-directions-data",
+          "type": "string"
+        },
+        {
+          "name": "game-directions",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attempts-data",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remaining-attempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directions-title",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "question-title",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-board",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "game-board-data",
+          "type": "{}"
+        },
+        {
+          "name": "game-data",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-score-board-backend",
+          "type": "string"
+        },
+        {
+          "name": "active-question",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameDirectionsData",
+          "type": "string"
+        },
+        {
+          "name": "gameDirections",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attemptsData",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remainingAttempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directionsTitle",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "questionTitle",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameBoard",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "gameBoardData",
+          "type": "{}"
+        },
+        {
+          "name": "gameData",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameScoreBoardBackend",
+          "type": "string"
+        },
+        {
+          "name": "activeQuestion",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "game-show-quiz-game-over"
+        },
+        {
+          "name": "simple-toast-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "description": "`game-show-quiz`",
+      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-directions-data",
+          "type": "string"
+        },
+        {
+          "name": "game-directions",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attempts-data",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remaining-attempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directions-title",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "question-title",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-board",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "game-board-data",
+          "type": "{}"
+        },
+        {
+          "name": "game-data",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-score-board-backend",
+          "type": "string"
+        },
+        {
+          "name": "active-question",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameDirectionsData",
+          "type": "string"
+        },
+        {
+          "name": "gameDirections",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attemptsData",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remainingAttempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directionsTitle",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "questionTitle",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameBoard",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "gameBoardData",
+          "type": "{}"
+        },
+        {
+          "name": "gameData",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameScoreBoardBackend",
+          "type": "string"
+        },
+        {
+          "name": "activeQuestion",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "game-show-quiz-game-over"
+        },
+        {
+          "name": "simple-toast-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "description": "`game-show-quiz`",
+      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-directions-data",
+          "type": "string"
+        },
+        {
+          "name": "game-directions",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attempts-data",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remaining-attempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directions-title",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "question-title",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-board",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "game-board-data",
+          "type": "{}"
+        },
+        {
+          "name": "game-data",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "game-score-board-backend",
+          "type": "string"
+        },
+        {
+          "name": "active-question",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameDirectionsData",
+          "type": "string"
+        },
+        {
+          "name": "gameDirections",
+          "type": "string"
+        },
+        {
+          "name": "token",
+          "type": "string"
+        },
+        {
+          "name": "attemptsData",
+          "type": "{}"
+        },
+        {
+          "name": "points",
+          "description": "Points object",
+          "jsDoc": "/**\n       * Points object\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "remainingAttempts",
+          "description": "Remaining attempts for the user",
+          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
+          "type": "number"
+        },
+        {
+          "name": "directionsTitle",
+          "description": "Title to use on the directions dialog.",
+          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "questionTitle",
+          "description": "Title to use on the question dialog.",
+          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameBoard",
+          "description": "Rows on the gameshow board",
+          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "gameBoardData",
+          "type": "{}"
+        },
+        {
+          "name": "gameData",
+          "description": "URL to load data for the game.",
+          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "gameScoreBoardBackend",
+          "type": "string"
+        },
+        {
+          "name": "activeQuestion",
+          "description": "Active item that is in the modal.",
+          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "game-show-quiz-game-over"
+        },
+        {
+          "name": "simple-toast-show"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

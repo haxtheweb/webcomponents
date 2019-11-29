@@ -1,0 +1,274 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "simple-colors\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.",
+      "description": "`simple-colors`",
+      "jsDoc": "/**\n * `simple-colors`\n * @customElement simple-colors\n * a shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/how.html getting started\n * @demo ./demo/colors.html all of the colors\n * @demo ./demo/picker.html simple-colors-picker\n * @demo ./demo/extending.html extending simple-colors\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-colors\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.",
+      "description": "`simple-colors`",
+      "jsDoc": "/**\n * `simple-colors`\n * @customElement simple-colors\n * a shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/how.html getting started\n * @demo ./demo/colors.html all of the colors\n * @demo ./demo/picker.html simple-colors-picker\n * @demo ./demo/extending.html extending simple-colors\n */",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-colors-picker\na select element for changing `simple-colors` attributes in demos\n\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.",
+      "description": "`simple-colors-picker`",
+      "jsDoc": "/**\n * `simple-colors-picker`\n * @customElement simple-colors-picker\n * a select element for changing `simple-colors` attributes in demos\n *\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n* \n * @extends SimpleColors\n\n * @demo ./demo/picker.html demo\n * @see \"../simple-colors.js\"\n * @see \"./demo/simple-colors-picker-demo.js\"\n */",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        },
+        {
+          "name": "aria-labelledby",
+          "description": "Optional. Sets the aria-labelledby attribute",
+          "jsDoc": "/**\n       * Optional. Sets the aria-labelledby attribute\n       */",
+          "type": "string"
+        },
+        {
+          "name": "block-label",
+          "description": "Display as a block",
+          "jsDoc": "/**\n       * Display as a block\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "Is the picker disabled?",
+          "jsDoc": "/**\n       * Is the picker disabled?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "expanded",
+          "description": "Is it expanded?",
+          "jsDoc": "/**\n       * Is it expanded?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Optional. The label for the picker input",
+          "jsDoc": "/**\n       * Optional. The label for the picker input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "description": "An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`",
+          "jsDoc": "/**\n       * An array of options for the picker, eg.: `\n[\n  {\n    \"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n    \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n    \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n  },...\n]`\n        */",
+          "type": "any[]"
+        },
+        {
+          "name": "shades",
+          "description": "Show all shades instead of just main accent-colors",
+          "jsDoc": "/**\n       * Show all shades instead of just main accent-colors\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "jsDoc": "/**\n       * The value of the option.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        },
+        {
+          "name": "ariaLabelledby",
+          "description": "Optional. Sets the aria-labelledby attribute",
+          "jsDoc": "/**\n       * Optional. Sets the aria-labelledby attribute\n       */",
+          "type": "string"
+        },
+        {
+          "name": "blockLabel",
+          "description": "Display as a block",
+          "jsDoc": "/**\n       * Display as a block\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "Is the picker disabled?",
+          "jsDoc": "/**\n       * Is the picker disabled?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "expanded",
+          "description": "Is it expanded?",
+          "jsDoc": "/**\n       * Is it expanded?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Optional. The label for the picker input",
+          "jsDoc": "/**\n       * Optional. The label for the picker input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "description": "An array of options for the picker, eg.: `\n[\n{\n\"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n\"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n\"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n},...\n]`",
+          "jsDoc": "/**\n       * An array of options for the picker, eg.: `\n[\n  {\n    \"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n    \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n    \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n  },...\n]`\n        */",
+          "type": "any[]"
+        },
+        {
+          "name": "shades",
+          "description": "Show all shades instead of just main accent-colors",
+          "jsDoc": "/**\n       * Show all shades instead of just main accent-colors\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "jsDoc": "/**\n       * The value of the option.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "option-focus"
+        },
+        {
+          "name": "expand"
+        },
+        {
+          "name": "collapse"
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "value-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "simple-colors-polymer\nshared set of styles for Polymer",
+      "description": "`simple-colors-polymer`",
+      "jsDoc": "/**\n * `simple-colors-polymer`\n * @customElement simple-colors-polymer\n * shared set of styles for Polymer @lrnwebcomponents\n *\n\n * @polymer\n */",
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "jsDoc": "/**\n       * a selected accent-color: grey, red, pink, purple, etc.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "jsDoc": "/**\n       * make the default theme dark?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "accentColor",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "jsDoc": "/**\n       * a selected accent-color: grey, red, pink, purple, etc.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "jsDoc": "/**\n       * make the default theme dark?\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "simple-colors\na shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.",
+      "description": "`simple-colors`",
+      "jsDoc": "/**\n * `simple-colors`\n * @customElement simple-colors\n * a shared set of styles for `@lrnwebcomponents`\n### Styling\nSee demo of \"all of the colors\" (`demo/colors.html`) for styling.\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/how.html getting started\n * @demo ./demo/colors.html all of the colors\n * @demo ./demo/picker.html simple-colors-picker\n * @demo ./demo/extending.html extending simple-colors\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "accentColor",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "type": "boolean"
+        },
+        {
+          "name": "colors",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}
