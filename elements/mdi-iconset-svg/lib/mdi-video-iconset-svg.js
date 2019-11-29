@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-video-iconset-svg` is a iconset for the Material Design Icons collection with the "video" tag
+ * `mdi-video-iconset-svg`
+ * @customElement mdi-video-iconset-svg is a iconset for the Material Design Icons collection with the "video" tag
  *
  * Example:
  *   <iron-icon icon="mdi-video:"></iron-icon>

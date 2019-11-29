@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `meme-maker`
+ * @customElement meme-maker
  * Connects lrndesign-gallery to HAX
  * @demo demo/index.html
  * @microcopy - the mental model for this element

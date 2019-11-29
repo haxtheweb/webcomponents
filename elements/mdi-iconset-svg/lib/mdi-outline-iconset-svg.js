@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-outline-iconset-svg` is a iconset for the Material Design Icons collection with the "outline" tag
+ * `mdi-outline-iconset-svg`
+ * @customElement mdi-outline-iconset-svg is a iconset for the Material Design Icons collection with the "outline" tag
  *
  * Example:
  *   <iron-icon icon="mdi-outline:"></iron-icon>

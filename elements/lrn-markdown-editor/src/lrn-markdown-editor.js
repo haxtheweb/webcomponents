@@ -9,12 +9,13 @@ import "@polymer/iron-pages/iron-pages.js";
 import "./lib/lrn-markdown-editor-editor.js";
 /**
  * `lrn-markdown-editor`
+ * @customElement lrn-markdown-editor
  * `Side by side markdown to HTML editor + preview pane`
  *
  * @microcopy - language worth noting:
  *  - often used for quick field editing interfaces w/ minimal input allowed
  * @polymer
- * @customElement
+
  * @demo demo/index.html
  */
 class LrnMarkdownEditor extends LitElement {

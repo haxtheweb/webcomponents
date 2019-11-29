@@ -7,6 +7,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import "@lrnwebcomponents/web-map/web-map.js";
 /**
  * `map-element`
+ * @customElement map-element
  * `A mapping data bound element`
  *
  * @demo demo/index.html

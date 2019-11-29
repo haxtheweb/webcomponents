@@ -25,7 +25,7 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
  * `haxcms-legacy-player`
  * `A simple slide playing theme`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

@@ -9,6 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `simple-blog-footer`
+ * @customElement simple-blog-footer
  * `Footer to blog posts`
  * @demo demo/index.html
  * @microcopy - the mental model for this element

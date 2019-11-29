@@ -3,6 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 /**
  * `simple-blog-listing`
+ * @customElement simple-blog-listing
  * `A simple blog and associated elements`
  */
 class SimpleBlogListing extends SimpleColors {

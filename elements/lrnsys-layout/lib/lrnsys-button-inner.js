@@ -5,6 +5,7 @@ import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `lrnsys-button-inner`
+ * @customElement lrnsys-button-inner
  */
 class LrnsysButtonInner extends PolymerElement {
   static get template() {

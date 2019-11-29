@@ -6,12 +6,13 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "../simple-modal.js";
 /**
  * `simple-modal-template`
+ * @customElement simple-modal-template
  * `A simple modal that ensures accessibility and stack order context appropriately`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/template.html
  */

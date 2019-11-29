@@ -3,9 +3,10 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/relative-heading/relative-heading.js";
 /**
  * `lrndesign-imagemap-hotspot`
+ * @customElement lrndesign-imagemap-hotspot
  * creates an accessible image map
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

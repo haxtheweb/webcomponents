@@ -9,6 +9,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-button-inner.js";
 /**
  * `lrnsys-drawer`
+ * @customElement lrnsys-drawer
  *
  * @demo demo/index.html
  */

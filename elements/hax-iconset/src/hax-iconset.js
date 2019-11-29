@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * `hax-iconset` is a iconset for HAX
+ * `hax-iconset`
+ * @customElement hax-iconset is a iconset for HAX
  *
  * Example:
  *   <script>import "@lrnwebcomponents/hax-iconset/hax-iconset.js";</script>

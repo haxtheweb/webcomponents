@@ -3,6 +3,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import "@polymer/paper-styles/shadow.js";
 /**
  * `lrndesign-blockquote`
+ * @customElement lrndesign-blockquote
  * `A structured blockquote element`
  *
  * @PolymerElement

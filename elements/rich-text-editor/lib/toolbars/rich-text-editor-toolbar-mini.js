@@ -12,7 +12,7 @@ import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/mini.html mini floating toolbar
  */

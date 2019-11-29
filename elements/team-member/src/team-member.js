@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `team-member`
+ * @customElement team-member
  * `A simple presentation of a team member and basic info`
  * @demo demo/index.html
  */

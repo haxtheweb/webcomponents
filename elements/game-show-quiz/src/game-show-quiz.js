@@ -15,6 +15,7 @@ import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";
 /**
  * `game-show-quiz`
+ * @customElement game-show-quiz
  * `Simple game show with questions and answers`
  * @demo demo/index.html
  * @microcopy - the mental model for this element

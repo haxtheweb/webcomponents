@@ -9,7 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

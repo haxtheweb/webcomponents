@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-action-iconset-svg` is a iconset for the Material Design Icons collection with the "action" tag
+ * `mdi-action-iconset-svg`
+ * @customElement mdi-action-iconset-svg is a iconset for the Material Design Icons collection with the "action" tag
  * Example:
  *   <iron-icon icon="mdi-action:airplane"></iron-icon>
  *

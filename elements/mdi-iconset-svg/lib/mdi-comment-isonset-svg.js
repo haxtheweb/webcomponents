@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-comment-iconset-svg` is a iconset for the Material Design Icons collection with the "comment" tag
+ * `mdi-comment-iconset-svg`
+ * @customElement mdi-comment-iconset-svg is a iconset for the Material Design Icons collection with the "comment" tag
  *
  * Example:
  *   <iron-icon icon="mdi-comment:comment-text"></iron-icon>

@@ -7,6 +7,7 @@ import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lrn-calendar-date`
+ * @customElement lrn-calendar-date
  * `A LRN element`
  *
  * @demo demo/index.html

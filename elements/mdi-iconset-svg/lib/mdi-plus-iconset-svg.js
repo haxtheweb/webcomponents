@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-plus-iconset-svg` is a iconset for the Material Design Icons collection with the "plus" tag
+ * `mdi-plus-iconset-svg`
+ * @customElement mdi-plus-iconset-svg is a iconset for the Material Design Icons collection with the "plus" tag
  *
  * Example:
  *   <iron-icon icon="mdi-plus:plus-circle"></iron-icon>

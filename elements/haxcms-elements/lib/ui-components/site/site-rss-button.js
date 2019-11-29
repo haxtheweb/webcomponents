@@ -11,7 +11,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
  *
- * @customElement
+
  */
 class SiteRSSButton extends LitElement {
   /**

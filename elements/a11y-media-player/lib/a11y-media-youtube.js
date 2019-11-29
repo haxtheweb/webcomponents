@@ -21,12 +21,13 @@ window.A11yMediaYoutube.requestAvailability = () => {
 };
 /**
  * `a11y-media-youtube`
+ * @customElement a11y-media-youtube
  * `A utility that manages multiple instances of a11y-media-player on a single page.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class A11yMediaYoutube extends PolymerElement {

@@ -6,9 +6,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 /**
  * `awesome-explosion`
+ * @customElement awesome-explosion
  * `An awesome, explosion.`
  *
- * @customElement
+
  * @polymer
  * @polymerLegacy
  * @silly

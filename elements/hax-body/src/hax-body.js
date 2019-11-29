@@ -7,6 +7,7 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `hax-body`
+ * @customElement hax-body
  * `Manager of the body area that can be modified`
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.

@@ -4,6 +4,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "./lib/stop-icon.js";
 /**
  * `stop-note`
+ * @customElement stop-note
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
  * @microcopy - the mental model for this element

@@ -7,6 +7,7 @@ import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `lrndesign-paperstack`
+ * @customElement lrndesign-paperstack
  * `Stack of papers visually`
  *
  * @demo demo/index.html

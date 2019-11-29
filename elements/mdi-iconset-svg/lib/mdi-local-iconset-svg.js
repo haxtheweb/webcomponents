@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-local-iconset-svg` is a iconset for the Material Design Icons collection with the "local" tag
+ * `mdi-local-iconset-svg`
+ * @customElement mdi-local-iconset-svg is a iconset for the Material Design Icons collection with the "local" tag
  *
  * Example:
  *   <iron-icon icon="mdi-local:store"></iron-icon>

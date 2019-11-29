@@ -12,6 +12,7 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-textop`
+ * @customElement hax-context-item-textop
  * `A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`
  * @microcopy - the mental model for this element
  * - context - menu in the page the user can select an item from, this being 1 option in that list

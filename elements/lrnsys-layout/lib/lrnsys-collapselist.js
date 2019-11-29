@@ -10,6 +10,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 import "./lrnsys-collapselist-item.js";
 /**
  * `lrnsys-collapselist`
+ * @customElement lrnsys-collapselist
  */
 class LrnsysCollapselist extends PolymerElement {
   static get template() {

@@ -2,6 +2,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { html, css } from "lit-element/lit-element.js";
 /**
  * `place-holder`
+ * @customElement place-holder
  * Placeholder for a piece of media in the future
  *
  * @demo demo/index.html

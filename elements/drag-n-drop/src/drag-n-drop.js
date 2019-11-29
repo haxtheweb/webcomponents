@@ -7,12 +7,13 @@
 
 /**
  * `drag-n-drop`
+ * @customElement drag-n-drop
  * `drag and drop elements and manager`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class DragNDrop extends HTMLElement {

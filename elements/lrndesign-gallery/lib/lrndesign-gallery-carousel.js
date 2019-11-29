@@ -10,6 +10,7 @@ import "./lrndesign-gallery-zoom.js";
 export { LrndesignGalleryCarousel };
 /**
  * `lrndesign-gallery-carousel`
+ * @customElement lrndesign-gallery-carousel
  * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
  *
  * @microcopy - language worth noting:```
@@ -37,7 +38,7 @@ export { LrndesignGalleryCarousel };
   "type": "image",                                  //required, "image", "video", "audio", etc.
 }]```
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html demo
  */

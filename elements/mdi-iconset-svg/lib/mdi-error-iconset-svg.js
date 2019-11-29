@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-error-iconset-svg` is a iconset for the Material Design Icons collection with the "error" tag
+ * `mdi-error-iconset-svg`
+ * @customElement mdi-error-iconset-svg is a iconset for the Material Design Icons collection with the "error" tag
  *
  * Example:
  *   <iron-icon icon="mdi-error:alert"></iron-icon>

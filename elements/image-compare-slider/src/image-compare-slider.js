@@ -2,10 +2,11 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `image-compare-slider`
+ * @customElement image-compare-slider
  * Layers images over each other with a slider interface to compare them
  * @microcopy - the mental model for this element
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

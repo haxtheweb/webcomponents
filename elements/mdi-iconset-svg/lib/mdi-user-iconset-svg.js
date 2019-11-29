@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-user-iconset-svg` is a iconset for the Material Design Icons collection with the "user" tag
+ * `mdi-user-iconset-svg`
+ * @customElement mdi-user-iconset-svg is a iconset for the Material Design Icons collection with the "user" tag
  *
  * Example:
  *   <iron-icon icon="mdi-user:account-circle"></iron-icon>

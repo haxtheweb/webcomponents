@@ -12,7 +12,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * `site-outline-block`
  * `Menu on top of the site typically a bar of options`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

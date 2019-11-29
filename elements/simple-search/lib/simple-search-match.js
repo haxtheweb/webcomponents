@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `simple-search-match`
+ * @customElement simple-search-match
  * matched term that can be searched with simple-search
  * 
 ### Styling
@@ -24,7 +25,7 @@ Custom property | Description | Default
 `--simple-search-match-border-radius` | border-radius for matched content | 0.16px
 `--simple-search-match-padding` | padding for matched conten | 0.16px 4px
  *
- * @customElement
+
  * @demo ./demo/index.html
  */
 class SimpleSearchMatch extends LitElement {

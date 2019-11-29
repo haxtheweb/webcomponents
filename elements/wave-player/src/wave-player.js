@@ -10,9 +10,10 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `wave-player`
+ * @customElement wave-player
  * `A player for visualizing a sound file`
  *
- * @customElement
+
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html

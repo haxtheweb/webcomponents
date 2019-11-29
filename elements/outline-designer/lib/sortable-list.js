@@ -8,11 +8,12 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import * as Gestures from "@polymer/polymer/lib/utils/gestures.js";
 /**
  * `outline-designer`
+ * @customElement outline-designer
  * `tools to modify and visualize JSON Outline Schema for editing`
  *
  * @microcopy - language worth noting:
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

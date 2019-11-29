@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-hardware-iconset-svg` is a iconset for the Material Design Icons collection with the "hardware" tag
+ * `mdi-hardware-iconset-svg`
+ * @customElement mdi-hardware-iconset-svg is a iconset for the Material Design Icons collection with the "hardware" tag
  *
  * Example:
  *   <iron-icon icon="mdi-hardware:harddisk"></iron-icon>

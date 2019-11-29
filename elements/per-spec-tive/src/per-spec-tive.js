@@ -3,6 +3,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 /**
  * `per-spec-tive`
+ * @customElement per-spec-tive
  * Giving learners a new perspective on education.
  * @demo ../../demo/index.html
  * @microcopy - the mental model for this app

@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `lrndesign-contentblock`
+ * @customElement lrndesign-contentblock
  * `An incredibly basic content block`
  * @demo demo/index.html
  */

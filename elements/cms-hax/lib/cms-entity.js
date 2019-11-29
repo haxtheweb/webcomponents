@@ -6,6 +6,7 @@ import "@polymer/paper-spinner/paper-spinner.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `cms-entity`
+ * @customElement cms-entity
  * `Render and process a  / entity from a content management system.`
  */
 class CMSEntity extends PolymerElement {

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-folder-iconset-svg` is a iconset for the Material Design Icons collection with the "folder" tag
+ * `mdi-folder-iconset-svg`
+ * @customElement mdi-folder-iconset-svg is a iconset for the Material Design Icons collection with the "folder" tag
  *
  * Example:
  *   <iron-icon icon="mdi-folder:folder-outline"></iron-icon>

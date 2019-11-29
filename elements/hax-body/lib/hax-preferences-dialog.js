@@ -6,6 +6,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-export-dialog`
+ * @customElement hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
 class HaxPreferencesDialog extends SimpleColors {

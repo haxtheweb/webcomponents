@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 /**
  * `hax-export-dialog`
+ * @customElement hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
 class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {

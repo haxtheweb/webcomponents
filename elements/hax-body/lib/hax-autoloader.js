@@ -5,6 +5,7 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 /**
  * `hax-autoloader`
+ * @customElement hax-autoloader
  * `Automatically load elements based on the most logical location with future fallback support for CDNs.`
  * @microcopy - the mental model for this element
  * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed

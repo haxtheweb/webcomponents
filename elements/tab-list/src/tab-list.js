@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 /**
  * `tab-list`
+ * @customElement tab-list
  * `A simple listing of tabed links / items`
  * @demo demo/index.html
  */

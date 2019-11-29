@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `lrndesign-gallery-shared-styles`
+ * @customElement lrndesign-gallery-shared-styles
  * `a shared set of styles for lrndesign-gallery`
  *
  * @microcopy - language worth noting:

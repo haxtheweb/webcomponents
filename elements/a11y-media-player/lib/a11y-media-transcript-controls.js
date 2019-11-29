@@ -9,6 +9,7 @@ import "./a11y-media-button.js";
 
 /**
  * `a11y-media-transcript-controls`
+ * @customElement a11y-media-transcript-controls
  * `A controls for the transcript element.`
  *
  * @microcopy - language worth noting:
@@ -26,7 +27,7 @@ import "./a11y-media-button.js";
 </a11y-media-transcript-controls>```
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaTranscriptControls extends A11yMediaBehaviors {

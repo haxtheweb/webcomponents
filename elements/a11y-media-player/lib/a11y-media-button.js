@@ -11,13 +11,14 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 export { A11yMediaButton };
 /**
  * `a11y-media-button`
+ * @customElement a11y-media-button
  * `A button used in a11y-media-controls and a11y-media-transcript-controls.`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaButton extends A11yMediaBehaviors {

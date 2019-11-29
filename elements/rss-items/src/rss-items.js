@@ -11,6 +11,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
  * `rss-items`
+ * @customElement rss-items
  * `visualize RSS items`
  * 
  * Example:
@@ -41,7 +42,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

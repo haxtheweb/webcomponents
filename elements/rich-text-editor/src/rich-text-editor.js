@@ -10,12 +10,13 @@ import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
+ * @customElement rich-text-editor
  * `a standalone rich text editor`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/mini.html mini floating toolbar

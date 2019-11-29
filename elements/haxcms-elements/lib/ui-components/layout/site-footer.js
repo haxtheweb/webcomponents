@@ -9,7 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-footer`
  * `A basic site footer`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

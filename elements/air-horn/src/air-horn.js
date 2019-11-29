@@ -4,12 +4,13 @@
  */
 /**
  * `air-horn`
+ * @customElement air-horn
  * `demonstrative purposes via meme`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class AirHorn extends HTMLElement {

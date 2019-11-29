@@ -9,6 +9,7 @@ import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
 export { A11yMediaTranscriptCue };
 /**
  * `a11y-media-transcript-cue`
+ * @customElement a11y-media-transcript-cue
  * `A single cue in a11y-media-transcriptas static text or as an button that controls media.`
  *
  * @microcopy - language worth noting:
@@ -36,7 +37,7 @@ export { A11yMediaTranscriptCue };
 --a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaTranscriptCue extends A11yMediaBehaviors {

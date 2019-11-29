@@ -21,12 +21,13 @@ window.A11yMediaStateManager.requestAvailability = () => {
 };
 /**
  * `a11y-media-state-manager`
+ * @customElement a11y-media-state-manager
  * `A utility that manages the state of multiple a11y-media-players on a single page.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class A11yMediaStateManager extends PolymerElement {

@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js";
 /**
  * `hax-stax-browser`
+ * @customElement hax-stax-browser
  * `Select a stack / template to insert`
  * @microcopy - the mental model for this element
  * - stax - silly name for the general public when talking about custom elements and what it provides in the end.

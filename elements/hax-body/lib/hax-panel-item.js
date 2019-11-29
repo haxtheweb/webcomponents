@@ -9,6 +9,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 
 /**
  * `hax-panel-item`
+ * @customElement hax-panel-item
  * `A single button in the hax panel for consistency.`
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed

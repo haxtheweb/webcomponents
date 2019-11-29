@@ -213,7 +213,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       */
 
       /**
-       * `target` is the target url to upload the files to.
+       * `target`
+       * @customElement target is the target url to upload the files to.
        * Additionally by adding '<name>' in your url, it will be replaced by
        * the file name.
        */
@@ -223,7 +224,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `accept` is the set of comma separated file extensions or mime types
+       * `accept`
+       * @customElement accept is the set of comma separated file extensions or mime types
        * to filter as accepted.
        */
       accept: {
@@ -232,7 +234,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `droppable` indicates whether or not to allow file drop.
+       * `droppable`
+       * @customElement droppable indicates whether or not to allow file drop.
        */
       droppable: {
         type: Boolean,
@@ -240,7 +243,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `dropText` is the  text to display in the file drop area.
+       * `dropText`
+       * @customElement dropText is the  text to display in the file drop area.
        */
       dropText: {
         type: String,
@@ -248,7 +252,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `multi` indicates whether or not to allow multiple files to be uploaded.
+       * `multi`
+       * @customElement multi indicates whether or not to allow multiple files to be uploaded.
        */
       multi: {
         type: Boolean,
@@ -256,7 +261,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `files` is the list of files to be uploaded
+       * `files`
+       * @customElement files is the list of files to be uploaded
        */
       files: {
         type: Array,
@@ -267,7 +273,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `raised` indicates whether or not the button should be raised
+       * `raised`
+       * @customElement raised indicates whether or not the button should be raised
        */
       raised: {
         type: Boolean,
@@ -275,7 +282,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `noink` indicates that the button should not have an ink effect
+       * `noink`
+       * @customElement noink indicates that the button should not have an ink effect
        */
       noink: {
         type: Boolean,
@@ -283,7 +291,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `headers` is a key value map of header names and values
+       * `headers`
+       * @customElement headers is a key value map of header names and values
        */
       headers: {
         type: Object,
@@ -291,7 +300,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `retryText` is the text for the tooltip to retry an upload
+       * `retryText`
+       * @customElement retryText is the text for the tooltip to retry an upload
        */
       retryText: {
         type: String,
@@ -299,7 +309,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `removeText` is the text for the tooltip to remove an upload
+       * `removeText`
+       * @customElement removeText is the text for the tooltip to remove an upload
        */
       removeText: {
         type: String,
@@ -307,7 +318,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `successText` is the text for the tooltip of a successful upload
+       * `successText`
+       * @customElement successText is the text for the tooltip of a successful upload
        */
       successText: {
         type: String,
@@ -315,7 +327,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `errorText` is the text to display for a failed upload
+       * `errorText`
+       * @customElement errorText is the text to display for a failed upload
        */
       errorText: {
         type: String,
@@ -323,7 +336,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `_shownDropText` indicates whether or not the drop text should be shown
+       * `_shownDropText`
+       * @customElement _shownDropText indicates whether or not the drop text should be shown
        */
       _shownDropText: {
         type: Boolean,
@@ -331,7 +345,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `additional` object of key-pair values to send additional values along with file.
+       * `additional`
+       * @customElement additional object of key-pair values to send additional values along with file.
        */
       additional: {
         type: Object,
@@ -339,7 +354,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `fileDataName` is the name for the file data in the `formData` object.
+       * `fileDataName`
+       * @customElement fileDataName is the name for the file data in the `formData` object.
        */
       fileDataName: {
         type: String,
@@ -347,7 +363,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `paperButtonAlt` allows changing the alt property on the paper button
+       * `paperButtonAlt`
+       * @customElement paperButtonAlt allows changing the alt property on the paper button
        */
       paperButtonAlt: {
         type: String,
@@ -355,7 +372,8 @@ class EcoJsonSchemaFile extends mixinBehaviors(
       },
 
       /**
-       * `paperButtonTitle` allows changing the title property on the paper button
+       * `paperButtonTitle`
+       * @customElement paperButtonTitle allows changing the title property on the paper button
        */
       paperButtonTitle: {
         type: String,

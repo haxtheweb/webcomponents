@@ -8,13 +8,14 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `simple-colors-picker`
+ * @customElement simple-colors-picker
  * a select element for changing `simple-colors` attributes in demos
  *
 ### Styling
 See demo of "all of the colors" (`demo/colors.html`) for styling.
 * 
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/picker.html demo
  * @see "../simple-colors.js"
  * @see "./demo/simple-colors-picker-demo.js"

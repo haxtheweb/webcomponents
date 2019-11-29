@@ -8,7 +8,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * `active-when-visible`
  * `Title of the site`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

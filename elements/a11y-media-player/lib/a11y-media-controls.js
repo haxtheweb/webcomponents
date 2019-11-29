@@ -18,12 +18,13 @@ import "./a11y-media-button.js";
 export { A11yMediaControls };
 /**
  * `a11y-media-controls`
+ * @customElement a11y-media-controls
  * `The controls bar for the a11y-media-player.`
  *
  * @microcopy - language worth noting:
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaControls extends A11yMediaBehaviors {

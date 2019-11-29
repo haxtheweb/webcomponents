@@ -2,6 +2,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-blog-overview`
+ * @customElement simple-blog-overview
  * `Overview / preview of the text of the post with title`
  *
  *  @microcopy - the mental model for this element

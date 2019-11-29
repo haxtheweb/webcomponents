@@ -5,9 +5,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `relative-heading`
+ * @customElement relative-heading
  * `outputs the correct heading hierarchy based on parent heading`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class RelativeHeading extends PolymerElement {

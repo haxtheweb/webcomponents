@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-shape-iconset-svg` is a iconset for the Material Design Icons collection with the "shape" tag
+ * `mdi-shape-iconset-svg`
+ * @customElement mdi-shape-iconset-svg is a iconset for the Material Design Icons collection with the "shape" tag
  *
  * Example:
  *   <iron-icon icon="mdi-shape:vector-square"></iron-icon>

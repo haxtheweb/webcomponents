@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-transportation-iconset-svg` is a iconset for the Material Design Icons collection with the "transportation" tag
+ * `mdi-transportation-iconset-svg`
+ * @customElement mdi-transportation-iconset-svg is a iconset for the Material Design Icons collection with the "transportation" tag
  *
  * Example:
  *   <iron-icon icon="mdi-transportation:bike"></iron-icon>

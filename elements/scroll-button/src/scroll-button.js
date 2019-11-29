@@ -8,12 +8,13 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `scroll-button`
+ * @customElement scroll-button
  * `button to scroll to an area or back to top`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

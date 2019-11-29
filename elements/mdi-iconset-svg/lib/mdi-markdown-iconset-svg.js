@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-markdown-iconset-svg` is a iconset for the Material Design Icons collection with the "markdown" tag
+ * `mdi-markdown-iconset-svg`
+ * @customElement mdi-markdown-iconset-svg is a iconset for the Material Design Icons collection with the "markdown" tag
  *
  * Example:
  *   <iron-icon icon="mdi-markdown:markdown"></iron-icon>

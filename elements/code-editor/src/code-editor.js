@@ -8,6 +8,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `code-editor`
+ * @customElement code-editor
  * `Wrapper on top of a code editor`
  *
  * @demo demo/index.html

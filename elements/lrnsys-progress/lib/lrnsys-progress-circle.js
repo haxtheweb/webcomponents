@@ -12,6 +12,7 @@ import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `lrnsys-progress-circle`
+ * @customElement lrnsys-progress-circle
  * `circle that the outline grows as the percentage ticks up`
  *
  */

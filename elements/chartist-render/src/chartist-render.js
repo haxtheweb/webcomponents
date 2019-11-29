@@ -8,6 +8,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `chartist-render`
+ * @customElement chartist-render
  * uses chartist library to render a chart
  *
 ### Styling
@@ -50,7 +51,7 @@ Custom property | Description | Default
 `--chartist-color-0` | background color for 15th series |  #a748ca
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
 
- * @customElement
+
  * @polymer
  * @extends SchemaBehaviors
  * @demo ./demo/index.html 

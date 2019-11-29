@@ -8,7 +8,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *
  * Partly influenced by https://github.com/PolymerVis/monaco-editor
  *
- * @customElement
+
  * @polymer
  *
  * @author Lars Gröber <larsgroeber7@gmail.com>

@@ -13,7 +13,7 @@ import { SimpleColors } from "../../simple-colors.js";
 See demo of "all of the colors" (`demo/colors.html`) for styling.
  * 
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/colors.html demo
  * @see "../../simple-colors.js"
  * @see "../simple-colors-picker.js"

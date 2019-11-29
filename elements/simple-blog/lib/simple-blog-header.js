@@ -5,6 +5,7 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 /**
  * `simple-blog-header`
+ * @customElement simple-blog-header
  * `A simple blog header to the front of the site`
  * @demo demo/index.html
  */

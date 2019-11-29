@@ -6,12 +6,13 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 /**
  * `agency-theme-body`
+ * @customElement agency-theme-body
  * `HAX theme to present an agency style site.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

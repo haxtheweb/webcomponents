@@ -8,12 +8,13 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
  * `a11y-media-behaviors`
+ * @customElement a11y-media-behaviors
  * `A set of properties common to player and transcript a11y-media components.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class A11yMediaBehaviors extends SimpleColorsPolymer {

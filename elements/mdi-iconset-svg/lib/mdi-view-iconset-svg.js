@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-view-iconset-svg` is a iconset for the Material Design Icons collection with the "view" tag
+ * `mdi-view-iconset-svg`
+ * @customElement mdi-view-iconset-svg is a iconset for the Material Design Icons collection with the "view" tag
  *
  * Example:
  *   <iron-icon icon="mdi-view:view-dashboard"></iron-icon>

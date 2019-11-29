@@ -10,12 +10,13 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 
 /**
  * `editable-list-item`
+ * @customElement editable-list-item
  * `an individual list item`
  *
  * @microcopy - language worth noting:
  *  - an item is a thing in a list of many which can be modified
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

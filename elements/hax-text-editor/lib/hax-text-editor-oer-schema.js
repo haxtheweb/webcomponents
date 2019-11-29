@@ -7,12 +7,13 @@ import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/l
 import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
 /**
  * `hax-text-editor-oer-schema`
+ * @customElement hax-text-editor-oer-schema
  * `a oer-schema button for hax text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class HaxTextEditorOerSchema extends RichTextEditorPromptButton {

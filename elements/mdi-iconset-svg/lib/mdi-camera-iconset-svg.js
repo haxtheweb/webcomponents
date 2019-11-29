@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-camera-iconset-svg` is a iconset for the Material Design Icons collection with the "camera" tag
+ * `mdi-camera-iconset-svg`
+ * @customElement mdi-camera-iconset-svg is a iconset for the Material Design Icons collection with the "camera" tag
  *
  * Example:
  *   <iron-icon icon="mdi-camera:contrast-circle"></iron-icon>

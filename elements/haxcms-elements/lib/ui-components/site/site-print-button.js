@@ -12,7 +12,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
  *
- * @customElement
+
  */
 class SitePrintButton extends LitElement {
   /**

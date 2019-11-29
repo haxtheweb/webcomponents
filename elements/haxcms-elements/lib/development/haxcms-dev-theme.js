@@ -14,7 +14,7 @@ import "@polymer/iron-list/iron-list.js";
  *  which allows you to build things that just work using JSON Outline Schema as it's "backend"
  * and then IF hax is around it'll show up :)`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {

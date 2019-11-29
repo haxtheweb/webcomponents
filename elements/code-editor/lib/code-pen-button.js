@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `code-pen-button`
+ * @customElement code-pen-button
  * `Post data to codepen to form a new pen`
  * @demo demo/index.html
  */

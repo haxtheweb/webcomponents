@@ -5,6 +5,7 @@ import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 /**
  * `cms-hax`
+ * @customElement cms-hax
  * @demo ../../demo/index.html
  */
 class CmsHax extends PolymerElement {

@@ -14,13 +14,14 @@ import "./lrndesign-gallery-shared-styles.js";
 export { LrndesignGalleryBehaviors };
 /**
  * `lerndesign-gallery-behaviors`
+ * @customElement lerndesign-gallery-behaviors
  * `A set of properties for lerndesign-gallery components.`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @extends SimpleColorsPolymer
- * @customElement
+
  * @polymer
  */
 class LrndesignGalleryBehaviors extends SimpleColorsPolymer {

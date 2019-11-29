@@ -3,6 +3,7 @@ import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `hax-stax-browser-item`
+ * @customElement hax-stax-browser-item
  * `A button on the hax-gizmo-browser app display`
  */
 class HaxStaxBrowserItem extends LitElement {

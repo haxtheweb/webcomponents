@@ -2,9 +2,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 /**
  * `simple-fields-form`
+ * @customElement simple-fields-form
  * `binding and submission capabilities on top of simple-fields`
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/form.html
  */

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-box-iconset-svg` is a iconset for the Material Design Icons collection with the "box" tag
+ * `mdi-box-iconset-svg`
+ * @customElement mdi-box-iconset-svg is a iconset for the Material Design Icons collection with the "box" tag
  *
  * Example:
  *   <iron-icon icon="mdi-box:zip-box"></iron-icon>

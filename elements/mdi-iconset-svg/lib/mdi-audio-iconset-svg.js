@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-audio-iconset-svg` is a iconset for the Material Design Icons collection with the "audio" tag
+ * `mdi-audio-iconset-svg`
+ * @customElement mdi-audio-iconset-svg is a iconset for the Material Design Icons collection with the "audio" tag
  *
  * Example:
  *   <iron-icon icon="mdi-audio:play"></iron-icon>

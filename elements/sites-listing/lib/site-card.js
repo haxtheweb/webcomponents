@@ -8,6 +8,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-image/iron-image.js";
 /**
  * `site-card`
+ * @customElement site-card
  * `A simple card for representing a site`
  * @demo demo/index.html
  */

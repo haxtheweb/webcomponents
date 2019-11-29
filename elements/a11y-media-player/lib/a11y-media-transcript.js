@@ -9,6 +9,7 @@ import "./a11y-media-transcript-cue.js";
 export { A11yMediaTranscript };
 /**
  * `a11y-media-transcript`
+ * @customElement a11y-media-transcript
  * `A transcript element to pair with a11y-media-player.`
  *
  * @microcopy - language worth noting:
@@ -29,7 +30,7 @@ export { A11yMediaTranscript };
 </a11y-media-transcript>```
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaTranscript extends A11yMediaBehaviors {

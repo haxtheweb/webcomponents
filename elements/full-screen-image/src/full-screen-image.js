@@ -7,12 +7,13 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/hardware-icons.js";
 /**
  * `full-screen-image`
+ * @customElement full-screen-image
  * `full screen banner image with down arrow`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

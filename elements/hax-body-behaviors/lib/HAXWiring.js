@@ -94,7 +94,8 @@
  *     }
  *   ]
  * }
- * `saveOptions` is a more open ended object which can be used to help
+ * `saveOptions`
+ * @customElement saveOptions is a more open ended object which can be used to help
  * support future flexibility / needs. The first major thing this supports
  * is the wipeSlot flag (default false). wipeSlot is used to inform HAX
  * that when it's going to save the current item to a backend (convert to html / text)
@@ -122,17 +123,20 @@
  * },
  *
  * Specialized functions
- * `preProcessHaxNodeToContent` - If you define this function on your element
+ * `preProcessHaxNodeToContent`
+ *  - If you define this function on your element
  * then it will run BEFORE the conversion to text. This can be used to do
  * specialized processing that may not be standard prior to conversion to content.
  *
- * `postProcesshaxNodeToContent` - If you define this function on your element
+ * `postProcesshaxNodeToContent`
+ *  - If you define this function on your element
  * then it will run AFTER the node has been converted to Content and allows you
  * to act upon the content even further. This could be to clean up / regex against
  * the text certain patterns or to look for certain elements at the end of
  * the conversion routine.
  *
- * `preProcessHaxInsertContent` - If an element needs to ensure it cleans up data
+ * `preProcessHaxInsertContent`
+ *  - If an element needs to ensure it cleans up data
  * during the conversion from preview to being inserted. This function passes in
  * the details object for creating an element from HAX schema. Examples could be
  * objects that contain focus which may cause issues when doing a pure clone as the

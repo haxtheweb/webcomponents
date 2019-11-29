@@ -142,6 +142,7 @@ class GridPlateLayoutOptions {
 }
 /**
  * `grid-plate`
+ * @customElement grid-plate
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
  */

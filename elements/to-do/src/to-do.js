@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `to-do`
+ * @customElement to-do
  * @demo demo/index.html
  */
 class ToDo extends SchemaBehaviors(PolymerElement) {

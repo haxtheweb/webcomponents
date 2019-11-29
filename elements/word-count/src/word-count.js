@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `word-count`
+ * @customElement word-count
  * `Count the words on whatever this wraps`
  *
  * @demo demo/index.html

@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-menu-button`
  * `Menu button based on the hierarchy`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-transform-iconset-svg` is a iconset for the Material Design Icons collection with the "transform" tag
+ * `mdi-transform-iconset-svg`
+ * @customElement mdi-transform-iconset-svg is a iconset for the Material Design Icons collection with the "transform" tag
  *
  * Example:
  *   <iron-icon icon="mdi-transform:rotate-left-variant"></iron-icon>

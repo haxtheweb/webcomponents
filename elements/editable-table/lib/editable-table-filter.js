@@ -10,12 +10,13 @@ import "./editable-table-iconset.js";
 
 /**
  * `editable-table-editor-filter`
+ * @customElement editable-table-editor-filter
  * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
  *
  * @demo ./demo/display.html
  *
  * @polymer
- * @customElement
+
  */
 class EditableTableFilter extends LitElement {
   static get styles() {

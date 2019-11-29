@@ -5,6 +5,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `simple-blog-post`
+ * @customElement simple-blog-post
  * `A simple blog and associated elements`
  */
 class SimpleBlogPost extends PolymerElement {

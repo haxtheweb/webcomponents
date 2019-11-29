@@ -7,6 +7,7 @@ import "@polymer/paper-toast/paper-toast.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `multiple-choice`
+ * @customElement multiple-choice
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
  */

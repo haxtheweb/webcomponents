@@ -9,6 +9,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 export { A11yMediaPlayButton };
 /**
  * `a11y-media-play-button`
+ * @customElement a11y-media-play-button
  * `A giant play button that overlays the media in a11y-media-player.`
  *
  * @microcopy - language worth noting:
@@ -18,7 +19,7 @@ Custom styles:
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaPlayButton extends A11yMediaBehaviors {

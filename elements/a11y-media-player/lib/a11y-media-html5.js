@@ -8,6 +8,7 @@ import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 export { A11yMediaHtml5 };
 /**
  * `a11y-media-html5`
+ * @customElement a11y-media-html5
  * `Loads HTML5 audio or video. `
  *
  * @microcopy - language worth noting:
@@ -20,7 +21,7 @@ export { A11yMediaHtml5 };
   </a11y-media-html5>```
  *
  * @extends A11yMediaBehaviors
- * @customElement
+
  * @polymer
  */
 class A11yMediaHtml5 extends A11yMediaBehaviors {

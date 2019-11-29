@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-store-iconset-svg` is a iconset for the Material Design Icons collection with the "store" tag
+ * `mdi-store-iconset-svg`
+ * @customElement mdi-store-iconset-svg is a iconset for the Material Design Icons collection with the "store" tag
  *
  * Example:
  *   <iron-icon icon="mdi-store:receipt"></iron-icon>

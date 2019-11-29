@@ -3,6 +3,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
  * `hax-blox-browser-item`
+ * @customElement hax-blox-browser-item
  * `A button on the hax-gizmo-browser app display`
  */
 class HaxBloxBrowserItem extends LitElement {

@@ -6,10 +6,11 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `simple-search-content`
+ * @customElement simple-search-content
  * content that can be searched with simple-search
  *
  *
- * @customElement
+
  * @demo ./demo/index.html
  */
 class SimpleSearchContent extends LitElement {

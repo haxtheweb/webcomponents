@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-edit-iconset-svg` is a iconset for the Material Design Icons collection with the "edit" tag
+ * `mdi-edit-iconset-svg`
+ * @customElement mdi-edit-iconset-svg is a iconset for the Material Design Icons collection with the "edit" tag
  *
  * Example:
  *   <iron-icon icon="mdi-edit:tooltip-edit"></iron-icon>

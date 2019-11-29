@@ -3,6 +3,7 @@ import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 
 /**
  * `hax-app-browser`
+ * @customElement hax-app-browser
  * `Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`
  * @microcopy - the mental model for this element
  * - hax-app - expression of how to communicate and visualize a data source

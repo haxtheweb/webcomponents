@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `a11y-gif-player`
+ * @customElement a11y-gif-player
  * plays gifs in an accessible way by having the user click to play their animation
 ### Styling
 
@@ -29,7 +30,6 @@ Custom property | Description | Default
 `--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff
 `--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
- * @customElement a11y-gif-player
  * @demo ./demo/index.html
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {

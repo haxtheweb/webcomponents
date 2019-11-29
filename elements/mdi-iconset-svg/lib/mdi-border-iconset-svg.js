@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-border-iconset-svg` is a iconset for the Material Design Icons collection with the "border" tag
+ * `mdi-border-iconset-svg`
+ * @customElement mdi-border-iconset-svg is a iconset for the Material Design Icons collection with the "border" tag
  *
  * Example:
  *   <iron-icon icon="mdi-border:border-inside"></iron-icon>

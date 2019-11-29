@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-minus-iconset-svg` is a iconset for the Material Design Icons collection with the "minus" tag
+ * `mdi-minus-iconset-svg`
+ * @customElement mdi-minus-iconset-svg is a iconset for the Material Design Icons collection with the "minus" tag
  *
  * Example:
  *   <iron-icon icon="mdi-minus:minus-circle-outline"></iron-icon>

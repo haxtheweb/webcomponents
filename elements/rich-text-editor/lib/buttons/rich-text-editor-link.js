@@ -15,7 +15,7 @@ import "../singletons/rich-text-editor-prompt.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorLink extends RichTextEditorPromptButton {

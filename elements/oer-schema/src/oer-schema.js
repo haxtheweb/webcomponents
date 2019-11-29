@@ -4,6 +4,7 @@ import { OERSchema } from "@lrnwebcomponents/oer-schema/lib/oerschema.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 /**
  * `oer-schema`
+ * @customElement oer-schema
  * `A LRN element to wrap an oer schema prefix onto materials.`
  * @demo demo/index.html
  */

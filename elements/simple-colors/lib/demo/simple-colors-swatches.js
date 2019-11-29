@@ -20,7 +20,7 @@ Custom property | Description | Default
 `--simple-colors-swatch-color` | Modal title bar background color. | unset
  * 
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/colors.html demo
  * @see "../../simple-colors.js"
  * @see "../simple-colors-picker.js"

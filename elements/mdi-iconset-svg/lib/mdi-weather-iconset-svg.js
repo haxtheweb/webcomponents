@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-weather-iconset-svg` is a iconset for the Material Design Icons collection with the "weather" tag
+ * `mdi-weather-iconset-svg`
+ * @customElement mdi-weather-iconset-svg is a iconset for the Material Design Icons collection with the "weather" tag
  *
  * Example:
  *   <iron-icon icon="mdi-weather:weather-partlycloudy"></iron-icon>

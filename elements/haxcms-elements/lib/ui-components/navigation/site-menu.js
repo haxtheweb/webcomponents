@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-menu`
  * `Menu hierarchy`
  *
- * @customElement
+
  */
 class SiteMenu extends LitElement {
   /**

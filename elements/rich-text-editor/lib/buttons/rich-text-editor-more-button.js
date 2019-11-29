@@ -11,7 +11,7 @@ import { RichTextEditorButton } from "./rich-text-editor-button.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorMoreButton extends RichTextEditorButton {

@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `lrndesign-abbreviation`
+ * @customElement lrndesign-abbreviation
  * `A wrapper to make a cleaner abbreviation deign element`
  *
  * @demo demo/index.html

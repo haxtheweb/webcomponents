@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `q-r`
+ * @customElement q-r
  * `Polymer wrapper for a qr code.`
  *
  * @demo demo/index.html

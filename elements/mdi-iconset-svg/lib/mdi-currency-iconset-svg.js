@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-currency-iconset-svg` is a iconset for the Material Design Icons collection with the "currency" tag
+ * `mdi-currency-iconset-svg`
+ * @customElement mdi-currency-iconset-svg is a iconset for the Material Design Icons collection with the "currency" tag
  *
  * Example:
  *   <iron-icon icon="mdi-currency:currency-usd"></iron-icon>

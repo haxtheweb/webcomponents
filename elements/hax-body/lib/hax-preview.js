@@ -8,6 +8,7 @@ import "@polymer/iron-media-query/iron-media-query.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-preview`
+ * @customElement hax-preview
  * `An element that can generate a form`
  * @microcopy - the mental model for this element
  *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form

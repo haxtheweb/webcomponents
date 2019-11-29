@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-pin-iconset-svg` is a iconset for the Material Design Icons collection with the "pin" tag
+ * `mdi-pin-iconset-svg`
+ * @customElement mdi-pin-iconset-svg is a iconset for the Material Design Icons collection with the "pin" tag
  *
  * Example:
  *   <iron-icon icon="mdi-pin:pin"></iron-icon>

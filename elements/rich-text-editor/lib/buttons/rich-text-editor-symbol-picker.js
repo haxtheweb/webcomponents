@@ -11,7 +11,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorSymbolPicker extends RichTextEditorPicker {

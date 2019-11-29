@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `image-inspector`
+ * @customElement image-inspector
  * `Zoom, Rotate, Mirror, Download, and View image`
  *
  * @demo demo/index.html

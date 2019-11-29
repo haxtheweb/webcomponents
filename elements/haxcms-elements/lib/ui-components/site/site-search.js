@@ -11,7 +11,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

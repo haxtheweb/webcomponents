@@ -9,12 +9,14 @@ import "./lib/agency-theme-spotlight.js";
 export { AgencyTheme };
 /**
  * `agency-theme`
+ * @customElement agency-theme
  * ``
+ * @customElement 
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

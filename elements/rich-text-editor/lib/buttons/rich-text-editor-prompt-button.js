@@ -16,7 +16,7 @@ import "./rich-text-editor-button-styles.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorPromptButton extends RichTextEditorButton {

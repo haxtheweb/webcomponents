@@ -12,9 +12,10 @@ hljs.registerLanguage("xml", xml);
 window["hljs"] = hljs;
 /**
  * `code-sample`
+ * @customElement code-sample
  * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.
  * @polymer
- * @customElement
+
  * @extends {PolymerElement}
  * @demo demo/index.html
  */

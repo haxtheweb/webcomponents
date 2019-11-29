@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-os-iconset-svg` is a iconset for the Material Design Icons collection with the "os" tag
+ * `mdi-os-iconset-svg`
+ * @customElement mdi-os-iconset-svg is a iconset for the Material Design Icons collection with the "os" tag
  *
  * Example:
  *   <iron-icon icon="mdi-os:ubuntu"></iron-icon>

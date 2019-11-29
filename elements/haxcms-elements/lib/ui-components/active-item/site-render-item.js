@@ -17,7 +17,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-render-item`
  * `Title of the active page in the site`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

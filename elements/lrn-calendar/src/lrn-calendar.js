@@ -3,6 +3,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lrn-calendar`
+ * @customElement lrn-calendar
  * @demo demo/index.html
  */
 class LrnCalendar extends PolymerElement {

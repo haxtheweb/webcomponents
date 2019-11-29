@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-arrange-iconset-svg` is a iconset for the Material Design Icons collection with the "arrange" tag
+ * `mdi-arrange-iconset-svg`
+ * @customElement mdi-arrange-iconset-svg is a iconset for the Material Design Icons collection with the "arrange" tag
  * Example:
  *   <iron-icon icon="mdi-arrange:flip-to-front"></iron-icon>
  *

@@ -57,7 +57,8 @@ class MaterialProgressBars extends mixinBehaviors(
        * Bars will be scaled according to their `data-value` attribute
        * and this maximum.
        * Note that, if the sum of all the bars' values are superior to this
-       * `max`, it will override it.
+       * `max`
+       * @customElement max, it will override it.
        */
       max: {
         type: Number,

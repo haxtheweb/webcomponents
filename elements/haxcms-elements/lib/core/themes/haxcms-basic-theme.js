@@ -10,7 +10,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  * `haxcms-basic-theme`
  * `An incredibly basic theme. Great starting point for new site discussions.
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

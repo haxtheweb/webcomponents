@@ -18,7 +18,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  * `haxcms-dev-theme`
  * `This is a theme used to make new themes (wwaaaaaaa?)
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

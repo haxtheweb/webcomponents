@@ -3,6 +3,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `self-check`
+ * @customElement self-check
  * 
 ### Styling
 
@@ -19,7 +20,7 @@ Custom property | Description | Default
 `--self-check-answer-color` | answer background color | var(--simple-colors-default-theme-light-green-8, #00762e)
 `--self-check-answer-text` | answer text color | var(--simple-colors-default-theme-grey-1, #fff)
  * 
- * @customElement
+
  * @extends LitElement
  * @extends SimpleColors
  * @extends SchemaBehaviors

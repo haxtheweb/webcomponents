@@ -7,6 +7,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 export { LrndesignGalleryDetails };
 /**
  * `lrndesign-gallery-details`
+ * @customElement lrndesign-gallery-details
  * `An element that renders the print view of a gallery item.`
  *
  * @microcopy - language worth noting:```
@@ -14,7 +15,7 @@ export { LrndesignGalleryDetails };
   details="<strong>HTML MARKUP HERE</strong>"       //required, an array of item data
 </lrndesign-gallery-details>```
  *
- * @customElement
+
  * @polymer
  */
 class LrndesignGalleryDetails extends PolymerElement {

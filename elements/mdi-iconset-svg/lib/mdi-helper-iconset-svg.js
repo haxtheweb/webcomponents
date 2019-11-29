@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-helper-iconset-svg` is a iconset for the Material Design Icons collection with the "helper" tag
+ * `mdi-helper-iconset-svg`
+ * @customElement mdi-helper-iconset-svg is a iconset for the Material Design Icons collection with the "helper" tag
  *
  * Example:
  *   <iron-icon icon="mdi-helper:color-helper"></iron-icon>

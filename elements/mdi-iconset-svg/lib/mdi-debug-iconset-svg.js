@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-debug-iconset-svg` is a iconset for the Material Design Icons collection with the "debug" tag
+ * `mdi-debug-iconset-svg`
+ * @customElement mdi-debug-iconset-svg is a iconset for the Material Design Icons collection with the "debug" tag
  *
  * Example:
  *   <iron-icon icon="mdi-debug:debug-step-over"></iron-icon>

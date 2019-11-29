@@ -12,7 +12,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

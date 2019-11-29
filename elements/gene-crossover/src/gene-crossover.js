@@ -14,6 +14,7 @@ import "./lib/gene-crossover-4.js";
 import "./lib/gene-crossover-5.js";
 /**
  * `gene-crossover`
+ * @customElement gene-crossover
  * `Gene animations`
  *
  * @demo demo/index.html

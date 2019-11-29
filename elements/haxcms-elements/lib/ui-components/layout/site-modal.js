@@ -14,7 +14,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-modal`
  * `A basic site dialog`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

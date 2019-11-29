@@ -11,7 +11,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-query`
  * `Query the JSON Outline Schema manifest and return a resulting array`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */
