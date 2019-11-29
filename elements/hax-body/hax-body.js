@@ -1,4 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
+// LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import {
   encapScript,
@@ -249,9 +250,12 @@ class HaxBody extends SimpleColors {
    */
   constructor() {
     super();
+    // lock to ensure we don't flood events on hitting the up / down arrows
+    // as we use a mutation observer to manage draggable bindings
     this.___moveLock = false;
     this.editMode = false;
     this.globalPreferences = {};
+    // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
     this.activeNode = null;
     this.activeContainerNode = null;
@@ -1989,7 +1993,7 @@ class HaxBody extends SimpleColors {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover");
+          children[i].classList.remove("mover", "hovered");
         }
       }
       // position arrows / set focus in case the DOM got updated above
@@ -2143,8 +2147,11 @@ class HaxBody extends SimpleColors {
     }
   }
   /**
-   * walk parents and find the correct position from top of document
-   * https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
+   * Get position from top and left of the page based on position:relative; being
+   * set in a parent.
+   *
+   * @notice This only works correctly across browsers because hax-body
+   * is position:relative in :host.
    */
   _getPosition(element) {
     let xPosition =
