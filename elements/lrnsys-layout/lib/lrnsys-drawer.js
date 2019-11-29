@@ -1,11 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-button-inner.js";
 /**
  * `lrnsys-drawer`
@@ -13,10 +8,14 @@ import "./lrnsys-button-inner.js";
  *
  * @demo demo/index.html
  */
-class LrnsysDrawer extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class LrnsysDrawer extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
@@ -27,21 +26,41 @@ class LrnsysDrawer extends PolymerElement {
           min-width: unset;
           margin: var(--lrnsys-drawer-button-margin);
           padding: var(--lrnsys-drawer-button-padding);
-          @apply --lrnsys-drawer-button;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.opened = false;
+    this.align = "left";
+    this.disabled = false;
+    this.focusState = false;
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    this.__modal = window.SimpleDrawer.requestAvailability();
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <paper-button
-        class\$="[[class]]"
+        class="${this.class}"
         id="flyouttrigger"
-        on-click="toggleDrawer"
-        raised="[[raised]]"
-        disabled\$="[[disabled]]"
-        title="[[alt]]"
+        @click="${this.toggleDrawer}"
+        ?raised="${this.raised}"
+        ?disabled="${this.disabled}"
+        title="${this.alt}"
       >
         <lrnsys-button-inner
-          avatar="[[avatar]]"
-          icon="[[icon]]"
-          text="[[text]]"
+          avatar="${this.avatar}"
+          icon="${this.icon}"
+          text="${this.text}"
         >
           <slot name="button"></slot>
         </lrnsys-button-inner>
@@ -57,20 +76,20 @@ class LrnsysDrawer extends PolymerElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * State for if it is currently open.
        */
       opened: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * If the button should be visually lifted off the UI.
        */
       raised: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Icon to present for clicking.
@@ -94,15 +113,14 @@ class LrnsysDrawer extends PolymerElement {
        * Side of the screen to align the flyout (right or left)
        */
       align: {
-        type: String,
-        value: "left"
+        type: String
       },
       /**
        * Alt / hover text for this link
        */
       alt: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Header for the drawer
@@ -115,46 +133,29 @@ class LrnsysDrawer extends PolymerElement {
        */
       disabled: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Classes to add / subtract based on the item being hovered
        */
       hoverClass: {
-        type: String
-      },
-      /**
-       * Heading classes to apply downstream.
-       */
-      headingClass: {
         type: String,
-        value: "white-text black"
+        attribute: "hover-class"
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        value: false
+        attribute: "focus-state"
       }
     };
   }
-
   /**
-   * Ready lifecycle
+   * LitElement ready
    */
-  ready() {
-    super.ready();
-    this.__modal = window.SimpleDrawer.requestAvailability();
-  }
-
-  /**
-   * Attached lifecycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  firstUpdated() {
+    setTimeout(() => {
       this.shadowRoot
         .querySelector("#flyouttrigger")
         .addEventListener("mousedown", this.tapEventOn.bind(this));
@@ -167,25 +168,7 @@ class LrnsysDrawer extends PolymerElement {
       this.shadowRoot
         .querySelector("#flyouttrigger")
         .addEventListener("focused-changed", this.focusToggle.bind(this));
-    });
-  }
-  /**
-   * detached lifecycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#flyouttrigger")
-      .removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.shadowRoot
-      .querySelector("#flyouttrigger")
-      .removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.shadowRoot
-      .querySelector("#flyouttrigger")
-      .removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.shadowRoot
-      .querySelector("#flyouttrigger")
-      .removeEventListener("focused-changed", this.focusToggle.bind(this));
-    super.disconnectedCallback();
+    }, 0);
   }
 
   /**
@@ -225,7 +208,7 @@ class LrnsysDrawer extends PolymerElement {
    */
   toggleDrawer() {
     // assemble everything in the slot
-    let nodes = FlattenedNodesObserver.getFlattenedNodes(this);
+    let nodes = this.children;
     let h = document.createElement("span");
     let c = document.createElement("span");
     for (var i in nodes) {

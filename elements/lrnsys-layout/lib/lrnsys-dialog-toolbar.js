@@ -1,11 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "./lrnsys-dialog-toolbar-button.js";
-class LrnsysDialogToolbar extends PolymerElement {
-  static get template() {
-    return html`
-      <style is="custom-style">
+import { LitElement, html, css } from "lit-element/lit-element.js";
+class LrnsysDialogToolbar extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           --app-toolbar-primary-height: 40px;
@@ -50,7 +50,14 @@ class LrnsysDialogToolbar extends PolymerElement {
         .secondary-buttons ::slotted(*) {
           display: inline-flex;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <app-toolbar id="primary">
         <slot name="primary"></slot>
         <div main-title=""></div>
@@ -60,7 +67,7 @@ class LrnsysDialogToolbar extends PolymerElement {
           title="close dialog"
         ></lrnsys-dialog-toolbar-button>
       </app-toolbar>
-      <app-toolbar id="secondary" hidden\$="[[!_secondaryHasChildren]]">
+      <app-toolbar id="secondary" .hidden="${!this._secondaryHasChildren}">
         <div class="secondary-buttons">
           <slot name="secondary" id="secondary-slot"></slot>
         </div>
@@ -71,62 +78,42 @@ class LrnsysDialogToolbar extends PolymerElement {
   static get tag() {
     return "lrnsys-dialog-toolbar";
   }
-
+  /**
+   * LitElement properties / popular convention
+   */
   static get properties() {
     return {
       /**
        * Internal state of secondary toolbar
        */
       _secondaryHasChildren: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
-
   /**
-   * Button tapped
+   * HTMLElement
    */
-  _tapHandler(e) {
-    this.dispatchEvent(
-      new CustomEvent("button-clicked", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: e.detail
-      })
-    );
+  constructor() {
+    super();
+    this._secondaryHasChildren = false;
+    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
+    import("./lrnsys-dialog-toolbar-button.js");
   }
-
   /**
-   * Ready.
+   * LitElement ready
    */
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      // listen to see if buttons have been initialized in the secondary toolbar
-      this.shadowRoot
-        .querySelector("#secondary")
-        .addEventListener("button-initialized", e => {
-          this._secondaryHasChildren = true;
-        });
-      this.addEventListener(
-        "dialog-toolbar-button-tapped",
-        this._tapHandler.bind(this)
-      );
-    });
-  }
-  disconnectedCallback() {
+  firstUpdated(changedProperties) {
+    // listen to see if buttons have been initialized in the secondary toolbar
     this.shadowRoot
       .querySelector("#secondary")
-      .removeEventListener("button-initialized", e => {
+      .addEventListener("button-initialized", e => {
         this._secondaryHasChildren = true;
       });
-    this.removeEventListener(
+    this.addEventListener(
       "dialog-toolbar-button-tapped",
       this._tapHandler.bind(this)
     );
-    super.disconnectedCallback();
   }
 }
 window.customElements.define(LrnsysDialogToolbar.tag, LrnsysDialogToolbar);

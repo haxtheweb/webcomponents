@@ -1,21 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/app-layout/app-layout.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-collapse/iron-collapse.js";
-import "./lrnsys-collapselist-item.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `lrnsys-collapselist`
  * @customElement lrnsys-collapselist
  */
-class LrnsysCollapselist extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class LrnsysCollapselist extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           background-color: var(--simple-colors-background1);
@@ -36,7 +31,7 @@ class LrnsysCollapselist extends PolymerElement {
           border: 1px solid var(--lrnsys-collapselist-item-border);
           margin-bottom: -1px;
         }
-        ul li paper-button {
+        ul li lrnsys-collapselist-item {
           height: 32px;
           padding: 8px;
           margin: 0;
@@ -48,8 +43,8 @@ class LrnsysCollapselist extends PolymerElement {
           text-transform: unset;
           border-radius: 0;
         }
-        ul li paper-button iron-icon,
-        ul li paper-button span {
+        ul li lrnsys-collapselist-item iron-icon,
+        ul li lrnsys-collapselist-item span {
           pointer-events: none;
         }
         iron-icon {
@@ -61,19 +56,37 @@ class LrnsysCollapselist extends PolymerElement {
         .collapse-content {
           padding: 16px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.items = [];
+    import("@polymer/iron-icon/iron-icon.js");
+    import("./lrnsys-collapselist-item.js");
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <ul>
-        <template is="dom-repeat" items="[[items]]" as="row">
-          <li>
-            <lrnsys-collapselist-item>
-              <span slot="label">
-                <iron-icon icon="[[row.icon]]"></iron-icon>
-                <span class="collapse-label">[[row.label]]</span>
-              </span>
-              <span slot="content"> [[row.content]] </span>
-            </lrnsys-collapselist-item>
-          </li>
-        </template>
+        ${this.items.map(
+          row => html`
+            <li>
+              <lrnsys-collapselist-item>
+                <span slot="label">
+                  <iron-icon icon="${row.icon}"></iron-icon>
+                  <span class="collapse-label">${row.label}</span>
+                </span>
+                <span slot="content"> ${row.content} </span>
+              </lrnsys-collapselist-item>
+            </li>
+          `
+        )}
       </ul>
     `;
   }
