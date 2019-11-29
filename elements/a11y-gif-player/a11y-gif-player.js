@@ -29,7 +29,7 @@ Custom property | Description | Default
 `--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff
 `--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
- * @customElement
+ * @customElement a11y-gif-player
  * @demo ./demo/index.html
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
