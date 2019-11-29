@@ -153,17 +153,12 @@ class CircleProgress extends mixinBehaviors(
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("iron-resize", this._onIronResize.bind(this));
-    });
+    }, 0);
   }
-  disconnectedCallback() {
-    this.removeEventListener("iron-resize", this._onIronResize.bind(this));
-    super.disconnectedCallback();
-  }
-
   _computeDashArray(radius) {
     return 2 * Math.PI * radius;
   }

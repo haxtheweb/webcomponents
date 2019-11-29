@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-input/paper-input.js";
@@ -268,6 +267,9 @@ class LrnsysOutlineItem extends PolymerElement {
   ready() {
     super.ready();
     this.__inputTarget = this.shadowRoot.querySelector("#input");
+    this.shadowRoot
+      .querySelector("#input")
+      .addEventListener("focused-changed", this._focusin.bind(this));
     this.dispatchEvent(
       new CustomEvent("focus-item", {
         bubbles: true,
@@ -276,106 +278,6 @@ class LrnsysOutlineItem extends PolymerElement {
         detail: this
       })
     );
-    afterNextRender(this, function() {
-      this.addEventListener("change", this._onChange.bind(this));
-      this.addEventListener("focus", e => {
-        this.dispatchEvent(
-          new CustomEvent("focus-item", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          })
-        );
-      });
-      this.addEventListener("mouseover", e => {
-        this.dispatchEvent(
-          new CustomEvent("focus-item", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          })
-        );
-      });
-      this.addEventListener("blur", e => {
-        this.dispatchEvent(
-          new CustomEvent("blur-item", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          })
-        );
-      });
-      this.addEventListener("mouseout", e => {
-        this.dispatchEvent(
-          new CustomEvent("blur-item", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this
-          })
-        );
-      });
-      this.shadowRoot
-        .querySelector("#input")
-        .addEventListener("focused-changed", this._focusin.bind(this));
-      this.addEventListener("focusin", this._focusin.bind(this));
-      this.addEventListener("focusout", this._focusout.bind(this));
-    });
-  }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener("change", this._onChange.bind(this));
-    this.removeEventListener("focus", e => {
-      this.dispatchEvent(
-        new CustomEvent("focus-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    });
-    this.removeEventListener("mouseover", e => {
-      this.dispatchEvent(
-        new CustomEvent("focus-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    });
-    this.removeEventListener("blur", e => {
-      this.dispatchEvent(
-        new CustomEvent("blur-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    });
-    this.removeEventListener("mouseout", e => {
-      this.dispatchEvent(
-        new CustomEvent("blur-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
-    });
-    this.shadowRoot
-      .querySelector("#input")
-      .removeEventListener("focused-changed", this._focusin.bind(this));
-    this.removeEventListener("focusin", this._focusin.bind(this));
-    this.removeEventListener("focusout", this._focusout.bind(this));
-    super.disconnectedCallback();
   }
 
   focus() {
@@ -466,6 +368,54 @@ class LrnsysOutlineItem extends PolymerElement {
       console.log(e);
     }
     this.focus();
+  }
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("change", this._onChange.bind(this));
+      this.addEventListener("focus", e => {
+        this.dispatchEvent(
+          new CustomEvent("focus-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this
+          })
+        );
+      });
+      this.addEventListener("mouseover", e => {
+        this.dispatchEvent(
+          new CustomEvent("focus-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this
+          })
+        );
+      });
+      this.addEventListener("blur", e => {
+        this.dispatchEvent(
+          new CustomEvent("blur-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this
+          })
+        );
+      });
+      this.addEventListener("mouseout", e => {
+        this.dispatchEvent(
+          new CustomEvent("blur-item", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this
+          })
+        );
+      });
+      this.addEventListener("focusin", this._focusin.bind(this));
+      this.addEventListener("focusout", this._focusout.bind(this));
+    }, 0);
   }
 
   _onChange() {

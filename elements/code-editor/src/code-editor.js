@@ -2,31 +2,24 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `code-editor`
- * @customElement code-editor
  * `Wrapper on top of a code editor`
  *
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - monaco is the VS code editor
+ * @customElement code-editor
  */
-class CodeEditor extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    this.__libPath =
-      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
-    import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
-    import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
-    this.addEventListener("monaco-element-ready", this.editorReady.bind(this));
-  }
-  static get template() {
-    return html`
-      <style>
+class CodeEditor extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           padding: 16px;
@@ -57,7 +50,6 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         label {
           color: var(--code-editor-label-color, #888);
           transition: all 0.5s;
-          @apply --code-editor-label;
         }
 
         :host([focused]) label {
@@ -65,37 +57,68 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
             --code-editor-float-label-active-color,
             var(--code-editor-label-color, #000)
           );
-          @apply --code-editor-focus-label;
         }
 
         #codeeditor {
           height: 100%;
           display: flex;
-          @apply --code-editor-code;
+          border: var(--code-editor-code-border);
+          border-radius: var(--code-editor-code-border-radius);
         }
 
         :host([focused]) #codeeditor {
-          @apply --code-editor-focus-code;
+          border: var(--code-editor-focus-code-border);
         }
-      </style>
-      <label for="codeeditor" hidden$="[[!title]]">[[title]]</label>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.showCodePen = false;
+    this.readOnly = false;
+    this.theme = "vs-dark";
+    this.language = "javascript";
+    this.fontSize = 16;
+    this.autofocus = false;
+    this.hideLineNumbers = false;
+    this.focused = false;
+    this.__libPath =
+      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
+    import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
+    import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
+    setTimeout(() => {
+      this.addEventListener(
+        "monaco-element-ready",
+        this.editorReady.bind(this)
+      );
+    }, 0);
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <label for="codeeditor" ?hidden="${!this.title}">${this.title}</label>
       <monaco-element
         id="codeeditor"
-        autofocus$="[[autofocus]]"
-        hide-line-numbers$="[[hideLineNumbers]]"
-        lib-path="[[__libPath]]"
-        language="[[language]]"
-        theme="[[theme]]"
-        on-value-changed="_editorDataChanged"
-        font-size$="[[fontSize]]"
-        read-only$="[[readOnly]]"
-        on-code-editor-focus="_handleFocus"
-        on-code-editor-blur="_handleBlur"
+        ?autofocus="${this.autofocus}"
+        ?hide-line-numbers="${this.hideLineNumbers}"
+        lib-path="${this.__libPath}"
+        language="${this.language}"
+        theme="${this.theme}"
+        @value-changed="${this._editorDataChanged}"
+        font-size="${this.fontSize}"
+        ?read-only="${this.readOnly}"
+        @code-editor-focus="${this._handleFocus}"
+        @code-editor-blur="${this._handleBlur}"
       >
       </monaco-element>
-      <div class="code-pen-container" hidden$="[[!showCodePen]]">
+      <div class="code-pen-container" ?hidden="${!this.showCodePen}">
         <span>Check it out on code pen: </span
-        ><code-pen-button data="[[codePenData]]"></code-pen-button>
+        ><code-pen-button .data="${this.codePenData}"></code-pen-button>
       </div>
     `;
   }
@@ -107,105 +130,127 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title
        */
       title: {
         type: String
       },
-
       /**
        * Show codePen button to fork it to there to run
        */
       showCodePen: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "show-code-pen"
       },
       /**
        * Readonly setting for the editor
        */
       readOnly: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "read-only"
       },
       /**
        * Code pen data, computed based on the HTML editor
        */
       codePenData: {
-        type: Object,
-        computed: "_computeCodePenData(title, value)"
+        type: Object
       },
       /**
        * contents of the editor
        */
       editorValue: {
-        type: String,
-        observer: "_editorValueChanged"
+        type: String
       },
       /**
        * value of the editor after the fact
        */
       value: {
-        type: String,
-        notify: true
+        type: String
       },
       /**
        * Theme for the Ace editor.
        */
       theme: {
-        type: String,
-        value: "vs-dark"
+        type: String
       },
       /**
        * Mode / language for editor
        */
       mode: {
-        type: String,
-        observer: "_modeChanged"
+        type: String
       },
       /**
        * Language to present color coding for
        */
       language: {
-        type: String,
-        value: "javascript"
+        type: String
       },
       /**
        * font size for the editor
        */
       fontSize: {
         type: Number,
-        value: 16
+        attribute: "font-size"
       },
       /**
        * automatically set focus on the editor
        */
       autofocus: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * hide the line numbers
        */
       hideLineNumbers: {
         type: Boolean,
-        value: false
+        attribute: "hide-line-numbers"
       },
       /**
        * does the monaco-editor have focus
        */
       focused: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editorValue") {
+        this._editorValueChanged(this[propName], oldValue);
+      }
+      if (propName == "mode") {
+        this._modeChanged(this[propName], oldValue);
+      }
+      if (propName === "showCodePen") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("show-code-pen-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName === "value") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["title", "value"].includes(propName)) {
+        this.codePenData = this._computeCodePenData(this.title, this.value);
+      }
+    });
+  }
   /**
    * Update the post data whenever the editor has been updated
    */
@@ -255,7 +300,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         console.warn(
           "code-editor works best with a template tag provided in light dom"
         );
-        children = FlattenedNodesObserver.getFlattenedNodes(this);
+        children = this.children;
         if (children.length > 0) {
           // loop through everything found in the slotted area and put it back in
           for (var j = 0, len2 = children.length; j < len2; j++) {
@@ -295,22 +340,20 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    afterNextRender(this, function() {
-      // mutation observer that ensures state of hax applied correctly
-      this._observer = new FlattenedNodesObserver(this, info => {
-        // if we've got new nodes, we have to react to that
-        if (info.addedNodes.length > 0) {
-          info.addedNodes.map(node => {
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach(node => {
             if (node.tagName) {
               this.updateEditorValue(node);
             }
           });
         }
         // if we dropped nodes via the UI (delete event basically)
-        if (info.removedNodes.length > 0) {
+        if (mutation.removedNodes.length > 0) {
           // handle removing items... not sure we need to do anything here
-          info.removedNodes.map(node => {
+          mutation.removedNodes.forEach(node => {
             if (node.tagName) {
               this.updateEditorValue(node);
             }
@@ -318,12 +361,11 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         }
       });
     });
+    this._observer.observe(this, {
+      childList: true
+    });
   }
   disconnectedCallback() {
-    this.removeEventListener(
-      "monaco-element-ready",
-      this.editorReady.bind(this)
-    );
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;

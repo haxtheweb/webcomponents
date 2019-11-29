@@ -9,6 +9,7 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
  * `Automatically load elements based on the most logical location with future fallback support for CDNs.`
  * @microcopy - the mental model for this element
  * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed
+ * @customElement hax-autoloader
  */
 class HaxAutoloader extends HAXElement(LitElement) {
   /**
@@ -37,6 +38,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * List of elements processed so we don't double process
        */

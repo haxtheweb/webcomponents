@@ -119,7 +119,8 @@
   }
 }
 ```
-*/
+ * @customElement hax-app
+ */
 class HAXApp extends HTMLElement {
   constructor() {
     super();

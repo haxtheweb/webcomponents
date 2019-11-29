@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { getRange } from "./shadows-safari.js";
 import {
@@ -7,12 +6,16 @@ import {
   wipeSlot,
   stripMSWord
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "./hax-app.js";
+import "./hax-stax.js";
+import "./hax-blox.js";
+/**
+ * @customElement hax-store
+ */
 class HaxStore extends HAXElement(LitElement) {
   /**
    * LitElement constructable styles enhancement
@@ -26,6 +29,9 @@ class HaxStore extends HAXElement(LitElement) {
       `
     ];
   }
+  /**
+   * LitElement render
+   */
   render() {
     return html`
       <slot></slot>
@@ -48,231 +54,234 @@ class HaxStore extends HAXElement(LitElement) {
   __appStoreDataChanged(e) {
     this.__appStoreData = e.detail.value;
   }
+  /**
+   * convention
+   */
   static get tag() {
     return "hax-store";
   }
-
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
-    return Object.assign(
-      {
-        voiceDebug: {
-          type: Boolean
-        },
-        voiceRespondsTo: {
-          type: String,
-          attribute: "voice-responses-to"
-        },
-        /**
-         * skipHAXConfirmation
-         */
-        skipHAXConfirmation: {
-          type: Boolean,
-          reflect: true,
-          attribute: "skip-hax-confirmation"
-        },
-        /**
-         * Local storage bridge
-         */
-        storageData: {
-          type: Object
-        },
-        /**
-         * Hax app picker element.
-         */
-        haxAppPicker: {
-          type: Object
-        },
-        /**
-         * Hax stax picker element.
-         */
-        haxStaxPicker: {
-          type: Object
-        },
-        /**
-         * Hax manager element.
-         */
-        haxManager: {
-          type: Object
-        },
-        /**
-         * Hax autoloader element.
-         */
-        haxAutoloader: {
-          type: Object
-        },
-        /**
-         * A list of all haxBodies that exist
-         */
-        haxBodies: {
-          type: Array
-        },
-        /**
-         * An active place holder item reference. This is used
-         * for inline drag and drop event detection so that we
-         * know what element replace in context.
-         */
-        activePlaceHolder: {
-          type: Object
-        },
-        /**
-         * The hax-body that is currently active.
-         */
-        activeHaxBody: {
-          type: Object
-        },
-        /**
-         * Possible appStore endpoint for loading in things dynamically.
-         */
-        appStore: {
-          type: Object,
-          attribute: "app-store"
-        },
-        /**
-         * HAX Toast message.
-         */
-        haxToast: {
-          type: Object
-        },
-        /**
-         * Hax panel element.
-         */
-        haxPanel: {
-          type: Object
-        },
-        /**
-         * Hax export dialog element.
-         */
-        haxExport: {
-          type: Object
-        },
-        /**
-         * Hax preferences dialog element.
-         */
-        haxPreferences: {
-          type: Object
-        },
-        /**
-         * Active HAX Element if we have one we are working on.
-         */
-        activeHaxElement: {
-          type: Object
-        },
-        /**
-         * Active Node.
-         */
-        activeNode: {
-          type: Object
-        },
-        /**
-         * Active container Node, 2nd highest parent of activeNode.
-         */
-        activeContainerNode: {
-          type: Object
-        },
-        /**
-         * Session object bridged in from a session method of some kind
-         */
-        sessionObject: {
-          type: Object
-        },
-        /**
-         * editMode
-         */
-        editMode: {
-          type: Boolean
-        },
-        /**
-         * Boolean for if this instance has backends that support uploading
-         */
-        canSupportUploads: {
-          type: Boolean
-        },
-        /**
-         * skip the exit trap to prevent losing data
-         */
-        skipExitTrap: {
-          type: Boolean
-        },
-        /**
-         * Available gizmos.
-         */
-        gizmoList: {
-          type: Array
-        },
-        /**
-         * Available elements keyed by tagName and with
-         * their haxProperties centrally registered.
-         */
-        elementList: {
-          type: Object
-        },
-        /**
-         * Available apps of things supplying media / content.
-         */
-        appList: {
-          type: Array
-        },
-        /**
-         * Available hax stax which are just re-usable templates
-         */
-        staxList: {
-          type: Array
-        },
-        /**
-         * Available hax blox which are grid plate / layout elements
-         */
-        bloxList: {
-          type: Array
-        },
-        /**
-         * Global preferences that HAX can write to and
-         * other elements can use to go off of.
-         */
-        globalPreferences: {
-          type: Object
-        },
-        /**
-         * Globally active app, used for brokering communications
-         */
-        activeApp: {
-          type: Object
-        },
-        /**
-         * Valid tag list, tag only and including primatives for a baseline.
-         */
-        validTagList: {
-          type: Array
-        },
-        /**
-         * Gizmo types which can be used to bridge apps to gizmos.
-         */
-        validGizmoTypes: {
-          type: Array
-        },
-        /**
-         * Sandboxed environment test
-         */
-        _isSandboxed: {
-          type: Boolean
-        },
-        /**
-         * Internal app store data property after request
-         */
-        __appStoreData: {
-          type: Object
-        },
-        __ready: {
-          type: Boolean
-        },
-        /**
-         * Support for deploy specific rewriting for things like JWTs
-         */
-        connectionRewrites: {
-          type: Object
-        }
+    return {
+      ...super.properties,
+      voiceDebug: {
+        type: Boolean
       },
-      super.properties
-    );
+      voiceRespondsTo: {
+        type: String,
+        attribute: "voice-responses-to"
+      },
+      /**
+       * skipHAXConfirmation
+       */
+      skipHAXConfirmation: {
+        type: Boolean,
+        reflect: true,
+        attribute: "skip-hax-confirmation"
+      },
+      /**
+       * Local storage bridge
+       */
+      storageData: {
+        type: Object
+      },
+      /**
+       * Hax app picker element.
+       */
+      haxAppPicker: {
+        type: Object
+      },
+      /**
+       * Hax stax picker element.
+       */
+      haxStaxPicker: {
+        type: Object
+      },
+      /**
+       * Hax manager element.
+       */
+      haxManager: {
+        type: Object
+      },
+      /**
+       * Hax autoloader element.
+       */
+      haxAutoloader: {
+        type: Object
+      },
+      /**
+       * A list of all haxBodies that exist
+       */
+      haxBodies: {
+        type: Array
+      },
+      /**
+       * An active place holder item reference. This is used
+       * for inline drag and drop event detection so that we
+       * know what element replace in context.
+       */
+      activePlaceHolder: {
+        type: Object
+      },
+      /**
+       * The hax-body that is currently active.
+       */
+      activeHaxBody: {
+        type: Object
+      },
+      /**
+       * Possible appStore endpoint for loading in things dynamically.
+       */
+      appStore: {
+        type: Object,
+        attribute: "app-store"
+      },
+      /**
+       * HAX Toast message.
+       */
+      haxToast: {
+        type: Object
+      },
+      /**
+       * Hax panel element.
+       */
+      haxPanel: {
+        type: Object
+      },
+      /**
+       * Hax export dialog element.
+       */
+      haxExport: {
+        type: Object
+      },
+      /**
+       * Hax preferences dialog element.
+       */
+      haxPreferences: {
+        type: Object
+      },
+      /**
+       * Active HAX Element if we have one we are working on.
+       */
+      activeHaxElement: {
+        type: Object
+      },
+      /**
+       * Active Node.
+       */
+      activeNode: {
+        type: Object
+      },
+      /**
+       * Active container Node, 2nd highest parent of activeNode.
+       */
+      activeContainerNode: {
+        type: Object
+      },
+      /**
+       * Session object bridged in from a session method of some kind
+       */
+      sessionObject: {
+        type: Object
+      },
+      /**
+       * editMode
+       */
+      editMode: {
+        type: Boolean
+      },
+      /**
+       * Boolean for if this instance has backends that support uploading
+       */
+      canSupportUploads: {
+        type: Boolean
+      },
+      /**
+       * skip the exit trap to prevent losing data
+       */
+      skipExitTrap: {
+        type: Boolean
+      },
+      /**
+       * Available gizmos.
+       */
+      gizmoList: {
+        type: Array
+      },
+      /**
+       * Available elements keyed by tagName and with
+       * their haxProperties centrally registered.
+       */
+      elementList: {
+        type: Object
+      },
+      /**
+       * Available apps of things supplying media / content.
+       */
+      appList: {
+        type: Array
+      },
+      /**
+       * Available hax stax which are just re-usable templates
+       */
+      staxList: {
+        type: Array
+      },
+      /**
+       * Available hax blox which are grid plate / layout elements
+       */
+      bloxList: {
+        type: Array
+      },
+      /**
+       * Global preferences that HAX can write to and
+       * other elements can use to go off of.
+       */
+      globalPreferences: {
+        type: Object
+      },
+      /**
+       * Globally active app, used for brokering communications
+       */
+      activeApp: {
+        type: Object
+      },
+      /**
+       * Valid tag list, tag only and including primatives for a baseline.
+       */
+      validTagList: {
+        type: Array
+      },
+      /**
+       * Gizmo types which can be used to bridge apps to gizmos.
+       */
+      validGizmoTypes: {
+        type: Array
+      },
+      /**
+       * Sandboxed environment test
+       */
+      _isSandboxed: {
+        type: Boolean
+      },
+      /**
+       * Internal app store data property after request
+       */
+      __appStoreData: {
+        type: Object
+      },
+      __ready: {
+        type: Boolean
+      },
+      /**
+       * Support for deploy specific rewriting for things like JWTs
+       */
+      connectionRewrites: {
+        type: Object
+      }
+    };
   }
   /**
    * Local storage data changed; callback to store this data in user storage
@@ -1059,6 +1068,7 @@ class HaxStore extends HAXElement(LitElement) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
+    // polymer specific thing
     setPassiveTouchGestures(true);
     // helps promose polyfill for this to be 1 execution chain as opposed to multiple
     import("@lrnwebcomponents/hax-body/lib/hax-store-dynamic.js");
@@ -2293,7 +2303,7 @@ window.HaxStore.nodeToContent = node => {
   // try and work against anything NOT a P tag
   if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
     // get content that is in the slots
-    let slotnodes = FlattenedNodesObserver.getFlattenedNodes(node);
+    let slotnodes = node.children;
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in

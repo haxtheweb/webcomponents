@@ -37,12 +37,9 @@ class AirHorn extends HTMLElement {
     if (!delayRender) {
       this.render();
     }
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    this.addEventListener("click", this._playSound.bind(this));
+    setTimeout(() => {
+      this.addEventListener("click", this._playSound.bind(this));
+    }, 0);
   }
 
   /**

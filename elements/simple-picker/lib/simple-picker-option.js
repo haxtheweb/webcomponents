@@ -99,12 +99,10 @@ class SimplePickerOption extends LitElement {
     this.selected = false;
     this.titleAsHtml = false;
     this.value = null;
-    this.addEventListener("focus", e => {
-      this._handleFocus();
-    });
-    this.addEventListener("mouseover", e => {
-      this._handleHover();
-    });
+    setTimeout(() => {
+      this.addEventListener("focus", this._handleFocus.bind(this));
+      this.addEventListener("mouseover", this._handleHover.bind(this));
+    }, 0);
   }
 
   // properties available to the custom element for data binding
@@ -221,19 +219,6 @@ class SimplePickerOption extends LitElement {
    */
   _handleHover() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
-  }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    this.removeEventListener("focus", e => {
-      this._handleFocus();
-    });
-    this.removeEventListener("mouseover", e => {
-      this._handleHover();
-    });
-    super.disconnectedCallback();
   }
 
   _getColor() {

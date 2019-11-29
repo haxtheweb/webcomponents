@@ -109,8 +109,10 @@ class HaxAppPicker extends LitElement {
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-dialog/paper-dialog.js");
-    this.addEventListener("iron-overlay-canceled", this.close.bind(this));
-    this.addEventListener("iron-overlay-closed", this.close.bind(this));
+    setTimeout(() => {
+      this.addEventListener("iron-overlay-canceled", this.close.bind(this));
+      this.addEventListener("iron-overlay-closed", this.close.bind(this));
+    }, 0);
   }
   render() {
     return html`

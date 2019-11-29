@@ -164,10 +164,24 @@ class HaxPanel extends SimpleColors {
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel-item.js");
     import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-    this.addEventListener(
-      "hax-item-selected",
-      this._processItemEvent.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "hax-item-selected",
+        this._processItemEvent.bind(this)
+      );
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      document.body.addEventListener(
+        "hax-active-hover-name",
+        this._activeNameChange.bind(this)
+      );
+      document.body.addEventListener(
+        "hax-panel-operation",
+        this._processItemEvent.bind(this)
+      );
+    }, 0);
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -179,18 +193,6 @@ class HaxPanel extends SimpleColors {
           object: this
         }
       })
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-active-hover-name",
-      this._activeNameChange.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-panel-operation",
-      this._processItemEvent.bind(this)
     );
   }
   render() {

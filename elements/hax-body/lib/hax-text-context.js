@@ -58,23 +58,16 @@ class HaxTextContext extends LitElement {
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+    }, 0);
     this.realSelectedValue = "p";
     this.selection = false;
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
-    // fire an event that this is a core piece of the system
-    this.dispatchEvent(
-      new CustomEvent("is-safari-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this.isSafari
-      })
-    );
   }
   render() {
     return html`

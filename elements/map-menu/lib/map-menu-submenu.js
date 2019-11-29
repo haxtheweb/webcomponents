@@ -1,6 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/map-menu/lib/map-menu-item.js";
-import "@lrnwebcomponents/map-menu/lib/map-menu-header.js";
 class MapMenuSubmenu extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -31,7 +29,20 @@ class MapMenuSubmenu extends LitElement {
     this.expandChildren = false;
     this.avatarLabel = "";
     this.label = "";
+    import("@lrnwebcomponents/map-menu/lib/map-menu-header.js");
     import("@polymer/iron-collapse/iron-collapse.js");
+    setTimeout(() => {
+      this.addEventListener("active-item", this.__activeChanged.bind(this));
+      this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
+      this.addEventListener(
+        "link-clicked",
+        this._headerClickHandler.bind(this)
+      );
+      this.addEventListener(
+        "map-menu-item-hidden-check",
+        this._mapMenuItemHiddenCheckHandler.bind(this)
+      );
+    }, 0);
   }
   /**
    * LitElement life cycle - render
@@ -54,34 +65,6 @@ class MapMenuSubmenu extends LitElement {
 
   static get tag() {
     return "map-menu-submenu";
-  }
-  /**
-   * LitElement life cycle - ready
-   */
-  firstUpdated(changedProperties) {
-    this.addEventListener("active-item", this.__activeChanged.bind(this));
-    this.addEventListener("toggle-header", this.__toggleHeader.bind(this));
-    this.addEventListener("link-clicked", this._headerClickHandler.bind(this));
-    this.addEventListener(
-      "map-menu-item-hidden-check",
-      this._mapMenuItemHiddenCheckHandler.bind(this)
-    );
-  }
-  /**
-   * HTMLElement life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener("active-item", this.__activeChanged.bind(this));
-    this.removeEventListener("toggle-header", this.__toggleHeader.bind(this));
-    this.removeEventListener(
-      "link-clicked",
-      this._headerClickHandler.bind(this)
-    );
-    this.removeEventListener(
-      "map-menu-item-hidden-check",
-      this._mapMenuItemHiddenCheckHandler.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * LitElement life cycle - properties definition

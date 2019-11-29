@@ -305,9 +305,14 @@ class GridPlate extends LitElement {
     this.responsiveSize = "xs";
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/hardware-icons.js");
-    this.addEventListener("focusin", this._focusIn.bind(this));
+    setTimeout(() => {
+      this.addEventListener("focusin", this._focusIn.bind(this));
+    }, 0);
     window.ResponsiveUtility.requestAvailability();
   }
+  /**
+   * LitElement render
+   */
   render() {
     return html`
       <div class="button-holding-pen">

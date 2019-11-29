@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `monaco-element`
  * Webcomponent wrapper for the monaco editor.
@@ -8,20 +8,15 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *
  * Partly influenced by https://github.com/PolymerVis/monaco-editor
  *
-
- * @polymer
- *
- * @author Lars Gröber <larsgroeber7@gmail.com>
+ * @customElement monaco-element
  */
-class MonacoElement extends PolymerElement {
-  constructor() {
-    super();
-    this.iframe = null;
-  }
-
-  static get template() {
-    return html`
-      <style>
+class MonacoElement extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -32,77 +27,93 @@ class MonacoElement extends PolymerElement {
           padding: 0;
           margin: 0;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.iframe = null;
+    this.value = "";
+    this.fontSize = 16;
+    this.readOnly = false;
+    this.eventTypes = {
+      ready: "ready",
+      focus: "focus",
+      blur: "blur",
+      valueChanged: "valueChanged",
+      languageChanged: "languageChanged",
+      themeChanged: "themeChanged"
+    };
+    this.language = "javascript";
+    this.theme = "vs-dark";
+    this.libPath = "node_modules/monaco-editor/min/vs";
+    this.autofocus = false;
+    this.hideLineNumbers = false;
+    this.editorReference = this.generateUUID();
+  }
+  /**
+   * LitElement
+   */
+  render() {
+    return html`
       <iframe id="iframe" frameborder="0"></iframe>
     `;
   }
-
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       value: {
-        type: String,
-        value: "",
-        observer: "monacoValueChanged"
+        type: String
       },
       fontSize: {
         type: Number,
-        value: 16
+        attribute: "font-size"
       },
       readOnly: {
         type: Boolean,
-        value: false
+        attribute: "read-only"
       },
       /**
        * THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS
        * DO NOT MESS WITH THIS AND IT HAS TO BE SET
        */
       uniqueKey: {
-        type: String
+        type: String,
+        attribute: "unique-key"
       },
       eventTypes: {
-        type: Object,
-        value: {
-          ready: "ready",
-          focus: "focus",
-          blur: "blur",
-          valueChanged: "valueChanged",
-          languageChanged: "languageChanged",
-          themeChanged: "themeChanged"
-        }
+        type: Object
       },
       language: {
-        type: String,
-        value: "javascript",
-        observer: "monacoLanguageChanged"
+        type: String
       },
       theme: {
-        type: String,
-        value: "vs-dark",
-        observer: "monacoThemeChanged"
+        type: String
       },
       libPath: {
         type: String,
-        value: "node_modules/monaco-editor/min/vs"
+        attribute: "lib-path"
       },
       editorReference: {
         type: String,
-        reflectToAttribute: true,
-        computed: "generateUUID()"
+        reflect: true,
+        attribute: "editor-reference"
       },
       /**
        * automatically set focus on the iframe
        */
       autofocus: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * hide line numbers
        */
       hideLineNumbers: {
         type: Boolean,
-        value: false
+        attribute: "hide-line-numbers"
       }
     };
   }
@@ -122,7 +133,19 @@ class MonacoElement extends PolymerElement {
       return this.iframe.contentWindow.document;
     }
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "value") {
+        this.monacoValueChanged(this[propName]);
+      }
+      if (propName == "language") {
+        this.monacoLanguageChanged(this[propName]);
+      }
+      if (propName == "theme") {
+        this.monacoThemeChanged(this[propName]);
+      }
+    });
+  }
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("message", message => {

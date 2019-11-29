@@ -1262,6 +1262,18 @@ export const HAXElement = function(SuperClass) {
       }
     }
     /**
+     * Clean up
+     */
+    disconnectedCallback() {
+      window.removeEventListener(
+        "hax-store-ready",
+        this._haxStoreReady.bind(this)
+      );
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+    }
+    /**
      * Setter to bridge private haxProperties setter.
      * This is to then be implemented by the ready state of whatever is supplying the
      * properties in order to be able to bubble up the properties for a tag.

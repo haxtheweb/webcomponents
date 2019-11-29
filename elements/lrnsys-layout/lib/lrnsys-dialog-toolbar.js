@@ -99,6 +99,12 @@ class LrnsysDialogToolbar extends LitElement {
     this._secondaryHasChildren = false;
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("./lrnsys-dialog-toolbar-button.js");
+    setTimeout(() => {
+      this.addEventListener(
+        "dialog-toolbar-button-tapped",
+        this._tapHandler.bind(this)
+      );
+    }, 0);
   }
   /**
    * LitElement ready
@@ -110,10 +116,6 @@ class LrnsysDialogToolbar extends LitElement {
       .addEventListener("button-initialized", e => {
         this._secondaryHasChildren = true;
       });
-    this.addEventListener(
-      "dialog-toolbar-button-tapped",
-      this._tapHandler.bind(this)
-    );
   }
 }
 window.customElements.define(LrnsysDialogToolbar.tag, LrnsysDialogToolbar);
