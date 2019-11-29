@@ -4,9 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `a11y-gif-player`
+ * @customElement a11y-gif-player
  * plays gifs in an accessible way by having the user click to play their animation
 ### Styling
 
@@ -28,9 +28,8 @@ Custom property | Description | Default
 `--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff
 `--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px
 `--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff
+`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
- * @customElement
- * @polymer
  * @demo ./demo/index.html
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
@@ -39,19 +38,24 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     this.alt = null;
     this.disabled = false;
     this.src = null;
-    this.tooltip = "Toggle Animation";
+    this.tooltip = "Toggle animation";
     this.tooltipPlaying = null;
     this.srcWithoutAnimation = null;
     this.__playing = false;
+    this.noImage = true;
+    import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/iron-image/iron-image.js");
   }
+  /**
+   * LitElement render styles
+   */
   static get styles() {
     return [
       css`
         :host {
           display: inline-flex;
         }
-        :host([hidden]) {
+        *[hidden] {
           display: none;
         }
         button {
@@ -113,6 +117,18 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         button[aria-pressed="true"] img {
           opacity: 0;
         }
+        button[data-no-image] .button-bg {
+          background-color: var(--a11y-gif-player-button-bg, #cccccc);
+        }
+        button[aria-pressed="true"][data-no-image] .button-bg {
+          background-color: transparent;
+        }
+        paper-tooltip {
+          --paper-tooltip-background: #000000;
+          --paper-tooltip-opacity: 1;
+          --paper-tooltip-text-color: #ffffff;
+          --paper-tooltip-delay-in: 0;
+        }
       `
     ];
   }
@@ -123,17 +139,22 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         aria-controls="gif"
         aria-pressed="${this.__playing ? "true" : "false"}"
         @click="${this.toggle}"
-        ?disabled="${this.disabled || !this.src || !this.srcWithoutAnimation}"
+        ?data-no-image="${this.noImage}"
+        ?disabled="${this.disabled || !this.src}"
       >
         <iron-image id="gif" src="${this.src}" ?hidden="${!this.src}">
         </iron-image>
-        <img
-          id="static"
-          alt="${this.alt}"
-          src="${this.srcWithoutAnimation}"
-          ?hidden="${!this.srcWithoutAnimation}"
-        />
-        <div ?hidden="${!this.src || !this.srcWithoutAnimation}">
+        ${!this.noImage
+          ? html`
+              <img
+                id="static"
+                loading="lazy"
+                alt="${this.alt}"
+                src="${this.srcWithoutAnimation}"
+              />
+            `
+          : html``}
+        <div class="button-bg">
           <svg
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
@@ -147,20 +168,25 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         </div>
       </button>
 
-      <paper-tooltip for="button">
+      <paper-tooltip for="button" offset="30" animation-delay="0">
         ${this.__playing && this.tooltipPlaying
           ? this.tooltipPlaying
           : this.tooltip}
       </paper-tooltip>
     `;
   }
+  /**
+   * Convention
+   */
   static get tag() {
     return "a11y-gif-player";
   }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Alt text of gif
        */
@@ -204,8 +230,28 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
        */
       __playing: {
         type: Boolean
+      },
+      /**
+       * Boolean for if theres a source image or not
+       */
+      noImage: {
+        type: Boolean
       }
     };
+  }
+  /**
+   * LitElement properties updated
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "srcWithoutAnimation") {
+        if (this[propName] != null && this[propName] != "") {
+          this.noImage = false;
+        } else {
+          this.noImage = true;
+        }
+      }
+    });
   }
   /**
    * plays the animation regarless of previous state
@@ -239,7 +285,9 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
       this.play();
     }
   }
-
+  /**
+   * HAX
+   */
   static get haxProperties() {
     return {
       canScale: true,
@@ -260,7 +308,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

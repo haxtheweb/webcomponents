@@ -1,0 +1,2468 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "hax-text-context\n`A context menu that provides common text based authoring options.`",
+      "description": "`hax-text-context`",
+      "jsDoc": "/**\n * `hax-text-context`\n * @customElement hax-text-context\n * `A context menu that provides common text based authoring options.`\n * @microcopy - the mental model for this element\n * - context menu - this is a menu of text based buttons and events for use in a larger solution.\n */",
+      "attributes": [
+        {
+          "name": "realSelectedValue",
+          "type": "string"
+        },
+        {
+          "name": "selected-value",
+          "description": "Selected value to match format of the tag currently.",
+          "jsDoc": "/**\n       * Selected value to match format of the tag currently.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "selection",
+          "description": "Selection tracking",
+          "jsDoc": "/**\n       * Selection tracking\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "format-icon",
+          "description": "Selected item icon",
+          "jsDoc": "/**\n       * Selected item icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "is-safari",
+          "description": "Is this safari",
+          "jsDoc": "/**\n       * Is this safari\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "realSelectedValue",
+          "type": "string"
+        },
+        {
+          "name": "selectedValue",
+          "description": "Selected value to match format of the tag currently.",
+          "jsDoc": "/**\n       * Selected value to match format of the tag currently.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "selection",
+          "description": "Selection tracking",
+          "jsDoc": "/**\n       * Selection tracking\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "formatIcon",
+          "description": "Selected item icon",
+          "jsDoc": "/**\n       * Selected item icon\n       */",
+          "type": "string"
+        },
+        {
+          "name": "isSafari",
+          "description": "Is this safari",
+          "jsDoc": "/**\n       * Is this safari\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "selected-value-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-ce-context\n`A context menu that provides common custom-element based authoring options. While\ntrying to call for haxProperties which can automatically generate the buttons\nrequired for populating input.`",
+      "description": "`hax-ce-context`",
+      "jsDoc": "/**\n * `hax-ce-context`\n * @customElement hax-ce-context\n * `A context menu that provides common custom-element based authoring options. While\n * trying to call for haxProperties which can automatically generate the buttons\n * required for populating input.`\n * @microcopy - the mental model for this element\n * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.\n */",
+      "attributes": [
+        {
+          "name": "ce-size",
+          "description": "ce size.",
+          "jsDoc": "/**\n       * ce size.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "hax-properties",
+          "description": "Selected value to match ce direction currently.",
+          "jsDoc": "/**\n       * Selected value to match ce direction currently.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ceSize",
+          "description": "ce size.",
+          "jsDoc": "/**\n       * ce size.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "haxProperties",
+          "description": "Selected value to match ce direction currently.",
+          "jsDoc": "/**\n       * Selected value to match ce direction currently.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-context-item-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-input-mixer\nA context menu that provides common custom-element based authoring options. While\ntrying to call for haxProperties which can automatically generate the buttons\nrequired for populating input.",
+      "description": "`hax-input-mixer`",
+      "jsDoc": "/**\n * `hax-input-mixer`\n * @customElement hax-input-mixer\n * A context menu that provides common custom-element based authoring options. While\n * trying to call for haxProperties which can automatically generate the buttons\n * required for populating input.\n * @microcopy - the mental model for this element\n * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "value, where the magic happens.",
+          "jsDoc": "/**\n       * value, where the magic happens.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the input",
+          "jsDoc": "/**\n       * Label for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "validation",
+          "description": "Optional regex Validation for input and textarea fields",
+          "jsDoc": "/**\n       * Optional regex Validation for input and textarea fields\n       */",
+          "type": "string"
+        },
+        {
+          "name": "validation-type",
+          "description": "Optional input type validation; use on input field",
+          "jsDoc": "/**\n       * Optional input type validation; use on input field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "required",
+          "description": "Required; used on input and textarea fields",
+          "jsDoc": "/**\n       * Required; used on input and textarea fields\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "options",
+          "description": "Options for the input if it's a select of some form",
+          "jsDoc": "/**\n       * Options for the input if it's a select of some form\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "description": "Optional icon that represents the item mixing.",
+          "jsDoc": "/**\n       * Optional icon that represents the item mixing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "inputMethod",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "property-to-bind",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slot-to-bind",
+          "description": "slot to bind input back to",
+          "jsDoc": "/**\n       * slot to bind input back to\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "value, where the magic happens.",
+          "jsDoc": "/**\n       * value, where the magic happens.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the input",
+          "jsDoc": "/**\n       * Label for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "validation",
+          "description": "Optional regex Validation for input and textarea fields",
+          "jsDoc": "/**\n       * Optional regex Validation for input and textarea fields\n       */",
+          "type": "string"
+        },
+        {
+          "name": "validationType",
+          "description": "Optional input type validation; use on input field",
+          "jsDoc": "/**\n       * Optional input type validation; use on input field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "required",
+          "description": "Required; used on input and textarea fields",
+          "jsDoc": "/**\n       * Required; used on input and textarea fields\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "options",
+          "description": "Options for the input if it's a select of some form",
+          "jsDoc": "/**\n       * Options for the input if it's a select of some form\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "description": "Optional icon that represents the item mixing.",
+          "jsDoc": "/**\n       * Optional icon that represents the item mixing.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "inputMethod",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "propertyToBind",
+          "description": "longer description for the input",
+          "jsDoc": "/**\n       * longer description for the input\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slotToBind",
+          "description": "slot to bind input back to",
+          "jsDoc": "/**\n       * slot to bind input back to\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-input-mixer-update"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-body\n`Manager of the body area that can be modified`",
+      "description": "`hax-body`",
+      "jsDoc": "/**\n * `hax-body`\n * @customElement hax-body\n * `Manager of the body area that can be modified`\n * @microcopy - the mental model for this element\n *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.\n *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.\n *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / \"global\" type of body operations performed on it such as delete, duplicate and higher level format styling.\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "State of if we are editing or not.",
+          "jsDoc": "/**\n       * State of if we are editing or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hax-ray-mode",
+          "description": "Bust out the HAX Ray mode",
+          "jsDoc": "/**\n       * Bust out the HAX Ray mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "globalPreferences",
+          "description": "Access to the global properties object.",
+          "jsDoc": "/**\n       * Access to the global properties object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeContainerNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "State of if we are editing or not.",
+          "jsDoc": "/**\n       * State of if we are editing or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "haxRayMode",
+          "description": "Bust out the HAX Ray mode",
+          "jsDoc": "/**\n       * Bust out the HAX Ray mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "globalPreferences",
+          "description": "Access to the global properties object.",
+          "jsDoc": "/**\n       * Access to the global properties object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeContainerNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-active-hover-name"
+        },
+        {
+          "name": "hax-body-tag-removed"
+        },
+        {
+          "name": "hax-body-tag-added"
+        },
+        {
+          "name": "active-container-node-changed"
+        },
+        {
+          "name": "active-node-changed"
+        },
+        {
+          "name": "hax-register-body"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-app-browser-item\n`A button on the hax-app-browser display`",
+      "description": "`hax-app-browser-item`",
+      "jsDoc": "/**\n * `hax-app-browser-item`\n * @customElement hax-app-browser-item\n * `A button on the hax-app-browser display`\n * @microcopy - the mental model for this element\n * - hax-app - data wiring for an app, this element uses the visual side of this\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "index",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "number"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "MaterializeCSS color name of the item",
+          "jsDoc": "/**\n       * MaterializeCSS color name of the item\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this app",
+          "jsDoc": "/**\n       * Author related to this app\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "index",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "number"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "MaterializeCSS color name of the item",
+          "jsDoc": "/**\n       * MaterializeCSS color name of the item\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this app",
+          "jsDoc": "/**\n       * Author related to this app\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-app-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-app-browser\n\n`Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`",
+      "description": "`hax-app-browser`",
+      "jsDoc": "/**\n * `hax-app-browser`\n * @customElement hax-app-browser\n * \n * `Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`\n * @microcopy - the mental model for this element\n * - hax-app - expression of how to communicate and visualize a data source\n * - gizmo - silly name for the general public when talking about hax-app and what it provides in the end\n */",
+      "attributes": [
+        {
+          "name": "search",
+          "description": "Search term",
+          "jsDoc": "/**\n       * Search term\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the browser, for translation.",
+          "jsDoc": "/**\n       * Title of the browser, for translation.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searching",
+          "description": "Searching mode",
+          "jsDoc": "/**\n       * Searching mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeApp",
+          "description": "Global activeApp object.",
+          "jsDoc": "/**\n       * Global activeApp object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "has-active",
+          "description": "If we have an active, scale everything",
+          "jsDoc": "/**\n       * If we have an active, scale everything\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "filtered",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "search",
+          "description": "Search term",
+          "jsDoc": "/**\n       * Search term\n       */",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the browser, for translation.",
+          "jsDoc": "/**\n       * Title of the browser, for translation.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "searching",
+          "description": "Searching mode",
+          "jsDoc": "/**\n       * Searching mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeApp",
+          "description": "Global activeApp object.",
+          "jsDoc": "/**\n       * Global activeApp object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "hasActive",
+          "description": "If we have an active, scale everything",
+          "jsDoc": "/**\n       * If we have an active, scale everything\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "filtered",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-item-button-inner\n`A button on the hax-gizmo-browser app display`",
+      "description": "`hax-item-button-inner`",
+      "jsDoc": "/**\n * `hax-item-button-inner`\n * @customElement hax-item-button-inner\n * `A button on the hax-gizmo-browser app display`\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "label",
+          "jsDoc": "/**\n       * label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "color name of the item",
+          "jsDoc": "/**\n       * color name of the item\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "description": "label",
+          "jsDoc": "/**\n       * label\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "color name of the item",
+          "jsDoc": "/**\n       * color name of the item\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-source\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`",
+      "description": "`hax-source`",
+      "jsDoc": "/**\n * `hax-source`\n * @customElement hax-source\n * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n */",
+      "attributes": [
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "type": "string"
+        },
+        {
+          "name": "map",
+          "type": "{}"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "type": "string"
+        },
+        {
+          "name": "map",
+          "type": "{}"
+        },
+        {
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-app-search\n`An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`",
+      "description": "`hax-app-search`",
+      "jsDoc": "/**\n * `hax-app-search`\n * @customElement hax-app-search\n * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`\n * @microcopy - the mental model for this element\n * - hax-source - a backend that can supply items for selection by the user\n * - hax-manager - controlling the UI for selection of something\n * - hax-body - the text are ultimately we are trying to insert this item into\n */",
+      "attributes": [
+        {
+          "name": "activeApp",
+          "description": "Active app globally bound based on previous selection.",
+          "jsDoc": "/**\n       * Active app globally bound based on previous selection.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "auto",
+          "description": "Immediatley perform a request.",
+          "jsDoc": "/**\n       * Immediatley perform a request.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "searchSchema",
+          "description": "Search schema for presenting a form of input.",
+          "jsDoc": "/**\n       * Search schema for presenting a form of input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "headers",
+          "description": "Custom headers for data binding from the App feed.",
+          "jsDoc": "/**\n       * Custom headers for data binding from the App feed.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "method",
+          "description": "Custom method for requesting data (almost always will be GET)",
+          "jsDoc": "/**\n       * Custom method for requesting data (almost always will be GET)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "loading",
+          "jsDoc": "/**\n       * loading\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "requestData",
+          "description": "Media request data updated",
+          "jsDoc": "/**\n       * Media request data updated\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "media",
+          "description": "Media object, normalized.",
+          "jsDoc": "/**\n       * Media object, normalized.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "requestEndPoint",
+          "type": "string"
+        },
+        {
+          "name": "requestParams",
+          "type": "{}"
+        },
+        {
+          "name": "resultMap",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeApp",
+          "description": "Active app globally bound based on previous selection.",
+          "jsDoc": "/**\n       * Active app globally bound based on previous selection.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "auto",
+          "description": "Immediatley perform a request.",
+          "jsDoc": "/**\n       * Immediatley perform a request.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "searchSchema",
+          "description": "Search schema for presenting a form of input.",
+          "jsDoc": "/**\n       * Search schema for presenting a form of input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "headers",
+          "description": "Custom headers for data binding from the App feed.",
+          "jsDoc": "/**\n       * Custom headers for data binding from the App feed.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "method",
+          "description": "Custom method for requesting data (almost always will be GET)",
+          "jsDoc": "/**\n       * Custom method for requesting data (almost always will be GET)\n       */",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "loading",
+          "jsDoc": "/**\n       * loading\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "requestData",
+          "description": "Media request data updated",
+          "jsDoc": "/**\n       * Media request data updated\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "media",
+          "description": "Media object, normalized.",
+          "jsDoc": "/**\n       * Media object, normalized.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "requestEndPoint",
+          "type": "string"
+        },
+        {
+          "name": "requestParams",
+          "type": "{}"
+        },
+        {
+          "name": "resultMap",
+          "type": "{}"
+        },
+        {
+          "name": "prev",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-autoloader\n`Automatically load elements based on the most logical location with future fallback support for CDNs.`",
+      "description": "`hax-autoloader`",
+      "jsDoc": "/**\n * `hax-autoloader`\n * @customElement hax-autoloader\n * `Automatically load elements based on the most logical location with future fallback support for CDNs.`\n * @microcopy - the mental model for this element\n * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed\n */",
+      "attributes": [
+        {
+          "name": "processedList",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "processedList",
+          "type": "any"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-register-properties"
+        },
+        {
+          "name": "hax-register-core-piece"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-blox-browser-item\n`A button on the hax-gizmo-browser app display`",
+      "description": "`hax-blox-browser-item`",
+      "jsDoc": "/**\n * `hax-blox-browser-item`\n * @customElement hax-blox-browser-item\n * `A button on the hax-gizmo-browser app display`\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bloxReference",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button, optional.",
+          "jsDoc": "/**\n       * icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, optional.",
+          "jsDoc": "/**\n       * Examples, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "layout",
+          "description": "Layout string to use",
+          "jsDoc": "/**\n       * Layout string to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bloxReference",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button, optional.",
+          "jsDoc": "/**\n       * icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, optional.",
+          "jsDoc": "/**\n       * Examples, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "layout",
+          "description": "Layout string to use",
+          "jsDoc": "/**\n       * Layout string to use\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-insert-content"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-blox-browser\n`List of layout blox to select from`",
+      "description": "`hax-blox-browser`",
+      "jsDoc": "/**\n * `hax-blox-browser`\n * @customElement hax-blox-browser\n * `List of layout blox to select from`\n * @microcopy - the mental model for this element\n * - blox - silly name for the general public when talking about custom elements and what it provides in the end.\n */",
+      "attributes": [
+        {
+          "name": "bloxList",
+          "description": "The list of blox",
+          "jsDoc": "/**\n       * The list of blox\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "bloxList",
+          "description": "The list of blox",
+          "jsDoc": "/**\n       * The list of blox\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-context-item-menu\n`An icon / button that has support for multiple options via drop down.`",
+      "description": "`hax-context-item-menu`",
+      "jsDoc": "/**\n * `hax-context-item-menu`\n * @customElement hax-context-item-menu\n * `An icon / button that has support for multiple options via drop down.`\n * @microcopy - the mental model for this element\n * - panel - the flyout from left or right side that has elements that can be placed\n * - button - an item that expresses what interaction you will have with the content.\n */",
+      "attributes": [
+        {
+          "name": "reset-on-select",
+          "description": "Should we reset the selection after it is made",
+          "jsDoc": "/**\n       * Should we reset the selection after it is made\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "selected-value",
+          "description": "Value.",
+          "jsDoc": "/**\n       * Value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "event-name",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "resetOnSelect",
+          "description": "Should we reset the selection after it is made",
+          "jsDoc": "/**\n       * Should we reset the selection after it is made\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "selectedValue",
+          "description": "Value.",
+          "jsDoc": "/**\n       * Value.\n       */",
+          "type": "number"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "eventName",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-context-item-selected"
+        },
+        {
+          "name": "selected-value-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-context-item-textop\n`A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`",
+      "description": "`hax-context-item-textop`",
+      "jsDoc": "/**\n * `hax-context-item-textop`\n * @customElement hax-context-item-textop\n * `A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`\n * @microcopy - the mental model for this element\n * - context - menu in the page the user can select an item from, this being 1 option in that list\n * - button - an item that expresses what interaction you will have with the content.\n */",
+      "attributes": [
+        {
+          "name": "light",
+          "description": "Light theme for toolbar item.",
+          "jsDoc": "/**\n       * Light theme for toolbar item.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "an optional value to send along in the press. Allows for\nreusing events more easily",
+          "jsDoc": "/**\n       * an optional value to send along in the press. Allows for\n       * reusing events more easily\n       */",
+          "type": "string"
+        },
+        {
+          "name": "mini",
+          "description": "Mini theme for making things small and round.",
+          "jsDoc": "/**\n       * Mini theme for making things small and round.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "menu",
+          "description": "Style to be presented in a menu",
+          "jsDoc": "/**\n       * Style to be presented in a menu\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "event-name",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "input-method",
+          "description": "Method of input to display when activated. This is\nonly used when triggered as part of haxProperties",
+          "jsDoc": "/**\n       * Method of input to display when activated. This is\n       * only used when triggered as part of haxProperties\n       */",
+          "type": "string"
+        },
+        {
+          "name": "property-to-bind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slot-to-bind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Optional description for this item.",
+          "jsDoc": "/**\n       * Optional description for this item.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "light",
+          "description": "Light theme for toolbar item.",
+          "jsDoc": "/**\n       * Light theme for toolbar item.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "an optional value to send along in the press. Allows for\nreusing events more easily",
+          "jsDoc": "/**\n       * an optional value to send along in the press. Allows for\n       * reusing events more easily\n       */",
+          "type": "string"
+        },
+        {
+          "name": "mini",
+          "description": "Mini theme for making things small and round.",
+          "jsDoc": "/**\n       * Mini theme for making things small and round.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "menu",
+          "description": "Style to be presented in a menu",
+          "jsDoc": "/**\n       * Style to be presented in a menu\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "eventName",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "inputMethod",
+          "description": "Method of input to display when activated. This is\nonly used when triggered as part of haxProperties",
+          "jsDoc": "/**\n       * Method of input to display when activated. This is\n       * only used when triggered as part of haxProperties\n       */",
+          "type": "string"
+        },
+        {
+          "name": "propertyToBind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slotToBind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Optional description for this item.",
+          "jsDoc": "/**\n       * Optional description for this item.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-context-item-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-context-item\n`A single button in the hax context menu for consistency.`",
+      "description": "`hax-context-item`",
+      "jsDoc": "/**\n * `hax-context-item`\n * @customElement hax-context-item\n * `A single button in the hax context menu for consistency.`\n * @microcopy - the mental model for this element\n * - context - menu in the page the user can select an item from, this being 1 option in that list\n * - button - an item that expresses what interaction you will have with the content.\n */",
+      "attributes": [
+        {
+          "name": "light",
+          "description": "Light theme for toolbar item.",
+          "jsDoc": "/**\n       * Light theme for toolbar item.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "disabled state",
+          "jsDoc": "/**\n       * disabled state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "mini",
+          "description": "Mini theme for making things small and round.",
+          "jsDoc": "/**\n       * Mini theme for making things small and round.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "menu",
+          "description": "Style to be presented in a menu",
+          "jsDoc": "/**\n       * Style to be presented in a menu\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "event-name",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "input-method",
+          "description": "Method of input to display when activated. This is\nonly used when triggered as part of haxProperties",
+          "jsDoc": "/**\n       * Method of input to display when activated. This is\n       * only used when triggered as part of haxProperties\n       */",
+          "type": "string"
+        },
+        {
+          "name": "property-to-bind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slot-to-bind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Optional description for this item.",
+          "jsDoc": "/**\n       * Optional description for this item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "default",
+          "description": "Is this button concidered a primary interaction",
+          "jsDoc": "/**\n       * Is this button concidered a primary interaction\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "an optional value to send along in the press. Allows for\nreusing events more easily",
+          "jsDoc": "/**\n       * an optional value to send along in the press. Allows for\n       * reusing events more easily\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "light",
+          "description": "Light theme for toolbar item.",
+          "jsDoc": "/**\n       * Light theme for toolbar item.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "description": "disabled state",
+          "jsDoc": "/**\n       * disabled state\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "mini",
+          "description": "Mini theme for making things small and round.",
+          "jsDoc": "/**\n       * Mini theme for making things small and round.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "menu",
+          "description": "Style to be presented in a menu",
+          "jsDoc": "/**\n       * Style to be presented in a menu\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "direction",
+          "description": "Direction for the tooltip",
+          "jsDoc": "/**\n       * Direction for the tooltip\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "eventName",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "inputMethod",
+          "description": "Method of input to display when activated. This is\nonly used when triggered as part of haxProperties",
+          "jsDoc": "/**\n       * Method of input to display when activated. This is\n       * only used when triggered as part of haxProperties\n       */",
+          "type": "string"
+        },
+        {
+          "name": "propertyToBind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "slotToBind",
+          "description": "Optional slot to bind this value to.",
+          "jsDoc": "/**\n       * Optional slot to bind this value to.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Optional description for this item.",
+          "jsDoc": "/**\n       * Optional description for this item.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "default",
+          "description": "Is this button concidered a primary interaction",
+          "jsDoc": "/**\n       * Is this button concidered a primary interaction\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "description": "an optional value to send along in the press. Allows for\nreusing events more easily",
+          "jsDoc": "/**\n       * an optional value to send along in the press. Allows for\n       * reusing events more easily\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-context-item-selected"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-export-dialog\n`Export dialog with all export options and settings provided.`",
+      "description": "`hax-export-dialog`",
+      "jsDoc": "/**\n * `hax-export-dialog`\n * @customElement hax-export-dialog\n * `Export dialog with all export options and settings provided.`\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "globalPreferences",
+          "type": "any"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "fileTypes",
+          "type": "any"
+        },
+        {
+          "name": "globalPreferences",
+          "type": "any"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-register-core-piece"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-gizmo-browser-item\n`A button on the hax-gizmo-browser app display`",
+      "description": "`hax-gizmo-browser-item`",
+      "jsDoc": "/**\n * `hax-gizmo-browser-item`\n * @customElement hax-gizmo-browser-item\n * `A button on the hax-gizmo-browser app display`\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "index",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "number"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "color name of the item",
+          "jsDoc": "/**\n       * color name of the item\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "tag-to-insert",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "index",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "number"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button, optional.",
+          "jsDoc": "/**\n       * Icon for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "color name of the item",
+          "jsDoc": "/**\n       * color name of the item\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "tagToInsert",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-gizmo-browser\n`Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`",
+      "description": "`hax-gizmo-browser`",
+      "jsDoc": "/**\n * `hax-gizmo-browser`\n * @customElement hax-gizmo-browser\n * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`\n * @microcopy - the mental model for this element\n * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the browser, for translation.",
+          "jsDoc": "/**\n       * Title of the browser, for translation.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "filtered",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title of the browser, for translation.",
+          "jsDoc": "/**\n       * Title of the browser, for translation.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "filtered",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-panel-item\n`A single button in the hax panel for consistency.`",
+      "description": "`hax-panel-item`",
+      "jsDoc": "/**\n * `hax-panel-item`\n * @customElement hax-panel-item\n * `A single button in the hax panel for consistency.`\n * @microcopy - the mental model for this element\n * - panel - the flyout from left or right side that has elements that can be placed\n * - button - an item that expresses what interaction you will have with the content.\n */",
+      "attributes": [
+        {
+          "name": "light",
+          "description": "Variant on button style for light",
+          "jsDoc": "/**\n       * Variant on button style for light\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "voice-command",
+          "description": "Voice command to append for things that support data-voicecommand.",
+          "jsDoc": "/**\n       * Voice command to append for things that support data-voicecommand.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Support for disabled state buttons",
+          "jsDoc": "/**\n       * Support for disabled state buttons\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edged",
+          "description": "If we should apply a rounded edge to the button, opposite\nto the direction that it's came from.",
+          "jsDoc": "/**\n       * If we should apply a rounded edge to the button, opposite\n       * to the direction that it's came from.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "event-name",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "Possible value to send along as well with the event.\nCan help with normalized event names / selection of\noptions.",
+          "jsDoc": "/**\n       * Possible value to send along as well with the event.\n       * Can help with normalized event names / selection of\n       * options.\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "light",
+          "description": "Variant on button style for light",
+          "jsDoc": "/**\n       * Variant on button style for light\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "voiceCommand",
+          "description": "Voice command to append for things that support data-voicecommand.",
+          "jsDoc": "/**\n       * Voice command to append for things that support data-voicecommand.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Support for disabled state buttons",
+          "jsDoc": "/**\n       * Support for disabled state buttons\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edged",
+          "description": "If we should apply a rounded edge to the button, opposite\nto the direction that it's came from.",
+          "jsDoc": "/**\n       * If we should apply a rounded edge to the button, opposite\n       * to the direction that it's came from.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon for the button.",
+          "jsDoc": "/**\n       * Icon for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label for the button.",
+          "jsDoc": "/**\n       * Label for the button.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "eventName",
+          "description": "Name of the event to bubble up as being tapped.\nThis can be used to tell other elements what was\nclicked so it can take action appropriately.",
+          "jsDoc": "/**\n       * Name of the event to bubble up as being tapped.\n       * This can be used to tell other elements what was\n       * clicked so it can take action appropriately.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "Possible value to send along as well with the event.\nCan help with normalized event names / selection of\noptions.",
+          "jsDoc": "/**\n       * Possible value to send along as well with the event.\n       * Can help with normalized event names / selection of\n       * options.\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-item-selected"
+        },
+        {
+          "name": "hax-add-voice-command"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-manager\n`A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`",
+      "description": "`hax-manager`",
+      "jsDoc": "/**\n * `hax-manager`\n * @customElement hax-manager\n * `A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`\n * @microcopy - the mental model for this element\n * - hax-manager - the modal for selecting a app for getting something added to hax-body. This will bubble an event up to an app which will then invoke the haxInsert function on hax-body in order to get the selected item onto the body area for usage.\n * - hax-body - the body tag that's beening clicked / focused and built; our WYSIWYG replacement.\n * - hax-panel - a panel off to the side that has possible options. Clicking in this panel is most likely what invokes hax-manager to display though this is also managed by a higher app (lrnapp-book in initial development)\n * - app - an API end point for querying and returning possible items for insert. For example, if a youtube is a source then it'll be expected to return data that can be mapped in such a way that it can display a grid of videos. Hitting vimeo we'd expect the same thing; enough data to be able to assemble a grid of videos to select / work with.\n * - endpoints - much of hax-manager is about routing data to and from the current application to backends. So uploads need to go some place, this is managing the UI aspect of that transaction while expecting to be fed an endpoint to handle the backend aspect.\n */",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "Track visibility status.",
+          "jsDoc": "/**\n       * Track visibility status.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-existing-node",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "edit-title",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "add-title",
+          "description": "Active title",
+          "jsDoc": "/**\n       * Active title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "active-step",
+          "description": "Active step currently selected",
+          "jsDoc": "/**\n       * Active step currently selected\n       */",
+          "type": "number"
+        },
+        {
+          "name": "searching",
+          "description": "Searching mode",
+          "jsDoc": "/**\n       * Searching mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "active-page",
+          "description": "Active page currently selected",
+          "jsDoc": "/**\n       * Active page currently selected\n       */",
+          "type": "number"
+        },
+        {
+          "name": "can-support-uploads",
+          "description": "If this can support uploads or not based on presense of a backend\nthis property is synced down from the store",
+          "jsDoc": "/**\n       * If this can support uploads or not based on presense of a backend\n       * this property is synced down from the store\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeHaxElement",
+          "description": "Active element",
+          "jsDoc": "/**\n       * Active element\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "appList",
+          "description": "List of apps so they can be added",
+          "jsDoc": "/**\n       * List of apps so they can be added\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "description": "Track visibility status.",
+          "jsDoc": "/**\n       * Track visibility status.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editExistingNode",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editTitle",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "addTitle",
+          "description": "Active title",
+          "jsDoc": "/**\n       * Active title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeStep",
+          "description": "Active step currently selected",
+          "jsDoc": "/**\n       * Active step currently selected\n       */",
+          "type": "number"
+        },
+        {
+          "name": "searching",
+          "description": "Searching mode",
+          "jsDoc": "/**\n       * Searching mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activePage",
+          "description": "Active page currently selected",
+          "jsDoc": "/**\n       * Active page currently selected\n       */",
+          "type": "number"
+        },
+        {
+          "name": "canSupportUploads",
+          "description": "If this can support uploads or not based on presense of a backend\nthis property is synced down from the store",
+          "jsDoc": "/**\n       * If this can support uploads or not based on presense of a backend\n       * this property is synced down from the store\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "activeHaxElement",
+          "description": "Active element",
+          "jsDoc": "/**\n       * Active element\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "appList",
+          "description": "List of apps so they can be added",
+          "jsDoc": "/**\n       * List of apps so they can be added\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "prev",
+          "type": "any"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-insert-content"
+        },
+        {
+          "name": "hax-register-core-piece"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-export-dialog\n`Export dialog with all export options and settings provided.`",
+      "description": "`hax-export-dialog`",
+      "jsDoc": "/**\n * `hax-export-dialog`\n * @customElement hax-export-dialog\n * `Export dialog with all export options and settings provided.`\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "description": "Schema that has all of inputs / manages state",
+          "jsDoc": "/**\n       * Schema that has all of inputs / manages state\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "preferences",
+          "description": "Preferences managed for everything global about HAX.",
+          "jsDoc": "/**\n       * Preferences managed for everything global about HAX.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title when open.",
+          "jsDoc": "/**\n       * Title when open.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "description": "Schema that has all of inputs / manages state",
+          "jsDoc": "/**\n       * Schema that has all of inputs / manages state\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "preferences",
+          "description": "Preferences managed for everything global about HAX.",
+          "jsDoc": "/**\n       * Preferences managed for everything global about HAX.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-register-core-piece"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-preview\n`An element that can generate a form`",
+      "description": "`hax-preview`",
+      "jsDoc": "/**\n * `hax-preview`\n * @customElement hax-preview\n * `An element that can generate a form`\n * @microcopy - the mental model for this element\n *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form\n *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.\n */",
+      "attributes": [
+        {
+          "name": "responsive-width",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "orientation-direction",
+          "type": "string"
+        },
+        {
+          "name": "previewNode",
+          "description": "A reference to the previewNode so we can do data binding correctly.",
+          "jsDoc": "/**\n       * A reference to the previewNode so we can do data binding correctly.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "value",
+          "description": "Returned value from the form input.",
+          "jsDoc": "/**\n       * Returned value from the form input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modeTab",
+          "description": "State of mode tabs.",
+          "jsDoc": "/**\n       * State of mode tabs.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editTitle",
+          "description": "Edit title since it can change based on the operation",
+          "jsDoc": "/**\n       * Edit title since it can change based on the operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeHaxElement",
+          "description": "The element to work against expressing the structure of the DOM element\nto create in the preview area.",
+          "jsDoc": "/**\n       * The element to work against expressing the structure of the DOM element\n       * to create in the preview area.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "haspreviewNode",
+          "description": "Boolean association for a preview node existing.",
+          "jsDoc": "/**\n       * Boolean association for a preview node existing.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advancedForm",
+          "description": "If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.",
+          "jsDoc": "/**\n       * If this is the advancedForm or not. Default to not but slider allows\n       * switching mode for the form to be presented.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "can-edit-source",
+          "description": "If we should show source view or not.",
+          "jsDoc": "/**\n       * If we should show source view or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "form-key",
+          "description": "Form key from hax to target.",
+          "jsDoc": "/**\n       * Form key from hax to target.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "humanName",
+          "description": "Active Name from the properties",
+          "jsDoc": "/**\n       * Active Name from the properties\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "responsiveWidth",
+          "type": "string"
+        },
+        {
+          "name": "orientation",
+          "type": "string"
+        },
+        {
+          "name": "orientationDirection",
+          "type": "string"
+        },
+        {
+          "name": "previewNode",
+          "description": "A reference to the previewNode so we can do data binding correctly.",
+          "jsDoc": "/**\n       * A reference to the previewNode so we can do data binding correctly.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "value",
+          "description": "Returned value from the form input.",
+          "jsDoc": "/**\n       * Returned value from the form input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "modeTab",
+          "description": "State of mode tabs.",
+          "jsDoc": "/**\n       * State of mode tabs.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editTitle",
+          "description": "Edit title since it can change based on the operation",
+          "jsDoc": "/**\n       * Edit title since it can change based on the operation\n       */",
+          "type": "string"
+        },
+        {
+          "name": "activeHaxElement",
+          "description": "The element to work against expressing the structure of the DOM element\nto create in the preview area.",
+          "jsDoc": "/**\n       * The element to work against expressing the structure of the DOM element\n       * to create in the preview area.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "haspreviewNode",
+          "description": "Boolean association for a preview node existing.",
+          "jsDoc": "/**\n       * Boolean association for a preview node existing.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advancedForm",
+          "description": "If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.",
+          "jsDoc": "/**\n       * If this is the advancedForm or not. Default to not but slider allows\n       * switching mode for the form to be presented.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "canEditSource",
+          "description": "If we should show source view or not.",
+          "jsDoc": "/**\n       * If we should show source view or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "formKey",
+          "description": "Form key from hax to target.",
+          "jsDoc": "/**\n       * Form key from hax to target.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "humanName",
+          "description": "Active Name from the properties",
+          "jsDoc": "/**\n       * Active Name from the properties\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "active-hax-element-changed"
+        },
+        {
+          "name": "preview-node-changed"
+        },
+        {
+          "name": "value-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-schema-form\n`An element that can generate a form from HAXschema`",
+      "description": "`hax-schema-form`",
+      "jsDoc": "/**\n * `hax-schema-form`\n * @customElement hax-schema-form\n * `An element that can generate a form from HAXschema`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.\n */",
+      "attributes": [
+        {
+          "name": "initial-value",
+          "description": "Returned value from the form input.",
+          "jsDoc": "/**\n       * Returned value from the form input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "value",
+          "type": "{}"
+        },
+        {
+          "name": "mode-tab",
+          "description": "State of mode tabs.",
+          "jsDoc": "/**\n       * State of mode tabs.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "advanced-form",
+          "description": "If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.",
+          "jsDoc": "/**\n       * If this is the advancedForm or not. Default to not but slider allows\n       * switching mode for the form to be presented.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "can-edit-source",
+          "description": "If we should show source view or not.",
+          "jsDoc": "/**\n       * If we should show source view or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "form-key",
+          "description": "Form key from hax to target.",
+          "jsDoc": "/**\n       * Form key from hax to target.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "configure-schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advanced-schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "initialValue",
+          "description": "Returned value from the form input.",
+          "jsDoc": "/**\n       * Returned value from the form input.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "value",
+          "type": "{}"
+        },
+        {
+          "name": "modeTab",
+          "description": "State of mode tabs.",
+          "jsDoc": "/**\n       * State of mode tabs.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "advancedForm",
+          "description": "If this is the advancedForm or not. Default to not but slider allows\nswitching mode for the form to be presented.",
+          "jsDoc": "/**\n       * If this is the advancedForm or not. Default to not but slider allows\n       * switching mode for the form to be presented.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "canEditSource",
+          "description": "If we should show source view or not.",
+          "jsDoc": "/**\n       * If we should show source view or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "formKey",
+          "description": "Form key from hax to target.",
+          "jsDoc": "/**\n       * Form key from hax to target.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "configureSchema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "advancedSchema",
+          "description": "JSON Schema.",
+          "jsDoc": "/**\n       * JSON Schema.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-stax-browser-item\n`A button on the hax-gizmo-browser app display`",
+      "description": "`hax-stax-browser-item`",
+      "jsDoc": "/**\n * `hax-stax-browser-item`\n * @customElement hax-stax-browser-item\n * `A button on the hax-gizmo-browser app display`\n */",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "staxReference",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "image",
+          "description": "Image for the button, optional.",
+          "jsDoc": "/**\n       * Image for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "tag",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "description": "Title",
+          "jsDoc": "/**\n       * Title\n       */",
+          "type": "string"
+        },
+        {
+          "name": "staxReference",
+          "description": "Index position in the original list of imports",
+          "jsDoc": "/**\n       * Index position in the original list of imports\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "image",
+          "description": "Image for the button, optional.",
+          "jsDoc": "/**\n       * Image for the button, optional.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Author related to this gizmo",
+          "jsDoc": "/**\n       * Author related to this gizmo\n       */",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Description for this.",
+          "jsDoc": "/**\n       * Description for this.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "examples",
+          "description": "Examples, a list of image links, optional.",
+          "jsDoc": "/**\n       * Examples, a list of image links, optional.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "status",
+          "description": "Status, whether disabled, enabled, or other future states.",
+          "jsDoc": "/**\n       * Status, whether disabled, enabled, or other future states.\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "tag",
+          "description": "Tag",
+          "jsDoc": "/**\n       * Tag\n       */",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-insert-content-array"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-stax-browser\n`Select a stack / template to insert`",
+      "description": "`hax-stax-browser`",
+      "jsDoc": "/**\n * `hax-stax-browser`\n * @customElement hax-stax-browser\n * `Select a stack / template to insert`\n * @microcopy - the mental model for this element\n * - stax - silly name for the general public when talking about custom elements and what it provides in the end.\n */",
+      "attributes": [
+        {
+          "name": "staxList",
+          "description": "The list of stax",
+          "jsDoc": "/**\n       * The list of stax\n       */",
+          "type": "any[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "staxList",
+          "description": "The list of stax",
+          "jsDoc": "/**\n       * The list of stax\n       */",
+          "type": "any[]"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "hax-upload-field",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "option",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "any[]"
+        },
+        {
+          "name": "no-camera",
+          "description": "Used when we want to ensure there is not a web cam option like video upload.",
+          "jsDoc": "/**\n       * Used when we want to ensure there is not a web cam option like video upload.\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "option",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "any[]"
+        },
+        {
+          "name": "noCamera",
+          "description": "Used when we want to ensure there is not a web cam option like video upload.",
+          "jsDoc": "/**\n       * Used when we want to ensure there is not a web cam option like video upload.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "prev",
+          "type": "any"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "hax-body\n`Manager of the body area that can be modified`",
+      "description": "`hax-body`",
+      "jsDoc": "/**\n * `hax-body`\n * @customElement hax-body\n * `Manager of the body area that can be modified`\n * @microcopy - the mental model for this element\n *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.\n *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.\n *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / \"global\" type of body operations performed on it such as delete, duplicate and higher level format styling.\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "State of if we are editing or not.",
+          "jsDoc": "/**\n       * State of if we are editing or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hax-ray-mode",
+          "description": "Bust out the HAX Ray mode",
+          "jsDoc": "/**\n       * Bust out the HAX Ray mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "globalPreferences",
+          "description": "Access to the global properties object.",
+          "jsDoc": "/**\n       * Access to the global properties object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeContainerNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "State of if we are editing or not.",
+          "jsDoc": "/**\n       * State of if we are editing or not.\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "haxRayMode",
+          "description": "Bust out the HAX Ray mode",
+          "jsDoc": "/**\n       * Bust out the HAX Ray mode\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "globalPreferences",
+          "description": "Access to the global properties object.",
+          "jsDoc": "/**\n       * Access to the global properties object.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        },
+        {
+          "name": "activeContainerNode",
+          "description": "A reference to the active node in the slot.",
+          "jsDoc": "/**\n       * A reference to the active node in the slot.\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "hax-active-hover-name"
+        },
+        {
+          "name": "hax-body-tag-removed"
+        },
+        {
+          "name": "hax-body-tag-added"
+        },
+        {
+          "name": "active-container-node-changed"
+        },
+        {
+          "name": "active-node-changed"
+        },
+        {
+          "name": "hax-register-body"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

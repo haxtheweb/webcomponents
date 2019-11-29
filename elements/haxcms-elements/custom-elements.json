@@ -1,0 +1,259 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "haxcms-basic-theme",
+      "description": "`haxcms-basic-theme`\n`An incredibly basic theme. Great starting point for new site discussions.",
+      "jsDoc": "/**\n * `haxcms-basic-theme`\n * `An incredibly basic theme. Great starting point for new site discussions.\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "HAXCMSThemeWiring",
+          "type": "any"
+        },
+        {
+          "name": "hexColor",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "isLoggedIn",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "haxcms-minimalist-theme",
+      "description": "`haxcms-minimalist-theme`\n`Minimalist design, just a whole page really.",
+      "jsDoc": "/**\n * `haxcms-minimalist-theme`\n * `Minimalist design, just a whole page really.\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "HAXCMSThemeWiring",
+          "type": "any"
+        },
+        {
+          "name": "hexColor",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "isLoggedIn",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "haxcms-user-theme",
+      "description": "`haxcms-custom-theme`\n`This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`",
+      "jsDoc": "/**\n * `haxcms-custom-theme`\n * `This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "HAXCMSThemeWiring",
+          "type": "any"
+        },
+        {
+          "name": "hexColor",
+          "description": "Class for the color",
+          "jsDoc": "/**\n       * Class for the color\n       */",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "jsDoc": "/**\n       * Color class work to apply\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "isLoggedIn",
+          "description": "editting state for the page",
+          "jsDoc": "/**\n       * editting state for the page\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "contentContainer",
+          "description": "DOM node that wraps the slot",
+          "jsDoc": "/**\n       * DOM node that wraps the slot\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-custom-theme-template-ready"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "basic-template",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "minimalist-template",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}
