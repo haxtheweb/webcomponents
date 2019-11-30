@@ -48,7 +48,8 @@ class HAXPanelItem extends LitElement {
        * Support for disabled state buttons
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
+        reflect: true
       },
       /**
        * If we should apply a rounded edge to the button, opposite
@@ -217,18 +218,20 @@ class HAXPanelItem extends LitElement {
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-item-selected", {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: {
-          target: this,
-          value: this.value,
-          eventName: this.eventName
-        }
-      })
-    );
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent("hax-item-selected", {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+          detail: {
+            target: this,
+            value: this.value,
+            eventName: this.eventName
+          }
+        })
+      );
+    }
   }
 }
 customElements.define(HAXPanelItem.tag, HAXPanelItem);
