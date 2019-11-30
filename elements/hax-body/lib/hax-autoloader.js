@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-autoloader`

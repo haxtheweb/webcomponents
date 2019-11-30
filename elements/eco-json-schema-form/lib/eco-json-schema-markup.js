@@ -1,10 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import {
-  encapScript,
-  wipeSlot
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/marked-element/marked-element.js";
 /**
 `eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,

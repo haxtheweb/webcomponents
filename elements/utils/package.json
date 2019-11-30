@@ -1,0 +1,19 @@
+{
+  "name": "@lrnwebcomponents/utils",
+  "version": "2.3.0",
+  "description": "A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "utils.js",
+  "module": "utils.js",
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

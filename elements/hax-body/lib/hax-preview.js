@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-media-query/iron-media-query.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention

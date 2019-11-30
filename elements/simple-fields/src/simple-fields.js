@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
-import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";

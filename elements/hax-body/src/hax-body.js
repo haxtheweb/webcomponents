@@ -1,10 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 // LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import {
-  encapScript,
-  wipeSlot
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-body`
  * @customElement hax-body

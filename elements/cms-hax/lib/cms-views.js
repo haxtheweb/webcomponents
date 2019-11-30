@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 /**

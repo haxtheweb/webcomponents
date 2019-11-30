@@ -1,11 +1,11 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
-import { getRange } from "./shadows-safari.js";
 import {
+  getRange,
   encapScript,
   wipeSlot,
   stripMSWord
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import "@polymer/iron-ajax/iron-ajax.js";
