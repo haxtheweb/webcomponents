@@ -1,8 +1,7 @@
-<div id="theme">${this.constructor.theme || oneDark}</div>
+<div id="theme"></div>
 <div id="demo" class="demo"></div>
-<slot id="content"></slot>
-
+<slot></slot>
 <div id="code-container">
-  <button type="button" hidden="[[!copyClipboardButton]]" id="copyButton" title="Copy to clipboard" on-click="_copyToClipboard">Copy</button>
+  <button type="button" ?hidden="${!this.copyClipboardButton}" id="copyButton" title="Copy to clipboard" @click="${this._copyToClipboard}">Copy</button>
   <pre id="code"></pre>
 </div>

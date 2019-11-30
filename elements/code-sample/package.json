@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/code-sample",
   "wcfactory": {
     "className": "CodeSample",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "code-sample",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": true,
