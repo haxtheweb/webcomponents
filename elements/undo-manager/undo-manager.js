@@ -107,23 +107,24 @@ class UndoManager extends LitElement {
    * HTMLElement
    */
   connectedCallback() {
-    super.connectedCallback();
     // watch for changes to the element itself
     this.observer = new MutationObserver(mutations => {
       // ensure this was not a change record to perform undo/redo itself!
-      if (this.blocked) {
-        this.blocked = false;
-        return;
-      }
-      // compare light dom children to previous value
-      const newValue = this.innerHTML;
-      if (this.stack && newValue != this.startValue) {
-        // push an "edit comand"
-        this.stack.execute(
-          new UndoManagerCommand(this, this.startValue, newValue)
-        );
-        this.startValue = newValue;
-      }
+      setTimeout(() => {
+        if (this.blocked) {
+          this.blocked = false;
+          return;
+        }
+        // compare light dom children to previous value
+        const newValue = this.innerHTML;
+        if (this.stack && newValue != this.startValue) {
+          // push an "edit comand"
+          this.stack.execute(
+            new UndoManagerCommand(this, this.startValue, newValue)
+          );
+          this.startValue = newValue;
+        }
+      }, 50);
     });
     // watch attributes, children and the subtree for changes
     this.observer.observe(this, {
@@ -131,6 +132,7 @@ class UndoManager extends LitElement {
       childList: true,
       subtree: true
     });
+    super.connectedCallback();
   }
   /**
    * HTMLElement
@@ -191,7 +193,7 @@ class UndoManager extends LitElement {
   }
   // execute an undo
   undo() {
-    this.stack.undo();
+    return this.stack.undo();
   }
   // execute a redo
   redo() {
