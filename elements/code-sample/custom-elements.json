@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "theme",
+          "type": "any"
+        },
+        {
+          "name": "copyClipboardButton",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
+      "attributes": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "copy-clipboard-button",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string"
+        },
+        {
+          "name": "copyClipboardButton",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
+      "attributes": [],
+      "properties": [
+        {
+          "name": "theme",
+          "type": "any"
+        },
+        {
+          "name": "copyClipboardButton",
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

@@ -5,8 +5,12 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { oneDark } from "./lib/themes/one-dark.js";
 import { hljs } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
+import { yaml } from "./lib/highlightjs/languages/yaml.js";
+import { jsonLang } from "./lib/highlightjs/languages/json.js";
 import { xml } from "./lib/highlightjs/languages/xml.js";
 hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("json", jsonLang);
+hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 window["hljs"] = hljs;
 /**
