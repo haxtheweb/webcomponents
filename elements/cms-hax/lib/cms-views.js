@@ -1,31 +1,24 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-spinner/paper-spinner.js";
 /**
  * `cms-views`
  * @customElement cms-views
  * `Render and process a  / views from a content management system.`
  */
-class CMSViews extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class CMSViews extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           min-width: 112px;
           min-height: 112px;
           transition: 0.6s all ease;
           background-color: transparent;
-        }
-        paper-spinner {
-          visibility: hidden;
-          opacity: 0;
-          height: 80px;
-          width: 80px;
-          padding: 16px;
         }
         #replacementcontent {
           visibility: visible;
@@ -34,29 +27,65 @@ class CMSViews extends PolymerElement {
         :host([loading]) {
           text-align: center;
         }
-        :host([loading]) paper-spinner {
-          visibility: visible;
-          opacity: 1;
-        }
         :host([loading]) #replacementcontent {
           opacity: 0;
           visibility: hidden;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         id="viewsrequest"
         method="GET"
-        params="[[bodyData]]"
-        url="[[viewsEndPoint]]"
+        url="${this.viewsEndPoint}"
         handle-as="json"
-        last-response="{{viewsData}}"
+        @last-response-changed="${this.viewsDataChanged}"
       ></iron-ajax>
-      <paper-spinner active="[[loading]]"></paper-spinner>
+      ${this.loading
+        ? html`
+            <hexagon-loader
+              item-count="4"
+              loading
+              size="small"
+            ></hexagon-loader>
+          `
+        : html``}
       <span id="replacementcontent"><slot></slot></span>
     `;
   }
+  viewsDataChanged(e) {
+    this.viewsData = e.detail.value;
+  }
   static get tag() {
     return "cms-views";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.loading = false;
+    this.viewsPrefix = "[";
+    this.viewsSuffix = "]";
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["viewsName", "viewsDisplay"].includes(propName)) {
+        this.bodyData = this._generateBodyData(
+          this.viewsName,
+          this.viewsDisplay
+        );
+      }
+      if (propName == "bodyData") {
+        this._viewsChanged(this[propName]);
+      }
+      if (propName == "viewsData") {
+        this._handleviewsResponse(this[propName]);
+      }
+    });
   }
   static get properties() {
     return {
@@ -65,57 +94,57 @@ class CMSViews extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Name of the views to render
        */
       viewsName: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "views-name"
       },
       /**
        * Display from the views
        */
       viewsDisplay: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "views-display"
       },
       /**
        * views end point updated, change the way we do processing.
        */
       viewsEndPoint: {
-        type: String
-      },
-      /**
-       * Body data which is just views with some encapsulation.
-       */
-      bodyData: {
-        type: Object,
-        computed: "_generateBodyData(viewsName, viewsDisplay)",
-        observer: "_viewsChanged"
-      },
-      /**
-       * views data from the end point.
-       */
-      viewsData: {
         type: String,
-        observer: "_handleviewsResponse"
+        attribute: "views-end-point"
       },
       /**
        * Prefix for the views to be processed
        */
       viewsPrefix: {
         type: String,
-        observer: "["
+        attribute: "views-prefix"
       },
       /**
        * Suffix for the views to be processed
        */
       viewsSuffix: {
         type: String,
-        observer: "]"
+        attribute: "views-suffix"
+      },
+      /**
+       * Body data which is just views with some encapsulation.
+       */
+      bodyData: {
+        type: Object
+      },
+      /**
+       * views data from the end point.
+       */
+      viewsData: {
+        type: String,
+        attribute: "views-data"
       }
     };
   }
@@ -146,21 +175,17 @@ class CMSViews extends PolymerElement {
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
-      microTask.run(() => {
-        let frag = document.createElement("span");
-        frag.innerHTML = newValue.content;
-        let newNode = frag.cloneNode(true);
-        this.appendChild(newNode);
-        setTimeout(() => {
-          this.loading = false;
-        }, 600);
-      });
+      let frag = document.createElement("span");
+      frag.innerHTML = newValue.content;
+      let newNode = frag.cloneNode(true);
+      this.appendChild(newNode);
+      this.loading = false;
     }
   }
   /**
    * views end point changed
    */
-  _viewsChanged(newValue, oldValue) {
+  _viewsChanged(newValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -176,40 +201,8 @@ class CMSViews extends PolymerElement {
       }
       if (this.viewsEndPoint) {
         this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#viewsrequest").generateRequest();
-        });
-      }
-    }
-  }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    if (
-      typeof this.viewsName !== typeof undefined &&
-      this.viewsName !== null &&
-      this.viewsName !== ""
-    ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the views data needed for the request from globals
-        if (
-          typeof this.viewsEndPoint === typeof undefined &&
-          typeof window.cmsviewsEndPoint !== typeof undefined
-        ) {
-          this.viewsEndPoint = window.cmsviewsEndPoint;
-        }
-        if (this.viewsEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#viewsrequest").generateRequest();
-          });
-        }
+        this.shadowRoot.querySelector("#viewsrequest").body = newValue;
+        this.shadowRoot.querySelector("#viewsrequest").generateRequest();
       }
     }
   }

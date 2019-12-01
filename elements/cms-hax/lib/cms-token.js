@@ -1,28 +1,25 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-spinner/paper-spinner.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
-`cms-token`
-Render and process a shortcode / token from a content management system.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - cms - Content management system, while writen against Drupal should be
-         abstract enough to work with just about anything.
- - token - a snippet / shortcode of logic to unpack and turn into something
-           more complex. Usually of the form [actual:thing:here] or
-           [[action|thing=stuff|here=place]] style. Either way, it's a
-           snippet which will get sent to a backend and dynamically replaced.
-*/
-class CMSToken extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+ * `cms-token`
+ * `Render and process a shortcode / token from a content management system.`
+ * @microcopy - the mental model for this element
+ * - cms   Content management system, while writen against Drupal should be
+ *         abstract enough to work with just about anything.
+ * - token a snippet / shortcode of logic to unpack and turn into something
+ *         more complex. Usually of the form [actual:thing:here] or
+ *         [[action|thing=stuff|here=place]] style. Either way, it's a
+ *         snippet which will get sent to a backend and dynamically replaced.
+ * @customElement cms-token
+ */
+class CMSToken extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline;
           min-width: 112px;
@@ -30,17 +27,6 @@ class CMSToken extends PolymerElement {
           transition: 0.6s all ease;
           background-color: transparent;
         }
-
-        paper-spinner {
-          transition: 0.6s all ease;
-          position: absolute;
-          visibility: hidden;
-          display: none;
-          opacity: 0;
-          height: 0;
-          width: 0;
-        }
-
         #replacementcontent {
           transition: 0.6s all ease;
           visibility: visible;
@@ -48,44 +34,78 @@ class CMSToken extends PolymerElement {
           height: auto;
           width: auto;
         }
-
         :host([loading]) {
           text-align: center;
         }
-
-        :host([loading]) paper-spinner {
-          visibility: visible;
-          opacity: 1;
-          position: relative;
-          height: 80px;
-          width: 80px;
-          padding: 16px;
-          display: flex;
-        }
-
         :host([loading]) #replacementcontent {
           opacity: 0;
           visibility: hidden;
           height: 0;
           width: 0;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <iron-ajax
         id="tokenrequest"
         method="GET"
-        params="[[bodyData]]"
-        url="[[tokenEndPoint]]"
+        url="${this.tokenEndPoint}"
         handle-as="json"
-        last-response="{{tokenData}}"
+        @last-response-changed="${this.tokenDataChanged}"
       ></iron-ajax>
-      <paper-spinner active="[[loading]]"></paper-spinner>
-      <span id="replacementcontent">
-        <slot></slot>
-      </span>
+      ${this.loading
+        ? html`
+            <hexagon-loader
+              item-count="4"
+              loading
+              size="small"
+            ></hexagon-loader>
+          `
+        : html``}
+      <span id="replacementcontent"><slot></slot></span>
     `;
+  }
+  tokenDataChanged(e) {
+    this.tokenData = e.detail.value;
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.loading = false;
+    this.tokenPrefix = "[";
+    this.tokenSuffix = "]";
+    this._clickInvoked = false;
+    this._displayMode = "full";
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
   }
   static get tag() {
     return "cms-token";
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["token", "_clickInvoked"].includes(propName)) {
+        this.bodyData = this._generateBodyData(this.token, this._clickInvoked);
+      }
+      if (propName == "bodyData") {
+        this._bodyDataChanged(this[propName]);
+      }
+      if (propName == "tokenData") {
+        this._handleTokenResponse(this[propName]);
+      }
+      if (propName == "_displayMode") {
+        this._displayModeChanged(this[propName]);
+      }
+    });
   }
   static get properties() {
     return {
@@ -94,65 +114,57 @@ class CMSToken extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Token changed (somehow) do the token processing.
        */
       token: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Token end point updated, change the way we do processing.
        */
       tokenEndPoint: {
-        type: String
+        type: String,
+        attribute: "token-end-point"
       },
       /**
        * Body data which is just token with some encapsulation.
        */
       bodyData: {
-        type: Object,
-        computed: "_generateBodyData(token, _clickInvoked)",
-        observer: "_tokenChanged"
+        type: Object
       },
       /**
        * internal tracking for edit button being clicked in HAX presentation
        */
       _clickInvoked: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * Token data from the end point.
        */
       tokenData: {
         type: String,
-        observer: "_handleTokenResponse"
+        attribute: "token-data"
       },
       /**
        * Prefix for the token to be processed
        */
       tokenPrefix: {
         type: String,
-        value: "["
+        attribute: "token-prefix"
       },
       /**
        * Suffix for the token to be processed
        */
       tokenSuffix: {
         type: String,
-        value: "]"
+        attribute: "token-suffix"
       },
-      /**
-       *
-       */
       _displayMode: {
-        type: String,
-        value: "full",
-        observer: "_displayModeChanged"
+        type: String
       }
     };
   }
@@ -185,7 +197,7 @@ class CMSToken extends PolymerElement {
   /**
    * Handle the response from the token processing endpoint
    */
-  _handleTokenResponse(newValue, oldValue) {
+  _handleTokenResponse(newValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks in the event we're in an editing mode
       if (document.getElementById("cmstokenidtolockonto") != null) {
@@ -201,18 +213,16 @@ class CMSToken extends PolymerElement {
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
-      microTask.run(() => {
-        let template = document.createElement("template");
-        template.innerHTML = newValue.content;
-        this.appendChild(document.importNode(template.content, true));
-        this.loading = false;
-      });
+      let template = document.createElement("template");
+      template.innerHTML = newValue.content;
+      this.appendChild(document.importNode(template.content, true));
+      this.loading = false;
     }
   }
   /**
-   * Token end point changed
+   * Body data changed end point changed
    */
-  _tokenChanged(newValue, oldValue) {
+  _bodyDataChanged(newValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -228,9 +238,8 @@ class CMSToken extends PolymerElement {
       }
       if (this.tokenEndPoint) {
         this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#tokenrequest").generateRequest();
-        });
+        this.shadowRoot.querySelector("#tokenrequest").body = newValue;
+        this.shadowRoot.querySelector("#tokenrequest").generateRequest();
       }
     }
   }
@@ -255,44 +264,19 @@ class CMSToken extends PolymerElement {
     this._clickInvoked = true;
   }
   /**
-   * Attached to the DOM, now fire.
+   * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
-    if (
-      typeof this.token !== typeof undefined &&
-      this.token !== null &&
-      this.token !== ""
-    ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the token data needed for the request from globals
-        if (
-          typeof this.tokenEndPoint === typeof undefined &&
-          typeof window.cmstokenEndPoint !== typeof undefined
-        ) {
-          this.tokenEndPoint = window.cmstokenEndPoint;
-        }
-        if (this.tokenEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#tokenrequest").generateRequest();
-          });
-        }
-      }
-    }
-    afterNextRender(this, function() {
+    setTimeout(() => {
       document.addEventListener(
         "visibilitychange",
         this._windowVisibilityChanged.bind(this)
       );
-    });
+    }, 0);
   }
   /**
-   * Detatched life cycle.
+   * HTMLElement
    */
   disconnectedCallback() {
     document.removeEventListener(
