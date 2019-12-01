@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { getRange } from "./lib/shadows-safari.js";
+import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
