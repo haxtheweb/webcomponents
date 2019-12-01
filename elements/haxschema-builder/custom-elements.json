@@ -5,15 +5,6 @@
       "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
       "description": "`haxschema-builder`",
       "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
-      "description": "`haxschema-builder`",
-      "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "hax-schema",
@@ -78,6 +69,15 @@
           "type": "string"
         }
       ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "haxschema-builder\n`dynamically build and visualize HAXschema`",
+      "description": "`haxschema-builder`",
+      "jsDoc": "/**\n * `haxschema-builder`\n * @customElement haxschema-builder\n * `dynamically build and visualize HAXschema`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
       "events": [],
       "slots": []
     },

@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";

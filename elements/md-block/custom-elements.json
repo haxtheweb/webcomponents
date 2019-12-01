@@ -5,6 +5,15 @@
       "name": "md-block\n`a markdown block`",
       "description": "`md-block`",
       "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "md-block\n`a markdown block`",
+      "description": "`md-block`",
+      "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
@@ -33,15 +42,6 @@
           "type": "string"
         }
       ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "md-block\n`a markdown block`",
-      "description": "`md-block`",
-      "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
       "events": [],
       "slots": []
     },

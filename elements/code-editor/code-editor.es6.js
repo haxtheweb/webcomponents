@@ -300,7 +300,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         console.warn(
           "code-editor works best with a template tag provided in light dom"
         );
-        children = this.children;
+        children = this.childNodes;
         if (children.length > 0) {
           // loop through everything found in the slotted area and put it back in
           for (var j = 0, len2 = children.length; j < len2; j++) {
