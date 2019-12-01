@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
-      "description": "`circle-progress`",
-      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "name": "circle-progress",
+      "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
+      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",
@@ -61,9 +61,9 @@
       "slots": []
     },
     {
-      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
-      "description": "`circle-progress`",
-      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "name": "circle-progress",
+      "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
+      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",
@@ -120,9 +120,9 @@
       "slots": []
     },
     {
-      "name": "circle-progress\n`Polymer-based web component displaying a circular progress bar.`",
-      "description": "`circle-progress`",
-      "jsDoc": "/**\n * `circle-progress`\n * @customElement circle-progress\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n */",
+      "name": "circle-progress",
+      "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
+      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",

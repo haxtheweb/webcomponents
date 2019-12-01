@@ -182,9 +182,11 @@ ol {
    */
   storeReady(e) {
     if (e.detail) {
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
+      setTimeout(() => {
+        window.HaxStore.instance.appStore = JSON.parse(
+          this.getAttribute("app-store")
+        );
+      }, 0);
     }
   }
   /**

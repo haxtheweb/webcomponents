@@ -18,8 +18,18 @@
         },
         {
           "name": "hide-export-button",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -38,7 +48,7 @@
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "field-class",
@@ -59,6 +69,10 @@
           "type": "string"
         },
         {
+          "name": "sync-body",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "State of the panel",
           "jsDoc": "/**\n       * State of the panel\n       */",
@@ -77,7 +91,7 @@
           "type": "string"
         },
         {
-          "name": "active-hax-body",
+          "name": "activeHaxBody",
           "description": "Reference to activeBody.",
           "jsDoc": "/**\n       * Reference to activeBody.\n       */",
           "type": "{}"
@@ -96,8 +110,18 @@
         },
         {
           "name": "hideExportButton",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -116,7 +140,7 @@
           "name": "appStoreConnection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "fieldClass",
@@ -135,6 +159,10 @@
           "description": "fieldName, internal to the form in whatever system it's in.",
           "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
+        },
+        {
+          "name": "syncBody",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -181,8 +209,18 @@
         },
         {
           "name": "hide-export-button",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -201,7 +239,7 @@
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "field-class",
@@ -222,6 +260,10 @@
           "type": "string"
         },
         {
+          "name": "sync-body",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "State of the panel",
           "jsDoc": "/**\n       * State of the panel\n       */",
@@ -240,7 +282,7 @@
           "type": "string"
         },
         {
-          "name": "active-hax-body",
+          "name": "activeHaxBody",
           "description": "Reference to activeBody.",
           "jsDoc": "/**\n       * Reference to activeBody.\n       */",
           "type": "{}"
@@ -259,8 +301,18 @@
         },
         {
           "name": "hideExportButton",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -279,7 +331,7 @@
           "name": "appStoreConnection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "fieldClass",
@@ -298,6 +350,10 @@
           "description": "fieldName, internal to the form in whatever system it's in.",
           "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
+        },
+        {
+          "name": "syncBody",
+          "type": "boolean"
         },
         {
           "name": "editMode",
@@ -344,8 +400,18 @@
         },
         {
           "name": "hide-export-button",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -364,7 +430,7 @@
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "field-class",
@@ -385,6 +451,10 @@
           "type": "string"
         },
         {
+          "name": "sync-body",
+          "type": "boolean"
+        },
+        {
           "name": "edit-mode",
           "description": "State of the panel",
           "jsDoc": "/**\n       * State of the panel\n       */",
@@ -403,7 +473,7 @@
           "type": "string"
         },
         {
-          "name": "active-hax-body",
+          "name": "activeHaxBody",
           "description": "Reference to activeBody.",
           "jsDoc": "/**\n       * Reference to activeBody.\n       */",
           "type": "{}"
@@ -422,8 +492,18 @@
         },
         {
           "name": "hideExportButton",
-          "description": "Hide the export button, not a common thing to show\nin this mode but it's possible for debugging",
-          "jsDoc": "/**\n       * Hide the export button, not a common thing to show\n       * in this mode but it's possible for debugging\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePanelOps",
+          "description": "Hide the panel operations (save and cancel),",
+          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "description": "Hide preferences button",
+          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
         },
         {
@@ -442,7 +522,7 @@
           "name": "appStoreConnection",
           "description": "Connection object for talking to an app store.",
           "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
-          "type": "{}"
+          "type": "string"
         },
         {
           "name": "fieldClass",
@@ -461,6 +541,10 @@
           "description": "fieldName, internal to the form in whatever system it's in.",
           "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
+        },
+        {
+          "name": "syncBody",
+          "type": "boolean"
         },
         {
           "name": "editMode",

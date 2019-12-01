@@ -6,7 +6,20 @@
       "description": "`full-screen-image`",
       "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "null"
+        }
+      ],
       "events": [],
       "slots": []
     },
@@ -25,7 +38,7 @@
         },
         {
           "name": "source",
-          "type": "string"
+          "type": "null"
         }
       ],
       "properties": [
@@ -39,7 +52,7 @@
         },
         {
           "name": "source",
-          "type": "string"
+          "type": "null"
         }
       ],
       "events": [],
@@ -50,7 +63,20 @@
       "description": "`full-screen-image`",
       "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "null"
+        }
+      ],
       "events": [],
       "slots": []
     }

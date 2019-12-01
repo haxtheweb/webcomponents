@@ -3,17 +3,8 @@
   "tags": [
     {
       "name": "full-width-image",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "full-width-image\n`full width image that flows beyond boundaries`",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
       "attributes": [],
       "properties": [],
       "events": [],
@@ -21,35 +12,8 @@
     },
     {
       "name": "full-width-image",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "source",
-          "type": "string"
-        },
-        {
-          "name": "caption",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "type": "string"
-        },
-        {
-          "name": "caption",
-          "type": "string"
-        }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "full-width-image\n`full width image that flows beyond boundaries`",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
       "attributes": [
         {
           "name": "source",
@@ -75,17 +39,8 @@
     },
     {
       "name": "full-width-image",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "full-width-image\n`full width image that flows beyond boundaries`",
-      "description": "`full-width-image`",
-      "jsDoc": "/**\n * `full-width-image`\n * @customElement full-width-image\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
       "attributes": [],
       "properties": [],
       "events": [],

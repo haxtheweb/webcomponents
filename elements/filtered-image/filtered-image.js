@@ -134,10 +134,6 @@ class FilteredImage extends SimpleColors {
       width: {
         type: String
       },
-      viewBox: {
-        type: String,
-        attribute: "view-box"
-      },
       color: {
         type: String
       },

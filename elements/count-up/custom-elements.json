@@ -6,7 +6,56 @@
       "description": "`count-up`",
       "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "start",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "type": "number"
+        },
+        {
+          "name": "duration",
+          "type": "number"
+        },
+        {
+          "name": "noeasing",
+          "type": "boolean"
+        },
+        {
+          "name": "decimalplaces",
+          "type": "number"
+        },
+        {
+          "name": "separator",
+          "type": "string"
+        },
+        {
+          "name": "decimal",
+          "type": "string"
+        },
+        {
+          "name": "prefixtext",
+          "type": "string"
+        },
+        {
+          "name": "suffixtext",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "type": "number[]"
+        },
+        {
+          "name": "rootMargin",
+          "type": "string"
+        },
+        {
+          "name": "visibleLimit",
+          "type": "number"
+        }
+      ],
       "events": [],
       "slots": []
     },
@@ -16,70 +65,52 @@
       "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
+          "name": "ratio",
+          "type": "number"
+        },
+        {
           "name": "start",
-          "description": "Starting point for counting",
-          "jsDoc": "/**\n       * Starting point for counting\n       */",
           "type": "number"
         },
         {
           "name": "end",
-          "description": "End point for counting stopping",
-          "jsDoc": "/**\n       * End point for counting stopping\n       */",
           "type": "number"
         },
         {
           "name": "duration",
-          "description": "Duration to count",
-          "jsDoc": "/**\n       * Duration to count\n       */",
           "type": "number"
         },
         {
           "name": "noeasing",
-          "description": "Disable easing animation",
-          "jsDoc": "/**\n       * Disable easing animation\n       */",
           "type": "boolean"
         },
         {
           "name": "decimalplaces",
-          "description": "decimal places to show",
-          "jsDoc": "/**\n       * decimal places to show\n       */",
           "type": "number"
         },
         {
           "name": "separator",
-          "description": "separator for 100s groupings",
-          "jsDoc": "/**\n       * separator for 100s groupings\n       */",
           "type": "string"
         },
         {
           "name": "decimal",
-          "description": "decimal point character",
-          "jsDoc": "/**\n       * decimal point character\n       */",
           "type": "string"
         },
         {
           "name": "prefixtext",
-          "description": "prefix string before the number counting",
-          "jsDoc": "/**\n       * prefix string before the number counting\n       */",
           "type": "string"
         },
         {
           "name": "suffixtext",
-          "description": "suffix string after the number counting",
-          "jsDoc": "/**\n       * suffix string after the number counting\n       */",
           "type": "string"
         },
         {
           "name": "thresholds",
-          "type": "any[]"
+          "type": "number[]"
         },
         {
           "name": "root-margin",
           "type": "string"
-        },
-        {
-          "name": "ratio",
-          "type": "number"
         },
         {
           "name": "visible-limit",
@@ -88,70 +119,52 @@
       ],
       "properties": [
         {
+          "name": "ratio",
+          "type": "number"
+        },
+        {
           "name": "start",
-          "description": "Starting point for counting",
-          "jsDoc": "/**\n       * Starting point for counting\n       */",
           "type": "number"
         },
         {
           "name": "end",
-          "description": "End point for counting stopping",
-          "jsDoc": "/**\n       * End point for counting stopping\n       */",
           "type": "number"
         },
         {
           "name": "duration",
-          "description": "Duration to count",
-          "jsDoc": "/**\n       * Duration to count\n       */",
           "type": "number"
         },
         {
           "name": "noeasing",
-          "description": "Disable easing animation",
-          "jsDoc": "/**\n       * Disable easing animation\n       */",
           "type": "boolean"
         },
         {
           "name": "decimalplaces",
-          "description": "decimal places to show",
-          "jsDoc": "/**\n       * decimal places to show\n       */",
           "type": "number"
         },
         {
           "name": "separator",
-          "description": "separator for 100s groupings",
-          "jsDoc": "/**\n       * separator for 100s groupings\n       */",
           "type": "string"
         },
         {
           "name": "decimal",
-          "description": "decimal point character",
-          "jsDoc": "/**\n       * decimal point character\n       */",
           "type": "string"
         },
         {
           "name": "prefixtext",
-          "description": "prefix string before the number counting",
-          "jsDoc": "/**\n       * prefix string before the number counting\n       */",
           "type": "string"
         },
         {
           "name": "suffixtext",
-          "description": "suffix string after the number counting",
-          "jsDoc": "/**\n       * suffix string after the number counting\n       */",
           "type": "string"
         },
         {
           "name": "thresholds",
-          "type": "any[]"
+          "type": "number[]"
         },
         {
           "name": "rootMargin",
           "type": "string"
-        },
-        {
-          "name": "ratio",
-          "type": "number"
         },
         {
           "name": "visibleLimit",
@@ -166,7 +179,56 @@
       "description": "`count-up`",
       "jsDoc": "/**\n * `count-up`\n * @customElement count-up\n * `count up js wrapper with minimal styling`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "start",
+          "type": "number"
+        },
+        {
+          "name": "end",
+          "type": "number"
+        },
+        {
+          "name": "duration",
+          "type": "number"
+        },
+        {
+          "name": "noeasing",
+          "type": "boolean"
+        },
+        {
+          "name": "decimalplaces",
+          "type": "number"
+        },
+        {
+          "name": "separator",
+          "type": "string"
+        },
+        {
+          "name": "decimal",
+          "type": "string"
+        },
+        {
+          "name": "prefixtext",
+          "type": "string"
+        },
+        {
+          "name": "suffixtext",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "type": "number[]"
+        },
+        {
+          "name": "rootMargin",
+          "type": "string"
+        },
+        {
+          "name": "visibleLimit",
+          "type": "number"
+        }
+      ],
       "events": [],
       "slots": []
     }

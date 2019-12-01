@@ -3,17 +3,38 @@
   "tags": [
     {
       "name": "glossary-term",
-      "description": "`glossary-term`",
-      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "definition",
+          "type": "string"
+        },
+        {
+          "name": "display",
+          "type": "string"
+        },
+        {
+          "name": "serviceType",
+          "type": "string"
+        },
+        {
+          "name": "endpoint",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     },
     {
       "name": "glossary-term",
-      "description": "`glossary-term`",
-      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
       "attributes": [
         {
           "name": "name",
@@ -28,7 +49,7 @@
           "type": "string"
         },
         {
-          "name": "service-type",
+          "name": "serviceType",
           "type": "string"
         },
         {
@@ -63,10 +84,31 @@
     },
     {
       "name": "glossary-term",
-      "description": "`glossary-term`",
-      "jsDoc": "/**\n * `glossary-term`\n * @customElement glossary-term\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "definition",
+          "type": "string"
+        },
+        {
+          "name": "display",
+          "type": "string"
+        },
+        {
+          "name": "serviceType",
+          "type": "string"
+        },
+        {
+          "name": "endpoint",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     }

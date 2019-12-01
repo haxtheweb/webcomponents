@@ -2,14 +2,14 @@
   "version": 2,
   "tags": [
     {
-      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "description": "`elmsln-loading`",
-      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "name": "elmsln-loading",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
@@ -22,8 +22,8 @@
       "properties": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
@@ -37,14 +37,14 @@
       "slots": []
     },
     {
-      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "description": "`elmsln-loading`",
-      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "name": "elmsln-loading",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
@@ -57,8 +57,8 @@
       "properties": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
@@ -72,14 +72,14 @@
       "slots": []
     },
     {
-      "name": "elmsln-loading\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "description": "`elmsln-loading`",
-      "jsDoc": "/**\n * `elmsln-loading`\n * @customElement elmsln-loading\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
+      "name": "elmsln-loading",
+      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
@@ -92,8 +92,8 @@
       "properties": [
         {
           "name": "color",
-          "description": "materialize class names for color",
-          "jsDoc": "/**\n       * materialize class names for color\n       */",
+          "description": "color",
+          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {

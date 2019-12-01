@@ -2,25 +2,19 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
-
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `glossary-term`
- * @customElement glossary-term
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
+ * `Glossary term that shows a popup for the answer`
  * @demo demo/index.html
+ * @customElement glossary-term
  */
-class GlossaryTerm extends PolymerElement {
+class GlossaryTerm extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host {
   display: inline-block;
 }
@@ -32,15 +26,18 @@ class GlossaryTerm extends PolymerElement {
 lrn-vocab {
   display: inline;
 }
-        </style>
-<template is="dom-if" if="[[!_fallback]]">
-  <lrn-vocab term="[[display]]">
-    <div>[[definition]]</div>
-  </lrn-vocab>
-</template>
-<template is="dom-if" if="[[_fallback]]">
-  <slot></slot>
-</template>`;
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+${this._fallback ? html`<slot></slot>` : `
+<lrn-vocab term="${this.display}">
+  <div>${this.definition}</div>
+</lrn-vocab>
+`}`;
   }
 
   // haxProperty definition
@@ -140,21 +137,32 @@ lrn-vocab {
 ;
   }
 
+  constructor() {
+    super();
+    this.name = "";
+    this.definition = "";
+    this.display = "";
+    this.serviceType = "file";
+    this.endpoint = "";
+    this._fallback = true;
+    import("@lrnwebcomponents/lrn-vocab/lrn-vocab.js");
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["endpoint", "serviceType"].includes(propName)) {
+        this.__endpointMethodChanged(this.endpoint, this.serviceType);
+      }
+    });
+  }
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * convention
    */
   static get tag() {
     return "glossary-term";
   }
-
-  static get observers() {
-    return [
-      // Observer method name, followed by a list of dependencies, in parenthesis
-      "__endpointMethodChanged(endpoint, serviceType)"
-    ];
-  }
-
+  /**
+   * Ensure end point is correct based on method requested
+   */
   __endpointMethodChanged(endpoint, serviceType) {
     // fetch definition
     if (endpoint) {
@@ -191,11 +199,6 @@ lrn-vocab {
       }
     }
   }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(GlossaryTerm.tag, GlossaryTerm);
 
