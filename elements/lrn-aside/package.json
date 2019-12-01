@@ -16,7 +16,7 @@
       "hax": "src/lrn-aside-hax.json"
     }
   },
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "A simple textual aside",
   "repository": {
     "type": "git",
@@ -39,12 +39,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-panelcard": "^2.3.0",
+    "@lrnwebcomponents/lrndesign-panelcard": "^2.3.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
