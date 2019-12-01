@@ -30,10 +30,9 @@
     haxThePress.fieldId = 'content';
     haxThePress.openDefault = true;
     haxThePress.align = 'left';
+    haxThePress.syncBody = true;
     haxThePress.fieldClass = 'coolClassName';
-    haxThePress.appStoreConnection = {
-      url: "sample-store.json"
-    };
+    haxThePress.appStoreConnection = '{\"url\": \"sample-store.json\"}';
     // set the template tag to the content previously in the textarea
     temp.innerHTML = content.value;
     // append the template tag into the wysiwyg

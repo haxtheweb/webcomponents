@@ -1910,13 +1910,13 @@ class HaxBody extends SimpleColors {
             }
           }
         } else {
-          children[i].removeAttribute("contenteditable", status);
-          children[j].removeAttribute("data-editable", status);
+          children[i].removeAttribute("contenteditable");
+          children[i].removeAttribute("data-editable");
           if (children[i].querySelectorAll("a").length > 0) {
             let links = children[i].querySelectorAll("a");
             for (var j = 0, len2 = links.length; j < len2; j++) {
-              links[j].removeAttribute("data-editable", status);
-              links[j].removeAttribute("contenteditable", status);
+              links[j].removeAttribute("data-editable");
+              links[j].removeAttribute("contenteditable");
               links[j].removeEventListener("click", e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -1951,11 +1951,17 @@ class HaxBody extends SimpleColors {
           children[i].removeAttribute("data-draggable");
           children[i].removeAttribute("data-editable");
           children[i].removeAttribute("data-hax-ray");
-          children[i].removeAttribute("drop", this.dropEvent.bind(this));
-          children[i].removeAttribute("dragenter", this.dragEnter.bind(this));
-          children[i].removeAttribute("dragleave", this.dragLeave.bind(this));
-          children[i].removeAttribute("dragend", this.dragEnd.bind(this));
-          children[i].removeAttribute("dragover", function(e) {
+          children[i].removeEventListener("drop", this.dropEvent.bind(this));
+          children[i].removeEventListener(
+            "dragenter",
+            this.dragEnter.bind(this)
+          );
+          children[i].removeEventListener(
+            "dragleave",
+            this.dragLeave.bind(this)
+          );
+          children[i].removeEventListener("dragend", this.dragEnd.bind(this));
+          children[i].removeEventListener("dragover", function(e) {
             e.preventDefault();
           });
         }
