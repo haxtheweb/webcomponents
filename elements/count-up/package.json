@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/count-up",
   "wcfactory": {
     "className": "CountUpElement",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "count-up",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,

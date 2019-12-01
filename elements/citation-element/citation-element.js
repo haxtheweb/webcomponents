@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
 /**
@@ -8,10 +8,13 @@ import { licenseList } from "@lrnwebcomponents/license-element/license-element.j
  * both visually as well as semantically with simple inputs.
  * @demo demo/index.html
  */
-class CitationElement extends SchemaBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class CitationElement extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           color: var(--license-text-color);
@@ -38,45 +41,92 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
           min-width: 16px;
           margin-right: 8px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <meta
-        about\$="[[relatedResource]]"
+        about="${this.relatedResource}"
         property="cc:attributionUrl"
-        content\$="[[source]]"
+        content="${this.source}"
       />
       <meta
-        about\$="[[relatedResource]]"
+        about="${this.relatedResource}"
         property="cc:attributionName"
         typeof="oer:Text"
-        content\$="[[title]]"
+        content="${this.title}"
       />
       <meta
         rel="cc:license"
-        href\$="[[licenseLink]]"
-        content\$="License: [[licenseName]]"
+        href="${this.licenseLink}"
+        content="License: ${this.licenseName}"
       />
       <cite
-        ><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]],
-        licensed under
-        <a class="license-link" target="_blank" href="[[licenseLink]]"
+        ><a target="_blank" rel="noopener noreferrer" href="${this.source}"
+          >${this.title}</a
+        >
+        by ${this.creator}, licensed under
+        <a
+          class="license-link"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="${this.licenseLink}"
           ><img
-            alt="[[licenseName]] graphic"
-            src="[[licenseImage]]"
-            hidden&="[[!licenseImage]]"
-          />[[licenseName]]</a
-        >. Accessed <span class="citation-date">[[date]]</span>.</cite
+            loading="lazy"
+            alt="${this.licenseName} graphic"
+            src="${this.licenseImage}"
+            ?hidden="${!this.licenseImage}"
+          />${this.licenseName}</a
+        >. Accessed <span class="citation-date">${this.date}</span>.</cite
       >
     `;
   }
-
+  /**
+   * convention
+   */
   static get tag() {
     return "citation-element";
   }
-
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.scope = "sibling";
+    this.source = "";
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "scope") {
+        this._scopeChanged(this[propName]);
+      }
+      if (propName == "license") {
+        this._licenseUpdated(this[propName]);
+      }
+      if (["relatedResource", "licenseLink"].includes(propName)) {
+        this._aboutLink = this._generateAboutLink(
+          this.relatedResource,
+          this.licenseLink
+        );
+      }
+      if (propName == "source") {
+        this._licenseLink = this._generateLicenseLink(this.source);
+      }
+    });
+  }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title of the work.
        */
@@ -87,9 +137,7 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
        * License scope
        */
       scope: {
-        type: String,
-        value: "sibling",
-        observer: "_scopeChanged"
+        type: String
       },
       /**
        * How to present the citation on the interface.
@@ -97,7 +145,8 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
        */
       displayMethod: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "display-method"
       },
       /**
        * Person or group that owns / created the work.
@@ -121,34 +170,21 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
        * License name, calculated or supplied by the end user if we don't have them.
        */
       licenseName: {
-        type: String
+        type: String,
+        attribute: "license-name"
       },
       /**
        * License link for more details
        */
       licenseLink: {
-        type: String
+        type: String,
+        attribute: "license-link"
       },
       /**
        * License short hand. Options cc0,
        */
       license: {
-        type: String,
-        observer: "_licenseUpdated"
-      },
-      /**
-       * About link for semantic meaning
-       */
-      _aboutLink: {
-        type: Object,
-        computed: "_generateAboutLink(relatedResource, licenseLink)"
-      },
-      /**
-       * License link object for semantic meaning
-       */
-      _licenseLink: {
-        type: Object,
-        computed: "_generateLicenseLink(source)"
+        type: String
       }
     };
   }
@@ -189,7 +225,7 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
   /**
    * Notice scope change.
    */
-  _scopeChanged(newValue, oldValue) {
+  _scopeChanged(newValue) {
     // make sure we actually have a sibling first
     if (newValue === "sibling" && this.previousElementSibling !== null) {
       // find the sibling element in the DOM and associate to it's resource ID
@@ -319,7 +355,7 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
   /**
    * License was updated, time to update license name and link.
    */
-  _licenseUpdated(newValue, oldValue) {
+  _licenseUpdated(newValue) {
     if (typeof newValue !== typeof undefined) {
       var list = new licenseList();
       if (typeof list[newValue] !== typeof undefined) {

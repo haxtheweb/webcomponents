@@ -2,9 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-icons/hardware-icons.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `full-screen-image`
  * @customElement full-screen-image
@@ -17,11 +15,11 @@ import "@polymer/iron-icons/hardware-icons.js";
  * @polymer
  * @demo demo/index.html
  */
-class FullScreenImage extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class FullScreenImage extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-variant-ligatures: common-ligatures;
@@ -97,18 +95,23 @@ class FullScreenImage extends PolymerElement {
           right: 0px;
           background-color: rgba(191, 147, 45, 0.7);
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div class="fullpage-container">
         <div class="overlay-container">
-          <h2>[[title]]</h2>
-          <p>[[subtitle]]</p>
+          <h2>${this.title}</h2>
+          <p>${this.subtitle}</p>
         </div>
         <paper-icon-button
           id="down"
           icon="hardware:keyboard-arrow-down"
         ></paper-icon-button>
         <div class="image-wrapper">
-          <img loading="lazy" id="img" src="[[source]]" />
+          <img loading="lazy" id="img" src="${this.source}" />
         </div>
       </div>
     `;
@@ -132,7 +135,7 @@ class FullScreenImage extends PolymerElement {
           }
         ],
         meta: {
-          author: "btopro",
+          author: "ELMS:LN",
           owner: "The Pennsylvania State University"
         }
       },
@@ -181,55 +184,39 @@ class FullScreenImage extends PolymerElement {
       ...super.properties,
 
       title: {
-        name: "title",
-        type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false
+        type: String
       },
       subtitle: {
-        name: "subtitle",
-        type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false
+        type: String
       },
       source: {
-        name: "source",
-        type: String,
-        value: "",
-        reflectToAttribute: false,
-        observer: false
+        type: String
       }
     };
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * convention
    */
   static get tag() {
     return "full-screen-image";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
-      this.nextElementSibling.scrollIntoView({
-        block: "start",
-        inline: "nearest",
-        behavior: "smooth"
-      });
-    });
+  constructor() {
+    super();
+    this.title = "";
+    this.subtitle = "";
+    this.source = null;
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/iron-icons/hardware-icons.js");
   }
   /**
-   * life cycle, element is removed from the DOM
+   * LitElement ready
    */
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.shadowRoot.querySelector("#down").removeEventListener("click", e => {
+  firstUpdated() {
+    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",

@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/filtered-image",
   "wcfactory": {
     "className": "FilteredImage",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "filtered-image",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,

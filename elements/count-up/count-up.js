@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { CountUp } from "countup.js";
 
 /**
@@ -17,11 +17,11 @@ import { CountUp } from "countup.js";
  * @lit-element
  * @demo demo/index.html
  */
-class CountUpElement extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class CountUpElement extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           --count-up-color: #000000;
@@ -40,9 +40,15 @@ class CountUpElement extends PolymerElement {
 
         #counter {
           color: var(--count-up-color);
-          @apply --count-up-number;
+          font-weight: var(--count-up-number-font-weight);
+          font-size: var(--count-up-number-font-size);
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div class="wrapper">
         <slot name="prefix"></slot>
         <div id="counter"></div>
@@ -135,91 +141,71 @@ class CountUpElement extends PolymerElement {
        * Starting point for counting
        */
       start: {
-        name: "start",
-        type: Number,
-        value: 0
+        type: Number
       },
       /**
        * End point for counting stopping
        */
       end: {
-        name: "end",
-        type: Number,
-        value: 100
+        type: Number
       },
       /**
        * Duration to count
        */
       duration: {
-        name: "duration",
-        type: Number,
-        value: 2.5
+        type: Number
       },
       /**
        * Disable easing animation
        */
       noeasing: {
-        name: "noeasing",
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * decimal places to show
        */
       decimalplaces: {
-        name: "decimalPlaces",
-        type: Number,
-        value: 0
+        type: Number
       },
       /**
        * separator for 100s groupings
        */
       separator: {
-        name: "separator",
-        type: String,
-        value: ","
+        type: String
       },
       /**
        * decimal point character
        */
       decimal: {
-        name: "decimal",
-        type: String,
-        value: "."
+        type: String
       },
       /**
        * prefix string before the number counting
        */
       prefixtext: {
-        name: "prefixtext",
-        type: String,
-        value: " "
+        type: String
       },
       /**
        * suffix string after the number counting
        */
       suffixtext: {
-        name: "suffixtext",
-        type: String,
-        value: " "
+        type: String
       },
       thresholds: {
-        type: Array,
-        value: [0.0, 0.25, 0.5, 0.75, 1.0]
+        type: Array
       },
       rootMargin: {
         type: String,
-        value: "0px"
+        attribute: "root-margin"
       },
       ratio: {
         type: Number,
-        reflectToAttribute: true,
-        readOnly: true
+        reflect: true
       },
       visibleLimit: {
         type: Number,
-        value: 0.5,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "visible-limit"
       }
     };
   }
@@ -231,8 +217,23 @@ class CountUpElement extends PolymerElement {
   static get tag() {
     return "count-up";
   }
+  constructor() {
+    super();
+    this.start = 0;
+    this.end = 100;
+    this.duration = 2.5;
+    this.noeasing = false;
+    this.decimalplaces = 0;
+    this.separator = ",";
+    this.decimal = ".";
+    this.prefixtext = " ";
+    this.suffixtext = " ";
+    this.thresholds = [0.0, 0.25, 0.5, 0.75, 1.0];
+    this.rootMargin = "0px";
+    this.visibleLimit = 0.5;
+  }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
@@ -246,6 +247,18 @@ class CountUpElement extends PolymerElement {
       }
     );
     this.observer.observe(this);
+  }
+  /**
+   * HTMLElement
+   */
+  disconnectedCallback() {
+    this.observer.disconnect();
+    super.disconnectedCallback();
+  }
+  /**
+   * LitElement ready
+   */
+  firstUpdated() {
     const options = {
       startVal: this.start,
       decimalPlaces: this.decimalplaces,
@@ -263,11 +276,13 @@ class CountUpElement extends PolymerElement {
     );
   }
   handleIntersectionCallback(entries) {
-    for (let entry of entries) {
-      this._setRatio(Number(entry.intersectionRatio).toFixed(2));
-      if (this.ratio >= this.visibleLimit) {
-        // now we care
-        this._countUp.start();
+    if (this._countUp) {
+      for (let entry of entries) {
+        this.ratio = Number(entry.intersectionRatio).toFixed(2);
+        if (this.ratio >= this.visibleLimit) {
+          // now we care
+          this._countUp.start();
+        }
       }
     }
   }

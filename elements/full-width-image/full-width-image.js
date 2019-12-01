@@ -2,24 +2,22 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `full-width-image`
- * @customElement full-width-image
  * `full width image that flows beyond boundaries`
  *
  * @microcopy - language worth noting:
  *  - images are best used when stretched across content
  *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement full-width-image
  */
-class FullWidthImage extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class FullWidthImage extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           background-color: #000000;
@@ -72,11 +70,16 @@ class FullWidthImage extends PolymerElement {
           color: #fff;
           font-style: italic;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div id="image">
         <div class="wrapper">
           <div class="caption">
-            [[caption]]
+            ${this.caption}
             <slot></slot>
           </div>
         </div>
@@ -145,28 +148,34 @@ class FullWidthImage extends PolymerElement {
       ...super.properties,
 
       source: {
-        name: "source",
         type: String,
-        reflectToAttributes: true,
-        observer: "_sourceChanged"
+        reflect: true
       },
       caption: {
-        name: "caption",
         type: String,
-        reflectToAttributes: true
+        reflect: true
       }
     };
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * convention
    */
   static get tag() {
     return "full-width-image";
   }
-  // Observer source for changes
-  _sourceChanged(newValue, oldValue) {
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "source") {
+        this._sourceChanged(this[propName]);
+      }
+    });
+  }
+
+  _sourceChanged(newValue) {
     if (typeof newValue !== typeof undefined) {
       this.shadowRoot.querySelector(
         "#image"

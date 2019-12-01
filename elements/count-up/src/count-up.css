@@ -16,5 +16,6 @@
 
 #counter {
   color: var(--count-up-color);
-  @apply --count-up-number;
+  font-weight: var(--count-up-number-font-weight);
+  font-size: var(--count-up-number-font-size);
 }

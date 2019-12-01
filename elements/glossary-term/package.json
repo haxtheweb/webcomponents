@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/glossary-term",
   "wcfactory": {
     "className": "GlossaryTerm",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "glossary-term",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": true,

@@ -3,90 +3,70 @@
    * Starting point for counting
    */
   "start": {
-    "name": "start",
-    "type": Number,
-    "value": 0
+    "type": Number
   },
   /**
    * End point for counting stopping
    */
   "end": {
-    "name": "end",
-    "type": Number,
-    "value": 100
+    "type": Number
   },
   /**
    * Duration to count
    */
   "duration": {
-    "name": "duration",
-    "type": Number,
-    "value": 2.5
+    "type": Number
   },
   /**
    * Disable easing animation
    */
   "noeasing": {
-    "name": "noeasing",
-    "type": Boolean,
-    "value": false
+    "type": Boolean
   },
   /**
    * decimal places to show
    */
   "decimalplaces": {
-    "name": "decimalPlaces",
-    "type": Number,
-    "value": 0
+    "type": Number
   },
   /**
    * separator for 100s groupings
    */
   "separator": {
-    "name": "separator",
-    "type": String,
-    "value": ","
+    "type": String
   },
   /**
    * decimal point character
    */
   "decimal": {
-    "name": "decimal",
-    "type": String,
-    "value": "."
+    "type": String
   },
   /**
    * prefix string before the number counting
    */
   "prefixtext": {
-    "name": "prefixtext",
-    "type": String,
-    "value": " "
+    "type": String
   },
   /**
    * suffix string after the number counting
    */
   "suffixtext": {
-    "name": "suffixtext",
-    "type": String,
-    "value": " "
+    "type": String
   },
   "thresholds": {
-    "type": Array,
-    "value": [0.0, 0.25, 0.5, 0.75, 1.0]
+    "type": Array
   },
   "rootMargin": {
     "type": String,
-    "value": "0px"
+    "attribute": "root-margin"
   },
   "ratio": {
     "type": Number,
-    "reflectToAttribute": true,
-    "readOnly": true
+    "reflect": true
   },
   "visibleLimit": {
     "type": Number,
-    "value": 0.5,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "visible-limit"
   }
 }

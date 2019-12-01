@@ -2,50 +2,27 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `elmsln-loading`
- * @customElement elmsln-loading
  * A spinner to tell the user that something is loading.
  * This is just the spinner though and doesn't provide any text or anything else.
  *
  * @microcopy - language worth noting:
  *  - elmsln - an open source NGDLE to save education
  *
-
- * @polymer
- * @polymerLegacy
  * @demo demo/index.html
+ * @customElement elmsln-loading
  */
-class ElmslnLoading extends SimpleColorsPolymer {
-  static get tag() {
-    return "elmsln-loading";
-  }
-  static get properties() {
-    return {
-      /**
-       * materialize class names for color
-       */
-      color: {
-        type: String,
-        observer: "_getAccentColor"
-      },
-      /**
-       * tiny, small, medium, large, epic sizing.
-       */
-      size: {
-        type: String,
-        reflectToAttribute: true,
-        value: "medium"
-      }
-    };
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class ElmslnLoading extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         @-moz-keyframes spin {
           100% {
             -moz-transform: rotate(60deg);
@@ -106,7 +83,57 @@ class ElmslnLoading extends SimpleColorsPolymer {
           -moz-animation: spin 2s ease-out infinite;
           animation: spin 2s ease-out infinite;
         }
-      </style>
+      `
+    ];
+  }
+  static get tag() {
+    return "elmsln-loading";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.size = "medium";
+    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "color") {
+        this._getAccentColor(this[propName]);
+      }
+    });
+  }
+  /**
+   * LitElement / popular convention
+   */
+  static get properties() {
+    return {
+      ...super.properties,
+      /**
+       * color
+       */
+      color: {
+        type: String
+      },
+      /**
+       * tiny, small, medium, large, epic sizing.
+       */
+      size: {
+        type: String,
+        reflect: true
+      }
+    };
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <iron-icon icon="lrn:network"></iron-icon>
     `;
   }

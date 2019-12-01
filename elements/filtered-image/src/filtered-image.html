@@ -1,8 +1,6 @@
-<style>
-</style>
-<svg id="svg" viewBox$="[[viewBox]]"> 
+<svg id="svg" viewBox="0 0 ${this.width} ${this.height}"> 
   <rect id="rect" x="0" y="0"></rect>
-  <filter id$="[[__id]]">
+  <filter id="${this.__id}">
     <feColorMatrix
       id="matrix"
       type="matrix"
@@ -10,7 +8,6 @@
                0   1   0   0   0
                0   0   1   0   0
                0   0   0   1   0 "/>
-
-  </filter>      
-  <image id="image" filter$="url(#[[__id]])" x="0" y="0"></image>
+  </filter>
+  <image id="image" filter="url(#${this.__id})" x="0" y="0"></image>
 </svg>

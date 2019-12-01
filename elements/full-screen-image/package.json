@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/full-screen-image",
   "wcfactory": {
     "className": "FullScreenImage",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "full-screen-image",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": true,
