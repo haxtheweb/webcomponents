@@ -147,6 +147,8 @@ class HaxPanel extends SimpleColors {
    */
   constructor() {
     super();
+    this.canUndo = true;
+    this.canRedo = true;
     this.align = "left";
     this.hideExportButton = false;
     this.haxDeveloperMode = false;
@@ -324,6 +326,22 @@ class HaxPanel extends SimpleColors {
         ></hax-panel-item>
         <slot></slot>
         <hax-panel-item
+          icon="icons:undo"
+          ?disabled="${!this.canUndo}"
+          label="Undo previous action"
+          event-name="undo"
+          voice-command="undo"
+          class="hide-small"
+        ></hax-panel-item>
+        <hax-panel-item
+          icon="icons:redo"
+          ?disabled="${!this.canRedo}"
+          label="Redo previous action"
+          event-name="redo"
+          voice-command="redo"
+          class="hide-small"
+        ></hax-panel-item>
+        <hax-panel-item
           right
           ?hidden="${this.hidePreferencesButton}"
           event-name="open-preferences-dialog"
@@ -419,6 +437,27 @@ class HaxPanel extends SimpleColors {
        */
       globalPreferences: {
         type: Object
+      },
+      /**
+       * If we can currently undo based on stack position
+       */
+      canUndo: {
+        type: Boolean,
+        attribute: "can-undo"
+      },
+      /**
+       * If we can currently redo based on stack position
+       */
+      canRedo: {
+        type: Boolean,
+        attribute: "can-redo"
+      },
+      /**
+       * If we're "dirty" meaning stackPosition and savePosition out of sync
+       */
+      isDirty: {
+        type: Boolean,
+        attribute: "is-dirty"
       }
     };
   }

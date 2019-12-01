@@ -35,6 +35,7 @@ class HaxStore extends HAXElement(LitElement) {
   render() {
     return html`
       <slot></slot>
+      <undoer-element></undoer-element>
       <iron-ajax
         id="appstore"
         url="${this.appStore.url}"
@@ -1857,6 +1858,7 @@ class HaxStore extends HAXElement(LitElement) {
     }
   }
 }
+window.customElements.define(HaxStore.tag, HaxStore);
 /**
  * Trick to write the store to the DOM if it wasn't there already.
  * This is not used yet but could be if you wanted to dynamically
@@ -2649,6 +2651,74 @@ window.HaxStore.getRange = () => {
     return sel;
   } else false;
 };
+import { Undoer } from "undoer/undoer.js";
+class UndoerElement extends HTMLElement {
+  static get observedAttributes() {
+    return ["state"];
+  }
 
-window.customElements.define(HaxStore.tag, HaxStore);
-export { HaxStore };
+  constructor() {
+    super();
+    this._root = this.attachShadow({ mode: "open" });
+
+    // hide from the first attributeChangedCallback call
+    this._selfAttributeChange = true;
+    window.setTimeout(() => {
+      this._selfAttributeChange = false;
+    });
+
+    const callback = data => {
+      const { value, attr } = data;
+      this._updateAttribute(attr ? value : null);
+
+      // hooray! tell the client
+      this.dispatchEvent(new CustomEvent("state", { detail: value }));
+    };
+
+    // set up initial zero undo state from attr
+    const zero = this.getAttribute("state");
+    const attr = this.hasAttribute("state");
+    this._undoer = new Undoer(callback, { value: zero, attr });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "state" && !this._selfAttributeChange) {
+      this._internalSet(newValue, true);
+    }
+  }
+
+  set state(value) {
+    if (!this.isConnected) {
+      throw new Error("can't push state while disconnected");
+    }
+
+    // render if simple "attribute safe" state
+    const attr = typeof value === "string" || typeof value === "number";
+    this._internalSet(value, attr);
+  }
+
+  get state() {
+    const { value } = this._undoer.data;
+    return value;
+  }
+
+  _updateAttribute(value) {
+    this._selfAttributeChange = true;
+    try {
+      if (value) {
+        this.setAttribute("state", value);
+      } else {
+        this.removeAttribute("state");
+      }
+    } finally {
+      this._selfAttributeChange = false;
+    }
+  }
+
+  _internalSet(value, attr) {
+    this._updateAttribute(attr ? value : null);
+    this._undoer.push({ value, attr }, this._root);
+  }
+}
+window.customElements.define("undoer-element", UndoerElement);
+export { HaxStore, UndoerElement };
