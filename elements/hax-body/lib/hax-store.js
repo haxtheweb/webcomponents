@@ -2303,7 +2303,7 @@ window.HaxStore.nodeToContent = node => {
   // try and work against anything NOT a P tag
   if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
     // get content that is in the slots
-    let slotnodes = node.children;
+    let slotnodes = node.childNodes;
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
@@ -2425,7 +2425,7 @@ window.HaxStore.getHAXSlot = node => {
     return node.innerHTML;
   }
   let content = "";
-  var slotnodes = node.children;
+  var slotnodes = node.childNodes;
   // ensure there's something inside of this
   if (slotnodes.length > 0) {
     // loop through everything found in the slotted area and put it back in
