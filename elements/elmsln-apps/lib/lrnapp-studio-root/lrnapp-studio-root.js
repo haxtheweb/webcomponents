@@ -19,11 +19,7 @@ class LrnappStudioRoot extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
-      css`
-      
-      `
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -57,10 +53,16 @@ class LrnappStudioRoot extends LitElement {
           @click="${this._dashboardClicked}"
           >A</a
         >
-        <a tabindex="-1" name="lrnapp-studio-kanban" @click="${this._kanbanClicked}"
+        <a
+          tabindex="-1"
+          name="lrnapp-studio-kanban"
+          @click="${this._kanbanClicked}"
           >B</a
         >
-        <a tabindex="-1" name="lrnapp-open-studio" @click="${this._openstudioClicked}"
+        <a
+          tabindex="-1"
+          name="lrnapp-open-studio"
+          @click="${this._openstudioClicked}"
           >C</a
         >
       </iron-selector>

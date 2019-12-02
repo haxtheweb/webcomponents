@@ -14,40 +14,42 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-        position: relative;
-        min-height: 200px;
-      }
-      #pages {
-        display: block;
-      }
-      .files__files {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .files__files > * {
-        margin-right: 16px;
-        min-width: 200px;
-      }
-      paper-dialog {
-        width: 50%;
-        width: 50vmax;
-        padding: 16px;
-      }
+        :host {
+          display: block;
+          position: relative;
+          min-height: 200px;
+        }
+        #pages {
+          display: block;
+        }
+        .files__files {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .files__files > * {
+          margin-right: 16px;
+          min-width: 200px;
+        }
+        paper-dialog {
+          width: 50%;
+          width: 50vmax;
+          padding: 16px;
+        }
       `
     ];
-  } 
+  }
   render() {
     return html`
       <div class="files__files">
-        ${this.files.map((file,index) => html`
-          <lrnapp-studio-submission-edit-file
-            .file="${file}"
-            @deleted="${this._deleteImage}"
-            data-index="${index}"
-          ></lrnapp-studio-submission-edit-file>
-        `)}
+        ${this.files.map(
+          (file, index) => html`
+            <lrnapp-studio-submission-edit-file
+              .file="${file}"
+              @deleted="${this._deleteImage}"
+              data-index="${index}"
+            ></lrnapp-studio-submission-edit-file>
+          `
+        )}
         <lrnapp-studio-submission-edit-add-asset
           @click="${this._addFile}"
           icon="editor:attach-file"
@@ -56,20 +58,22 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
       <paper-dialog id="dialog">
         <h2>Add Files</h2>
         <div class="files__upload">
-        ${this.uploadUrl ? html`
-            <vaadin-upload
-              accept="${this.fileTypes}"
-              target="${this.uploadUrl}"
-              method="POST"
-              form-data-name="file-upload"
-              @upload-success="${this._handleImageUploadSuccess}"
-            >
-              <div class="files__drop-label">
-                <iron-icon icon="description"></iron-icon>
-                Upload files here:
-              </div>
-            </vaadin-upload>
-        ` : ``}
+          ${this.uploadUrl
+            ? html`
+                <vaadin-upload
+                  accept="${this.fileTypes}"
+                  target="${this.uploadUrl}"
+                  method="POST"
+                  form-data-name="file-upload"
+                  @upload-success="${this._handleImageUploadSuccess}"
+                >
+                  <div class="files__drop-label">
+                    <iron-icon icon="description"></iron-icon>
+                    Upload files here:
+                  </div>
+                </vaadin-upload>
+              `
+            : ``}
         </div>
         <div>
           <paper-button dialog-dismiss>Cancel</paper-button>

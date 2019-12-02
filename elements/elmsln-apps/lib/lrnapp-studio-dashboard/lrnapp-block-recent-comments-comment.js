@@ -86,11 +86,13 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           </div>
         </div>
         <div class="card-actions">
-          ${this.actionView ? html`
-            <a href="${this.actionView}" tabindex="-1">
-              <paper-button raised="" id="view">View thread</paper-button>
-            </a>
-          ` : ``}
+          ${this.actionView
+            ? html`
+                <a href="${this.actionView}" tabindex="-1">
+                  <paper-button raised="" id="view">View thread</paper-button>
+                </a>
+              `
+            : ``}
         </div>
       </paper-card>
     `;
@@ -112,23 +114,23 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       commentTitle: {
         type: String,
@@ -164,13 +166,11 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
     }, 0);
   }
   firstUpdated() {
-    this.shadowRoot
-      .querySelector("#wrapper")
-      .addEventListener("click", (e) => {
-        this.shadowRoot
-          .querySelector("#comment")
-          .classList.toggle("inactive", this.inactive);
-      });
+    this.shadowRoot.querySelector("#wrapper").addEventListener("click", e => {
+      this.shadowRoot
+        .querySelector("#comment")
+        .classList.toggle("inactive", this.inactive);
+    });
   }
 }
 window.customElements.define(

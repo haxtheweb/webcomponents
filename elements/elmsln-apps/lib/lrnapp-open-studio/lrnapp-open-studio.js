@@ -22,11 +22,7 @@ class LrnappOpenStudio extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
-      css`
-      
-      `
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -118,7 +114,9 @@ class LrnappOpenStudio extends LitElement {
           attr-for-selected="name"
           role="navigation"
         >
-          <a tabindex="-1" name="submissions" @click="${this._submissionsClicked}"
+          <a tabindex="-1" name="submissions" @click="${
+            this._submissionsClicked
+          }"
             ><lrnsys-button
               icon="apps"
               label="Submission display"
@@ -136,7 +134,9 @@ class LrnappOpenStudio extends LitElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="assignments" @click="${this._assignmentsClicked}"
+          <a tabindex="-1" name="assignments" @click="${
+            this._assignmentsClicked
+          }"
             ><lrnsys-button
               icon="list"
               label="Assignment centric"
@@ -170,11 +170,13 @@ class LrnappOpenStudio extends LitElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            ${this._toArray(this.authors).map( author => html`
-              <paper-item item-id="${author.id}"
-                >${author.display_name}</paper-item
-              >
-            `)}
+            ${this._toArray(this.authors).map(
+              author => html`
+                <paper-item item-id="${author.id}"
+                  >${author.display_name}</paper-item
+                >
+              `
+            )}
           </paper-listbox>
         </paper-dropdown-menu>
         <paper-dropdown-menu label="Project" ?hidden="${!this.projects}">
@@ -185,11 +187,13 @@ class LrnappOpenStudio extends LitElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            ${this._toArray(this.projects).map(project => html`
-              <paper-item item-id="${project.id}"
-                >${project.attributes.title}</paper-item
-              >
-            `)}
+            ${this._toArray(this.projects).map(
+              project => html`
+                <paper-item item-id="${project.id}"
+                  >${project.attributes.title}</paper-item
+                >
+              `
+            )}
           </paper-listbox>
         </paper-dropdown-menu>
         <paper-dropdown-menu label="Assignment" ?hidden="${!this.assignments}">
@@ -200,11 +204,13 @@ class LrnappOpenStudio extends LitElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            ${this._toArray(this.assignments).map(assignment => html`
-              <paper-item item-id="${assignment.id}"
-                >${assignment.attributes.title}</paper-item
-              >
-            `)}
+            ${this._toArray(this.assignments).map(
+              assignment => html`
+                <paper-item item-id="${assignment.id}"
+                  >${assignment.attributes.title}</paper-item
+                >
+              `
+            )}
             </template>
           </paper-listbox>
         </paper-dropdown-menu>
@@ -227,7 +233,9 @@ class LrnappOpenStudio extends LitElement {
               <template>
                 <div class="gallerycard-wrapper">
                   <a
-                    href="${this.basePath}lrnapp-studio-submission/submissions/[[item.id]]"
+                    href="${
+                      this.basePath
+                    }lrnapp-studio-submission/submissions/[[item.id]]"
                   >
                     <lrndesign-gallerycard
                       elevation="2"
@@ -279,23 +287,23 @@ class LrnappOpenStudio extends LitElement {
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       /**
        * The studioResponse from server

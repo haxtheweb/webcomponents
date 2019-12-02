@@ -19,13 +19,15 @@ class ElmsmediaDashboardToolbarFilters extends LitElement {
   }
   render() {
     return html`
-      ${this._filtersArray.map( item => html`
-        <elmsmedia-dashboard-toolbar-filter
-          path="${item.path}"
-          prop-value="${item.propValue}"
-          title="${item.title}"
-        ></elmsmedia-dashboard-toolbar-filter>
-      `)}
+      ${this._filtersArray.map(
+        item => html`
+          <elmsmedia-dashboard-toolbar-filter
+            path="${item.path}"
+            prop-value="${item.propValue}"
+            title="${item.title}"
+          ></elmsmedia-dashboard-toolbar-filter>
+        `
+      )}
     `;
   }
   static get tag() {
@@ -38,7 +40,7 @@ class ElmsmediaDashboardToolbarFilters extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'filters') {
+      if (propName == "filters") {
         this._filtersArray = this._filtersArrayCompute(this[propName]);
       }
     });
@@ -46,10 +48,10 @@ class ElmsmediaDashboardToolbarFilters extends LitElement {
   static get properties() {
     return {
       filters: {
-        type: Object,
+        type: Object
       },
       _filtersArray: {
-        type: Array,
+        type: Array
       }
     };
   }

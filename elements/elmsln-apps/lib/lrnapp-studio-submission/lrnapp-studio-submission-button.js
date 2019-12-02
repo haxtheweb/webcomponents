@@ -16,11 +16,7 @@ class LrnappStudioSubmissionButton extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
-      css`
-      
-      `
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -37,7 +33,8 @@ class LrnappStudioSubmissionButton extends LitElement {
         ></lrnsys-button>
         <iron-ajax
           id="ajaxCreateStub"
-          url="${this.endPoint}/api/submissions/create-stub?token=${this.csrfToken}"
+          url="${this.endPoint}/api/submissions/create-stub?token=${this
+            .csrfToken}"
           method="POST"
           body="[[assignmentId]]"
           handle-as="json"

@@ -108,67 +108,76 @@ class LrnappBlockRecentProject extends LitElement {
         <h3>Loading..</h3>
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
-      ${this.hasProject ? html`
-        <a tabindex="-1" href="${this.basePath}lrnapp-studio-kanban">
-          <paper-button class="whole-project ferpa-protect">
-            <paper-card
-              id="project-${this.project.id}"
-              class="project-card grey lighten-3"
-              heading="${this.project.attributes.title}"
-              elevation="2"
-            >
-              <div class="card-content">
-                <iron-list
-                  items="${this._toArray(this.project.relationships.assignments)}"
-                  as="assignment"
-                  mutable-data
+      ${this.hasProject
+        ? html`
+            <a tabindex="-1" href="${this.basePath}lrnapp-studio-kanban">
+              <paper-button class="whole-project ferpa-protect">
+                <paper-card
+                  id="project-${this.project.id}"
+                  class="project-card grey lighten-3"
+                  heading="${this.project.attributes.title}"
+                  elevation="2"
                 >
-                  <template>
-                    <div class="assignment-row" id="assignment">
-                      <lrnsys-button
-                        inner-class="no-left-padding"
-                        class="assignment-row-button"
-                        button-class="assignment-row-button"
-                        id="assignment-${this.project.id}-${this.assignment.id}"
-                        hover-class="amber lighten-5"
-                        href="${this.basePath}lrnapp-studio-kanban"
-                      >
-                        <span class="button-contents">
-                          <div
-                            class="status-indicator ${this.assignment.metadata.relatedSubmissions.complete.color}"
+                  <div class="card-content">
+                    <iron-list
+                      items="${this._toArray(
+                        this.project.relationships.assignments
+                      )}"
+                      as="assignment"
+                      mutable-data
+                    >
+                      <template>
+                        <div class="assignment-row" id="assignment">
+                          <lrnsys-button
+                            inner-class="no-left-padding"
+                            class="assignment-row-button"
+                            button-class="assignment-row-button"
+                            id="assignment-${this.project.id}-${this.assignment
+                              .id}"
+                            hover-class="amber lighten-5"
+                            href="${this.basePath}lrnapp-studio-kanban"
                           >
-                            <iron-icon
-                              icon="${this.assignment.metadata.relatedSubmissions.complete.icon}"
-                            ></iron-icon>
-                          </div>
-                          <div class="assignment-title">
-                            ${this.assignment.title}
-                          </div>
-                        </span>
-                      </lrnsys-button>
-                    </div>
-                  </template>
-                </iron-list>
-              </div>
-            </paper-card>
-          </paper-button>
-        </a>
-      ` : html`
-        <lrnsys-button
-          inner-class="no-left-padding"
-          button-class="assignment-row-button"
-          class="assignment-row-button"
-          href="${this.basePath}lrnapp-studio-kanban"
-          hover-class="amber lighten-5"
-        >
-          <span class="button-contents">
-            <div class="status-indicator">
-              <iron-icon icon="assignment"></iron-icon>
-            </div>
-            <div class="assignment-title">Tap to start your first project!</div>
-          </span>
-        </lrnsys-button>
-      `}
+                            <span class="button-contents">
+                              <div
+                                class="status-indicator ${this.assignment
+                                  .metadata.relatedSubmissions.complete.color}"
+                              >
+                                <iron-icon
+                                  icon="${this.assignment.metadata
+                                    .relatedSubmissions.complete.icon}"
+                                ></iron-icon>
+                              </div>
+                              <div class="assignment-title">
+                                ${this.assignment.title}
+                              </div>
+                            </span>
+                          </lrnsys-button>
+                        </div>
+                      </template>
+                    </iron-list>
+                  </div>
+                </paper-card>
+              </paper-button>
+            </a>
+          `
+        : html`
+            <lrnsys-button
+              inner-class="no-left-padding"
+              button-class="assignment-row-button"
+              class="assignment-row-button"
+              href="${this.basePath}lrnapp-studio-kanban"
+              hover-class="amber lighten-5"
+            >
+              <span class="button-contents">
+                <div class="status-indicator">
+                  <iron-icon icon="assignment"></iron-icon>
+                </div>
+                <div class="assignment-title">
+                  Tap to start your first project!
+                </div>
+              </span>
+            </lrnsys-button>
+          `}
     `;
   }
   static get tag() {
@@ -179,23 +188,23 @@ class LrnappBlockRecentProject extends LitElement {
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       sourcePath: {
         type: String,

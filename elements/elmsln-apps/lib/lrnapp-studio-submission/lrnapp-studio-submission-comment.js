@@ -11,11 +11,7 @@ class LrnappStudioSubmissionComment extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
-      css`
-      
-      `
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -85,9 +81,7 @@ class LrnappStudioSubmissionComment extends LitElement {
           class="float-left"
         ></lrndesign-avatar>
       </div>
-      <paper-card
-        class="paper-card-length-[[comment.attributes.threadDepth]]"
-      >
+      <paper-card class="paper-card-length-[[comment.attributes.threadDepth]]">
         <div id="body" class="comment-body nowrap">
           <h4>
             [[comment.relationships.author.data.name]]

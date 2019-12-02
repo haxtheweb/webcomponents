@@ -12,30 +12,30 @@ class LrnappStudioBlock extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-        font-size: 12px;
-      }
-      .studio-block__header {
-        padding: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        border: 1px solid lightgray;
-        border-bottom: none;
-      }
-      .studio-block__content {
-        padding: 0 16px;
-        border: 1px solid lightgray;
-      }
-      .studio-block__icon-wrapper {
-        width: 32px;
-      }
-      .studio-block__header h3 {
-        margin: 0;
-        font-style: none;
-        font-size: inherit;
-      }
+        :host {
+          display: block;
+          font-size: 12px;
+        }
+        .studio-block__header {
+          padding: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          border: 1px solid lightgray;
+          border-bottom: none;
+        }
+        .studio-block__content {
+          padding: 0 16px;
+          border: 1px solid lightgray;
+        }
+        .studio-block__icon-wrapper {
+          width: 32px;
+        }
+        .studio-block__header h3 {
+          margin: 0;
+          font-style: none;
+          font-size: inherit;
+        }
       `
     ];
   }
@@ -57,10 +57,10 @@ class LrnappStudioBlock extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String,
+        type: String
       },
       icon: {
-        type: String,
+        type: String
       }
     };
   }

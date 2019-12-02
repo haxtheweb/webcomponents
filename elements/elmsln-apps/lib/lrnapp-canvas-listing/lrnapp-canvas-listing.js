@@ -19,135 +19,135 @@ class LrnappCanvasListing extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-        margin: 0 2em;
-      }
-      .loading {
-        width: 100%;
-        z-index: 1000;
-        opacity: 0.8;
-        text-align: center;
-        align-content: center;
-        justify-content: center;
-        height: 100vh;
-        position: absolute;
-        background-color: white;
-      }
-      vaadin-grid {
-        height: 75vh;
-        font-family: Roboto, sans-serif;
-      }
+        :host {
+          display: block;
+          margin: 0 2em;
+        }
+        .loading {
+          width: 100%;
+          z-index: 1000;
+          opacity: 0.8;
+          text-align: center;
+          align-content: center;
+          justify-content: center;
+          height: 100vh;
+          position: absolute;
+          background-color: white;
+        }
+        vaadin-grid {
+          height: 75vh;
+          font-family: Roboto, sans-serif;
+        }
 
-      vaadin-grid .cell {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 56px;
-      }
+        vaadin-grid .cell {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 56px;
+        }
 
-      vaadin-grid .cell.last {
-        padding-right: 24px;
-      }
+        vaadin-grid .cell.last {
+          padding-right: 24px;
+        }
 
-      vaadin-grid .cell.numeric {
-        text-align: right;
-      }
+        vaadin-grid .cell.numeric {
+          text-align: right;
+        }
 
-      vaadin-grid paper-checkbox {
-        --primary-color: var(--paper-indigo-500);
-        margin: 0 24px;
-      }
+        vaadin-grid paper-checkbox {
+          --primary-color: var(--paper-indigo-500);
+          margin: 0 24px;
+        }
 
-      vaadin-grid vaadin-grid-sorter .cell {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        vaadin-grid vaadin-grid-sorter .cell {
+          flex: 1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-      vaadin-grid vaadin-grid-sorter iron-icon {
-        transform: scale(0.8);
-      }
+        vaadin-grid vaadin-grid-sorter iron-icon {
+          transform: scale(0.8);
+        }
 
-      vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
-        color: rgba(0, 0, 0, var(--dark-disabled-opacity));
-      }
+        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
+          color: rgba(0, 0, 0, var(--dark-disabled-opacity));
+        }
 
-      vaadin-grid vaadin-grid-sorter[direction] {
-        color: rgba(0, 0, 0, var(--dark-primary-opacity));
-      }
+        vaadin-grid vaadin-grid-sorter[direction] {
+          color: rgba(0, 0, 0, var(--dark-primary-opacity));
+        }
 
-      vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
-        transform: scale(0.8) rotate(180deg);
-      }
-      vaadin-grid-sorter {
-        text-align: center;
-      }
-      lrndesign-avatar {
-        display: inline-flex;
-      }
-      lrnsys-dialog {
-        display: inline-flex;
-      }
-      lrnsys-dialog #dialog-trigger span {
-        pointer-events: none;
-      }
-      .avatar-name {
-        line-height: 2em;
-        margin: 0;
-        display: inline-block;
-      }
-      .listing-select {
-        display: block;
-        height: 100%;
-        margin: 0;
-        width: 100%;
-      }
+        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
+          transform: scale(0.8) rotate(180deg);
+        }
+        vaadin-grid-sorter {
+          text-align: center;
+        }
+        lrndesign-avatar {
+          display: inline-flex;
+        }
+        lrnsys-dialog {
+          display: inline-flex;
+        }
+        lrnsys-dialog #dialog-trigger span {
+          pointer-events: none;
+        }
+        .avatar-name {
+          line-height: 2em;
+          margin: 0;
+          display: inline-block;
+        }
+        .listing-select {
+          display: block;
+          height: 100%;
+          margin: 0;
+          width: 100%;
+        }
       `
     ];
   }
   render() {
     return html`
-    <custom-style>
-      <style include="materializecss-styles">
-        vaadin-grid {
-          --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
+      <custom-style>
+        <style include="materializecss-styles">
+          vaadin-grid {
+            --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
 
-          --vaadin-grid-cell: {
-            padding: 0;
-          }
+            --vaadin-grid-cell: {
+              padding: 0;
+            }
 
-          --vaadin-grid-header-cell: {
-            height: 3.5em;
-            color: rgba(0, 0, 0, var(--dark-secondary-opacity));
-            font-size: 1em;
-          }
+            --vaadin-grid-header-cell: {
+              height: 3.5em;
+              color: rgba(0, 0, 0, var(--dark-secondary-opacity));
+              font-size: 1em;
+            }
 
-          --vaadin-grid-body-cell: {
-            height: 3em;
-            color: rgba(0, 0, 0, var(--dark-primary-opacity));
-            font-size: 0.8em;
-          }
+            --vaadin-grid-body-cell: {
+              height: 3em;
+              color: rgba(0, 0, 0, var(--dark-primary-opacity));
+              font-size: 0.8em;
+            }
 
-          --vaadin-grid-body-row-hover-cell: {
-            background-color: var(--paper-grey-200);
-          }
+            --vaadin-grid-body-row-hover-cell: {
+              background-color: var(--paper-grey-200);
+            }
 
-          --vaadin-grid-body-row-selected-cell: {
-            background-color: var(--paper-grey-100);
-          }
+            --vaadin-grid-body-row-selected-cell: {
+              background-color: var(--paper-grey-100);
+            }
 
-          --vaadin-grid-focused-cell: {
-            box-shadow: none;
-            font-weight: bold;
+            --vaadin-grid-focused-cell: {
+              box-shadow: none;
+              font-weight: bold;
+            }
           }
-        }
-        vaadin-grid vaadin-grid-sorter {
-          --vaadin-grid-sorter-arrow: {
-            display: none !important;
+          vaadin-grid vaadin-grid-sorter {
+            --vaadin-grid-sorter-arrow: {
+              display: none !important;
+            }
           }
-        }
-      </style>
+        </style>
       </custom-style>
       <iron-ajax
         auto
@@ -396,23 +396,23 @@ class LrnappCanvasListing extends LitElement {
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       elmslnCourses: {
         type: Array,

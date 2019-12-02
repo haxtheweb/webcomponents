@@ -13,11 +13,7 @@ class LrnappOpenStudioTable extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [
-      css`
-      
-      `
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -359,42 +355,42 @@ class LrnappOpenStudioTable extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'submissions') {
+      if (propName == "submissions") {
         // notify
         this.dispatchEvent(
           new CustomEvent("submissions-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'sourcePath') {
+      if (propName == "sourcePath") {
         // notify
         this.dispatchEvent(
           new CustomEvent("source-path-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'basePath') {
+      if (propName == "basePath") {
         // notify
         this.dispatchEvent(
           new CustomEvent("base-path-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'activeSubmission') {
+      if (propName == "activeSubmission") {
         // notify
         this.dispatchEvent(
           new CustomEvent("active-submission-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -405,46 +401,46 @@ class LrnappOpenStudioTable extends LitElement {
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       /**
        * The submissions to render
        */
       submissions: {
-        type: Array,
+        type: Array
       },
       _numWidth: {
-        type: String,
+        type: String
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        attribute: 'source-path',
+        attribute: "source-path"
       },
       /**
        * Active / clicked submission.
        */
       activeSubmission: {
         type: String,
-        attribute: 'active-submission',
+        attribute: "active-submission"
       }
     };
   }

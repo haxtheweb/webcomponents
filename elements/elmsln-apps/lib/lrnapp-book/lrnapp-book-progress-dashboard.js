@@ -47,7 +47,7 @@ class LrnappBookProgressDashboard extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
+        :host {
           display: block;
         }
         paper-progress {

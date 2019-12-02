@@ -15,7 +15,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
   static get styles() {
     return [
       css`
-      :host {
+        :host {
           display: flex;
           position: relative;
           align-items: stretch;
@@ -49,7 +49,8 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
   }
   render() {
     return html`
-      ${this.videos.map((video, index) => html`
+      ${this.videos.map(
+        (video, index) => html`
           <lrnapp-studio-submission-media-editoverlay
             @deleted="${this._videoDelete}"
             data-index="${index}"
@@ -59,7 +60,8 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
               src="${video.video_src}"
             ></iframe>
           </lrnapp-studio-submission-media-editoverlay>
-      `)}
+        `
+      )}
 
       <lrnapp-studio-submission-edit-add-asset
         icon="av:video-library"
@@ -69,7 +71,11 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
       <paper-dialog id="dialog">
         <h2>Add Video</h2>
         <paper-dialog-scrollable>
-          <paper-input label="Video URL" value="${this.newvideo}" @value-changed="${this.newvideoEvent}"></paper-input>
+          <paper-input
+            label="Video URL"
+            value="${this.newvideo}"
+            @value-changed="${this.newvideoEvent}"
+          ></paper-input>
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
@@ -78,18 +84,20 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
           >
         </div>
       </paper-dialog>
-      ${this.videoGenerateSourceUrl ? html`
-        <!-- Generate Video Source Url for preview -->
-        <iron-ajax
-          id="videourl"
-          url="${this.videoGenerateSourceUrl}"
-          method="POST"
-          .body="${this.newvideo}"
-          content-type="application/json"
-          handle-as="json"
-          @response="${this._addVideoAjax}"
-        ></iron-ajax>
-      `: ``}
+      ${this.videoGenerateSourceUrl
+        ? html`
+            <!-- Generate Video Source Url for preview -->
+            <iron-ajax
+              id="videourl"
+              url="${this.videoGenerateSourceUrl}"
+              method="POST"
+              .body="${this.newvideo}"
+              content-type="application/json"
+              handle-as="json"
+              @response="${this._addVideoAjax}"
+            ></iron-ajax>
+          `
+        : ``}
     `;
   }
   static get tag() {
@@ -102,17 +110,19 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
     super();
     this.videos = [];
     this.selectedPage = "0";
-    this.newvideo = '';
-    this.videoGenerateSourceUrl = this.generateUrl("/api/video/generate-source-url");
+    this.newvideo = "";
+    this.videoGenerateSourceUrl = this.generateUrl(
+      "/api/video/generate-source-url"
+    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'videos') {
+      if (propName == "videos") {
         // notify
         this.dispatchEvent(
           new CustomEvent("videos-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -122,18 +132,18 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
   static get properties() {
     return {
       videos: {
-        type: Array,
+        type: Array
       },
       selectedPage: {
         type: String,
-        attribute: 'selected-page',
+        attribute: "selected-page"
       },
       newvideo: {
-        type: String,
+        type: String
       },
       videoGenerateSourceUrl: {
         type: String,
-        attribute: 'video-generate-source-url',
+        attribute: "video-generate-source-url"
       }
     };
   }
@@ -146,9 +156,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
     this.newvideo = "";
   }
   _addVideo(e) {
-    this.shadowRoot
-        .querySelector("#videourl")
-        .generateRequest();
+    this.shadowRoot.querySelector("#videourl").generateRequest();
   }
 
   _videoDelete(e) {

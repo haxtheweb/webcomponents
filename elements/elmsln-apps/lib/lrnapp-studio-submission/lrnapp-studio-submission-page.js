@@ -29,7 +29,7 @@ class LrnappStudioSubmissionPage extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
+        :host {
           display: block;
           position: relative;
         }
@@ -227,26 +227,29 @@ class LrnappStudioSubmissionPage extends LitElement {
       ></iron-ajax>
 
       <app-toolbar class="amber lighten-3" ?hidden="${this.hideMenuBar}">
-      ${this.showComments ? html`
-        <lrnsys-button
-          @click="${this._backToStudio}"
-          icon="arrow-back"
-          label="See in studio"
-          hover-class="amber darken-4 white-text"
-        ></lrnsys-button>
-      ` : html`
-        <lrnsys-button
-          @click="${this._backToKanban}"
-          icon="arrow-back"
-          label="Back to project management"
-          hover-class="amber darken-4 white-text"
-        ></lrnsys-button>
-      `}
+        ${this.showComments
+          ? html`
+              <lrnsys-button
+                @click="${this._backToStudio}"
+                icon="arrow-back"
+                label="See in studio"
+                hover-class="amber darken-4 white-text"
+              ></lrnsys-button>
+            `
+          : html`
+              <lrnsys-button
+                @click="${this._backToKanban}"
+                icon="arrow-back"
+                label="Back to project management"
+                hover-class="amber darken-4 white-text"
+              ></lrnsys-button>
+            `}
         <div spacer="" main-title="">${this.submission.attributes.title}</div>
         <div spacer="">
           <lrnsys-dialog
             raised
-            header="${this.submission.relationships.assignment.attributes.title}"
+            header="${this.submission.relationships.assignment.attributes
+              .title}"
           >
             <span slot="button"
               ><iron-icon icon="icons:assignment"></iron-icon>Assignment
@@ -255,7 +258,8 @@ class LrnappStudioSubmissionPage extends LitElement {
             <div class="assignment-body">
               <marked-element
                 id="assignment-body"
-                markdown="${this.submission.relationships.assignment.attributes.body}"
+                markdown="${this.submission.relationships.assignment.attributes
+                  .body}"
               ></marked-element>
             </div>
           </lrnsys-dialog>
@@ -300,14 +304,16 @@ class LrnappStudioSubmissionPage extends LitElement {
           class="submission-comments"
           style="min-width: 25%; max-width: 40%; width:30%;"
         >
-        ${this.showComments ? html`
-          <lrnsys-comment-list
-            comment-ops-base="{{commentOpsBase}}"
-            csrf-token="${this.csrfToken}"
-            source-path="{{commentsUrl}}"
-            create-stub-url="{{createStubUrl}}"
-          ></lrnsys-comment-list>
-        ` : ``}
+          ${this.showComments
+            ? html`
+                <lrnsys-comment-list
+                  comment-ops-base="{{commentOpsBase}}"
+                  csrf-token="${this.csrfToken}"
+                  source-path="{{commentsUrl}}"
+                  create-stub-url="{{createStubUrl}}"
+                ></lrnsys-comment-list>
+              `
+            : ``}
         </div>
         <div id="submissioncolumn" style="width:70%;">
           <lrnapp-studio-submission-object
@@ -325,7 +331,9 @@ class LrnappStudioSubmissionPage extends LitElement {
         <p>Are you sure you want to delete this submission?</p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" @click="${this._submissionDeleteConfirmed}"
+          <paper-button
+            dialog-confirm=""
+            @click="${this._submissionDeleteConfirmed}"
             >Delete</paper-button
           >
         </div>
@@ -338,7 +346,9 @@ class LrnappStudioSubmissionPage extends LitElement {
         </p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" @click="${this._submissionPublishConfirmed}"
+          <paper-button
+            dialog-confirm=""
+            @click="${this._submissionPublishConfirmed}"
             >Yes Publish</paper-button
           >
         </div>
@@ -379,23 +389,23 @@ class LrnappStudioSubmissionPage extends LitElement {
       },
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       reqUrl: {
         type: String
@@ -461,7 +471,7 @@ class LrnappStudioSubmissionPage extends LitElement {
    * Trigger the page router to invoke edit state.
    */
   _setEditRoute(e) {
-    this.route.path = 'edit';
+    this.route.path = "edit";
     this.route = { ...this.route };
   }
 
@@ -469,8 +479,8 @@ class LrnappStudioSubmissionPage extends LitElement {
    * Trigger the page router to invoke edit state.
    */
   _resetRoute(e) {
-    this.route.path = '';
-    this.route = { ...this.route};
+    this.route.path = "";
+    this.route = { ...this.route };
   }
 
   /**
@@ -514,7 +524,7 @@ class LrnappStudioSubmissionPage extends LitElement {
   _handleResponse(data) {
     // empty response means no access or deleted item
     if (data.detail.response.data) {
-      this.submission = {...data.detail.response.data};
+      this.submission = { ...data.detail.response.data };
       window.dispatchEvent(new Event("resize"));
     }
   }

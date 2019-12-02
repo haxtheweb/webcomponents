@@ -9,9 +9,10 @@ class ElmsMediaUpload extends SimpleColors {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [...super.styles,
+    return [
+      ...super.styles,
       css`
-      :host {
+        :host {
           display: block;
         }
         paper-button {
@@ -71,7 +72,11 @@ class ElmsMediaUpload extends SimpleColors {
               <paper-item value="image__circle">Circle</paper-item>
             </paper-listbox>
           </paper-dropdown-menu>
-          <paper-checkbox class="styled" ?checked="${this.hasLightbox}" @checked-changed="${this.hasLightboxEvent}">
+          <paper-checkbox
+            class="styled"
+            ?checked="${this.hasLightbox}"
+            @checked-changed="${this.hasLightboxEvent}"
+          >
             Lightbox <span class="subtitle"> Users can click to expand </span>
           </paper-checkbox>
           <paper-button raised class="green">Save</paper-button>
@@ -92,32 +97,32 @@ class ElmsMediaUpload extends SimpleColors {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'uploadPath') {
+      if (propName == "uploadPath") {
         // notify
         this.dispatchEvent(
           new CustomEvent("upload-path-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'uploadTitle') {
+      if (propName == "uploadTitle") {
         // notify
         this.dispatchEvent(
           new CustomEvent("upload-title-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'hasLightbox') {
+      if (propName == "hasLightbox") {
         // notify
         this.dispatchEvent(
           new CustomEvent("has-lightbox-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -131,18 +136,19 @@ class ElmsMediaUpload extends SimpleColors {
     return "elmsmedia-upload";
   }
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       uploadPath: {
         type: String,
-        attribute: 'upload-path',
+        attribute: "upload-path"
       },
       uploadTitle: {
         type: String,
-        attribute: 'upload-title',
+        attribute: "upload-title"
       },
       hasLightbox: {
         type: Boolean,
-        attribute: 'has-lightbox',
+        attribute: "has-lightbox"
       }
     };
   }

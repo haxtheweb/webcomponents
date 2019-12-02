@@ -14,7 +14,7 @@ class LrnappStudioSubmissionEdit extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
+        :host {
           display: block;
           padding: 16px;
         }
@@ -44,88 +44,90 @@ class LrnappStudioSubmissionEdit extends LitElement {
   }
   render() {
     return html`
-      ${this.submission ? html`
-        <div class="field">
-          <paper-input
-            label="Title"
-            value="{{submission.attributes.title}}"
-          ></paper-input>
-        </div>
-        <!-- Body -->
-        <div class="field">
-          <label>Submission Text</label>
-          <lrnapp-studio-submission-edit-textarea
-            content="{{submission.attributes.body}}"
-          ></lrnapp-studio-submission-edit-textarea>
-        </div>
+      ${this.submission
+        ? html`
+            <div class="field">
+              <paper-input
+                label="Title"
+                value="{{submission.attributes.title}}"
+              ></paper-input>
+            </div>
+            <!-- Body -->
+            <div class="field">
+              <label>Submission Text</label>
+              <lrnapp-studio-submission-edit-textarea
+                content="{{submission.attributes.body}}"
+              ></lrnapp-studio-submission-edit-textarea>
+            </div>
 
-        <!-- Images -->
-        <div class="imagesfield field">
-          <label for="image-upload">Images</label>
-          <lrnapp-studio-submission-edit-images
-            images="{{submission.attributes.images}}"
-            file-types="${this.submission.meta.imagefieldTypes}"
-          ></lrnapp-studio-submission-edit-images>
-        </div>
+            <!-- Images -->
+            <div class="imagesfield field">
+              <label for="image-upload">Images</label>
+              <lrnapp-studio-submission-edit-images
+                images="{{submission.attributes.images}}"
+                file-types="${this.submission.meta.imagefieldTypes}"
+              ></lrnapp-studio-submission-edit-images>
+            </div>
 
-        <!-- Files -->
-        <div class="filesfield field">
-          <label for="file-upload">Files</label>
-          <lrnapp-studio-submission-edit-files
-            files="{{submission.attributes.files}}"
-            file-types="${this.submission.meta.filefieldTypes}"
-          >
-          </lrnapp-studio-submission-edit-files>
-        </div>
+            <!-- Files -->
+            <div class="filesfield field">
+              <label for="file-upload">Files</label>
+              <lrnapp-studio-submission-edit-files
+                files="{{submission.attributes.files}}"
+                file-types="${this.submission.meta.filefieldTypes}"
+              >
+              </lrnapp-studio-submission-edit-files>
+            </div>
 
-        <!-- Links -->
-        <div id="linksfield" class="linksfield field">
-          <label for="links-input">Links</label>
-          <lrnapp-studio-submission-edit-links
-            links="{{submission.attributes.links}}"
-          ></lrnapp-studio-submission-edit-links>
-        </div>
+            <!-- Links -->
+            <div id="linksfield" class="linksfield field">
+              <label for="links-input">Links</label>
+              <lrnapp-studio-submission-edit-links
+                links="{{submission.attributes.links}}"
+              ></lrnapp-studio-submission-edit-links>
+            </div>
 
-        <!-- Videos -->
-        <div id="videosfield" class="videosfield field">
-          <label for="videos-input">Videos</label>
-          <lrnapp-studio-submission-edit-video
-            .videos="${this.submission.attributes.video}"
-            @videos-changed="${this.submissionVideosChanged}"
-            end-point="${this.endPoint}"
-            csrf-token="${this.csrfToken}"
-          ></lrnapp-studio-submission-edit-video>
-        </div>
+            <!-- Videos -->
+            <div id="videosfield" class="videosfield field">
+              <label for="videos-input">Videos</label>
+              <lrnapp-studio-submission-edit-video
+                .videos="${this.submission.attributes.video}"
+                @videos-changed="${this.submissionVideosChanged}"
+                end-point="${this.endPoint}"
+                csrf-token="${this.csrfToken}"
+              ></lrnapp-studio-submission-edit-video>
+            </div>
 
-        <div class="actions">
-          <lrnsys-button
-            id="publish"
-            icon="check"
-            label="Publish to Studio"
-            @click="${this._publishClicked}"
-            hover-class="amber lighten-5 green-text text-darken-4"
-            icon-class="green-text"
-          ></lrnsys-button>
-          <lrnsys-button
-            id="save-draft"
-            icon="drafts"
-            label="Save Draft"
-            @click="${this._saveDraftClicked}"
-            hover-class="amber lighten-5 amber-text text-darken-4"
-            icon-class="amber-text text-darken-4"
-          ></lrnsys-button>
-          <span class="spacer"></span>
-          <lrnsys-button
-            id="delete"
-            label="Delete"
-            icon="delete"
-            @click="${this._deleteClicked}"
-            hover-class="amber lighten-5 red-text"
-            icon-class="red-text text-darken-4"
-          >
-          </lrnsys-button>
-        </div>
-      ` : ``}
+            <div class="actions">
+              <lrnsys-button
+                id="publish"
+                icon="check"
+                label="Publish to Studio"
+                @click="${this._publishClicked}"
+                hover-class="amber lighten-5 green-text text-darken-4"
+                icon-class="green-text"
+              ></lrnsys-button>
+              <lrnsys-button
+                id="save-draft"
+                icon="drafts"
+                label="Save Draft"
+                @click="${this._saveDraftClicked}"
+                hover-class="amber lighten-5 amber-text text-darken-4"
+                icon-class="amber-text text-darken-4"
+              ></lrnsys-button>
+              <span class="spacer"></span>
+              <lrnsys-button
+                id="delete"
+                label="Delete"
+                icon="delete"
+                @click="${this._deleteClicked}"
+                hover-class="amber lighten-5 red-text"
+                icon-class="red-text text-darken-4"
+              >
+              </lrnsys-button>
+            </div>
+          `
+        : ``}
     `;
   }
   submissionVideosChanged(e) {
@@ -136,15 +138,15 @@ class LrnappStudioSubmissionEdit extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'title') {
+      if (propName == "title") {
         this._bodyChanged(this[propName]);
       }
-      if (propName == 'submission') {
+      if (propName == "submission") {
         // notify
         this.dispatchEvent(
           new CustomEvent("submission-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -154,11 +156,11 @@ class LrnappStudioSubmissionEdit extends LitElement {
   static get properties() {
     return {
       submission: {
-        type: Object,
+        type: Object
       },
       uploadFilesUrl: {
         type: String,
-        attribute: 'upload-files-url',
+        attribute: "upload-files-url"
       },
       newlink: {
         type: String
@@ -168,14 +170,14 @@ class LrnappStudioSubmissionEdit extends LitElement {
       },
       videoGenerateSourceUrl: {
         type: String,
-        attribute: 'video-generate-source-url',
-      },
+        attribute: "video-generate-source-url"
+      }
     };
   }
 
   _publishClicked(e) {
     this.submission.attributes.state = "submission_ready";
-    this.submission.attributes = {...this.submission.attributes};
+    this.submission.attributes = { ...this.submission.attributes };
     this.dispatchEvent(
       new CustomEvent("submissionPublishClicked", {
         bubbles: true,

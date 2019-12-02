@@ -8,17 +8,17 @@ class LrnappStudioSubmissionEditImage extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: inline-flex;
-        justify-content: space-around;
-        min-height: 100px;
-        position: relative;
-      }
+        :host {
+          display: inline-flex;
+          justify-content: space-around;
+          min-height: 100px;
+          position: relative;
+        }
 
-      iron-image {
-        --iron-image-height: 200px;
-        display: block;
-      }
+        iron-image {
+          --iron-image-height: 200px;
+          display: block;
+        }
       `
     ];
   }
@@ -41,24 +41,24 @@ class LrnappStudioSubmissionEditImage extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'image') {
+      if (propName == "image") {
         this.embedcode = this._computeEmbedCode(this.image);
         this.thumbnail = this._getThumbnail(this.image);
         // notify
         this.dispatchEvent(
           new CustomEvent("image-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
-      if (propName == 'thumbnail') {
+      if (propName == "thumbnail") {
         // notify
         this.dispatchEvent(
           new CustomEvent("thumbnail-changed", {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -71,16 +71,16 @@ class LrnappStudioSubmissionEditImage extends LitElement {
   static get properties() {
     return {
       index: {
-        type: String,
+        type: String
       },
       image: {
-        type: Object,
+        type: Object
       },
       thumbnail: {
-        type: String,
+        type: String
       },
       embedcode: {
-        type: String,
+        type: String
       }
     };
   }

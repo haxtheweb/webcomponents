@@ -14,23 +14,23 @@ class ElmsmediaDashboard extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-      }
-      paper-dialog {
-        padding: 1em;
-      }
-      #toolbar {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
+        :host {
+          display: block;
+        }
+        paper-dialog {
+          padding: 1em;
+        }
+        #toolbar {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
       `
     ];
   }
   constructor() {
     super();
-    this.requestEndPoint = '';
+    this.requestEndPoint = "";
     this.queryParams = {};
     setTimeout(() => {
       this.addEventListener("remove-filter", e => {
@@ -102,10 +102,10 @@ class ElmsmediaDashboard extends LitElement {
   static get properties() {
     return {
       requestEndPoint: {
-        type: String,
+        type: String
       },
       queryParams: {
-        type: Object,
+        type: Object
       }
     };
   }
@@ -121,7 +121,7 @@ class ElmsmediaDashboard extends LitElement {
   _filterChanged(e) {
     let newParams = Object.assign({}, e.detail);
     newParams = this._cleanParams(newParams);
-    this.queryParams = {...newParams};
+    this.queryParams = { ...newParams };
   }
 
   /**
