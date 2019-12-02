@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 // register globally so we can make sure there is only one
 window.SimpleModal = window.SimpleModal || {};
@@ -20,7 +18,6 @@ window.SimpleModal.requestAvailability = () => {
 };
 /**
  * `simple-modal`
- * @customElement simple-modal
  * `A simple modal that ensures accessibility and stack order context appropriately`
  *
  * @microcopy - language worth noting:
@@ -39,12 +36,11 @@ window.SimpleModal.requestAvailability = () => {
 --simple-modal-button-background: var(--simple-modal-buttons-background-color);
 ```
  *
-
- * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/css.html styling simple-modal via CSS
  * @demo ./demo/details.html styling simple-modal via event details
  * @demo ./demo/template.html using simple-modal-template
+ * @customElement simple-modal
  */
 class SimpleModal extends PolymerElement {
   // render function
@@ -279,25 +275,26 @@ class SimpleModal extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
+    setTimeout(() => {
       window.addEventListener("simple-modal-hide", this.close.bind(this));
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-      this.shadowRoot
-        .querySelector("#simple-modal-content")
-        .addEventListener(
-          "neon-animation-finish",
-          this._ironOverlayClosed.bind(this)
-        );
-    });
+    }, 0);
+  }
+  ready() {
+    super.ready();
+    this.shadowRoot
+      .querySelector("#simple-modal-content")
+      .addEventListener(
+        "neon-animation-finish",
+        this._ironOverlayClosed.bind(this)
+      );
   }
   /**
    * Ensure everything is visible in what's been expanded.
    */
   _resizeContent(e) {
     // fake a resize event to make contents happy
-    microTask.run(() => {
-      window.dispatchEvent(new Event("resize"));
-    });
+    window.dispatchEvent(new Event("resize"));
   }
   /**
    * show event call to open the modal and display it's content
@@ -417,11 +414,9 @@ class SimpleModal extends PolymerElement {
       this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
-      microTask.run(() => {
-        setTimeout(() => {
-          this.invokedBy.focus();
-        }, 500);
-      });
+      setTimeout(() => {
+        this.invokedBy.focus();
+      }, 500);
     }
   }
   /**
