@@ -181,7 +181,7 @@ class MoocContent extends LitElement {
                         class="elmsln-modal-content"
                         id="block-mooc-helper-mooc-helper-toc-nav-modal"
                       >
-                        <div id="outlinemodal" on-click="_modalTap">
+                        <div id="outlinemodal" @click="${this._modalTap}">
                           <slot name="outlinemodal"></slot>
                         </div>
                       </div>

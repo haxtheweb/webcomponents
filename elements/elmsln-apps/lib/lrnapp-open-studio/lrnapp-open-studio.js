@@ -1,11 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-selector/iron-selector.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
@@ -17,8 +17,18 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-open-studio-table.js";
 import "./lrnapp-open-studio-projects.js";
 import "./lrnapp-open-studio-assignments.js";
-class LrnappOpenStudio extends PolymerElement {
-  static get template() {
+class LrnappOpenStudio extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -78,11 +88,11 @@ class LrnappOpenStudio extends PolymerElement {
       </style>
       <iron-ajax
         auto
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
         last-response="{{studioResponse}}"
-        on-response="_handleResponse"
+        @response="${this._handleResponse}"
       ></iron-ajax>
 
       <app-location
@@ -91,7 +101,7 @@ class LrnappOpenStudio extends PolymerElement {
       ></app-location>
       <app-route
         route="{{route}}"
-        pattern="[[endPoint]]/:page"
+        pattern="${this.endPoint}/:page"
         data="{{data}}"
         tail="{{tail}}"
         query-params="{{queryParams}}"
@@ -108,7 +118,7 @@ class LrnappOpenStudio extends PolymerElement {
           attr-for-selected="name"
           role="navigation"
         >
-          <a tabindex="-1" name="submissions" on-click="_submissionsClicked"
+          <a tabindex="-1" name="submissions" @click="${this._submissionsClicked}"
             ><lrnsys-button
               icon="apps"
               label="Submission display"
@@ -117,7 +127,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="projects" on-click="_projectsClicked"
+          <a tabindex="-1" name="projects" @click="${this._projectsClicked}"
             ><lrnsys-button
               icon="folder"
               label="Project board"
@@ -126,7 +136,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="assignments" on-click="_assignmentsClicked"
+          <a tabindex="-1" name="assignments" @click="${this._assignmentsClicked}"
             ><lrnsys-button
               icon="list"
               label="Assignment centric"
@@ -135,7 +145,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="table" on-click="_tableClicked"
+          <a tabindex="-1" name="table" @click="${this._tableClicked}"
             ><lrnsys-button
               icon="view-list"
               label="Table view"
@@ -149,10 +159,10 @@ class LrnappOpenStudio extends PolymerElement {
         <span
           top-item
           style="text-align:right;font-size:.5em;padding-right:1em;"
-          >Displaying [[submissions.length]] of
-          [[originalSubmissions.length]]</span
+          >Displaying ${this.submissions.length} of
+          ${this.originalSubmissions.length}</span
         >
-        <paper-dropdown-menu label="Author" hidden$="[[!authors]]">
+        <paper-dropdown-menu label="Author" ?hidden="${!this.authors}">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -160,14 +170,14 @@ class LrnappOpenStudio extends PolymerElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            <template is="dom-repeat" items="[[_toArray(authors)]]" as="author">
-              <paper-item item-id="[[author.id]]"
-                >[[author.display_name]]</paper-item
+            ${this._toArray(this.authors).map( author => html`
+              <paper-item item-id="${author.id}"
+                >${author.display_name}</paper-item
               >
-            </template>
+            `)}
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu label="Project" hidden$="[[!projects]]">
+        <paper-dropdown-menu label="Project" ?hidden="${!this.projects}">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -175,18 +185,14 @@ class LrnappOpenStudio extends PolymerElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            <template
-              is="dom-repeat"
-              items="[[_toArray(projects)]]"
-              as="project"
-            >
-              <paper-item item-id="[[project.id]]"
-                >[[project.attributes.title]]</paper-item
+            ${this._toArray(this.projects).map(project => html`
+              <paper-item item-id="${project.id}"
+                >${project.attributes.title}</paper-item
               >
-            </template>
+            `)}
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu label="Assignment" hidden$="[[!assignments]]">
+        <paper-dropdown-menu label="Assignment" ?hidden="${!this.assignments}">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
@@ -194,14 +200,11 @@ class LrnappOpenStudio extends PolymerElement {
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
-            <template
-              is="dom-repeat"
-              items="[[_toArray(assignments)]]"
-              as="assignment"
-            >
-              <paper-item item-id="[[assignment.id]]"
-                >[[assignment.attributes.title]]</paper-item
+            ${this._toArray(this.assignments).map(assignment => html`
+              <paper-item item-id="${assignment.id}"
+                >${assignment.attributes.title}</paper-item
               >
+            `)}
             </template>
           </paper-listbox>
         </paper-dropdown-menu>
@@ -216,7 +219,7 @@ class LrnappOpenStudio extends PolymerElement {
           <div class="iron-list-container" name="submissions">
             <iron-list
               id="ironlist"
-              items="[[submissions]]"
+              .items="${this.submissions}"
               as="item"
               grid
               scroll-target="document"
@@ -224,11 +227,11 @@ class LrnappOpenStudio extends PolymerElement {
               <template>
                 <div class="gallerycard-wrapper">
                   <a
-                    href$="[[basePath]]lrnapp-studio-submission/submissions/[[item.id]]"
+                    href="${this.basePath}lrnapp-studio-submission/submissions/[[item.id]]"
                   >
                     <lrndesign-gallerycard
                       elevation="2"
-                      data-submission-id$="[[item.id]]"
+                      data-submission-id="[[item.id]]"
                       title="[[item.attributes.title]]"
                       author="[[item.relationships.author.data]]"
                       comments="[[item.meta.comment_count]]"
@@ -244,25 +247,25 @@ class LrnappOpenStudio extends PolymerElement {
           </div>
           <lrnapp-open-studio-assignments
             name="assignments"
-            base-path="[[basePath]]"
-            submissions="[[submissions]]"
-            assignments="[[assignments]]"
-            active-author-id="[[queryParams.author]]"
-            active-assignment-id="[[queryParams.assignment]]"
+            base-path="${this.basePath}"
+            .submissions="${this.submissions}"
+            .assignments="${this.assignments}"
+            active-author-id="${this.queryParams.author}"
+            active-assignment-id="${this.queryParams.assignment}"
           ></lrnapp-open-studio-assignments>
           <lrnapp-open-studio-projects
             name="projects"
-            base-path="[[basePath]]"
-            projects="[[projects]]"
-            submissions="[[submissions]]"
-            assignments="[[assignments]]"
-            active-author-id="[[queryParams.author]]"
-            active-project-id="[[queryParams.project]]"
+            base-path="${this.basePath}"
+            .projects="${this.projects}"
+            .submissions="${this.submissions}"
+            .assignments="${this.assignments}"
+            active-author-id="${this.queryParams.author}"
+            active-project-id="${this.queryParams.project}"
           ></lrnapp-open-studio-projects>
           <lrnapp-open-studio-table
             name="table"
-            base-path="[[basePath]]"
-            submissions="[[submissions]]"
+            base-path="${this.basePath}"
+            .submissions="${this.submissions}"
           ></lrnapp-open-studio-table>
         </iron-pages>
       </div>
@@ -275,19 +278,24 @@ class LrnappOpenStudio extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       /**
        * The studioResponse from server
@@ -526,9 +534,9 @@ class LrnappOpenStudio extends PolymerElement {
     if (root.studioResponse.data.projects != null) {
       projects = this._toArray(root.studioResponse.data.projects);
     }
-    this.set("projects", projects);
+    this.projects = [...projects];
     // original = active off the bat then we apply filters later to chang this
-    this.set("originalSubmissions", submissions);
+    this.originalSubmissions = [...submissions];
     // figure out authors and assignments
     for (var index = 0; index < submissions.length; index++) {
       author = submissions[index].relationships.author.data;
@@ -547,20 +555,20 @@ class LrnappOpenStudio extends PolymerElement {
       assignments.push(element);
     });
     root.shadowRoot.querySelector("#loading").hidden = true;
-    this.set("assignments", assignments);
-    this.set("authors", authors);
+    this.assignments = [...assignments];
+    this.authors = [...authors];
   }
   _submissionsClicked(e) {
-    this.set("route.path", this.endPoint + "/submissions");
-    this.notifyPath("route.path");
+    this.route.path = this.endPoint + "/submissions";
+    this.route = { ...this.route };
   }
   _projectsClicked(e) {
-    this.set("route.path", this.endPoint + "/projects");
-    this.notifyPath("route.path");
+    this.route.path = this.endPoint + "/projects";
+    this.route = { ...this.route };
   }
   _assignmentsClicked(e) {
-    this.set("route.path", this.endPoint + "/assignments");
-    this.notifyPath("route.path");
+    this.route.path = this.endPoint + "/assignments";
+    this.route = { ...this.route };
   }
   /**
    * Simple way to convert from object to array.

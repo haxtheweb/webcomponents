@@ -1,7 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@lrnwebcomponents/lrn-markdown-editor/lrn-markdown-editor.js";
-class LrnappStudioSubmissionEditTextArea extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionEditTextArea extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {

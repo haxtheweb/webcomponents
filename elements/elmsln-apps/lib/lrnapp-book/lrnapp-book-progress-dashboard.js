@@ -1,8 +1,8 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
 import "@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
@@ -23,6 +23,10 @@ import "@lrnwebcomponents/page-scroll-position/page-scroll-position.js";
 import "@lrnwebcomponents/hax-body/hax-body.js";
 import "@lrnwebcomponents/material-progress/material-progress.js";
 import "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 
 /**
 `lrnapp-book-progress-dashboard`
@@ -36,11 +40,14 @@ A LRN element
   stats
 
 */
-class LrnappBookProgressDashboard extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles">
-        :host {
+class LrnappBookProgressDashboard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
           display: block;
         }
         paper-progress {
@@ -79,16 +86,13 @@ class LrnappBookProgressDashboard extends PolymerElement {
         }
         material-progress-histo {
           width: 100%;
-          @apply (--paper-font-body2);
         }
         material-progress-bars {
           width: 100%;
-          @apply (--paper-font-body2);
         }
         material-progress-bars > .bar > span {
           text-align: end;
           font-size: 0.9em;
-          @apply (--layout-flex);
         }
         .bar {
           background-color: var(--paper-deep-orange-500);
@@ -102,13 +106,30 @@ class LrnappBookProgressDashboard extends PolymerElement {
         .bar.world {
           background-color: var(--paper-orange-500);
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles">
+          material-progress-histo {
+            @apply (--paper-font-body2);
+          }
+          material-progress-bars {
+            @apply (--paper-font-body2);
+          }
+          material-progress-bars > .bar > span {
+            @apply (--layout-flex);
+          }
+        </style>
+      </custom-style>
       <iron-ajax
         id="dataajax"
-        url="[[sourcePath]]"
-        params="[[requestParams]]"
+        url="${this.sourcePath}"
+        .params="${this.requestParams}"
         handle-as="json"
-        on-response="handleDataResponse"
+        @response="${this.handleDataResponse}"
         last-response="{{readTimeData}}"
       ></iron-ajax>
 
@@ -143,17 +164,17 @@ class LrnappBookProgressDashboard extends PolymerElement {
           </div>
           <div class="bar world" data-value="30"><span>World</span></div>
         </material-progress-histo>
-        <template is="dom-repeat" items="[[dashboardItems]]" as="item">
+        <template is="dom-repeat" items="${this.dashboardItems}" as="item">
           <div class="progress-row">
             <div class="progress-left">
               <lrnsys-progress-circle
                 status="disabled"
                 class="flex"
-                icon="[[item.meta.icon]]"
+                icon="${item.meta.icon}"
               ></lrnsys-progress-circle>
             </div>
             <div class="progress-right">
-              <h3 class="progress-item-title">[[item.attributes.title]]</h3>
+              <h3 class="progress-item-title">${item.attributes.title}</h3>
               <div class="description-content">
                 <div>
                   <lrn-icon icon="network" class="progress-icon"></lrn-icon>
@@ -164,8 +185,8 @@ class LrnappBookProgressDashboard extends PolymerElement {
                 </div>
                 <div>
                   <lrndesign-avatar
-                    src="[[userData.user.avatar]]"
-                    label="[[userData.user.display_name]]"
+                    src="${this.userData.user.avatar}"
+                    label="${this.userData.user.display_name}"
                   ></lrndesign-avatar>
                   <paper-progress
                     value="70"
@@ -228,7 +249,7 @@ class LrnappBookProgressDashboard extends PolymerElement {
       showProgress: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
+        reflect: true,
         observer: "_showProgressChanged"
       }
     };

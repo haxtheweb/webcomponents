@@ -1,4 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-list/iron-list.js";
@@ -7,8 +8,18 @@ import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-class LrnappMediaGrid extends PolymerElement {
-  static get template() {
+class LrnappMediaGrid extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -42,7 +53,7 @@ class LrnappMediaGrid extends PolymerElement {
       </style>
       <iron-ajax
         id="ajax"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
         last-response="{{images}}"
@@ -65,13 +76,13 @@ class LrnappMediaGrid extends PolymerElement {
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
         <paper-dialog-scrollable id="dialogResponse">
-          <iron-image src$="[[activeImage]]"></iron-image>
+          <iron-image src="${this.activeImage}"></iron-image>
           <div id="details">
             <div class="title">
               <span>Title:</span> <span>[[activeTitle]]</span>
             </div>
             <div class="comment-on-work">
-              <a href$="[[activeUrl]]">
+              <a href="${this.activeUrl}">
                 <paper-button raised="">View media</paper-button>
               </a>
             </div>
@@ -92,19 +103,24 @@ class LrnappMediaGrid extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourcePath: {
         type: String,
@@ -116,17 +132,17 @@ class LrnappMediaGrid extends PolymerElement {
       },
       activeImage: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeTitle: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeUrl: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       }
     };

@@ -40,7 +40,7 @@ A LRN element
   author mode - authoring mode
 */
 class LrnappBook extends HAXCMSPolymerElementTheme {
-  static get template() {
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -383,11 +383,11 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
           <div
             id="bookdrawercontent"
             style="height: 100%; overflow: auto;"
-            hidden\$="[[!bookItems]]"
+            ?hidden="[[!bookItems]]"
           >
             <paper-search-bar
               hide-filter-button=""
-              hidden\$="[[!showSearch]]"
+              ?hidden="[[!showSearch]]"
             ></paper-search-bar>
             <map-menu id="mapmenu" manifest="[[_routerManifest]]">
               <!-- Server response will populate this -->
@@ -408,7 +408,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
                   title="Content outline"
                   id="menubutton"
                   icon="menu"
-                  on-click="toggleBook"
+                  @click="${this.toggleBook}"
                 ></paper-icon-button>
               </div>
               <div spacer="" class="outline-title">[[outlineTitle]]</div>
@@ -430,7 +430,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
               </div>
               <!--
               <div class="your-progress-button">
-                <lrnsys-dialog body-append modal on-click="progressdashboardopen" header="Your progress" alt="Your progress">
+                <lrnsys-dialog body-append modal @click="${this.progressdashboardopen" header="Your progress" alt="Your progress}">
                   <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
                   <div>
                     <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
@@ -457,10 +457,10 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
               <paper-icon-button
                 id="next"
                 title="[[nextLabel]]"
-                on-click="_nextBtn"
+                @click="${this._nextBtn}"
                 icon="hardware:keyboard-arrow-right"
                 data-voicecommand="next page"
-                hidden\$="[[!hasNextPage]]"
+                ?hidden="[[!hasNextPage]]"
               ></paper-icon-button>
               <paper-tooltip
                 for="next"
@@ -475,10 +475,10 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
               <paper-icon-button
                 id="prev"
                 title="[[prevLabel]]"
-                on-click="_prevBtn"
+                @click="${this._prevBtn}"
                 icon="hardware:keyboard-arrow-left"
                 data-voicecommand="previous page"
-                hidden\$="[[!hasPrevPage]]"
+                ?hidden="[[!hasPrevPage]]"
               ></paper-icon-button>
               <paper-tooltip
                 for="prev"
@@ -511,7 +511,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
        */
       showSearch: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false
       },
       /**
@@ -525,7 +525,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
        */
       editMode: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false,
         notify: true,
         observer: "_editModeChanged"
@@ -537,7 +537,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
       drawerOpened: {
         type: Boolean,
         value: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Title for the content
@@ -753,7 +753,7 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
        */
       fullWidth: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false,
         observer: "_fullWidthChanged"
       },
@@ -1076,12 +1076,8 @@ class LrnappBook extends HAXCMSPolymerElementTheme {
         this.activePage = 0;
       }
       // set outline items to repaint, aggressively
-      this.set("outlineItems", []);
-      this.set("outlineItems", items);
-      this.notifyPath("outlineItems.*");
-      this.set("bookItems", []);
-      this.set("bookItems", items);
-      this.notifyPath("bookItems.*");
+      this.outlineItems = [...items];
+      this.bookItems = [...items];
       // set title to match new parent title
       this.outlineTitle = outlineTitle;
       this.shadowRoot.querySelector("#outlineloading").hidden = true;

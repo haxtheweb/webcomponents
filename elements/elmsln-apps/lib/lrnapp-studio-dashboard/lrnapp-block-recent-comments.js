@@ -1,11 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-block-recent-comments-comment.js";
-class LrnappBlockRecentComments extends PolymerElement {
-  static get template() {
+class LrnappBlockRecentComments extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="paper-item-styles">
         :host {
@@ -21,7 +31,7 @@ class LrnappBlockRecentComments extends PolymerElement {
         url="{{sourcePath}}"
         handle-as="json"
         last-response="{{response}}"
-        on-response="handleResponse"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <template
         is="dom-repeat"
@@ -46,19 +56,24 @@ class LrnappBlockRecentComments extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourcePath: {
         type: String,

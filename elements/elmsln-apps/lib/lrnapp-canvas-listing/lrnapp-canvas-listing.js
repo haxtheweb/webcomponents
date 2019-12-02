@@ -1,8 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
@@ -14,28 +12,105 @@ import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
-class LrnappCanvasListing extends PolymerElement {
-  static get template() {
+class LrnappCanvasListing extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
+        display: block;
+        margin: 0 2em;
+      }
+      .loading {
+        width: 100%;
+        z-index: 1000;
+        opacity: 0.8;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        height: 100vh;
+        position: absolute;
+        background-color: white;
+      }
+      vaadin-grid {
+        height: 75vh;
+        font-family: Roboto, sans-serif;
+      }
+
+      vaadin-grid .cell {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 56px;
+      }
+
+      vaadin-grid .cell.last {
+        padding-right: 24px;
+      }
+
+      vaadin-grid .cell.numeric {
+        text-align: right;
+      }
+
+      vaadin-grid paper-checkbox {
+        --primary-color: var(--paper-indigo-500);
+        margin: 0 24px;
+      }
+
+      vaadin-grid vaadin-grid-sorter .cell {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      vaadin-grid vaadin-grid-sorter iron-icon {
+        transform: scale(0.8);
+      }
+
+      vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
+        color: rgba(0, 0, 0, var(--dark-disabled-opacity));
+      }
+
+      vaadin-grid vaadin-grid-sorter[direction] {
+        color: rgba(0, 0, 0, var(--dark-primary-opacity));
+      }
+
+      vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
+        transform: scale(0.8) rotate(180deg);
+      }
+      vaadin-grid-sorter {
+        text-align: center;
+      }
+      lrndesign-avatar {
+        display: inline-flex;
+      }
+      lrnsys-dialog {
+        display: inline-flex;
+      }
+      lrnsys-dialog #dialog-trigger span {
+        pointer-events: none;
+      }
+      .avatar-name {
+        line-height: 2em;
+        margin: 0;
+        display: inline-block;
+      }
+      .listing-select {
+        display: block;
+        height: 100%;
+        margin: 0;
+        width: 100%;
+      }
+      `
+    ];
+  }
+  render() {
     return html`
+    <custom-style>
       <style include="materializecss-styles">
-        :host {
-          display: block;
-          margin: 0 2em;
-        }
-        .loading {
-          width: 100%;
-          z-index: 1000;
-          opacity: 0.8;
-          text-align: center;
-          align-content: center;
-          justify-content: center;
-          height: 100vh;
-          position: absolute;
-          background-color: white;
-        }
-        vaadin-grid#material {
-          height: 75vh;
-          font-family: Roboto, sans-serif;
+        vaadin-grid {
           --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
 
           --vaadin-grid-cell: {
@@ -67,84 +142,19 @@ class LrnappCanvasListing extends PolymerElement {
             font-weight: bold;
           }
         }
-
-        vaadin-grid#material .cell {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          padding-right: 56px;
-        }
-
-        vaadin-grid#material .cell.last {
-          padding-right: 24px;
-        }
-
-        vaadin-grid#material .cell.numeric {
-          text-align: right;
-        }
-
-        vaadin-grid#material paper-checkbox {
-          --primary-color: var(--paper-indigo-500);
-          margin: 0 24px;
-        }
-
-        vaadin-grid#material vaadin-grid-sorter {
+        vaadin-grid vaadin-grid-sorter {
           --vaadin-grid-sorter-arrow: {
             display: none !important;
           }
         }
-
-        vaadin-grid#material vaadin-grid-sorter .cell {
-          flex: 1;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        vaadin-grid#material vaadin-grid-sorter iron-icon {
-          transform: scale(0.8);
-        }
-
-        vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
-          color: rgba(0, 0, 0, var(--dark-disabled-opacity));
-        }
-
-        vaadin-grid#material vaadin-grid-sorter[direction] {
-          color: rgba(0, 0, 0, var(--dark-primary-opacity));
-        }
-
-        vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
-          transform: scale(0.8) rotate(180deg);
-        }
-        vaadin-grid-sorter {
-          text-align: center;
-        }
-        lrndesign-avatar {
-          display: inline-flex;
-        }
-        lrnsys-dialog {
-          display: inline-flex;
-        }
-        lrnsys-dialog #dialog-trigger span {
-          pointer-events: none;
-        }
-        .avatar-name {
-          line-height: 2em;
-          margin: 0;
-          display: inline-block;
-        }
-        .listing-select {
-          display: block;
-          height: 100%;
-          margin: 0;
-          width: 100%;
-        }
       </style>
+      </custom-style>
       <iron-ajax
         auto
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params='{"return": "courses"}'
         handle-as="json"
-        on-response="handleResponse"
+        @response="${this.handleResponse}"
         last-response="{{queryResponse}}"
       ></iron-ajax>
       <div id="loading" class="loading">
@@ -272,7 +282,7 @@ class LrnappCanvasListing extends PolymerElement {
           >
           <template>
             <select
-              name$="elmsln--map--:key:[[item.sis_course_id]]:key:[[item.term]]:key:[[item.start]]:key:[[item.end]]"
+              name="elmsln--map--:key:[[item.sis_course_id]]:key:[[item.term]]:key:[[item.start]]:key:[[item.end]]"
               class="listing-select"
               value="{{item.elmslnCourse::input}}"
             >
@@ -307,8 +317,8 @@ class LrnappCanvasListing extends PolymerElement {
           <template>
             <paper-button
               raised
-              on-click="_triggerDialog"
-              id$="{{item.sis_course_id}}"
+              @click="${this._triggerDialog}"
+              id="{{item.sis_course_id}}"
               >Details</paper-button
             >
           </template>
@@ -317,10 +327,10 @@ class LrnappCanvasListing extends PolymerElement {
       </vaadin-grid>
       <iron-ajax
         id="request"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params='{"return": "users"}'
         handle-as="json"
-        on-response="handleRosterResponse"
+        @response="${this.handleRosterResponse}"
         last-response="{{queryResponse}}"
       ></iron-ajax>
       <lrnsys-dialog
@@ -345,7 +355,7 @@ class LrnappCanvasListing extends PolymerElement {
                 sizing="cover"
                 preload
                 fade
-                src$="{{activeCourse.image}}"
+                src="{{activeCourse.image}}"
               ></iron-image>
             </template>
             <span class="heading">
@@ -364,13 +374,13 @@ class LrnappCanvasListing extends PolymerElement {
               items="[[_toArray(roleList.users)]]"
               as="user"
             >
-              <div class="avatar-name" id$="user-{{user.id}}">
+              <div class="avatar-name" id="user-{{user.id}}">
                 <lrndesign-avatar
-                  label$="{{user.name}}"
-                  src$="{{user.picture}}"
+                  label="{{user.name}}"
+                  src="{{user.picture}}"
                 ></lrndesign-avatar>
               </div>
-              <paper-tooltip for$="user-{{user.id}}"
+              <paper-tooltip for="user-{{user.id}}"
                 >{{user.name}}</paper-tooltip
               >
             </template>
@@ -385,19 +395,24 @@ class LrnappCanvasListing extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       elmslnCourses: {
         type: Array,
@@ -423,7 +438,7 @@ class LrnappCanvasListing extends PolymerElement {
       activeCourse: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

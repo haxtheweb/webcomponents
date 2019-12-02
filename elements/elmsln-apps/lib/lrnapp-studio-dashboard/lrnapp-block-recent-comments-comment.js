@@ -1,17 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   [IronResizableBehavior],
   PolymerElement
 ) {
-  static get template() {
+  render() {
     return html`
       <style>
         :host {
@@ -75,10 +74,10 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
       <paper-card elevation="3" class="flex-wrap">
         <div class="card-content">
           <lrndesign-avatar
-            label="[[commentUser.name]]"
-            src="[[commentUser.avatar]]"
+            label="${this.commentUser.name}"
+            src="${this.commentUser.avatar}"
           ></lrndesign-avatar>
-          <h3>[[commentUser.display_name]]</h3>
+          <h3>${this.commentUser.display_name}</h3>
           <div id="wrapper" class="button-wrapper">
             <div id="comment" class="inactive"><slot></slot></div>
             <paper-button id="btn" class="hidden">
@@ -87,11 +86,11 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           </div>
         </div>
         <div class="card-actions">
-          <template is="dom-if" if="[[actionView]]">
-            <a href$="[[actionView]]" tabindex="-1">
+          ${this.actionView ? html`
+            <a href="${this.actionView}" tabindex="-1">
               <paper-button raised="" id="view">View thread</paper-button>
             </a>
-          </template>
+          ` : ``}
         </div>
       </paper-card>
     `;
@@ -112,40 +111,45 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       commentTitle: {
         type: String,
         value: "Comment title",
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       actionView: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       dateUpdated: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       commentUser: {
         type: Object,
         value: {},
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       }
     };
@@ -153,32 +157,20 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   /**
    * attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.shadowRoot
-        .querySelector("#wrapper")
-        .addEventListener("click", function(e) {
-          this.shadowRoot
-            .querySelector("#comment")
-            .classList.toggle("inactive", this.inactive);
-        });
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
-    });
+    }, 0);
   }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
+  firstUpdated() {
     this.shadowRoot
       .querySelector("#wrapper")
-      .removeEventListener("click", function(e) {
+      .addEventListener("click", (e) => {
         this.shadowRoot
           .querySelector("#comment")
           .classList.toggle("inactive", this.inactive);
       });
-    this.removeEventListener("iron-resize", this.onHeightChange.bind(this));
-    super.disconnectedCallback();
   }
 }
 window.customElements.define(

@@ -1,6 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
@@ -9,63 +7,69 @@ import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-file.js";
-class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
-  static get template() {
+class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
+        display: block;
+        position: relative;
+        min-height: 200px;
+      }
+      #pages {
+        display: block;
+      }
+      .files__files {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .files__files > * {
+        margin-right: 16px;
+        min-width: 200px;
+      }
+      paper-dialog {
+        width: 50%;
+        width: 50vmax;
+        padding: 16px;
+      }
+      `
+    ];
+  } 
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-          position: relative;
-          min-height: 200px;
-        }
-        #pages {
-          display: block;
-        }
-        .files__files {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .files__files > * {
-          margin-right: 16px;
-          min-width: 200px;
-        }
-        paper-dialog {
-          width: 50%;
-          width: 50vmax;
-          padding: 16px;
-        }
-      </style>
-
       <div class="files__files">
-        <template is="dom-repeat" items="[[files]]" as="file">
+        ${this.files.map((file,index) => html`
           <lrnapp-studio-submission-edit-file
-            file="[[file]]"
-            on-deleted="_deleteImage"
-            data-index\$="[[index]]"
+            .file="${file}"
+            @deleted="${this._deleteImage}"
+            data-index="${index}"
           ></lrnapp-studio-submission-edit-file>
-        </template>
+        `)}
         <lrnapp-studio-submission-edit-add-asset
-          on-click="_addFile"
+          @click="${this._addFile}"
           icon="editor:attach-file"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
       <paper-dialog id="dialog">
         <h2>Add Files</h2>
         <div class="files__upload">
-          <template is="dom-if" if="[[uploadUrl]]">
+        ${this.uploadUrl ? html`
             <vaadin-upload
-              accept="[[fileTypes]]"
-              target="[[uploadUrl]]"
+              accept="${this.fileTypes}"
+              target="${this.uploadUrl}"
               method="POST"
               form-data-name="file-upload"
-              on-upload-success="_handleImageUploadSuccess"
+              @upload-success="${this._handleImageUploadSuccess}"
             >
               <div class="files__drop-label">
                 <iron-icon icon="description"></iron-icon>
                 Upload files here:
               </div>
             </vaadin-upload>
-          </template>
+        ` : ``}
         </div>
         <div>
           <paper-button dialog-dismiss>Cancel</paper-button>
@@ -112,11 +116,11 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
 
   _selectPage(e) {
     var page = e.target.getAttribute("data-page");
-    this.set("selectedPage", page);
+    this.selectedPage = page;
   }
 
   _handleImageUploadSuccess(e) {
-    this.set("selectedPage", 0);
+    this.selectedPage = 0;
     var files = [];
     var response = e.detail.xhr.response;
     // normalize response string
@@ -125,16 +129,16 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
     if (response.data.file) {
       var file = response.data.file;
       if (this.files === null) {
-        this.set("files", []);
+        this.files = [];
       }
-      this.push("files", file);
+      this.files.push(file);
       this.shadowRoot.querySelector("#dialog").close();
     }
   }
 
   _deleteImage(e) {
     var deleteIndex = e.target.getAttribute("data-index");
-    this.splice("files", Number(deleteIndex), 1);
+    this.files.splice(Number(deleteIndex), 1);
   }
 
   _canUpload() {
@@ -154,7 +158,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
     super.connectedCallback();
     const uploadUrl = this.generateUrl("/api/files");
     if (uploadUrl !== null) {
-      this.set("uploadUrl", uploadUrl);
+      this.uploadUrl = uploadUrl;
     }
   }
 }

@@ -1,17 +1,26 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-image/iron-image.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/image-inspector/image-inspector.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/word-count/word-count.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-contentblock/lrndesign-contentblock.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-class LrnappStudioSubmissionDisplay extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionDisplay extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -245,20 +254,25 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
         observer: "_submissionLoaded"
       },
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
-      }
+        type: String,
+        attribute: 'end-point',
+      },
     };
   }
   _submissionLoaded(newValue) {

@@ -1,13 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -19,12 +17,19 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-studio-submission-object.js";
 import "./lrnapp-studio-submission-comments.js";
 import "./lrnapp-studio-submission-comment.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 
-class LrnappStudioSubmissionPage extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
-        :host {
+class LrnappStudioSubmissionPage extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
           display: block;
           position: relative;
         }
@@ -99,10 +104,6 @@ class LrnappStudioSubmissionPage extends PolymerElement {
 
         .submission-page-wrapper {
           padding: 0;
-          --vaadin-split-layout-splitter: {
-            min-width: 0.4em;
-            background: var(--paper-amber-200);
-          }
         }
 
         .submission-page {
@@ -169,8 +170,22 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         iron-icon {
           margin: 0.2em;
         }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          .submission-page-wrapper {
+            padding: 0;
+            --vaadin-split-layout-splitter: {
+              min-width: 0.4em;
+              background: var(--paper-amber-200);
+            }
+          }
+        </style>
+      </custom-style>
       <app-route
         route="{{route}}"
         pattern="/edit"
@@ -182,57 +197,56 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       <iron-ajax
         id="ajaxRequest"
         auto=""
-        url="[[reqUrl]]"
+        url="${this.reqUrl}"
         method="GET"
-        params="[[reqParams]]"
+        params="${this.reqParams}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleResponse"
+        @response="${this._handleResponse}"
       ></iron-ajax>
       <!-- Update Submission Node -->
       <iron-ajax
         id="ajaxUpdateRequest"
-        url="[[reqUrl]]"
+        url="${this.reqUrl}"
         method="PUT"
-        body="[[submission]]"
-        params="[[reqParams]]"
+        .body="${this.submission}"
+        params="${this.reqParams}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleUpdateResponse"
+        @response="${this._handleUpdateResponse}"
       ></iron-ajax>
       <!-- Delete Submission Node -->
       <iron-ajax
         id="ajaxDeleteRequest"
-        url="[[reqUrl]]"
+        url="${this.reqUrl}"
         method="DELETE"
-        params="[[reqParams]]"
+        params="${this.reqParams}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleDeleteResponse"
+        @response="${this._handleDeleteResponse}"
       ></iron-ajax>
 
-      <app-toolbar class="amber lighten-3" hidden\$="[[hideMenuBar]]">
-        <template is="dom-if" if="[[showComments]]">
-          <lrnsys-button
-            on-click="_backToStudio"
-            icon="arrow-back"
-            label="See in studio"
-            hover-class="amber darken-4 white-text"
-          ></lrnsys-button>
-        </template>
-        <template is="dom-if" if="[[!showComments]]">
-          <lrnsys-button
-            on-click="_backToKanban"
-            icon="arrow-back"
-            label="Back to project management"
-            hover-class="amber darken-4 white-text"
-          ></lrnsys-button>
-        </template>
-        <div spacer="" main-title="">[[submission.attributes.title]]</div>
+      <app-toolbar class="amber lighten-3" ?hidden="${this.hideMenuBar}">
+      ${this.showComments ? html`
+        <lrnsys-button
+          @click="${this._backToStudio}"
+          icon="arrow-back"
+          label="See in studio"
+          hover-class="amber darken-4 white-text"
+        ></lrnsys-button>
+      ` : html`
+        <lrnsys-button
+          @click="${this._backToKanban}"
+          icon="arrow-back"
+          label="Back to project management"
+          hover-class="amber darken-4 white-text"
+        ></lrnsys-button>
+      `}
+        <div spacer="" main-title="">${this.submission.attributes.title}</div>
         <div spacer="">
           <lrnsys-dialog
             raised
-            header="[[submission.relationships.assignment.attributes.title]]"
+            header="${this.submission.relationships.assignment.attributes.title}"
           >
             <span slot="button"
               ><iron-icon icon="icons:assignment"></iron-icon>Assignment
@@ -241,7 +255,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             <div class="assignment-body">
               <marked-element
                 id="assignment-body"
-                markdown="[[submission.relationships.assignment.attributes.body]]"
+                markdown="${this.submission.relationships.assignment.attributes.body}"
               ></marked-element>
             </div>
           </lrnsys-dialog>
@@ -252,30 +266,30 @@ class LrnappStudioSubmissionPage extends PolymerElement {
             style="margin:0;padding:.25em;text-transform:none;"
           >
             <iron-icon icon="communication:forum"></iron-icon>
-            [[submission.meta.comment_count]] Comments
+            ${this.submission.meta.comment_count} Comments
           </paper-button>
           <paper-badge
-            hidden\$="[[displayNewBadge(submission.meta.comment_new)]]"
+            ?hidden="${this.displayNewBadge(this.submission.meta.comment_new)}"
             for="comment-count"
-            label\$="[[submission.meta.comment_new]]"
+            label="${this.submission.meta.comment_new}"
           ></paper-badge>
         </div>
-        <div hidden\$="[[editPage]]">
+        <div ?hidden="${this.editPage}">
           <lrnsys-button
-            on-click="_setEditRoute"
+            @click="${this._setEditRoute}"
             icon="create"
             label="Edit"
             hover-class="amber darken-4 white-text"
-            hidden\$="[[!submission.meta.canUpdate]]"
+            ?hidden="${!this.submission.meta.canUpdate}"
           ></lrnsys-button>
         </div>
-        <div hidden\$="[[!editPage]]">
+        <div ?hidden="${!this.editPage}">
           <lrnsys-button
-            on-click="_resetRoute"
+            @click="${this._resetRoute}"
             icon="cancel"
             label="Cancel"
             hover-class="amber darken-4 white-text"
-            hidden\$="[[!submission.meta.canUpdate]]"
+            ?hidden="${!this.submission.meta.canUpdate}"
           ></lrnsys-button>
         </div>
       </app-toolbar>
@@ -286,19 +300,19 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           class="submission-comments"
           style="min-width: 25%; max-width: 40%; width:30%;"
         >
-          <template is="dom-if" if="[[showComments]]">
-            <lrnsys-comment-list
-              comment-ops-base="{{commentOpsBase}}"
-              csrf-token="[[csrfToken]]"
-              source-path="{{commentsUrl}}"
-              create-stub-url="{{createStubUrl}}"
-            ></lrnsys-comment-list>
-          </template>
+        ${this.showComments ? html`
+          <lrnsys-comment-list
+            comment-ops-base="{{commentOpsBase}}"
+            csrf-token="${this.csrfToken}"
+            source-path="{{commentsUrl}}"
+            create-stub-url="{{createStubUrl}}"
+          ></lrnsys-comment-list>
+        ` : ``}
         </div>
         <div id="submissioncolumn" style="width:70%;">
           <lrnapp-studio-submission-object
             submission="{{submission}}"
-            edit="[[editPage]]"
+            edit="${this.editPage}"
           ></lrnapp-studio-submission-object>
         </div>
         <iron-icon class="splitter-handle" icon="more-vert"></iron-icon>
@@ -311,7 +325,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         <p>Are you sure you want to delete this submission?</p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_submissionDeleteConfirmed"
+          <paper-button dialog-confirm="" @click="${this._submissionDeleteConfirmed}"
             >Delete</paper-button
           >
         </div>
@@ -324,7 +338,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_submissionPublishConfirmed"
+          <paper-button dialog-confirm="" @click="${this._submissionPublishConfirmed}"
             >Yes Publish</paper-button
           >
         </div>
@@ -333,7 +347,23 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       <paper-toast id="toast"></paper-toast>
     `;
   }
-
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener(
+        "submissionDeleteClicked",
+        this._submissionDeleteClicked.bind(this)
+      );
+      this.addEventListener(
+        "submissionPublishClicked",
+        this._submissionPublishClicked.bind(this)
+      );
+      this.addEventListener(
+        "submissionSaveDraftClicked",
+        this._submissionSaveDraftClicked.bind(this)
+      );
+    }, 0);
+  }
   static get tag() {
     return "lrnapp-studio-submission-page";
   }
@@ -348,28 +378,24 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         value: false
       },
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
-      },
-      endPoint: {
-        type: String
-      },
-      basePath: {
-        type: String
-      },
-      csrfToken: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       reqUrl: {
         type: String
@@ -394,51 +420,19 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       },
       editPage: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       saving: {
         type: Boolean,
         value: false,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       showComments: {
         type: Boolean,
         computed: "_computeShowComments(submission)"
       }
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "submissionDeleteClicked",
-        this._submissionDeleteClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionPublishClicked",
-        this._submissionPublishClicked.bind(this)
-      );
-      this.addEventListener(
-        "submissionSaveDraftClicked",
-        this._submissionSaveDraftClicked.bind(this)
-      );
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "submissionDeleteClicked",
-      this._submissionDeleteClicked.bind(this)
-    );
-    this.removeEventListener(
-      "submissionPublishClicked",
-      this._submissionPublishClicked.bind(this)
-    );
-    this.removeEventListener(
-      "submissionSaveDraftClicked",
-      this._submissionSaveDraftClicked.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   static get observers() {
@@ -467,16 +461,16 @@ class LrnappStudioSubmissionPage extends PolymerElement {
    * Trigger the page router to invoke edit state.
    */
   _setEditRoute(e) {
-    this.set("route.path", "edit");
-    this.notifyPath("route.path");
+    this.route.path = 'edit';
+    this.route = { ...this.route };
   }
 
   /**
    * Trigger the page router to invoke edit state.
    */
   _resetRoute(e) {
-    this.set("route.path", "");
-    this.notifyPath("route.path");
+    this.route.path = '';
+    this.route = { ...this.route};
   }
 
   /**
@@ -520,11 +514,8 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   _handleResponse(data) {
     // empty response means no access or deleted item
     if (data.detail.response.data) {
-      this.set("submission", []);
-      this.set("submission", data.detail.response.data);
-      microTask.run(() => {
-        window.dispatchEvent(new Event("resize"));
-      });
+      this.submission = {...data.detail.response.data};
+      window.dispatchEvent(new Event("resize"));
     }
   }
 

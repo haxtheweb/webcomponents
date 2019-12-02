@@ -1,19 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-image.js";
 class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
   PolymerElement
 ) {
-  static get template() {
+  render() {
     return html`
       <style>
         :host {
@@ -44,13 +43,13 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       <div class="images__images">
         <template is="dom-repeat" items="[[images]]" as="image">
           <lrnapp-studio-submission-edit-image
-            image="[[image]]"
-            on-deleted="_deleteImage"
-            data-index\$="[[index]]"
+            image="${image}"
+            @deleted="${this._deleteImage}"
+            data-index="[[index]]"
           ></lrnapp-studio-submission-edit-image>
         </template>
         <lrnapp-studio-submission-edit-add-asset
-          on-click="_addImage"
+          @click="${this._addImage}"
           icon="image:photo-library"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
@@ -58,13 +57,13 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
         <h2>Add Image(s)</h2>
         <paper-dialog-scrollable>
           <div class="images__upload">
-            <template is="dom-if" if="[[uploadUrl]]">
+            <template is="dom-if" if="${this.uploadUrl}">
               <vaadin-upload
                 accept="[[fileTypes]]"
-                target="[[uploadUrl]]"
+                target="${this.uploadUrl}"
                 method="POST"
                 form-data-name="file-upload"
-                on-upload-success="_handleImageUploadSuccess"
+                @upload-success="${this._handleImageUploadSuccess}"
               >
                 <div class="images__drop-label">
                   <iron-icon icon="description"></iron-icon>
@@ -146,7 +145,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
 
   _deleteImage(e) {
     var deleteIndex = e.target.getAttribute("data-index");
-    this.splice("images", deleteIndex, 1);
+    this.images.splice(deleteIndex, 1);
   }
   /**
    * attached life cycle

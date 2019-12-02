@@ -1,10 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-pages/iron-pages.js";
 import "./lrnapp-studio-submission-display.js";
 import "./lrnapp-studio-submission-edit.js";
 import "./lrnapp-studio-submission-critique.js";
-class LrnappStudioSubmissionObject extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionObject extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -20,7 +31,7 @@ class LrnappStudioSubmissionObject extends PolymerElement {
         ></lrnapp-studio-submission-edit>
         <lrnapp-studio-submission-critique
           submission="{{submission}}"
-          edit="[[edit]]"
+          edit="${this.edit}"
         ></lrnapp-studio-submission-critique>
       </iron-pages>
     `;
@@ -31,19 +42,24 @@ class LrnappStudioSubmissionObject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       submission: {
         type: Object,

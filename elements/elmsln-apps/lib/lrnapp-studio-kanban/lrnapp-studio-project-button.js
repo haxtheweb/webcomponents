@@ -1,5 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
@@ -10,10 +10,20 @@ Allows users to create new projects.
 
 Usage:
 ```
-<lrnapp-studio-project-button classes="amber white-text" icon="add" display-errors="true" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-project-button>
+<lrnapp-studio-project-button classes="amber white-text" icon="add" display-errors="true" end-point="${this.endPoint}" csrf-token=${this.csrfToken}></lrnapp-studio-project-button>
 */
-class LrnappStudioProjectButton extends PolymerElement {
-  static get template() {
+class LrnappStudioProjectButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -23,10 +33,10 @@ class LrnappStudioProjectButton extends PolymerElement {
       <template is="dom-if" if="[[createProjectsUrl]]">
         <lrnsys-button
           raised=""
-          class\$="[[classes]]"
-          button-class\$="[[classes]]"
-          icon="[[icon]]"
-          on-click="_createProject"
+          class="[[classes]]"
+          button-class="[[classes]]"
+          icon="${this.icon}"
+          @click="${this._createProject}"
           label="Create project"
         ></lrnsys-button>
         <iron-ajax
@@ -34,7 +44,7 @@ class LrnappStudioProjectButton extends PolymerElement {
           url="[[createProjectsUrl]]"
           method="POST"
           handle-as="json"
-          on-response="_ajaxCreateStubHandler"
+          @response="${this._ajaxCreateStubHandler}"
         ></iron-ajax>
       </template>
       <template is="dom-if" if="[[displayErrors]]">
@@ -49,23 +59,28 @@ class LrnappStudioProjectButton extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       auto: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false,
         notify: true
       },

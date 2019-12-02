@@ -1,7 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /*
 `lrnapp-studio-assignment-button`
@@ -9,10 +9,20 @@ Allows users to either start a assignment or link to a assignment.
 
 Usage:
 ```
-<lrnapp-studio-assignment-button assignment-id="[[id]]" assignment-id="{{assignmentId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-assignment-button>
+<lrnapp-studio-assignment-button assignment-id="[[id]]" assignment-id="{{assignmentId}}" end-point="${this.endPoint}" csrf-token=${this.csrfToken}></lrnapp-studio-assignment-button>
 */
-class LrnappStudioAssignmentButton extends PolymerElement {
-  static get template() {
+class LrnappStudioAssignmentButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -20,21 +30,21 @@ class LrnappStudioAssignmentButton extends PolymerElement {
         }
       </style>
       <lrnsys-button
-        on-click="_createAssignment"
+        @click="${this._createAssignment}"
         icon-class="[[iconClass]]"
         alt="[[alt]]"
-        class\$="[[classes]]"
-        button-class\$="[[classes]]"
+        class="[[classes]]"
+        button-class="[[classes]]"
         hover-class="[[hoverClass]]"
-        icon="[[icon]]"
+        icon="${this.icon}"
       ></lrnsys-button>
       <iron-ajax
         id="ajaxCreateStub"
-        url="[[endPoint]]/api/assignments/create-stub?token=[[csrfToken]]"
+        url="${this.endPoint}/api/assignments/create-stub?token=${this.csrfToken}"
         method="POST"
         body="[[projectId]]"
         handle-as="json"
-        on-response="_ajaxCreateStubHandler"
+        @response="${this._ajaxCreateStubHandler}"
       ></iron-ajax>
       <template is="dom-if" if="[[displayErrors]]">
         <paper-toast id="toast"></paper-toast>
@@ -60,16 +70,16 @@ class LrnappStudioAssignmentButton extends PolymerElement {
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       endPoint: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       auto: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false,
         notify: true
       },

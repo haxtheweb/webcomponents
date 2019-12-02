@@ -1,11 +1,22 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-class LrnappBlockRecentSubmissions extends PolymerElement {
-  static get template() {
+class LrnappBlockRecentSubmissions extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="paper-item-styles">
         :host {
@@ -20,7 +31,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
         url="{{sourcePath}}"
         handle-as="json"
         last-response="{{response}}"
-        on-response="handleResponse"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <div id="loading">
         <h3>Loading..</h3>
@@ -28,9 +39,9 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
       </div>
       <iron-list items="[[_toArray(response.data)]]" as="item">
         <template>
-          <paper-button on-click="_loadSubmissionUrl">
+          <paper-button @click="${this._loadSubmissionUrl}">
             <lrndesign-gallerycard
-              data-submission-id\$="[[item.id]]"
+              data-submission-id="[[item.id]]"
               title="[[item.attributes.title]]"
               author="[[item.relationships.author.data]]"
               comments="[[item.meta.comment_count]]"
@@ -50,19 +61,24 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourcePath: {
         type: String,

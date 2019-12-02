@@ -1,6 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
 import "./lrnapp-studio-submission-edit-images.js";
@@ -8,11 +7,14 @@ import "./lrnapp-studio-submission-edit-files.js";
 import "./lrnapp-studio-submission-edit-video.js";
 import "./lrnapp-studio-submission-edit-links.js";
 import "./lrnapp-studio-submission-edit-textarea.js";
-class LrnappStudioSubmissionEdit extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
-        :host {
+class LrnappStudioSubmissionEdit extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
           display: block;
           padding: 16px;
         }
@@ -37,8 +39,12 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
           top: 0;
           right: 0;
         }
-      </style>
-      <template is="dom-if" if="{{submission}}">
+      `
+    ];
+  }
+  render() {
+    return html`
+      ${this.submission ? html`
         <div class="field">
           <paper-input
             label="Title"
@@ -58,7 +64,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
           <label for="image-upload">Images</label>
           <lrnapp-studio-submission-edit-images
             images="{{submission.attributes.images}}"
-            file-types="[[submission.meta.imagefieldTypes]]"
+            file-types="${this.submission.meta.imagefieldTypes}"
           ></lrnapp-studio-submission-edit-images>
         </div>
 
@@ -67,7 +73,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
           <label for="file-upload">Files</label>
           <lrnapp-studio-submission-edit-files
             files="{{submission.attributes.files}}"
-            file-types="[[submission.meta.filefieldTypes]]"
+            file-types="${this.submission.meta.filefieldTypes}"
           >
           </lrnapp-studio-submission-edit-files>
         </div>
@@ -84,9 +90,10 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         <div id="videosfield" class="videosfield field">
           <label for="videos-input">Videos</label>
           <lrnapp-studio-submission-edit-video
-            videos="{{submission.attributes.video}}"
-            end-point="[[endPoint]]"
-            csrf-token="[[csrfToken]]"
+            .videos="${this.submission.attributes.video}"
+            @videos-changed="${this.submissionVideosChanged}"
+            end-point="${this.endPoint}"
+            csrf-token="${this.csrfToken}"
           ></lrnapp-studio-submission-edit-video>
         </div>
 
@@ -95,7 +102,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
             id="publish"
             icon="check"
             label="Publish to Studio"
-            on-click="_publishClicked"
+            @click="${this._publishClicked}"
             hover-class="amber lighten-5 green-text text-darken-4"
             icon-class="green-text"
           ></lrnsys-button>
@@ -103,7 +110,7 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
             id="save-draft"
             icon="drafts"
             label="Save Draft"
-            on-click="_saveDraftClicked"
+            @click="${this._saveDraftClicked}"
             hover-class="amber lighten-5 amber-text text-darken-4"
             icon-class="amber-text text-darken-4"
           ></lrnsys-button>
@@ -112,26 +119,46 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
             id="delete"
             label="Delete"
             icon="delete"
-            on-click="_deleteClicked"
+            @click="${this._deleteClicked}"
             hover-class="amber lighten-5 red-text"
             icon-class="red-text text-darken-4"
           >
           </lrnsys-button>
         </div>
-      </template>
+      ` : ``}
     `;
+  }
+  submissionVideosChanged(e) {
+    this.submission.attributes.video = [...e.detail.value];
   }
   static get tag() {
     return "lrnapp-studio-submission-edit";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == 'title') {
+        this._bodyChanged(this[propName]);
+      }
+      if (propName == 'submission') {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submission-changed", {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
   }
   static get properties() {
     return {
       submission: {
         type: Object,
-        notify: true
       },
       uploadFilesUrl: {
-        type: String
+        type: String,
+        attribute: 'upload-files-url',
       },
       newlink: {
         type: String
@@ -140,22 +167,15 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
         type: String
       },
       videoGenerateSourceUrl: {
-        type: String
+        type: String,
+        attribute: 'video-generate-source-url',
       },
-      submission: {
-        type: Object,
-        notify: true
-      }
     };
   }
 
-  static get observers() {
-    return ["_bodyChanged(title)"];
-  }
-
   _publishClicked(e) {
-    this.set("submission.attributes.state", "submission_ready");
-    this.notifyPath("submission.attributes.state");
+    this.submission.attributes.state = "submission_ready";
+    this.submission.attributes = {...this.submission.attributes};
     this.dispatchEvent(
       new CustomEvent("submissionPublishClicked", {
         bubbles: true,
@@ -165,10 +185,9 @@ class LrnappStudioSubmissionEdit extends PolymerElement {
       })
     );
   }
-
   _saveDraftClicked(e) {
-    this.set("submission.attributes.state", "submission_in_progress");
-    this.notifyPath("submission.attributes.state");
+    this.submission.attributes.state = "submission_in_progress";
+    this.submission.attributes = { ...this.submission.attributes };
     this.dispatchEvent(
       new CustomEvent("submissionSaveDraftClicked", {
         bubbles: true,

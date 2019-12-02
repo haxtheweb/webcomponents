@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `lrnapp-media-upload`
@@ -10,8 +11,18 @@ import "@vaadin/vaadin-upload/vaadin-upload.js";
  *
  * @demo demo/index.html
  */
-class LrnappMediaUpload extends PolymerElement {
-  static get template() {
+class LrnappMediaUpload extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -38,7 +49,7 @@ class LrnappMediaUpload extends PolymerElement {
         }
       </style>
       <vaadin-upload
-        target\$="{{uploadPath}}"
+        target="{{uploadPath}}"
         method="POST"
         form-data-name="file-upload"
       ></vaadin-upload>
@@ -50,24 +61,29 @@ class LrnappMediaUpload extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       uploadPath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

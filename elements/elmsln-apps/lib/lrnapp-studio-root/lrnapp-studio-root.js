@@ -1,4 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -13,8 +14,18 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-dashboard/lrnapp-studio-dashboard.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-kanban/lrnapp-studio-kanban.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-open-studio/lrnapp-open-studio.js";
-class LrnappStudioRoot extends PolymerElement {
-  static get template() {
+class LrnappStudioRoot extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -28,7 +39,7 @@ class LrnappStudioRoot extends PolymerElement {
       ></app-location>
       <app-route
         route="{{route}}"
-        pattern="[[basePath]]/:page"
+        pattern="${this.basePath}/:page"
         data="{{data}}"
         tail="{{tail}}"
         query-params="{{queryParams}}"
@@ -43,13 +54,13 @@ class LrnappStudioRoot extends PolymerElement {
         <a
           tabindex="-1"
           name="lrnapp-studio-dashboard"
-          on-click="_dashboardClicked"
+          @click="${this._dashboardClicked}"
           >A</a
         >
-        <a tabindex="-1" name="lrnapp-studio-kanban" on-click="_kanbanClicked"
+        <a tabindex="-1" name="lrnapp-studio-kanban" @click="${this._kanbanClicked}"
           >B</a
         >
-        <a tabindex="-1" name="lrnapp-open-studio" on-click="_openstudioClicked"
+        <a tabindex="-1" name="lrnapp-open-studio" @click="${this._openstudioClicked}"
           >C</a
         >
       </iron-selector>
@@ -62,9 +73,9 @@ class LrnappStudioRoot extends PolymerElement {
       >
         <lrnapp-studio-dashboard
           name="lrnapp-studio-dashboard"
-          csrf-token="[[csrfToken]]"
+          csrf-token="${this.csrfToken}"
           end-point="[[_endPoint('lrnapp-studio-dashboard')]]"
-          base-path="[[basePath]]"
+          base-path="${this.basePath}"
           elmsln-course="[[elmslnCourse]]"
           elmsln-section="[[elmslnSection]]"
           route="[[tail]]"
@@ -72,9 +83,9 @@ class LrnappStudioRoot extends PolymerElement {
         </lrnapp-studio-dashboard>
         <lrnapp-studio-kanban
           name="lrnapp-studio-kanban"
-          csrf-token="[[csrfToken]]"
+          csrf-token="${this.csrfToken}"
           end-point="[[_endPoint('lrnapp-studio-dashboard')]]"
-          base-path="[[basePath]]"
+          base-path="${this.basePath}"
           source-path="[[_sourcePath('lrnapp-studio-kanban/kanban-data')]]"
           elmsln-course="[[elmslnCourse]]"
           elmsln-section="[[elmslnSection]]"
@@ -82,9 +93,9 @@ class LrnappStudioRoot extends PolymerElement {
         ></lrnapp-studio-kanban>
         <lrnapp-open-studio
           name="lrnapp-open-studio"
-          csrf-token="[[csrfToken]]"
+          csrf-token="${this.csrfToken}"
           end-point="[[_endPoint('lrnapp-open-studio')]]"
-          base-path="[[basePath]]"
+          base-path="${this.basePath}"
           source-path="[[_sourcePath('lrnapp-open-studio/data')]]"
           elmsln-course="[[elmslnCourse]]"
           elmsln-section="[[elmslnSection]]"
@@ -118,22 +129,22 @@ class LrnappStudioRoot extends PolymerElement {
       sourcePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       elmslnSection: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       elmslnCourse: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * base path for the app

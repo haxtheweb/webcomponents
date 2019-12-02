@@ -2,28 +2,16 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-
-class ElmsMediaUpload extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@vaadin/vaadin-upload/vaadin-upload.js");
-    import("@polymer/paper-dialog/paper-dialog.js");
-    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
-    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-input/paper-input.js");
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
-        :host {
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+class ElmsMediaUpload extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [...super.styles,
+      css`
+      :host {
           display: block;
         }
         paper-button {
@@ -47,9 +35,29 @@ class ElmsMediaUpload extends PolymerElement {
         .green {
           background-color: var(--simple-colors-default-theme-green-6);
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@vaadin/vaadin-upload/vaadin-upload.js");
+    import("@polymer/paper-dialog/paper-dialog.js");
+    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
+    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-checkbox/paper-checkbox.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-input/paper-input.js");
+    setTimeout(() => {
+      this.addEventListener("upload-success", this._uploadSuccess.bind(this));
+    }, 0);
+  }
+  render() {
+    return html`
       <vaadin-upload
-        target$="[[uploadPath]]"
+        target="${this.uploadPath}"
         method="POST"
         form-data-name="file-upload"
         timeout="0"
@@ -63,43 +71,78 @@ class ElmsMediaUpload extends PolymerElement {
               <paper-item value="image__circle">Circle</paper-item>
             </paper-listbox>
           </paper-dropdown-menu>
-          <paper-checkbox class="styled" checked="{{hasLightbox}}">
+          <paper-checkbox class="styled" ?checked="${this.hasLightbox}" @checked-changed="${this.hasLightboxEvent}">
             Lightbox <span class="subtitle"> Users can click to expand </span>
           </paper-checkbox>
           <paper-button raised class="green">Save</paper-button>
         </app-toolbar>
-        <h2>[[uploadTitle]]</h2>
+        <h2>${this.uploadTitle}</h2>
         <paper-input
           label="Title"
           placeholder="Title"
-          value="{{uploadTitle}}"
+          value="${this.uploadTitle}"
+          @value-changed="${this.uploadTitleEvent}"
         ></paper-input>
         <div id="content"></div>
       </paper-dialog>
     `;
   }
+  uploadTitleEvent(e) {
+    this.value = e.detail.value;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == 'uploadPath') {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("upload-path-changed", {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+      if (propName == 'uploadTitle') {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("upload-title-changed", {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+      if (propName == 'hasLightbox') {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("has-lightbox-changed", {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
+  }
+  hasLightboxEvent(e) {
+    this.hasLightbox = e.detail.value;
+  }
   static get tag() {
     return "elmsmedia-upload";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("upload-success", this._uploadSuccess.bind(this));
-    });
-  }
   static get properties() {
-    return {
+    return {...super.properties,
       uploadPath: {
         type: String,
-        notify: true
+        attribute: 'upload-path',
       },
       uploadTitle: {
         type: String,
-        notify: true
+        attribute: 'upload-title',
       },
       hasLightbox: {
         type: Boolean,
-        notify: true
+        attribute: 'has-lightbox',
       }
     };
   }

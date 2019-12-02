@@ -1,5 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
 import "./lrnapp-studio-submission-edit-images.js";
@@ -10,8 +10,18 @@ import "./lrnapp-studio-submission-display.js";
 import "./lrnapp-studio-submission-edit-textarea.js";
 import "./lrnapp-studio-block.js";
 import "./lrnapp-studio-submission-critique-panel.js";
-class LrnappStudioSubmissionCritique extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionCritique extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -43,12 +53,12 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
             <div class="submission-critique-panel">
               <lrnapp-studio-submission-critique-panel
                 submission="[[submission]]"
-                edit="[[edit]]"
+                edit="${this.edit}"
               ></lrnapp-studio-submission-critique-panel>
             </div>
           </div>
         </template>
-        <template is="dom-if" if="[[edit]]">
+        <template is="dom-if" if="${this.edit}">
           <vaadin-split-layout class="submission-critique">
             <!-- critique panel -->
             <div class="submission-critique-panel" id="crititque-panel">
@@ -60,7 +70,7 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
             <div class="submission-critique-panel">
               <lrnapp-studio-submission-critique-panel
                 submission="{{submission}}"
-                edit="[[edit]]"
+                edit="${this.edit}"
               ></lrnapp-studio-submission-critique-panel>
             </div>
           </vaadin-split-layout>
@@ -81,7 +91,7 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
       edit: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

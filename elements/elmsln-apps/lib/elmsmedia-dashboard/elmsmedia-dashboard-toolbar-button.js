@@ -1,8 +1,19 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
-class ElmsmediaDashboardToolbarButton extends PolymerElement {
-  static get template() {
+class ElmsmediaDashboardToolbarButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -19,8 +30,8 @@ class ElmsmediaDashboardToolbarButton extends PolymerElement {
         }
       </style>
       <paper-button id="button">
-        <h3 id="title">[[title]]</h3>
-        <iron-icon id="icon" icon="[[icon]]"></iron-icon>
+        <h3 id="title">${this.title}</h3>
+        <iron-icon id="icon" icon="${this.icon}"></iron-icon>
       </paper-button>
     `;
   }

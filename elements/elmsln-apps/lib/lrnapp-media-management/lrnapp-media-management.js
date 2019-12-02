@@ -1,4 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
@@ -6,8 +7,18 @@ import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-class LrnappMediaManagement extends PolymerElement {
-  static get template() {
+class LrnappMediaManagement extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -41,7 +52,7 @@ class LrnappMediaManagement extends PolymerElement {
       </style>
       <iron-ajax
         id="ajax"
-        url="[[source-path]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
         last-response="{{submissions}}"
@@ -103,19 +114,24 @@ class LrnappMediaManagement extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       submissions: {
         type: Array,
@@ -123,27 +139,27 @@ class LrnappMediaManagement extends PolymerElement {
       },
       activeImage: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeTitle: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeAuthor: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeComments: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeUrl: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       }
     };

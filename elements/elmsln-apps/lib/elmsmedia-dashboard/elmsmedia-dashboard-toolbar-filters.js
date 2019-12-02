@@ -1,10 +1,12 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./elmsmedia-dashboard-toolbar-filter.js";
-class ElmsmediaDashboardToolbarFilters extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class ElmsmediaDashboardToolbarFilters extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
           align-items: center;
@@ -12,31 +14,42 @@ class ElmsmediaDashboardToolbarFilters extends PolymerElement {
         elmsmedia-dashboard-toolbar-filter {
           margin-right: 4.8px;
         }
-      </style>
-
-      <template is="dom-repeat" items="[[_filtersArray]]" as="item">
+      `
+    ];
+  }
+  render() {
+    return html`
+      ${this._filtersArray.map( item => html`
         <elmsmedia-dashboard-toolbar-filter
-          path="[[item.path]]"
-          prop-value="[[item.propValue]]"
-          title="[[item.title]]"
+          path="${item.path}"
+          prop-value="${item.propValue}"
+          title="${item.title}"
         ></elmsmedia-dashboard-toolbar-filter>
-      </template>
+      `)}
     `;
   }
-
   static get tag() {
     return "elmsmedia-dashboard-toolbar-filters";
   }
-
+  constructor() {
+    super();
+    this.filters = {};
+    this._filtersArray = [];
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == 'filters') {
+        this._filtersArray = this._filtersArrayCompute(this[propName]);
+      }
+    });
+  }
   static get properties() {
     return {
       filters: {
         type: Object,
-        value: {}
       },
       _filtersArray: {
         type: Array,
-        computed: "_filtersArrayCompute(filters, filters.*)"
       }
     };
   }

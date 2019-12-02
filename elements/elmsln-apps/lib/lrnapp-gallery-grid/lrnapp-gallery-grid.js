@@ -1,19 +1,29 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-class LrnappGalleryGrid extends PolymerElement {
+class LrnappGalleryGrid extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
   constructor() {
     super();
     setTimeout(() => {
       this.addEventListener("click", this._triggerDialog.bind(this));
     }, 0);
   }
-  static get template() {
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -47,7 +57,7 @@ class LrnappGalleryGrid extends PolymerElement {
       </style>
       <iron-ajax
         id="ajax"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
         last-response="{{submissions}}"
@@ -77,19 +87,19 @@ class LrnappGalleryGrid extends PolymerElement {
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
         <paper-dialog-scrollable id="dialogResponse">
-          <iron-image src$="[[activeImage]]"></iron-image>
+          <iron-image src="${this.activeImage}"></iron-image>
           <div id="details">
             <div class="title">
-              <span>Title:</span> <span>{{{activeTitle}}}</span>
+              <span>Title:</span> <span>${this.activeTitle}</span>
             </div>
             <div class="author">
-              <span>Author:</span> <span>{{activeAuthor}}</span>
+              <span>Author:</span> <span>${this.activeAuthor}</span>
             </div>
             <div class="comments">
-              <span>Comments:</span> <span>{{activeComments}}</span>
+              <span>Comments:</span> <span>${this.activeComments}</span>
             </div>
             <div class="comment-on-work">
-              <a href$="[[activeUrl]]">
+              <a href="${this.activeUrl}">
                 <paper-button raised>Comment on this work</paper-button>
               </a>
             </div>
@@ -104,19 +114,24 @@ class LrnappGalleryGrid extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourcePath: {
         type: String,
@@ -128,27 +143,27 @@ class LrnappGalleryGrid extends PolymerElement {
       },
       activeImage: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeTitle: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeAuthor: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeComments: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       },
       activeUrl: {
         type: String,
-        reflectToAttribute: true,
+        reflect: true,
         notify: true
       }
     };

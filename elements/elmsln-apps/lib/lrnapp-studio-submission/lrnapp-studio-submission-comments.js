@@ -1,10 +1,19 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "./lrnapp-studio-submission-comment.js";
 
-class LrnappStudioSubmissionComments extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionComments extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {

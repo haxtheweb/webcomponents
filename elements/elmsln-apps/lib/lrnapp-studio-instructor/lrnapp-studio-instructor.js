@@ -1,7 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -10,7 +9,6 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-badge/paper-badge.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -20,7 +18,6 @@ import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";
 import "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js";
@@ -31,8 +28,18 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
-class LrnappStudioInstructor extends PolymerElement {
-  static get template() {
+class LrnappStudioInstructor extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
     <style include="materializecss-styles">
       :host {
@@ -66,7 +73,7 @@ class LrnappStudioInstructor extends PolymerElement {
       .center-data {
         text-align: center;
       }
-      vaadin-grid#material {
+      vaadin-grid {
         height: 75vh;
         font-family: Roboto, sans-serif;
         --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
@@ -101,45 +108,45 @@ class LrnappStudioInstructor extends PolymerElement {
         };
       }
 
-      vaadin-grid#material .cell {
+      vaadin-grid .cell {
         overflow: hidden;
         text-overflow: ellipsis;
         padding-right: 56px;
       }
 
-      vaadin-grid#material .cell.last {
+      vaadin-grid .cell.last {
         padding-right: 24px;
       }
 
-      vaadin-grid#material .cell.numeric {
+      vaadin-grid .cell.numeric {
         text-align: right;
       }
 
-      vaadin-grid#material paper-checkbox {
+      vaadin-grid paper-checkbox {
         --primary-color: var(--paper-indigo-500);
         margin: 0 24px;
       }
 
-      vaadin-grid#material vaadin-grid-sorter .cell {
+      vaadin-grid vaadin-grid-sorter .cell {
         flex: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
-      vaadin-grid#material vaadin-grid-sorter iron-icon {
+      vaadin-grid vaadin-grid-sorter iron-icon {
         transform: scale(0.8);
       }
 
-      vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+      vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
         color: rgba(0, 0, 0, var(--dark-disabled-opacity));
       }
 
-      vaadin-grid#material vaadin-grid-sorter[direction] {
+      vaadin-grid vaadin-grid-sorter[direction] {
         color: rgba(0, 0, 0, var(--dark-primary-opacity));
       }
 
-      vaadin-grid#material vaadin-grid-sorter[direction=desc] iron-icon {
+      vaadin-grid vaadin-grid-sorter[direction=desc] iron-icon {
         transform: scale(0.8) rotate(180deg);
       }
       vaadin-grid-sorter {
@@ -205,7 +212,7 @@ class LrnappStudioInstructor extends PolymerElement {
     <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
-        pattern="[[endPoint]]/submissions/:submission"
+        pattern="${this.endPoint}/submissions/:submission"
         data="{{data}}"
         tail="{{tail}}">
     </app-route>
@@ -214,25 +221,25 @@ class LrnappStudioInstructor extends PolymerElement {
       url="[[sourceProjectPath]]"
       handle-as="json"
       last-response="{{_projectData}}"
-      on-response="_handleProjectResponse"></iron-ajax>
+      @response="${this._handleProjectResponse}"></iron-ajax>
     <iron-ajax
       id="studentrequest"
       url="[[sourceStudentPath]]"
       params="[[studentParams]]"
       handle-as="json"
       last-response="{{_studentData}}"
-      on-response="_handleStudentResponse"></iron-ajax>
+      @response="${this._handleStudentResponse}"></iron-ajax>
     <div id="loading">
       <h3>Loading..</h3>
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
     </div>
-    <div hidden$="[[activeProject]]">Select a project to begin reviewing work</div>
+    <div ?hidden="[[activeProject]]">Select a project to begin reviewing work</div>
     <dropdown-select id="selectedproject" label="Project">
       <template is="dom-repeat" items="[[_toArray(projects)]]" as="project">
-        <paper-item value$="[[project.id]]">[[project.attributes.title]]</paper-item>
+        <paper-item value="[[project.id]]">[[project.attributes.title]]</paper-item>
       </template>
     </dropdown-select>
-    <paper-toggle-button id="datatype" checked="{{dataType}}" disabled>
+    <paper-toggle-button id="datatype" ?checked="{{dataType}}" disabled>
       [[dataTypeText]]
     </paper-toggle-button>
     <paper-button id="statsdialogbutton" disabled><iron-icon icon="editor:show-chart"></iron-icon> Statistics (beta)</span></paper-button>
@@ -251,13 +258,13 @@ class LrnappStudioInstructor extends PolymerElement {
       </paper-dialog-scrollable>
       </div>
     </paper-dialog>
-    <vaadin-grid hidden$="[[!students]]" id="material" aria-label="Student project list" items="[[_toArray(students)]]">
+    <vaadin-grid ?hidden="[[!students]]" id="material" aria-label="Student project list" items="[[_toArray(students)]]">
       <vaadin-grid-column resizable>
         <template class="header">
           <vaadin-grid-sorter id="sorter" path="sis.sortable_name">Student</vaadin-grid-sorter>
         </template>
         <template>
-          <a href$="[[basePath]]lrnapp-open-studio/projects?author=[[item.id]]&project=[[activeProject]]" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
+          <a href="${this.basePath}lrnapp-open-studio/projects?author=[[item.id]]&project=[[activeProject]]" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
             <paper-button class="avatar-button">
               <lrndesign-avatar label="[[item.name]]" src="[[item.avatar]]"></lrndesign-avatar>
               <span class="avatar-label">[[item.sis.sortable_name]]</span>
@@ -278,14 +285,14 @@ class LrnappStudioInstructor extends PolymerElement {
           <template>
             <template is="dom-if" if="[[_submissionStatus(item, assignment, dataType)]]">
               <template is="dom-if" if="[[!dataType]]">
-                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" on-click="_setActiveSubmission">
+                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" @click="${this._setActiveSubmission}">
                 </lrnsys-button>
               </template>
               <template is="dom-if" if="[[dataType]]">
                 <ul class="comment-list">
                 <template is="dom-repeat" items="[[_submissionPiece(item, assignment, 'comments')]]" as="commented">
                   <li>
-                    <lrnsys-button icon="communication:comment" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" on-click="_setActiveComment">
+                    <lrnsys-button icon="communication:comment" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" @click="${this._setActiveComment}">
                     </lrnsys-button>
                   </li>
                 </template>
@@ -293,10 +300,10 @@ class LrnappStudioInstructor extends PolymerElement {
               </template>
             </template>
             <template is="dom-if" if="[[!_submissionStatus(item, assignment, dataType)]]">
-              <paper-button disabled class="project-button" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-null">X</paper-button>
+              <paper-button disabled class="project-button" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-null">X</paper-button>
             </template>
             <template is="dom-if" if="[[_commentCount(item, assignment, dataType)]]">
-              <paper-badge id$="student-[[item.id]]-assignment-[[assignment.id]]-tip" for="student-[[item.id]]-assignment-[[assignment.id]]" label="[[_commentCount(item, assignment, dataType)]]"></paper-badge>
+              <paper-badge id="student-[[item.id]]-assignment-[[assignment.id]]-tip" for="student-[[item.id]]-assignment-[[assignment.id]]" label="[[_commentCount(item, assignment, dataType)]]"></paper-badge>
               <paper-tooltip for="student-[[item.id]]-assignment-[[assignment.id]]-tip">Comments left on classmates [[assignment.title]]</paper-badge>
             </template>
           </template>
@@ -307,20 +314,20 @@ class LrnappStudioInstructor extends PolymerElement {
       <app-header>
         <app-toolbar>
           <span style="width:15em;">
-            <paper-icon-button on-click="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
-            <paper-icon-button on-click="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
+            <paper-icon-button @click="${this._changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student}"></paper-icon-button>
+            <paper-icon-button @click="${this._changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student}"></paper-icon-button>
             <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
             <span class="avatar-label ferpa-protect" style="margin-left:1em;">[[activeData.student.sis.sortable_name]]</span>
           </span>
-          <paper-icon-button on-click="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
-          <paper-icon-button on-click="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
+          <paper-icon-button @click="${this._changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;}"></paper-icon-button>
+          <paper-icon-button @click="${this._changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment}"></paper-icon-button>
           <span style="font-weight:bold;" main-title>Assignment: [[activeData.assignment.title]]</span>
           <paper-button dialog-dismiss><iron-icon icon="close"></iron-icon> Close</paper-button>
         </app-toolbar>
       </app-header>
       <paper-dialog-scrollable>
         <template is="dom-if" if="[[activeData.submission]]">
-          <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" data="[[data]]" hide-menu-bar></lrnapp-studio-submission-page>
+          <lrnapp-studio-submission-page base-path="${this.basePath}" route="{{tail}}" id="[[data.submission]]" end-point="${this.basePath}lrnapp-studio-submission" csrf-token="${this.csrfToken}" data="[[data]]" hide-menu-bar></lrnapp-studio-submission-page>
         </template>
         <template is="dom-if" if="[[!activeData.submission]]">
           <div>
@@ -343,19 +350,24 @@ class LrnappStudioInstructor extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourceProjectPath: {
         type: String

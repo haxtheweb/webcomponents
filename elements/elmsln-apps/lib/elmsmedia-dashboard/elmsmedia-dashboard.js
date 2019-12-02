@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -7,23 +7,39 @@ import "@lrnwebcomponents/hax-body/lib/hax-app.js";
 import "./elmsmedia-dashboard-filters.js";
 import "./elmsmedia-dashboard-toolbar-filters.js";
 import "./elmsmedia-dashboard-toolbar-button.js";
-class ElmsmediaDashboard extends PolymerElement {
-  static get template() {
+class ElmsmediaDashboard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
+        display: block;
+      }
+      paper-dialog {
+        padding: 1em;
+      }
+      #toolbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.requestEndPoint = '';
+    this.queryParams = {};
+    setTimeout(() => {
+      this.addEventListener("remove-filter", e => {
+        this.removeFilter(e.detail.path, e.detail.propValue);
+      });
+    }, 0);
+  }
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
-        paper-dialog {
-          padding: 1em;
-        }
-        #toolbar {
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-        }
-      </style>
-
       <app-location route="{{route}}"></app-location>
       <app-route
         route="{{route}}"
@@ -35,17 +51,17 @@ class ElmsmediaDashboard extends PolymerElement {
 
       <div id="toolbar">
         <elmsmedia-dashboard-toolbar-filters
-          filters="[[queryParams]]"
+          .filters="${this.queryParams}"
         ></elmsmedia-dashboard-toolbar-filters>
         <elmsmedia-dashboard-toolbar-button
           icon="filter-list"
           title="Filter"
-          on-click="toggleFilters"
+          @click="${this.toggleFilters}"
         ></elmsmedia-dashboard-toolbar-button>
         <elmsmedia-dashboard-toolbar-button
           icon="search"
           title="Search"
-          on-click="toggleSearch"
+          @click="${this.toggleSearch}"
         ></elmsmedia-dashboard-toolbar-button>
       </div>
 
@@ -53,7 +69,7 @@ class ElmsmediaDashboard extends PolymerElement {
         <h3>Filter Media</h3>
         <elmsmedia-dashboard-filters
           form="{{queryParams}}"
-          on-filter-changed="_filterChanged"
+          @filter-changed="${this._filterChanged}"
         ></elmsmedia-dashboard-filters>
         <div class="buttons">
           <paper-button dialog-dismiss="">Dismiss dialog</paper-button>
@@ -64,7 +80,7 @@ class ElmsmediaDashboard extends PolymerElement {
         id="haxSource"
         auto=""
         query-param="title"
-        request-end-point="[[requestEndPoint]]"
+        request-end-point="${this.requestEndPoint}"
         request-params="{{queryParams}}"
         data='{
       "root": "list",
@@ -87,11 +103,9 @@ class ElmsmediaDashboard extends PolymerElement {
     return {
       requestEndPoint: {
         type: String,
-        value: ""
       },
       queryParams: {
         type: Object,
-        value: {}
       }
     };
   }
@@ -107,8 +121,7 @@ class ElmsmediaDashboard extends PolymerElement {
   _filterChanged(e) {
     let newParams = Object.assign({}, e.detail);
     newParams = this._cleanParams(newParams);
-    this.set("queryParams", {});
-    this.set("queryParams", newParams);
+    this.queryParams = {...newParams};
   }
 
   /**
@@ -151,21 +164,7 @@ class ElmsmediaDashboard extends PolymerElement {
       .join(",");
     const newParams = _.set(currentParams, path, newValue);
     const newCleanParams = this._cleanParams(newParams);
-    this.set("queryParams", {});
-    this.set("queryParams", newCleanParams);
-  }
-
-  ready() {
-    super.ready();
-    this.addEventListener("remove-filter", e => {
-      this.removeFilter(e.detail.path, e.detail.propValue);
-    });
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.removeEventListener("remove-filter", e => {
-      this.removeFilter(e.detail.path, e.detail.propValue);
-    });
+    this.queryParams = { ...newCleanParams };
   }
 }
 window.customElements.define(ElmsmediaDashboard.tag, ElmsmediaDashboard);

@@ -1,6 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /**
@@ -9,10 +9,20 @@ import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 
 Usage:
 ```
-<lrnapp-studio-submission-button assignment-id="[[id]]" submission-id="{{submissionId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-submission-button>
+<lrnapp-studio-submission-button assignment-id="[[id]]" submission-id="{{submissionId}}" end-point="${this.endPoint}" csrf-token=${this.csrfToken}></lrnapp-studio-submission-button>
 */
-class LrnappStudioSubmissionButton extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -22,16 +32,16 @@ class LrnappStudioSubmissionButton extends PolymerElement {
       <template is="dom-if" if="[[!submissionId]]">
         <lrnsys-button
           raised
-          on-click="_createSubmission"
+          @click="${this._createSubmission}"
           label="Create submission"
         ></lrnsys-button>
         <iron-ajax
           id="ajaxCreateStub"
-          url="[[endPoint]]/api/submissions/create-stub?token=[[csrfToken]]"
+          url="${this.endPoint}/api/submissions/create-stub?token=${this.csrfToken}"
           method="POST"
           body="[[assignmentId]]"
           handle-as="json"
-          on-response="_ajaxCreateStubHandler"
+          @response="${this._ajaxCreateStubHandler}"
         ></iron-ajax>
       </template>
       <template is="dom-if" if="[[submissionId]]">
@@ -54,18 +64,18 @@ class LrnappStudioSubmissionButton extends PolymerElement {
     return {
       auto: {
         type: Boolean,
-        reflectToAttribute: true,
+        reflect: true,
         value: false,
         notify: true
       },
       assignmentId: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       submissionId: {
         type: String,
         value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       displayErrors: {
         type: Boolean,
@@ -80,17 +90,17 @@ class LrnappStudioSubmissionButton extends PolymerElement {
       basePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       endPoint: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

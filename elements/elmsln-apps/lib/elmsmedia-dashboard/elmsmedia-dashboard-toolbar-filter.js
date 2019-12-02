@@ -1,9 +1,20 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./paper-chip.js";
-class ElmsmediaDashboardToolbarFilter extends PolymerElement {
-  static get template() {
+class ElmsmediaDashboardToolbarFilter extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -19,12 +30,12 @@ class ElmsmediaDashboardToolbarFilter extends PolymerElement {
         }
       </style>
       <paper-chip>
-        [[title]]
+        ${this.title}
         <paper-icon-button
           id="clear"
           icon="clear"
           title="Remove filter"
-          on-click="remove"
+          @click="${this.remove}"
         ></paper-icon-button>
       </paper-chip>
       <paper-tooltip

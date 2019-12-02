@@ -1,13 +1,23 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
-class LrnappStudioSubmissionEditLinks extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionEditLinks extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -48,8 +58,8 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
             <paper-icon-button
               icon="delete"
               class="linksfield__delete"
-              data-index\$="{{index}}"
-              on-click="_deleteLink"
+              data-index="{{index}}"
+              @click="${this._deleteLink}"
             ></paper-icon-button>
           </div>
         </div>
@@ -57,7 +67,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
       <lrnapp-studio-submission-edit-add-asset
         icon="link"
         display="pill"
-        on-click="_openDialog"
+        @click="${this._openDialog}"
       ></lrnapp-studio-submission-edit-add-asset>
 
       <paper-dialog id="dialog">
@@ -72,7 +82,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" on-click="_createLink"
+          <paper-button dialog-confirm="" @click="${this._createLink}"
             >Add Link</paper-button
           >
         </div>
@@ -114,7 +124,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
 
   _deleteLink(e) {
     var deleteIndex = e.target.getAttribute("data-index");
-    this.splice("links", deleteIndex, 1);
+    this.links.splice(deleteIndex, 1);
   }
 }
 window.customElements.define(

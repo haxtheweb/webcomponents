@@ -1,9 +1,20 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionEditAddAsset extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -38,7 +49,7 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
         }
       </style>
       <paper-button>
-        <iron-icon icon="[[icon]]"></iron-icon>
+        <iron-icon icon="${this.icon}"></iron-icon>
         <paper-ripple></paper-ripple>
       </paper-button>
     `;
@@ -61,7 +72,7 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
       display: {
         type: String,
         value: "box",
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

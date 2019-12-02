@@ -1,4 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
@@ -24,8 +25,18 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
-class LrnappStudioKanban extends PolymerElement {
-  static get template() {
+class LrnappStudioKanban extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -190,19 +201,19 @@ class LrnappStudioKanban extends PolymerElement {
       <iron-ajax
         auto=""
         id="projectbackend"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         handle-as="json"
         last-response="{{projectResponse}}"
-        on-response="_handleProjectResponse"
+        @response="${this._handleProjectResponse}"
       >
       </iron-ajax>
       <iron-ajax
         id="backend"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
         last-response="{{backendResponse}}"
-        on-response="_handleUpdateResponse"
+        @response="${this._handleUpdateResponse}"
       >
       </iron-ajax>
 
@@ -212,7 +223,7 @@ class LrnappStudioKanban extends PolymerElement {
       ></app-location>
       <app-route
         route="{{route}}"
-        pattern="[[endPoint]]/:page"
+        pattern="${this.endPoint}/:page"
         data="{{data}}"
         tail="{{tail}}"
         query-params="{{queryParams}}"
@@ -223,10 +234,10 @@ class LrnappStudioKanban extends PolymerElement {
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
       <lrnapp-studio-project-button
-        hidden\$="[[!projectResponse.data.canCreateProjects]]"
+        ?hidden="[[!projectResponse.data.canCreateProjects]]"
         classes="amber darken-4 white-text"
-        end-point="[[endPoint]]"
-        csrf-token="[[csrfToken]]"
+        end-point="${this.endPoint}"
+        csrf-token="${this.csrfToken}"
         icon="add"
       ></lrnapp-studio-project-button>
       <div class="projects-window">
@@ -240,7 +251,7 @@ class LrnappStudioKanban extends PolymerElement {
           <template class="projects-container-items">
             <div class="project-container">
               <paper-card
-                id\$="project-[[project.id]]"
+                id="project-[[project.id]]"
                 class="project-card grey lighten-3"
                 heading="[[project.attributes.title]]"
                 elevation="2"
@@ -248,37 +259,37 @@ class LrnappStudioKanban extends PolymerElement {
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
-                    id\$="project-[[project.id]]-edit"
+                    id="project-[[project.id]]-edit"
                     alt="Edit project"
                     class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="create"
-                    on-click="_makeProjectEditLink"
+                    @click="${this._makeProjectEditLink}"
                   >
                   </lrnsys-button>
                   <lrnapp-studio-assignment-button
                     project-id="[[project.id]]"
                     icon-class="no-margin"
-                    id\$="project-[[project.id]]-add"
+                    id="project-[[project.id]]-add"
                     alt="Add assignment"
                     class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="add"
-                    end-point="[[endPoint]]"
-                    csrf-token="[[csrfToken]]"
+                    end-point="${this.endPoint}"
+                    csrf-token="${this.csrfToken}"
                   >
                   </lrnapp-studio-assignment-button>
                   <lrnsys-button
-                    id\$="project-[[project.id]]-delete"
+                    id="project-[[project.id]]-delete"
                     alt="Delete project!"
                     class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
                     hidden="[[!project.meta.canDelete]]"
                     icon="delete-forever"
-                    on-click="_deleteProjectDialog"
+                    @click="${this._deleteProjectDialog}"
                     icon-class="no-margin"
                   >
                   </lrnsys-button>
@@ -292,43 +303,43 @@ class LrnappStudioKanban extends PolymerElement {
                     <template>
                       <div class="assignment-row" id="assignment">
                         <lrnsys-button
-                          id\$="assignment-[[project.id]]-[[assignment.id]]"
+                          id="assignment-[[project.id]]-[[assignment.id]]"
                           class="assignment-row-button"
                           hover-class="amber lighten-5"
-                          on-click="assignmentClick"
+                          @click="${this.assignmentClick}"
                           icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
                         >
                           [[assignment.attributes.title]]
                         </lrnsys-button>
                         <span class="assignment-operations">
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
+                            id="assignment-[[project.id]]-[[assignment.id]]-add-critique"
                             icon="editor:insert-comment"
                             alt="Add critique"
                             class="operation"
                             hover-class="green lighten-2"
                             hidden="[[!assignment.meta.canCritique]]"
-                            href\$="[[assignment.meta.critiqueLink]]"
+                            href="[[assignment.meta.critiqueLink]]"
                             icon-class="no-margin"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
+                            id="assignment-[[project.id]]-[[assignment.id]]-edit"
                             icon="editor:mode-edit"
                             alt="Edit"
                             class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canUpdate]]"
-                            on-click="_makeAssignmentEditLink"
+                            @click="${this._makeAssignmentEditLink}"
                             icon-class="no-margin green-text text-darken-4"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
+                            id="assignment-[[project.id]]-[[assignment.id]]-delete"
                             icon="delete"
                             alt="Delete"
                             class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canDelete]]"
-                            on-click="_deleteAssignmentDialog"
+                            @click="${this._deleteAssignmentDialog}"
                             icon-class="no-margin red-text text-darken-4"
                           ></lrnsys-button>
                         </span>
@@ -349,7 +360,7 @@ class LrnappStudioKanban extends PolymerElement {
           <paper-button dialog-dismiss="">Decline</paper-button>
           <paper-button
             id="deleteaccept"
-            on-click="_handleDelete"
+            @click="${this._handleDelete}"
             dialog-confirm=""
             autofocus=""
             >Accept</paper-button
@@ -360,22 +371,22 @@ class LrnappStudioKanban extends PolymerElement {
         <div id="activecontent">
           <app-header reveals>
             <app-toolbar
-              class\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
+              class="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
             >
               <div>
                 <iron-icon
                   icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
-                  disabled\$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
+                  disabled="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
                 ></iron-icon>
                 [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.title]]
               </div>
               <div
                 spacer=""
                 class="comment-box"
-                hidden\$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+                ?hidden="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               >
                 <paper-button
-                  id\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
+                  id="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
                   <iron-icon icon="communication:forum"></iron-icon>
@@ -383,9 +394,9 @@ class LrnappStudioKanban extends PolymerElement {
                   Comments
                 </paper-button>
                 <paper-badge
-                  hidden\$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
-                  for\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
-                  label\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
+                  ?hidden="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
+                  for="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
+                  label="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
                 ></paper-badge>
               </div>
 
@@ -395,12 +406,12 @@ class LrnappStudioKanban extends PolymerElement {
                 assignment-id="[[activeAssignmentNode.id]]"
                 submission="{{submission}}"
                 end-point="[[buildSubmissionPath(basePath)]]"
-                csrf-token="[[csrfToken]]"
+                csrf-token="${this.csrfToken}"
                 submission-id="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               ></lrnapp-studio-submission-button>
               <paper-toggle-button
                 id="activetoggle"
-                on-click="statusToggle"
+                @click="${this.statusToggle}"
               ></paper-toggle-button>
               <span id="activetoggletext"></span>
             </app-toolbar>
@@ -725,7 +736,7 @@ class LrnappStudioKanban extends PolymerElement {
       this.shadowRoot.querySelector("#toast").text = "Updated successfully";
       this.shadowRoot.querySelector("#toast").toggle();
       // this will force a repaint of the UI pieces on reload
-      this.set("projectResponse", {});
+      this.projectResponse = {};
       this.shadowRoot.querySelector("#projectbackend").generateRequest();
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");

@@ -1,10 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
-class ElmsmediaDashboardFilters extends PolymerElement {
-  static get template() {
+class ElmsmediaDashboardFilters extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {

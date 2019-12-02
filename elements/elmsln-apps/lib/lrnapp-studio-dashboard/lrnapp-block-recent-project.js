@@ -1,21 +1,24 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-item/paper-item-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-class LrnappBlockRecentProject extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles paper-item-styles">
-        :host {
-          display: block;
-        }
+class LrnappBlockRecentProject extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         #loading {
           width: 100%;
           z-index: 1000;
@@ -82,30 +85,41 @@ class LrnappBlockRecentProject extends PolymerElement {
           margin: 0;
           padding: 0;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles paper-item-styles">
+          :host {
+            display: block;
+          }
+        </style>
+      </custom-style>
       <iron-ajax
         auto=""
-        url="{{sourcePath}}"
+        url="${this.sourcePath}"
         handle-as="json"
         last-response="{{response}}"
-        on-response="handleResponse"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <div id="loading">
         <h3>Loading..</h3>
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
-      <template is="dom-if" if="[[hasProject]]">
-        <a tabindex="-1" href\$="[[basePath]]lrnapp-studio-kanban">
+      ${this.hasProject ? html`
+        <a tabindex="-1" href="${this.basePath}lrnapp-studio-kanban">
           <paper-button class="whole-project ferpa-protect">
             <paper-card
-              id\$="project-[[project.id]]"
+              id="project-${this.project.id}"
               class="project-card grey lighten-3"
-              heading="{{project.attributes.title}}"
+              heading="${this.project.attributes.title}"
               elevation="2"
             >
               <div class="card-content">
                 <iron-list
-                  items="[[_toArray(project.relationships.assignments)]]"
+                  items="${this._toArray(this.project.relationships.assignments)}"
                   as="assignment"
                   mutable-data
                 >
@@ -115,20 +129,20 @@ class LrnappBlockRecentProject extends PolymerElement {
                         inner-class="no-left-padding"
                         class="assignment-row-button"
                         button-class="assignment-row-button"
-                        id\$="assignment-[[project.id]]-[[assignment.id]]"
+                        id="assignment-${this.project.id}-${this.assignment.id}"
                         hover-class="amber lighten-5"
-                        href\$="[[basePath]]lrnapp-studio-kanban"
+                        href="${this.basePath}lrnapp-studio-kanban"
                       >
                         <span class="button-contents">
                           <div
-                            class\$="status-indicator [[assignment.metadata.relatedSubmissions.complete.color]]"
+                            class="status-indicator ${this.assignment.metadata.relatedSubmissions.complete.color}"
                           >
                             <iron-icon
-                              icon="[[assignment.metadata.relatedSubmissions.complete.icon]]"
+                              icon="${this.assignment.metadata.relatedSubmissions.complete.icon}"
                             ></iron-icon>
                           </div>
                           <div class="assignment-title">
-                            [[assignment.title]]
+                            ${this.assignment.title}
                           </div>
                         </span>
                       </lrnsys-button>
@@ -139,13 +153,12 @@ class LrnappBlockRecentProject extends PolymerElement {
             </paper-card>
           </paper-button>
         </a>
-      </template>
-      <template is="dom-if" if="[[!hasProject]]">
+      ` : html`
         <lrnsys-button
           inner-class="no-left-padding"
           button-class="assignment-row-button"
           class="assignment-row-button"
-          href\$="[[basePath]]lrnapp-studio-kanban"
+          href="${this.basePath}lrnapp-studio-kanban"
           hover-class="amber lighten-5"
         >
           <span class="button-contents">
@@ -155,7 +168,7 @@ class LrnappBlockRecentProject extends PolymerElement {
             <div class="assignment-title">Tap to start your first project!</div>
           </span>
         </lrnsys-button>
-      </template>
+      `}
     `;
   }
   static get tag() {
@@ -165,19 +178,24 @@ class LrnappBlockRecentProject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       sourcePath: {
         type: String,
@@ -194,7 +212,7 @@ class LrnappBlockRecentProject extends PolymerElement {
       hasProject: {
         type: Boolean,
         notify: true,
-        reflectToAttribute: true,
+        reflect: true,
         computed: "_getHasProject(project)"
       }
     };

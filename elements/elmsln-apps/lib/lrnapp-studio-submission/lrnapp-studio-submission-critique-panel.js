@@ -1,11 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/marked-element/marked-element.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "./lrnapp-studio-block.js";
 import "./lrnapp-studio-submission-edit-textarea.js";
-class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionCritiquePanel extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -50,7 +60,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
           class="submission-critique-outline submission-critique-outline--feedback"
         >
           <lrnapp-studio-block title="Feedback" icon="communication:comment">
-            <template is="dom-if" if="[[edit]]">
+            <template is="dom-if" if="${this.edit}">
               <lrnapp-studio-submission-edit-textarea
                 content="{{submission.attributes.body}}"
               ></lrnapp-studio-submission-edit-textarea>
@@ -63,13 +73,13 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
           </lrnapp-studio-block>
         </div>
       </div>
-      <template is="dom-if" if="[[edit]]">
+      <template is="dom-if" if="${this.edit}">
         <div class="actions">
           <lrnsys-button
             id="publish"
             icon="check"
             label="Publish Feedback"
-            on-click="_publishClicked"
+            @click="${this._publishClicked}"
             hover-class="amber lighten-5 green-text text-darken-4"
             icon-class="green-text"
           ></lrnsys-button>
@@ -77,7 +87,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
             id="save-draft"
             icon="drafts"
             label="Save Draft"
-            on-click="_saveDraftClicked"
+            @click="${this._saveDraftClicked}"
             hover-class="amber lighten-5 amber-text text-darken-4"
             icon-class="amber-text text-darken-4"
           ></lrnsys-button>
@@ -86,7 +96,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
             id="delete"
             label="Delete Feedback"
             icon="delete"
-            on-click="_deleteClicked"
+            @click="${this._deleteClicked}"
             hover-class="amber lighten-5 red-text"
             icon-class="red-text text-darken-4"
           >
@@ -107,7 +117,7 @@ class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
       edit: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

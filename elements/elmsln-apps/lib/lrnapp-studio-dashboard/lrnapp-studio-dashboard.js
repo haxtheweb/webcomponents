@@ -1,12 +1,23 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-block-recent-project.js";
 import "./lrnapp-block-recent-submissions.js";
 import "./lrnapp-block-recent-comments.js";
 import "./lrnapp-block-need-feedback.js";
-class LrnappStudioDashboard extends PolymerElement {
-  static get template() {
+class LrnappStudioDashboard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style include="materializecss-styles">
         :host {
@@ -39,9 +50,9 @@ class LrnappStudioDashboard extends PolymerElement {
         <paper-card heading="Your active project" class="dashboard-item">
           <div class="card-content">
             <lrnapp-block-recent-project
-              csrf-token="[[csrfToken]]"
+              csrf-token="${this.csrfToken}"
               end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
+              base-path="${this.basePath}"
               source-path="[[_getDataSource(csrfToken, basePath,'recent-project')]]"
             >
             </lrnapp-block-recent-project>
@@ -53,9 +64,9 @@ class LrnappStudioDashboard extends PolymerElement {
         >
           <div class="card-content">
             <lrnapp-block-need-feedback
-              csrf-token="[[csrfToken]]"
+              csrf-token="${this.csrfToken}"
               end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
+              base-path="${this.basePath}"
               source-path="[[_getDataSource(csrfToken, basePath,'need-feedback')]]"
             >
             </lrnapp-block-need-feedback>
@@ -64,9 +75,9 @@ class LrnappStudioDashboard extends PolymerElement {
         <paper-card heading="Recent Studio submissions" class="dashboard-item">
           <div class="card-content">
             <lrnapp-block-recent-submissions
-              csrf-token="[[csrfToken]]"
+              csrf-token="${this.csrfToken}"
               end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
+              base-path="${this.basePath}"
               source-path="[[_getDataSource(csrfToken, basePath,'recent-submissions')]]"
             >
             </lrnapp-block-recent-submissions>
@@ -75,9 +86,9 @@ class LrnappStudioDashboard extends PolymerElement {
         <paper-card heading="Recent Studio comments" class="dashboard-item">
           <div class="card-content">
             <lrnapp-block-recent-comments
-              csrf-token="[[csrfToken]]"
+              csrf-token="${this.csrfToken}"
               end-point="[[_getEndPoint(basePath)]]"
-              base-path="[[basePath]]"
+              base-path="${this.basePath}"
               source-path="[[_getDataSource(csrfToken, basePath,'recent-comments')]]"
             >
             </lrnapp-block-recent-comments>
@@ -92,38 +103,43 @@ class LrnappStudioDashboard extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       username: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       basePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       csrfToken: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       sourcePath: {
         type: String,
         notify: true,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

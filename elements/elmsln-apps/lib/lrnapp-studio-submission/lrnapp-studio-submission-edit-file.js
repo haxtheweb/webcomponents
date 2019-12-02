@@ -1,7 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import "./lrnapp-studio-submission-media-editoverlay.js";
-class LrnappStudioSubmissionEditFile extends PolymerElement {
-  static get template() {
+class LrnappStudioSubmissionEditFile extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      
+      `
+    ];
+  }
+  render() {
     return html`
       <style>
         :host {
@@ -25,7 +36,7 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
       </style>
 
       <lrnapp-studio-submission-media-editoverlay
-        data-index\$="[[index]]"
+        data-index="[[index]]"
         embedcode="{{embedcode}}"
       >
         <div class="file_url">[[file.filename]]</div>

@@ -1,14 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "./lrnapp-studio-submission-page.js";
 import "./lrnapp-studio-submission-button.js";
 class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
-  static get template() {
+  render() {
     return html`
       <style>
         :host {
@@ -23,7 +23,7 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
       <app-location route="{{route}}"></app-location>
       <app-route
         route="{{route}}"
-        pattern="[[endPoint]]/submissions/:submission"
+        pattern="${this.endPoint}/submissions/:submission"
         data="{{data}}"
         tail="{{tail}}"
       >
@@ -34,8 +34,8 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
           base-path="{{basePath}}"
           route="{{tail}}"
           id="[[data.submission]]"
-          end-point="[[endPoint]]"
-          csrf-token="[[csrfToken]]"
+          end-point="${this.endPoint}"
+          csrf-token="${this.csrfToken}"
           data="{{data}}"
         ></lrnapp-studio-submission-page>
       </template>
@@ -54,32 +54,29 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: 'elmsln-course',
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: 'elmsln-section',
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: 'base-path',
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: 'csrf-token',
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: 'end-point',
       },
       activePage: {
-        type: String
+        type: String,
+        attribute: 'active-page',
       },
-      basePath: {
-        type: String
-      },
-      endPoint: {
-        type: String
-      },
-      csrfToken: {
-        type: String
-      }
     };
   }
 
