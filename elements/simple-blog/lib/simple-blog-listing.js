@@ -1,6 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js";
 /**
  * `simple-blog-listing`
  * @customElement simple-blog-listing
@@ -52,7 +53,6 @@ class SimpleBlogListing extends SimpleColors {
   constructor() {
     super();
     this.__items = [];
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js");
   }
   /**
    * LitElement render

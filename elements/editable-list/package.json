@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/editable-list",
   "wcfactory": {
     "className": "EditableList",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "editable-list",
     "generator-wcfactory-version": "0.6.3",
     "useHAX": false,

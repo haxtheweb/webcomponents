@@ -113,7 +113,7 @@ class SimpleBlogHeader extends SimpleColors {
       <div class="teaserimage">
         <div
           class="teaserimage-image"
-          style\$="background-image: url(${this.image});"
+          style="background-image: url(${this.image});"
         ></div>
       </div>
       <header class="blog-header">

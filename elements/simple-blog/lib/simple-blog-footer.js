@@ -165,35 +165,45 @@ class SimpleBlogFooter extends SimpleColors {
       <div class="background-closer-image-wrap">
         <div
           class="background-closer-image"
-          style="background-image: url(${this.manifest.metadata.theme.variables
-            .image})"
+          style="background-image: url(${varExists(
+            this.manifest,
+            "metadata.theme.variables.image"
+          )
+            ? this.manifest.metadata.theme.variables.image
+            : ""})"
         ></div>
       </div>
       <div class="inner">
-        <site-menu-button type="prev" position="right" label="Previous post">
+        <site-menu-button type="prev" position="right">
           <simple-datetime
             format="M jS"
-            timestamp="${this.nextChanged}"
+            .timestamp="${this.prevChanged}"
             unix
             slot="suffix"
           >
           </simple-datetime>
-          <span slot="suffix">${this.nextTitle}</span>
+          <span slot="suffix">${this.prevTitle}</span>
         </site-menu-button>
-        <site-menu-button type="next" position="right" label="Next post">
+        <site-menu-button type="next" position="right">
           <simple-datetime
             format="M jS"
-            timestamp="${this.prevChanged}"
+            .timestamp="${this.nextChanged}"
             unix
             slot="prefix"
           ></simple-datetime>
-          <span slot="prefix">${this.prevTitle}</span>
+          <span slot="prefix">${this.nextTitle}</span>
         </site-menu-button>
         <paper-button raised @click="${this._backButtonTap}"
           >Back to list</paper-button
         >
-        <h2 class="blog-title">${this.manifest.title}</h2>
-        <h3 class="blog-description">${this.manifest.description}</h3>
+        <h2 class="blog-title">
+          ${varExists(this.manifest, "title") ? this.manifest.title : ""}
+        </h2>
+        <h3 class="blog-description">
+          ${varExists(this.manifest, "description")
+            ? this.manifest.description
+            : ""}
+        </h3>
       </div>
     `;
   }
@@ -230,6 +240,18 @@ class SimpleBlogFooter extends SimpleColors {
         type: Boolean,
         reflect: true,
         attribute: "edit-mode"
+      },
+      prevChanged: {
+        type: String
+      },
+      nextChanged: {
+        type: String
+      },
+      prevTitle: {
+        type: String
+      },
+      nextTitle: {
+        type: String
       }
     };
   }
@@ -253,10 +275,17 @@ class SimpleBlogFooter extends SimpleColors {
   }
   constructor() {
     super();
-    this.__disposer = [];
+    this.prevTitle = "";
+    this.prevChanged = "";
+    this.nextTitle = "";
+    this.nextChanged = "";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__disposer = [];
     autorun(reaction => {
       this.manifest = toJS(store.routerManifest);
       if (varExists(this.manifest, "title")) {

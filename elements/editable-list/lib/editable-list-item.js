@@ -1,34 +1,37 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `editable-list-item`
- * @customElement editable-list-item
  * `an individual list item`
  *
  * @microcopy - language worth noting:
  *  - an item is a thing in a list of many which can be modified
  *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement editable-list-item
  */
-class EditableListItem extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class EditableListItem extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
-
         :host([hidden]) {
           display: none;
         }
@@ -49,13 +52,6 @@ class EditableListItem extends PolymerElement {
           visibility: hidden;
           opacity: 0;
           transition: 0.3s all linear;
-        }
-        paper-input {
-          --paper-input-container-shared-input-style: {
-            height: 40px;
-            padding: 0;
-            margin: 0;
-          }
         }
         .input {
           display: block;
@@ -96,37 +92,81 @@ class EditableListItem extends PolymerElement {
           color: white;
           background-color: var(--simple-colors-default-theme-red-6, #ff5555);
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          paper-input {
+            --paper-input-container-shared-input-style: {
+              height: 40px;
+              padding: 0;
+              margin: 0;
+            }
+          }
+        </style>
+      </custom-style>
       <paper-input
         id="input"
         class="input"
-        value="{{value}}"
-        hidden$="[[!editing]]"
+        value="${this.value}"
+        @value-changed="${this.valueChanged}"
+        ?hidden="${!this.editing}"
       ></paper-input>
-      <div class="input" hidden$="[[editing]]">[[value]]</div>
-      <div class="ops" hidden$="[[!editMode]]">
+      <div class="input" ?hidden="${!this.editing}">${this.value}</div>
+      <div class="ops" ?hidden="${!this.editMode}">
         <paper-icon-button
-          on-click="_editToggle"
+          @click="${this._editToggle}"
           id="edit"
           icon="icons:create"
         ></paper-icon-button>
         <paper-icon-button
-          on-click="_editToggle"
+          @click="${this._editToggle}"
           id="add"
           icon="icons:add"
         ></paper-icon-button>
         <paper-icon-button
-          on-click="_editToggle"
+          @click="${this._editToggle}"
           id="duplicate"
           icon="icons:content-copy"
         ></paper-icon-button>
         <paper-icon-button
-          on-click="_deleteModal"
+          @click="${this._deleteModal}"
           id="delete"
           icon="icons:delete"
         ></paper-icon-button>
       </div>
     `;
+  }
+  valueChanged(e) {
+    this.value = e.detail.value;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editMode") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("edit-mode-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "editing") {
+        this._editModeChanged(this[propName]);
+      }
+    });
+  }
+  constructor() {
+    super();
+    this.editMode = false;
+    this.editing = false;
+    this.canEdit = false;
+    this.canDelete = false;
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -135,45 +175,37 @@ class EditableListItem extends PolymerElement {
        * The value that gets bound into the text field
        */
       value: {
-        name: "value",
         type: String
       },
       /**
        * ability to edit the items in the list
        */
       editMode: {
-        name: "editMode",
         type: Boolean,
-        value: false,
-        notify: true,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * Editing state of the item
        */
       editing: {
-        name: "editing",
-        type: Boolean,
-        value: false,
-        observer: "_editModeChanged"
+        type: Boolean
       },
       /**
        * Permission to edit this
        */
       canEdit: {
-        name: "canEdit",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "can-edit"
       },
       /**
        * Permission to delete this
        */
       canDelete: {
-        name: "canDelete",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "can-delete"
       }
     };
   }

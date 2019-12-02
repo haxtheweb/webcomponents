@@ -146,7 +146,7 @@ class SimpleBlogPost extends SimpleColors {
                   <div
                     id="image"
                     class="post-image-image"
-                    style\$='background-image: url("${this.image}");'
+                    style='background-image: url("${this.image}");'
                   ></div>
                 `
               : ``}

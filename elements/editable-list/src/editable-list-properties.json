@@ -3,28 +3,21 @@
    * ability to edit the items in the list
    */
   "editMode": {
-    "name": "editMode",
     "type": Boolean,
-    "value": false,
-    "notify": true,
-    "reflectToAttribute": true,
-    "observer": "_editModeChanged"
+    "reflect": true,
+    "attribute": "edit-mode"
   },
   /**
    * items array
    */
   "items": {
-    "name": "items",
     "type": Array,
-    "value": [],
-    "reflectToAttribute": false,
-    "observer": "_itemsChanged"
+    "reflect": false
   },
   /**
    * Active element being worked on in the list
    */
   "activeElement": {
-    "name": "activeElement",
     "type": Object
   }
 }
