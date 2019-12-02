@@ -1,7 +1,36 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-class PaperIconStepper extends PolymerElement {
+import { LitElement } from "lit-element/lit-element.js";
+
+class PaperIconStepper extends LitElement {
+  /**
+   * concept
+   */
   static get tag() {
     return "paper-icon-stepper";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.selectedValues = [];
+    this._selected = -1;
+  }
+  /**
+   * LitElement ready
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "selectedValues") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("selected-values-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   static get properties() {
     return {
@@ -10,15 +39,13 @@ class PaperIconStepper extends PolymerElement {
        */
       selectedValues: {
         type: Array,
-        notify: true,
-        value: []
+        attribute: "selected-values"
       },
       /**
        * Currently selected step
        */
       _selected: {
-        type: Number,
-        value: -1
+        type: Number
       }
     };
   }
@@ -34,7 +61,7 @@ class PaperIconStepper extends PolymerElement {
     }
     // remove the currently selected from the array
     var index = this.selectedValues.indexOf(this._selected);
-    this.splice("selectedValues", index, 1);
+    this.selectedValues.splice(index, 1);
     this._selected--;
   }
   /**
@@ -55,8 +82,7 @@ class PaperIconStepper extends PolymerElement {
       // items selected (e.g. specified by the caller). Default to the element after the last element of the array
       this._selected = this.selectedValues[this.selectedValues.length]++;
     }
-
-    this.push("selectedValues", this._selected);
+    this.selectedValues.push(this._selected);
   }
   /**
    * Clears all the steps
