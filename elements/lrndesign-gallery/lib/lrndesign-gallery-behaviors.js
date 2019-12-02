@@ -11,7 +11,6 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lrndesign-gallery-shared-styles.js";
 
-export { LrndesignGalleryBehaviors };
 /**
  * `lerndesign-gallery-behaviors`
  * @customElement lerndesign-gallery-behaviors
@@ -362,3 +361,4 @@ window.customElements.define(
   LrndesignGalleryBehaviors.tag,
   LrndesignGalleryBehaviors
 );
+export { LrndesignGalleryBehaviors };

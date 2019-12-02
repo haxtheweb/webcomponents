@@ -7,8 +7,6 @@ import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-
-export { LrndesignGalleryZoom };
 /**
  * `lrndesign-gallery-zoom`
  * @customElement lrndesign-gallery-zoom
@@ -246,3 +244,4 @@ class LrndesignGalleryZoom extends PolymerElement {
   }
 }
 window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
+export { LrndesignGalleryZoom };

@@ -1,5 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-class PaperStep extends PolymerElement {
+import { LitElement, html, css } from "lit-element/lit-element.js";
+class PaperStep extends LitElement {
   static get tag() {
     return "paper-step";
   }

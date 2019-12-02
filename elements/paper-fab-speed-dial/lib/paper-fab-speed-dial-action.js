@@ -1,5 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-class PaperFabSpeedDialAction extends PolymerElement {
+import { LitElement, html, css } from "lit-element/lit-element.js";
+class PaperFabSpeedDialAction extends LitElement {
   static get tag() {
     return "paper-fab-speed-dial-action";
   }

@@ -7,7 +7,6 @@ import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-details.js";
 import "./lrndesign-gallery-zoom.js";
 
-export { LrndesignGalleryCarousel };
 /**
  * `lrndesign-gallery-carousel`
  * @customElement lrndesign-gallery-carousel
@@ -489,3 +488,4 @@ window.customElements.define(
   LrndesignGalleryCarousel.tag,
   LrndesignGalleryCarousel
 );
+export { LrndesignGalleryCarousel };

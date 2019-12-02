@@ -1,19 +1,17 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@lrnwebcomponents/relative-heading/relative-heading.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrndesign-imagemap-hotspot`
- * @customElement lrndesign-imagemap-hotspot
  * creates an accessible image map
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement lrndesign-imagemap-hotspot
  */
-class LrndesignImagemapHotspot extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrndesignImagemapHotspot extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: none;
         }
@@ -25,13 +23,32 @@ class LrndesignImagemapHotspot extends PolymerElement {
             display: block;
           }
         }
-      </style>
-      <relative-heading hidden\$="[[!label]]" id="heading" text\$="[[label]]">
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <relative-heading
+        id="heading"
+        ?hidden="${!this.label}"
+        text="${this.label}"
+      >
       </relative-heading>
       <div id="desc"><slot></slot></div>
     `;
   }
-
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.label = null;
+    this.hotspotId = null;
+    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+  }
   static get tag() {
     return "lrndesign-imagemap-hotspot";
   }
@@ -42,15 +59,14 @@ class LrndesignImagemapHotspot extends PolymerElement {
        * Label for the hotspot
        */
       label: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * Id of hotspot element inside the SVG
        */
       hotspotId: {
         type: String,
-        value: null
+        attribute: "hotspot-id"
       }
     };
   }

@@ -1,10 +1,8 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**    
 `responsive-grid-col`
 A column for the responsive grid
-
 * @demo demo/index.html
-
 @microcopy - the mental model for this element
   Example: 
   <responsive-grid-col 
@@ -14,12 +12,14 @@ A column for the responsive grid
     xl="4">   //the number of columns on a large-width screen
     CONTENT HERE
   </responsive-grid-col>
-
 */
-class ResponsiveGridCol extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class ResponsiveGridCol extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           position: relative;
           min-height: 1px;
@@ -29,9 +29,8 @@ class ResponsiveGridCol extends PolymerElement {
           clear: both;
         }
         #col-inner {
-          padding-left: 15px;
-          padding-right: 15px;
-          @apply --responsive-grid-col-inner;
+          padding-left: var(--responsive-grid-col-inner-padding-left, 15px);
+          padding-right: var(--responsive-grid-col-inner-padding-right, 15px);
         }
         /* Hide Print-Only on Screen */
         @media screen {
@@ -45,7 +44,11 @@ class ResponsiveGridCol extends PolymerElement {
             display: none;
           }
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div id="col-inner"><slot></slot></div>
     `;
   }
@@ -53,43 +56,45 @@ class ResponsiveGridCol extends PolymerElement {
   static get tag() {
     return "responsive-grid-col";
   }
-
+  constructor() {
+    super();
+    this.xl = 1;
+    this.lg = 1;
+    this.md = 1;
+    this.sm = 1;
+    this.xs = 1;
+  }
   static get properties() {
     return {
       /**
        * the width when viewed on an extra large screen
        */
       xl: {
-        type: Number,
-        value: 1
+        type: Number
       },
       /**
        * the width when viewed on a large screen
        */
       lg: {
-        type: Number,
-        value: 1
+        type: Number
       },
       /**
        * the width when viewed on a medium screen
        */
       md: {
-        type: Number,
-        value: 1
+        type: Number
       },
       /**
        * the width when viewed on a small screen
        */
       sm: {
-        type: Number,
-        value: 1
+        type: Number
       },
       /**
        * the width when viewed on an extra-small screen
        */
       xs: {
-        type: Number,
-        value: 1
+        type: Number
       }
     };
   }
