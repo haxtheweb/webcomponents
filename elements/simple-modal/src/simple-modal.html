@@ -1,20 +1,66 @@
-<paper-dialog id="dialog" 
+<custom-style>
+  <style>
+  :host paper-dialog ::slotted(*) {
+    @apply --simple-modal-content;
+  }
+
+  #dialog {
+    @apply --simple-modal-dialog;
+  }
+
+  #titlebar {
+    @apply --simple-modal-top;
+  }
+
+  #headerbar {
+    @apply --simple-modal-headerbar;
+  }
+
+  h2 {
+    @apply --simple-modal-title;
+  }
+
+  #close {
+    @apply --simple-modal-close;
+  }
+
+  #close iron-icon {
+    @apply --simple-modal-close-icon;
+  }
+
+  #simple-modal-content {
+    --paper-dialog-scrollable: {
+      padding: 0;
+    }
+    @apply --simple-modal-content-container;
+  }
+  .buttons {
+    @apply --simple-modal-buttons;
+  }
+  .buttons ::slotted(*) {
+    @apply --simple-modal-button;
+  }
+  </style>
+</custom-style>
+<paper-dialog
+  id="dialog"
   always-on-top
   aria-describedby="simple-modal-content"
-  aria-label$="[[_getAriaLabel(title)]]"
-  aria-labelledby$="[[_getAriaLabelledby(title)]]"
+  aria-label="${this._getAriaLabel(this.title)}"
+  aria-labelledby="${this._getAriaLabelledby(this.title)}"
   aria-modal="true"
-  entry-animation="scale-up-animation" 
-  exit-animation="fade-out-animation" 
+  entry-animation="scale-up-animation"
+  exit-animation="fade-out-animation"
   role="dialog"
-  opened="{{opened}}" 
-  modal="[[modal]]"
+  ?opened="${this.opened}"
+  @opened-changed="${this.openedChangedEvent}"
+  ?modal="${this.modal}"
   with-backdrop>
   <div id="titlebar">
-    <h2 id="simple-modal-title" hidden$="[[!title]]">[[title]]</h2>
+    <h2 id="simple-modal-title" ?hidden="${!this.title}">${this.title}</h2>
     <div></div>
-    <paper-button id="close" dialog-dismiss hidden$="[[!opened]]" label="[[closeLabel]]">
-      <iron-icon aria-hidden="true" icon="[[closeIcon]]"></iron-icon>
+    <paper-button id="close" dialog-dismiss ?hidden="${!this.opened}" label="${this.closeLabel}">
+      <iron-icon aria-hidden="true" icon="${this.closeIcon}"></iron-icon>
     </paper-button>
   </div>
   <div id="headerbar"><slot name="header"></slot></div>

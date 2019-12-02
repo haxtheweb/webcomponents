@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-modal",
   "wcfactory": {
     "className": "SimpleModal",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-modal",
     "generator-wcfactory-version": "0.4.1",
     "useHAX": false,

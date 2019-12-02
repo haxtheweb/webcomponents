@@ -1,28 +1,16 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-// register globally so we can make sure there is only one
-window.SimpleModal = window.SimpleModal || {};
-// request if this exists. This helps invoke the element existing in the dom
-// as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
-window.SimpleModal.requestAvailability = () => {
-  if (!window.SimpleModal.instance) {
-    window.SimpleModal.instance = document.createElement("simple-modal");
-    document.body.appendChild(window.SimpleModal.instance);
-  }
-  return window.SimpleModal.instance;
-};
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
- *
- * @microcopy - language worth noting:
- *  -
- * 
  * CSS Variables: ```
 --simple-modal-titlebar-color: #444;
 --simple-modal-titlebar-background: #ddd;
@@ -35,18 +23,31 @@ window.SimpleModal.requestAvailability = () => {
 --simple-modal-button-color: var(--simple-modal-buttons-color);
 --simple-modal-button-background: var(--simple-modal-buttons-background-color);
 ```
- *
  * @demo ./demo/index.html demo
  * @demo ./demo/css.html styling simple-modal via CSS
  * @demo ./demo/details.html styling simple-modal via event details
  * @demo ./demo/template.html using simple-modal-template
  * @customElement simple-modal
  */
-class SimpleModal extends PolymerElement {
+class SimpleModal extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
+  /**
+   * convention
+   */
+  static get tag() {
+    return "simple-modal";
+  }
+  /**
+   * HTMLElement
+   */
   constructor() {
     super();
+    this.title = "";
+    this.opened = false;
+    this.closeLabel = "Close";
+    this.closeIcon = "close";
+    this.modal = false;
     import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -55,14 +56,28 @@ class SimpleModal extends PolymerElement {
     import("@polymer/neon-animation/animations/fade-out-animation.js");
   }
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * LitElement
    */
-  static get tag() {
-    return "simple-modal";
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "opened") {
+        this._openedChanged(this[propName]);
+      }
+    });
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * LitElement ready
+   */
+  firstUpdated() {
+    this.shadowRoot
+      .querySelector("#simple-modal-content")
+      .addEventListener(
+        "neon-animation-finish",
+        this._ironOverlayClosed.bind(this)
+      );
+  }
+  /**
+   * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
@@ -71,14 +86,13 @@ class SimpleModal extends PolymerElement {
       window.addEventListener("simple-modal-show", this.showEvent.bind(this));
     }, 0);
   }
-  ready() {
-    super.ready();
-    this.shadowRoot
-      .querySelector("#simple-modal-content")
-      .addEventListener(
-        "neon-animation-finish",
-        this._ironOverlayClosed.bind(this)
-      );
+  /**
+   * HTMLElement
+   */
+  disconnectedCallback() {
+    window.removeEventListener("simple-modal-hide", this.close.bind(this));
+    window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
+    super.disconnectedCallback();
   }
   /**
    * Ensure everything is visible in what's been expanded.
@@ -137,7 +151,7 @@ class SimpleModal extends PolymerElement {
     clone = false,
     modal = false
   ) {
-    this.set("invokedBy", invokedBy);
+    this.invokedBy = invokedBy;
     this.modal = modal;
     this.title = title;
     let element;
@@ -216,8 +230,11 @@ class SimpleModal extends PolymerElement {
   close() {
     this.shadowRoot.querySelector("#dialog").close();
   }
+  openedChangedEvent(e) {
+    this.opened = e.detail.value;
+  }
   // Observer opened for changes
-  _openedChanged(newValue, oldValue) {
+  _openedChanged(newValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
       this.animationEnded();
       const evt = new CustomEvent("simple-modal-closed", {
@@ -257,20 +274,19 @@ class SimpleModal extends PolymerElement {
     e.preventDefault();
     e.stopPropagation();
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    window.removeEventListener("simple-modal-hide", this.close.bind(this));
-    window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.shadowRoot
-      .querySelector("#simple-modal-content")
-      .removeEventListener(
-        "neon-animation-finish",
-        this._ironOverlayClosed.bind(this)
-      );
-    super.disconnectedCallback();
-  }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);
 export { SimpleModal };
+
+// register globally so we can make sure there is only one
+window.SimpleModal = window.SimpleModal || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.SimpleModal.requestAvailability = () => {
+  if (!window.SimpleModal.instance) {
+    window.SimpleModal.instance = document.createElement("simple-modal");
+    document.body.appendChild(window.SimpleModal.instance);
+  }
+  return window.SimpleModal.instance;
+};
