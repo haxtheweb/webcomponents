@@ -185,12 +185,6 @@ class EditableListItem extends PolymerElement {
     return "editable-list-item";
   }
   /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
