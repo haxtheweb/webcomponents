@@ -5,8 +5,18 @@
       "name": "simple-blog\n`A simple blog and associated elements`",
       "description": "`simple-blog`",
       "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
       "events": [
         {
           "name": "json-outline-schema-active-item-changed"
@@ -18,8 +28,18 @@
       "name": "simple-blog\n`A simple blog and associated elements`",
       "description": "`simple-blog`",
       "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
       "events": [
         {
           "name": "json-outline-schema-active-item-changed"
@@ -47,6 +67,22 @@
         {
           "name": "edit-mode",
           "type": "boolean"
+        },
+        {
+          "name": "prevTitle",
+          "type": "string"
+        },
+        {
+          "name": "prevChanged",
+          "type": "string"
+        },
+        {
+          "name": "nextTitle",
+          "type": "string"
+        },
+        {
+          "name": "nextChanged",
+          "type": "string"
         }
       ],
       "properties": [
@@ -65,15 +101,31 @@
         {
           "name": "editMode",
           "type": "boolean"
+        },
+        {
+          "name": "prevTitle",
+          "type": "string"
+        },
+        {
+          "name": "prevChanged",
+          "type": "string"
+        },
+        {
+          "name": "nextTitle",
+          "type": "string"
+        },
+        {
+          "name": "nextChanged",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "simple-blog-header\n`A simple blog header to the front of the site`",
-      "description": "`simple-blog-header`",
-      "jsDoc": "/**\n * `simple-blog-header`\n * @customElement simple-blog-header\n * `A simple blog header to the front of the site`\n * @demo demo/index.html\n */",
+      "name": "simple-blog-header",
+      "description": "`simple-blog-header`\n`A simple blog header to the front of the site`",
+      "jsDoc": "/**\n * `simple-blog-header`\n * `A simple blog header to the front of the site`\n * @customElement simple-blog-header\n */",
       "attributes": [
         {
           "name": "description",
@@ -217,14 +269,12 @@
           "type": "boolean"
         },
         {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "jsDoc": "/**\n       * editting state for the page\n       */",
-          "type": "boolean"
-        },
-        {
           "name": "image",
           "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
         }
       ],
       "properties": [
@@ -235,14 +285,12 @@
           "type": "boolean"
         },
         {
-          "name": "editMode",
-          "description": "editting state for the page",
-          "jsDoc": "/**\n       * editting state for the page\n       */",
-          "type": "boolean"
-        },
-        {
           "name": "image",
           "type": "string"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean"
         }
       ],
       "events": [],
@@ -252,8 +300,18 @@
       "name": "simple-blog\n`A simple blog and associated elements`",
       "description": "`simple-blog`",
       "jsDoc": "/**\n * `simple-blog`\n * @customElement simple-blog\n * `A simple blog and associated elements`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "type": "number"
+        }
+      ],
       "events": [
         {
           "name": "json-outline-schema-active-item-changed"

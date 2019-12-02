@@ -1,2 +1,54 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("@polymer/polymer/polymer-element.js")):"function"==typeof define&&define.amd?define(["exports","@polymer/polymer/polymer-element.js"],n):n((e=e||self).AgencyTheme={},e.polymerElement_js)}(this,function(e,n){"use strict";function t(e,n){if(!(e instanceof n))throw new TypeError("Cannot call a class as a function")}function i(e,n){for(var t=0;t<n.length;t++){var i=n[t];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}function r(e,n,t){return n&&i(e.prototype,n),t&&i(e,t),e}function o(e,n,t){return n in e?Object.defineProperty(e,n,{value:t,enumerable:!0,configurable:!0,writable:!0}):e[n]=t,e}function a(e,n){if("function"!=typeof n&&null!==n)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(n&&n.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),n&&l(e,n)}function c(e){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function l(e,n){return(l=Object.setPrototypeOf||function(e,n){return e.__proto__=n,e})(e,n)}function s(e,n){return!n||"object"!=typeof n&&"function"!=typeof n?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):n}function u(e,n,t){return(u="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,n,t){var i=function(e,n){for(;!Object.prototype.hasOwnProperty.call(e,n)&&null!==(e=c(e)););return e}(e,n);if(i){var r=Object.getOwnPropertyDescriptor(i,n);return r.get?r.get.call(t):r.value}})(e,n,t||e)}function p(e,n){return n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}}))}function g(){var e=p(["\n      <style>\n      :host {\n        --agency-theme-band-bg-color: #333a4a;\n        --agency-theme-band-slice-height: 3.5vw;\n        --agency-theme-band-content-max-width: 900px;\n        --agency-theme-band-content-padding: 1em;\n        display: block;\n        margin-top: calc(var(--agency-theme-band-slice-height) * -1);\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n      #wrapper {\n        margin: var(--agency-theme-band-slice-height) 0;\n        position: relative;\n        @apply --agency-theme-band-wrapper;\n      }\n      #slice {\n        width: 100%;\n        height: var(--agency-theme-band-slice-height);\n        margin-bottom: -1px;\n      }\n      #slice svg {\n        width: 100%;\n        height: 100%;\n      }\n      #inner {\n        background-image: linear-gradient(to bottom, #333a4a, rgba(46, 49, 65, 0.8));\n        @apply --agency-theme-band-inner;\n      }\n      #inner-wrapper {\n        max-width: var(--agency-theme-band-content-max-width);\n        padding: var(--agency-theme-band-content-padding);\n        margin: auto;\n      }\n      </style>\n      <div id=\"wrapper\">\n        <div id=\"slice\">\n          <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'><polygon points='0,100 100,0 100,100' style='fill:#333a4a'></svg>\n        </div>\n        <div id=\"inner\">\n          <div id=\"inner-wrapper\">\n            <slot></slot>\n          </div>\n        </div>\n      </div>\n    "]);return g=function(){return e},e}var h=function(e){function i(){return t(this,i),s(this,c(i).apply(this,arguments))}return a(i,n.PolymerElement),r(i,[{key:"connectedCallback",value:function(){u(c(i.prototype),"connectedCallback",this).call(this)}}],[{key:"tag",get:function(){return"agency-theme-band"}},{key:"template",get:function(){return n.html(g())}}]),i}();function d(){var e=p(['\n      <style>\n        :host {\n          --agency-theme-spotlight-image-height: 10em;\n          --agency-theme-spotlight-content-padding: 3vw;\n          --agency-theme-spotlight-content-color: white;\n          display: block;\n          color: white;\n        }\n\n        :host([hidden]) {\n          display: none;\n        }\n\n        .inner {\n          display: flex;\n          flex-wrap: wrap;\n        }\n\n        .image {\n          display: flex;\n          width: 100%;\n          flex: 0 1 auto;\n          justify-content: center;\n        }\n\n        .image img {\n          border-radius: 100%;\n          object-fit: cover;\n          width: var(--agency-theme-spotlight-image-height);\n          height: var(--agency-theme-spotlight-image-height);\n        }\n\n        @media screen and (min-width: 500px) {\n          .inner {\n            flex-wrap: nowrap;\n          }\n          .image {\n            width: auto;\n          }\n          .image + .content {\n            margin-left: var(--agency-theme-spotlight-content-padding);\n          }\n        }\n\n        .content {\n          width: 100%;\n          flex: 1 1 auto;\n          -ms-flex: 2;\n        }\n        .title {\n          border-bottom: 1px solid rgba(0, 0, 0, 0.2);\n          margin-bottom: 1em;\n          @apply --agency-theme-spotlight-margin;\n        }\n      </style>\n      <div class="inner">\n        <div class="image">\n          <img loading="lazy" src="[[image]]" alt="" />\n        </div>\n        <div class="content">\n          <div class="title"><slot name="title"></slot></div>\n          <slot></slot>\n        </div>\n      </div>\n    ']);return d=function(){return e},e}window.customElements.define(h.tag,h);var f=function(e){function i(){return t(this,i),s(this,c(i).apply(this,arguments))}return a(i,n.PolymerElement),r(i,[{key:"connectedCallback",value:function(){u(c(i.prototype),"connectedCallback",this).call(this)}}],[{key:"tag",get:function(){return"agency-theme-spotlight"}},{key:"properties",get:function(){return{image:{type:String}}}},{key:"template",get:function(){return n.html(d())}}]),i}();function y(){var e=p(["\n<style>\n:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n        </style>\n<slot></slot>"]);return y=function(){return e},e}window.customElements.define(f.tag,f);var m=function(e){function i(){return t(this,i),s(this,c(i).apply(this,arguments))}return a(i,n.PolymerElement),r(i,[{key:"connectedCallback",value:function(){u(c(i.prototype),"connectedCallback",this).call(this)}}],[{key:"template",get:function(){return n.html(y())}},{key:"properties",get:function(){return function(e){for(var n=1;n<arguments.length;n++){var t=null!=arguments[n]?arguments[n]:{},i=Object.keys(t);"function"==typeof Object.getOwnPropertySymbols&&(i=i.concat(Object.getOwnPropertySymbols(t).filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),i.forEach(function(n){o(e,n,t[n])})}return e}({},u(c(i),"properties",this))}},{key:"tag",get:function(){return"agency-theme"}}]),i}();window.customElements.define(m.tag,m),e.AgencyTheme=m,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=agency-theme.umd.js.map
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * `agency-theme`
+ * @demo demo/index.html
+ * @customElement agency-theme
+ */
+class AgencyTheme extends LitElement {
+  
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+<slot></slot>`;
+  }
+
+  // properties available to the custom element for data binding
+    static get properties() {
+    return {...super.properties}
+;
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "agency-theme";
+  }
+  constructor() {
+    super();
+    import("./lib/agency-theme-band.js");
+    import("./lib/agency-theme-spotlight.js");
+  }
+}
+window.customElements.define(AgencyTheme.tag, AgencyTheme);
+export { AgencyTheme };

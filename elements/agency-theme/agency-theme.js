@@ -9,10 +9,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @customElement agency-theme
  */
 class AgencyTheme extends LitElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -20,7 +20,12 @@ class AgencyTheme extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <slot></slot>
     `;
   }

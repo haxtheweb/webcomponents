@@ -1,32 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 /**
 `img-pan-zoom` Image pan zoom element
-
 Images are preloaded by `img-loader` and a spinner is shown until loaded
 Deep Zoom Images are supported
-
-### Styling
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--img-pan-zoom-spinner` | Mixin applied to spinner |
-`--img-pan-zoom-spinner-color` | Spinner color | `#2196F3`
-`--img-pan-zoom-spinner-width` | Spinner width | `5px`
-
 ### Credits
-
 <a href="https://openseadragon.github.io">openSeadragon</a>
-
-
 * @demo demo/index.html
+* @customElement img-pan-zoom
 */
-class ImgPanZoom extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class ImgPanZoom extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           position: relative;
@@ -38,7 +27,7 @@ class ImgPanZoom extends PolymerElement {
           width: 100%;
         }
 
-        paper-spinner {
+        hexagon-loader {
           opacity: 0;
           display: block;
           transition: opacity 700ms;
@@ -51,27 +40,33 @@ class ImgPanZoom extends PolymerElement {
           z-index: 1;
           height: 70px;
           width: 70px;
-          --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196f3);
-          --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
-          @apply --img-pan-zoom-spinner;
         }
-        paper-spinner[active] {
+        hexagon-loader[loading] {
           opacity: 1;
         }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
       <!-- Only preload regular images -->
-      <template is="dom-if" if="[[!dzi]]">
-        <paper-spinner
-          hidden$="[[hideSpinner]]"
-          active="[[loading]]"
-        ></paper-spinner>
-        <img-loader
-          loaded="{{loaded}}"
-          loading="{{loading}}"
-          src="[[src]]"
-        ></img-loader>
-      </template>
+      ${!this.dzi
+        ? html`
+            <hexagon-loader
+              ?hidden="${this.hideSpinner}"
+              ?loading=${!this.loading}
+              item-count="4"
+              size="small"
+            ></hexagon-loader>
+            <img-loader
+              loaded="${this.loaded}"
+              @loaded-changed="${this.loadedChangedEvent}"
+              loading="${this.loading}"
+              @loading-changed="${this.loadingChangedEvent}"
+              src="${this.src}"
+            ></img-loader>
+          `
+        : ""}
 
       <!-- Openseadragon -->
       <div id="viewer"></div>
@@ -90,84 +85,80 @@ class ImgPanZoom extends PolymerElement {
       },
       // Set to true if you are using a deep zoom image
       dzi: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       // Fade in new items added to the viewer
       fadeIn: {
         type: Boolean,
-        value: true
+        attribute: "fade-in"
       },
       // loading
       loading: {
-        type: Boolean,
-        notify: true
+        type: Boolean
       },
       // hides spinner
       hideSpinner: {
         type: Boolean,
-        value: false
+        attribute: "hide-spinner"
       },
       // loaded
       loaded: {
-        type: Boolean,
-        notify: true,
-        observer: "_loadedChanged"
+        type: Boolean
       },
       // Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
       showNavigationControl: {
         type: Boolean,
-        value: false
+        attribute: "show-navigation-control"
       },
       // Set to true to make the navigator minimap appear.
       showNavigator: {
         type: Boolean,
-        value: false
+        attribute: "show-navigator"
       },
       // The "zoom distance" per mouse click or touch tap. Note: Setting this to 1.0 effectively disables the click-to-zoom feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
       zoomPerClick: {
         type: Number,
-        value: 2.0
+        attribute: "zoom-per-click"
       },
       // The "zoom distance" per mouse scroll or touch pinch. Note: Setting this to 1.0 effectively disables the mouse-wheel zoom feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
       zoomPerScroll: {
         type: Number,
-        value: 1.2
+        attribute: "zoom-per-scroll"
       },
       // Specifies the animation duration per each OpenSeadragon.Spring which occur when the image is dragged or zoomed.
       animationTime: {
         type: Number,
-        value: 1.2
+        attribute: "animation-time"
       },
       // If true then the 'previous' button will wrap to the last image when viewing the first image and the 'next' button will wrap to the first image when viewing the last image.
       navPrevNextWrap: {
         type: Boolean,
-        value: false
+        attribute: "nav-prev-next-wrap"
       },
       // If true then the rotate left/right controls will be displayed as part of the standard controls. This is also subject to the browser support for rotate (e.g. viewer.drawer.canRotate()).
       showRotationControl: {
         type: Boolean,
-        value: false
+        attribute: "show-rotation-control"
       },
       // The minimum percentage ( expressed as a number between 0 and 1 ) of the viewport height or width at which the zoom out will be constrained. Setting it to 0, for example will allow you to zoom out infinity.
       minZoomImageRatio: {
         type: Number,
-        value: 1
+        attribute: "min-zoom-image-ratio"
       },
       // The maximum ratio to allow a zoom-in to affect the highest level pixel ratio. This can be set to Infinity to allow 'infinite' zooming into the image though it is less effective visually if the HTML5 Canvas is not availble on the viewing device.
       maxZoomPixelRatio: {
         type: Number,
-        value: 1.1
+        attribute: "max-zoom-pixel-ratio"
       },
       // Constrain during pan
       constrainDuringPan: {
         type: Boolean,
-        value: false
+        attribute: "constrain-during-pan"
       },
       // The percentage ( as a number from 0 to 1 ) of the source image which must be kept within the viewport. If the image is dragged beyond that limit, it will 'bounce' back until the minimum visibility ratio is achieved. Setting this to 0 and wrapHorizontal ( or wrapVertical ) to true will provide the effect of an infinitely scrolling viewport.
       visibilityRatio: {
         type: Number,
-        value: 1
+        attribute: "visibility-ratio"
       }
     };
   }
@@ -176,20 +167,65 @@ class ImgPanZoom extends PolymerElement {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
-   * life cycle
+   * HTMLElement
    */
   constructor() {
     super();
-    import("@polymer/paper-spinner/paper-spinner.js");
-    import("@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
-    window.addEventListener(
-      "es-bridge-openseadragon-loaded",
-      this._openseadragonLoaded.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("openseadragon", location);
+    this.loading = false;
+    this.dzi = false;
+    this.fadeIn = true;
+    this.hideSpinner = false;
+    this.showNavigationControl = false;
+    this.showNavigator = false;
+    this.zoomPerClick = 2.0;
+    this.zoomPerScroll = 1.2;
+    this.animationTime = 1.2;
+    this.navPrevNextWrap = false;
+    this.showRotationControl = false;
+    this.minZoomImageRatio = 1;
+    this.maxZoomPixelRatio = 1.1;
+    this.constrainDuringPan = false;
+    this.visibilityRatio = 1;
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("./lib/img-loader.js");
+    setTimeout(() => {
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
+      window.addEventListener(
+        "es-bridge-openseadragon-loaded",
+        this._openseadragonLoaded.bind(this)
+      );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load("openseadragon", location);
+    }, 0);
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "loading") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("loading-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "loaded") {
+        this._loadedChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("loaded-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   _openseadragonLoaded() {
     this.__openseadragonLoaded = true;
@@ -208,13 +244,13 @@ class ImgPanZoom extends PolymerElement {
         node: this.shadowRoot.querySelector("#viewer")
       }
     };
-    afterNextRender(this, function() {
+    setTimeout(() => {
       // Init openseadragon if we are using a deep zoom image
       if (this.dzi && this.__openseadragonLoaded) {
         // Add src changed observer
         this._initOpenSeadragon();
       }
-    });
+    }, 0);
   }
   /**
    * life cycle
@@ -298,7 +334,12 @@ class ImgPanZoom extends PolymerElement {
       this._addTiledImage();
     }
   }
-
+  loadedChangedEvent(e) {
+    this.loaded = e.detail.value;
+  }
+  loadingChangedEvent(e) {
+    this.loading = e.detail.value;
+  }
   // Add loaded images to viewer
   _loadedChanged() {
     if (this.loaded) {

@@ -152,9 +152,9 @@
       "slots": []
     },
     {
-      "name": "site-card\n`A simple card for representing a site`",
-      "description": "`site-card`",
-      "jsDoc": "/**\n * `site-card`\n * @customElement site-card\n * `A simple card for representing a site`\n * @demo demo/index.html\n */",
+      "name": "site-card",
+      "description": "`site-card`\n`A simple card for representing a site`",
+      "jsDoc": "/**\n * `site-card`\n * `A simple card for representing a site`\n * @demo demo/index.html\n * @customElement site-card\n */",
       "attributes": [
         {
           "name": "size",

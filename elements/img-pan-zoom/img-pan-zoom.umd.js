@@ -1,2 +1,367 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("@polymer/polymer/polymer-element.js"),require("@polymer/polymer/lib/utils/render-status.js"),require("@lrnwebcomponents/es-global-bridge/es-global-bridge.js"),require("@polymer/polymer/lib/elements/dom-if.js")):"function"==typeof define&&define.amd?define(["exports","@polymer/polymer/polymer-element.js","@polymer/polymer/lib/utils/render-status.js","@lrnwebcomponents/es-global-bridge/es-global-bridge.js","@polymer/polymer/lib/elements/dom-if.js"],n):n((e=e||self).ImgPanZoom={},e.polymerElement_js,e.renderStatus_js)}(this,function(e,n,o){"use strict";function t(e,n){for(var o=0;o<n.length;o++){var t=n[o];t.enumerable=t.enumerable||!1,t.configurable=!0,"value"in t&&(t.writable=!0),Object.defineProperty(e,t.key,t)}}function i(e,n,o){return n&&t(e.prototype,n),o&&t(e,o),e}function r(e){return(r=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function a(e,n){return(a=Object.setPrototypeOf||function(e,n){return e.__proto__=n,e})(e,n)}function l(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function s(e,n,o){return(s="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,n,o){var t=function(e,n){for(;!Object.prototype.hasOwnProperty.call(e,n)&&null!==(e=r(e)););return e}(e,n);if(t){var i=Object.getOwnPropertyDescriptor(t,n);return i.get?i.get.call(o):i.value}})(e,n,o||e)}function p(){var e,n,o=(e=['\n      <style>\n        :host {\n          display: block;\n          position: relative;\n          height: 500px;\n        }\n        #viewer {\n          position: relative;\n          height: 100%;\n          width: 100%;\n        }\n\n        paper-spinner {\n          opacity: 0;\n          display: block;\n          transition: opacity 700ms;\n          position: absolute;\n          margin: auto;\n          top: 0;\n          left: 0;\n          bottom: 0;\n          right: 0;\n          z-index: 1;\n          height: 70px;\n          width: 70px;\n          --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196f3);\n          --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n          @apply --img-pan-zoom-spinner;\n        }\n        paper-spinner[active] {\n          opacity: 1;\n        }\n      </style>\n\n      \x3c!-- Only preload regular images --\x3e\n      <template is="dom-if" if="[[!dzi]]">\n        <paper-spinner\n          hidden$="[[hideSpinner]]"\n          active="[[loading]]"\n        ></paper-spinner>\n        <img-loader\n          loaded="{{loaded}}"\n          loading="{{loading}}"\n          src="[[src]]"\n        ></img-loader>\n      </template>\n\n      \x3c!-- Openseadragon --\x3e\n      <div id="viewer"></div>\n    '],n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}})));return p=function(){return o},o}var d=function(e){function t(){var e,n,o;!function(e,n){if(!(e instanceof n))throw new TypeError("Cannot call a class as a function")}(this,t),n=this,e=!(o=r(t).call(this))||"object"!=typeof o&&"function"!=typeof o?l(n):o,import("@polymer/paper-spinner/paper-spinner.js"),import("@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");var i=e.pathFromUrl(decodeURIComponent("undefined"!=typeof document?document.currentScript&&document.currentScript.src||document.baseURI:new("undefined"!=typeof URL?URL:require("url").URL)("file:"+__filename).href)),a="".concat(i,"lib/openseadragon/build/openseadragon/openseadragon.min.js");return window.addEventListener("es-bridge-openseadragon-loaded",e._openseadragonLoaded.bind(l(e))),window.ESGlobalBridge.requestAvailability(),window.ESGlobalBridge.instance.load("openseadragon",a),e}return function(e,n){if("function"!=typeof n&&null!==n)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(n&&n.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),n&&a(e,n)}(t,n.PolymerElement),i(t,[{key:"pathFromUrl",value:function(e){return e.substring(0,e.lastIndexOf("/")+1)}}],[{key:"template",get:function(){return n.html(p())}},{key:"tag",get:function(){return"img-pan-zoom"}},{key:"properties",get:function(){return{src:{type:String},dzi:{type:Boolean,value:!1},fadeIn:{type:Boolean,value:!0},loading:{type:Boolean,notify:!0},hideSpinner:{type:Boolean,value:!1},loaded:{type:Boolean,notify:!0,observer:"_loadedChanged"},showNavigationControl:{type:Boolean,value:!1},showNavigator:{type:Boolean,value:!1},zoomPerClick:{type:Number,value:2},zoomPerScroll:{type:Number,value:1.2},animationTime:{type:Number,value:1.2},navPrevNextWrap:{type:Boolean,value:!1},showRotationControl:{type:Boolean,value:!1},minZoomImageRatio:{type:Number,value:1},maxZoomPixelRatio:{type:Number,value:1.1},constrainDuringPan:{type:Boolean,value:!1},visibilityRatio:{type:Number,value:1}}}}]),i(t,[{key:"_openseadragonLoaded",value:function(){this.__openseadragonLoaded=!0,this.dzi&&this._initOpenSeadragon()}},{key:"connectedCallback",value:function(){s(r(t.prototype),"connectedCallback",this).call(this),this.animationConfig={fade:{name:"fade-in-animation",node:this.shadowRoot.querySelector("#viewer")}},o.afterNextRender(this,function(){this.dzi&&this.__openseadragonLoaded&&this._initOpenSeadragon()})}},{key:"disconnectedCallback",value:function(){s(r(t.prototype),"disconnectedCallback",this).call(this),window.removeEventListener("es-bridge-openseadragon-loaded",this._openseadragonLoaded.bind(this))}},{key:"_initOpenSeadragon",value:function(){var e=this;setTimeout(function(){var n=e.src;e.dzi||(n={type:"image",url:e.src,buildPyramid:!1}),e.viewer=new OpenSeadragon({element:e.shadowRoot.querySelector("#viewer"),visibilityRatio:e.visibilityRatio,constrainDuringPan:e.constrainDuringPan,showNavigationControl:e.showNavigationControl,showNavigator:e.showNavigator,zoomPerClick:e.zoomPerClick,zoomPerScroll:e.zoomPerScroll,animationTime:e.animationTime,navPrevNextWrap:e.navPrevNextWrap,showRotationControl:e.showRotationControl,minZoomImageRatio:e.minZoomImageRatio,maxZoomPixelRatio:e.maxZoomPixelRatio,tileSources:n}),e.init=!0},100)}},{key:"destroy",value:function(){this.viewer.destroy()}},{key:"zoomIn",value:function(){var e=this.viewer.viewport.getZoom()+.7;e<this.viewer.viewport.getMaxZoom()&&this.viewer.viewport.zoomTo(e)}},{key:"zoomOut",value:function(){var e=this.viewer.viewport.getZoom(),n=this.viewer.viewport.getMinZoom(),o=e-.7;o>n?this.viewer.viewport.zoomTo(o):n!=e&&this.resetZoom()}},{key:"resetZoom",value:function(){this.viewer.viewport.goHome()}},{key:"_srcChanged",value:function(){this.dzi&&this.init&&this._addTiledImage()}},{key:"_loadedChanged",value:function(){this.loaded&&(this.init?this._addImage():this._initOpenSeadragon())}},{key:"_addImage",value:function(){this.viewer.addSimpleImage({url:this.src,index:0,replace:!0})}},{key:"_addTiledImage",value:function(){this.viewer.addTiledImage({tileSource:this.src,index:0,replace:!0})}}]),t}();window.customElements.define(d.tag,d),e.ImgPanZoom=d,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=img-pan-zoom.umd.js.map
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+/**
+`img-pan-zoom` Image pan zoom element
+Images are preloaded by `img-loader` and a spinner is shown until loaded
+Deep Zoom Images are supported
+### Credits
+<a href="https://openseadragon.github.io">openSeadragon</a>
+* @demo demo/index.html
+* @customElement img-pan-zoom
+*/
+class ImgPanZoom extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          position: relative;
+          height: 500px;
+        }
+        #viewer {
+          position: relative;
+          height: 100%;
+          width: 100%;
+        }
+
+        hexagon-loader {
+          opacity: 0;
+          display: block;
+          transition: opacity 700ms;
+          position: absolute;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+          height: 70px;
+          width: 70px;
+        }
+        hexagon-loader[loading] {
+          opacity: 1;
+        }
+      `
+    ];
+  }
+  render() {
+    return html`
+      <!-- Only preload regular images -->
+      ${!this.dzi
+        ? html`
+            <hexagon-loader
+              ?hidden="${this.hideSpinner}"
+              ?loading=${!this.loading}
+              item-count="4"
+              size="small"
+            ></hexagon-loader>
+            <img-loader
+              loaded="${this.loaded}"
+              @loaded-changed="${this.loadedChangedEvent}"
+              loading="${this.loading}"
+              @loading-changed="${this.loadingChangedEvent}"
+              src="${this.src}"
+            ></img-loader>
+          `
+        : ""}
+
+      <!-- Openseadragon -->
+      <div id="viewer"></div>
+    `;
+  }
+
+  static get tag() {
+    return "img-pan-zoom";
+  }
+
+  static get properties() {
+    return {
+      // Image source
+      src: {
+        type: String
+      },
+      // Set to true if you are using a deep zoom image
+      dzi: {
+        type: Boolean
+      },
+      // Fade in new items added to the viewer
+      fadeIn: {
+        type: Boolean,
+        attribute: "fade-in"
+      },
+      // loading
+      loading: {
+        type: Boolean
+      },
+      // hides spinner
+      hideSpinner: {
+        type: Boolean,
+        attribute: "hide-spinner"
+      },
+      // loaded
+      loaded: {
+        type: Boolean
+      },
+      // Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
+      showNavigationControl: {
+        type: Boolean,
+        attribute: "show-navigation-control"
+      },
+      // Set to true to make the navigator minimap appear.
+      showNavigator: {
+        type: Boolean,
+        attribute: "show-navigator"
+      },
+      // The "zoom distance" per mouse click or touch tap. Note: Setting this to 1.0 effectively disables the click-to-zoom feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
+      zoomPerClick: {
+        type: Number,
+        attribute: "zoom-per-click"
+      },
+      // The "zoom distance" per mouse scroll or touch pinch. Note: Setting this to 1.0 effectively disables the mouse-wheel zoom feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
+      zoomPerScroll: {
+        type: Number,
+        attribute: "zoom-per-scroll"
+      },
+      // Specifies the animation duration per each OpenSeadragon.Spring which occur when the image is dragged or zoomed.
+      animationTime: {
+        type: Number,
+        attribute: "animation-time"
+      },
+      // If true then the 'previous' button will wrap to the last image when viewing the first image and the 'next' button will wrap to the first image when viewing the last image.
+      navPrevNextWrap: {
+        type: Boolean,
+        attribute: "nav-prev-next-wrap"
+      },
+      // If true then the rotate left/right controls will be displayed as part of the standard controls. This is also subject to the browser support for rotate (e.g. viewer.drawer.canRotate()).
+      showRotationControl: {
+        type: Boolean,
+        attribute: "show-rotation-control"
+      },
+      // The minimum percentage ( expressed as a number between 0 and 1 ) of the viewport height or width at which the zoom out will be constrained. Setting it to 0, for example will allow you to zoom out infinity.
+      minZoomImageRatio: {
+        type: Number,
+        attribute: "min-zoom-image-ratio"
+      },
+      // The maximum ratio to allow a zoom-in to affect the highest level pixel ratio. This can be set to Infinity to allow 'infinite' zooming into the image though it is less effective visually if the HTML5 Canvas is not availble on the viewing device.
+      maxZoomPixelRatio: {
+        type: Number,
+        attribute: "max-zoom-pixel-ratio"
+      },
+      // Constrain during pan
+      constrainDuringPan: {
+        type: Boolean,
+        attribute: "constrain-during-pan"
+      },
+      // The percentage ( as a number from 0 to 1 ) of the source image which must be kept within the viewport. If the image is dragged beyond that limit, it will 'bounce' back until the minimum visibility ratio is achieved. Setting this to 0 and wrapHorizontal ( or wrapVertical ) to true will provide the effect of an infinitely scrolling viewport.
+      visibilityRatio: {
+        type: Number,
+        attribute: "visibility-ratio"
+      }
+    };
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.loading = false;
+    this.dzi = false;
+    this.fadeIn = true;
+    this.hideSpinner = false;
+    this.showNavigationControl = false;
+    this.showNavigator = false;
+    this.zoomPerClick = 2.0;
+    this.zoomPerScroll = 1.2;
+    this.animationTime = 1.2;
+    this.navPrevNextWrap = false;
+    this.showRotationControl = false;
+    this.minZoomImageRatio = 1;
+    this.maxZoomPixelRatio = 1.1;
+    this.constrainDuringPan = false;
+    this.visibilityRatio = 1;
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("./lib/img-loader.js");
+    setTimeout(() => {
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
+      window.addEventListener(
+        "es-bridge-openseadragon-loaded",
+        this._openseadragonLoaded.bind(this)
+      );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load("openseadragon", location);
+    }, 0);
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "loading") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("loading-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "loaded") {
+        this._loadedChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("loaded-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  _openseadragonLoaded() {
+    this.__openseadragonLoaded = true;
+    if (this.dzi) {
+      this._initOpenSeadragon();
+    }
+  }
+  /**
+   * life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.animationConfig = {
+      fade: {
+        name: "fade-in-animation",
+        node: this.shadowRoot.querySelector("#viewer")
+      }
+    };
+    setTimeout(() => {
+      // Init openseadragon if we are using a deep zoom image
+      if (this.dzi && this.__openseadragonLoaded) {
+        // Add src changed observer
+        this._initOpenSeadragon();
+      }
+    }, 0);
+  }
+  /**
+   * life cycle
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener(
+      "es-bridge-openseadragon-loaded",
+      this._openseadragonLoaded.bind(this)
+    );
+  }
+  // Init openseadragon
+  _initOpenSeadragon() {
+    setTimeout(() => {
+      var tileSources = this.src;
+      if (!this.dzi) {
+        tileSources = {
+          type: "image",
+          url: this.src,
+          buildPyramid: false
+        };
+      }
+      this.viewer = new OpenSeadragon({
+        element: this.shadowRoot.querySelector("#viewer"),
+        visibilityRatio: this.visibilityRatio,
+        constrainDuringPan: this.constrainDuringPan,
+        showNavigationControl: this.showNavigationControl,
+        showNavigator: this.showNavigator,
+        zoomPerClick: this.zoomPerClick,
+        zoomPerScroll: this.zoomPerScroll,
+        animationTime: this.animationTime,
+        navPrevNextWrap: this.navPrevNextWrap,
+        showRotationControl: this.showRotationControl,
+        minZoomImageRatio: this.minZoomImageRatio,
+        maxZoomPixelRatio: this.maxZoomPixelRatio,
+        tileSources: tileSources
+      });
+      this.init = true;
+    }, 100);
+  }
+
+  //Function to destroy the viewer and clean up everything created by OpenSeadragon.
+  destroy() {
+    this.viewer.destroy();
+  }
+
+  // Zoom in
+  zoomIn() {
+    // TODO: Replace with native openseadragon zoomIn
+    var currentZoom = this.viewer.viewport.getZoom();
+    var maxZoom = this.viewer.viewport.getMaxZoom();
+    var zoomTo = currentZoom + 0.7;
+    if (zoomTo < maxZoom) {
+      this.viewer.viewport.zoomTo(zoomTo);
+    }
+  }
+
+  // Zoom out
+  zoomOut() {
+    // TODO: Replace with openseadragon native zoomOut
+    var currentZoom = this.viewer.viewport.getZoom();
+    var minZoom = this.viewer.viewport.getMinZoom();
+    var zoomTo = currentZoom - 0.7;
+    if (zoomTo > minZoom) {
+      this.viewer.viewport.zoomTo(zoomTo);
+    } else {
+      if (minZoom != currentZoom) {
+        this.resetZoom();
+      }
+    }
+  }
+
+  // reset zoom
+  resetZoom() {
+    this.viewer.viewport.goHome();
+  }
+
+  _srcChanged() {
+    if (this.dzi && this.init) {
+      // add tiled image
+      this._addTiledImage();
+    }
+  }
+  loadedChangedEvent(e) {
+    this.loaded = e.detail.value;
+  }
+  loadingChangedEvent(e) {
+    this.loading = e.detail.value;
+  }
+  // Add loaded images to viewer
+  _loadedChanged() {
+    if (this.loaded) {
+      if (!this.init) {
+        this._initOpenSeadragon();
+      } else {
+        this._addImage();
+      }
+    }
+  }
+
+  _addImage() {
+    this.viewer.addSimpleImage({ url: this.src, index: 0, replace: true });
+  }
+
+  _addTiledImage() {
+    this.viewer.addTiledImage({
+      tileSource: this.src,
+      index: 0,
+      replace: true
+    });
+  }
+}
+window.customElements.define(ImgPanZoom.tag, ImgPanZoom);
+export { ImgPanZoom };

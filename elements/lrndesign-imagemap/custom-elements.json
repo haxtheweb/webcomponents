@@ -136,9 +136,9 @@
       "slots": []
     },
     {
-      "name": "lrndesign-imagemap-hotspot\ncreates an accessible image map",
-      "description": "`lrndesign-imagemap-hotspot`",
-      "jsDoc": "/**\n * `lrndesign-imagemap-hotspot`\n * @customElement lrndesign-imagemap-hotspot\n * creates an accessible image map\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "lrndesign-imagemap-hotspot",
+      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map",
+      "jsDoc": "/**\n * `lrndesign-imagemap-hotspot`\n * creates an accessible image map\n * @demo demo/index.html\n * @customElement lrndesign-imagemap-hotspot\n */",
       "attributes": [
         {
           "name": "label",

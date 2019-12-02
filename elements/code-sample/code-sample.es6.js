@@ -219,19 +219,10 @@ button {
     }
   }
   _themeCanBeChanged(theme) {
-    if (window.ShadyCSS) {
-      console.error(
-        "<code-sample>:",
-        "Theme changing is not supported in Shady DOM."
-      );
-      return;
-    }
-
     if (theme.tagName !== "TEMPLATE") {
       console.error("<code-sample>:", "theme must be a template");
       return;
     }
-
     return true;
   }
   _updateContent() {

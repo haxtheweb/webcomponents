@@ -141,9 +141,9 @@
       "slots": []
     },
     {
-      "name": "lrndesign-gallery-details\n`An element that renders the print view of a gallery item.`",
-      "description": "`lrndesign-gallery-details`",
-      "jsDoc": "/**\n * `lrndesign-gallery-details`\n * @customElement lrndesign-gallery-details\n * `An element that renders the print view of a gallery item.`\n *\n * @microcopy - language worth noting:```\n<lrndesign-gallery-details \n  details=\"<strong>HTML MARKUP HERE</strong>\"       //required, an array of item data\n</lrndesign-gallery-details>```\n *\n\n * @polymer\n */",
+      "name": "lrndesign-gallery-details",
+      "description": "`lrndesign-gallery-details`\n`An element that renders the print view of a gallery item.`",
+      "jsDoc": "/**\n * `lrndesign-gallery-details`\n * `An element that renders the print view of a gallery item.`\n *\n * @microcopy - language worth noting:```\n<lrndesign-gallery-details \n  details=\"<strong>HTML MARKUP HERE</strong>\"       //required, an array of item data\n</lrndesign-gallery-details>```\n *\n * @customElement lrndesign-gallery-details\n */",
       "attributes": [
         {
           "name": "details",

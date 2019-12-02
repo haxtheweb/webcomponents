@@ -23,7 +23,7 @@ class EditableList extends LitElement {
           display: none;
         }
 
-        iron-list {
+        #list {
           height: 100%;
         }
       `
