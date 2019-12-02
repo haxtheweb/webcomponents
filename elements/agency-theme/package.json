@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/agency-theme",
   "wcfactory": {
     "className": "AgencyTheme",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "agency-theme",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": false,
