@@ -374,15 +374,9 @@ class LrnappOpenStudio extends PolymerElement {
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("route-change", this._routeChange.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("route-change", this._routeChange.bind(this));
-    super.disconnectedCallback();
+  constructor() {
+    super();
+    this.addEventListener("route-change", this._routeChange.bind(this));
   }
   static get observers() {
     return [
