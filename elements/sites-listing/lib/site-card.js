@@ -1,21 +1,21 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-image/iron-image.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `site-card`
- * @customElement site-card
  * `A simple card for representing a site`
  * @demo demo/index.html
+ * @customElement site-card
  */
-class SiteCard extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class SiteCard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           width: 250px;
@@ -136,8 +136,15 @@ class SiteCard extends PolymerElement {
         .inline {
           display: inline;
         }
-      </style>
-      <paper-card elevation="[[elevation]]">
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <paper-card elevation="${this.elevation}">
         <div class="card-content card-control-height card-control-center">
           <div class="site-preview">
             <iron-image
@@ -145,19 +152,19 @@ class SiteCard extends PolymerElement {
               sizing="cover"
               preload=""
               fade=""
-              src="[[image]]"
-              hidden\$="[[!image]]"
+              src="${this.image}"
+              ?hidden="${!this.image}"
             ></iron-image>
           </div>
           <iron-icon
             class="site-icon"
-            icon="[[icon]]"
-            hidden\$="[[!icon]]"
+            icon="${this.icon}"
+            ?hidden="${!this.icon}"
           ></iron-icon>
           <div class="site-info">
             <div class="divider"></div>
-            <div class="name">[[name]]</div>
-            <div class="title">[[title]]</div>
+            <div class="name">${this.name}</div>
+            <div class="title">${this.title}</div>
           </div>
         </div>
         <div class="card-actions" hidden="">
@@ -166,9 +173,28 @@ class SiteCard extends PolymerElement {
       </paper-card>
     `;
   }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.icon = "";
+    this.name = "";
+    this.title = "";
+    this.elevation = 1;
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-image/iron-image.js");
+  }
+  /**
+   * convention
+   */
   static get tag() {
     return "site-card";
   }
+  /**
+   * LitElement / popular concept
+   */
   static get properties() {
     return {
       /**
@@ -176,7 +202,7 @@ class SiteCard extends PolymerElement {
        */
       size: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Cover image src.
@@ -188,30 +214,26 @@ class SiteCard extends PolymerElement {
        * Icon to use if image isn't there.
        */
       icon: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * name of the course like sing100
        */
       name: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * title of the course like Intro to studies
        */
       title: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * Visual elevation of the item off the UI via paper element height
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
