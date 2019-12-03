@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@polymer/iron-pages/iron-pages.js";
 import "./lrnapp-studio-submission-display.js";
 import "./lrnapp-studio-submission-edit.js";
@@ -9,25 +8,29 @@ class LrnappStudioSubmissionObject extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
-      <iron-pages selected="[[selectedPage]]">
+      `
+    ];
+  }
+  render() {
+    return html`
+      <iron-pages selected="${this.selectedPage}">
         <lrnapp-studio-submission-display
-          submission="{{submission}}"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
         ></lrnapp-studio-submission-display>
         <lrnapp-studio-submission-edit
-          submission="{{submission}}"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
         ></lrnapp-studio-submission-edit>
         <lrnapp-studio-submission-critique
-          submission="{{submission}}"
-          edit="${this.edit}"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
+          ?edit="${this.edit}"
         ></lrnapp-studio-submission-critique>
       </iron-pages>
     `;
@@ -58,23 +61,45 @@ class LrnappStudioSubmissionObject extends LitElement {
         attribute: "end-point"
       },
       submission: {
-        type: Object,
-        value: null,
-        notify: true
+        type: Object
       },
       edit: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       selectedPage: {
         type: Number,
-        value: 0
+        attribute: "selected-page"
       }
     };
   }
-
-  static get observers() {
-    return ["_selectedPageChanged(edit, submission.meta.submissionType)"];
+  submissionChanged(e) {
+    this.submission = { ...e.detail.value };
+  }
+  constructor() {
+    super();
+    this.submission = null;
+    this.edit = false;
+    this.selectedPage = 0;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "submission") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submission-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["edit", "submission"].includes(propName)) {
+        this._selectedPageChanged(
+          this.edit,
+          this.submission.meta.submissionType
+        );
+      }
+    });
   }
 
   _selectedPageChanged(edit, type) {
@@ -98,7 +123,7 @@ class LrnappStudioSubmissionObject extends LitElement {
           break;
       }
     }
-    this.set("selectedPage", selected);
+    this.selectedPage = selected;
   }
 }
 window.customElements.define(

@@ -24,7 +24,7 @@ class LrnappBlockRecentSubmissions extends LitElement {
       </style>
       <iron-ajax
         auto=""
-        url="{{sourcePath}}"
+        url="${this.sourcePath}"
         handle-as="json"
         last-response="{{response}}"
         @response="${this.handleResponse}"

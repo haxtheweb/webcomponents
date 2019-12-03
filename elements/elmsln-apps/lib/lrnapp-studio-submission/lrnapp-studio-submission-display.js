@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-image/iron-image.js";
@@ -14,11 +13,8 @@ class LrnappStudioSubmissionDisplay extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
         }
@@ -109,127 +105,136 @@ class LrnappStudioSubmissionDisplay extends LitElement {
         .top {
           top: 8em;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div class="submission-page">
         <paper-card class="submission-page-card ferpa-protect">
           <div class="card-content">
             <lrndesign-avatar
               class="center"
-              label="{{submission.relationships.author.data.name}}"
-              src="{{submission.relationships.author.data.avatar}}"
+              label="${this.submission.relationships.author.data.name}"
+              src="${this.submission.relationships.author.data.avatar}"
             ></lrndesign-avatar>
             <div class="author center">
-              {{submission.relationships.author.data.display_name}}
+              ${this.submission.relationships.author.data.display_name}
             </div>
-            <h2 class="title center">{{submission.attributes.title}}</h2>
+            <h2 class="title center">${this.submission.attributes.title}</h2>
             <div class="date center">
-              Created: [[date(submission.meta.created)]]
+              Created: ${this.date(this.submission.meta.created)}
             </div>
             <div class="date center">
-              Last updated: [[date(submission.meta.changed)]]
+              Last updated: ${this.date(this.submission.meta.changed)}
             </div>
             <!-- ----- Text Submission ----- -->
             <word-count>
               <marked-element id="markedarea"> </marked-element>
             </word-count>
             <!-- ----- Images Submission ----- -->
-            <template is="dom-if" if="[[submission.attributes.images]]">
-              <lrndesign-contentblock class="center">
-                <template
-                  is="dom-repeat"
-                  items="[[_toArray(submission.attributes.images)]]"
-                  as="image"
-                >
-                  <lrnsys-dialog alt="View Image" dynamic-images="">
-                    <div class="image-dialog-header"></div>
-                    <span slot="button">
-                      <iron-image
-                        style="width:200px; height:200px; background-color: lightgray;"
-                        sizing="contain"
-                        class="contain"
-                        src="[[image.thumbnail]]"
-                        preload=""
-                        fade=""
-                      ></iron-image>
-                    </span>
-                    <div style="text-align: center;">
-                      <template is="dom-if" if="[[!_isGif(image.url)]]">
-                        <image-inspector src="[[image.url]]">
-                          <span slot="toolbar">
-                            <lrnsys-button
-                              alt="Download all images"
-                              icon="icons:file-download"
-                              href="[[submission.attributes.download_files]]"
-                              target="_blank"
-                            ></lrnsys-button>
+            ${this.submission.attributes.images
+              ? html`
+                  <lrndesign-contentblock class="center">
+                    ${this._toArray(this.submission.attributes.images).map(
+                      image => html`
+                        <lrnsys-dialog alt="View Image" dynamic-images="">
+                          <div class="image-dialog-header"></div>
+                          <span slot="button">
+                            <iron-image
+                              style="width:200px; height:200px; background-color: lightgray;"
+                              sizing="contain"
+                              class="contain"
+                              src="${image.thumbnail}"
+                              preload=""
+                              fade=""
+                            ></iron-image>
                           </span>
-                        </image-inspector>
-                      </template>
-                      <template is="dom-if" if="[[_isGif(image.url)]]">
-                        <iron-image
-                          style="width:500px; height:500px; background-color: lightgray;"
-                          sizing="contain"
-                          class="contain"
-                          src="[[image.url]]"
-                          preload=""
-                          fade=""
-                        ></iron-image>
-                      </template>
-                    </div>
-                  </lrnsys-dialog>
-                </template>
-              </lrndesign-contentblock>
-            </template>
+                          <div style="text-align: center;">
+                            ${this._isGif(image.url)
+                              ? html`
+                                  <iron-image
+                                    style="width:500px; height:500px; background-color: lightgray;"
+                                    sizing="contain"
+                                    class="contain"
+                                    src="${image.url}"
+                                    preload=""
+                                    fade=""
+                                  ></iron-image>
+                                `
+                              : html`
+                                  <image-inspector src="${image.url}">
+                                    <span slot="toolbar">
+                                      <lrnsys-button
+                                        alt="Download all images"
+                                        icon="icons:file-download"
+                                        href="${this.submission.attributes
+                                          .download_files}"
+                                        target="_blank"
+                                      ></lrnsys-button>
+                                    </span>
+                                  </image-inspector>
+                                `}
+                          </div>
+                        </lrnsys-dialog>
+                      `
+                    )}
+                  </lrndesign-contentblock>
+                `
+              : ``}
             <!-- ----- Video Submission ----- -->
-            <template is="dom-if" if="[[submission.attributes.video]]">
-              <lrndesign-contentblock class="center">
-                <template
-                  is="dom-repeat"
-                  items="[[_toArray(submission.attributes.video)]]"
-                  as="video"
-                >
-                  <iframe
-                    width="460"
-                    height="249"
-                    src="[[video.video_src]]"
-                  ></iframe>
-                </template>
-              </lrndesign-contentblock>
-            </template>
+            ${this.submission.attributes.video
+              ? html`
+                  <lrndesign-contentblock>
+                    ${this._toArray(this.submission.attributes.video).map(
+                      video => html`
+                        <iframe
+                          width="460"
+                          height="249"
+                          src="${video.video_src}"
+                        ></iframe>
+                      `
+                    )}
+                  </lrndesign-contentblock>
+                `
+              : ``}
             <!-- ----- Links Submission ----- -->
-            <template is="dom-if" if="[[submission.attributes.links]]">
-              <lrndesign-contentblock>
-                <template
-                  is="dom-repeat"
-                  items="[[_toArray(submission.attributes.links)]]"
-                  as="link"
-                >
-                  <p>
-                    <strong>[[link.title]]:</strong>
-                    <a class="link" href="[[link.url]]" target="_blank"
-                      >[[link.url]]</a
-                    >
-                  </p>
-                </template>
-              </lrndesign-contentblock>
-            </template>
+            ${this.submission.attributes.links
+              ? html`
+                  <lrndesign-contentblock>
+                    ${this._toArray(this.submission.attributes.links).map(
+                      link => html`
+                        <p>
+                          <strong>${link.title}:</strong>
+                          <a class="link" href="${link.url}" target="_blank"
+                            >${link.url}</a
+                          >
+                        </p>
+                      `
+                    )}
+                  </lrndesign-contentblock>
+                `
+              : ``}
             <!-- ----- Files Submission ----- -->
-            <template is="dom-if" if="[[submission.attributes.files]]">
-              <lrndesign-contentblock title="Files Submitted">
-                <template
-                  is="dom-repeat"
-                  items="[[_toArray(submission.attributes.files)]]"
-                  as="file"
-                >
-                  <p>
-                    <strong>[[file.filename]]:</strong>
-                    <a class="link" href="[[file.url]]" target="_blank"
-                      >[[file.url]]</a
-                    >
-                  </p>
-                </template>
-              </lrndesign-contentblock>
-            </template>
+            ${this.submission.attributes.files
+              ? html`
+                  <lrndesign-contentblock title="Files Submitted">
+                    ${this._toArray(this.submission.attributes.files).map(
+                      file => html`
+                        <p>
+                          <strong>${file.filename}:</strong>
+                          <a class="link" href="${file.url}" target="_blank"
+                            >${file.url}</a
+                          >
+                        </p>
+                      `
+                    )}
+                  </lrndesign-contentblock>
+                `
+              : ``}
           </div>
         </paper-card>
       </div>
@@ -238,6 +243,24 @@ class LrnappStudioSubmissionDisplay extends LitElement {
   static get tag() {
     return "lrnapp-studio-submission-display";
   }
+  /**
+   * LitElement ready
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "submission") {
+        this._submissionLoaded(this[propName]);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submission-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   static get properties() {
     return {
       /**
@@ -245,9 +268,7 @@ class LrnappStudioSubmissionDisplay extends LitElement {
        * is being viewed.
        */
       submission: {
-        type: Object,
-        notify: true,
-        observer: "_submissionLoaded"
+        type: Object
       },
       elmslnCourse: {
         type: String,

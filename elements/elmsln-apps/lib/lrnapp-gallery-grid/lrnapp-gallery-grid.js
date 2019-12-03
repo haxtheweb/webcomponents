@@ -1,5 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
@@ -11,17 +14,8 @@ class LrnappGalleryGrid extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  constructor() {
-    super();
-    setTimeout(() => {
-      this.addEventListener("click", this._triggerDialog.bind(this));
-    }, 0);
-  }
-  render() {
-    return html`
-      <style include="materializecss-styles">
+    return [
+      css`
         :host {
           display: block;
         }
@@ -50,35 +44,83 @@ class LrnappGalleryGrid extends LitElement {
           font-size: 0.8em;
           background-color: white;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("click", this._triggerDialog.bind(this));
+    }, 0);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "sourcePath",
+        "submissions",
+        "activeImage",
+        "activeTitle",
+        "activeUrl",
+        "activeComments",
+        "activeAuthor"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles">
+          :host {
+            display: block;
+          }
+        </style>
+      </custom-style>
       <iron-ajax
         id="ajax"
         url="${this.sourcePath}"
         params=""
         handle-as="json"
-        last-response="{{submissions}}"
+        @last-response-changed="${this.submissionsChangedEvent}"
       ></iron-ajax>
-      <iron-scroll-threshold on-lower-threshold="_loadMoreData" id="threshold">
-        <iron-list grid items="[[_toArray(submissions.data)]]" as="item">
-          <template
-            is="dom-repeat"
-            items="[[_toArray(item.images)]]"
-            as="image"
-          >
-            <paper-button>
-              <iron-image
-                preload
-                open-url="{{item.url}}"
-                title="{{item.title}}"
-                alt="{{item.title}}"
-                src="{{image.src}}"
-                author="{{item.author}}"
-                comments="{{item.comments}}"
-                height="{{image.height}}"
-                width="{{image.width}}"
-              ></iron-image>
-            </paper-button>
-          </template>
+      <iron-scroll-threshold
+        @lower-threshold="${this._loadMoreData}"
+        id="threshold"
+      >
+        <iron-list
+          grid
+          .items="${this._toArray(this.submissions.data)}"
+          as="item"
+        >
+          ${this._toArray(item.images).map(
+            image => html`
+              <paper-button>
+                <iron-image
+                  preload
+                  open-url="${item.url}"
+                  title="${item.title}"
+                  alt="${item.title}"
+                  src="${image.src}"
+                  author="${item.author}"
+                  comments="${item.comments}"
+                  height="${image.height}"
+                  width="${image.width}"
+                ></iron-image>
+              </paper-button>
+            `
+          )}
         </iron-list>
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
@@ -103,6 +145,9 @@ class LrnappGalleryGrid extends LitElement {
         </paper-dialog-scrollable>
       </paper-dialog>
     `;
+  }
+  submissionsChangedEvent(e) {
+    this.submissions = [...e.detail.value];
   }
   static get tag() {
     return "lrnapp-gallery-grid";
@@ -131,36 +176,35 @@ class LrnappGalleryGrid extends LitElement {
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       submissions: {
-        type: Array,
-        notify: true
+        type: Array
       },
       activeImage: {
         type: String,
         reflect: true,
-        notify: true
+        attribute: "active-image"
       },
       activeTitle: {
         type: String,
         reflect: true,
-        notify: true
+        attribute: "active-title"
       },
       activeAuthor: {
         type: String,
         reflect: true,
-        notify: true
+        attribute: "active-author"
       },
       activeComments: {
         type: String,
         reflect: true,
-        notify: true
+        attribute: "active-comments"
       },
       activeUrl: {
         type: String,
         reflect: true,
-        notify: true
+        attribute: "active-url"
       }
     };
   }

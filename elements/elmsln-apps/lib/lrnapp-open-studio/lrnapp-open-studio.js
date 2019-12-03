@@ -1,6 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -22,11 +20,8 @@ class LrnappOpenStudio extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
           align-content: center;
@@ -81,27 +76,36 @@ class LrnappOpenStudio extends LitElement {
         iron-list {
           height: 100vh;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         auto
         url="${this.sourcePath}"
         params=""
         handle-as="json"
-        last-response="{{studioResponse}}"
+        @last-response-changed="${this.studioResponseChangedEvent}"
         @response="${this._handleResponse}"
       ></iron-ajax>
 
       <app-location
-        route="{{route}}"
-        query-params="{{queryParams}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
       ></app-location>
       <app-route
-        route="{{route}}"
-        pattern="${this.endPoint}/:page"
-        data="{{data}}"
-        tail="{{tail}}"
-        query-params="{{queryParams}}"
-      >
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .data="${this.data}"
+        @data-changed="${this.dataChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
+        pattern="${this.endPoint}/:page">
       </app-route>
 
       <div id="loading">
@@ -110,7 +114,8 @@ class LrnappOpenStudio extends LitElement {
       </div>
       <app-toolbar>
         <iron-selector
-          selected="{{data.page}}"
+          selected="${this.data.page}"
+          @selected-changed="${this.dataPageChangedEvent}"
           attr-for-selected="name"
           role="navigation"
         >
@@ -166,7 +171,8 @@ class LrnappOpenStudio extends LitElement {
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            selected="{{queryParams.author}}"
+            selected="${this.queryParams.author}"
+            @selected-changed="${this.queryParamsAuthorEvent}"
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
@@ -183,7 +189,8 @@ class LrnappOpenStudio extends LitElement {
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            selected="{{queryParams.project}}"
+            selected="${this.queryParams.project}"
+            @selected-changed="${this.queryParamsProjectEvent}"
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
@@ -200,7 +207,8 @@ class LrnappOpenStudio extends LitElement {
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            selected="{{queryParams.assignment}}"
+            selected="${this.queryParams.assignment}"
+            @selected-changed="${this.queryParamsAssignmentEvent}"
             attr-for-selected="item-id"
           >
             <paper-item></paper-item>
@@ -217,7 +225,8 @@ class LrnappOpenStudio extends LitElement {
       </app-toolbar>
       <div class="gallery-grid">
         <iron-pages
-          selected="{{data.page}}"
+          selected="${this.data.page}"
+          @selected-changed="${this.dataPageChangedEvent}"
           attr-for-selected="name"
           fallback-selection="submissions"
           role="main"
@@ -232,11 +241,9 @@ class LrnappOpenStudio extends LitElement {
             >
               <template>
                 <div class="gallerycard-wrapper">
-                  <a
-                    href="${
-                      this.basePath
-                    }lrnapp-studio-submission/submissions/[[item.id]]"
-                  >
+                  <a href="${
+                    this.basePath
+                  }lrnapp-studio-submission/submissions/[[item.id]]">
                     <lrndesign-gallerycard
                       elevation="2"
                       data-submission-id="[[item.id]]"
@@ -280,6 +287,41 @@ class LrnappOpenStudio extends LitElement {
       <paper-toast id="toast"></paper-toast>
     `;
   }
+  dataPageChangedEvent(e) {
+    let attr = this.data;
+    attr.page = e.detail.value;
+    this.data = { ...attr };
+  }
+  queryParamsAssignmentEvent(e) {
+    let attr = this.queryParams.attributes;
+    attr.assignment = e.detail.value;
+    this.queryParams.attributes = { ...attr };
+  }
+  queryParamsProjectEvent(e) {
+    let attr = this.queryParams.attributes;
+    attr.project = e.detail.value;
+    this.queryParams.attributes = { ...attr };
+  }
+  queryParamsAuthorEvent(e) {
+    let attr = this.queryParams.attributes;
+    attr.author = e.detail.value;
+    this.queryParams.attributes = { ...attr };
+  }
+  studioResponseChangedEvent(e) {
+    this.studioResponse = { ...e.detail.value };
+  }
+  queryParamsChangedEvent(e) {
+    this.queryParams = { ...e.detail.value };
+  }
+  dataChangedEvent(e) {
+    this.data = { ...e.detail.value };
+  }
+  routeChangedEvent(e) {
+    this.route = { ...e.detail.value };
+  }
+  tailChangedEvent(e) {
+    this.tail = { ...e.detail.value };
+  }
   static get tag() {
     return "lrnapp-open-studio";
   }
@@ -310,97 +352,179 @@ class LrnappOpenStudio extends LitElement {
        */
       studioResponse: {
         type: Object,
-        notify: true
+        attribute: "studio-response"
       },
       /**
        * The submissions to render; potentially filtered
        */
       submissions: {
-        type: Object,
-        notify: true,
-        computed: "_submissionsCompute(originalSubmissions, queryParams)"
+        type: Object
       },
       /**
        * The original submissions array; used to filter against
        */
       originalSubmissions: {
         type: Object,
-        notify: true
+        attribute: "original-submissions"
       },
       /**
        * The submissions to render
        */
       projects: {
-        type: Array,
-        notify: true,
-        value: []
+        type: Array
       },
       /**
        * The assignments to render
        */
       assignments: {
-        type: Array,
-        notify: true,
-        value: []
+        type: Array
       },
       /**
        * The authors to render
        */
       authors: {
-        type: Array,
-        notify: true,
-        value: []
+        type: Array
       },
       /**
        * sourcePath for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
-      },
-      /**
-       * Endpoint for submission data.
-       */
-      endPoint: {
-        type: String,
-        notify: true
-      },
-      /**
-       * base path for the app
-       */
-      basePath: {
-        type: String,
-        notify: true
+        attribute: "source-path"
       },
       /**
        * Active / clicked submission.
        */
       activeSubmission: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "active-submission"
       },
       queryParams: {
-        type: Object,
-        notify: true
+        type: Object
       },
       _blockcycle: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
   constructor() {
     super();
-    this.addEventListener("route-change", this._routeChange.bind(this));
+    this.projects = [];
+    this.assignments = [];
+    this.authors = [];
+    this.activeSubmission = null;
+    this._blockcycle = false;
+    setTimeout(() => {
+      this.addEventListener("route-change", this._routeChange.bind(this));
+    }, 0);
   }
-  static get observers() {
-    return [
-      "_routeChanged(route, endPoint)",
-      "_deleteToast(queryParams.deletetoast)",
-      "_assignmentFilterChanged(queryParams.assignment)",
-      "_projectFilterChanged(queryParams.project)"
-    ];
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "basePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("base-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "sourcePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("source-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "endPoint") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("end-point-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "studioResponse") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("studio-response-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "submissions") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submissions-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["originalSubmissions", "queryParams"].includes(propName)) {
+        this.submissions = [
+          ...this._submissionsCompute(
+            this.originalSubmissions,
+            this.queryParams
+          )
+        ];
+      }
+      if (propName == "originalSubmissions") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("original-submissions-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "activeSubmission") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-submission-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "queryParams") {
+        this._deleteToast(this.queryParams.deletetoast);
+        this._assignmentFilterChanged(this.queryParams.assignment);
+        this._projectFilterChanged(this.queryParams.project);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("query-params-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["projects", "assignments", "authors"].includes(propName)) {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+    });
   }
   // If the current route is outside the scope of our app
   // then allow the website to break out of the single page
@@ -422,16 +546,24 @@ class LrnappOpenStudio extends LitElement {
   _routeChange(e) {
     var details = e.detail;
     if (typeof details.queryParams.assignment !== typeof undefined) {
-      this.set("queryParams.assignment", details.queryParams.assignment);
+      let attr = this.queryParams;
+      attr.assignment = details.queryParams.assignment;
+      this.queryParams = { ...attr };
     }
     if (typeof details.queryParams.project !== typeof undefined) {
-      this.set("queryParams.project", details.queryParams.project);
+      let attr = this.queryParams;
+      attr.project = details.queryParams.project;
+      this.queryParams = { ...attr };
     }
     if (typeof details.queryParams.author !== typeof undefined) {
-      this.set("queryParams.author", details.queryParams.author);
+      let attr = this.queryParams;
+      attr.author = details.queryParams.author;
+      this.queryParams = { ...attr };
     }
     if (typeof details.data.page !== typeof undefined) {
-      this.set("data.page", details.data.page);
+      let attr = this.data;
+      attr.page = details.data.page;
+      this.data = { ...attr };
     }
   }
   _submissionsCompute(originalSubmissions, queryParams) {
@@ -474,8 +606,9 @@ class LrnappOpenStudio extends LitElement {
     return filteredSubmissions;
   }
   _tableClicked(e) {
-    this.set("route.path", this.endPoint + "/table");
-    this.notifyPath("route.path");
+    let attr = this.route;
+    attr.path = this.endPoint + "/table";
+    this.route = { ...attr };
   }
   /**
    * Support having a toast message because of delete or error elsewhere.
@@ -491,18 +624,19 @@ class LrnappOpenStudio extends LitElement {
           .querySelector("#toast")
           .show("Submission deleted successfully!");
       }
-      this.set("queryParams.deletetoast", undefined);
-      this.notifyPath("queryParams.deletetoast");
+      let attr = this.queryParams;
+      attr.deletetoast = undefined;
+      this.queryParams = { ...attr };
     }
   }
   _assignmentFilterChanged(assignment) {
     // if we have a assignment then we need to uncheck project
     if (typeof assignment !== typeof undefined && !this._blockcycle) {
       this._blockcycle = true;
-      this.set("queryParams.project", undefined);
-      this.notifyPath("queryParams.project");
-      this.set("queryParams.assignment", assignment);
-      this.notifyPath("queryParams.assignment");
+      let attr = this.queryParams;
+      attr.project = undefined;
+      attr.assignment = assignment;
+      this.queryParams = { ...attr };
     } else {
       this._blockcycle = false;
     }
@@ -511,10 +645,10 @@ class LrnappOpenStudio extends LitElement {
     // if we have a project then we need to uncheck assignment
     if (typeof project !== typeof undefined && !this._blockcycle) {
       this._blockcycle = true;
-      this.set("queryParams.project", project);
-      this.notifyPath("queryParams.project");
-      this.set("queryParams.assignment", undefined);
-      this.notifyPath("queryParams.assignment");
+      let attr = this.queryParams;
+      attr.project = project;
+      attr.assignment = undefined;
+      this.queryParams = { ...attr };
     } else {
       this._blockcycle = false;
     }

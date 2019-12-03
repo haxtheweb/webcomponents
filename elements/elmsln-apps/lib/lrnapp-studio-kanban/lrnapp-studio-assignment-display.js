@@ -1,16 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@polymer/marked-element/marked-element.js";
 class LrnappStudioAssignmentDisplay extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
           padding: 16px;
@@ -18,11 +14,15 @@ class LrnappStudioAssignmentDisplay extends LitElement {
         #assignment-body {
           font-size: 21px;
         }
-      </style>
-      <h1>[[assignment.attributes.title]]</h1>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <h1>${this.assignment.attributes.title}</h1>
       <marked-element
         id="assignment-body"
-        markdown="[[assignment.attributes.body]]"
+        markdown="${this.assignment.attributes.body}"
       ></marked-element>
     `;
   }
