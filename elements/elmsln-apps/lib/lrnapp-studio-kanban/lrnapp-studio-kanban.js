@@ -230,7 +230,7 @@ class LrnappStudioKanban extends LitElement {
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
       <lrnapp-studio-project-button
-        ?hidden="[[!projectResponse.data.canCreateProjects]]"
+        ?hidden="${!this.projectResponse.data.canCreateProjects}"
         classes="amber darken-4 white-text"
         end-point="${this.endPoint}"
         csrf-token="${this.csrfToken}"
@@ -238,7 +238,7 @@ class LrnappStudioKanban extends LitElement {
       ></lrnapp-studio-project-button>
       <div class="projects-window">
         <iron-list
-          items="[[_toArray(projectResponse.data.projects)]]"
+          items="${this._toArray(projectResponse.data.projects)}"
           as="project"
           class="projects-container"
           grid=""
@@ -247,43 +247,43 @@ class LrnappStudioKanban extends LitElement {
           <template class="projects-container-items">
             <div class="project-container">
               <paper-card
-                id="project-[[project.id]]"
+                id="project-${project.id}"
                 class="project-card grey lighten-3"
-                heading="[[project.attributes.title]]"
+                heading="${project.attributes.title}"
                 elevation="2"
               >
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
-                    id="project-[[project.id]]-edit"
+                    id="project-${project.id}-edit"
                     alt="Edit project"
                     class="operation"
                     hover-class="amber lighten-2"
-                    hidden="[[!project.meta.canUpdate]]"
+                    ?hidden="${!project.meta.canUpdate}"
                     icon="create"
                     @click="${this._makeProjectEditLink}"
                   >
                   </lrnsys-button>
                   <lrnapp-studio-assignment-button
-                    project-id="[[project.id]]"
+                    project-id="${project.id}"
                     icon-class="no-margin"
-                    id="project-[[project.id]]-add"
+                    id="project-${project.id}-add"
                     alt="Add assignment"
                     class="operation"
                     hover-class="amber lighten-2"
-                    hidden="[[!project.meta.canUpdate]]"
+                    ?hidden="${!project.meta.canUpdate}"
                     icon="add"
                     end-point="${this.endPoint}"
                     csrf-token="${this.csrfToken}"
                   >
                   </lrnapp-studio-assignment-button>
                   <lrnsys-button
-                    id="project-[[project.id]]-delete"
+                    id="project-${project.id}-delete"
                     alt="Delete project!"
                     class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
-                    hidden="[[!project.meta.canDelete]]"
+                    ?hidden="${!project.meta.canDelete}"
                     icon="delete-forever"
                     @click="${this._deleteProjectDialog}"
                     icon-class="no-margin"
@@ -292,49 +292,49 @@ class LrnappStudioKanban extends LitElement {
                 </div>
                 <div class="card-content">
                   <iron-list
-                    items="[[_toArray(project.relationships.assignments)]]"
+                    items="${this._toArray(project.relationships.assignments)}"
                     as="assignment"
                     mutable-data
                   >
                     <template>
                       <div class="assignment-row" id="assignment">
                         <lrnsys-button
-                          id="assignment-[[project.id]]-[[assignment.id]]"
+                          id="assignment-${project.id}-${assignment.id}"
                           class="assignment-row-button"
                           hover-class="amber lighten-5"
                           @click="${this.assignmentClick}"
-                          icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
+                          icon="${assignment.meta.relatedSubmissions.complete.icon}"
                         >
-                          [[assignment.attributes.title]]
+                          ${assignment.attributes.title}
                         </lrnsys-button>
                         <span class="assignment-operations">
                           <lrnsys-button
-                            id="assignment-[[project.id]]-[[assignment.id]]-add-critique"
+                            id="assignment-${project.id}-${assignment.id}-add-critique"
                             icon="editor:insert-comment"
                             alt="Add critique"
                             class="operation"
                             hover-class="green lighten-2"
-                            hidden="[[!assignment.meta.canCritique]]"
-                            href="[[assignment.meta.critiqueLink]]"
+                            ?hidden="${!assignment.meta.canCritique}"
+                            href="${assignment.meta.critiqueLink}"
                             icon-class="no-margin"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id="assignment-[[project.id]]-[[assignment.id]]-edit"
+                            id="assignment-${project.id}-${assignment.id}-edit"
                             icon="editor:mode-edit"
                             alt="Edit"
                             class="operation"
                             hover-class="amber lighten-4"
-                            hidden="[[!assignment.meta.canUpdate]]"
+                            ?hidden="${!assignment.meta.canUpdate}"
                             @click="${this._makeAssignmentEditLink}"
                             icon-class="no-margin green-text text-darken-4"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id="assignment-[[project.id]]-[[assignment.id]]-delete"
+                            id="assignment-${project.id}-${assignment.id}-delete"
                             icon="delete"
                             alt="Delete"
                             class="operation"
                             hover-class="amber lighten-4"
-                            hidden="[[!assignment.meta.canDelete]]"
+                            hidden="${!assignment.meta.canDelete}"
                             @click="${this._deleteAssignmentDialog}"
                             icon-class="no-margin red-text text-darken-4"
                           ></lrnsys-button>
@@ -350,8 +350,8 @@ class LrnappStudioKanban extends LitElement {
       </div>
       <paper-toast text="Updated" id="toast"></paper-toast>
       <paper-dialog id="delete" modal="">
-        <h3>[[_deleteTitle]]</h3>
-        <p>[[_deleteText]]</p>
+        <h3>${this._deleteTitle}</h3>
+        <p>${this._deleteText}</p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Decline</paper-button>
           <paper-button
@@ -367,43 +367,43 @@ class LrnappStudioKanban extends LitElement {
         <div id="activecontent">
           <app-header reveals>
             <app-toolbar
-              class="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
+              class="${this.activeAssignmentNode.meta.relatedSubmissions.complete.color}"
             >
               <div>
                 <iron-icon
-                  icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
-                  disabled="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
+                  icon="${this.activeAssignmentNode.meta.relatedSubmissions.complete.icon}"
+                  ?disabled="${!this.activeAssignmentNode.meta.relatedSubmissions.canCreate}"
                 ></iron-icon>
-                [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.title]]
+                ${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.title}
               </div>
               <div
                 spacer=""
                 class="comment-box"
-                ?hidden="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+                ?hidden="${!this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.id}"
               >
                 <paper-button
-                  id="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
+                  id="assignment-${this.activeAssignmentNode.relationships.project.data.id}-${this.activeAssignmentNode.id}-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
                   <iron-icon icon="communication:forum"></iron-icon>
-                  [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
+                  ${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count}
                   Comments
                 </paper-button>
                 <paper-badge
-                  ?hidden="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
-                  for="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
-                  label="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
+                  ?hidden="${this.displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)}"
+                  for="assignment-${this.activeAssignmentNode.relationships.project.data.id}-${this.activeAssignmentNode.id}-comments"
+                  label="${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new}"
                 ></paper-badge>
               </div>
 
               <lrnapp-studio-submission-button
                 spacer
                 auto
-                assignment-id="[[activeAssignmentNode.id]]"
-                submission="{{submission}}"
-                end-point="[[buildSubmissionPath(basePath)]]"
+                assignment-id="${this.activeAssignmentNode.id}"
+                .submission="${this.submission}"
+                end-point="${this.buildSubmissionPath(this.basePath)}"
                 csrf-token="${this.csrfToken}"
-                submission-id="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+                submission-id="${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.id}"
               ></lrnapp-studio-submission-button>
               <paper-toggle-button
                 id="activetoggle"
@@ -412,12 +412,12 @@ class LrnappStudioKanban extends LitElement {
               <span id="activetoggletext"></span>
             </app-toolbar>
             <div class="status-rationale">
-              [[activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text]]
+              ${this.activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text}
             </div>
           </app-header>
           <lrnsys-render-html
             style="padding:2em;"
-            html="[[activeAssignmentNode.attributes.body]]"
+            html="${this.activeAssignmentNode.attributes.body}"
           ></lrnsys-render-html>
         </div>
       </paper-dialog>
@@ -554,8 +554,9 @@ class LrnappStudioKanban extends LitElement {
           .querySelector("#toast")
           .show("Submission deleted successfully!");
       }
-      this.set("queryParams.deletetoast", undefined);
-      this.notifyPath("queryParams.deletetoast");
+      let attr = this.queryParams;
+      attr.deletetoast = undefined;
+      this.queryParams = { ...attr };
     }
   }
 
@@ -709,7 +710,6 @@ class LrnappStudioKanban extends LitElement {
     if (this.activeAssignment) {
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
-        this.set("activeAssignmentNode", {});
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
         ].relationships.assignments["assignment-" + parts[2]];
@@ -736,7 +736,6 @@ class LrnappStudioKanban extends LitElement {
       this.shadowRoot.querySelector("#projectbackend").generateRequest();
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
-        this.set("activeAssignmentNode", {});
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
         ].relationships.assignments["assignment-" + parts[2]];

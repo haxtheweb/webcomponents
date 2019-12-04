@@ -84,25 +84,43 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
   static get tag() {
     return "lrnapp-studio-submission-edit-files";
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ['files'];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
+  }
+  constructor() {
+    super();
+    this.files = [];
+    this.selectedPage = 0;
+    this.uploadUrl = null;
+    this.fileTypes = '';
+  }
   static get properties() {
     return {
       files: {
         type: Array,
-        notify: true,
-        value: null
       },
       selectedPage: {
         type: String,
-        value: 0
       },
       uploadUrl: {
         type: String,
-        value: null,
-        observer: "log"
       },
       fileTypes: {
         type: String,
-        value: ""
+        attribute: 'file-types',
       }
     };
   }
@@ -154,7 +172,6 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
     }
   }
 
-  log(property) {}
   /**
    * attached life cycle
    */

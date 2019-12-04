@@ -36,12 +36,12 @@ class LrnappStudioSubmissionButton extends LitElement {
           url="${this.endPoint}/api/submissions/create-stub?token=${this
             .csrfToken}"
           method="POST"
-          body="[[assignmentId]]"
+          body="${this.assignmentId}"
           handle-as="json"
           @response="${this._ajaxCreateStubHandler}"
         ></iron-ajax>
       </template>
-      <template is="dom-if" if="[[submissionId]]">
+      <template is="dom-if" if="${this.submissionId}">
         <lrnsys-button
           raised=""
           label="View submission"

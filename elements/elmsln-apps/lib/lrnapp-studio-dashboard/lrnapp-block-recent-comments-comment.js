@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-card/paper-card.js";
@@ -134,33 +133,45 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
       },
       commentTitle: {
         type: String,
-        value: "Comment title",
         reflect: true,
-        notify: true
       },
       actionView: {
         type: String,
         reflect: true,
-        notify: true
       },
       dateUpdated: {
         type: String,
         reflect: true,
-        notify: true
       },
       commentUser: {
         type: Object,
-        value: {},
         reflect: true,
-        notify: true
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ['commentTitle', 'actionView', 'dateUpdated', 'commentUser'];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * attached life cycle
    */
   constructor() {
     super();
+    this.commentTitle = 'Comment title';
+    this.commentUser = {};
     setTimeout(() => {
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
     }, 0);

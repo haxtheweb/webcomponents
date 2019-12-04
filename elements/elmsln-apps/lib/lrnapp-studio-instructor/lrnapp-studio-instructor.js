@@ -1,6 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -233,14 +231,14 @@ class LrnappStudioInstructor extends LitElement {
       <h3>Loading..</h3>
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
     </div>
-    <div ?hidden="[[activeProject]]">Select a project to begin reviewing work</div>
+    <div ?hidden="${this.activeProject}">Select a project to begin reviewing work</div>
     <dropdown-select id="selectedproject" label="Project">
       <template is="dom-repeat" items="[[_toArray(projects)]]" as="project">
         <paper-item value="[[project.id]]">[[project.attributes.title]]</paper-item>
       </template>
     </dropdown-select>
     <paper-toggle-button id="datatype" ?checked="{{dataType}}" disabled>
-      [[dataTypeText]]
+      ${this.dataTypeText}
     </paper-toggle-button>
     <paper-button id="statsdialogbutton" disabled><iron-icon icon="editor:show-chart"></iron-icon> Statistics (beta)</span></paper-button>
     <paper-dialog id="statsdialog">
@@ -264,7 +262,7 @@ class LrnappStudioInstructor extends LitElement {
           <vaadin-grid-sorter id="sorter" path="sis.sortable_name">Student</vaadin-grid-sorter>
         </template>
         <template>
-          <a href="${this.basePath}lrnapp-open-studio/projects?author=[[item.id]]&project=[[activeProject]]" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
+          <a href="${this.basePath}lrnapp-open-studio/projects?author=[[item.id]]&project=${this.activeProject}" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
             <paper-button class="avatar-button">
               <lrndesign-avatar label="[[item.name]]" src="[[item.avatar]]"></lrndesign-avatar>
               <span class="avatar-label">[[item.sis.sortable_name]]</span>
@@ -540,16 +538,11 @@ class LrnappStudioInstructor extends LitElement {
    * Rebuild the chart whenever the select list is changed.
    */
   _chartChanged(e) {
-    this.set("activeChart.title", e.detail.value);
-    this.notifyPath("activeChart.title");
-    this.set(
-      "activeChart.description",
-      "Chart of values relative to " + e.detail.value
-    );
-    this.notifyPath("activeChart.description");
-    // calculate the valid charting options relative to selected chart style
-    this.set("activeChart.data", this._formatChartData(e.detail.value));
-    this.notifyPath("activeChart.data");
+    let attr = this.activeChart;
+    attr.title = e.detail.value;
+    attr.description = "Chart of values relative to " + e.detail.value;
+    attr.data = this._formatChartData(e.detail.value);
+    this.activeChart = { ...attr };
   }
   /**
    * Format data in a way that chartist likes and that matches
@@ -735,23 +728,17 @@ class LrnappStudioInstructor extends LitElement {
    */
   _handleProjectResponse(event) {
     this.shadowRoot.querySelector("#loading").hidden = true;
-    this.set("projects", this._projectData.data.projects);
+    this.projects = this._projectData.data.projects;
   }
   /**
    * Handle response for the whole projects object.
    */
   _handleStudentResponse(event) {
     this.shadowRoot.querySelector("#loading").hidden = true;
-    this.set("students", []);
-    this.set("students", this._studentData.data.students);
-    this.set("assignments", []);
-    this.set("assignments", this._studentData.data.assignments);
+    this.students = [...this._studentData.data.students];
+    this.assignments = [...this._studentData.data.assignments];
     this.stats = this._studentData.data.stats;
-    this.set(
-      "stats.header",
-      "Statistics for " +
-        this.projects["project-" + this.activeProject].attributes.title
-    );
+    this.stats.header = "Statistics for " + this.projects["project-" + this.activeProject].attributes.title;
     // make sure default is asc data
     setTimeout(() => {
       this.shadowRoot.querySelector("#sorter").direction = "asc";
@@ -778,17 +765,9 @@ class LrnappStudioInstructor extends LitElement {
           typeof newstudent.assignments[this.activeData.assignment.id] !==
             typeof undefined
         ) {
-          this.set("activeData.student", {});
-          this.set("activeData.student", newstudent);
-          this.set("activeData.submission", {});
-          this.set(
-            "activeData.submission",
-            newstudent.assignments[this.activeData.assignment.id]
-          );
-          this.set(
-            "route.path",
-            this.endPoint + "/submissions/" + this.activeData.submission.id
-          );
+          this.activeData.student = {...newstudent}
+          this.activeData.submission = {...newstudent.assignments[this.activeData.assignment.id]}
+          this.route.path = this.endPoint + "/submissions/" + this.activeData.submission.id;
         }
         break;
       case "nextstudent":
@@ -802,17 +781,9 @@ class LrnappStudioInstructor extends LitElement {
           typeof newstudent.assignments[this.activeData.assignment.id] !==
             typeof undefined
         ) {
-          this.set("activeData.student", {});
-          this.set("activeData.student", newstudent);
-          this.set("activeData.submission", {});
-          this.set(
-            "activeData.submission",
-            newstudent.assignments[this.activeData.assignment.id]
-          );
-          this.set(
-            "route.path",
-            this.endPoint + "/submissions/" + this.activeData.submission.id
-          );
+          this.activeData.student = {...newstudent};
+          this.activeData.submission = {...newstudent.assignments[this.activeData.assignment.id]};
+          this.route.path = this.endPoint + "/submissions/" + this.activeData.submission.id;
         }
         break;
       case "prevassignment":
@@ -822,25 +793,15 @@ class LrnappStudioInstructor extends LitElement {
           -1
         );
         if (newassignment != -1) {
-          this.set("activeData.assignment", {});
-          this.set("activeData.assignment", newassignment);
+          this.activeData.assignment = {...newassignment}
           if (
             typeof this.activeData.student.assignments[newassignment.id].id !==
             typeof undefined
           ) {
-            this.set(
-              "activeData.submission",
-              this.activeData.student.assignments[newassignment.id]
-            );
-            this.set("activeData.submission", {});
-            this.set(
-              "route.path",
-              this.endPoint +
-                "/submissions/" +
-                this.activeData.student.assignments[newassignment.id].id
-            );
+            this.activeData.submission = {...this.activeData.student.assignments[newassignment.id]};
+            this.route.path = this.endPoint + "/submissions/" + this.activeData.student.assignments[newassignment.id].id
           } else {
-            this.set("activeData.submission", false);
+            this.activeData.submission = false;
           }
         }
         break;
@@ -851,25 +812,15 @@ class LrnappStudioInstructor extends LitElement {
           1
         );
         if (newassignment != -1) {
-          this.set("activeData.assignment", {});
-          this.set("activeData.assignment", newassignment);
+          this.activeData.assignment = {...newassignment};
           if (
             typeof this.activeData.student.assignments[newassignment.id].id !==
             typeof undefined
           ) {
-            this.set("activeData.submission", {});
-            this.set(
-              "activeData.submission",
-              this.activeData.student.assignments[newassignment.id]
-            );
-            this.set(
-              "route.path",
-              this.endPoint +
-                "/submissions/" +
-                this.activeData.student.assignments[newassignment.id].id
-            );
+          this.activeData.submission = {...this.activeData.student.assignments[newassignment.id]};
+          this.route.path = this.endPoint + "/submissions/" + this.activeData.student.assignments[newassignment.id].id;
           } else {
-            this.set("activeData.submission", false);
+            this.activeData.submission = false;
           }
         }
         break;
@@ -994,16 +945,10 @@ class LrnappStudioInstructor extends LitElement {
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
-    this.set("activeData.student", this.students[item[1]]);
-    this.set("activeData.assignment", this.assignments[item[3]]);
-    this.set(
-      "activeData.submission",
-      this.students[item[1]].assignments[item[3]]
-    );
-    this.set(
-      "route.path",
-      this.endPoint + "/submissions/" + item[item.length - 1]
-    );
+    this.activeData.student = {...this.students[item[1]]};
+    this.activeData.assignment = {...this.assignments[item[3]]};
+    this.activeData.submission = {...this.students[item[1]].assignments[item[3]]};
+    this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
     document.body.classList.add("scroll-disabled");
     this.shadowRoot.querySelector("#dialog").toggle();
   }
@@ -1020,16 +965,10 @@ class LrnappStudioInstructor extends LitElement {
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
-    this.set("activeData.student", this.students[item[1]]);
-    this.set("activeData.assignment", this.assignments[item[3]]);
-    this.set(
-      "activeData.submission",
-      this.students[item[1]].assignments[item[3]]
-    );
-    this.set(
-      "route.path",
-      this.endPoint + "/submissions/" + item[item.length - 1]
-    );
+    this.activeData.student = {...this.students[item[1]]};
+    this.activeData.assignment = {...this.assignments[item[3]]};
+    this.activeData.submission = {...this.students[item[1]].assignments[item[3]]};
+    this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
     document.body.classList.add("scroll-disabled");
     this.shadowRoot.querySelector("#dialog").toggle();
   }

@@ -1,9 +1,0 @@
-{
-  "name": "@polymer/elmsln-open-studio",
-  "flat": true,
-  "version": "",
-  "description": "open studio application",
-  "main": "index.html",
-  "dependencies": {},
-  "devDependencies": {}
-}

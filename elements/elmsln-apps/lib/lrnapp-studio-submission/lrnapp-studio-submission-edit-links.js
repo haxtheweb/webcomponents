@@ -94,16 +94,33 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
     return {
       links: {
         type: Array,
-        value: null,
-        notify: true
       },
       newlink: {
         type: String,
-        value: ""
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ['links'];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
+  }
+  constructor() {
+    super();
+    this.newlink = '';
+    this.links = [];
+  }
   _openDialog() {
     // @todo switch to singleton
     this.shadowRoot.querySelector("#dialog").open();
@@ -112,9 +129,9 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
   _createLink(e) {
     var links = this.links;
     if (links === null) {
-      this.set("links", []);
+      this.links = [];
     }
-    this.push("links", { url: this.newlink });
+    this.links.push({ url: this.newlink });
     this.newlink = "";
   }
 

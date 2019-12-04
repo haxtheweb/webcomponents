@@ -165,7 +165,7 @@ class LrnappCanvasListing extends LitElement {
         column-reordering-allowed
         id="material"
         aria-label="Course list"
-        items="[[_toArray(canvasCourses)]]"
+        .items="${this._toArray(this.canvasCourses)}"
       >
         <vaadin-grid-column width="50px" flex-grow="0">
           <template class="header"
@@ -189,12 +189,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Semester"
               path="term"
-              value="[[_filterTerm]]"
+              value="${this._filterTerm}"
             >
               <paper-input
                 slot="filter"
                 label="Semester"
-                value="{{_filterTerm::input}}"
+                @value-changed="${this._filterTermEvent}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -211,12 +211,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Course"
               path="name"
-              value="[[_filterCourse]]"
+              value="${this._filterCourse}"
             >
               <paper-input
                 slot="filter"
                 label="Course"
-                value="{{_filterCourse::input}}"
+                @value-changed="${this._filterCourseEvent}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -233,12 +233,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Student information system ID"
               path="sis_course_id"
-              value="[[_filterSIS]]"
+              value="${this._filterSIS}"
             >
               <paper-input
                 slot="filter"
                 label="SIS"
-                value="{{_filterSIS::input}}"
+                @value-changed="${this._filterSISChanged}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -265,12 +265,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Workflow state"
               path="workflow_state"
-              value="[[_filterWorkflow]]"
+              value="${this._filterWorkflow}"
             >
               <paper-input
                 slot="filter"
                 label="State"
-                value="{{_filterWorkflow::input}}"
+                value="${this._filterWorkflowChanged}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -286,27 +286,23 @@ class LrnappCanvasListing extends LitElement {
               class="listing-select"
               value="{{item.elmslnCourse::input}}"
             >
-              <template
-                is="dom-repeat"
-                items="[[elmslnCourses]]"
-                as="elmsCourse"
-              >
-                <option value="[[elmsCourse.machineName]]"
-                  >[[elmsCourse.name]] ([[elmsCourse.machineName]])</option
-                >
-              </template>
+            ${this.elmslnCourses.map(elmsCourse => html`
+              <option value="${elmsCourse.machineName}">
+                ${elmsCourse.name} (${elmsCourse.machineName})
+              </option>            
+            `)}
             </select>
           </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Course"
               path="elmslnCourse"
-              value="[[_filterELMSLNCourse]]"
+              value="${this._filterELMSLNCourse}"
             >
               <paper-input
                 slot="filter"
                 label="Course"
-                value="{{_filterELMSLNCourse::input}}"
+                @value-changed="${this.filterELMSLNCourseEvent}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -337,7 +333,7 @@ class LrnappCanvasListing extends LitElement {
         tabindex="-1"
         id="details-dialog"
         body-append
-        header="{{activeCourse.name}}"
+        header="${this.activeCourse.name}"
       >
         <div slot="content">
           <template is="dom-if" if="{{!roster}}">
@@ -349,51 +345,77 @@ class LrnappCanvasListing extends LitElement {
         </div>
         <div slot="header">
           <template is="dom-if" if="{{roster}}">
-            <template is="dom-if" if="{{activeCourse.image}}">
+            <template is="dom-if" if="${this.activeCourse.image}">
               <iron-image
                 style="width:100%; height:200px; background-color: lightgray;"
                 sizing="cover"
                 preload
                 fade
-                src="{{activeCourse.image}}"
+                src="${this.activeCourse.image}"
               ></iron-image>
             </template>
             <span class="heading">
-              <span>Student count: {{activeCourse.student_count}}</span>
-              <span>SIS ID: {{activeCourse.sis_course_id}}</span>
-              <span>Term: {{activeCourse.term}}</span>
-              <span>Workflow: {{activeCourse.workflow_state}}</span>
+              <span>Student count: ${this.activeCourse.student_count}</span>
+              <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
+              <span>Term: ${this.activeCourse.term}</span>
+              <span>Workflow: ${this.activeCourse.workflow_state}</span>
             </span>
           </template>
         </div>
         <div id="loadingContent" slot="content">
-          <template is="dom-repeat" items="[[_toArray(roster)]]" as="roleList">
-            <h2>{{roleList.role}}s</h2>
-            <template
-              is="dom-repeat"
-              items="[[_toArray(roleList.users)]]"
-              as="user"
-            >
-              <div class="avatar-name" id="user-{{user.id}}">
+          ${this._toArray(this.roster).map(roleList => html`
+            <h2>${roleList.role}s</h2>
+            ${this._toArray(roleList.users).map(user => html`
+              <div class="avatar-name" id="user-${user.id}">
                 <lrndesign-avatar
-                  label="{{user.name}}"
-                  src="{{user.picture}}"
+                  label="${user.name}"
+                  src="${user.picture}"
                 ></lrndesign-avatar>
               </div>
-              <paper-tooltip for="user-{{user.id}}"
-                >{{user.name}}</paper-tooltip
+              <paper-tooltip for="user-${user.id}"
+                >${user.name}</paper-tooltip
               >
-            </template>
-          </template>
+            `)}
+          `)}
         </div>
       </lrnsys-dialog>
     `;
+  }
+  _filterWorkflowChanged(e) {
+    this._filterWorkflow = e.detail.value;
+  }
+  _filterCourseEvent(e) {
+    this._filterCourse = e.detail.value;
+  }
+  filterELMSLNCourseEvent(e) {
+    this._filterELMSLNCourse = e.detail.value;
+  }
+  _filterTermEvent(e) {
+    this._filterTerm = e.detail.value;
+  }
+  _filterSISChanged(e) {
+    this._filterSIS = e.detail.value;
   }
   static get tag() {
     return "lrnapp-canvas-listing";
   }
   static get properties() {
     return {
+      _filterWorkflow: {
+        type: String,
+      },
+      _filterSIS: {
+        type: String,
+      },
+      _filterCourse: {
+        type: String,
+      },
+      _filterTerm: {
+        type: String,
+      },
+      _filterELMSLNCourse: {
+        type: String,
+      },
       elmslnCourse: {
         type: String,
         attribute: "elmsln-course"
@@ -414,33 +436,40 @@ class LrnappCanvasListing extends LitElement {
         type: String,
         attribute: "end-point"
       },
-      elmslnCourses: {
-        type: Array,
-        notify: true
-      },
       canvasCourses: {
         type: Array,
-        notify: true
       },
       roster: {
         type: Array,
-        notify: true,
         value: false
       },
       queryResponse: {
         type: Array,
-        notify: true
       },
       sourcePath: {
         type: String,
-        notify: true
       },
       activeCourse: {
         type: String,
-        notify: true,
         reflect: true
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ['activeCourse', 'sourcePath', 'queryResponse', 'roster', 'canvasCourses', 'elmslnCourses'];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * Simple way to convert from object to array.

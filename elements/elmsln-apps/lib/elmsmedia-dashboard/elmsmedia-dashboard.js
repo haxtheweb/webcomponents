@@ -155,7 +155,7 @@ class ElmsmediaDashboard extends LitElement {
   removeFilter(path, propValue) {
     const currentParams = Object.assign({}, this.queryParams);
     // get the current value of the filter
-    const currentValue = _.get(currentParams, path);
+    const currentValue = this.get(currentParams, path);
     // remove the specified filter from the current value
     // by converting to an array and filtering it
     const newValue = currentValue

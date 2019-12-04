@@ -307,17 +307,17 @@ class LrnappStudioSubmissionPage extends LitElement {
           ${this.showComments
             ? html`
                 <lrnsys-comment-list
-                  comment-ops-base="{{commentOpsBase}}"
+                  comment-ops-base="${this.commentOpsBase}"
                   csrf-token="${this.csrfToken}"
-                  source-path="{{commentsUrl}}"
-                  create-stub-url="{{createStubUrl}}"
+                  source-path="${this.commentsUrl}"
+                  create-stub-url="${this.createStubUrl}"
                 ></lrnsys-comment-list>
               `
             : ``}
         </div>
         <div id="submissioncolumn" style="width:70%;">
           <lrnapp-studio-submission-object
-            submission="{{submission}}"
+            .submission="${this.submission}"
             edit="${this.editPage}"
           ></lrnapp-studio-submission-object>
         </div>
@@ -385,7 +385,6 @@ class LrnappStudioSubmissionPage extends LitElement {
       },
       hideMenuBar: {
         type: Boolean,
-        value: false
       },
       elmslnCourse: {
         type: String,
@@ -418,15 +417,12 @@ class LrnappStudioSubmissionPage extends LitElement {
       },
       commentsUrl: {
         type: String,
-        computed: "_computeCommentsUrl(id, endPoint, csrfToken)"
       },
       createStubUrl: {
         type: String,
-        computed: "_computeCommentsStubUrl(id, endPoint, csrfToken)"
       },
       commentOpsBase: {
         type: String,
-        computed: "_computeCommentsOpsUrl(id, endPoint, csrfToken)"
       },
       editPage: {
         type: Boolean,
@@ -434,17 +430,42 @@ class LrnappStudioSubmissionPage extends LitElement {
       },
       saving: {
         type: Boolean,
-        value: false,
-        notify: true,
         reflect: true
       },
       showComments: {
         type: Boolean,
-        computed: "_computeShowComments(submission)"
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == 'submission') {
+        this.showComments = this._computeShowComments(this[propName]);
+      }
+      if (['id', 'endPoint', 'csrfToken'].includes(propName)) {
+        this.commentsUrl = this._computeCommentsUrl(this.id, this.endPoint, this.csrfToken);
+        this.createStubUrl = this._computeCommentsStubUrl(this.id, this.endPoint, this.csrfToken);
+        this.commentOpsBase = this._computeCommentsOpsUrl(this.id, this.endPoint, this.csrfToken);
+      }
+      let notifiedProps = ['saving'];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName],
+            }
+          })
+        );
+      }
+    });
+  }
+  constructor() {
+    super();
+    this.hideMenuBar = false;
+    this.saving = false;
+  }
   static get observers() {
     return [
       "_urlVarsChanged(id, endPoint)",
