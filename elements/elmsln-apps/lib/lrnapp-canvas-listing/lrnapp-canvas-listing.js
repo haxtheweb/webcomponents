@@ -286,11 +286,13 @@ class LrnappCanvasListing extends LitElement {
               class="listing-select"
               value="{{item.elmslnCourse::input}}"
             >
-            ${this.elmslnCourses.map(elmsCourse => html`
-              <option value="${elmsCourse.machineName}">
-                ${elmsCourse.name} (${elmsCourse.machineName})
-              </option>            
-            `)}
+              ${this.elmslnCourses.map(
+                elmsCourse => html`
+                  <option value="${elmsCourse.machineName}">
+                    ${elmsCourse.name} (${elmsCourse.machineName})
+                  </option>
+                `
+              )}
             </select>
           </template>
           <template class="footer">
@@ -363,20 +365,24 @@ class LrnappCanvasListing extends LitElement {
           </template>
         </div>
         <div id="loadingContent" slot="content">
-          ${this._toArray(this.roster).map(roleList => html`
-            <h2>${roleList.role}s</h2>
-            ${this._toArray(roleList.users).map(user => html`
-              <div class="avatar-name" id="user-${user.id}">
-                <lrndesign-avatar
-                  label="${user.name}"
-                  src="${user.picture}"
-                ></lrndesign-avatar>
-              </div>
-              <paper-tooltip for="user-${user.id}"
-                >${user.name}</paper-tooltip
-              >
-            `)}
-          `)}
+          ${this._toArray(this.roster).map(
+            roleList => html`
+              <h2>${roleList.role}s</h2>
+              ${this._toArray(roleList.users).map(
+                user => html`
+                  <div class="avatar-name" id="user-${user.id}">
+                    <lrndesign-avatar
+                      label="${user.name}"
+                      src="${user.picture}"
+                    ></lrndesign-avatar>
+                  </div>
+                  <paper-tooltip for="user-${user.id}"
+                    >${user.name}</paper-tooltip
+                  >
+                `
+              )}
+            `
+          )}
         </div>
       </lrnsys-dialog>
     `;
@@ -402,19 +408,19 @@ class LrnappCanvasListing extends LitElement {
   static get properties() {
     return {
       _filterWorkflow: {
-        type: String,
+        type: String
       },
       _filterSIS: {
-        type: String,
+        type: String
       },
       _filterCourse: {
-        type: String,
+        type: String
       },
       _filterTerm: {
-        type: String,
+        type: String
       },
       _filterELMSLNCourse: {
-        type: String,
+        type: String
       },
       elmslnCourse: {
         type: String,
@@ -437,17 +443,17 @@ class LrnappCanvasListing extends LitElement {
         attribute: "end-point"
       },
       canvasCourses: {
-        type: Array,
+        type: Array
       },
       roster: {
         type: Array,
         value: false
       },
       queryResponse: {
-        type: Array,
+        type: Array
       },
       sourcePath: {
-        type: String,
+        type: String
       },
       activeCourse: {
         type: String,
@@ -457,14 +463,23 @@ class LrnappCanvasListing extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ['activeCourse', 'sourcePath', 'queryResponse', 'roster', 'canvasCourses', 'elmslnCourses'];
+      let notifiedProps = [
+        "activeCourse",
+        "sourcePath",
+        "queryResponse",
+        "roster",
+        "canvasCourses",
+        "elmslnCourses"
+      ];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );

@@ -133,32 +133,39 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
       },
       commentTitle: {
         type: String,
-        reflect: true,
+        reflect: true
       },
       actionView: {
         type: String,
-        reflect: true,
+        reflect: true
       },
       dateUpdated: {
         type: String,
-        reflect: true,
+        reflect: true
       },
       commentUser: {
         type: Object,
-        reflect: true,
+        reflect: true
       }
     };
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ['commentTitle', 'actionView', 'dateUpdated', 'commentUser'];
+      let notifiedProps = [
+        "commentTitle",
+        "actionView",
+        "dateUpdated",
+        "commentUser"
+      ];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -170,7 +177,7 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    */
   constructor() {
     super();
-    this.commentTitle = 'Comment title';
+    this.commentTitle = "Comment title";
     this.commentUser = {};
     setTimeout(() => {
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));

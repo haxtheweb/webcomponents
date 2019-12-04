@@ -93,23 +93,25 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
   static get properties() {
     return {
       links: {
-        type: Array,
+        type: Array
       },
       newlink: {
-        type: String,
+        type: String
       }
     };
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ['links'];
+      let notifiedProps = ["links"];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -118,7 +120,7 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
   }
   constructor() {
     super();
-    this.newlink = '';
+    this.newlink = "";
     this.links = [];
   }
   _openDialog() {

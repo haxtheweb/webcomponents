@@ -303,7 +303,8 @@ class LrnappStudioKanban extends LitElement {
                           class="assignment-row-button"
                           hover-class="amber lighten-5"
                           @click="${this.assignmentClick}"
-                          icon="${assignment.meta.relatedSubmissions.complete.icon}"
+                          icon="${assignment.meta.relatedSubmissions.complete
+                            .icon}"
                         >
                           ${assignment.attributes.title}
                         </lrnsys-button>
@@ -367,32 +368,44 @@ class LrnappStudioKanban extends LitElement {
         <div id="activecontent">
           <app-header reveals>
             <app-toolbar
-              class="${this.activeAssignmentNode.meta.relatedSubmissions.complete.color}"
+              class="${this.activeAssignmentNode.meta.relatedSubmissions
+                .complete.color}"
             >
               <div>
                 <iron-icon
-                  icon="${this.activeAssignmentNode.meta.relatedSubmissions.complete.icon}"
-                  ?disabled="${!this.activeAssignmentNode.meta.relatedSubmissions.canCreate}"
+                  icon="${this.activeAssignmentNode.meta.relatedSubmissions
+                    .complete.icon}"
+                  ?disabled="${!this.activeAssignmentNode.meta
+                    .relatedSubmissions.canCreate}"
                 ></iron-icon>
-                ${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.title}
+                ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                  .submission.title}
               </div>
               <div
                 spacer=""
                 class="comment-box"
-                ?hidden="${!this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.id}"
+                ?hidden="${!this.activeAssignmentNode.meta.relatedSubmissions
+                  .complete.submission.id}"
               >
                 <paper-button
-                  id="assignment-${this.activeAssignmentNode.relationships.project.data.id}-${this.activeAssignmentNode.id}-comments"
+                  id="assignment-${this.activeAssignmentNode.relationships
+                    .project.data.id}-${this.activeAssignmentNode.id}-comments"
                   style="margin:0;padding:.25em;text-transform:none;"
                 >
                   <iron-icon icon="communication:forum"></iron-icon>
-                  ${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count}
+                  ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                    .submission.meta.comments.count}
                   Comments
                 </paper-button>
                 <paper-badge
-                  ?hidden="${this.displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)}"
-                  for="assignment-${this.activeAssignmentNode.relationships.project.data.id}-${this.activeAssignmentNode.id}-comments"
-                  label="${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new}"
+                  ?hidden="${this.displayNewBadge(
+                    activeAssignmentNode.meta.relatedSubmissions.complete
+                      .submission.meta.new
+                  )}"
+                  for="assignment-${this.activeAssignmentNode.relationships
+                    .project.data.id}-${this.activeAssignmentNode.id}-comments"
+                  label="${this.activeAssignmentNode.meta.relatedSubmissions
+                    .complete.submission.meta.comments.new}"
                 ></paper-badge>
               </div>
 
@@ -403,7 +416,8 @@ class LrnappStudioKanban extends LitElement {
                 .submission="${this.submission}"
                 end-point="${this.buildSubmissionPath(this.basePath)}"
                 csrf-token="${this.csrfToken}"
-                submission-id="${this.activeAssignmentNode.meta.relatedSubmissions.complete.submission.id}"
+                submission-id="${this.activeAssignmentNode.meta
+                  .relatedSubmissions.complete.submission.id}"
               ></lrnapp-studio-submission-button>
               <paper-toggle-button
                 id="activetoggle"
@@ -412,7 +426,8 @@ class LrnappStudioKanban extends LitElement {
               <span id="activetoggletext"></span>
             </app-toolbar>
             <div class="status-rationale">
-              ${this.activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text}
+              ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                .rationale.text}
             </div>
           </app-header>
           <lrnsys-render-html

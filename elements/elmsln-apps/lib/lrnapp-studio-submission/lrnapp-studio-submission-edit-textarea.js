@@ -6,9 +6,13 @@ class LrnappStudioSubmissionEditTextArea extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css`:host {
+    return [
+      css`
+        :host {
           display: block;
-        }`];
+        }
+      `
+    ];
   }
   render() {
     return html`
@@ -17,14 +21,16 @@ class LrnappStudioSubmissionEditTextArea extends LitElement {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ['content'];
+      let notifiedProps = ["content"];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -37,7 +43,7 @@ class LrnappStudioSubmissionEditTextArea extends LitElement {
   static get properties() {
     return {
       content: {
-        type: String,
+        type: String
       }
     };
   }

@@ -86,14 +86,16 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ['files'];
+      let notifiedProps = ["files"];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
@@ -105,22 +107,22 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
     this.files = [];
     this.selectedPage = 0;
     this.uploadUrl = null;
-    this.fileTypes = '';
+    this.fileTypes = "";
   }
   static get properties() {
     return {
       files: {
-        type: Array,
+        type: Array
       },
       selectedPage: {
-        type: String,
+        type: String
       },
       uploadUrl: {
-        type: String,
+        type: String
       },
       fileTypes: {
         type: String,
-        attribute: 'file-types',
+        attribute: "file-types"
       }
     };
   }
