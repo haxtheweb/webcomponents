@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/editable-outline",
   "wcfactory": {
     "className": "EditableOutline",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "editable-outline",
     "generator-wcfactory-version": "0.6.5",
     "useHAX": false,
