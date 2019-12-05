@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrn-content",
   "wcfactory": {
     "className": "LrnContent",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrn-content",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
