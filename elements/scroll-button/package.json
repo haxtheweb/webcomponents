@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/scroll-button",
   "wcfactory": {
     "className": "ScrollButton",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "scroll-button",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
@@ -42,7 +42,8 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

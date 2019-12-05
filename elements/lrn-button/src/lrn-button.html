@@ -1,13 +1,22 @@
-<style include="materializecss-styles-colors"></style>
-<a tabindex="-1" id="lrnsys-button-link" href$="[[showHref]]" data-prefetch-hover$="[[prefetch]]" target$="[[target]]">
-  <paper-button id="button" raised="[[raised]]" class$="[[class]] [[color]] [[textColor]]" disabled$="[[disabled]]">
-    <div class$="inner [[innerClass]]">
-      <iron-icon icon$="[[icon]]" id="icon" class$="[[iconClass]]" hidden$="[[!icon]]"></iron-icon>
-      <span class="label" hidden$="[[!label]]">
-        [[label]]
-      </span>
+<custom-style>
+<style include="materializecss-styles-colors">
+  :host {
+    @apply --paper-button;
+  }
+</style>
+</custom-style>
+<a tabindex="-1" id="lrnsys-button-link" href="${this.showHref}" data-prefetch-hover="${this.prefetch}" target="${this.target}">
+<paper-button id="button" raised="${this.raised}" class="${this.class} ${this.color} ${this.textColor}" ?disabled="${this.disabled}">
+    <div class="inner ${this.innerClass}">
+      ${this.icon ? html`
+      <iron-icon icon="${this.icon}" id="icon" class="${this.iconClass}"></iron-icon>
+      `:``}
+      ${this.label ? html`
+        <span class="label">
+        ${this.label}
+        </span>`: ``}
       <slot></slot>
     </div>
   </paper-button>
 </a>
-<paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>
+<paper-tooltip for="lrnsys-button-link" animation-delay="0">${this.alt}</paper-tooltip>

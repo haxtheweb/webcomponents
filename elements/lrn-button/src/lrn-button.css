@@ -1,7 +1,5 @@
   :host {
     display: block;
-    @apply --paper-font-common-base;
-    @apply --paper-button;
     --lrnsys-button-height: 48px;
   }
 

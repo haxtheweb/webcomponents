@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrn-button",
   "wcfactory": {
     "className": "LrnButton",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrn-button",
     "generator-wcfactory-version": "0.5.0",
     "useHAX": false,
@@ -44,7 +44,7 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

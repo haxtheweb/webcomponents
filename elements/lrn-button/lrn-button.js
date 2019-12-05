@@ -2,33 +2,22 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 
 /**
  * `lrn-button`
- * @customElement lrn-button
  * `Simple button wrapper with a few options`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement lrn-button
  */
-class LrnButton extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class LrnButton extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
-          @apply --paper-font-common-base;
-          @apply --paper-button;
           --lrnsys-button-height: 48px;
         }
 
@@ -85,37 +74,55 @@ class LrnButton extends PolymerElement {
           text-align: center;
           margin: 0 auto;
         }
-      </style>
-      <style include="materializecss-styles-colors"></style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles-colors">
+          :host {
+            @apply --paper-button;
+          }
+        </style>
+      </custom-style>
       <a
         tabindex="-1"
         id="lrnsys-button-link"
-        href$="[[showHref]]"
-        data-prefetch-hover$="[[prefetch]]"
-        target$="[[target]]"
+        href="${this.showHref}"
+        data-prefetch-hover="${this.prefetch}"
+        target="${this.target}"
       >
         <paper-button
           id="button"
-          raised="[[raised]]"
-          class$="[[class]] [[color]] [[textColor]]"
-          disabled$="[[disabled]]"
+          raised="${this.raised}"
+          class="${this.class} ${this.color} ${this.textColor}"
+          ?disabled="${this.disabled}"
         >
-          <div class$="inner [[innerClass]]">
-            <iron-icon
-              icon$="[[icon]]"
-              id="icon"
-              class$="[[iconClass]]"
-              hidden$="[[!icon]]"
-            ></iron-icon>
-            <span class="label" hidden$="[[!label]]">
-              [[label]]
-            </span>
+          <div class="inner ${this.innerClass}">
+            ${this.icon
+              ? html`
+                  <iron-icon
+                    icon="${this.icon}"
+                    id="icon"
+                    class="${this.iconClass}"
+                  ></iron-icon>
+                `
+              : ``}
+            ${this.label
+              ? html`
+                  <span class="label">
+                    ${this.label}
+                  </span>
+                `
+              : ``}
             <slot></slot>
           </div>
         </paper-button>
       </a>
       <paper-tooltip for="lrnsys-button-link" animation-delay="0"
-        >[[alt]]</paper-tooltip
+        >${this.alt}</paper-tooltip
       >
     `;
   }
@@ -129,15 +136,14 @@ class LrnButton extends PolymerElement {
        * Standard href pass down
        */
       href: {
-        type: String,
-        value: "#"
+        type: String
       },
       /**
        * What to display for the resource
        */
       showHref: {
         type: String,
-        value: false
+        attribute: "show-href"
       },
       /**
        * If the button should be visually lifted off the UI.
@@ -149,37 +155,37 @@ class LrnButton extends PolymerElement {
        * Label to place in the text area
        */
       label: {
-        type: String,
-        value: ""
+        type: String
       },
       target: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * iron-icon to use (with iconset if needed)
        */
       icon: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * Classes to add / subtract based on the item being hovered.
        */
       hoverClass: {
-        type: String
+        type: String,
+        attribute: "hover-class"
       },
       /**
        * Icon class in the event you want it to look different from the text.
        */
       iconClass: {
-        type: String
+        type: String,
+        attribute: "icon-class"
       },
       /**
        * Inner container classes.
        */
       innerClass: {
-        type: String
+        type: String,
+        attribute: "inner-class"
       },
       /**
        * materializeCSS color class
@@ -191,7 +197,8 @@ class LrnButton extends PolymerElement {
        * materializeCSS color class for text
        */
       textColor: {
-        type: String
+        type: String,
+        attribute: "text-color"
       },
       /**
        * Allow for prefetch data on hover
@@ -209,15 +216,14 @@ class LrnButton extends PolymerElement {
        * Disabled state.
        */
       disabled: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Tracks if focus state is applied
        */
       focusState: {
         type: Boolean,
-        value: false
+        attribute: "focus-state"
       }
     };
   }
@@ -232,38 +238,23 @@ class LrnButton extends PolymerElement {
     super();
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    this.href = "#";
+    this.label = "";
+    this.target = "";
+    this.disabled = false;
+    this.focusState = false;
+    setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
-      this.shadowRoot
-        .querySelector("#button")
-        .addEventListener("focused-changed", this.focusToggle);
-    });
+    }, 0);
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn);
-    this.removeEventListener("mouseover", this.tapEventOn);
-    this.removeEventListener("mouseout", this.tapEventOff);
+  firstUpdated() {
     this.shadowRoot
       .querySelector("#button")
-      .removeEventListener("focused-changed", this.focusToggle);
-    super.disconnectedCallback();
-  }
-  /**
-   * Go to the href if the button isn't disabled
-   */
-  ready() {
-    super.ready();
+      .addEventListener("focused-changed", this.focusToggle);
     if (!this.disabled) {
       this.showHref = this.href;
     }
@@ -273,16 +264,15 @@ class LrnButton extends PolymerElement {
    * Class processing on un-tap / hover
    */
   tapEventOn(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.add(item);
+          this.shadowRoot.querySelector("#button").classList.add(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.add(item);
+            this.shadowRoot.querySelector("#icon").classList.add(item);
           }
         }
       });
@@ -293,16 +283,15 @@ class LrnButton extends PolymerElement {
    * Undo class processing on un-tap / hover
    */
   tapEventOff(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.remove(item);
+          this.shadowRoot.querySelector("#button").classList.remove(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.remove(item);
+            this.shadowRoot.querySelector("#icon").classList.remove(item);
           }
         }
       });
@@ -313,36 +302,35 @@ class LrnButton extends PolymerElement {
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
   focusToggle(e) {
-    let root = this;
     this.dispatchEvent(
       new CustomEvent("focus-changed", {
         bubbles: true,
         composed: true,
-        detail: { focus: root.focusState }
+        detail: { focus: this.focusState }
       })
     );
     // see if it has hover classes
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          if (root.focusState) {
-            root.shadowRoot.querySelector("#button").classList.add(item);
+          if (this.focusState) {
+            this.shadowRoot.querySelector("#button").classList.add(item);
             if (item.indexOf("-") != -1) {
-              root.shadowRoot.querySelector("#icon").classList.add(item);
+              this.shadowRoot.querySelector("#icon").classList.add(item);
             }
           } else {
-            root.shadowRoot.querySelector("#button").classList.remove(item);
+            this.shadowRoot.querySelector("#button").classList.remove(item);
             if (item.indexOf("-") != -1) {
-              root.shadowRoot.querySelector("#icon").classList.remove(item);
+              this.shadowRoot.querySelector("#icon").classList.remove(item);
             }
           }
         }
       });
     }
-    root.focusState = !root.focusState;
+    this.focusState = !this.focusState;
   }
 }
 window.customElements.define(LrnButton.tag, LrnButton);
