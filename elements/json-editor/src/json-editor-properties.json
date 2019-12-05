@@ -3,63 +3,49 @@
    * label for the text area
    */
   "label": {
-    "name": "label",
-    "type": String,
-    "value": "JSON data"
+    "type": String
   },
   /**
    * State of being valid JSON object
    */
   "error": {
-    "name": "error",
     "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * toggling disabled state of the editor
    */
   "disabled": {
-    "name": "disabled",
     "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * max rows in the textarea
    */
   "maxRows": {
-    "name": "maxRows",
     "type": Number,
-    "value": 0,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "max-rows"
   },
   /**
    * String based value of the editor, use this to set initial value
    */
   "value": {
-    "name": "value",
     "type": String,
-    "value": "",
-    "notify": true,
-    "reflectToAttribute": false,
-    "observer": "_valueChanged"
+    "reflect": false
   },
   /**
    * format test to update value so it's pretty printed
    */
   "formatTest": {
-    "name": "value",
     "type": String,
-    "computed": "_computeFormattedValue(value)"
+    "attribute": "format-test"
   },
   /**
    * The current data object
    */
   "currentData": {
-    "name": "currentData",
     "type": Object,
-    "notify": true,
-    "computed": "_computeCurrentData(value)"
+    "attribute": "current-data"
   }
 }

@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/json-editor",
   "wcfactory": {
     "className": "JsonEditor",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "json-editor",
     "generator-wcfactory-version": "0.6.3",
     "useHAX": false,
@@ -39,9 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

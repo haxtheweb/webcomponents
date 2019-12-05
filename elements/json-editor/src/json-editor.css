@@ -1,35 +1,6 @@
 :host {
   display: block;
-  
 }
-
 :host([hidden]) {
   display: none;
-}
-:host([error]) paper-textarea {
-  --iron-autogrow-textarea: {
-    background-color: #ffeeee;
-  };
-}
-paper-textarea {
-  --iron-autogrow-textarea: {
-    font-family: "Lucida Console", Monaco, monospace;
-    font-weight: 600;
-    white-space: pre;
-    line-height: 20px;
-    padding: 9.5px;
-    margin: 0 0 10px;
-    font-size: 13px;
-    color: #000000;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: 0.3s linear all;
-    -webkit-transition: 0.3s linear all;
-    -moz-transition: 0.3s linear all;
-    -ms-transition: 0.3s linear all;
-    -o-transition: 0.3s linear all;
-};
 }
