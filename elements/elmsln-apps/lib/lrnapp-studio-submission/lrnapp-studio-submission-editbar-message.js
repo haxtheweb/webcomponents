@@ -5,15 +5,16 @@ class LrnappStudioSubmissionEditbarMessage extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <slot></slot>
     `;
   }

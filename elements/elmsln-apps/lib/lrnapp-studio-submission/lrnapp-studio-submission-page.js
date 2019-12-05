@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -178,7 +177,6 @@ class LrnappStudioSubmissionPage extends LitElement {
       <custom-style>
         <style>
           .submission-page-wrapper {
-            padding: 0;
             --vaadin-split-layout-splitter: {
               min-width: 0.4em;
               background: var(--paper-amber-200);
@@ -187,10 +185,13 @@ class LrnappStudioSubmissionPage extends LitElement {
         </style>
       </custom-style>
       <app-route
-        route="{{route}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
         pattern="/edit"
-        tail="{{tail}}"
-        active="{{editPage}}"
+        .active="${this.editPage}"
+        @active-changed="${this.editPageChangedEvent}"
       >
       </app-route>
 
@@ -359,6 +360,8 @@ class LrnappStudioSubmissionPage extends LitElement {
   }
   constructor() {
     super();
+    this.hideMenuBar = false;
+    this.saving = false;
     setTimeout(() => {
       this.addEventListener(
         "submissionDeleteClicked",
@@ -384,7 +387,7 @@ class LrnappStudioSubmissionPage extends LitElement {
         type: String
       },
       hideMenuBar: {
-        type: Boolean,
+        type: Boolean
       },
       elmslnCourse: {
         type: String,
@@ -416,13 +419,13 @@ class LrnappStudioSubmissionPage extends LitElement {
         type: Object
       },
       commentsUrl: {
-        type: String,
+        type: String
       },
       createStubUrl: {
-        type: String,
+        type: String
       },
       commentOpsBase: {
-        type: String,
+        type: String
       },
       editPage: {
         type: Boolean,
@@ -433,47 +436,66 @@ class LrnappStudioSubmissionPage extends LitElement {
         reflect: true
       },
       showComments: {
-        type: Boolean,
+        type: Boolean
       }
     };
   }
+  editPageChangedEvent(e) {
+    this.editPage = e.detail.value;
+  }
+  routeChangedEvent(e) {
+    this.route = { ...e.detail.value };
+  }
+  tailChangedEvent(e) {
+    this.tail = e.detail.value;
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'submission') {
+      if (["id", "endPoint"].includes(propName)) {
+        this._urlVarsChanged(this.id, this.endPoint);
+      }
+      if (propName == "csrfToken") {
+        this._paramsChanged(this[propName]);
+      }
+      if (propName == "title") {
+        this._bodyChanged(this[propName]);
+      }
+      if (propName == "submission") {
         this.showComments = this._computeShowComments(this[propName]);
       }
-      if (['id', 'endPoint', 'csrfToken'].includes(propName)) {
-        this.commentsUrl = this._computeCommentsUrl(this.id, this.endPoint, this.csrfToken);
-        this.createStubUrl = this._computeCommentsStubUrl(this.id, this.endPoint, this.csrfToken);
-        this.commentOpsBase = this._computeCommentsOpsUrl(this.id, this.endPoint, this.csrfToken);
+      if (["id", "endPoint", "csrfToken"].includes(propName)) {
+        this.commentsUrl = this._computeCommentsUrl(
+          this.id,
+          this.endPoint,
+          this.csrfToken
+        );
+        this.createStubUrl = this._computeCommentsStubUrl(
+          this.id,
+          this.endPoint,
+          this.csrfToken
+        );
+        this.commentOpsBase = this._computeCommentsOpsUrl(
+          this.id,
+          this.endPoint,
+          this.csrfToken
+        );
       }
-      let notifiedProps = ['saving'];
+      let notifiedProps = ["saving"];
       if (notifiedProps.includes(propName)) {
         // notify
-        let eventName = `${propName.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}-changed`
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
         this.dispatchEvent(
           new CustomEvent(eventName, {
             detail: {
-              value: this[propName],
+              value: this[propName]
             }
           })
         );
       }
     });
   }
-  constructor() {
-    super();
-    this.hideMenuBar = false;
-    this.saving = false;
-  }
-  static get observers() {
-    return [
-      "_urlVarsChanged(id, endPoint)",
-      "_paramsChanged(csrfToken)",
-      "_bodyChanged(title)"
-    ];
-  }
-
   /**
    * Go back to the studio relative to the app's path.
    */
@@ -578,14 +600,14 @@ class LrnappStudioSubmissionPage extends LitElement {
   }
 
   _handleUpdateResponse(res) {
-    var root = this;
     var status = res.detail.response.status;
     var submission = res.detail.response.data;
-    root.saving = false;
+    this.saving = false;
     if (status === 200) {
-      root.set("submission", {});
-      root.set("submission", submission);
-      root.set("route.path", "");
+      this.submission = { ...submission };
+      let attr = this.route;
+      attr.path = "";
+      this.route = { ...attr };
       // display a submission published notification
       if (submission.attributes.state === "submission_ready") {
         this.shadowRoot.querySelector("#toast").show("Published!");

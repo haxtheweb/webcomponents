@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 class LrnappStudioSubmissionMediaEditoverlay extends LitElement {
@@ -72,7 +71,6 @@ class LrnappStudioSubmissionMediaEditoverlay extends LitElement {
             class="delete"
             @click="${this._deleteClicked}"
           ></paper-icon-button>
-          <paper-ripple></paper-ripple>
         </div>
       </div>
       ${this.embedcode

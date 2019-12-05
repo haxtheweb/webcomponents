@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@lrnwebcomponents/lrn-markdown-editor/lrn-markdown-editor.js";
 class LrnappStudioSubmissionEditTextArea extends LitElement {
   /**
@@ -16,8 +15,14 @@ class LrnappStudioSubmissionEditTextArea extends LitElement {
   }
   render() {
     return html`
-      <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
+      <lrn-markdown-editor
+        content="${this.content}"
+        @content-changed="${this.contentEvent}"
+      ></lrn-markdown-editor>
     `;
+  }
+  contentEvent(e) {
+    this.content = e.detail.value;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

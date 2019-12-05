@@ -1,12 +1,15 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-collapse/iron-collapse.js";
 import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
-class LrndesignMapmenuSubmenu extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrndesignMapmenuSubmenu extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -20,15 +23,19 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
         #container ::slotted(lrndesign-mapmenu-item) {
           margin-top: 6.4px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <lrndesign-mapmenu-header
-        on-click="_headerClickHandler"
-        avatar-label="[[avatarLabel]]"
-        title="[[title]]"
-        label="[[label]]"
-        opened="[[opened]]"
+        @click="${this._headerClickHandler}"
+        avatar-label="${this.avatarLabel}"
+        title="${this.title}"
+        label="${this.label}"
+        ?opened="${this.opened}"
       ></lrndesign-mapmenu-header>
-      <iron-collapse id="container"> <slot id="slot"></slot> </iron-collapse>
+      <iron-collapse id="container"> <slot></slot> </iron-collapse>
     `;
   }
 
@@ -42,28 +49,24 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
         type: String
       },
       avatarLabel: {
-        type: String
+        type: String,
+        attribute: "avatar-label"
       },
       label: {
         type: String
       },
       opened: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       collapsable: {
         type: Boolean,
-        value: true
+        reflect: true
       },
       expandChildren: {
         type: Boolean,
-        value: false
+        attribute: "expand-children"
       }
     };
-  }
-
-  static get observers() {
-    return ["_openChanged(opened)"];
   }
 
   _openChanged(opened) {
@@ -78,21 +81,24 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
     }
   }
 
-  ready() {
-    super.ready();
-    this._observer = new FlattenedNodesObserver(
-      this.shadowRoot.querySelector("#slot"),
-      info => {
-        var submenus = info.addedNodes.filter(
-          item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
-        );
-        if (this.expandChildren) {
-          for (let menu of submenus) {
-            menu.setAttribute("opened", true);
-          }
+  constructor() {
+    super();
+    this.opened = false;
+    this.collapsable = true;
+    this.expandChildren = false;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this._observer = new FlattenedNodesObserver(this, info => {
+      var submenus = info.addedNodes.filter(
+        item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
+      );
+      if (this.expandChildren) {
+        for (let menu of submenus) {
+          menu.setAttribute("opened", true);
         }
       }
-    );
+    });
   }
   disconnectedCallback() {
     this._observer.disconnect();

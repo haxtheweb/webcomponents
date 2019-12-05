@@ -632,12 +632,6 @@ class MoocContent extends LitElement {
     // we have now successfully ruined something encapsulated and once beautiful
     this.shadowRoot.querySelector("#hackycontainer").appendChild(customStyle);
   }
-  /**
-   * highjack shadowDom
-   */
-  _attachDom(dom) {
-    this.appendChild(dom);
-  }
 }
 window.customElements.define(MoocContent.tag, MoocContent);
 export { MoocContent };

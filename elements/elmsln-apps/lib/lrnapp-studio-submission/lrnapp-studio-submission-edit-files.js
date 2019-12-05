@@ -127,12 +127,6 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
     };
   }
 
-  static get observers() {
-    return ["_filesChanged(files)"];
-  }
-
-  _filesChanged(files) {}
-
   _addFile(e) {
     // @todo switch to singleton
     this.shadowRoot.querySelector("#dialog").open();
@@ -145,7 +139,6 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(LitElement) {
 
   _handleImageUploadSuccess(e) {
     this.selectedPage = 0;
-    var files = [];
     var response = e.detail.xhr.response;
     // normalize response string
     var response = JSON.parse(response);

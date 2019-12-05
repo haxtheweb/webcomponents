@@ -33,49 +33,180 @@ class LrnappStudioInstructor extends LitElement {
   static get styles() {
     return [
       css`
-      
+        :host {
+          display: block;
+          align-content: center;
+          padding: 0.8em;
+        }
+        paper-dialog {
+          width: 70vw;
+          min-height: 50vh;
+        }
+        vaadin-grid-table-body > vaadin-grid-cell-content {
+          height: unset !important;
+        }
+        app-toolbar {
+          background-color: #4285f4;
+          color: #fff;
+          margin: 20px 0;
+        }
+        #loading {
+          width: 100%;
+          z-index: 1000;
+          opacity: 0.8;
+          text-align: center;
+          align-content: center;
+          justify-content: center;
+          height: 100vh;
+          position: absolute;
+          background-color: white;
+        }
+        .center-data {
+          text-align: center;
+        }
+        vaadin-grid {
+          height: 75vh;
+          font-family: Roboto, sans-serif;
+          --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
+
+          --vaadin-grid-cell: {
+            padding: 0;
+          }
+
+          --vaadin-grid-header-cell: {
+            height: 3.5em;
+            color: rgba(0, 0, 0, var(--dark-secondary-opacity));
+            font-size: 1em;
+          }
+
+          --vaadin-grid-body-cell: {
+            height: 3em;
+            color: rgba(0, 0, 0, var(--dark-primary-opacity));
+            font-size: 0.8em;
+          }
+
+          --vaadin-grid-body-row-hover-cell: {
+            background-color: var(--paper-grey-200);
+          }
+
+          --vaadin-grid-body-row-selected-cell: {
+            background-color: var(--paper-grey-100);
+          }
+
+          --vaadin-grid-focused-cell: {
+            box-shadow: none;
+            font-weight: bold;
+          }
+        }
+
+        vaadin-grid .cell {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 56px;
+        }
+
+        vaadin-grid .cell.last {
+          padding-right: 24px;
+        }
+
+        vaadin-grid .cell.numeric {
+          text-align: right;
+        }
+
+        vaadin-grid paper-checkbox {
+          --primary-color: var(--paper-indigo-500);
+          margin: 0 24px;
+        }
+
+        vaadin-grid vaadin-grid-sorter .cell {
+          flex: 1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        vaadin-grid vaadin-grid-sorter iron-icon {
+          transform: scale(0.8);
+        }
+
+        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
+          color: rgba(0, 0, 0, var(--dark-disabled-opacity));
+        }
+
+        vaadin-grid vaadin-grid-sorter[direction] {
+          color: rgba(0, 0, 0, var(--dark-primary-opacity));
+        }
+
+        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
+          transform: scale(0.8) rotate(180deg);
+        }
+        vaadin-grid-sorter {
+          text-align: center;
+        }
+
+        lrndesign-avatar {
+          display: inline-block;
+        }
+        .avatar-label {
+          display: inline-block;
+          margin-left: 0.2em;
+        }
+        .assignment-button {
+          height: 1em;
+        }
+        .project-button {
+          height: 1em;
+        }
+        paper-badge {
+          top: 0 !important;
+          left: unset !important;
+          right: 0;
+          z-index: 1;
+        }
+        .avatar-link {
+          color: black;
+        }
+        .avatar-link paper-button {
+          text-transform: unset;
+        }
+        #selectedproject {
+          display: inline-block;
+        }
+        #datatype {
+          display: inline-block;
+          vertical-align: middle;
+          --paper-toggle-button-checked-bar-color: var(--paper-green-500);
+          --paper-toggle-button-checked-button-color: var(--paper-green-500);
+          --paper-toggle-button-checked-ink-color: var(--paper-green-500);
+          --paper-toggle-button-unchecked-bar-color: var(--paper-amber-900);
+          --paper-toggle-button-unchecked-button-color: var(--paper-amber-900);
+          --paper-toggle-button-unchecked-ink-color: var(--paper-amber-900);
+        }
+        .comment-list {
+          list-style-image: none;
+          display: inline-block;
+          padding: 0;
+          margin: 0;
+        }
+        .stats-text {
+          font-size: 0.8em;
+          font-style: italic;
+          line-height: 1em;
+          padding: 0 0 0 2em;
+          display: inline-block;
+          text-align: right;
+        }
+        #selectedchart {
+          padding-left: 8px;
+        }
       `
     ];
   }
   render() {
     return html`
+    <custom-style>
     <style include="materializecss-styles">
-      :host {
-        display: block;
-        align-content: center;
-        padding: .8em;
-      }
-      paper-dialog {
-        width: 70vw;
-        min-height:50vh;
-      }
-      vaadin-grid-table-body > vaadin-grid-cell-content {
-        height: unset !important;
-      }
-      app-toolbar {
-        background-color: #4285f4;
-        color: #fff;
-        margin: 20px 0;
-      }
-      #loading {
-        width: 100%;
-        z-index: 1000;
-        opacity: .8;
-        text-align: center;
-        align-content: center;
-        justify-content: center;
-        height: 100vh;
-        position: absolute;
-        background-color: white;
-      }
-      .center-data {
-        text-align: center;
-      }
       vaadin-grid {
-        height: 75vh;
-        font-family: Roboto, sans-serif;
-        --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
-
         --vaadin-grid-cell: {
           padding: 0;
         };
@@ -105,164 +236,93 @@ class LrnappStudioInstructor extends LitElement {
           font-weight: bold;
         };
       }
-
-      vaadin-grid .cell {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 56px;
-      }
-
-      vaadin-grid .cell.last {
-        padding-right: 24px;
-      }
-
-      vaadin-grid .cell.numeric {
-        text-align: right;
-      }
-
-      vaadin-grid paper-checkbox {
-        --primary-color: var(--paper-indigo-500);
-        margin: 0 24px;
-      }
-
-      vaadin-grid vaadin-grid-sorter .cell {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      vaadin-grid vaadin-grid-sorter iron-icon {
-        transform: scale(0.8);
-      }
-
-      vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
-        color: rgba(0, 0, 0, var(--dark-disabled-opacity));
-      }
-
-      vaadin-grid vaadin-grid-sorter[direction] {
-        color: rgba(0, 0, 0, var(--dark-primary-opacity));
-      }
-
-      vaadin-grid vaadin-grid-sorter[direction=desc] iron-icon {
-        transform: scale(0.8) rotate(180deg);
-      }
-      vaadin-grid-sorter {
-        text-align: center;
-      }
-
-      lrndesign-avatar {
-        display: inline-block;
-      }
-      .avatar-label {
-        display: inline-block;
-        margin-left: .2em;
-      }
-      .assignment-button {
-        height: 1em;
-      }
-      .project-button {
-        height: 1em;
-      }
-      paper-badge {
-        top: 0 !important;
-        left: unset !important;
-        right: 0;
-        z-index: 1;
-      }
-      .avatar-link {
-        color: black;
-      }
-      .avatar-link paper-button {
-        text-transform: unset;
-      }
-      #selectedproject {
-        display: inline-block;
-      }
-      #datatype {
-        display: inline-block;
-        vertical-align: middle;
-        --paper-toggle-button-checked-bar-color:  var(--paper-green-500);
-        --paper-toggle-button-checked-button-color:  var(--paper-green-500);
-        --paper-toggle-button-checked-ink-color: var(--paper-green-500);
-        --paper-toggle-button-unchecked-bar-color:  var(--paper-amber-900);
-        --paper-toggle-button-unchecked-button-color:  var(--paper-amber-900);
-        --paper-toggle-button-unchecked-ink-color: var(--paper-amber-900);
-      }
-      .comment-list {
-        list-style-image: none;
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-      }
-      .stats-text {
-        font-size: .8em;
-        font-style: italic;
-        line-height: 1em;
-        padding: 0 0 0 2em;
-        display: inline-block;
-        text-align: right;
-      }
-      #selectedchart {
-        padding-left: 8px;
-      }
     </style>
-    <app-location route="{{route}}"></app-location>
+    </custom-style>
+    <app-location 
+      .route="${this.route}"
+      @route-changed="${this.routeChangedEvent}"
+    ></app-location>
     <app-route
-        route="{{route}}"
-        pattern="${this.endPoint}/submissions/:submission"
-        data="{{data}}"
-        tail="{{tail}}">
+      .route="${this.route}"
+      @route-changed="${this.routeChangedEvent}"
+      pattern="${this.endPoint}/submissions/:submission"
+      .data="${this.data}"
+      @data-changed="${this.dataChangedEvent}"
+      .tail="${this.tail}"
+      @tail-changed="${this.tailChangedEvent}"  
+      >
     </app-route>
     <iron-ajax auto
       id="projectrequest"
-      url="[[sourceProjectPath]]"
+      url="${this.sourceProjectPath}"
       handle-as="json"
-      last-response="{{_projectData}}"
+      @last-response-changed="${this._projectDataChanged}"
       @response="${this._handleProjectResponse}"></iron-ajax>
     <iron-ajax
       id="studentrequest"
-      url="[[sourceStudentPath]]"
-      params="[[studentParams]]"
+      url="${this.sourceStudentPath}"
+      .params="${this.studentParams}"
       handle-as="json"
-      last-response="{{_studentData}}"
+      @last-response-changed="${this._studentDataChanged}"
       @response="${this._handleStudentResponse}"></iron-ajax>
     <div id="loading">
       <h3>Loading..</h3>
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
     </div>
-    <div ?hidden="${this.activeProject}">Select a project to begin reviewing work</div>
+    <div ?hidden="${
+      this.activeProject
+    }">Select a project to begin reviewing work</div>
     <dropdown-select id="selectedproject" label="Project">
-      <template is="dom-repeat" items="[[_toArray(projects)]]" as="project">
-        <paper-item value="[[project.id]]">[[project.attributes.title]]</paper-item>
-      </template>
+      ${this._toArray(this.projects).map(
+        project => html`
+          <paper-item value="${project.id}"
+            >${project.attributes.title}</paper-item
+          >
+        `
+      )}
     </dropdown-select>
-    <paper-toggle-button id="datatype" ?checked="{{dataType}}" disabled>
+    <paper-toggle-button id="datatype"
+     ?checked="${this.dataType}"
+      @checked-changed="${this.checkedChangedEvent}"
+      disabled
+    >
       ${this.dataTypeText}
     </paper-toggle-button>
     <paper-button id="statsdialogbutton" disabled><iron-icon icon="editor:show-chart"></iron-icon> Statistics (beta)</span></paper-button>
     <paper-dialog id="statsdialog">
       <app-header>
         <app-toolbar>
-          <div main-title>[[stats.header]]</div>
+          <div main-title>${this.stats.header}</div>
           <label for="selectedchart">Graph style</label>
-          <simple-picker id="selectedchart" options="[[simplePickerOptions]]"></simple-picker>
+          <simple-picker id="selectedchart" .options="${
+            this.simplePickerOptions
+          }"></simple-picker>
           <paper-button dialog-dismiss><iron-icon icon="close"></iron-icon> Close</paper-button>
         </app-toolbar>
       </app-header>
       <paper-dialog-scrollable>
-          <div class="stats-text">[[stats.overview]]</div>
-        <lrndesign-bar chart-title="[[activeChart.title]]" chart-desc="[[activeChart.description]]" data="[[activeChart.data]]"></lrndesign-bar>
+        <div class="stats-text">${this.stats.overview}</div>
+        <lrndesign-bar
+        chart-title="${this.activeChart.title}"
+        chart-desc="${this.activeChart.description}"
+        .data="${this.activeChart.data}"
+        ></lrndesign-bar>
       </paper-dialog-scrollable>
-      </div>
     </paper-dialog>
-    <vaadin-grid ?hidden="[[!students]]" id="material" aria-label="Student project list" items="[[_toArray(students)]]">
+    <vaadin-grid ?hidden="${!this
+      .students}" id="material" aria-label="Student project list" .items="${this._toArray(
+      this.students
+    )}">
       <vaadin-grid-column resizable>
         <template class="header">
           <vaadin-grid-sorter id="sorter" path="sis.sortable_name">Student</vaadin-grid-sorter>
         </template>
         <template>
-          <a href="${this.basePath}lrnapp-open-studio/projects?author=[[item.id]]&project=${this.activeProject}" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
+          <a href="${
+            this.basePath
+          }lrnapp-open-studio/projects?author=[[item.id]]&project=${
+      this.activeProject
+    }" tabindex="-1" target="_blank" class="avatar-link ferpa-protect">
             <paper-button class="avatar-button">
               <lrndesign-avatar label="[[item.name]]" src="[[item.avatar]]"></lrndesign-avatar>
               <span class="avatar-label">[[item.sis.sortable_name]]</span>
@@ -275,7 +335,8 @@ class LrnappStudioInstructor extends LitElement {
           </vaadin-grid-filter>
         </template>
       </vaadin-grid-column>
-      <template is="dom-repeat" items="[[_toArray(assignments)]]" as="assignment">
+      ${this._toArray(this.assignments).map(
+        assignment => html`
         <vaadin-grid-column resizable>
           <template class="header">
             <span>[[assignment.title]]</span>
@@ -283,14 +344,18 @@ class LrnappStudioInstructor extends LitElement {
           <template>
             <template is="dom-if" if="[[_submissionStatus(item, assignment, dataType)]]">
               <template is="dom-if" if="[[!dataType]]">
-                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" @click="${this._setActiveSubmission}">
+                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" @click="${
+                  this._setActiveSubmission
+                }">
                 </lrnsys-button>
               </template>
               <template is="dom-if" if="[[dataType]]">
                 <ul class="comment-list">
                 <template is="dom-repeat" items="[[_submissionPiece(item, assignment, 'comments')]]" as="commented">
                   <li>
-                    <lrnsys-button icon="communication:comment" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" @click="${this._setActiveComment}">
+                    <lrnsys-button icon="communication:comment" id="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" @click="${
+                      this._setActiveComment
+                    }">
                     </lrnsys-button>
                   </li>
                 </template>
@@ -306,66 +371,107 @@ class LrnappStudioInstructor extends LitElement {
             </template>
           </template>
         </vaadin-grid-column>
-      </template>
+      `
+      )}
     </vaadin-grid>
     <paper-dialog id="dialog" style="overflow: visible;">
       <app-header>
         <app-toolbar>
           <span style="width:15em;">
-            <paper-icon-button @click="${this._changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student}"></paper-icon-button>
-            <paper-icon-button @click="${this._changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student}"></paper-icon-button>
-            <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
-            <span class="avatar-label ferpa-protect" style="margin-left:1em;">[[activeData.student.sis.sortable_name]]</span>
+            <paper-icon-button @click="${
+              this._changeActiveItem
+            }" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
+            <paper-icon-button @click="${
+              this._changeActiveItem
+            }" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
+            <lrndesign-avatar class="ferpa-protect" label="${
+              this.activeData.student.name
+            }" src="${
+      this.activeData.student.avatar
+    }" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
+            <span class="avatar-label ferpa-protect" style="margin-left:1em;">${
+              this.activeData.student.sis.sortable_name
+            }</span>
           </span>
-          <paper-icon-button @click="${this._changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;}"></paper-icon-button>
-          <paper-icon-button @click="${this._changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment}"></paper-icon-button>
-          <span style="font-weight:bold;" main-title>Assignment: [[activeData.assignment.title]]</span>
+          <paper-icon-button @click="${
+            this._changeActiveItem
+          }" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
+          <paper-icon-button @click="${
+            this._changeActiveItem
+          }" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
+          <span style="font-weight:bold;" main-title>Assignment: ${
+            this.activeData.assignment.title
+          }</span>
           <paper-button dialog-dismiss><iron-icon icon="close"></iron-icon> Close</paper-button>
         </app-toolbar>
       </app-header>
       <paper-dialog-scrollable>
-        <template is="dom-if" if="[[activeData.submission]]">
-          <lrnapp-studio-submission-page base-path="${this.basePath}" route="{{tail}}" id="[[data.submission]]" end-point="${this.basePath}lrnapp-studio-submission" csrf-token="${this.csrfToken}" data="[[data]]" hide-menu-bar></lrnapp-studio-submission-page>
-        </template>
-        <template is="dom-if" if="[[!activeData.submission]]">
-          <div>
-            <h3>No submission for this assignment</h3>
-            <p>This student has not submitted anything for this assignment at this time.</p>
-          </div>
-        </template>
+        ${
+          this.activeData.submission
+            ? html`
+                <lrnapp-studio-submission-page
+                  base-path="${this.basePath}"
+                  .route="${this.tail}"
+                  @route-changed="${this.tailChangedEvent}"
+                  id="${this.data.submission}"
+                  end-point="${this.basePath}lrnapp-studio-submission"
+                  csrf-token="${this.csrfToken}"
+                  data="${this.data}"
+                  hide-menu-bar
+                ></lrnapp-studio-submission-page>
+              `
+            : html`
+                <div>
+                  <h3>No submission for this assignment</h3>
+                  <p>
+                    This student has not submitted anything for this assignment
+                    at this time.
+                  </p>
+                </div>
+              `
+        }
       </paper-dialog-scrollable>
     </paper-dialog>`;
   }
   static get tag() {
     return "lrnapp-studio-instructor";
   }
-  static get observers() {
-    return [
-      "_routeChanged(route, endPoint)",
-      "_activeDataChanged(activeData.student, activeData.assignment)"
-    ];
+  _studentDataChanged(e) {
+    this._studentData = e.detail.value;
+  }
+  _projectDataChanged(e) {
+    this._projectData = e.detail.value;
+  }
+  tailChangedEvent(e) {
+    this.tail = e.detail.value;
+  }
+  routeChangedEvent(e) {
+    this.route = e.detail.value;
+  }
+  dataChangedEvent(e) {
+    this.data = e.detail.value;
   }
   static get properties() {
     return {
       elmslnCourse: {
         type: String,
-        attribute: 'elmsln-course',
+        attribute: "elmsln-course"
       },
       elmslnSection: {
         type: String,
-        attribute: 'elmsln-section',
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        attribute: 'base-path',
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        attribute: 'csrf-token',
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        attribute: 'end-point',
+        attribute: "end-point"
       },
       sourceProjectPath: {
         type: String
@@ -374,74 +480,29 @@ class LrnappStudioInstructor extends LitElement {
         type: String
       },
       simplePickerOptions: {
-        type: Array,
-        value: [
-          [
-            {
-              alt: "Submissions by Assignment",
-              value: "byassignment-submissions"
-            }
-          ],
-          [{ alt: "Comments by Assignment", value: "byassignment-comments" }],
-          [
-            {
-              alt: "Commenters by Assignment",
-              value: "byassignment-commenters"
-            }
-          ]
-        ]
+        type: Array
       },
       /**
        * Type of data to display, either submission centric or comment centric.
        * False = submission, true = comment
        */
       dataType: {
-        type: Boolean,
-        value: false,
-        observer: "_dataTypeChanged"
+        type: Boolean
       },
       dataTypeText: {
-        type: String,
-        value: "Submissions"
-      },
-      /**
-       * The projects to render
-       */
-      projects: {
-        type: Object,
-        notify: true
-      },
-      /**
-       * The assignments to render
-       */
-      assignments: {
-        type: Object,
-        notify: true
-      },
-      /**
-       * The submissions to render
-       */
-      students: {
-        type: Object,
-        notify: true,
-        value: false
+        type: String
       },
       /**
        * Internal value for mapping the raw response data.
        */
       _projectData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * studentParams for the request
        */
       studentParams: {
-        type: Object,
-        value: {
-          projectId: null,
-          type: "submission"
-        }
+        type: Object
       },
       /**
        * Internal value for mapping the raw response data.
@@ -453,45 +514,37 @@ class LrnappStudioInstructor extends LitElement {
        * Internal width so they are all unified from editing this
        */
       _numWidth: {
-        type: String,
-        value: "2.25em"
+        type: String
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       /**
-       * base path for the app
+       * The projects to render
        */
-      basePath: {
-        type: String,
-        notify: true
+      projects: {
+        type: Object
+      },
+      /**
+       * The assignments to render
+       */
+      assignments: {
+        type: Object
+      },
+      /**
+       * The submissions to render
+       */
+      students: {
+        type: Object
       },
       /**
        * routing variable for url
        */
       route: {
-        type: String
-      },
-      /**
-       * Security token
-       */
-      csrfToken: {
-        type: String
-      },
-      /**
-       * course
-       */
-      elmslnCourse: {
-        type: String
-      },
-      /**
-       * section
-       */
-      elmslnSection: {
         type: String
       },
       /**
@@ -504,35 +557,101 @@ class LrnappStudioInstructor extends LitElement {
        * Internal ID for active project
        */
       activeProject: {
-        type: Number,
-        value: false
+        type: Number
       },
       /**
        * Active Data based on selection
        */
       activeData: {
-        type: Object,
-        value: {
-          student: false,
-          assignment: false,
-          submission: false
-        }
+        type: Object
       },
       /**
        * raw Stats data from backend.
        */
       stats: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Selected chart with data cleaned up to match formatting.
        */
       activeChart: {
-        type: Object,
-        value: {}
+        type: Object
       }
     };
+  }
+  checkedChangedEvent(e) {
+    this.checked = e.detail.value;
+  }
+  constructor() {
+    super();
+    this.studentParams = {
+      projectId: null,
+      type: "submission"
+    };
+    this.simplePickerOptions = [
+      [
+        {
+          alt: "Submissions by Assignment",
+          value: "byassignment-submissions"
+        }
+      ],
+      [{ alt: "Comments by Assignment", value: "byassignment-comments" }],
+      [
+        {
+          alt: "Commenters by Assignment",
+          value: "byassignment-commenters"
+        }
+      ]
+    ];
+    this._numWidth = "2.25em";
+    this.dataType = false;
+    this.activeChart = {};
+    this.stats = {};
+    this.activeData = {
+      student: false,
+      assignment: false,
+      submission: false
+    };
+    this.students = {};
+    this.activeProject = null;
+    this._projectData = {};
+    this.dataTypeText = "Submissions";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "basePath",
+        "sourcePath",
+        "students",
+        "assignments",
+        "projects"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()} -changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "dataType") {
+        this._dataTypeChanged(this[propName], oldValue);
+      }
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+      if (propName == "activeData") {
+        this._activeDataChanged(
+          this.activeData.student,
+          this.activeData.assignment
+        );
+      }
+    });
   }
   /**
    * Rebuild the chart whenever the select list is changed.
@@ -738,7 +857,9 @@ class LrnappStudioInstructor extends LitElement {
     this.students = [...this._studentData.data.students];
     this.assignments = [...this._studentData.data.assignments];
     this.stats = this._studentData.data.stats;
-    this.stats.header = "Statistics for " + this.projects["project-" + this.activeProject].attributes.title;
+    this.stats.header =
+      "Statistics for " +
+      this.projects["project-" + this.activeProject].attributes.title;
     // make sure default is asc data
     setTimeout(() => {
       this.shadowRoot.querySelector("#sorter").direction = "asc";
@@ -765,9 +886,12 @@ class LrnappStudioInstructor extends LitElement {
           typeof newstudent.assignments[this.activeData.assignment.id] !==
             typeof undefined
         ) {
-          this.activeData.student = {...newstudent}
-          this.activeData.submission = {...newstudent.assignments[this.activeData.assignment.id]}
-          this.route.path = this.endPoint + "/submissions/" + this.activeData.submission.id;
+          this.activeData.student = { ...newstudent };
+          this.activeData.submission = {
+            ...newstudent.assignments[this.activeData.assignment.id]
+          };
+          this.route.path =
+            this.endPoint + "/submissions/" + this.activeData.submission.id;
         }
         break;
       case "nextstudent":
@@ -781,9 +905,12 @@ class LrnappStudioInstructor extends LitElement {
           typeof newstudent.assignments[this.activeData.assignment.id] !==
             typeof undefined
         ) {
-          this.activeData.student = {...newstudent};
-          this.activeData.submission = {...newstudent.assignments[this.activeData.assignment.id]};
-          this.route.path = this.endPoint + "/submissions/" + this.activeData.submission.id;
+          this.activeData.student = { ...newstudent };
+          this.activeData.submission = {
+            ...newstudent.assignments[this.activeData.assignment.id]
+          };
+          this.route.path =
+            this.endPoint + "/submissions/" + this.activeData.submission.id;
         }
         break;
       case "prevassignment":
@@ -793,13 +920,18 @@ class LrnappStudioInstructor extends LitElement {
           -1
         );
         if (newassignment != -1) {
-          this.activeData.assignment = {...newassignment}
+          this.activeData.assignment = { ...newassignment };
           if (
             typeof this.activeData.student.assignments[newassignment.id].id !==
             typeof undefined
           ) {
-            this.activeData.submission = {...this.activeData.student.assignments[newassignment.id]};
-            this.route.path = this.endPoint + "/submissions/" + this.activeData.student.assignments[newassignment.id].id
+            this.activeData.submission = {
+              ...this.activeData.student.assignments[newassignment.id]
+            };
+            this.route.path =
+              this.endPoint +
+              "/submissions/" +
+              this.activeData.student.assignments[newassignment.id].id;
           } else {
             this.activeData.submission = false;
           }
@@ -812,13 +944,18 @@ class LrnappStudioInstructor extends LitElement {
           1
         );
         if (newassignment != -1) {
-          this.activeData.assignment = {...newassignment};
+          this.activeData.assignment = { ...newassignment };
           if (
             typeof this.activeData.student.assignments[newassignment.id].id !==
             typeof undefined
           ) {
-          this.activeData.submission = {...this.activeData.student.assignments[newassignment.id]};
-          this.route.path = this.endPoint + "/submissions/" + this.activeData.student.assignments[newassignment.id].id;
+            this.activeData.submission = {
+              ...this.activeData.student.assignments[newassignment.id]
+            };
+            this.route.path =
+              this.endPoint +
+              "/submissions/" +
+              this.activeData.student.assignments[newassignment.id].id;
           } else {
             this.activeData.submission = false;
           }
@@ -945,9 +1082,11 @@ class LrnappStudioInstructor extends LitElement {
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
-    this.activeData.student = {...this.students[item[1]]};
-    this.activeData.assignment = {...this.assignments[item[3]]};
-    this.activeData.submission = {...this.students[item[1]].assignments[item[3]]};
+    this.activeData.student = { ...this.students[item[1]] };
+    this.activeData.assignment = { ...this.assignments[item[3]] };
+    this.activeData.submission = {
+      ...this.students[item[1]].assignments[item[3]]
+    };
     this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
     document.body.classList.add("scroll-disabled");
     this.shadowRoot.querySelector("#dialog").toggle();
@@ -965,9 +1104,11 @@ class LrnappStudioInstructor extends LitElement {
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
-    this.activeData.student = {...this.students[item[1]]};
-    this.activeData.assignment = {...this.assignments[item[3]]};
-    this.activeData.submission = {...this.students[item[1]].assignments[item[3]]};
+    this.activeData.student = { ...this.students[item[1]] };
+    this.activeData.assignment = { ...this.assignments[item[3]] };
+    this.activeData.submission = {
+      ...this.students[item[1]].assignments[item[3]]
+    };
     this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
     document.body.classList.add("scroll-disabled");
     this.shadowRoot.querySelector("#dialog").toggle();

@@ -155,7 +155,7 @@ class LrnappCanvasListing extends LitElement {
         params='{"return": "courses"}'
         handle-as="json"
         @response="${this.handleResponse}"
-        last-response="{{queryResponse}}"
+        @last-response-changed="${this.queryResponseEvent}"
       ></iron-ajax>
       <div id="loading" class="loading">
         <h3>Loading..</h3>
@@ -329,7 +329,7 @@ class LrnappCanvasListing extends LitElement {
         params='{"return": "users"}'
         handle-as="json"
         @response="${this.handleRosterResponse}"
-        last-response="{{queryResponse}}"
+        @last-response-changed="${this.queryResponseRosterEvent}"
       ></iron-ajax>
       <lrnsys-dialog
         tabindex="-1"
@@ -338,31 +338,40 @@ class LrnappCanvasListing extends LitElement {
         header="${this.activeCourse.name}"
       >
         <div slot="content">
-          <template is="dom-if" if="{{!roster}}">
-            <div id="loadingRoster" class="loading">
-              <h3>Loading..</h3>
-              <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-            </div>
-          </template>
+          ${!this.roster
+            ? html`
+                <div id="loadingRoster" class="loading">
+                  <h3>Loading..</h3>
+                  <elmsln-loading
+                    color="grey-text"
+                    size="large"
+                  ></elmsln-loading>
+                </div>
+              `
+            : ``}
         </div>
         <div slot="header">
-          <template is="dom-if" if="{{roster}}">
-            <template is="dom-if" if="${this.activeCourse.image}">
-              <iron-image
-                style="width:100%; height:200px; background-color: lightgray;"
-                sizing="cover"
-                preload
-                fade
-                src="${this.activeCourse.image}"
-              ></iron-image>
-            </template>
-            <span class="heading">
-              <span>Student count: ${this.activeCourse.student_count}</span>
-              <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
-              <span>Term: ${this.activeCourse.term}</span>
-              <span>Workflow: ${this.activeCourse.workflow_state}</span>
-            </span>
-          </template>
+          ${this.roster
+            ? html`
+                ${this.activeCourse.image
+                  ? html`
+                      <iron-image
+                        style="width:100%; height:200px; background-color: lightgray;"
+                        sizing="cover"
+                        preload
+                        fade
+                        src="${this.activeCourse.image}"
+                      ></iron-image>
+                    `
+                  : ``}
+                <span class="heading">
+                  <span>Student count: ${this.activeCourse.student_count}</span>
+                  <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
+                  <span>Term: ${this.activeCourse.term}</span>
+                  <span>Workflow: ${this.activeCourse.workflow_state}</span>
+                </span>
+              `
+            : ``}
         </div>
         <div id="loadingContent" slot="content">
           ${this._toArray(this.roster).map(
@@ -386,6 +395,12 @@ class LrnappCanvasListing extends LitElement {
         </div>
       </lrnsys-dialog>
     `;
+  }
+  queryResponseEvent(e) {
+    this.queryResponse = { ...e.detail.value };
+  }
+  queryResponseRosterEvent(e) {
+    this.queryResponseRoster = { ...e.detail.value };
   }
   _filterWorkflowChanged(e) {
     this._filterWorkflow = e.detail.value;
@@ -446,20 +461,28 @@ class LrnappCanvasListing extends LitElement {
         type: Array
       },
       roster: {
-        type: Array,
-        value: false
-      },
-      queryResponse: {
         type: Array
       },
+      queryResponse: {
+        type: Object
+      },
+      queryResponseRoster: {
+        type: Object
+      },
       sourcePath: {
-        type: String
+        type: String,
+        attribute: "source-path"
       },
       activeCourse: {
         type: String,
-        reflect: true
+        reflect: true,
+        attribute: "active-course"
       }
     };
+  }
+  constructor() {
+    super();
+    this.roster = [];
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -516,20 +539,17 @@ class LrnappCanvasListing extends LitElement {
     this.querySelector("#request").generateRequest();
     this.querySelector("#loadingContent").style.display = "none";
   }
-  handleResponse() {
+  handleResponse(e) {
     this.elmslnCourses = this.queryResponse.data.elmslnCourses;
     this.canvasCourses = this.queryResponse.data.canvasCourses;
-    this.shadowRoot.querySelector("#loading").hidden = true;
+    this.querySelector("#loading").hidden = true;
   }
-  handleRosterResponse() {
-    this.roster = this.queryResponse.data;
+  handleRosterResponse(e) {
+    this.roster = this.queryResponseRoster.data;
     this.querySelector("#loadingContent").style.display = "block";
   }
-  /**
-   * highjack shadowDom
-   */
-  _attachDom(dom) {
-    this.appendChild(dom);
+  createRenderRoot() {
+    return this;
   }
 }
 window.customElements.define(LrnappCanvasListing.tag, LrnappCanvasListing);

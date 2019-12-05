@@ -1,55 +1,59 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 class LrnappBlockRecentSubmissions extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style include="paper-item-styles">
+    return [
+      css`
         :host {
           display: block;
         }
         paper-button {
           width: 100%;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         auto=""
         url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{response}}"
+        @last-response-changed="${this.responseEvent}"
         @response="${this.handleResponse}"
       ></iron-ajax>
-      <div id="loading">
-        <h3>Loading..</h3>
-        <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-      </div>
-      <iron-list items="[[_toArray(response.data)]]" as="item">
-        <template>
+      <hexagon-loader
+        id="loader"
+        item-count="4"
+        ?loading=${this.loading}
+        size="small"
+      ></hexagon-loader>
+      ${this._toArray(this.response.data).map(
+        item => html`
           <paper-button @click="${this._loadSubmissionUrl}">
             <lrndesign-gallerycard
-              data-submission-id="[[item.id]]"
-              title="[[item.attributes.title]]"
-              author="[[item.relationships.author.data]]"
-              comments="[[item.meta.comment_count]]"
-              image="[[item.display.image]]"
-              icon="[[item.display.icon]]"
+              data-submission-id="${item.id}"
+              title="${item.attributes.title}"
+              author="${item.relationships.author.data}"
+              comments="${item.meta.comment_count}"
+              image="${item.display.image}"
+              icon="${item.display.icon}"
               class="ferpa-protect"
             >
             </lrndesign-gallerycard>
           </paper-button>
-        </template>
-      </iron-list>
+        `
+      )}
     `;
+  }
+  responseEvent(e) {
+    this.response = { ...e.detail.value };
   }
   static get tag() {
     return "lrnapp-block-recent-submissions";
@@ -78,13 +82,37 @@ class LrnappBlockRecentSubmissions extends LitElement {
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       response: {
-        type: Array,
-        notify: true
+        type: Array
+      },
+      loading: {
+        type: Boolean
       }
     };
+  }
+  constructor() {
+    super();
+    this.loading = true;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["sourcePath", "response"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * Handle tap on paper-button above to redirect to the correct submission url.
@@ -98,7 +126,7 @@ class LrnappBlockRecentSubmissions extends LitElement {
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   }
   handleResponse(e) {
-    this.shadowRoot.querySelector("#loading").hidden = true;
+    this.loading = false;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

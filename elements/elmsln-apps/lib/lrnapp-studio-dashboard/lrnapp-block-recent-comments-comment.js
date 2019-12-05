@@ -1,17 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-class LrnappBlockRecentCommentsComment extends mixinBehaviors(
-  [IronResizableBehavior],
-  PolymerElement
-) {
-  render() {
-    return html`
-      <style>
+class LrnappBlockRecentCommentsComment extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -45,11 +43,6 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           margin-right: 1em;
         }
 
-        .flex-wrap {
-          @apply --layout-horizontal;
-          @apply --layout-wrap;
-        }
-
         .inactive {
           max-height: 4.6em;
           overflow: hidden;
@@ -69,7 +62,11 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
         .hidden {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-card elevation="3" class="flex-wrap">
         <div class="card-content">
           <lrndesign-avatar

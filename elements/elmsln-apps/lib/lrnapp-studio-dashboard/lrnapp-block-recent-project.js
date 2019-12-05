@@ -101,7 +101,7 @@ class LrnappBlockRecentProject extends LitElement {
         auto=""
         url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{response}}"
+        @last-response-changed="${this.responseChanged}"
         @response="${this.handleResponse}"
       ></iron-ajax>
       <div id="loading">
@@ -120,7 +120,7 @@ class LrnappBlockRecentProject extends LitElement {
                 >
                   <div class="card-content">
                     <iron-list
-                      items="${this._toArray(
+                      .items="${this._toArray(
                         this.project.relationships.assignments
                       )}"
                       as="assignment"
@@ -208,25 +208,42 @@ class LrnappBlockRecentProject extends LitElement {
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       response: {
-        type: Object,
-        notify: true
+        type: Object
       },
       project: {
-        type: Object,
-        notify: true
+        type: Object
       },
       hasProject: {
         type: Boolean,
-        notify: true,
-        reflect: true,
-        computed: "_getHasProject(project)"
+        reflect: true
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // computed
+      if (["project"].includes(propName)) {
+        this.hasProject = this._getHasProject(this[propName]);
+      }
+      let notifiedProps = ["sourcePath", "response", "hasProject", "project"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   /**
    * Generate the correct boolean for having a project.
    */
@@ -236,7 +253,9 @@ class LrnappBlockRecentProject extends LitElement {
     }
     return false;
   }
-
+  responseChanged(e) {
+    this.response = e.detail.value;
+  }
   /**
    * Swap off the loading with project data.
    */

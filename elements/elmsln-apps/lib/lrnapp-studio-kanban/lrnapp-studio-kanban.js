@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -13,7 +15,6 @@ import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -30,11 +31,8 @@ class LrnappStudioKanban extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style include="materializecss-styles">
+    return [
+      css`
         :host {
           display: block;
         }
@@ -112,10 +110,6 @@ class LrnappStudioKanban extends LitElement {
           margin: 0;
           height: 100%;
           min-height: 10em;
-          --paper-card-header: {
-            max-width: 60%;
-            word-break: break-all;
-          }
         }
         .project-container {
           padding: 1em;
@@ -193,13 +187,27 @@ class LrnappStudioKanban extends LitElement {
           margin: 0em auto;
           max-width: 20em;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles">
+          .project-card {
+            --paper-card-header: {
+              max-width: 60%;
+              word-break: break-all;
+            }
+          }
+        </style>
+      </custom-style>
       <iron-ajax
         auto=""
         id="projectbackend"
         url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{projectResponse}}"
+        @last-response-changed="${this.projectResponseChanged}"
         @response="${this._handleProjectResponse}"
       >
       </iron-ajax>
@@ -208,21 +216,27 @@ class LrnappStudioKanban extends LitElement {
         url="${this.sourcePath}"
         params=""
         handle-as="json"
-        last-response="{{backendResponse}}"
+        @last-response-changed="${this.backendResponseChanged}"
         @response="${this._handleUpdateResponse}"
       >
       </iron-ajax>
 
       <app-location
-        route="{{route}}"
-        query-params="{{queryParams}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
       ></app-location>
       <app-route
-        route="{{route}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
         pattern="${this.endPoint}/:page"
-        data="{{data}}"
-        tail="{{tail}}"
-        query-params="{{queryParams}}"
+        .data="${this.data}"
+        @data-changed="${this.dataChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
       >
       </app-route>
       <div id="loading">
@@ -237,14 +251,8 @@ class LrnappStudioKanban extends LitElement {
         icon="add"
       ></lrnapp-studio-project-button>
       <div class="projects-window">
-        <iron-list
-          items="${this._toArray(projectResponse.data.projects)}"
-          as="project"
-          class="projects-container"
-          grid=""
-          mutable-data
-        >
-          <template class="projects-container-items">
+        ${this._toArray(this.projectResponse.data.projects).map(
+          project => html`
             <div class="project-container">
               <paper-card
                 id="project-${project.id}"
@@ -291,12 +299,8 @@ class LrnappStudioKanban extends LitElement {
                   </lrnsys-button>
                 </div>
                 <div class="card-content">
-                  <iron-list
-                    items="${this._toArray(project.relationships.assignments)}"
-                    as="assignment"
-                    mutable-data
-                  >
-                    <template>
+                  ${this._toArray(project.relationships.assignments).map(
+                    assignment => html`
                       <div class="assignment-row" id="assignment">
                         <lrnsys-button
                           id="assignment-${project.id}-${assignment.id}"
@@ -341,13 +345,13 @@ class LrnappStudioKanban extends LitElement {
                           ></lrnsys-button>
                         </span>
                       </div>
-                    </template>
-                  </iron-list>
+                    `
+                  )}
                 </div>
               </paper-card>
             </div>
-          </template>
-        </iron-list>
+          `
+        )}
       </div>
       <paper-toast text="Updated" id="toast"></paper-toast>
       <paper-dialog id="delete" modal="">
@@ -446,72 +450,89 @@ class LrnappStudioKanban extends LitElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        notify: true
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        notify: true
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        notify: true
+        attribute: "end-point"
       },
       activeAssignment: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "active-assignment"
       },
       activeAssignmentNode: {
         type: Object
       },
       projectToDelete: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "project-to-delete"
       },
       assignmentToDelete: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "assignment-to-delete"
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       /**
        * Submission for two-way data binding on return from the button being pushed
        */
       submission: {
-        type: Object,
-        notify: true
+        type: Object
       },
       /**
        * Response from the server.
        */
       projectResponse: {
-        type: Object,
-        notify: true
+        type: Object
       },
       /**
        * Response from the server for non-project requests.
        */
       backendResponse: {
-        type: Object,
-        notify: true
+        type: Object
       }
     };
   }
+  backendResponseChanged(e) {
+    this.backendResponse = { ...e.detail.value };
+  }
+  projectResponseChanged(e) {
+    this.projectResponse = { ...e.detail.value };
+  }
+  routeChangedEvent(e) {
+    this.route = { ...e.detail.value };
+  }
+  queryParamsChangedEvent(e) {
+    this.queryParams = { ...e.detail.value };
+  }
+  tailChangedEvent(e) {
+    this.tail = { ...e.detail.value };
+  }
+  dataChangedEvent(e) {
+    this.data = { ...e.detail.value };
+  }
 
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    this.assignmentToDelete = null;
+    this.projectToDelete = null;
+    this.activeAssignment = null;
+    setTimeout(() => {
       this.addEventListener(
         "project-created",
         this._handleProjectCreated.bind(this)
@@ -520,25 +541,42 @@ class LrnappStudioKanban extends LitElement {
         "assignment-created",
         this._handleAssignmentCreated.bind(this)
       );
+    }, 0);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "basePath",
+        "csrfToken",
+        "endPoint",
+        "activeAssignment",
+        "backendResponse",
+        "projectResponse",
+        "submission",
+        "sourcePath",
+        "assignmentToDelete",
+        "projectToDelete"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+      if (propName == "queryParams") {
+        this._deleteToast(this.queryParams.deletetoast);
+      }
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "project-created",
-      this._handleProjectCreated.bind(this)
-    );
-    this.removeEventListener(
-      "assignment-created",
-      this._handleAssignmentCreated.bind(this)
-    );
-    super.disconnectedCallback();
-  }
-
-  static get observers() {
-    return [
-      "_routeChanged(route, endPoint)",
-      "_deleteToast(queryParams.deletetoast)"
-    ];
   }
 
   // If the current route is outside the scope of our app

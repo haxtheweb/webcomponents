@@ -49,14 +49,16 @@ class LrnappStudioSubmissionEdit extends LitElement {
             <div class="field">
               <paper-input
                 label="Title"
-                value="{{submission.attributes.title}}"
+                value="${this.submission.attributes.title}"
+                @value-changed="${this.titleEvent}"
               ></paper-input>
             </div>
             <!-- Body -->
             <div class="field">
               <label>Submission Text</label>
               <lrnapp-studio-submission-edit-textarea
-                content="{{submission.attributes.body}}"
+                content="${this.submission.attributes.body}"
+                @content-changed="${this.contentEvent}"
               ></lrnapp-studio-submission-edit-textarea>
             </div>
 
@@ -64,7 +66,8 @@ class LrnappStudioSubmissionEdit extends LitElement {
             <div class="imagesfield field">
               <label for="image-upload">Images</label>
               <lrnapp-studio-submission-edit-images
-                images="{{submission.attributes.images}}"
+                .images="${this.submission.attributes.images}"
+                @images-changed="${this.imagesEvent}"
                 file-types="${this.submission.meta.imagefieldTypes}"
               ></lrnapp-studio-submission-edit-images>
             </div>
@@ -73,7 +76,8 @@ class LrnappStudioSubmissionEdit extends LitElement {
             <div class="filesfield field">
               <label for="file-upload">Files</label>
               <lrnapp-studio-submission-edit-files
-                files="{{submission.attributes.files}}"
+                .files="${this.submission.attributes.files}"
+                @files-changed="${this.filesEvent}"
                 file-types="${this.submission.meta.filefieldTypes}"
               >
               </lrnapp-studio-submission-edit-files>
@@ -83,7 +87,8 @@ class LrnappStudioSubmissionEdit extends LitElement {
             <div id="linksfield" class="linksfield field">
               <label for="links-input">Links</label>
               <lrnapp-studio-submission-edit-links
-                links="{{submission.attributes.links}}"
+                .links="${this.submission.attributes.links}"
+                @links-changed="${this.linksEvent}"
               ></lrnapp-studio-submission-edit-links>
             </div>
 
@@ -129,6 +134,21 @@ class LrnappStudioSubmissionEdit extends LitElement {
           `
         : ``}
     `;
+  }
+  titleEvent(e) {
+    this.submission.attributes.title = e.detail.value;
+  }
+  contentEvent(e) {
+    this.submission.attributes.body = e.detail.value;
+  }
+  imagesEvent(e) {
+    this.submission.attributes.images = [...e.detail.value];
+  }
+  filesEvent(e) {
+    this.submission.attributes.files = [...e.detail.value];
+  }
+  linksEvent(e) {
+    this.submission.attributes.links = [...e.detail.value];
   }
   submissionVideosChanged(e) {
     this.submission.attributes.video = [...e.detail.value];

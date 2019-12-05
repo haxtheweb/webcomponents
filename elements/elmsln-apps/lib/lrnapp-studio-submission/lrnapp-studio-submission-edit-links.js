@@ -11,11 +11,8 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style>
+    return [
+      css`
         :host {
           display: block;
         }
@@ -43,23 +40,28 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
           width: 50vmax;
           padding: 1em;
         }
-      </style>
-
-      <template is="dom-repeat" items="{{links}}" as="link">
-        <div class="item">
-          <div class="info">
-            <div class="linksfield__url">{{link.url}}</div>
+      `
+    ];
+  }
+  render() {
+    return html`
+      ${this.links.map(
+        (link, index) => html`
+          <div class="item">
+            <div class="info">
+              <div class="linksfield__url">${link.url}</div>
+            </div>
+            <div class="linksfield__actions">
+              <paper-icon-button
+                icon="delete"
+                class="linksfield__delete"
+                data-index="${index}"
+                @click="${this._deleteLink}"
+              ></paper-icon-button>
+            </div>
           </div>
-          <div class="linksfield__actions">
-            <paper-icon-button
-              icon="delete"
-              class="linksfield__delete"
-              data-index="{{index}}"
-              @click="${this._deleteLink}"
-            ></paper-icon-button>
-          </div>
-        </div>
-      </template>
+        `
+      )}
       <lrnapp-studio-submission-edit-add-asset
         icon="link"
         display="pill"
@@ -73,7 +75,8 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
             id="link-input"
             class="input"
             label="URL"
-            value="{{newlink}}"
+            value="${this.newlink}"
+            @value-changed="${this.newlinkEvent}"
           ></paper-input>
         </paper-dialog-scrollable>
         <div class="buttons">
@@ -85,7 +88,9 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
       </paper-dialog>
     `;
   }
-
+  newlinkEvent(e) {
+    this.newlink = e.detail.value;
+  }
   static get tag() {
     return "lrnapp-studio-submission-edit-links";
   }

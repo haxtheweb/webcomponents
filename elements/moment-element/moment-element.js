@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * @license
@@ -15,10 +15,10 @@ Examples:
 
 * @demo demo/index.html
 */
-class MomentElement extends PolymerElement {
-  static get template() {
+class MomentElement extends LitElement {
+  render() {
     return html`
-      [[output]]
+      ${this.output}
     `;
   }
   static get tag() {
@@ -26,73 +26,30 @@ class MomentElement extends PolymerElement {
   }
   static get properties() {
     return {
-      /**
-       * The input datetime. If don't set the datetime, the datetime will be now.
-       * For consistent results, parsing anything other than ISO 8601 strings
-       * with the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).
-       */
       datetime: {
-        type: String,
-        value() {
-          return new Date();
-        }
+        type: String
       },
-
-      /**
-       * The datetime input format. An string using the
-       * [moment String + Format](http://momentjs.com/docs/#/parsing/string-format/).
-       */
       inputFormat: {
         type: String,
-        value: ""
+        attribute: "input-format"
       },
-
-      /**
-       * The datetime output format. Options are 'now' or datetime using the
-       * [moment Format](http://momentjs.com/docs/#/displaying/format/).
-       */
       outputFormat: {
         type: String,
-        value: ""
+        attribute: "output-format"
       },
-
-      /**
-       * Relative time using [momen time from now](http://momentjs.com/docs/#/displaying/fromnow/)
-       * or [momen Time from datetime](http://momentjs.com/docs/#/displaying/from/).
-       */
       from: {
-        type: String,
-        value: ""
+        type: String
       },
-
-      /**
-       * Relative time using [momen Time to now](http://momentjs.com/docs/#/displaying/tonow/)
-       * or [momen Time to datetime](http://momentjs.com/docs/#/displaying/to/).
-       */
       to: {
-        type: String,
-        value: ""
+        type: String
       },
-
-      /**
-       * The output datetime.
-       */
       output: {
-        type: String,
-        notify: true
+        type: String
       },
-      /**
-       * library loaded
-       */
       libraryLoaded: {
         type: Boolean
       }
     };
-  }
-  static get observers() {
-    return [
-      "_computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded)"
-    ];
   }
   // simple path from a url modifier
   pathFromUrl(url) {
@@ -100,6 +57,11 @@ class MomentElement extends PolymerElement {
   }
   constructor() {
     super();
+    this.datetime = new Date();
+    this.inputFormat = "";
+    this.outputFormat = "";
+    this.from = "";
+    this.to = "";
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/moment/moment.js`;
     window.addEventListener(
@@ -108,6 +70,43 @@ class MomentElement extends PolymerElement {
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("moment", location);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["output"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (
+        [
+          "datetime",
+          "inputFormat",
+          "outputFormat",
+          "from",
+          "to",
+          "libraryLoaded"
+        ].includes(propName)
+      ) {
+        this.output = this._computeOutput(
+          this.datetime,
+          this.inputFormat,
+          this.outputFormat,
+          this.from,
+          this.to,
+          this.libraryLoaded
+        );
+      }
+    });
   }
   disconnectedCallback() {
     window.removeEventListener(
@@ -119,19 +118,7 @@ class MomentElement extends PolymerElement {
   _momentLoaded() {
     this.libraryLoaded = true;
   }
-  /**
-   * Recomputes the output
-   */
-  update() {
-    this._computeOutput(
-      this.datetime,
-      this.inputFormat,
-      this.outputFormat,
-      this.from,
-      this.to,
-      this.libraryLoaded
-    );
-  }
+
   _computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded) {
     if (libraryLoaded) {
       var output = inputFormat
@@ -144,7 +131,7 @@ class MomentElement extends PolymerElement {
       } else if (to) {
         output = to === "now" ? output.toNow() : output.to(moment(to));
       }
-      this.set("output", output);
+      return output;
     }
   }
 }

@@ -1,5 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-block-recent-project.js";
@@ -11,15 +14,8 @@ class LrnappStudioDashboard extends LitElement {
    * LitElement constructable styles enhancement
    */
   static get styles() {
-    return [css``];
-  }
-  render() {
-    return html`
-      <style include="materializecss-styles">
-        :host {
-          display: block;
-          padding: 0 2em;
-        }
+    return [
+      css`
         h1.title {
           font-size: 2em;
           color: black;
@@ -39,17 +35,33 @@ class LrnappStudioDashboard extends LitElement {
         .dashboard-item {
           width: 30%;
         }
-      </style>
-      <h1 class="title">Welcome back [[username]]!</h1>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style include="materializecss-styles">
+          :host {
+            display: block;
+            padding: 0 2em;
+          }
+        </style>
+      </custom-style>
+      <h1 class="title">Welcome back ${this.username}!</h1>
       <p class="para">Here's what's been going on in the studio</p>
       <div class="dashboard-row">
         <paper-card heading="Your active project" class="dashboard-item">
           <div class="card-content">
             <lrnapp-block-recent-project
               csrf-token="${this.csrfToken}"
-              end-point="[[_getEndPoint(basePath)]]"
+              end-point="${this._getEndPoint(this.basePath)}"
               base-path="${this.basePath}"
-              source-path="[[_getDataSource(csrfToken, basePath,'recent-project')]]"
+              source-path="${this._getDataSource(
+                this.csrfToken,
+                this.basePath,
+                "recent-project"
+              )}"
             >
             </lrnapp-block-recent-project>
           </div>
@@ -61,9 +73,13 @@ class LrnappStudioDashboard extends LitElement {
           <div class="card-content">
             <lrnapp-block-need-feedback
               csrf-token="${this.csrfToken}"
-              end-point="[[_getEndPoint(basePath)]]"
+              end-point="${this._getEndPoint(this.basePath)}"
               base-path="${this.basePath}"
-              source-path="[[_getDataSource(csrfToken, basePath,'need-feedback')]]"
+              source-path="${this._getDataSource(
+                this.csrfToken,
+                this.basePath,
+                "need-feedback"
+              )}"
             >
             </lrnapp-block-need-feedback>
           </div>
@@ -72,9 +88,13 @@ class LrnappStudioDashboard extends LitElement {
           <div class="card-content">
             <lrnapp-block-recent-submissions
               csrf-token="${this.csrfToken}"
-              end-point="[[_getEndPoint(basePath)]]"
+              end-point="${this._getEndPoint(this.basePath)}"
               base-path="${this.basePath}"
-              source-path="[[_getDataSource(csrfToken, basePath,'recent-submissions')]]"
+              source-path="${this._getDataSource(
+                this.csrfToken,
+                this.basePath,
+                "recent-submissions"
+              )}"
             >
             </lrnapp-block-recent-submissions>
           </div>
@@ -83,9 +103,13 @@ class LrnappStudioDashboard extends LitElement {
           <div class="card-content">
             <lrnapp-block-recent-comments
               csrf-token="${this.csrfToken}"
-              end-point="[[_getEndPoint(basePath)]]"
+              end-point="${this._getEndPoint(this.basePath)}"
               base-path="${this.basePath}"
-              source-path="[[_getDataSource(csrfToken, basePath,'recent-comments')]]"
+              source-path="${this._getDataSource(
+                this.csrfToken,
+                this.basePath,
+                "recent-comments"
+              )}"
             >
             </lrnapp-block-recent-comments>
           </div>
@@ -108,11 +132,13 @@ class LrnappStudioDashboard extends LitElement {
       },
       basePath: {
         type: String,
-        attribute: "base-path"
+        attribute: "base-path",
+        reflect: true
       },
       csrfToken: {
         type: String,
-        attribute: "csrf-token"
+        attribute: "csrf-token",
+        reflect: true
       },
       endPoint: {
         type: String,
@@ -122,22 +148,30 @@ class LrnappStudioDashboard extends LitElement {
         type: String,
         reflect: true
       },
-      basePath: {
-        type: String,
-        notify: true,
-        reflect: true
-      },
-      csrfToken: {
-        type: String,
-        notify: true,
-        reflect: true
-      },
       sourcePath: {
         type: String,
-        notify: true,
-        reflect: true
+        reflect: true,
+        attribute: "source-path"
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["sourcePath", "basePath", "csrfToken"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   _getEndPoint(basePath) {
     return basePath + "lrnapp-studio-dashboard/blocks";
