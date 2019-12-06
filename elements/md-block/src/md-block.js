@@ -2,24 +2,19 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `md-block`
- * @customElement md-block
  * `a markdown block`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement md-block
  */
-class MdBlock extends PolymerElement {
+class MdBlock extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
+    this.markdown = "";
+    this.source = "";
     import("@polymer/marked-element/marked-element.js");
   }
   /**
@@ -28,16 +23,6 @@ class MdBlock extends PolymerElement {
    */
   static get tag() {
     return "md-block";
-  }
-  /**
-   * Calculate visibility of the source response
-   */
-  _calculateHasSource(source) {
-    if (source && source != "") {
-      return true;
-    }
-    this.source = null;
-    return false;
   }
 }
 window.customElements.define(MdBlock.tag, MdBlock);

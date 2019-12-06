@@ -1,15 +1,8 @@
 {
   "source": {
-    "name": "source",
     "type": String
   },
-  "hasSource": {
-    "name": "hasSource",
-    "type": Boolean,
-    "computed": "_calculateHasSource(source)"
-  },
   "markdown": {
-    "name": "markdown",
     "type": String
   }
 }

@@ -2,25 +2,18 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `md-block`
- * @customElement md-block
  * `a markdown block`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement md-block
  */
-class MdBlock extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class MdBlock extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -28,13 +21,16 @@ class MdBlock extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div>
-        <marked-element markdown="[[markdown]]">
+        <marked-element markdown="${this.markdown}">
           <div slot="markdown-html"></div>
-          <dom-if if="[[hasSource]]">
-            <script type="text/markdown" src$="[[source]]"></script>
-          </dom-if>
+          <script type="text/markdown" src="${this.source}"></script>
         </marked-element>
       </div>
     `;
@@ -96,22 +92,17 @@ class MdBlock extends PolymerElement {
       ...super.properties,
 
       source: {
-        name: "source",
         type: String
       },
-      hasSource: {
-        name: "hasSource",
-        type: Boolean,
-        computed: "_calculateHasSource(source)"
-      },
       markdown: {
-        name: "markdown",
         type: String
       }
     };
   }
   constructor() {
     super();
+    this.markdown = "";
+    this.source = "";
     import("@polymer/marked-element/marked-element.js");
   }
   /**
@@ -120,16 +111,6 @@ class MdBlock extends PolymerElement {
    */
   static get tag() {
     return "md-block";
-  }
-  /**
-   * Calculate visibility of the source response
-   */
-  _calculateHasSource(source) {
-    if (source && source != "") {
-      return true;
-    }
-    this.source = null;
-    return false;
   }
 }
 window.customElements.define(MdBlock.tag, MdBlock);

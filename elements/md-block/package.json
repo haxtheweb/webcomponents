@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/md-block",
   "wcfactory": {
     "className": "MdBlock",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "md-block",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": true,
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/marked-element": "3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

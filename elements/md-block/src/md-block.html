@@ -1,8 +1,6 @@
 <div>
-<marked-element markdown="[[markdown]]">
+  <marked-element markdown="${this.markdown}">
     <div slot="markdown-html"></div>
-    <dom-if if="[[hasSource]]">
-      <script type="text/markdown" src$="[[source]]"></script>
-    </dom-if>
-</marked-element>
+    <script type="text/markdown" src="${this.source}"></script>
+  </marked-element>
 </div>
