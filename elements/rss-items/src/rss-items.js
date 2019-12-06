@@ -4,14 +4,11 @@
  *
  * Based on https://github.com/TherapyChat/rss-items
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
  * `rss-items`
- * @customElement rss-items
  * `visualize RSS items`
  * 
  * Example:
@@ -23,30 +20,10 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
   ></rss-items>
   ```
  * It will retrieve the items from the url automatically.
-   ### Styling
-
-    The following custom properties and mixins are available for styling:
-
-    Custom property | Description | Default
-    ----------------|-------------|----------
-    `--rss-items` | Mixin applied to the component | `{}`
-    `--rss-items-article` | Mixin applied to the articles | `{}`
-    `--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`
-    `--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`
-    `--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`
-    `--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`
-    `--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`
-    `--rss-items-title` | Mixin applied to the title | `{}`
-    `--rss-items-excerpt` | Mixin applied to the excerpt | `{}`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement rss-items
  */
-class RssItems extends PolymerElement {
+class RssItems extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -63,7 +40,7 @@ class RssItems extends PolymerElement {
     this.shadowRoot.querySelector("#rssajax").generateRequest();
   }
   _maxChanged(newValue) {
-    if (newValue && this._x2js && this.__ready) {
+    if (this.xml && newValue && this._x2js && this.__ready) {
       this.xmlToItems(this.xml);
     }
   }
@@ -76,10 +53,12 @@ class RssItems extends PolymerElement {
       // parse xml to json and get items
       var conversor = new X2JS();
       var json = conversor.xml2json(newValue);
-      var items = json.rss ? json.rss.channel.item : json.channel.item;
-      // truncate with this.max and parse items
-      items = this.max === undefined ? items : items.splice(0, this.max);
-      this.items = this._parseItems(items);
+      if (json) {
+        var items = json.rss ? json.rss.channel.item : json.channel.item;
+        // truncate with this.max and parse items
+        items = this.max === undefined ? items : items.splice(0, this.max);
+        this.items = [...this._parseItems(items)];
+      }
     }
   }
   _urlChanged(newValue) {
@@ -87,18 +66,22 @@ class RssItems extends PolymerElement {
       this.initRequest();
     }
   }
+  xmlEvent(e) {
+    this.xml = {};
+    setTimeout(() => {
+      this.xml = e.detail.value;
+    }, 0);
+  }
   /**
    * Parse items by getting excerpt and image source.
    * @param {Array} items RSS items.
    */
   _parseItems(items) {
-    return items.map(
-      function(item) {
-        item.excerpt = this._getItemExcerpt(item);
-        item.imageSrc = this._getItemImageScr(item);
-        return item;
-      }.bind(this)
-    );
+    return items.map(item => {
+      item.excerpt = this._getItemExcerpt(item);
+      item.imageSrc = this._getItemImageScr(item);
+      return item;
+    });
   }
   /**
    * Get excerpt from item description.
@@ -140,8 +123,43 @@ class RssItems extends PolymerElement {
   pathFromUrl(url) {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["items"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "max") {
+        this._maxChanged(this[propName], oldValue);
+      }
+      if (propName == "url") {
+        this._urlChanged(this[propName], oldValue);
+      }
+      if (propName == "xml") {
+        this.xmlToItems(this[propName], oldValue);
+      }
+    });
+  }
   constructor() {
     super();
+    this.items = [];
+    this.auto = false;
+    this.max = 10;
+    this.maxExcerptLength = 100;
+    this.maxTitleLength = 50;
+    this.readMoreAnchorText = "Read more";
+    this.readMoreImageAlt = "";
+    this.showReadMore = false;
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -168,18 +186,15 @@ class RssItems extends PolymerElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.__ready = true;
-    afterNextRender(this, function() {
-      if (this._x2js) {
-        if (this.auto) {
-          this.shadowRoot.querySelector("#rssajax").auto = this.auto;
-        } else {
-          this.initRequest();
-        }
+    if (this._x2js) {
+      if (this.auto) {
+        this.shadowRoot.querySelector("#rssajax").auto = this.auto;
+      } else {
+        this.initRequest();
       }
-    });
+    }
   }
   /**
    * life cycle, element is removed from the DOM
