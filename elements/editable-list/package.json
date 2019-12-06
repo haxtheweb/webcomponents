@@ -16,7 +16,7 @@
       "hax": "src/editable-list-hax.json"
     }
   },
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "a listing of items that can be edited in place with operations",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.3.1",
-    "@lrnwebcomponents/simple-modal": "^2.3.1",
+    "@lrnwebcomponents/simple-colors": "^2.3.2",
+    "@lrnwebcomponents/simple-modal": "^2.3.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
