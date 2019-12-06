@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
 `lrnsys-render-html`
 A legacy element which just directly renders HTML.
@@ -15,14 +15,21 @@ your users.
 
 * @demo demo/index.html
 */
-class LrnsysRenderHtml extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnsysRenderHtml extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div id="container"></div>
     `;
   }
@@ -35,26 +42,21 @@ class LrnsysRenderHtml extends PolymerElement {
     return {
       /**
        * String to render as HTML directly
-       * @type {Object}
        */
       html: {
         type: String
       }
     };
   }
-
-  /**
-   * When HTML changes, inject it directly.
-   */
-  static get observers() {
-    return ["_render(html)"];
+  firstUpdated() {
+    this.shadowRoot.querySelector("#container").innerHTML = this.html;
   }
-
-  /**
-   * Render the HTML by just injecting it directly.
-   */
-  _render(html) {
-    this.shadowRoot.querySelector("#container").innerHTML = html;
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "html" && this.shadowRoot) {
+        this.shadowRoot.querySelector("#container").innerHTML = this[propName];
+      }
+    });
   }
 }
 window.customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);

@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
-      "description": "`oer-schema`",
-      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "jsDoc": "/**\n * `oer-schema`\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n * @customElement oer-schema\n */",
       "attributes": [
         {
           "name": "text",
@@ -61,9 +61,9 @@
       "slots": []
     },
     {
-      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
-      "description": "`oer-schema`",
-      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "jsDoc": "/**\n * `oer-schema`\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n * @customElement oer-schema\n */",
       "attributes": [
         {
           "name": "text",
@@ -120,9 +120,9 @@
       "slots": []
     },
     {
-      "name": "oer-schema\n`A LRN element to wrap an oer schema prefix onto materials.`",
-      "description": "`oer-schema`",
-      "jsDoc": "/**\n * `oer-schema`\n * @customElement oer-schema\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n */",
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "jsDoc": "/**\n * `oer-schema`\n * `A LRN element to wrap an oer schema prefix onto materials.`\n * @demo demo/index.html\n * @customElement oer-schema\n */",
       "attributes": [
         {
           "name": "text",

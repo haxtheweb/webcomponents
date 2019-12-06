@@ -2,28 +2,19 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/relative-heading/relative-heading.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `topic-heading`
- * @customElement topic-heading
  * `Semantic and visual meaning behind a heading break`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement topic-heading
  */
-class TopicHeading extends PolymerElement {
+class TopicHeading extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host {
   display: block;
 }
@@ -33,13 +24,8 @@ class TopicHeading extends PolymerElement {
 }
 
 relative-heading {
-  color: var(--topic-heading-heading-color);
+  color: var(--topic-heading-text-color);
   display: inline-flex;
-  --relative-heading-heading: {
-    padding: 0;
-    margin: 0 0 16px 0;
-    @apply --topic-heading-heading;
-  }
 }
 iron-icon {
   color: var(--topic-heading-icon-color);
@@ -50,10 +36,20 @@ iron-icon {
   padding: 16px;
   line-height: 16px;
   vertical-align: bottom;
-  @apply --topic-heading-icon;
 }
-        </style>
-<iron-icon icon="[[icon]]"></iron-icon><relative-heading text="[[title]]"></relative-heading>`;
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+${this.icon ? html`
+  <iron-icon icon="${this.icon}"></iron-icon>
+` : ``}
+${this.title ? html`
+<relative-heading text="${this.title}">${this.title}</relative-heading>
+` : ``}`;
   }
 
   // haxProperty definition
@@ -108,19 +104,26 @@ iron-icon {
   ...super.properties,
   
   "icon": {
-    "name": "icon",
-    "type": String,
-    "value": ""
+    "type": String
   },
   "title": {
-    "name": "title",
-    "type": String,
-    "value": "Heading"
+    "type": String
   }
 }
 ;
   }
-
+  constructor() {
+    super();
+    this.icon = "";
+    this.title = "";
+    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+  }
+  firstUpdated() {
+    if (this.icon) {
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
+    }
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -128,10 +131,6 @@ iron-icon {
   static get tag() {
     return "topic-heading";
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(TopicHeading.tag, TopicHeading);
 export { TopicHeading };

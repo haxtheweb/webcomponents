@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "q-r\n`Polymer wrapper for a qr code.`",
-      "description": "`q-r`",
-      "jsDoc": "/**\n * `q-r`\n * @customElement q-r\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n */",
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",
@@ -73,9 +73,9 @@
       "slots": []
     },
     {
-      "name": "q-r\n`Polymer wrapper for a qr code.`",
-      "description": "`q-r`",
-      "jsDoc": "/**\n * `q-r`\n * @customElement q-r\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n */",
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",
@@ -144,9 +144,9 @@
       "slots": []
     },
     {
-      "name": "q-r\n`Polymer wrapper for a qr code.`",
-      "description": "`q-r`",
-      "jsDoc": "/**\n * `q-r`\n * @customElement q-r\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n */",
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",

@@ -4,32 +4,16 @@
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],
@@ -39,32 +23,16 @@
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],
@@ -74,32 +42,16 @@
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @customElement parallax-image\n * @demo demo/index.html\n */",
+      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "url",
-          "description": "Url",
-          "jsDoc": "/**\n       * Url\n       */",
           "type": "string"
         }
       ],

@@ -2,49 +2,40 @@
   "version": 2,
   "tags": [
     {
-      "name": "json-editor\n`simple JSON blob data binding to a text area`",
-      "description": "`json-editor`",
-      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
       "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "json-editor\n`simple JSON blob data binding to a text area`",
-      "description": "`json-editor`",
-      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
+      "properties": [
         {
           "name": "label",
-          "description": "label for the text area",
-          "jsDoc": "/**\n       * label for the text area\n       */",
           "type": "string"
         },
         {
           "name": "error",
-          "description": "State of being valid JSON object",
-          "jsDoc": "/**\n       * State of being valid JSON object\n       */",
           "type": "boolean"
         },
         {
           "name": "disabled",
-          "description": "toggling disabled state of the editor",
-          "jsDoc": "/**\n       * toggling disabled state of the editor\n       */",
           "type": "boolean"
         },
         {
-          "name": "max-rows",
-          "description": "max rows in the textarea",
-          "jsDoc": "/**\n       * max rows in the textarea\n       */",
+          "name": "maxRows",
           "type": "number"
         },
         {
           "name": "value",
-          "description": "String based value of the editor, use this to set initial value",
-          "jsDoc": "/**\n       * String based value of the editor, use this to set initial value\n       */",
           "type": "string"
-        },
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
+      "attributes": [
         {
           "name": "format-test",
           "description": "format test to update value so it's pretty printed",
@@ -56,39 +47,29 @@
           "description": "The current data object",
           "jsDoc": "/**\n       * The current data object\n       */",
           "type": "{}"
-        }
-      ],
-      "properties": [
+        },
         {
           "name": "label",
-          "description": "label for the text area",
-          "jsDoc": "/**\n       * label for the text area\n       */",
           "type": "string"
         },
         {
           "name": "error",
-          "description": "State of being valid JSON object",
-          "jsDoc": "/**\n       * State of being valid JSON object\n       */",
           "type": "boolean"
         },
         {
           "name": "disabled",
-          "description": "toggling disabled state of the editor",
-          "jsDoc": "/**\n       * toggling disabled state of the editor\n       */",
           "type": "boolean"
         },
         {
-          "name": "maxRows",
-          "description": "max rows in the textarea",
-          "jsDoc": "/**\n       * max rows in the textarea\n       */",
+          "name": "max-rows",
           "type": "number"
         },
         {
           "name": "value",
-          "description": "String based value of the editor, use this to set initial value",
-          "jsDoc": "/**\n       * String based value of the editor, use this to set initial value\n       */",
           "type": "string"
-        },
+        }
+      ],
+      "properties": [
         {
           "name": "formatTest",
           "description": "format test to update value so it's pretty printed",
@@ -100,17 +81,58 @@
           "description": "The current data object",
           "jsDoc": "/**\n       * The current data object\n       */",
           "type": "{}"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "maxRows",
+          "type": "number"
+        },
+        {
+          "name": "value",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "json-editor\n`simple JSON blob data binding to a text area`",
-      "description": "`json-editor`",
-      "jsDoc": "/**\n * `json-editor`\n * @customElement json-editor\n * `simple JSON blob data binding to a text area`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "maxRows",
+          "type": "number"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     }

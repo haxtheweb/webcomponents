@@ -2,16 +2,10 @@
   "version": 2,
   "tags": [
     {
-      "name": "task-list\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "description": "`task-list`",
-      "jsDoc": "/**\n * `task-list`\n * @customElement task-list\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n */",
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
@@ -20,18 +14,14 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "properties": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "relatedResource",
           "description": "Related Resource ID",
@@ -40,25 +30,21 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "task-list\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "description": "`task-list`",
-      "jsDoc": "/**\n * `task-list`\n * @customElement task-list\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n */",
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
@@ -67,18 +53,14 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "properties": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "relatedResource",
           "description": "Related Resource ID",
@@ -87,25 +69,21 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "task-list\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "description": "`task-list`",
-      "jsDoc": "/**\n * `task-list`\n * @customElement task-list\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n */",
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
@@ -114,18 +92,14 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "properties": [
-        {
-          "name": "name",
-          "description": "Name of this task list",
-          "jsDoc": "/**\n       * Name of this task list\n       */",
-          "type": "string"
-        },
         {
           "name": "relatedResource",
           "description": "Related Resource ID",
@@ -134,9 +108,11 @@
         },
         {
           "name": "tasks",
-          "description": "Task list",
-          "jsDoc": "/**\n       * Task list\n       */",
-          "type": "any[]"
+          "type": "never[]"
+        },
+        {
+          "name": "name",
+          "type": "string"
         }
       ],
       "events": [],

@@ -2,18 +2,31 @@
   "version": 2,
   "tags": [
     {
-      "name": "scroll-button\n`button to scroll to an area or back to top`",
-      "description": "`scroll-button`",
-      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     },
     {
-      "name": "scroll-button\n`button to scroll to an area or back to top`",
-      "description": "`scroll-button`",
-      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
       "attributes": [
         {
           "name": "target",
@@ -54,11 +67,24 @@
       "slots": []
     },
     {
-      "name": "scroll-button\n`button to scroll to an area or back to top`",
-      "description": "`scroll-button`",
-      "jsDoc": "/**\n * `scroll-button`\n * @customElement scroll-button\n * `button to scroll to an area or back to top`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     }

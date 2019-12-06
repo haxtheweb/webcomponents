@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "lrndesign-blockquote\n`A structured blockquote element`",
-      "description": "`lrndesign-blockquote`",
-      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * `A structured blockquote element`\n * @customElement lrndesign-blockquote\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "citation",
@@ -73,9 +73,9 @@
       "slots": []
     },
     {
-      "name": "lrndesign-blockquote\n`A structured blockquote element`",
-      "description": "`lrndesign-blockquote`",
-      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * `A structured blockquote element`\n * @customElement lrndesign-blockquote\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "citation",
@@ -144,9 +144,9 @@
       "slots": []
     },
     {
-      "name": "lrndesign-blockquote\n`A structured blockquote element`",
-      "description": "`lrndesign-blockquote`",
-      "jsDoc": "/**\n * `lrndesign-blockquote`\n * @customElement lrndesign-blockquote\n * `A structured blockquote element`\n *\n * @PolymerElement\n * @polymer\n * @webcomponent\n * @demo demo/index.html\n */",
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "jsDoc": "/**\n * `lrndesign-blockquote`\n * `A structured blockquote element`\n * @customElement lrndesign-blockquote\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "citation",

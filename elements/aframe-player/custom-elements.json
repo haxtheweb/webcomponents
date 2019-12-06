@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
-      "description": "`aframe-player`",
-      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
@@ -62,6 +62,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "course",
+          "type": "string"
+        },
         {
           "name": "source",
           "description": "Source to reference for the 3D object",
@@ -121,9 +125,9 @@
       "slots": []
     },
     {
-      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
-      "description": "`aframe-player`",
-      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
@@ -181,6 +185,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "course",
+          "type": "string"
+        },
         {
           "name": "source",
           "description": "Source to reference for the 3D object",
@@ -240,9 +248,9 @@
       "slots": []
     },
     {
-      "name": "aframe-player\n`A wrapper to do data binding into aframe`",
-      "description": "`aframe-player`",
-      "jsDoc": "/**\n * `aframe-player`\n * @customElement aframe-player\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n */",
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
@@ -300,6 +308,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "course",
+          "type": "string"
+        },
         {
           "name": "source",
           "description": "Source to reference for the 3D object",

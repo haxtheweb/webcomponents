@@ -2,127 +2,52 @@
   "version": 2,
   "tags": [
     {
-      "name": "rss-items\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\nurl=\"https://content.therapychat.com/rss.xml\"\nmax=\"4\"\nauto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.\n### Styling\nThe following custom properties and mixins are available for styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--rss-items` | Mixin applied to the component | `{}`\n`--rss-items-article` | Mixin applied to the articles | `{}`\n`--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n`--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n`--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n`--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n`--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n`--rss-items-title` | Mixin applied to the title | `{}`\n`--rss-items-excerpt` | Mixin applied to the excerpt | `{}`",
-      "description": "`rss-items`",
-      "jsDoc": "/**\n * `rss-items`\n * @customElement rss-items\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n   ### Styling\n\n    The following custom properties and mixins are available for styling:\n\n    Custom property | Description | Default\n    ----------------|-------------|----------\n    `--rss-items` | Mixin applied to the component | `{}`\n    `--rss-items-article` | Mixin applied to the articles | `{}`\n    `--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n    `--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n    `--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n    `--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n    `--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n    `--rss-items-title` | Mixin applied to the title | `{}`\n    `--rss-items-excerpt` | Mixin applied to the excerpt | `{}`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "jsDoc": "/**\n * `rss-items`\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n * @demo demo/index.html\n * @customElement rss-items\n */",
       "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "rss-items\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\nurl=\"https://content.therapychat.com/rss.xml\"\nmax=\"4\"\nauto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.\n### Styling\nThe following custom properties and mixins are available for styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--rss-items` | Mixin applied to the component | `{}`\n`--rss-items-article` | Mixin applied to the articles | `{}`\n`--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n`--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n`--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n`--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n`--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n`--rss-items-title` | Mixin applied to the title | `{}`\n`--rss-items-excerpt` | Mixin applied to the excerpt | `{}`",
-      "description": "`rss-items`",
-      "jsDoc": "/**\n * `rss-items`\n * @customElement rss-items\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n   ### Styling\n\n    The following custom properties and mixins are available for styling:\n\n    Custom property | Description | Default\n    ----------------|-------------|----------\n    `--rss-items` | Mixin applied to the component | `{}`\n    `--rss-items-article` | Mixin applied to the articles | `{}`\n    `--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n    `--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n    `--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n    `--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n    `--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n    `--rss-items-title` | Mixin applied to the title | `{}`\n    `--rss-items-excerpt` | Mixin applied to the excerpt | `{}`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "auto",
-          "description": "If true init rss request.",
-          "jsDoc": "/**\n       * If true init rss request.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "The retrieved items array.",
-          "jsDoc": "/**\n       * The retrieved items array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "max",
-          "description": "Max number of items to show. If it is undefined shows all items.",
-          "jsDoc": "/**\n       * Max number of items to show. If it is undefined shows all items.\n       */",
-          "type": "number"
-        },
-        {
-          "name": "max-excerpt-length",
-          "description": "Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.",
-          "jsDoc": "/**\n       * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.\n       */",
-          "type": "number"
-        },
-        {
-          "name": "max-title-length",
-          "description": "Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.",
-          "jsDoc": "/**\n       * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.\n       */",
-          "type": "number"
-        },
-        {
-          "name": "read-more-anchor-text",
-          "description": "Read more anchor text.",
-          "jsDoc": "/**\n       * Read more anchor text.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "read-more-image-alt",
-          "description": "Read more image alternative text.",
-          "jsDoc": "/**\n       * Read more image alternative text.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "show-read-more",
-          "description": "If true the items elements will display a read more link.",
-          "jsDoc": "/**\n       * If true the items elements will display a read more link.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "url",
-          "description": "The URL of the RSS.",
-          "jsDoc": "/**\n       * The URL of the RSS.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "xml",
-          "type": "{}"
-        }
-      ],
       "properties": [
         {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
           "name": "auto",
-          "description": "If true init rss request.",
-          "jsDoc": "/**\n       * If true init rss request.\n       */",
           "type": "boolean"
         },
         {
-          "name": "items",
-          "description": "The retrieved items array.",
-          "jsDoc": "/**\n       * The retrieved items array.\n       */",
-          "type": "any[]"
-        },
-        {
           "name": "max",
-          "description": "Max number of items to show. If it is undefined shows all items.",
-          "jsDoc": "/**\n       * Max number of items to show. If it is undefined shows all items.\n       */",
           "type": "number"
         },
         {
           "name": "maxExcerptLength",
-          "description": "Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.",
-          "jsDoc": "/**\n       * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.\n       */",
           "type": "number"
         },
         {
           "name": "maxTitleLength",
-          "description": "Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.",
-          "jsDoc": "/**\n       * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.\n       */",
           "type": "number"
         },
         {
           "name": "readMoreAnchorText",
-          "description": "Read more anchor text.",
-          "jsDoc": "/**\n       * Read more anchor text.\n       */",
-          "type": "boolean"
+          "type": "string"
         },
         {
           "name": "readMoreImageAlt",
-          "description": "Read more image alternative text.",
-          "jsDoc": "/**\n       * Read more image alternative text.\n       */",
-          "type": "boolean"
+          "type": "string"
         },
         {
           "name": "showReadMore",
-          "description": "If true the items elements will display a read more link.",
-          "jsDoc": "/**\n       * If true the items elements will display a read more link.\n       */",
           "type": "boolean"
-        },
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "jsDoc": "/**\n * `rss-items`\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n * @demo demo/index.html\n * @customElement rss-items\n */",
+      "attributes": [
         {
           "name": "url",
           "description": "The URL of the RSS.",
@@ -132,17 +57,126 @@
         {
           "name": "xml",
           "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "type": "number"
+        },
+        {
+          "name": "max-excerpt-length",
+          "type": "number"
+        },
+        {
+          "name": "max-title-length",
+          "type": "number"
+        },
+        {
+          "name": "read-more-anchor-text",
+          "type": "string"
+        },
+        {
+          "name": "read-more-image-alt",
+          "type": "string"
+        },
+        {
+          "name": "show-read-more",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "url",
+          "description": "The URL of the RSS.",
+          "jsDoc": "/**\n       * The URL of the RSS.\n       */",
+          "type": "string"
+        },
+        {
+          "name": "xml",
+          "type": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "type": "number"
+        },
+        {
+          "name": "maxExcerptLength",
+          "type": "number"
+        },
+        {
+          "name": "maxTitleLength",
+          "type": "number"
+        },
+        {
+          "name": "readMoreAnchorText",
+          "type": "string"
+        },
+        {
+          "name": "readMoreImageAlt",
+          "type": "string"
+        },
+        {
+          "name": "showReadMore",
+          "type": "boolean"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "rss-items\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\nurl=\"https://content.therapychat.com/rss.xml\"\nmax=\"4\"\nauto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.\n### Styling\nThe following custom properties and mixins are available for styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--rss-items` | Mixin applied to the component | `{}`\n`--rss-items-article` | Mixin applied to the articles | `{}`\n`--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n`--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n`--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n`--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n`--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n`--rss-items-title` | Mixin applied to the title | `{}`\n`--rss-items-excerpt` | Mixin applied to the excerpt | `{}`",
-      "description": "`rss-items`",
-      "jsDoc": "/**\n * `rss-items`\n * @customElement rss-items\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n   ### Styling\n\n    The following custom properties and mixins are available for styling:\n\n    Custom property | Description | Default\n    ----------------|-------------|----------\n    `--rss-items` | Mixin applied to the component | `{}`\n    `--rss-items-article` | Mixin applied to the articles | `{}`\n    `--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`\n    `--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`\n    `--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`\n    `--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`\n    `--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`\n    `--rss-items-title` | Mixin applied to the title | `{}`\n    `--rss-items-excerpt` | Mixin applied to the excerpt | `{}`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "jsDoc": "/**\n * `rss-items`\n * `visualize RSS items`\n * \n * Example:\n  ```html\n  <rss-items\n    url=\"https://content.therapychat.com/rss.xml\"\n    max=\"4\"\n    auto\n  ></rss-items>\n  ```\n * It will retrieve the items from the url automatically.\n * @demo demo/index.html\n * @customElement rss-items\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "auto",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "type": "number"
+        },
+        {
+          "name": "maxExcerptLength",
+          "type": "number"
+        },
+        {
+          "name": "maxTitleLength",
+          "type": "number"
+        },
+        {
+          "name": "readMoreAnchorText",
+          "type": "string"
+        },
+        {
+          "name": "readMoreImageAlt",
+          "type": "string"
+        },
+        {
+          "name": "showReadMore",
+          "type": "boolean"
+        }
+      ],
       "events": [],
       "slots": []
     }

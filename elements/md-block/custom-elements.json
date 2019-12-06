@@ -2,43 +2,44 @@
   "version": 2,
   "tags": [
     {
-      "name": "md-block\n`a markdown block`",
-      "description": "`md-block`",
-      "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "md-block",
+      "description": "`md-block`\n`a markdown block`",
+      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "markdown",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     },
     {
-      "name": "md-block\n`a markdown block`",
-      "description": "`md-block`",
-      "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "md-block",
+      "description": "`md-block`\n`a markdown block`",
+      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
       "attributes": [
         {
-          "name": "source",
+          "name": "markdown",
           "type": "string"
         },
         {
-          "name": "has-source",
-          "type": "boolean"
-        },
-        {
-          "name": "markdown",
+          "name": "source",
           "type": "string"
         }
       ],
       "properties": [
         {
-          "name": "source",
+          "name": "markdown",
           "type": "string"
         },
         {
-          "name": "hasSource",
-          "type": "boolean"
-        },
-        {
-          "name": "markdown",
+          "name": "source",
           "type": "string"
         }
       ],
@@ -46,11 +47,20 @@
       "slots": []
     },
     {
-      "name": "md-block\n`a markdown block`",
-      "description": "`md-block`",
-      "jsDoc": "/**\n * `md-block`\n * @customElement md-block\n * `a markdown block`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "md-block",
+      "description": "`md-block`\n`a markdown block`",
+      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "markdown",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     }

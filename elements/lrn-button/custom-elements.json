@@ -2,11 +2,32 @@
   "version": 2,
   "tags": [
     {
-      "name": "lrn-button\n`Simple button wrapper with a few options`",
-      "description": "`lrn-button`",
-      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "jsDoc": "/**\n * `lrn-button`\n * `Simple button wrapper with a few options`\n * @demo demo/index.html\n * @customElement lrn-button\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "focusState",
+          "type": "boolean"
+        }
+      ],
       "events": [
         {
           "name": "focus-changed"
@@ -15,16 +36,10 @@
       "slots": []
     },
     {
-      "name": "lrn-button\n`Simple button wrapper with a few options`",
-      "description": "`lrn-button`",
-      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "jsDoc": "/**\n * `lrn-button`\n * `Simple button wrapper with a few options`\n * @demo demo/index.html\n * @customElement lrn-button\n */",
       "attributes": [
-        {
-          "name": "href",
-          "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
-        },
         {
           "name": "show-href",
           "description": "What to display for the resource",
@@ -36,16 +51,6 @@
           "description": "If the button should be visually lifted off the UI.",
           "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
-        },
-        {
-          "name": "label",
-          "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
-        },
-        {
-          "name": "target",
-          "type": "string"
         },
         {
           "name": "icon",
@@ -96,25 +101,27 @@
           "type": "string"
         },
         {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
           "name": "disabled",
-          "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
           "type": "boolean"
         },
         {
           "name": "focus-state",
-          "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
           "type": "boolean"
         }
       ],
       "properties": [
-        {
-          "name": "href",
-          "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
-        },
         {
           "name": "showHref",
           "description": "What to display for the resource",
@@ -126,16 +133,6 @@
           "description": "If the button should be visually lifted off the UI.",
           "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
-        },
-        {
-          "name": "label",
-          "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
-        },
-        {
-          "name": "target",
-          "type": "string"
         },
         {
           "name": "icon",
@@ -186,15 +183,23 @@
           "type": "string"
         },
         {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
           "name": "disabled",
-          "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
           "type": "boolean"
         },
         {
           "name": "focusState",
-          "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
           "type": "boolean"
         }
       ],
@@ -206,11 +211,32 @@
       "slots": []
     },
     {
-      "name": "lrn-button\n`Simple button wrapper with a few options`",
-      "description": "`lrn-button`",
-      "jsDoc": "/**\n * `lrn-button`\n * @customElement lrn-button\n * `Simple button wrapper with a few options`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "jsDoc": "/**\n * `lrn-button`\n * `Simple button wrapper with a few options`\n * @demo demo/index.html\n * @customElement lrn-button\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "target",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "focusState",
+          "type": "boolean"
+        }
+      ],
       "events": [
         {
           "name": "focus-changed"

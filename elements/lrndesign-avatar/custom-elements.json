@@ -2,10 +2,14 @@
   "version": 2,
   "tags": [
     {
-      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
-      "description": "`lrndesign-avatar`",
-      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n * @customElement lrndesign-avatar\n */",
       "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",
@@ -19,7 +23,7 @@
           "type": "string"
         },
         {
-          "name": "twoChars",
+          "name": "two-chars",
           "description": "Mode for presenting 1st two letters",
           "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
           "type": "boolean"
@@ -38,6 +42,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",
@@ -73,10 +81,14 @@
       "slots": []
     },
     {
-      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
-      "description": "`lrndesign-avatar`",
-      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n * @customElement lrndesign-avatar\n */",
       "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",
@@ -90,7 +102,7 @@
           "type": "string"
         },
         {
-          "name": "twoChars",
+          "name": "two-chars",
           "description": "Mode for presenting 1st two letters",
           "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
           "type": "boolean"
@@ -109,6 +121,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",
@@ -144,10 +160,14 @@
       "slots": []
     },
     {
-      "name": "lrndesign-avatar\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
-      "description": "`lrndesign-avatar`",
-      "jsDoc": "/**\n * `lrndesign-avatar`\n * @customElement lrndesign-avatar\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n */",
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "jsDoc": "/**\n * `lrndesign-avatar`\n * `Visualize a user account eitehr with an image, a label, or as abstract art.`\n * @demo demo/index.html\n * @customElement lrndesign-avatar\n */",
       "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",
@@ -161,7 +181,7 @@
           "type": "string"
         },
         {
-          "name": "twoChars",
+          "name": "two-chars",
           "description": "Mode for presenting 1st two letters",
           "jsDoc": "/**\n       * Mode for presenting 1st two letters\n       */",
           "type": "boolean"
@@ -180,6 +200,10 @@
         }
       ],
       "properties": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
         {
           "name": "label",
           "description": "text to use for avatar",

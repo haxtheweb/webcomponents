@@ -2,25 +2,32 @@
   "version": 2,
   "tags": [
     {
-      "name": "relative-heading\n`outputs the correct heading hierarchy based on parent heading`",
-      "description": "`relative-heading`",
-      "jsDoc": "/**\n * `relative-heading`\n * @customElement relative-heading\n * `outputs the correct heading hierarchy based on parent heading`\n *\n\n * @demo demo/index.html\n */",
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "jsDoc": "/**\n * `relative-heading`\n * `outputs the correct heading hierarchy based on parent heading`\n *\n * @demo demo/index.html\n * @customElement relative-heading\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "defaultLevel",
+          "type": "number"
+        },
+        {
+          "name": "parentId",
+          "type": "null"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     },
     {
-      "name": "relative-heading\n`outputs the correct heading hierarchy based on parent heading`",
-      "description": "`relative-heading`",
-      "jsDoc": "/**\n * `relative-heading`\n * @customElement relative-heading\n * `outputs the correct heading hierarchy based on parent heading`\n *\n\n * @demo demo/index.html\n */",
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "jsDoc": "/**\n * `relative-heading`\n * `outputs the correct heading hierarchy based on parent heading`\n *\n * @demo demo/index.html\n * @customElement relative-heading\n */",
       "attributes": [
-        {
-          "name": "default-level",
-          "description": "The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.",
-          "jsDoc": "/**\n       * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n       */",
-          "type": "number"
-        },
         {
           "name": "id",
           "description": "The relative-heading's UUID.",
@@ -28,47 +35,29 @@
           "type": "string"
         },
         {
-          "name": "parent-id",
-          "description": "The parent relative-heading's UUID.",
-          "jsDoc": "/**\n       * The parent relative-heading's UUID.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "text",
-          "description": "The heading text.",
-          "jsDoc": "/**\n       * The heading text.\n       */",
-          "type": "string"
-        },
-        {
           "name": "level",
           "description": "The heading level (1-6), eg., 1 for <h1>",
           "jsDoc": "/**\n       * The heading level (1-6), eg., 1 for <h1>\n       */",
           "type": "number"
+        },
+        {
+          "name": "default-level",
+          "type": "number"
+        },
+        {
+          "name": "parent-id",
+          "type": "null"
+        },
+        {
+          "name": "text",
+          "type": "string"
         }
       ],
       "properties": [
         {
-          "name": "defaultLevel",
-          "description": "The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.",
-          "jsDoc": "/**\n       * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n       */",
-          "type": "number"
-        },
-        {
           "name": "id",
           "description": "The relative-heading's UUID.",
           "jsDoc": "/**\n       * The relative-heading's UUID.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "parentId",
-          "description": "The parent relative-heading's UUID.",
-          "jsDoc": "/**\n       * The parent relative-heading's UUID.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "text",
-          "description": "The heading text.",
-          "jsDoc": "/**\n       * The heading text.\n       */",
           "type": "string"
         },
         {
@@ -76,6 +65,18 @@
           "description": "The heading level (1-6), eg., 1 for <h1>",
           "jsDoc": "/**\n       * The heading level (1-6), eg., 1 for <h1>\n       */",
           "type": "number"
+        },
+        {
+          "name": "defaultLevel",
+          "type": "number"
+        },
+        {
+          "name": "parentId",
+          "type": "null"
+        },
+        {
+          "name": "text",
+          "type": "string"
         }
       ],
       "events": [],
@@ -91,11 +92,24 @@
       "slots": []
     },
     {
-      "name": "relative-heading\n`outputs the correct heading hierarchy based on parent heading`",
-      "description": "`relative-heading`",
-      "jsDoc": "/**\n * `relative-heading`\n * @customElement relative-heading\n * `outputs the correct heading hierarchy based on parent heading`\n *\n\n * @demo demo/index.html\n */",
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "jsDoc": "/**\n * `relative-heading`\n * `outputs the correct heading hierarchy based on parent heading`\n *\n * @demo demo/index.html\n * @customElement relative-heading\n */",
       "attributes": [],
-      "properties": [],
+      "properties": [
+        {
+          "name": "defaultLevel",
+          "type": "number"
+        },
+        {
+          "name": "parentId",
+          "type": "null"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
       "events": [],
       "slots": []
     }

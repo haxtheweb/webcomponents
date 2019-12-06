@@ -2,48 +2,17 @@
   "version": 2,
   "tags": [
     {
-      "name": "editable-outline\n`a simple outline thats contenteditable in nature`",
-      "description": "`editable-outline`",
-      "jsDoc": "/**\n * `editable-outline`\n * @customElement editable-outline\n * `a simple outline thats contenteditable in nature`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
       "attributes": [],
       "properties": [
         {
-          "name": "jos",
-          "type": "any"
-        }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "editable-outline\n`a simple outline thats contenteditable in nature`",
-      "description": "`editable-outline`",
-      "jsDoc": "/**\n * `editable-outline`\n * @customElement editable-outline\n * `a simple outline thats contenteditable in nature`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
           "name": "items",
-          "description": "A items list of JSON Outline Schema Items",
-          "jsDoc": "/**\n       * A items list of JSON Outline Schema Items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "edit-mode",
-          "description": "Edit mode",
-          "jsDoc": "/**\n       * Edit mode\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "items",
-          "description": "A items list of JSON Outline Schema Items",
-          "jsDoc": "/**\n       * A items list of JSON Outline Schema Items\n       */",
-          "type": "any[]"
+          "type": "never[]"
         },
         {
           "name": "editMode",
-          "description": "Edit mode",
-          "jsDoc": "/**\n       * Edit mode\n       */",
           "type": "boolean"
         },
         {
@@ -55,11 +24,50 @@
       "slots": []
     },
     {
-      "name": "editable-outline\n`a simple outline thats contenteditable in nature`",
-      "description": "`editable-outline`",
-      "jsDoc": "/**\n * `editable-outline`\n * @customElement editable-outline\n * `a simple outline thats contenteditable in nature`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
+      "attributes": [
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean"
+        },
+        {
+          "name": "jos",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
       "attributes": [],
       "properties": [
+        {
+          "name": "items",
+          "type": "never[]"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean"
+        },
         {
           "name": "jos",
           "type": "any"

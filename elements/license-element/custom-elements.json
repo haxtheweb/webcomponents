@@ -2,9 +2,9 @@
   "version": 2,
   "tags": [
     {
-      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
-      "description": "`license-element`",
-      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "jsDoc": "/**\n * `license-element`\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @customElement license-element\n */",
       "attributes": [
         {
           "name": "title",
@@ -43,12 +43,6 @@
           "type": "string"
         },
         {
-          "name": "more-label",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "more-link",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -59,6 +53,10 @@
           "description": "See if we have more things to point to",
           "jsDoc": "/**\n       * See if we have more things to point to\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "type": "string"
         }
       ],
       "properties": [
@@ -99,12 +97,6 @@
           "type": "string"
         },
         {
-          "name": "moreLabel",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "moreLink",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -119,15 +111,19 @@
         {
           "name": "licenseList",
           "type": "any"
+        },
+        {
+          "name": "moreLabel",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
-      "description": "`license-element`",
-      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "jsDoc": "/**\n * `license-element`\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @customElement license-element\n */",
       "attributes": [
         {
           "name": "title",
@@ -166,12 +162,6 @@
           "type": "string"
         },
         {
-          "name": "more-label",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "more-link",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -182,6 +172,10 @@
           "description": "See if we have more things to point to",
           "jsDoc": "/**\n       * See if we have more things to point to\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "type": "string"
         }
       ],
       "properties": [
@@ -222,12 +216,6 @@
           "type": "string"
         },
         {
-          "name": "moreLabel",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "moreLink",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -242,15 +230,19 @@
         {
           "name": "licenseList",
           "type": "any"
+        },
+        {
+          "name": "moreLabel",
+          "type": "string"
         }
       ],
       "events": [],
       "slots": []
     },
     {
-      "name": "license-element\n`A simple way of applying a semantically accurate license to work.`",
-      "description": "`license-element`",
-      "jsDoc": "/**\n * `license-element`\n * @customElement license-element\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n */",
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "jsDoc": "/**\n * `license-element`\n * `A simple way of applying a semantically accurate license to work.`\n * @demo demo/index.html\n * @customElement license-element\n */",
       "attributes": [
         {
           "name": "title",
@@ -289,12 +281,6 @@
           "type": "string"
         },
         {
-          "name": "more-label",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "more-link",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -305,6 +291,10 @@
           "description": "See if we have more things to point to",
           "jsDoc": "/**\n       * See if we have more things to point to\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "type": "string"
         }
       ],
       "properties": [
@@ -345,12 +335,6 @@
           "type": "string"
         },
         {
-          "name": "moreLabel",
-          "description": "More details label",
-          "jsDoc": "/**\n       * More details label\n       */",
-          "type": "string"
-        },
-        {
           "name": "moreLink",
           "description": "More details link",
           "jsDoc": "/**\n       * More details link\n       */",
@@ -365,6 +349,10 @@
         {
           "name": "licenseList",
           "type": "any"
+        },
+        {
+          "name": "moreLabel",
+          "type": "string"
         }
       ],
       "events": [],

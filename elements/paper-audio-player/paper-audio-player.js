@@ -5,7 +5,6 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-ripple/paper-ripple.js";
 import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
@@ -163,10 +162,6 @@ class PaperAudioPlayer extends mixinBehaviors(
           background-color: var(--paper-audio-player-color);
         }
 
-        paper-ripple {
-          color: var(--paper-audio-player-color);
-        }
-
         /* On hover */
 
         :host(:not(.cantplay)) #right:hover #replay {
@@ -274,7 +269,6 @@ class PaperAudioPlayer extends mixinBehaviors(
           ></audio>
           <!-- Progress bar -->
           <div id="progress" class="fit"></div>
-          <paper-ripple></paper-ripple>
           <!-- Secondary white title -->
           <div id="progress2" class="fit">
             <div id="title2" aria-hidden="true">[[title]]</div>

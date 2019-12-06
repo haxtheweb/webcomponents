@@ -154,9 +154,9 @@
       "slots": []
     },
     {
-      "name": "media-image-caption\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-caption`",
-      "jsDoc": "/**\n * `media-image-caption`\n * @customElement media-image-caption\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
+      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
       "attributes": [],
       "properties": [],
       "events": [],
@@ -315,9 +315,9 @@
       "slots": []
     },
     {
-      "name": "media-image-caption\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-caption`",
-      "jsDoc": "/**\n * `media-image-caption`\n * @customElement media-image-caption\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
+      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
       "attributes": [],
       "properties": [],
       "events": [],
@@ -476,9 +476,9 @@
       "slots": []
     },
     {
-      "name": "media-image-caption\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-caption`",
-      "jsDoc": "/**\n * `media-image-caption`\n * @customElement media-image-caption\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
+      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
       "attributes": [],
       "properties": [],
       "events": [],
