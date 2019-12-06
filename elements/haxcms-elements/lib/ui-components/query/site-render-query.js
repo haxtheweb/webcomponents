@@ -2,8 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 /**
@@ -14,7 +13,19 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
  * @polymer
  * @demo demo/index.html
  */
-class SiteRenderQuery extends MutableData(PolymerElement) {
+class SiteRenderQuery extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+      `
+    ];
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,25 +33,26 @@ class SiteRenderQuery extends MutableData(PolymerElement) {
     return "site-render-query";
   }
   // render function, this is non-visual
-  static get template() {
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
-        iron-list {
-          @apply --site-query-iron-list;
-        }
-      </style>
       <site-query
-        result="{{result}}"
-        sort="[[sort]]"
-        conditions="[[conditions]]"
+        .result="${this.result}"
+        @result-changed="${this.resultEvent}"
+        .sort="${this.sort}"
+        .conditions="${this.conditions}"
       ></site-query>
-      <iron-list id="list" items="[[__items]]" grid="[[grid]]" mutable-data>
+      <iron-list
+        id="list"
+        .items="${this.__items}"
+        ?grid="${this.grid}"
+        mutable-data
+      >
         <slot></slot>
       </iron-list>
     `;
+  }
+  resultEvent(e) {
+    this.result = [...e.detail.value];
   }
   /**
    * Props
@@ -51,37 +63,49 @@ class SiteRenderQuery extends MutableData(PolymerElement) {
        * Conditions that can be used to slice the data differently in the manifest
        */
       conditions: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Establish the order items should be displayed in
        */
       sort: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * iron-list helper for this 1 flag
        */
       grid: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       result: {
-        type: Array,
-        notify: true,
-        observer: "_resultChanged"
+        type: Array
       },
       __items: {
-        type: Array,
-        value: []
+        type: Array
       }
     };
   }
-  _resultChanged(newValue) {
-    this.set("__items", newValue);
-    this.notifyPath("__items");
+  constructor() {
+    super();
+    this.conditions = {};
+    this.sort = {};
+    this.grid = false;
+    this.result = [];
+    this.__items = [];
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "result") {
+        this.dispatchEvent(
+          new CustomEvent("result-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+        this.__items = [...newValue];
+      }
+    });
   }
 }
 window.customElements.define(SiteRenderQuery.tag, SiteRenderQuery);

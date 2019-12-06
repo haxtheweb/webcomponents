@@ -8,7 +8,7 @@ import {
   wipeSlot,
   varExists,
   varGet
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";

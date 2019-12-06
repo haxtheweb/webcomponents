@@ -2,10 +2,9 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
+import { LitElement } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { objectValFromStringPos } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { objectValFromStringPos } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `site-query`
@@ -20,7 +19,7 @@ Object.byString = function(o, s) {
   return objectValFromStringPos(o, s);
 };
 
-class SiteQuery extends MutableData(PolymerElement) {
+class SiteQuery extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -42,76 +41,121 @@ class SiteQuery extends MutableData(PolymerElement) {
        * activeId
        */
       activeId: {
-        type: String
+        type: String,
+        attribute: "active-id"
       },
       /**
        * result to help illustrate this only lives here
        */
       result: {
-        type: Array,
-        notify: true
+        type: Array
       },
       __result: {
-        type: Array,
-        computed:
-          "_computeResult(entity, conditions, sort, routerManifest, activeId, limit, startIndex, random, forceRebuild)",
-        observer: "_noticeResultChange"
+        type: Array
       },
       /**
        * Conditions that can be used to slice the data differently in the manifest
        */
       conditions: {
-        type: Object,
-        notify: true,
-        value: {}
+        type: Object
       },
       /**
        * Establish the order items should be displayed in
        */
       sort: {
-        type: Object,
-        notify: true,
-        value: {
-          order: "ASC"
-        }
+        type: Object
       },
       /**
        * Boolean flag to force a repaint of what's in the item
        */
       forceRebuild: {
         type: Boolean,
-        notify: true,
-        value: false
+        attribute: "force-rebuild"
       },
       /**
        * Limit the number of results returned
        */
       limit: {
-        type: Number,
-        value: 0
+        type: Number
       },
       /**
        * Where to start returning results from
        */
       startIndex: {
         type: Number,
-        value: 0
+        attribute: "start-index"
       },
       /**
        * Randomize results
        */
       random: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Entity to focus on
        */
       entity: {
-        type: String,
-        value: "node"
+        type: String
       }
     };
+  }
+  constructor() {
+    super();
+    this.entity = "node";
+    this.conditions = {};
+    this.random = false;
+    this.sort = {
+      order: "ASC"
+    };
+    this.forceRebuild = false;
+    this.limit = 0;
+    this.startIndex = 0;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["result", "conditions", "sort", "forceRebuild"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (
+        [
+          "entity",
+          "conditions",
+          "sort",
+          "routerManifest",
+          "activeId",
+          "limit",
+          "startIndex",
+          "random",
+          "forceRebuild"
+        ].includes(propName)
+      ) {
+        this.__result = this._computeResult(
+          this.entity,
+          this.conditions,
+          this.sort,
+          this.routerManifest,
+          this.activeId,
+          this.limit,
+          this.startIndex,
+          this.random,
+          this.forceRebuild
+        );
+      }
+      if (propName == "__result") {
+        this.result = [...this[propName]];
+      }
+    });
   }
   /**
    * Compute what we should present as a slice of the real deal
@@ -318,13 +362,6 @@ class SiteQuery extends MutableData(PolymerElement) {
       return items;
     }
     return [];
-  }
-  /**
-   * Try and get the value to skip dirty checks and do a full data rebind
-   */
-  _noticeResultChange(newValue) {
-    this.set("result", newValue);
-    this.notifyPath("result");
   }
   /**
    * Connected life cycle

@@ -6,7 +6,7 @@ import {
   action,
   toJS
 } from "mobx/lib/mobx.module.js";
-import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 
 class Store {
   constructor() {

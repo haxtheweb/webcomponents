@@ -11,7 +11,7 @@ import {
   findTagsInHTML,
   wipeSlot,
   varExists
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";

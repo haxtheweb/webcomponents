@@ -49,15 +49,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
         }
-        site-render-query.cardlist {
-          --site-query-iron-list: {
-            padding: 16px;
-            margin: 0 auto;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-          }
-        }
         paper-card {
           width: 200px;
           color: black;
