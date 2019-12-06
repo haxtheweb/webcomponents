@@ -2,27 +2,21 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@lrnwebcomponents/figure-label/figure-label.js";
-
 /**
  * `media-image`
  * @customElement media-image
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  */
-class MediaImage extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/iron-icons/iron-icons.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class MediaImage extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           width: auto;
@@ -71,6 +65,7 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
           float: left;
           margin: var(--media-image-offset-width, 1.5vw);
           margin-left: calc(-2 * var(--media-image-offset-width, 1.5vw));
+          padding-left: calc(4 * var(--media-image-offset-width, 1.5vw));
           margin-top: 0;
           margin-bottom: calc(0.1 * var(--media-image-offset-width, 1.5vw));
         }
@@ -79,6 +74,7 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
           float: right;
           margin: var(--media-image-offset-width, 1.5vw);
           margin-right: calc(-2 * var(--media-image-offset-width, 1.5vw));
+          padding-right: calc(4 * var(--media-image-offset-width, 1.5vw));
           margin-top: 0;
           margin-bottom: calc(0.1 * var(--media-image-offset-width, 1.5vw));
         }
@@ -92,36 +88,62 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
           max-width: var(--media-image-offset-narrow-max-width, 500px);
           margin: auto;
         }
-      </style>
-
-      <dom-if if="[[_hasFigureLabel(figureLabelTitle, figureLabelDescription)]]">
-        <template>
-          <figure-label title="[[figureLabelTitle]]" description="[[figureLabelDescription]]">
-        </template>
-      </dom-if>
-
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.source = "";
+    this.citation = "";
+    this.caption = "";
+    this.figureLabelTitle = "";
+    this.figureLabelDescription = "";
+    this.alt = "";
+    this.size = "wide";
+    this.round = false;
+    this.card = false;
+    this.box = false;
+    this.offset = "none";
+    import("@lrnwebcomponents/figure-label/figure-label.js");
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/iron-icons/iron-icons.js");
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "caption") {
+        this._computeHasCaption(this[propName]);
+      }
+    });
+  }
+  render() {
+    return html`
+      ${this._hasFigureLabel(this.figureLabelTitle, this.figureLabelDescription)
+        ? html`
+            <figure-label
+              title="${this.figureLabelTitle}"
+              description="${this.figureLabelDescription}"
+            ></figure-label>
+          `
+        : ``}
       <iron-image
-        resource\$="[[schemaResourceID]]-image"
-        src\$="[[source]]"
-        alt\$="[[alt]]"
+        resource="${this.schemaResourceID}-image"
+        src="${this.source}"
+        alt="${this.alt}"
       ></iron-image>
-
-
       <media-image-citation>
         <slot name="citation">
-          [[citation]]
+          ${this.citation}
         </slot>
       </media-image-citation>
-
-      <dom-if if="[[_hasCaption]]">
-        <template>
-          <media-image-caption>
-            <slot name="caption">
-              [[caption]]
-            </slot>
-          </media-image-caption>
-        </template>
-      </dom-if>
+      ${this._hasCaption
+        ? html`
+            <media-image-caption>
+              <slot name="caption">
+                ${this.caption}
+              </slot>
+            </media-image-caption>
+          `
+        : ``}
     `;
   }
   static get tag() {
@@ -130,67 +152,60 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
   static get properties() {
     return {
       ...super.properties,
-
+      _hasCaption: {
+        type: Boolean
+      },
       /**
        * Image source.
        */
       source: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * Image citation.
        */
       citation: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * Image caption.
        */
       caption: {
-        type: String,
-        value: "",
-        observer: "_computeHasCaption"
+        type: String
       },
       /**
        * Image alt.
        */
       alt: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * The size of the image (small, wide).
        */
       size: {
         type: String,
-        value: "wide",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * The shape of the image (round).
        */
       round: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Applies card styling.
        */
       card: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Applies box styling.
        */
       box: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Applies left or right offset
@@ -202,22 +217,21 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
        */
       offset: {
         type: String,
-        value: "none",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Added a figure label title to the top of the media-image
        */
       figureLabelTitle: {
         type: String,
-        value: ""
+        attribute: "figure-label-title"
       },
       /**
        * Added a figure label description to the top of the media-image
        */
       figureLabelDescription: {
         type: String,
-        value: ""
+        attribute: "figure-label-description"
       }
     };
   }
@@ -228,20 +242,20 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
   _hasFigureLabel(title, description) {
     return title.length > 0 || description.length > 0;
   }
-
-  ready() {
-    super.ready();
-    this._observer = new FlattenedNodesObserver(this, info => {
-      this._computeHasCaption();
-    });
-  }
-
   _computeHasCaption() {
     this._hasCaption =
       this.caption.length > 0 ||
       this.querySelector('[slot="caption"]') !== null;
   }
-
+  connectedCallback() {
+    super.connectedCallback();
+    this._observer = new MutationObserver(mutations => {
+      this._computeHasCaption();
+    });
+    this._observer.observe(this, {
+      childList: true
+    });
+  }
   disconnectedCallback() {
     this._observer.disconnect();
     super.disconnectedCallback();
@@ -393,10 +407,13 @@ window.customElements.define(MediaImage.tag, MediaImage);
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
  */
-class MediaImageCitation extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class MediaImageCitation extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -407,7 +424,11 @@ class MediaImageCitation extends PolymerElement {
           color: #4c4c4c;
           margin: 15px 0 15px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div class="citation"><slot></slot></div>
     `;
   }
@@ -419,14 +440,17 @@ window.customElements.define(MediaImageCitation.tag, MediaImageCitation);
 
 /**
  * `media-image-caption`
- * @customElement media-image-caption
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
+ * @customElement media-image-caption
  */
-class MediaImageCaption extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class MediaImageCaption extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -439,15 +463,23 @@ class MediaImageCaption extends PolymerElement {
           font-size: 18px;
         }
 
-        ::slotted(*) {
+        .caption ::slotted(*) {
           margin-top: 0;
         }
-        ::slotted(*:last-child) {
+        .caption ::slotted(*:last-child) {
           margin-bottom: 0;
         }
-      </style>
-      <div class="caption" hidden$="[[!__hasContent]]">
-        <slot id="slot"></slot>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <div class="caption">
+        ${!this.__hasContent
+          ? html`
+              <slot id="slot"></slot>
+            `
+          : ``}
       </div>
     `;
   }

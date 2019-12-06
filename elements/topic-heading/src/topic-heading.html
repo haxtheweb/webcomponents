@@ -1,1 +1,6 @@
-<iron-icon icon="[[icon]]"></iron-icon><relative-heading text="[[title]]"></relative-heading>
+${this.icon ? html`
+  <iron-icon icon="${this.icon}"></iron-icon>
+` : ``}
+${this.title ? html`
+<relative-heading text="${this.title}">${this.title}</relative-heading>
+` : ``}

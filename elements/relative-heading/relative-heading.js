@@ -2,59 +2,33 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `relative-heading`
- * @customElement relative-heading
  * `outputs the correct heading hierarchy based on parent heading`
  *
-
  * @demo demo/index.html
+ * @customElement relative-heading
  */
-class RelativeHeading extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class RelativeHeading extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
         :host([hidden]) {
           display: none;
         }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          @apply --relative-heading-style;
-        }
-        h1 {
-          @apply --relative-heading-h1;
-        }
-        h2 {
-          @apply --relative-heading-h2;
-        }
-        h3 {
-          @apply --relative-heading-h3;
-        }
-        h4 {
-          @apply --relative-heading-h4;
-        }
-        h5 {
-          @apply --relative-heading-h5;
-        }
-        h6 {
-          @apply --relative-heading-h6;
-        }
-      </style>
-      <h1 aria-live="polite" hidden="[[!__isLevel1]]">[[text]]</h1>
-      <h2 aria-live="polite" hidden="[[!__isLevel2]]">[[text]]</h2>
-      <h3 aria-live="polite" hidden="[[!__isLevel3]]">[[text]]</h3>
-      <h4 aria-live="polite" hidden="[[!__isLevel4]]">[[text]]</h4>
-      <h5 aria-live="polite" hidden="[[!__isLevel5]]">[[text]]</h5>
-      <h6 aria-live="polite" hidden="[[!__isLevel6]]">[[text]]</h6>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <div><slot></slot></div>
     `;
   }
 
@@ -112,92 +86,34 @@ class RelativeHeading extends PolymerElement {
        * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
        */
       defaultLevel: {
-        name: "defaultLevel",
         type: Number,
-        value: 1
+        attribute: "default-level"
       },
       /**
        * The relative-heading's UUID.
        */
       id: {
-        name: "id",
-        type: String,
-        value: null,
-        observer: "_updateChildren"
+        type: String
       },
       /**
        * The parent relative-heading's UUID.
        */
       parentId: {
-        name: "parentId",
         type: String,
-        value: null
+        attribute: "parent-id"
       },
       /**
        * The heading text.
        */
       text: {
-        name: "text",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The heading level (1-6), eg., 1 for <h1>
        */
       level: {
-        name: "level",
         type: Number,
-        reflectToAttribute: true,
-        computed: "_getLevel(parentId,defaultLevel)",
-        observer: "_updateChildren"
-      },
-      /**
-       * Is the heading an h1?
-       */
-      __isLevel1: {
-        name: "__isLevel1",
-        type: Boolean,
-        computed: "_isLevel(level,1)"
-      },
-      /**
-       * Is the heading an h2?
-       */
-      __isLevel2: {
-        name: "__isLevel2",
-        type: Boolean,
-        computed: "_isLevel(level,2)"
-      },
-      /**
-       * Is the heading an h3?
-       */
-      __isLevel3: {
-        name: "__isLevel3",
-        type: Boolean,
-        computed: "_isLevel(level,3)"
-      },
-      /**
-       * Is the heading an h4?
-       */
-      __isLevel4: {
-        name: "__isLevel4",
-        type: Boolean,
-        computed: "_isLevel(level,4)"
-      },
-      /**
-       * Is the heading an h5?
-       */
-      __isLevel5: {
-        name: "__isLevel5",
-        type: Boolean,
-        computed: "_isLevel(level,5)"
-      },
-      /**
-       * Is the heading an h6?
-       */
-      __isLevel6: {
-        name: "__isLevel6",
-        type: Boolean,
-        computed: "_isLevel(level,6)"
+        reflect: true
       }
     };
   }
@@ -213,8 +129,7 @@ class RelativeHeading extends PolymerElement {
    * update this level when the parent id changes
    */
   _getLevel(parentId, defaultLevel) {
-    let root = this,
-      parent = document.querySelector("#" + parentId),
+    let parent = document.querySelector("#" + parentId),
       parentLvl =
         parent !== null && parent.level !== undefined
           ? parent.level
@@ -239,6 +154,29 @@ class RelativeHeading extends PolymerElement {
    */
   _isLevel(level, testLevel) {
     return level === testLevel;
+  }
+  constructor() {
+    super();
+    this.defaultLevel = 1;
+    this.parentId = null;
+    this.text = "";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "id") {
+        this._updateChildren(this[propName], oldValue);
+      }
+      if (propName == "level" || propName == "text") {
+        wipeSlot(this);
+        let level = document.createElement(`h${this.level}`);
+        level.innerText = this.text;
+        this.appendChild(level);
+        this._updateChildren(this.level, oldValue);
+      }
+      if (["parentId", "defaultLevel"].includes(propName)) {
+        this.level = this._getLevel(this.parentId, this.defaultLevel);
+      }
+    });
   }
 }
 window.customElements.define(RelativeHeading.tag, RelativeHeading);

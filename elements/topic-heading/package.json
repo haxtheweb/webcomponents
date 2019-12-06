@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/topic-heading",
   "wcfactory": {
     "className": "TopicHeading",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "topic-heading",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
@@ -42,7 +42,7 @@
     "@lrnwebcomponents/relative-heading": "^2.3.1",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
