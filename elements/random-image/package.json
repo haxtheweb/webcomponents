@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/random-image",
   "wcfactory": {
     "className": "RandomImage",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "random-image",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-image": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
