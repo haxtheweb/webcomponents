@@ -152,6 +152,7 @@ class LrnappStudioSubmissionDisplay extends LitElement {
                               preload=""
                               fade=""
                             ></iron-image>
+                            <span>filename: image.url</span>
                           </span>
                           <div style="text-align: center;">
                             ${this._isGif(image.url)
