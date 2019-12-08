@@ -50,9 +50,6 @@ class SiteQuery extends LitElement {
       result: {
         type: Array
       },
-      __result: {
-        type: Array
-      },
       /**
        * Conditions that can be used to slice the data differently in the manifest
        */
@@ -140,20 +137,19 @@ class SiteQuery extends LitElement {
           "forceRebuild"
         ].includes(propName)
       ) {
-        this.__result = this._computeResult(
-          this.entity,
-          this.conditions,
-          this.sort,
-          this.routerManifest,
-          this.activeId,
-          this.limit,
-          this.startIndex,
-          this.random,
-          this.forceRebuild
-        );
-      }
-      if (propName == "__result") {
-        this.result = [...this[propName]];
+        this.result = [
+          ...this._computeResult(
+            this.entity,
+            this.conditions,
+            this.sort,
+            this.routerManifest,
+            this.activeId,
+            this.limit,
+            this.startIndex,
+            this.random,
+            this.forceRebuild
+          )
+        ];
       }
     });
   }
@@ -173,7 +169,7 @@ class SiteQuery extends LitElement {
   ) {
     if (routerManifest && routerManifest.items) {
       // ensure no data references, clone object
-      var items = Object.assign([], toJS(routerManifest.items));
+      var items = [...toJS(routerManifest.items)];
       // ohhh.... boy.... let's completely alter how this thing works
       if (entity !== "node") {
         var newItems = [];
