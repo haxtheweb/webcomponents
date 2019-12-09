@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -172,6 +172,14 @@ class A11yMediaBehaviors extends SimpleColors {
       },
 
       /**
+       * play/pause button
+       */
+      muteUnmute: {
+        attribute: "mute-unmute",
+        type: Object
+      },
+
+      /**
        * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
        */
       playbackRate: {
@@ -299,7 +307,7 @@ class A11yMediaBehaviors extends SimpleColors {
     };
   }
 
-  constructor(){
+  constructor() {
     super();
     this.audioOnly = false;
     this.autoplay = false;
@@ -313,117 +321,119 @@ class A11yMediaBehaviors extends SimpleColors {
     this.lang = "en";
     this.linkable = false;
     this.localization = {};
+    this.muteUnmute = this._getMuteUnmute(false);
+    this.playPause = this._getPlayPause(false);
     /**
      * TODO
      */
     this.__localizationDefaults = {
-      "audio":{ 
-        "label":"Audio",
-        "notSupported": "HTML5 video is not supported." 
+      audio: {
+        label: "Audio",
+        notSupported: "HTML5 video is not supported."
       },
-      "autoScroll":{
-        "label":"Scroll transcript with video.",
-        "icon":"swap-vert"
+      autoScroll: {
+        label: "Scroll transcript with video.",
+        icon: "swap-vert"
       },
-      "captions":{
-        "label":"Closed Captions",
-        "icon":"av:closed-caption",
-        "off":"Off"
+      captions: {
+        label: "Closed Captions",
+        icon: "av:closed-caption",
+        off: "Off"
       },
-      "download":{
-        "label":"Download the transcript.",
-        "icon":"file-download"
+      download: {
+        label: "Download the transcript.",
+        icon: "file-download"
       },
-      "forward":{
-        "label":"Forward",
-        "icon":"av:fast-forward"
+      forward: {
+        label: "Forward",
+        icon: "av:fast-forward"
       },
-      "fullscreen":{
-        "label":"Fullscreen",
-        "icon":"fullscreen"
+      fullscreen: {
+        label: "Fullscreen",
+        icon: "fullscreen"
       },
-      "copyLink":{
-        "label":"Copy Media Link",
-        "icon":"link"
+      copyLink: {
+        label: "Copy Media Link",
+        icon: "link"
       },
-      "closeLink":{
-        "label":"Close",
-        "icon":"close"
+      closeLink: {
+        label: "Close",
+        icon: "close"
       },
-      "loading":{
-        "label":"Loading..."
+      loading: {
+        label: "Loading..."
       },
-      "loop":{
-        "label":"Loop Playback"
+      loop: {
+        label: "Loop Playback"
       },
-      "mute":{
-        "label":"Mute",
-        "icon":"av:volume-up"
+      mute: {
+        label: "Mute",
+        icon: "av:volume-up"
       },
-      "nextResult":{
-        "label":"Next",
-        "icon":"arrow-forward"
+      nextResult: {
+        label: "Next",
+        icon: "arrow-forward"
       },
-      "pause":{
-        "label":"Pause",
-        "icon":"av:pause"
+      pause: {
+        label: "Pause",
+        icon: "av:pause"
       },
-      "play":{
-        "label":"Play",
-        "icon":"av:play-arrow"
+      play: {
+        label: "Play",
+        icon: "av:play-arrow"
       },
-      "prevResult":{
-        "label":"Previous",
-        "icon":"arrow-back"
+      prevResult: {
+        label: "Previous",
+        icon: "arrow-back"
       },
-      "print":{
-        "label":"Print the transcript.",
-        "icon":"print"
+      print: {
+        label: "Print the transcript.",
+        icon: "print"
       },
-      "restart":{
-        "label":"Restart",
-        "icon":"av:replay"
+      restart: {
+        label: "Restart",
+        icon: "av:replay"
       },
-      "rewind":{
-        "label":"Backward",
-        "icon":"av:fast-rewind"
+      rewind: {
+        label: "Backward",
+        icon: "av:fast-rewind"
       },
-      "search":{
-        "label":"Search the transcript.",
-        "icon":"search"
+      search: {
+        label: "Search the transcript.",
+        icon: "search"
       },
-      "seekSlider":{
-        "label":"Seek Slider"
+      seekSlider: {
+        label: "Seek Slider"
       },
-      "settings":{
-        "label":"Settings",
-        "icon":"settings"
+      settings: {
+        label: "Settings",
+        icon: "settings"
       },
-      "speed":{
-        "label":"Speed %"
+      speed: {
+        label: "Speed %"
       },
-      "transcript":{
-        "label":"Transcript",
-        "icon":"description",
-        "loading":"Loading the transcript(s)...",
-        "skip":"Skip to the transcript."
+      transcript: {
+        label: "Transcript",
+        icon: "description",
+        loading: "Loading the transcript(s)...",
+        skip: "Skip to the transcript."
       },
-      "unmute":{
-        "label":"Unmute",
-        "icon":"av:volume-off"
+      unmute: {
+        label: "Unmute",
+        icon: "av:volume-off"
       },
-      "video":{
-        "label":"Video",
-        "notSupported": "HTML5 video is not supported."
+      video: {
+        label: "Video",
+        notSupported: "HTML5 video is not supported."
       },
-      "volume":{
-        "label":"Volume"
+      volume: {
+        label: "Volume"
       },
-      "youTubeLoading":{
-        "label":"Ready."
+      youTubeLoading: {
+        label: "Ready."
       },
-      "youTubeTranscript":{
-        "label":"Transcript will load once media plays."
+      youTubeTranscript: {
+        label: "Transcript will load once media plays."
       }
     };
     this.loop = false;
@@ -444,16 +454,61 @@ class A11yMediaBehaviors extends SimpleColors {
     this.volume = 70;
     this.width = null;
     this.youtubeId = null;
-    this.youtube= {};
+    this.youtube = {};
     this.isYoutube = this._hasAttribute(this.youtubeId);
     this.seekSlider = {
-      "label": this._getLocal("seekSlider", "label")
-    }
-    this.playPause = {
-      "label": this._getLocal("play", "label"),
-      "icon": this._getLocal("play", "icon"),
-      "action": "play"
+      label: this._getLocal("seekSlider", "label")
     };
+    this.playPause = {
+      label: this._getLocal("play", "label"),
+      icon: this._getLocal("play", "icon"),
+      action: "play"
+    };
+    this.muteUnmute = {
+      label: this._getLocal("mute", "label"),
+      icon: this._getLocal("mute", "icon"),
+      action: "mute"
+    };
+  }
+
+  /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media muted?
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
+   */
+  _getMuteUnmute(muted, volume) {
+    return muted === true || volume === 0
+      ? {
+          label: this._getLocal("unmute", "label"),
+          icon: this._getLocal("unmute", "icon"),
+          action: "unmute"
+        }
+      : {
+          label: this._getLocal("mute", "label"),
+          icon: this._getLocal("mute", "icon"),
+          action: "mute"
+        };
+  }
+
+  /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media playing?
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
+   */
+  _getPlayPause(__playing) {
+    return __playing !== false
+      ? {
+          label: this._getLocal("pause", "label"),
+          icon: this._getLocal("pause", "icon"),
+          action: "pause"
+        }
+      : {
+          label: this._getLocal("play", "label"),
+          icon: this._getLocal("play", "icon"),
+          action: "play"
+        };
   }
 
   /**
@@ -500,6 +555,10 @@ class A11yMediaBehaviors extends SimpleColors {
   _addResponsiveUtility(options) {
     let root = this;
     window.ResponsiveUtility.requestAvailability();
+    /**
+     * Fires player needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail:
@@ -578,44 +637,6 @@ class A11yMediaBehaviors extends SimpleColors {
       local = this.__localizationDefaults[key][subkey];
     }
     return local;
-  }
-
-  /**
-   * handles the print transcript button
-   */
-  _handlePrintClick(e) {
-    this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
-  }
-
-  /**
-   * handles the print transcript button
-   */
-  _handleDownloadClick(e) {
-    this.dispatchEvent(
-      new CustomEvent("download-transcript", { detail: this })
-    );
-  }
-
-  /**
-   * handles transcript printing
-   */
-  _handleDownload(e) {
-    let root = this;
-    root.dispatchEvent(
-      new CustomEvent("downloading-transcript", { detail: root })
-    );
-    root.shadowRoot.querySelector("#transcript").download(root.mediaTitle);
-  }
-
-  /**
-   * handles transcript printing
-   */
-  _handlePrinting(e) {
-    let root = this;
-    root.dispatchEvent(
-      new CustomEvent("printing-transcript", { detail: root })
-    );
-    root.shadowRoot.querySelector("#transcript").print(root.mediaTitle);
   }
 }
 window.customElements.define(A11yMediaBehaviors.tag, A11yMediaBehaviors);

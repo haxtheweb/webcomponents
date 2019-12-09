@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement } from "lit-element/lit-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.A11yMediaYoutube = window.A11yMediaYoutube || {};
@@ -22,11 +22,10 @@ window.A11yMediaYoutube.requestAvailability = () => {
 /**
  * `a11y-media-youtube`
  * Handles YouTube as source for a11y-media-player.
- * 
+ *
  * @polymer
  */
 class A11yMediaYoutube extends LitElement {
-
   /**
    * Store the tag name to make it easier to obtain directly.
 
@@ -62,11 +61,17 @@ class A11yMediaYoutube extends LitElement {
     super();
     this.apiReady = window.YT !== undefined;
     this.counter = 0;
+    this.id = null;
     let root = this,
       api = document.createElement("script");
     api.setAttribute("src", "https://www.youtube.com/iframe_api");
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
+
+    /**
+     * Fires when YouTube API is ready
+     * @event youtube-api-ready
+     */
     window.onYouTubeIframeAPIReady = () => {
       root.apiReady = true;
       window.dispatchEvent(new CustomEvent("youtube-api-ready"));
@@ -82,6 +87,7 @@ class A11yMediaYoutube extends LitElement {
   initYoutubePlayer(options) {
     //get unique id for each youtube iframe
     // function to create and init iframe
+    console.log(options, options.videoId);
     let temp = "a11y-media-yt-",
       div = document.createElement("div"),
       vdata = options.videoId.split(/[\?&]/),
@@ -172,14 +178,24 @@ class A11yMediaYoutube extends LitElement {
         clearInterval(iframe.timeupdate);
       } else {
         iframe.timeupdate = setInterval(() => {
+          /**
+           * Fires as YouTube video time changes
+           * @event timeupdate
+           */
           document.dispatchEvent(
             new CustomEvent("timeupdate", { detail: iframe })
           );
         }, 1);
       }
     });
+    iframe.currentTime = () => {
+      return iframe.getCurrentTime();
+    };
     iframe.pause = () => {
       if (iframe.pauseVideo !== undefined) iframe.pauseVideo();
+    };
+    iframe.playbackRate = value => {
+      iframe.setPlaybackRate(value);
     };
     iframe.seek = (time = 0) => {
       if (iframe.seekTo !== undefined) {
@@ -198,6 +214,9 @@ class A11yMediaYoutube extends LitElement {
     };
     iframe.setMute = mode => {
       if (iframe.mute !== undefined) mode ? iframe.mute() : iframe.unMute();
+    };
+    iframe.volume = value => {
+      iframe.setVolume(value * 100);
     };
     return iframe;
   }

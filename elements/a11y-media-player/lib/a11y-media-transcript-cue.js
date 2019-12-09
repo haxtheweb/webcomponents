@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
 
 /**
@@ -25,7 +25,7 @@ import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
  *
  * @customElement
  */
-class A11yMediaTranscriptCue extends LitElement {
+class A11yMediaTranscriptCue extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -65,12 +65,6 @@ class A11yMediaTranscriptCue extends LitElement {
        */
       start: {
         type: String
-      },
-      /**
-       * parsed cue text
-       */
-      text: {
-        type: String
       }
     };
   }
@@ -88,85 +82,89 @@ class A11yMediaTranscriptCue extends LitElement {
     super();
     this.active = false;
     this.disabled = false;
-    this.end = "";
     this.hideTimestamps = false;
     this.start = "";
-    this.text = "";
+    this.end = "";
   }
 
   //render function
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       css`
-      :host {
-        cursor: default;
-        display: table-row;
-        width: 100%;
-        color: var(--a11y-media-transcript-cue-color);
-        background-color: var(--a11y-media-transcript-cue-bg-color);
-        transition: color 0.25s, background-color 0.25s;
-        --simple-search-match-text-color: var(
-          --a11y-media-transcript-match-color
-        );
-        --simple-search-match-bg-color: var(
-          --a11y-media-transcript-match-bg-color
-        );
-        --simple-search-match-border-color: var(
-          --a11y-media-transcript-match-border-color
-        );
-        --simple-search-match-border: none;
-        --simple-search-match-border-radius: 4px;
-        --simple-search-match-font-weight: normal;
-      }
-      :host([hide-timestamps]) {
-        display: inline;
-      }
-      :host(:not([active]):not([disabled]):active),
-      :host(:not([active]):not([disabled]):focus),
-      :host(:not([active]):not([disabled]):hover) {
-        cursor: pointer;
-        color: var(--a11y-media-transcript-focused-cue-color);
-        background-color: var(--a11y-media-transcript-focused-cue-bg-color);
-        outline: 1px dotted var(--a11y-media-transcript-focused-cue-color);
-      }
-      :host([active]) {
-        color: var(--a11y-media-transcript-active-cue-color);
-        background-color: var(--a11y-media-transcript-active-cue-bg-color);
-      }
-      #text {
-        display: table-cell;
-        width: 100%;
-        line-height: 200%;
-      }
-      :host([hide-timestamps]) #text {
-        display: inline;
-      }
-      #time {
-        display: table-cell;
-        font-size: 80%;
-        padding: 0 16px 0 0;
-        white-space: nowrap;
-        font-family: monospace;
-      }
-      :host([hide-timestamps]) #time {
-        display: none;
-      }
-      @media print {
-        :host,
-        :host([active]),
+        :host {
+          cursor: default;
+          display: table-row;
+          width: 100%;
+          color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-transcript-cue-bg-color);
+          transition: color 0.25s, background-color 0.25s;
+          --simple-search-match-text-color: var(
+            --a11y-media-transcript-match-color
+          );
+          --simple-search-match-bg-color: var(
+            --a11y-media-transcript-match-bg-color
+          );
+          --simple-search-match-border-color: var(
+            --a11y-media-transcript-match-border-color
+          );
+          --simple-search-match-border: none;
+          --simple-search-match-border-radius: 4px;
+          --simple-search-match-font-weight: normal;
+        }
+        :host([hide-timestamps]) {
+          display: inline;
+        }
         :host(:not([active]):not([disabled]):active),
         :host(:not([active]):not([disabled]):focus),
         :host(:not([active]):not([disabled]):hover) {
-          color: #000000;
-          background-color: #ffffff;
+          cursor: pointer;
+          color: var(--a11y-media-transcript-focused-cue-color);
+          background-color: var(--a11y-media-transcript-focused-cue-bg-color);
+          outline: 1px dotted var(--a11y-media-transcript-focused-cue-color);
         }
-      }`
+        :host([active]) {
+          color: var(--a11y-media-transcript-active-cue-color);
+          background-color: var(--a11y-media-transcript-active-cue-bg-color);
+        }
+        #text {
+          display: table-cell;
+          width: 100%;
+          line-height: 200%;
+        }
+        :host([hide-timestamps]) #text {
+          display: inline;
+        }
+        #time {
+          display: table-cell;
+          font-size: 80%;
+          padding: 0 16px 0 0;
+          white-space: nowrap;
+          font-family: monospace;
+        }
+        :host([hide-timestamps]) #time {
+          display: none;
+        }
+        @media print {
+          :host,
+          :host([active]),
+          :host(:not([active]):not([disabled]):active),
+          :host(:not([active]):not([disabled]):focus),
+          :host(:not([active]):not([disabled]):hover) {
+            color: #000000;
+            background-color: #ffffff;
+          }
+        }
+      `
     ];
-  }
-  render() {
-    return html`
-      <span id="time">${cue.start} - ${cue.end}</span>
-      <span id="text">${cue.text}</span>
+  }
+  render() {
+    return html`
+      <span id="time">
+        ${this.start} - ${this.end}
+      </span>
+      <span id="text">
+        <slot></slot>
+      </span>
     `;
   }
 }

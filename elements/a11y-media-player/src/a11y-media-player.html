@@ -18,30 +18,14 @@
         ?disabled="${this.audioNoThumb}"
         ?hidden="${this._hidePlayButton(this.thumbnailSrc, this.isYoutube, this.__elapsed)}">
       </a11y-media-play-button>
-      <a11y-media-html5
-        id="html5"
-        crossorigin="${ifDefined(this.crossorigin)}"
-        media-lang="${this.mediaLang}"
-        playback-rate="${this.playbackRate}"
-        preload="${this.preload}"
-        thumbnail-src="${ifDefined(this.thumbnailSrc)}"
-        volume="${this.volume}"
-        @media-loaded="${this._handleMediaLoaded}"
-        @timeupdate="${this._handleTimeUpdate}"
-        ?audio-only="${this.audioOnly}"
-        ?autoplay="${this.autoplay}"
-        ?cc="${this.cc}"
-        ?hidden="${this.isYoutube}"
-        ?loop="${this.loop}"
-        ?muted="${this.muted}"
-        ?playing="${this.__playing}"
-      >
+      <div id="html5">
         <slot></slot>
-      </a11y-media-html5>
+      </div>
       <div id="youtube" 
         lang="${this.mediaLang}"
         video-id="${this.videoId}"
-        .elapsed="${this.__elapsed || false}" >
+        ?hidden="${!this.isYoutube}"
+        .elapsed="${this.__elapsed}" >
       </div>
       <div id="customcc" 
         aria-live="polite"
@@ -68,13 +52,9 @@
   </paper-slider>
   <a11y-media-controls id="controls"
     responsive-size="${this.responsiveSize}"
-    volume="${this.__volume}"
-    @controls-change="${this._onControlsChanged}"
-    @print-transcript="${this._handlePrinting}"
-    @download-transcript="${this._handleDownload}"
-    .mute-unmute="${this.muteUnmute}"
-    .play-pause="${this.playPause}"
+    volume="${this.volume}"
     .status="${this.status}"
+    .tracks="${this.tracks}" 
     ?cc="${this.cc}"
     ?disable-seek="${this.disableSeek}"
     ?fixed-height="${this.height}"
@@ -84,7 +64,12 @@
     ?has-transcript="${this.hasTranscript}"
     ?hide-transcript="${this.hideTranscript}"
     ?linkable="${this.linkable}"
-    ?stand-alone="${this.standAlone}">
+    ?muted="${this.muted}"
+    ?playing="${this.__playing}"
+    ?stand-alone="${this.standAlone}"
+    @controls-change="${this._onControlsChanged}"
+    @print-transcript="${this._handlePrinting}"
+    @download-transcript="${this._handleDownload}">
   </a11y-media-controls>
   <a id="captionlink" href="${ifDefined(this.__captionHref)}">
     <div
@@ -122,8 +107,8 @@
           controls="transcript"
           icon="${this._getLocal('autoScroll','icon')}"
           label="${this._getLocal('autoScroll','label')}"
-          @click="${this._handleScrollClick}"
-          ?toggle="${!this.disableScroll}">
+          ?toggle="${!this.disableScroll}"
+          @click-details="${this._handleScroll}">
         </a11y-media-button>
       </div>
       <div id="printing"
@@ -134,29 +119,47 @@
           controls="transcript"
           icon="${this._getLocal('download','icon')}"
           label="${this._getLocal('download','label')}"
-          @click="${this._handleDownloadClick}">
+          @click-details="${this._handleDownload}">
         </a11y-media-button>
         <a11y-media-button
           id="print"
           controls="transcript"
           icon="${this._getLocal('print','icon')}"
           label="${this._getLocal('print','label')}"
-          @click="${this._handlePrintClick}">
+          @click-details="${this._handlePrint}">
         </a11y-media-button>
       </div>
     </div>
-    <a11y-media-transcript id="transcript" 
-      accent-color="${this.accentColor}"
-      media-id="${this.id}"
-      @transcript-seek="${this._handleTranscriptSeek}"
-      .localization="${this.localization}"
-      .selected-transcript="${this.__selectedTrack}"
-      ?dark="${this.darkTranscript}"
-      ?disable-scroll="${this.disableScroll}"
-      ?disable-seek="${this.disableSeek}"
-      ?disable-interactive="${this.disableInteractive}"
-      ?hide-timestamps="${this.hideTimestamps}">
-    </a11y-media-transcript>
+    <div id="transcript" aria-live="polite">
+      <a id="transcript-desc" class="sr-only" href="#bottom">
+        ${this._getLocal('transcript','skip')}
+      </a>
+      ${this.__filteredCues.length > 0 ? html`
+        <div class="transcript-from-track">
+          ${this.__filteredCues.map((cue,index) => { return html`
+            <a11y-media-transcript-cue
+              accent-color="${this.accentColor}"
+              controls="html5"
+              end="${this._getHHMMSS(cue.endTime, this.media.duration)}"
+              lang="${cue.track.language}"
+              order="${cue.id || cue.index}"
+              role="button"
+              start="${this._getHHMMSS(cue.startTime, this.media.duration)}"
+              tabindex="0"
+              @click="${e => this._handleCueSeek(cue)}"
+              ?disabled="${this.disableInteractive || this.disableSeek}"
+              ?hide-timestamps="${this.hideTimestamps}">
+              ${cue.text}
+            </a11y-media-transcript-cue>
+          `})}
+        </div>
+      ` : html`
+        <div id="loading"
+          class="transcript-from-track">
+          ${this.status}
+        </div>`
+      }
+    </div>
   </div>
 </div>
 <paper-toast id="link" 
@@ -168,7 +171,8 @@
     action="linkable"
     icon="${this._getLocal('closeLink','icon')}"
     label="${this._getLocal('closeLink','label')}"
-    @click="${this._handleCloseLink}"
     tooltip-position="top"
+    @click-details="${this._handleCloseLink}"
   ></a11y-media-button>
 </paper-toast>
+<div id="bottom" class="sr-only"></div>

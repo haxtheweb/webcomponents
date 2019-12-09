@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 
 /**
@@ -56,8 +56,8 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     return "a11y-media-play-button";
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host {
@@ -70,8 +70,6 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           opacity: 0;
         }
         :host,
-        #thumbnail,
-        #background,
         #button {
           width: 100%;
           top: 0;
@@ -79,34 +77,18 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           opacity: 1;
           transition: opacity 0.5s;
         }
-        #thumbnail,
-        #background,
         #button {
           position: absolute;
           height: 100%;
           padding: 0;
           margin: 0;
           border: none;
-        }
-        #thumbnail {
-          height: auto;
-          overflow: hidden;
-        }
-        #button {
-          overflow: hidden;
-          background: transparent;
-        }
-        #button:hover {
-          cursor: pointer;
-        }
-        #background {
-          opacity: 0.3;
           background: var(--a11y-play-button-bg-color);
         }
-        #button:focus #background,
-        #button:hover #background {
+        #button:focus,
+        #button:hover {
           background: var(--a11y-play-button-focus-bg-color);
-          opacity: 0.1;
+          opacity: 0.2;
         }
         #arrow {
           stroke: #ffffff;
@@ -129,16 +111,16 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           }
         }
       `
-    ];
-  }
+    ];
+  }
 
-  //render function 
-  render() {
-    return html`
+  //render function
+  render() {
+    return html`
       <button
         id="button"
-        aria-pressed="${this.playing ? 'true' : 'false'}"
-        aria-hidden="${this.disabled ? 'true' : 'false'}"
+        aria-pressed="${this.playing ? "true" : "false"}"
+        aria-hidden="${this.disabled ? "true" : "false"}"
         controls="video"
         label="${this.label}"
         tabindex="0"
@@ -152,7 +134,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           viewBox="0 0 200 200"
           width="30%"
           height="30%"
-          opacity="0.7"
+          opacity="0.5"
         >
           <g>
             <polygon
@@ -178,7 +160,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     `;
   }
 
-  constructor(){
+  constructor() {
     super();
     this.action = null;
     this.disabled = false;
@@ -191,6 +173,10 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
    * handle button tap
    */
   _handleButtonClick(e) {
+    /**
+     * Fires when button is clicked in order to signal a change is made
+     * @event controls-change
+     */
     this.dispatchEvent(new CustomEvent("controls-change", { detail: this }));
   }
 }

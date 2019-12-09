@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
@@ -61,14 +61,14 @@ class A11yMediaButton extends A11yMediaBehaviors {
        */
       disabled: {
         attribute: "disabled",
-        type: Boolean,
+        type: Boolean
       },
       /*
        * Is it disabled?
        */
       tooltipPosition: {
         attribute: "tooltip-position",
-        type: String,
+        type: String
       }
     };
   }
@@ -94,8 +94,8 @@ class A11yMediaButton extends A11yMediaBehaviors {
     import("@polymer/paper-tooltip/paper-tooltip.js");
   }
 
-  static get styles() {
-    return [
+  static get styles() {
+    return [
       ...super.styles,
       css`
         :host {
@@ -121,7 +121,6 @@ class A11yMediaButton extends A11yMediaBehaviors {
         :host(:active) #button,
         :host(:focus) #button,
         :host(:hover) #button {
-          cursor: pointer;
           color: var(--a11y-media-button-hover-color);
           background-color: var(--a11y-media-button-hover-bg-color);
         }
@@ -143,14 +142,14 @@ class A11yMediaButton extends A11yMediaBehaviors {
           display: inline-block;
         }
       `
-    ];
-  }
-  render() {
-    return html`
+    ];
+  }
+  render() {
+    return html`
       <button
         id="button"
         aria-label="${this.label}"
-        aria-pressed="${this.toggle ? 'true' : 'false'}"
+        aria-pressed="${this.toggle ? "true" : "false"}"
         controls="${this.controls}"
         role="button"
         tabindex="0"
@@ -160,8 +159,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
       >
         <iron-icon icon="${this.icon}"></iron-icon>
       </button>
-      <paper-tooltip for="button" 
-        position="${this.tooltipPosition}"
+      <paper-tooltip for="button" position="${this.tooltipPosition}"
         >${this.label}</paper-tooltip
       >
     `;
@@ -170,8 +168,12 @@ class A11yMediaButton extends A11yMediaBehaviors {
   /**
    * lets player know this button was clicked
    */
-  _buttonClick() {
-    this.dispatchEvent(new CustomEvent("click", { detail: this }));
+  _buttonClick(e) {
+    /**
+     * Fires when button is clicked
+     * @event click-details
+     */
+    this.dispatchEvent(new CustomEvent("click-details", { detail: this }));
   }
 }
 window.customElements.define(A11yMediaButton.tag, A11yMediaButton);

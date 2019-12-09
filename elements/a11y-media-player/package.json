@@ -14,7 +14,8 @@
       "js": "src/a11y-media-player.js",
       "properties": "src/a11y-media-player-properties.json",
       "hax": "src/a11y-media-player-hax.json"
-    }
+    },
+    "sharedStyles": [ "...super.styles" ]
   },
   "version": "2.2.0",
   "description": "A feature rich, highly accessible video player",

@@ -1,5 +1,12 @@
 {
   /**
+   * array of cues
+   */
+  "activeCues": {
+    "attribute": "active-cues",
+    "type": "Array"
+  },
+  /**
    * Allow this media to play concurrently with other a11y-media-players?
    * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
    */
@@ -118,13 +125,6 @@
     "type": "String"
   },
   /**
-   * mute/unmute button
-   */
-  "muteUnmute": {
-    "attribute": "mute-unmute",
-    "type": "Object"
-  },
-  /**
    * The media caption that displays when the page is printed.
    */
   "printCaption": {
@@ -211,31 +211,57 @@
     "type": "Array"
   },
   /**
-   * play/pause button
+   * Transcript associated with player. (Can be set to an extenal object);
    */
-  "playPause": {
-    "attribute": "playPause",
-    "type": "Object"
+  "transcript": {
+    "attribute": "transcript"
   },
   /**
-   * Notice if the elapsed time changes
+   * Active transcript track
    */
-  "__elapsed": {
-    "type": "Number",
-    "notify": true
-  },
-  /**
-   * Notice if the video is playing
-   */
-  "__playing": {
-    "type": "Boolean",
-    "notify": true
+  "__activeTrack": {
+    "type": "Array"
   },
   /**
    * Notice if the video is playing
    */
   "__captionHref": {
-    "type": "String",
-    "notify": true
+    "type": "String"
+  },
+  /**
+   * array of cues
+   */
+  "__cues": {
+    "type": "Array"
+  },
+  /**
+   * array of cues
+   */
+  "__filteredCues": {
+    "type": "Array"
+  },
+  /**
+   * Notice if the elapsed time changes
+   */
+  "__deprecatedMedia": {
+    "type": "Array"
+  },
+  /**
+   * Notice if the elapsed time changes
+   */
+  "__duration": {
+    "type": "Number"
+  },
+  /**
+   * Notice if the elapsed time changes
+   */
+  "__elapsed": {
+    "type": "Number"
+  },
+  /**
+   * Notice if the video is playing
+   */
+  "__playing": {
+    "type": "Boolean"
   }
 }
