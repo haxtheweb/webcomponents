@@ -165,7 +165,7 @@ class HaxBloxBrowserItem extends LitElement {
         detail: blox
       })
     );
-    window.HaxStore.instance.haxBloxPicker.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
 }
 window.customElements.define(HaxBloxBrowserItem.tag, HaxBloxBrowserItem);

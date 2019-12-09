@@ -67,6 +67,9 @@ class HaxStore extends HAXElement(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      openDrawer: {
+        type: Object
+      },
       voiceDebug: {
         type: Boolean
       },
@@ -98,6 +101,12 @@ class HaxStore extends HAXElement(LitElement) {
        * Hax stax picker element.
        */
       haxStaxPicker: {
+        type: Object
+      },
+      /**
+       * Hax stax picker element.
+       */
+      haxBloxPicker: {
         type: Object
       },
       /**
@@ -562,6 +571,67 @@ class HaxStore extends HAXElement(LitElement) {
       }
     }
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // notice hax property definitions coming from anywhere
+    window.addEventListener(
+      "hax-register-properties",
+      this._haxStoreRegisterProperties.bind(this)
+    );
+    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
+    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
+    window.addEventListener("paste", this._onPaste.bind(this));
+    // app registration can come in automatically from app-stores
+    // or through direct definition in the DOM
+    window.addEventListener(
+      "hax-register-app",
+      this._haxStoreRegisterApp.bind(this)
+    );
+    // register stax which are groupings of haxElements
+    window.addEventListener(
+      "hax-register-stax",
+      this._haxStoreRegisterStax.bind(this)
+    );
+    // register blox which are grid plate configurations
+    window.addEventListener(
+      "hax-register-blox",
+      this._haxStoreRegisterBlox.bind(this)
+    );
+    // register the pieces of the body of what we call HAX
+    // think of this like the core of the system required
+    // to do anything like have buttons or state management
+
+    // write data to the store
+    window.addEventListener("hax-store-write", this._writeHaxStore.bind(this));
+    // register pieces of the system
+    window.addEventListener(
+      "hax-register-core-piece",
+      this._haxStorePieceRegistrationManager.bind(this)
+    );
+    // register a body, kind of a big deal
+    window.addEventListener(
+      "hax-register-body",
+      this._haxStoreRegisterBody.bind(this)
+    );
+    // grid plate add item event
+    window.addEventListener(
+      "grid-plate-add-item",
+      this.haxInsertAnything.bind(this)
+    );
+    // notice content insert and help it along to the body
+    window.addEventListener(
+      "hax-insert-content",
+      this._haxStoreInsertContent.bind(this)
+    );
+    window.addEventListener(
+      "hax-insert-content-array",
+      this._haxStoreInsertMultiple.bind(this)
+    );
+    window.addEventListener(
+      "hax-add-voice-command",
+      this._addVoiceCommand.bind(this)
+    );
+  }
   /**
    * Detached life cycle
    */
@@ -573,17 +643,17 @@ class HaxStore extends HAXElement(LitElement) {
     );
     // app registration can come in automatically from app-stores
     // or through direct definition in the DOM
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-app",
       this._haxStoreRegisterApp.bind(this)
     );
     // register stax which are groupings of haxElements
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-stax",
       this._haxStoreRegisterStax.bind(this)
     );
     // register blox which are grid plate configurations
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-blox",
       this._haxStoreRegisterBlox.bind(this)
     );
@@ -592,31 +662,31 @@ class HaxStore extends HAXElement(LitElement) {
     // to do anything like have buttons or state management
 
     // write data to the store
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-store-write",
       this._writeHaxStore.bind(this)
     );
     // register the autoloader area for elements
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-core-piece",
       this._haxStorePieceRegistrationManager.bind(this)
     );
     // register a body, kind of a big deal
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-body",
       this._haxStoreRegisterBody.bind(this)
     );
     // notice content insert and help it along to the body
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
     // grid plate add item event
-    document.body.removeEventListener(
+    window.removeEventListener(
       "grid-plate-add-item",
       this.haxInsertAnything.bind(this)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
     );
@@ -660,8 +730,10 @@ class HaxStore extends HAXElement(LitElement) {
   }
   updated(changedProperties) {
     let loadAppStoreData = false;
-    let storePiecesAllHere = false;
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "openDrawer") {
+        this.openDrawersCallback(this[propName]);
+      }
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
       }
@@ -685,10 +757,23 @@ class HaxStore extends HAXElement(LitElement) {
           "haxPreferences",
           "haxManager",
           "haxStaxPicker",
+          "haxBloxPicker",
           "haxAppPicker"
         ].includes(propName)
       ) {
-        storePiecesAllHere = true;
+        // allow this to verify if everything is here or not
+        this._storePiecesAllHere(
+          this.haxAutoloader,
+          this.activeHaxBody,
+          this.haxPanel,
+          this.haxToast,
+          this.haxExport,
+          this.haxPreferences,
+          this.haxManager,
+          this.haxStaxPicker,
+          this.haxBloxPicker,
+          this.haxAppPicker
+        );
       }
     });
     if (loadAppStoreData) {
@@ -696,19 +781,6 @@ class HaxStore extends HAXElement(LitElement) {
         this.__ready,
         this.__appStoreData,
         this.haxAutoloader
-      );
-    }
-    if (storePiecesAllHere) {
-      this._storePiecesAllHere(
-        this.haxAutoloader,
-        this.activeHaxBody,
-        this.haxPanel,
-        this.haxToast,
-        this.haxExport,
-        this.haxPreferences,
-        this.haxManager,
-        this.haxStaxPicker,
-        this.haxAppPicker
       );
     }
   }
@@ -795,6 +867,7 @@ class HaxStore extends HAXElement(LitElement) {
     haxPreferences,
     haxManager,
     haxStaxPicker,
+    haxBloxPicker,
     haxAppPicker
   ) {
     if (
@@ -807,6 +880,7 @@ class HaxStore extends HAXElement(LitElement) {
       haxPreferences &&
       haxManager &&
       haxStaxPicker &&
+      haxBloxPicker &&
       haxAppPicker
     ) {
       // send that hax store is ready to go so now we can setup the rest
@@ -851,7 +925,7 @@ class HaxStore extends HAXElement(LitElement) {
       this.__hal.speak("Yeah what do you want");
     };
     this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
-      window.HaxStore.instance.closeAllDrawers();
+      window.HaxStore.write("openDrawer", false, this);
     };
   }
   /**
@@ -1079,67 +1153,6 @@ class HaxStore extends HAXElement(LitElement) {
       window.HaxStore.instance = this;
     }
     this.haxToast = window.SimpleToast.requestAvailability();
-    // notice hax property definitions coming from anywhere
-    window.addEventListener(
-      "hax-register-properties",
-      this._haxStoreRegisterProperties.bind(this)
-    );
-    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
-    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // app registration can come in automatically from app-stores
-    // or through direct definition in the DOM
-    document.body.addEventListener(
-      "hax-register-app",
-      this._haxStoreRegisterApp.bind(this)
-    );
-    // register stax which are groupings of haxElements
-    document.body.addEventListener(
-      "hax-register-stax",
-      this._haxStoreRegisterStax.bind(this)
-    );
-    // register blox which are grid plate configurations
-    document.body.addEventListener(
-      "hax-register-blox",
-      this._haxStoreRegisterBlox.bind(this)
-    );
-    // register the pieces of the body of what we call HAX
-    // think of this like the core of the system required
-    // to do anything like have buttons or state management
-
-    // write data to the store
-    document.body.addEventListener(
-      "hax-store-write",
-      this._writeHaxStore.bind(this)
-    );
-    // register pieces of the system
-    document.body.addEventListener(
-      "hax-register-core-piece",
-      this._haxStorePieceRegistrationManager.bind(this)
-    );
-    // register a body, kind of a big deal
-    document.body.addEventListener(
-      "hax-register-body",
-      this._haxStoreRegisterBody.bind(this)
-    );
-    // grid plate add item event
-    document.body.addEventListener(
-      "grid-plate-add-item",
-      this.haxInsertAnything.bind(this)
-    );
-    // notice content insert and help it along to the body
-    document.body.addEventListener(
-      "hax-insert-content",
-      this._haxStoreInsertContent.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-insert-content-array",
-      this._haxStoreInsertMultiple.bind(this)
-    );
-    window.addEventListener(
-      "hax-add-voice-command",
-      this._addVoiceCommand.bind(this)
-    );
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   }
 
@@ -1481,12 +1494,13 @@ class HaxStore extends HAXElement(LitElement) {
   /**
    * Close all drawers
    */
-  closeAllDrawers(active = false) {
+  openDrawersCallback(active = false) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
     let drawers = [
       "haxManager",
+      "haxAppPicker",
       "haxBloxPicker",
       "haxStaxPicker",
       "haxPreferences",
@@ -1763,7 +1777,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterApp(e) {
     if (e.detail) {
       e.detail.index = this.appList.length;
-      this.appList.push(e.detail);
+      this.appList = [...this.appList, e.detail];
       window.HaxStore.write("appList", this.appList, this);
       // preconnect apps at registration time
       if (
@@ -1793,7 +1807,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterStax(e) {
     if (e.detail) {
       e.detail.index = this.staxList.length;
-      this.staxList.push(e.detail);
+      this.staxList = [...this.staxList, e.detail];
       window.HaxStore.write("staxList", this.staxList, this);
       // we don't care about this after it's launched
       if (
@@ -1811,7 +1825,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterBlox(e) {
     if (e.detail) {
       e.detail.index = this.bloxList.length;
-      this.bloxList.push(e.detail);
+      this.bloxList = [...this.bloxList, e.detail];
       window.HaxStore.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
@@ -2659,6 +2673,7 @@ class UndoerElement extends HTMLElement {
 
   constructor() {
     super();
+    this.openDrawer = false;
     this._root = this.attachShadow({ mode: "open" });
 
     // hide from the first attributeChangedCallback call

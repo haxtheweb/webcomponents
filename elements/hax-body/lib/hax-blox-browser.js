@@ -25,15 +25,14 @@ class HaxBloxBrowser extends LitElement {
   constructor() {
     super();
     this.bloxList = [];
-    this.__bloxList = [];
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
   }
   render() {
     return html`
-      ${this.__bloxList.map(
+      ${this.bloxList.map(
         blox => html`
           <div class="blox-container">
             <hax-blox-browser-item
@@ -66,9 +65,6 @@ class HaxBloxBrowser extends LitElement {
        */
       bloxList: {
         type: Array
-      },
-      __bloxList: {
-        type: Array
       }
     };
   }
@@ -80,25 +76,10 @@ class HaxBloxBrowser extends LitElement {
     if (
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
-      e.detail.property
+      e.detail.property == "bloxList"
     ) {
-      // make sure we set array's empty first to force a repaint of paths
-      if (
-        typeof this[e.detail.property] !== typeof undefined &&
-        this[e.detail.property] != null &&
-        typeof this[e.detail.property].length !== typeof undefined
-      ) {
-        this[e.detail.property] = [];
-      }
-      this[e.detail.property] = e.detail.value;
+      this[e.detail.property] = [...e.detail.value];
     }
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "bloxList") {
-        this.__bloxList = this[propName];
-      }
-    });
   }
 }
 window.customElements.define(HaxBloxBrowser.tag, HaxBloxBrowser);

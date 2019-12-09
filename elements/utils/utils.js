@@ -182,6 +182,42 @@ function objectValFromStringPos(o, s, r = null) {
   return o;
 }
 
+/**
+ * Manage window based events in a consistent and simple manner
+ */
+export const winEventsElement = function(SuperClass) {
+  return class extends SuperClass {
+    __applyWinEvents(status) {
+      if (this.__winEvents) {
+        for (var eName in this.__winEvents) {
+          window[`${status ? "add" : "remove"}EventListener`](
+            eName,
+            this[this.__winEvents[eName]].bind(this)
+          );
+        }
+      }
+    }
+    /**
+     * HTMLElement connected element
+     */
+    connectedCallback() {
+      if (super.connectedCallback) {
+        super.connectedCallback();
+      }
+      this.__applyWinEvents(true);
+    }
+    /**
+     * HTML Element disconnected element
+     */
+    disconnectedCallback() {
+      this.__applyWinEvents(false);
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+    }
+  };
+};
+
 export {
   encapScript,
   findTagsInHTML,

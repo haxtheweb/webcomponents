@@ -408,7 +408,7 @@ class HaxUploadField extends SimpleColors {
         "simple-camera-snap-image",
         this.__newPhotoShowedUp.bind(this)
       );
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
     );
@@ -417,7 +417,7 @@ class HaxUploadField extends SimpleColors {
    * HTMLElement
    */
   disconnectedCallback() {
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
     );

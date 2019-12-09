@@ -171,15 +171,15 @@ class HaxPanel extends SimpleColors {
         "hax-item-selected",
         this._processItemEvent.bind(this)
       );
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
       );
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-active-hover-name",
         this._activeNameChange.bind(this)
       );
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-panel-operation",
         this._processItemEvent.bind(this)
       );
@@ -533,10 +533,18 @@ class HaxPanel extends SimpleColors {
         );
         break;
       case "open-preferences-dialog":
-        window.HaxStore.instance.haxPreferences.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxPreferences,
+          this
+        );
         break;
       case "open-export-dialog":
-        window.HaxStore.instance.haxExport.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxExport,
+          this
+        );
         break;
       case "divider":
         detail.tag = "hr";
@@ -597,13 +605,25 @@ class HaxPanel extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        window.HaxStore.instance.haxManager.toggleDialog(false);
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         break;
       case "hax-stax-picker-open":
-        window.HaxStore.instance.haxStaxPicker.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxStaxPicker,
+          this
+        );
         break;
       case "hax-blox-picker-open":
-        window.HaxStore.instance.haxBloxPicker.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxBloxPicker,
+          this
+        );
         break;
       case "undo":
         document.execCommand("undo");
@@ -673,7 +693,7 @@ class HaxPanel extends SimpleColors {
     window.HaxStore.write("editMode", !this.editMode, this);
     this.shadowRoot.querySelector("#drawer").opened = this.editMode;
     if (!this.shadowRoot.querySelector("#drawer").opened) {
-      window.HaxStore.instance.closeAllDrawers();
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
 }

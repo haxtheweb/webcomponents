@@ -75,7 +75,7 @@ class HaxPreferencesDialog extends SimpleColors {
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     // add event listener
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
@@ -122,7 +122,12 @@ class HaxPreferencesDialog extends SimpleColors {
           }
         </style>
       </custom-style>
-      <app-drawer id="dialog" align="right" transition-duration="300">
+      <app-drawer
+        id="dialog"
+        align="right"
+        transition-duration="300"
+        @opened-changed="${this.openedChanged}"
+      >
         <h3 class="title">
           <iron-icon icon="icons:settings"></iron-icon> ${this.title}
         </h3>
@@ -132,11 +137,20 @@ class HaxPreferencesDialog extends SimpleColors {
             @value-changed="${this.valueChanged}"
           ></eco-json-schema-object>
         </div>
-        <paper-button id="closedialog" @click="${this.close}">
+        <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
     `;
+  }
+  openedChanged(e) {
+    // force close event to align data model if clicking away
+    if (e.detail.value === false) {
+      this.closeEvent(e);
+    }
+  }
+  closeEvent(e) {
+    window.HaxStore.write("openDrawer", false, this);
   }
   static get tag() {
     return "hax-preferences-dialog";
@@ -255,23 +269,7 @@ class HaxPreferencesDialog extends SimpleColors {
       this.preferences = { ...e.detail.value };
     }
   }
-  /**
-   * Toggle state.
-   */
-  toggleDialog() {
-    if (this.shadowRoot.querySelector("#dialog").opened) {
-      this.close();
-    } else {
-      window.HaxStore.instance.closeAllDrawers(this);
-      var schema = this.schema;
-      // enforce property values to be the schema value
-      for (var key in this.preferences) {
-        this.schema.properties[key].value = this.preferences[key];
-      }
-      // force the form to rebuild
-      this.schema = { ...schema };
-    }
-  }
+
   /**
    * open the dialog
    */

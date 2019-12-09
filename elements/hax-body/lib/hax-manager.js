@@ -295,7 +295,7 @@ class HaxManager extends SimpleColors {
           </iron-pages>
           <paper-button
             id="closedialog"
-            @click="${this.cancel}"
+            @click="${this.closeEvent}"
             ?hidden="${this.activeStep === 0 ? false : true}"
           >
             <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
@@ -417,22 +417,6 @@ class HaxManager extends SimpleColors {
         }
       })
     );
-    // add event listeners
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    // specialized support for the place-holder tag
-    // and a drag and drop event
-    document.body.addEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-
     this.shadowRoot
       .querySelector("#dialog")
       .addEventListener("iron-overlay-canceled", this.close.bind(this));
@@ -452,6 +436,42 @@ class HaxManager extends SimpleColors {
       .querySelector("#fileupload")
       .addEventListener("upload-response", this._fileUploadResponse.bind(this));
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // add event listeners
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener(
+      "hax-app-picker-selection",
+      this._haxAppPickerSelection.bind(this)
+    );
+    // specialized support for the place-holder tag
+    // and a drag and drop event
+    window.addEventListener(
+      "place-holder-file-drop",
+      this._placeHolderFileDrop.bind(this)
+    );
+  }
+  disconnectedCallback() {
+    // add event listeners
+    window.removeEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.removeEventListener(
+      "hax-app-picker-selection",
+      this._haxAppPickerSelection.bind(this)
+    );
+    // specialized support for the place-holder tag
+    // and a drag and drop event
+    window.removeEventListener(
+      "place-holder-file-drop",
+      this._placeHolderFileDrop.bind(this)
+    );
+    super.disconnectedCallback();
+  }
   /**
    * LitElement life cycle - properties changed
    */
@@ -468,6 +488,9 @@ class HaxManager extends SimpleColors {
       }
       if (propName == "activeHaxElement" && this[propName] !== oldValue) {
         this._activeHaxElementChanged(this[propName], oldValue);
+      }
+      if (propName == "opened") {
+        this._openedChanged(this[propName], oldValue);
       }
     });
   }
@@ -722,7 +745,7 @@ class HaxManager extends SimpleColors {
     }
     window.HaxStore.toast(toast, 2000);
     // close window
-    this.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
   /**
    * Reset things on the display to their defaults.
@@ -731,7 +754,7 @@ class HaxManager extends SimpleColors {
     this.selectStep("select");
     this.activePage = activePage;
     document.body.style.overflow = null;
-    this.appList = window.HaxStore.instance.appList;
+    this.appList = [...window.HaxStore.instance.appList];
     this.searching = false;
     window.HaxStore.write("activeApp", null, this);
     this.editExistingNode = false;
@@ -751,9 +774,9 @@ class HaxManager extends SimpleColors {
   /**
    * Cancel interaction with the modal
    */
-  cancel(e) {
+  closeEvent(e) {
     // reset and close dialog
-    this.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
 
   /**
@@ -764,6 +787,9 @@ class HaxManager extends SimpleColors {
       document.body.style.overflow = null;
     } else if (newValue && !oldValue) {
       document.body.style.overflow = "hidden";
+    }
+    if (!newValue) {
+      this.closeEvent();
     }
   }
 
@@ -819,17 +845,6 @@ class HaxManager extends SimpleColors {
       window.HaxStore.toast(
         "Sorry, HAX doesn't know how to handle that type of link yet."
       );
-    }
-  }
-
-  /**
-   * Toggle ourselves.
-   */
-  toggleDialog(toggle = true) {
-    if (this.opened && toggle) {
-      this.close();
-    } else {
-      window.HaxStore.instance.closeAllDrawers(this);
     }
   }
 

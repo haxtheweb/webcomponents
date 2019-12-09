@@ -154,7 +154,7 @@ class HaxStaxBrowserItem extends LitElement {
         detail: this.stax
       })
     );
-    window.HaxStore.instance.haxStaxPicker.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
 }
 

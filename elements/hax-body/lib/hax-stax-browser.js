@@ -24,15 +24,14 @@ class HaxStaxBrowser extends LitElement {
   constructor() {
     super();
     this.staxList = [];
-    this.__staxList = [];
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
   }
   render() {
     return html`
-      ${this.__staxList.map(
+      ${this.staxList.map(
         stax => html`
           <div class="stax-container">
             <hax-stax-browser-item
@@ -62,9 +61,6 @@ class HaxStaxBrowser extends LitElement {
        */
       staxList: {
         type: Array
-      },
-      __staxList: {
-        type: Array
       }
     };
   }
@@ -76,25 +72,10 @@ class HaxStaxBrowser extends LitElement {
     if (
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
-      e.detail.property
+      e.detail.property == "staxList"
     ) {
-      // make sure we set array's empty first to force a repaint of paths
-      if (
-        typeof this[e.detail.property] !== typeof undefined &&
-        this[e.detail.property] != null &&
-        typeof this[e.detail.property].length !== typeof undefined
-      ) {
-        this[e.detail.property] = [];
-      }
-      this[e.detail.property] = e.detail.value;
+      this[e.detail.property] = [...e.detail.value];
     }
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "staxList") {
-        this.__staxList = this[propName];
-      }
-    });
   }
 }
 window.customElements.define(HaxStaxBrowser.tag, HaxStaxBrowser);

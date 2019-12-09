@@ -148,7 +148,7 @@ class HaxAppPicker extends LitElement {
             )}
           </div>
         </div>
-        <paper-button id="closedialog" @click="${this.close}">
+        <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>
@@ -157,7 +157,9 @@ class HaxAppPicker extends LitElement {
   static get tag() {
     return "hax-app-picker";
   }
-
+  closeEvent(e) {
+    window.HaxStore.write("openDrawer", false, this);
+  }
   static get properties() {
     return {
       /**

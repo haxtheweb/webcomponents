@@ -1,6 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -14,7 +15,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * - hax-manager - controlling the UI for selection of something
  * - hax-body - the text are ultimately we are trying to insert this item into
  */
-class HaxAppSearch extends SimpleColors {
+class HaxAppSearch extends winEventsElement(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -79,6 +80,10 @@ class HaxAppSearch extends SimpleColors {
   }
   constructor() {
     super();
+    // window based events managed in winEventsElement
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     this.auto = false;
     this.headers = {};
     this.method = "GET";
@@ -92,10 +97,6 @@ class HaxAppSearch extends SimpleColors {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   /**
    * LitElement life cycle - render callback

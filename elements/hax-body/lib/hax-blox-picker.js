@@ -93,20 +93,33 @@ class HaxPicker extends LitElement {
 
   render() {
     return html`
-      <app-drawer id="dialog" align="left" transition-duration="300">
+      <app-drawer
+        id="dialog"
+        @opened-changed="${this.openedChanged}"
+        align="left"
+        transition-duration="300"
+      >
         <h3 class="title">
           <iron-icon icon="${this.icon}"></iron-icon> ${this.title}
         </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <slot></slot>
         </div>
-        <paper-button id="closedialog" @click="${this.close}">
+        <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
     `;
   }
-
+  openedChanged(e) {
+    // force close event to align data model if clicking away
+    if (e.detail.value === false) {
+      this.closeEvent(e);
+    }
+  }
+  closeEvent(e) {
+    window.HaxStore.write("openDrawer", false, this);
+  }
   static get properties() {
     return {
       /**
@@ -131,16 +144,6 @@ class HaxPicker extends LitElement {
    */
   close() {
     this.shadowRoot.querySelector("#dialog").close();
-  }
-  /**
-   * Toggle state.
-   */
-  toggleDialog() {
-    if (this.shadowRoot.querySelector("#dialog").opened) {
-      this.close();
-    } else {
-      window.HaxStore.instance.closeAllDrawers(this);
-    }
   }
 }
 

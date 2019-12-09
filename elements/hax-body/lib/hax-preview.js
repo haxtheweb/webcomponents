@@ -202,7 +202,7 @@ class HaxPreview extends LitElement {
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
     setTimeout(() => {
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
       );

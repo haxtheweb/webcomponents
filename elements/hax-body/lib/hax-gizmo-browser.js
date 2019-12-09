@@ -53,7 +53,7 @@ class HaxGizmoBrowser extends LitElement {
     import("@polymer/paper-input/paper-input.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser-item.js");
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );

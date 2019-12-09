@@ -522,36 +522,43 @@ class HaxBody extends SimpleColors {
    * Keep the context menu visible if needed
    */
   _keepContextVisible(e) {
-    // see if the text context menu is visible
-    let el = false;
-    if (
-      this.shadowRoot
-        .querySelector("#textcontextmenu")
-        .classList.contains("hax-context-visible")
-    ) {
-      el = this.shadowRoot.querySelector("#textcontextmenu");
-    } else if (
-      this.shadowRoot
-        .querySelector("#cecontextmenu")
-        .classList.contains("hax-context-visible")
-    ) {
-      el = this.shadowRoot.querySelector("#cecontextmenu");
-    }
-    // if we see it, ensure we don't have the pin
-    if (el) {
-      if (this.elementInViewport(el)) {
-        el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
-      } else {
-        if (this.__OffBottom) {
-          el.classList.add("hax-context-pin-top");
+    if (!window.HaxStore.instance.openDrawer && this.editMode) {
+      // see if the text context menu is visible
+      let el = false;
+      if (
+        this.shadowRoot
+          .querySelector("#textcontextmenu")
+          .classList.contains("hax-context-visible")
+      ) {
+        el = this.shadowRoot.querySelector("#textcontextmenu");
+      } else if (
+        this.shadowRoot
+          .querySelector("#cecontextmenu")
+          .classList.contains("hax-context-visible")
+      ) {
+        el = this.shadowRoot.querySelector("#cecontextmenu");
+      }
+      // if we see it, ensure we don't have the pin
+      if (el) {
+        if (this.elementInViewport(el)) {
+          el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
         } else {
-          el.classList.add("hax-context-pin-bottom");
+          if (this.__OffBottom) {
+            el.classList.add("hax-context-pin-top");
+          } else {
+            el.classList.add("hax-context-pin-bottom");
+          }
         }
       }
     }
   }
   _onKeyDown(e) {
-    if (this.editMode && this.getAttribute("contenteditable")) {
+    // @todo need another state value to prevent key tests when dialogs open
+    if (
+      !window.HaxStore.instance.openDrawer &&
+      this.editMode &&
+      this.getAttribute("contenteditable")
+    ) {
       switch (e.key) {
         case "Tab":
           if (
@@ -637,6 +644,7 @@ class HaxBody extends SimpleColors {
   }
   _onKeyPress(e) {
     if (
+      !window.HaxStore.instance.openDrawer &&
       this.editMode &&
       this.shadowRoot
         .querySelector("#platecontextmenu")
@@ -656,7 +664,7 @@ class HaxBody extends SimpleColors {
    * on mouse over then fire the hax ray value if we have one
    */
   hoverEvent(e) {
-    if (this.editMode) {
+    if (!window.HaxStore.instance.openDrawer && this.editMode) {
       if (e.target && e.target.getAttribute("data-hax-ray") != null) {
         this.__activeHover = e.target;
         this.dispatchEvent(
@@ -1538,7 +1546,11 @@ class HaxBody extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         break;
       case "grid-plate-down":
         this.haxMoveGridPlate(
@@ -1653,7 +1665,11 @@ class HaxBody extends SimpleColors {
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
         window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
@@ -1681,7 +1697,11 @@ class HaxBody extends SimpleColors {
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
         window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
@@ -1732,7 +1752,12 @@ class HaxBody extends SimpleColors {
   __focusLogic(target) {
     let stopProp = false;
     // only worry about these when we are in edit mode
-    if (this.editMode && !this.__tabTrap) {
+    // and there is no drawer open
+    if (
+      !window.HaxStore.instance.openDrawer &&
+      this.editMode &&
+      !this.__tabTrap
+    ) {
       let containerNode = target;
       // edge case, thing selected is inside a paragraph tag
       // HTML is stupid and allows this

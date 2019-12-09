@@ -54,7 +54,7 @@ class HaxAppBrowser extends LitElement {
     this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
-    this.__appList = [];
+    this.appList = [];
     this.filtered = [];
     this.hasActive = false;
     import("@polymer/paper-input/paper-input.js");
@@ -62,14 +62,6 @@ class HaxAppBrowser extends LitElement {
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
-    document.body.addEventListener(
-      "hax-app-selected",
-      this._appSelected.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   render() {
     return html`
@@ -94,7 +86,7 @@ class HaxAppBrowser extends LitElement {
       </div>
       <grafitto-filter
         id="filter"
-        .items="${this.__appList}"
+        .items="${this.appList}"
         like=""
         @filtered-changed="${this.filteredChanged}"
         where="details.title"
@@ -165,7 +157,7 @@ class HaxAppBrowser extends LitElement {
       filtered: {
         type: Array
       },
-      __appList: {
+      appList: {
         type: Array
       }
     };
@@ -199,7 +191,7 @@ class HaxAppBrowser extends LitElement {
     if (typeof e.detail !== typeof undefined) {
       this.__activeApp = e.detail;
       this.searching = true;
-      window.HaxStore.write("activeApp", this.__appList[e.detail], this);
+      window.HaxStore.write("activeApp", this.appList[e.detail], this);
     }
   }
 
@@ -213,6 +205,25 @@ class HaxAppBrowser extends LitElement {
     } else {
       this.hasActive = false;
     }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("hax-app-selected", this._appSelected.bind(this));
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "hax-app-selected",
+      this._appSelected.bind(this)
+    );
+    window.removeEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    super.disconnectedCallback();
   }
 
   /**
@@ -232,8 +243,8 @@ class HaxAppBrowser extends LitElement {
    */
   resetBrowser() {
     this.searching = false;
-    this.__appList = window.HaxStore.instance.appList;
-    this.filtered = this.__appList;
+    this.appList = [...window.HaxStore.instance.appList];
+    this.filtered = this.appList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";
