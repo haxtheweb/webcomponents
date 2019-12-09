@@ -14,9 +14,10 @@
       "js": "src/beaker-broker.js",
       "properties": "src/beaker-broker-properties.json",
       "hax": "src/beaker-broker-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A broker element to make working with Beaker Browser's API even easier.",
   "repository": {
     "type": "git",

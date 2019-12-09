@@ -14,9 +14,10 @@
       "js": "src/absolute-position-behavior.js",
       "properties": "src/absolute-position-behavior-properties.json",
       "hax": "src/absolute-position-behavior-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
   "repository": {
     "type": "git",

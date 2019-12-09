@@ -14,9 +14,10 @@
       "js": "src/full-width-image.js",
       "properties": "src/full-width-image-properties.json",
       "hax": "src/full-width-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "full width image that flows beyond boundaries",
   "repository": {
     "type": "git",

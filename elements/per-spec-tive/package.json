@@ -14,9 +14,10 @@
       "js": "src/per-spec-tive.js",
       "properties": "src/per-spec-tive-properties.json",
       "hax": "src/per-spec-tive-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of per-spec-tive/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/paper-fab-transitions.js",
       "properties": "src/paper-fab-transitions-properties.json",
       "hax": "src/paper-fab-transitions-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of paper-fab-transitions/",
   "repository": {
     "type": "git",

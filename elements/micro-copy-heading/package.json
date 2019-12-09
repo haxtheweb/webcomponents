@@ -14,9 +14,10 @@
       "js": "src/micro-copy-heading.js",
       "properties": "src/micro-copy-heading-properties.json",
       "hax": "src/micro-copy-heading-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "small call to action / attention that acts as a heading too",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/paper-stepper.js",
       "properties": "src/paper-stepper-properties.json",
       "hax": "src/paper-stepper-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of paper-stepper",
   "repository": {
     "type": "git",

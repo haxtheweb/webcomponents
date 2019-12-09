@@ -14,9 +14,10 @@
       "js": "src/lrnsys-pdf.js",
       "properties": "src/lrnsys-pdf-properties.json",
       "hax": "src/lrnsys-pdf-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-pdf/",
   "repository": {
     "type": "git",

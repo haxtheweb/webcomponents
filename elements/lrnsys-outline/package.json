@@ -14,9 +14,10 @@
       "js": "src/lrnsys-outline.js",
       "properties": "src/lrnsys-outline-properties.json",
       "hax": "src/lrnsys-outline-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-outline/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/layout-builder.js",
       "properties": "src/layout-builder-properties.json",
       "hax": "src/layout-builder-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A new UI for adding content to layouts",
   "repository": {
     "type": "git",

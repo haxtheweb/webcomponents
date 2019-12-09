@@ -14,9 +14,10 @@
       "js": "src/paper-audio-player.js",
       "properties": "src/paper-audio-player-properties.json",
       "hax": "src/paper-audio-player-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of paper-audio-player/",
   "repository": {
     "type": "git",

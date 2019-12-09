@@ -14,9 +14,10 @@
       "js": "src/lrn-shared-styles.js",
       "properties": "src/lrn-shared-styles-properties.json",
       "hax": "src/lrn-shared-styles-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a shared set of styles for all @lrnwebcomponents",
   "repository": {
     "type": "git",

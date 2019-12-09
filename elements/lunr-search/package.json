@@ -14,9 +14,10 @@
       "js": "src/lunr-search.js",
       "properties": "src/lunr-search-properties.json",
       "hax": "src/lunr-search-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "LunrJS search element",
   "repository": {
     "type": "git",

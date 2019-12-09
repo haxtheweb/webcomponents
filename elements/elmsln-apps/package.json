@@ -14,9 +14,10 @@
       "js": "src/elmsln-apps.js",
       "properties": "src/elmsln-apps-properties.json",
       "hax": "src/elmsln-apps-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",

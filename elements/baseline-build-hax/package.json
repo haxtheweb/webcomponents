@@ -14,9 +14,10 @@
       "js": "src/baseline-build-hax.js",
       "properties": "src/baseline-build-hax-properties.json",
       "hax": "src/baseline-build-hax-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "create an inflexible baseline build of hax with all elements",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/pouch-db.js",
       "properties": "src/pouch-db-properties.json",
       "hax": "src/pouch-db-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "read and write localized data elements",
   "repository": {
     "type": "git",

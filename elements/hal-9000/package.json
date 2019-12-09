@@ -14,9 +14,10 @@
       "js": "src/hal-9000.js",
       "properties": "src/hal-9000-properties.json",
       "hax": "src/hal-9000-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",

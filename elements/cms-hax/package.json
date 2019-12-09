@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/cms-hax.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",

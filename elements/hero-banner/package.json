@@ -14,9 +14,10 @@
       "js": "src/hero-banner.js",
       "properties": "src/hero-banner-properties.json",
       "hax": "src/hero-banner-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "The evil yet always requested hero banner",
   "repository": {
     "type": "git",

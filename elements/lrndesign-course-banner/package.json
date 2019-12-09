@@ -14,9 +14,10 @@
       "js": "src/lrndesign-course-banner.js",
       "properties": "src/lrndesign-course-banner-properties.json",
       "hax": "src/lrndesign-course-banner-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-course-banner/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/lrnsys-randomimage.js",
       "properties": "src/lrnsys-randomimage-properties.json",
       "hax": "src/lrnsys-randomimage-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-randomimage/",
   "repository": {
     "type": "git",

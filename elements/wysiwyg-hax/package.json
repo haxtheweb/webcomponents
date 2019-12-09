@@ -14,9 +14,10 @@
       "js": "src/wysiwyg-hax.js",
       "properties": "src/wysiwyg-hax-properties.json",
       "hax": "src/wysiwyg-hax-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",

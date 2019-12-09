@@ -14,9 +14,10 @@
       "js": "src/portal-launcher.js",
       "properties": "src/portal-launcher-properties.json",
       "hax": "src/portal-launcher-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "silly thing to play with portal tag and progressive enhancement",
   "repository": {
     "type": "git",

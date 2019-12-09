@@ -14,9 +14,10 @@
       "js": "src/responsive-grid.js",
       "properties": "src/responsive-grid-properties.json",
       "hax": "src/responsive-grid-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of responsive-grid/",
   "repository": {
     "type": "git",

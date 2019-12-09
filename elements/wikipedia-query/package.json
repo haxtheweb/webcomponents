@@ -14,9 +14,10 @@
       "js": "src/wikipedia-query.js",
       "properties": "src/wikipedia-query-properties.json",
       "hax": "src/wikipedia-query-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of wikipedia-query/",
   "repository": {
     "type": "git",

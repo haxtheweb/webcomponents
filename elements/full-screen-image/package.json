@@ -14,9 +14,10 @@
       "js": "src/full-screen-image.js",
       "properties": "src/full-screen-image-properties.json",
       "hax": "src/full-screen-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "full screen banner image with down arrow",
   "repository": {
     "type": "git",

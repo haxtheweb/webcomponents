@@ -14,9 +14,10 @@
       "js": "src/license-element.js",
       "properties": "src/license-element-properties.json",
       "hax": "src/license-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Semantically accurate license for a work",
   "repository": {
     "type": "git",

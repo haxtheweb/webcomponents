@@ -14,9 +14,10 @@
       "js": "src/lrndesign-abbreviation.js",
       "properties": "src/lrndesign-abbreviation-properties.json",
       "hax": "src/lrndesign-abbreviation-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-abbreviation/",
   "repository": {
     "type": "git",

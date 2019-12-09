@@ -14,9 +14,10 @@
       "js": "src/lrndesign-panelcard.js",
       "properties": "src/lrndesign-panelcard-properties.json",
       "hax": "src/lrndesign-panelcard-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-panelcard/",
   "repository": {
     "type": "git",

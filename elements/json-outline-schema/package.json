@@ -14,9 +14,10 @@
       "js": "src/json-outline-schema.js",
       "properties": "src/json-outline-schema-properties.json",
       "hax": "src/json-outline-schema-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "JS based state management helper for the json outline schema spec",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/fluid-type.js",
       "properties": "src/fluid-type-properties.json",
       "hax": "src/fluid-type-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",

@@ -12,9 +12,10 @@
       "html": "src/simple-search.html",
       "css": "src/simple-search.css",
       "js": "src/simple-search.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-search",
   "repository": {
     "type": "git",

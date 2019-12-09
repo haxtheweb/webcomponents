@@ -14,9 +14,10 @@
       "js": "src/lrn-page.js",
       "properties": "src/lrn-page-properties.json",
       "hax": "src/lrn-page-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "OER Schema wrapping for a page",
   "repository": {
     "type": "git",

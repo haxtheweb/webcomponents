@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/hax-body-behaviors.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Wire any element up to HAX",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/map-element.js",
       "properties": "src/map-element-properties.json",
       "hax": "src/map-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of map-element/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/simple-modal.js",
       "properties": "src/simple-modal-properties.json",
       "hax": "src/simple-modal-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A simple modal that ensures accessibility and stack order context appropriately",
   "repository": {
     "type": "git",

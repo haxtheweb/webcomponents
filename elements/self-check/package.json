@@ -14,9 +14,10 @@
       "js": "src/self-check.js",
       "properties": "src/self-check-properties.json",
       "hax": "src/self-check-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",

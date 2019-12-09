@@ -14,9 +14,10 @@
       "js": "src/lrnsys-progress.js",
       "properties": "src/lrnsys-progress-properties.json",
       "hax": "src/lrnsys-progress-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-progress/",
   "repository": {
     "type": "git",

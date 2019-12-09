@@ -14,9 +14,10 @@
       "js": "src/lrnsys-chartjs.js",
       "properties": "src/lrnsys-chartjs-properties.json",
       "hax": "src/lrnsys-chartjs-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-chartjs/",
   "repository": {
     "type": "git",

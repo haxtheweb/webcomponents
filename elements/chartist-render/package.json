@@ -14,9 +14,10 @@
       "js": "src/chartist-render.js",
       "properties": "src/chartist-render-properties.json",
       "hax": "src/chartist-render-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Rendering Chartist",
   "repository": {
     "type": "git",

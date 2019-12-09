@@ -14,9 +14,10 @@
       "js": "src/paper-avatar.js",
       "properties": "src/paper-avatar-properties.json",
       "hax": "src/paper-avatar-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of paper-avatar/",
   "repository": {
     "type": "git",

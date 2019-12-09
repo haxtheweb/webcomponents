@@ -14,9 +14,10 @@
       "js": "src/simple-colors-shared-styles.js",
       "properties": "src/simple-colors-shared-styles-properties.json",
       "hax": "src/simple-colors-shared-styles-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "shared styles for simple-colors",
   "repository": {
     "type": "git",

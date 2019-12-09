@@ -14,9 +14,10 @@
       "js": "src/agency-theme.js",
       "properties": "src/agency-theme-properties.json",
       "hax": "src/agency-theme-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/outline-designer.js",
       "properties": "src/outline-designer-properties.json",
       "hax": "src/outline-designer-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",

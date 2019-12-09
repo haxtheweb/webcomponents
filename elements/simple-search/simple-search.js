@@ -150,58 +150,117 @@ class SimpleSearch extends LitElement {
     return {
       ...super.properties,
 
-  "resultCount": {
-    "attribute": "result-count",
-    "type": Number
-  },
-  /**
-   * Which result are we currently on?
-   */
-  "resultPointer": {
-    "attribute": "result-pointer",
-    "type": Number
-  },
-  /**
-   * label for search icon
-   */
-  "searchInputIcon": {
-    "attribute": "search-input-icon",
-    "type": String
-  },
-  /**
-   * label for search input
-   */
-  "searchInputLabel": {
-    "attribute": "search-input-label",
-    "type": String
-  },
-  /**
-   * an array of search terms
-   */
-  "searchTerms": {
-    "attribute": "search-terms",
-    "type": Array
-  },
-  /**
-   * If set, search will be automated and restricted to this object.
-   */
-  "target": {
-    "type": Object
-  },
-  /**
-   * Hide next button
-   */
-  "__hideNext": {
-    "type": Boolean
-  },
-  /**
-   * Hide prev button
-   */
-  "__hidePrev": {
-    "type": Boolean
-  }
-}
-;
+      /**
+       * always float the label
+       */
+      alwaysFloatLabel: {
+        attribute: "always-float-label",
+        type: Boolean
+      },
+      /**
+       * Is the search case-sensitive
+       */
+      caseSensitive: {
+        attribute: "case-sensitive",
+        type: Boolean
+      },
+      /**
+       * The id of the container element that the navigation buttons control
+       */
+      controls: {
+        attribute: "controls",
+        type: String
+      },
+      /**
+       * label for next result icon
+       */
+      nextButtonIcon: {
+        attribute: "next-button-icon",
+        type: String
+      },
+      /**
+       * label for next result button
+       */
+      nextButtonLabel: {
+        attribute: "next-button-label",
+        type: String
+      },
+      /**
+       * never float the label
+       */
+      noLabelFloat: {
+        attribute: "no-label-float",
+        type: Boolean
+      },
+      /**
+       * label for previous result icon
+       */
+      prevButtonIcon: {
+        attribute: "prev-button-icon",
+        type: String
+      },
+      /**
+       * label for previous result button
+       */
+      prevButtonLabel: {
+        attribute: "prev-button-label",
+        type: String
+      },
+      /**
+       * Number of results.
+       */
+
+      resultCount: {
+        attribute: "result-count",
+        type: Number
+      },
+      /**
+       * Which result are we currently on?
+       */
+      resultPointer: {
+        attribute: "result-pointer",
+        type: Number
+      },
+      /**
+       * label for search icon
+       */
+      searchInputIcon: {
+        attribute: "search-input-icon",
+        type: String
+      },
+      /**
+       * label for search input
+       */
+      searchInputLabel: {
+        attribute: "search-input-label",
+        type: String
+      },
+      /**
+       * an array of search terms
+       */
+      searchTerms: {
+        attribute: "search-terms",
+        type: Array
+      },
+      /**
+       * If set, search will be automated and restricted to this object.
+       */
+      target: {
+        type: Object
+      },
+      /**
+       * Hide next button
+       */
+      __hideNext: {
+        type: Boolean
+      },
+      /**
+       * Hide prev button
+       */
+      __hidePrev: {
+        type: Boolean
+      }
+    };
   }
 
   static get tag() {
@@ -238,11 +297,15 @@ class SimpleSearch extends LitElement {
    * are there any results to navigate?
    */
   _handleChange(e) {
-    let target = this.controls ? document.getElementById(this.controls) : null;
+    let target = this.controls
+      ? this.getRootNode().querySelector(`#${this.controls}`)
+      : null;
+    console.log(this.controls, target, this.getRootNode());
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-    if(target && target.innerHTML) target.innerHTML = this.findMatches(target.innerHTML);
+    if (target && target.innerHTML)
+      target.innerHTML = this.findMatches(target.innerHTML);
     /**
      * Fires when search changes (detail = { search: this, content: event })
      *

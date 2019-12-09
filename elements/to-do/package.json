@@ -14,9 +14,10 @@
       "js": "src/to-do.js",
       "properties": "src/to-do-properties.json",
       "hax": "src/to-do-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of to-do",
   "repository": {
     "type": "git",

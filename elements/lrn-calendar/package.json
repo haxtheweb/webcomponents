@@ -14,9 +14,10 @@
       "js": "src/lrn-calendar.js",
       "properties": "src/lrn-calendar-properties.json",
       "hax": "src/lrn-calendar-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Render a calendar from an ical file",
   "repository": {
     "type": "git",

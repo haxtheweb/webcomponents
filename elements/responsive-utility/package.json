@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/responsive-utility.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of responsive-utility/",
   "repository": {
     "type": "git",

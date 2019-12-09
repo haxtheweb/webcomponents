@@ -14,9 +14,10 @@
       "js": "src/stop-note.js",
       "properties": "src/stop-note-properties.json",
       "hax": "src/stop-note-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of stop-note/",
   "repository": {
     "type": "git",

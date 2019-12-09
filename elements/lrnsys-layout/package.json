@@ -14,9 +14,10 @@
       "js": "src/lrnsys-layout.js",
       "properties": "src/lrnsys-layout-properties.json",
       "hax": "src/lrnsys-layout-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",

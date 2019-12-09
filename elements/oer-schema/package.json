@@ -14,9 +14,10 @@
       "js": "src/oer-schema.js",
       "properties": "src/oer-schema-properties.json",
       "hax": "src/oer-schema-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of oer-schema/",
   "repository": {
     "type": "git",

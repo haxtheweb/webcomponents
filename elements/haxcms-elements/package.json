@@ -14,9 +14,10 @@
       "js": "src/haxcms-elements.js",
       "properties": "src/haxcms-elements-properties.json",
       "hax": "src/haxcms-elements-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",

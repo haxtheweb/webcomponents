@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/dropdown-select.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A dropdown element with better event and data binding",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/md-extra-icons.js",
       "properties": "src/md-extra-icons-properties.json",
       "hax": "src/md-extra-icons-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of md-extra-icons/",
   "repository": {
     "type": "git",

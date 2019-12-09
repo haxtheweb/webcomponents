@@ -14,9 +14,10 @@
       "js": "src/tab-list.js",
       "properties": "src/tab-list-properties.json",
       "hax": "src/tab-list-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of tab-list/",
   "repository": {
     "type": "git",

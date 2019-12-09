@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/dl-behavior.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of download thing",
   "repository": {
     "type": "git",

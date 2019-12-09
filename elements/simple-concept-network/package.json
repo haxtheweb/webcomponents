@@ -14,9 +14,10 @@
       "js": "src/simple-concept-network.js",
       "properties": "src/simple-concept-network-properties.json",
       "hax": "src/simple-concept-network-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-concept-network/",
   "repository": {
     "type": "git",

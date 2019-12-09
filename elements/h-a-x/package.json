@@ -14,9 +14,10 @@
       "js": "src/h-a-x.js",
       "properties": "src/h-a-x-properties.json",
       "hax": "src/h-a-x-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Single tag to transform authoring",
   "repository": {
     "type": "git",

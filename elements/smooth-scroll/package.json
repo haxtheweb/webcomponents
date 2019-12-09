@@ -14,9 +14,10 @@
       "js": "src/smooth-scroll.js",
       "properties": "src/smooth-scroll-properties.json",
       "hax": "src/smooth-scroll-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Start of smooth-scroll",
   "repository": {
     "type": "git",

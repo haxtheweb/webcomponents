@@ -14,9 +14,10 @@
       "js": "src/lrndesign-gallery.js",
       "properties": "src/lrndesign-gallery-properties.json",
       "hax": "src/lrndesign-gallery-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Start of lrndesign-gallery",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/simple-datetime.js",
       "properties": "src/simple-datetime-properties.json",
       "hax": "src/simple-datetime-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-datetime/",
   "repository": {
     "type": "git",

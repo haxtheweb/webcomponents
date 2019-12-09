@@ -14,9 +14,10 @@
       "js": "src/lrndesign-sidenote.js",
       "properties": "src/lrndesign-sidenote-properties.json",
       "hax": "src/lrndesign-sidenote-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-sidenote/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/editable-outline.js",
       "properties": "src/editable-outline-properties.json",
       "hax": "src/editable-outline-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a simple outline thats contenteditable in nature",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/lrndesign-gallerycard.js",
       "properties": "src/lrndesign-gallerycard-properties.json",
       "hax": "src/lrndesign-gallerycard-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-gallerycard/",
   "repository": {
     "type": "git",

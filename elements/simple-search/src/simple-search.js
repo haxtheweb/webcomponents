@@ -73,11 +73,15 @@ class SimpleSearch extends LitElement {
    * are there any results to navigate?
    */
   _handleChange(e) {
-    let target = this.controls ? document.getElementById(this.controls) : null;
+    let target = this.controls
+      ? this.getRootNode().querySelector(`#${this.controls}`)
+      : null;
+    console.log(this.controls, target, this.getRootNode());
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-    if(target && target.innerHTML) target.innerHTML = this.findMatches(target.innerHTML);
+    if (target && target.innerHTML)
+      target.innerHTML = this.findMatches(target.innerHTML);
     /**
      * Fires when search changes (detail = { search: this, content: event })
      *

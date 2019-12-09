@@ -14,9 +14,10 @@
       "js": "src/data-viz.js",
       "properties": "src/data-viz-properties.json",
       "hax": "src/data-viz-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "display pouch-db data using graphs",
   "repository": {
     "type": "git",

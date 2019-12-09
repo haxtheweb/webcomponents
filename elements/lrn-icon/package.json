@@ -14,9 +14,10 @@
       "js": "src/lrn-icon.js",
       "properties": "src/lrn-icon-properties.json",
       "hax": "src/lrn-icon-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",

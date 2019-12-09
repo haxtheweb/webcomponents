@@ -14,9 +14,10 @@
       "js": "src/social-share-link.js",
       "properties": "src/social-share-link-properties.json",
       "hax": "src/social-share-link-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a link to share content on social",
   "repository": {
     "type": "git",

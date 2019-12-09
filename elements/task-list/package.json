@@ -14,9 +14,10 @@
       "js": "src/task-list.js",
       "properties": "src/task-list-properties.json",
       "hax": "src/task-list-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of task-list/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/simple-login.js",
       "properties": "src/simple-login-properties.json",
       "hax": "src/simple-login-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a simple login form",
   "repository": {
     "type": "git",

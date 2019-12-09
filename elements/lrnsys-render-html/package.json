@@ -14,9 +14,10 @@
       "js": "src/lrnsys-render-html.js",
       "properties": "src/lrnsys-render-html-properties.json",
       "hax": "src/lrnsys-render-html-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-render-html/",
   "repository": {
     "type": "git",

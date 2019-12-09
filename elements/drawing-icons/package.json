@@ -14,9 +14,10 @@
       "js": "src/drawing-icons.js",
       "properties": "src/drawing-icons-properties.json",
       "hax": "src/drawing-icons-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "iconset for drawing toolbar buttons",
   "repository": {
     "type": "git",

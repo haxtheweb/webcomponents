@@ -14,9 +14,10 @@
       "js": "src/rss-items.js",
       "properties": "src/rss-items-properties.json",
       "hax": "src/rss-items-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "visualize RSS items",
   "repository": {
     "type": "git",

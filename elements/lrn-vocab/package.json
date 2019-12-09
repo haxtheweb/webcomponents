@@ -14,9 +14,10 @@
       "js": "src/lrn-vocab.js",
       "properties": "src/lrn-vocab-properties.json",
       "hax": "src/lrn-vocab-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A simple vocabulary term highlighted with pop up for more details",
   "repository": {
     "type": "git",

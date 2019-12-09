@@ -14,9 +14,10 @@
       "js": "src/lrndesign-chart.js",
       "properties": "src/lrndesign-chart-properties.json",
       "hax": "src/lrndesign-chart-hax.json"
-    }
+    },
+    "sharedStyles": ["...super.styles"]
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-chart/",
   "repository": {
     "type": "git",

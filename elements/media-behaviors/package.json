@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/media-behaviors.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of media-behaviors/",
   "repository": {
     "type": "git",

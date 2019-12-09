@@ -14,9 +14,10 @@
       "js": "src/count-up.js",
       "properties": "src/count-up-properties.json",
       "hax": "src/count-up-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",

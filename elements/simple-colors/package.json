@@ -14,9 +14,10 @@
       "js": "src/simple-colors.js",
       "properties": "src/simple-colors-properties.json",
       "hax": "src/simple-colors-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",

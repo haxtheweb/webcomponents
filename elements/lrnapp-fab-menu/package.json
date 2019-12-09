@@ -14,9 +14,10 @@
       "js": "src/lrnapp-fab-menu.js",
       "properties": "src/lrnapp-fab-menu-properties.json",
       "hax": "src/lrnapp-fab-menu-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnapp-fab-menu/",
   "repository": {
     "type": "git",

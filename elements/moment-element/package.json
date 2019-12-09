@@ -14,9 +14,10 @@
       "js": "src/moment-element.js",
       "properties": "src/moment-element-properties.json",
       "hax": "src/moment-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of moment-element",
   "repository": {
     "type": "git",

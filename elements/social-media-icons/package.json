@@ -14,9 +14,10 @@
       "js": "src/social-media-icons.js",
       "properties": "src/social-media-icons-properties.json",
       "hax": "src/social-media-icons-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of social-media-icons",
   "repository": {
     "type": "git",

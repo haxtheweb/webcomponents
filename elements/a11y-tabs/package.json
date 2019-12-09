@@ -14,9 +14,10 @@
       "js": "src/a11y-tabs.js",
       "properties": "src/a11y-tabs-properties.json",
       "hax": "src/a11y-tabs-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "accessible and responsive tabbed interface",
   "repository": {
     "type": "git",

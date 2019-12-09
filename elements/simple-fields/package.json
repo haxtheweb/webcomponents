@@ -14,9 +14,10 @@
       "js": "src/simple-fields.js",
       "properties": "src/simple-fields-properties.json",
       "hax": "src/simple-fields-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Uses eco-json-form and HAX wiring to display a series of fields",
   "repository": {
     "type": "git",

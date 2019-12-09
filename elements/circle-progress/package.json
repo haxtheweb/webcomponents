@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/circle-progress.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A circle that illustrates progression via the outline of the element",
   "repository": {
     "type": "git",

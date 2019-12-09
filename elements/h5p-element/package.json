@@ -14,9 +14,10 @@
       "js": "src/h5p-element.js",
       "properties": "src/h5p-element-properties.json",
       "hax": "src/h5p-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "h5p wrapper for loading and presenting .h5p files",
   "repository": {
     "type": "git",

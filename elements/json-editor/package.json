@@ -14,9 +14,10 @@
       "js": "src/json-editor.js",
       "properties": "src/json-editor-properties.json",
       "hax": "src/json-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "simple JSON blob data binding to a text area",
   "repository": {
     "type": "git",

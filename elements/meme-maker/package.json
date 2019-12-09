@@ -14,9 +14,10 @@
       "js": "src/meme-maker.js",
       "properties": "src/meme-maker-properties.json",
       "hax": "src/meme-maker-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of meme-maker/",
   "repository": {
     "type": "git",

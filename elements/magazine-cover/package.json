@@ -14,9 +14,10 @@
       "js": "src/magazine-cover.js",
       "properties": "src/magazine-cover-properties.json",
       "hax": "src/magazine-cover-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of magazine-cover/",
   "repository": {
     "type": "git",

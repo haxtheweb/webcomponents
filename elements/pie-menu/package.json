@@ -14,9 +14,10 @@
       "js": "src/pie-menu.js",
       "properties": "src/pie-menu-properties.json",
       "hax": "src/pie-menu-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of pie-menu/",
   "repository": {
     "type": "git",

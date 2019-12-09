@@ -14,9 +14,10 @@
       "js": "src/q-r.js",
       "properties": "src/q-r-properties.json",
       "hax": "src/q-r-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",

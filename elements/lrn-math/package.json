@@ -14,9 +14,10 @@
       "js": "src/lrn-math.js",
       "properties": "src/lrn-math-properties.json",
       "hax": "src/lrn-math-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "MathJAX element with HAX capabilities baked in",
   "repository": {
     "type": "git",

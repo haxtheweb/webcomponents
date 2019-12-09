@@ -14,9 +14,10 @@
       "js": "src/media-image.js",
       "properties": "src/media-image-properties.json",
       "hax": "src/media-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",

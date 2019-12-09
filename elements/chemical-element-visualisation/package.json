@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/chemical-element-visualisation.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Visualization of some different chemistry elements",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/lrndesign-blockquote.js",
       "properties": "src/lrndesign-blockquote-properties.json",
       "hax": "src/lrndesign-blockquote-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-blockquote/",
   "repository": {
     "type": "git",

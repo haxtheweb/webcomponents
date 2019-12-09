@@ -14,9 +14,10 @@
       "js": "src/anchor-behaviors.js",
       "properties": "src/anchor-behaviors-properties.json",
       "hax": "src/anchor-behaviors-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "handles anchors and params in the url",
   "repository": {
     "type": "git",

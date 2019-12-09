@@ -14,9 +14,10 @@
       "js": "src/material-progress.js",
       "properties": "src/material-progress-properties.json",
       "hax": "src/material-progress-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of material-progress",
   "repository": {
     "type": "git",

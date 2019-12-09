@@ -14,9 +14,10 @@
       "js": "src/gene-crossover.js",
       "properties": "src/gene-crossover-properties.json",
       "hax": "src/gene-crossover-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Some gene animations",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/place-holder.js",
       "properties": "src/place-holder-properties.json",
       "hax": "src/place-holder-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of place-holder/",
   "repository": {
     "type": "git",

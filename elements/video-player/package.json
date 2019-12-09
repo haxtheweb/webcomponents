@@ -14,9 +14,10 @@
       "js": "src/video-player.js",
       "properties": "src/video-player-properties.json",
       "hax": "src/video-player-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",

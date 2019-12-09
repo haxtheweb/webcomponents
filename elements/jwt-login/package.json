@@ -14,9 +14,10 @@
       "js": "src/jwt-login.js",
       "properties": "src/jwt-login-properties.json",
       "hax": "src/jwt-login-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "JSON Web Token login broker / manager",
   "repository": {
     "type": "git",

@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/aframe-player.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A-frame 3D player in the browser via data binding w/ polymer",
   "repository": {
     "type": "git",

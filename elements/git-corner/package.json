@@ -14,9 +14,10 @@
       "js": "src/git-corner.js",
       "properties": "src/git-corner-properties.json",
       "hax": "src/git-corner-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/simple-image.js",
       "properties": "src/simple-image-properties.json",
       "hax": "src/simple-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-image/",
   "repository": {
     "type": "git",

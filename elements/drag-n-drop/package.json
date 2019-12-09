@@ -14,9 +14,10 @@
       "js": "src/drag-n-drop.js",
       "properties": "src/drag-n-drop-properties.json",
       "hax": "src/drag-n-drop-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "drag and drop elements and manager",
   "repository": {
     "type": "git",

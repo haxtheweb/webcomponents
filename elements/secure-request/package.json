@@ -14,9 +14,10 @@
       "js": "src/secure-request.js",
       "properties": "src/secure-request-properties.json",
       "hax": "src/secure-request-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of secure-request/",
   "repository": {
     "type": "git",

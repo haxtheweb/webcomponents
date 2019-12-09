@@ -14,9 +14,10 @@
       "js": "src/lrndesign-stepper.js",
       "properties": "src/lrndesign-stepper-properties.json",
       "hax": "src/lrndesign-stepper-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-stepper/",
   "repository": {
     "type": "git",

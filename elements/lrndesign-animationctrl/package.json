@@ -14,9 +14,10 @@
       "js": "src/lrndesign-animationctrl.js",
       "properties": "src/lrndesign-animationctrl-properties.json",
       "hax": "src/lrndesign-animationctrl-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-animationctrl/",
   "repository": {
     "type": "git",

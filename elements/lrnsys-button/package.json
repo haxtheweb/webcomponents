@@ -14,9 +14,10 @@
       "js": "src/lrnsys-button.js",
       "properties": "src/lrnsys-button-properties.json",
       "hax": "src/lrnsys-button-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrnsys-button/",
   "repository": {
     "type": "git",

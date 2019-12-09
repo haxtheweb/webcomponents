@@ -14,9 +14,10 @@
       "js": "src/paper-input-flagged.js",
       "properties": "src/paper-input-flagged-properties.json",
       "hax": "src/paper-input-flagged-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of paper-input-flagged/",
   "repository": {
     "type": "git",

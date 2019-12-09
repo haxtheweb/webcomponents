@@ -14,9 +14,10 @@
       "js": "src/outline-player.js",
       "properties": "src/outline-player-properties.json",
       "hax": "src/outline-player-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/paper-search.js",
       "properties": "src/paper-search-properties.json",
       "hax": "src/paper-search-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of paper-search",
   "repository": {
     "type": "git",

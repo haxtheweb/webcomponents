@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/game-show-quiz.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",

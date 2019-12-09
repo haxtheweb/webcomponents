@@ -14,9 +14,10 @@
       "js": "src/simple-timer.js",
       "properties": "src/simple-timer-properties.json",
       "hax": "src/simple-timer-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of simple-timer/",
   "repository": {
     "type": "git",

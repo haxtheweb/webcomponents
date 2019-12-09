@@ -14,9 +14,10 @@
       "js": "src/sites-listing.js",
       "properties": "src/sites-listing-properties.json",
       "hax": "src/sites-listing-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of sites-listing/",
   "repository": {
     "type": "git",

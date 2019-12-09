@@ -14,9 +14,10 @@
       "js": "src/progress-donut.js",
       "properties": "src/progress-donut-properties.json",
       "hax": "src/progress-donut-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",

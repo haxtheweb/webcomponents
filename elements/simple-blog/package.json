@@ -14,9 +14,10 @@
       "js": "src/simple-blog.js",
       "properties": "src/simple-blog-properties.json",
       "hax": "src/simple-blog-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.1",
+  "version":  "2.2.1",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",

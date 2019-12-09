@@ -9,9 +9,10 @@
     "useSass": false,
     "files": {
       "js": "src/elmsln-loading.js"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Basic loading spinner based on the ELMS:LN icon",
   "repository": {
     "type": "git",

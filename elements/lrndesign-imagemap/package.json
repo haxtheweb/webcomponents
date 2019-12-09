@@ -14,9 +14,10 @@
       "js": "src/lrndesign-imagemap.js",
       "properties": "src/lrndesign-imagemap-properties.json",
       "hax": "src/lrndesign-imagemap-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",

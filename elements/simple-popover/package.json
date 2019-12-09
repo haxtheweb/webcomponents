@@ -14,9 +14,10 @@
       "js": "src/simple-popover.js",
       "properties": "src/simple-popover-properties.json",
       "hax": "src/simple-popover-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A popover alertdialog that is positioned next to a target element",
   "repository": {
     "type": "git",

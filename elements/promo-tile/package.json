@@ -14,9 +14,10 @@
       "js": "src/promo-tile.js",
       "properties": "src/promo-tile-properties.json",
       "hax": "src/promo-tile-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Start of promo-tile",
   "repository": {
     "type": "git",

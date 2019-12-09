@@ -14,9 +14,10 @@
       "js": "src/lrn-assignment.js",
       "properties": "src/lrn-assignment-properties.json",
       "hax": "src/lrn-assignment-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "A basic OER schema semantic assignment wrapper",
   "repository": {
     "type": "git",

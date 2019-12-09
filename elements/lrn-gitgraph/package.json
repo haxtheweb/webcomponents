@@ -14,9 +14,10 @@
       "js": "src/lrn-gitgraph.js",
       "properties": "src/lrn-gitgraph-properties.json",
       "hax": "src/lrn-gitgraph-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "Render git data in a graphing tree format",
   "repository": {
     "type": "git",

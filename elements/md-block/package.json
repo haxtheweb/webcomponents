@@ -14,9 +14,10 @@
       "js": "src/md-block.js",
       "properties": "src/md-block-properties.json",
       "hax": "src/md-block-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a markdown block",
   "repository": {
     "type": "git",

@@ -14,9 +14,10 @@
       "js": "src/simple-blog-card.js",
       "properties": "src/simple-blog-card-properties.json",
       "hax": "src/simple-blog-card-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
-  "version": "2.2.0",
+  "version":  "2.2.0",
   "description": "a card commonly found on a blogging website",
   "repository": {
     "type": "git",
