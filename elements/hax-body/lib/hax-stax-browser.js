@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js";
 /**
  * `hax-stax-browser`
@@ -7,7 +8,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js";
  * @microcopy - the mental model for this element
  * - stax - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxStaxBrowser extends LitElement {
+class HaxStaxBrowser extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -24,10 +25,9 @@ class HaxStaxBrowser extends LitElement {
   constructor() {
     super();
     this.staxList = [];
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
   }
   render() {
     return html`

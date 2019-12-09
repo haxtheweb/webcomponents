@@ -1,5 +1,6 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -17,7 +18,7 @@ as the events being bubbled up include HTML nodes to inject into something
  - element - buttons on the panel which when pressed will trigger an event
 
 */
-class HaxPanel extends SimpleColors {
+class HaxPanel extends winEventsElement(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -147,6 +148,11 @@ class HaxPanel extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-active-hover-name": "_activeNameChange",
+      "hax-panel-operation": "_processItemEvent"
+    };
     this.canUndo = true;
     this.canRedo = true;
     this.align = "left";
@@ -169,18 +175,6 @@ class HaxPanel extends SimpleColors {
     setTimeout(() => {
       this.addEventListener(
         "hax-item-selected",
-        this._processItemEvent.bind(this)
-      );
-      window.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener(
-        "hax-active-hover-name",
-        this._activeNameChange.bind(this)
-      );
-      window.addEventListener(
-        "hax-panel-operation",
         this._processItemEvent.bind(this)
       );
     }, 0);

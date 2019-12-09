@@ -123,6 +123,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         id="searchinput"
         .label="${this.label}"
         .schema="${this.searchSchema}"
+        @search-values-changed="${this._searchValuesChanged}"
       ></hax-app-search-inputs>
       <hax-app-pagination
         id="pagerbottom"
@@ -315,20 +316,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         this.auto = true;
       }
     }
-  }
-  /**
-   * LitElement life cycle - ready callback
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.shadowRoot
-      .querySelector("#searchinput")
-      .addEventListener(
-        "search-values-changed",
-        this._searchValuesChanged.bind(this)
-      );
   }
   /**
    * Store updated, sync.

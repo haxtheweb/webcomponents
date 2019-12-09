@@ -1,8 +1,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
-class HaxUploadField extends SimpleColors {
+class HaxUploadField extends winEventsElement(SimpleColors) {
   /**
    * LitElement life cycle - styles addition
    */
@@ -111,6 +112,9 @@ class HaxUploadField extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-app-picker-selection": "_haxAppPickerSelection"
+    };
     this.label = null;
     this.noCamera = false;
     import("@polymer/paper-input/paper-input.js");
@@ -148,6 +152,8 @@ class HaxUploadField extends SimpleColors {
             form-data-name="file-upload"
             ?hidden="${this.option !== "fileupload"}"
             id="fileupload"
+            @upload-before="${this._fileAboutToUpload}"
+            @upload-response="${this._fileUploadResponse}"
           ></vaadin-upload>
           <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
         </div>
@@ -392,13 +398,6 @@ class HaxUploadField extends SimpleColors {
     } else {
       this.option = "fileupload";
     }
-    // event handlers for file work
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
     this.shadowRoot.querySelector("#picker").addEventListener("change", e => {
       if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
     });
@@ -408,20 +407,6 @@ class HaxUploadField extends SimpleColors {
         "simple-camera-snap-image",
         this.__newPhotoShowedUp.bind(this)
       );
-    window.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-  }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    window.removeEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * We got a new photo

@@ -127,7 +127,7 @@ class HaxAppPicker extends LitElement {
           }
         </style>
       </custom-style>
-      <paper-dialog id="dialog">
+      <paper-dialog id="dialog" ?opened="${this.opened}">
         <h3 id="title">${this.title}</h3>
         <div id="buttonlist">
           <div class="scroll-wrap">
@@ -158,7 +158,9 @@ class HaxAppPicker extends LitElement {
     return "hax-app-picker";
   }
   closeEvent(e) {
-    window.HaxStore.write("openDrawer", false, this);
+    if (window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
+    }
   }
   static get properties() {
     return {
@@ -228,13 +230,9 @@ class HaxAppPicker extends LitElement {
    */
   _openedChanged(newValue, oldValue) {
     if (newValue) {
-      this.shadowRoot.querySelector("#dialog").open();
       // lock the background
       document.body.style.overflow = "hidden";
     } else {
-      if (this.shadowRoot.querySelector("#dialog").close) {
-        this.shadowRoot.querySelector("#dialog").close();
-      }
       this.selectionList = [];
       document.body.style.overflow = null;
     }

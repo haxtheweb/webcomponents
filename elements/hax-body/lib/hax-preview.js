@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-media-query/iron-media-query.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -14,7 +14,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form
  *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
  */
-class HaxPreview extends LitElement {
+class HaxPreview extends winEventsElement(LitElement) {
   /**
    * LitElement render styles
    */
@@ -174,6 +174,9 @@ class HaxPreview extends LitElement {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     this.responsiveWidth = "800px";
     this.orientation = "horizontal";
     this.orientationDirection = "width";
@@ -201,12 +204,6 @@ class HaxPreview extends LitElement {
     import("@lrnwebcomponents/simple-picker/simple-picker.js");
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
-    setTimeout(() => {
-      window.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-    }, 0);
   }
   /**
    * LitElement render
@@ -492,7 +489,7 @@ class HaxPreview extends LitElement {
    * Trigger cancel on manager as it is the parent here.
    */
   cancel(e) {
-    window.HaxStore.instance.haxManager.cancel(e);
+    window.HaxStore.write("openDrawer", false, this);
   }
 
   /**

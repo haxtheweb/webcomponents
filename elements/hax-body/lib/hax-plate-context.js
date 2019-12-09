@@ -78,9 +78,11 @@ class HaxPlateContext extends HTMLElement {
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   connectedCallback() {
-    this.shadowRoot
-      .querySelector("#drag")
-      .addEventListener("dragstart", this._dragstart);
+    setTimeout(() => {
+      this.shadowRoot
+        .querySelector("#drag")
+        .addEventListener("dragstart", this._dragstart);
+    }, 0);
   }
   disconnectedCallback() {
     this.shadowRoot

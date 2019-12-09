@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `hax-blox-browser`
  * @customElement hax-blox-browser
@@ -7,7 +9,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js";
  * @microcopy - the mental model for this element
  * - blox - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxBloxBrowser extends LitElement {
+class HaxBloxBrowser extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -25,10 +27,9 @@ class HaxBloxBrowser extends LitElement {
   constructor() {
     super();
     this.bloxList = [];
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
   }
   render() {
     return html`

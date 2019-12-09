@@ -2,6 +2,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-pages/iron-pages.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -17,7 +18,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * - app - an API end point for querying and returning possible items for insert. For example, if a youtube is a source then it'll be expected to return data that can be mapped in such a way that it can display a grid of videos. Hitting vimeo we'd expect the same thing; enough data to be able to assemble a grid of videos to select / work with.
  * - endpoints - much of hax-manager is about routing data to and from the current application to backends. So uploads need to go some place, this is managing the UI aspect of that transaction while expecting to be fed an endpoint to handle the backend aspect.
  */
-class HaxManager extends SimpleColors {
+class HaxManager extends winEventsElement(SimpleColors) {
   /**
    * LitElement life cycle - styles addition
    */
@@ -162,6 +163,11 @@ class HaxManager extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-app-picker-selection": "_haxAppPickerSelection",
+      "place-holder-file-drop": "_placeHolderFileDrop"
+    };
     this.opened = false;
     this.editExistingNode = false;
     this.addTitle = "Upload media";
@@ -227,6 +233,8 @@ class HaxManager extends SimpleColors {
       </custom-style>
       <app-drawer
         id="dialog"
+        @iron-overlay-closed="${this.closeEvent}"
+        @iron-overlay-canceled="${this.closeEvent}"
         .opened="${this.opened}"
         @opened-changed="${this.openedChanged}"
         disable-swipe=""
@@ -269,12 +277,17 @@ class HaxManager extends SimpleColors {
                     </div>
                     <div class="add-upload-area">
                       <vaadin-upload
+                        @upload-before="${this._fileAboutToUpload}"
+                        @upload-response="${this._fileUploadResponse}"
                         form-data-name="file-upload"
                         id="fileupload"
                         ?hidden="${!this.canSupportUploads}"
                       ></vaadin-upload>
                     </div>
-                    <paper-button id="newassetconfigure" raised=""
+                    <paper-button
+                      @click="${this.newAssetConfigure}"
+                      id="newassetconfigure"
+                      raised=""
                       >Configure item</paper-button
                     >
                   </div>
@@ -417,60 +430,6 @@ class HaxManager extends SimpleColors {
         }
       })
     );
-    this.shadowRoot
-      .querySelector("#dialog")
-      .addEventListener("iron-overlay-canceled", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#dialog")
-      .addEventListener("iron-overlay-closed", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#closedialog")
-      .addEventListener("click", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#newassetconfigure")
-      .addEventListener("click", this.newAssetConfigure.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    // add event listeners
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    // specialized support for the place-holder tag
-    // and a drag and drop event
-    window.addEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-  }
-  disconnectedCallback() {
-    // add event listeners
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.removeEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    // specialized support for the place-holder tag
-    // and a drag and drop event
-    window.removeEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * LitElement life cycle - properties changed
@@ -776,7 +735,9 @@ class HaxManager extends SimpleColors {
    */
   closeEvent(e) {
     // reset and close dialog
-    window.HaxStore.write("openDrawer", false, this);
+    if (!this.opened && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
+    }
   }
 
   /**

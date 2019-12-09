@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-app-browser`
@@ -10,7 +11,7 @@ import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
  * - hax-app - expression of how to communicate and visualize a data source
  * - gizmo - silly name for the general public when talking about hax-app and what it provides in the end
  */
-class HaxAppBrowser extends LitElement {
+class HaxAppBrowser extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -51,6 +52,10 @@ class HaxAppBrowser extends LitElement {
   }
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-app-selected": "_appSelected",
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
@@ -206,26 +211,6 @@ class HaxAppBrowser extends LitElement {
       this.hasActive = false;
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("hax-app-selected", this._appSelected.bind(this));
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  disconnectedCallback() {
-    window.removeEventListener(
-      "hax-app-selected",
-      this._appSelected.bind(this)
-    );
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    super.disconnectedCallback();
-  }
-
   /**
    * Store updated, sync.
    */

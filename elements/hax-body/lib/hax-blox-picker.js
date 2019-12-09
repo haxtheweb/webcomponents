@@ -14,6 +14,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class HaxPicker extends LitElement {
   constructor() {
     super();
+    this.opened = false;
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
@@ -96,6 +97,7 @@ class HaxPicker extends LitElement {
       <app-drawer
         id="dialog"
         @opened-changed="${this.openedChanged}"
+        ?opened="${this.opened}"
         align="left"
         transition-duration="300"
       >
@@ -113,12 +115,12 @@ class HaxPicker extends LitElement {
   }
   openedChanged(e) {
     // force close event to align data model if clicking away
-    if (e.detail.value === false) {
-      this.closeEvent(e);
+    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
   closeEvent(e) {
-    window.HaxStore.write("openDrawer", false, this);
+    this.opened = false;
   }
   static get properties() {
     return {
@@ -130,6 +132,9 @@ class HaxPicker extends LitElement {
       },
       icon: {
         type: String
+      },
+      opened: {
+        type: Boolean
       }
     };
   }
@@ -137,13 +142,13 @@ class HaxPicker extends LitElement {
    * open the dialog
    */
   open() {
-    this.shadowRoot.querySelector("#dialog").open();
+    this.opened = true;
   }
   /**
    * close the dialog
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
+    this.opened = false;
   }
 }
 

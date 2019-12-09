@@ -1,5 +1,6 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -9,7 +10,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * @customElement hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxPreferencesDialog extends SimpleColors {
+class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -67,6 +68,9 @@ class HaxPreferencesDialog extends SimpleColors {
   }
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     this.title = "Editor preferences";
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -74,11 +78,6 @@ class HaxPreferencesDialog extends SimpleColors {
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
-    // add event listener
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -126,6 +125,7 @@ class HaxPreferencesDialog extends SimpleColors {
         id="dialog"
         align="right"
         transition-duration="300"
+        ?opened="${this.opened}"
         @opened-changed="${this.openedChanged}"
       >
         <h3 class="title">
@@ -145,12 +145,12 @@ class HaxPreferencesDialog extends SimpleColors {
   }
   openedChanged(e) {
     // force close event to align data model if clicking away
-    if (e.detail.value === false) {
-      this.closeEvent(e);
+    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
   closeEvent(e) {
-    window.HaxStore.write("openDrawer", false, this);
+    this.opened = false;
   }
   static get tag() {
     return "hax-preferences-dialog";
@@ -174,6 +174,9 @@ class HaxPreferencesDialog extends SimpleColors {
        */
       preferences: {
         type: Object
+      },
+      opened: {
+        type: Boolean
       }
     };
   }
@@ -274,13 +277,13 @@ class HaxPreferencesDialog extends SimpleColors {
    * open the dialog
    */
   open() {
-    this.shadowRoot.querySelector("#dialog").open();
+    this.opened = true;
   }
   /**
    * close the dialog
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
+    this.opened = false;
   }
 }
 window.customElements.define(HaxPreferencesDialog.tag, HaxPreferencesDialog);
