@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 /*
 `img-loader` preloads images
 */

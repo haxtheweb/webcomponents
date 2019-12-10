@@ -68,7 +68,9 @@ class ExifData extends HTMLElement {
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
     this.render();
-    this.addEventListener("click", this.clickImage.bind(this));
+    if (!this.getAttribute("no-events")) {
+      this.addEventListener("click", this.clickImage.bind(this));
+    }
   }
   /**
    * Library loaded
@@ -81,29 +83,40 @@ class ExifData extends HTMLElement {
     this.__ready = true;
     this.updateExif();
   }
+  showDetails(item) {
+    let target = this.alignTarget;
+    if (!target) {
+      target = item.node;
+    }
+    const dim = target.getBoundingClientRect();
+    var content = "";
+    for (var key in item.data) {
+      if (
+        item.data[key] != "" &&
+        item.data[key] != false &&
+        item.data[key] != " " &&
+        item.data[key] != 0 &&
+        item.data[key] != null
+      ) {
+        content += `<li><strong>${key}</strong>: ${item.data[key]}</li>`;
+      }
+    }
+    this.dataElement.innerHTML = content;
+    if (this.alignTargetTop) {
+      this.dataElement.style.top = this.alignTargetTop;
+    } else {
+      this.dataElement.style.top = dim.top + "px";
+    }
+    this.dataElement.style.height = dim.height + "px";
+    this.dataElement.style.width = dim.width + "px";
+    this.dataElement.style.left = dim.left + "px";
+    this.dataElement.classList.add("showdata");
+  }
   clickImage(e) {
     if (e.target.tagName === "IMG") {
       this.nodeData.forEach(item => {
         if (item.node === e.target) {
-          const dim = item.node.getBoundingClientRect();
-          var content = "";
-          for (var key in item.data) {
-            if (
-              item.data[key] != "" &&
-              item.data[key] != false &&
-              item.data[key] != " " &&
-              item.data[key] != 0 &&
-              item.data[key] != null
-            ) {
-              content += `<li><strong>${key}</strong>: ${item.data[key]}</li>`;
-            }
-          }
-          this.dataElement.innerHTML = content;
-          this.dataElement.style.top = dim.top + "px";
-          this.dataElement.style.height = dim.height + "px";
-          this.dataElement.style.width = dim.width + "px";
-          this.dataElement.style.left = dim.left + "px";
-          this.dataElement.classList.add("showdata");
+          this.showDetails(item);
         }
       });
     }
@@ -123,7 +136,7 @@ class ExifData extends HTMLElement {
       });
     });
   }
-  updateExif() {
+  updateExif(show = false) {
     this.nodeData = [];
     this.dataElement.innerHTML = "";
     this.childNodes.forEach(node => {
@@ -131,6 +144,9 @@ class ExifData extends HTMLElement {
         this.getExifData(node);
       }
     });
+    if (show && this.children.length === 1) {
+      this.showDetails(this.nodeData[0]);
+    }
   }
   clickData(e) {
     this.dataElement.classList.remove("showdata");
@@ -143,8 +159,9 @@ class ExifData extends HTMLElement {
       window.ShadyCSS.styleElement(this);
     }
     this.dataElement = this.shadowRoot.querySelector("#data");
-    this.dataElement.addEventListener("click", this.clickData.bind(this));
-
+    if (!this.getAttribute("no-events")) {
+      this.dataElement.addEventListener("click", this.clickData.bind(this));
+    }
     // any change, update things
     this.observer = new MutationObserver(mutations => {
       this.updateExif();
@@ -155,7 +172,9 @@ class ExifData extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.dataElement.removeEventListener("click", this.clickData.bind(this));
+    if (!this.getAttribute("no-events")) {
+      this.dataElement.removeEventListener("click", this.clickData.bind(this));
+    }
     this.observer.disconnect();
   }
 }
