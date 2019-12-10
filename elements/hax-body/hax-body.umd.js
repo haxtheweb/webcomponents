@@ -300,6 +300,9 @@ class HaxBody extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      openDrawer: {
+        type: Object
+      },
       /**
        * State of if we are editing or not.
        */
@@ -395,6 +398,9 @@ class HaxBody extends SimpleColors {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "openDrawer") {
+        this._openDrawerChanged(this[propName], oldValue);
+      }
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
       }
@@ -424,6 +430,13 @@ class HaxBody extends SimpleColors {
         );
       }
     });
+  }
+  _openDrawerChanged(newValue, oldValue) {
+    if (!newValue) {
+      this.positionContextMenus(this.activeNode, this.activeContainerNode);
+    } else {
+      this.hideContextMenus();
+    }
   }
   /**
    * HTMLElement
@@ -522,36 +535,43 @@ class HaxBody extends SimpleColors {
    * Keep the context menu visible if needed
    */
   _keepContextVisible(e) {
-    // see if the text context menu is visible
-    let el = false;
-    if (
-      this.shadowRoot
-        .querySelector("#textcontextmenu")
-        .classList.contains("hax-context-visible")
-    ) {
-      el = this.shadowRoot.querySelector("#textcontextmenu");
-    } else if (
-      this.shadowRoot
-        .querySelector("#cecontextmenu")
-        .classList.contains("hax-context-visible")
-    ) {
-      el = this.shadowRoot.querySelector("#cecontextmenu");
-    }
-    // if we see it, ensure we don't have the pin
-    if (el) {
-      if (this.elementInViewport(el)) {
-        el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
-      } else {
-        if (this.__OffBottom) {
-          el.classList.add("hax-context-pin-top");
+    if (!this.openDrawer && this.editMode) {
+      // see if the text context menu is visible
+      let el = false;
+      if (
+        this.shadowRoot
+          .querySelector("#textcontextmenu")
+          .classList.contains("hax-context-visible")
+      ) {
+        el = this.shadowRoot.querySelector("#textcontextmenu");
+      } else if (
+        this.shadowRoot
+          .querySelector("#cecontextmenu")
+          .classList.contains("hax-context-visible")
+      ) {
+        el = this.shadowRoot.querySelector("#cecontextmenu");
+      }
+      // if we see it, ensure we don't have the pin
+      if (el) {
+        if (this.elementInViewport(el)) {
+          el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
         } else {
-          el.classList.add("hax-context-pin-bottom");
+          if (this.__OffBottom) {
+            el.classList.add("hax-context-pin-top");
+          } else {
+            el.classList.add("hax-context-pin-bottom");
+          }
         }
       }
     }
   }
   _onKeyDown(e) {
-    if (this.editMode && this.getAttribute("contenteditable")) {
+    // @todo need another state value to prevent key tests when dialogs open
+    if (
+      !this.openDrawer &&
+      this.editMode &&
+      this.getAttribute("contenteditable")
+    ) {
       switch (e.key) {
         case "Tab":
           if (
@@ -637,13 +657,14 @@ class HaxBody extends SimpleColors {
   }
   _onKeyPress(e) {
     if (
+      !this.openDrawer &&
       this.editMode &&
       this.shadowRoot
         .querySelector("#platecontextmenu")
         .classList.contains("hax-active-hover")
     ) {
       this.__dropActiveHover();
-    } else if (this.editMode && this.activeNode) {
+    } else if (!this.openDrawer && this.editMode && this.activeNode) {
       // If the user has paused for awhile, show the menu
       clearTimeout(this.positionContextTimer);
       this.positionContextTimer = setTimeout(() => {
@@ -656,7 +677,7 @@ class HaxBody extends SimpleColors {
    * on mouse over then fire the hax ray value if we have one
    */
   hoverEvent(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       if (e.target && e.target.getAttribute("data-hax-ray") != null) {
         this.__activeHover = e.target;
         this.dispatchEvent(
@@ -1538,7 +1559,11 @@ class HaxBody extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         break;
       case "grid-plate-down":
         this.haxMoveGridPlate(
@@ -1653,7 +1678,11 @@ class HaxBody extends SimpleColors {
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
         window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
@@ -1681,7 +1710,11 @@ class HaxBody extends SimpleColors {
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
         window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
@@ -1732,7 +1765,8 @@ class HaxBody extends SimpleColors {
   __focusLogic(target) {
     let stopProp = false;
     // only worry about these when we are in edit mode
-    if (this.editMode && !this.__tabTrap) {
+    // and there is no drawer open
+    if (!this.openDrawer && this.editMode && !this.__tabTrap) {
       let containerNode = target;
       // edge case, thing selected is inside a paragraph tag
       // HTML is stupid and allows this
@@ -1972,7 +2006,7 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       var target = window.HaxStore.instance.__dragTarget;
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
@@ -1988,7 +2022,11 @@ class HaxBody extends SimpleColors {
       ) {
         // incase this came from a grid plate, drop the slot so it works
         target.removeAttribute("slot");
-        this.insertBefore(target, local);
+        try {
+          this.insertBefore(target, local);
+        } catch (e) {
+          console.warn(e);
+        }
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -2010,7 +2048,7 @@ class HaxBody extends SimpleColors {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       e.preventDefault();
       e.target.classList.add("hovered");
     }
@@ -2019,7 +2057,7 @@ class HaxBody extends SimpleColors {
    * Leaving an element while dragging.
    */
   dragLeave(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       e.target.classList.remove("hovered");
     }
   }
@@ -2027,7 +2065,7 @@ class HaxBody extends SimpleColors {
    * Start a drag event, this is an element being dragged
    */
   dragStart(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
@@ -2042,7 +2080,7 @@ class HaxBody extends SimpleColors {
    * When we end dragging ensure we remove the mover class.
    */
   dragEnd(e) {
-    if (this.editMode) {
+    if (!this.openDrawer && this.editMode) {
       let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
