@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `hax-stax-browser-item`
@@ -73,12 +72,15 @@ class HaxStaxBrowserItem extends LitElement {
         .data-voicecommand="select ${this.title}"
       >
         <div class="button-inner">
-          <iron-image
-            src="${this.image}"
-            preload=""
-            sizing="cover"
-            .hidden="${this.image}"
-          ></iron-image>
+          ${this.image
+            ? html`
+                <iron-image
+                  src="${this.image}"
+                  preload=""
+                  sizing="cover"
+                ></iron-image>
+              `
+            : ``}
           <div class="item-title">${this.title}</div>
         </div>
       </paper-button>
@@ -106,8 +108,7 @@ class HaxStaxBrowserItem extends LitElement {
        * Image for the button, optional.
        */
       image: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * Author related to this gizmo
@@ -141,7 +142,13 @@ class HaxStaxBrowserItem extends LitElement {
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "image") {
+        import("@polymer/iron-image/iron-image.js");
+      }
+    });
+  }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */

@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/oer-schema": "^2.3.2",
-    "lit-element": "^2.2.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

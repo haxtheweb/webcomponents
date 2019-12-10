@@ -43,7 +43,7 @@
     "@polymer/iron-selector": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

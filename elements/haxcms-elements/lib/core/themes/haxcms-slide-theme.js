@@ -38,7 +38,7 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles">
+      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }
@@ -49,14 +49,22 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
           display: none;
         }
         .active-slide {
-          width: 100vw;
-          padding: 16px;
+          width: calc(100vw - 64px);
+          padding: 32px;
           margin: 0;
           position: fixed;
           top: 0;
           bottom: 60px;
           overflow: scroll;
           border-bottom: 4px solid var(--haxcms-color, black);
+        }
+        :host([is-logged-in]) .active-slide {
+          left: 48px;
+          width: calc(100vw - 64px - 48px);
+        }
+        :host([is-logged-in]) .bottom-wrapper {
+          left: 48px;
+          width: calc(100vw - 48px);
         }
         :host([edit-mode]) .active-slide {
           bottom: 0;
@@ -85,9 +93,7 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
           display: inline-flex;
         }
         site-menu-button {
-          --site-menu-button-link: {
-            color: #ffffff;
-          }
+          --site-menu-button-link-color: #ffffff;
           --site-menu-button-button: {
             height: 60px;
             width: 60px;
@@ -154,6 +160,7 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
           right: 0;
           transition: 0.2s opacity linear;
           opacity: 1;
+          width: 100vw;
         }
         :host([edit-mode]) .bottom-wrapper {
           opacity: 0;

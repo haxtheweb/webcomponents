@@ -158,9 +158,7 @@ class HaxAppPicker extends LitElement {
     return "hax-app-picker";
   }
   closeEvent(e) {
-    if (window.HaxStore.instance.openDrawer === this) {
-      window.HaxStore.write("openDrawer", false, this);
-    }
+    this.opened = false;
   }
   static get properties() {
     return {
@@ -305,7 +303,11 @@ class HaxAppPicker extends LitElement {
         }
         // ensure this is open even though it should be
         window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.instance.haxManager.open();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
       } else if (this.pickerType == "delete") {
         if (this._elements[key]["title"] === "Yes") {
           if (

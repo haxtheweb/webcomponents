@@ -1,7 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-
 /**
  * `hax-blox-browser`
  * @customElement hax-blox-browser
@@ -9,7 +7,7 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
  * @microcopy - the mental model for this element
  * - blox - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxBloxBrowser extends winEventsElement(LitElement) {
+class HaxBloxBrowser extends LitElement {
   static get styles() {
     return [
       css`
@@ -27,9 +25,6 @@ class HaxBloxBrowser extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.bloxList = [];
-    this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
-    };
   }
   render() {
     return html`
@@ -68,19 +63,6 @@ class HaxBloxBrowser extends winEventsElement(LitElement) {
         type: Array
       }
     };
-  }
-
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property == "bloxList"
-    ) {
-      this[e.detail.property] = [...e.detail.value];
-    }
   }
 }
 window.customElements.define(HaxBloxBrowser.tag, HaxBloxBrowser);

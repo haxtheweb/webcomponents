@@ -13,8 +13,6 @@
       }
     }
     site-title {
-      position: relative;
-      overflow: hidden;
       --site-title-link: {
         display: inline-block;
         color: #fafafa;
@@ -31,12 +29,6 @@
       }
     }
     site-menu {
-      background-color: #383f45;
-      color: #ffffff;
-      padding: 0;
-      overflow: scroll;
-      max-height: calc(100vh - 200px);
-      --site-menu-active-color: #ffffff;
       --site-menu: {
         background-color: #383f45;
       }
@@ -44,15 +36,8 @@
         padding: 0;
         background-color: #2d3237;
       }
-      --site-menu-item-active-item-color: #2d3237;
     }
     app-drawer-layout {
-      min-height: 100vh;
-      min-height: -moz-available;
-      min-height: -webkit-fill-available;
-      min-height: fill-available;
-      --app-drawer-width: 300px;
-      --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
       --app-drawer-content-container: {
         overflow: hidden;
         background-color: #383f45;
@@ -65,16 +50,6 @@
       }
     }
     site-menu-button {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 300px;
-      z-index: 1;
-      --site-menu-button-icon: {
-        width: 64px;
-        height: 64px;
-        color: #2d3237;
-      }
       --site-menu-button-button: {
         background-color: rgba(0, 0, 0, 0);
         width: 64px;
@@ -92,8 +67,6 @@
       }
     }
     app-drawer-layout[narrow] site-menu-button {
-      bottom: 0;
-      top: unset;
       --site-menu-button-button: {
         background-color: transparent !important;
         width: 64px;
@@ -103,9 +76,6 @@
     site-menu,
     map-menu,
     map-menu * {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
       --map-menu-container: {
         display: flex;
         flex-direction: column;
@@ -126,7 +96,7 @@
     <div class="header-wrapper">
       <div class="header">
         <site-title ?disabled="${this.editMode}"></site-title>
-        <site-modal ?disabled="${this.editMode}" icon="icons:search" title="Search site" button-label="Search">
+        <site-modal @site-modal-click="${this.siteModalClick}" ?disabled="${this.editMode}" icon="icons:search" title="Search site" button-label="Search">
           <site-search></site-search>
         </site-modal>
       </div>

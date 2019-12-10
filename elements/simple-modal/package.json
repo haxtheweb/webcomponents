@@ -45,7 +45,7 @@
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-dialog": "^3.0.1",
     "@polymer/paper-dialog-scrollable": "^3.0.1",
-    "@polymer/polymer": "^3.2.0",
+    "@polymer/polymer": "^3.3.1",
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {

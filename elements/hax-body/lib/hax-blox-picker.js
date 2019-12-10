@@ -36,7 +36,8 @@ class HaxPicker extends LitElement {
         }
       })
     );
-    this.appendChild(document.createElement(pickerTag));
+    this.picker = document.createElement(pickerTag);
+    this.appendChild(this.picker);
   }
   static get styles() {
     return [
@@ -118,6 +119,11 @@ class HaxPicker extends LitElement {
     if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
       window.HaxStore.write("openDrawer", false, this);
     }
+    if (e.detail.value && window.HaxStore.instance[this.refreshOnOpen]) {
+      this.picker[this.refreshOnOpen] = [
+        ...window.HaxStore.instance[this.refreshOnOpen]
+      ];
+    }
   }
   closeEvent(e) {
     this.opened = false;
@@ -158,6 +164,7 @@ class HaxBloxPicker extends HaxPicker {
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
     this.title = "Insert layout";
     this.icon = "icons:view-column";
+    this.refreshOnOpen = "bloxList";
     // this sets everything else in motion correctly
     this.setupPicker("haxBloxPicker", "hax-blox-browser");
   }

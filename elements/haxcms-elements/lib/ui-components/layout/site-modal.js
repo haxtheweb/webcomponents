@@ -28,6 +28,9 @@ class SiteModal extends LitElement {
         :host {
           display: block;
         }
+        paper-icon-button {
+          color: var(--site-modal-icon-color);
+        }
       `
     ];
   }
@@ -50,9 +53,6 @@ class SiteModal extends LitElement {
     return html`
       <custom-style>
         <style>
-          paper-icon-button {
-            @apply --site-modal-icon;
-          }
           paper-tooltip {
             @apply --site-modal-tooltip;
           }
@@ -64,6 +64,7 @@ class SiteModal extends LitElement {
       <paper-icon-button
         ?disabled="${this.editMode}"
         id="btn"
+        @click="${this.fireEvent}"
         .icon="${this.icon}"
         .title="${this.buttonLabel}"
       ></paper-icon-button>
@@ -74,6 +75,16 @@ class SiteModal extends LitElement {
         <div id="content" slot="content"></div>
       </simple-modal-template>
     `;
+  }
+  /**
+   * Fire an event for things to react to above us; useful for lazy loading
+   */
+  fireEvent(e) {
+    this.dispatchEvent(
+      new CustomEvent("site-modal-click", {
+        detail: { value: true }
+      })
+    );
   }
   static get properties() {
     return {

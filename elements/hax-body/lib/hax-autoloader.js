@@ -67,18 +67,22 @@ class HaxAutoloader extends HAXElement(LitElement) {
         }
       })
     );
-    // notice elements when they update
-    this._observer = new FlattenedNodesObserver(this, info => {
-      // if we've got new nodes, we have to react to that
-      if (info.addedNodes.length > 0) {
-        setTimeout(() => {
-          this.processNewElements(info.addedNodes);
-        }, 5);
-      }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          this.processNewElements(node);
+        });
+      });
+    });
+    this.observer.observe(this, {
+      childList: true
     });
   }
   disconnectedCallback() {
-    this._observer.disconnect();
+    this.observer.disconnect();
     super.disconnectedCallback();
   }
   /**
@@ -86,9 +90,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
    */
   processNewElements(e) {
     // when new nodes show up in the slots then fire the needed pieces
-    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
-      this
-    ).filter(n => n.nodeType === Node.ELEMENT_NODE);
+    let effectiveChildren = this.childNodes;
     for (var i = 0; i < effectiveChildren.length; i++) {
       // strip invalid tags / textnodes
       if (
@@ -189,6 +191,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
           // error in the event this is a double registration
         }
       }
+      effectiveChildren[i].remove();
     }
   }
 }

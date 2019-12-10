@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
-import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
   encapScript,
@@ -11,8 +10,6 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
-import "./haxcms-site-router.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -302,6 +299,9 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   constructor() {
     super();
+    // attempt to set polymer passive gestures globally
+    // this decreases logging and improves performance on scrolling
+    setPassiveTouchGestures(true);
     this.__disposer = [];
     this.queryParams = {};
     this.loading = false;
@@ -310,28 +310,43 @@ class HAXCMSSiteBuilder extends LitElement {
     this._timeStamp = "";
     this.outlineLocation = "";
     this.activeItemLocation = "";
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-    // attempt to set polymer passive gestures globally
-    // this decreases logging and improves performance on scrolling
-    setPassiveTouchGestures(true);
-    autorun(reaction => {
-      this.dashboardOpened = toJS(store.dashboardOpened);
-      this.__disposer.push(reaction);
+    import("./haxcms-site-router.js");
+    // bizarre way of taking iron-ajax out the blocking of the page rendering :)
+    import("@polymer/iron-ajax/iron-ajax.js").then(response => {
+      this.shadowRoot.querySelector("#manifest").generateRequest();
+      import("@polymer/paper-progress/paper-progress.js");
+      import("@lrnwebcomponents/simple-toast/simple-toast.js");
+      import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     });
-    autorun(reaction => {
-      this.themeData = toJS(store.themeData);
-      if (this.themeData && this.themeData.element !== this.themeName) {
-        this.themeName = this.themeData.element;
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.activeItem = toJS(store.activeItem);
-      if (this.activeItem && this.activeItem.location) {
-        this.activeItemLocation = this.activeItem.location;
-      }
-      this.__disposer.push(reaction);
-    });
+    setTimeout(() => {
+      window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+      window.addEventListener(
+        "haxcms-trigger-update",
+        this._triggerUpdatedData.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-trigger-update-node",
+        this._triggerUpdatedNode.bind(this)
+      );
+      autorun(reaction => {
+        this.dashboardOpened = toJS(store.dashboardOpened);
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.themeData = toJS(store.themeData);
+        if (this.themeData && this.themeData.element !== this.themeName) {
+          this.themeName = this.themeData.element;
+        }
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.activeItem = toJS(store.activeItem);
+        if (this.activeItem && this.activeItem.location) {
+          this.activeItemLocation = this.activeItem.location;
+        }
+        this.__disposer.push(reaction);
+      });
+    }, 0);
   }
   _dashboardOpenedChanged(newValue, oldValue) {
     if (newValue) {
@@ -344,9 +359,6 @@ class HAXCMSSiteBuilder extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    import("@polymer/paper-progress/paper-progress.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js");
-    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     this.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,
@@ -354,14 +366,6 @@ class HAXCMSSiteBuilder extends LitElement {
         cancelable: false,
         detail: this
       })
-    );
-    window.addEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
     );
     // dyanmcially import the editor builder which figures out if we should have one
     import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
@@ -389,18 +393,9 @@ class HAXCMSSiteBuilder extends LitElement {
    * Detached life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
-    );
-    window.removeEventListener(
-      "haxcms-trigger-update-node",
-      this._triggerUpdatedNode.bind(this)
-    );
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
     super.disconnectedCallback();
   }
   storeReady(e) {
@@ -477,7 +472,11 @@ class HAXCMSSiteBuilder extends LitElement {
    * Active item updated, let's request the content from it
    */
   _activeItemChanged(newValue, oldValue) {
-    if (newValue && typeof newValue.id !== typeof undefined) {
+    if (
+      this.shadowRoot &&
+      newValue &&
+      typeof newValue.id !== typeof undefined
+    ) {
       this.queryParams.nodeId = newValue.id;
       // if published, keep it static on request
       // @todo might revisit this in the future
@@ -537,7 +536,10 @@ class HAXCMSSiteBuilder extends LitElement {
    * File changed so let's pull from the location
    */
   _fileChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
+    if (
+      this.shadowRoot.querySelector("#manifest").generateRequest &&
+      typeof newValue !== typeof undefined
+    ) {
       this.shadowRoot.querySelector("#manifest").generateRequest();
     }
   }
@@ -635,10 +637,6 @@ class HAXCMSSiteBuilder extends LitElement {
           this.themeLoaded = true;
         }
       }
-      // delay for theme switching to reapply the css variable associations
-      setTimeout(() => {
-        updateStyles();
-      }, 500);
     }
   }
 }

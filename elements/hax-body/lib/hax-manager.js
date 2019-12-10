@@ -233,8 +233,6 @@ class HaxManager extends winEventsElement(SimpleColors) {
       </custom-style>
       <app-drawer
         id="dialog"
-        @iron-overlay-closed="${this.closeEvent}"
-        @iron-overlay-canceled="${this.closeEvent}"
         .opened="${this.opened}"
         @opened-changed="${this.openedChanged}"
         disable-swipe=""
@@ -408,6 +406,9 @@ class HaxManager extends winEventsElement(SimpleColors) {
   }
   openedChanged(e) {
     this.opened = e.detail.value;
+    if (this.opened) {
+      import("@lrnwebcomponents/hax-body/lib/hax-manager-openeddeps.js");
+    }
   }
   activeStepChanged(e) {
     this.activeStep = Number(e.detail.value);
@@ -473,7 +474,7 @@ class HaxManager extends winEventsElement(SimpleColors) {
     // reset the manager back to the first page
     this.resetManager();
     // trigger a self open request
-    this.open();
+    window.HaxStore.write("openDrawer", this, this);
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
     window.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
@@ -735,9 +736,7 @@ class HaxManager extends winEventsElement(SimpleColors) {
    */
   closeEvent(e) {
     // reset and close dialog
-    if (!this.opened && window.HaxStore.instance.openDrawer === this) {
-      window.HaxStore.write("openDrawer", false, this);
-    }
+    this.opened = false;
   }
 
   /**
@@ -749,8 +748,8 @@ class HaxManager extends winEventsElement(SimpleColors) {
     } else if (newValue && !oldValue) {
       document.body.style.overflow = "hidden";
     }
-    if (!newValue) {
-      this.closeEvent();
+    if (!newValue && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
 

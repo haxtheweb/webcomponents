@@ -42,7 +42,7 @@
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-meta": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -44,7 +44,7 @@
     "@lrnwebcomponents/media-behaviors": "^2.3.2",
     "@lrnwebcomponents/schema-behaviors": "^2.3.2",
     "@lrnwebcomponents/simple-colors": "^2.3.2",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

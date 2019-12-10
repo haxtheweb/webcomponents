@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0",
+    "@polymer/polymer": "^3.3.1",
     "countup.js": "^2.0.4"
   },
   "devDependencies": {

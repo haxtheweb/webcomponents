@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.2.1",
+    "lit-element": "2.2.1",
     "undo.js": "0.2.0"
   },
   "devDependencies": {

@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

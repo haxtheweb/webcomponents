@@ -37,7 +37,7 @@
     "@polymer/paper-dropdown-menu": "^3.0.1",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-listbox": "^3.0.0",
-    "lit-element": "2.0.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

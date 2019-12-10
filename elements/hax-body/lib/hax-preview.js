@@ -189,21 +189,6 @@ class HaxPreview extends winEventsElement(LitElement) {
     };
     this.activeHaxElement = {};
     this.advancedForm = false;
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-tabs/paper-tabs.js");
-    import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
-    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@polymer/paper-input/paper-textarea.js");
-    import("app-datepicker/app-datepicker.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
-    import("@lrnwebcomponents/simple-picker/simple-picker.js");
-    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
   }
   /**
    * LitElement render

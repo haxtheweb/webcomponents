@@ -4,10 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
  *
@@ -101,23 +97,6 @@ class SiteSearch extends LitElement {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          .result {
-            @apply --site-search-result;
-          }
-          .result:hover,
-          .result:focus {
-            @apply --site-search-result-hover;
-          }
-          .result .title {
-            @apply --site-search-link-text;
-          }
-          .result .link-text {
-            @apply --site-search-link-text;
-          }
-        </style>
-      </custom-style>
       <paper-input
         id="search"
         always-float-label

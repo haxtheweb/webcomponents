@@ -52,7 +52,7 @@
     "@polymer/paper-drawer-panel": "^3.0.0",
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0",
+    "@polymer/polymer": "^3.3.1",
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {

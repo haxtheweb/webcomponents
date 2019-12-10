@@ -37,7 +37,7 @@
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/paper-styles": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

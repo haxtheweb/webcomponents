@@ -50,9 +50,9 @@
     "@polymer/paper-dialog-scrollable": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-toast": "^3.0.0",
-    "@polymer/polymer": "^3.2.0",
+    "@polymer/polymer": "^3.3.1",
     "@vaadin/vaadin-split-layout": "^4.1.0",
-    "lit-element": "^2.2.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

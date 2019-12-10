@@ -43,7 +43,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles">
+      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
         :host {
           display: block;
           /* theme color which is dictated by the manifest */
@@ -96,12 +96,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           --site-children-block-button-active: {
             background-color: #37474f;
             color: #ffffff;
-          }
-        }
-        site-menu-button {
-          --site-menu-button-icon: {
-            width: 32px;
-            height: 32px;
           }
         }
         site-print-button {

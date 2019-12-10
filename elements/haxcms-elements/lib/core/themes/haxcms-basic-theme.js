@@ -133,11 +133,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           display: flex;
         }
         site-menu-button {
-          --site-menu-button-icon: {
-            width: 32px;
-            height: 32px;
-            color: white;
-          }
+          --site-menu-button-icon-fill-color: white;
           --site-menu-button-button-hover: {
             color: var(--haxcms-basic-theme-accent-color);
           }
@@ -147,9 +143,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           background-color: #37474f;
         }
         site-modal {
-          --site-modal-icon: {
-            color: white;
-          }
+          --site-modal-icon-color: white;
           --site-modal-tooltip: {
             --paper-tooltip-background: #000000;
             --paper-tooltip-opacity: 1;

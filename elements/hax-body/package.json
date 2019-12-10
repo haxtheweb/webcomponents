@@ -96,11 +96,11 @@
     "@polymer/paper-toast": "^3.0.0",
     "@polymer/paper-toggle-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0",
+    "@polymer/polymer": "^3.3.1",
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.2.1",
     "app-datepicker": "^3.0.0",
-    "lit-element": "^2.2.1",
+    "lit-element": "2.2.1",
     "paper-collapse-item": "^4.0.4",
     "undoer": "^0.1.1",
     "web-animations-js": "^2.3.1"
