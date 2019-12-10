@@ -111,7 +111,7 @@ class EditableOutline extends LitElement {
     });
     // required because of async rendering
     if (!this._observer) {
-      this._observer = new MutationObserver(this._observer.bind(this));
+      this._observer = new MutationObserver(this._observeRecord.bind(this));
       this._observer.observe(this.__outlineNode, {
         childList: true,
         subtree: true
@@ -142,7 +142,7 @@ class EditableOutline extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     if (this.__outlineNode) {
-      this._observer = new MutationObserver(this._observer.bind(this));
+      this._observer = new MutationObserver(this._observeRecord.bind(this));
       this._observer.observe(this.__outlineNode, {
         childList: true,
         subtree: true
@@ -153,7 +153,7 @@ class EditableOutline extends LitElement {
    * Mutation observer callback
    * @todo current issue if you copy and paste into the same node
    */
-  _observer(record) {
+  _observeRecord(record) {
     for (var index in record) {
       let info = record[index];
       // if we've got new nodes to react to that were not imported
@@ -187,6 +187,7 @@ class EditableOutline extends LitElement {
    * Disconnected life cycle
    */
   disconnectedCallback() {
+    this._observer.disconnect();
     super.disconnectedCallback();
   }
 
@@ -397,23 +398,25 @@ class EditableOutline extends LitElement {
    */
   importJsonOutlineSchemaItems() {
     this.__blockScrub = true;
-    // wipe out the outline
-    while (this.__outlineNode.firstChild !== null) {
-      this.__outlineNode.removeChild(this.__outlineNode.firstChild);
-    }
-    if (this.items.length === 0) {
-      // get from JOS items if we have none currently
-      this.items = [...this.jos.items];
-    }
-    let outline = this.jos.itemsToNodes(this.items);
-    // rebuild the outline w/ children we just found
-    while (outline.firstChild !== null) {
-      this.__blockScrub = true;
-      this.__outlineNode.appendChild(outline.firstChild);
-    }
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
-      el.setAttribute("contenteditable", "true");
-    });
+    setTimeout(() => {
+      // wipe out the outline
+      while (this.__outlineNode.firstChild) {
+        this.__outlineNode.removeChild(this.__outlineNode.firstChild);
+      }
+      if (this.items.length === 0) {
+        // get from JOS items if we have none currently
+        this.items = [...this.jos.items];
+      }
+      let outline = this.jos.itemsToNodes(this.items);
+      // rebuild the outline w/ children we just found
+      while (outline.firstChild) {
+        this.__blockScrub = true;
+        this.__outlineNode.appendChild(outline.firstChild);
+      }
+      this.shadowRoot.querySelectorAll("li").forEach(el => {
+        el.setAttribute("contenteditable", "true");
+      });
+    }, 0);
     return outline;
   }
   /**

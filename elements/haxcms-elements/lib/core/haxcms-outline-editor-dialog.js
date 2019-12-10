@@ -77,6 +77,7 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       ></editable-outline>
       <json-editor
         id="editor"
+        @current-data-changed="${this.currentDataChangedEvent}"
         label="JSON Outline Schema items"
         value="${this.manifestItemsStatic}"
         .hidden="${!this.viewMode}"
@@ -99,10 +100,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
     super();
     this.__disposer = [];
     this.viewMode = false;
-    autorun(reaction => {
-      this.manifestItems = Object.assign([], toJS(store.manifest.items));
-      this.__disposer.push(reaction);
-    });
   }
   static get properties() {
     return {
@@ -141,6 +138,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       }
     };
   }
+  currentDataChangedEvent(e) {
+    if (e.detail.value) {
+      this.manifestItems = [...e.detail.value];
+      this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
+    }
+  }
   /**
    * LitElement property change life cycle
    */
@@ -178,17 +181,12 @@ class HAXCMSOutlineEditorDialog extends LitElement {
       this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
     }
   }
-  firstUpdated(changedProperties) {
-    this.shadowRoot
-      .querySelector("#editor")
-      .addEventListener("current-data-changed", e => {
-        if (e.detail.value) {
-          this.manifestItems = e.detail.value;
-          this.shadowRoot
-            .querySelector("#outline")
-            .importJsonOutlineSchemaItems();
-        }
-      });
+  connectedCallback() {
+    super.connectedCallback();
+    autorun(reaction => {
+      this.manifestItems = [...toJS(store.manifest.items)];
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * detached life cycle
@@ -197,16 +195,6 @@ class HAXCMSOutlineEditorDialog extends LitElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    this.shadowRoot
-      .querySelector("#editor")
-      .removeEventListener("current-data-changed", e => {
-        if (e.detail.value) {
-          this.manifestItems = e.detail.value;
-          this.shadowRoot
-            .querySelector("#outline")
-            .importJsonOutlineSchemaItems();
-        }
-      });
     super.disconnectedCallback();
   }
   /**
