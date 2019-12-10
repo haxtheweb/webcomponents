@@ -300,6 +300,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           </div>
           <div>
             <site-modal
+              @site-modal-click="${this.siteModalClick}"
               icon="icons:search"
               title="Search site"
               button-label="Search"
@@ -568,6 +569,12 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       return manifest.metadata.theme.variables.hexCode;
     }
   }
+  /**
+   * Delay importing site-search until we click to open it directly
+   */
+  siteModalClick(e) {
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+  }
   constructor() {
     super();
     this.__mainPosts = [];
@@ -596,7 +603,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/iron-icons/places-icons.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
     autorun(reaction => {
       let location = toJS(store.location);
