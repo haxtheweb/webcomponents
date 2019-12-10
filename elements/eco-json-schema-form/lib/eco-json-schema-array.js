@@ -240,10 +240,11 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     //make sure the content is there first
     afterNextRender(this, () => {
       let itemLabel = this.schema.items.itemLabel;
-      if (this.schema.value)
+      if (this.schema && Array.isArray(this.schema.value)) {
         this.schema.value.forEach(val => {
           this.push("__headings", val[itemLabel]);
         });
+      }
       this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
         let index = item.getAttribute("data-index"),
           propertyName = `${this.propertyPrefix}${this.propertyName}`,

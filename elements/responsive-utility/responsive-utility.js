@@ -190,7 +190,8 @@ window.ResponsiveUtility._getWidth = function(detail) {
     ) {
       return el.offsetWidth;
     } else if (el.parentNode !== null) {
-      return el.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE
+      return el.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE &&
+        el.parentNode.host
         ? el.parentNode.host.offsetWidth
         : el.parentNode.offsetWidth;
     }
