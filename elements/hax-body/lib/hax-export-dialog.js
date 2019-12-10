@@ -286,7 +286,8 @@ class HaxExportDialog extends winEventsElement(
    * Output entire thing as a file.
    */
   contentToFile(full) {
-    var content = "";
+    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+    var content = body;
     // if you want full HTML headers or not
     if (full) {
       let elementList = window.HaxStore.instance.elementList;
@@ -326,10 +327,8 @@ class HaxExportDialog extends winEventsElement(
         }
       }
       content += "</head><body>";
-      content += window.HaxStore.instance.activeHaxBody.haxToContent();
+      content += body;
       content += "</body></html>";
-    } else {
-      content = window.HaxStore.instance.activeHaxBody.haxToContent();
     }
     return content;
   }
@@ -363,6 +362,9 @@ class HaxExportDialog extends winEventsElement(
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
 
     this.opened = true;
+    this.shadowRoot.querySelector("#textarea").editorValue = this.contentToFile(
+      false
+    );
     this.shadowRoot.querySelector("#buttons").style.display = "none";
     this.shadowRoot
       .querySelector("#loading")
