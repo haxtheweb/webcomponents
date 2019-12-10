@@ -16,7 +16,7 @@
       "hax": "src/outline-player-hax.json"
     }
   },
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
@@ -39,10 +39,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.3.2",
-    "@lrnwebcomponents/map-menu": "^2.3.2",
-    "@lrnwebcomponents/schema-behaviors": "^2.3.2",
-    "@lrnwebcomponents/simple-colors": "^2.3.2",
+    "@lrnwebcomponents/haxcms-elements": "^2.3.3",
+    "@lrnwebcomponents/map-menu": "^2.3.3",
+    "@lrnwebcomponents/schema-behaviors": "^2.3.3",
+    "@lrnwebcomponents/simple-colors": "^2.3.3",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

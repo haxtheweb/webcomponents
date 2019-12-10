@@ -16,7 +16,7 @@
       "hax": "src/rss-items-hax.json"
     }
   },
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "visualize RSS items",
   "repository": {
     "type": "git",

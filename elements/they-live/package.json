@@ -16,7 +16,7 @@
       "hax": "src/they-live-hax.json"
     }
   },
-  "version": "2.3.0",
+  "version": "2.3.3",
   "description": "To demonstrate the hidden reality behind the component",
   "repository": {
     "type": "git",
