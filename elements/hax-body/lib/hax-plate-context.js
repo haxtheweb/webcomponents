@@ -15,9 +15,7 @@ class HaxPlateContext extends HTMLElement {
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
-
     this.attachShadow({ mode: "open" });
-
     if (!delayRender) {
       this.render();
     }

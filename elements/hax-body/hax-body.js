@@ -137,8 +137,6 @@ class HaxBody extends SimpleColors {
 
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
           outline: none;
-          transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
-            0.2s margin ease-in-out;
           caret-color: var(--hax-color-text);
         }
         :host([edit-mode])
@@ -263,6 +261,21 @@ class HaxBody extends SimpleColors {
       import("./lib/hax-plate-context.js");
       import("./lib/hax-input-mixer.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
+      this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+      this.addEventListener(
+        "hax-input-mixer-update",
+        this._haxInputMixerOperation.bind(this)
+      );
+      this.addEventListener(
+        "place-holder-replace",
+        this.replacePlaceholder.bind(this)
+      );
+      this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("mousedown", this._focusIn.bind(this));
     }, 0);
   }
   static get tag() {
@@ -351,19 +364,6 @@ class HaxBody extends SimpleColors {
         detail: this
       })
     );
-    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-    this.addEventListener(
-      "hax-input-mixer-update",
-      this._haxInputMixerOperation.bind(this)
-    );
-    this.addEventListener(
-      "place-holder-replace",
-      this.replacePlaceholder.bind(this)
-    );
     // try to normalize paragraph insert on enter
     try {
       document.execCommand("enableObjectResizing", false, false);
@@ -386,8 +386,6 @@ class HaxBody extends SimpleColors {
         console.warn(e);
       }
     });
-    this.addEventListener("focusin", this._focusIn.bind(this));
-    this.addEventListener("mousedown", this._focusIn.bind(this));
     // in case we miss this on the initial setup. possible in auto opening environments.
     this.editMode = window.HaxStore.instance.editMode;
     // ensure this resets every append
@@ -431,6 +429,10 @@ class HaxBody extends SimpleColors {
       }
     });
   }
+  /**
+   * Odd, but this is because NO DRAWER IS OPEN, meaning that
+   * the hax body has regained focus / is visible
+   */
   _openDrawerChanged(newValue, oldValue) {
     if (!newValue) {
       this.positionContextMenus(this.activeNode, this.activeContainerNode);
@@ -451,19 +453,18 @@ class HaxBody extends SimpleColors {
         if (mutation.addedNodes.length > 0) {
           mutation.addedNodes.forEach(node => {
             if (this._validElementTest(node)) {
-              if (this._HTMLPrimativeTest(node)) {
-                node.contentEditable = this.editMode;
+              // edge case, thing is moved around in the dom so let's do the opposite
+              // this is something that has PART of these applies
+              // let's make sure that we maintain state associated with contenteditable
+              if (
+                this.editMode &&
+                (node.getAttribute("contenteditable") == "true" ||
+                  node.getAttribute("contenteditable") === true ||
+                  node.getAttribute("contenteditable") == "contenteditable")
+              ) {
+                this.__applyNodeEditableState(node, !this.editMode);
               }
-              // this does the real targetting
-              node.setAttribute("data-editable", this.editMode);
-              let haxRay = node.tagName.replace("-", " ").toLowerCase();
-              let i = window.HaxStore.instance.gizmoList.findIndex(
-                j => j.tag === node.tagName.toLowerCase()
-              );
-              if (i !== -1) {
-                haxRay = window.HaxStore.instance.gizmoList[i].title;
-              }
-              node.setAttribute("data-hax-ray", haxRay);
+              this.__applyNodeEditableState(node, this.editMode);
               this.dispatchEvent(
                 new CustomEvent("hax-body-tag-added", {
                   bubbles: true,
@@ -509,13 +510,15 @@ class HaxBody extends SimpleColors {
     this._observer.observe(this, {
       childList: true
     });
-    window.addEventListener("keydown", this._onKeyDown.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.addEventListener("scroll", this._keepContextVisible.bind(this));
+    setTimeout(() => {
+      window.addEventListener("keydown", this._onKeyDown.bind(this));
+      window.addEventListener("keypress", this._onKeyPress.bind(this));
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      window.addEventListener("scroll", this._keepContextVisible.bind(this));
+    }, 0);
   }
   /**
    * HTMLElement
@@ -594,12 +597,14 @@ class HaxBody extends SimpleColors {
           break;
         case "Enter":
           this.setAttribute("contenteditable", true);
-          break;
+        case "Backspace":
+        case "Delete":
         case "ArrowUp":
         case "ArrowDown":
         case "ArrowLeft":
         case "ArrowRight":
-          setTimeout(() => {
+          clearTimeout(this.__keyPressDirection);
+          this.__keyPressDirection = setTimeout(() => {
             const rng = window.HaxStore.getRange();
             if (
               rng.commonAncestorContainer &&
@@ -661,13 +666,20 @@ class HaxBody extends SimpleColors {
       this.editMode &&
       this.shadowRoot
         .querySelector("#platecontextmenu")
-        .classList.contains("hax-active-hover")
+        .classList.contains("hax-active-hover") &&
+      this.activeNode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
     ) {
       this.__dropActiveHover();
-    } else if (!this.openDrawer && this.editMode && this.activeNode) {
+    } else if (
+      !this.openDrawer &&
+      this.editMode &&
+      this.activeNode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
+    ) {
       // If the user has paused for awhile, show the menu
-      clearTimeout(this.positionContextTimer);
-      this.positionContextTimer = setTimeout(() => {
+      clearTimeout(this.__positionContextTimer);
+      this.__positionContextTimer = setTimeout(() => {
         // always on active if we were just typing
         this.positionContextMenus(this.activeNode, this.activeNode);
       }, 2000);
@@ -722,6 +734,7 @@ class HaxBody extends SimpleColors {
           local.parentNode.parentNode === this.activeContainerNode ||
           local.parentNode.parentNode.parentNode === this.activeContainerNode
         ) {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
           this.__addActiveHover();
           this.__typeLock = false;
         } else {
@@ -1214,17 +1227,26 @@ class HaxBody extends SimpleColors {
         typeof props !== typeof undefined &&
         !window.HaxStore.instance.isTextElement(node)
       ) {
-        this.__activeContextType = this.shadowRoot.querySelector(
-          "#cecontextmenu"
+        this._hideContextMenu(
+          this.shadowRoot.querySelector("#textcontextmenu")
         );
         props.element = node;
-        this.__activeContextType.setHaxProperties(props);
+        this.shadowRoot.querySelector("#cecontextmenu").setHaxProperties(props);
+        this._positionContextMenu(
+          this.shadowRoot.querySelector("#cecontextmenu"),
+          node,
+          -39,
+          -39
+        );
       } else {
-        this.__activeContextType = this.shadowRoot.querySelector(
-          "#textcontextmenu"
+        this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
+        this._positionContextMenu(
+          this.shadowRoot.querySelector("#textcontextmenu"),
+          node,
+          -39,
+          -39
         );
       }
-      this._positionContextMenu(this.__activeContextType, node, -39, -39);
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
@@ -1306,7 +1328,7 @@ class HaxBody extends SimpleColors {
   /**
    * Convert an element from one tag to another.
    */
-  haxChangeTagName(node, tagName, newNode) {
+  haxChangeTagName(node, tagName) {
     // ensure we're not in the document tree for the replaced node
     this.hideContextMenus();
     // Create a replacement tag of the desired type
@@ -1351,7 +1373,7 @@ class HaxBody extends SimpleColors {
     }
     // Switch!
     try {
-      this.replaceChild(replacement, node);
+      node.parentNode.replaceChild(replacement, node);
       // focus on the thing switched to
       setTimeout(() => {
         let children = replacement.children;
@@ -1489,16 +1511,15 @@ class HaxBody extends SimpleColors {
         // trigger the default selected value in context menu to match
         this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
           detail.eventName;
-        window.HaxStore.write(
-          "activeContainerNode",
-          this.haxChangeTagName(this.activeContainerNode, detail.eventName),
-          this
+        this.activeNode = this.haxChangeTagName(
+          this.activeNode,
+          detail.eventName
         );
+        window.HaxStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus(this.activeNode, this.activeContainerNode);
         break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
@@ -1637,30 +1658,15 @@ class HaxBody extends SimpleColors {
         this.activeNode.style.float = null;
         this.activeNode.style.margin = null;
         this.activeNode.style.display = null;
-        // animation forces us to have to wait to position
-        setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 200);
         break;
       case "hax-align-center":
         this.activeNode.style.float = null;
         this.activeNode.style.margin = "0 auto";
         this.activeNode.style.display = "block";
-        // animation forces us to have to wait to position
-        setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 200);
         break;
       case "hax-size-change":
         if (this.activeNode) {
           this.activeNode.style.width = detail.value + "%";
-          // animation forces us to have to wait to position
-          setTimeout(() => {
-            this.positionContextMenus(
-              this.activeNode,
-              this.activeContainerNode
-            );
-          }, 100);
         }
         break;
       // settings button selected from hax-ce-context bar
@@ -1837,7 +1843,6 @@ class HaxBody extends SimpleColors {
         ) {
           this.activeNode = activeNode;
           window.HaxStore.write("activeNode", activeNode, this);
-          this.hideContextMenus();
           this.positionContextMenus(activeNode, containerNode);
           stopProp = true;
         }
@@ -1845,7 +1850,6 @@ class HaxBody extends SimpleColors {
     } else {
       this.__tabTrap = false;
     }
-
     return stopProp;
   }
   /**
@@ -1861,7 +1865,13 @@ class HaxBody extends SimpleColors {
         typeof this.activeNode !== typeof undefined &&
         this.activeNode !== null
       ) {
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        setTimeout(() => {
+          if (this.activeContainerNode == null) {
+            this.activeContainerNode = this.activeNode;
+            window.HaxStore.write("activeContainerNode", this.activeNode, this);
+          }
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 0);
       }
     }
     // hide menus when state changes
@@ -1887,13 +1897,16 @@ class HaxBody extends SimpleColors {
   /**
    * Test if this is a HAX element or not
    * true means its a valid element for selection
+   * We have special support for the hax-logo because it's hax.
    */
   _validElementTest(node) {
-    if (
-      typeof node.tagName !== typeof undefined &&
-      node.tagName.substring(0, 4) !== "HAX-"
-    ) {
-      return true;
+    if (typeof node.tagName !== typeof undefined) {
+      if (
+        node.tagName.substring(0, 4) !== "HAX-" ||
+        node.tagName === "HAX-LOGO"
+      ) {
+        return true;
+      }
     }
     return false;
   }
@@ -1926,77 +1939,73 @@ class HaxBody extends SimpleColors {
       children = target.children;
     }
     for (var i = 0, len = children.length; i < len; i++) {
-      // we have to tell the browser that primatives are editable
-      if (this._HTMLPrimativeTest(children[i])) {
-        if (status) {
-          children[i].setAttribute("contenteditable", status);
-          children[i].setAttribute("data-editable", status);
-          if (children[i].querySelectorAll("a").length > 0) {
-            let links = children[i].querySelectorAll("a");
-            for (var j = 0, len2 = links.length; j < len2; j++) {
-              links[j].setAttribute("contenteditable", status);
-              links[j].setAttribute("data-editable", status);
-              links[j].addEventListener("click", e => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-              });
-            }
-          }
-        } else {
-          children[i].removeAttribute("contenteditable");
-          children[i].removeAttribute("data-editable");
-          if (children[i].querySelectorAll("a").length > 0) {
-            let links = children[i].querySelectorAll("a");
-            for (var j = 0, len2 = links.length; j < len2; j++) {
-              links[j].removeAttribute("data-editable");
-              links[j].removeAttribute("contenteditable");
-              links[j].removeEventListener("click", e => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-              });
-            }
-          }
+      // sanity check for being a valid element / not a "hax" element
+      if (this._validElementTest(children[i])) {
+        // correctly add or remove listeners
+        if (
+          !status ||
+          (children[i].getAttribute("contenteditable") !== true &&
+            children[i].getAttribute("contenteditable") != "true" &&
+            children[i].getAttribute("contenteditable") != "contenteditable")
+        ) {
+          this.__applyNodeEditableState(children[i], status);
         }
       }
-      // this does the real targetting
-      if (this._validElementTest(children[i])) {
-        if (status) {
-          let haxRay = children[i].tagName.replace("-", " ").toLowerCase();
-          let l = window.HaxStore.instance.gizmoList.findIndex(
-            j => j.tag === children[i].tagName.toLowerCase()
-          );
-          if (l !== -1) {
-            haxRay = window.HaxStore.instance.gizmoList[l].title;
+    }
+  }
+  /**
+   * Apply the node editable state correctly so we can do drag and drop / editing uniformly
+   */
+  __applyNodeEditableState(node, status = true) {
+    let listenerMethod;
+    // create the hax-ray x ray googles thing
+    let haxRay = node.tagName.replace("-", " ").toLowerCase();
+    let i = window.HaxStore.instance.gizmoList.findIndex(
+      j => j.tag === node.tagName.toLowerCase()
+    );
+    if (i !== -1) {
+      haxRay = window.HaxStore.instance.gizmoList[i].title;
+    }
+    // oooooo snap, drag and drop..
+    if (status) {
+      node.setAttribute("data-draggable", true);
+      node.setAttribute("data-editable", status);
+      node.setAttribute("data-hax-ray", haxRay);
+      listenerMethod = "addEventListener";
+    } else {
+      node.removeAttribute("data-draggable");
+      node.removeAttribute("data-editable");
+      node.removeAttribute("data-hax-ray");
+      listenerMethod = "removeEventListener";
+    }
+    node[listenerMethod]("drop", this.dropEvent.bind(this));
+    node[listenerMethod]("dragenter", this.dragEnter.bind(this));
+    node[listenerMethod]("dragleave", this.dragLeave.bind(this));
+    node[listenerMethod]("dragend", this.dragEnd.bind(this));
+    node[listenerMethod]("dragover", function(e) {
+      e.preventDefault();
+    });
+    // additional things for text based elements
+    if (this._HTMLPrimativeTest(node)) {
+      if (status) {
+        node.setAttribute("contenteditable", status);
+      } else {
+        node.removeAttribute("contenteditable");
+      }
+      if (node.querySelectorAll("a").length > 0) {
+        let links = node.querySelectorAll("a");
+        for (var j = 0, len2 = links.length; j < len2; j++) {
+          if (status) {
+            links[j].setAttribute("contenteditable", status);
+            links[j].setAttribute("data-editable", status);
+          } else {
+            links[j].removeAttribute("contenteditable");
+            links[j].removeAttribute("data-editable");
           }
-          // oooooo snap, drag and drop..
-          children[i].setAttribute("data-draggable", true);
-          children[i].setAttribute("data-editable", status);
-          children[i].setAttribute("data-hax-ray", haxRay);
-          children[i].addEventListener("drop", this.dropEvent.bind(this));
-          children[i].addEventListener("dragenter", this.dragEnter.bind(this));
-          children[i].addEventListener("dragleave", this.dragLeave.bind(this));
-          children[i].addEventListener("dragend", this.dragEnd.bind(this));
-          children[i].addEventListener("dragover", function(e) {
+          links[j][listenerMethod]("click", e => {
             e.preventDefault();
-          });
-        } else {
-          children[i].removeAttribute("data-draggable");
-          children[i].removeAttribute("data-editable");
-          children[i].removeAttribute("data-hax-ray");
-          children[i].removeEventListener("drop", this.dropEvent.bind(this));
-          children[i].removeEventListener(
-            "dragenter",
-            this.dragEnter.bind(this)
-          );
-          children[i].removeEventListener(
-            "dragleave",
-            this.dragLeave.bind(this)
-          );
-          children[i].removeEventListener("dragend", this.dragEnd.bind(this));
-          children[i].removeEventListener("dragover", function(e) {
-            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
           });
         }
       }
@@ -2040,7 +2049,9 @@ class HaxBody extends SimpleColors {
       }
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
-        target.focus();
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 0);
       }
     }
   }
@@ -2152,10 +2163,14 @@ class HaxBody extends SimpleColors {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
         // position the operations / in context element
-        clearTimeout(this.positionContextTimer);
-        this.positionContextTimer = setTimeout(() => {
-          this.positionContextMenus(newValue, newValue);
-        }, 1000);
+        // this seems odd but its in case a ton of elements are inserted
+        // all at once to keep from things jumping around
+        clearTimeout(this.__positionContextTimer);
+        this.__positionContextTimer = setTimeout(() => {
+          if (newValue === this.activeNode) {
+            this.positionContextMenus(newValue, newValue);
+          }
+        }, 10);
       } else {
         newValue.removeAttribute("contenteditable");
         this.removeAttribute("contenteditable");

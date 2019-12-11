@@ -47,7 +47,10 @@ class HaxToolbarItem extends LitElement {
         paper-button {
           display: flex;
           align-items: center;
-          background-color: var(--hax-toolbar-item-bg, --hax-color-bg-accent);
+          background-color: var(
+            --hax-toolbar-item-bg,
+            var(--hax-color-bg-accent, white)
+          );
           color: var(--hax-toolbar-item-color, --hax-color-text);
           min-width: 0;
           margin: 0;
@@ -69,6 +72,7 @@ class HaxToolbarItem extends LitElement {
         paper-button:focus {
           color: var(--hax-color-text-active);
           outline: 1px solid var(--hax-color-accent1);
+          z-index: 2;
         }
         :host([default]) paper-button {
           background: black;

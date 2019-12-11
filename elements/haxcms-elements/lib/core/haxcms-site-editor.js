@@ -357,7 +357,9 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   _handleUserDataResponse(e) {
-    store.userData = e.detail.response.data;
+    if (e.detail.response && e.detail.response.data) {
+      store.userData = e.detail.response.data;
+    }
   }
 
   _lastErrorChanged(newValue) {
