@@ -116,16 +116,6 @@ class EditableOutline extends LitElement {
   render() {
     return html`
       <iron-a11y-keys
-        keys="shift+tab"
-        @keys-pressed="${this._tabBackKeyPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="tab"
-        @keys-pressed="${this._tabKeyPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
         keys="enter"
         @keys-pressed="${this._enterPressed}"
         stop-keyboard-event-propagation
@@ -300,6 +290,19 @@ class EditableOutline extends LitElement {
       }
     });
   }
+  _onKeyDown(e) {
+    if (this.editMode) {
+      switch (e.key) {
+        case "Tab":
+          if (e.shiftKey) {
+            this._tabBackKeyPressed(e);
+          } else {
+            this._tabKeyPressed(e);
+          }
+          break;
+      }
+    }
+  }
   /**
    * Click handler method needs to walk a little different then normal collapse
    */
@@ -326,7 +329,7 @@ class EditableOutline extends LitElement {
    */
   _delete(e) {
     let node = this.getSelectionNode();
-    if (node) {
+    if (node && node.tagName === "LI") {
       const parent = node.parentNode;
       node.remove();
       if (parent.children.length === 0) {
@@ -339,14 +342,12 @@ class EditableOutline extends LitElement {
     this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
       el.target = this.__outlineNode;
     });
-    // required because of async rendering
-    if (!this._observer) {
-      this._observer = new MutationObserver(this._observeRecord.bind(this));
-      this._observer.observe(this.__outlineNode, {
-        childList: true,
-        subtree: true
-      });
-    }
+    this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
+    this._observer = new MutationObserver(this._observeRecord.bind(this));
+    this._observer.observe(this.__outlineNode, {
+      childList: true,
+      subtree: true
+    });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -365,19 +366,6 @@ class EditableOutline extends LitElement {
         );
       }
     });
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    if (this.__outlineNode) {
-      this._observer = new MutationObserver(this._observeRecord.bind(this));
-      this._observer.observe(this.__outlineNode, {
-        childList: true,
-        subtree: true
-      });
-    }
   }
   /**
    * Mutation observer callback
@@ -417,6 +405,10 @@ class EditableOutline extends LitElement {
    * Disconnected life cycle
    */
   disconnectedCallback() {
+    this.__outlineNode.removeEventListener(
+      "keydown",
+      this._onKeyDown.bind(this)
+    );
     this._observer.disconnect();
     super.disconnectedCallback();
   }
