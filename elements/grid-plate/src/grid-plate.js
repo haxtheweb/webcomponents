@@ -658,7 +658,11 @@ class GridPlate extends LitElement {
           "active-item",
           "layouts",
           "columns",
-          "options"
+          "options",
+          "droppable",
+          "ignorehax",
+          "disableresponsive",
+          "activeitem"
         ]
       }
     };
