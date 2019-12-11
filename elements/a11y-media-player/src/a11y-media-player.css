@@ -180,6 +180,146 @@
   color: var(--a11y-media-color);
   background-color: transparent;
 }
+#controls {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 44px;
+  max-height: 44px;
+  position: relative;
+  color: var(--a11y-media-color);
+  --primary-text-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-background: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-background-color: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-color: var(--a11y-media-settings-menu-color);
+  --paper-listbox: {
+    padding: 0;
+  }
+  --paper-menu-button: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+  }
+  --paper-menu-button-dropdown: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  --paper-item-selected: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+  --paper-item-focused: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+}
+#controls-left {
+  position: absolute;
+  left: 0;
+  min-width: 200px;
+}
+#controls-right {
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+paper-menu-button,
+dropdown-select {
+  padding: 0;
+}
+paper-icon-button {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-icon-button:active,
+paper-icon-button:focus,
+paper-icon-button:hover {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-item {
+  min-height: 40;
+}
+.play-status,
+paper-icon-button {
+  border: none;
+  position: relative;
+}
+.play-status {
+  font-size: 85%;
+}
+.play-status.control-bar {
+  padding: 8px 13px 8px;
+}
+:host([hide-play-status]) .play-status {
+  display: none;
+}
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.setting-text {
+  min-width: 125px;
+}
+.setting-control {
+  max-width: 100px;
+}
+.setting-slider {
+  width: 130px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#speed {
+  --paper-slider-knob-start-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-start-border-color: var(
+    --a11y-media-accent-color
+  );
+  --paper-slider-knob-end-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
+}
+#showvolume {
+  display: inline-block;
+  position: relative;
+}
+#volume {
+  position: absolute;
+  left: 30px;
+  top: 0px;
+  width: 0;
+  height: 40px;
+  overflow: hidden;
+  transition: width 0.5s;
+  z-index: 3;
+  border-radius: 4px;
+  background-color: var(--a11y-media-bg-color);
+  --paper-slider-knob-end-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
+}
+
+#volume:active,
+#volume:focus,
+#volume:hover,
+#volume.focus,
+#showvolume:active #volume,
+#showvolume:focus #volume,
+#showvolume:hover #volume {
+  overflow: visible;
+  width: 100px;
+}
+:host([responsive-size="xs"]) #volume:active,
+:host([responsive-size="xs"]) #volume:focus,
+:host([responsive-size="xs"]) #volume:hover,
+:host([responsive-size="xs"]) #volume.focus,
+:host([responsive-size="xs"]) #showvolume:active #volume,
+:host([responsive-size="xs"]) #showvolume:focus #volume,
+:host([responsive-size="xs"]) #showvolume:hover #volume {
+  top: 0px;
+}
 #printthumb {
   width: 100%;
   margin: 0;
@@ -273,6 +413,8 @@
   width: 0;
   overflow: hidden;
 }
+paper-menu-button:not(:defined) paper-listbox, 
+paper-listbox:not(:defined), 
 paper-tooltip:not(:defined), 
 paper-toast:not(:defined) {
   display: none;

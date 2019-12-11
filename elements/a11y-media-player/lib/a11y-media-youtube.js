@@ -172,6 +172,9 @@ class A11yMediaYoutube extends LitElement {
     iframe.play = () => {
       if (iframe.playVideo !== undefined) iframe.playVideo();
     };
+    iframe.getDuration = () => {
+      return iframe.duration;
+    };
     iframe.addEventListener("onStateChange", () => {
       iframe.paused = iframe.getPlayerState() !== 1;
       if (iframe.paused) {

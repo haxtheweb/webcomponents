@@ -25,6 +25,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
        */
       action: {
         attribute: "action",
+        reflect: true,
         type: String
       },
       /*
@@ -32,6 +33,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
        */
       controls: {
         attribute: "controls",
+        reflect: true,
         type: String
       },
       /*
@@ -86,17 +88,18 @@ class A11yMediaButton extends A11yMediaBehaviors {
     super();
     this.action = null;
     this.controls = "video";
+    this.disabled = false;
     this.icon = null;
     this.label = null;
     this.toggle = false;
-    this.disabled = false;
-    this.tooltipPosition = null;
+    this.tooltipPosition = "bottom";
     import("@polymer/paper-tooltip/paper-tooltip.js");
   }
 
   static get styles() {
     return [
       ...super.styles,
+      this.buttonStyles,
       css`
         :host {
           margin: 0;
@@ -144,6 +147,31 @@ class A11yMediaButton extends A11yMediaBehaviors {
       `
     ];
   }
+  static get buttonStyles() {
+    return [
+      css`
+        #button {
+          margin: 0;
+          border: none;
+        }
+        .sr-only {
+          position: absolute;
+          left: -99999;
+          top: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        paper-tooltip {
+          z-index: 100;
+        }
+        paper-tooltip:not(:defined) {
+          display: none;
+        }
+      `
+    ];
+  }
+
   render() {
     return html`
       <button
@@ -151,7 +179,6 @@ class A11yMediaButton extends A11yMediaBehaviors {
         aria-label="${this.label}"
         aria-pressed="${this.toggle ? "true" : "false"}"
         controls="${this.controls}"
-        role="button"
         tabindex="0"
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
@@ -169,11 +196,12 @@ class A11yMediaButton extends A11yMediaBehaviors {
    * lets player know this button was clicked
    */
   _buttonClick(e) {
+    console.log("button-click", e);
     /**
      * Fires when button is clicked
      * @event click-details
      */
-    this.dispatchEvent(new CustomEvent("click-details", { detail: this }));
+    this.dispatchEvent(new CustomEvent("button-click", { detail: this }));
   }
 }
 window.customElements.define(A11yMediaButton.tag, A11yMediaButton);

@@ -1,12 +1,5 @@
 {
   /**
-   * array of cues
-   */
-  "activeCues": {
-    "attribute": "active-cues",
-    "type": "Array"
-  },
-  /**
    * Allow this media to play concurrently with other a11y-media-players?
    * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
    */
@@ -16,17 +9,33 @@
     "type": "Boolean"
   },
   /**
-   * Is it an audio player with no thumbnail?
+   * Is this an audio file?
    */
-  "audioNoThumb": {
-    "attribute": "audio-no-thumb",
+  "audioOnly": {
+    "attribute": "audio-only",
+    "type": "Boolean",
+    "reflect": true
+  },
+  /**
+   * autoplay is an option,
+   * but generally not recommended for a11y
+   */
+  "autoplay": {
+    "attribute": "autoplay",
     "type": "Boolean"
   },
   /**
-   * Use dark theme on transcript? Default is false, even when player is dark.
+   * the selected track
    */
-  "darkTranscript": {
-    "attribute": "dark-transcript",
+  "captionsTrack": {
+    "attribute": "captions-track",
+    "type": "Object"
+  },
+  /**
+   * show closed captions
+   */
+  "cc": {
+    "attribute": "cc",
     "type": "Boolean"
   },
   /**
@@ -35,6 +44,41 @@
   "crossorigin": {
     "attribute": "crossorigin",
     "type": "String"
+  },
+  /**
+   * disable transcript print button
+   */
+  "disablePrintButton": {
+    "attribute": "disable-print-button",
+    "type": "Boolean"
+  },
+  /**
+   * disable transcript search feature
+   */
+  "disableSearch": {
+    "attribute": "disable-search",
+    "type": "Boolean"
+  },
+  /**
+   * disable autoscrolling as transcript plays
+   */
+  "disableScroll": {
+    "attribute": "disable-scroll",
+    "type": "Boolean"
+  },
+  /**
+   * disables seeking
+   */
+  "disableSeek": {
+    "attribute": "disable-seek",
+    "type": "Boolean"
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "attribute": "dark-transcript",
+    "type": "Boolean"
   },
   /**
    * disable fullscreen option
@@ -51,14 +95,6 @@
     "type": "Boolean"
   },
   /**
-   * Determines if video and transcript are in a flex layout
-   */
-  "flexLayout": {
-    "attribute": "flex-layout",
-    "type": "Boolean",
-    "reflect": true
-  },
-  /**
    * Is fullscreen mode?
    */
   "fullscreen": {
@@ -70,8 +106,7 @@
    */
   "fullscreenButton": {
     "attribute": "fullscreen-button",
-    "type": "Boolean",
-    "notify": true
+    "type": "Boolean"
   },
   /**
    * Does the player have tracks?
@@ -79,6 +114,20 @@
   "hasCaptions": {
     "attribute": "has-captions",
     "type": "Boolean"
+  },
+  /**
+   * Does the player have an interactive transcript?
+   */
+  "hasTranscript": {
+    "attribute": "has-transcript",
+    "type": "Boolean"
+  },
+  /**
+   * The height of the media player.
+   */
+  "height": {
+    "attribute": "height",
+    "type": "String"
   },
   /**
    * Hide elapsed time?
@@ -111,11 +160,46 @@
     "reflect": true
   },
   /**
-   * The default media caption if none is given.
+   * Language
    */
-  "mediaCaption": {
-    "attribute": "media-caption",
+  "lang": {
+    "attribute": "lang",
     "type": "String"
+  },
+  /**
+   * has link button
+   */
+  "linkable": {
+    "attribute": "linkable",
+    "type": "Boolean"
+  },
+  /**
+   * custom localization settings
+   */
+  "localization": {
+    "attribute": "localization",
+    "type": "Object"
+  },
+  /**
+   * Loop the video?
+   */
+  "loop": {
+    "attribute": "loop",
+    "type": "Boolean"
+  },
+  /**
+   * Dash.js manifest source?
+   */
+  "manifest": {
+    "attribute": "manifest",
+    "type": "String"
+  },
+  /**
+   * the media to be manipulated
+   */
+  "media": {
+    "attribute": "media",
+    "type": "Object"
   },
   /**
    * the language of the media (if different from user interface language)
@@ -125,11 +209,25 @@
     "type": "String"
   },
   /**
-   * The media caption that displays when the page is printed.
+   * optional title of media (shows when printed)
    */
-  "printCaption": {
-    "attribute": "print-caption",
+  "mediaTitle": {
+    "attribute": "media-title",
     "type": "String"
+  },
+  /**
+   * Is audio muted?
+   */
+  "muted": {
+    "attribute": "muted",
+    "type": "Boolean"
+  },
+  /**
+   * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
+   */
+  "playbackRate": {
+    "attribute": "playback-rate",
+    "type": "Number"
   },
   /**
    * Size of the a11y media element for responsive styling
@@ -137,34 +235,25 @@
   "responsiveSize": {
     "attribute": "responsive-size",
     "type": "String",
-    "notify": true,
     "reflect": true
   },
   /**
-   * Has screenfull loaded?
+   * the search tool for the transcript
    */
-  "screenfullLoaded": {
-    "attribute": "screenfull-loaded",
+  "search": {
+    "attribute": "search",
+    "type": "Object"
+  },
+  /**
+   * Is stand-alone player (without transcript)?
+   */
+  "standAlone": {
+    "attribute": "stand-alone",
     "type": "Boolean",
-    "notify": true
+    "reflect": true
   },
   /**
-   * Has screenfull loaded?
-   */
-  "shareLink": {
-    "attribute": "share-link",
-    "type": "String"
-  },
-
-  /**
-   * is YouTube?
-   */
-  "showCustomCaptions": {
-    "attribute": "showCustom-captions",
-    "type": "Boolean"
-  },
-  /**
-   * Optional array ouf sources.
+   * DEPRECATED: array ouf sources
    */
   "sources": {
     "attribute": "sources",
@@ -196,6 +285,13 @@
     "reflect": true
   },
   /**
+   * target of the controls
+   */
+  "target": {
+    "attribute": "target",
+    "type": "Object"
+  },
+  /**
    * Source of optional thumbnail image
    */
   "thumbnailSrc": {
@@ -204,7 +300,7 @@
     "reflect": true
   },
   /**
-   * Optional array ouf tracks.
+   * DEPRECATED: array of tracks.
    */
   "tracks": {
     "attribute": "tracks",
@@ -217,16 +313,69 @@
     "attribute": "transcript"
   },
   /**
+   * the selected track for the transcript
+   */
+  "transcriptTrack": {
+    "attribute": "transcript-track",
+    "type": "Object"
+  },
+  /**
+   * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
+   */
+  "volume": {
+    "attribute": "volume",
+    "type": "Number"
+  },
+  /**
+   * The width of the media player.
+   */
+  "width": {
+    "attribute": "width",
+    "type": "String"
+  },
+  /**
+   * the id for the video
+   */
+  "youtubeId": {
+    "attribute": "youtube-id",
+    "type": "String"
+  },
+  /**
+   * the YouTube player object
+   */
+  "youtube": {
+    "attribute": "youtube",
+    "type": "Object"
+  },
+  /**
+   * array of cues
+   */
+  "__activeCues": {
+    "type": "Array"
+  },
+  /**
    * Active transcript track
    */
   "__activeTrack": {
     "type": "Array"
   },
   /**
+   * Is it an audio player with no thumbnail?
+   */
+  "__audioNoThumb": {
+    "type": "Boolean"
+  },
+  /**
    * Notice if the video is playing
    */
   "__captionHref": {
     "type": "String"
+  },
+  /**
+   * `key` of selected textTrack for captions area
+   */
+  "__captionsOption": {
+    "type": "Number"
   },
   /**
    * array of cues
@@ -259,9 +408,78 @@
     "type": "Number"
   },
   /**
+   * Determines if video and transcript are in a flex layout
+   */
+  "__flexLayout": {
+    "attribute": "flex-layout",
+    "type": "Boolean",
+    "reflect": true
+  },
+  /**
+   * The media tag where sources and tracks can be found
+   */
+  "__html5Media": {
+    "type": "Array"
+  },
+  /**
+   * is YouTube?
+   */
+  "__isYoutube": {
+    "type": "Boolean"
+  },
+  /**
+   * default localization settings
+   */
+  "__localizationDefaults": {
+    "type": "Object"
+  },
+  /**
+   * The default media caption if none is given.
+   */
+  "__mediaCaption": {
+    "type": "String"
+  },
+  /**
    * Notice if the video is playing
    */
   "__playing": {
+    "type": "Boolean"
+  },
+  /**
+   * The media caption that displays when the page is printed.
+   */
+  "__printCaption": {
+    "type": "String"
+  },
+  /**
+   * Has screenfull loaded?
+   */
+  "__screenfullLoaded": {
+    "type": "Boolean"
+  },
+  /**
+   * Has screenfull loaded?
+   */
+  "__shareLink": {
+    "type": "String"
+  },
+  /**
+   * `key` of selected textTrack for transcript area
+   */
+  "__transcriptOption": {
+    "type": "Number"
+  },
+  /**
+   * currently selected volume level
+   */
+  "__volumeOption": {
+    "type": "Number"
+  },
+  /**
+   * is YouTube?
+   */
+  "showCustomCaptions": {
+    "attribute": "show-custom-captions",
     "type": "Boolean"
   }
 }

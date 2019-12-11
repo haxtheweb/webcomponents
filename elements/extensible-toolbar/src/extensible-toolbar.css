@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  opacity: 1;
+  z-index: 1;
+  margin: 0;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  transition: all 0.5s;
+  --extensible-toolbar-visible-until-sm: unset;
+  --extensible-toolbar-visible-until-md: unset;
+  --extensible-toolbar-visible-until-lg: unset;
+  --extensible-toolbar-visible-until-xl: unset;
+  --extensible-toolbar-hidden-until-sm: none;
+  --extensible-toolbar-hidden-until-md: none;
+  --extensible-toolbar-hidden-until-lg: none;
+  --extensible-toolbar-hidden-until-xl: none;
+}
+:host([hidden]) {
+  display: none;
+}
+:host([aria-hidden]) {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+:host([sticky]) {
+  position: sticky;
+  top: 0;
+}
+:host([collapsed]:not([responsive-size="xs"])){
+  --extensible-toolbar-visible-until-sm: none;
+  --extensible-toolbar-hidden-until-sm: unset;
+}
+:host([collapsed]:not([responsive-size*="s"])){
+  --extensible-toolbar-visible-until-md: none;
+  --extensible-toolbar-hidden-until-md: none;
+}
+:host([collapsed][responsive-size*="l"]){
+  --extensible-toolbar-visible-until-lg: none;
+  --extensible-toolbar-hidden-until-lg: none;
+}
+:host([collapsed][responsive-size="xl"]){
+  --extensible-toolbar-visible-until-xl: none;
+  --extensible-toolbar-hidden-until-xl: none;
+}

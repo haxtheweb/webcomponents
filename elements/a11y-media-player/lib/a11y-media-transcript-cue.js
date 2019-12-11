@@ -167,6 +167,20 @@ class A11yMediaTranscriptCue extends LitElement {
       </span>
     `;
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "active" && this.active)
+        this.dispatchEvent(
+          new CustomEvent("active-changed", {
+            detail: {
+              element: this,
+              oldValue: oldValue,
+              value: this.active
+            }
+          })
+        );
+    });
+  }
 }
 window.customElements.define(
   A11yMediaTranscriptCue.tag,

@@ -4,11 +4,11 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./lib/a11y-media-state-manager.js";
-import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-transcript-cue.js";
 
@@ -24,13 +24,14 @@ import "./lib/a11y-media-transcript-cue.js";
  * @demo ./demo/youtube.html YouTube demo
  *
  */
-class A11yMediaPlayer extends A11yMediaBehaviors {
+class A11yMediaPlayer extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   // simple path from a url modifier
   pathFromUrl(url) {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
+
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -41,55 +42,202 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
   constructor() {
     super();
-    this.activeCues = [];
-    this.audioNoThumb = this._getAudioNoThumb(false, null);
+    this.__localizationDefaults = {
+      audio: {
+        label: "Audio",
+        notSupported: "HTML5 video is not supported."
+      },
+      autoScroll: {
+        label: "Scroll Transcript",
+        icon: "swap-vert"
+      },
+      captions: {
+        label: "Closed Captions",
+        icon: "av:closed-caption",
+        off: "Off"
+      },
+      download: {
+        label: "Download Transcript",
+        icon: "file-download"
+      },
+      forward: {
+        label: "Forward",
+        icon: "av:fast-forward"
+      },
+      fullscreen: {
+        label: "Fullscreen",
+        icon: "fullscreen"
+      },
+      copyLink: {
+        label: "Copy Media Link",
+        icon: "link"
+      },
+      closeLink: {
+        label: "Close",
+        icon: "close"
+      },
+      loading: {
+        label: "Loading..."
+      },
+      loop: {
+        label: "Loop Playback"
+      },
+      mute: {
+        label: "Mute",
+        icon: "av:volume-up"
+      },
+      nextResult: {
+        label: "Next",
+        icon: "arrow-forward"
+      },
+      pause: {
+        label: "Pause",
+        icon: "av:pause"
+      },
+      play: {
+        label: "Play",
+        icon: "av:play-arrow"
+      },
+      prevResult: {
+        label: "Previous",
+        icon: "arrow-back"
+      },
+      print: {
+        label: "Print Transcript",
+        icon: "print"
+      },
+      restart: {
+        label: "Restart",
+        icon: "av:replay"
+      },
+      rewind: {
+        label: "Backward",
+        icon: "av:fast-rewind"
+      },
+      search: {
+        label: "Search the transcript.",
+        icon: "search"
+      },
+      seekSlider: {
+        label: "Seek Slider"
+      },
+      settings: {
+        label: "Settings",
+        icon: "settings"
+      },
+      speed: {
+        label: "Speed %"
+      },
+      transcript: {
+        label: "Transcript",
+        icon: "description",
+        loading: "Loading the transcript(s)...",
+        off: "Off",
+        skip: "Skip to the transcript."
+      },
+      unmute: {
+        label: "Unmute",
+        icon: "av:volume-off"
+      },
+      video: {
+        label: "Video",
+        notSupported: "HTML5 video is not supported."
+      },
+      volume: {
+        label: "Volume"
+      },
+      youTubeLoading: {
+        label: "Ready."
+      },
+      youTubeTranscript: {
+        label: "Transcript will load once media plays."
+      }
+    };
+    this.audioOnly = false;
+    this.autoplay = false;
     this.allowConcurrent = false;
+    this.cc = false;
     this.darkTranscript = false;
     this.disableFullscreen = false;
     this.disableInteractive = false;
-    this.flexLayout = true;
+    this.disablePrintButton = false;
+    this.disableSearch = false;
+    this.disableScroll = false;
+    this.disableSeek = false;
     this.fullscreen = false;
     this.fullscreenButton = false;
     this.hasCaptions = false;
+    this.hasTranscript = false;
+    this.height = null;
     this.hideElapsedTime = false;
     this.hideTimestamps = false;
     this.hideTranscript = false;
     this.id = null;
-    this.mediaCaption = this._getMediaCaption(false, "");
+    this.lang = "en";
+    this.linkable = false;
+    this.localization = {};
+    this.loop = false;
+    this.manifest = null;
+    this.media = null;
+    this.mediaTitle = "";
     this.mediaLang = "en";
     this.muted = false;
-    this.printCaption = this._getPrintCaption(false, "");
+    this.playbackRate = 1;
+    this.search = null;
+    this.standAlone = false;
     this.responsiveSize = "xs";
-    this.screenfullLoaded = false;
-    this.shareLink = this._getShareLink(0);
+    this.captionsTrack = null;
+    this.transcriptTrack = null;
     this.showCustomCaptions = false;
     this.sources = [];
     this.stackedLayout = false;
     this.sticky = false;
     this.stickyCorner = "top-right";
+    this.target = null;
     this.tracks = [];
-    this.__activeTrack = null;
+    this.volume = 70;
+    this.width = null;
+    this.youtubeId = null;
+    this.youtube = {};
+    this.__activeCues = [];
+    this.__audioNoThumb = this._getAudioNoThumb(false, null);
     this.__cues = [];
+    this.__captionHref = "";
+    this.__captionsOption = -1;
+    this.__html5Media = null;
+    this.__isYoutube = null;
     this.__filteredCues = [];
     this.__duration = 0;
-    this.__elapsed = null;
+    this.__elapsed = 0;
+    this.__flexLayout = true;
+    this.__mediaCaption = this._getMediaCaption(false, "");
     this.__playing = false;
-    this.__captionHref = "";
     this.__playerAttached = true;
-    this.__status = this._getLocal("loading", "label");
+    this.__printCaption = this._getPrintCaption(false, "");
+    this.__screenfullLoaded = false;
+    this.__shareLink = this._getShareLink(0);
+    this.__status = this._getLocal(this.localization, "loading", "label");
     this.__resumePlaying = false;
+    this.__transcriptOption = -1;
+    this.__volumeOption = 70;
     this._setPlayerHeight();
 
     window.A11yMediaStateManager.requestAvailability();
-
-    import("./lib/a11y-media-transcript.js");
     import("./lib/a11y-media-youtube.js");
-    import("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js");
     import("@polymer/paper-slider/paper-slider.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
-    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/paper-menu-button/paper-menu-button.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js");
+    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
@@ -103,12 +251,16 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
   connectedCallback() {
     super.connectedCallback();
-    let media = this.querySelectorAll("audio,video");
+    console.log(this.share);
+    let root = this,
+      media = this.querySelectorAll("audio,video");
     media.forEach(medium => {
       medium.removeAttribute("autoplay");
       medium.style.width = "100%";
       medium.style.maxWidth = "100%";
+      medium.setAttribute("preload", "metadata");
     });
+
     if (media.length > 0) {
       this.media = media[0];
       this.audioOnly = this.media.tagName === "AUDIO";
@@ -121,11 +273,30 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) media.appendChild(node);
       });
+      media.setAttribute("preload", "metadata");
       this.appendChild(media);
       this.media = media;
     }
+    /* handle deprecated tracks */
+    this.tracks.forEach(track => {
+      let node = document.createElement("track");
+      Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
+      media.appendChild(node);
+    });
+    /* handle deprecated sources */
+    this.sources.forEach(source => {
+      let node = document.createElement("source");
+      Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
+      media.appendChild(node);
+    });
+    this.__html5Media = this.media;
+    this.__html5Media.addEventListener("media-loaded", e =>
+      root._handleMediaLoaded(e)
+    );
+    this.__html5Media.addEventListener("timeupdate", e =>
+      root._handleTimeUpdate(e)
+    );
     this._addResponsiveUtility();
-    this.transcript = this.shadowRoot.querySelector("#transcript");
     /**
      * Fires when a new player is ready for a11y-media-state-manager
      * @event a11y-player
@@ -156,120 +327,143 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   firstUpdated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "isYoutube" && this.isYoutube) this._youTubeRequest();
+      if (propName === "__isYoutube" && this.__isYoutube)
+        this._youTubeRequest();
     });
   }
 
   /**
    * @param {map} changedProperties the properties that have changed
    */
-
   updated(changedProperties) {
-    let notifiedProps = [
-      "fullscreenButton",
-      "responsiveSize",
-      "screenfullLoaded",
-      "__elapsed",
-      "__playing",
-      "__captionHref"
-    ];
     changedProperties.forEach((oldValue, propName) => {
       this._updateMediaProperties(propName);
       this._updateCaptionProperties(propName);
       if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
-      if (propName === "cc") this._handleCCChanged();
+
+      /* updates playback status */
+      if (propName === "__elapsed")
+        this.__shareLink = this._getShareLink(this.__elapsed);
+
+      /* updates volume */
       if (propName === "muted") this._handleMuteChanged();
       if (propName === "volume") this.setVolume(this.volume);
+
+      /* updates captions */
+      if (propName === "__captionsOption") this._captionsOptionChanged();
+      if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
+      if (["audioOnly", "hasCaptions", "__isYoutube"].includes(propName))
+        this.showCustomCaptions =
+          (this.__isYoutube || this.audioOnly) && this.hasCaptions && this.cc;
+
+      /* updates tranmsctipt */
+      if (["hasCaptions", "standAlone"].includes(propName))
+        this.hasTranscript = this.hasCaptions && !this.standAlone;
+      if (propName === "__transcriptOption") this._transcriptOptionChanged();
+      if (["hideTranscript", "transcriptTrack"].includes(propName))
+        this._transcriptChanged();
       if (propName === "__cues") this.hasCaptions = this.__cues.length > 1;
-      if (propName === "__elapsed")
-        this.shareLink = this._getShareLink(this.__elapsed);
-      if (propName === "__playing")
-        this.playPause = this._getPlayPause(this.__playing);
+      if (["transcriptTrack", "__cues"].includes(propName)) {
+        let cues = this.__cues.slice();
+        this.__filteredCues = cues.filter(
+          cue => cue.track === this.transcriptTrack
+        );
+      }
+      /* updates layout */
       if (
-        ["audioNoThumb", "disableFullscreen", "screenfullLoaded"].includes(
+        ["__audioNoThumb", "disableFullscreen", "__screenfullLoaded"].includes(
           propName
         )
       )
         this.fullscreenButton = this._getFullscreenButton(
           this.disableFullscreen,
-          this.audioNoThumb
+          this.__audioNoThumb
         );
       if (
         [
-          "audioNoThumb",
+          "__audioNoThumb",
           "hideTranscript",
           "stackedLayout",
           "standAlone"
         ].includes(propName)
       )
-        this.flexLayout = !(
+        this.__flexLayout = !(
           this.standAlone ||
           this.hideTranscript ||
-          this.audioNoThumb ||
+          this.__audioNoThumb ||
           this.stackedLayout
         );
-      if (["audioOnly", "hasCaptions", "isYoutube"].includes(propName))
-        this.showCustomCaptions =
-          (this.isYoutube || this.audioOnly) && this.hasCaptions && this.cc;
       if (["audioOnly", "thumbnailSrc"].includes(propName))
-        this.audioNoThumb = this._getAudioNoThumb(
+        this.__audioNoThumb = this._getAudioNoThumb(
           this.audioOnly,
           this.thumbnailSrc
         );
       if (["fullscreen", "height", "media", "width"].includes(propName))
         this._setPlayerHeight();
-      if (["hasCaptions", "standAlone"].includes(propName))
-        this.hasTranscript = this.hasCaptions && !this.standAlone;
-      if (["selectedTrack", "__cues"].includes(propName))
-        this.__filteredCues = this.__cues.filter(
-          cue => cue.track === this.selectedTrack
-        );
 
-      if (notifiedProps.includes(propName)) {
-        this.dispatchEvent(
-          new CustomEvent(
-            `${propName
-              .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-              .toLowerCase()}-changed`,
-            { detail: { value: this[propName] } }
-          )
-        );
-      }
+      this.dispatchEvent(
+        new CustomEvent(
+          `${propName
+            .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+            .toLowerCase()}-changed`,
+          { detail: { value: this[propName] } }
+        )
+      );
     });
   }
 
   /**
-   * handles closed captions change
+   * updates track mode & `__captionsOption` when `captionsTrack` or `cc` changes
    */
-  _handleCCChanged() {
-    console.log("_handleCCChanged", this.selectedTrack, this.cc);
-    if (this.selectedTrack && this.cc === true) {
-      this.selectedTrack.mode = "showing";
-      this.querySelector("video,audio").textTracks.value = this.selectedTrackId;
-    } else if (this.selectedTrack) {
-      this.selectedTrack.mode = "hidden";
-      this.querySelector("video,audio").textTracks.value = "";
-    }
-    /**
-     * Fires when closed caption is toggled
-     * @event cc-changed
-     */
-    window.dispatchEvent(
-      new CustomEvent("cc-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
+  _captionsChanged() {
+    let ccNum = -1;
+    Object.keys(this.__html5Media.textTracks).forEach(key => {
+      let showing =
+        this.cc && this.__html5Media.textTracks[key] === this.captionsTrack;
+      this.__html5Media.textTracks[key].mode = showing ? "showing" : "hidden";
+      if (showing) ccNum = key;
+    });
+    this.__captionsOption = ccNum;
+  }
+
+  /**
+   * updates track mode & `captionsTrack` when `__captionsOption` changes
+   */
+  _captionsOptionChanged() {
+    this.cc = this.__captionsOption > -1;
+    Object.keys(this.__html5Media.textTracks).forEach(key => {
+      let showing = parseInt(key) == parseInt(this.__captionsOption);
+      this.__html5Media.textTracks[key].mode = showing ? "showing" : "hidden";
+      if (showing) this.captionsTrack = this.__html5Media.textTracks[key];
+    });
+  }
+
+  /**
+   * updates `__transcriptOption` when `transcriptTrack` or `hide-transcript` changes
+   */
+  _transcriptChanged() {
+    this.__transcriptOption = this.hideTranscript
+      ? -1
+      : this._getTrackId(this.transcriptTrack);
+  }
+
+  /**
+   * updates track mode & `transcriptTrack` when `__transcriptOption` changes
+   */
+  _transcriptOptionChanged() {
+    if (this.__transcriptOption > -1)
+      this.transcriptTrack = this.__html5Media.textTracks[
+        this.__transcriptOption
+      ];
+    this.hideTranscript = this.__transcriptOption < 0;
   }
 
   /**
    * handles mute change
    */
   _handleMuteChanged() {
-    if (this.isYoutube) {
+    if (this.__isYoutube) {
       this.media.setMute(this.muted);
     } else {
       this.media.muted = this.muted;
@@ -289,6 +483,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   }
 
   /**
+   * determine which button was clicked and act accordingly
+   */
+  _handleSettingsChanged(e) {
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#settings") &&
+      this.shadowRoot.querySelector("#settings").close &&
+      !e.path[0].opened
+    )
+      this.shadowRoot.querySelector("#settings").close();
+  }
+
+  /**
    * gets the buffered time
    */
   getBufferedTime() {
@@ -296,25 +503,30 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       ? this.media.buffered.end(0)
       : this.currentTime;
   }
+
   /**
    * gets download data for the active transcript
    * @param {string} the title of the media
    */
-  download(mediaTitle) {
+  download() {
     let a = document.createElement("a"),
       title =
-        mediaTitle !== null && mediaTitle !== ""
-          ? mediaTitle
-          : this._getLocal("transcript", "label"),
-      filename =
-        mediaTitle !== null && mediaTitle !== ""
-          ? mediaTitle.replace(/[^\w\d]/g, "")
-          : "Transcript",
-      selectedTrack = this.tracks.filter(
-        (track, index) => parseInt(this.selectedTranscript) === parseInt(index)
-      )[0],
-      data = selectedTrack.cues
-        .map(cue => `${cue.start} - ${cue.end}: ${cue.text}\n`)
+        this.mediaTitle && this.mediaTitle.trim() != ""
+          ? `${this.mediaTitle} (${this._getLocal(
+              this.localization,
+              "transcript",
+              "label"
+            )})`
+          : this._getLocal(this.localization, "transcript", "label"),
+      filename = title.replace(/[^\w\d]/g, ""),
+      cues = this.transcriptTrack.cues,
+      data = Object.keys(cues)
+        .map(
+          key =>
+            `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(
+              cues[key].endTime
+            )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`
+        )
         .join("");
     a.setAttribute(
       "href",
@@ -325,59 +537,89 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    /**
+     * Fires when transcript is downloaded
+     * @event transcript-downloaded
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-downloaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
   }
 
   /**
    * prints the active transcript
    * @param {string} the title of the media
    */
-  print(mediaTitle) {
-    let selectedTrack = this.tracks.filter(
-        (track, index) => parseInt(this.selectedTranscript) === parseInt(index)
-      )[0],
-      cues = selectedTrack.cues
-        .map(
-          cue => `
-        <div style="display: table-row;">
-          ${
-            this.hideTimestamps
-              ? ``
-              : `
-              <span style="display: table-cell;
-                font-size: 80%;
-                padding: 0 16px;
-                white-space: nowrap;
-                font-family: monospace;">
-                ${cue.start} - ${cue.end}:
-              </span>`
-          }
-          <span style="display: table-cell; line-height: 200%;">
-            ${cue.text}
-          </span>
-        </div>`
-        )
-        .join(""),
+  print() {
+    let cues = this.transcriptTrack.cues,
       title =
-        mediaTitle !== null && mediaTitle !== ""
-          ? mediaTitle
-          : this._getLocal("transcript", "label"),
+        this.mediaTitle && this.mediaTitle.trim() != ""
+          ? `${this.mediaTitle} (${this._getLocal(
+              this.localization,
+              "transcript",
+              "label"
+            )})`
+          : this._getLocal(this.localization, "transcript", "label"),
       print = window.open(
         "",
         "",
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
       );
-    print.document.body.innerHTML = `<h1>${title}</h1>${cues}`;
+    print.document.body.innerHTML = `
+    <h1>${title}</h1>
+    ${Object.keys(cues)
+      .map(
+        key =>
+          `<div style="display: table-row;">
+        ${
+          this.hideTimestamps
+            ? ``
+            : `
+            <span style="display: table-cell;
+              font-size: 80%;
+              padding: 0 16px;
+              white-space: nowrap;
+              font-family: monospace;">
+              ${this._getHHMMSS(cues[key].startTime)} - 
+              ${this._getHHMMSS(cues[key].endTime)}:
+            </span>`
+        }
+        <span style="display: table-cell; line-height: 200%;">
+          ${cues[key].text}
+        </span>
+      </div>`
+      )
+      .join("")}
+    `;
     print.document.close();
     print.focus();
     print.print();
     print.close();
+
+    /**
+     * Fires when transcript is printed
+     * @event transcript-printed
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-printed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
   }
 
   /**
    * plays the media
    */
   play() {
-    if (this.isYoutube && !this.__ytAppended) {
+    if (this.__isYoutube && !this.__ytAppended) {
       ytInit();
     } else {
       this.__playing = true;
@@ -550,41 +792,28 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       );
     }
   }
+  /**
+   * selects a specific transcript track
+   * @param {track} track text track
+   */
+  _getTrack(track) {
+    if (!track) {
+      let defaultTracks = this.__html5Media.textTracks.filter(
+        track => track.default === true
+      );
+      return defaultTracks
+        ? defaultTracks[0].track
+        : this.__html5Media.textTracks[0].track;
+    }
+    return track;
+  }
 
   /**
-   * selects a specific track by index
-   * @param {integer} index track index
+   * selects a specific track as transcript
+   * @param {track} track text track
    */
-  selectTrack(index) {
-    if (!index) {
-      let defaultTracks = this.tracks.filter(track => track.default === true);
-      this.selectedTrack = defaultTracks
-        ? defaultTracks[0].track
-        : this.tracks[0].track;
-    } else {
-      this.selectedTrack = this.tracks.filter(
-        track => track.value === index
-      )[0].track;
-    }
-    Object.keys(this.media.textTracks).forEach(key => {
-      if (this.media.textTracks[key])
-        this.media.textTracks[key].mode =
-          this.cc && this.media.textTracks[key] === this.selectedTrack
-            ? "showing"
-            : "hidden";
-    });
-    /**
-     * Fires when video track changes
-     * @event track-changed
-     */
-    window.dispatchEvent(
-      new CustomEvent("track-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
+  selectTranscript(track) {
+    this.transcriptTrack = this._getTrack(track);
   }
 
   /**
@@ -634,8 +863,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {boolean} Toggle CC on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleCC(mode) {
-    console.log("toggleCC", mode, this.cc);
     this.cc = typeof mode === typeof undefined ? !this.cc : mode;
+
     /**
      * Fires when closed caption is toggled
      * @event cc-toggle
@@ -651,25 +880,72 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   }
 
   /**
+   * toggles fullscreen
+   * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleFullscreen(mode) {
+    if (screenfull && this.fullscreenButton) {
+      this.fullscreen = mode === undefined ? !this.loop : mode;
+      this.toggleTranscript(this.fullscreen);
+      screenfull.toggle(this.shadowRoot.querySelector("#outerplayer"));
+
+      /**
+       * Fires when fullscreen is toggled
+       * @event fullscreen-toggle
+       */
+      window.dispatchEvent(
+        new CustomEvent("fullscreen-toggle", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
    * toggles looping
    * @param {boolean} Toggle looping on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleLoop(mode) {
-    if (this.isYoutube) {
+    this.loop = mode === undefined ? !this.loop : mode;
+    if (this.__isYoutube) {
+      this.media.setLoop(this.loop);
     } else {
-      this.loop = mode === undefined ? !this.loop : mode;
-      if (this.isYoutube) {
-        this.media.setLoop(this.loop);
-      } else {
-        this.media.loop = mode === true;
-      }
+      this.media.loop = mode === true;
     }
+
     /**
      * Fires when looping is toggled
      * @event loop-toggle
      */
     window.dispatchEvent(
       new CustomEvent("loop-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles play
+   * @param {boolean} Toggle play/pause? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  togglePlay() {
+    if (this.playing) {
+      this.pause();
+    } else {
+      this.play();
+    }
+    /**
+     * Fires when play/pause is toggled
+     * @event play-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("play-toggle", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -726,43 +1002,35 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   toggleTranscript(mode) {
     mode = mode === undefined ? this.hideTranscript : mode;
     this.hideTranscript = !mode;
-    if (
-      this.transcript &&
-      this.shadowRoot.querySelector("#transcript") !== null
-    ) {
-      /**
-       * Fires when transcript toggles
-       * @event transcript-toggle
-       */
-      this.dispatchEvent(
-        new CustomEvent("transcript-toggle", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-    }
+    /**
+     * Fires when transcript toggles
+     * @event transcript-toggle
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
   }
 
   /**
    * loads a track's cue metadata
    */
   _addSourcesAndTracks(media = this.media) {
-    let root = this,
-      counter = 0;
+    let root = this;
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    media.setAttribute("preload", "metadata");
-    this.__captionHref = media.querySelector("source[src]");
-    media.addEventListener("media-loaded", e => root._handleMediaLoaded(e));
-    media.addEventListener("timeupdate", e => root._handleTimeUpdate(e));
-    media.textTracks.onremovetrack = e => {
-      this.tracks.filter(track => track.value !== e.track);
+    this.__captionHref = this.__html5Media.querySelector("source[src]");
+    this.__html5Media.textTracks.onremovetrack = e => {
+      this.__html5Media.textTracks.filter(track => track !== e.track);
       this.__cues = this.__cues.filter(cue => cue.track !== e.track);
     };
-    media.textTracks.onaddtrack = e => {
-      if (!root.selectedTrack) root.selectedTrack = e.track;
+    this.__html5Media.textTracks.onaddtrack = e => {
+      if (this.captionsTrack === null) this.captionsTrack = e.track;
+      e.track.mode = "hidden";
       let loadCueData = setInterval(() => {
         if (e.track.cues && e.track.cues.length > 0) {
           clearInterval(loadCueData);
@@ -775,19 +1043,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         }
       });
     };
-    this.selectTrack();
-    this.tracks = Object.keys(media.textTracks).map(key => {
-      let d = this.media.querySelector("track[default]");
-      return {
-        default:
-          d &&
-          d.label == media.textTracks[key].label &&
-          d.srclang == media.textTracks[key].language &&
-          d.kind == media.textTracks[key].kind,
-        value: key,
-        track: media.textTracks[key]
-      };
-    });
+
+    let d = this.__html5Media.querySelector("track[default]"),
+      defaultTrack =
+        Object.keys(this.__html5Media.textTracks).find(key => {
+          return (
+            d.label === this.__html5Media.textTracks[key].label &&
+            d.kind === this.__html5Media.textTracks[key].kind &&
+            d.srclang === this.__html5Media.textTracks[key].scrlang
+          );
+        }) || 0;
+    this.captionsTrack = this.__html5Media.textTracks[defaultTrack];
+    this.transcriptTrack = this.captionsTrack;
+    this._setElapsedTime();
   }
 
   /**
@@ -805,7 +1073,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {boolean} Is fullscreen mode set to disabled?
    * @returns {boolean} Should fullscreen disabled?
    */
-  _getFullscreenButton(disableFullscreen, audioNoThumb, screenfullLoaded) {
+  _getFullscreenButton(disableFullscreen, audioNoThumb, __screenfullLoaded) {
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -828,7 +1096,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {string} the media caption
    */
   _getMediaCaption(audioOnly, mediaTitle) {
-    let audioLabel = this._getLocal("audio", "label"),
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -849,8 +1117,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {string} the media caption when the page is printed
    */
   _getPrintCaption(audioOnly, mediaTitle) {
-    let audioLabel = this._getLocal("audio", "label"),
-      videoLabel = this._getLocal("video", "label"),
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+      videoLabel = this._getLocal(this.localization, "video", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -883,63 +1151,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _getThumbnailCSS(thumbnailSrc, isYoutube, audioOnly) {
-    return thumbnailSrc != null && (isYoutube || audioOnly)
+  _getThumbnailCSS(thumbnailSrc, __isYoutube, audioOnly) {
+    return thumbnailSrc != null && (__isYoutube || audioOnly)
       ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
       : undefined;
-  }
-
-  /**
-   * loads a track's cue metadata
-   * @param {object} track text track
-   * @param {number} id unique identifier
-   * /
-  _getTrackData(track, id) {
-    let root = this,
-      selected = track.default === true || this.__selectedTrack === undefined,
-      loadCueData;
-    if (selected) this.selectTrack(id);
-    track.mode = selected && this.cc === true ? "showing" : "hidden";
-    loadCueData = setInterval(() => {
-      if (
-        track.cues !== undefined &&
-        track.cues !== null &&
-        track.cues.length > 0
-      ) {
-        clearInterval(loadCueData);
-        let cues = Object.keys(track.cues).map(key => {
-          return {
-            order: track.cues[key].id !== "" ? track.cues[key].id : key,
-            seek: track.cues[key].startTime,
-            seekEnd: track.cues[key].endTime,
-            start: this._getHHMMSS(
-              track.cues[key].startTime,
-              this.media.duration
-            ),
-            end: this._getHHMMSS(track.cues[key].endTime, this.media.duration),
-            text: track.cues[key].text
-          };
-        });
-
-        if (this.tracks === undefined) this.tracks = [];
-        this.tracks.push({
-          value: id,
-          language: track.language,
-          text:
-            track.label !== undefined
-              ? track.label
-              : track.language !== undefined
-              ? track.language
-              : "Track " + id,
-          cues: cues
-        });
-        track.oncuechange = e => {
-          root._setActiveCues(
-            Object.keys(e.currentTarget.activeCues).map(key => e.currentTarget.activeCues[key].id)
-          );
-        };
-      }
-    }, 1);
   }
 
   /**
@@ -962,7 +1177,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let el = document.createElement("textarea");
     this.__resumePlaying = this.__playing;
     this.pause;
-    el.value = this.shareLink;
+    el.value = this.__shareLink;
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
@@ -976,29 +1191,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {event} e seek event
    */
   _handleCueSeek(cue) {
-    if (!this.standAlone && this.transcript) {
+    if (!this.standAlone) {
       this.__resumePlaying = this.__playing;
-      this.seek(cue);
+      this.seek(cue.startTime);
     }
-  }
-
-  /**
-   * handles transcript printing
-   */
-  _handleDownload() {
-    this.shadowRoot.querySelector("#transcript").download(this.mediaTitle);
-    /**
-     * Fires when transcript is downloaded
-     * @event transcript-downloaded
-     */
-    this.dispatchEvent(
-      new CustomEvent("transcript-downloaded", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
   }
 
   /**
@@ -1013,29 +1209,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
     // gets and converts video duration
     this._setElapsedTime();
-    //this._getTrackData(this.querySelector("video,audio"));
 
     //if this video is part of the page's query string or anchor, seek the video
     if (target === this) this.seek(this._getSeconds(params.t));
-  }
-
-  /**
-   * handles transcript printing
-   */
-  _handlePrint() {
-    this.shadowRoot.querySelector("#transcript").print(this.mediaTitle);
-    /**
-     * Fires when transcript is printed
-     * @event transcript-printed
-     */
-    this.dispatchEvent(
-      new CustomEvent("transcript-printed", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
   }
 
   /**
@@ -1073,7 +1249,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _handleTimeUpdate() {
     //if play exceeds clip length, stop
-    if (this.isYoutube && this.media.duration !== this.media.getDuration()) {
+    if (this.__isYoutube && this.media.duration !== this.media.getDuration()) {
       this.__duration = this.media.duration = this.media.getDuration();
       this.__buffered = this.getBufferedTime() || 0;
       while (this.__buffered < this.__duration)
@@ -1103,21 +1279,24 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   }
 
   /**
-   * handles transcript scroll toggle
+   * gets `key` of given track
+   *
+   * @param {object} track textTrack
+   * @returns {number} key
    */
-  _handleTranscriptScroll() {
-    this.disableScroll = !this.disableScroll;
+  _getTrackId(track) {
+    return (
+      Object.keys(this.__html5Media.textTracks).find(
+        key => this.__html5Media.textTracks[key] === track
+      ) || -1
+    );
   }
 
   /**
-   * hides the playbutton for YouTube media that have no custom thumbnail
-   * and for media that are already playing
-   * @param {string} thumbnailSrc url for thumbnail image
-   * @param {boolean} isYoutube source is YouTube
-   * @returns {boolean} whether to hhide media
+   * handles transcript scroll toggle
    */
-  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
-    return (isYoutube && thumbnailSrc === null) || (__elapsed && __elapsed > 0);
+  _transcriptScroll() {
+    this.disableScroll = !this.disableScroll;
   }
 
   /**
@@ -1136,48 +1315,17 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * determine which button was clicked and act accordingly
    */
   _onControlsChanged(e) {
-    let action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
-
-    if (action === "backward" || action === "rewind") {
-      this.rewind();
-    } else if (action === "captions") {
-      this.toggleCC();
-    } else if (action === "transcript" || action === "transcript-toggle") {
-      this.toggleTranscript();
-    } else if (e.detail.id === "tracks") {
-      if (this.cc) this.selectTrack(e.detail.value);
-    } else if (action === "forward") {
-      this.forward();
-    } else if (action === "fullscreen" && this.fullscreenButton) {
-      this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#outerplayer"));
-    } else if (action === "loop") {
-      this.toggleLoop();
-    } else if (action === "mute" || action === "unmute") {
-      this.toggleMute();
-    } else if (action === "pause") {
-      this.pause();
-    } else if (action === "play") {
-      this.play();
-    } else if (action === "restart") {
-      this.seek(0);
-      this.play();
-    } else if (action === "speed") {
-      this.setPlaybackRate(e.detail.value);
-    } else if (action === "volume") {
-      this.volume = e.detail.value;
-    } else if (action === "linkable") {
-      this._handleCopyLink();
-    }
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
+      this.shadowRoot.querySelector("#settings").close();
   }
 
   /**
-   * sets the element's screenfullLoaded variable to true once screenfull is loaded
+   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
    * and adds an event listener for screenfull
    */
   _onScreenfullLoaded() {
     let root = this;
-    this.screenfullLoaded = true;
+    this.__screenfullLoaded = true;
 
     // handles fullscreen
     if (screenfull) {
@@ -1188,23 +1336,17 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   }
 
   /**
-   * updates activeCues array and scrolls to position
+   * updates __activeCues array and scrolls to position
    * @param {array} an array of cues
    */
-  _setActiveCues(cues) {
-    let track = this.shadowRoot.getElementById("track"),
-      offset = track !== null && track !== undefined ? track.offsetTop : 0,
-      cue = this.shadowRoot.getElementById(
-        "track a11y-media-transcript-cue[active]"
-      );
-    this.activeCues = cues.slice(0);
-    if (
-      !this.disableScroll &&
-      cue !== undefined &&
-      cue !== null &&
-      this.activeCues !== undefined &&
-      cue.getAttribute("order") !== this.activeCues[0]
-    ) {
+  _setActiveCue(e) {
+    let cue = e.detail.element,
+      transcript = cue.parentNode,
+      offset =
+        transcript !== null && transcript !== undefined
+          ? transcript.offsetTop
+          : 0;
+    if (!this.disableScroll) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
       let scrollingTo = (element, to, duration) => {
         if (duration <= 0) return;
@@ -1217,17 +1359,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           scrollingTo(element, to, duration - 10);
         }, 10);
       };
-      scrollingTo(this, cue.offsetTop - offset, 250);
+      scrollingTo(cue.parentNode.parentNode, cue.offsetTop - offset, 250);
     }
-  }
-
-  /**
-   * updates the active track when tracks or selected track changes
-   */
-  _setActiveTrack() {
-    let i = this.selectedTrack ? parseInt(this.selectedTrack) : 0,
-      track = this.tracks.filter((track, index) => index === i);
-    this.__activeTrack = track && track.length > -1 ? track[0] : null;
   }
 
   /**
@@ -1255,8 +1388,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             ? this.media.seekable.start(0)
             : 0);
     }
-    this.__status =
-      this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
+    if (duration > 0)
+      this.__status = `${this._getHHMMSS(elapsed, duration)}/${this._getHHMMSS(
+        duration
+      )}`;
   }
 
   /**
@@ -1297,8 +1432,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {boolean} Are the CC turned on?
    * @returns {boolean} Should the player show custom CC?
    */
-  _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
-    return (isYoutube || audioOnly) && hasCaptions && cc;
+  _showCustomCaptions(__isYoutube, audioOnly, hasCaptions, cc) {
+    return (__isYoutube || audioOnly) && hasCaptions && cc;
   }
   /**
    * When relevant player properties change, updates caption below media and print caption above it
@@ -1307,11 +1442,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
   _updateCaptionProperties(propName) {
     if (["audioOnly", "localization", "mediaTitle"].includes(propName)) {
-      this.mediaCaption = this._getMediaCaption(
+      this.__mediaCaption = this._getMediaCaption(
         this.audioOnly,
         this.mediaTitle
       );
-      this.printCaption = this._getPrintCaption(
+      this.__printCaption = this._getPrintCaption(
         this.audioOnly,
         this.mediaTitle
       );
@@ -1322,8 +1457,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * updates custom tracks for youTube
    */
   _updateCustomTracks() {
-    if ((this.isYoutube || this.audioOnly) && this.tracks) {
-      let track = this.tracks[this.transcript.selectedTranscript],
+    if ((this.__isYoutube || this.audioOnly) && this.__html5Media.textTracks) {
+      let track = this.captionsTrack,
         active = [],
         caption = "";
       if (
@@ -1342,7 +1477,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           }
         }
         this.shadowRoot.querySelector("#customcctxt").innerText = caption;
-        this._setActiveCues(active);
       }
     }
   }
@@ -1354,7 +1488,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {} val value
    */
   _updateMediaAttribute(attr, val) {
-    if (attr === "cc") console.log("_updateMediaAttribute", attr, val);
     if (val) {
       this.media.setAttribute(attr, val);
     } else {
@@ -1379,8 +1512,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         this._updateMediaAttribute("autoplay", this.autoplay);
       if (["media", "cc"].includes(propName))
         this._updateMediaAttribute("cc", this.cc);
-      if (["media", "isYoutube"].includes(propName))
-        this._updateMediaAttribute("hidden", this.isYoutube);
+      if (["media", "__isYoutube"].includes(propName))
+        this._updateMediaAttribute("hidden", this.__isYoutube);
       if (["media", "playbackRate"].includes(propName))
         this._updateMediaAttribute("playbackRate", this.playbackRate);
       if (["media", "autoplay"].includes(propName))
@@ -1399,9 +1532,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed) {
+  _useYoutubeIframe(thumbnailSrc, __isYoutube, __elapsed) {
     return (
-      isYoutube &&
+      __isYoutube &&
       (thumbnailSrc === null || __elapsed === undefined || __elapsed === 0)
     );
   }
@@ -1427,7 +1560,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             height: "100%",
             videoId: this.youtubeId
           });
-          this.__status = this._getLocal("youTubeLoading", "label");
+          this.__status = this._getLocal(
+            this.localization,
+            "youTubeLoading",
+            "label"
+          );
           // move the YouTube iframe to the media player's YouTube container
           this.shadowRoot.querySelector("#youtube").appendChild(this.media.a);
           this.__ytAppended = true;
@@ -1449,6 +1586,134 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         window.addEventListener("youtube-api-ready", checkApi);
       }
     }
+  }
+
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @param {boolean} linkable is the video is linkable
+   */
+  _getShareLink(__elapsed) {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      elapsed =
+        id !== "" && this.__elapsed && this.__elapsed !== 0
+          ? `&t=${this.__elapsed}`
+          : ``;
+    return `${url}${id}${elapsed}`;
+  }
+
+  /**
+   * returns true if an attribute is not null
+   *
+   * @param {object} the attribute to check
+   * @returns {boolean} attr !== undefined && attr !== null
+   */
+  _hasAttribute(attr) {
+    return attr !== undefined && attr !== null;
+  }
+
+  /**
+   * returns true if an attribute is set to a value
+   *
+   * @param {object} the attribute to check
+   * @param {object} the value to check
+   * @returns {boolean} attr === val
+   */
+
+  _testAttribute(attr, val) {
+    return attr === val;
+  }
+
+  /**
+   * calls responsive-utility to get parent's responsive size
+   *
+   * @param {object} a set of responsive for options, eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
+   */
+  _addResponsiveUtility(options) {
+    let root = this;
+    window.ResponsiveUtility.requestAvailability();
+    /**
+     * Fires player needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail:
+          options !== undefined
+            ? options
+            : {
+                element: root,
+                attribute: "responsive-size",
+                relativeToParent: true
+              }
+      })
+    );
+  }
+
+  /**
+   * converts time in millesconds to HH:MM:SS
+   *
+   * @param {float} the elapsed time, in seconds
+   * @param {float} the duration, in seconds
+   * @returns {string} a human-readable string of elapsed time/duration in HH:MM:SS
+   *
+   */
+  _getHHMMSS(val, max) {
+    val = parseFloat(val);
+    max = max === undefined ? val : parseFloat(max);
+    let a = val => {
+        return val < 10 ? `0${val}` : val;
+      },
+      b = (val, i, none) => {
+        return max >= i ? a(Math.floor(val / i)) + ":" : none;
+      },
+      c = val => {
+        return val < 100 ? val + "0" : val;
+      };
+    return (
+      b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
+    );
+  }
+  /**
+   * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
+   * @param {string} time
+   * @returns {float} seconds
+   */
+  _getSeconds(time = 0) {
+    let units = time
+        .replace(/[hm]{1,2}&?/g, ":0")
+        .replace(/[s]{1,2}$/g, "")
+        .split(/:/),
+      hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
+      mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
+      ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
+    return hh * 3600 + mm * 60 + ss;
+  }
+
+  /**
+   * gets the localization by compaing the localization set to the defaults
+   *
+   * @param {object} the localization object
+   * @param {string} the key to search for
+   * @param {string} the subkey to search for
+   * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
+   */
+  _getLocal(localization, key, subkey) {
+    let local = "";
+    if (
+      localization !== undefined &&
+      localization[key] !== undefined &&
+      localization[key][subkey] !== undefined
+    ) {
+      local = localization[key][subkey];
+    } else if (
+      this.__localizationDefaults !== undefined &&
+      this.__localizationDefaults[key] !== undefined &&
+      this.__localizationDefaults[key][subkey] !== undefined
+    ) {
+      local = this.__localizationDefaults[key][subkey];
+    }
+    return local;
   }
 }
 window.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
