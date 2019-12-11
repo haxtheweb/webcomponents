@@ -1009,7 +1009,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.globalPreferences = {};
     this.activeApp = {};
     this.connectionRewrites = {};
-    this.voiceDebug = true;
+    // change this in order to debug voice commands
+    this.voiceDebug = false;
     this.validTagList = this.__validTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env

@@ -139,6 +139,7 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   }
   constructor() {
     super();
+    this.__disposer = [];
     this.selectedPage = 0;
     import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
@@ -158,13 +159,13 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = [];
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
-      this._locationChanged(store.location);
+      let location = toJS(store.location);
+      this._locationChanged(location);
       this.__disposer.push(reaction);
     });
   }
@@ -193,6 +194,11 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       });
       this.selectedPage = 1;
     }
+    setTimeout(() => {
+      var evt = document.createEvent("UIEvents");
+      evt.initUIEvent("resize", true, false, window, 0);
+      window.dispatchEvent(evt);
+    }, 50);
   }
   /**
    * Reset the active item to reset state
