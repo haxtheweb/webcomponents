@@ -28,7 +28,7 @@
       <div id="customcc" 
         aria-live="polite"
         class="screen-only" 
-        ?hidden="${ifDefined(!this.showCustomCaptions)}">
+        ?hidden="${!this.showCustomCaptions}">
         <div id="customcctxt"></div>
       </div>
     </div>
@@ -58,21 +58,21 @@
       <a11y-media-button
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
-        ?disabled="${ifDefined(this.disableSeek)}"
+        ?disabled="${this.disableSeek}"
         ?hidden="${this.responsiveSize === 'xs'}"
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
-        ?disabled="${ifDefined(this.disableSeek)}"
+        ?disabled="${this.disableSeek}"
         ?hidden="${this.responsiveSize === 'xs'}"
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
-        ?disabled="${ifDefined(this.disableSeek)}"
+        ?disabled="${this.disableSeek}"
         ?hidden="${this.responsiveSize === 'xs'}"
         @click="${e => this.restart()}"
       ></a11y-media-button>
@@ -105,8 +105,8 @@
       <a11y-media-button
         icon="${this._getLocal(this.localization,'captions','icon')}"
         label="${this._getLocal(this.localization,'captions','label')}"
-        ?disabled="${ifDefined(!this.hasCaptions)}"
-        ?hidden="${ifDefined(!this.hasCaptions)}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions}"
         ?toggle="${this.__captionsOption > -1}"
         @click="${e => this.toggleCC()}"
       >
@@ -115,7 +115,7 @@
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
-        ?disabled="${ifDefined(this.hideTranscriptButton)}"
+        ?disabled="${this.hideTranscriptButton}"
         ?hidden="${this.hideTranscriptButton}"
         ?toggle="${this.__transcriptOption > -1}"
         @click="${e => this.toggleTranscript()}"
@@ -124,7 +124,7 @@
       <a11y-media-button
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
-        ?disabled="${ifDefined(!this.linkable)}"
+        ?disabled="${!this.linkable}"
         ?hidden="${!this.linkable}"
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
@@ -132,7 +132,7 @@
         step="1"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
-        ?disabled="${ifDefined(this.fullscreenButton)}"
+        ?disabled="${this.fullscreenButton}"
         ?hidden="${this.__audioNoThumb || !this.fullscreenButton}"
         ?toggle="${this.fullscreen}"
         @click="${e => this.toggleFullscreen()}"
@@ -170,7 +170,7 @@
                   no-label-float
                   value="${this.__captionsOption}"
                   ?hidden="${!this.hasCaptions}"
-                  ?disabled="${ifDefined(!this.hasCaptions)}"
+                  ?disabled="${!this.hasCaptions}"
                   @value-changed="${e => this.__captionsOption = parseInt(e.detail.value)}"
                 >
                   <paper-item value="-1"
@@ -198,7 +198,7 @@
                   no-label-float
                   value="${this.__transcriptOption}"
                   ?hidden="${!this.hasCaptions}"
-                  ?disabled="${ifDefined(!this.hasCaptions)}"
+                  ?disabled="${!this.hasCaptions}"
                   @value-changed="${e => this.__transcriptOption = parseInt(e.detail.value)}"
                 >
                   <paper-item value="-1"
@@ -226,7 +226,7 @@
                   aria-labelledby="transcript-label"
                   controls="transcript"
                   ?checked="${!this.hideTranscript}"
-                  ?disabled="${ifDefined(this.noTranscriptToggle)}"
+                  ?disabled="${this.noTranscriptToggle}"
                   @change="${e => this.toggleTranscript()}"
                 >
                 </paper-toggle-button>
@@ -242,7 +242,7 @@
               <a11y-media-button
                 aria-labelledby="print-label"
                 icon="${this._getLocal(this.localization,'print','icon')}"
-                ?disabled="${ifDefined(this.noPrinting)}"
+                ?disabled="${this.noPrinting}"
                 ?hidden="${this.noPrinting}"
                 @click="${this.print}"
               >
@@ -259,7 +259,7 @@
                 <a11y-media-button
                   aria-labelledby="download-label"
                   icon="${this._getLocal(this.localization,'download','icon')}"
-                  ?disabled="${ifDefined(this.noPrinting)}"
+                  ?disabled="${this.noPrinting}"
                   ?hidden="${this.noPrinting}"
                   @click="${this.download}"
                 >

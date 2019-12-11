@@ -689,7 +689,7 @@ class A11yMediaPlayer extends SimpleColors {
               id="customcc"
               aria-live="polite"
               class="screen-only"
-              ?hidden="${ifDefined(!this.showCustomCaptions)}"
+              ?hidden="${!this.showCustomCaptions}"
             >
               <div id="customcctxt"></div>
             </div>
@@ -729,21 +729,21 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(this.localization, "rewind", "icon")}"
               label="${this._getLocal(this.localization, "rewind", "label")}"
-              ?disabled="${ifDefined(this.disableSeek)}"
+              ?disabled="${this.disableSeek}"
               ?hidden="${this.responsiveSize === "xs"}"
               @click="${e => this.rewind()}"
             ></a11y-media-button>
             <a11y-media-button
               icon="${this._getLocal(this.localization, "forward", "icon")}"
               label="${this._getLocal(this.localization, "forward", "label")}"
-              ?disabled="${ifDefined(this.disableSeek)}"
+              ?disabled="${this.disableSeek}"
               ?hidden="${this.responsiveSize === "xs"}"
               @click="${e => this.forward()}"
             ></a11y-media-button>
             <a11y-media-button
               icon="${this._getLocal(this.localization, "restart", "icon")}"
               label="${this._getLocal(this.localization, "restart", "label")}"
-              ?disabled="${ifDefined(this.disableSeek)}"
+              ?disabled="${this.disableSeek}"
               ?hidden="${this.responsiveSize === "xs"}"
               @click="${e => this.restart()}"
             ></a11y-media-button>
@@ -786,8 +786,8 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(this.localization, "captions", "icon")}"
               label="${this._getLocal(this.localization, "captions", "label")}"
-              ?disabled="${ifDefined(!this.hasCaptions)}"
-              ?hidden="${ifDefined(!this.hasCaptions)}"
+              ?disabled="${!this.hasCaptions}"
+              ?hidden="${!this.hasCaptions}"
               ?toggle="${this.__captionsOption > -1}"
               @click="${e => this.toggleCC()}"
             >
@@ -800,7 +800,7 @@ class A11yMediaPlayer extends SimpleColors {
                 "transcript",
                 "label"
               )}"
-              ?disabled="${ifDefined(this.hideTranscriptButton)}"
+              ?disabled="${this.hideTranscriptButton}"
               ?hidden="${this.hideTranscriptButton}"
               ?toggle="${this.__transcriptOption > -1}"
               @click="${e => this.toggleTranscript()}"
@@ -809,7 +809,7 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(this.localization, "copyLink", "icon")}"
               label="${this._getLocal(this.localization, "copyLink", "label")}"
-              ?disabled="${ifDefined(!this.linkable)}"
+              ?disabled="${!this.linkable}"
               ?hidden="${!this.linkable}"
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
@@ -821,7 +821,7 @@ class A11yMediaPlayer extends SimpleColors {
                 "fullscreen",
                 "label"
               )}"
-              ?disabled="${ifDefined(this.fullscreenButton)}"
+              ?disabled="${this.fullscreenButton}"
               ?hidden="${this.__audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
               @click="${e => this.toggleFullscreen()}"
@@ -859,7 +859,7 @@ class A11yMediaPlayer extends SimpleColors {
                         no-label-float
                         value="${this.__captionsOption}"
                         ?hidden="${!this.hasCaptions}"
-                        ?disabled="${ifDefined(!this.hasCaptions)}"
+                        ?disabled="${!this.hasCaptions}"
                         @value-changed="${e =>
                           (this.__captionsOption = parseInt(e.detail.value))}"
                       >
@@ -901,7 +901,7 @@ class A11yMediaPlayer extends SimpleColors {
                         no-label-float
                         value="${this.__transcriptOption}"
                         ?hidden="${!this.hasCaptions}"
-                        ?disabled="${ifDefined(!this.hasCaptions)}"
+                        ?disabled="${!this.hasCaptions}"
                         @value-changed="${e =>
                           (this.__transcriptOption = parseInt(e.detail.value))}"
                       >
@@ -943,7 +943,7 @@ class A11yMediaPlayer extends SimpleColors {
                         aria-labelledby="transcript-label"
                         controls="transcript"
                         ?checked="${!this.hideTranscript}"
-                        ?disabled="${ifDefined(this.noTranscriptToggle)}"
+                        ?disabled="${this.noTranscriptToggle}"
                         @change="${e => this.toggleTranscript()}"
                       >
                       </paper-toggle-button>
@@ -963,7 +963,7 @@ class A11yMediaPlayer extends SimpleColors {
                           "print",
                           "icon"
                         )}"
-                        ?disabled="${ifDefined(this.noPrinting)}"
+                        ?disabled="${this.noPrinting}"
                         ?hidden="${this.noPrinting}"
                         @click="${this.print}"
                       >
@@ -984,7 +984,7 @@ class A11yMediaPlayer extends SimpleColors {
                           "download",
                           "icon"
                         )}"
-                        ?disabled="${ifDefined(this.noPrinting)}"
+                        ?disabled="${this.noPrinting}"
                         ?hidden="${this.noPrinting}"
                         @click="${this.download}"
                       >
