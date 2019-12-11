@@ -39,21 +39,20 @@ class HAXCMSBackendPHP extends LitElement {
     this.jwt = e.detail.value;
   }
   /**
-   * HTMLElement
-   */
-  constructor() {
-    super();
-    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
-  }
-  /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
+    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
     if (window.appSettings) {
       this.jwtLoginLocation = window.appSettings.login;
       this.jwtLogoutLocation = window.appSettings.logout;
     }
-    if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
+    if (
+      this.jwt != null &&
+      this.jwt != "null" &&
+      this.jwt != "" &&
+      typeof this.jwt == "string"
+    ) {
       this.dynamicallyImportEditor();
     } else {
       // other things will have to sort out the fact that while we
@@ -87,7 +86,12 @@ class HAXCMSBackendPHP extends LitElement {
     this.jwt = e.detail;
     store.jwt = this.jwt;
     // support updates after the fact
-    if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
+    if (
+      this.jwt != null &&
+      this.jwt != "null" &&
+      this.jwt != "" &&
+      typeof this.jwt == "string"
+    ) {
       this.dynamicallyImportEditor();
     }
   }
