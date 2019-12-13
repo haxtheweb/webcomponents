@@ -219,6 +219,7 @@ class A11yMediaPlayer extends SimpleColors {
         #player {
           height: 400px;
           position: relative;
+          background-size: cover;
         }
         #player > * {
           position: absolute;
@@ -648,31 +649,24 @@ class A11yMediaPlayer extends SimpleColors {
   // render function
   render() {
     return html`
-      <div class="sr-only">
-        <a href="${ifDefined(this.test)}">${this.__mediaCaption}</a>
+      <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
+        ${this.mediaCaption}
       </div>
-      <div id="outerplayer">
-        <div id="innerplayer">
-          <div
-            id="player"
-            .style="${this._getThumbnailCSS(
-              this.thumbnailSrc,
-              this.__isYoutube,
-              this.audioOnly
-            )}"
-          >
+      <div id="outerplayer" flex-layout="${this.flexLayout}">
+        <div id="innerplayer" .style="${this.innerplayerStyle}">
+          <div id="player" .style="${this.playerStyle}">
             <a11y-media-play-button
               id="playbutton"
-              action="${this.__playing ? "pause" : "play"}"
+              action="${this.playing ? "pause" : "play"}"
               label="${this._getLocal(
                 this.localization,
-                this.__playing ? "pause" : "play",
+                this.playing ? "pause" : "play",
                 "label"
               )}"
               @button-click="${e => this.togglePlay()}"
               ?audio-only="${this.audioOnly}"
-              ?disabled="${this.__audioNoThumb}"
-              ?hidden="${this.__isYoutube && this.thumbnailSrc === null}"
+              ?disabled="${this.audioNoThumb || !this.mediaLoaded}"
+              ?hidden="${this.isYouTube && this.thumbnailSrc === null}"
             >
             </a11y-media-play-button>
             <div id="html5">
@@ -682,8 +676,8 @@ class A11yMediaPlayer extends SimpleColors {
               id="youtube"
               lang="${this.mediaLang}"
               video-id="${this.videoId}"
-              ?hidden="${!this.__isYoutube}"
-              .elapsed="${this.__elapsed}"
+              ?hidden="${!this.isYouTube}"
+              .elapsed="${this.elapsed}"
             ></div>
             <div
               id="customcc"
@@ -691,7 +685,14 @@ class A11yMediaPlayer extends SimpleColors {
               class="screen-only"
               ?hidden="${!this.showCustomCaptions}"
             >
-              <div id="customcctxt"></div>
+              <div id="customcctxt">
+                ${Object.keys(this.captionCues).map(
+                  key =>
+                    html`
+                      ${this.captionCues[key].text}
+                    `
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -700,15 +701,15 @@ class A11yMediaPlayer extends SimpleColors {
           class="screen-only"
           label="${this._getLocal(this.localization, "seekSlider", "label")}"
           min="0"
-          max="${this.__duration}"
-          secondary-progress="${this.__buffered}"
+          max="${this.duration}"
+          secondary-progress="${this.buffered}"
           @mousedown="${this._handleSliderStart}"
           @mouseup="${this._handleSliderStop}"
           @keyup="${this._handleSliderStop}"
           @keydown="${this._handleSliderStart}"
           @blur="${this._handleSliderStop}"
-          .value="${this.__elapsed}"
-          ?disabled="${this.disableSeek || this.__duration === 0}"
+          .value="${this.elapsed}"
+          ?disabled="${this.disableSeek || this.duration === 0}"
         >
         </paper-slider>
         <div id="controls" controls="innerplayer">
@@ -716,12 +717,12 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(
                 this.localization,
-                this.__playing ? "pause" : "play",
+                this.playing ? "pause" : "play",
                 "icon"
               )}"
               label="${this._getLocal(
                 this.localization,
-                this.__playing ? "pause" : "play",
+                this.playing ? "pause" : "play",
                 "label"
               )}"
               @click="${e => this.togglePlay()}"
@@ -749,8 +750,8 @@ class A11yMediaPlayer extends SimpleColors {
             ></a11y-media-button>
             <div
               id="showvolume"
-              @focus="${e => this.__volumeSlider === true}"
-              @blur="${e => this.__volumeSlider === false}"
+              @focus="${e => (this.__volumeSlider = true)}"
+              @blur="${e => (this.__volumeSlider = false)}"
             >
               <a11y-media-button
                 id="mute"
@@ -779,7 +780,7 @@ class A11yMediaPlayer extends SimpleColors {
               ></paper-slider>
             </div>
             <span aria-live="polite" class="play-status control-bar">
-              <span id="statbar">${this.__status}</span>
+              <span id="statbar">${this.status}</span>
             </span>
           </div>
           <div id="controls-right">
@@ -788,7 +789,7 @@ class A11yMediaPlayer extends SimpleColors {
               label="${this._getLocal(this.localization, "captions", "label")}"
               ?disabled="${!this.hasCaptions}"
               ?hidden="${!this.hasCaptions}"
-              ?toggle="${this.__captionsOption > -1}"
+              ?toggle="${this.captionsTrackKey > -1}"
               @click="${e => this.toggleCC()}"
             >
             </a11y-media-button>
@@ -802,7 +803,7 @@ class A11yMediaPlayer extends SimpleColors {
               )}"
               ?disabled="${this.hideTranscriptButton}"
               ?hidden="${this.hideTranscriptButton}"
-              ?toggle="${this.__transcriptOption > -1}"
+              ?toggle="${this.transcriptTrackKey > -1}"
               @click="${e => this.toggleTranscript()}"
             >
             </a11y-media-button>
@@ -822,7 +823,7 @@ class A11yMediaPlayer extends SimpleColors {
                 "label"
               )}"
               ?disabled="${this.fullscreenButton}"
-              ?hidden="${this.__audioNoThumb || !this.fullscreenButton}"
+              ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
               @click="${e => this.toggleFullscreen()}"
             >
@@ -857,11 +858,11 @@ class A11yMediaPlayer extends SimpleColors {
                       <dropdown-select
                         id="cc_tracks"
                         no-label-float
-                        value="${this.__captionsOption}"
+                        value="${this.captionsTrackKey}"
                         ?hidden="${!this.hasCaptions}"
                         ?disabled="${!this.hasCaptions}"
                         @value-changed="${e =>
-                          (this.__captionsOption = parseInt(e.detail.value))}"
+                          this.selectCaptionByKey(e.detail.value)}}"
                       >
                         <paper-item value="-1"
                           >${this._getLocal(
@@ -870,14 +871,14 @@ class A11yMediaPlayer extends SimpleColors {
                             "off"
                           )}</paper-item
                         >
-                        ${!this.__html5Media
+                        ${!this.loadedTracks
                           ? ``
-                          : Object.keys(this.__html5Media.textTracks).map(
+                          : Object.keys(this.loadedTracks.textTracks).map(
                               key => {
                                 return html`
                                   <paper-item value="${key}">
-                                    ${this.__html5Media.textTracks[key].label ||
-                                      this.__html5Media.textTracks.language}
+                                    ${this.loadedTracks.textTracks[key].label ||
+                                      this.loadedTracks.textTracks.language}
                                   </paper-item>
                                 `;
                               }
@@ -899,11 +900,11 @@ class A11yMediaPlayer extends SimpleColors {
                       <dropdown-select
                         id="transcript_tracks"
                         no-label-float
-                        value="${this.__transcriptOption}"
+                        value="${this.transcriptTrackKey}"
                         ?hidden="${!this.hasCaptions}"
                         ?disabled="${!this.hasCaptions}"
                         @value-changed="${e =>
-                          (this.__transcriptOption = parseInt(e.detail.value))}"
+                          this.selectTranscriptByKey(e.detail.value)}"
                       >
                         <paper-item value="-1"
                           >${this._getLocal(
@@ -912,14 +913,14 @@ class A11yMediaPlayer extends SimpleColors {
                             "off"
                           )}</paper-item
                         >
-                        ${!this.__html5Media
+                        ${!this.loadedTracks
                           ? ``
-                          : Object.keys(this.__html5Media.textTracks).map(
+                          : Object.keys(this.loadedTracks.textTracks).map(
                               key => {
                                 return html`
                                   <paper-item value="${key}">
-                                    ${this.__html5Media.textTracks[key].label ||
-                                      this.__html5Media.textTracks.language}
+                                    ${this.loadedTracks.textTracks[key].label ||
+                                      this.loadedTracks.textTracks.language}
                                   </paper-item>
                                 `;
                               }
@@ -1032,23 +1033,14 @@ class A11yMediaPlayer extends SimpleColors {
             </paper-menu-button>
           </div>
         </div>
-        <a
-          id="captionlink"
-          href="${ifDefined(
-            this.__html5Media
-              ? this.__html5Media.querySelector("track").src
-              : null
-          )}"
+        <div
+          aria-hidden="true"
+          class="screen-only media-caption"
+          ?hidden="${!this.mediaCaption}"
         >
-          <div
-            aria-hidden="true"
-            class="screen-only media-caption"
-            ?hidden="${!this._hasAttribute(this.__mediaCaption)}"
-          >
-            ${this.__mediaCaption}
-          </div>
-        </a>
-        <div class="print-only media-caption">${this.__printCaption}</div>
+          ${this.mediaCaption}
+        </div>
+        <div class="print-only media-caption">${this.printCaption}</div>
       </div>
       <img
         id="printthumb"
@@ -1148,10 +1140,10 @@ class A11yMediaPlayer extends SimpleColors {
             <a id="transcript-desc" class="sr-only" href="#bottom">
               ${this._getLocal(this.localization, "transcript", "skip")}
             </a>
-            ${this.__filteredCues.length > 0
+            ${this.transcriptCues.length > 0
               ? html`
                   <div class="transcript-from-track">
-                    ${this.__filteredCues.map((cue, index) => {
+                    ${this.transcriptCues.map((cue, index) => {
                       return html`
                         <a11y-media-transcript-cue
                           controls="html5"
@@ -1182,7 +1174,7 @@ class A11yMediaPlayer extends SimpleColors {
                 `
               : html`
                   <div id="loading" class="transcript-from-track">
-                    ${this.__status}
+                    ${this.status}
                   </div>
                 `}
           </div>
@@ -1191,7 +1183,7 @@ class A11yMediaPlayer extends SimpleColors {
       <paper-toast
         id="link"
         duration="5000"
-        text="Copied to clipboard: ${this.__shareLink}"
+        text="Copied to clipboard: ${this.shareLink}"
         ?disabled="${!this.linkable}"
         ?hidden="${!this.linkable}"
       >
@@ -1315,27 +1307,6 @@ class A11yMediaPlayer extends SimpleColors {
         type: Boolean
       },
       /**
-       * show the FullscreenButton?
-       */
-      fullscreenButton: {
-        attribute: "fullscreen-button",
-        type: Boolean
-      },
-      /**
-       * Does the player have tracks?
-       */
-      hasCaptions: {
-        attribute: "has-captions",
-        type: Boolean
-      },
-      /**
-       * Does the player have an interactive transcript?
-       */
-      hasTranscript: {
-        attribute: "has-transcript",
-        type: Boolean
-      },
-      /**
        * The height of the media player.
        */
       height: {
@@ -1401,22 +1372,15 @@ class A11yMediaPlayer extends SimpleColors {
         type: Boolean
       },
       /**
-       * Dash.js manifest source?
-       */
-      manifest: {
-        attribute: "manifest",
-        type: String
-      },
-      /**
-       * the media to be manipulated
-       */
-      media: {
-        attribute: "media",
-        type: Object
-      },
-      /**
-       * the language of the media (if different from user interface language)
-       */
+   * Dash.js manifest source?
+   * /
+  "manifest": {
+    "attribute": "manifest",
+    "type": String
+  },
+  /**
+   * the language of the media (if different from user interface language)
+   */
       mediaLang: {
         attribute: "media-lang",
         type: String
@@ -1498,13 +1462,6 @@ class A11yMediaPlayer extends SimpleColors {
         reflect: true
       },
       /**
-       * target of the controls
-       */
-      target: {
-        attribute: "target",
-        type: Object
-      },
-      /**
        * Source of optional thumbnail image
        */
       thumbnailSrc: {
@@ -1518,12 +1475,6 @@ class A11yMediaPlayer extends SimpleColors {
       tracks: {
         attribute: "tracks",
         type: Array
-      },
-      /**
-       * Transcript associated with player. (Can be set to an extenal object);
-       */
-      transcript: {
-        attribute: "transcript"
       },
       /**
        * the selected track for the transcript
@@ -1561,138 +1512,45 @@ class A11yMediaPlayer extends SimpleColors {
         type: Object
       },
       /**
-       * array of cues
-       */
-      __activeCues: {
-        type: Array
-      },
-      /**
-       * Active transcript track
-       */
-      __activeTrack: {
-        type: Array
-      },
-      /**
-       * Is it an audio player with no thumbnail?
-       */
-      __audioNoThumb: {
-        type: Boolean
-      },
-      /**
-       * Notice if the video is playing
-       */
-      __captionHref: {
-        type: String
-      },
-      /**
-       * `key` of selected textTrack for captions area
-       */
-      __captionsOption: {
-        type: Number
-      },
-      /**
-       * array of cues
+       * array of cues provided to readOnly `get cues`
        */
       __cues: {
         type: Array
       },
       /**
-       * array of cues
+       * buffered media in seconds provided to readOnly `get buffered`
        */
-      __filteredCues: {
-        type: Array
+      __buffered: {
+        type: Number
       },
       /**
-       * Notice if the elapsed time changes
-       */
-      __deprecatedMedia: {
-        type: Array
-      },
-      /**
-       * Notice if the elapsed time changes
+       * media duration in seconds provided to readOnly `get duration`
        */
       __duration: {
         type: Number
       },
       /**
-       * Notice if the elapsed time changes
+       * elapsed media in seconds provided to readOnly `get elapsed`
        */
       __elapsed: {
         type: Number
       },
       /**
-       * Determines if video and transcript are in a flex layout
+       * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
        */
-      __flexLayout: {
-        attribute: "flex-layout",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * The media tag where sources and tracks can be found
-       */
-      __html5Media: {
-        type: Array
-      },
-      /**
-       * is YouTube?
-       */
-      __isYoutube: {
-        type: Boolean
-      },
-      /**
-       * default localization settings
-       */
-      __localizationDefaults: {
+      __loadedTracks: {
         type: Object
       },
       /**
-       * The default media caption if none is given.
-       */
-      __mediaCaption: {
-        type: String
-      },
-      /**
-       * Notice if the video is playing
+       * media playing status readOnly `get playing`
        */
       __playing: {
         type: Boolean
       },
       /**
-       * The media caption that displays when the page is printed.
-       */
-      __printCaption: {
-        type: String
-      },
-      /**
        * Has screenfull loaded?
        */
       __screenfullLoaded: {
-        type: Boolean
-      },
-      /**
-       * Has screenfull loaded?
-       */
-      __shareLink: {
-        type: String
-      },
-      /**
-       * `key` of selected textTrack for transcript area
-       */
-      __transcriptOption: {
-        type: Number
-      },
-      /**
-       * currently selected volume level
-       */
-      __volumeOption: {
-        type: Number
-      },
-      /**
-       * is YouTube?
-       */
-      showCustomCaptions: {
-        attribute: "show-custom-captions",
         type: Boolean
       }
     };
@@ -1713,7 +1571,261 @@ class A11yMediaPlayer extends SimpleColors {
 
   constructor() {
     super();
-    this.__localizationDefaults = {
+    this.audioOnly = false;
+    this.autoplay = false;
+    this.allowConcurrent = false;
+    this.cc = false;
+    this.darkTranscript = false;
+    this.disableFullscreen = false;
+    this.disableInteractive = false;
+    this.disablePrintButton = false;
+    this.disableSearch = false;
+    this.disableScroll = false;
+    this.disableSeek = false;
+    this.fullscreen = false;
+    this.height = null;
+    this.hideElapsedTime = false;
+    this.hideTimestamps = false;
+    this.hideTranscript = false;
+    this.id = null;
+    this.lang = "en";
+    this.linkable = false;
+    this.localization = {};
+    this.loop = false;
+    this.mediaTitle = "";
+    this.mediaLang = "en";
+    this.muted = false;
+    this.playbackRate = 1;
+    this.search = null;
+    this.standAlone = false;
+    this.responsiveSize = "xs";
+    this.captionsTrack = null;
+    this.transcriptTrack = null;
+    this.sources = [];
+    this.stackedLayout = false;
+    this.sticky = false;
+    this.stickyCorner = "top-right";
+    this.tracks = [];
+    this.volume = 70;
+    this.width = null;
+    this.youtubeId = null;
+    this.youtube = null;
+    this.__buffered = 0;
+    this.__cues = [];
+    this.__captionsOption = -1;
+    this.__duration = 0;
+    this.__elapsed = 0;
+    this.__loadedTracks = null;
+    this.__playing = false;
+    this.__screenfullLoaded = false;
+    this.__resumePlaying = false;
+    this.__transcriptOption = -1;
+
+    window.A11yMediaStateManager.requestAvailability();
+    import("./lib/a11y-media-youtube.js");
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/paper-menu-button/paper-menu-button.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js");
+    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("screenfullLib", location);
+    window.addEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded.bind(this)
+    );
+  }
+
+  /** -------------------------- CALACULATED PROPERTIES ----------------- */
+  /**
+   * the aspect ratio of the media, or if unknown, `16/9`
+   * @readonly
+   * @returns {number} media width divided by height
+   */
+  get aspect() {
+    let aspect =
+      this.media && this.media.aspectRatio ? this.media.aspectRatio : 16 / 9;
+    this.width !== null ? this.width : "100%";
+    this.style.maxWidth = this.width;
+    return aspect;
+  }
+
+  /**
+   * returns true if an attribute is set to a value
+   * @readonly
+   * @returns {boolean} Should height of audio/thumbnail area be set to 0?
+   */
+  get audioNoThumb() {
+    return (
+      this.audioOnly &&
+      (this.thumbnailSrc === null || this.thumbnailSrc === undefined)
+    );
+  }
+
+  /**
+   * returns buffered media
+   * @readonly
+   * @returns {number} seconds of buffered media
+   */
+  get buffered() {
+    return this.__buffered;
+  }
+
+  /**
+   * gets caption cues that should be visible for custom captions
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get captionCues() {
+    let cues =
+      this.captionsTrack && this.captionsTrack.activeCues
+        ? this.captionsTrack.activeCues
+        : [];
+    console.log("captionsTrack", this.captionsTrack, cues);
+    return cues;
+  }
+
+  /**
+   * `key` of selected textTrack based on `captionsTrack` and `cc` values
+   */
+  get captionsTrackKey() {
+    return !this.cc ? -1 : this._getTrackId(this.captionsTrack);
+  }
+
+  /**
+   * returns cues array
+   */
+  get cues() {
+    return this.__cues;
+  }
+
+  /**
+   * returns media duration
+   * @readonly
+   * @returns {number} media duration in seconds
+   */
+  get duration() {
+    return this.__duration;
+  }
+
+  /**
+   * returns elaped media
+   * @readonly
+   * @returns {number} media duration in seconds
+   */
+  get elapsed() {
+    return this.__elapsed;
+  }
+
+  /**
+   * determines if player is in flex-layout mode
+   * @returns {boolean} Is the video in flex layout mode?
+   */
+  get flexLayout() {
+    if (
+      !this.standAlone &&
+      !this.hideTranscript &&
+      !this.audioNoThumb &&
+      !this.stackedLayout
+    ) {
+      this.setAttribute("flex-layout", true);
+      return true;
+    } else {
+      this.removeAttribute("flex-layout");
+      return true;
+    }
+  }
+
+  /**
+   * whether or not the fullscreen mode is be disabled
+   * @returns {boolean}
+   */
+  get fullscreenButton() {
+    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) ||
+      this.disableFullscreen ||
+      this.audioNoThumb ||
+      !(typeof screenfull === "object")
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  /**
+   * whether the media has any tracks
+   *
+   * @readonly
+   * @returns {boolean}
+   */
+  get hasCaptions() {
+    return this.cues.length > 1;
+  }
+
+  /**
+   * `style` for `#innerplayer`
+   * @readonly
+   * @returns {string} value for style attribute
+   */
+  get innerplayerStyle() {
+    let maxWidth = this.fullscreen
+      ? `unset`
+      : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
+    return `max-width:${maxWidth};`;
+  }
+
+  /**
+   * whether media is YouTube
+   * @readonly
+   * @returns {boolean}
+   */
+  get isYouTube() {
+    return this.youtubeId;
+  }
+
+  /**
+   * HTML `audio` or `video` tag where textTracks, if any, can be found
+   * @readonly
+   */
+  get loadedTracks() {
+    return this.__loadedTracks;
+  }
+
+  /**
+   * media used for playback
+   * @readonly
+   */
+  get media() {
+    //console.log('get media',this.isYouTube ? this.youTube : this.loadedTracks);
+    //let media = this.isYouTube ? this.youTube : this.loadedTracks;
+    let media = this.loadedTracks;
+    return media;
+  }
+
+  /**
+   * object that contains default localization
+   *
+   * @readonly
+   * @returns {object} default localization object
+   */
+  get localizationDefaults() {
+    return {
       audio: {
         label: "Audio",
         notSupported: "HTML5 video is not supported."
@@ -1824,147 +1936,143 @@ class A11yMediaPlayer extends SimpleColors {
         label: "Transcript will load once media plays."
       }
     };
-    this.audioOnly = false;
-    this.autoplay = false;
-    this.allowConcurrent = false;
-    this.cc = false;
-    this.darkTranscript = false;
-    this.disableFullscreen = false;
-    this.disableInteractive = false;
-    this.disablePrintButton = false;
-    this.disableSearch = false;
-    this.disableScroll = false;
-    this.disableSeek = false;
-    this.fullscreen = false;
-    this.fullscreenButton = false;
-    this.hasCaptions = false;
-    this.hasTranscript = false;
-    this.height = null;
-    this.hideElapsedTime = false;
-    this.hideTimestamps = false;
-    this.hideTranscript = false;
-    this.id = null;
-    this.lang = "en";
-    this.linkable = false;
-    this.localization = {};
-    this.loop = false;
-    this.manifest = null;
-    this.media = null;
-    this.mediaTitle = "";
-    this.mediaLang = "en";
-    this.muted = false;
-    this.playbackRate = 1;
-    this.search = null;
-    this.standAlone = false;
-    this.responsiveSize = "xs";
-    this.captionsTrack = null;
-    this.transcriptTrack = null;
-    this.showCustomCaptions = false;
-    this.sources = [];
-    this.stackedLayout = false;
-    this.sticky = false;
-    this.stickyCorner = "top-right";
-    this.target = null;
-    this.tracks = [];
-    this.volume = 70;
-    this.width = null;
-    this.youtubeId = null;
-    this.youtube = {};
-    this.__activeCues = [];
-    this.__audioNoThumb = this._getAudioNoThumb(false, null);
-    this.__cues = [];
-    this.__captionHref = "";
-    this.__captionsOption = -1;
-    this.__html5Media = null;
-    this.__isYoutube = null;
-    this.__filteredCues = [];
-    this.__duration = 0;
-    this.__elapsed = 0;
-    this.__flexLayout = true;
-    this.__mediaCaption = this._getMediaCaption(false, "");
-    this.__playing = false;
-    this.__playerAttached = true;
-    this.__printCaption = this._getPrintCaption(false, "");
-    this.__screenfullLoaded = false;
-    this.__shareLink = this._getShareLink(0);
-    this.__status = this._getLocal(this.localization, "loading", "label");
-    this.__resumePlaying = false;
-    this.__transcriptOption = -1;
-    this.__volumeOption = 70;
-    this._setPlayerHeight();
+  }
 
-    window.A11yMediaStateManager.requestAvailability();
-    import("./lib/a11y-media-youtube.js");
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-menu-button/paper-menu-button.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-    import("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js");
-    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
-    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
-    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load("screenfullLib", location);
-    window.addEventListener(
-      "es-bridge-screenfullLib-loaded",
-      this._onScreenfullLoaded.bind(this)
-    );
+  /**
+   * gets media caption
+   * @readonly
+   * @returns {string} the media caption
+   */
+  get mediaCaption() {
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+      hasMediaTitle =
+        this.mediaTitle !== undefined &&
+        this.mediaTitle !== null &&
+        this.mediaTitle !== "";
+    if (this.audioOnly && hasMediaTitle) {
+      return this.mediaTitle + " (" + audioLabel + ")";
+    } else if (this.audioOnly) {
+      return audioLabel;
+    } else if (hasMediaTitle) {
+      return this.mediaTitle;
+    } else {
+      return undefined;
+    }
+  }
+
+  /**
+   * whether media is currently playing
+   * @readonly
+   * @returns {boolean}
+   */
+  get playing() {
+    return this.__playing;
+  }
+
+  /**
+   * `style` for `#player`
+   * @readonly
+   * @returns {string} value for style attribute
+   */
+  get playerStyle() {
+    let audio =
+        this.audioOnly && this.thumbnailSrc === null && this.height === null,
+      height = audio ? "60px" : "unset",
+      paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
+      thumbnail =
+        this.thumbnailSrc != null && (this.isYouTube || this.audioOnly)
+          ? "url(" + thumbnailSrc + ")"
+          : "none";
+    return `height:${height};padding-top:${paddingTop};background-image:${thumbnail};`;
+  }
+
+  /**
+   * gets print caption
+   * @readonly
+   * @returns {string} the media caption when the page is printed
+   */
+  get printCaption() {
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+      videoLabel = this._getLocal(this.localization, "video", "label"),
+      hasMediaTitle =
+        this.mediaTitle !== undefined &&
+        this.mediaTitle !== null &&
+        this.mediaTitle !== "";
+    if (this.audioOnly && hasMediaTitle) {
+      return this.mediaTitle + " (" + audioLabel + ")";
+    } else if (this.audioOnly) {
+      return audioLabel;
+    } else if (hasMediaTitle) {
+      return this.mediaTitle + " (" + videoLabel + ")";
+    } else {
+      return videoLabel;
+    }
+  }
+
+  /**
+   * gets transcript cues that should be visible
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get transcriptCues() {
+    let cues = this.cues.slice();
+    return cues.filter(cue => cue.track === this.transcriptTrack);
+  }
+
+  /**
+   * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
+   */
+  get transcriptTrackKey() {
+    return this.hideTranscript ? -1 : this._getTrackId(this.transcriptTrack);
+  }
+
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @readonly
+   * @returns {string} url for sharing the video
+   */
+  get shareLink() {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      elapsed =
+        id !== "" && this.elapsed && this.elapsed !== 0
+          ? `&t=${this.elapsed}`
+          : ``;
+    return `${url}${id}${elapsed}`;
+  }
+
+  /**
+   * Show custom CC (for audio and YouTube)?
+   * @returns {boolean} Should the player show custom CC?
+   */
+  get showCustomCaptions() {
+    return (this.isYouTube || this.audioOnly) && this.hasCaptions && this.cc;
+  }
+
+  /**
+   * gets playback status text
+   *
+   * @readonly
+   * @returns {string} status, as either a localized loading message or elapsed/duration
+   */
+  get status() {
+    return this.duration > 0
+      ? `${this._getHHMMSS(this.elapsed, this.duration)}/${this._getHHMMSS(
+          this.duration
+        )}`
+      : this.isYouTube
+      ? this._getLocal(this.localization, "youTubeLoading", "label")
+      : this._getLocal(this.localization, "loading", "label");
   }
 
   connectedCallback() {
+    let root = this;
     super.connectedCallback();
-    console.log(this.share);
-    let root = this,
-      media = this.querySelectorAll("audio,video");
-    media.forEach(medium => {
-      medium.removeAttribute("autoplay");
-      medium.style.width = "100%";
-      medium.style.maxWidth = "100%";
-      medium.setAttribute("preload", "metadata");
-    });
-
-    if (media.length > 0) {
-      this.media = media[0];
-      this.audioOnly = this.media.tagName === "AUDIO";
-    } else {
-      let media = document.createElement(
-        this.querySelectorAll('source[type*="audio"]').length > 0
-          ? "audio"
-          : "video"
-      );
-      this.querySelectorAll("source,track").forEach(node => {
-        if (node.parentNode === this) media.appendChild(node);
-      });
-      media.setAttribute("preload", "metadata");
-      this.appendChild(media);
-      this.media = media;
-    }
-    /* handle deprecated tracks */
-    this.tracks.forEach(track => {
-      let node = document.createElement("track");
-      Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
-      media.appendChild(node);
-    });
-    /* handle deprecated sources */
-    this.sources.forEach(source => {
-      let node = document.createElement("source");
-      Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
-      media.appendChild(node);
-    });
-    this.__html5Media = this.media;
-    this.__html5Media.addEventListener("media-loaded", e =>
+    this.__loadedTracks = this.getloadedTracks();
+    this.__loadedTracks.addEventListener("media-loaded", e =>
       root._handleMediaLoaded(e)
     );
-    this.__html5Media.addEventListener("timeupdate", e =>
+    this.__loadedTracks.addEventListener("timeupdate", e =>
       root._handleTimeUpdate(e)
     );
     this._addResponsiveUtility();
@@ -1998,8 +2106,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   firstUpdated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "__isYoutube" && this.__isYoutube)
-        this._youTubeRequest();
+      if (propName === "isYouTube" && this.isYouTube) this._youTubeRequest();
     });
   }
 
@@ -2008,70 +2115,14 @@ class A11yMediaPlayer extends SimpleColors {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      //console.log('updated',propName,oldValue);
       this._updateMediaProperties(propName);
-      this._updateCaptionProperties(propName);
       if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
-
-      /* updates playback status */
-      if (propName === "__elapsed")
-        this.__shareLink = this._getShareLink(this.__elapsed);
-
-      /* updates volume */
-      if (propName === "muted") this._handleMuteChanged();
-      if (propName === "volume") this.setVolume(this.volume);
 
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
       if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
-      if (["audioOnly", "hasCaptions", "__isYoutube"].includes(propName))
-        this.showCustomCaptions =
-          (this.__isYoutube || this.audioOnly) && this.hasCaptions && this.cc;
-
-      /* updates tranmsctipt */
-      if (["hasCaptions", "standAlone"].includes(propName))
-        this.hasTranscript = this.hasCaptions && !this.standAlone;
-      if (propName === "__transcriptOption") this._transcriptOptionChanged();
-      if (["hideTranscript", "transcriptTrack"].includes(propName))
-        this._transcriptChanged();
-      if (propName === "__cues") this.hasCaptions = this.__cues.length > 1;
-      if (["transcriptTrack", "__cues"].includes(propName)) {
-        let cues = this.__cues.slice();
-        this.__filteredCues = cues.filter(
-          cue => cue.track === this.transcriptTrack
-        );
-      }
-      /* updates layout */
-      if (
-        ["__audioNoThumb", "disableFullscreen", "__screenfullLoaded"].includes(
-          propName
-        )
-      )
-        this.fullscreenButton = this._getFullscreenButton(
-          this.disableFullscreen,
-          this.__audioNoThumb
-        );
-      if (
-        [
-          "__audioNoThumb",
-          "hideTranscript",
-          "stackedLayout",
-          "standAlone"
-        ].includes(propName)
-      )
-        this.__flexLayout = !(
-          this.standAlone ||
-          this.hideTranscript ||
-          this.__audioNoThumb ||
-          this.stackedLayout
-        );
-      if (["audioOnly", "thumbnailSrc"].includes(propName))
-        this.__audioNoThumb = this._getAudioNoThumb(
-          this.audioOnly,
-          this.thumbnailSrc
-        );
-      if (["fullscreen", "height", "media", "width"].includes(propName))
-        this._setPlayerHeight();
 
       this.dispatchEvent(
         new CustomEvent(
@@ -2089,10 +2140,10 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _captionsChanged() {
     let ccNum = -1;
-    Object.keys(this.__html5Media.textTracks).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks).forEach(key => {
       let showing =
-        this.cc && this.__html5Media.textTracks[key] === this.captionsTrack;
-      this.__html5Media.textTracks[key].mode = showing ? "showing" : "hidden";
+        this.cc && this.loadedTracks.textTracks[key] === this.captionsTrack;
+      this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
       if (showing) ccNum = key;
     });
     this.__captionsOption = ccNum;
@@ -2103,38 +2154,18 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _captionsOptionChanged() {
     this.cc = this.__captionsOption > -1;
-    Object.keys(this.__html5Media.textTracks).forEach(key => {
+    Object.keys(this.loadedTracks.textTracks).forEach(key => {
       let showing = parseInt(key) == parseInt(this.__captionsOption);
-      this.__html5Media.textTracks[key].mode = showing ? "showing" : "hidden";
-      if (showing) this.captionsTrack = this.__html5Media.textTracks[key];
+      this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
+      if (showing) this.captionsTrack = this.loadedTracks.textTracks[key];
     });
-  }
-
-  /**
-   * updates `__transcriptOption` when `transcriptTrack` or `hide-transcript` changes
-   */
-  _transcriptChanged() {
-    this.__transcriptOption = this.hideTranscript
-      ? -1
-      : this._getTrackId(this.transcriptTrack);
-  }
-
-  /**
-   * updates track mode & `transcriptTrack` when `__transcriptOption` changes
-   */
-  _transcriptOptionChanged() {
-    if (this.__transcriptOption > -1)
-      this.transcriptTrack = this.__html5Media.textTracks[
-        this.__transcriptOption
-      ];
-    this.hideTranscript = this.__transcriptOption < 0;
   }
 
   /**
    * handles mute change
    */
   _handleMuteChanged() {
-    if (this.__isYoutube) {
+    if (this.isYouTube) {
       this.media.setMute(this.muted);
     } else {
       this.media.muted = this.muted;
@@ -2290,9 +2321,10 @@ class A11yMediaPlayer extends SimpleColors {
    * plays the media
    */
   play() {
-    if (this.__isYoutube && !this.__ytAppended) {
+    if (this.isYouTube && !this.__ytAppended) {
       ytInit();
     } else {
+      console.log("play", this.media, this.isYouTube);
       this.__playing = true;
       this.media.play();
       /**
@@ -2326,6 +2358,7 @@ class A11yMediaPlayer extends SimpleColors {
    * pauses the media
    */
   pause() {
+    console.log("pause", this.media);
     this.__playing = false;
     this.media.pause();
     /**
@@ -2388,7 +2421,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   rewind(amt) {
     amt = amt !== undefined ? amt : this.media.duration / 20;
-    this.__resumePlaying = this.__playing;
+    this.__resumePlaying = this.playing;
     this.seek(this.media.currentTime - amt, 0);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
@@ -2412,7 +2445,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   forward(amt) {
     amt = amt !== undefined ? amt : this.media.duration / 20;
-    this.__resumePlaying = this.__playing;
+    this.__resumePlaying = this.playing;
     this.seek(this.media.currentTime + amt);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
@@ -2463,18 +2496,83 @@ class A11yMediaPlayer extends SimpleColors {
       );
     }
   }
+
+  /**
+   * selects `captionsTrack` by key and adjusts `cc` accordingly
+   */
+  selectCaptionByKey(id) {
+    id = parseInt(id);
+    if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
+    this.cc = id > -1;
+  }
+
+  /**
+   * selects `transcriptTrack` by key and adjusts `hideTranscript` accordingly
+   */
+  selectTranscriptByKey(id) {
+    id = parseInt(id);
+    if (id > -1) this.transcriptTrack = this.loadedTracks.textTracks[id];
+    this.hideTranscript = id < 0;
+  }
+
+  /**
+   * media tag where sources and tracks can be found
+   * @readonly
+   */
+  getloadedTracks() {
+    let media = this.querySelectorAll("audio,video"),
+      primary = null;
+    media.forEach(medium => {
+      medium.removeAttribute("autoplay");
+      medium.setAttribute("preload", "metadata");
+    });
+
+    if (media.length > 0) {
+      primary = media[0];
+      this.audioOnly = primary.tagName === "AUDIO";
+    } else {
+      primary = document.createElement(
+        this.querySelectorAll('source[type*="audio"]').length > 0
+          ? "audio"
+          : "video"
+      );
+      this.querySelectorAll("source,track").forEach(node => {
+        if (node.parentNode === this) primary.appendChild(node);
+      });
+      primary.setAttribute("preload", "metadata");
+      this.appendChild(primary);
+    }
+    primary.style.width = "100%";
+    primary.style.maxWidth = "100%";
+
+    /* handle deprecated tracks */
+    this.tracks.forEach(track => {
+      let node = document.createElement("track");
+      Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
+      primary.appendChild(node);
+    });
+
+    /* handle deprecated sources */
+    this.sources.forEach(source => {
+      let node = document.createElement("source");
+      Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
+      primary.appendChild(node);
+    });
+    return primary;
+  }
+
   /**
    * selects a specific transcript track
    * @param {track} track text track
    */
   _getTrack(track) {
     if (!track) {
-      let defaultTracks = this.__html5Media.textTracks.filter(
+      let defaultTracks = this.loadedTracks.textTracks.filter(
         track => track.default === true
       );
       return defaultTracks
         ? defaultTracks[0].track
-        : this.__html5Media.textTracks[0].track;
+        : this.loadedTracks.textTracks[0].track;
     }
     return track;
   }
@@ -2581,7 +2679,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   toggleLoop(mode) {
     this.loop = mode === undefined ? !this.loop : mode;
-    if (this.__isYoutube) {
+    if (this.isYouTube) {
       this.media.setLoop(this.loop);
     } else {
       this.media.loop = mode === true;
@@ -2690,23 +2788,21 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * loads a track's cue metadata
    */
-  _addSourcesAndTracks(media = this.media) {
-    let root = this;
+  _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    this.__captionHref = this.__html5Media.querySelector("source[src]");
-    this.__html5Media.textTracks.onremovetrack = e => {
-      this.__html5Media.textTracks.filter(track => track !== e.track);
-      this.__cues = this.__cues.filter(cue => cue.track !== e.track);
+    this.loadedTracks.textTracks.onremovetrack = e => {
+      this.loadedTracks.textTracks.filter(track => track !== e.track);
+      this.__cues = this.cues.filter(cue => cue.track !== e.track);
     };
-    this.__html5Media.textTracks.onaddtrack = e => {
+    this.loadedTracks.textTracks.onaddtrack = e => {
       if (this.captionsTrack === null) this.captionsTrack = e.track;
       e.track.mode = "hidden";
       let loadCueData = setInterval(() => {
         if (e.track.cues && e.track.cues.length > 0) {
           clearInterval(loadCueData);
           let cues = Object.keys(e.track.cues).map(key => e.track.cues[key]);
-          this.__cues = this.__cues.concat(cues).sort((a, b) => {
+          this.__cues = this.cues.concat(cues).sort((a, b) => {
             let start = a.startTime - b.startTime,
               end = a.endTime - b.endTime;
             return start !== 0 ? start : end !== 0 ? end : a.track - b.track;
@@ -2715,117 +2811,18 @@ class A11yMediaPlayer extends SimpleColors {
       });
     };
 
-    let d = this.__html5Media.querySelector("track[default]"),
+    let d = this.loadedTracks.querySelector("track[default]"),
       defaultTrack =
-        Object.keys(this.__html5Media.textTracks).find(key => {
+        Object.keys(this.loadedTracks.textTracks).find(key => {
           return (
-            d.label === this.__html5Media.textTracks[key].label &&
-            d.kind === this.__html5Media.textTracks[key].kind &&
-            d.srclang === this.__html5Media.textTracks[key].scrlang
+            d.label === this.loadedTracks.textTracks[key].label &&
+            d.kind === this.loadedTracks.textTracks[key].kind &&
+            d.srclang === this.loadedTracks.textTracks[key].scrlang
           );
         }) || 0;
-    this.captionsTrack = this.__html5Media.textTracks[defaultTrack];
+    this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
     this._setElapsedTime();
-  }
-
-  /**
-   * returns true if an attribute is set to a value
-   * @param {boolean} Is the media audio only?
-   * @param {string} optional: the source URL of the thumbnail image
-   * @returns {boolean} Should height of video/thumbnail area be set to 0?
-   */
-  _getAudioNoThumb(audioOnly, thumbnailSrc) {
-    return audioOnly && (thumbnailSrc === null || thumbnailSrc === undefined);
-  }
-
-  /**
-   * returns whether or not the fullscreen mode should be disabled
-   * @param {boolean} Is fullscreen mode set to disabled?
-   * @returns {boolean} Should fullscreen disabled?
-   */
-  _getFullscreenButton(disableFullscreen, audioNoThumb, __screenfullLoaded) {
-    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      ) ||
-      disableFullscreen ||
-      audioNoThumb ||
-      !(typeof screenfull === "object")
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  /**
-   * gets media caption
-   * @param {boolean} Is the player set to audio-only?
-   * @param {string} the title of the media
-   * @returns {string} the media caption
-   */
-  _getMediaCaption(audioOnly, mediaTitle) {
-    let audioLabel = this._getLocal(this.localization, "audio", "label"),
-      hasMediaTitle =
-        mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
-    if (audioOnly && hasMediaTitle) {
-      return mediaTitle + " (" + audioLabel + ")";
-    } else if (audioOnly) {
-      return audioLabel;
-    } else if (hasMediaTitle) {
-      return mediaTitle;
-    } else {
-      return null;
-    }
-  }
-
-  /**
-   * gets print caption
-   * @param {boolean} Is the player set to audio-only?
-   * @param {string} the title of the media
-   * @returns {string} the media caption when the page is printed
-   */
-  _getPrintCaption(audioOnly, mediaTitle) {
-    let audioLabel = this._getLocal(this.localization, "audio", "label"),
-      videoLabel = this._getLocal(this.localization, "video", "label"),
-      hasMediaTitle =
-        mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
-    if (audioOnly && hasMediaTitle) {
-      return mediaTitle + " (" + audioLabel + ")";
-    } else if (audioOnly) {
-      return audioLabel;
-    } else if (hasMediaTitle) {
-      return mediaTitle + " (" + videoLabel + ")";
-    } else {
-      return videoLabel;
-    }
-  }
-
-  /**
-   * gets the link for sharing the video at a specific timecode
-   * @param {boolean} linkable is the video is linkable
-   */
-  _getShareLink(__elapsed) {
-    let url = window.location.href.split(/[#?]/)[0],
-      id = this.id ? `?id=${this.id}` : ``,
-      elapsed =
-        id !== "" && this.__elapsed && this.__elapsed !== 0
-          ? `&t=${this.__elapsed}`
-          : ``;
-    return `${url}${id}${elapsed}`;
-  }
-
-  /**
-   * get thumbanail css based on whether or not the video is playing
-   * @param {string} the url for the thumbnail image
-   * @returns {string} the string for the style attribute
-   */
-  _getThumbnailCSS(thumbnailSrc, __isYoutube, audioOnly) {
-    return thumbnailSrc != null && (__isYoutube || audioOnly)
-      ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
-      : undefined;
   }
 
   /**
@@ -2846,9 +2843,9 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCopyLink() {
     let el = document.createElement("textarea");
-    this.__resumePlaying = this.__playing;
+    this.__resumePlaying = this.playing;
     this.pause;
-    el.value = this.__shareLink;
+    el.value = this.shareLink;
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
@@ -2863,7 +2860,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCueSeek(cue) {
     if (!this.standAlone) {
-      this.__resumePlaying = this.__playing;
+      this.__resumePlaying = this.playing;
       this.seek(cue.startTime);
     }
   }
@@ -2872,10 +2869,10 @@ class A11yMediaPlayer extends SimpleColors {
    * handles media metadata when media is loaded
    */
   _handleMediaLoaded() {
+    console.log("_handleMediaLoaded");
     let anchor = window.AnchorBehaviors,
       target = anchor.getTarget(this),
       params = anchor.params;
-    this._setPlayerHeight();
     this.shadowRoot.querySelector("#playbutton").removeAttribute("disabled");
 
     // gets and converts video duration
@@ -2898,7 +2895,7 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    */
   _handleSliderStart() {
-    this.__resumePlaying = this.__playing;
+    this.__resumePlaying = this.playing;
     this.pause();
     this.__seeking = true;
   }
@@ -2920,7 +2917,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleTimeUpdate() {
     //if play exceeds clip length, stop
-    if (this.__isYoutube && this.media.duration !== this.media.getDuration()) {
+    if (this.isYouTube && this.media.duration !== this.media.getDuration()) {
       this.__duration = this.media.duration = this.media.getDuration();
       this.__buffered = this.getBufferedTime() || 0;
       while (this.__buffered < this.__duration)
@@ -2945,7 +2942,6 @@ class A11yMediaPlayer extends SimpleColors {
       this.__playing = false;
     }
     //prevent slider and cue updates until finished seeking
-    this._updateCustomTracks();
     this._setElapsedTime();
   }
 
@@ -2957,8 +2953,8 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _getTrackId(track) {
     return (
-      Object.keys(this.__html5Media.textTracks).find(
-        key => this.__html5Media.textTracks[key] === track
+      Object.keys(this.loadedTracks.textTracks).find(
+        key => this.loadedTracks.textTracks[key] === track
       ) || -1
     );
   }
@@ -2968,18 +2964,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _transcriptScroll() {
     this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * Determines if video and transcript are in a flex layout
-   * @param {boolean} Is the player in stand-alone mode?
-   * @param {boolean} Is the transcript hidden?
-   * @param {boolean} Does the media no video or thumbnail image?
-   * @param {boolean} Is the layout stacked?
-   * @returns {boolean} Is the video in flex layout mode?
-   */
-  _isFlexLayout(standAlone, hideTranscript, audioNoThumb, stackedLayout) {
-    return !standAlone && !hideTranscript && !audioNoThumb && !stackedLayout;
   }
 
   /**
@@ -3007,8 +2991,8 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * updates __activeCues array and scrolls to position
-   * @param {array} an array of cues
+   * on a cue.onenter event scrolls the first active cue to position
+   * @param {event} e onenter event
    */
   _setActiveCue(e) {
     let cue = e.detail.element,
@@ -3059,142 +3043,43 @@ class A11yMediaPlayer extends SimpleColors {
             ? this.media.seekable.start(0)
             : 0);
     }
-    if (duration > 0)
-      this.__status = `${this._getHHMMSS(elapsed, duration)}/${this._getHHMMSS(
-        duration
-      )}`;
   }
 
-  /**
-   * sets the height of the player
-   */
-  _setPlayerHeight() {
-    let aspect =
-        this.media && this.media.aspectRatio ? this.media.aspectRatio : 16 / 9,
-      player = this.shadowRoot.querySelector("#player"),
-      audio =
-        this.audioOnly && this.thumbnailSrc === null && this.height === null;
-    this.width !== null ? this.width : "100%";
-    this.style.maxWidth = this.width;
-
-    if (player) {
-      player.style.height = audio ? "60px" : "unset";
-      if (this.height === null) {
-        player.style.paddingTop = this.fullscreen
-          ? `unset`
-          : `${100 / aspect}%`;
-        this.shadowRoot.querySelector("#innerplayer").style.maxWidth = this
-          .fullscreen
-          ? `unset`
-          : `calc(${aspect * 100}vh - ${aspect * 80}px)`;
-      } else {
-        this.shadowRoot.querySelector(
-          "#outerplayer"
-        ).style.height = this.height;
-      }
-    }
-  }
-
-  /**
-   * Show custom CC (for audio and YouTube)?
-   * @param {boolean} Is the media from YouTube?
-   * @param {boolean} Is the media audio only?
-   * @param {boolean} Does the media have CC tracks?
-   * @param {boolean} Are the CC turned on?
-   * @returns {boolean} Should the player show custom CC?
-   */
-  _showCustomCaptions(__isYoutube, audioOnly, hasCaptions, cc) {
-    return (__isYoutube || audioOnly) && hasCaptions && cc;
-  }
-  /**
-   * When relevant player properties change, updates caption below media and print caption above it
-   * @param {string} propName the changed property
-   */
-
-  _updateCaptionProperties(propName) {
-    if (["audioOnly", "localization", "mediaTitle"].includes(propName)) {
-      this.__mediaCaption = this._getMediaCaption(
-        this.audioOnly,
-        this.mediaTitle
-      );
-      this.__printCaption = this._getPrintCaption(
-        this.audioOnly,
-        this.mediaTitle
-      );
-    }
-  }
-
-  /**
-   * updates custom tracks for youTube
-   */
-  _updateCustomTracks() {
-    if ((this.__isYoutube || this.audioOnly) && this.__html5Media.textTracks) {
-      let track = this.captionsTrack,
-        active = [],
-        caption = "";
-      if (
-        track !== undefined &&
-        track !== null &&
-        track.cues !== undefined &&
-        track.cues !== null
-      ) {
-        for (let i = 0; i < track.cues.length; i++) {
-          if (
-            track.cues[i].seek < this.__elapsed &&
-            track.cues[i].seekEnd > this.__elapsed
-          ) {
-            active.push(track.cues[i].order);
-            caption = caption === "" ? track.cues[i].text : caption;
-          }
-        }
-        this.shadowRoot.querySelector("#customcctxt").innerText = caption;
-      }
-    }
-  }
-
-  /**
-   * sets or removes media attributes
-   *
-   * @param {string} attr the media attribute
-   * @param {} val value
-   */
-  _updateMediaAttribute(attr, val) {
-    if (val) {
-      this.media.setAttribute(attr, val);
-    } else {
-      this.media.removeAttribute(attr, val);
-    }
-  }
   /**
    * When relevant player properties change, updates properties of media
    * @param {string} propName the changed property
    */
 
   _updateMediaProperties(propName) {
-    if (this.media && this.media !== null) {
-      if (propName === "media") this._addSourcesAndTracks(this.media);
-      if (["media", "crossorigin"].includes(propName))
-        this._updateMediaAttribute("crossorigin", this.crossorigin);
-      if (["media", "mediaLang"].includes(propName))
-        this._updateMediaAttribute("lang", this.mediaLang);
-      if (["media", "thumbnailSrc"].includes(propName))
-        this._updateMediaAttribute("poster", this.thumbnailSrc);
-      if (["media", "autoplay"].includes(propName))
-        this._updateMediaAttribute("autoplay", this.autoplay);
-      if (["media", "cc"].includes(propName))
-        this._updateMediaAttribute("cc", this.cc);
-      if (["media", "__isYoutube"].includes(propName))
-        this._updateMediaAttribute("hidden", this.__isYoutube);
-      if (["media", "playbackRate"].includes(propName))
-        this._updateMediaAttribute("playbackRate", this.playbackRate);
-      if (["media", "autoplay"].includes(propName))
-        this._updateMediaAttribute("autoplay", this.autoplay);
-      if (["media", "volume"].includes(propName))
-        this._updateMediaAttribute("volume", this.volume);
-      if (["media", "muted"].includes(propName))
-        this._updateMediaAttribute("muted", this.muted);
-      if (["media", "__playing"].includes(propName))
-        this._updateMediaAttribute("playing", this.playing);
+    let setAttr = (attr, val = this[attr]) => {
+      if (["__loadedTracks", attr].includes(propName)) {
+        console.log("_updateMediaProperties", propName, this.loadedTracks);
+        if (val) {
+          this.loadedTracks.setAttribute(attr, val);
+        } else {
+          this.loadedTracks.removeAttribute(attr, val);
+        }
+      }
+    };
+    if (this.media !== null) {
+      setAttr("autoplay");
+      setAttr("cc");
+      setAttr("crossorigin");
+      setAttr("hidden", this.isYouTube);
+      setAttr("lang", this.mediaLang);
+      //TODO setAttr("loop");
+      //TODO setAttr("muted");
+      setAttr("playbackRate");
+      setAttr("poster", this.thumbnailSrc); //TODO
+      //TODO setAttr("volume");
+      setAttr("playing", this.playing);
+
+      if (propName === "__loadedTracks")
+        this._addSourcesAndTracks(this.loadedTracks);
+      if (["media", "muted"].includes(propName)) this._handleMuteChanged();
+      if (["media", "volume"].includes(propName)) this.setVolume(this.volume);
+      if (["media", "autoplay"].includes(propName) && this.autoplay)
+        this.play();
     }
   }
 
@@ -3203,9 +3088,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _useYoutubeIframe(thumbnailSrc, __isYoutube, __elapsed) {
+  _useYoutubeIframe(thumbnailSrc, isYouTube, __elapsed) {
     return (
-      __isYoutube &&
+      isYouTube &&
       (thumbnailSrc === null || __elapsed === undefined || __elapsed === 0)
     );
   }
@@ -3222,24 +3107,18 @@ class A11yMediaPlayer extends SimpleColors {
       if (e.detail === root.media) root._handleTimeUpdate(e);
     });
     this.disableSeek = true;
-    if (this.__playerAttached && this.__playerReady) {
+    if (this.__playerReady) {
       let ytInit = () => {
           // once metadata is ready on video set it on the media player
           // initialize the YouTube player
-          this.media = ytUtil.initYoutubePlayer({
+          this.youtube = ytUtil.initYoutubePlayer({
             width: "100%",
             height: "100%",
             videoId: this.youtubeId
           });
-          this.__status = this._getLocal(
-            this.localization,
-            "youTubeLoading",
-            "label"
-          );
           // move the YouTube iframe to the media player's YouTube container
-          this.shadowRoot.querySelector("#youtube").appendChild(this.media.a);
+          this.shadowRoot.querySelector("#youtube").appendChild(this.youtube.a);
           this.__ytAppended = true;
-          this._updateCustomTracks();
         },
         checkApi = e => {
           if (ytUtil.apiReady) {
@@ -3257,42 +3136,6 @@ class A11yMediaPlayer extends SimpleColors {
         window.addEventListener("youtube-api-ready", checkApi);
       }
     }
-  }
-
-  /**
-   * gets the link for sharing the video at a specific timecode
-   * @param {boolean} linkable is the video is linkable
-   */
-  _getShareLink(__elapsed) {
-    let url = window.location.href.split(/[#?]/)[0],
-      id = this.id ? `?id=${this.id}` : ``,
-      elapsed =
-        id !== "" && this.__elapsed && this.__elapsed !== 0
-          ? `&t=${this.__elapsed}`
-          : ``;
-    return `${url}${id}${elapsed}`;
-  }
-
-  /**
-   * returns true if an attribute is not null
-   *
-   * @param {object} the attribute to check
-   * @returns {boolean} attr !== undefined && attr !== null
-   */
-  _hasAttribute(attr) {
-    return attr !== undefined && attr !== null;
-  }
-
-  /**
-   * returns true if an attribute is set to a value
-   *
-   * @param {object} the attribute to check
-   * @param {object} the value to check
-   * @returns {boolean} attr === val
-   */
-
-  _testAttribute(attr, val) {
-    return attr === val;
   }
 
   /**
@@ -3378,11 +3221,11 @@ class A11yMediaPlayer extends SimpleColors {
     ) {
       local = localization[key][subkey];
     } else if (
-      this.__localizationDefaults !== undefined &&
-      this.__localizationDefaults[key] !== undefined &&
-      this.__localizationDefaults[key][subkey] !== undefined
+      this.localizationDefaults !== undefined &&
+      this.localizationDefaults[key] !== undefined &&
+      this.localizationDefaults[key][subkey] !== undefined
     ) {
-      local = this.__localizationDefaults[key][subkey];
+      local = this.localizationDefaults[key][subkey];
     }
     return local;
   }

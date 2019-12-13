@@ -130,6 +130,7 @@
 #player {
   height: 400px;
   position: relative;
+  background-size: cover;
 }
 #player > * {
   position: absolute;

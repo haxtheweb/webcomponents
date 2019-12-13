@@ -102,27 +102,6 @@
     "type": "Boolean"
   },
   /**
-   * show the FullscreenButton?
-   */
-  "fullscreenButton": {
-    "attribute": "fullscreen-button",
-    "type": "Boolean"
-  },
-  /**
-   * Does the player have tracks?
-   */
-  "hasCaptions": {
-    "attribute": "has-captions",
-    "type": "Boolean"
-  },
-  /**
-   * Does the player have an interactive transcript?
-   */
-  "hasTranscript": {
-    "attribute": "has-transcript",
-    "type": "Boolean"
-  },
-  /**
    * The height of the media player.
    */
   "height": {
@@ -189,17 +168,10 @@
   },
   /**
    * Dash.js manifest source?
-   */
+   * /
   "manifest": {
     "attribute": "manifest",
     "type": "String"
-  },
-  /**
-   * the media to be manipulated
-   */
-  "media": {
-    "attribute": "media",
-    "type": "Object"
   },
   /**
    * the language of the media (if different from user interface language)
@@ -285,13 +257,6 @@
     "reflect": true
   },
   /**
-   * target of the controls
-   */
-  "target": {
-    "attribute": "target",
-    "type": "Object"
-  },
-  /**
    * Source of optional thumbnail image
    */
   "thumbnailSrc": {
@@ -305,12 +270,6 @@
   "tracks": {
     "attribute": "tracks",
     "type": "Array"
-  },
-  /**
-   * Transcript associated with player. (Can be set to an extenal object);
-   */
-  "transcript": {
-    "attribute": "transcript"
   },
   /**
    * the selected track for the transcript
@@ -348,138 +307,45 @@
     "type": "Object"
   },
   /**
-   * array of cues
-   */
-  "__activeCues": {
-    "type": "Array"
-  },
-  /**
-   * Active transcript track
-   */
-  "__activeTrack": {
-    "type": "Array"
-  },
-  /**
-   * Is it an audio player with no thumbnail?
-   */
-  "__audioNoThumb": {
-    "type": "Boolean"
-  },
-  /**
-   * Notice if the video is playing
-   */
-  "__captionHref": {
-    "type": "String"
-  },
-  /**
-   * `key` of selected textTrack for captions area
-   */
-  "__captionsOption": {
-    "type": "Number"
-  },
-  /**
-   * array of cues
+   * array of cues provided to readOnly `get cues`
    */
   "__cues": {
     "type": "Array"
   },
   /**
-   * array of cues
+   * buffered media in seconds provided to readOnly `get buffered`
    */
-  "__filteredCues": {
-    "type": "Array"
+  "__buffered": {
+    "type": "Number"
   },
   /**
-   * Notice if the elapsed time changes
-   */
-  "__deprecatedMedia": {
-    "type": "Array"
-  },
-  /**
-   * Notice if the elapsed time changes
+   * media duration in seconds provided to readOnly `get duration`
    */
   "__duration": {
     "type": "Number"
   },
   /**
-   * Notice if the elapsed time changes
+   * elapsed media in seconds provided to readOnly `get elapsed`
    */
   "__elapsed": {
     "type": "Number"
   },
   /**
-   * Determines if video and transcript are in a flex layout
+   * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
    */
-  "__flexLayout": {
-    "attribute": "flex-layout",
-    "type": "Boolean",
-    "reflect": true
-  },
-  /**
-   * The media tag where sources and tracks can be found
-   */
-  "__html5Media": {
-    "type": "Array"
-  },
-  /**
-   * is YouTube?
-   */
-  "__isYoutube": {
-    "type": "Boolean"
-  },
-  /**
-   * default localization settings
-   */
-  "__localizationDefaults": {
+  "__loadedTracks": {
     "type": "Object"
   },
   /**
-   * The default media caption if none is given.
-   */
-  "__mediaCaption": {
-    "type": "String"
-  },
-  /**
-   * Notice if the video is playing
+   * media playing status readOnly `get playing`
    */
   "__playing": {
     "type": "Boolean"
   },
   /**
-   * The media caption that displays when the page is printed.
-   */
-  "__printCaption": {
-    "type": "String"
-  },
-  /**
    * Has screenfull loaded?
    */
   "__screenfullLoaded": {
-    "type": "Boolean"
-  },
-  /**
-   * Has screenfull loaded?
-   */
-  "__shareLink": {
-    "type": "String"
-  },
-  /**
-   * `key` of selected textTrack for transcript area
-   */
-  "__transcriptOption": {
-    "type": "Number"
-  },
-  /**
-   * currently selected volume level
-   */
-  "__volumeOption": {
-    "type": "Number"
-  },
-  /**
-   * is YouTube?
-   */
-  "showCustomCaptions": {
-    "attribute": "show-custom-captions",
     "type": "Boolean"
   }
 }
