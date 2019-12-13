@@ -10,6 +10,7 @@ import {
 } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -105,6 +106,9 @@ class HAXCMSSiteBuilder extends LitElement {
   }
   _updateLastError(e) {
     this.lastError = e.detail.value;
+  }
+  firstUpdated() {
+    this.shadowRoot.querySelector("#manifest").generateRequest();
   }
   /**
    * life cycle updated
@@ -311,13 +315,9 @@ class HAXCMSSiteBuilder extends LitElement {
     this.outlineLocation = "";
     this.activeItemLocation = "";
     import("./haxcms-site-router.js");
-    // bizarre way of taking iron-ajax out the blocking of the page rendering :)
-    import("@polymer/iron-ajax/iron-ajax.js").then(response => {
-      this.shadowRoot.querySelector("#manifest").generateRequest();
-      import("@polymer/paper-progress/paper-progress.js");
-      import("@lrnwebcomponents/simple-toast/simple-toast.js");
-      import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
-    });
+    import("@polymer/paper-progress/paper-progress.js");
+    import("@lrnwebcomponents/simple-toast/simple-toast.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     setTimeout(() => {
       window.addEventListener("hax-store-ready", this.storeReady.bind(this));
       window.addEventListener(
