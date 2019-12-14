@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "jsDoc": "/**\n * `voice-recorder`\n * `LAME bridge`\n *\n * @microcopy - language worth noting:\n *  -\n *\n * @demo demo/index.html\n * @customElement voice-recorder\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "jsDoc": "/**\n * `voice-recorder`\n * `LAME bridge`\n *\n * @microcopy - language worth noting:\n *  -\n *\n * @demo demo/index.html\n * @customElement voice-recorder\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    },
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "jsDoc": "/**\n * `voice-recorder`\n * `LAME bridge`\n *\n * @microcopy - language worth noting:\n *  -\n *\n * @demo demo/index.html\n * @customElement voice-recorder\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [],
+      "slots": []
+    }
+  ]
+}
