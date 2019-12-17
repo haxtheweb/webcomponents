@@ -1,170 +1,244 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrn-markdown-editor\n`Side by side markdown to HTML editor + preview pane`",
-      "description": "`lrn-markdown-editor`",
-      "jsDoc": "/**\n * `lrn-markdown-editor`\n * @customElement lrn-markdown-editor\n * `Side by side markdown to HTML editor + preview pane`\n *\n * @microcopy - language worth noting:\n *  - often used for quick field editing interfaces w/ minimal input allowed\n * @polymer\n\n * @demo demo/index.html\n */",
+      "name": "lrn-markdown-editor-editor",
       "attributes": [
         {
           "name": "content",
           "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "string"
-        },
-        {
-          "name": "layout",
-          "type": "string"
-        },
-        {
-          "name": "cookies",
-          "type": "boolean"
-        },
-        {
-          "name": "el-ready",
-          "type": "boolean"
         }
       ],
       "properties": [
         {
           "name": "content",
+          "attribute": "content",
           "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "string"
-        },
-        {
-          "name": "layout",
-          "type": "string"
-        },
-        {
-          "name": "cookies",
-          "type": "boolean"
-        },
-        {
-          "name": "elReady",
-          "type": "boolean"
         }
       ],
       "events": [
         {
           "name": "content-changed"
+        },
+        {
+          "name": "content-updated"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-markdown-editor\n`Side by side markdown to HTML editor + preview pane`",
+      "name": "lrn-markdown-editor",
       "description": "`lrn-markdown-editor`",
-      "jsDoc": "/**\n * `lrn-markdown-editor`\n * @customElement lrn-markdown-editor\n * `Side by side markdown to HTML editor + preview pane`\n *\n * @microcopy - language worth noting:\n *  - often used for quick field editing interfaces w/ minimal input allowed\n * @polymer\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "content",
-          "type": "string"
-        },
-        {
           "name": "selected",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "layout",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "cookies",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "el-ready",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "content",
-          "type": "string"
-        },
-        {
           "name": "selected",
-          "type": "string"
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "layout",
-          "type": "string"
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "cookies",
-          "type": "boolean"
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "elReady",
-          "type": "boolean"
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "content-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-markdown-editor\n`Side by side markdown to HTML editor + preview pane`",
+      "name": "lrn-markdown-editor",
       "description": "`lrn-markdown-editor`",
-      "jsDoc": "/**\n * `lrn-markdown-editor`\n * @customElement lrn-markdown-editor\n * `Side by side markdown to HTML editor + preview pane`\n *\n * @microcopy - language worth noting:\n *  - often used for quick field editing interfaces w/ minimal input allowed\n * @polymer\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "content",
-          "type": "string"
-        },
-        {
           "name": "selected",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "layout",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "cookies",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "el-ready",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "content",
-          "type": "string"
-        },
-        {
           "name": "selected",
-          "type": "string"
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "layout",
-          "type": "string"
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "cookies",
-          "type": "boolean"
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "elReady",
-          "type": "boolean"
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "content-changed"
         }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "content-changed"
+        },
+        {
+          "name": "content-updated"
+        }
+      ]
+    },
+    {
+      "name": "lrn-markdown-editor",
+      "description": "`lrn-markdown-editor`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
       ],
-      "slots": []
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "elReady",
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-changed"
+        }
+      ]
     }
   ]
 }

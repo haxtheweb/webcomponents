@@ -1,4 +1,110 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "to-element",
+      "description": "`to-element`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"to-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "to-element",
+      "description": "`to-element`",
+      "attributes": [
+        {
+          "name": "element",
+          "description": "object in question to clone and turn into a custom element",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "name",
+          "description": "valid custom element name of the new element to create",
+          "type": "string",
+          "default": "\"new-element\""
+        },
+        {
+          "name": "sourceUrl",
+          "description": "optional original location that this came from",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fileTypes",
+          "description": "MIME type lookup for file extensions",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "element",
+          "attribute": "element",
+          "description": "object in question to clone and turn into a custom element",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "valid custom element name of the new element to create",
+          "type": "string",
+          "default": "\"new-element\""
+        },
+        {
+          "name": "sourceUrl",
+          "attribute": "sourceUrl",
+          "description": "optional original location that this came from",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fileTypes",
+          "attribute": "fileTypes",
+          "description": "MIME type lookup for file extensions",
+          "type": "object"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"to-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "to-element",
+      "description": "`to-element`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"to-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
 }

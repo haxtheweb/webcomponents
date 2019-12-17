@@ -1,182 +1,170 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "meme-maker\nConnects lrndesign-gallery to HAX",
+      "name": "meme-maker",
       "description": "`meme-maker`",
-      "jsDoc": "/**\n * `meme-maker`\n * @customElement meme-maker\n * Connects lrndesign-gallery to HAX\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  - go forth and make dank memes yo\n */",
       "attributes": [
-        {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
         {
           "name": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
-        {
           "name": "imageUrl",
+          "attribute": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "topText",
+          "attribute": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottomText",
+          "attribute": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "meme-maker\nConnects lrndesign-gallery to HAX",
+      "name": "meme-maker",
       "description": "`meme-maker`",
-      "jsDoc": "/**\n * `meme-maker`\n * @customElement meme-maker\n * Connects lrndesign-gallery to HAX\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  - go forth and make dank memes yo\n */",
       "attributes": [
-        {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
         {
           "name": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
-        {
           "name": "imageUrl",
+          "attribute": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "topText",
+          "attribute": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottomText",
+          "attribute": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "meme-maker\nConnects lrndesign-gallery to HAX",
+      "name": "tag"
+    },
+    {
+      "name": "meme-maker",
       "description": "`meme-maker`",
-      "jsDoc": "/**\n * `meme-maker`\n * @customElement meme-maker\n * Connects lrndesign-gallery to HAX\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  - go forth and make dank memes yo\n */",
       "attributes": [
-        {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
         {
           "name": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "alt",
-          "description": "Alt data passed down to appropriate tag",
-          "jsDoc": "/**\n       * Alt data passed down to appropriate tag\n       */",
-          "type": "string"
-        },
-        {
           "name": "imageUrl",
+          "attribute": "image-url",
           "description": "url to the meme image",
-          "jsDoc": "/**\n       * url to the meme image\n       */",
           "type": "string"
         },
         {
           "name": "topText",
+          "attribute": "top-text",
           "description": "Text on top of the image.",
-          "jsDoc": "/**\n       * Text on top of the image.\n       */",
           "type": "string"
         },
         {
           "name": "bottomText",
+          "attribute": "bottom-text",
           "description": "Bottom text for the image.",
-          "jsDoc": "/**\n       * Bottom text for the image.\n       */",
           "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,4 +1,335 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "attribute": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "attribute": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "inputSuccess",
+          "attribute": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flaggedInput",
+          "attribute": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ]
+    },
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "attribute": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "attribute": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "inputSuccess",
+          "attribute": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flaggedInput",
+          "attribute": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon based on status",
+          "type": "string"
+        },
+        {
+          "name": "maxlength",
+          "attribute": "maxlength",
+          "type": "number"
+        },
+        {
+          "name": "minlength",
+          "attribute": "minlength",
+          "type": "number"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "Status based on test for flagged words",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "inputSuccess",
+          "attribute": "input-success",
+          "description": "Passed tests / success data.",
+          "type": "object",
+          "default": "{\"message\":\"You passed our simple accessibility checks.\",\"status\":\"info\"}"
+        },
+        {
+          "name": "flaggedInput",
+          "attribute": "flagged-input",
+          "description": "Input to trap and offer feedback about.",
+          "type": "array",
+          "default": "[{\"match\":null,\"message\":\"Alt data is required for everything except decoration images.\",\"status\":\"notice\"},{\"match\":\"image\",\"message\":\"Screenreaders will say the word image, don't put it in the descriptive text\",\"status\":\"error\"},{\"match\":\"photo\",\"message\":\"Screenreaders will say the word image, don't put photo in the descriptive text\",\"status\":\"error\"},{\"match\":\"picture\",\"message\":\"Screenreaders will say the word image, don't put picture in the descriptive text\",\"status\":\"error\"},{\"match\":3,\"message\":\"Description not effective enough. This should be at least a sentance about what the image is.\",\"status\":\"error\"},{\"match\":10,\"message\":\"Make sure your alt text is descriptive enough for those that can't see the media.\",\"status\":\"warning\"}]"
+        }
+      ]
+    }
+  ]
 }

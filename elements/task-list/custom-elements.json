@@ -1,122 +1,143 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "task-list",
       "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
       ],
       "properties": [
         {
           "name": "relatedResource",
+          "attribute": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "task-list",
       "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
       ],
       "properties": [
         {
           "name": "relatedResource",
+          "attribute": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "task-list",
       "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
-      "jsDoc": "/**\n * `task-list`\n * Visual listing of tasks with different design components that is\n * OER Schema capable!\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - task - a singular thing to accomplish\n * @customElement task-list\n */",
       "attributes": [
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
       ],
       "properties": [
         {
           "name": "relatedResource",
+          "attribute": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
           "type": "string"
         },
         {
           "name": "tasks",
-          "type": "never[]"
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "name",
-          "type": "string"
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

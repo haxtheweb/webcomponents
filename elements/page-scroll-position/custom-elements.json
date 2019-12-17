@@ -1,38 +1,37 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "page-scroll-position",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
           "name": "value-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "page-scroll-position",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
           "name": "value-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "page-scroll-position",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
           "name": "value-changed"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "page-scroll-position",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
     }
   ]
 }

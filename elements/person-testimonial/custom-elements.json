@@ -1,182 +1,170 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "person-testimonial\n`Leaving a testimonial from a person to say your company rocks!`",
+      "name": "person-testimonial",
       "description": "`person-testimonial`",
-      "jsDoc": "/**\n * `person-testimonial`\n * @customElement person-testimonial\n * `Leaving a testimonial from a person to say your company rocks!`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "elevation",
+          "attribute": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "person-testimonial\n`Leaving a testimonial from a person to say your company rocks!`",
+      "name": "person-testimonial",
       "description": "`person-testimonial`",
-      "jsDoc": "/**\n * `person-testimonial`\n * @customElement person-testimonial\n * `Leaving a testimonial from a person to say your company rocks!`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "elevation",
+          "attribute": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "person-testimonial\n`Leaving a testimonial from a person to say your company rocks!`",
+      "name": "tag"
+    },
+    {
+      "name": "person-testimonial",
       "description": "`person-testimonial`",
-      "jsDoc": "/**\n * `person-testimonial`\n * @customElement person-testimonial\n * `Leaving a testimonial from a person to say your company rocks!`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "elevation",
+          "attribute": "elevation",
           "description": "Visual height of the card.",
-          "jsDoc": "/**\n       * Visual height of the card.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "The profile image to display to the left of the quote.",
-          "jsDoc": "/**\n       * The profile image to display to the left of the quote.\n       */",
           "type": "string"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of the person making the quote.",
-          "jsDoc": "/**\n       * Name of the person making the quote.\n       */",
           "type": "string"
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "The title / position of the person in question.",
-          "jsDoc": "/**\n       * The title / position of the person in question.\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

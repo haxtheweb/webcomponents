@@ -1,218 +1,269 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "lrnsys-pdf",
       "description": "`lrnsys-pdf`",
-      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
+          "attribute": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "downloadLabel",
+          "attribute": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
+          "attribute": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
+          "attribute": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "lrnsys-pdf",
       "description": "`lrnsys-pdf`",
-      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
+          "attribute": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "downloadLabel",
+          "attribute": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
+          "attribute": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
+          "attribute": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "lrnsys-pdf",
       "description": "`lrnsys-pdf`",
-      "jsDoc": "/**\n * `lrnsys-pdf`\n * @customElement lrnsys-pdf\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title prior to the PDF",
-          "jsDoc": "/**\n       * Title prior to the PDF\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrnsys-pdf\""
         },
         {
           "name": "card",
+          "attribute": "card",
           "description": "Whether or not to present this as a card.",
-          "jsDoc": "/**\n       * Whether or not to present this as a card.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "downloadLabel",
+          "attribute": "download-label",
           "description": "Download Label.",
-          "jsDoc": "/**\n       * Download Label.\n       */",
           "type": "string"
         },
         {
           "name": "page",
+          "attribute": "page",
           "description": "Active Page",
-          "jsDoc": "/**\n       * Active Page\n       */",
           "type": "string"
         },
         {
           "name": "file",
+          "attribute": "file",
           "description": "File to present",
-          "jsDoc": "/**\n       * File to present\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

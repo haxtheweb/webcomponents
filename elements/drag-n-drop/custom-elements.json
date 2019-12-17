@@ -1,4 +1,91 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`",
+      "attributes": [
+        {
+          "name": "editing",
+          "type": "void"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "editing",
+          "attribute": "editing",
+          "type": "void"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"drag-n-drop\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`",
+      "attributes": [
+        {
+          "name": "editing",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "editing",
+          "attribute": "editing",
+          "type": "boolean"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"drag-n-drop\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`",
+      "attributes": [
+        {
+          "name": "editing",
+          "type": "void"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editing",
+          "attribute": "editing",
+          "type": "void"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"drag-n-drop\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
 }

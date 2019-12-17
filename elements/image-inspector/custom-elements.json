@@ -1,146 +1,143 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "image-inspector\n`Zoom, Rotate, Mirror, Download, and View image`",
+      "name": "image-inspector",
       "description": "`image-inspector`",
-      "jsDoc": "/**\n * `image-inspector`\n * @customElement image-inspector\n * `Zoom, Rotate, Mirror, Download, and View image`\n *\n * @demo demo/index.html\n */",
       "attributes": [
-        {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
-        },
         {
           "name": "src",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
           "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
       ],
       "properties": [
         {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
         },
         {
-          "name": "src",
-          "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "image-inspector\n`Zoom, Rotate, Mirror, Download, and View image`",
+      "name": "image-inspector",
       "description": "`image-inspector`",
-      "jsDoc": "/**\n * `image-inspector`\n * @customElement image-inspector\n * `Zoom, Rotate, Mirror, Download, and View image`\n *\n * @demo demo/index.html\n */",
       "attributes": [
-        {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
-        },
         {
           "name": "src",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
           "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
       ],
       "properties": [
         {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
         },
         {
-          "name": "src",
-          "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "image-inspector\n`Zoom, Rotate, Mirror, Download, and View image`",
+      "name": "tag"
+    },
+    {
+      "name": "image-inspector",
       "description": "`image-inspector`",
-      "jsDoc": "/**\n * `image-inspector`\n * @customElement image-inspector\n * `Zoom, Rotate, Mirror, Download, and View image`\n *\n * @demo demo/index.html\n */",
       "attributes": [
-        {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
-        },
         {
           "name": "src",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
           "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
       ],
       "properties": [
         {
-          "name": "degrees",
-          "description": "Image rotation",
-          "jsDoc": "/**\n       * Image rotation\n       */",
-          "type": "number"
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
         },
         {
-          "name": "src",
-          "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Hover class for button styling",
-          "jsDoc": "/**\n       * Hover class for button styling\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"blue white-text\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

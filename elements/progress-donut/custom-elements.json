@@ -1,217 +1,268 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "progress-donut\nshows progress in as a rounded shape w/ hollow middle",
+      "name": "progress-donut",
       "description": "`progress-donut`",
-      "jsDoc": "/**\n * `progress-donut`\n * @customElement progress-donut\n * shows progress in as a rounded shape w/ hollow middle\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "animated",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"grey\""
         },
         {
           "name": "dark",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "complete",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "desc",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageSrc",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageAlt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "total",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n     * Fired when chart changes.\n     *\n     * @event chart-changed\n     *\n     */"
+          "name": "options-changed",
+          "description": "Fired when options change."
         },
         {
-          "name": "options-changed",
-          "description": "Fired when options change.",
-          "jsDoc": "/**\n       * Fired when options change.\n       *\n       * @event options-changed\n       *\n       */"
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "progress-donut\nshows progress in as a rounded shape w/ hollow middle",
+      "name": "progress-donut",
       "description": "`progress-donut`",
-      "jsDoc": "/**\n * `progress-donut`\n * @customElement progress-donut\n * shows progress in as a rounded shape w/ hollow middle\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "start-angle",
           "description": "Donut angle where progress starts",
-          "jsDoc": "/**\n       * Donut angle where progress starts\n       */",
           "type": "number"
         },
         {
           "name": "animated",
-          "type": "boolean"
+          "description": "Whether progress animates on first load",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "complete",
-          "type": "never[]"
+          "description": "An array of completed values",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "desc",
-          "type": "string"
+          "description": "Accessible long description",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "Title of donut",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "image-src",
-          "type": "string"
+          "description": "Source of image in the center of the object.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "image-alt",
-          "type": "string"
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "total",
-          "type": "number"
+          "description": "Array of incomplete values",
+          "type": "number",
+          "default": "100"
         }
       ],
       "properties": [
         {
           "name": "startAngle",
+          "attribute": "start-angle",
           "description": "Donut angle where progress starts",
-          "jsDoc": "/**\n       * Donut angle where progress starts\n       */",
           "type": "number"
         },
         {
           "name": "animated",
-          "type": "boolean"
+          "attribute": "animated",
+          "description": "Whether progress animates on first load",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"grey\""
         },
         {
           "name": "dark",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "complete",
-          "type": "never[]"
+          "attribute": "complete",
+          "description": "An array of completed values",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "desc",
-          "type": "string"
+          "attribute": "desc",
+          "description": "Accessible long description",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "attribute": "title",
+          "description": "Title of donut",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageSrc",
-          "type": "string"
+          "attribute": "image-src",
+          "description": "Source of image in the center of the object.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageAlt",
-          "type": "string"
+          "attribute": "image-alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "total",
-          "type": "number"
+          "attribute": "total",
+          "description": "Array of incomplete values",
+          "type": "number",
+          "default": "100"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n     * Fired when chart changes.\n     *\n     * @event chart-changed\n     *\n     */"
+          "name": "options-changed",
+          "description": "Fired when options change."
         },
         {
-          "name": "options-changed",
-          "description": "Fired when options change.",
-          "jsDoc": "/**\n       * Fired when options change.\n       *\n       * @event options-changed\n       *\n       */"
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "progress-donut\nshows progress in as a rounded shape w/ hollow middle",
+      "name": "tag",
+      "events": [
+        {
+          "name": "options-changed"
+        },
+        {
+          "name": "chart-changed"
+        }
+      ]
+    },
+    {
+      "name": "progress-donut",
       "description": "`progress-donut`",
-      "jsDoc": "/**\n * `progress-donut`\n * @customElement progress-donut\n * shows progress in as a rounded shape w/ hollow middle\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "animated",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"grey\""
         },
         {
           "name": "dark",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "complete",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "desc",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageSrc",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "imageAlt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "total",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n     * Fired when chart changes.\n     *\n     * @event chart-changed\n     *\n     */"
+          "name": "options-changed",
+          "description": "Fired when options change."
         },
         {
-          "name": "options-changed",
-          "description": "Fired when options change.",
-          "jsDoc": "/**\n       * Fired when options change.\n       *\n       * @event options-changed\n       *\n       */"
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

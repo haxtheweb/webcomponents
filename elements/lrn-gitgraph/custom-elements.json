@@ -1,188 +1,284 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "name": "lrn-gitgraph",
       "description": "`lrn-gitgraph`",
-      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "commits",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverse-arrow",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
         }
       ],
       "properties": [
         {
           "name": "commits",
-          "type": "any[]"
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverseArrow",
-          "type": "boolean"
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "name": "lrn-gitgraph",
       "description": "`lrn-gitgraph`",
-      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "commits",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverse-arrow",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
         }
       ],
       "properties": [
         {
           "name": "commits",
-          "type": "any[]"
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverseArrow",
-          "type": "boolean"
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-gitgraph\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "name": "tag"
+    },
+    {
+      "name": "lrn-gitgraph",
       "description": "`lrn-gitgraph`",
-      "jsDoc": "/**\n * `lrn-gitgraph`\n * @customElement lrn-gitgraph\n * For each branch in your repo use the following git command:\n *   ```\n *   git log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n *   ```\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "commits",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverse-arrow",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
         }
       ],
       "properties": [
         {
           "name": "commits",
-          "type": "any[]"
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "template",
-          "type": "string"
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
         },
         {
           "name": "orientation",
-          "type": "string"
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
         },
         {
           "name": "mode",
-          "type": "string"
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reverseArrow",
-          "type": "boolean"
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "config",
-          "jsDoc": "/**\n       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}\n       */",
-          "type": "{}"
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

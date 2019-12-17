@@ -1,84 +1,85 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "name": "full-screen-image",
       "description": "`full-screen-image`",
-      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "subtitle",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
-          "name": "source",
-          "type": "null"
+          "name": "source"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "name": "full-screen-image",
       "description": "`full-screen-image`",
-      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "subtitle",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "null"
+          "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
-          "type": "string"
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "subtitle",
-          "type": "string"
+          "attribute": "subtitle",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "null"
+          "attribute": "source",
+          "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "full-screen-image\n`full screen banner image with down arrow`",
+      "name": "tag"
+    },
+    {
+      "name": "full-screen-image",
       "description": "`full-screen-image`",
-      "jsDoc": "/**\n * `full-screen-image`\n * @customElement full-screen-image\n * `full screen banner image with down arrow`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "subtitle",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
-          "name": "source",
-          "type": "null"
+          "name": "source"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

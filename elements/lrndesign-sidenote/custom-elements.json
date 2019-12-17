@@ -1,110 +1,131 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "lrndesign-sidenote",
       "description": "`lrndesign-sidenote`\nA basic side note",
-      "jsDoc": "/**\n`lrndesign-sidenote`\nA basic side note\n\n* @demo demo/index.html\n*/",
       "attributes": [
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "lrndesign-sidenote",
       "description": "`lrndesign-sidenote`\nA basic side note",
-      "jsDoc": "/**\n`lrndesign-sidenote`\nA basic side note\n\n* @demo demo/index.html\n*/",
       "attributes": [
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "lrndesign-sidenote"
     },
     {
       "name": "lrndesign-sidenote",
       "description": "`lrndesign-sidenote`\nA basic side note",
-      "jsDoc": "/**\n`lrndesign-sidenote`\nA basic side note\n\n* @demo demo/index.html\n*/",
       "attributes": [
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "bgColor",
-          "type": "string"
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

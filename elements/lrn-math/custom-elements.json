@@ -1,26 +1,32 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrn-math-controller",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "lrn-math-controller"
     },
     {
-      "name": "lrn-math-controller",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "lrn-math",
+      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS"
     },
     {
-      "name": "lrn-math-controller",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "lrn-math-controller"
+    },
+    {
+      "name": "lrn-math",
+      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS"
+    },
+    {
+      "name": "lrn-math-controller"
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrn-math-controller"
+    },
+    {
+      "name": "lrn-math",
+      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS"
     }
   ]
 }

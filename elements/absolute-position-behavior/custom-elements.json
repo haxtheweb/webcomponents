@@ -1,155 +1,175 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "absolute-position-state-manager\nmanages state of multiple absolute-positioned elements on a page",
+      "name": "absolute-position-state-manager",
       "description": "`absolute-position-state-manager`",
-      "jsDoc": "/**\n * `absolute-position-state-manager`\n * @customElement absolute-position-state-manager\n * manages state of multiple absolute-positioned elements on a page\n *\n\n * @polymer\n */",
       "attributes": [
         {
           "name": "elements",
-          "type": "never[]"
+          "description": "Stores an array of all elements using manager.",
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "elements",
-          "type": "never[]"
-        },
-        {
-          "name": "ancestor",
-          "type": "any"
+          "attribute": "elements",
+          "description": "Stores an array of all elements using manager.",
+          "type": "array",
+          "default": "[]"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "name": "absolute-position-behavior",
       "description": "`absolute-position-behavior`",
-      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "auto",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "for",
-          "type": "null"
+          "name": "for"
         },
         {
           "name": "offset",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "position",
-          "type": "string"
+          "type": "string",
+          "default": "\"bottom\""
         },
         {
-          "name": "target",
-          "type": "null"
+          "name": "target"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "name": "absolute-position-behavior",
       "description": "`absolute-position-behavior`",
-      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "auto",
-          "type": "boolean"
+          "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fit-to-visible-bounds",
-          "type": "boolean"
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "for",
-          "type": "null"
-        },
-        {
-          "name": "offset",
-          "type": "number"
-        },
-        {
-          "name": "position",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
           "type": "string"
         },
         {
+          "name": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
           "name": "target",
-          "type": "null"
+          "description": "The actual target element",
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "auto",
-          "type": "boolean"
+          "attribute": "auto",
+          "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
+          "attribute": "fit-to-visible-bounds",
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "for",
-          "type": "null"
-        },
-        {
-          "name": "offset",
-          "type": "number"
-        },
-        {
-          "name": "position",
+          "attribute": "for",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
           "type": "string"
         },
         {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
           "name": "target",
-          "type": "null"
+          "attribute": "target",
+          "description": "The actual target element",
+          "type": "object"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "absolute-position-behavior\nabstracts absolute positioning behavior to be resusable in other elements",
+      "name": "tag"
+    },
+    {
+      "name": "absolute-position-behavior",
       "description": "`absolute-position-behavior`",
-      "jsDoc": "/**\n * `absolute-position-behavior`\n * @customElement absolute-position-behavior\n * abstracts absolute positioning behavior to be resusable in other elements\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo ./demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "auto",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "for",
-          "type": "null"
+          "name": "for"
         },
         {
           "name": "offset",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "position",
-          "type": "string"
+          "type": "string",
+          "default": "\"bottom\""
         },
         {
-          "name": "target",
-          "type": "null"
+          "name": "target"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

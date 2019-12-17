@@ -1,4 +1,149 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the panel",
+          "type": "string",
+          "default": "\"Block heading\""
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Height of the paper.",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Applies the color to the text instead of the background",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
 }

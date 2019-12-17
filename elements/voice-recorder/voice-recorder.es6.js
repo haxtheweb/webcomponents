@@ -2,7 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { record } from "vmsg/vmsg.js";
 
 /**
  * `voice-recorder`
@@ -15,30 +16,35 @@ import { LitElement, html, css } from 'lit-element/lit-element.js';
  * @customElement voice-recorder
  */
 class VoiceRecorder extends LitElement {
-  
-  // render function
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: inline-flex;
+        }
+      `
+    ];
+  }
   render() {
     return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+      <button @click="${this.recordState}">
+        <iron-icon icon="${this.iconState}"></iron-icon>${this.textState}
+      </button>
+    `;
   }
-
-  // properties available to the custom element for data binding
   static get properties() {
-    let props = {};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
+    return {
+      iconState: {
+        type: String
+      },
+      textState: {
+        type: String
+      },
+      recording: {
+        type: Boolean
+      }
+    };
   }
-
   /**
    * Convention we use
    */
@@ -51,44 +57,59 @@ class VoiceRecorder extends LitElement {
    */
   constructor() {
     super();
-    
+    this.recording = false;
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/av-icons.js");
+  }
+  recordState(e) {
+    this.recording = !this.recording;
   }
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {
-    
-  }
+  firstUpdated(changedProperties) {}
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      if (propName == "recording") {
+        if (this[propName]) {
+          this.textState = "stop";
+          this.iconState = "av:stop";
+        } else {
+          this.textState = "Record";
+          this.iconState = "av:play-arrow";
+        }
+        // observer to act on the recording piece
+        this.toggleRecording(this[propName], oldValue);
       }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
-  
+  /**
+   * Toggle the LAME bridge
+   */
+  toggleRecording(newValue, oldValue) {
+    if (newValue) {
+      // need to start...
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+      record({ wasmURL: basePath + "../../vmsg/vmsg.wasm" }).then(blob => {
+        console.log("Recorded MP3", blob);
+        this.dispatchEvent(
+          new CustomEvent("voice-recorder-recording", {
+            value: blob
+          })
+        );
+      });
+    }
+    // was on now off
+    if (oldValue && !newValue) {
+      // need to stop
+    }
+  }
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
 }
 customElements.define(VoiceRecorder.tag, VoiceRecorder);
 export { VoiceRecorder };

@@ -54,14 +54,14 @@ class ImgPanZoom extends LitElement {
         ? html`
             <hexagon-loader
               ?hidden="${this.hideSpinner}"
-              ?loading=${!this.loading}
+              ?loading=${this.loading}
               item-count="4"
               size="small"
             ></hexagon-loader>
             <img-loader
               loaded="${this.loaded}"
               @loaded-changed="${this.loadedChangedEvent}"
-              loading="${this.loading}"
+              ?loading="${this.loading}"
               @loading-changed="${this.loadingChangedEvent}"
               src="${this.src}"
             ></img-loader>

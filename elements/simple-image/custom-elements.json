@@ -1,182 +1,224 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "name": "simple-image",
       "description": "`simple-image`",
-      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
+          "attribute": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "name": "simple-image",
       "description": "`simple-image`",
-      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
+          "attribute": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-image\n`A minimalist image that modals and presents info cleanly.`",
+      "name": "tag"
+    },
+    {
+      "name": "simple-image",
       "description": "`simple-image`",
-      "jsDoc": "/**\n * `simple-image`\n * @customElement simple-image\n * `A minimalist image that modals and presents info cleanly.`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "image source",
-          "jsDoc": "/**\n       * image source\n       */",
           "type": "string"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "alt data",
-          "jsDoc": "/**\n       * alt data\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "caption on the image",
-          "jsDoc": "/**\n       * caption on the image\n       */",
           "type": "string"
         },
         {
           "name": "credit",
+          "attribute": "credit",
           "description": "photo credit / copyright info",
-          "jsDoc": "/**\n       * photo credit / copyright info\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,290 +1,281 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "csv-render\n`Remote render a CSV file in place as an accessible table.`",
-      "description": "`csv-render`",
-      "jsDoc": "/**\n * `csv-render`\n * @customElement csv-render\n * `Remote render a CSV file in place as an accessible table.`\n *\n * @microcopy - language worth noting:\n *  - CSV is comma separated values\n *\n\n * @demo ./demo/index.html\n */",
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
       "attributes": [
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "dataSource",
+          "attribute": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
+          "attribute": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableData",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "csv-render\n`Remote render a CSV file in place as an accessible table.`",
-      "description": "`csv-render`",
-      "jsDoc": "/**\n * `csv-render`\n * @customElement csv-render\n * `Remote render a CSV file in place as an accessible table.`\n *\n * @microcopy - language worth noting:\n *  - CSV is comma separated values\n *\n\n * @demo ./demo/index.html\n */",
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
       "attributes": [
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "dataSource",
+          "attribute": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
+          "attribute": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableData",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "csv-render\n`Remote render a CSV file in place as an accessible table.`",
-      "description": "`csv-render`",
-      "jsDoc": "/**\n * `csv-render`\n * @customElement csv-render\n * `Remote render a CSV file in place as an accessible table.`\n *\n * @microcopy - language worth noting:\n *  - CSV is comma separated values\n *\n\n * @demo ./demo/index.html\n */",
+      "name": "tag"
+    },
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
       "attributes": [
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "table-data",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "dataSource",
+          "attribute": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Caption for the table to improve accessibility and readability.",
-          "jsDoc": "/**\n       * Caption for the table to improve accessibility and readability.\n       */",
           "type": "string"
         },
         {
           "name": "summary",
+          "attribute": "summary",
           "description": "Summary to improve accessibility for screen readers.",
-          "jsDoc": "/**\n       * Summary to improve accessibility for screen readers.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "table",
-          "description": "Table busted out as an array.",
-          "jsDoc": "/**\n       * Table busted out as an array.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableHeadings",
-          "description": "Headings from the first row of the csv",
-          "jsDoc": "/**\n       * Headings from the first row of the csv\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "tableData",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

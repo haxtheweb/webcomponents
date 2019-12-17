@@ -1,382 +1,367 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "video-player\n`A simple responsive video player with ridiculously powerful backing`",
-      "description": "`video-player`",
-      "jsDoc": "/**\n * `video-player`\n * @customElement video-player\n * `A simple responsive video player with ridiculously powerful backing`\n *\n * @microcopy - language worth noting:\n * - `video source` - url / link to the video file\n *\n```\n<video-player \n  accent-color$=\"[[accentColor]]\"                 // Optional accent color for controls, \n                                                  // using the following materialize colors: \n                                                  // red, pink, purple, deep-purple, indigo, blue, \n                                                  // light blue, cyan, teal, green, light green, lime, \n                                                  // yellow, amber, orange, deep-orange, and brown. \n                                                  // Default is null. \n  dark$=\"[[dark]]\"                                // Is the color scheme dark? Default is light. \n  dark-transcript$=\"[[darkTranscript]]\"           // Use dark theme on transcript? Default is false, even when player is dark.   \n  disable-interactive$=\"[[disableInteractive]]\"   // Disable interactive cues?\n  height$=\"[[height]]\"                            // The height of player\n  hide-timestamps$=\"[[hideTimestamps]]\"           // Hide cue timestamps?\n  lang$=\"[[lang]]\"                                // The language of the media\n  media-title$=\"[[mediaTitle]]\"                   // The title of the media\n  source$=\"[[source]]\"                            // The source URL of the media\n  sticky-corner$=\"[[stickyCorner]]\"               // When user scrolls a playing video off-screen, \n                                                      which corner will it stick to? Values are: \n                                                      top-right (default), top-left, bottom-left, bottom-right, \n                                                      and none (to turn sticky off)\n  thumbnail-src$=\"[[thumbnailSrc]]\"               // Optional thumbanil/cover image url\n  width$=\"[[width]]\">                              // The width of the media             \n  <div slot=\"caption\">Optional caption info.</div>\n</video-player>\n```\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "video-player",
+      "description": "`video-player`"
     },
     {
-      "name": "video-player\n`A simple responsive video player with ridiculously powerful backing`",
+      "name": "video-player",
       "description": "`video-player`",
-      "jsDoc": "/**\n * `video-player`\n * @customElement video-player\n * `A simple responsive video player with ridiculously powerful backing`\n *\n * @microcopy - language worth noting:\n * - `video source` - url / link to the video file\n *\n```\n<video-player \n  accent-color$=\"[[accentColor]]\"                 // Optional accent color for controls, \n                                                  // using the following materialize colors: \n                                                  // red, pink, purple, deep-purple, indigo, blue, \n                                                  // light blue, cyan, teal, green, light green, lime, \n                                                  // yellow, amber, orange, deep-orange, and brown. \n                                                  // Default is null. \n  dark$=\"[[dark]]\"                                // Is the color scheme dark? Default is light. \n  dark-transcript$=\"[[darkTranscript]]\"           // Use dark theme on transcript? Default is false, even when player is dark.   \n  disable-interactive$=\"[[disableInteractive]]\"   // Disable interactive cues?\n  height$=\"[[height]]\"                            // The height of player\n  hide-timestamps$=\"[[hideTimestamps]]\"           // Hide cue timestamps?\n  lang$=\"[[lang]]\"                                // The language of the media\n  media-title$=\"[[mediaTitle]]\"                   // The title of the media\n  source$=\"[[source]]\"                            // The source URL of the media\n  sticky-corner$=\"[[stickyCorner]]\"               // When user scrolls a playing video off-screen, \n                                                      which corner will it stick to? Values are: \n                                                      top-right (default), top-left, bottom-left, bottom-right, \n                                                      and none (to turn sticky off)\n  thumbnail-src$=\"[[thumbnailSrc]]\"               // Optional thumbanil/cover image url\n  width$=\"[[width]]\">                              // The width of the media             \n  <div slot=\"caption\">Optional caption info.</div>\n</video-player>\n```\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "audioOnly",
+          "name": "audio-only",
           "description": "Is the media an audio file only?",
-          "jsDoc": "/**\n       * Is the media an audio file only?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "accentColor",
+          "name": "accent-color",
           "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
-          "jsDoc": "/**\n       * Optional accent color for controls,\n       * using the following materialize \"colors\":\n       * red, pink, purple, deep-purple, indigo, blue,\n       * light blue, cyan, teal, green, light green, lime,\n       * yellow, amber, orange, deep-orange, and brown.\n       * Default is null.\n       */",
           "type": "string"
         },
         {
           "name": "crossorigin",
           "description": "Cross origin flag for transcripts to load",
-          "jsDoc": "/**\n       * Cross origin flag for transcripts to load\n       */",
           "type": "string"
         },
         {
           "name": "dark",
           "description": "Enables darker player.",
-          "jsDoc": "/**\n       * Enables darker player.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "darkTranscript",
+          "name": "dark-transcript",
           "description": "Use dark theme on transcript? Default is false, even when player is dark.",
-          "jsDoc": "/**\n       * Use dark theme on transcript? Default is false, even when player is dark.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "disableInteractive",
+          "name": "disable-interactive",
           "description": "disable interactive mode that makes the transcript clickable",
-          "jsDoc": "/**\n       * disable interactive mode that makes the transcript clickable\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "height",
           "description": "The height of the media player for non-a11y-media.",
-          "jsDoc": "/**\n       * The height of the media player for non-a11y-media.\n       */",
           "type": "string"
         },
         {
-          "name": "hideTimestamps",
+          "name": "hide-timestamps",
           "description": "show cue's start and end time",
-          "jsDoc": "/**\n       * show cue's start and end time\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "hideTranscript",
+          "name": "hide-transcript",
           "description": "hide the transcript by default",
-          "jsDoc": "/**\n       * hide the transcript by default\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "iframed",
           "description": "Computed if this should be in an iframe or not.",
-          "jsDoc": "/**\n       * Computed if this should be in an iframe or not.\n       */",
           "type": "boolean"
         },
         {
-          "name": "isA11yMedia",
+          "name": "is-a11y-media",
           "description": "Computed if this should be in a11y-media-player.",
-          "jsDoc": "/**\n       * Computed if this should be in a11y-media-player.\n       */",
           "type": "boolean"
         },
         {
-          "name": "isYoutube",
+          "name": "is-youtube",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "boolean"
         },
         {
           "name": "lang",
           "description": "The language of the media",
-          "jsDoc": "/**\n       * The language of the media\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"en\""
         },
         {
           "name": "linkable",
           "description": "Include a share link?",
-          "jsDoc": "/**\n       * Include a share link?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "mediaTitle",
+          "name": "media-title",
           "description": "Simple caption for the video",
-          "jsDoc": "/**\n       * Simple caption for the video\n       */",
           "type": "string"
         },
         {
-          "name": "playerId",
+          "name": "player-id",
           "description": "ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.",
-          "jsDoc": "/**\n   * ID for a11y-media-player. \n   If none specified it will be modified from schema-resource-id.\n   */",
           "type": "string"
         },
         {
           "name": "preload",
           "description": "What to preload for a11y-media-player: auto, metadata (default), or none.",
-          "jsDoc": "/**\n       * What to preload for a11y-media-player: auto, metadata (default), or none.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"metadata\""
         },
         {
           "name": "sandboxed",
           "description": "Compute if this is a sandboxed system or not",
-          "jsDoc": "/**\n       * Compute if this is a sandboxed system or not\n       */",
           "type": "boolean"
         },
         {
           "name": "source",
           "description": "Source of the video",
-          "jsDoc": "/**\n       * Source of the video\n       */",
           "type": "string"
         },
         {
           "name": "sources",
           "description": "Source of the video",
-          "jsDoc": "/**\n       * Source of the video\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "sourceData",
+          "name": "source-data",
           "description": "List of source objects",
-          "jsDoc": "/**\n       * List of source objects\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
-          "name": "sourceType",
+          "name": "source-type",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "string"
         },
         {
-          "name": "stickyCorner",
+          "name": "sticky-corner",
           "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
-          "jsDoc": "/**\n       * When playing but scrolled off screen, to which corner does it \"stick\":\n       * top-left, top-right, bottom-left, bottom-right, or none?\n       * Default is \"top-right\". \"None\" disables stickiness.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"top-right\""
         },
         {
           "name": "track",
           "description": "The url for a single subtitle track",
-          "jsDoc": "/**\n       * The url for a single subtitle track\n       */",
           "type": "string"
         },
         {
           "name": "tracks",
           "description": "Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
-          "jsDoc": "/**\n       * Array of text tracks\n       * [{\n       *  \"src\": \"path/to/track.vtt\",\n       *  \"label\": \"English\",\n       *  \"srclang\": \"en\",\n       *  \"kind\": \"subtitles\",\n       * }]\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "trackData",
+          "name": "track-data",
           "description": "Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
-          "jsDoc": "/**\n       * Cleaned array of text tracks\n       * [{\n       *  \"src\": \"path/to/track.vtt\",\n       *  \"label\": \"English\",\n       *  \"srclang\": \"en\",\n       *  \"kind\": \"subtitles\",\n       * }]\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
-          "name": "thumbnailSrc",
+          "name": "thumbnail-src",
           "description": "Source of optional thumbnail image",
-          "jsDoc": "/**\n       * Source of optional thumbnail image\n       */",
           "type": "string"
         },
         {
           "name": "width",
           "description": "The width of the media player for non-a11y-media.",
-          "jsDoc": "/**\n       * The width of the media player for non-a11y-media.\n       */",
           "type": "string"
         },
         {
-          "name": "youtubeId",
+          "name": "youtube-id",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "audioOnly",
+          "attribute": "audio-only",
           "description": "Is the media an audio file only?",
-          "jsDoc": "/**\n       * Is the media an audio file only?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "accentColor",
+          "attribute": "accent-color",
           "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
-          "jsDoc": "/**\n       * Optional accent color for controls,\n       * using the following materialize \"colors\":\n       * red, pink, purple, deep-purple, indigo, blue,\n       * light blue, cyan, teal, green, light green, lime,\n       * yellow, amber, orange, deep-orange, and brown.\n       * Default is null.\n       */",
           "type": "string"
         },
         {
           "name": "crossorigin",
+          "attribute": "crossorigin",
           "description": "Cross origin flag for transcripts to load",
-          "jsDoc": "/**\n       * Cross origin flag for transcripts to load\n       */",
           "type": "string"
         },
         {
           "name": "dark",
+          "attribute": "dark",
           "description": "Enables darker player.",
-          "jsDoc": "/**\n       * Enables darker player.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "darkTranscript",
+          "attribute": "dark-transcript",
           "description": "Use dark theme on transcript? Default is false, even when player is dark.",
-          "jsDoc": "/**\n       * Use dark theme on transcript? Default is false, even when player is dark.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disableInteractive",
+          "attribute": "disable-interactive",
           "description": "disable interactive mode that makes the transcript clickable",
-          "jsDoc": "/**\n       * disable interactive mode that makes the transcript clickable\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "height",
+          "attribute": "height",
           "description": "The height of the media player for non-a11y-media.",
-          "jsDoc": "/**\n       * The height of the media player for non-a11y-media.\n       */",
           "type": "string"
         },
         {
           "name": "hideTimestamps",
+          "attribute": "hide-timestamps",
           "description": "show cue's start and end time",
-          "jsDoc": "/**\n       * show cue's start and end time\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideTranscript",
+          "attribute": "hide-transcript",
           "description": "hide the transcript by default",
-          "jsDoc": "/**\n       * hide the transcript by default\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "iframed",
+          "attribute": "iframed",
           "description": "Computed if this should be in an iframe or not.",
-          "jsDoc": "/**\n       * Computed if this should be in an iframe or not.\n       */",
           "type": "boolean"
         },
         {
           "name": "isA11yMedia",
+          "attribute": "is-a11y-media",
           "description": "Computed if this should be in a11y-media-player.",
-          "jsDoc": "/**\n       * Computed if this should be in a11y-media-player.\n       */",
           "type": "boolean"
         },
         {
           "name": "isYoutube",
+          "attribute": "is-youtube",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "boolean"
         },
         {
           "name": "lang",
+          "attribute": "lang",
           "description": "The language of the media",
-          "jsDoc": "/**\n       * The language of the media\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"en\""
         },
         {
           "name": "linkable",
+          "attribute": "linkable",
           "description": "Include a share link?",
-          "jsDoc": "/**\n       * Include a share link?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "mediaTitle",
+          "attribute": "media-title",
           "description": "Simple caption for the video",
-          "jsDoc": "/**\n       * Simple caption for the video\n       */",
           "type": "string"
         },
         {
           "name": "playerId",
+          "attribute": "player-id",
           "description": "ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.",
-          "jsDoc": "/**\n   * ID for a11y-media-player. \n   If none specified it will be modified from schema-resource-id.\n   */",
           "type": "string"
         },
         {
           "name": "preload",
+          "attribute": "preload",
           "description": "What to preload for a11y-media-player: auto, metadata (default), or none.",
-          "jsDoc": "/**\n       * What to preload for a11y-media-player: auto, metadata (default), or none.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"metadata\""
         },
         {
           "name": "sandboxed",
+          "attribute": "sandboxed",
           "description": "Compute if this is a sandboxed system or not",
-          "jsDoc": "/**\n       * Compute if this is a sandboxed system or not\n       */",
           "type": "boolean"
         },
         {
           "name": "source",
+          "attribute": "source",
           "description": "Source of the video",
-          "jsDoc": "/**\n       * Source of the video\n       */",
           "type": "string"
         },
         {
           "name": "sources",
+          "attribute": "sources",
           "description": "Source of the video",
-          "jsDoc": "/**\n       * Source of the video\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "sourceData",
+          "attribute": "source-data",
           "description": "List of source objects",
-          "jsDoc": "/**\n       * List of source objects\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "sourceType",
+          "attribute": "source-type",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "string"
         },
         {
           "name": "stickyCorner",
+          "attribute": "sticky-corner",
           "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
-          "jsDoc": "/**\n       * When playing but scrolled off screen, to which corner does it \"stick\":\n       * top-left, top-right, bottom-left, bottom-right, or none?\n       * Default is \"top-right\". \"None\" disables stickiness.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"top-right\""
         },
         {
           "name": "track",
+          "attribute": "track",
           "description": "The url for a single subtitle track",
-          "jsDoc": "/**\n       * The url for a single subtitle track\n       */",
           "type": "string"
         },
         {
           "name": "tracks",
+          "attribute": "tracks",
           "description": "Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
-          "jsDoc": "/**\n       * Array of text tracks\n       * [{\n       *  \"src\": \"path/to/track.vtt\",\n       *  \"label\": \"English\",\n       *  \"srclang\": \"en\",\n       *  \"kind\": \"subtitles\",\n       * }]\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "trackData",
+          "attribute": "track-data",
           "description": "Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
-          "jsDoc": "/**\n       * Cleaned array of text tracks\n       * [{\n       *  \"src\": \"path/to/track.vtt\",\n       *  \"label\": \"English\",\n       *  \"srclang\": \"en\",\n       *  \"kind\": \"subtitles\",\n       * }]\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "thumbnailSrc",
+          "attribute": "thumbnail-src",
           "description": "Source of optional thumbnail image",
-          "jsDoc": "/**\n       * Source of optional thumbnail image\n       */",
           "type": "string"
         },
         {
           "name": "width",
+          "attribute": "width",
           "description": "The width of the media player for non-a11y-media.",
-          "jsDoc": "/**\n       * The width of the media player for non-a11y-media.\n       */",
           "type": "string"
         },
         {
           "name": "youtubeId",
+          "attribute": "youtube-id",
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
-          "jsDoc": "/**\n       * The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "video-player\n`A simple responsive video player with ridiculously powerful backing`",
-      "description": "`video-player`",
-      "jsDoc": "/**\n * `video-player`\n * @customElement video-player\n * `A simple responsive video player with ridiculously powerful backing`\n *\n * @microcopy - language worth noting:\n * - `video source` - url / link to the video file\n *\n```\n<video-player \n  accent-color$=\"[[accentColor]]\"                 // Optional accent color for controls, \n                                                  // using the following materialize colors: \n                                                  // red, pink, purple, deep-purple, indigo, blue, \n                                                  // light blue, cyan, teal, green, light green, lime, \n                                                  // yellow, amber, orange, deep-orange, and brown. \n                                                  // Default is null. \n  dark$=\"[[dark]]\"                                // Is the color scheme dark? Default is light. \n  dark-transcript$=\"[[darkTranscript]]\"           // Use dark theme on transcript? Default is false, even when player is dark.   \n  disable-interactive$=\"[[disableInteractive]]\"   // Disable interactive cues?\n  height$=\"[[height]]\"                            // The height of player\n  hide-timestamps$=\"[[hideTimestamps]]\"           // Hide cue timestamps?\n  lang$=\"[[lang]]\"                                // The language of the media\n  media-title$=\"[[mediaTitle]]\"                   // The title of the media\n  source$=\"[[source]]\"                            // The source URL of the media\n  sticky-corner$=\"[[stickyCorner]]\"               // When user scrolls a playing video off-screen, \n                                                      which corner will it stick to? Values are: \n                                                      top-right (default), top-left, bottom-left, bottom-right, \n                                                      and none (to turn sticky off)\n  thumbnail-src$=\"[[thumbnailSrc]]\"               // Optional thumbanil/cover image url\n  width$=\"[[width]]\">                              // The width of the media             \n  <div slot=\"caption\">Optional caption info.</div>\n</video-player>\n```\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "tag"
+    },
+    {
+      "name": "video-player",
+      "description": "`video-player`"
     }
   ]
 }

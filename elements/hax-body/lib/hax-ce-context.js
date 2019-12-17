@@ -2,12 +2,12 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 /**
  * `hax-ce-context`
- * @customElement hax-ce-context
  * `A context menu that provides common custom-element based authoring options. While
  * trying to call for haxProperties which can automatically generate the buttons
  * required for populating input.`
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
+ * @customElement hax-ce-context
  */
 class HaxCeContext extends LitElement {
   /**

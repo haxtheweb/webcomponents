@@ -1,110 +1,158 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrndesign-abbreviation\n`A wrapper to make a cleaner abbreviation deign element`",
+      "name": "lrndesign-abbreviation",
       "description": "`lrndesign-abbreviation`",
-      "jsDoc": "/**\n * `lrndesign-abbreviation`\n * @customElement lrndesign-abbreviation\n * `A wrapper to make a cleaner abbreviation deign element`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "abbr",
+          "attribute": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
+          "attribute": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-abbreviation\n`A wrapper to make a cleaner abbreviation deign element`",
+      "name": "lrndesign-abbreviation",
       "description": "`lrndesign-abbreviation`",
-      "jsDoc": "/**\n * `lrndesign-abbreviation`\n * @customElement lrndesign-abbreviation\n * `A wrapper to make a cleaner abbreviation deign element`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "abbr",
+          "attribute": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
+          "attribute": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-abbreviation\n`A wrapper to make a cleaner abbreviation deign element`",
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-abbreviation",
       "description": "`lrndesign-abbreviation`",
-      "jsDoc": "/**\n * `lrndesign-abbreviation`\n * @customElement lrndesign-abbreviation\n * `A wrapper to make a cleaner abbreviation deign element`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "abbr",
+          "attribute": "abbr",
           "description": "Abbreviation text.",
-          "jsDoc": "/**\n       * Abbreviation text.\n       */",
           "type": "string"
         },
         {
           "name": "phrase",
+          "attribute": "phrase",
           "description": "The thing the abbreviation represents.",
-          "jsDoc": "/**\n       * The thing the abbreviation represents.\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

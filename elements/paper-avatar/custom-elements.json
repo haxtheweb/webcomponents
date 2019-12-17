@@ -1,4 +1,248 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "attribute": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "paper-avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "attribute": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "paper-avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label with username",
+          "type": "string"
+        },
+        {
+          "name": "colors",
+          "attribute": "colors",
+          "description": "Array of colors for avatar background",
+          "type": "array"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image address or base64",
+          "type": "string"
+        },
+        {
+          "name": "jdenticonExists",
+          "attribute": "jdenticonExists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Show two chars in avatar",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Set true if you want use a jdenticon avatar",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
 }

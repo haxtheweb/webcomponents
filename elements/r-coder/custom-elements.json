@@ -1,42 +1,99 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "r-coder\n`R coder interface for the r-service backend.`",
+      "name": "r-coder",
       "description": "`r-coder`",
-      "jsDoc": "/**\n * `r-coder`\n * @customElement r-coder\n * `R coder interface for the r-service backend.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     },
     {
-      "name": "r-coder\n`R coder interface for the r-service backend.`",
+      "name": "r-coder",
       "description": "`r-coder`",
-      "jsDoc": "/**\n * `r-coder`\n * @customElement r-coder\n * `R coder interface for the r-service backend.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "endpoint",
-          "type": "string"
+          "type": "string",
+          "default": "\"/service/r-service\""
         }
       ],
       "properties": [
         {
           "name": "endpoint",
+          "attribute": "endpoint",
+          "type": "string",
+          "default": "\"/service/r-service\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "r-coder\n`R coder interface for the r-service backend.`",
+      "name": "tag"
+    },
+    {
+      "name": "r-coder",
       "description": "`r-coder`",
-      "jsDoc": "/**\n * `r-coder`\n * @customElement r-coder\n * `R coder interface for the r-service backend.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     }
   ]
 }

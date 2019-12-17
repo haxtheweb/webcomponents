@@ -1,4 +1,41 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "portal-launcher",
+      "description": "`portal-launcher`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"portal-launcher\""
+        }
+      ]
+    },
+    {
+      "name": "portal-launcher",
+      "description": "`portal-launcher`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"portal-launcher\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "portal-launcher",
+      "description": "`portal-launcher`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"portal-launcher\""
+        }
+      ]
+    }
+  ]
 }

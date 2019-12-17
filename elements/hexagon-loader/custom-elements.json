@@ -1,104 +1,123 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "hexagon-loader\n`a simple element that is for showing something is loading`",
+      "name": "hex-a-gon",
+      "description": "`hex-a-gon`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"hex-a-gon\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-loader",
       "description": "`hexagon-loader`",
-      "jsDoc": "/**\n * `hexagon-loader`\n * @customElement hexagon-loader\n * `a simple element that is for showing something is loading`\n *\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "itemCount",
-          "type": "number"
+          "type": "number",
+          "default": "37"
         },
         {
           "name": "items",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "hexagon-loader\n`a simple element that is for showing something is loading`",
+      "name": "hexagon-loader",
       "description": "`hexagon-loader`",
-      "jsDoc": "/**\n * `hexagon-loader`\n * @customElement hexagon-loader\n * `a simple element that is for showing something is loading`\n *\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "color",
           "description": "Color to make the loader",
-          "jsDoc": "/**\n       * Color to make the loader\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "The relative size of this loader. Options small, medium, large",
-          "jsDoc": "/**\n       * The relative size of this loader. Options small, medium, large\n       */",
           "type": "string"
         },
         {
           "name": "loading",
           "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
           "type": "boolean"
         },
         {
           "name": "item-count",
-          "type": "number"
+          "description": "Count of the items",
+          "type": "number",
+          "default": "37"
         },
         {
           "name": "items",
-          "type": "never[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color to make the loader",
-          "jsDoc": "/**\n       * Color to make the loader\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "The relative size of this loader. Options small, medium, large",
-          "jsDoc": "/**\n       * The relative size of this loader. Options small, medium, large\n       */",
           "type": "string"
         },
         {
           "name": "loading",
+          "attribute": "loading",
           "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
           "type": "boolean"
         },
         {
           "name": "itemCount",
-          "type": "number"
+          "attribute": "item-count",
+          "description": "Count of the items",
+          "type": "number",
+          "default": "37"
         },
         {
           "name": "items",
-          "type": "never[]"
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "hexagon-loader\n`a simple element that is for showing something is loading`",
+      "name": "tag"
+    },
+    {
+      "name": "hexagon-loader",
       "description": "`hexagon-loader`",
-      "jsDoc": "/**\n * `hexagon-loader`\n * @customElement hexagon-loader\n * `a simple element that is for showing something is loading`\n *\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "itemCount",
-          "type": "number"
+          "type": "number",
+          "default": "37"
         },
         {
           "name": "items",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

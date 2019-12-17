@@ -1,155 +1,309 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrnsys-outline\n`Outline that items can be shuffled around in`",
+      "name": "lrnsys-outline",
       "description": "`lrnsys-outline`",
-      "jsDoc": "/**\n * `lrnsys-outline`\n * @customElement lrnsys-outline\n * `Outline that items can be shuffled around in`\n *\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  -\n */",
       "attributes": [
         {
           "name": "data",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "active-item",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "data",
-          "type": "any[]"
+          "attribute": "data",
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "attribute": "items",
+          "type": "array"
         },
         {
           "name": "activeItem",
-          "type": "{}"
+          "attribute": "active-item",
+          "type": "object"
         },
         {
-          "name": "moveUp",
-          "type": "any"
+          "name": "rootPath",
+          "type": "string"
         },
         {
-          "name": "prev",
-          "type": "1 | -1"
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "simple-modal-hide"
+          "name": "simple-modal-show"
         },
         {
-          "name": "simple-modal-show"
+          "name": "simple-modal-hide"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrnsys-outline\n`Outline that items can be shuffled around in`",
+      "name": "lrnsys-outline",
       "description": "`lrnsys-outline`",
-      "jsDoc": "/**\n * `lrnsys-outline`\n * @customElement lrnsys-outline\n * `Outline that items can be shuffled around in`\n *\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  -\n */",
       "attributes": [
         {
           "name": "data",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "active-item",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "data",
-          "type": "any[]"
+          "attribute": "data",
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "attribute": "items",
+          "type": "array"
         },
         {
           "name": "activeItem",
-          "type": "{}"
+          "attribute": "active-item",
+          "type": "object"
         },
         {
-          "name": "moveUp",
-          "type": "any"
+          "name": "rootPath",
+          "type": "string"
         },
         {
-          "name": "prev",
-          "type": "1 | -1"
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "simple-modal-hide"
+          "name": "simple-modal-show"
         },
         {
-          "name": "simple-modal-show"
+          "name": "simple-modal-hide"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrnsys-outline\n`Outline that items can be shuffled around in`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-outline-item",
+      "description": "`lrnsys-outline-item`\nA LRN element",
+      "attributes": [
+        {
+          "name": "indent-level",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "indentLevel",
+          "attribute": "indent-level",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "index",
+          "attribute": "index",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "attached-item"
+        },
+        {
+          "name": "focus-item"
+        },
+        {
+          "name": "delete-item"
+        },
+        {
+          "name": "indent-item"
+        },
+        {
+          "name": "add-item"
+        },
+        {
+          "name": "move-item"
+        },
+        {
+          "name": "change-item"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-outline",
       "description": "`lrnsys-outline`",
-      "jsDoc": "/**\n * `lrnsys-outline`\n * @customElement lrnsys-outline\n * `Outline that items can be shuffled around in`\n *\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n *  -\n */",
       "attributes": [
         {
           "name": "data",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "active-item",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "data",
-          "type": "any[]"
+          "attribute": "data",
+          "type": "array"
         },
         {
           "name": "items",
-          "type": "any[]"
+          "attribute": "items",
+          "type": "array"
         },
         {
           "name": "activeItem",
-          "type": "{}"
+          "attribute": "active-item",
+          "type": "object"
         },
         {
-          "name": "moveUp",
-          "type": "any"
+          "name": "rootPath",
+          "type": "string"
         },
         {
-          "name": "prev",
-          "type": "1 | -1"
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "simple-modal-hide"
+          "name": "simple-modal-show"
         },
         {
-          "name": "simple-modal-show"
+          "name": "simple-modal-hide"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

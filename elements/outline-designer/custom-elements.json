@@ -1,509 +1,420 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "attributes": [
+        {
+          "name": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sortable",
+          "attribute": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "attribute": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "sort-finish"
+        }
+      ]
+    },
     {
       "name": "sortable-list",
       "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "sortable",
           "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
-          "jsDoc": "/**\n       * This is a CSS selector string. If this is set, only items that\n       * match the CSS selector are sortable.\n       */",
           "type": "string"
         },
         {
           "name": "items",
           "description": "The list of sortable items.",
-          "jsDoc": "/**\n       * The list of sortable items.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "dragging",
           "description": "Returns true when an item is being drag.",
-          "jsDoc": "/**\n       * Returns true when an item is being drag.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
           "description": "Disables the draggable if set to true.",
-          "jsDoc": "/**\n       * Disables the draggable if set to true.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "sortable",
+          "attribute": "sortable",
           "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
-          "jsDoc": "/**\n       * This is a CSS selector string. If this is set, only items that\n       * match the CSS selector are sortable.\n       */",
           "type": "string"
         },
         {
           "name": "items",
+          "attribute": "items",
           "description": "The list of sortable items.",
-          "jsDoc": "/**\n       * The list of sortable items.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "dragging",
+          "attribute": "dragging",
           "description": "Returns true when an item is being drag.",
-          "jsDoc": "/**\n       * Returns true when an item is being drag.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Disables the draggable if set to true.",
-          "jsDoc": "/**\n       * Disables the draggable if set to true.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "enable",
-          "type": "\"addEventListener\" | \"removeEventListener\""
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "sort-finish"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "outline-designer\n`tools to modify and visualize JSON Outline Schema for editing`",
+      "name": "outline-designer",
       "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
+      "properties": [
         {
-          "name": "sortable",
-          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
-          "jsDoc": "/**\n       * This is a CSS selector string. If this is set, only items that\n       * match the CSS selector are sortable.\n       */",
+          "name": "rootPath",
           "type": "string"
         },
         {
-          "name": "items",
-          "description": "The list of sortable items.",
-          "jsDoc": "/**\n       * The list of sortable items.\n       */",
-          "type": "any[]"
+          "name": "importPath",
+          "type": "string"
         },
         {
-          "name": "dragging",
-          "description": "Returns true when an item is being drag.",
-          "jsDoc": "/**\n       * Returns true when an item is being drag.\n       */",
-          "type": "boolean"
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
         },
         {
-          "name": "disabled",
-          "description": "Disables the draggable if set to true.",
-          "jsDoc": "/**\n       * Disables the draggable if set to true.\n       */",
-          "type": "boolean"
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    },
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "attributes": [
+        {
+          "name": "view-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"cards\""
+        },
+        {
+          "name": "view-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "view-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "details-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"mid\""
+        },
+        {
+          "name": "details-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "details-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "selected-view",
+          "description": "Data binding to show the selected view",
+          "type": "number"
+        },
+        {
+          "name": "edit-mode",
+          "description": "Whether or not we are in an editing state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mini-map",
+          "description": "Whether or to show the mini map",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "outline-schema-url",
+          "description": "end point / JSON to load",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "manifest",
+          "description": "JSON outline schema manifest",
+          "type": "object"
+        },
+        {
+          "name": "outline-data",
+          "description": "Data in outline format",
+          "type": "object"
         }
       ],
       "properties": [
         {
-          "name": "sortable",
-          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
-          "jsDoc": "/**\n       * This is a CSS selector string. If this is set, only items that\n       * match the CSS selector are sortable.\n       */",
+          "name": "viewMode",
+          "attribute": "view-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"cards\""
+        },
+        {
+          "name": "viewModeIcon",
+          "attribute": "view-mode-icon",
+          "description": "Icon for the selected view mode",
           "type": "string"
         },
         {
-          "name": "items",
-          "description": "The list of sortable items.",
-          "jsDoc": "/**\n       * The list of sortable items.\n       */",
-          "type": "any[]"
+          "name": "viewModeLabel",
+          "attribute": "view-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
         },
         {
-          "name": "dragging",
-          "description": "Returns true when an item is being drag.",
-          "jsDoc": "/**\n       * Returns true when an item is being drag.\n       */",
-          "type": "boolean"
+          "name": "detailsMode",
+          "attribute": "details-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"mid\""
         },
         {
-          "name": "disabled",
-          "description": "Disables the draggable if set to true.",
-          "jsDoc": "/**\n       * Disables the draggable if set to true.\n       */",
-          "type": "boolean"
+          "name": "detailsModeIcon",
+          "attribute": "details-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
         },
         {
-          "name": "enable",
-          "type": "\"addEventListener\" | \"removeEventListener\""
+          "name": "detailsModeLabel",
+          "attribute": "details-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "selectedView",
+          "attribute": "selected-view",
+          "description": "Data binding to show the selected view",
+          "type": "number"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Whether or not we are in an editing state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "miniMap",
+          "attribute": "mini-map",
+          "description": "Whether or to show the mini map",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "outlineSchemaUrl",
+          "attribute": "outline-schema-url",
+          "description": "end point / JSON to load",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "JSON outline schema manifest",
+          "type": "object"
+        },
+        {
+          "name": "outlineData",
+          "attribute": "outline-data",
+          "description": "Data in outline format",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
       "events": [
         {
           "name": "sort-finish"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "outline-designer",
-      "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
           "name": "iron-resize"
         }
-      ],
-      "slots": []
-    },
-    {
-      "name": "outline-designer\n`tools to modify and visualize JSON Outline Schema for editing`",
-      "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [
-        {
-          "name": "iron-resize"
-        }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "outline-designer",
       "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "view-mode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "view-mode-icon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "view-mode-label",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode-icon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode-label",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "selected-view",
-          "description": "Data binding to show the selected view",
-          "jsDoc": "/**\n       * Data binding to show the selected view\n       */",
-          "type": "number"
-        },
-        {
-          "name": "edit-mode",
-          "description": "Whether or not we are in an editing state",
-          "jsDoc": "/**\n       * Whether or not we are in an editing state\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "mini-map",
-          "description": "Whether or to show the mini map",
-          "jsDoc": "/**\n       * Whether or to show the mini map\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "outline-schema-url",
-          "description": "end point / JSON to load",
-          "jsDoc": "/**\n       * end point / JSON to load\n       */",
-          "type": "string"
-        },
-        {
-          "name": "manifest",
-          "description": "JSON outline schema manifest",
-          "jsDoc": "/**\n       * JSON outline schema manifest\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "outline-data",
-          "description": "Data in outline format",
-          "jsDoc": "/**\n       * Data in outline format\n       */",
-          "type": "{}"
-        }
-      ],
       "properties": [
         {
-          "name": "viewMode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
+          "name": "rootPath",
           "type": "string"
         },
         {
-          "name": "viewModeIcon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
+          "name": "importPath",
           "type": "string"
         },
         {
-          "name": "viewModeLabel",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
         },
         {
-          "name": "detailsMode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
         },
         {
-          "name": "detailsModeIcon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "detailsModeLabel",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "selectedView",
-          "description": "Data binding to show the selected view",
-          "jsDoc": "/**\n       * Data binding to show the selected view\n       */",
-          "type": "number"
-        },
-        {
-          "name": "editMode",
-          "description": "Whether or not we are in an editing state",
-          "jsDoc": "/**\n       * Whether or not we are in an editing state\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "miniMap",
-          "description": "Whether or to show the mini map",
-          "jsDoc": "/**\n       * Whether or to show the mini map\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "outlineSchemaUrl",
-          "description": "end point / JSON to load",
-          "jsDoc": "/**\n       * end point / JSON to load\n       */",
-          "type": "string"
-        },
-        {
-          "name": "manifest",
-          "description": "JSON outline schema manifest",
-          "jsDoc": "/**\n       * JSON outline schema manifest\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "outlineData",
-          "description": "Data in outline format",
-          "jsDoc": "/**\n       * Data in outline format\n       */",
-          "type": "{}"
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "iron-resize"
         }
-      ],
-      "slots": []
-    },
-    {
-      "name": "outline-designer\n`tools to modify and visualize JSON Outline Schema for editing`",
-      "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "view-mode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "view-mode-icon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "view-mode-label",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode-icon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "details-mode-label",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "selected-view",
-          "description": "Data binding to show the selected view",
-          "jsDoc": "/**\n       * Data binding to show the selected view\n       */",
-          "type": "number"
-        },
-        {
-          "name": "edit-mode",
-          "description": "Whether or not we are in an editing state",
-          "jsDoc": "/**\n       * Whether or not we are in an editing state\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "mini-map",
-          "description": "Whether or to show the mini map",
-          "jsDoc": "/**\n       * Whether or to show the mini map\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "outline-schema-url",
-          "description": "end point / JSON to load",
-          "jsDoc": "/**\n       * end point / JSON to load\n       */",
-          "type": "string"
-        },
-        {
-          "name": "manifest",
-          "description": "JSON outline schema manifest",
-          "jsDoc": "/**\n       * JSON outline schema manifest\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "outline-data",
-          "description": "Data in outline format",
-          "jsDoc": "/**\n       * Data in outline format\n       */",
-          "type": "{}"
-        }
-      ],
-      "properties": [
-        {
-          "name": "viewMode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "viewModeIcon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "viewModeLabel",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "detailsMode",
-          "description": "Which layout to the outline to display",
-          "jsDoc": "/**\n       * Which layout to the outline to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "detailsModeIcon",
-          "description": "Icon for the selected view mode",
-          "jsDoc": "/**\n       * Icon for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "detailsModeLabel",
-          "description": "Label for the selected view mode",
-          "jsDoc": "/**\n       * Label for the selected view mode\n       */",
-          "type": "string"
-        },
-        {
-          "name": "selectedView",
-          "description": "Data binding to show the selected view",
-          "jsDoc": "/**\n       * Data binding to show the selected view\n       */",
-          "type": "number"
-        },
-        {
-          "name": "editMode",
-          "description": "Whether or not we are in an editing state",
-          "jsDoc": "/**\n       * Whether or not we are in an editing state\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "miniMap",
-          "description": "Whether or to show the mini map",
-          "jsDoc": "/**\n       * Whether or to show the mini map\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "outlineSchemaUrl",
-          "description": "end point / JSON to load",
-          "jsDoc": "/**\n       * end point / JSON to load\n       */",
-          "type": "string"
-        },
-        {
-          "name": "manifest",
-          "description": "JSON outline schema manifest",
-          "jsDoc": "/**\n       * JSON outline schema manifest\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "outlineData",
-          "description": "Data in outline format",
-          "jsDoc": "/**\n       * Data in outline format\n       */",
-          "type": "{}"
-        }
-      ],
-      "events": [
-        {
-          "name": "iron-resize"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "outline-designer",
-      "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [
-        {
-          "name": "iron-resize"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "outline-designer\n`tools to modify and visualize JSON Outline Schema for editing`",
-      "description": "`outline-designer`",
-      "jsDoc": "/**\n * `outline-designer`\n * @customElement outline-designer\n * `tools to modify and visualize JSON Outline Schema for editing`\n *\n * @microcopy - language worth noting:\n *  -\n * Feedback\n * color code lessons\nstep down the hierarchy\n\nmode vs resolution (3 levels)\n\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [
-        {
-          "name": "iron-resize"
-        }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

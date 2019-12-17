@@ -6,14 +6,13 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `csv-render`
- * @customElement csv-render
  * `Remote render a CSV file in place as an accessible table.`
  *
  * @microcopy - language worth noting:
  *  - CSV is comma separated values
  *
-
  * @demo ./demo/index.html
+ * @customElement csv-render
  */
 class CsvRender extends SimpleColors {
   /**
@@ -181,7 +180,7 @@ class CsvRender extends SimpleColors {
             ${this.tableHeadings.map(
               heading =>
                 html`
-                  <th scope="col">${this.heading}</th>
+                  <th scope="col">${heading}</th>
                 `
             )}
           </tr>

@@ -1,158 +1,217 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "name": "select-menu",
       "description": "`select-menu`",
-      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "label",
+          "attribute": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
+          "attribute": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selectedIndex",
+          "attribute": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "change"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "name": "select-menu",
       "description": "`select-menu`",
-      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "label",
+          "attribute": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
+          "attribute": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selectedIndex",
+          "attribute": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "change"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "select-menu\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
+      "name": "tag",
+      "events": [
+        {
+          "name": "change"
+        }
+      ]
+    },
+    {
+      "name": "select-menu",
       "description": "`select-menu`",
-      "jsDoc": "/**\n * `select-menu`\n * @customElement select-menu\n * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "label",
+          "attribute": "label",
           "description": "The label of the select menu",
-          "jsDoc": "/**\n       * The label of the select menu\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Select an option.\""
         },
         {
           "name": "value",
+          "attribute": "value",
           "description": "The default value",
-          "jsDoc": "/**\n       * The default value\n       */",
           "type": "string"
         },
         {
           "name": "selectedIndex",
+          "attribute": "selected-index",
           "description": "The index of the selected item",
-          "jsDoc": "/**\n       * The index of the selected item\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "change"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

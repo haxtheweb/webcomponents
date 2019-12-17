@@ -1,110 +1,131 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "punnett-square",
       "description": "`punnett-square`",
-      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "variant1",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "variant1",
-          "type": "string"
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "punnett-square",
       "description": "`punnett-square`",
-      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "variant1",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "variant1",
-          "type": "string"
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "punnett-square",
       "description": "`punnett-square`",
-      "jsDoc": "/**\n * `punnett-square`\n * @customElement punnett-square\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "variant1",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "variant1",
-          "type": "string"
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "variant2",
-          "type": "string"
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "editable",
-          "type": "boolean"
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

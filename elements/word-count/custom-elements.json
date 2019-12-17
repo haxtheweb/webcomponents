@@ -1,10 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "word-count\n`Count the words on whatever this wraps`",
+      "name": "word-count",
       "description": "`word-count`",
-      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "words",
@@ -12,26 +11,27 @@
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "type": "string",
+          "default": "\"Word count:\""
         }
       ],
       "properties": [
         {
           "name": "words",
+          "attribute": "words",
           "type": "number"
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "word-count\n`Count the words on whatever this wraps`",
+      "name": "word-count",
       "description": "`word-count`",
-      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "words",
@@ -39,26 +39,30 @@
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "type": "string",
+          "default": "\"Word count:\""
         }
       ],
       "properties": [
         {
           "name": "words",
+          "attribute": "words",
           "type": "number"
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "word-count\n`Count the words on whatever this wraps`",
+      "name": "tag"
+    },
+    {
+      "name": "word-count",
       "description": "`word-count`",
-      "jsDoc": "/**\n * `word-count`\n * @customElement word-count\n * `Count the words on whatever this wraps`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "words",
@@ -66,21 +70,23 @@
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "type": "string",
+          "default": "\"Word count:\""
         }
       ],
       "properties": [
         {
           "name": "words",
+          "attribute": "words",
           "type": "number"
         },
         {
           "name": "wordsPrefix",
-          "type": "string"
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

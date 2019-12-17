@@ -1,115 +1,54 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
+      "name": "h5p-element"
+    },
+    {
       "name": "h5p-element",
       "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "contentId",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "h5p-element\n`h5p wrapper for loading and presenting .h5p files`",
-      "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [
-        {
-          "name": "contentId",
-          "type": "string"
-        }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "h5p-element",
       "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Source of the .h5p file",
-          "jsDoc": "/**\n       * Source of the .h5p file\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "description": "Source of the .h5p file",
-          "jsDoc": "/**\n       * Source of the .h5p file\n       */",
           "type": "string"
         },
         {
           "name": "contentId",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "h5p-element\n`h5p wrapper for loading and presenting .h5p files`",
-      "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "source",
-          "description": "Source of the .h5p file",
-          "jsDoc": "/**\n       * Source of the .h5p file\n       */",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "source",
-          "description": "Source of the .h5p file",
-          "jsDoc": "/**\n       * Source of the .h5p file\n       */",
-          "type": "string"
-        },
-        {
-          "name": "contentId",
-          "type": "string"
-        }
-      ],
-      "events": [],
-      "slots": []
+      "name": "h5p-element"
     },
     {
       "name": "h5p-element",
       "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "contentId",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "h5p-element\n`h5p wrapper for loading and presenting .h5p files`",
-      "description": "`h5p-element`",
-      "jsDoc": "/**\n * `h5p-element`\n * @customElement h5p-element\n * `h5p wrapper for loading and presenting .h5p files`\n *\n * @microcopy - language worth noting:\n *  - h5p is it's own eco system, we're just trying to wrap it a bit\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [
-        {
-          "name": "contentId",
-          "type": "string"
-        }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

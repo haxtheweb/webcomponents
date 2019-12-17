@@ -1,4 +1,457 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-search-bar",
+      "attributes": [
+        {
+          "name": "query",
+          "description": "Text for which the user is searching",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hide-filter-button",
+          "description": "Whether to hide the Filter button. Set attribute \"hide-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-filter-button",
+          "description": "Whether to disable the Filter button. Set attribute \"disable-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nr-selected-filters",
+          "description": "Number of filters the user has been selected (shown in the badge) (optional)",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "icon",
+          "description": "Icon shown in the search background",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "placeholder",
+          "description": "Text shown in the search box if the user didn't enter any query",
+          "type": "string",
+          "default": "\"Search\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "query",
+          "attribute": "query",
+          "description": "Text for which the user is searching",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hideFilterButton",
+          "attribute": "hide-filter-button",
+          "description": "Whether to hide the Filter button. Set attribute \"hide-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableFilterButton",
+          "attribute": "disable-filter-button",
+          "description": "Whether to disable the Filter button. Set attribute \"disable-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nrSelectedFilters",
+          "attribute": "nr-selected-filters",
+          "description": "Number of filters the user has been selected (shown in the badge) (optional)",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon shown in the search background",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "description": "Text shown in the search box if the user didn't enter any query",
+          "type": "string",
+          "default": "\"Search\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "paper-search-filter"
+        },
+        {
+          "name": "paper-search-clear"
+        },
+        {
+          "name": "paper-search-search"
+        }
+      ]
+    },
+    {
+      "name": "paper-filter-dialog",
+      "attributes": [
+        {
+          "name": "filters",
+          "description": "All filters from which the user can choose",
+          "type": "array"
+        },
+        {
+          "name": "selected-filters",
+          "description": "All filters that have been selected by the user, e.g. `{ age: [ \"child\", \"teen\" ] }`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "reset-button",
+          "description": "Text for the reset button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Reset\""
+        },
+        {
+          "name": "save-button",
+          "description": "Text for the save button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Save filters\""
+        },
+        {
+          "name": "no-values-label",
+          "description": "Label shown if no values are selected for a filter. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"No filters yet\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "filters",
+          "attribute": "filters",
+          "description": "All filters from which the user can choose",
+          "type": "array"
+        },
+        {
+          "name": "selectedFilters",
+          "attribute": "selected-filters",
+          "description": "All filters that have been selected by the user, e.g. `{ age: [ \"child\", \"teen\" ] }`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "resetButton",
+          "attribute": "reset-button",
+          "description": "Text for the reset button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Reset\""
+        },
+        {
+          "name": "saveButton",
+          "attribute": "save-button",
+          "description": "Text for the save button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Save filters\""
+        },
+        {
+          "name": "noValuesLabel",
+          "attribute": "no-values-label",
+          "description": "Label shown if no values are selected for a filter. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"No filters yet\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "save"
+        }
+      ]
+    },
+    {
+      "name": "paper-search-panel",
+      "attributes": [
+        {
+          "name": "search",
+          "description": "Query for which the user was searching",
+          "type": "string"
+        },
+        {
+          "name": "filters",
+          "description": "All filters from which the user can choose",
+          "type": "object"
+        },
+        {
+          "name": "selected-filters",
+          "description": "All filters that have been selected by the user, e.g. `{ age: [ \"child\", \"teen\" ] }`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "description": "Items that are currently shown in the lister",
+          "type": "array"
+        },
+        {
+          "name": "has-more",
+          "description": "True if further items could be loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "description": "True if items are currently loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-filter-button",
+          "description": "Whether to hide the Filter button. Set attribute \"hide-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "count",
+          "description": "Number of items loaded per page (i.e. for each click on [more])",
+          "type": "number",
+          "default": "20"
+        },
+        {
+          "name": "icon",
+          "description": "Icon shown in the search background",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "placeholder",
+          "description": "Text shown in the search box if the user didn't enter any query",
+          "type": "string",
+          "default": "\"Search\""
+        },
+        {
+          "name": "no-results-text",
+          "description": "Text shown if no results are found. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"No matching results found.\""
+        },
+        {
+          "name": "more-button",
+          "description": "Text for the more button to load more data. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"More\""
+        },
+        {
+          "name": "reset-button",
+          "description": "Text for the reset button in the filter dialog. Use this property to localize the element.",
+          "type": "string"
+        },
+        {
+          "name": "save-button",
+          "description": "Text for the save button in the filter dialog. Use this property to localize the element.",
+          "type": "string"
+        },
+        {
+          "name": "no-values-label",
+          "description": "Label shown if no values are selected for a filter. Use this property to localize the element.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "search",
+          "attribute": "search",
+          "description": "Query for which the user was searching",
+          "type": "string"
+        },
+        {
+          "name": "filters",
+          "attribute": "filters",
+          "description": "All filters from which the user can choose",
+          "type": "object"
+        },
+        {
+          "name": "selectedFilters",
+          "attribute": "selected-filters",
+          "description": "All filters that have been selected by the user, e.g. `{ age: [ \"child\", \"teen\" ] }`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items that are currently shown in the lister",
+          "type": "array"
+        },
+        {
+          "name": "hasMore",
+          "attribute": "has-more",
+          "description": "True if further items could be loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "True if items are currently loaded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideFilterButton",
+          "attribute": "hide-filter-button",
+          "description": "Whether to hide the Filter button. Set attribute \"hide-filter-button\" to do so.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "count",
+          "attribute": "count",
+          "description": "Number of items loaded per page (i.e. for each click on [more])",
+          "type": "number",
+          "default": "20"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon shown in the search background",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "description": "Text shown in the search box if the user didn't enter any query",
+          "type": "string",
+          "default": "\"Search\""
+        },
+        {
+          "name": "noResultsText",
+          "attribute": "no-results-text",
+          "description": "Text shown if no results are found. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"No matching results found.\""
+        },
+        {
+          "name": "moreButton",
+          "attribute": "more-button",
+          "description": "Text for the more button to load more data. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"More\""
+        },
+        {
+          "name": "resetButton",
+          "attribute": "reset-button",
+          "description": "Text for the reset button in the filter dialog. Use this property to localize the element.",
+          "type": "string"
+        },
+        {
+          "name": "saveButton",
+          "attribute": "save-button",
+          "description": "Text for the save button in the filter dialog. Use this property to localize the element.",
+          "type": "string"
+        },
+        {
+          "name": "noValuesLabel",
+          "attribute": "no-values-label",
+          "description": "Label shown if no values are selected for a filter. Use this property to localize the element.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "change-request-params"
+        },
+        {
+          "name": "search"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "paper-search-filter"
+        },
+        {
+          "name": "paper-search-clear"
+        },
+        {
+          "name": "paper-search-search"
+        },
+        {
+          "name": "save"
+        },
+        {
+          "name": "change-request-params"
+        },
+        {
+          "name": "search"
+        }
+      ]
+    }
+  ]
 }

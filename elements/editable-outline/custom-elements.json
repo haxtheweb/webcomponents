@@ -1,80 +1,83 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "editable-outline",
       "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
-      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "items",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "editMode",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "jos",
-          "type": "any"
+          "name": "jos"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "editable-outline",
       "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
-      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
       "attributes": [
         {
           "name": "items",
-          "type": "never[]"
+          "description": "A items list of JSON Outline Schema Items",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "edit-mode",
-          "type": "boolean"
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "items",
-          "type": "never[]"
+          "attribute": "items",
+          "description": "A items list of JSON Outline Schema Items",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "editMode",
-          "type": "boolean"
+          "attribute": "edit-mode",
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "jos",
-          "type": "any"
+          "name": "jos"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "editable-outline",
       "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
-      "jsDoc": "/**\n * `editable-outline`\n * `a simple outline thats contenteditable in nature`\n * @demo demo/index.html\n * @customElement editable-outline\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "items",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "editMode",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "jos",
-          "type": "any"
+          "name": "jos"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

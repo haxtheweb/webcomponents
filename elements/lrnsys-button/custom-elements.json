@@ -1,602 +1,656 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrnsys-button\n`A simple button for use in systems`",
+      "name": "lrnsys-button",
       "description": "`lrnsys-button`",
-      "jsDoc": "/**\n * `lrnsys-button`\n * @customElement lrnsys-button\n * `A simple button for use in systems`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "show-href",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "href",
+          "attribute": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "showHref",
-          "type": "string"
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
+          "attribute": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
+          "attribute": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "buttonClass",
+          "attribute": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "iconClass",
+          "attribute": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "innerClass",
+          "attribute": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "textColor",
+          "attribute": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
+          "attribute": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focusState",
+          "attribute": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrnsys-button\n`A simple button for use in systems`",
+      "name": "lrnsys-button",
       "description": "`lrnsys-button`",
-      "jsDoc": "/**\n * `lrnsys-button`\n * @customElement lrnsys-button\n * `A simple button for use in systems`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "show-href",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "href",
+          "attribute": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "showHref",
-          "type": "string"
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
+          "attribute": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
+          "attribute": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "buttonClass",
+          "attribute": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "iconClass",
+          "attribute": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "innerClass",
+          "attribute": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "textColor",
+          "attribute": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
+          "attribute": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focusState",
+          "attribute": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrnsys-button\n`A simple button for use in systems`",
+      "name": "tag"
+    },
+    {
+      "name": "lrnsys-button",
       "description": "`lrnsys-button`",
-      "jsDoc": "/**\n * `lrnsys-button`\n * @customElement lrnsys-button\n * `A simple button for use in systems`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "show-href",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "href",
+          "attribute": "href",
           "description": "Standard href pass down",
-          "jsDoc": "/**\n       * Standard href pass down\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#\""
         },
         {
           "name": "showHref",
-          "type": "string"
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "raised",
+          "attribute": "raised",
           "description": "If the button should be visually lifted off the UI.",
-          "jsDoc": "/**\n       * If the button should be visually lifted off the UI.\n       */",
           "type": "boolean"
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label to place in the text area",
-          "jsDoc": "/**\n       * Label to place in the text area\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "target",
+          "attribute": "target",
           "description": "Support for target to open in new windows.",
-          "jsDoc": "/**\n       * Support for target to open in new windows.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "iron-icon to use (with iconset if needed)",
-          "jsDoc": "/**\n       * iron-icon to use (with iconset if needed)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "false"
         },
         {
           "name": "hoverClass",
+          "attribute": "hover-class",
           "description": "Classes to add / subtract based on the item being hovered.",
-          "jsDoc": "/**\n       * Classes to add / subtract based on the item being hovered.\n       */",
           "type": "string"
         },
         {
           "name": "buttonClass",
+          "attribute": "button-class",
           "description": "Button class.",
-          "jsDoc": "/**\n       * Button class.\n       */",
           "type": "string"
         },
         {
           "name": "iconClass",
+          "attribute": "icon-class",
           "description": "Icon class in the event you want it to look different from the text.",
-          "jsDoc": "/**\n       * Icon class in the event you want it to look different from the text.\n       */",
           "type": "string"
         },
         {
           "name": "innerClass",
+          "attribute": "inner-class",
           "description": "Inner container classes.",
-          "jsDoc": "/**\n       * Inner container classes.\n       */",
           "type": "string"
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "Color class work to apply",
-          "jsDoc": "/**\n       * Color class work to apply\n       */",
           "type": "string"
         },
         {
           "name": "textColor",
+          "attribute": "text-color",
           "description": "materializeCSS color class for text",
-          "jsDoc": "/**\n       * materializeCSS color class for text\n       */",
           "type": "string"
         },
         {
           "name": "prefetch",
+          "attribute": "prefetch",
           "description": "Allow for prefetch data automatically",
-          "jsDoc": "/**\n       * Allow for prefetch data automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt via tooltip.",
-          "jsDoc": "/**\n       * Alt via tooltip.\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Disabled state.",
-          "jsDoc": "/**\n       * Disabled state.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "focusState",
+          "attribute": "focus-state",
           "description": "Tracks if focus state is applied",
-          "jsDoc": "/**\n       * Tracks if focus state is applied\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,182 +1,248 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "to-do",
       "description": "`to-do`",
-      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "hideForm",
+          "attribute": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabledList",
+          "attribute": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
+          "attribute": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "to-do",
       "description": "`to-do`",
-      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "hideForm",
+          "attribute": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabledList",
+          "attribute": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
+          "attribute": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "to-do",
       "description": "`to-do`",
-      "jsDoc": "/**\n * `to-do`\n * @customElement to-do\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "hideForm",
+          "attribute": "hide-form",
           "description": "Allow for hiding the input form for new data.",
-          "jsDoc": "/**\n       * Allow for hiding the input form for new data.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabledList",
+          "attribute": "disabled-list",
           "description": "Whether or not the list of items is disabled\ncheckboxes.",
-          "jsDoc": "/**\n       * Whether or not the list of items is disabled\n       * checkboxes.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "name",
+          "attribute": "name",
           "description": "Name of this to do list",
-          "jsDoc": "/**\n       * Name of this to do list\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"To do list\""
         },
         {
           "name": "items",
+          "attribute": "items",
           "description": "Items",
-          "jsDoc": "/**\n       * Items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

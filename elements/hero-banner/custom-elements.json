@@ -1,218 +1,215 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "hero-banner\n`That thing no one wants to make over and over again yet always does...`",
+      "name": "hero-banner",
       "description": "`hero-banner`",
-      "jsDoc": "/**\n * `hero-banner`\n * @customElement hero-banner\n * `That thing no one wants to make over and over again yet always does...`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
+          "attribute": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
+          "attribute": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
+          "attribute": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "hero-banner\n`That thing no one wants to make over and over again yet always does...`",
+      "name": "hero-banner",
       "description": "`hero-banner`",
-      "jsDoc": "/**\n * `hero-banner`\n * @customElement hero-banner\n * `That thing no one wants to make over and over again yet always does...`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
+          "attribute": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
+          "attribute": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
+          "attribute": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "hero-banner\n`That thing no one wants to make over and over again yet always does...`",
+      "name": "tag"
+    },
+    {
+      "name": "hero-banner",
       "description": "`hero-banner`",
-      "jsDoc": "/**\n * `hero-banner`\n * @customElement hero-banner\n * `That thing no one wants to make over and over again yet always does...`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image",
-          "jsDoc": "/**\n       * Image\n       */",
           "type": "string"
         },
         {
           "name": "details",
+          "attribute": "details",
           "description": "Details / teaser text",
-          "jsDoc": "/**\n       * Details / teaser text\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Details\""
         },
         {
           "name": "buttonText",
+          "attribute": "buttonText",
           "description": "button label",
-          "jsDoc": "/**\n       * button label\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Find out more\""
         },
         {
           "name": "buttonLink",
+          "attribute": "buttonLink",
           "description": "url for the button",
-          "jsDoc": "/**\n       * url for the button\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

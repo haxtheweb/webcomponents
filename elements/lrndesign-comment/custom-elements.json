@@ -1,14 +1,13 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrndesign-comment\nA LRN element",
+      "name": "lrndesign-comment",
       "description": "`lrndesign-comment`",
-      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "avatar",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "name",
@@ -16,42 +15,65 @@
         },
         {
           "name": "date",
-          "type": "string"
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "avatar",
-          "type": "{}"
+          "attribute": "avatar",
+          "type": "object"
         },
         {
           "name": "name",
+          "attribute": "name",
           "type": "string"
         },
         {
           "name": "date",
-          "type": "string"
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-comment\nA LRN element",
+      "name": "lrndesign-comment",
       "description": "`lrndesign-comment`",
-      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "avatar",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "name",
@@ -59,42 +81,68 @@
         },
         {
           "name": "date",
-          "type": "string"
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "avatar",
-          "type": "{}"
+          "attribute": "avatar",
+          "type": "object"
         },
         {
           "name": "name",
+          "attribute": "name",
           "type": "string"
         },
         {
           "name": "date",
-          "type": "string"
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-comment\nA LRN element",
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-comment",
       "description": "`lrndesign-comment`",
-      "jsDoc": "/**\n * `lrndesign-comment`\n * @customElement lrndesign-comment\n * A LRN element\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "avatar",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "name",
@@ -102,33 +150,57 @@
         },
         {
           "name": "date",
-          "type": "string"
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "avatar",
-          "type": "{}"
+          "attribute": "avatar",
+          "type": "object"
         },
         {
           "name": "name",
+          "attribute": "name",
           "type": "string"
         },
         {
           "name": "date",
-          "type": "string"
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
         },
         {
           "name": "links",
-          "type": "{}"
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

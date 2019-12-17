@@ -1,68 +1,70 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "md-block",
       "description": "`md-block`\n`a markdown block`",
-      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "markdown",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "md-block",
       "description": "`md-block`\n`a markdown block`",
-      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
       "attributes": [
         {
           "name": "markdown",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "markdown",
-          "type": "string"
+          "attribute": "markdown",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "string"
+          "attribute": "source",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "md-block",
       "description": "`md-block`\n`a markdown block`",
-      "jsDoc": "/**\n * `md-block`\n * `a markdown block`\n * @demo demo/index.html\n * @customElement md-block\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "markdown",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "source",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

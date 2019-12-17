@@ -1,116 +1,133 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "glossary-term",
       "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
-      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "name",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "definition",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "display",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "serviceType",
-          "type": "string"
+          "type": "string",
+          "default": "\"file\""
         },
         {
           "name": "endpoint",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "glossary-term",
       "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
-      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
       "attributes": [
         {
           "name": "name",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "definition",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "display",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "serviceType",
-          "type": "string"
+          "type": "string",
+          "default": "\"file\""
         },
         {
           "name": "endpoint",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "name",
-          "type": "string"
+          "attribute": "name",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "definition",
-          "type": "string"
+          "attribute": "definition",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "display",
-          "type": "string"
+          "attribute": "display",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "serviceType",
-          "type": "string"
+          "attribute": "serviceType",
+          "type": "string",
+          "default": "\"file\""
         },
         {
           "name": "endpoint",
-          "type": "string"
+          "attribute": "endpoint",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "glossary-term",
       "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
-      "jsDoc": "/**\n * `glossary-term`\n * `Glossary term that shows a popup for the answer`\n * @demo demo/index.html\n * @customElement glossary-term\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "name",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "definition",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "display",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "serviceType",
-          "type": "string"
+          "type": "string",
+          "default": "\"file\""
         },
         {
           "name": "endpoint",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

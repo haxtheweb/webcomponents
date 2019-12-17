@@ -1,4 +1,341 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\nA LRN element for presenting a gallery of items as cards\nthat can pop up to display more info",
+      "attributes": [
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "attribute": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\nA LRN element for presenting a gallery of items as cards\nthat can pop up to display more info",
+      "attributes": [
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "attribute": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\nA LRN element for presenting a gallery of items as cards\nthat can pop up to display more info",
+      "attributes": [
+        {
+          "name": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "size",
+          "attribute": "size",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Cover image src.",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to use if image isn't there.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the gallery item",
+          "type": "string",
+          "default": "\"Project\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Gallery creator",
+          "type": "object",
+          "default": "{\"name\":\"author\",\"display_name\":\"Author\"}"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual elevation of the item off the UI via paper element height",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "comments",
+          "attribute": "comments",
+          "description": "Number of comments this has",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
 }

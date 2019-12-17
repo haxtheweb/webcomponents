@@ -1,176 +1,235 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "simple-icon-picker\nUses simple-picker to create an icon picker",
+      "name": "simple-icon-picker",
       "description": "`simple-icon-picker`",
-      "jsDoc": "/**\n * `simple-icon-picker`\n * @customElement simple-icon-picker\n * Uses simple-picker to create an icon picker\n *\n\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "allowNull",
-          "type": "boolean"
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "properties": [
         {
           "name": "hideOptionLabels",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "allowNull",
-          "type": "boolean"
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "options",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "events": [
         {
           "name": "value-changed",
-          "description": "fires when value changes",
-          "jsDoc": "/**\n         * fires when value changes\n         * @event value-changed\n         */"
+          "description": "fires when value changes"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-icon-picker\nUses simple-picker to create an icon picker",
+      "name": "simple-icon-picker",
       "description": "`simple-icon-picker`",
-      "jsDoc": "/**\n * `simple-icon-picker`\n * @customElement simple-icon-picker\n * Uses simple-picker to create an icon picker\n *\n\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "allowNull",
-          "type": "boolean"
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "properties": [
         {
           "name": "hideOptionLabels",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "allowNull",
-          "type": "boolean"
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "options",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "events": [
         {
           "name": "value-changed",
-          "description": "fires when value changes",
-          "jsDoc": "/**\n         * fires when value changes\n         * @event value-changed\n         */"
+          "description": "fires when value changes"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-icon-picker\nUses simple-picker to create an icon picker",
+      "name": "tag",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-picker",
       "description": "`simple-icon-picker`",
-      "jsDoc": "/**\n * `simple-icon-picker`\n * @customElement simple-icon-picker\n * Uses simple-picker to create an icon picker\n *\n\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "allowNull",
-          "type": "boolean"
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "properties": [
         {
           "name": "hideOptionLabels",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "allowNull",
-          "type": "boolean"
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icons",
-          "type": "never[]"
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "value",
-          "type": "null"
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
         },
         {
           "name": "options",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "optionsPerRow",
-          "type": "number"
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
         }
       ],
       "events": [
         {
           "name": "value-changed",
-          "description": "fires when value changes",
-          "jsDoc": "/**\n         * fires when value changes\n         * @event value-changed\n         */"
+          "description": "fires when value changes"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,11 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "simple-popover\na popover alertdialog that is positioned next to a target element\n\n### Styling\n`<simple-popover>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
+      "name": "simple-popover",
       "description": "`simple-popover`",
-      "jsDoc": "/**\n * `simple-popover`\n * @customElement simple-popover\n * a popover alertdialog that is positioned next to a target element\n *\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;\n *\n\n * @demo ./demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "offset",
@@ -13,21 +11,14 @@
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
-        },
-        {
-          "name": "h",
-          "type": "string"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-popover\na popover alertdialog that is positioned next to a target element\n\n### Styling\n`<simple-popover>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
+      "name": "simple-popover",
       "description": "`simple-popover`",
-      "jsDoc": "/**\n * `simple-popover`\n * @customElement simple-popover\n * a popover alertdialog that is positioned next to a target element\n *\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;\n *\n\n * @demo ./demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "offset",
@@ -35,21 +26,17 @@
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
-        },
-        {
-          "name": "h",
-          "type": "string"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-popover\na popover alertdialog that is positioned next to a target element\n\n### Styling\n`<simple-popover>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
+      "name": "tag"
+    },
+    {
+      "name": "simple-popover",
       "description": "`simple-popover`",
-      "jsDoc": "/**\n * `simple-popover`\n * @customElement simple-popover\n * a popover alertdialog that is positioned next to a target element\n *\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;\n *\n\n * @demo ./demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "offset",
@@ -57,15 +44,10 @@
         },
         {
           "name": "fitToVisibleBounds",
-          "type": "boolean"
-        },
-        {
-          "name": "h",
-          "type": "string"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,218 +1,218 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "q-r",
       "description": "`q-r`\n`Polymer wrapper for a qr code.`",
-      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
       ],
       "properties": [
         {
           "name": "data",
+          "attribute": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
+          "attribute": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
+          "attribute": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
+          "attribute": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "q-r",
       "description": "`q-r`\n`Polymer wrapper for a qr code.`",
-      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
       ],
       "properties": [
         {
           "name": "data",
+          "attribute": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
+          "attribute": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
+          "attribute": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
+          "attribute": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "qr-code"
     },
     {
       "name": "q-r",
       "description": "`q-r`\n`Polymer wrapper for a qr code.`",
-      "jsDoc": "/**\n * `q-r`\n * `Polymer wrapper for a qr code.`\n *\n * @demo demo/index.html\n * @customElement q-r\n */",
       "attributes": [
         {
           "name": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
       ],
       "properties": [
         {
           "name": "data",
+          "attribute": "data",
           "description": "Data to code via QR code",
-          "jsDoc": "/**\n       * Data to code via QR code\n       */",
           "type": "string"
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Alternate title for the data",
-          "jsDoc": "/**\n       * Alternate title for the data\n       */",
           "type": "string"
         },
         {
           "name": "modulesize",
+          "attribute": "modulesize",
           "description": "module size of the square",
-          "jsDoc": "/**\n       * module size of the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "margin",
+          "attribute": "margin",
           "description": "Margin on the square",
-          "jsDoc": "/**\n       * Margin on the square\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "2"
         },
         {
           "name": "format",
+          "attribute": "format",
           "description": "format to output",
-          "jsDoc": "/**\n       * format to output\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"png\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

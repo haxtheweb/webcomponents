@@ -1,110 +1,104 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "elmsln-loading",
       "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
       ],
       "properties": [
         {
           "name": "color",
+          "attribute": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "elmsln-loading",
       "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
       ],
       "properties": [
         {
           "name": "color",
+          "attribute": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "elmsln-loading",
       "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
-      "jsDoc": "/**\n * `elmsln-loading`\n * A spinner to tell the user that something is loading.\n * This is just the spinner though and doesn't provide any text or anything else.\n *\n * @microcopy - language worth noting:\n *  - elmsln - an open source NGDLE to save education\n *\n * @demo demo/index.html\n * @customElement elmsln-loading\n */",
       "attributes": [
         {
           "name": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
       ],
       "properties": [
         {
           "name": "color",
+          "attribute": "color",
           "description": "color",
-          "jsDoc": "/**\n       * color\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "tiny, small, medium, large, epic sizing.",
-          "jsDoc": "/**\n       * tiny, small, medium, large, epic sizing.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

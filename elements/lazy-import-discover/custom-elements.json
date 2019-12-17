@@ -1,4 +1,74 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lazy-import-discover",
+      "description": "`lazy-import-discover`",
+      "attributes": [
+        {
+          "name": "base",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "base",
+          "attribute": "base",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"lazy-import-discover\""
+        }
+      ]
+    },
+    {
+      "name": "lazy-import-discover",
+      "description": "`lazy-import-discover`",
+      "attributes": [
+        {
+          "name": "base",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "base",
+          "attribute": "base",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"lazy-import-discover\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lazy-import-discover",
+      "description": "`lazy-import-discover`",
+      "attributes": [
+        {
+          "name": "base",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "base",
+          "attribute": "base",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"lazy-import-discover\""
+        }
+      ]
+    }
+  ]
 }

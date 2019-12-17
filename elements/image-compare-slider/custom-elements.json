@@ -1,182 +1,170 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "image-compare-slider",
       "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them",
-      "jsDoc": "/**\n * `image-compare-slider`\n * Layers images over each other with a slider interface to compare them\n * @demo demo/index.html\n * @customElement image-compare-slider\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "topSrc",
+          "attribute": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
+          "attribute": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottomSrc",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "image-compare-slider",
       "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them",
-      "jsDoc": "/**\n * `image-compare-slider`\n * Layers images over each other with a slider interface to compare them\n * @demo demo/index.html\n * @customElement image-compare-slider\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "topSrc",
+          "attribute": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
+          "attribute": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottomSrc",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "image-compare-slider",
       "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them",
-      "jsDoc": "/**\n * `image-compare-slider`\n * Layers images over each other with a slider interface to compare them\n * @demo demo/index.html\n * @customElement image-compare-slider\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottom-src",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "topSrc",
+          "attribute": "top-src",
           "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
+          "type": "string"
+        },
+        {
+          "name": "bottomSrc",
+          "attribute": "bottom-src",
+          "description": "src for top image",
           "type": "string"
         },
         {
           "name": "opacity",
+          "attribute": "opacity",
           "description": "mode for the slider: wipe",
-          "jsDoc": "/**\n       * mode for the slider: wipe\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "bottomSrc",
-          "description": "src for top image",
-          "jsDoc": "/**\n       * src for top image\n       */",
-          "type": "string"
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

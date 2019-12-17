@@ -1,290 +1,281 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "a11y-gif-player\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc",
+      "name": "a11y-gif-player",
       "description": "`a11y-gif-player`",
-      "jsDoc": "/**\n * `a11y-gif-player`\n * @customElement a11y-gif-player\n * plays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n *\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
           "type": "string"
         },
         {
           "name": "src-without-animation",
           "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip-playing",
-          "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
           "type": "string"
         },
         {
           "name": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
       ],
       "properties": [
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
+          "attribute": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
-          "type": "string"
-        },
-        {
-          "name": "srcWithoutAnimation",
-          "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
           "type": "string"
         },
         {
           "name": "tooltip",
+          "attribute": "tooltip",
           "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Toggle animation\""
         },
         {
           "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
           "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
           "type": "string"
         },
         {
           "name": "noImage",
+          "attribute": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "a11y-gif-player\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc",
+      "name": "a11y-gif-player",
       "description": "`a11y-gif-player`",
-      "jsDoc": "/**\n * `a11y-gif-player`\n * @customElement a11y-gif-player\n * plays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n *\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
           "type": "string"
         },
         {
           "name": "src-without-animation",
           "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip-playing",
-          "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
           "type": "string"
         },
         {
           "name": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
       ],
       "properties": [
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
+          "attribute": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
-          "type": "string"
-        },
-        {
-          "name": "srcWithoutAnimation",
-          "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
           "type": "string"
         },
         {
           "name": "tooltip",
+          "attribute": "tooltip",
           "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Toggle animation\""
         },
         {
           "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
           "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
           "type": "string"
         },
         {
           "name": "noImage",
+          "attribute": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "a11y-gif-player\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc",
+      "name": "tag"
+    },
+    {
+      "name": "a11y-gif-player",
       "description": "`a11y-gif-player`",
-      "jsDoc": "/**\n * `a11y-gif-player`\n * @customElement a11y-gif-player\n * plays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n *\n * @demo ./demo/index.html\n */",
       "attributes": [
         {
           "name": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
           "type": "string"
         },
         {
           "name": "src-without-animation",
           "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip",
-          "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
-        },
-        {
-          "name": "tooltip-playing",
-          "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
           "type": "string"
         },
         {
           "name": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
       ],
       "properties": [
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text of gif",
-          "jsDoc": "/**\n       * Alt text of gif\n       */",
           "type": "string"
         },
         {
           "name": "disabled",
+          "attribute": "disabled",
           "description": "Whether button is disabled",
-          "jsDoc": "/**\n       * Whether button is disabled\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
+          "attribute": "src",
           "description": "Source of animated gif",
-          "jsDoc": "/**\n       * Source of animated gif\n       */",
-          "type": "string"
-        },
-        {
-          "name": "srcWithoutAnimation",
-          "description": "Source of static version of image",
-          "jsDoc": "/**\n       * Source of static version of image\n       */",
           "type": "string"
         },
         {
           "name": "tooltip",
+          "attribute": "tooltip",
           "description": "default tooltip",
-          "jsDoc": "/**\n       * default tooltip\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Toggle animation\""
         },
         {
           "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
           "description": "tooltip when playing",
-          "jsDoc": "/**\n       * tooltip when playing\n       */",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
           "type": "string"
         },
         {
           "name": "noImage",
+          "attribute": "noImage",
           "description": "Boolean for if theres a source image or not",
-          "jsDoc": "/**\n       * Boolean for if theres a source image or not\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "true"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

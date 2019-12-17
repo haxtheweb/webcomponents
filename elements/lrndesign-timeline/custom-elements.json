@@ -1,82 +1,81 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrndesign-timeline\n`an element that displays events on a timeline`",
+      "name": "lrndesign-timeline",
       "description": "`lrndesign-timeline`",
-      "jsDoc": "/**\n * `lrndesign-timeline`\n * @customElement lrndesign-timeline\n * `an element that displays events on a timeline`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
           "name": "responsive-element"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-timeline\n`an element that displays events on a timeline`",
+      "name": "lrndesign-timeline",
       "description": "`lrndesign-timeline`",
-      "jsDoc": "/**\n * `lrndesign-timeline`\n * @customElement lrndesign-timeline\n * `an element that displays events on a timeline`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "the title of the timeline",
-          "jsDoc": "/**\n       * the title of the timeline\n       */",
           "type": "string"
         },
         {
           "name": "events",
           "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
-          "jsDoc": "/**\n   * the events of the timeline, in the desired order, as in:```\n[\n  {\n    \"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n    \"details\": \"\",                            //optional, text describing the event\n    \"image\": {                                //optional image for the event\n      \"src\": \"path/to/media.jpg\",             //the alt text of the image\n      \"alt\": \"path/to/media.mp3\",             //the url of the image\n    },\n    {...},\n    {...},\n  }\n]```\n   */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "timelineSize",
+          "name": "timeline-size",
           "description": "the timline size, calculated by responsive utility",
-          "jsDoc": "/**\n       * the timline size, calculated by responsive utility\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"xs\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "the title of the timeline",
-          "jsDoc": "/**\n       * the title of the timeline\n       */",
           "type": "string"
         },
         {
           "name": "events",
+          "attribute": "events",
           "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
-          "jsDoc": "/**\n   * the events of the timeline, in the desired order, as in:```\n[\n  {\n    \"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n    \"details\": \"\",                            //optional, text describing the event\n    \"image\": {                                //optional image for the event\n      \"src\": \"path/to/media.jpg\",             //the alt text of the image\n      \"alt\": \"path/to/media.mp3\",             //the url of the image\n    },\n    {...},\n    {...},\n  }\n]```\n   */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "timelineSize",
+          "attribute": "timeline-size",
           "description": "the timline size, calculated by responsive utility",
-          "jsDoc": "/**\n       * the timline size, calculated by responsive utility\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"xs\""
         }
       ],
       "events": [
         {
           "name": "responsive-element"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-timeline\n`an element that displays events on a timeline`",
-      "description": "`lrndesign-timeline`",
-      "jsDoc": "/**\n * `lrndesign-timeline`\n * @customElement lrndesign-timeline\n * `an element that displays events on a timeline`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
+      "name": "tag",
       "events": [
         {
           "name": "responsive-element"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`",
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
     }
   ]
 }

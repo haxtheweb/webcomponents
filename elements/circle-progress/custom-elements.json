@@ -1,182 +1,242 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "circle-progress",
       "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
-      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "value",
+          "attribute": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
+          "attribute": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "strokeWidth",
+          "attribute": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
+          "attribute": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "circle-progress",
       "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
-      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "value",
+          "attribute": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
+          "attribute": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "strokeWidth",
+          "attribute": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
+          "attribute": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "circle-progress",
       "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
-      "jsDoc": "/**\n * `circle-progress`\n * `Polymer-based web component displaying a circular progress bar.`\n *\n * @demo demo/index.html\n * @customElement circle-progress\n */",
       "attributes": [
         {
           "name": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "value",
+          "attribute": "value",
           "description": "Value of circular progress bar.",
-          "jsDoc": "/**\n       * Value of circular progress bar.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "max",
+          "attribute": "max",
           "description": "Maximum of value.",
-          "jsDoc": "/**\n       * Maximum of value.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "100"
         },
         {
           "name": "strokeWidth",
+          "attribute": "stroke-width",
           "description": "Stroke width of circle.",
-          "jsDoc": "/**\n       * Stroke width of circle.\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "4"
         },
         {
           "name": "angle",
+          "attribute": "angle",
           "description": "Starting angle of the progress.",
-          "jsDoc": "/**\n       * Starting angle of the progress.\n       */",
           "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

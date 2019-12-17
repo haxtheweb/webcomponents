@@ -1,213 +1,252 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "chartist-render\nuses chartist library to render a chart\n\n### Styling\n`<chartist-render>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`",
+      "name": "chartist-render",
       "description": "`chartist-render`",
-      "jsDoc": "/**\n * `chartist-render`\n * @customElement chartist-render\n * uses chartist library to render a chart\n *\n### Styling\n\n`<chartist-render>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`\n\n\n * @polymer\n * @extends SchemaBehaviors\n * @demo ./demo/index.html \n *\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "id",
-          "type": "string"
+          "type": "string",
+          "default": "\"chart\""
         },
         {
           "name": "type",
-          "type": "string"
+          "type": "string",
+          "default": "\"bar\""
         },
         {
           "name": "scale",
-          "type": "string"
+          "type": "string",
+          "default": "\"ct-minor-seventh\""
         },
         {
-          "name": "chartTitle",
-          "type": "null"
+          "name": "chartTitle"
         },
         {
-          "name": "chartDesc",
-          "type": "null"
+          "name": "chartDesc"
         },
         {
-          "name": "data",
-          "type": "null"
+          "name": "data"
         },
         {
-          "name": "options",
-          "type": "null"
+          "name": "options"
         },
         {
           "name": "responsiveOptions",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "showTable",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "chartist-render-created",
-          "description": "Fired once chart is created and accessibility features are added.",
-          "jsDoc": "/**\n         * Fired once chart is created and accessibility features are added.\n         *\n         * @event chartist-render-created\n         *\n         */"
+          "name": "chartist-render-draw",
+          "description": "Fired when chart is being drawn."
         },
         {
-          "name": "chartist-render-draw",
-          "description": "Fired when chart is being drawn.",
-          "jsDoc": "/**\n       * Fired when chart is being drawn.\n       *\n       * @event chartist-render-draw\n       *\n       */"
+          "name": "chartist-render-created",
+          "description": "Fired once chart is created and accessibility features are added."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "chartist-render\nuses chartist library to render a chart\n\n### Styling\n`<chartist-render>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`",
+      "name": "chartist-render",
       "description": "`chartist-render`",
-      "jsDoc": "/**\n * `chartist-render`\n * @customElement chartist-render\n * uses chartist library to render a chart\n *\n### Styling\n\n`<chartist-render>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`\n\n\n * @polymer\n * @extends SchemaBehaviors\n * @demo ./demo/index.html \n *\n */",
       "attributes": [
         {
           "name": "id",
-          "type": "string"
+          "description": "The unique identifier of the chart.",
+          "type": "string",
+          "default": "\"chart\""
         },
         {
           "name": "type",
-          "type": "string"
+          "description": "The type of chart:bar, line, or pie",
+          "type": "string",
+          "default": "\"bar\""
         },
         {
           "name": "scale",
-          "type": "string"
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+          "type": "string",
+          "default": "\"ct-minor-seventh\""
         },
         {
           "name": "chart-title",
-          "type": "null"
+          "description": "The chart title used for accessibility.",
+          "type": "string"
         },
         {
           "name": "chart-desc",
-          "type": "null"
+          "description": "The chart description used for accessibility.",
+          "type": "string"
         },
         {
           "name": "data",
-          "type": "null"
+          "description": "The chart data.",
+          "type": "object"
         },
         {
           "name": "options",
-          "type": "null"
+          "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+          "type": "object"
         },
         {
           "name": "responsive-options",
-          "type": "never[]"
+          "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "show-table",
-          "type": "boolean"
+          "description": "The show data in table form as well? Default is false.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "id",
-          "type": "string"
+          "attribute": "id",
+          "description": "The unique identifier of the chart.",
+          "type": "string",
+          "default": "\"chart\""
         },
         {
           "name": "type",
-          "type": "string"
+          "attribute": "type",
+          "description": "The type of chart:bar, line, or pie",
+          "type": "string",
+          "default": "\"bar\""
         },
         {
           "name": "scale",
-          "type": "string"
+          "attribute": "scale",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+          "type": "string",
+          "default": "\"ct-minor-seventh\""
         },
         {
           "name": "chartTitle",
-          "type": "null"
+          "attribute": "chart-title",
+          "description": "The chart title used for accessibility.",
+          "type": "string"
         },
         {
           "name": "chartDesc",
-          "type": "null"
+          "attribute": "chart-desc",
+          "description": "The chart description used for accessibility.",
+          "type": "string"
         },
         {
           "name": "data",
-          "type": "null"
+          "attribute": "data",
+          "description": "The chart data.",
+          "type": "object"
         },
         {
           "name": "options",
-          "type": "null"
+          "attribute": "options",
+          "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+          "type": "object"
         },
         {
           "name": "responsiveOptions",
-          "type": "never[]"
+          "attribute": "responsive-options",
+          "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "showTable",
-          "type": "boolean"
+          "attribute": "show-table",
+          "description": "The show data in table form as well? Default is false.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "chartist-render-created",
-          "description": "Fired once chart is created and accessibility features are added.",
-          "jsDoc": "/**\n         * Fired once chart is created and accessibility features are added.\n         *\n         * @event chartist-render-created\n         *\n         */"
+          "name": "chartist-render-draw",
+          "description": "Fired when chart is being drawn."
         },
         {
-          "name": "chartist-render-draw",
-          "description": "Fired when chart is being drawn.",
-          "jsDoc": "/**\n       * Fired when chart is being drawn.\n       *\n       * @event chartist-render-draw\n       *\n       */"
+          "name": "chartist-render-created",
+          "description": "Fired once chart is created and accessibility features are added."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "chartist-render\nuses chartist library to render a chart\n\n### Styling\n`<chartist-render>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "chartist-render-ready"
+        },
+        {
+          "name": "chartist-render-draw"
+        },
+        {
+          "name": "chartist-render-created"
+        }
+      ]
+    },
+    {
+      "name": "chartist-render",
       "description": "`chartist-render`",
-      "jsDoc": "/**\n * `chartist-render`\n * @customElement chartist-render\n * uses chartist library to render a chart\n *\n### Styling\n\n`<chartist-render>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--chartist-label-color` | default label color for charts | #000\n`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`\n`--chartist-color-a` | background color for 1st series |  #d70206\n`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`\n`--chartist-color-b` | background color for 2nd series |  #f05b4f\n`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`\n`--chartist-color-c` | background color for 3rd series |  #f4c63d\n`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`\n`--chartist-color-d` | background color for 4th series |  #d17905\n`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`\n`--chartist-color-e` | background color for 5th series |  #453d3f\n`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`\n`--chartist-color-f` | background color for 6th series |  #59922b\n`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`\n`--chartist-color-g` | background color for 7th series |  #0544d3\n`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`\n`--chartist-color-h` | background color for 8th series |  #6b0392\n`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`\n`--chartist-color-i` | background color for 9th series |  #f05b4f\n`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`\n`--chartist-color-j` | background color for 10th series |  #dda458\n`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`\n`--chartist-color-k` | background color for 11th series |  #eacf7d\n`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`\n`--chartist-color-l` | background color for 12th series |  #86797d\n`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`\n`--chartist-color-m` | background color for 13th series |  #b2c326\n`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`\n`--chartist-color-n` | background color for 14th series |  #6188e2\n`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`\n`--chartist-color-0` | background color for 15th series |  #a748ca\n`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`\n\n\n * @polymer\n * @extends SchemaBehaviors\n * @demo ./demo/index.html \n *\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "id",
-          "type": "string"
+          "type": "string",
+          "default": "\"chart\""
         },
         {
           "name": "type",
-          "type": "string"
+          "type": "string",
+          "default": "\"bar\""
         },
         {
           "name": "scale",
-          "type": "string"
+          "type": "string",
+          "default": "\"ct-minor-seventh\""
         },
         {
-          "name": "chartTitle",
-          "type": "null"
+          "name": "chartTitle"
         },
         {
-          "name": "chartDesc",
-          "type": "null"
+          "name": "chartDesc"
         },
         {
-          "name": "data",
-          "type": "null"
+          "name": "data"
         },
         {
-          "name": "options",
-          "type": "null"
+          "name": "options"
         },
         {
           "name": "responsiveOptions",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "showTable",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "chartist-render-created",
-          "description": "Fired once chart is created and accessibility features are added.",
-          "jsDoc": "/**\n         * Fired once chart is created and accessibility features are added.\n         *\n         * @event chartist-render-created\n         *\n         */"
+          "name": "chartist-render-draw",
+          "description": "Fired when chart is being drawn."
         },
         {
-          "name": "chartist-render-draw",
-          "description": "Fired when chart is being drawn.",
-          "jsDoc": "/**\n       * Fired when chart is being drawn.\n       *\n       * @event chartist-render-draw\n       *\n       */"
+          "name": "chartist-render-created",
+          "description": "Fired once chart is created and accessibility features are added."
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

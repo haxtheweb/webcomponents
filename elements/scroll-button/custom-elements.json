@@ -1,92 +1,100 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "scroll-button",
       "description": "`scroll-button`\n`button to scroll to an area or back to top`",
-      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"icons:expand-less\""
         },
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"Scroll to top\""
         },
         {
           "name": "position",
-          "type": "string"
+          "type": "string",
+          "default": "\"top\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "scroll-button",
       "description": "`scroll-button`\n`button to scroll to an area or back to top`",
-      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
       "attributes": [
         {
           "name": "target",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"icons:expand-less\""
         },
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"Scroll to top\""
         },
         {
           "name": "position",
-          "type": "string"
+          "type": "string",
+          "default": "\"top\""
         }
       ],
       "properties": [
         {
           "name": "target",
-          "type": "{}"
+          "attribute": "target",
+          "type": "object"
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"icons:expand-less\""
         },
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Scroll to top\""
         },
         {
           "name": "position",
-          "type": "string"
+          "attribute": "position",
+          "type": "string",
+          "default": "\"top\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "scroll-button",
       "description": "`scroll-button`\n`button to scroll to an area or back to top`",
-      "jsDoc": "/**\n * `scroll-button`\n * `button to scroll to an area or back to top`\n * @demo demo/index.html\n * @customElement scroll-button\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"icons:expand-less\""
         },
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"Scroll to top\""
         },
         {
           "name": "position",
-          "type": "string"
+          "type": "string",
+          "default": "\"top\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

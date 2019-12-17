@@ -1,374 +1,373 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "awesome-explosion",
       "description": "`awesome-explosion`\n`An awesome, explosion.`",
-      "jsDoc": "/**\n * `awesome-explosion`\n * `An awesome, explosion.`\n *\n * @silly\n * @demo demo/index.html\n * @customElement awesome-explosion\n */",
       "attributes": [
-        {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
         {
           "name": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
         },
         {
           "name": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
-        {
           "name": "stopped",
+          "attribute": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
+          "attribute": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
+          "attribute": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
         },
         {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
           "name": "image",
+          "attribute": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
+          "attribute": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "resetSound",
+          "attribute": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "awesome-event"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "awesome-explosion",
       "description": "`awesome-explosion`\n`An awesome, explosion.`",
-      "jsDoc": "/**\n * `awesome-explosion`\n * `An awesome, explosion.`\n *\n * @silly\n * @demo demo/index.html\n * @customElement awesome-explosion\n */",
       "attributes": [
-        {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
         {
           "name": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
         },
         {
           "name": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
-        {
           "name": "stopped",
+          "attribute": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
+          "attribute": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
+          "attribute": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
         },
         {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
           "name": "image",
+          "attribute": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
+          "attribute": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "resetSound",
+          "attribute": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "awesome-event"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "awesome-event"
+        }
+      ]
     },
     {
       "name": "awesome-explosion",
       "description": "`awesome-explosion`\n`An awesome, explosion.`",
-      "jsDoc": "/**\n * `awesome-explosion`\n * `An awesome, explosion.`\n *\n * @silly\n * @demo demo/index.html\n * @customElement awesome-explosion\n */",
       "attributes": [
-        {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
         {
           "name": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
         },
         {
           "name": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "state",
-          "description": "State is for setting:\nPossible values: play, pause, stop",
-          "jsDoc": "/**\n       * State is for setting:\n       * Possible values: play, pause, stop\n       */",
-          "type": "string"
-        },
-        {
           "name": "stopped",
+          "attribute": "stopped",
           "description": "Allow for stopping the sound effect.",
-          "jsDoc": "/**\n       * Allow for stopping the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "playing",
+          "attribute": "playing",
           "description": "Allow for playing the sound effect.",
-          "jsDoc": "/**\n       * Allow for playing the sound effect.\n       */",
           "type": "boolean"
         },
         {
           "name": "paused",
+          "attribute": "paused",
           "description": "Allow for pausing the sound effect.",
-          "jsDoc": "/**\n       * Allow for pausing the sound effect.\n       */",
           "type": "boolean"
         },
         {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
           "name": "image",
+          "attribute": "image",
           "description": "This allows you to swap out the image",
-          "jsDoc": "/**\n       * This allows you to swap out the image\n       */",
           "type": "string"
         },
         {
           "name": "sound",
+          "attribute": "sound",
           "description": "This allows you to swap out the sound.",
-          "jsDoc": "/**\n       * This allows you to swap out the sound.\n       */",
           "type": "string"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
-          "jsDoc": "/**\n       * This is the size of the element. Possible values are:\n       * tiny, small, medium, large, epic\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"medium\""
         },
         {
           "name": "color",
+          "attribute": "color",
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
-          "jsDoc": "/**\n       * This is to change the color of the element. Possible values are:\n       * red, blue, orange, yellow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "resetSound",
+          "attribute": "reset-sound",
           "description": "Allow for resetting the sound effect.",
-          "jsDoc": "/**\n       * Allow for resetting the sound effect.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "awesome-event"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,28 +1,24 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "code-sample",
       "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
-      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "theme",
-          "type": "any"
+          "default": "\"oneDark\""
         },
         {
           "name": "copyClipboardButton",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "code-sample",
       "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
-      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
       "attributes": [
         {
           "name": "type",
@@ -30,47 +26,52 @@
         },
         {
           "name": "theme",
-          "type": "string"
+          "type": "string",
+          "default": "\"oneDark\""
         },
         {
           "name": "copy-clipboard-button",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "type",
+          "attribute": "type",
           "type": "string"
         },
         {
           "name": "theme",
-          "type": "string"
+          "attribute": "theme",
+          "type": "string",
+          "default": "\"oneDark\""
         },
         {
           "name": "copyClipboardButton",
-          "type": "boolean"
+          "attribute": "copy-clipboard-button",
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "code-sample",
       "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
-      "jsDoc": "/**\n * `code-sample`\n * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n * @demo demo/index.html\n * @customElement code-sample\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "theme",
-          "type": "any"
+          "default": "\"oneDark\""
         },
         {
           "name": "copyClipboardButton",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

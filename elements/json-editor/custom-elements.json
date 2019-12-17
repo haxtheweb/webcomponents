@@ -1,140 +1,165 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "json-editor",
       "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
-      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"JSON data\""
         },
         {
           "name": "error",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "maxRows",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "value",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "json-editor",
       "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
-      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
       "attributes": [
         {
           "name": "format-test",
           "description": "format test to update value so it's pretty printed",
-          "jsDoc": "/**\n       * format test to update value so it's pretty printed\n       */",
           "type": "string"
         },
         {
           "name": "current-data",
           "description": "The current data object",
-          "jsDoc": "/**\n       * The current data object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "label",
-          "type": "string"
+          "description": "label for the text area",
+          "type": "string",
+          "default": "\"JSON data\""
         },
         {
           "name": "error",
-          "type": "boolean"
+          "description": "State of being valid JSON object",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "description": "toggling disabled state of the editor",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "max-rows",
-          "type": "number"
+          "description": "max rows in the textarea",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "value",
-          "type": "string"
+          "description": "String based value of the editor, use this to set initial value",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "formatTest",
+          "attribute": "format-test",
           "description": "format test to update value so it's pretty printed",
-          "jsDoc": "/**\n       * format test to update value so it's pretty printed\n       */",
           "type": "string"
         },
         {
           "name": "currentData",
+          "attribute": "current-data",
           "description": "The current data object",
-          "jsDoc": "/**\n       * The current data object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "description": "label for the text area",
+          "type": "string",
+          "default": "\"JSON data\""
         },
         {
           "name": "error",
-          "type": "boolean"
+          "attribute": "error",
+          "description": "State of being valid JSON object",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "attribute": "disabled",
+          "description": "toggling disabled state of the editor",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "maxRows",
-          "type": "number"
+          "attribute": "max-rows",
+          "description": "max rows in the textarea",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "value",
-          "type": "string"
+          "attribute": "value",
+          "description": "String based value of the editor, use this to set initial value",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "json-editor",
       "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
-      "jsDoc": "/**\n * `json-editor`\n * `simple JSON blob data binding to a text area`\n * @demo demo/index.html\n * @customElement json-editor\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "label",
-          "type": "string"
+          "type": "string",
+          "default": "\"JSON data\""
         },
         {
           "name": "error",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "maxRows",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "value",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

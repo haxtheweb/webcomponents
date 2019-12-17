@@ -1,10 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "game-show-quiz-modal\n`Modal for the quiz show`",
+      "name": "game-show-quiz-modal",
       "description": "`game-show-quiz-modal`",
-      "jsDoc": "/**\n * `game-show-quiz-modal`\n * @customElement game-show-quiz-modal\n * `Modal for the quiz show`\n *  @microcopy - the mental model for this element\n *  - game show - a display board in the style of Jeopardy\n */",
       "attributes": [
         {
           "name": "title",
@@ -14,21 +13,18 @@
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "name": "game-show-quiz",
       "description": "`game-show-quiz`",
-      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
@@ -45,46 +41,45 @@
         },
         {
           "name": "attempts-data",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "game-board-data",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
@@ -94,103 +89,130 @@
         {
           "name": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "gameDirectionsData",
+          "attribute": "game-directions-data",
           "type": "string"
         },
         {
           "name": "gameDirections",
+          "attribute": "game-directions",
           "type": "string"
         },
         {
           "name": "token",
+          "attribute": "token",
           "type": "string"
         },
         {
           "name": "attemptsData",
-          "type": "{}"
+          "attribute": "attempts-data",
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
+          "attribute": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remainingAttempts",
+          "attribute": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directionsTitle",
+          "attribute": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "questionTitle",
+          "attribute": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "gameBoard",
+          "attribute": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "gameBoardData",
-          "type": "{}"
+          "attribute": "game-board-data",
+          "type": "object"
         },
         {
           "name": "gameData",
+          "attribute": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
           "name": "gameScoreBoardBackend",
+          "attribute": "game-score-board-backend",
           "type": "string"
         },
         {
           "name": "activeQuestion",
+          "attribute": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "game-show-quiz-game-over"
+          "name": "simple-toast-show"
         },
         {
-          "name": "simple-toast-show"
+          "name": "game-show-quiz-game-over"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "name": "game-show-quiz",
       "description": "`game-show-quiz`",
-      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
@@ -207,46 +229,45 @@
         },
         {
           "name": "attempts-data",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "game-board-data",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
@@ -256,103 +277,141 @@
         {
           "name": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "gameDirectionsData",
+          "attribute": "game-directions-data",
           "type": "string"
         },
         {
           "name": "gameDirections",
+          "attribute": "game-directions",
           "type": "string"
         },
         {
           "name": "token",
+          "attribute": "token",
           "type": "string"
         },
         {
           "name": "attemptsData",
-          "type": "{}"
+          "attribute": "attempts-data",
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
+          "attribute": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remainingAttempts",
+          "attribute": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directionsTitle",
+          "attribute": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "questionTitle",
+          "attribute": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "gameBoard",
+          "attribute": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "gameBoardData",
-          "type": "{}"
+          "attribute": "game-board-data",
+          "type": "object"
         },
         {
           "name": "gameData",
+          "attribute": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
           "name": "gameScoreBoardBackend",
+          "attribute": "game-score-board-backend",
           "type": "string"
         },
         {
           "name": "activeQuestion",
+          "attribute": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "game-show-quiz-game-over"
+          "name": "simple-toast-show"
         },
         {
-          "name": "simple-toast-show"
+          "name": "game-show-quiz-game-over"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "game-show-quiz\n`Simple game show with questions and answers`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "game-show-quiz-game-over"
+        }
+      ]
+    },
+    {
+      "name": "game-show-quiz",
       "description": "`game-show-quiz`",
-      "jsDoc": "/**\n * `game-show-quiz`\n * @customElement game-show-quiz\n * `Simple game show with questions and answers`\n * @demo demo/index.html\n * @microcopy - the mental model for this element\n * - game show - a display board in the style of Jeopardy\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
@@ -369,46 +428,45 @@
         },
         {
           "name": "attempts-data",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "game-board-data",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
@@ -418,93 +476,122 @@
         {
           "name": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         },
         {
           "name": "gameDirectionsData",
+          "attribute": "game-directions-data",
           "type": "string"
         },
         {
           "name": "gameDirections",
+          "attribute": "game-directions",
           "type": "string"
         },
         {
           "name": "token",
+          "attribute": "token",
           "type": "string"
         },
         {
           "name": "attemptsData",
-          "type": "{}"
+          "attribute": "attempts-data",
+          "type": "object",
+          "default": "{\"overall\":{\"labels\":[\"Slide ID\",\"Terminology\",\"Reading\",\"Lecture\"],\"series\":[0,0,0,0]},\"slideid\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"terminology\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"reading\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"lecture\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"bonus\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]},\"total\":{\"labels\":[\"Correct\",\"Incorrect\"],\"series\":[0,0]}}"
         },
         {
           "name": "points",
+          "attribute": "points",
           "description": "Points object",
-          "jsDoc": "/**\n       * Points object\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"slideid\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"terminology\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"reading\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"lecture\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"bonus\":{\"attempted\":0,\"earned\":0,\"percent\":0},\"total\":{\"attempted\":0,\"earned\":0,\"percent\":0}}"
         },
         {
           "name": "remainingAttempts",
+          "attribute": "remaining-attempts",
           "description": "Remaining attempts for the user",
-          "jsDoc": "/**\n       * Remaining attempts for the user\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "30"
         },
         {
           "name": "directionsTitle",
+          "attribute": "directions-title",
           "description": "Title to use on the directions dialog.",
-          "jsDoc": "/**\n       * Title to use on the directions dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Directions\""
         },
         {
           "name": "questionTitle",
+          "attribute": "question-title",
           "description": "Title to use on the question dialog.",
-          "jsDoc": "/**\n       * Title to use on the question dialog.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Answer the following\""
         },
         {
           "name": "gameBoard",
+          "attribute": "game-board",
           "description": "Rows on the gameshow board",
-          "jsDoc": "/**\n       * Rows on the gameshow board\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "gameBoardData",
-          "type": "{}"
+          "attribute": "game-board-data",
+          "type": "object"
         },
         {
           "name": "gameData",
+          "attribute": "game-data",
           "description": "URL to load data for the game.",
-          "jsDoc": "/**\n       * URL to load data for the game.\n       */",
           "type": "string"
         },
         {
           "name": "gameScoreBoardBackend",
+          "attribute": "game-score-board-backend",
           "type": "string"
         },
         {
           "name": "activeQuestion",
+          "attribute": "active-question",
           "description": "Active item that is in the modal.",
-          "jsDoc": "/**\n       * Active item that is in the modal.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "game-show-quiz-game-over"
+          "name": "simple-toast-show"
         },
         {
-          "name": "simple-toast-show"
+          "name": "game-show-quiz-game-over"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

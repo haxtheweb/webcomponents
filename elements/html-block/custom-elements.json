@@ -1,4 +1,82 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "html-block",
+      "description": "`html-block`",
+      "attributes": [
+        {
+          "name": "allowscript",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "allowscript",
+          "attribute": "allowscript",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"html-block\""
+        }
+      ]
+    },
+    {
+      "name": "html-block",
+      "description": "`html-block`",
+      "attributes": [
+        {
+          "name": "allowscript",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "allowscript",
+          "attribute": "allowscript",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"html-block\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "html-block",
+      "description": "`html-block`",
+      "attributes": [
+        {
+          "name": "allowscript",
+          "type": "string | null"
+        }
+      ],
+      "properties": [
+        {
+          "name": "allowscript",
+          "attribute": "allowscript",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"html-block\""
+        }
+      ]
+    }
+  ]
 }

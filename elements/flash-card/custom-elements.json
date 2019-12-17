@@ -1,74 +1,125 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "flash-card",
       "description": "`flash-card`",
-      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "flash-card",
       "description": "`flash-card`",
-      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "flash-card",
       "description": "`flash-card`",
-      "jsDoc": "/**\n * `flash-card`\n * @customElement flash-card\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

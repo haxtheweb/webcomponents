@@ -1,140 +1,139 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "simple-drawer\n`a singleton drawer element`",
+      "name": "simple-drawer",
       "description": "`simple-drawer`",
-      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "align",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "opened",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "closeLabel",
-          "type": "string"
+          "type": "string",
+          "default": "\"Close\""
         },
         {
           "name": "closeIcon",
-          "type": "string"
+          "type": "string",
+          "default": "\"icons:cancel\""
         }
       ],
       "events": [
         {
-          "name": "simple-drawer-opened"
+          "name": "simple-drawer-closed"
         },
         {
-          "name": "simple-drawer-closed"
+          "name": "simple-drawer-opened"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-drawer\n`a singleton drawer element`",
+      "name": "simple-drawer",
       "description": "`simple-drawer`",
-      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "invokedBy",
+          "name": "invoked-by",
           "description": "The element that invoked this. This way we can track our way back accessibly",
-          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "title",
-          "type": "string"
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "align",
-          "type": "string"
+          "description": "alignment of the drawer",
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "opened",
-          "type": "boolean"
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "closeLabel",
-          "type": "string"
+          "name": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
         },
         {
-          "name": "closeIcon",
-          "type": "string"
+          "name": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"icons:cancel\""
         }
       ],
       "properties": [
         {
           "name": "invokedBy",
+          "attribute": "invoked-by",
           "description": "The element that invoked this. This way we can track our way back accessibly",
-          "jsDoc": "/**\n       * The element that invoked this. This way we can track our way back accessibly\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "title",
-          "type": "string"
+          "attribute": "title",
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "align",
-          "type": "string"
+          "attribute": "align",
+          "description": "alignment of the drawer",
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "opened",
-          "type": "boolean"
+          "attribute": "opened",
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "closeLabel",
-          "type": "string"
+          "attribute": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
         },
         {
           "name": "closeIcon",
-          "type": "string"
+          "attribute": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"icons:cancel\""
         }
       ],
       "events": [
         {
-          "name": "simple-drawer-opened"
+          "name": "simple-drawer-closed"
         },
         {
-          "name": "simple-drawer-closed"
+          "name": "simple-drawer-opened"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-drawer\n`a singleton drawer element`",
-      "description": "`simple-drawer`",
-      "jsDoc": "/**\n * `simple-drawer`\n * @customElement simple-drawer\n * `a singleton drawer element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [
-        {
-          "name": "title",
-          "type": "string"
-        },
-        {
-          "name": "align",
-          "type": "string"
-        },
-        {
-          "name": "opened",
-          "type": "boolean"
-        },
-        {
-          "name": "closeLabel",
-          "type": "string"
-        },
-        {
-          "name": "closeIcon",
-          "type": "string"
-        }
-      ],
+      "name": "tag",
       "events": [
         {
           "name": "simple-drawer-opened"
@@ -142,8 +141,46 @@
         {
           "name": "simple-drawer-closed"
         }
+      ]
+    },
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "type": "string",
+          "default": "\"icons:cancel\""
+        }
       ],
-      "slots": []
+      "events": [
+        {
+          "name": "simple-drawer-closed"
+        },
+        {
+          "name": "simple-drawer-opened"
+        }
+      ]
     }
   ]
 }

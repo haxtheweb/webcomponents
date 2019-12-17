@@ -113,7 +113,7 @@ class JwtLogin extends LitElement {
   }
   _jwtChanged(newValue, oldValue) {
     if (
-      (newValue == null || newValue == "") &&
+      (newValue == null || newValue == "" || newValue == "null") &&
       typeof oldValue !== typeof undefined
     ) {
       // remove this key from local storage bin

@@ -1,135 +1,145 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lerndesign-gallery-behaviors\n`A set of properties for lerndesign-gallery components.`",
+      "name": "lerndesign-gallery-behaviors",
       "description": "`lerndesign-gallery-behaviors`",
-      "jsDoc": "/**\n * `lerndesign-gallery-behaviors`\n * @customElement lerndesign-gallery-behaviors\n * `A set of properties for lerndesign-gallery components.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n * @extends SimpleColorsPolymer\n\n * @polymer\n */",
       "attributes": [
         {
-          "name": "anchorData",
+          "name": "anchor-data",
           "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
-          "name": "aspectRatio",
+          "name": "aspect-ratio",
           "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "\"1.33333333\""
         },
         {
-          "name": "extraWide",
+          "name": "extra-wide",
           "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "galleryId",
+          "name": "gallery-id",
           "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
           "type": "string"
         },
         {
           "name": "grid",
           "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "items",
           "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
-          "name": "responsiveSize",
-          "type": "string"
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
         },
         {
           "name": "selected",
-          "type": "{}"
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "sizing",
           "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"cover\""
         },
         {
           "name": "sources",
           "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "title",
           "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "anchorData",
+          "attribute": "anchor-data",
           "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "aspectRatio",
+          "attribute": "aspect-ratio",
           "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "\"1.33333333\""
         },
         {
           "name": "extraWide",
+          "attribute": "extra-wide",
           "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "galleryId",
+          "attribute": "gallery-id",
           "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
           "type": "string"
         },
         {
           "name": "grid",
+          "attribute": "grid",
           "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "items",
+          "attribute": "items",
           "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "responsiveSize",
-          "type": "string"
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
         },
         {
           "name": "selected",
-          "type": "{}"
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "sizing",
+          "attribute": "sizing",
           "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"cover\""
         },
         {
           "name": "sources",
+          "attribute": "sources",
           "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
           "type": "string"
         }
       ],
@@ -137,738 +147,943 @@
         {
           "name": "responsive-element"
         }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-behaviors",
+      "description": "`lerndesign-gallery-behaviors`",
+      "attributes": [
+        {
+          "name": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
       ],
-      "slots": []
+      "properties": [
+        {
+          "name": "anchorData",
+          "attribute": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspectRatio",
+          "attribute": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extraWide",
+          "attribute": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "galleryId",
+          "attribute": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "attribute": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
     },
     {
       "name": "lrndesign-gallery-details",
       "description": "`lrndesign-gallery-details`\n`An element that renders the print view of a gallery item.`",
-      "jsDoc": "/**\n * `lrndesign-gallery-details`\n * `An element that renders the print view of a gallery item.`\n *\n * @microcopy - language worth noting:```\n<lrndesign-gallery-details \n  details=\"<strong>HTML MARKUP HERE</strong>\"       //required, an array of item data\n</lrndesign-gallery-details>```\n *\n * @customElement lrndesign-gallery-details\n */",
       "attributes": [
         {
           "name": "details",
           "description": "image's details in as a string of HTML",
-          "jsDoc": "/**\n       * image's details in as a string of HTML\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "details",
+          "attribute": "details",
           "description": "image's details in as a string of HTML",
-          "jsDoc": "/**\n       * image's details in as a string of HTML\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-gallery-zoom\n`An element that renders the zoom feature for the gallery.`",
+      "name": "lrndesign-gallery-zoom",
       "description": "`lrndesign-gallery-zoom`",
-      "jsDoc": "/**\n * `lrndesign-gallery-zoom`\n * @customElement lrndesign-gallery-zoom\n * `An element that renders the zoom feature for the gallery.`\n *\n * @microcopy - language worth noting:```\n<lrndesign-gallery-zoom \n  details=\"Text details about the image.\" //optional text about the image\n  heading$=\"Image title\"                  //required, image dialog title\n  item-id=\"0\"                             //required, index of the item to view\n  src$=\"[[item.large]]\"                   //required, full-sized image\n  tooltip$=\"[[item.tooltip]]\"             //required, tooltip text\n  zoom-alt$=\"[[item.alt]]\"                //required, alt text for the image\n  tooltip=\"ZOOM\"                       \n</lrndesign-gallery-zoom>```\n *\n * CSS Variables: ```\n--lrndesign-gallery-dialog-color                        //text color of dialog\n--lrndesign-gallery-dialog-background-color             //background-color of dialog\n--lrndesign-gallery-dialog-titlebar-color               //text color of dialog titlebar\n--lrndesign-gallery-dialog-titlebar-background-color    //background-color of dialog titlebar\n--lrndesign-gallery-dialog-header-color                 //text color of dialog header\n--lrndesign-gallery-dialog-header-background-color      //background-color of dialog header```\n * \n\n * @polymer\n */",
       "attributes": [
         {
           "name": "details",
           "description": "optional: details for zooming",
-          "jsDoc": "/**\n       * optional: details for zooming\n       */",
           "type": "string"
         },
         {
           "name": "heading",
           "description": "heading for the zoom modal",
-          "jsDoc": "/**\n       * heading for the zoom modal\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Image Zoom\""
         },
         {
           "name": "item-id",
           "description": "heading for the zoom modal",
-          "jsDoc": "/**\n       * heading for the zoom modal\n       */",
           "type": "string"
         },
         {
           "name": "modal",
           "description": "The zoom modal",
-          "jsDoc": "/**\n       * The zoom modal\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "scrolled",
           "description": "scrolled to by default (for grid)?",
-          "jsDoc": "/**\n       * scrolled to by default (for grid)?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
           "type": "string"
         },
         {
           "name": "tooltip",
           "description": "tooltip for the zoom button",
-          "jsDoc": "/**\n       * tooltip for the zoom button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Zoom In\""
         },
         {
           "name": "zoom-alt",
           "description": "gallery item's alt text",
-          "jsDoc": "/**\n       * gallery item's alt text\n       */",
           "type": "string"
         },
         {
           "name": "zoomed",
           "description": "zoomed by default?",
-          "jsDoc": "/**\n       * zoomed by default?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "details",
+          "attribute": "details",
           "description": "optional: details for zooming",
-          "jsDoc": "/**\n       * optional: details for zooming\n       */",
           "type": "string"
         },
         {
           "name": "heading",
+          "attribute": "heading",
           "description": "heading for the zoom modal",
-          "jsDoc": "/**\n       * heading for the zoom modal\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Image Zoom\""
         },
         {
           "name": "itemId",
+          "attribute": "item-id",
           "description": "heading for the zoom modal",
-          "jsDoc": "/**\n       * heading for the zoom modal\n       */",
           "type": "string"
         },
         {
           "name": "modal",
+          "attribute": "modal",
           "description": "The zoom modal",
-          "jsDoc": "/**\n       * The zoom modal\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "scrolled",
+          "attribute": "scrolled",
           "description": "scrolled to by default (for grid)?",
-          "jsDoc": "/**\n       * scrolled to by default (for grid)?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "src",
+          "attribute": "src",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
           "type": "string"
         },
         {
           "name": "tooltip",
+          "attribute": "tooltip",
           "description": "tooltip for the zoom button",
-          "jsDoc": "/**\n       * tooltip for the zoom button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Zoom In\""
         },
         {
           "name": "zoomAlt",
+          "attribute": "zoom-alt",
           "description": "gallery item's alt text",
-          "jsDoc": "/**\n       * gallery item's alt text\n       */",
           "type": "string"
         },
         {
           "name": "zoomed",
+          "attribute": "zoomed",
           "description": "zoomed by default?",
-          "jsDoc": "/**\n       * zoomed by default?\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
+          "name": "gallery-scroll"
+        },
+        {
           "name": "gallery-zoom"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-carousel",
+      "description": "`lrndesign-gallery-carousel`",
+      "attributes": [
+        {
+          "name": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "anchorData",
+          "attribute": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspectRatio",
+          "attribute": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extraWide",
+          "attribute": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "galleryId",
+          "attribute": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "attribute": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery-grid",
+      "description": "`lrndesign-gallery-grid`",
+      "attributes": [
+        {
+          "name": "image-style",
+          "description": "aspect ratio of media",
+          "type": "string"
+        },
+        {
+          "name": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageStyle",
+          "attribute": "image-style",
+          "description": "aspect ratio of media",
+          "type": "string"
+        },
+        {
+          "name": "anchorData",
+          "attribute": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspectRatio",
+          "attribute": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extraWide",
+          "attribute": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "galleryId",
+          "attribute": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "attribute": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery",
+      "description": "`lrndesign-gallery`",
+      "attributes": [
+        {
+          "name": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "anchorData",
+          "attribute": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspectRatio",
+          "attribute": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extraWide",
+          "attribute": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "galleryId",
+          "attribute": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "attribute": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallery",
+      "description": "`lrndesign-gallery`",
+      "attributes": [
+        {
+          "name": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "anchorData",
+          "attribute": "anchor-data",
+          "description": "a named anchor for the gallery",
+          "type": "object"
+        },
+        {
+          "name": "aspectRatio",
+          "attribute": "aspect-ratio",
+          "description": "aspect ratio of media",
+          "type": "number",
+          "default": "\"1.33333333\""
+        },
+        {
+          "name": "extraWide",
+          "attribute": "extra-wide",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "galleryId",
+          "attribute": "gallery-id",
+          "description": "gallery's unique id",
+          "type": "string"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "size for responsive CSS",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "array of carousel/grid items",
+          "type": "array"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "parent size for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "data for the selected item",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sizing",
+          "attribute": "sizing",
+          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
+          "type": "string",
+          "default": "\"cover\""
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "array of carousel/grid items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "gallery's title",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "responsive-element"
         },
         {
           "name": "gallery-scroll"
+        },
+        {
+          "name": "gallery-zoom"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-gallery-carousel\n`An element that renders a collection of gallery items into a carousel or a single media item into a layout.`",
-      "description": "`lrndesign-gallery-carousel`",
-      "jsDoc": "/**\n * `lrndesign-gallery-carousel`\n * @customElement lrndesign-gallery-carousel\n * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`\n *\n * @microcopy - language worth noting:```\n <lrndesign-gallery-carousel \n  accent-color=\"grey\"               //optional, the accent color from simple-colors; default is grey\n  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)\n  id=\"mygallery1\"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load\n  sources=\"[]\"                      //required, array of image sources\n  sizing=\"contain\"                  //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing\n  title=\"My Gallery\">               //optional, the title of the gallery\n  Optional description of the gallery.\n</lrndesign-gallery-carousel>```\n * where `sources` array is:```\n[{\n  \"alt\": \"IMAGE ALT TEXT\",                          //required\n  \"details\": \"TEXT ABOUT IMAGE HERE\",               //optional \n  \"heading\": \"IMAGE HEADING HERE\",                  //required, the image heading when in zoom mode\n  \"id\": \"123\"                                       //required, unique id  \n  \"sizing\": \"contain\",                              //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing, default is parent's sizing\n  \"large\": \"PATH/TO/LARGE/IMAGE/HERE.JPG\",          //optional, larger image for zoom instead of src \n  \"src\": \"PATH/TO/FULL/IMAGE/HERE.JPG\",             //required\n  \"thumbnail\": \"PATH/TO/THUMBAIL/IMAGE/HERE.JPG\",   //required\n  \"tooltip\": \"IMAGE TOOLTIP HERE\",                  //required, the tooltip for the image thumbnail\n  \"title\": \"IMAGE TITLE HERE\",                      //optional, the image title when viewed\n  \"type\": \"image\",                                  //required, \"image\", \"video\", \"audio\", etc.\n}]```\n *\n\n * @polymer\n * @demo ./demo/index.html demo\n */",
-      "attributes": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "responsive-element"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "lrndesign-gallery-grid\n`An element that renders a collection of gallery items into a grid or a single media item into a layout.`",
-      "description": "`lrndesign-gallery-grid`",
-      "jsDoc": "/**\n * `lrndesign-gallery-grid`\n * @customElement lrndesign-gallery-grid\n * `An element that renders a collection of gallery items into a grid or a single media item into a layout.`\n *\n * @microcopy - language worth noting:```\n<lrndesign-gallery-grid \n  accent-color=\"grey\"               //optional, the accent color from simple-colors; default is grey\n  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)\n  id=\"mygallery1\"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load\n  sources=\"[]\"                      //required, array of image sources\n  sizing=\"contain\"                  //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing\n  title=\"My Gallery\">               //optional, the title of the gallery\n  Optional description of the gallery.\n</lrndesign-gallery-grid>```\n * where `sources` array is:```\n[{\n  \"alt\": \"IMAGE ALT TEXT\",                          //required\n  \"details\": \"TEXT ABOUT IMAGE HERE\",               //optional \n  \"heading\": \"IMAGE HEADING HERE\",                  //required, the image heading when in zoom mode\n  \"id\": \"123\"                                       //required, unique id  \n  \"sizing\": \"contain\",                              //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing, default is parent's sizing\n  \"large\": \"PATH/TO/LARGE/IMAGE/HERE.JPG\",          //optional, larger image for zoom instead of src \n  \"src\": \"PATH/TO/FULL/IMAGE/HERE.JPG\",             //required\n  \"thumbnail\": \"PATH/TO/THUMBAIL/IMAGE/HERE.JPG\",   //required\n  \"tooltip\": \"IMAGE TOOLTIP HERE\",                  //required, the tooltip for the image thumbnail\n  \"title\": \"IMAGE TITLE HERE\",                      //optional, the image title when viewed\n  \"type\": \"image\",                                  //required, \"image\", \"video\", \"audio\", etc.\n}]```\n *\n\n * @polymer\n * @demo ./demo/grid.html demo\n */",
-      "attributes": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        },
-        {
-          "name": "imageStyle",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        },
-        {
-          "name": "imageStyle",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "responsive-element"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "lrndesign-gallery\n`An element that renders a collection of gallery items into a carousel or a single media item into a layout.`",
+      "name": "lrndesign-gallery",
       "description": "`lrndesign-gallery`",
-      "jsDoc": "/**\n * `lrndesign-gallery`\n * @customElement lrndesign-gallery\n * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`\n *\n * @microcopy - language worth noting:```\n <lrndesign-gallery \n  accent-color=\"grey\"               //optional, the accent color from simple-colors; default is grey\n  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)\n  id=\"mygallery1\"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load\n  sources=\"[]\"                      //required, array of image sources\n  sizing=\"contain\"                  //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing\n  title=\"My Gallery\">               //optional, the title of the gallery\n  Optional description of the gallery.\n</lrndesign-gallery>```\n * where `sources` array is:```\n[{\n  \"alt\": \"IMAGE ALT TEXT\",                          //required\n  \"details\": \"TEXT ABOUT IMAGE HERE\",               //optional \n  \"heading\": \"IMAGE HEADING HERE\",                  //required, the image heading when in zoom mode\n  \"id\": \"123\"                                       //required, unique id  \n  \"sizing\": \"contain\",                              //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing, default is parent's sizing\n  \"large\": \"PATH/TO/LARGE/IMAGE/HERE.JPG\",          //optional, larger image for zoom instead of src \n  \"src\": \"PATH/TO/FULL/IMAGE/HERE.JPG\",             //required\n  \"thumbnail\": \"PATH/TO/THUMBAIL/IMAGE/HERE.JPG\",   //required\n  \"tooltip\": \"IMAGE TOOLTIP HERE\",                  //required, the tooltip for the image thumbnail\n  \"title\": \"IMAGE TITLE HERE\",                      //optional, the image title when viewed\n  \"type\": \"image\",                                  //required, \"image\", \"video\", \"audio\", etc.\n}]```\n *\n\n * @polymer\n * @demo ./demo/index.html carousel demo\n * @demo ./demo/grid.html grid demo\n */",
-      "attributes": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
       "events": [
         {
           "name": "responsive-element"
         }
-      ],
-      "slots": []
-    },
-    {
-      "name": "lrndesign-gallery\n`An element that renders a collection of gallery items into a carousel or a single media item into a layout.`",
-      "description": "`lrndesign-gallery`",
-      "jsDoc": "/**\n * `lrndesign-gallery`\n * @customElement lrndesign-gallery\n * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`\n *\n * @microcopy - language worth noting:```\n <lrndesign-gallery \n  accent-color=\"grey\"               //optional, the accent color from simple-colors; default is grey\n  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)\n  id=\"mygallery1\"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load\n  sources=\"[]\"                      //required, array of image sources\n  sizing=\"contain\"                  //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing\n  title=\"My Gallery\">               //optional, the title of the gallery\n  Optional description of the gallery.\n</lrndesign-gallery>```\n * where `sources` array is:```\n[{\n  \"alt\": \"IMAGE ALT TEXT\",                          //required\n  \"details\": \"TEXT ABOUT IMAGE HERE\",               //optional \n  \"heading\": \"IMAGE HEADING HERE\",                  //required, the image heading when in zoom mode\n  \"id\": \"123\"                                       //required, unique id  \n  \"sizing\": \"contain\",                              //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing, default is parent's sizing\n  \"large\": \"PATH/TO/LARGE/IMAGE/HERE.JPG\",          //optional, larger image for zoom instead of src \n  \"src\": \"PATH/TO/FULL/IMAGE/HERE.JPG\",             //required\n  \"thumbnail\": \"PATH/TO/THUMBAIL/IMAGE/HERE.JPG\",   //required\n  \"tooltip\": \"IMAGE TOOLTIP HERE\",                  //required, the tooltip for the image thumbnail\n  \"title\": \"IMAGE TITLE HERE\",                      //optional, the image title when viewed\n  \"type\": \"image\",                                  //required, \"image\", \"video\", \"audio\", etc.\n}]```\n *\n\n * @polymer\n * @demo ./demo/index.html carousel demo\n * @demo ./demo/grid.html grid demo\n */",
-      "attributes": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "anchorData",
-          "description": "a named anchor for the gallery",
-          "jsDoc": "/**\n       * a named anchor for the gallery\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "aspectRatio",
-          "description": "aspect ratio of media",
-          "jsDoc": "/**\n       * aspect ratio of media\n       */",
-          "type": "number"
-        },
-        {
-          "name": "extraWide",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "galleryId",
-          "description": "gallery's unique id",
-          "jsDoc": "/**\n       * gallery's unique id\n       */",
-          "type": "string"
-        },
-        {
-          "name": "grid",
-          "description": "size for responsive CSS",
-          "jsDoc": "/**\n       * size for responsive CSS\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "responsiveSize",
-          "type": "string"
-        },
-        {
-          "name": "selected",
-          "type": "{}"
-        },
-        {
-          "name": "sizing",
-          "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
-          "jsDoc": "/**\n       * default sizing: fit screen by cropping (cover)\n       * or with letterboxing (contain)\n       */",
-          "type": "string"
-        },
-        {
-          "name": "sources",
-          "description": "array of carousel/grid items",
-          "jsDoc": "/**\n       * array of carousel/grid items\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "title",
-          "description": "gallery's title",
-          "jsDoc": "/**\n       * gallery's title\n       */",
-          "type": "string"
-        }
-      ],
-      "events": [
-        {
-          "name": "responsive-element"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "lrndesign-gallery\n`An element that renders a collection of gallery items into a carousel or a single media item into a layout.`",
-      "description": "`lrndesign-gallery`",
-      "jsDoc": "/**\n * `lrndesign-gallery`\n * @customElement lrndesign-gallery\n * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`\n *\n * @microcopy - language worth noting:```\n <lrndesign-gallery \n  accent-color=\"grey\"               //optional, the accent color from simple-colors; default is grey\n  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)\n  id=\"mygallery1\"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load\n  sources=\"[]\"                      //required, array of image sources\n  sizing=\"contain\"                  //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing\n  title=\"My Gallery\">               //optional, the title of the gallery\n  Optional description of the gallery.\n</lrndesign-gallery>```\n * where `sources` array is:```\n[{\n  \"alt\": \"IMAGE ALT TEXT\",                          //required\n  \"details\": \"TEXT ABOUT IMAGE HERE\",               //optional \n  \"heading\": \"IMAGE HEADING HERE\",                  //required, the image heading when in zoom mode\n  \"id\": \"123\"                                       //required, unique id  \n  \"sizing\": \"contain\",                              //optional, \"cover\" for cropping (default) or \"contain\" for letterboxing, default is parent's sizing\n  \"large\": \"PATH/TO/LARGE/IMAGE/HERE.JPG\",          //optional, larger image for zoom instead of src \n  \"src\": \"PATH/TO/FULL/IMAGE/HERE.JPG\",             //required\n  \"thumbnail\": \"PATH/TO/THUMBAIL/IMAGE/HERE.JPG\",   //required\n  \"tooltip\": \"IMAGE TOOLTIP HERE\",                  //required, the tooltip for the image thumbnail\n  \"title\": \"IMAGE TITLE HERE\",                      //optional, the image title when viewed\n  \"type\": \"image\",                                  //required, \"image\", \"video\", \"audio\", etc.\n}]```\n *\n\n * @polymer\n * @demo ./demo/index.html carousel demo\n * @demo ./demo/grid.html grid demo\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [
-        {
-          "name": "responsive-element"
-        }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

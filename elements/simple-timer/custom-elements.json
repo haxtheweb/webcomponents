@@ -1,194 +1,262 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "name": "simple-timer",
       "description": "`simple-timer`",
-      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "startTime",
+          "attribute": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "currentTime",
+          "attribute": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "isRunning",
+          "attribute": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "countUp",
+          "attribute": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "simple-timer-end"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "name": "simple-timer",
       "description": "`simple-timer`",
-      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "startTime",
+          "attribute": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "currentTime",
+          "attribute": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "isRunning",
+          "attribute": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "countUp",
+          "attribute": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "simple-timer-end"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "simple-timer\n`Automated conversion of simple-timer/`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ]
+    },
+    {
+      "name": "simple-timer",
       "description": "`simple-timer`",
-      "jsDoc": "/**\n * `simple-timer`\n * @customElement simple-timer\n * `Automated conversion of simple-timer/`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "startTime",
+          "attribute": "start-time",
           "description": "Start time for the timer in seconds",
-          "jsDoc": "/**\n       * Start time for the timer in seconds\n       */",
-          "type": "number"
+          "type": "number",
+          "default": "60"
         },
         {
           "name": "currentTime",
+          "attribute": "current-time",
           "description": "Current time of the timer, in seconds",
-          "jsDoc": "/**\n       * Current time of the timer, in seconds\n       */",
           "type": "number"
         },
         {
           "name": "isRunning",
+          "attribute": "is-running",
           "description": "True if the timer is currently running",
-          "jsDoc": "/**\n       * True if the timer is currently running\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "countUp",
+          "attribute": "count-up",
           "description": "Set to true to have timer count up",
-          "jsDoc": "/**\n       * Set to true to have timer count up\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
           "name": "simple-timer-end"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

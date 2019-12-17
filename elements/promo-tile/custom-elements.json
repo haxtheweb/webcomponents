@@ -1,254 +1,326 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "promo-tile",
       "description": "`promo-tile`",
-      "jsDoc": "/**\n * `promo-tile`\n * @customElement promo-tile\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
+          "attribute": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
+          "attribute": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "promo-tile",
       "description": "`promo-tile`",
-      "jsDoc": "/**\n * `promo-tile`\n * @customElement promo-tile\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
+          "attribute": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
+          "attribute": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "promo-tile",
       "description": "`promo-tile`",
-      "jsDoc": "/**\n * `promo-tile`\n * @customElement promo-tile\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "image",
+          "attribute": "image",
           "description": "Image source",
-          "jsDoc": "/**\n       * Image source\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "Alt text for image",
-          "jsDoc": "/**\n       * Alt text for image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "label",
+          "attribute": "label",
           "description": "Label for button",
-          "jsDoc": "/**\n       * Label for button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title of tile",
-          "jsDoc": "/**\n       * Title of tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "url",
+          "attribute": "url",
           "description": "Url for tile",
-          "jsDoc": "/**\n       * Url for tile\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hover",
+          "attribute": "hover",
           "description": "Hover state",
-          "jsDoc": "/**\n       * Hover state\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

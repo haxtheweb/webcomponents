@@ -1,146 +1,166 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "outline-player\n`A basic outline presentation`",
+      "name": "outline-player",
       "description": "`outline-player`",
-      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
           "type": "boolean"
         },
         {
-          "name": "closed",
-          "type": "boolean"
-        },
-        {
           "name": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "opened",
-          "type": "boolean"
-        },
-        {
-          "name": "closed",
+          "attribute": "opened",
           "type": "boolean"
         },
         {
           "name": "activeId",
+          "attribute": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
+          "attribute": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "attribute": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "closed-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "outline-player\n`A basic outline presentation`",
+      "name": "outline-player",
       "description": "`outline-player`",
-      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
           "type": "boolean"
         },
         {
-          "name": "closed",
-          "type": "boolean"
-        },
-        {
           "name": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "opened",
-          "type": "boolean"
-        },
-        {
-          "name": "closed",
+          "attribute": "opened",
           "type": "boolean"
         },
         {
           "name": "activeId",
+          "attribute": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
+          "attribute": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "attribute": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "closed-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "outline-player\n`A basic outline presentation`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "closed-changed"
+        }
+      ]
+    },
+    {
+      "name": "outline-player",
       "description": "`outline-player`",
-      "jsDoc": "/**\n * `outline-player`\n * @customElement outline-player\n * `A basic outline presentation`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
           "type": "boolean"
         },
         {
-          "name": "closed",
-          "type": "boolean"
-        },
-        {
           "name": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "opened",
-          "type": "boolean"
-        },
-        {
-          "name": "closed",
+          "attribute": "opened",
           "type": "boolean"
         },
         {
           "name": "activeId",
+          "attribute": "activeId",
           "type": "string"
         },
         {
           "name": "narrow",
+          "attribute": "narrow",
           "type": "boolean"
+        },
+        {
+          "name": "closed",
+          "attribute": "closed",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
           "name": "closed-changed"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

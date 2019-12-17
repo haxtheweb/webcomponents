@@ -5,11 +5,11 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-menu`
- * @customElement hax-context-item-menu
  * `An icon / button that has support for multiple options via drop down.`
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
+ * @customElement hax-context-item-menu
  */
 class HaxContextItemMenu extends LitElement {
   /**

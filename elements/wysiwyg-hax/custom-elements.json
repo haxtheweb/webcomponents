@@ -1,71 +1,33 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "name": "wysiwyg-hax",
       "description": "`wysiwyg-hax`",
-      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
       "attributes": [
-        {
-          "name": "open-default",
-          "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "redirect-location",
-          "type": "string"
-        },
-        {
-          "name": "hide-export-button",
-          "type": "boolean"
-        },
         {
           "name": "hide-panel-ops",
           "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
           "type": "boolean"
         },
         {
           "name": "hide-preferences-button",
           "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
-        },
-        {
-          "name": "align",
-          "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
         },
         {
           "name": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-id",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-name",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
@@ -75,188 +37,189 @@
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "update-page-data",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
-        }
-      ],
-      "properties": [
+          "type": "object"
+        },
         {
-          "name": "openDefault",
+          "name": "open-default",
           "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "redirectLocation",
-          "type": "string"
-        },
-        {
-          "name": "hideExportButton",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePanelOps",
-          "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePreferencesButton",
-          "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
-          "type": "boolean"
+          "name": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
           "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hidePanelOps",
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean"
         },
         {
           "name": "bodyValue",
+          "attribute": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "fieldClass",
+          "attribute": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldId",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldName",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
           "name": "syncBody",
+          "attribute": "sync-body",
           "type": "boolean"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "updatePageData",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "openDefault",
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideExportButton",
+          "attribute": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "fieldId",
+          "attribute": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirectLocation",
+          "attribute": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "updatePageData",
+          "attribute": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "name": "wysiwyg-hax",
       "description": "`wysiwyg-hax`",
-      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
       "attributes": [
-        {
-          "name": "open-default",
-          "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "redirect-location",
-          "type": "string"
-        },
-        {
-          "name": "hide-export-button",
-          "type": "boolean"
-        },
         {
           "name": "hide-panel-ops",
           "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
           "type": "boolean"
         },
         {
           "name": "hide-preferences-button",
           "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
-        },
-        {
-          "name": "align",
-          "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
         },
         {
           "name": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-id",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-name",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
@@ -266,188 +229,192 @@
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "update-page-data",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
-        }
-      ],
-      "properties": [
+          "type": "object"
+        },
         {
-          "name": "openDefault",
+          "name": "open-default",
           "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "redirectLocation",
-          "type": "string"
-        },
-        {
-          "name": "hideExportButton",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePanelOps",
-          "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePreferencesButton",
-          "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
-          "type": "boolean"
+          "name": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
           "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hidePanelOps",
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean"
         },
         {
           "name": "bodyValue",
+          "attribute": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "fieldClass",
+          "attribute": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldId",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldName",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
           "name": "syncBody",
+          "attribute": "sync-body",
           "type": "boolean"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "updatePageData",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "openDefault",
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideExportButton",
+          "attribute": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "fieldId",
+          "attribute": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirectLocation",
+          "attribute": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "updatePageData",
+          "attribute": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "wysiwyg-hax\n`Integration of wysiwyg edit form for a page with HAX.`",
+      "name": "tag"
+    },
+    {
+      "name": "wysiwyg-hax",
       "description": "`wysiwyg-hax`",
-      "jsDoc": "/**\n * `wysiwyg-hax`\n * @customElement wysiwyg-hax\n * `Integration of wysiwyg edit form for a page with HAX.`\n */",
       "attributes": [
-        {
-          "name": "open-default",
-          "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "redirect-location",
-          "type": "string"
-        },
-        {
-          "name": "hide-export-button",
-          "type": "boolean"
-        },
         {
           "name": "hide-panel-ops",
           "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
           "type": "boolean"
         },
         {
           "name": "hide-preferences-button",
           "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
           "type": "boolean"
-        },
-        {
-          "name": "align",
-          "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
         },
         {
           "name": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-id",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "field-name",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
@@ -457,122 +424,161 @@
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "update-page-data",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
-        }
-      ],
-      "properties": [
+          "type": "object"
+        },
         {
-          "name": "openDefault",
+          "name": "open-default",
           "description": "Default the panel to open",
-          "jsDoc": "/**\n       * Default the panel to open\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "redirectLocation",
-          "type": "string"
-        },
-        {
-          "name": "hideExportButton",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePanelOps",
-          "description": "Hide the panel operations (save and cancel),",
-          "jsDoc": "/**\n       * Hide the panel operations (save and cancel),\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "hidePreferencesButton",
-          "description": "Hide preferences button",
-          "jsDoc": "/**\n       * Hide preferences button\n       */",
-          "type": "boolean"
+          "name": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
           "description": "Direction to align the hax edit panel",
-          "jsDoc": "/**\n       * Direction to align the hax edit panel\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hidePanelOps",
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean"
+        },
+        {
+          "name": "hidePreferencesButton",
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean"
         },
         {
           "name": "bodyValue",
+          "attribute": "body-value",
           "description": "Data binding of a hidden text area with the value from the hax-body tag",
-          "jsDoc": "/**\n       * Data binding of a hidden text area with the value from the hax-body tag\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "fieldClass",
+          "attribute": "field-class",
           "description": "class on the field",
-          "jsDoc": "/**\n       * class on the field\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldId",
-          "description": "fieldId, id value on the input field.",
-          "jsDoc": "/**\n       * fieldId, id value on the input field.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "fieldName",
-          "description": "fieldName, internal to the form in whatever system it's in.",
-          "jsDoc": "/**\n       * fieldName, internal to the form in whatever system it's in.\n       */",
           "type": "string"
         },
         {
           "name": "syncBody",
+          "attribute": "sync-body",
           "type": "boolean"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "updatePageData",
-          "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "openDefault",
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideExportButton",
+          "attribute": "hide-export-button",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "fieldId",
+          "attribute": "field-id",
+          "description": "fieldId, id value on the input field.",
+          "type": "string",
+          "default": "\"textarea-input-field\""
+        },
+        {
+          "name": "fieldName",
+          "attribute": "field-name",
+          "description": "fieldName, internal to the form in whatever system it's in.",
+          "type": "string",
+          "default": "\"data[content]\""
+        },
+        {
+          "name": "redirectLocation",
+          "attribute": "redirect-location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "updatePageData",
+          "attribute": "update-page-data",
+          "description": "Page data, body of text as a string.",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,4 +1,85 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "tag"
+    },
+    {
+      "name": "hax-logo",
+      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string | null"
+        },
+        {
+          "name": "toupper",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"hax-logo\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "hax-logo",
+      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "type": "string | null"
+        },
+        {
+          "name": "toupper",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"hax-logo\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "hax-logo",
+      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
+      "properties": [
+        {
+          "name": "size",
+          "type": "string | null"
+        },
+        {
+          "name": "toupper",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"hax-logo\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
 }

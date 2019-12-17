@@ -1,74 +1,125 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "lrnsys-randomimage",
       "description": "`lrnsys-randomimage`",
-      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "images",
+          "attribute": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "lrnsys-randomimage",
       "description": "`lrnsys-randomimage`",
-      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "images",
+          "attribute": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "lrnsys-randomimage",
       "description": "`lrnsys-randomimage`",
-      "jsDoc": "/**\n * `lrnsys-randomimage`\n * @customElement lrnsys-randomimage\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
         }
       ],
       "properties": [
         {
           "name": "images",
+          "attribute": "images",
           "description": "An array of images to pick from at random.",
-          "jsDoc": "/**\n       * An array of images to pick from at random.\n       */",
-          "type": "{}"
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

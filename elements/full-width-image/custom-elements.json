@@ -1,19 +1,13 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
-      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
     },
     {
       "name": "full-width-image",
       "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
-      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
       "attributes": [
         {
           "name": "source",
@@ -27,24 +21,22 @@
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "type": "string"
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "full-width-image"
     },
     {
       "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
-      "jsDoc": "/**\n * `full-width-image`\n * `full width image that flows beyond boundaries`\n *\n * @microcopy - language worth noting:\n *  - images are best used when stretched across content\n *\n * @demo demo/index.html\n * @customElement full-width-image\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
     }
   ]
 }

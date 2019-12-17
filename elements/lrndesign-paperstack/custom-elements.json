@@ -1,110 +1,110 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrndesign-paperstack\n`Stack of papers visually`",
+      "name": "lrndesign-paperstack",
       "description": "`lrndesign-paperstack`",
-      "jsDoc": "/**\n * `lrndesign-paperstack`\n * @customElement lrndesign-paperstack\n * `Stack of papers visually`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-paperstack\n`Stack of papers visually`",
+      "name": "lrndesign-paperstack",
       "description": "`lrndesign-paperstack`",
-      "jsDoc": "/**\n * `lrndesign-paperstack`\n * @customElement lrndesign-paperstack\n * `Stack of papers visually`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-paperstack\n`Stack of papers visually`",
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-paperstack",
       "description": "`lrndesign-paperstack`",
-      "jsDoc": "/**\n * `lrndesign-paperstack`\n * @customElement lrndesign-paperstack\n * `Stack of papers visually`\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Title\""
         },
         {
           "name": "icon",
+          "attribute": "icon",
           "description": "icon",
-          "jsDoc": "/**\n       * icon\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"lrn:assignment\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

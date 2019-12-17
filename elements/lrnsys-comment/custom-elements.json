@@ -1,131 +1,459 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrnsys-comment-list\n`A listing and event handling for comments.`",
+      "name": "lrnsys-comment",
+      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.",
+      "attributes": [
+        {
+          "name": "comment",
+          "type": "object"
+        },
+        {
+          "name": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "comment",
+          "attribute": "comment",
+          "type": "object"
+        },
+        {
+          "name": "displayName",
+          "attribute": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "commentNew",
+          "attribute": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "attribute": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "comment-reply"
+        },
+        {
+          "name": "comment-like"
+        },
+        {
+          "name": "comment-delete-dialog"
+        },
+        {
+          "name": "comment-editing"
+        },
+        {
+          "name": "comment-save"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-comment",
+      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.",
+      "attributes": [
+        {
+          "name": "comment",
+          "type": "object"
+        },
+        {
+          "name": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "comment",
+          "attribute": "comment",
+          "type": "object"
+        },
+        {
+          "name": "displayName",
+          "attribute": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "commentNew",
+          "attribute": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "attribute": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "comment-reply"
+        },
+        {
+          "name": "comment-like"
+        },
+        {
+          "name": "comment-delete-dialog"
+        },
+        {
+          "name": "comment-editing"
+        },
+        {
+          "name": "comment-save"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "comment-reply"
+        },
+        {
+          "name": "comment-like"
+        },
+        {
+          "name": "comment-delete-dialog"
+        },
+        {
+          "name": "comment-editing"
+        },
+        {
+          "name": "comment-save"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-comment-list",
       "description": "`lrnsys-comment-list`",
-      "jsDoc": "/**\n * `lrnsys-comment-list`\n * @customElement lrnsys-comment-list\n * `A listing and event handling for comments.`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "csrf-token",
           "description": "CSRF Token",
-          "jsDoc": "/**\n       * CSRF Token\n       */",
           "type": "string"
         },
         {
           "name": "ops-request-method",
           "description": "Request methods",
-          "jsDoc": "/**\n       * Request methods\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"list\":\"GET\",\"create\":\"POST\",\"update\":\"PUT\",\"delete\":\"DELETE\",\"like\":\"PATCH\"}"
         },
         {
           "name": "active-comment",
           "description": "Comment currently in scope",
-          "jsDoc": "/**\n       * Comment currently in scope\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "new-comment",
           "description": "New stub comment from backend.",
-          "jsDoc": "/**\n       * New stub comment from backend.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "comments",
           "description": "An object containing all comments to render in the list",
-          "jsDoc": "/**\n       * An object containing all comments to render in the list\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "source-path",
           "description": "Source to pull the comments from",
-          "jsDoc": "/**\n       * Source to pull the comments from\n       */",
           "type": "string"
         },
         {
           "name": "comment-ops-base",
           "description": "Base for ops calls",
-          "jsDoc": "/**\n       * Base for ops calls\n       */",
           "type": "string"
         },
         {
           "name": "create-stub-url",
           "description": "Source to get stub comments from",
-          "jsDoc": "/**\n       * Source to get stub comments from\n       */",
           "type": "string"
         },
         {
           "name": "req-url",
           "description": "Source for CRUD ops against individual comments.",
-          "jsDoc": "/**\n       * Source for CRUD ops against individual comments.\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "csrfToken",
+          "attribute": "csrf-token",
           "description": "CSRF Token",
-          "jsDoc": "/**\n       * CSRF Token\n       */",
           "type": "string"
         },
         {
           "name": "opsRequestMethod",
+          "attribute": "ops-request-method",
           "description": "Request methods",
-          "jsDoc": "/**\n       * Request methods\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{\"list\":\"GET\",\"create\":\"POST\",\"update\":\"PUT\",\"delete\":\"DELETE\",\"like\":\"PATCH\"}"
         },
         {
           "name": "activeComment",
+          "attribute": "active-comment",
           "description": "Comment currently in scope",
-          "jsDoc": "/**\n       * Comment currently in scope\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "newComment",
+          "attribute": "new-comment",
           "description": "New stub comment from backend.",
-          "jsDoc": "/**\n       * New stub comment from backend.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "comments",
+          "attribute": "comments",
           "description": "An object containing all comments to render in the list",
-          "jsDoc": "/**\n       * An object containing all comments to render in the list\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "sourcePath",
+          "attribute": "source-path",
           "description": "Source to pull the comments from",
-          "jsDoc": "/**\n       * Source to pull the comments from\n       */",
           "type": "string"
         },
         {
           "name": "commentOpsBase",
+          "attribute": "comment-ops-base",
           "description": "Base for ops calls",
-          "jsDoc": "/**\n       * Base for ops calls\n       */",
           "type": "string"
         },
         {
           "name": "createStubUrl",
+          "attribute": "create-stub-url",
           "description": "Source to get stub comments from",
-          "jsDoc": "/**\n       * Source to get stub comments from\n       */",
           "type": "string"
         },
         {
           "name": "reqUrl",
+          "attribute": "req-url",
           "description": "Source for CRUD ops against individual comments.",
-          "jsDoc": "/**\n       * Source for CRUD ops against individual comments.\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "simple-modal-show"
         },
         {
-          "name": "simple-modal-show"
+          "name": "simple-toast-show"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-comment",
+      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.",
+      "attributes": [
+        {
+          "name": "comment",
+          "type": "object"
+        },
+        {
+          "name": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
         }
       ],
-      "slots": []
+      "properties": [
+        {
+          "name": "comment",
+          "attribute": "comment",
+          "type": "object"
+        },
+        {
+          "name": "displayName",
+          "attribute": "display-name",
+          "type": "string"
+        },
+        {
+          "name": "commentNew",
+          "attribute": "comment-new",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "editform",
+          "attribute": "editform",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "comment-reply"
+        },
+        {
+          "name": "comment-like"
+        },
+        {
+          "name": "comment-delete-dialog"
+        },
+        {
+          "name": "comment-editing"
+        },
+        {
+          "name": "comment-save"
+        }
+      ]
     }
   ]
 }

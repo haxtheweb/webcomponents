@@ -1,82 +1,71 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "git-corner\n`display a quick link with styling to a repo to help with contributions`",
-      "description": "`git-corner`",
-      "jsDoc": "/**\n * `git-corner`\n * @customElement git-corner\n * `display a quick link with styling to a repo to help with contributions`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "tag"
     },
     {
-      "name": "git-corner\n`display a quick link with styling to a repo to help with contributions`",
+      "name": "git-corner",
+      "description": "`git-corner`"
+    },
+    {
+      "name": "git-corner",
       "description": "`git-corner`",
-      "jsDoc": "/**\n * `git-corner`\n * @customElement git-corner\n * `display a quick link with styling to a repo to help with contributions`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
           "description": "source to point to",
-          "jsDoc": "/**\n       * source to point to\n       */",
           "type": "string"
         },
         {
           "name": "alt",
           "description": "alt text",
-          "jsDoc": "/**\n       * alt text\n       */",
           "type": "string"
         },
         {
           "name": "corner",
           "description": "Whether or not to be rendered in the top corner, common on tech sites",
-          "jsDoc": "/**\n       * Whether or not to be rendered in the top corner, common on tech sites\n       */",
           "type": "boolean"
         },
         {
           "name": "size",
           "description": "basic size adjustment",
-          "jsDoc": "/**\n       * basic size adjustment\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "description": "source to point to",
-          "jsDoc": "/**\n       * source to point to\n       */",
           "type": "string"
         },
         {
           "name": "alt",
+          "attribute": "alt",
           "description": "alt text",
-          "jsDoc": "/**\n       * alt text\n       */",
           "type": "string"
         },
         {
           "name": "corner",
+          "attribute": "corner",
           "description": "Whether or not to be rendered in the top corner, common on tech sites",
-          "jsDoc": "/**\n       * Whether or not to be rendered in the top corner, common on tech sites\n       */",
           "type": "boolean"
         },
         {
           "name": "size",
+          "attribute": "size",
           "description": "basic size adjustment",
-          "jsDoc": "/**\n       * basic size adjustment\n       */",
           "type": "string"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "git-corner\n`display a quick link with styling to a repo to help with contributions`",
-      "description": "`git-corner`",
-      "jsDoc": "/**\n * `git-corner`\n * @customElement git-corner\n * `display a quick link with styling to a repo to help with contributions`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "tag"
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`"
     }
   ]
 }

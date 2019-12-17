@@ -1,168 +1,208 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "name": "hal-9000",
       "description": "`hal-9000`",
-      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "commands",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "respondsTo",
-          "type": "string"
+          "type": "string",
+          "default": "\"(hal)\""
         },
         {
           "name": "debug",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "pitch",
-          "type": "number"
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "rate",
-          "type": "number"
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "language",
-          "type": "string"
+          "type": "string",
+          "default": "\"en-US\""
         }
       ],
       "events": [
         {
           "name": "hal-9000-online"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "name": "hal-9000",
       "description": "`hal-9000`",
-      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "auto",
           "description": "Start automatically",
-          "jsDoc": "/**\n       * Start automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "enabled",
           "description": "Status of listening",
-          "jsDoc": "/**\n       * Status of listening\n       */",
           "type": "boolean"
         },
         {
           "name": "commands",
-          "type": "{}"
+          "description": "Commands to listen for and take action on",
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "responds-to",
-          "type": "string"
+          "description": "The name that HAL 9000 should respond to.",
+          "type": "string",
+          "default": "\"(hal)\""
         },
         {
           "name": "debug",
-          "type": "boolean"
+          "description": "Debug mode for annyang",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "pitch",
-          "type": "number"
+          "description": "Pitch of speech",
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "rate",
-          "type": "number"
+          "description": "Rate of speech",
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "language",
-          "type": "string"
+          "description": "Language of the speaker",
+          "type": "string",
+          "default": "\"en-US\""
         }
       ],
       "properties": [
         {
           "name": "auto",
+          "attribute": "auto",
           "description": "Start automatically",
-          "jsDoc": "/**\n       * Start automatically\n       */",
           "type": "boolean"
         },
         {
           "name": "enabled",
+          "attribute": "enabled",
           "description": "Status of listening",
-          "jsDoc": "/**\n       * Status of listening\n       */",
           "type": "boolean"
         },
         {
           "name": "commands",
-          "type": "{}"
+          "attribute": "commands",
+          "description": "Commands to listen for and take action on",
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "respondsTo",
-          "type": "string"
+          "attribute": "responds-to",
+          "description": "The name that HAL 9000 should respond to.",
+          "type": "string",
+          "default": "\"(hal)\""
         },
         {
           "name": "debug",
-          "type": "boolean"
+          "attribute": "debug",
+          "description": "Debug mode for annyang",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "pitch",
-          "type": "number"
+          "attribute": "pitch",
+          "description": "Pitch of speech",
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "rate",
-          "type": "number"
+          "attribute": "rate",
+          "description": "Rate of speech",
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "language",
-          "type": "string"
+          "attribute": "language",
+          "description": "Language of the speaker",
+          "type": "string",
+          "default": "\"en-US\""
         }
       ],
       "events": [
         {
           "name": "hal-9000-online"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "hal-9000\n`Robot assistant tag, hopefully not evil`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ]
+    },
+    {
+      "name": "hal-9000",
       "description": "`hal-9000`",
-      "jsDoc": "/**\n * `hal-9000`\n * @customElement hal-9000\n * `Robot assistant tag, hopefully not evil`\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "commands",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "respondsTo",
-          "type": "string"
+          "type": "string",
+          "default": "\"(hal)\""
         },
         {
           "name": "debug",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "pitch",
-          "type": "number"
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "rate",
-          "type": "number"
+          "type": "number",
+          "default": "0.9"
         },
         {
           "name": "language",
-          "type": "string"
+          "type": "string",
+          "default": "\"en-US\""
         }
       ],
       "events": [
         {
           "name": "hal-9000-online"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

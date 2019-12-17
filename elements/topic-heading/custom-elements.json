@@ -1,68 +1,70 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "topic-heading",
       "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
-      "jsDoc": "/**\n * `topic-heading`\n * `Semantic and visual meaning behind a heading break`\n * @demo demo/index.html\n * @customElement topic-heading\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "topic-heading",
       "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
-      "jsDoc": "/**\n * `topic-heading`\n * `Semantic and visual meaning behind a heading break`\n * @demo demo/index.html\n * @customElement topic-heading\n */",
       "attributes": [
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "topic-heading",
       "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
-      "jsDoc": "/**\n * `topic-heading`\n * `Semantic and visual meaning behind a heading break`\n * @demo demo/index.html\n * @customElement topic-heading\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "icon",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "title",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,10 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "name": "learn-two-theme",
       "description": "`learn-two-theme`",
-      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
@@ -14,16 +13,14 @@
       "properties": [
         {
           "name": "opened",
+          "attribute": "opened",
           "type": "boolean"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "name": "learn-two-theme",
       "description": "`learn-two-theme`",
-      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
@@ -33,16 +30,17 @@
       "properties": [
         {
           "name": "opened",
+          "attribute": "opened",
           "type": "boolean"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "learn-two-theme\n`Learn2 theme for HAXcms`",
+      "name": "tag"
+    },
+    {
+      "name": "learn-two-theme",
       "description": "`learn-two-theme`",
-      "jsDoc": "/**\n * `learn-two-theme`\n * @customElement learn-two-theme\n * `Learn2 theme for HAXcms`\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "opened",
@@ -52,11 +50,10 @@
       "properties": [
         {
           "name": "opened",
+          "attribute": "opened",
           "type": "boolean"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,19 +1,35 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lunr-search\n`LunrJS search element`",
+      "name": "lunr-search",
       "description": "`lunr-search`",
-      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     },
     {
-      "name": "lunr-search\n`LunrJS search element`",
+      "name": "lunr-search",
       "description": "`lunr-search`",
-      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "data-source",
@@ -21,11 +37,12 @@
         },
         {
           "name": "data",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "method",
-          "type": "string"
+          "type": "string",
+          "default": "\"GET\""
         },
         {
           "name": "search",
@@ -33,98 +50,159 @@
         },
         {
           "name": "results",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "no-stop-words",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fields",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "index-no-stop-words",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "index",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "limit",
-          "type": "number"
+          "type": "number",
+          "default": "500"
         },
         {
           "name": "min-score",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "log",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "dataSource",
+          "attribute": "data-source",
           "type": "string"
         },
         {
           "name": "data",
-          "type": "any[]"
+          "attribute": "data",
+          "type": "array"
         },
         {
           "name": "method",
-          "type": "string"
+          "attribute": "method",
+          "type": "string",
+          "default": "\"GET\""
         },
         {
           "name": "search",
+          "attribute": "search",
           "type": "string"
         },
         {
           "name": "results",
-          "type": "any[]"
+          "attribute": "results",
+          "type": "array"
         },
         {
           "name": "noStopWords",
-          "type": "boolean"
+          "attribute": "no-stop-words",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "fields",
-          "type": "any[]"
+          "attribute": "fields",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "indexNoStopWords",
-          "type": "{}"
+          "attribute": "index-no-stop-words",
+          "type": "object"
         },
         {
           "name": "index",
-          "type": "{}"
+          "attribute": "index",
+          "type": "object"
         },
         {
           "name": "limit",
-          "type": "number"
+          "attribute": "limit",
+          "type": "number",
+          "default": "500"
         },
         {
           "name": "minScore",
-          "type": "number"
+          "attribute": "min-score",
+          "type": "number",
+          "default": "0"
         },
         {
           "name": "log",
-          "type": "boolean"
+          "attribute": "log",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lunr-search\n`LunrJS search element`",
+      "name": "tag"
+    },
+    {
+      "name": "lunr-search",
       "description": "`lunr-search`",
-      "jsDoc": "/**\n * `lunr-search`\n * @customElement lunr-search\n * `LunrJS search element`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     }
   ]
 }

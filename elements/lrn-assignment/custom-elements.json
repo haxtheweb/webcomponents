@@ -1,4 +1,526 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-assignment",
+      "description": "`lrn-assignment`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "attribute": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "attribute": "actions",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignments",
+      "attributes": [
+        {
+          "name": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "assignments",
+          "attribute": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignment",
+      "description": "`lrn-assignment`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "attribute": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "attribute": "actions",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignments",
+      "attributes": [
+        {
+          "name": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "assignments",
+          "attribute": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrn-assignment-button",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "attribute": "complete",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignment",
+      "description": "`lrn-assignment`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image url",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details of the assignment",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "open",
+          "attribute": "open",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "attribute": "complete",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "actions",
+          "attribute": "actions",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrn-assignments",
+      "attributes": [
+        {
+          "name": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "assignments",
+          "attribute": "assignments",
+          "type": "object"
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
 }

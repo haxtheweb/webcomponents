@@ -1,86 +1,91 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "name": "tab-list",
       "description": "`tab-list`",
-      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "tabs",
+          "attribute": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "events": [
         {
           "name": "tabs-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "name": "tab-list",
       "description": "`tab-list`",
-      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "tabs",
+          "attribute": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "events": [
         {
           "name": "tabs-changed"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "tab-list\n`A simple listing of tabed links / items`",
+      "name": "tag",
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ]
+    },
+    {
+      "name": "tab-list",
       "description": "`tab-list`",
-      "jsDoc": "/**\n * `tab-list`\n * @customElement tab-list\n * `A simple listing of tabed links / items`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "properties": [
         {
           "name": "tabs",
+          "attribute": "tabs",
           "description": "List of tabs",
-          "jsDoc": "/**\n       * List of tabs\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         }
       ],
       "events": [
         {
           "name": "tabs-changed"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

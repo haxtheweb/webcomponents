@@ -1,10 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "material-word\n`Outputs word in material alphabet`",
+      "name": "material-word",
       "description": "`material-word`",
-      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "word",
@@ -12,34 +11,58 @@
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "half-letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
         }
       ],
       "properties": [
         {
           "name": "word",
+          "attribute": "word",
           "type": "string"
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "halfLetters",
-          "type": "any[]"
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "material-word\n`Outputs word in material alphabet`",
+      "name": "material-word",
       "description": "`material-word`",
-      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "word",
@@ -47,34 +70,61 @@
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "half-letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
         }
       ],
       "properties": [
         {
           "name": "word",
+          "attribute": "word",
           "type": "string"
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "halfLetters",
-          "type": "any[]"
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "material-word\n`Outputs word in material alphabet`",
+      "name": "tag"
+    },
+    {
+      "name": "material-word",
       "description": "`material-word`",
-      "jsDoc": "/**\n * `material-word`\n * @customElement material-word\n * `Outputs word in material alphabet`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "word",
@@ -82,29 +132,54 @@
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "half-letters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
         }
       ],
       "properties": [
         {
           "name": "word",
+          "attribute": "word",
           "type": "string"
         },
         {
           "name": "letters",
-          "type": "any[]"
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "halfLetters",
-          "type": "any[]"
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

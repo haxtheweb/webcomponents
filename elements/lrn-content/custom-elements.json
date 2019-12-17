@@ -1,4 +1,59 @@
 {
-  "version": 2,
-  "tags": []
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        }
+      ]
+    }
+  ]
 }

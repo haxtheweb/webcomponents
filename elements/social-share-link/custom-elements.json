@@ -1,118 +1,173 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "social-share-link\n`a link to share content on social`",
+      "name": "social-share-link",
       "description": "`social-share-link`",
-      "jsDoc": "/**\n * `social-share-link`\n * @customElement social-share-link\n * `a link to share content on social`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     },
     {
-      "name": "social-share-link\n`a link to share content on social`",
+      "name": "social-share-link",
       "description": "`social-share-link`",
-      "jsDoc": "/**\n * `social-share-link`\n * @customElement social-share-link\n * `a link to share content on social`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "button-style",
           "description": "display link as a button",
-          "jsDoc": "/**\n       * display link as a button\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "image",
           "description": "optional image to attach to the share\n(Pinterest only)",
-          "jsDoc": "/**\n       * optional image to attach to the share\n       * (Pinterest only)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "message",
           "description": "the message to attach to the social share\n(not used in Facebook)",
-          "jsDoc": "/**\n       * the message to attach to the social share\n       * (not used in Facebook)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "mode",
           "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
-          "jsDoc": "/**\n       * optional display mode for the link,\"text-only\" or \"icon-only\";\n       * default is to dislay both an icon and text\n       */",
           "type": "string"
         },
         {
           "name": "text",
           "description": "the link text; if null, the text will be \"Share on (type of social)\"",
-          "jsDoc": "/**\n       * the link text; if null, the text will be \"Share on (type of social)\"\n       */",
           "type": "string"
         },
         {
           "name": "type",
           "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
-          "jsDoc": "/**\n       * the type of social; currently supports\n       * Facebook, LinkedIn, Pinterest, and Twitter (default)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Twitter\""
         },
         {
           "name": "url",
           "description": "the url to share",
-          "jsDoc": "/**\n       * the url to share\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "buttonStyle",
+          "attribute": "button-style",
           "description": "display link as a button",
-          "jsDoc": "/**\n       * display link as a button\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "image",
+          "attribute": "image",
           "description": "optional image to attach to the share\n(Pinterest only)",
-          "jsDoc": "/**\n       * optional image to attach to the share\n       * (Pinterest only)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "message",
+          "attribute": "message",
           "description": "the message to attach to the social share\n(not used in Facebook)",
-          "jsDoc": "/**\n       * the message to attach to the social share\n       * (not used in Facebook)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "mode",
+          "attribute": "mode",
           "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
-          "jsDoc": "/**\n       * optional display mode for the link,\"text-only\" or \"icon-only\";\n       * default is to dislay both an icon and text\n       */",
           "type": "string"
         },
         {
           "name": "text",
+          "attribute": "text",
           "description": "the link text; if null, the text will be \"Share on (type of social)\"",
-          "jsDoc": "/**\n       * the link text; if null, the text will be \"Share on (type of social)\"\n       */",
           "type": "string"
         },
         {
           "name": "type",
+          "attribute": "type",
           "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
-          "jsDoc": "/**\n       * the type of social; currently supports\n       * Facebook, LinkedIn, Pinterest, and Twitter (default)\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Twitter\""
         },
         {
           "name": "url",
+          "attribute": "url",
           "description": "the url to share",
-          "jsDoc": "/**\n       * the url to share\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "social-share-link\n`a link to share content on social`",
+      "name": "tag"
+    },
+    {
+      "name": "social-share-link",
       "description": "`social-share-link`",
-      "jsDoc": "/**\n * `social-share-link`\n * @customElement social-share-link\n * `a link to share content on social`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     }
   ]
 }

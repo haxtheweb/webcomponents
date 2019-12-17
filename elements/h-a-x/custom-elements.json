@@ -1,28 +1,21 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "h-a-x",
       "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "app-store",
-          "type": "any"
+          "name": "app-store"
         },
         {
-          "name": "hide-panel-ops",
-          "type": "any"
+          "name": "hide-panel-ops"
         }
       ],
       "properties": [
         {
-          "name": "tag",
+          "name": "html",
           "type": "string"
-        },
-        {
-          "name": "template",
-          "type": "any"
         },
         {
           "name": "hidePanelOps",
@@ -31,72 +24,37 @@
         {
           "name": "appStore",
           "type": "string | null"
-        }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "h-a-x\n`Single tag to transform authoring`",
-      "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "app-store",
-          "type": "any"
         },
-        {
-          "name": "hide-panel-ops",
-          "type": "any"
-        }
-      ],
-      "properties": [
         {
           "name": "tag",
-          "type": "string"
+          "type": "string",
+          "default": "\"h-a-x\""
         },
         {
-          "name": "template",
-          "type": "any"
-        },
-        {
-          "name": "hidePanelOps",
-          "type": "string | null"
-        },
-        {
-          "name": "appStore",
-          "type": "string | null"
+          "name": "template"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "h-a-x",
       "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "app-store",
-          "type": "any"
-        },
-        {
-          "name": "hide-panel-ops",
-          "type": "any"
-        },
-        {
           "name": "appStore",
-          "type": "string | null"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "app-store"
+        },
+        {
+          "name": "hide-panel-ops"
         }
       ],
       "properties": [
         {
-          "name": "tag",
+          "name": "html",
           "type": "string"
-        },
-        {
-          "name": "template",
-          "type": "any"
         },
         {
           "name": "hidePanelOps",
@@ -104,74 +62,35 @@
         },
         {
           "name": "appStore",
-          "type": "string | null"
+          "attribute": "appStore",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"h-a-x\""
+        },
+        {
+          "name": "template"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "h-a-x\n`Single tag to transform authoring`",
-      "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "app-store",
-          "type": "any"
-        },
-        {
-          "name": "hide-panel-ops",
-          "type": "any"
-        },
-        {
-          "name": "appStore",
-          "type": "string | null"
-        }
-      ],
-      "properties": [
-        {
-          "name": "tag",
-          "type": "string"
-        },
-        {
-          "name": "template",
-          "type": "any"
-        },
-        {
-          "name": "hidePanelOps",
-          "type": "string | null"
-        },
-        {
-          "name": "appStore",
-          "type": "string | null"
-        }
-      ],
-      "events": [],
-      "slots": []
+      "name": "h-a-x"
     },
     {
       "name": "h-a-x",
       "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "app-store",
-          "type": "any"
+          "name": "app-store"
         },
         {
-          "name": "hide-panel-ops",
-          "type": "any"
+          "name": "hide-panel-ops"
         }
       ],
       "properties": [
-        {
-          "name": "tag",
-          "type": "string"
-        },
-        {
-          "name": "template",
-          "type": "any"
-        },
         {
           "name": "hidePanelOps",
           "type": "string | null"
@@ -179,45 +98,16 @@
         {
           "name": "appStore",
           "type": "string | null"
-        }
-      ],
-      "events": [],
-      "slots": []
-    },
-    {
-      "name": "h-a-x\n`Single tag to transform authoring`",
-      "description": "`h-a-x`",
-      "jsDoc": "/**\n * `h-a-x`\n * @customElement h-a-x\n * `Single tag to transform authoring`\n *\n * @microcopy - language worth noting:\n *  - HAX - Headless Authoring eXperience\n *  - Body - the editable area that can be worked on and gets saved as a string / blob\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "app-store",
-          "type": "any"
         },
-        {
-          "name": "hide-panel-ops",
-          "type": "any"
-        }
-      ],
-      "properties": [
         {
           "name": "tag",
-          "type": "string"
+          "type": "string",
+          "default": "\"h-a-x\""
         },
         {
-          "name": "template",
-          "type": "any"
-        },
-        {
-          "name": "hidePanelOps",
-          "type": "string | null"
-        },
-        {
-          "name": "appStore",
-          "type": "string | null"
+          "name": "template"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

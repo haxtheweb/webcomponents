@@ -1,146 +1,209 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrn-aside\nA content aside as a panel",
+      "name": "lrn-aside",
       "description": "`lrn-aside`",
-      "jsDoc": "/**\n * `lrn-aside`\n * @customElement lrn-aside\n * A content aside as a panel\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
+          "attribute": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
+          "attribute": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-aside\nA content aside as a panel",
+      "name": "lrn-aside",
       "description": "`lrn-aside`",
-      "jsDoc": "/**\n * `lrn-aside`\n * @customElement lrn-aside\n * A content aside as a panel\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
+          "attribute": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
+          "attribute": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "lrn-aside\nA content aside as a panel",
+      "name": "tag"
+    },
+    {
+      "name": "lrn-aside",
       "description": "`lrn-aside`",
-      "jsDoc": "/**\n * `lrn-aside`\n * @customElement lrn-aside\n * A content aside as a panel\n *\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "title",
+          "attribute": "title",
           "description": "Title for the aside.",
-          "jsDoc": "/**\n       * Title for the aside.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Related content\""
         },
         {
           "name": "sticky",
+          "attribute": "sticky",
           "description": "Apply CSS sticky styling",
-          "jsDoc": "/**\n       * Apply CSS sticky styling\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "direction",
+          "attribute": "direction",
           "description": "Direction to hang off UI if sticky, left or right.",
-          "jsDoc": "/**\n       * Direction to hang off UI if sticky, left or right.\n       */",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

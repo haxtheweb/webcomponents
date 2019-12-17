@@ -1,72 +1,69 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "name": "micro-copy-heading",
       "description": "`micro-copy-heading`",
-      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "tag",
-          "type": "string"
+          "type": "string",
+          "default": "\"micro-copy-heading\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "name": "micro-copy-heading",
       "description": "`micro-copy-heading`",
-      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "heading",
           "description": "Heading / call to action to display",
-          "jsDoc": "/**\n       * Heading / call to action to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Telling our story\""
         },
         {
           "name": "endcap",
           "description": "ending cap to the statement, possibly a character, icon, etc",
-          "jsDoc": "/**\n       * ending cap to the statement, possibly a character, icon, etc\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"//\""
         }
       ],
       "properties": [
         {
           "name": "heading",
+          "attribute": "heading",
           "description": "Heading / call to action to display",
-          "jsDoc": "/**\n       * Heading / call to action to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Telling our story\""
         },
         {
           "name": "endcap",
+          "attribute": "endcap",
           "description": "ending cap to the statement, possibly a character, icon, etc",
-          "jsDoc": "/**\n       * ending cap to the statement, possibly a character, icon, etc\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"//\""
         },
         {
           "name": "tag",
-          "type": "string"
+          "type": "string",
+          "default": "\"micro-copy-heading\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "micro-copy-heading\n`small call to action / attention that acts as a heading too`",
+      "name": "tag"
+    },
+    {
+      "name": "micro-copy-heading",
       "description": "`micro-copy-heading`",
-      "jsDoc": "/**\n * `micro-copy-heading`\n * @customElement micro-copy-heading\n * `small call to action / attention that acts as a heading too`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @lit-element\n * @demo demo/index.html\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "tag",
-          "type": "string"
+          "type": "string",
+          "default": "\"micro-copy-heading\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

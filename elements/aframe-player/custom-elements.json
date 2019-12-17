@@ -1,374 +1,392 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "aframe-player",
       "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
-      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
       ],
       "properties": [
         {
-          "name": "course",
+          "name": "source",
+          "attribute": "source",
+          "description": "Source to reference for the 3D object",
           "type": "string"
         },
         {
-          "name": "source",
-          "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
-          "type": "string"
+          "name": "course",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
+          "attribute": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
+          "attribute": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "skyColor",
+          "attribute": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
+          "attribute": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
+          "attribute": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
+          "attribute": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
+          "attribute": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "aframe-player",
       "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
-      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
       ],
       "properties": [
         {
-          "name": "course",
+          "name": "source",
+          "attribute": "source",
+          "description": "Source to reference for the 3D object",
           "type": "string"
         },
         {
-          "name": "source",
-          "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
-          "type": "string"
+          "name": "course",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
+          "attribute": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
+          "attribute": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "skyColor",
+          "attribute": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
+          "attribute": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
+          "attribute": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
+          "attribute": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
+          "attribute": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "aframe-player",
       "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
-      "jsDoc": "/**\n * `aframe-player`\n * `A wrapper to do data binding into aframe`\n *\n * @demo demo/index.html\n * @customElement aframe-player\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
       ],
       "properties": [
         {
-          "name": "course",
+          "name": "source",
+          "attribute": "source",
+          "description": "Source to reference for the 3D object",
           "type": "string"
         },
         {
-          "name": "source",
-          "description": "Source to reference for the 3D object",
-          "jsDoc": "/**\n       * Source to reference for the 3D object\n       */",
-          "type": "string"
+          "name": "course",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
+          "attribute": "height",
           "description": "height of the element",
-          "jsDoc": "/**\n       * height of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"480px\""
         },
         {
           "name": "width",
+          "attribute": "width",
           "description": "width of the element",
-          "jsDoc": "/**\n       * width of the element\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"640px\""
         },
         {
           "name": "skyColor",
+          "attribute": "sky-color",
           "description": "Color of the sky / background.",
-          "jsDoc": "/**\n       * Color of the sky / background.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#DCDCDC\""
         },
         {
           "name": "ar",
+          "attribute": "ar",
           "description": "If this is for augmented reality or not.",
-          "jsDoc": "/**\n       * If this is for augmented reality or not.\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "x",
+          "attribute": "x",
           "description": "x position for the AR element.",
-          "jsDoc": "/**\n       * x position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "y",
+          "attribute": "y",
           "description": "y position for the AR element.",
-          "jsDoc": "/**\n       * y position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "z",
+          "attribute": "z",
           "description": "z position for the AR element.",
-          "jsDoc": "/**\n       * z position for the AR element.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"0\""
         },
         {
           "name": "position",
+          "attribute": "position",
           "description": "Generate a position object when coordinates change.",
-          "jsDoc": "/**\n       * Generate a position object when coordinates change.\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,709 +1,772 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "lrndesign-chart-behaviors\na line chart",
+      "name": "lrndesign-chart-behaviors",
       "description": "`lrndesign-chart-behaviors`",
-      "jsDoc": "/**\n * `lrndesign-chart-behaviors`\n * @customElement lrndesign-chart-behaviors\n * a line chart\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo ./demo/index.html\n * @demo ./demo/pie.html pie charts\n * @demo ./demo/bar.html bar charts\n * @demo ./demo/line.html line charts\n *\n */",
-      "attributes": [],
-      "properties": [],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
+          "name": "data-source-changed"
         },
         {
           "name": "raw-data-changed"
         },
         {
-          "name": "data-source-changed"
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-chart-behaviors\na line chart",
+      "name": "lrndesign-chart",
       "description": "`lrndesign-chart-behaviors`",
-      "jsDoc": "/**\n * `lrndesign-chart-behaviors`\n * @customElement lrndesign-chart-behaviors\n * a line chart\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo ./demo/index.html\n * @demo ./demo/pie.html pie charts\n * @demo ./demo/bar.html bar charts\n * @demo ./demo/line.html line charts\n *\n */",
+      "events": [
+        {
+          "name": "data-source-changed"
+        },
+        {
+          "name": "raw-data-changed"
+        },
+        {
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart-behaviors",
+      "description": "`lrndesign-chart-behaviors`",
       "attributes": [
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         },
         {
           "name": "raw-data",
           "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "reverse-data",
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
         {
           "name": "width",
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "dataSource",
+          "attribute": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "height",
+          "attribute": "height",
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         },
         {
           "name": "rawData",
+          "attribute": "raw-data",
           "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "reverseData",
+          "attribute": "reverse-data",
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
         {
           "name": "width",
+          "attribute": "width",
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
+          "name": "data-source-changed"
         },
         {
           "name": "raw-data-changed"
         },
         {
-          "name": "data-source-changed"
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-pie\na pie chart",
+      "name": "lrndesign-chart",
+      "description": "`lrndesign-chart-behaviors`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        },
+        {
+          "name": "raw-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string"
+        },
+        {
+          "name": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "type": "boolean"
+        },
+        {
+          "name": "width",
+          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        },
+        {
+          "name": "rawData",
+          "attribute": "raw-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string"
+        },
+        {
+          "name": "reverseData",
+          "attribute": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "type": "boolean"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "data-source-changed"
+        },
+        {
+          "name": "raw-data-changed"
+        },
+        {
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-pie",
       "description": "`lrndesign-pie`",
-      "jsDoc": "/**\n * `lrndesign-pie`\n * @customElement lrndesign-pie\n * a pie chart\n *\n\n * @extends LrndesignChart\n * @see ../lrndesign-chart.js\n *\n * @demo ../demo/pie.html\n *\n */",
       "attributes": [
+        {
+          "name": "chartPadding",
+          "description": "Padding of chart drawing area to container element and labels",
+          "type": "number"
+        },
+        {
+          "name": "donut",
+          "description": "Displays chart as donut instead of pie.",
+          "type": "boolean"
+        },
+        {
+          "name": "donutSolid",
+          "description": "Draw donut segments as shapes instead of strokes.",
+          "type": "boolean"
+        },
+        {
+          "name": "donutWidth",
+          "description": "Donut stroke width, currently done in javascript.",
+          "type": "number"
+        },
+        {
+          "name": "ignoreEmptyValues",
+          "description": "Empty values will be ignored to avoid drawing\nunncessary slices and labels",
+          "type": "boolean"
+        },
+        {
+          "name": "labelDirection",
+          "description": "Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.",
+          "type": "string"
+        },
+        {
+          "name": "labelOffset",
+          "description": "Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.",
+          "type": "number"
+        },
+        {
+          "name": "labelPosition",
+          "description": "This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.",
+          "type": "string"
+        },
+        {
+          "name": "showLabel",
+          "description": "If a label should be shown.",
+          "type": "boolean"
+        },
+        {
+          "name": "startAngle",
+          "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
+          "type": "number"
+        },
+        {
+          "name": "total",
+          "description": "Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.",
+          "type": "number"
+        },
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         },
         {
           "name": "raw-data",
           "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "reverse-data",
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
         {
           "name": "width",
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
-        },
-        {
-          "name": "chartPadding",
-          "description": "Padding of chart drawing area to container element and labels",
-          "jsDoc": "/**\n       * Padding of chart drawing area to container element and labels\n       */",
-          "type": "number"
-        },
-        {
-          "name": "donut",
-          "description": "Displays chart as donut instead of pie.",
-          "jsDoc": "/**\n       * Displays chart as donut instead of pie.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "donutSolid",
-          "description": "Draw donut segments as shapes instead of strokes.",
-          "jsDoc": "/**\n       * Draw donut segments as shapes instead of strokes.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "donutWidth",
-          "description": "Donut stroke width, currently done in javascript.",
-          "jsDoc": "/**\n       * Donut stroke width, currently done in javascript.\n       */",
-          "type": "number"
-        },
-        {
-          "name": "ignoreEmptyValues",
-          "description": "Empty values will be ignored to avoid drawing\nunncessary slices and labels",
-          "jsDoc": "/**\n       * Empty values will be ignored to avoid drawing\n       * unncessary slices and labels\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "labelDirection",
-          "description": "Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.",
-          "jsDoc": "/**\n       * Label direction can be 'neutral', 'explode' or 'implode'.\n       * The labels anchor will be positioned based on those settings\n       * as well as the fact if the labels are on the right or\n       * left side of the center of the chart.\n       * Usually explode is useful when labels are positioned\n       * far away from the center.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "labelOffset",
-          "description": "Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.",
-          "jsDoc": "/**\n       * Label position offset from the standard position\n       * which is half distance of the radius.\n       * This value can be either positive or negative.\n       * Positive values will position the label away from the center.\n       */",
-          "type": "number"
-        },
-        {
-          "name": "labelPosition",
-          "description": "This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.",
-          "jsDoc": "/**\n       * This option can be set to 'inside', 'outside' or 'center'.\n       * Positioned with 'inside' the labels will be placed on half the distance\n       * of the radius to the border of the Pie by respecting the 'labelOffset'.\n       * The 'outside' option will place the labels at the border of the pie\n       * and 'center' will place the labels in the absolute center point\n       * of the chart. The 'center' option only makes sense\n       * in conjunction with the 'labelOffset' option.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "showLabel",
-          "description": "If a label should be shown.",
-          "jsDoc": "/**\n       * If a label should be shown.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "startAngle",
-          "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
-          "jsDoc": "/**\n       *  Start angle of the pie chart in degrees where 0 points north.\n       * A higher value offsets the start angle clockwise..\n       */",
-          "type": "number"
-        },
-        {
-          "name": "total",
-          "description": "Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.",
-          "jsDoc": "/**\n       * Optional total you can specify. By specifying a total value,\n       * the sum of the values in the series must be this total in order\n       * to draw a full pie. You can use this parameter to draw only parts\n       * of a pie or gauge charts.\n       */",
-          "type": "number"
         }
       ],
       "properties": [
         {
-          "name": "dataSource",
-          "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "height",
-          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
-        {
-          "name": "rawData",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reverseData",
-          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "width",
-          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
-        {
           "name": "chartPadding",
+          "attribute": "chartPadding",
           "description": "Padding of chart drawing area to container element and labels",
-          "jsDoc": "/**\n       * Padding of chart drawing area to container element and labels\n       */",
           "type": "number"
         },
         {
           "name": "donut",
+          "attribute": "donut",
           "description": "Displays chart as donut instead of pie.",
-          "jsDoc": "/**\n       * Displays chart as donut instead of pie.\n       */",
           "type": "boolean"
         },
         {
           "name": "donutSolid",
+          "attribute": "donutSolid",
           "description": "Draw donut segments as shapes instead of strokes.",
-          "jsDoc": "/**\n       * Draw donut segments as shapes instead of strokes.\n       */",
           "type": "boolean"
         },
         {
           "name": "donutWidth",
+          "attribute": "donutWidth",
           "description": "Donut stroke width, currently done in javascript.",
-          "jsDoc": "/**\n       * Donut stroke width, currently done in javascript.\n       */",
           "type": "number"
         },
         {
           "name": "ignoreEmptyValues",
+          "attribute": "ignoreEmptyValues",
           "description": "Empty values will be ignored to avoid drawing\nunncessary slices and labels",
-          "jsDoc": "/**\n       * Empty values will be ignored to avoid drawing\n       * unncessary slices and labels\n       */",
           "type": "boolean"
         },
         {
           "name": "labelDirection",
+          "attribute": "labelDirection",
           "description": "Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.",
-          "jsDoc": "/**\n       * Label direction can be 'neutral', 'explode' or 'implode'.\n       * The labels anchor will be positioned based on those settings\n       * as well as the fact if the labels are on the right or\n       * left side of the center of the chart.\n       * Usually explode is useful when labels are positioned\n       * far away from the center.\n       */",
           "type": "string"
         },
         {
           "name": "labelOffset",
+          "attribute": "labelOffset",
           "description": "Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.",
-          "jsDoc": "/**\n       * Label position offset from the standard position\n       * which is half distance of the radius.\n       * This value can be either positive or negative.\n       * Positive values will position the label away from the center.\n       */",
           "type": "number"
         },
         {
           "name": "labelPosition",
+          "attribute": "labelPosition",
           "description": "This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.",
-          "jsDoc": "/**\n       * This option can be set to 'inside', 'outside' or 'center'.\n       * Positioned with 'inside' the labels will be placed on half the distance\n       * of the radius to the border of the Pie by respecting the 'labelOffset'.\n       * The 'outside' option will place the labels at the border of the pie\n       * and 'center' will place the labels in the absolute center point\n       * of the chart. The 'center' option only makes sense\n       * in conjunction with the 'labelOffset' option.\n       */",
           "type": "string"
         },
         {
           "name": "showLabel",
+          "attribute": "showLabel",
           "description": "If a label should be shown.",
-          "jsDoc": "/**\n       * If a label should be shown.\n       */",
           "type": "boolean"
         },
         {
           "name": "startAngle",
+          "attribute": "startAngle",
           "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
-          "jsDoc": "/**\n       *  Start angle of the pie chart in degrees where 0 points north.\n       * A higher value offsets the start angle clockwise..\n       */",
           "type": "number"
         },
         {
           "name": "total",
+          "attribute": "total",
           "description": "Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.",
-          "jsDoc": "/**\n       * Optional total you can specify. By specifying a total value,\n       * the sum of the values in the series must be this total in order\n       * to draw a full pie. You can use this parameter to draw only parts\n       * of a pie or gauge charts.\n       */",
           "type": "number"
+        },
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        },
+        {
+          "name": "rawData",
+          "attribute": "raw-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string"
+        },
+        {
+          "name": "reverseData",
+          "attribute": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "type": "boolean"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
+          "name": "data-source-changed"
         },
         {
           "name": "raw-data-changed"
         },
         {
-          "name": "data-source-changed"
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-line\na line chart",
+      "name": "lrndesign-line",
       "description": "`lrndesign-line`",
-      "jsDoc": "/**\n * `lrndesign-line`\n * @customElement lrndesign-line\n * a line chart\n *\n\n * @extends LrndesignChart\n * @see ../lrndesign-chart.js\n *\n * @demo ../demo/line.html\n *\n */",
       "attributes": [
-        {
-          "name": "data-source",
-          "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "height",
-          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
-        {
-          "name": "raw-data",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reverse-data",
-          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "width",
-          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
         {
           "name": "area-base",
           "description": "The base for the area chart that will be used\nto close the area shape (is normally 0).",
-          "jsDoc": "/**\n       * The base for the area chart that will be used\n       * to close the area shape (is normally 0).\n       */",
           "type": "number"
         },
         {
           "name": "full-width",
           "description": "When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.",
-          "jsDoc": "/**\n       * When set to true, the last grid line on the x-axis\n       * is not drawn and the chart elements will expand\n       * to the full available width of the chart.\n       * For the last label to be drawn correctly\n       * you might need to add chart padding or offset the\n       * last label with a draw event handler.\n       */",
           "type": "boolean"
         },
         {
           "name": "line-smooth",
           "description": "Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..",
-          "jsDoc": "/**\n       * Specify if the lines should be smoothed.\n       * This value can be true or false where true\n       * will result in smoothing using the default\n       * smoothing interpolation function Chartist.\n       * Interpolation.cardinal and false results in\n       * Chartist.Interpolation.none.\n       * You can also choose other smoothing /\n       * interpolation functions available in the Chartist.\n       * Interpolation module, or write your own\n       * interpolation function. Check the examples\n       * for a brief description..\n       */",
           "type": "boolean"
         },
         {
           "name": "show-area",
           "description": "If the line chart should draw an area.",
-          "jsDoc": "/**\n       * If the line chart should draw an area.\n       */",
           "type": "boolean"
         },
         {
           "name": "show-line",
           "description": "If the line should be drawn or not.",
-          "jsDoc": "/**\n       * If the line should be drawn or not.\n       */",
           "type": "boolean"
         },
         {
           "name": "show-point",
           "description": "If the line should be drawn or not.",
-          "jsDoc": "/**\n       * If the line should be drawn or not.\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
-        {
-          "name": "dataSource",
-          "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "height",
-          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
-        {
-          "name": "rawData",
-          "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reverseData",
-          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
-        {
-          "name": "width",
-          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
-          "type": "string"
-        },
-        {
-          "name": "areaBase",
-          "description": "The base for the area chart that will be used\nto close the area shape (is normally 0).",
-          "jsDoc": "/**\n       * The base for the area chart that will be used\n       * to close the area shape (is normally 0).\n       */",
-          "type": "number"
-        },
-        {
-          "name": "fullWidth",
-          "description": "When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.",
-          "jsDoc": "/**\n       * When set to true, the last grid line on the x-axis\n       * is not drawn and the chart elements will expand\n       * to the full available width of the chart.\n       * For the last label to be drawn correctly\n       * you might need to add chart padding or offset the\n       * last label with a draw event handler.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "lineSmooth",
-          "description": "Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..",
-          "jsDoc": "/**\n       * Specify if the lines should be smoothed.\n       * This value can be true or false where true\n       * will result in smoothing using the default\n       * smoothing interpolation function Chartist.\n       * Interpolation.cardinal and false results in\n       * Chartist.Interpolation.none.\n       * You can also choose other smoothing /\n       * interpolation functions available in the Chartist.\n       * Interpolation module, or write your own\n       * interpolation function. Check the examples\n       * for a brief description..\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "showArea",
-          "description": "If the line chart should draw an area.",
-          "jsDoc": "/**\n       * If the line chart should draw an area.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "showLine",
-          "description": "If the line should be drawn or not.",
-          "jsDoc": "/**\n       * If the line should be drawn or not.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "showPoint",
-          "description": "If the line should be drawn or not.",
-          "jsDoc": "/**\n       * If the line should be drawn or not.\n       */",
-          "type": "boolean"
-        }
-      ],
-      "events": [
-        {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
-        },
-        {
-          "name": "raw-data-changed"
-        },
-        {
-          "name": "data-source-changed"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "lrndesign-bar\na bar chart",
-      "description": "`lrndesign-bar`",
-      "jsDoc": "/**\n * `lrndesign-bar`\n * @customElement lrndesign-bar\n * a bar chart\n *\n\n * @extends LrndesignChart\n * @see ../lrndesign-chart.js\n * @demo ./demo/bar.html\n *\n */",
-      "attributes": [
         {
           "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         },
         {
           "name": "raw-data",
           "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
           "name": "reverse-data",
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
         {
           "name": "width",
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "areaBase",
+          "attribute": "area-base",
+          "description": "The base for the area chart that will be used\nto close the area shape (is normally 0).",
+          "type": "number"
+        },
+        {
+          "name": "fullWidth",
+          "attribute": "full-width",
+          "description": "When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.",
+          "type": "boolean"
+        },
+        {
+          "name": "lineSmooth",
+          "attribute": "line-smooth",
+          "description": "Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..",
+          "type": "boolean"
+        },
+        {
+          "name": "showArea",
+          "attribute": "show-area",
+          "description": "If the line chart should draw an area.",
+          "type": "boolean"
+        },
+        {
+          "name": "showLine",
+          "attribute": "show-line",
+          "description": "If the line should be drawn or not.",
+          "type": "boolean"
+        },
+        {
+          "name": "showPoint",
+          "attribute": "show-point",
+          "description": "If the line should be drawn or not.",
+          "type": "boolean"
+        },
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
           "type": "string"
         },
         {
+          "name": "height",
+          "attribute": "height",
+          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        },
+        {
+          "name": "rawData",
+          "attribute": "raw-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string"
+        },
+        {
+          "name": "reverseData",
+          "attribute": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "type": "boolean"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "data-source-changed"
+        },
+        {
+          "name": "raw-data-changed"
+        },
+        {
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-bar",
+      "description": "`lrndesign-bar`",
+      "attributes": [
+        {
           "name": "axis-x-only-integer",
           "description": "Use only integer values (whole numbers) for the scale steps",
-          "jsDoc": "/**\n       * Use only integer values (whole numbers) for the scale steps\n       */",
           "type": "boolean"
         },
         {
           "name": "axis-x-min-space",
           "description": "TODO",
-          "jsDoc": "/**\n       * TODO\n       */",
           "type": "number"
         },
         {
           "name": "distribute-series",
           "description": "If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.",
-          "jsDoc": "/**\n       * If set to true then each bar will represent a series and\n       * the data array is expected to be a one dimensional array\n       * of data values rather than a series array of series.\n       * This is useful if the bar chart should represent\n       * a profile rather than some data over time.\n       */",
           "type": "boolean"
         },
         {
           "name": "horizontal-bars",
           "description": "Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.",
-          "jsDoc": "/**\n       * Inverts the axes of the bar chart in order to draw\n       * a horizontal bar chart. Be aware that you also need\n       * to invert your axis settings as the Y Axis will now display\n       * the labels and the X Axis the values.\n       */",
           "type": "boolean"
         },
         {
           "name": "reference-value",
           "description": "Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.",
-          "jsDoc": "/**\n       * Unless low/high are explicitly set, bar chart will be\n       * centered at zero by default. Set referenceValue to null to auto scale.\n       */",
           "type": "number"
         },
         {
           "name": "series-bar-distance",
           "description": "Specify the distance in pixel of bars in a group.",
-          "jsDoc": "/**\n       * Specify the distance in pixel of bars in a group.\n       */",
           "type": "number"
         },
         {
           "name": "stack-bars",
           "description": "If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.",
-          "jsDoc": "/**\n       * If set to true this property will cause the series bars\n       * to be stacked. Check the \"stackMode\" option\n       * for further stacking options.\n       */",
           "type": "boolean"
         },
         {
           "name": "stack-mode",
           "description": "If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.",
-          "jsDoc": "/**\n       * If set to \"true\" this property will form a total\n       * for each series point. This will also influence\n       * the y-axis and the overall bounds of the chart.\n       * If set to \"false\" this property will force\n       * the stacked bars to draw from the zero line.\n       * In stacked mode the \"seriesBarDistance\" property will have no effect.\n       */",
           "type": "boolean"
-        }
-      ],
-      "properties": [
+        },
         {
-          "name": "dataSource",
+          "name": "data-source",
           "description": "Location of the CSV file.",
-          "jsDoc": "/**\n       * Location of the CSV file.\n       */",
           "type": "string"
         },
         {
           "name": "height",
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed height for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
         },
         {
-          "name": "rawData",
+          "name": "raw-data",
           "description": "Raw data pulled in from the csv file.",
-          "jsDoc": "/**\n       * Raw data pulled in from the csv file.\n       */",
           "type": "string"
         },
         {
-          "name": "reverseData",
+          "name": "reverse-data",
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "jsDoc": "/**\n       * Reverse data including labels, the series order as well as\n       * the whole series data arrays.\n       */",
           "type": "boolean"
         },
         {
           "name": "width",
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
-          "jsDoc": "/**\n       * Fixed width for the chart as a string (i.e. '100px' or '50%').\n       */",
           "type": "string"
-        },
+        }
+      ],
+      "properties": [
         {
           "name": "axisXOnlyInteger",
+          "attribute": "axis-x-only-integer",
           "description": "Use only integer values (whole numbers) for the scale steps",
-          "jsDoc": "/**\n       * Use only integer values (whole numbers) for the scale steps\n       */",
           "type": "boolean"
         },
         {
           "name": "axisXScaleMinSpace",
+          "attribute": "axis-x-min-space",
           "description": "TODO",
-          "jsDoc": "/**\n       * TODO\n       */",
           "type": "number"
         },
         {
           "name": "distributeSeries",
+          "attribute": "distribute-series",
           "description": "If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.",
-          "jsDoc": "/**\n       * If set to true then each bar will represent a series and\n       * the data array is expected to be a one dimensional array\n       * of data values rather than a series array of series.\n       * This is useful if the bar chart should represent\n       * a profile rather than some data over time.\n       */",
           "type": "boolean"
         },
         {
           "name": "horizontalBars",
+          "attribute": "horizontal-bars",
           "description": "Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.",
-          "jsDoc": "/**\n       * Inverts the axes of the bar chart in order to draw\n       * a horizontal bar chart. Be aware that you also need\n       * to invert your axis settings as the Y Axis will now display\n       * the labels and the X Axis the values.\n       */",
           "type": "boolean"
         },
         {
           "name": "referenceValue",
+          "attribute": "reference-value",
           "description": "Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.",
-          "jsDoc": "/**\n       * Unless low/high are explicitly set, bar chart will be\n       * centered at zero by default. Set referenceValue to null to auto scale.\n       */",
           "type": "number"
         },
         {
           "name": "seriesBarDistance",
+          "attribute": "series-bar-distance",
           "description": "Specify the distance in pixel of bars in a group.",
-          "jsDoc": "/**\n       * Specify the distance in pixel of bars in a group.\n       */",
           "type": "number"
         },
         {
           "name": "stackBars",
+          "attribute": "stack-bars",
           "description": "If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.",
-          "jsDoc": "/**\n       * If set to true this property will cause the series bars\n       * to be stacked. Check the \"stackMode\" option\n       * for further stacking options.\n       */",
           "type": "boolean"
         },
         {
           "name": "stackMode",
+          "attribute": "stack-mode",
           "description": "If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.",
-          "jsDoc": "/**\n       * If set to \"true\" this property will form a total\n       * for each series point. This will also influence\n       * the y-axis and the overall bounds of the chart.\n       * If set to \"false\" this property will force\n       * the stacked bars to draw from the zero line.\n       * In stacked mode the \"seriesBarDistance\" property will have no effect.\n       */",
           "type": "boolean"
+        },
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
+        },
+        {
+          "name": "rawData",
+          "attribute": "raw-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string"
+        },
+        {
+          "name": "reverseData",
+          "attribute": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "type": "boolean"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
+          "type": "string"
         }
       ],
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
+          "name": "data-source-changed"
         },
         {
           "name": "raw-data-changed"
         },
         {
-          "name": "data-source-changed"
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "lrndesign-chart-behaviors\na line chart",
-      "description": "`lrndesign-chart-behaviors`",
-      "jsDoc": "/**\n * `lrndesign-chart-behaviors`\n * @customElement lrndesign-chart-behaviors\n * a line chart\n *\n\n * @extends ChartistRender\n * @see @lrnwebcomponents/chartist-render/chartist-render.js\n * @extends SimpleColors\n * @see @lrnwebcomponents/simple-colors/simple-colors.js\n * @extends SchemaBehaviors\n * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js\n *\n * @demo ./demo/index.html\n * @demo ./demo/pie.html pie charts\n * @demo ./demo/bar.html bar charts\n * @demo ./demo/line.html line charts\n *\n */",
-      "attributes": [],
-      "properties": [],
+      "name": "tag",
       "events": [
         {
-          "name": "chart-changed",
-          "description": "Fired when chart changes.",
-          "jsDoc": "/**\n       * Fired when chart changes.\n       *\n       * @event chart-changed\n       *\n       */"
-        },
-        {
-          "name": "options-changed",
-          "description": "Fired when chart options change.",
-          "jsDoc": "/**\n       * Fired when chart options change.\n       *\n       * @event options-changed\n       * @param {object} chart options\n       *\n       */"
+          "name": "data-source-changed"
         },
         {
           "name": "raw-data-changed"
         },
         {
-          "name": "data-source-changed"
+          "name": "options-changed"
+        },
+        {
+          "name": "chart-changed"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "lrndesign-chart-behaviors",
+      "description": "`lrndesign-chart-behaviors`",
+      "events": [
+        {
+          "name": "data-source-changed"
+        },
+        {
+          "name": "raw-data-changed"
+        },
+        {
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart",
+      "description": "`lrndesign-chart-behaviors`",
+      "events": [
+        {
+          "name": "data-source-changed"
+        },
+        {
+          "name": "raw-data-changed"
+        },
+        {
+          "name": "options-changed",
+          "description": "Fired when chart options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
     }
   ]
 }

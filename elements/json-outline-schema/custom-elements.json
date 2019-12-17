@@ -1,100 +1,54 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
-      "description": "`json-outline-schema`",
-      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
-      "attributes": [
-        {
-          "name": "file",
-          "type": "string | null"
-        },
-        {
-          "name": "id",
-          "type": "string | null"
-        },
-        {
-          "name": "title",
-          "type": "string | null"
-        },
-        {
-          "name": "author",
-          "type": "string | null"
-        },
-        {
-          "name": "description",
-          "type": "string | null"
-        },
-        {
-          "name": "license",
-          "type": "string | null"
-        },
-        {
-          "name": "debug",
-          "type": "string | null"
-        }
-      ],
+      "name": "json-outline-schema-item",
+      "description": "`json-outline-schema-item`",
       "properties": [
         {
-          "name": "tag",
+          "name": "id",
           "type": "string"
         },
         {
-          "name": "template",
-          "type": "any"
-        },
-        {
-          "name": "metadata",
-          "type": "{}"
-        },
-        {
-          "name": "items",
-          "type": "never[]"
-        },
-        {
-          "name": "file",
-          "type": "string | null"
-        },
-        {
-          "name": "id",
-          "type": "string | null"
-        },
-        {
           "name": "title",
-          "type": "string | null"
+          "type": "string",
+          "default": "\"New item\""
         },
         {
-          "name": "author",
-          "type": "string | null"
+          "name": "location",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "description",
-          "type": "string | null"
+          "type": "string",
+          "default": "\"\""
         },
         {
-          "name": "license",
-          "type": "string | null"
+          "name": "parent",
+          "type": "string",
+          "default": "\"\""
         },
         {
-          "name": "debug",
-          "type": "string | null"
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "order",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "indent",
+          "type": "number",
+          "default": "0"
         }
-      ],
-      "events": [
-        {
-          "name": "json-outline-schema-unready"
-        },
-        {
-          "name": "json-outline-schema-ready"
-        }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
+      "name": "json-outline-schema",
       "description": "`json-outline-schema`",
-      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "file",
@@ -106,85 +60,106 @@
         },
         {
           "name": "title",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"New site\""
         },
         {
           "name": "author",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "description",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "license",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"by-sa\""
         },
         {
           "name": "debug",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "tag",
+          "name": "html",
           "type": "string"
         },
         {
-          "name": "template",
-          "type": "any"
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
         },
         {
-          "name": "metadata",
-          "type": "{}"
-        },
-        {
-          "name": "items",
-          "type": "never[]"
+          "name": "template"
         },
         {
           "name": "file",
+          "attribute": "file",
           "type": "string | null"
         },
         {
           "name": "id",
+          "attribute": "id",
           "type": "string | null"
         },
         {
           "name": "title",
-          "type": "string | null"
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
         },
         {
           "name": "author",
-          "type": "string | null"
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "description",
-          "type": "string | null"
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "license",
-          "type": "string | null"
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
         },
         {
           "name": "debug",
-          "type": "string | null"
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "json-outline-schema-unready"
+          "name": "json-outline-schema-ready"
         },
         {
-          "name": "json-outline-schema-ready"
+          "name": "json-outline-schema-unready"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "json-outline-schema\n`JS based state management helper for the json outline schema spec`",
+      "name": "json-outline-schema",
       "description": "`json-outline-schema`",
-      "jsDoc": "/**\n * `json-outline-schema`\n * @customElement json-outline-schema\n * `JS based state management helper for the json outline schema spec`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "file",
@@ -196,42 +171,118 @@
         },
         {
           "name": "title",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"New site\""
         },
         {
           "name": "author",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "description",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "license",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"by-sa\""
         },
         {
           "name": "debug",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "false"
         }
       ],
       "properties": [
         {
-          "name": "tag",
+          "name": "html",
           "type": "string"
         },
         {
-          "name": "template",
-          "type": "any"
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
+        },
+        {
+          "name": "template"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
         },
         {
           "name": "metadata",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "items",
-          "type": "never[]"
+          "type": "never[]",
+          "default": "[]"
         },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    },
+    {
+      "name": "json-outline-schema",
+      "description": "`json-outline-schema`",
+      "attributes": [
         {
           "name": "file",
           "type": "string | null"
@@ -242,34 +293,98 @@
         },
         {
           "name": "title",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"New site\""
         },
         {
           "name": "author",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "description",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"\""
         },
         {
           "name": "license",
-          "type": "string | null"
+          "type": "string | null",
+          "default": "\"by-sa\""
         },
         {
           "name": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
+        },
+        {
+          "name": "template"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
           "type": "string | null"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "json-outline-schema-unready"
+          "name": "json-outline-schema-ready"
         },
         {
-          "name": "json-outline-schema-ready"
+          "name": "json-outline-schema-unready"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

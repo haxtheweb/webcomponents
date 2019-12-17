@@ -1,58 +1,110 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "name": "iconset-demo",
       "description": "`iconset-demo`",
-      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     },
     {
-      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "name": "iconset-demo",
       "description": "`iconset-demo`",
-      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "include-sets",
           "description": "a space-separated whitelist of iconsets by name",
-          "jsDoc": "/**\n       * a space-separated whitelist of iconsets by name\n       */",
           "type": "string"
         },
         {
           "name": "exclude-sets",
           "description": "a space-separated blacklist of iconsets by name",
-          "jsDoc": "/**\n       * a space-separated blacklist of iconsets by name\n       */",
           "type": "string"
         }
       ],
       "properties": [
         {
           "name": "includeSets",
+          "attribute": "include-sets",
           "description": "a space-separated whitelist of iconsets by name",
-          "jsDoc": "/**\n       * a space-separated whitelist of iconsets by name\n       */",
           "type": "string"
         },
         {
           "name": "excludeSets",
+          "attribute": "exclude-sets",
           "description": "a space-separated blacklist of iconsets by name",
-          "jsDoc": "/**\n       * a space-separated blacklist of iconsets by name\n       */",
           "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "iconset-demo\n`iterates through an iconset array to generate a demo of all of the icons`",
+      "name": "tag"
+    },
+    {
+      "name": "iconset-demo",
       "description": "`iconset-demo`",
-      "jsDoc": "/**\n * `iconset-demo`\n * @customElement iconset-demo\n * `iterates through an iconset array to generate a demo of all of the icons`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
     }
   ]
 }

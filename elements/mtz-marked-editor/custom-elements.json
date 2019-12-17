@@ -1,10 +1,9 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "name": "mtz-marked-editor",
       "description": "`mtz-marked-editor`",
-      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "autofocus",
@@ -16,30 +15,52 @@
         },
         {
           "name": "textarea-selector",
-          "type": "string"
+          "type": "string",
+          "default": "\"textarea\""
         }
       ],
       "properties": [
         {
           "name": "autofocus",
+          "attribute": "autofocus",
           "type": "boolean"
         },
         {
           "name": "readonly",
+          "attribute": "readonly",
           "type": "boolean"
         },
         {
           "name": "textareaSelector",
+          "attribute": "textarea-selector",
+          "type": "string",
+          "default": "\"textarea\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "name": "mtz-marked-editor",
       "description": "`mtz-marked-editor`",
-      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "autofocus",
@@ -51,30 +72,288 @@
         },
         {
           "name": "textarea-selector",
-          "type": "string"
+          "type": "string",
+          "default": "\"textarea\""
         }
       ],
       "properties": [
         {
           "name": "autofocus",
+          "attribute": "autofocus",
           "type": "boolean"
         },
         {
           "name": "readonly",
+          "attribute": "readonly",
           "type": "boolean"
         },
         {
           "name": "textareaSelector",
+          "attribute": "textarea-selector",
+          "type": "string",
+          "default": "\"textarea\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "mtz-marked-editor\n`Creates a textarea with common editor logic and can be controlled by UI elements`",
+      "name": "tag"
+    },
+    {
+      "name": "mtz-marked-control-generic-line",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "type": "boolean"
+        },
+        {
+          "name": "syntax-prefix",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "attribute": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "type": "boolean"
+        },
+        {
+          "name": "syntaxPrefix",
+          "attribute": "syntax-prefix",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "register-control"
+        }
+      ]
+    },
+    {
+      "name": "mtz-marked-control-generic-wrap",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "type": "boolean"
+        },
+        {
+          "name": "syntax-prefix",
+          "type": "string"
+        },
+        {
+          "name": "syntax-suffix",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "attribute": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "type": "boolean"
+        },
+        {
+          "name": "syntaxPrefix",
+          "attribute": "syntax-prefix",
+          "type": "string"
+        },
+        {
+          "name": "syntaxSuffix",
+          "attribute": "syntax-suffix",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "register-control"
+        }
+      ]
+    },
+    {
+      "name": "mtz-marked-control-link",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "keys",
+          "attribute": "keys",
+          "type": "string"
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "register-control"
+        }
+      ]
+    },
+    {
+      "name": "mtz-marked-editor",
       "description": "`mtz-marked-editor`",
-      "jsDoc": "/**\n * `mtz-marked-editor`\n * @customElement mtz-marked-editor\n * `Creates a textarea with common editor logic and can be controlled by UI elements`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "autofocus",
@@ -86,25 +365,48 @@
         },
         {
           "name": "textarea-selector",
-          "type": "string"
+          "type": "string",
+          "default": "\"textarea\""
         }
       ],
       "properties": [
         {
           "name": "autofocus",
+          "attribute": "autofocus",
           "type": "boolean"
         },
         {
           "name": "readonly",
+          "attribute": "readonly",
           "type": "boolean"
         },
         {
           "name": "textareaSelector",
+          "attribute": "textarea-selector",
+          "type": "string",
+          "default": "\"textarea\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

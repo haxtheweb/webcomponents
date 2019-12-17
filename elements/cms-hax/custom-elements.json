@@ -1,967 +1,1076 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "cms-hax",
       "description": "`cms-hax`",
-      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
       "attributes": [
         {
           "name": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "open-default",
-          "type": "boolean"
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-export-button",
-          "type": "boolean"
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hide-panel-ops",
-          "type": "boolean"
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-preferences-button",
-          "type": "boolean"
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "sync-body",
-          "type": "boolean"
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "body-value",
-          "type": "string"
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hide-message",
-          "type": "boolean"
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "allowedTags",
+          "attribute": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "updatePageData",
+          "attribute": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirectLocation",
+          "attribute": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirectOnSave",
+          "attribute": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "openDefault",
-          "type": "boolean"
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideExportButton",
-          "type": "boolean"
+          "attribute": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hidePanelOps",
-          "type": "boolean"
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hidePreferencesButton",
-          "type": "boolean"
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "attribute": "method",
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "syncBody",
-          "type": "boolean"
+          "attribute": "sync-body",
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "bodyValue",
-          "type": "string"
+          "attribute": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hideMessage",
-          "type": "boolean"
+          "attribute": "hide-message",
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "hax-body-content-changed"
         },
         {
-          "name": "hax-body-content-changed"
+          "name": "simple-toast-show"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "cms-hax",
       "description": "`cms-hax`",
-      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
       "attributes": [
         {
           "name": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "open-default",
-          "type": "boolean"
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-export-button",
-          "type": "boolean"
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hide-panel-ops",
-          "type": "boolean"
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-preferences-button",
-          "type": "boolean"
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "sync-body",
-          "type": "boolean"
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "body-value",
-          "type": "string"
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hide-message",
-          "type": "boolean"
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "allowedTags",
+          "attribute": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "updatePageData",
+          "attribute": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirectLocation",
+          "attribute": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirectOnSave",
+          "attribute": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "openDefault",
-          "type": "boolean"
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideExportButton",
-          "type": "boolean"
+          "attribute": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hidePanelOps",
-          "type": "boolean"
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hidePreferencesButton",
-          "type": "boolean"
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "attribute": "method",
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "syncBody",
-          "type": "boolean"
+          "attribute": "sync-body",
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "bodyValue",
-          "type": "string"
+          "attribute": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hideMessage",
-          "type": "boolean"
+          "attribute": "hide-message",
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "hax-body-content-changed"
         },
         {
-          "name": "hax-body-content-changed"
+          "name": "simple-toast-show"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "hax-body-content-changed"
+        },
+        {
+          "name": "simple-toast-show"
+        }
+      ]
     },
     {
       "name": "cms-block",
       "description": "`cms-block`\n`Render and process a  / block from a content management system.`",
-      "jsDoc": "/**\n * `cms-block`\n * `Render and process a  / block from a content management system.`\n * @customElement cms-block\n */",
       "attributes": [
         {
           "name": "block-module",
           "description": "Module supplying the block",
-          "jsDoc": "/**\n       * Module supplying the block\n       */",
           "type": "string"
         },
         {
           "name": "block-delta",
           "description": "A delta value relative to the module",
-          "jsDoc": "/**\n       * A delta value relative to the module\n       */",
           "type": "string"
         },
         {
           "name": "block-end-point",
           "description": "block end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * block end point updated, change the way we do processing.\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
           "description": "Body data which is just block with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just block with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "loading",
-          "type": "boolean"
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "block-prefix",
-          "type": "string"
+          "description": "Prefix for the block to be processed",
+          "type": "string",
+          "default": "\"[\""
         },
         {
           "name": "block-suffix",
-          "type": "string"
+          "description": "Suffix for the block to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
       ],
       "properties": [
         {
           "name": "blockModule",
+          "attribute": "block-module",
           "description": "Module supplying the block",
-          "jsDoc": "/**\n       * Module supplying the block\n       */",
           "type": "string"
         },
         {
           "name": "blockDelta",
+          "attribute": "block-delta",
           "description": "A delta value relative to the module",
-          "jsDoc": "/**\n       * A delta value relative to the module\n       */",
           "type": "string"
         },
         {
           "name": "blockEndPoint",
+          "attribute": "block-end-point",
           "description": "block end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * block end point updated, change the way we do processing.\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
+          "attribute": "bodyData",
           "description": "Body data which is just block with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just block with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "loading",
-          "type": "boolean"
+          "attribute": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "blockPrefix",
-          "type": "string"
+          "attribute": "block-prefix",
+          "description": "Prefix for the block to be processed",
+          "type": "string",
+          "default": "\"[\""
         },
         {
           "name": "blockSuffix",
-          "type": "string"
+          "attribute": "block-suffix",
+          "description": "Suffix for the block to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "cms-entity\n`Render and process a  / entity from a content management system.`",
+      "name": "cms-entity",
       "description": "`cms-entity`",
-      "jsDoc": "/**\n * `cms-entity`\n * @customElement cms-entity\n * `Render and process a  / entity from a content management system.`\n */",
       "attributes": [
-        {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
         {
           "name": "entity-type",
           "description": "Type of entity to load",
-          "jsDoc": "/**\n       * Type of entity to load\n       */",
           "type": "string"
         },
         {
           "name": "entity-id",
           "description": "ID of the item to load",
-          "jsDoc": "/**\n       * ID of the item to load\n       */",
           "type": "string"
         },
         {
           "name": "entity-display-mode",
           "description": "Display mode of the entity",
-          "jsDoc": "/**\n       * Display mode of the entity\n       */",
           "type": "string"
         },
         {
           "name": "entity-end-point",
           "description": "entity end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * entity end point updated, change the way we do processing.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "entity-prefix",
-          "description": "Prefix for the entity to be processed",
-          "jsDoc": "/**\n       * Prefix for the entity to be processed\n       */",
-          "type": "string"
-        },
-        {
-          "name": "entity-suffix",
-          "description": "Suffix for the entity to be processed",
-          "jsDoc": "/**\n       * Suffix for the entity to be processed\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
           "description": "Body data which is just entity with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just entity with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "entity-data",
           "description": "entity data from the end point.",
-          "jsDoc": "/**\n       * entity data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "entity-prefix",
+          "description": "Prefix for the entity to be processed",
+          "type": "string",
+          "default": "\"[\""
+        },
+        {
+          "name": "entity-suffix",
+          "description": "Suffix for the entity to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
       ],
       "properties": [
         {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
-        {
           "name": "entityType",
+          "attribute": "entity-type",
           "description": "Type of entity to load",
-          "jsDoc": "/**\n       * Type of entity to load\n       */",
           "type": "string"
         },
         {
           "name": "entityId",
+          "attribute": "entity-id",
           "description": "ID of the item to load",
-          "jsDoc": "/**\n       * ID of the item to load\n       */",
           "type": "string"
         },
         {
           "name": "entityDisplayMode",
+          "attribute": "entity-display-mode",
           "description": "Display mode of the entity",
-          "jsDoc": "/**\n       * Display mode of the entity\n       */",
           "type": "string"
         },
         {
           "name": "entityEndPoint",
+          "attribute": "entity-end-point",
           "description": "entity end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * entity end point updated, change the way we do processing.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "entityPrefix",
-          "description": "Prefix for the entity to be processed",
-          "jsDoc": "/**\n       * Prefix for the entity to be processed\n       */",
-          "type": "string"
-        },
-        {
-          "name": "entitySuffix",
-          "description": "Suffix for the entity to be processed",
-          "jsDoc": "/**\n       * Suffix for the entity to be processed\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
+          "attribute": "bodyData",
           "description": "Body data which is just entity with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just entity with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "entityData",
+          "attribute": "entity-data",
           "description": "entity data from the end point.",
-          "jsDoc": "/**\n       * entity data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "entityPrefix",
+          "attribute": "entity-prefix",
+          "description": "Prefix for the entity to be processed",
+          "type": "string",
+          "default": "\"[\""
+        },
+        {
+          "name": "entitySuffix",
+          "attribute": "entity-suffix",
+          "description": "Suffix for the entity to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "cms-token",
       "description": "`cms-token`\n`Render and process a shortcode / token from a content management system.`",
-      "jsDoc": "/**\n * `cms-token`\n * `Render and process a shortcode / token from a content management system.`\n * @microcopy - the mental model for this element\n * - cms   Content management system, while writen against Drupal should be\n *         abstract enough to work with just about anything.\n * - token a snippet / shortcode of logic to unpack and turn into something\n *         more complex. Usually of the form [actual:thing:here] or\n *         [[action|thing=stuff|here=place]] style. Either way, it's a\n *         snippet which will get sent to a backend and dynamically replaced.\n * @customElement cms-token\n */",
       "attributes": [
-        {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
         {
           "name": "token",
           "description": "Token changed (somehow) do the token processing.",
-          "jsDoc": "/**\n       * Token changed (somehow) do the token processing.\n       */",
           "type": "string"
         },
         {
           "name": "token-end-point",
           "description": "Token end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * Token end point updated, change the way we do processing.\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
           "description": "Body data which is just token with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just token with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "token-data",
           "description": "Token data from the end point.",
-          "jsDoc": "/**\n       * Token data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "token-prefix",
           "description": "Prefix for the token to be processed",
-          "jsDoc": "/**\n       * Prefix for the token to be processed\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"[\""
         },
         {
           "name": "token-suffix",
           "description": "Suffix for the token to be processed",
-          "jsDoc": "/**\n       * Suffix for the token to be processed\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"]\""
         }
       ],
       "properties": [
         {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
-        {
           "name": "token",
+          "attribute": "token",
           "description": "Token changed (somehow) do the token processing.",
-          "jsDoc": "/**\n       * Token changed (somehow) do the token processing.\n       */",
           "type": "string"
         },
         {
           "name": "tokenEndPoint",
+          "attribute": "token-end-point",
           "description": "Token end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * Token end point updated, change the way we do processing.\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
+          "attribute": "bodyData",
           "description": "Body data which is just token with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just token with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "tokenData",
+          "attribute": "token-data",
           "description": "Token data from the end point.",
-          "jsDoc": "/**\n       * Token data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "tokenPrefix",
+          "attribute": "token-prefix",
           "description": "Prefix for the token to be processed",
-          "jsDoc": "/**\n       * Prefix for the token to be processed\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"[\""
         },
         {
           "name": "tokenSuffix",
+          "attribute": "token-suffix",
           "description": "Suffix for the token to be processed",
-          "jsDoc": "/**\n       * Suffix for the token to be processed\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"]\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "cms-views\n`Render and process a  / views from a content management system.`",
+      "name": "cms-views",
       "description": "`cms-views`",
-      "jsDoc": "/**\n * `cms-views`\n * @customElement cms-views\n * `Render and process a  / views from a content management system.`\n */",
       "attributes": [
-        {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
         {
           "name": "views-name",
           "description": "Name of the views to render",
-          "jsDoc": "/**\n       * Name of the views to render\n       */",
           "type": "string"
         },
         {
           "name": "views-display",
           "description": "Display from the views",
-          "jsDoc": "/**\n       * Display from the views\n       */",
           "type": "string"
         },
         {
           "name": "views-end-point",
           "description": "views end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * views end point updated, change the way we do processing.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "views-prefix",
-          "description": "Prefix for the views to be processed",
-          "jsDoc": "/**\n       * Prefix for the views to be processed\n       */",
-          "type": "string"
-        },
-        {
-          "name": "views-suffix",
-          "description": "Suffix for the views to be processed",
-          "jsDoc": "/**\n       * Suffix for the views to be processed\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
           "description": "Body data which is just views with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just views with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "views-data",
           "description": "views data from the end point.",
-          "jsDoc": "/**\n       * views data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "views-prefix",
+          "description": "Prefix for the views to be processed",
+          "type": "string",
+          "default": "\"[\""
+        },
+        {
+          "name": "views-suffix",
+          "description": "Suffix for the views to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
       ],
       "properties": [
         {
-          "name": "loading",
-          "description": "Loading state",
-          "jsDoc": "/**\n       * Loading state\n       */",
-          "type": "boolean"
-        },
-        {
           "name": "viewsName",
+          "attribute": "views-name",
           "description": "Name of the views to render",
-          "jsDoc": "/**\n       * Name of the views to render\n       */",
           "type": "string"
         },
         {
           "name": "viewsDisplay",
+          "attribute": "views-display",
           "description": "Display from the views",
-          "jsDoc": "/**\n       * Display from the views\n       */",
           "type": "string"
         },
         {
           "name": "viewsEndPoint",
+          "attribute": "views-end-point",
           "description": "views end point updated, change the way we do processing.",
-          "jsDoc": "/**\n       * views end point updated, change the way we do processing.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "viewsPrefix",
-          "description": "Prefix for the views to be processed",
-          "jsDoc": "/**\n       * Prefix for the views to be processed\n       */",
-          "type": "string"
-        },
-        {
-          "name": "viewsSuffix",
-          "description": "Suffix for the views to be processed",
-          "jsDoc": "/**\n       * Suffix for the views to be processed\n       */",
           "type": "string"
         },
         {
           "name": "bodyData",
+          "attribute": "bodyData",
           "description": "Body data which is just views with some encapsulation.",
-          "jsDoc": "/**\n       * Body data which is just views with some encapsulation.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "viewsData",
+          "attribute": "views-data",
           "description": "views data from the end point.",
-          "jsDoc": "/**\n       * views data from the end point.\n       */",
           "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Loading state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "viewsPrefix",
+          "attribute": "views-prefix",
+          "description": "Prefix for the views to be processed",
+          "type": "string",
+          "default": "\"[\""
+        },
+        {
+          "name": "viewsSuffix",
+          "attribute": "views-suffix",
+          "description": "Suffix for the views to be processed",
+          "type": "string",
+          "default": "\"]\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "cms-hax",
       "description": "`cms-hax`",
-      "jsDoc": "/**\n * `cms-hax`\n * @customElement cms-hax\n * @demo ../../demo/index.html\n */",
       "attributes": [
         {
           "name": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "open-default",
-          "type": "boolean"
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-export-button",
-          "type": "boolean"
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hide-panel-ops",
-          "type": "boolean"
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-preferences-button",
-          "type": "boolean"
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "sync-body",
-          "type": "boolean"
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "body-value",
-          "type": "string"
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hide-message",
-          "type": "boolean"
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
           "name": "allowedTags",
+          "attribute": "allowedTags",
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
-          "jsDoc": "/**\n       * allowed Tags, usually as dictated by the input filtering\n       * layer of the backend system that HAX is riding on.\n       * While not fullproof, this at least will enforce front-end\n       * filtering to match what actually is going to be allowed\n       * to be saved in the first place.\n       */",
-          "type": "any[]"
+          "type": "array"
         },
         {
           "name": "endPoint",
+          "attribute": "end-point",
           "description": "Location to save content to.",
-          "jsDoc": "/**\n       * Location to save content to.\n       */",
           "type": "string"
         },
         {
           "name": "updatePageData",
+          "attribute": "udpate-page-data",
           "description": "Page data, body of text as a string.",
-          "jsDoc": "/**\n       * Page data, body of text as a string.\n       */",
           "type": "string"
         },
         {
           "name": "appStoreConnection",
+          "attribute": "app-store-connection",
           "description": "Connection object for talking to an app store.",
-          "jsDoc": "/**\n       * Connection object for talking to an app store.\n       */",
           "type": "string"
         },
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "State of the panel",
-          "jsDoc": "/**\n       * State of the panel\n       */",
           "type": "boolean"
         },
         {
           "name": "redirectLocation",
+          "attribute": "redirect-location",
           "description": "Optional URL to redirect to once we save.",
-          "jsDoc": "/**\n       * Optional URL to redirect to once we save.\n       */",
           "type": "string"
         },
         {
           "name": "redirectOnSave",
+          "attribute": "redirect-on-save",
           "description": "Option to redirect once we save successfully",
-          "jsDoc": "/**\n       * Option to redirect once we save successfully\n       */",
           "type": "boolean"
         },
         {
           "name": "activeHaxBody",
+          "attribute": "activeHaxBody",
           "description": "Reference to activeBody.",
-          "jsDoc": "/**\n       * Reference to activeBody.\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "openDefault",
-          "type": "boolean"
+          "attribute": "open-default",
+          "description": "Default the panel to open",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideExportButton",
-          "type": "boolean"
+          "attribute": "hide-export-button",
+          "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
+          "type": "boolean",
+          "default": "true"
         },
         {
           "name": "hidePanelOps",
-          "type": "boolean"
+          "attribute": "hide-panel-ops",
+          "description": "Hide the panel operations (save and cancel),",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hidePreferencesButton",
-          "type": "boolean"
+          "attribute": "hide-preferences-button",
+          "description": "Hide preferences button",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "align",
-          "type": "string"
+          "attribute": "align",
+          "description": "Direction to align the hax edit panel",
+          "type": "string",
+          "default": "\"right\""
         },
         {
           "name": "method",
-          "type": "string"
+          "attribute": "method",
+          "description": "Method to save content.",
+          "type": "string",
+          "default": "\"PUT\""
         },
         {
           "name": "syncBody",
-          "type": "boolean"
+          "attribute": "sync-body",
+          "description": "syncBody",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "bodyValue",
-          "type": "string"
+          "attribute": "body-value",
+          "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "hideMessage",
-          "type": "boolean"
+          "attribute": "hide-message",
+          "description": "Flag to hide the toast.",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "events": [
         {
-          "name": "simple-toast-show"
+          "name": "hax-body-content-changed"
         },
         {
-          "name": "hax-body-content-changed"
+          "name": "simple-toast-show"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

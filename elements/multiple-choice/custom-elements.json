@@ -1,614 +1,658 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "multiple-choice",
       "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
-      "jsDoc": "/**\n * `multiple-choice`\n * `Ask the user a question from a set of possible answers.`\n * @demo demo/index.html\n * @customElement multiple-choice\n */",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
           "name": "positionTarget",
-          "type": "{}"
-        },
-        {
-          "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reset-label",
-          "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "object"
         },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "question",
-          "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
-        },
-        {
-          "name": "answers",
-          "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "correct-text",
-          "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
           "type": "string"
         },
         {
           "name": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
+          "type": "boolean",
+          "default": "false"
+        },
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
-          "name": "positionTarget",
-          "type": "{}"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "disabled",
           "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "singleOption",
+          "name": "single-option",
           "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "checkLabel",
+          "name": "check-label",
           "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Check answer\""
         },
         {
-          "name": "resetLabel",
+          "name": "reset-label",
           "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Reset\""
         },
         {
-          "name": "relatedResource",
-          "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hideTitle",
+          "name": "hide-title",
           "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "question",
           "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "answers",
           "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "displayedAnswers",
           "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "correctText",
+          "name": "correct-text",
           "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Great job!\""
         },
         {
-          "name": "incorrectText",
+          "name": "incorrect-text",
           "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Better luck next time!\""
         },
         {
-          "name": "quizName",
+          "name": "quiz-name",
           "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "positionTarget",
+          "attribute": "positionTarget",
+          "type": "object"
+        },
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
           "type": "string"
         },
         {
           "name": "randomize",
+          "attribute": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideButtons",
+          "attribute": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Support disabling interaction with the entire board",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "singleOption",
+          "attribute": "single-option",
+          "description": "Simple option, otherwise allow multiple via checkbox",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "checkLabel",
+          "attribute": "check-label",
+          "description": "Text of the label to check your answer",
+          "type": "string",
+          "default": "\"Check answer\""
+        },
+        {
+          "name": "resetLabel",
+          "attribute": "reset-label",
+          "description": "Text of the reset button",
+          "type": "string",
+          "default": "\"Reset\""
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "Flag to hide the title",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question to ask",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "answers",
+          "attribute": "answers",
+          "description": "Array of possible answers",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "displayedAnswers",
+          "attribute": "displayedAnswers",
+          "description": "Displayed Answer set.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "correctText",
+          "attribute": "correct-text",
+          "description": "Correct answer text to display",
+          "type": "string",
+          "default": "\"Great job!\""
+        },
+        {
+          "name": "incorrectText",
+          "attribute": "incorrect-text",
+          "description": "Incorrect answer text to display",
+          "type": "string",
+          "default": "\"Better luck next time!\""
+        },
+        {
+          "name": "quizName",
+          "attribute": "quiz-name",
+          "description": "Name of the quiz - hardcoded for now from HTML",
+          "type": "string",
+          "default": "\"default\""
         }
       ],
       "events": [
         {
           "name": "user-engagement"
         }
-      ],
-      "slots": []
+      ]
     },
     {
       "name": "multiple-choice",
       "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
-      "jsDoc": "/**\n * `multiple-choice`\n * `Ask the user a question from a set of possible answers.`\n * @demo demo/index.html\n * @customElement multiple-choice\n */",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
           "name": "positionTarget",
-          "type": "{}"
-        },
-        {
-          "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reset-label",
-          "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "object"
         },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "question",
-          "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
-        },
-        {
-          "name": "answers",
-          "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "correct-text",
-          "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
           "type": "string"
         },
         {
           "name": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
+          "type": "boolean",
+          "default": "false"
+        },
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
-          "name": "positionTarget",
-          "type": "{}"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "disabled",
           "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "singleOption",
+          "name": "single-option",
           "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "checkLabel",
+          "name": "check-label",
           "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Check answer\""
         },
         {
-          "name": "resetLabel",
+          "name": "reset-label",
           "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Reset\""
         },
         {
-          "name": "relatedResource",
-          "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hideTitle",
+          "name": "hide-title",
           "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "question",
           "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "answers",
           "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "displayedAnswers",
           "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "correctText",
+          "name": "correct-text",
           "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Great job!\""
         },
         {
-          "name": "incorrectText",
+          "name": "incorrect-text",
           "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Better luck next time!\""
         },
         {
-          "name": "quizName",
+          "name": "quiz-name",
           "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "positionTarget",
+          "attribute": "positionTarget",
+          "type": "object"
+        },
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
           "type": "string"
         },
         {
           "name": "randomize",
+          "attribute": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideButtons",
+          "attribute": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Support disabling interaction with the entire board",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "singleOption",
+          "attribute": "single-option",
+          "description": "Simple option, otherwise allow multiple via checkbox",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "checkLabel",
+          "attribute": "check-label",
+          "description": "Text of the label to check your answer",
+          "type": "string",
+          "default": "\"Check answer\""
+        },
+        {
+          "name": "resetLabel",
+          "attribute": "reset-label",
+          "description": "Text of the reset button",
+          "type": "string",
+          "default": "\"Reset\""
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "Flag to hide the title",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question to ask",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "answers",
+          "attribute": "answers",
+          "description": "Array of possible answers",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "displayedAnswers",
+          "attribute": "displayedAnswers",
+          "description": "Displayed Answer set.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "correctText",
+          "attribute": "correct-text",
+          "description": "Correct answer text to display",
+          "type": "string",
+          "default": "\"Great job!\""
+        },
+        {
+          "name": "incorrectText",
+          "attribute": "incorrect-text",
+          "description": "Incorrect answer text to display",
+          "type": "string",
+          "default": "\"Better luck next time!\""
+        },
+        {
+          "name": "quizName",
+          "attribute": "quiz-name",
+          "description": "Name of the quiz - hardcoded for now from HTML",
+          "type": "string",
+          "default": "\"default\""
         }
       ],
       "events": [
         {
           "name": "user-engagement"
         }
-      ],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "user-engagement"
+        }
+      ]
     },
     {
       "name": "multiple-choice",
       "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
-      "jsDoc": "/**\n * `multiple-choice`\n * `Ask the user a question from a set of possible answers.`\n * @demo demo/index.html\n * @customElement multiple-choice\n */",
       "attributes": [
         {
-          "name": "title",
-          "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
           "name": "positionTarget",
-          "type": "{}"
-        },
-        {
-          "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "single-option",
-          "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
-        },
-        {
-          "name": "reset-label",
-          "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "object"
         },
         {
           "name": "related-resource",
           "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "question",
-          "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
-        },
-        {
-          "name": "answers",
-          "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
-        },
-        {
-          "name": "correct-text",
-          "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
-        },
-        {
-          "name": "quiz-name",
-          "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
           "type": "string"
         },
         {
           "name": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
+          "type": "boolean",
+          "default": "false"
+        },
         {
           "name": "title",
           "description": "Title",
-          "jsDoc": "/**\n       * Title\n       */",
-          "type": "string"
-        },
-        {
-          "name": "positionTarget",
-          "type": "{}"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "disabled",
           "description": "Support disabling interaction with the entire board",
-          "jsDoc": "/**\n       * Support disabling interaction with the entire board\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "singleOption",
+          "name": "single-option",
           "description": "Simple option, otherwise allow multiple via checkbox",
-          "jsDoc": "/**\n       * Simple option, otherwise allow multiple via checkbox\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
-          "name": "checkLabel",
+          "name": "check-label",
           "description": "Text of the label to check your answer",
-          "jsDoc": "/**\n       * Text of the label to check your answer\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Check answer\""
         },
         {
-          "name": "resetLabel",
+          "name": "reset-label",
           "description": "Text of the reset button",
-          "jsDoc": "/**\n       * Text of the reset button\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Reset\""
         },
         {
-          "name": "relatedResource",
-          "description": "Related Resource ID",
-          "jsDoc": "/**\n       * Related Resource ID\n       */",
-          "type": "string"
-        },
-        {
-          "name": "hideTitle",
+          "name": "hide-title",
           "description": "Flag to hide the title",
-          "jsDoc": "/**\n       * Flag to hide the title\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "question",
           "description": "Question to ask",
-          "jsDoc": "/**\n       * Question to ask\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "answers",
           "description": "Array of possible answers",
-          "jsDoc": "/**\n       * Array of possible answers\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
           "name": "displayedAnswers",
           "description": "Displayed Answer set.",
-          "jsDoc": "/**\n       * Displayed Answer set.\n       */",
-          "type": "any[]"
+          "type": "array",
+          "default": "[]"
         },
         {
-          "name": "correctText",
+          "name": "correct-text",
           "description": "Correct answer text to display",
-          "jsDoc": "/**\n       * Correct answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Great job!\""
         },
         {
-          "name": "incorrectText",
+          "name": "incorrect-text",
           "description": "Incorrect answer text to display",
-          "jsDoc": "/**\n       * Incorrect answer text to display\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"Better luck next time!\""
         },
         {
-          "name": "quizName",
+          "name": "quiz-name",
           "description": "Name of the quiz - hardcoded for now from HTML",
-          "jsDoc": "/**\n       * Name of the quiz - hardcoded for now from HTML\n       */",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "positionTarget",
+          "attribute": "positionTarget",
+          "type": "object"
+        },
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
           "type": "string"
         },
         {
           "name": "randomize",
+          "attribute": "randomize",
           "description": "Randomize the display of the answers",
-          "jsDoc": "/**\n       * Randomize the display of the answers\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "hideButtons",
+          "attribute": "hide-buttons",
           "description": "flag to hide buttons",
-          "jsDoc": "/**\n       * flag to hide buttons\n       */",
-          "type": "boolean"
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Support disabling interaction with the entire board",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "singleOption",
+          "attribute": "single-option",
+          "description": "Simple option, otherwise allow multiple via checkbox",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "checkLabel",
+          "attribute": "check-label",
+          "description": "Text of the label to check your answer",
+          "type": "string",
+          "default": "\"Check answer\""
+        },
+        {
+          "name": "resetLabel",
+          "attribute": "reset-label",
+          "description": "Text of the reset button",
+          "type": "string",
+          "default": "\"Reset\""
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "Flag to hide the title",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question to ask",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "answers",
+          "attribute": "answers",
+          "description": "Array of possible answers",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "displayedAnswers",
+          "attribute": "displayedAnswers",
+          "description": "Displayed Answer set.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "correctText",
+          "attribute": "correct-text",
+          "description": "Correct answer text to display",
+          "type": "string",
+          "default": "\"Great job!\""
+        },
+        {
+          "name": "incorrectText",
+          "attribute": "incorrect-text",
+          "description": "Incorrect answer text to display",
+          "type": "string",
+          "default": "\"Better luck next time!\""
+        },
+        {
+          "name": "quizName",
+          "attribute": "quiz-name",
+          "description": "Name of the quiz - hardcoded for now from HTML",
+          "type": "string",
+          "default": "\"default\""
         }
       ],
       "events": [
         {
           "name": "user-engagement"
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

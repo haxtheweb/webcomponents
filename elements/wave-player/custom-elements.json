@@ -1,326 +1,398 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "wave-player\n`A player for visualizing a sound file`",
+      "name": "wave-player",
       "description": "`wave-player`",
-      "jsDoc": "/**\n * `wave-player`\n * @customElement wave-player\n * `A player for visualizing a sound file`\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#CFD8DC\""
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
+          "attribute": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
+          "attribute": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
+          "attribute": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
+          "attribute": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
+          "attribute": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
+          "attribute": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "wave-player\n`A player for visualizing a sound file`",
+      "name": "wave-player",
       "description": "`wave-player`",
-      "jsDoc": "/**\n * `wave-player`\n * @customElement wave-player\n * `A player for visualizing a sound file`\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#CFD8DC\""
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
+          "attribute": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
+          "attribute": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
+          "attribute": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
+          "attribute": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
+          "attribute": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
+          "attribute": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "wave-player\n`A player for visualizing a sound file`",
+      "name": "tag"
+    },
+    {
+      "name": "wave-player",
       "description": "`wave-player`",
-      "jsDoc": "/**\n * `wave-player`\n * @customElement wave-player\n * `A player for visualizing a sound file`\n *\n\n * @polymer\n * @polymerLegacy\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#CFD8DC\""
         }
       ],
       "properties": [
         {
           "name": "src",
+          "attribute": "src",
           "description": "The source of the audio file to be played",
-          "jsDoc": "/**\n       * The source of the audio file to be played\n       *\n       * @attribute src\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "title",
+          "attribute": "title",
           "description": "The main (bold) title",
-          "jsDoc": "/**\n       * The main (bold) title\n       *\n       * @attribute title\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "subtitle",
+          "attribute": "subtitle",
           "description": "The smaller subtitle, for chapter heading or composer.",
-          "jsDoc": "/**\n       * The smaller subtitle, for chapter heading or composer.\n       *\n       * @attribute subtitle\n       * @type String\n       * @default NULL\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"NULL\""
         },
         {
           "name": "coverart",
+          "attribute": "coverart",
           "description": "The sourse for cover art",
-          "jsDoc": "/**\n       * The sourse for cover art\n       *\n       * @attribute coverart\n       * @type String\n       * @default art.jpg\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"art.jpg\""
         },
         {
           "name": "wavesurfer",
+          "attribute": "wavesurfer",
           "description": "container for the wave object",
-          "jsDoc": "/**\n       * container for the wave object\n       *\n       * @attribute wavesurfer\n       * @type Object\n       */",
-          "type": "{}"
+          "type": "object"
         },
         {
           "name": "lean",
+          "attribute": "lean",
           "description": "Determines if the FOB is on the left or the right",
-          "jsDoc": "/**\n       * Determines if the FOB is on the left or the right\n       *\n       * @attribute lean\n       * @type String\n       * @default left\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"left\""
         },
         {
           "name": "wavecolor",
+          "attribute": "wavecolor",
           "description": "Color of the Wave",
-          "jsDoc": "/**\n       * Color of the Wave\n       *\n       * @attribute wavecolor\n       * @type String\n       * @default #ffffff\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "progresscolor",
+          "attribute": "progresscolor",
           "description": "Color of the completed section of the wave",
-          "jsDoc": "/**\n       * Color of the completed section of the wave\n       *\n       * @attribute progresscolor\n       * @type String\n       * @default #CFD8DC\n       */",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
           "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

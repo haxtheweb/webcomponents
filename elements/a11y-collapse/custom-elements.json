@@ -1,485 +1,607 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "a11y-collapse\nan accessible expand collapse\n\n### Styling\n`<a11y-collapse>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset",
+      "name": "a11y-collapse",
       "description": "`a11y-collapse`",
-      "jsDoc": "/**\n * `a11y-collapse`\n * @customElement a11y-collapse\n * an accessible expand collapse\n * \n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/group.html collapse groups\n */",
       "attributes": [
         {
           "name": "accordion",
-          "type": "boolean"
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean"
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
         },
         {
           "name": "icon-expanded",
-          "type": "null"
+          "description": "icon when expanded",
+          "type": "string"
         },
         {
           "name": "label",
-          "type": "string"
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
         },
         {
           "name": "label-expanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
+          "description": "optional label for the button when expanded",
           "type": "string"
         },
         {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
           "name": "tooltip-expanded",
-          "type": "null"
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "properties": [
         {
           "name": "accordion",
-          "type": "boolean"
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean"
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
         },
         {
           "name": "iconExpanded",
-          "type": "null"
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
         },
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
         },
         {
           "name": "labelExpanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
           "type": "string"
         },
         {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
           "name": "tooltipExpanded",
-          "type": "null"
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "events": [
         {
-          "name": "a11y-collapse-click",
-          "description": "Fires when clicked.",
-          "jsDoc": "/**\n       * Fires when clicked.\n       *\n       * @event a11y-collapse-click\n       */"
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed.",
-          "jsDoc": "/**\n       * Fires when collapsed.\n       *\n       * @event collapse\n       */"
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded.",
-          "jsDoc": "/**\n       * Fires when expanded.\n       *\n       * @event expand\n       */"
-        },
-        {
-          "name": "a11y-collapse-toggle",
-          "description": "Deprecated. Fires when toggled.",
-          "jsDoc": "/**\n     * Deprecated. Fires when toggled.\n     *\n     * @event a11y-collapse-toggle\n     */"
+          "name": "a11y-collapse-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
           "name": "toggle",
-          "description": "Fires when toggled.",
-          "jsDoc": "/**\n     * Fires when toggled.\n     *\n     * @event toggle\n     */"
+          "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it.",
-          "jsDoc": "/**\n     * Fires when detatched, so that parent radio group will no longer listen for it.\n     *\n     * @event a11y-collapse-detached\n     */"
+          "name": "a11y-collapse-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-collapse-click",
+          "description": "Fires when clicked."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "a11y-collapse\nan accessible expand collapse\n\n### Styling\n`<a11y-collapse>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset",
+      "name": "a11y-collapse",
       "description": "`a11y-collapse`",
-      "jsDoc": "/**\n * `a11y-collapse`\n * @customElement a11y-collapse\n * an accessible expand collapse\n * \n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/group.html collapse groups\n */",
       "attributes": [
         {
           "name": "accordion",
-          "type": "boolean"
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean"
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icon",
-          "type": "string"
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
         },
         {
           "name": "icon-expanded",
-          "type": "null"
+          "description": "icon when expanded",
+          "type": "string"
         },
         {
           "name": "label",
-          "type": "string"
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
         },
         {
           "name": "label-expanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
+          "description": "optional label for the button when expanded",
           "type": "string"
         },
         {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
           "name": "tooltip-expanded",
-          "type": "null"
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "properties": [
         {
           "name": "accordion",
-          "type": "boolean"
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean"
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
         },
         {
           "name": "iconExpanded",
-          "type": "null"
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
         },
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
         },
         {
           "name": "labelExpanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
           "type": "string"
         },
         {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
           "name": "tooltipExpanded",
-          "type": "null"
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "events": [
         {
-          "name": "a11y-collapse-click",
-          "description": "Fires when clicked.",
-          "jsDoc": "/**\n       * Fires when clicked.\n       *\n       * @event a11y-collapse-click\n       */"
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed.",
-          "jsDoc": "/**\n       * Fires when collapsed.\n       *\n       * @event collapse\n       */"
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded.",
-          "jsDoc": "/**\n       * Fires when expanded.\n       *\n       * @event expand\n       */"
-        },
-        {
-          "name": "a11y-collapse-toggle",
-          "description": "Deprecated. Fires when toggled.",
-          "jsDoc": "/**\n     * Deprecated. Fires when toggled.\n     *\n     * @event a11y-collapse-toggle\n     */"
+          "name": "a11y-collapse-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
           "name": "toggle",
-          "description": "Fires when toggled.",
-          "jsDoc": "/**\n     * Fires when toggled.\n     *\n     * @event toggle\n     */"
+          "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it.",
-          "jsDoc": "/**\n     * Fires when detatched, so that parent radio group will no longer listen for it.\n     *\n     * @event a11y-collapse-detached\n     */"
+          "name": "a11y-collapse-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-collapse-click",
+          "description": "Fires when clicked."
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "a11y-collapse-group\na group of `a11y-collapse` elements\n\n### Styling\n`<a11y-collapse-group>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0",
+      "name": "a11y-collapse-group",
       "description": "`a11y-collapse-group`",
-      "jsDoc": "/**\n * `a11y-collapse-group`\n * @customElement a11y-collapse-group\n * a group of `a11y-collapse` elements\n * \n### Styling\n\n`<a11y-collapse-group>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0\n *\n\n * @extends A11yCollapse\n * @see ../a11y-collapse.js\n * @demo ./demo/group.html collapse groups\n */",
       "attributes": [
-        {
-          "name": "accordion",
-          "type": "null"
-        },
-        {
-          "name": "disabled",
-          "type": "null"
-        },
-        {
-          "name": "expanded",
-          "type": "null"
-        },
-        {
-          "name": "icon",
-          "type": "null"
-        },
-        {
-          "name": "icon-expanded",
-          "type": "null"
-        },
-        {
-          "name": "label",
-          "type": "null"
-        },
-        {
-          "name": "label-expanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
-          "type": "null"
-        },
-        {
-          "name": "tooltip-expanded",
-          "type": "null"
-        },
         {
           "name": "global-options",
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
-          "jsDoc": "/**\n       * an array of globalProperties to override every a11y-collapse item\n       * For example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n       */",
-          "type": "{}"
+          "type": "object",
+          "default": "{}"
         },
         {
           "name": "radio",
           "description": "is every a11y-collapse item radio button?",
-          "jsDoc": "/**\n       * is every a11y-collapse item radio button?\n       */",
-          "type": "boolean"
-        }
-      ],
-      "properties": [
+          "type": "boolean",
+          "default": "false"
+        },
         {
           "name": "accordion",
-          "type": "null"
+          "description": "accordion-style: whole header acts as button? default is just icon."
         },
         {
           "name": "disabled",
-          "type": "null"
+          "description": "is disabled?"
         },
         {
           "name": "expanded",
-          "type": "null"
+          "description": "icon when expanded"
         },
         {
           "name": "icon",
-          "type": "null"
-        },
-        {
-          "name": "iconExpanded",
-          "type": "null"
-        },
-        {
-          "name": "label",
-          "type": "null"
-        },
-        {
-          "name": "labelExpanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
-          "type": "null"
-        },
-        {
-          "name": "tooltipExpanded",
-          "type": "null"
-        },
-        {
-          "name": "globalOptions",
-          "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
-          "jsDoc": "/**\n       * an array of globalProperties to override every a11y-collapse item\n       * For example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n       */",
-          "type": "{}"
-        },
-        {
-          "name": "radio",
-          "description": "is every a11y-collapse item radio button?",
-          "jsDoc": "/**\n       * is every a11y-collapse item radio button?\n       */",
-          "type": "boolean"
-        }
-      ],
-      "events": [
-        {
-          "name": "a11y-collapse-click",
-          "description": "Fires when clicked.",
-          "jsDoc": "/**\n       * Fires when clicked.\n       *\n       * @event a11y-collapse-click\n       */"
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed.",
-          "jsDoc": "/**\n       * Fires when collapsed.\n       *\n       * @event collapse\n       */"
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded.",
-          "jsDoc": "/**\n       * Fires when expanded.\n       *\n       * @event expand\n       */"
-        },
-        {
-          "name": "a11y-collapse-toggle",
-          "description": "Deprecated. Fires when toggled.",
-          "jsDoc": "/**\n     * Deprecated. Fires when toggled.\n     *\n     * @event a11y-collapse-toggle\n     */"
-        },
-        {
-          "name": "toggle",
-          "description": "Fires when toggled.",
-          "jsDoc": "/**\n     * Fires when toggled.\n     *\n     * @event toggle\n     */"
-        },
-        {
-          "name": "a11y-collapse-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it.",
-          "jsDoc": "/**\n     * Fires when detatched, so that parent radio group will no longer listen for it.\n     *\n     * @event a11y-collapse-detached\n     */"
-        }
-      ],
-      "slots": []
-    },
-    {
-      "name": "a11y-collapse\nan accessible expand collapse\n\n### Styling\n`<a11y-collapse>` provides the following custom properties\nfor styling:\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset",
-      "description": "`a11y-collapse`",
-      "jsDoc": "/**\n * `a11y-collapse`\n * @customElement a11y-collapse\n * an accessible expand collapse\n * \n### Styling\n\n`<a11y-collapse>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--a11y-collapse-border` | border around a11y-collapse | 1px solid\n`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`\n`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px\n`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`\n`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding\n`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border\n`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold\n`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset\n`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset\n *\n\n * @demo ./demo/index.html demo\n * @demo ./demo/group.html collapse groups\n */",
-      "attributes": [
-        {
-          "name": "accordion",
-          "type": "boolean"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "expanded",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "type": "string"
+          "description": "icon for the button"
         },
         {
           "name": "icon-expanded",
-          "type": "null"
+          "description": "icon when expanded"
         },
         {
           "name": "label",
-          "type": "string"
+          "description": "label for the button"
         },
         {
           "name": "label-expanded",
-          "type": "null"
+          "description": "optional label for the button when expanded"
         },
         {
           "name": "tooltip",
-          "type": "string"
+          "description": "tooltip for the button"
         },
         {
           "name": "tooltip-expanded",
-          "type": "null"
+          "description": "optional tooltip for the button when expanded"
+        }
+      ],
+      "properties": [
+        {
+          "name": "globalOptions",
+          "attribute": "global-options",
+          "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "radio",
+          "attribute": "radio",
+          "description": "is every a11y-collapse item radio button?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accordion",
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon."
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is disabled?"
+        },
+        {
+          "name": "expanded",
+          "attribute": "expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for the button"
+        },
+        {
+          "name": "iconExpanded",
+          "attribute": "icon-expanded",
+          "description": "icon when expanded"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button"
+        },
+        {
+          "name": "labelExpanded",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button"
+        },
+        {
+          "name": "tooltipExpanded",
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-collapse-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "toggle",
+          "description": "Fires when toggled."
+        },
+        {
+          "name": "a11y-collapse-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-collapse-click",
+          "description": "Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "a11y-collapse-attached"
+        },
+        {
+          "name": "a11y-collapse-detached"
+        },
+        {
+          "name": "toggle"
+        },
+        {
+          "name": "a11y-collapse-toggle"
+        },
+        {
+          "name": "expand"
+        },
+        {
+          "name": "collapse"
+        },
+        {
+          "name": "a11y-collapse-click"
+        }
+      ]
+    },
+    {
+      "name": "a11y-collapse",
+      "description": "`a11y-collapse`",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
+        },
+        {
+          "name": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "properties": [
         {
           "name": "accordion",
-          "type": "boolean"
+          "attribute": "accordion",
+          "description": "accordion-style: whole header acts as button? default is just icon.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean"
+          "attribute": "disabled",
+          "description": "is disabled?",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean"
+          "attribute": "expanded",
+          "description": "icon when expanded",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "icon",
-          "type": "string"
+          "attribute": "icon",
+          "description": "icon for the button",
+          "type": "string",
+          "default": "\"expand-more\""
         },
         {
           "name": "iconExpanded",
-          "type": "null"
+          "attribute": "icon-expanded",
+          "description": "icon when expanded",
+          "type": "string"
         },
         {
           "name": "label",
-          "type": "string"
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"expand/collapse\""
         },
         {
           "name": "labelExpanded",
-          "type": "null"
-        },
-        {
-          "name": "tooltip",
+          "attribute": "label-expanded",
+          "description": "optional label for the button when expanded",
           "type": "string"
         },
         {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "tooltip for the button",
+          "type": "string",
+          "default": "\"toggle expand/collapse\""
+        },
+        {
           "name": "tooltipExpanded",
-          "type": "null"
+          "attribute": "tooltip-expanded",
+          "description": "optional tooltip for the button when expanded",
+          "type": "string"
         }
       ],
       "events": [
         {
-          "name": "a11y-collapse-click",
-          "description": "Fires when clicked.",
-          "jsDoc": "/**\n       * Fires when clicked.\n       *\n       * @event a11y-collapse-click\n       */"
-        },
-        {
-          "name": "collapse",
-          "description": "Fires when collapsed.",
-          "jsDoc": "/**\n       * Fires when collapsed.\n       *\n       * @event collapse\n       */"
-        },
-        {
-          "name": "expand",
-          "description": "Fires when expanded.",
-          "jsDoc": "/**\n       * Fires when expanded.\n       *\n       * @event expand\n       */"
-        },
-        {
-          "name": "a11y-collapse-toggle",
-          "description": "Deprecated. Fires when toggled.",
-          "jsDoc": "/**\n     * Deprecated. Fires when toggled.\n     *\n     * @event a11y-collapse-toggle\n     */"
+          "name": "a11y-collapse-detached",
+          "description": "Fires when detatched, so that parent radio group will no longer listen for it."
         },
         {
           "name": "toggle",
-          "description": "Fires when toggled.",
-          "jsDoc": "/**\n     * Fires when toggled.\n     *\n     * @event toggle\n     */"
+          "description": "Fires when toggled."
         },
         {
-          "name": "a11y-collapse-detached",
-          "description": "Fires when detatched, so that parent radio group will no longer listen for it.",
-          "jsDoc": "/**\n     * Fires when detatched, so that parent radio group will no longer listen for it.\n     *\n     * @event a11y-collapse-detached\n     */"
+          "name": "a11y-collapse-toggle",
+          "description": "Deprecated. Fires when toggled."
+        },
+        {
+          "name": "expand",
+          "description": "Fires when expanded."
+        },
+        {
+          "name": "collapse",
+          "description": "Fires when collapsed."
+        },
+        {
+          "name": "a11y-collapse-click",
+          "description": "Fires when clicked."
         }
-      ],
-      "slots": []
+      ]
     }
   ]
 }

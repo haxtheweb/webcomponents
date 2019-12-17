@@ -1,207 +1,269 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "name": "filtered-image",
       "description": "`filtered-image`",
-      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "src",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "color",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "strength",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "name": "filtered-image",
       "description": "`filtered-image`",
-      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "color",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "strength",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         }
       ],
       "properties": [
         {
           "name": "src",
-          "type": "string"
+          "attribute": "src",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "attribute": "height",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "attribute": "width",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "color",
-          "type": "string"
+          "attribute": "color",
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "strength",
-          "type": "number"
+          "attribute": "strength",
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "contrast",
-          "type": "number"
+          "attribute": "contrast",
+          "type": "number",
+          "default": "0"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "filtered-image-filters\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "name": "tag"
+    },
+    {
+      "name": "filtered-image-filters",
       "description": "`filtered-image-filters`",
-      "jsDoc": "/**\n * `filtered-image-filters`\n * @customElement filtered-image-filters\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "src",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "filter1",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "filters",
-          "type": "any[]"
+          "type": "array",
+          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
         }
       ],
       "properties": [
         {
           "name": "src",
-          "type": "string"
+          "attribute": "src",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "attribute": "height",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "attribute": "width",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "filter1",
-          "type": "string"
+          "attribute": "filter1",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "filters",
-          "type": "any[]"
+          "attribute": "filters",
+          "type": "array",
+          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "filtered-image\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`",
+      "name": "filtered-image",
       "description": "`filtered-image`",
-      "jsDoc": "/**\n * `filtered-image`\n * @customElement filtered-image\n * `An image using an SVG filter. Can be used to make background images have more contrast with text.`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n * @demo demo/filters.html Filters\n */",
-      "attributes": [],
       "properties": [
         {
           "name": "src",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "alt",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "height",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "width",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "color",
-          "type": "string"
+          "type": "string",
+          "default": "\"#ffffff\""
         },
         {
           "name": "strength",
-          "type": "number"
+          "type": "number",
+          "default": "1"
         },
         {
           "name": "contrast",
-          "type": "number"
+          "type": "number",
+          "default": "0"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

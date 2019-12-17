@@ -1,218 +1,184 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "place-holder\nPlaceholder for a piece of media in the future",
+      "name": "place-holder",
       "description": "`place-holder`",
-      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
       "attributes": [
         {
           "name": "iconFromType",
           "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
           "type": "string"
         },
         {
           "name": "calcText",
           "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
           "type": "string"
         },
         {
           "name": "text",
-          "type": "string"
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "type",
-          "type": "string"
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
         },
         {
           "name": "drag-over",
-          "type": "boolean"
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "directions",
-          "type": "string"
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
         }
       ],
       "properties": [
         {
           "name": "iconFromType",
+          "attribute": "iconFromType",
           "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
           "type": "string"
         },
         {
           "name": "calcText",
+          "attribute": "calcText",
           "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
           "type": "string"
         },
         {
           "name": "text",
-          "type": "string"
+          "attribute": "text",
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "type",
-          "type": "string"
+          "attribute": "type",
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
         },
         {
           "name": "dragOver",
-          "type": "boolean"
+          "attribute": "drag-over",
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "directions",
-          "type": "string"
+          "attribute": "directions",
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
         }
       ],
       "events": [
         {
-          "name": "place-holder-file-drop"
+          "name": "place-holder-replace"
         },
         {
-          "name": "place-holder-replace"
+          "name": "place-holder-file-drop"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "place-holder\nPlaceholder for a piece of media in the future",
+      "name": "place-holder",
       "description": "`place-holder`",
-      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
       "attributes": [
         {
           "name": "iconFromType",
           "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
           "type": "string"
         },
         {
           "name": "calcText",
           "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
           "type": "string"
         },
         {
           "name": "text",
-          "type": "string"
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "type",
-          "type": "string"
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
         },
         {
           "name": "drag-over",
-          "type": "boolean"
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "directions",
-          "type": "string"
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
         }
       ],
       "properties": [
         {
           "name": "iconFromType",
+          "attribute": "iconFromType",
           "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
           "type": "string"
         },
         {
           "name": "calcText",
+          "attribute": "calcText",
           "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
           "type": "string"
         },
         {
           "name": "text",
-          "type": "string"
+          "attribute": "text",
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "type",
-          "type": "string"
+          "attribute": "type",
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
         },
         {
           "name": "dragOver",
-          "type": "boolean"
+          "attribute": "drag-over",
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
         },
         {
           "name": "directions",
-          "type": "string"
+          "attribute": "directions",
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
         }
       ],
       "events": [
         {
-          "name": "place-holder-file-drop"
+          "name": "place-holder-replace"
         },
         {
-          "name": "place-holder-replace"
+          "name": "place-holder-file-drop"
         }
-      ],
-      "slots": []
+      ]
     },
     {
-      "name": "place-holder\nPlaceholder for a piece of media in the future",
-      "description": "`place-holder`",
-      "jsDoc": "/**\n * `place-holder`\n * @customElement place-holder\n * Placeholder for a piece of media in the future\n *\n * @demo demo/index.html\n *\n * @microcopy - the mental model for this element\n * - placeholder is a grey block on the page which can respond to drag and drop\n */",
-      "attributes": [
-        {
-          "name": "iconFromType",
-          "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
-          "type": "string"
-        },
-        {
-          "name": "calcText",
-          "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string"
-        },
-        {
-          "name": "drag-over",
-          "type": "boolean"
-        },
-        {
-          "name": "directions",
-          "type": "string"
-        }
-      ],
-      "properties": [
-        {
-          "name": "iconFromType",
-          "description": "calculate an icon based on the type that was used",
-          "jsDoc": "/**\n       * calculate an icon based on the type that was used\n       */",
-          "type": "string"
-        },
-        {
-          "name": "calcText",
-          "description": "Calculate text based on the type in the event we have no default.",
-          "jsDoc": "/**\n       * Calculate text based on the type in the event we have no default.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "text",
-          "type": "string"
-        },
-        {
-          "name": "type",
-          "type": "string"
-        },
-        {
-          "name": "dragOver",
-          "type": "boolean"
-        },
-        {
-          "name": "directions",
-          "type": "string"
-        }
-      ],
+      "name": "tag",
       "events": [
         {
           "name": "place-holder-file-drop"
@@ -220,8 +186,95 @@
         {
           "name": "place-holder-replace"
         }
+      ]
+    },
+    {
+      "name": "place-holder",
+      "description": "`place-holder`",
+      "attributes": [
+        {
+          "name": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
+        },
+        {
+          "name": "drag-over",
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "directions",
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
+        }
       ],
-      "slots": []
+      "properties": [
+        {
+          "name": "iconFromType",
+          "attribute": "iconFromType",
+          "description": "calculate an icon based on the type that was used",
+          "type": "string"
+        },
+        {
+          "name": "calcText",
+          "attribute": "calcText",
+          "description": "Calculate text based on the type in the event we have no default.",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Text place holder for describing this place holder element.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "description": "A media type to visualize and also bubble events off of.",
+          "type": "string",
+          "default": "\"text\""
+        },
+        {
+          "name": "dragOver",
+          "attribute": "drag-over",
+          "description": "Bind dragging state to a variable so we can apply CSS.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "directions",
+          "attribute": "directions",
+          "type": "string",
+          "default": "\"Double click or drag and drop file to replace\""
+        }
+      ],
+      "events": [
+        {
+          "name": "place-holder-replace"
+        },
+        {
+          "name": "place-holder-file-drop"
+        }
+      ]
     }
   ]
 }

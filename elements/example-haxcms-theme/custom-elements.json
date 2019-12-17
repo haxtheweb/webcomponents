@@ -1,58 +1,46 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "example-haxcms-theme\n`A basic, well documented example theme for HAXcms`",
-      "description": "`example-haxcms-theme`",
-      "jsDoc": "/**\n * `example-haxcms-theme`\n * @customElement example-haxcms-theme\n * `A basic, well documented example theme for HAXcms`\n *\n * @microcopy - language worth noting:\n *  - HAXcms - A content management system that builds state of the art one page apps via GUI\n *\n\n * @polymerElement\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`"
     },
     {
-      "name": "example-haxcms-theme\n`A basic, well documented example theme for HAXcms`",
+      "name": "example-haxcms-theme",
       "description": "`example-haxcms-theme`",
-      "jsDoc": "/**\n * `example-haxcms-theme`\n * @customElement example-haxcms-theme\n * `A basic, well documented example theme for HAXcms`\n *\n * @microcopy - language worth noting:\n *  - HAXcms - A content management system that builds state of the art one page apps via GUI\n *\n\n * @polymerElement\n * @demo demo/index.html\n */",
       "attributes": [
         {
-          "name": "editMode",
+          "name": "edit-mode",
           "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
-          "jsDoc": "/**\n       * Edit mode which will be updated whenever HAXcms store\n       * has been updated. It's also reflected to attribute which\n       * is a Polymer convention to allow it to be leveraged in\n       * CSS styling.\n       */",
           "type": "boolean"
         },
         {
-          "name": "activeManifestIndex",
+          "name": "active-manifest-index",
           "description": "Current array index of the active page that's been loaded.",
-          "jsDoc": "/**\n       * Current array index of the active page that's been loaded.\n       */",
           "type": "number"
         }
       ],
       "properties": [
         {
           "name": "editMode",
+          "attribute": "edit-mode",
           "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
-          "jsDoc": "/**\n       * Edit mode which will be updated whenever HAXcms store\n       * has been updated. It's also reflected to attribute which\n       * is a Polymer convention to allow it to be leveraged in\n       * CSS styling.\n       */",
           "type": "boolean"
         },
         {
           "name": "activeManifestIndex",
+          "attribute": "active-manifest-index",
           "description": "Current array index of the active page that's been loaded.",
-          "jsDoc": "/**\n       * Current array index of the active page that's been loaded.\n       */",
           "type": "number"
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "example-haxcms-theme\n`A basic, well documented example theme for HAXcms`",
-      "description": "`example-haxcms-theme`",
-      "jsDoc": "/**\n * `example-haxcms-theme`\n * @customElement example-haxcms-theme\n * `A basic, well documented example theme for HAXcms`\n *\n * @microcopy - language worth noting:\n *  - HAXcms - A content management system that builds state of the art one page apps via GUI\n *\n\n * @polymerElement\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "tag"
+    },
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`"
     }
   ]
 }

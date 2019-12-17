@@ -1,62 +1,71 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "type": "string"
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "type": "string"
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "type": "string"
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "type": "string"
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
+    },
+    {
+      "name": "tag"
     },
     {
       "name": "parallax-image",
       "description": "`parallax-image`",
-      "jsDoc": "/**\n * `parallax-image`\n * @demo demo/index.html\n * @customElement parallax-image\n */",
       "attributes": [
         {
           "name": "image-bg",
-          "type": "string"
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
           "name": "imageBg",
-          "type": "string"
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     }
   ]
 }

@@ -1,488 +1,485 @@
 {
-  "version": 2,
+  "version": "experimental",
   "tags": [
     {
-      "name": "media-image\n`A simple image presentaiton with minor documented options`",
+      "name": "media-image",
       "description": "`media-image`",
-      "jsDoc": "/**\n * `media-image`\n * @customElement media-image\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
       ],
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
+          "attribute": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelTitle",
+          "attribute": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelDescription",
+          "attribute": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "attribute": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "attribute": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "attribute": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "media-image-citation\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-citation`",
-      "jsDoc": "/**\n * `media-image-citation`\n * @customElement media-image-citation\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "media-image-citation",
+      "description": "`media-image-citation`"
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
-      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
     },
     {
-      "name": "media-image\n`A simple image presentaiton with minor documented options`",
+      "name": "media-image",
       "description": "`media-image`",
-      "jsDoc": "/**\n * `media-image`\n * @customElement media-image\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
       ],
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
+          "attribute": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelTitle",
+          "attribute": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelDescription",
+          "attribute": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "attribute": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "attribute": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "attribute": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "media-image-citation\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-citation`",
-      "jsDoc": "/**\n * `media-image-citation`\n * @customElement media-image-citation\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "media-image-citation",
+      "description": "`media-image-citation`"
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
-      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
     },
     {
-      "name": "media-image\n`A simple image presentaiton with minor documented options`",
+      "name": "tag"
+    },
+    {
+      "name": "media-image",
       "description": "`media-image`",
-      "jsDoc": "/**\n * `media-image`\n * @customElement media-image\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
       "attributes": [
         {
           "name": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
       ],
       "properties": [
         {
           "name": "source",
+          "attribute": "source",
           "description": "Image source.",
-          "jsDoc": "/**\n       * Image source.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "citation",
+          "attribute": "citation",
           "description": "Image citation.",
-          "jsDoc": "/**\n       * Image citation.\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "caption",
+          "attribute": "caption",
           "description": "Image caption.",
-          "jsDoc": "/**\n       * Image caption.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "alt",
-          "description": "Image alt.",
-          "jsDoc": "/**\n       * Image alt.\n       */",
-          "type": "string"
-        },
-        {
-          "name": "size",
-          "description": "The size of the image (small, wide).",
-          "jsDoc": "/**\n       * The size of the image (small, wide).\n       */",
-          "type": "string"
-        },
-        {
-          "name": "round",
-          "description": "The shape of the image (round).",
-          "jsDoc": "/**\n       * The shape of the image (round).\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "card",
-          "description": "Applies card styling.",
-          "jsDoc": "/**\n       * Applies card styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "box",
-          "description": "Applies box styling.",
-          "jsDoc": "/**\n       * Applies box styling.\n       */",
-          "type": "boolean"
-        },
-        {
-          "name": "offset",
-          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
-          "jsDoc": "/**\n       * Applies left or right offset\n       * - none\n       * - left\n       * - right\n       * - wide\n       * - narrow\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelTitle",
+          "attribute": "figure-label-title",
           "description": "Added a figure label title to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label title to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "figureLabelDescription",
+          "attribute": "figure-label-description",
           "description": "Added a figure label description to the top of the media-image",
-          "jsDoc": "/**\n       * Added a figure label description to the top of the media-image\n       */",
-          "type": "string"
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Image alt.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "The size of the image (small, wide).",
+          "type": "string",
+          "default": "\"wide\""
+        },
+        {
+          "name": "round",
+          "attribute": "round",
+          "description": "The shape of the image (round).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "card",
+          "attribute": "card",
+          "description": "Applies card styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "box",
+          "attribute": "box",
+          "description": "Applies box styling.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+          "type": "string",
+          "default": "\"none\""
         }
-      ],
-      "events": [],
-      "slots": []
+      ]
     },
     {
-      "name": "media-image-citation\n`A simple image presentaiton with minor documented options`",
-      "description": "`media-image-citation`",
-      "jsDoc": "/**\n * `media-image-citation`\n * @customElement media-image-citation\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "name": "media-image-citation",
+      "description": "`media-image-citation`"
     },
     {
       "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
-      "jsDoc": "/**\n * `media-image-caption`\n * `A simple image presentaiton with minor documented options`\n * @demo demo/index.html\n * @customElement media-image-caption\n */",
-      "attributes": [],
-      "properties": [],
-      "events": [],
-      "slots": []
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`"
     }
   ]
 }
