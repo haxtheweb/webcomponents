@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`\n\nEvents:\n\n  * `responsive-element` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`\n\nEvents:\n\n  * `responsive-element` - \n\nAttributes:\n\n  * `title` {`string`} - the title of the timeline\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `__events` {`any[]`} - the updated list of events\n\n  * `timeline-size` {`string`} - the timline size, calculated by responsive utility\n\nProperties:\n\n  * `title` {`string`} - the title of the timeline\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `__events` {`any[]`} - the updated list of events\n\n  * `timelineSize` {`string`} - the timline size, calculated by responsive utility",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - the title of the timeline\n\nProperty: title\n\nDefault: null"
+        },
+        {
+          "name": "events",
+          "description": "`events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\nProperty: events\n\nDefault: "
+        },
+        {
+          "name": "__events",
+          "description": "`__events` {`any[]`} - the updated list of events\n\nProperty: __events"
+        },
+        {
+          "name": "timeline-size",
+          "description": "`timeline-size` {`string`} - the timline size, calculated by responsive utility\n\nProperty: timelineSize\n\nDefault: xs"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `responsive-element` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`\n\nEvents:\n\n  * `responsive-element` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

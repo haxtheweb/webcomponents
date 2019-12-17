@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
+    },
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`\n\nAttributes:\n\n  * `hax-schema` {`string`} - schema to extract for whatever you wanted it for\n\n  * `configure-schema` - configure form schema to extract for whatever you wanted it for\n\n  * `advanced-schema` - advanced form schema to extract for whatever you wanted it for\n\n  * `source` {`string`} - Optional remote source to pull in\n\n  * `value` {`string`} - String based value passed between the elements to stitch together\n\nProperties:\n\n  * `haxSchema` {`string`} - schema to extract for whatever you wanted it for\n\n  * `configureSchema` - configure form schema to extract for whatever you wanted it for\n\n  * `advancedSchema` - advanced form schema to extract for whatever you wanted it for\n\n  * `source` {`string`} - Optional remote source to pull in\n\n  * `value` {`string`} - String based value passed between the elements to stitch together\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "hax-schema",
+          "description": "`hax-schema` {`string`} - schema to extract for whatever you wanted it for\n\nProperty: haxSchema"
+        },
+        {
+          "name": "configure-schema",
+          "description": "`configure-schema` - configure form schema to extract for whatever you wanted it for\n\nProperty: configureSchema\n\nDefault: [object Object]"
+        },
+        {
+          "name": "advanced-schema",
+          "description": "`advanced-schema` - advanced form schema to extract for whatever you wanted it for\n\nProperty: advancedSchema\n\nDefault: [object Object]"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Optional remote source to pull in\n\nProperty: source"
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - String based value passed between the elements to stitch together\n\nProperty: value"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

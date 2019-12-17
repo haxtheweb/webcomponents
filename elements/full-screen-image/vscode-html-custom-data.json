@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` - ",
+      "attributes": []
+    },
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `source` - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

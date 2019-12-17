@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "degrees",
+          "description": "`degrees` {`number`} - Image rotation\n\nProperty: degrees\n\nDefault: 0"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - Hover class for button styling\n\nProperty: hoverClass\n\nDefault: blue white-text"
+        }
+      ]
+    },
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "degrees",
+          "description": "`degrees` {`number`} - Image rotation\n\nProperty: degrees\n\nDefault: 0"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - Hover class for button styling\n\nProperty: hoverClass\n\nDefault: blue white-text"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "degrees",
+          "description": "`degrees` {`number`} - Image rotation\n\nProperty: degrees\n\nDefault: 0"
+        },
+        {
+          "name": "hover-class",
+          "description": "`hover-class` {`string`} - Hover class for button styling\n\nProperty: hoverClass\n\nDefault: blue white-text"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

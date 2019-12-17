@@ -1,4 +1,10 @@
 {
   "editor.tabSize": 2,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "html.customData": [
+    "elements/*/custom-elements.json",
+    "elements/*/vscode-html-custom-data.json",
+    "vscode-html-custom-data.json",
+    "custom-elements.json"
+  ]
 }

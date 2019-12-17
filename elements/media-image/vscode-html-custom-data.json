@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "media-image",
+      "description": "`media-image`\n\nAttributes:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperties:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+      "attributes": [
+        {
+          "name": "_hasCaption",
+          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
+          "valueSet": "v"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
+        },
+        {
+          "name": "citation",
+          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
+        },
+        {
+          "name": "figure-label-title",
+          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
+        },
+        {
+          "name": "figure-label-description",
+          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "box",
+          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        }
+      ]
+    },
+    {
+      "name": "media-image-citation",
+      "description": "`media-image-citation`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "media-image",
+      "description": "`media-image`\n\nAttributes:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperties:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+      "attributes": [
+        {
+          "name": "_hasCaption",
+          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
+          "valueSet": "v"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
+        },
+        {
+          "name": "citation",
+          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
+        },
+        {
+          "name": "figure-label-title",
+          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
+        },
+        {
+          "name": "figure-label-description",
+          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "box",
+          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        }
+      ]
+    },
+    {
+      "name": "media-image-citation",
+      "description": "`media-image-citation`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "media-image",
+      "description": "`media-image`\n\nAttributes:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperties:\n\n  * `_hasCaption` {`boolean`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+      "attributes": [
+        {
+          "name": "_hasCaption",
+          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
+          "valueSet": "v"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
+        },
+        {
+          "name": "citation",
+          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
+        },
+        {
+          "name": "figure-label-title",
+          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
+        },
+        {
+          "name": "figure-label-description",
+          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "box",
+          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "offset",
+          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
+        }
+      ]
+    },
+    {
+      "name": "media-image-citation",
+      "description": "`media-image-citation`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "media-image-caption",
+      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

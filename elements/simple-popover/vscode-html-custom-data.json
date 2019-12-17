@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`\n\nProperties:\n\n  * `offset` {`number`} - \n\n  * `fitToVisibleBounds` {`boolean`} - ",
+      "attributes": []
+    },
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`\n\nProperties:\n\n  * `offset` {`number`} - \n\n  * `fitToVisibleBounds` {`boolean`} - ",
+      "attributes": []
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`\n\nProperties:\n\n  * `offset` {`number`} - \n\n  * `fitToVisibleBounds` {`boolean`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

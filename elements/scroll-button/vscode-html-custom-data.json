@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
+      "attributes": []
+    },
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nAttributes:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
+      "attributes": [
+        {
+          "name": "target",
+          "description": "`target` - \n\nProperty: target"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:expand-less"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Scroll to top"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: top"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "attributes": []
+    },
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "attributes": [
+        {
+          "name": "__id",
+          "description": "`__id` {`string`} - \n\nProperty: __id"
+        },
+        {
+          "name": "__matrix",
+          "description": "`__matrix` {`any[]`} - \n\nProperty: __matrix"
+        },
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: "
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: "
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: #ffffff"
+        },
+        {
+          "name": "strength",
+          "description": "`strength` {`number`} - \n\nProperty: strength\n\nDefault: 1"
+        },
+        {
+          "name": "contrast",
+          "description": "`contrast` {`number`} - \n\nProperty: contrast\n\nDefault: 0"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "filtered-image-filters",
+      "description": "`filtered-image-filters`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selected-filters` {`any[]`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `filter1` {`string`} - \n\n  * `filters` {`any[]`} - \n\n  * `__selectedFilters` {`any[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: "
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: "
+        },
+        {
+          "name": "filter1",
+          "description": "`filter1` {`string`} - \n\nProperty: filter1\n\nDefault: "
+        },
+        {
+          "name": "filters",
+          "description": "`filters` {`any[]`} - \n\nProperty: filters\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+        },
+        {
+          "name": "__selected-filters",
+          "description": "`__selected-filters` {`any[]`} - \n\nProperty: __selectedFilters"
+        }
+      ]
+    },
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

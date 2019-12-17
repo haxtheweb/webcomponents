@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`\n\nAttributes:\n\n  * `image-bg` {`string`} - Image\n\nProperties:\n\n  * `imageBg` {`string`} - Image",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

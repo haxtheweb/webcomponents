@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrn-aside",
+      "description": "`lrn-aside`\n\nAttributes:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperties:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title for the aside.\n\nProperty: title\n\nDefault: Related content"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Apply CSS sticky styling\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "direction",
+          "description": "`direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperty: direction\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "lrn-aside",
+      "description": "`lrn-aside`\n\nAttributes:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperties:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title for the aside.\n\nProperty: title\n\nDefault: Related content"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Apply CSS sticky styling\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "direction",
+          "description": "`direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperty: direction\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrn-aside",
+      "description": "`lrn-aside`\n\nAttributes:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperties:\n\n  * `title` {`string`} - Title for the aside.\n\n  * `sticky` {`boolean`} - Apply CSS sticky styling\n\n  * `direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title for the aside.\n\nProperty: title\n\nDefault: Related content"
+        },
+        {
+          "name": "sticky",
+          "description": "`sticky` {`boolean`} - Apply CSS sticky styling\n\nProperty: sticky\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "direction",
+          "description": "`direction` {`string`} - Direction to hang off UI if sticky, left or right.\n\nProperty: direction\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

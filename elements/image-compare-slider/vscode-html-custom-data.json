@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "image-compare-slider",
+      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title"
+        },
+        {
+          "name": "top-src",
+          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+        },
+        {
+          "name": "bottom-src",
+          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+        },
+        {
+          "name": "opacity",
+          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "image-compare-slider",
+      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title"
+        },
+        {
+          "name": "top-src",
+          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+        },
+        {
+          "name": "bottom-src",
+          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+        },
+        {
+          "name": "opacity",
+          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "image-compare-slider",
+      "description": "`image-compare-slider`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `top-src` {`string`} - src for top image\n\n  * `bottom-src` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `topSrc` {`string`} - src for top image\n\n  * `bottomSrc` {`string`} - src for top image\n\n  * `opacity` {`boolean`} - mode for the slider: wipe",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title"
+        },
+        {
+          "name": "top-src",
+          "description": "`top-src` {`string`} - src for top image\n\nProperty: topSrc"
+        },
+        {
+          "name": "bottom-src",
+          "description": "`bottom-src` {`string`} - src for top image\n\nProperty: bottomSrc"
+        },
+        {
+          "name": "opacity",
+          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

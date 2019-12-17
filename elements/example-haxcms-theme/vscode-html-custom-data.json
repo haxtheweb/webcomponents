@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`\n\nProperties:\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": []
+    },
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\nProperties:\n\n  * `editMode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `activeManifestIndex` {`number`} - Current array index of the active page that's been loaded.\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "active-manifest-index",
+          "description": "`active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\nProperty: activeManifestIndex"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`\n\nProperties:\n\n  * `__disposer` {`never[]`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n\nAttributes:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\nProperties:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - The source of the audio file to be played\n\nProperty: src\n\nDefault: NULL"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - The main (bold) title\n\nProperty: title\n\nDefault: NULL"
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\nProperty: subtitle\n\nDefault: NULL"
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - The sourse for cover art\n\nProperty: coverart\n\nDefault: art.jpg"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - container for the wave object\n\nProperty: wavesurfer"
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - Determines if the FOB is on the left or the right\n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - Color of the Wave\n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - Color of the completed section of the wave\n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n\nAttributes:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\nProperties:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - The source of the audio file to be played\n\nProperty: src\n\nDefault: NULL"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - The main (bold) title\n\nProperty: title\n\nDefault: NULL"
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\nProperty: subtitle\n\nDefault: NULL"
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - The sourse for cover art\n\nProperty: coverart\n\nDefault: art.jpg"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - container for the wave object\n\nProperty: wavesurfer"
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - Determines if the FOB is on the left or the right\n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - Color of the Wave\n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - Color of the completed section of the wave\n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n\nAttributes:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\nProperties:\n\n  * `src` {`string`} - The source of the audio file to be played\n\n  * `title` {`string`} - The main (bold) title\n\n  * `subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\n  * `coverart` {`string`} - The sourse for cover art\n\n  * `wavesurfer` - container for the wave object\n\n  * `lean` {`string`} - Determines if the FOB is on the left or the right\n\n  * `wavecolor` {`string`} - Color of the Wave\n\n  * `progresscolor` {`string`} - Color of the completed section of the wave\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - The source of the audio file to be played\n\nProperty: src\n\nDefault: NULL"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - The main (bold) title\n\nProperty: title\n\nDefault: NULL"
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - The smaller subtitle, for chapter heading or composer.\n\nProperty: subtitle\n\nDefault: NULL"
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - The sourse for cover art\n\nProperty: coverart\n\nDefault: art.jpg"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - container for the wave object\n\nProperty: wavesurfer"
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - Determines if the FOB is on the left or the right\n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - Color of the Wave\n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - Color of the completed section of the wave\n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

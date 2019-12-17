@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "self-check",
+      "description": "`self-check`\n\nAttributes:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.\n\nProperties:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "`link` {`string`} - Link for more information.\n\nProperty: link"
+        },
+        {
+          "name": "correct",
+          "description": "`correct` {`boolean`} - Property for toggling \"checkbtn\".\n\nProperty: correct\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image.\n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "question",
+          "description": "`question` {`string`} - Question.\n\nProperty: question\n\nDefault: "
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Self-Check"
+        }
+      ]
+    },
+    {
+      "name": "self-check",
+      "description": "`self-check`\n\nAttributes:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.\n\nProperties:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "`link` {`string`} - Link for more information.\n\nProperty: link"
+        },
+        {
+          "name": "correct",
+          "description": "`correct` {`boolean`} - Property for toggling \"checkbtn\".\n\nProperty: correct\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image.\n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "question",
+          "description": "`question` {`string`} - Question.\n\nProperty: question\n\nDefault: "
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Self-Check"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "self-check",
+      "description": "`self-check`\n\nAttributes:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.\n\nProperties:\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "`link` {`string`} - Link for more information.\n\nProperty: link"
+        },
+        {
+          "name": "correct",
+          "description": "`correct` {`boolean`} - Property for toggling \"checkbtn\".\n\nProperty: correct\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt\n\nDefault: "
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image.\n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "question",
+          "description": "`question` {`string`} - Question.\n\nProperty: question\n\nDefault: "
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Self-Check"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

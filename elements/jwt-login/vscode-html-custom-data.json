@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url\n\nProperty: url"
+        },
+        {
+          "name": "auto",
+          "description": "`auto` {`boolean`} - auto, useful for demos\n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Request method\n\nProperty: method\n\nDefault: GET"
+        },
+        {
+          "name": "body",
+          "description": "`body` - Optional body, useful when doing posts\n\nProperty: body\n\nDefault: [object Object]"
+        },
+        {
+          "name": "key",
+          "description": "`key` {`string`} - Key that contains the token in local storage\n\nProperty: key\n\nDefault: jwt"
+        },
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` - "
+        },
+        {
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` - "
+        },
+        {
+          "name": "onjwt-token",
+          "description": "`jwt-token` - "
+        }
+      ]
+    },
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url\n\nProperty: url"
+        },
+        {
+          "name": "auto",
+          "description": "`auto` {`boolean`} - auto, useful for demos\n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Request method\n\nProperty: method\n\nDefault: GET"
+        },
+        {
+          "name": "body",
+          "description": "`body` - Optional body, useful when doing posts\n\nProperty: body\n\nDefault: [object Object]"
+        },
+        {
+          "name": "key",
+          "description": "`key` {`string`} - Key that contains the token in local storage\n\nProperty: key\n\nDefault: jwt"
+        },
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` - "
+        },
+        {
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` - "
+        },
+        {
+          "name": "onjwt-token",
+          "description": "`jwt-token` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `jwt-changed` - \n\n  * `jwt-token` - \n\n  * `jwt-logged-in` - ",
+      "attributes": [
+        {
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` - "
+        },
+        {
+          "name": "onjwt-token",
+          "description": "`jwt-token` - "
+        },
+        {
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` - "
+        }
+      ]
+    },
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "`url` {`string`} - url\n\nProperty: url"
+        },
+        {
+          "name": "auto",
+          "description": "`auto` {`boolean`} - auto, useful for demos\n\nProperty: auto\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Request method\n\nProperty: method\n\nDefault: GET"
+        },
+        {
+          "name": "body",
+          "description": "`body` - Optional body, useful when doing posts\n\nProperty: body\n\nDefault: [object Object]"
+        },
+        {
+          "name": "key",
+          "description": "`key` {`string`} - Key that contains the token in local storage\n\nProperty: key\n\nDefault: jwt"
+        },
+        {
+          "name": "jwt",
+          "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-changed",
+          "description": "`jwt-changed` - "
+        },
+        {
+          "name": "onjwt-logged-in",
+          "description": "`jwt-logged-in` - "
+        },
+        {
+          "name": "onjwt-token",
+          "description": "`jwt-token` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

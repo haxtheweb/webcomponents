@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`\n\nAttributes:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\nProperties:\n\n  * `source` {`string`} - source to point to\n\n  * `alt` {`string`} - alt text\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - source to point to\n\nProperty: source"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - alt text\n\nProperty: alt"
+        },
+        {
+          "name": "corner",
+          "description": "`corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\nProperty: corner",
+          "valueSet": "v"
+        },
+        {
+          "name": "size",
+          "description": "`size` {`string`} - basic size adjustment\n\nProperty: size"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

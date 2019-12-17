@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        }
+      ]
+    },
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrn-content",
+      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

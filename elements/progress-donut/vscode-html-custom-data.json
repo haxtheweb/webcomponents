@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`\n\nEvents:\n\n  * `options-changed` - Fired when options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nProperties:\n\n  * `animated` {`boolean`} - \n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `complete` {`never[]`} - \n\n  * `desc` {`string`} - \n\n  * `title` {`string`} - \n\n  * `imageSrc` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `total` {`number`} - ",
+      "attributes": [
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`\n\nEvents:\n\n  * `options-changed` - Fired when options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `start-angle` {`number`} - Donut angle where progress starts\n\n  * `animated` {`boolean`} - Whether progress animates on first load\n\n  * `complete` {`any[]`} - An array of completed values\n\n  * `desc` {`string`} - Accessible long description\n\n  * `title` {`string`} - Title of donut\n\n  * `image-src` {`string`} - Source of image in the center of the object.\n\n  * `image-alt` {`string`} - Alt text for image.\n\n  * `total` {`number`} - Array of incomplete values\n\nProperties:\n\n  * `startAngle` {`number`} - Donut angle where progress starts\n\n  * `animated` {`boolean`} - Whether progress animates on first load\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `complete` {`any[]`} - An array of completed values\n\n  * `desc` {`string`} - Accessible long description\n\n  * `title` {`string`} - Title of donut\n\n  * `imageSrc` {`string`} - Source of image in the center of the object.\n\n  * `imageAlt` {`string`} - Alt text for image.\n\n  * `total` {`number`} - Array of incomplete values",
+      "attributes": [
+        {
+          "name": "start-angle",
+          "description": "`start-angle` {`number`} - Donut angle where progress starts\n\nProperty: startAngle"
+        },
+        {
+          "name": "animated",
+          "description": "`animated` {`boolean`} - Whether progress animates on first load\n\nProperty: animated\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "complete",
+          "description": "`complete` {`any[]`} - An array of completed values\n\nProperty: complete\n\nDefault: "
+        },
+        {
+          "name": "desc",
+          "description": "`desc` {`string`} - Accessible long description\n\nProperty: desc\n\nDefault: "
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of donut\n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "image-src",
+          "description": "`image-src` {`string`} - Source of image in the center of the object.\n\nProperty: imageSrc\n\nDefault: "
+        },
+        {
+          "name": "image-alt",
+          "description": "`image-alt` {`string`} - Alt text for image.\n\nProperty: imageAlt\n\nDefault: "
+        },
+        {
+          "name": "total",
+          "description": "`total` {`number`} - Array of incomplete values\n\nProperty: total\n\nDefault: 100"
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `options-changed` - \n\n  * `chart-changed` - ",
+      "attributes": [
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - "
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`\n\nEvents:\n\n  * `options-changed` - Fired when options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nProperties:\n\n  * `animated` {`boolean`} - \n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `complete` {`never[]`} - \n\n  * `desc` {`string`} - \n\n  * `title` {`string`} - \n\n  * `imageSrc` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `total` {`number`} - ",
+      "attributes": [
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
+        },
+        {
+          "name": "summary",
+          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "table",
+          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
+        },
+        {
+          "name": "tableHeadings",
+          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
+        },
+        {
+          "name": "table-data",
+          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
+        },
+        {
+          "name": "summary",
+          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "table",
+          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
+        },
+        {
+          "name": "tableHeadings",
+          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
+        },
+        {
+          "name": "table-data",
+          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `color` {`string`} - Color class work to apply\n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "caption",
+          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
+        },
+        {
+          "name": "summary",
+          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "table",
+          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
+        },
+        {
+          "name": "tableHeadings",
+          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
+        },
+        {
+          "name": "table-data",
+          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

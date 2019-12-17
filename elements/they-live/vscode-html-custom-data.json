@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "they-live",
+      "description": "`they-live`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`\n\nAttributes:\n\n  * `truth` {`string`} - \n\nProperties:\n\n  * `truth` {`string`} - ",
+      "attributes": [
+        {
+          "name": "truth",
+          "description": "`truth` {`string`} - \n\nProperty: truth"
+        }
+      ]
+    },
+    {
+      "name": "they-live",
+      "attributes": []
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`\n\n",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

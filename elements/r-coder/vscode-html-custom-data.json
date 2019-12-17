@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "r-coder",
+      "description": "`r-coder`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
+    },
+    {
+      "name": "r-coder",
+      "description": "`r-coder`\n\nAttributes:\n\n  * `endpoint` {`string`} - \n\n  * `__connected` {`boolean`} - \n\nProperties:\n\n  * `endpoint` {`string`} - \n\n  * `__connected` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "endpoint",
+          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: /service/r-service"
+        },
+        {
+          "name": "__connected",
+          "description": "`__connected` {`boolean`} - \n\nProperty: __connected\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "r-coder",
+      "description": "`r-coder`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

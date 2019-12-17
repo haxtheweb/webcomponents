@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "responsive-utility",
+      "description": "Attributes:\n\n  * `details` {`any[]`} - Stores\n\nProperties:\n\n  * `details` {`any[]`} - Stores\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "details",
+          "description": "`details` {`any[]`} - Stores\n\nProperty: details\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "responsive-utility",
+      "description": "Attributes:\n\n  * `details` {`any[]`} - Stores\n\nProperties:\n\n  * `details` {`any[]`} - Stores\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "details",
+          "description": "`details` {`any[]`} - Stores\n\nProperty: details\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "responsive-utility",
+      "description": "Attributes:\n\n  * `details` {`any[]`} - Stores\n\nProperties:\n\n  * `details` {`any[]`} - Stores\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "details",
+          "description": "`details` {`any[]`} - Stores\n\nProperty: details\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `simple-modal-closed` - \n\n  * `simple-modal-opened` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `modal` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "onsimple-modal-closed",
+          "description": "`simple-modal-closed` - "
+        },
+        {
+          "name": "onsimple-modal-opened",
+          "description": "`simple-modal-opened` - "
+        }
+      ]
+    },
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `simple-modal-closed` - \n\n  * `simple-modal-opened` - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
+      "attributes": [
+        {
+          "name": "invokedBy",
+          "description": "`invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\nProperty: invokedBy"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - heading / label of the modal\n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - open state\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "close-label",
+          "description": "`close-label` {`string`} - Close label\n\nProperty: closeLabel\n\nDefault: Close"
+        },
+        {
+          "name": "close-icon",
+          "description": "`close-icon` {`string`} - Close icon\n\nProperty: closeIcon\n\nDefault: close"
+        },
+        {
+          "name": "modal",
+          "description": "`modal` {`boolean`} - support for modal flag\n\nProperty: modal\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onsimple-modal-closed",
+          "description": "`simple-modal-closed` - "
+        },
+        {
+          "name": "onsimple-modal-opened",
+          "description": "`simple-modal-opened` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `simple-modal-opened` - \n\n  * `simple-modal-closed` - ",
+      "attributes": [
+        {
+          "name": "onsimple-modal-opened",
+          "description": "`simple-modal-opened` - "
+        },
+        {
+          "name": "onsimple-modal-closed",
+          "description": "`simple-modal-closed` - "
+        }
+      ]
+    },
+    {
+      "name": "simple-modal-template",
+      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `modal-id` - the desired id for the modal\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `modalId` - the desired id for the modal\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
+      "attributes": [
+        {
+          "name": "modal-id",
+          "description": "`modal-id` - the desired id for the modal\n\nProperty: modalId\n\nDefault: null"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - the modal title\n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "modal",
+          "description": "`modal` - the simple-modal\n\nProperty: modal"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
+    },
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```\n\nEvents:\n\n  * `simple-modal-closed` - \n\n  * `simple-modal-opened` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - \n\n  * `modal` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "onsimple-modal-closed",
+          "description": "`simple-modal-closed` - "
+        },
+        {
+          "name": "onsimple-modal-opened",
+          "description": "`simple-modal-opened` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `state-class` {`string`} - \n\n  * `__main-posts` {`any[]`} - \n\n  * `__extra-posts` {`any[]`} - \n\n  * `__follow-up-posts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "`manifest` - \n\nProperty: manifest"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color"
+        },
+        {
+          "name": "state-class",
+          "description": "`state-class` {`string`} - \n\nProperty: stateClass"
+        },
+        {
+          "name": "__main-posts",
+          "description": "`__main-posts` {`any[]`} - \n\nProperty: __mainPosts\n\nDefault: "
+        },
+        {
+          "name": "__extra-posts",
+          "description": "`__extra-posts` {`any[]`} - \n\nProperty: __extraPosts\n\nDefault: "
+        },
+        {
+          "name": "__follow-up-posts",
+          "description": "`__follow-up-posts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
+        },
+        {
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `state-class` {`string`} - \n\n  * `__main-posts` {`any[]`} - \n\n  * `__extra-posts` {`any[]`} - \n\n  * `__follow-up-posts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "`manifest` - \n\nProperty: manifest"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color"
+        },
+        {
+          "name": "state-class",
+          "description": "`state-class` {`string`} - \n\nProperty: stateClass"
+        },
+        {
+          "name": "__main-posts",
+          "description": "`__main-posts` {`any[]`} - \n\nProperty: __mainPosts\n\nDefault: "
+        },
+        {
+          "name": "__extra-posts",
+          "description": "`__extra-posts` {`any[]`} - \n\nProperty: __extraPosts\n\nDefault: "
+        },
+        {
+          "name": "__follow-up-posts",
+          "description": "`__follow-up-posts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
+        },
+        {
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `json-outline-schema-active-item-changed` - ",
+      "attributes": [
+        {
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`\n\nEvents:\n\n  * `json-outline-schema-active-item-changed` - \n\nAttributes:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `state-class` {`string`} - \n\n  * `__main-posts` {`any[]`} - \n\n  * `__extra-posts` {`any[]`} - \n\n  * `__follow-up-posts` {`any[]`} - \n\n  * `selected-page` {`number`} - \n\nProperties:\n\n  * `manifest` - \n\n  * `color` {`string`} - \n\n  * `stateClass` {`string`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `__mainPosts` {`any[]`} - \n\n  * `__extraPosts` {`any[]`} - \n\n  * `__followUpPosts` {`any[]`} - \n\n  * `selectedPage` {`number`} - ",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "`manifest` - \n\nProperty: manifest"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - \n\nProperty: color"
+        },
+        {
+          "name": "state-class",
+          "description": "`state-class` {`string`} - \n\nProperty: stateClass"
+        },
+        {
+          "name": "__main-posts",
+          "description": "`__main-posts` {`any[]`} - \n\nProperty: __mainPosts\n\nDefault: "
+        },
+        {
+          "name": "__extra-posts",
+          "description": "`__extra-posts` {`any[]`} - \n\nProperty: __extraPosts\n\nDefault: "
+        },
+        {
+          "name": "__follow-up-posts",
+          "description": "`__follow-up-posts` {`any[]`} - \n\nProperty: __followUpPosts\n\nDefault: "
+        },
+        {
+          "name": "selected-page",
+          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
+        },
+        {
+          "name": "onjson-outline-schema-active-item-changed",
+          "description": "`json-outline-schema-active-item-changed` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
+        },
+        {
+          "name": "top-text",
+          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
+        },
+        {
+          "name": "bottom-text",
+          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
+        },
+        {
+          "name": "top-text",
+          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
+        },
+        {
+          "name": "bottom-text",
+          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
+        },
+        {
+          "name": "top-text",
+          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
+        },
+        {
+          "name": "bottom-text",
+          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "hax-text-editor-inline",
+      "description": "`hax-text-editor-inline`\n\nAttributes:\n\n  * `element` - \n\n  * `tag` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `fields` {`string`} - \n\nProperties:\n\n  * `element` - \n\n  * `tag` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `label` {`string`} - \n\n  * `fields` {`string`} - \n\n  * `inlineWidget` {`boolean`} - \n\n  * `toggles` {`boolean`} - \n\n  * `value` - ",
+      "attributes": [
+        {
+          "name": "element",
+          "description": "`element` - \n\nProperty: element\n\nDefault: null"
+        },
+        {
+          "name": "tag",
+          "description": "`tag` {`string`} - \n\nProperty: tag"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label"
+        },
+        {
+          "name": "fields",
+          "description": "`fields` {`string`} - \n\nProperty: fields"
+        }
+      ]
+    },
+    {
+      "name": "hax-text-editor-math",
+      "description": "`hax-text-editor-math`\n\nProperties:\n\n  * `inlineWidget` {`boolean`} - \n\n  * `fields` - \n\n  * `tag` - \n\n  * `icon` - \n\n  * `label` - \n\n  * `toggles` {`boolean`} - \n\n  * `value` - ",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor-toolbar",
+      "description": "`hax-text-editor-toolbar`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor",
+      "description": "`hax-text-editor`\n\nProperties:\n\n  * `type` {`string`} - ",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor",
+      "description": "`hax-text-editor`\n\nProperties:\n\n  * `type` {`string`} - ",
+      "attributes": []
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor-oer-schema",
+      "description": "`hax-text-editor-oer-schema`\n\nProperties:\n\n  * `fields` - \n\n  * `tag` - \n\n  * `icon` - \n\n  * `label` - \n\n  * `toggles` {`boolean`} - \n\n  * `value` - ",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor-vocab",
+      "description": "`hax-text-editor-vocab`\n\nProperties:\n\n  * `inlineWidget` {`boolean`} - \n\n  * `tag` - \n\n  * `icon` - \n\n  * `label` - \n\n  * `fields` - \n\n  * `toggles` {`boolean`} - \n\n  * `value` - ",
+      "attributes": []
+    },
+    {
+      "name": "hax-text-editor",
+      "description": "`hax-text-editor`\n\nProperties:\n\n  * `type` {`string`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

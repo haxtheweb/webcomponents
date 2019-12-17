@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrn-table",
+      "description": "`lrn-table`\n\nAttributes:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csv-file` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperties:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csvFile` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\nProperty: title"
+        },
+        {
+          "name": "csv-file",
+          "description": "`csv-file` {`string`} - The file to load material from.\n\nProperty: csvFile"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperty: description"
+        }
+      ]
+    },
+    {
+      "name": "lrn-table",
+      "description": "`lrn-table`\n\nAttributes:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csv-file` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperties:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csvFile` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\nProperty: title"
+        },
+        {
+          "name": "csv-file",
+          "description": "`csv-file` {`string`} - The file to load material from.\n\nProperty: csvFile"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperty: description"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrn-table",
+      "description": "`lrn-table`\n\nAttributes:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csv-file` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperties:\n\n  * `title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\n  * `csvFile` {`string`} - The file to load material from.\n\n  * `description` {`string`} - An extended description of the material in the table for improved accessibility.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of this table. This is both for accessibility and presentation.\n\nProperty: title"
+        },
+        {
+          "name": "csv-file",
+          "description": "`csv-file` {`string`} - The file to load material from.\n\nProperty: csvFile"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - An extended description of the material in the table for improved accessibility.\n\nProperty: description"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

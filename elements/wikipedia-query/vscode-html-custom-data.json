@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `render-as` {`string`} - Render the response as..\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `renderAs` {`string`} - Render the response as..\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "__rendercontent",
+          "description": "`__rendercontent` {`string`} - \n\nProperty: __rendercontent"
+        },
+        {
+          "name": "searchResponse",
+          "description": "`searchResponse` - Response to parse.\n\nProperty: searchResponse"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search\n\nDefault: Web_Components"
+        },
+        {
+          "name": "render-as",
+          "description": "`render-as` {`string`} - Render the response as..\n\nProperty: renderAs\n\nDefault: content"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `render-as` {`string`} - Render the response as..\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `renderAs` {`string`} - Render the response as..\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "__rendercontent",
+          "description": "`__rendercontent` {`string`} - \n\nProperty: __rendercontent"
+        },
+        {
+          "name": "searchResponse",
+          "description": "`searchResponse` - Response to parse.\n\nProperty: searchResponse"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search\n\nDefault: Web_Components"
+        },
+        {
+          "name": "render-as",
+          "description": "`render-as` {`string`} - Render the response as..\n\nProperty: renderAs\n\nDefault: content"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `render-as` {`string`} - Render the response as..\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `__rendercontent` {`string`} - \n\n  * `searchResponse` - Response to parse.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `search` {`string`} - Search string.\n\n  * `renderAs` {`string`} - Render the response as..\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "__rendercontent",
+          "description": "`__rendercontent` {`string`} - \n\nProperty: __rendercontent"
+        },
+        {
+          "name": "searchResponse",
+          "description": "`searchResponse` - Response to parse.\n\nProperty: searchResponse"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search\n\nDefault: Web_Components"
+        },
+        {
+          "name": "render-as",
+          "description": "`render-as` {`string`} - Render the response as..\n\nProperty: renderAs\n\nDefault: content"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}
