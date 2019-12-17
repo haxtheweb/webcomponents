@@ -40,7 +40,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       <iron-ajax
         id="appstore"
         url="${this.appStore.url}"
-        params="${this.appStore.params}"
+        .params="${this.appStore.params}"
         method="GET"
         content-type="application/json"
         handle-as="json"
@@ -994,7 +994,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.voiceCommands = {};
     this.skipHAXConfirmation = false;
     this.storageData = {};
-    this.appStore = {};
+    this.appStore = {
+      url: "",
+      params: {}
+    };
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
