@@ -807,7 +807,8 @@ export class HAXWiring {
                     formDataName: "file-upload",
                     disabled: settings[value].disabled,
                     required: settings[value].required,
-                    noCamera: settings[value].noCamera
+                    noCamera: settings[value].noCamera,
+                    noVoiceRecord: settings[value].noVoiceRecord
                   }
                 };
                 break;
@@ -976,7 +977,8 @@ export class HAXWiring {
                     formDataName: "file-upload",
                     required: settings[value].required,
                     disabled: settings[value].disabled,
-                    noCamera: settings[value].noCamera
+                    noCamera: settings[value].noCamera,
+                    noVoiceRecord: settings[value].noVoiceRecord
                   }
                 };
                 break;

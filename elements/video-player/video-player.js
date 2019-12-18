@@ -12,7 +12,6 @@ import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-beh
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 /**
  * `video-player`
- * @customElement video-player
  * `A simple responsive video player with ridiculously powerful backing`
  *
  * @microcopy - language worth noting:
@@ -44,9 +43,8 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 </video-player>
 ```
  *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement video-player
  */
 class VideoPlayer extends MediaBehaviorsVideo(
   A11yBehaviors(SchemaBehaviors(SimpleColorsPolymer))
@@ -213,6 +211,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             icon: "link",
             required: true,
             noCamera: true,
+            noVoiceRecord: true,
             validationType: "url"
           },
           {
@@ -231,6 +230,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             inputMethod: "haxupload",
             icon: "link",
             required: true,
+            noVoiceRecord: true,
             validationType: "url"
           },
           {

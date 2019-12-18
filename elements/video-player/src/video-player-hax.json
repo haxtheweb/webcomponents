@@ -51,6 +51,7 @@
         "icon": "link",
         "required": true,
         "noCamera": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {
@@ -69,6 +70,7 @@
         "inputMethod": "haxupload",
         "icon": "link",
         "required": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {

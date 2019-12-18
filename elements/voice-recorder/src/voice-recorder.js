@@ -9,9 +9,6 @@ import { record } from "vmsg/vmsg.js";
  * `voice-recorder`
  * `LAME bridge`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @demo demo/index.html
  * @customElement voice-recorder
  */
@@ -109,10 +106,6 @@ class VoiceRecorder extends LitElement {
           );
         }
       );
-    }
-    // was on now off
-    if (oldValue && !newValue) {
-      // need to stop
     }
   }
   pathFromUrl(url) {
