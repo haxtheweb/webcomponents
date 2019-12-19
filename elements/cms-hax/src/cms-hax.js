@@ -27,7 +27,6 @@ class CmsHax extends LitElement {
         id="pageupdateajax"
         url="${this.endPoint}"
         method="${this.method}"
-        body="${this.updatePageData}"
         content-type="application/json"
         handle-as="json"
         @response="${this._handleUpdateResponse}"
@@ -125,13 +124,6 @@ class CmsHax extends LitElement {
        */
       method: {
         type: String
-      },
-      /**
-       * Page data, body of text as a string.
-       */
-      updatePageData: {
-        type: String,
-        attribute: "udpate-page-data"
       },
       /**
        * Connection object for talking to an app store.
@@ -272,13 +264,19 @@ class CmsHax extends LitElement {
         this.align
       );
       this.__applyMO();
-    }, 250);
+    }, 0);
   }
   /**
    * Created life cycle
    */
   constructor() {
     super();
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
+    window.addEventListener("hax-save", this._saveFired.bind(this));
     this.__lock = false;
     this.openDefault = false;
     this.hideExportButton = true;
@@ -340,12 +338,6 @@ class CmsHax extends LitElement {
       this._observer.disconnect();
       this._observer = null;
     }
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.removeEventListener("hax-store-ready", this._storeReady.bind(this));
-    window.removeEventListener("hax-save", this._saveFired.bind(this));
     super.disconnectedCallback();
   }
   /**
@@ -354,14 +346,6 @@ class CmsHax extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      window.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("hax-store-ready", this._storeReady.bind(this));
-      window.addEventListener("hax-save", this._saveFired.bind(this));
-    }, 0);
     this.__applyMO();
   }
   __applyMO() {
@@ -416,9 +400,11 @@ class CmsHax extends LitElement {
    */
   _saveFired(e) {
     // generate sanitized content
-    this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.shadowRoot.querySelector(
+      "#pageupdateajax"
+    ).body = window.HaxStore.instance.activeHaxBody.haxToContent();
     // send the request
-    this.querySelector("#pageupdateajax").generateRequest();
+    this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
   }
 
   /**
