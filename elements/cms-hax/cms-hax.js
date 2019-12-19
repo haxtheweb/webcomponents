@@ -64,6 +64,9 @@ class CmsHax extends LitElement {
   }
   static get properties() {
     return {
+      __ready: {
+        type: Boolean
+      },
       /**
        * Default the panel to open
        */
@@ -198,16 +201,16 @@ class CmsHax extends LitElement {
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated(newValue, oldValue) {
+  _activeHaxBodyUpdated(bodyElement, ready) {
     // ensure we import our content once we get an initial registration of active body
-    if (newValue != null && !this.__imported) {
+    if (bodyElement != null && ready && !this.__imported) {
       this.__imported = true;
       // see what's inside of this, in a template tag
       let children = this.querySelector("template");
       // convert this template content into the real thing
       // this helps with correctly preserving everything on the way down
       if (children != null) {
-        newValue.importContent(children.innerHTML);
+        bodyElement.importContent(children.innerHTML);
       }
     }
   }
@@ -220,12 +223,6 @@ class CmsHax extends LitElement {
       return true;
     }
     return false;
-  }
-  /**
-   * LitElement without shadowRoot
-   */
-  createRenderRoot() {
-    return this;
   }
   /**
    * Set certain data bound values to the store once it's ready
@@ -257,6 +254,7 @@ class CmsHax extends LitElement {
    */
   firstUpdated() {
     this.__applyMO();
+    this.__ready = true;
   }
   /**
    * Set certain data bound values to the store once it's ready
@@ -307,8 +305,8 @@ class CmsHax extends LitElement {
       if (propName == "redirectLocation") {
         this.redirectOnSave = this._computeRedirectOnSave(this[propName]);
       }
-      if (propName == "activeHaxBody") {
-        this._activeHaxBodyUpdated(this[propName]);
+      if (propName == "activeHaxBody" || propName == "__ready") {
+        this._activeHaxBodyUpdated(this.activeHaxBody, this.__ready);
       }
       if (propName == "appStoreConnection") {
         this._makeAppStore(this[propName]);
@@ -407,10 +405,9 @@ class CmsHax extends LitElement {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this[e.detail.property] = { ...e.detail.value };
-      } else {
-        this[e.detail.property] = e.detail.value;
+        this[e.detail.property] = {};
       }
+      this[e.detail.property] = e.detail.value;
     }
   }
 
