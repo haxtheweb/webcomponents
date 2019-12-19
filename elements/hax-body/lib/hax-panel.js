@@ -178,6 +178,11 @@ class HaxPanel extends winEventsElement(SimpleColors) {
         this._processItemEvent.bind(this)
       );
     }, 0);
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {

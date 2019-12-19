@@ -134,6 +134,10 @@ class HAXApp extends HTMLElement {
    */
   connectedCallback() {
     if (typeof this.data !== typeof undefined) {
+      // account for possibly needing to convert string to data object
+      if (typeof this.data === "string") {
+        this.data = JSON.parse(this.data);
+      }
       this.dispatchEvent(
         new CustomEvent(this.eventName, {
           bubbles: true,

@@ -146,8 +146,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Possible appStore endpoint for loading in things dynamically.
        */
       appStore: {
-        type: Object,
-        attribute: "app-store"
+        type: Object
       },
       /**
        * HAX Toast message.
