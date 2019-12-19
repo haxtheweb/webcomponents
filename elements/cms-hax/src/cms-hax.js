@@ -32,7 +32,7 @@ class CmsHax extends LitElement {
         handle-as="json"
         @response="${this._handleUpdateResponse}"
       ></iron-ajax>
-      <h-a-x app-store="${this.appStoreConnection}"></h-a-x>
+      <h-a-x app-store="${this.__appStore}"></h-a-x>
     `;
   }
 
@@ -40,6 +40,28 @@ class CmsHax extends LitElement {
     return "cms-hax";
   }
 
+  decodeHTMLEntities(text) {
+    var entities = [
+      ["amp", "&"],
+      ["apos", "'"],
+      ["#x27", "'"],
+      ["#x2F", "/"],
+      ["#39", "'"],
+      ["#47", "/"],
+      ["lt", "<"],
+      ["gt", ">"],
+      ["nbsp", " "],
+      ["quot", '"']
+    ];
+
+    for (var i = 0, max = entities.length; i < max; ++i)
+      text = text.replace(
+        new RegExp("&" + entities[i][0] + ";", "g"),
+        entities[i][1]
+      );
+
+    return text;
+  }
   static get properties() {
     return {
       /**
@@ -114,6 +136,9 @@ class CmsHax extends LitElement {
       appStoreConnection: {
         type: String,
         attribute: "app-store-connection"
+      },
+      __appStore: {
+        type: String
       },
       /**
        * State of the panel
@@ -274,6 +299,9 @@ class CmsHax extends LitElement {
     import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js");
   }
+  _makeAppStore(val) {
+    this.__appStore = this.decodeHTMLEntities(val);
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "redirectLocation") {
@@ -281,6 +309,9 @@ class CmsHax extends LitElement {
       }
       if (propName == "activeHaxBody") {
         this._activeHaxBodyUpdated(this[propName]);
+      }
+      if (propName == "appStoreConnection") {
+        this._makeAppStore(this[propName]);
       }
       if (
         [

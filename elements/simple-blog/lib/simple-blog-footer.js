@@ -1,7 +1,7 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import { varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention

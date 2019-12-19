@@ -143,7 +143,12 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           class="vertical flex layout"
           global-options="[[globalOptions]]"
         >
-          <template is="dom-repeat" items="[[schema.value]]" as="item" restamp>
+          <template
+            is="dom-repeat"
+            items="[[_toArray(schema.value)]]"
+            as="item"
+            restamp
+          >
             <a11y-collapse
               accordion
               id$="item-[[index]]"
@@ -151,7 +156,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
               tooltip$="[[globalOptions.tooltip]]"
             >
               <p slot="heading">
-                {{_getHeading(__headings.*,schema.label,index)}}
+                [[_getHeading(__headings.*,schema.label,index)]]
               </p>
               <div slot="content">
                 <div>
@@ -190,6 +195,16 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       </fieldset>
     `;
   }
+  _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
+
+    return Object.keys(obj).map(function(key) {
+      return obj[key];
+    });
+  }
+
   static get properties() {
     return {
       globalOptions: {

@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
-import { varGet } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
@@ -17,6 +16,9 @@ class HAXCMSSiteEditorUI extends LitElement {
   static get styles() {
     return [
       css`
+        :host *:not(:defined) {
+          display: none;
+        }
         :host {
           display: block;
           position: fixed;
@@ -173,34 +175,17 @@ class HAXCMSSiteEditorUI extends LitElement {
         detail: true
       })
     );
-    autorun(reaction => {
-      this.userName = toJS(store.userData.userName);
-      this.userPicture = toJS(store.userData.userPicture);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.manifest = toJS(store.manifest);
-      this.icon = "hax:site-settings";
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.dashboardOpened = toJS(store.dashboardOpened);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      const activeItem = toJS(store.activeItem);
-      if (activeItem && activeItem.id) {
-        this.activeTitle = activeItem.title;
-        this.pageAllowed = true;
-      } else {
-        this.pageAllowed = false;
-      }
-      this.__disposer.push(reaction);
-    });
+    setTimeout(() => {
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
+      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-modal/simple-modal.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/paper-fab/paper-fab.js");
+      import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
+    }, 0);
   }
   // render function
   render() {
@@ -299,16 +284,6 @@ class HAXCMSSiteEditorUI extends LitElement {
     `;
   }
   firstUpdated(changedProperties) {
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
-    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/simple-modal/simple-modal.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-fab/paper-fab.js");
-    import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
-
     // load user data
     this.dispatchEvent(
       new CustomEvent("haxcms-load-user-data", {
@@ -454,6 +429,37 @@ class HAXCMSSiteEditorUI extends LitElement {
         attribute: "dashboard-opened"
       }
     };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    autorun(reaction => {
+      this.userName = toJS(store.userData.userName);
+      this.userPicture = toJS(store.userData.userPicture);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.icon = "hax:site-settings";
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.dashboardOpened = toJS(store.dashboardOpened);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem && activeItem.id) {
+        this.activeTitle = activeItem.title;
+        this.pageAllowed = true;
+      } else {
+        this.pageAllowed = false;
+      }
+      this.__disposer.push(reaction);
+    });
   }
   disconnectedCallback() {
     for (var i in this.__disposer) {
