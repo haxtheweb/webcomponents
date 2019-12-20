@@ -11,15 +11,14 @@ class MapMenuItem extends LitElement {
       css`
         :host {
           display: block;
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.2s;
+          transition: 0.1s all ease-in-out;
           font-size: var(--map-menu-item-font-size, 14px);
           --map-menu-item-height: var(--map-menu-item-height);
           --map-menu-item-a-color: inherit;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
-          color: var(--site-menu-item-active-item-color, #000000);
+          color: var(--map-menu-item-active-item-color, #000000);
         }
         paper-button {
           width: 100%;
@@ -48,8 +47,7 @@ class MapMenuItem extends LitElement {
           text-decoration: var(--map-menu-item-a-text-decoration);
         }
         #track {
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.5s;
+          transition: 0.1s all ease-in-out;
           position: absolute;
           right: 0;
 

@@ -12,13 +12,12 @@ class MapMenuHeader extends LitElement {
       css`
         :host {
           display: block;
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.2s;
+          transition: 0.1s all ease-in-out;
           --map-menu-item-height: 16px;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
-          color: var(--site-menu-item-active-item-color, #000000);
+          color: var(--map-menu-item-active-item-color, #000000);
         }
         #container {
           display: flex;
@@ -91,7 +90,7 @@ class MapMenuHeader extends LitElement {
           ? html`
               <div class="avatarlabel">
                 <lrndesign-avatar
-                  .label="${this.avatarLabel}"
+                  label="${this.avatarLabel}"
                 ></lrndesign-avatar>
               </div>
             `
@@ -133,11 +132,10 @@ class MapMenuHeader extends LitElement {
    */
   constructor() {
     super();
-    this.avatarLabel = false;
+    this.avatarLabel = "";
     this.url = "";
+    this.opened = false;
     this.active = false;
-    this.__collapseIcon = "arrow-drop-up";
-    this.__collapseAria = "expand menu";
     setTimeout(() => {
       this.addEventListener("click", this.__tap.bind(this));
       this.addEventListener("keypress", this.__keypress.bind(this));
@@ -206,10 +204,10 @@ class MapMenuHeader extends LitElement {
   }
   _openedChanged(newValue, oldValue) {
     if (newValue) {
-      this.__collapseIcon = "arrow-drop-down";
+      this.__collapseIcon = "icons:expand-more";
       this.__collapseAria = "collapse menu";
     } else {
-      this.__collapseIcon = "arrow-drop-up";
+      this.__collapseIcon = "icons:chevron-right";
       this.__collapseAria = "expand menu";
     }
   }
