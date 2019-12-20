@@ -1860,18 +1860,43 @@ class HaxBody extends SimpleColors {
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
       this.setAttribute("tabindex", "-1");
-      if (
-        newValue !== false &&
-        typeof this.activeNode !== typeof undefined &&
-        this.activeNode !== null
-      ) {
-        setTimeout(() => {
-          if (this.activeContainerNode == null) {
-            this.activeContainerNode = this.activeNode;
-            window.HaxStore.write("activeContainerNode", this.activeNode, this);
-          }
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 0);
+      if (newValue) {
+        if (this.children && this.children[0] && this.children[0].focus) {
+          this.activeNode = this.children[0];
+          this.activeContainerNode = this.activeNode;
+          window.HaxStore.write("activeNode", this.children[0], this);
+          window.HaxStore.write("activeContainerNode", this.children[0], this);
+          setTimeout(() => {
+            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+              try {
+                var range = document.createRange();
+                var sel = window.HaxStore.getSelection();
+                range.setStart(this.activeNode, 0);
+                range.collapse(true);
+                sel.removeAllRanges();
+                sel.addRange(range);
+                this.activeNode.focus();
+              } catch (e) {
+                console.warn(e);
+              }
+            }
+          }, 0);
+        } else {
+          this.haxInsert("p", "", {}, false);
+          setTimeout(() => {
+            try {
+              var range = document.createRange();
+              var sel = window.HaxStore.getSelection();
+              range.setStart(this.activeNode, 0);
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              this.activeNode.focus();
+            } catch (e) {
+              console.warn(e);
+            }
+          }, 0);
+        }
       }
     }
     // hide menus when state changes
