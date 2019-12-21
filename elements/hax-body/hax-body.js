@@ -1861,13 +1861,37 @@ class HaxBody extends SimpleColors {
       this._applyContentEditable(newValue);
       this.setAttribute("tabindex", "-1");
       if (newValue) {
-        if (this.children && this.children[0] && this.children[0].focus) {
-          this.activeNode = this.children[0];
-          this.activeContainerNode = this.activeNode;
-          window.HaxStore.write("activeNode", this.children[0], this);
-          window.HaxStore.write("activeContainerNode", this.children[0], this);
-          setTimeout(() => {
-            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+        // minor timeout here to see if we have children or not. the slight delay helps w/
+        // timing in scenarios where this is inside of other systems which are setting default
+        // attributes and what not
+        setTimeout(() => {
+          if (this.children && this.children[0] && this.children[0].focus) {
+            this.activeNode = this.children[0];
+            this.activeContainerNode = this.activeNode;
+            window.HaxStore.write("activeNode", this.children[0], this);
+            window.HaxStore.write(
+              "activeContainerNode",
+              this.children[0],
+              this
+            );
+            setTimeout(() => {
+              if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+                try {
+                  var range = document.createRange();
+                  var sel = window.HaxStore.getSelection();
+                  range.setStart(this.activeNode, 0);
+                  range.collapse(true);
+                  sel.removeAllRanges();
+                  sel.addRange(range);
+                  this.activeNode.focus();
+                } catch (e) {
+                  console.warn(e);
+                }
+              }
+            }, 0);
+          } else {
+            this.haxInsert("p", "", {}, false);
+            setTimeout(() => {
               try {
                 var range = document.createRange();
                 var sel = window.HaxStore.getSelection();
@@ -1879,24 +1903,9 @@ class HaxBody extends SimpleColors {
               } catch (e) {
                 console.warn(e);
               }
-            }
-          }, 0);
-        } else {
-          this.haxInsert("p", "", {}, false);
-          setTimeout(() => {
-            try {
-              var range = document.createRange();
-              var sel = window.HaxStore.getSelection();
-              range.setStart(this.activeNode, 0);
-              range.collapse(true);
-              sel.removeAllRanges();
-              sel.addRange(range);
-              this.activeNode.focus();
-            } catch (e) {
-              console.warn(e);
-            }
-          }, 0);
-        }
+            }, 0);
+          }
+        }, 100);
       }
     }
     // hide menus when state changes

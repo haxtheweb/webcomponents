@@ -2,8 +2,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/cms-hax/cms-hax.js";
 /**
  * `wysiwyg-hax`
- * @customElement wysiwyg-hax
  * `Integration of wysiwyg edit form for a page with HAX.`
+ * @demo demo/index.html
+ * @customElement wysiwyg-hax
  */
 class WysiwygHax extends LitElement {
   /**
@@ -51,6 +52,11 @@ class WysiwygHax extends LitElement {
   }
   constructor() {
     super();
+    // import child nodes before things start deleting whats in there
+    let children = this.querySelector("template");
+    if (children) {
+      this.__importContent = children.innerHTML;
+    }
     this.openDefault = false;
     this.hideExportButton = false;
     this.align = "right";
@@ -59,6 +65,11 @@ class WysiwygHax extends LitElement {
     this.__imported = false;
     this.redirectLocation = "";
     this.updatePageData = "";
+    window.addEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -187,39 +198,14 @@ class WysiwygHax extends LitElement {
     // ensure we import our content once we get an initial registration of active body
     if (newValue != null && !this.__imported) {
       this.__imported = true;
-      // see what's inside of this, in a template tag
-      let children = this.querySelector("template");
-      // convert this template content into the real thing
-      // this helps with correctly preserving everything on the way down
-      if (children != null) {
-        newValue.importContent(children.innerHTML);
-        // need to dot his because of juggling unfortunately
-        this.editMode = false;
-        window.HaxStore.write("editMode", this.editMode, this);
-        setTimeout(() => {
-          this.editMode = true;
-          window.HaxStore.write("editMode", this.editMode, this);
-        }, 200);
+      if (this.__importContent) {
+        newValue.importContent(this.__importContent);
       }
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    document.body.addEventListener(
-      "hax-save",
-      this._bodyContentUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
   disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-save",
-      this._bodyContentUpdated.bind(this)
-    );
-    document.body.removeEventListener(
+    window.removeEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
@@ -235,10 +221,9 @@ class WysiwygHax extends LitElement {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this[e.detail.property] = { ...e.detail.value };
-      } else {
-        this[e.detail.property] = e.detail.value;
+        this[e.detail.property] = null;
       }
+      this[e.detail.property] = e.detail.value;
     }
   }
 
