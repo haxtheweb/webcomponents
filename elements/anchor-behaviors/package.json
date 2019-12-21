@@ -16,7 +16,7 @@
       "hax": "src/anchor-behaviors-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "handles anchors and params in the url",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/html-block-hax.json"
     }
   },
-  "version": "2.3.0",
+  "version": "2.3.4",
   "description": "A basic HTML block that provides HAXschema wiring",
   "repository": {
     "type": "git",

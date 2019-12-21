@@ -16,7 +16,7 @@
       "hax": "src/elmsln-apps-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^2.3.3",
-    "@lrnwebcomponents/materializecss-styles": "^2.3.3",
+    "@lrnwebcomponents/elmsln-loading": "^2.3.4",
+    "@lrnwebcomponents/materializecss-styles": "^2.3.4",
     "@polymer/app-route": "^3.0.2",
     "@polymer/iron-scroll-threshold": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

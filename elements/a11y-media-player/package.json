@@ -16,7 +16,7 @@
       "hax": "src/a11y-media-player-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -39,12 +39,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/anchor-behaviors": "^2.3.3",
-    "@lrnwebcomponents/dropdown-select": "^2.3.3",
+    "@lrnwebcomponents/anchor-behaviors": "^2.3.4",
+    "@lrnwebcomponents/dropdown-select": "^2.3.4",
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/responsive-utility": "^2.3.3",
-    "@lrnwebcomponents/simple-colors": "^2.3.3",
-    "@lrnwebcomponents/simple-search": "^2.3.3",
+    "@lrnwebcomponents/responsive-utility": "^2.3.4",
+    "@lrnwebcomponents/simple-colors": "^2.3.4",
+    "@lrnwebcomponents/simple-search": "^2.3.4",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-resizable-behavior": "^3.0.0",
@@ -64,7 +64,7 @@
     "screenfull": "^4.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/storybook-utilities": "^2.3.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

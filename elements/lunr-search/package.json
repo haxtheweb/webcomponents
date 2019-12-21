@@ -16,7 +16,7 @@
       "hax": "src/lunr-search-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "LunrJS search element",
   "repository": {
     "type": "git",

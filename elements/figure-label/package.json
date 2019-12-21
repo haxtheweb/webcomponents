@@ -16,7 +16,7 @@
       "hax": "src/figure-label-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",

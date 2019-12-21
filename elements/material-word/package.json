@@ -19,7 +19,7 @@
   "contributors": [
     "John Marczak <johnnyboyct@hotmail.com>"
   ],
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Start of material-word",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

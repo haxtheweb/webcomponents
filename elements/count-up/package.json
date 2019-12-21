@@ -16,7 +16,7 @@
       "hax": "src/count-up-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",

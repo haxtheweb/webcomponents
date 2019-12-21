@@ -16,7 +16,7 @@
       "hax": "src/md-block-hax.json"
     }
   },
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "a markdown block",
   "repository": {
     "type": "git",

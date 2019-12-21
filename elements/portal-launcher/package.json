@@ -16,7 +16,7 @@
       "hax": "src/portal-launcher-hax.json"
     }
   },
-  "version": "2.3.0",
+  "version": "2.3.4",
   "description": "silly thing to play with portal tag and progressive enhancement",
   "repository": {
     "type": "git",
