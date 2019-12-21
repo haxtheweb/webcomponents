@@ -12,10 +12,10 @@ import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `map-menu`
- * @customElement map-menu
  * `A series of elements that generate a hierarchical menu`
  *
  * @demo demo/index.html
+ * @customElement map-menu
  */
 class MapMenu extends LitElement {
   /**
@@ -32,13 +32,13 @@ class MapMenu extends LitElement {
           overflow-y: scroll;
           position: relative;
           height: 100%;
-          transition: 0.2s linear all;
+          transition: 0.1s linear all;
           opacity: 1;
           background-color: transparent;
         }
         #activeindicator {
           background: var(--map-menu-active-color);
-          transition: all 0.3s ease-in-out;
+          transition: all 0.1s ease-in-out;
           position: absolute;
         }
 
@@ -306,6 +306,7 @@ class MapMenu extends LitElement {
     const action = e.detail.opened ? "opened" : "closed";
     const target = e.path[0];
     if (typeof this.activeItem !== "undefined") {
+      this.__updateActiveIndicator(this.activeItem, false);
       this.activeItem.dispatchEvent(
         new CustomEvent("map-menu-item-hidden-check", {
           bubbles: true,
@@ -357,16 +358,18 @@ class MapMenu extends LitElement {
    */
   __updateActiveIndicator(element, hidden = false) {
     // run it through to set time just to let stuff set up
-    const activeindicator = this.shadowRoot.querySelector("#activeindicator");
-    const left = element.offsetLeft;
-    const top = element.offsetTop;
-    const width = element.offsetWidth;
-    // if the element is hidden the set the indicator height to zero to make it disapear
-    const height = !hidden ? element.offsetHeight : 0;
-    activeindicator.setAttribute(
-      "style",
-      `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
-    );
+    setTimeout(() => {
+      const activeindicator = this.shadowRoot.querySelector("#activeindicator");
+      const left = element.offsetLeft;
+      const top = element.offsetTop;
+      const width = element.offsetWidth;
+      // if the element is hidden the set the indicator height to zero to make it disapear
+      const height = !hidden ? element.offsetHeight : 0;
+      activeindicator.setAttribute(
+        "style",
+        `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
+      );
+    }, 200);
   }
   /**
    * Find out if any parents of the item are collapsed

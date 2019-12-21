@@ -3,18 +3,101 @@
   "tags": [
     {
       "name": "retro-card",
-      "description": "`retro-card`\n`Simple card in a cool retro design`"
+      "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "properties": [
+        {
+          "name": "hoverState",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     },
     {
       "name": "retro-card",
-      "description": "`retro-card`\n`Simple card in a cool retro design`"
+      "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "type": "string"
+        },
+        {
+          "name": "media-source",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "hover-source",
+          "type": "string"
+        },
+        {
+          "name": "hover-state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "type": "string"
+        },
+        {
+          "name": "tags",
+          "attribute": "tags",
+          "type": "string"
+        },
+        {
+          "name": "mediaSource",
+          "attribute": "media-source",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "hoverSource",
+          "attribute": "hover-source",
+          "type": "string"
+        },
+        {
+          "name": "hoverState",
+          "attribute": "hover-state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     },
     {
       "name": "tag"
     },
     {
       "name": "retro-card",
-      "description": "`retro-card`\n`Simple card in a cool retro design`"
+      "description": "`retro-card`\n`Simple card in a cool retro design`",
+      "properties": [
+        {
+          "name": "hoverState",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
     }
   ]
 }

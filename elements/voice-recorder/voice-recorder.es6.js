@@ -3,14 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { record } from "vmsg/vmsg.js";
+import { record } from "./lib/vmsg-fork.js";
 
 /**
  * `voice-recorder`
  * `LAME bridge`
- *
- * @microcopy - language worth noting:
- *  -
  *
  * @demo demo/index.html
  * @customElement voice-recorder
@@ -30,6 +27,7 @@ class VoiceRecorder extends LitElement {
       <button @click="${this.recordState}">
         <iron-icon icon="${this.iconState}"></iron-icon>${this.textState}
       </button>
+      <slot></slot>
     `;
   }
   static get properties() {
@@ -58,16 +56,14 @@ class VoiceRecorder extends LitElement {
   constructor() {
     super();
     this.recording = false;
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/av-icons.js");
+    setTimeout(() => {
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@polymer/iron-icons/av-icons.js");
+    }, 0);
   }
   recordState(e) {
     this.recording = !this.recording;
   }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {}
   /**
    * LitElement life cycle - property changed
    */
@@ -92,19 +88,20 @@ class VoiceRecorder extends LitElement {
   toggleRecording(newValue, oldValue) {
     if (newValue) {
       // need to start...
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      record({ wasmURL: basePath + "../../vmsg/vmsg.wasm" }).then(blob => {
-        console.log("Recorded MP3", blob);
+      record(
+        {
+          wasmURL:
+            this.pathFromUrl(decodeURIComponent(import.meta.url)) +
+            "../../vmsg/vmsg.wasm"
+        },
+        this
+      ).then(blob => {
         this.dispatchEvent(
           new CustomEvent("voice-recorder-recording", {
             value: blob
           })
         );
       });
-    }
-    // was on now off
-    if (oldValue && !newValue) {
-      // need to stop
     }
   }
   pathFromUrl(url) {

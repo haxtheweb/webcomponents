@@ -27,12 +27,11 @@ class CmsHax extends LitElement {
         id="pageupdateajax"
         url="${this.endPoint}"
         method="${this.method}"
-        body="${this.updatePageData}"
         content-type="application/json"
         handle-as="json"
         @response="${this._handleUpdateResponse}"
       ></iron-ajax>
-      <h-a-x app-store="${this.appStoreConnection}"></h-a-x>
+      <h-a-x app-store="${this.__appStore}"></h-a-x>
     `;
   }
 
@@ -40,8 +39,33 @@ class CmsHax extends LitElement {
     return "cms-hax";
   }
 
+  decodeHTMLEntities(text) {
+    var entities = [
+      ["amp", "&"],
+      ["apos", "'"],
+      ["#x27", "'"],
+      ["#x2F", "/"],
+      ["#39", "'"],
+      ["#47", "/"],
+      ["lt", "<"],
+      ["gt", ">"],
+      ["nbsp", " "],
+      ["quot", '"']
+    ];
+
+    for (var i = 0, max = entities.length; i < max; ++i)
+      text = text.replace(
+        new RegExp("&" + entities[i][0] + ";", "g"),
+        entities[i][1]
+      );
+
+    return text;
+  }
   static get properties() {
     return {
+      __ready: {
+        type: Boolean
+      },
       /**
        * Default the panel to open
        */
@@ -102,18 +126,14 @@ class CmsHax extends LitElement {
         type: String
       },
       /**
-       * Page data, body of text as a string.
-       */
-      updatePageData: {
-        type: String,
-        attribute: "udpate-page-data"
-      },
-      /**
        * Connection object for talking to an app store.
        */
       appStoreConnection: {
         type: String,
         attribute: "app-store-connection"
+      },
+      __appStore: {
+        type: String
       },
       /**
        * State of the panel
@@ -173,16 +193,16 @@ class CmsHax extends LitElement {
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated(newValue, oldValue) {
+  _activeHaxBodyUpdated(bodyElement, ready) {
     // ensure we import our content once we get an initial registration of active body
-    if (newValue != null && !this.__imported) {
+    if (bodyElement != null && ready && !this.__imported) {
       this.__imported = true;
       // see what's inside of this, in a template tag
       let children = this.querySelector("template");
       // convert this template content into the real thing
       // this helps with correctly preserving everything on the way down
       if (children != null) {
-        newValue.importContent(children.innerHTML);
+        bodyElement.importContent(children.innerHTML);
       }
     }
   }
@@ -195,12 +215,6 @@ class CmsHax extends LitElement {
       return true;
     }
     return false;
-  }
-  /**
-   * LitElement without shadowRoot
-   */
-  createRenderRoot() {
-    return this;
   }
   /**
    * Set certain data bound values to the store once it's ready
@@ -232,6 +246,7 @@ class CmsHax extends LitElement {
    */
   firstUpdated() {
     this.__applyMO();
+    this.__ready = true;
   }
   /**
    * Set certain data bound values to the store once it's ready
@@ -249,13 +264,19 @@ class CmsHax extends LitElement {
         this.align
       );
       this.__applyMO();
-    }, 250);
+    }, 0);
   }
   /**
    * Created life cycle
    */
   constructor() {
     super();
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
+    window.addEventListener("hax-save", this._saveFired.bind(this));
     this.__lock = false;
     this.openDefault = false;
     this.hideExportButton = true;
@@ -274,13 +295,19 @@ class CmsHax extends LitElement {
     import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js");
   }
+  _makeAppStore(val) {
+    this.__appStore = this.decodeHTMLEntities(val);
+  }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "redirectLocation") {
         this.redirectOnSave = this._computeRedirectOnSave(this[propName]);
       }
-      if (propName == "activeHaxBody") {
-        this._activeHaxBodyUpdated(this[propName]);
+      if (propName == "activeHaxBody" || propName == "__ready") {
+        this._activeHaxBodyUpdated(this.activeHaxBody, this.__ready);
+      }
+      if (propName == "appStoreConnection") {
+        this._makeAppStore(this[propName]);
       }
       if (
         [
@@ -311,12 +338,6 @@ class CmsHax extends LitElement {
       this._observer.disconnect();
       this._observer = null;
     }
-    window.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.removeEventListener("hax-store-ready", this._storeReady.bind(this));
-    window.removeEventListener("hax-save", this._saveFired.bind(this));
     super.disconnectedCallback();
   }
   /**
@@ -325,14 +346,6 @@ class CmsHax extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      window.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      window.addEventListener("hax-store-ready", this._storeReady.bind(this));
-      window.addEventListener("hax-save", this._saveFired.bind(this));
-    }, 0);
     this.__applyMO();
   }
   __applyMO() {
@@ -376,10 +389,9 @@ class CmsHax extends LitElement {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this[e.detail.property] = { ...e.detail.value };
-      } else {
-        this[e.detail.property] = e.detail.value;
+        this[e.detail.property] = {};
       }
+      this[e.detail.property] = e.detail.value;
     }
   }
 
@@ -388,9 +400,11 @@ class CmsHax extends LitElement {
    */
   _saveFired(e) {
     // generate sanitized content
-    this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.shadowRoot.querySelector(
+      "#pageupdateajax"
+    ).body = window.HaxStore.instance.activeHaxBody.haxToContent();
     // send the request
-    this.querySelector("#pageupdateajax").generateRequest();
+    this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
   }
 
   /**

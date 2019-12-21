@@ -183,9 +183,9 @@ ol {
   storeReady(e) {
     if (e.detail) {
       setTimeout(() => {
-        window.HaxStore.instance.appStore = JSON.parse(
-          this.getAttribute("app-store")
-        );
+        window.HaxStore.instance.appStore = {
+          ...JSON.parse(this.getAttribute("app-store"))
+        };
       }, 0);
     }
   }
@@ -264,9 +264,9 @@ ol {
     if (this.__rendered) {
       this.setAttribute("app-store", newValue);
       // bind to the hax store global on change
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
+      window.HaxStore.instance.appStore = {
+        ...JSON.parse(this.getAttribute("app-store"))
+      };
     }
   }
   attributeChangedCallback(attr, oldValue, newValue) {}
