@@ -16,7 +16,7 @@
       "hax": "src/social-share-link-hax.json"
     }
   },
-  "version": "2.3.4",
+  "version": "2.3.6",
   "description": "a link to share content on social",
   "repository": {
     "type": "git",
@@ -39,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/social-media-icons": "^2.3.4",
+    "@lrnwebcomponents/social-media-icons": "^2.3.6",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.4",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.6",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
