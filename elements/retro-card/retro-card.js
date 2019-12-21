@@ -186,8 +186,8 @@ class RetroCard extends SimpleColors {
         handles: [
           {
             type: "image",
-            source: "source",
-            source2: "hoverSource",
+            source2: "mediaSource",
+            source: "hoverSource",
             alt: "subtitle",
             title: "title",
             name: "title"
@@ -201,7 +201,7 @@ class RetroCard extends SimpleColors {
       settings: {
         quick: [
           {
-            property: "source",
+            property: "mediaSource",
             description: "",
             inputMethod: "textfield",
             required: true,
@@ -218,6 +218,14 @@ class RetroCard extends SimpleColors {
             icon: "icons:android"
           },
           {
+            property: "url",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android",
+            validationType: "url"
+          },
+          {
             property: "subtitle",
             description: "",
             inputMethod: "textfield",
@@ -227,32 +235,41 @@ class RetroCard extends SimpleColors {
           {
             property: "tags",
             description: "",
-            inputMethod: "array",
+            inputMethod: "textfield",
             required: false,
             icon: "icons:android"
           },
           {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
+            property: "mediaSource",
+            description: "Primary media source",
+            inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
             validationType: "url"
           },
           {
             property: "hoverSource",
-            description: "",
-            inputMethod: "textfield",
+            description: "When user hovers / activates the card",
+            title: "Source on hover",
+            inputMethod: "haxupload",
             required: false,
             validationType: "url",
             icon: "icons:android"
           },
           {
             property: "accentColor",
-            description: "",
+            description: "An accent to apply evenly to the card",
+            title: "Accent Color",
             inputMethod: "colorpicker",
             required: false,
             icon: "icons:android"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Flips the color mode to be dark mode",
+            inputMethod: "boolean",
+            required: false
           }
         ],
         advanced: []

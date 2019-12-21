@@ -1452,6 +1452,7 @@
     }
   ],
   "autoloader": {
+    "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
     "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
