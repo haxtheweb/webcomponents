@@ -16,7 +16,7 @@
       "hax": "src/retro-card-hax.json"
     }
   },
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
