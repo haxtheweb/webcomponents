@@ -1,7 +1,7 @@
 # &lt;retro-card&gt;
 
 Card
-> Simple card in a cool retro design
+> Simple card in a cool retro design based off of PSU DMD program style
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
