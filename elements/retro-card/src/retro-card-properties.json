@@ -1,0 +1,33 @@
+{
+  "title": {
+    "type": String
+  },
+  "subtitle": {
+    "type": String
+  },
+  "tags": {
+    "type": String
+  },
+  "mediaSource": {
+    "type": String,
+    "attribute": "media-source"
+  },
+  "url": {
+    "type": String
+  },
+  "hoverSource": {
+    "type": String,
+    "attribute": "hover-source"
+  },
+  "hoverState": {
+    "type": Boolean,
+    "attribute": "hover-state",
+    "reflect": true
+  },
+  "__cardTags": {
+    "type": Array
+  },
+  "__source": {
+    "type": String
+  }
+}

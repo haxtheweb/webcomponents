@@ -1,0 +1,85 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Retro card",
+    "description": "Simple card in a cool retro design",
+    "icon": "icons:android",
+    "color": "purple",
+    "groups": ["Card"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "source",
+        "source2": "hoverSource",
+        "alt": "subtitle",
+        "title": "title",
+        "name": "title"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "subtitle",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "tags",
+        "description": "",
+        "inputMethod": "array",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "hoverSource",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "validationType": "url",
+        "icon": "icons:android"
+      },
+      {
+        "property": "accentColor",
+        "description": "",
+        "inputMethod": "colorpicker",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
