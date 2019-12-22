@@ -4,13 +4,14 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-modal-handler.js";
 /**
  * `media-image`
- * @customElement media-image
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
+ * @customElement media-image
  */
-class MediaImage extends SchemaBehaviors(LitElement) {
+class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -93,6 +94,9 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   }
   constructor() {
     super();
+    this.modalContent = document.createElement("image-inspector");
+    this.modalContent.noLeft = true;
+    this.modalTitle = "";
     this.source = "";
     this.citation = "";
     this.caption = "";
@@ -104,20 +108,55 @@ class MediaImage extends SchemaBehaviors(LitElement) {
     this.card = false;
     this.box = false;
     this.offset = "none";
-    import("@lrnwebcomponents/figure-label/figure-label.js");
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/iron-icons/iron-icons.js");
+    setTimeout(() => {
+      import("@polymer/iron-image/iron-image.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      this.addEventListener(
+        "simple-modal-show",
+        this.__modalShowEvent.bind(this)
+      );
+    }, 0);
+  }
+  /**
+   * Only import the definition if they call up the modal because it's a pretty
+   * heavy library tree
+   */
+  __modalShowEvent(e) {
+    import("@lrnwebcomponents/image-inspector/image-inspector.js");
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "caption") {
         this._computeHasCaption(this[propName]);
       }
+      // ensure pop up matches source url
+      if (propName == "source") {
+        this.modalContent.src = this[propName];
+      }
+      if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
+        this.__figureLabel = this._hasFigureLabel(
+          this.figureLabelTitle,
+          this.figureLabelDescription
+        );
+      }
+      if (["figureLabelTitle", "caption"].includes(propName)) {
+        this.modalTitle = this.figureLabelTitle
+          ? this.figureLabelTitle
+          : this.caption;
+        this.modalTitle += this.figureLabelDescription
+          ? " - " + this.figureLabelDescription
+          : "";
+      }
+      if (propName == "__figureLabel") {
+        if (this[propName]) {
+          import("@lrnwebcomponents/figure-label/figure-label.js");
+        }
+      }
     });
   }
   render() {
     return html`
-      ${this._hasFigureLabel(this.figureLabelTitle, this.figureLabelDescription)
+      ${this.__figureLabel
         ? html`
             <figure-label
               title="${this.figureLabelTitle}"
@@ -152,6 +191,9 @@ class MediaImage extends SchemaBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      __figureLabel: {
+        type: Boolean
+      },
       _hasCaption: {
         type: Boolean
       },
@@ -403,9 +445,9 @@ window.customElements.define(MediaImage.tag, MediaImage);
 
 /**
  * `media-image-citation`
- * @customElement media-image-citation
  * `A simple image presentaiton with minor documented options`
  * @demo demo/index.html
+ * @customElement media-image-citation
  */
 class MediaImageCitation extends LitElement {
   /**

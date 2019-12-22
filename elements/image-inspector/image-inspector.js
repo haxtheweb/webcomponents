@@ -1,10 +1,11 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/exif-data/exif-data.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /**
  * `image-inspector`
- * @customElement image-inspector
  * `Zoom, Rotate, Mirror, Download, and View image`
- *
  * @demo demo/index.html
+ * @customElement image-inspector
  */
 class ImageInspector extends LitElement {
   /**
@@ -20,7 +21,7 @@ class ImageInspector extends LitElement {
         }
 
         app-toolbar {
-          width: 90%;
+          width: 100%;
           background: var(--image-inspector-background);
           margin: 0 auto;
           padding: 0;
@@ -35,7 +36,7 @@ class ImageInspector extends LitElement {
         }
 
         .top {
-          top: 128px;
+          top: 0px;
         }
         .showData {
           display: block;
@@ -61,14 +62,15 @@ class ImageInspector extends LitElement {
   }
   constructor() {
     super();
+    this.noLeft = false;
     this.degrees = 0;
     this.hoverClass = "blue white-text";
-    import("@polymer/app-layout/app-layout.js");
-    import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
-    import("@lrnwebcomponents/exif-data/exif-data.js");
-    import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/image-icons.js");
+    setTimeout(() => {
+      import("@polymer/app-layout/app-layout.js");
+      import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/image-icons.js");
+    }, 0);
   }
   render() {
     return html`
@@ -118,9 +120,13 @@ class ImageInspector extends LitElement {
         ></lrnsys-button>
         <slot name="toolbar"></slot>
       </app-toolbar>
-      <exif-data id="exif" @click=${this.hideData} no-events>
-        <img src="${this.src}" />
-      </exif-data>
+      <exif-data
+        id="exif"
+        @click=${this.hideData}
+        no-events
+        ?no-left="${this.noLeft}"
+        ><img src="${this.src}"
+      /></exif-data>
       <img-pan-zoom id="img" src="${this.src}"></img-pan-zoom>
       <slot></slot>
     `;
@@ -129,8 +135,8 @@ class ImageInspector extends LitElement {
     if (this.shadowRoot.querySelector("#exif").classList.contains("showData")) {
       this.shadowRoot.querySelector("#exif").classList.remove("showData");
     } else {
-      this.shadowRoot.querySelector("#exif").classList.add("showData");
       this.shadowRoot.querySelector("#exif").updateExif(true);
+      this.shadowRoot.querySelector("#exif").classList.add("showData");
     }
   }
   hideData(e) {
@@ -143,6 +149,10 @@ class ImageInspector extends LitElement {
 
   static get properties() {
     return {
+      noLeft: {
+        type: Boolean,
+        attribute: "no-left"
+      },
       /**
        * Image rotation
        */
@@ -177,7 +187,11 @@ class ImageInspector extends LitElement {
     // spin 90
     this.degrees += 90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    this.__img.toggleClass("top");
+    if (this.__img.classList.contains("top")) {
+      this.__img.classList.remove("top");
+    } else {
+      this.__img.classList.add("top");
+    }
   }
 
   /**
@@ -187,7 +201,11 @@ class ImageInspector extends LitElement {
     // go back 90
     this.degrees += -90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    this.__img.toggleClass("top");
+    if (this.__img.classList.contains("top")) {
+      this.__img.classList.remove("top");
+    } else {
+      this.__img.classList.add("top");
+    }
   }
 
   /**

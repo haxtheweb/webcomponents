@@ -58,6 +58,7 @@ class ExifData extends HTMLElement {
    */
   constructor() {
     super();
+    this.nodeData = [];
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("exif-js", `${basePath}lib/exif-js.js`);
@@ -68,9 +69,6 @@ class ExifData extends HTMLElement {
     this.template = document.createElement("template");
     this.attachShadow({ mode: "open" });
     this.render();
-    if (!this.getAttribute("no-events")) {
-      this.addEventListener("click", this.clickImage.bind(this));
-    }
   }
   /**
    * Library loaded
@@ -84,6 +82,9 @@ class ExifData extends HTMLElement {
     this.updateExif();
   }
   showDetails(item) {
+    if (!item) {
+      return;
+    }
     let target = this.alignTarget;
     if (!target) {
       target = item.node;
@@ -109,7 +110,9 @@ class ExifData extends HTMLElement {
     }
     this.dataElement.style.height = dim.height + "px";
     this.dataElement.style.width = dim.width + "px";
-    this.dataElement.style.left = dim.left + "px";
+    if (!this.noLeft) {
+      this.dataElement.style.left = dim.left + "px";
+    }
     this.dataElement.classList.add("showdata");
   }
   clickImage(e) {
@@ -145,7 +148,9 @@ class ExifData extends HTMLElement {
       }
     });
     if (show && this.children.length === 1) {
-      this.showDetails(this.nodeData[0]);
+      setTimeout(() => {
+        this.showDetails(this.nodeData[0]);
+      }, 250);
     }
   }
   clickData(e) {
@@ -159,8 +164,14 @@ class ExifData extends HTMLElement {
       window.ShadyCSS.styleElement(this);
     }
     this.dataElement = this.shadowRoot.querySelector("#data");
-    if (!this.getAttribute("no-events")) {
+    if (this.getAttribute("no-events") == null) {
+      this.addEventListener("click", this.clickImage.bind(this));
       this.dataElement.addEventListener("click", this.clickData.bind(this));
+    }
+    if (this.getAttribute("no-left") == null) {
+      this.noLeft = false;
+    } else {
+      this.noLeft = true;
     }
     // any change, update things
     this.observer = new MutationObserver(mutations => {
@@ -172,7 +183,8 @@ class ExifData extends HTMLElement {
   }
 
   disconnectedCallback() {
-    if (!this.getAttribute("no-events")) {
+    if (this.getAttribute("no-events") == null) {
+      this.removeEventListener("click", this.clickImage.bind(this));
       this.dataElement.removeEventListener("click", this.clickData.bind(this));
     }
     this.observer.disconnect();
