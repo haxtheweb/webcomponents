@@ -37,8 +37,6 @@ class CitationElement extends SchemaBehaviors(LitElement) {
           font-style: italic;
         }
         .license-link img {
-          height: 16px;
-          min-width: 16px;
           margin-right: 8px;
         }
       `
@@ -80,6 +78,8 @@ class CitationElement extends SchemaBehaviors(LitElement) {
             alt="${this.licenseName} graphic"
             src="${this.licenseImage}"
             ?hidden="${!this.licenseImage}"
+            width="44px"
+            height="16px"
           />${this.licenseName}</a
         >. Accessed <span class="citation-date">${this.date}</span>.</cite
       >

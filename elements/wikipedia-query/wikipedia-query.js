@@ -2,10 +2,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `wikipedia-query`
- * @customElement wikipedia-query
  * `Query and present information from wikipedia.`
- *
  * @demo demo/index.html
+ * @customElement wikipedia-query
  */
 class WikipediaQuery extends LitElement {
   /**
@@ -37,13 +36,13 @@ class WikipediaQuery extends LitElement {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/citation-element/citation-element.js");
     this.hideTitle = false;
-    this.search = "Web_Components";
-    this.renderAs = "content";
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    setTimeout(() => {
+      import("@lrnwebcomponents/citation-element/citation-element.js");
+    }, 0);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -55,26 +54,29 @@ class WikipediaQuery extends LitElement {
   // LitElement render function
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this
-          .search}&amp;prop=extracts&amp;format=json"
-        handle-as="json"
-        @response="${this.handleResponse}"
-        debounce-duration="25"
-        @last-response-changed="${this.searchResponseChanged}"
-      ></iron-ajax>
-      <h3 .hidden="${this.hideTitle}">${this._title}</h3>
-      <div id="result" .hidden="${!this.__rendercontent}"></div>
-      <citation-element
-        .hidden="${!this.__rendercontent}"
-        creator="{Wikipedia contributors}"
-        scope="sibling"
-        license="by-sa"
-        title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
-        source="https://en.wikipedia.org/w/index.php?title=${this.search}"
-        date="${this.__now}"
-      ></citation-element>
+      ${this.search
+        ? html`
+            <iron-ajax
+              auto
+              url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this
+                .search}&amp;prop=extracts&amp;format=json"
+              handle-as="json"
+              @response="${this.handleResponse}"
+              debounce-duration="25"
+              @last-response-changed="${this.searchResponseChanged}"
+            ></iron-ajax>
+            <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+            <div id="result"></div>
+            <citation-element
+              creator="{Wikipedia contributors}"
+              scope="sibling"
+              license="by-sa"
+              title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
+              source="https://en.wikipedia.org/w/index.php?title=${this.search}"
+              date="${this.__now}"
+            ></citation-element>
+          `
+        : ``}
     `;
   }
   searchResponseChanged(e) {
@@ -97,10 +99,6 @@ class WikipediaQuery extends LitElement {
           this._title = this.title;
         }
       }
-      if (propName == "renderAs") {
-        // observer
-        this._renderAsUpdated(this[propName], oldValue);
-      }
     });
   }
   static get properties() {
@@ -112,9 +110,6 @@ class WikipediaQuery extends LitElement {
         type: String
       },
       _title: {
-        type: String
-      },
-      __rendercontent: {
         type: String
       },
       /**
@@ -129,19 +124,6 @@ class WikipediaQuery extends LitElement {
        */
       search: {
         type: String
-      },
-      /**
-       * Render the response as..
-       */
-      renderAs: {
-        type: String,
-        attribute: "render-as"
-      },
-      /**
-       * Response to parse.
-       */
-      searchResponse: {
-        type: Object
       }
     };
   }
@@ -202,31 +184,6 @@ class WikipediaQuery extends LitElement {
     };
   }
   /**
-   * Convert renderas into a variable.
-   */
-  _renderAsUpdated(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      this._resetRenderMethods();
-    }
-  }
-  /**
-   * Validate input method.
-   */
-  _validRenderMethods() {
-    var methods = ["content"];
-    return methods;
-  }
-  /**
-   * Reset all our meta attributes.
-   */
-  _resetRenderMethods() {
-    let methods = this._validRenderMethods();
-    for (var i = 0; i < methods.length; i++) {
-      this["__render" + methods[i]] = false;
-    }
-  }
-
-  /**
    * Process response from wikipedia.
    */
   handleResponse(response) {
@@ -235,7 +192,6 @@ class WikipediaQuery extends LitElement {
       typeof this.searchResponse !== typeof undefined &&
       this.searchResponse.query
     ) {
-      this[`__render${this.renderAs}`] = true;
       for (var key in this.searchResponse.query.pages) {
         // skip anything that's prototype object
         if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
