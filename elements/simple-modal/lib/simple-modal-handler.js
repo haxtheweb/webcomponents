@@ -1,9 +1,18 @@
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+/**
+ * SuperClass to add in accessible clicking capabilities to anything
+ * to pop passed in items up via...
+ * @var {string} this.modalTitle - title to display in modal
+ * @var {object} this.modalContent - HTML element to display as content
+ */
 export const SimpleModalHandler = function(SuperClass) {
   return class extends SuperClass {
+    connectedCallback() {
+      super.connectedCallback();
+      this.setAttribute("tabindex", "0");
+    }
     constructor() {
       super();
-      this.setAttribute("tabindex", "0");
       setTimeout(() => {
         window.SimpleModal.requestAvailability();
         this.addEventListener(
