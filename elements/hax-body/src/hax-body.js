@@ -1900,6 +1900,12 @@ class HaxBody extends SimpleColors {
                 sel.removeAllRanges();
                 sel.addRange(range);
                 this.activeNode.focus();
+                this.activeContainerNode = this.activeNode;
+                window.HaxStore.write(
+                  "activeContainerNode",
+                  this.activeContainerNode,
+                  this
+                );
               } catch (e) {
                 console.warn(e);
               }

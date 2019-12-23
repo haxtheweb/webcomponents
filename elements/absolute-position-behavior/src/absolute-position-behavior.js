@@ -7,14 +7,9 @@ import "./lib/absolute-position-state-manager";
 
 /**
  * `absolute-position-behavior`
- * @customElement absolute-position-behavior
  * abstracts absolute positioning behavior to be resusable in other elements
- *
- * @microcopy - language worth noting:
- *  -
- *
-
  * @demo ./demo/index.html
+ * @customElement absolute-position-behavior
  */
 class AbsolutePositionBehavior extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
