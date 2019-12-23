@@ -44,6 +44,7 @@ class HaxContextItem extends LitElement {
           height: 36px;
           width: 36px;
         }
+        :host([large]),
         :host([mini]) {
           height: unset;
           width: unset;
@@ -180,7 +181,8 @@ class HaxContextItem extends LitElement {
         reflect: true
       },
       large: {
-        type: Boolean
+        type: Boolean,
+        reflect: true
       },
       /**
        * Is this button concidered a primary interaction

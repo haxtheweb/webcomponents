@@ -1250,7 +1250,7 @@ class HaxBody extends SimpleColors {
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        -39,
+        -69,
         0
       );
       // special case for node not matching container
@@ -1302,6 +1302,51 @@ class HaxBody extends SimpleColors {
       }
     }, 5);
     return true;
+  }
+  /**
+   * Inject a grid plate where something currently lives
+   */
+  haxInjectGridplate(node, side) {
+    // allow splitting the grid plate that is already there
+    let changed = false;
+    if (node.tagName === "GRID-PLATE") {
+      switch (node.layout) {
+        case "1":
+          node.layout = "1-1";
+          changed = true;
+          break;
+        case "1-1":
+          node.layout = "1-1-1";
+          changed = true;
+          break;
+        case "1-1-1":
+          node.layout = "1-1-1-1";
+          changed = true;
+          break;
+      }
+      // if left, nudge everything over 1, right simple
+      if (changed && side == "left") {
+        node.childNodes.forEach(el => {
+          if (el.tagName) {
+            let s =
+              parseInt(el.getAttribute("slot").replace("col-", ""), 10) + 1;
+            el.setAttribute("slot", `col-${s}`);
+          }
+        });
+      }
+    } else {
+      let grid = document.createElement("grid-plate");
+      grid.layout = "1-1";
+      this.insertBefore(grid, node);
+      let col = "1";
+      if (side == "right") {
+        col = "2";
+      }
+      setTimeout(() => {
+        grid.appendChild(node);
+        node.setAttribute("slot", "col-" + col);
+      }, 0);
+    }
   }
   /**
    * Convert an element from one tag to another.
@@ -1525,6 +1570,14 @@ class HaxBody extends SimpleColors {
       // allow for transforming this haxElement into another one
       case "grid-plate-convert":
         this.replaceElementWorkflow();
+        break;
+      // grid plate based operations
+      // allow for transforming this haxElement into another one
+      case "grid-plate-create-left":
+        this.haxInjectGridplate(this.activeNode, "left");
+        break;
+      case "grid-plate-create-right":
+        this.haxInjectGridplate(this.activeNode, "right");
         break;
       // duplicate the active item or container
       case "grid-plate-duplicate":
@@ -1861,13 +1914,37 @@ class HaxBody extends SimpleColors {
       this._applyContentEditable(newValue);
       this.setAttribute("tabindex", "-1");
       if (newValue) {
-        if (this.children && this.children[0] && this.children[0].focus) {
-          this.activeNode = this.children[0];
-          this.activeContainerNode = this.activeNode;
-          window.HaxStore.write("activeNode", this.children[0], this);
-          window.HaxStore.write("activeContainerNode", this.children[0], this);
-          setTimeout(() => {
-            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+        // minor timeout here to see if we have children or not. the slight delay helps w/
+        // timing in scenarios where this is inside of other systems which are setting default
+        // attributes and what not
+        setTimeout(() => {
+          if (this.children && this.children[0] && this.children[0].focus) {
+            this.activeNode = this.children[0];
+            this.activeContainerNode = this.activeNode;
+            window.HaxStore.write("activeNode", this.children[0], this);
+            window.HaxStore.write(
+              "activeContainerNode",
+              this.children[0],
+              this
+            );
+            setTimeout(() => {
+              if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+                try {
+                  var range = document.createRange();
+                  var sel = window.HaxStore.getSelection();
+                  range.setStart(this.activeNode, 0);
+                  range.collapse(true);
+                  sel.removeAllRanges();
+                  sel.addRange(range);
+                  this.activeNode.focus();
+                } catch (e) {
+                  console.warn(e);
+                }
+              }
+            }, 0);
+          } else {
+            this.haxInsert("p", "", {}, false);
+            setTimeout(() => {
               try {
                 var range = document.createRange();
                 var sel = window.HaxStore.getSelection();
@@ -1876,27 +1953,18 @@ class HaxBody extends SimpleColors {
                 sel.removeAllRanges();
                 sel.addRange(range);
                 this.activeNode.focus();
+                this.activeContainerNode = this.activeNode;
+                window.HaxStore.write(
+                  "activeContainerNode",
+                  this.activeContainerNode,
+                  this
+                );
               } catch (e) {
                 console.warn(e);
               }
-            }
-          }, 0);
-        } else {
-          this.haxInsert("p", "", {}, false);
-          setTimeout(() => {
-            try {
-              var range = document.createRange();
-              var sel = window.HaxStore.getSelection();
-              range.setStart(this.activeNode, 0);
-              range.collapse(true);
-              sel.removeAllRanges();
-              sel.addRange(range);
-              this.activeNode.focus();
-            } catch (e) {
-              console.warn(e);
-            }
-          }, 0);
-        }
+            }, 0);
+          }
+        }, 100);
       }
     }
     // hide menus when state changes

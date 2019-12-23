@@ -1250,7 +1250,7 @@ class HaxBody extends SimpleColors {
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        -39,
+        -59,
         0
       );
       // special case for node not matching container
@@ -1338,9 +1338,9 @@ class HaxBody extends SimpleColors {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       this.insertBefore(grid, node);
-      let col = "1";
+      let col = "2";
       if (side == "right") {
-        col = "2";
+        col = "1";
       }
       setTimeout(() => {
         grid.appendChild(node);
@@ -2328,6 +2328,7 @@ class HaxBody extends SimpleColors {
         menu.style["top"] = pos.y + "px";
       }
     }
+    menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible");
     // text we want to operate this way
     if (this.__activeHover) {
@@ -2343,6 +2344,7 @@ class HaxBody extends SimpleColors {
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    menu.removeAttribute("on-screen");
     menu.classList.remove(
       "hax-context-visible",
       "hax-context-pin-top",

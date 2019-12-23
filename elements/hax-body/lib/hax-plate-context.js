@@ -1,3 +1,4 @@
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -5,9 +6,12 @@
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends HTMLElement {
+class HaxPlateContext extends winEventsElement(HTMLElement) {
   constructor(delayRender = false) {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
@@ -30,7 +34,7 @@ class HaxPlateContext extends HTMLElement {
     <style>
     :host {
       display: block;
-      width: 40px;
+      width: 56;
       margin-top: -2px;
     }
     hax-context-item {
@@ -38,13 +42,29 @@ class HaxPlateContext extends HTMLElement {
     }
     hax-context-item[large] {
       display: inline-block;
-      float:right;
+      margin:0;
+      padding:0;
     }
     .area {
       width: 40px;
       float: left;
       visibility: visible;
       transition: 0.2s all linear;
+    }
+    .leftside {
+      width: 20px;
+      float: left;
+      visibility: visible;
+      transition: 0.2s all linear;
+    }
+    .rightside {
+      width: 20px;
+      float: right;
+      visibility: visible;
+      transition: 0.2s all linear;
+    }
+    #right {
+      position:fixed;
     }
     </style>
     <div class="area">
@@ -70,23 +90,50 @@ class HaxPlateContext extends HTMLElement {
         event-name="grid-plate-down"
         direction="left"
       ></hax-context-item>
+    </div>
+    <div class="leftside">
       <hax-context-item
         light
         large
-        icon="editor:border-left"
-        label="Insert Column layout"
+        icon="icons:add"
+        label="Add column"
         event-name="grid-plate-create-left"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-        light
-        large
-        icon="editor:border-right"
-        label="Insert Column layout"
-        event-name="grid-plate-create-right"
         direction="right"
+        id="left"
       ></hax-context-item>
+    </div>
+    <div class="rightside">
+      <hax-context-item
+      light
+      large
+      id="right"
+      icon="icons:add"
+      label="Add column"
+      event-name="grid-plate-create-right"
+      direction="left"
+    ></hax-context-item>
     </div>`;
+  }
+  /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (
+      e.detail &&
+      typeof e.detail.value !== typeof undefined &&
+      e.detail.property &&
+      this.getAttribute("on-screen") != null &&
+      e.detail.property === "activeNode"
+    ) {
+      // when activeNode changes make sure we reposition
+      this.__updatePlatePosition();
+    }
+  }
+  __updatePlatePosition() {
+    let rect = window.HaxStore.instance.activeNode.getBoundingClientRect();
+    this.shadowRoot.querySelector("#right").style.top = rect.y - 2 + "px";
+    this.shadowRoot.querySelector("#right").style.left =
+      rect.left + rect.width + 2 + "px";
   }
   render() {
     this.shadowRoot.innerHTML = null;
@@ -97,6 +144,18 @@ class HaxPlateContext extends HTMLElement {
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
+  static get observedAttributes() {
+    return ["on-screen"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name == "on-screen" && newValue) {
+      this.__updatePlatePosition();
+    } else {
+      // offscreen
+    }
+  }
+
   connectedCallback() {
     setTimeout(() => {
       this.shadowRoot
