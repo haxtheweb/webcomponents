@@ -48,12 +48,12 @@ class SimpleModal extends LitElement {
     this.closeLabel = "Close";
     this.closeIcon = "close";
     this.modal = false;
-    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/neon-animation/animations/scale-up-animation.js");
-    import("@polymer/neon-animation/animations/fade-out-animation.js");
+    setTimeout(() => {
+      import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
+    }, 0);
   }
   /**
    * LitElement
