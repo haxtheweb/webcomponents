@@ -8,10 +8,6 @@
 class HaxPlateContext extends HTMLElement {
   constructor(delayRender = false) {
     super();
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
     // set tag for later use
     this.tag = HaxPlateContext.tag;
     this.template = document.createElement("template");
@@ -19,6 +15,12 @@ class HaxPlateContext extends HTMLElement {
     if (!delayRender) {
       this.render();
     }
+    setTimeout(() => {
+      import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/iron-icons/hardware-icons.js");
+    }, 0);
   }
   static get tag() {
     return "hax-plate-context";
@@ -33,6 +35,10 @@ class HaxPlateContext extends HTMLElement {
     }
     hax-context-item {
       display: block;
+    }
+    hax-context-item[large] {
+      display: inline-block;
+      float:right;
     }
     .area {
       width: 40px;
@@ -63,6 +69,22 @@ class HaxPlateContext extends HTMLElement {
         label="Move down"
         event-name="grid-plate-down"
         direction="left"
+      ></hax-context-item>
+      <hax-context-item
+        light
+        large
+        icon="editor:border-left"
+        label="Insert Column layout"
+        event-name="grid-plate-create-left"
+        direction="left"
+      ></hax-context-item>
+      <hax-context-item
+        light
+        large
+        icon="editor:border-right"
+        label="Insert Column layout"
+        event-name="grid-plate-create-right"
+        direction="right"
       ></hax-context-item>
     </div>`;
   }

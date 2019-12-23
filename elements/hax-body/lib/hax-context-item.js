@@ -21,6 +21,7 @@ class HaxContextItem extends LitElement {
   constructor() {
     super();
     this.light = false;
+    this.large = false;
     this.disabled = false;
     this.mini = false;
     this.menu = false;
@@ -58,19 +59,20 @@ class HaxContextItem extends LitElement {
   render() {
     return html`
       <hax-toolbar-item
-        .disabled="${this.disabled}"
-        .light="${this.light}"
-        .mini="${this.mini}"
+        ?disabled="${this.disabled}"
+        ?light="${this.light}"
+        ?mini="${this.mini}"
+        ?large="${this.large}"
         id="button"
         icon="${this.icon}"
-        .hidden="${!this.icon}"
+        ?hidden="${!this.icon}"
         icon-class="${this.iconClass}"
         @mousedown="${this._storeSelection}"
         @click="${this._fireEvent}"
         tooltip="${this.label}"
         tooltip-direction="${this.direction}"
-        .default="${this.default}"
-        .menu="${this.menu}"
+        ?default="${this.default}"
+        ?menu="${this.menu}"
       >
         <slot></slot>
       </hax-toolbar-item>
@@ -176,6 +178,9 @@ class HaxContextItem extends LitElement {
       description: {
         type: String,
         reflect: true
+      },
+      large: {
+        type: Boolean
       },
       /**
        * Is this button concidered a primary interaction

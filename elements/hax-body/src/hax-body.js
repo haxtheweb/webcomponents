@@ -1304,6 +1304,51 @@ class HaxBody extends SimpleColors {
     return true;
   }
   /**
+   * Inject a grid plate where something currently lives
+   */
+  haxInjectGridplate(node, side) {
+    // allow splitting the grid plate that is already there
+    let changed = false;
+    if (node.tagName === "GRID-PLATE") {
+      switch (node.layout) {
+        case "1":
+          node.layout = "1-1";
+          changed = true;
+          break;
+        case "1-1":
+          node.layout = "1-1-1";
+          changed = true;
+          break;
+        case "1-1-1":
+          node.layout = "1-1-1-1";
+          changed = true;
+          break;
+      }
+      // if left, nudge everything over 1, right simple
+      if (changed && side == "left") {
+        node.childNodes.forEach(el => {
+          if (el.tagName) {
+            let s =
+              parseInt(el.getAttribute("slot").replace("col-", ""), 10) + 1;
+            el.setAttribute("slot", `col-${s}`);
+          }
+        });
+      }
+    } else {
+      let grid = document.createElement("grid-plate");
+      grid.layout = "1-1";
+      this.insertBefore(grid, node);
+      let col = "1";
+      if (side == "right") {
+        col = "2";
+      }
+      setTimeout(() => {
+        grid.appendChild(node);
+        node.setAttribute("slot", "col-" + col);
+      }, 0);
+    }
+  }
+  /**
    * Convert an element from one tag to another.
    */
   haxReplaceNode(node, replacement, parent = this) {
@@ -1525,6 +1570,14 @@ class HaxBody extends SimpleColors {
       // allow for transforming this haxElement into another one
       case "grid-plate-convert":
         this.replaceElementWorkflow();
+        break;
+      // grid plate based operations
+      // allow for transforming this haxElement into another one
+      case "grid-plate-create-left":
+        this.haxInjectGridplate(this.activeNode, "left");
+        break;
+      case "grid-plate-create-right":
+        this.haxInjectGridplate(this.activeNode, "right");
         break;
       // duplicate the active item or container
       case "grid-plate-duplicate":

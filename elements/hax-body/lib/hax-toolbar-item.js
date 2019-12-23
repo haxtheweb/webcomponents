@@ -106,6 +106,17 @@ class HaxToolbarItem extends LitElement {
           padding: 1px;
           border: 1px solid var(--hax-color-border-outline);
         }
+        :host([large][light]) paper-button {
+          background-color: #aaaaaa;
+          color: #eeeeee;
+        }
+        :host([large]) paper-button {
+          border-radius: 0;
+          width: 36px;
+          height: 120px;
+          padding: 1px;
+          border: 1px solid var(--hax-color-border-outline);
+        }
         :host([mini]) paper-button:active,
         :host([mini]) paper-button:hover,
         :host([mini]) paper-button:focus {
@@ -179,6 +190,7 @@ class HaxToolbarItem extends LitElement {
   constructor() {
     super();
     this.corner = "";
+    this.large = false;
     this.disabled = false;
     this.dark = false;
     this.menu = false;
@@ -223,6 +235,13 @@ class HaxToolbarItem extends LitElement {
        * Present smaller the normal but consistent
        */
       mini: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * Present larger then normal but consistent
+       */
+      large: {
         type: Boolean,
         reflect: true
       },
