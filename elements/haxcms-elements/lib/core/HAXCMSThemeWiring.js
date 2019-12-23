@@ -22,6 +22,14 @@ const HAXCMSTheme = function(SuperClass) {
     // as well as those wanting a custom integration methodology
     constructor() {
       super();
+      // a bucket for settings that can be for reusable
+      // functionality across themes yet they might want
+      // to opt in / out
+      this.HAXCMSThemeSettings = {
+        // should we scroll to the top when a new page
+        // is selected
+        autoScroll: false
+      };
       this.__disposer = [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
     }
@@ -78,7 +86,10 @@ const HAXCMSTheme = function(SuperClass) {
      */
     _contentContainerChanged(newValue, oldValue) {
       // test that this hasn't been connected previously
-      if (newValue && typeof oldValue === typeof undefined) {
+      if (
+        newValue &&
+        (typeof oldValue === typeof undefined || oldValue == null)
+      ) {
         this.HAXCMSThemeWiring.connect(this, newValue);
       }
       // previously connected, needs to change to new connection
@@ -105,6 +116,12 @@ const HAXCMSTheme = function(SuperClass) {
         if (firstItem) {
           store.activeId = firstItem.id;
         }
+      }
+      if (this.HAXCMSThemeSettings.autoScroll) {
+        window.scrollTo({
+          top: 0,
+          left: 0
+        });
       }
     }
     /**

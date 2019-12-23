@@ -141,18 +141,27 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super();
     this.__disposer = [];
     this.selectedPage = 0;
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js");
+    }, 0);
   }
   /**
    * LitElement ready
    */
-  firstUpdated() {
-    this.contentContainer = this.shadowRoot
-      .querySelector("simple-blog-post")
-      .shadowRoot.querySelector("#contentcontainer");
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // bc of async rendering and this being in a shadow of a shadow
+    // we need to pause to ensure its painted
+    setTimeout(() => {
+      this.contentContainer = this.shadowRoot
+        .querySelector("simple-blog-post")
+        .shadowRoot.querySelector("#contentcontainer");
+    }, 0);
   }
   /**
    * attached life cycle

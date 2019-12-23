@@ -203,9 +203,9 @@ class HAXCMSSiteEditorUI extends LitElement {
       </custom-style>
       <paper-avatar
         id="username"
-        .label="${this.userName}"
+        label="${this.userName}"
         two-chars
-        .src="${this.userPicture}"
+        src="${this.userPicture}"
       ></paper-avatar>
       <paper-fab
         id="editbutton"
