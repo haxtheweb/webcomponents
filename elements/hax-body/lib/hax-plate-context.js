@@ -118,7 +118,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       id="leftadd"
       class="paddle"
       icon="hax:add-brick"
-      label="Insert element"
+      label="Insert new.."
       event-name="grid-plate-add-element"
       direction="right"
       selected-value="0"
@@ -128,16 +128,19 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       <paper-item value='{"tag":"p","content":"", "properties": {}}'
       ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
       >
+      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'
+      ><iron-icon icon="hax:h2"></iron-icon>Heading
+    </paper-item>
       <paper-item value='{"tag":"ul","content":"<li>List</li>", "properties": {}}'
         ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
         list</paper-item
       >
-      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'
-        ><iron-icon icon="hax:h2"></iron-icon>Title
+      <paper-item value='{"tag":"hr","content":"", "properties": {}}'
+        ><iron-icon icon="hax:hr"></iron-icon>Horizontal line
       </paper-item>
-      <paper-item value='{"tag":"h3","content":"Subheading", "properties": {}}'
-        ><iron-icon icon="hax:h3"></iron-icon>Content heading
-      </paper-item>
+      <paper-item value='{"tag":"place-holder","content":"", "properties": {"type": "image", "text": "Image"}}'
+      ><iron-icon icon="hax:placeholder"></iron-icon>Image placeholder
+    </paper-item>
     </hax-context-item-menu>
     <hax-context-item
       light
@@ -168,14 +171,13 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   }
   __updatePlatePosition() {
     setTimeout(() => {
-      let rect;
+      let activeRec = window.HaxStore.instance.activeNode.getBoundingClientRect();
+      let rect = activeRec;
       let right = this.shadowRoot.querySelector("#right");
       let left = this.shadowRoot.querySelector("#left");
       let leftadd = this.shadowRoot.querySelector("#leftadd");
       if (window.HaxStore.instance.activeContainerNode) {
         rect = window.HaxStore.instance.activeContainerNode.getBoundingClientRect();
-      } else {
-        rect = window.HaxStore.instance.activeNode.getBoundingClientRect();
       }
       right.style.top = Math.round(rect.y - 1) + "px";
       right.style.left = Math.round(rect.left + rect.width + 2) + "px";
@@ -184,8 +186,8 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       right.height = Math.round(rect.height + 2) + "px";
       left.height = right.height;
       this.style.height = right.height;
-      leftadd.style.top = Math.round(rect.y + rect.height + 1) + "px";
-      leftadd.style.left = left.style.left;
+      leftadd.style.top = Math.round(activeRec.y + activeRec.height + 1) + "px";
+      leftadd.style.left = Math.round(activeRec.left - 22) + "px";
     }, 0);
   }
   render() {

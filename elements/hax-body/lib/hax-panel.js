@@ -296,27 +296,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="hax:h2"
-          label="Insert heading"
-          event-name="header"
-          voice-command="insert (header)(heading)"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:hr"
-          label="Insert horizontal line"
-          event-name="divider"
-          voice-command="insert (divider)(horizontal line)"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:placeholder"
-          label="Insert media placeholder"
-          event-name="placeholder"
-          voice-command="insert (image) placeholder"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
           ?hidden="${this.hideExportButton}"
           event-name="open-export-dialog"
           icon="code"

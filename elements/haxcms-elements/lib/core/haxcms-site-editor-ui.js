@@ -334,6 +334,14 @@ class HAXCMSSiteEditorUI extends LitElement {
         })
       );
     });
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
