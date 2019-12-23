@@ -65,6 +65,7 @@ class HaxContextItem extends LitElement {
         ?mini="${this.mini}"
         ?large="${this.large}"
         id="button"
+        height="${this.height}"
         icon="${this.icon}"
         ?hidden="${!this.icon}"
         icon-class="${this.iconClass}"
@@ -90,6 +91,9 @@ class HaxContextItem extends LitElement {
        */
       light: {
         type: Boolean
+      },
+      height: {
+        type: String
       },
       /**
        * disabled state

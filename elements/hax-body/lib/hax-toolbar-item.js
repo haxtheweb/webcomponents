@@ -17,6 +17,7 @@ class HaxToolbarItem extends LitElement {
           height: 36px;
           width: 36px;
         }
+        :host([large]),
         :host([mini]) {
           height: unset;
           width: unset;
@@ -112,8 +113,7 @@ class HaxToolbarItem extends LitElement {
         }
         :host([large]) paper-button {
           border-radius: 0;
-          width: 16px;
-          height: 80px;
+          width: unset;
           padding: 0px;
           border: 0px;
         }
@@ -201,6 +201,13 @@ class HaxToolbarItem extends LitElement {
     this.tooltipDirection = "top";
     this.default = false;
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "height" && this.shadowRoot) {
+        this.shadowRoot.querySelector("#btn").style.height = this[propName];
+      }
+    });
+  }
   static get properties() {
     return {
       /**
@@ -209,6 +216,9 @@ class HaxToolbarItem extends LitElement {
       corner: {
         type: String,
         reflect: true
+      },
+      height: {
+        type: String
       },
       /**
        * disabled state

@@ -29,6 +29,10 @@ class HaxContextItemMenu extends LitElement {
         :host hax-toolbar-menu ::slotted(*) {
           height: 36px;
         }
+        :host(mini) {
+          height: unset;
+          width: unset;
+        }
       `
     ];
   }
@@ -40,18 +44,18 @@ class HaxContextItemMenu extends LitElement {
     this.direction = "top";
     this.icon = "editor:text-fields";
     this.label = "editor:text-fields";
-    this.eventName = "button";
   }
   render() {
     return html`
       <hax-toolbar-menu
         id="menu"
+        ?mini="${this.mini}"
         .icon="${this.icon}"
         .tooltip="${this.label}"
         .tooltip-direction="${this.direction}"
         @selected-changed="${this.selectedValueChanged}"
         .selected="${this.selectedValue}"
-        .reset-on-select="${this.resetOnSelect}"
+        ?reset-on-select="${this.resetOnSelect}"
       >
         <slot></slot>
       </hax-toolbar-menu>
@@ -79,6 +83,10 @@ class HaxContextItemMenu extends LitElement {
   }
   static get properties() {
     return {
+      mini: {
+        type: Boolean,
+        reflect: true
+      },
       /**
        * Internal flag to allow blocking the event firing if machine selects tag.
        */
@@ -127,7 +135,6 @@ class HaxContextItemMenu extends LitElement {
        */
       eventName: {
         type: String,
-        reflect: true,
         attribute: "event-name"
       }
     };
@@ -170,17 +177,21 @@ class HaxContextItemMenu extends LitElement {
         // avoids an annoying UX error where the menu stays open for
         // no reason.
         this.shadowRoot.querySelector("#menu").hideMenu();
-        this.dispatchEvent(
-          new CustomEvent("hax-context-item-selected", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              target: item,
-              eventName: item.attributes.value.value
-            }
-          })
-        );
+        // only emit if we have an event name
+        if (this.eventName) {
+          this.dispatchEvent(
+            new CustomEvent("hax-context-item-selected", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: {
+                target: item,
+                eventName: this.eventName,
+                value: item.attributes.value.value
+              }
+            })
+          );
+        }
       }
       // we only block 1 time if it's available
       if (this._blockEvent) {

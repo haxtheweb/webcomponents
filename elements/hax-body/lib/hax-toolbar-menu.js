@@ -57,6 +57,7 @@ class HaxToolbarMenu extends LitElement {
       <paper-menu-button>
         <hax-toolbar-item
           id="button"
+          ?mini="${this.mini}"
           slot="dropdown-trigger"
           icon="${this.icon}"
           .hidden="${!this.icon}"
@@ -98,6 +99,10 @@ class HaxToolbarMenu extends LitElement {
        */
       corner: {
         type: String,
+        reflect: true
+      },
+      mini: {
+        type: Boolean,
         reflect: true
       },
       icon: {

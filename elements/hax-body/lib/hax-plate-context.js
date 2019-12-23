@@ -20,8 +20,10 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       this.render();
     }
     setTimeout(() => {
+      import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/iron-icons/hardware-icons.js");
     }, 0);
@@ -34,7 +36,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     <style>
     :host {
       display: block;
-      width: 56;
       margin-top: -2px;
     }
     hax-context-item {
@@ -46,25 +47,36 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       padding:0;
     }
     .area {
-      width: 40px;
-      float: left;
       visibility: visible;
-      transition: 0.2s all linear;
+      transition: 0.2s height linear;
     }
-    .leftside {
-      width: 20px;
-      float: left;
-      visibility: visible;
-      transition: 0.2s all linear;
-    }
-    .rightside {
-      width: 20px;
-      float: right;
-      visibility: visible;
-      transition: 0.2s all linear;
-    }
-    #right {
+    .paddle {
       position:fixed;
+      width: unset;
+      height: unset;
+      visibility: visible;
+      opacity: .6;
+      transition: 0.2s height linear;
+    }
+    .paddle:hover {
+      opacity: 1;
+    }
+    paper-item {
+      -webkit-justify-content: flex-start;
+      justify-content: flex-start;
+      height: 20px;
+      padding: 0 4px;
+      min-height: 20px;
+      font-size: 10px;
+    }
+    paper-item:hover {
+      background-color: #d3d3d3;
+      cursor: pointer;
+    }
+    iron-icon {
+      padding: 0 2px;
+      width: 16px;
+      height: 16px;
     }
     </style>
     <div class="area">
@@ -91,28 +103,53 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         direction="left"
       ></hax-context-item>
     </div>
-    <div class="leftside">
-      <hax-context-item
-        light
-        large
-        icon="icons:add"
-        label="Add column"
-        event-name="grid-plate-create-left"
-        direction="right"
-        id="left"
-      ></hax-context-item>
-    </div>
-    <div class="rightside">
-      <hax-context-item
+    <hax-context-item
+      light
+      large
+      class="paddle"
+      icon="icons:add"
+      label="Add column"
+      event-name="grid-plate-create-left"
+      direction="right"
+      id="left"
+    ></hax-context-item>
+    <hax-context-item-menu
+      mini
+      id="leftadd"
+      class="paddle"
+      icon="hax:add-brick"
+      label="Insert element"
+      event-name="grid-plate-add-element"
+      direction="right"
+      selected-value="0"
+      reset-on-select
+    >
+    <paper-item value="" hidden></paper-item>
+      <paper-item value='{"tag":"p","content":"", "properties": {}}'
+      ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
+      >
+      <paper-item value='{"tag":"ul","content":"<li>List</li>", "properties": {}}'
+        ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
+        list</paper-item
+      >
+      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'
+        ><iron-icon icon="hax:h2"></iron-icon>Title
+      </paper-item>
+      <paper-item value='{"tag":"h3","content":"Subheading", "properties": {}}'
+        ><iron-icon icon="hax:h3"></iron-icon>Content heading
+      </paper-item>
+    </hax-context-item-menu>
+    <hax-context-item
       light
       large
       id="right"
+      class="paddle"
       icon="icons:add"
       label="Add column"
       event-name="grid-plate-create-right"
       direction="left"
     ></hax-context-item>
-    </div>`;
+  `;
   }
   /**
    * Store updated, sync.
@@ -123,17 +160,33 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property &&
       this.getAttribute("on-screen") != null &&
-      e.detail.property === "activeNode"
+      e.detail.property === "activeContainerNode"
     ) {
       // when activeNode changes make sure we reposition
       this.__updatePlatePosition();
     }
   }
   __updatePlatePosition() {
-    let rect = window.HaxStore.instance.activeNode.getBoundingClientRect();
-    this.shadowRoot.querySelector("#right").style.top = rect.y - 2 + "px";
-    this.shadowRoot.querySelector("#right").style.left =
-      rect.left + rect.width + 2 + "px";
+    setTimeout(() => {
+      let rect;
+      let right = this.shadowRoot.querySelector("#right");
+      let left = this.shadowRoot.querySelector("#left");
+      let leftadd = this.shadowRoot.querySelector("#leftadd");
+      if (window.HaxStore.instance.activeContainerNode) {
+        rect = window.HaxStore.instance.activeContainerNode.getBoundingClientRect();
+      } else {
+        rect = window.HaxStore.instance.activeNode.getBoundingClientRect();
+      }
+      right.style.top = Math.round(rect.y - 1) + "px";
+      right.style.left = Math.round(rect.left + rect.width + 2) + "px";
+      left.style.top = Math.round(rect.y - 1) + "px";
+      left.style.left = Math.round(rect.left - 22) + "px";
+      right.height = Math.round(rect.height + 2) + "px";
+      left.height = right.height;
+      this.style.height = right.height;
+      leftadd.style.top = Math.round(rect.y + rect.height + 1) + "px";
+      leftadd.style.left = left.style.left;
+    }, 0);
   }
   render() {
     this.shadowRoot.innerHTML = null;

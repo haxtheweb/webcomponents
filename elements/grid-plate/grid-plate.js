@@ -220,6 +220,7 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
           cursor: move;
+          outline: 2px dashed var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(.mover) {
           outline: 2px dashed var(--grid-plate-editable-border-color);

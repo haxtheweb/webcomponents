@@ -21,12 +21,11 @@ class HaxToolbar extends LitElement {
         .wrapper {
           display: flex;
           border: 1px solid var(--hax-color-border-outline, black);
+          border-bottom: none;
           color: #222222;
           background-color: #ffffff;
-          height: 35px;
+          height: 38px;
           align-items: center;
-          padding: 1px;
-          margin-top: -2px;
         }
         :host .wrapper ::slotted(*) {
           pointer-events: all;
