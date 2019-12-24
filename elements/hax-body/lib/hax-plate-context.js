@@ -216,12 +216,32 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       this.shadowRoot
         .querySelector("#drag")
         .addEventListener("dragstart", this._dragstart);
+      this.shadowRoot
+        .querySelector("#drag")
+        .addEventListener("dragend", this.dragEnd);
     }, 0);
   }
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#drag")
       .removeEventListener("dragstart", this._dragstart);
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  dragEnd(e) {
+    let children = window.HaxStore.instance.activeHaxBody.children;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove(
+          "mover",
+          "hovered",
+          "moving",
+          "grid-plate-active-item"
+        );
+      }
+    }
   }
   /**
    * Drag start so we know what target to set
@@ -231,24 +251,27 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     if (window.HaxStore.instance.activeContainerNode) {
       target = window.HaxStore.instance.activeContainerNode;
     }
-    // show where things can be dropped only during the drag
-    if (
-      !window.HaxStore.instance.activeHaxBody.openDrawer &&
-      window.HaxStore.instance.editMode
-    ) {
-      let children = window.HaxStore.instance.activeHaxBody.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (children[i].classList) {
-          children[i].classList.add("mover");
-        }
-      }
-    }
     window.HaxStore.instance.__dragTarget = target;
+    target.classList.add("moving");
     e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setDragImage(target, 25, 25);
+    e.dataTransfer.setDragImage(target, 0, 0);
     e.stopPropagation();
     e.stopImmediatePropagation();
+    setTimeout(() => {
+      // show where things can be dropped only during the drag
+      if (
+        !window.HaxStore.instance.activeHaxBody.openDrawer &&
+        window.HaxStore.instance.editMode
+      ) {
+        let children = window.HaxStore.instance.activeHaxBody.children;
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (children[i].classList && target !== children[i]) {
+            children[i].classList.add("mover");
+          }
+        }
+      }
+    }, 10);
   }
 }
 window.customElements.define(HaxPlateContext.tag, HaxPlateContext);

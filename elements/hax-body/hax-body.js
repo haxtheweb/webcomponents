@@ -52,9 +52,11 @@ class HaxBody extends SimpleColors {
           --hax-body-editable-border-color: #bbbbbb;
           --hax-body-active-border-color: #000000;
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-blue-1
+            --simple-colors-default-theme-grey-3
           );
-          --hax-body-possible-target-background-color: transparent;
+          --hax-body-possible-target-background-color: var(
+            --simple-colors-default-theme-grey-2
+          );
         }
         .hax-context-menu {
           padding: 0;
@@ -228,16 +230,24 @@ class HaxBody extends SimpleColors {
           line-height: 2;
         }
         /* drag and drop */
-        :host([edit-mode]) #bodycontainer ::slotted(*.mover) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.mover):before {
           outline: 2px dashed var(--hax-body-editable-border-color);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(*.mover) {
           background-color: var(--hax-body-possible-target-background-color);
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -20px 0 0 0;
+          z-index: 2;
+          height: 20px;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hovered) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+          outline: 2px dashed var(--hax-body-active-border-color);
+          background-color: #eeeeee;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*.hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
           outline: dashed 2px var(--hax-body-active-border-color);
-          z-index: 2;
         }
         .hax-context-menu:not(:defined) {
           display: none;
@@ -280,6 +290,7 @@ class HaxBody extends SimpleColors {
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener("drop", this.dropEvent.bind(this));
     }, 0);
   }
   static get tag() {
@@ -2133,7 +2144,6 @@ class HaxBody extends SimpleColors {
     node[listenerMethod]("drop", this.dropEvent.bind(this));
     node[listenerMethod]("dragenter", this.dragEnter.bind(this));
     node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-    node[listenerMethod]("dragend", this.dragEnd.bind(this));
     node[listenerMethod]("dragover", function(e) {
       e.preventDefault();
     });
@@ -2167,7 +2177,20 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
+    clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
+      let children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove(
+            "mover",
+            "hovered",
+            "moving",
+            "grid-plate-active-item"
+          );
+        }
+      }
       var target = window.HaxStore.instance.__dragTarget;
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
@@ -2191,13 +2214,6 @@ class HaxBody extends SimpleColors {
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
-      }
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered");
-        }
       }
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
@@ -2381,20 +2397,6 @@ class HaxBody extends SimpleColors {
   dragLeave(e) {
     if (!this.openDrawer && this.editMode) {
       e.target.classList.remove("hovered");
-    }
-  }
-  /**
-   * When we end dragging ensure we remove the mover class.
-   */
-  dragEnd(e) {
-    if (!this.openDrawer && this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered");
-        }
-      }
     }
   }
   /**
