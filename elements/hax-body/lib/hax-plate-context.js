@@ -225,6 +225,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     this.shadowRoot
       .querySelector("#drag")
       .removeEventListener("dragstart", this._dragstart);
+    this.shadowRoot
+      .querySelector("#drag")
+      .removeEventListener("dragend", this.dragEnd);
   }
   /**
    * When we end dragging ensure we remove the mover class.

@@ -4,8 +4,8 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 // variables required as part of the gravity drag and scroll
 var timer = null;
-const maxStep = 30;
-const edgeSize = 200;
+const maxStep = 25;
+const edgeSize = 100;
 
 /**
  * `hax-body`
@@ -1155,7 +1155,6 @@ class HaxBody extends SimpleColors {
     content = content.replace(/\sdata-editable/g, "");
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
-    content = content.replace(/\sdata-draggable/g, "");
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
     // remove HAX specific classes / scoping classes
@@ -1285,7 +1284,7 @@ class HaxBody extends SimpleColors {
         this.shadowRoot.querySelector("#cecontextmenu").setHaxProperties(props);
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
-          node,
+          container,
           -58,
           -40
         );
@@ -1293,7 +1292,7 @@ class HaxBody extends SimpleColors {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
-          node,
+          container,
           -58,
           -40
         );
@@ -1304,11 +1303,15 @@ class HaxBody extends SimpleColors {
         -59,
         0
       );
-      // special case for node not matching container
-      if (container && !this._HTMLPrimativeTest(node) && node !== container) {
-        container.contentEditable = false;
-      } else if (container) {
-        container.contentEditable = true;
+      // special case for node not matching container yet it being editable
+      if (
+        container &&
+        !window.HaxStore.instance.isTextElement(node) &&
+        node !== container
+      ) {
+        container.removeAttribute("contenteditable");
+      } else {
+        container.setAttribute("contenteditable", true);
       }
     }
   }
@@ -2131,12 +2134,10 @@ class HaxBody extends SimpleColors {
     }
     // oooooo snap, drag and drop..
     if (status) {
-      node.setAttribute("data-draggable", true);
       node.setAttribute("data-editable", status);
       node.setAttribute("data-hax-ray", haxRay);
       listenerMethod = "addEventListener";
     } else {
-      node.removeAttribute("data-draggable");
       node.removeAttribute("data-editable");
       node.removeAttribute("data-hax-ray");
       listenerMethod = "removeEventListener";
@@ -2207,7 +2208,7 @@ class HaxBody extends SimpleColors {
         // incase this came from a grid plate, drop the slot so it works
         target.removeAttribute("slot");
         try {
-          this.insertBefore(target, local);
+          local.parentNode.insertBefore(target, local);
         } catch (e) {
           console.warn(e);
         }
@@ -2217,6 +2218,16 @@ class HaxBody extends SimpleColors {
       }
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
+        this.activeNode = target;
+        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
+          this.activeContainerNode = this.activeNode.parentNode;
+        }
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        window.HaxStore.write(
+          "activeContainerNode",
+          this.activeContainerNode,
+          this
+        );
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
         }, 10);

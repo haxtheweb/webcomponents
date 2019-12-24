@@ -158,13 +158,17 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: #bbbbbb;
+          --grid-plate-editable-border-color: var(
+            --simple-colors-default-theme-grey-2
+          );
           --grid-plate-active-border-color: #000000;
           --grid-plate-target-background-color: var(
-            --simple-colors-default-theme-blue-1
+            --simple-colors-default-theme-grey-2
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
+          --grid-plate-arrow-color: #000000;
+          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-2);
         }
         :host .row {
           width: 100%;
@@ -181,6 +185,8 @@ class GridPlate extends LitElement {
         }
         :host([edit-mode]) .column {
           min-height: 150px;
+          transition: 0.2s color linear, 0.2s background-color linear,
+            0.2s outline linear;
         }
         :host([edit-mode]) .column {
           outline: 2px dashed var(--grid-plate-editable-border-color);
@@ -211,6 +217,8 @@ class GridPlate extends LitElement {
           padding: var(--grid-plate-item-margin);
           max-width: calc(100% - 60px);
           max-width: -webkit-fill-available;
+          transition: 0.2s color linear, 0.2s background-color linear,
+            0.2s outline linear;
         }
         :host([edit-mode]) .column ::slotted(img) {
           display: block;
@@ -222,29 +230,40 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:focus),
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
-          cursor: move;
           outline: 2px dashed var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) .column ::slotted(.mover) {
+        :host([edit-mode]) .column ::slotted(*.mover):before {
           outline: 2px dashed var(--grid-plate-editable-border-color);
+          background-color: var(--grid-plate-possible-target-background-color);
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -30px 0 0 0;
+          z-index: 2;
+          height: 30px;
+        }
+        :host([edit-mode]) .column ::slotted(img.mover) {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+          background-color: var(--grid-plate-possible-target-background-color);
         }
         :host([edit-mode]) .column.mover {
           outline: 2px dashed var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) .column ::slotted(.mover) {
-          background-color: var(--grid-plate-possible-target-background-color);
-          padding: 16px;
+        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+          outline: 2px dashed var(--hax-body-active-border-color);
+          background-color: #eeeeee;
         }
         :host([edit-mode]) .column.mover {
           content: "Double click to create a paragraph here";
           background-color: var(--grid-plate-possible-target-background-color);
         }
-        :host([edit-mode]) .column ::slotted(.hovered) {
+        :host([edit-mode]) .column ::slotted(img.hovered),
+        :host([edit-mode]) .column ::slotted(*.hovered):before {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
           outline: dashed 2px var(--grid-plate-active-border-color);
-          z-index: 2;
         }
         :host([edit-mode]) .column.hovered {
           background-color: var(
@@ -259,25 +278,28 @@ class GridPlate extends LitElement {
           margin: 0;
           padding: 0;
           outline: none;
-          width: 30px;
-          height: 30px;
-          color: black;
-          opacity: 0.8;
-          background-color: transparent;
-          border-radius: 0;
+          width: 20px;
+          height: 20px;
+          color: var(--grid-plate-arrow-color);
+          opacity: 1;
+          background-color: var(--grid-plate-arrow-bg);
+          border-radius: 50%;
           box-sizing: content-box !important;
-          z-index: 1;
+          z-index: 2;
           min-width: unset;
+          transition: 0.2s color linear, 0.2s background-color linear;
         }
         paper-icon-button:hover {
-          outline: 2px dashed #000000;
           opacity: 1;
           visibility: visible;
-          background-color: #ffffff;
+          background-color: var(--grid-plate-arrow-color);
+          color: var(--grid-plate-arrow-bg);
         }
-
+        #drag {
+          cursor: move;
+        }
         paper-icon-button[disabled] {
-          color: #aaa;
+          opacity: 0.5;
         }
         paper-icon-button[disabled]:focus,
         paper-icon-button[disabled]:hover {
@@ -309,8 +331,10 @@ class GridPlate extends LitElement {
     this.responsiveSize = "xs";
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
       this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("dragenter", this.dragEnterGrid.bind(this));
     }, 0);
     window.ResponsiveUtility.requestAvailability();
   }
@@ -322,8 +346,18 @@ class GridPlate extends LitElement {
       <div class="button-holding-pen">
         <paper-icon-button
           class="direction"
+          icon="editor:drag-handle"
+          title="Drag"
+          draggable="true"
+          id="drag"
+          @dragstart="${this.dragStart}"
+          @dragend="${this.dragEnd}"
+        >
+        </paper-icon-button>
+        <paper-icon-button
+          class="direction"
           icon="hardware:keyboard-arrow-up"
-          title="move item up"
+          title="Move up"
           id="up"
           @click="${this.moveActiveElement}"
         >
@@ -331,7 +365,7 @@ class GridPlate extends LitElement {
         <paper-icon-button
           class="direction"
           icon="hardware:keyboard-arrow-right"
-          title="move item right"
+          title="Move right"
           id="right"
           @click="${this.moveActiveElement}"
         >
@@ -339,7 +373,7 @@ class GridPlate extends LitElement {
         <paper-icon-button
           class="direction"
           icon="hardware:keyboard-arrow-down"
-          title="move item down"
+          title="Move down"
           id="down"
           @click="${this.moveActiveElement}"
         >
@@ -347,7 +381,7 @@ class GridPlate extends LitElement {
         <paper-icon-button
           class="direction"
           icon="hardware:keyboard-arrow-left"
-          title="move item left"
+          title="Move left"
           id="left"
           @click="${this.moveActiveElement}"
         >
@@ -416,25 +450,6 @@ class GridPlate extends LitElement {
       node.getAttribute("slot")
     );
   }
-  _dragstart(e) {
-    let target;
-    // @todo this MUST validate that we are 1 below this element
-    // leverage closest thing to the drag 1st
-    // THIS IS HOW WE CAN MAKE A GRIP HANDLE!!!!!
-    if (e.path[0]) {
-      target = e.path[0];
-    } else {
-      target = e.target;
-    }
-    // special support for HAXStore
-    if (window.HaxStore && window.HaxStore.ready) {
-      window.HaxStore.instance.__dragTarget = target;
-    } else {
-      this.__dragTarget = target;
-    }
-    e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setDragImage(target, 25, 25);
-  }
   /**
    * HTMLElement
    */
@@ -461,20 +476,22 @@ class GridPlate extends LitElement {
               ) {
                 node.setAttribute("slot", "col-1");
               }
-              node.addEventListener("drop", this.dropEvent.bind(this));
-              node.addEventListener("dragenter", this.dragEnter.bind(this));
-              node.addEventListener("dragleave", this.dragLeave.bind(this));
-              node.addEventListener("dragstart", this.dragStart.bind(this));
-              node.addEventListener("dragend", this.dragEnd.bind(this));
-              node.addEventListener("dragover", function(e) {
-                e.preventDefault();
-              });
-              node.setAttribute("draggable", true);
-              node.setAttribute("data-draggable", true);
-              // ensure they can be focused
-              node.setAttribute("tabindex", 0);
-              // set whatever got added here as active in the grid plate
-              this.activeItem = node;
+              // event timeout is to help w/ between grid plate drops
+              setTimeout(() => {
+                node.addEventListener("drop", this.dropEvent.bind(this));
+                node.addEventListener("dragenter", this.dragEnter.bind(this));
+                node.addEventListener("dragleave", this.dragLeave.bind(this));
+                node.addEventListener("dragend", this.dragEnd.bind(this));
+                node.addEventListener("dragover", function(e) {
+                  e.preventDefault();
+                });
+                // UX normalization
+                if (node.tagName === "IMG") {
+                  node.setAttribute("draggable", false);
+                }
+                // ensure they can be focused
+                node.setAttribute("tabindex", 0);
+              }, 50);
             }
           });
           mutation.removedNodes.forEach(node => {
@@ -482,13 +499,12 @@ class GridPlate extends LitElement {
               node.removeEventListener("drop", this.dropEvent.bind(this));
               node.removeEventListener("dragenter", this.dragEnter.bind(this));
               node.removeEventListener("dragleave", this.dragLeave.bind(this));
-              node.removeEventListener("dragstart", this.dragStart.bind(this));
-              node.removeEventListener("dragend", this.dragEnd.bind(this));
               node.removeEventListener("dragover", function(e) {
                 e.preventDefault();
               });
-              node.removeAttribute("draggable");
-              node.removeAttribute("data-draggable");
+              if (node.tagName === "IMG") {
+                node.removeAttribute("draggable");
+              }
               // ensure they can be focused
               node.removeAttribute("tabindex");
             }
@@ -499,8 +515,6 @@ class GridPlate extends LitElement {
     this.observer.observe(this, {
       childList: true
     });
-    // need to do some global drag tracking to know the DOM node moved
-    window.addEventListener("dragstart", this._dragstart.bind(this));
     // capture keydown events
     window.addEventListener("keydown", this._onKeyDown.bind(this));
     // listen for HAX if it's around
@@ -570,14 +584,11 @@ class GridPlate extends LitElement {
         let col = this.shadowRoot.querySelector("#col" + j);
         col.addEventListener("drop", this.dropEvent.bind(this));
         col.addEventListener("dblclick", this.dblclick.bind(this));
-        col.addEventListener("dragstart", this.dragStart.bind(this));
         col.addEventListener("dragenter", this.dragEnter.bind(this));
         col.addEventListener("dragleave", this.dragLeave.bind(this));
-        col.addEventListener("dragend", this.dragEnd.bind(this));
         col.addEventListener("dragover", function(e) {
           e.preventDefault();
         });
-        col.setAttribute("data-draggable", true);
       }
     }
     this.columnWidths = this._getColumnWidths(
@@ -591,7 +602,6 @@ class GridPlate extends LitElement {
    * life cycle
    */
   disconnectedCallback() {
-    window.removeEventListener("dragstart", this._dragstart.bind(this));
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     // listen for HAX if it's around
     window.removeEventListener(
@@ -1058,10 +1068,16 @@ class GridPlate extends LitElement {
   /**
    * Position the arrows to change directions around something
    */
-  positionArrows(item) {
+  positionArrows(item, onlyArrows = false) {
     if (item == null) {
       this.shadowRoot.querySelectorAll(".direction").forEach(el => {
-        el.classList.remove("active");
+        if (!onlyArrows) {
+          el.classList.remove("active");
+        } else {
+          if (el.id != "drag") {
+            el.classList.remove("active");
+          }
+        }
       });
     } else {
       this.shadowRoot.querySelectorAll(".direction").forEach(el => {
@@ -1097,22 +1113,26 @@ class GridPlate extends LitElement {
       let leftOffset = elemRect.left - bodyRect.left;
 
       // set the arrows to position correctly at all 4 sides
-      this.shadowRoot.querySelector("#up").style.top = topOffset - 32 + "px";
+      this.shadowRoot.querySelector("#up").style.top = topOffset - 10 + "px";
       this.shadowRoot.querySelector("#down").style.top =
-        topOffset + elemRect.height + 2 + "px";
+        topOffset + elemRect.height - 10 + "px";
       this.shadowRoot.querySelector("#left").style.top =
-        topOffset + elemRect.height / 2 - 15 + "px";
+        topOffset + elemRect.height / 2 - 10 + "px";
       this.shadowRoot.querySelector("#right").style.top =
-        topOffset + elemRect.height / 2 - 15 + "px";
+        topOffset + elemRect.height / 2 - 10 + "px";
+
+      this.shadowRoot.querySelector("#drag").style.top = topOffset - 10 + "px";
+      this.shadowRoot.querySelector("#drag").style.left =
+        leftOffset - 10 + "px";
 
       this.shadowRoot.querySelector("#up").style.left =
-        leftOffset + elemRect.width / 2 - 15 + "px";
+        leftOffset + elemRect.width / 2 - 10 + "px";
       this.shadowRoot.querySelector("#down").style.left =
-        leftOffset + elemRect.width / 2 - 15 + "px";
+        leftOffset + elemRect.width / 2 - 10 + "px";
       this.shadowRoot.querySelector("#left").style.left =
-        leftOffset - 32 + "px";
+        leftOffset - 10 + "px";
       this.shadowRoot.querySelector("#right").style.left =
-        leftOffset + elemRect.width + 2 + "px";
+        leftOffset + elemRect.width - 10 + "px";
     }
   }
   /**
@@ -1128,13 +1148,12 @@ class GridPlate extends LitElement {
           children[i].addEventListener("drop", this.dropEvent.bind(this));
           children[i].addEventListener("dragenter", this.dragEnter.bind(this));
           children[i].addEventListener("dragleave", this.dragLeave.bind(this));
-          children[i].addEventListener("dragstart", this.dragStart.bind(this));
-          children[i].addEventListener("dragend", this.dragEnd.bind(this));
           children[i].addEventListener("dragover", function(e) {
             e.preventDefault();
           });
-          children[i].setAttribute("draggable", true);
-          children[i].setAttribute("data-draggable", true);
+          if (children[i].tagName === "IMG") {
+            children[i].setAttribute("draggable", false);
+          }
           // ensure they can be focused
           children[i].setAttribute("tabindex", 0);
         }
@@ -1150,10 +1169,6 @@ class GridPlate extends LitElement {
         if (typeof children[i].tagName !== typeof undefined) {
           children[i].removeEventListener("drop", this.dropEvent.bind(this));
           children[i].removeEventListener(
-            "dragstart",
-            this.dragStart.bind(this)
-          );
-          children[i].removeEventListener(
             "dragenter",
             this.dragEnter.bind(this)
           );
@@ -1161,14 +1176,31 @@ class GridPlate extends LitElement {
             "dragleave",
             this.dragLeave.bind(this)
           );
-          children[i].removeEventListener("dragend", this.dragEnd.bind(this));
           children[i].removeEventListener("dragover", function(e) {
             e.preventDefault();
           });
-          children[i].removeAttribute("draggable");
-          children[i].removeAttribute("data-draggable");
+          if (children[i].tagName === "IMG") {
+            children[i].removeAttribute("draggable");
+          }
           children[i].removeAttribute("tabindex");
         }
+      }
+    }
+  }
+  /**
+   * Activation allowed from outside this grid as far as drop areas
+   */
+  dragEnterGrid(e) {
+    const children = this.children;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (children[i].classList && children[i] !== this.activeItem) {
+        children[i].classList.add("mover");
+      }
+    }
+    for (var j = 1; j <= this.columns; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        this.shadowRoot.querySelector("#col" + j).classList.add("mover");
       }
     }
   }
@@ -1226,6 +1258,22 @@ class GridPlate extends LitElement {
       ) {
         target = window.HaxStore.instance.__dragTarget;
       }
+      setTimeout(() => {
+        let children = this.children;
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].classList !== typeof undefined) {
+            children[i].classList.remove("mover", "hovered", "moving");
+          }
+        }
+        for (var j = 1; j <= this.columns; j++) {
+          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+            this.shadowRoot
+              .querySelector("#col" + j)
+              .classList.remove("mover", "hovered", "moving");
+          }
+        }
+      }, 0);
       // edge case, something caused this to drag and it tried to do
       // itself into itself
       if (target === this) {
@@ -1262,30 +1310,31 @@ class GridPlate extends LitElement {
         e.stopPropagation();
         e.stopImmediatePropagation();
       }
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover");
+      setTimeout(() => {
+        // support for hax
+        if (
+          window.HaxStore &&
+          window.HaxStore.ready &&
+          window.HaxStore.instance
+        ) {
+          if (target.parentNode.tagName === "GRID-PLATE") {
+            window.HaxStore.write("activeNode", target, this);
+            window.HaxStore.write(
+              "activeContainerNode",
+              target.parentNode,
+              this
+            );
+            setTimeout(() => {
+              window.HaxStore.instance.activeHaxBody.positionContextMenus(
+                target,
+                target.parentNode
+              );
+            }, 10);
+          }
         }
-      }
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
-        }
-      }
-      // position arrows / set focus in case the DOM got updated above
-      if (
-        target &&
-        typeof target.focus === "function" &&
-        target.parentNode === this
-      ) {
-        this.positionArrows(target);
-        target.focus();
-      } else {
-        // element moved outside of this grid plate, lose focus
         this.positionArrows(null);
-      }
+        this.activeItem = null;
+      }, 0);
     }
   }
 
@@ -1294,18 +1343,38 @@ class GridPlate extends LitElement {
    */
   dragStart(e) {
     if (this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.add("mover");
+      if (window.HaxStore && window.HaxStore.ready) {
+        let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
+        // walk the children and apply the draggable state needed
+        for (var i in childrenHAX) {
+          if (childrenHAX[i].classList) {
+            childrenHAX[i].classList.add("mover");
+          }
         }
+        window.HaxStore.instance.__dragTarget = this.activeItem;
+      } else {
+        this.__dragTarget = this.activeItem;
       }
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+      this.positionArrows(null, true);
+      this.activeItem.classList.add("moving");
+      e.dataTransfer.dropEffect = "move";
+      e.dataTransfer.setDragImage(this.activeItem, 0, 0);
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      setTimeout(() => {
+        const children = this.children;
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (children[i].classList && children[i] !== this.activeItem) {
+            children[i].classList.add("mover");
+          }
         }
-      }
+        for (var j = 1; j <= this.columns; j++) {
+          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+            this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+          }
+        }
+      }, 0);
     }
   }
 
@@ -1318,14 +1387,14 @@ class GridPlate extends LitElement {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered");
+          children[i].classList.remove("mover", "hovered", "moving");
         }
       }
       for (var j = 1; j <= this.columns; j++) {
         if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
           this.shadowRoot
             .querySelector("#col" + j)
-            .classList.remove("mover", "hovered");
+            .classList.remove("mover", "hovered", "moving");
         }
       }
     }
