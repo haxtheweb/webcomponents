@@ -231,6 +231,19 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     if (window.HaxStore.instance.activeContainerNode) {
       target = window.HaxStore.instance.activeContainerNode;
     }
+    // show where things can be dropped only during the drag
+    if (
+      !window.HaxStore.instance.activeHaxBody.openDrawer &&
+      window.HaxStore.instance.editMode
+    ) {
+      let children = window.HaxStore.instance.activeHaxBody.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (children[i].classList) {
+          children[i].classList.add("mover");
+        }
+      }
+    }
     window.HaxStore.instance.__dragTarget = target;
     e.dataTransfer.dropEffect = "move";
     e.dataTransfer.setDragImage(target, 25, 25);
