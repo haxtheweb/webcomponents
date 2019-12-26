@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/wave-player",
   "wcfactory": {
     "className": "WavePlayer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "wave-player",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
