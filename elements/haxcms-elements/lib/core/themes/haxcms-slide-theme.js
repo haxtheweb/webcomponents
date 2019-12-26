@@ -2,12 +2,11 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import { html, css } from "lit-element/lit-element.js";
+import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 /**
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
@@ -16,18 +15,20 @@ import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
  * @polymer
  * @demo demo/index.html
  */
-class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
+class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   constructor() {
     super();
     this.__disposer = [];
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+    }, 0);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -35,10 +36,10 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
   static get tag() {
     return "haxcms-slide-theme";
   }
-  // render function
-  static get template() {
-    return html`
-      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
@@ -94,16 +95,6 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
         }
         site-menu-button {
           --site-menu-button-link-color: #ffffff;
-          --site-menu-button-button: {
-            height: 60px;
-            width: 60px;
-            padding: 0;
-            margin: 0;
-            line-height: 60px;
-          }
-          --site-menu-button-button-hover: {
-            color: var(--haxcms-color, yellow);
-          }
         }
         site-menu-button:hover,
         site-menu-button:focus,
@@ -123,27 +114,12 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
         site-title {
           display: inline-flex;
           margin: 0 0 0 32px;
-          --site-title-link: {
-            text-decoration: none;
-          }
-          --site-title-heading: {
-            color: black;
-            font-size: 28px;
-            margin: 0;
-            padding: 0;
-          }
         }
         site-active-title {
           display: inline-flex;
           padding: 0 32px;
           margin: 0 0 0 16px;
           border-left: 4px solid var(--haxcms-color, black);
-          --site-active-title-heading: {
-            color: black;
-            font-size: 28px;
-            margin: 0;
-            padding: 0;
-          }
         }
         site-dot-indicator {
           display: inline-flex;
@@ -184,7 +160,47 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
             display: inline-block;
           }
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          site-menu-button {
+            --site-menu-button-button: {
+              height: 60px;
+              width: 60px;
+              padding: 0;
+              margin: 0;
+              line-height: 60px;
+            }
+            --site-menu-button-button-hover: {
+              color: var(--haxcms-color, yellow);
+            }
+          }
+          site-title {
+            --site-title-link: {
+              text-decoration: none;
+            }
+            --site-title-heading: {
+              color: black;
+              font-size: 28px;
+              margin: 0;
+              padding: 0;
+            }
+          }
+          site-active-title {
+            --site-active-title-heading: {
+              color: black;
+              font-size: 28px;
+              margin: 0;
+              padding: 0;
+            }
+          }
+        </style>
+      </custom-style>
       <div class="active-slide">
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>
@@ -198,7 +214,7 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
             position="top"
           ></site-menu-button>
           <div class="counter">
-            [[activeManifestIndexCounter]] / [[manifestLength]]
+            ${this.activeManifestIndexCounter} / ${this.manifestLength}
           </div>
           <site-menu-button
             type="next"
@@ -223,6 +239,13 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
         </div>
       </div>
     `;
+  }
+  static get properties() {
+    return {
+      ...super.properties,
+      manifestLength: { type: Number },
+      activeManifestIndexCounter: { type: Number }
+    };
   }
   /**
    * Connect state and theme wiring
