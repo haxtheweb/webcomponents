@@ -18,7 +18,7 @@ class SimpleIconPicker extends SimplePicker {
   //styles function
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host(simple-icon-picker) #collapse {
           width: 300px;

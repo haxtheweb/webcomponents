@@ -48,7 +48,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: block;

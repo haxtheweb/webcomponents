@@ -28,7 +28,7 @@ Custom property | Description | Default
 class simpleColorsSwatches extends SimpleColors {
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: block;

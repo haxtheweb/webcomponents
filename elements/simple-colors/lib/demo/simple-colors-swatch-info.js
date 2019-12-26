@@ -21,7 +21,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
 class simpleColorsSwatchInfo extends SimpleColors {
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: block;
