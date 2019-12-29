@@ -1,0 +1,43 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-wc",
+      "description": "`simple-wc`\n`A simple web component wrapper to simplify consistent patterns of element creation`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "simple-wc",
+      "description": "`simple-wc`\n`A simple web component wrapper to simplify consistent patterns of element creation`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "simple-wc",
+      "description": "`simple-wc`\n`A simple web component wrapper to simplify consistent patterns of element creation`",
+      "properties": [
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}
