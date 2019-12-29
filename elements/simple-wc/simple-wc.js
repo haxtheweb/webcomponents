@@ -20,9 +20,12 @@ export function createSWC(swc) {
      */
     constructor() {
       super();
+      for (let key in swc.callbacks) {
+        this[key] = swc.callbacks[key];
+      }
       // internal var to access everywhere
       // set the values from defaults
-      for (var key in swc.data.values) {
+      for (let key in swc.data.values) {
         this[key] = swc.data.values[key];
       }
       // dynamically import depedencies
@@ -59,8 +62,8 @@ export function createSWC(swc) {
      * LitElement / popular convention
      */
     static get properties() {
-      var props = {};
-      for (var key in swc.data.values) {
+      let props = {};
+      for (let key in swc.data.values) {
         // set type
         props[key] = {
           type: typeof swc.data.values[key]
@@ -133,7 +136,7 @@ export function createSWC(swc) {
      */
     __applyWinEvents(status) {
       if (swc.events && swc.events.window) {
-        for (var eName in swc.events.window) {
+        for (let eName in swc.events.window) {
           window[`${status ? "add" : "remove"}EventListener`](
             eName,
             swc.callbacks[swc.events.window[eName]].bind(this)
@@ -146,8 +149,8 @@ export function createSWC(swc) {
      */
     firstUpdated() {
       if (swc.events && swc.events.shadow) {
-        for (var target in swc.events.shadow) {
-          for (var eName in swc.events.shadow[target]) {
+        for (let target in swc.events.shadow) {
+          for (let eName in swc.events.shadow[target]) {
             this.shadowRoot
               .querySelector(target)
               .addEventListener(

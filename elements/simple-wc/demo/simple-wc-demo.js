@@ -80,7 +80,7 @@ createSWC({
       "hax-app-selected": "_appSelected",
       "hax-store-property-updated": "_haxStorePropertyUpdated"
     },
-    // after shadowRoot is available apply these events to these selectors
+    // after shadowRoot is available, querySelect the key, then apply the event and callback
     shadow: {
       "#stuff": {
         click: "_clickedStuff"
@@ -100,7 +100,7 @@ createSWC({
     // reflect to css attribute
     reflect: ["color"],
     // fire up an event whatever-changed on value change
-    notify: ["shadow", "border", "color"],
+    notify: ["shadow", "color"],
     // run this function when these values change
     // 3rd optional parameter is what value to compute based on the others
     observe: [
