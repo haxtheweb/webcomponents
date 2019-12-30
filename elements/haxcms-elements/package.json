@@ -16,7 +16,7 @@
       "hax": "src/haxcms-elements-hax.json"
     }
   },
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",
@@ -41,15 +41,15 @@
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.3.6",
     "@lrnwebcomponents/dropdown-select": "^2.3.6",
-    "@lrnwebcomponents/hax-body": "^2.3.6",
+    "@lrnwebcomponents/hax-body": "^2.3.7",
     "@lrnwebcomponents/hax-body-behaviors": "^2.3.6",
     "@lrnwebcomponents/jwt-login": "^2.3.6",
     "@lrnwebcomponents/lunr-search": "^2.3.4",
     "@lrnwebcomponents/magazine-cover": "^2.3.6",
-    "@lrnwebcomponents/map-menu": "^2.3.6",
-    "@lrnwebcomponents/schema-behaviors": "^2.3.6",
-    "@lrnwebcomponents/simple-colors": "^2.3.6",
-    "@lrnwebcomponents/simple-icon-picker": "^2.3.6",
+    "@lrnwebcomponents/map-menu": "^2.3.7",
+    "@lrnwebcomponents/schema-behaviors": "^2.3.7",
+    "@lrnwebcomponents/simple-colors": "^2.3.7",
+    "@lrnwebcomponents/simple-icon-picker": "^2.3.7",
     "@lrnwebcomponents/simple-picker": "^2.3.6",
     "@lrnwebcomponents/sites-listing": "^2.3.1",
     "@polymer/app-layout": "^3.0.2",
@@ -73,7 +73,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.6",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

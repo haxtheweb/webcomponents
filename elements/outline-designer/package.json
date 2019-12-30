@@ -16,7 +16,7 @@
       "hax": "src/outline-designer-hax.json"
     }
   },
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -39,11 +39,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/editable-list": "^2.3.6",
+    "@lrnwebcomponents/editable-list": "^2.3.7",
     "@lrnwebcomponents/item-overlay-ops": "^2.3.6",
-    "@lrnwebcomponents/lrnsys-outline": "^2.3.6",
-    "@lrnwebcomponents/simple-colors": "^2.3.6",
-    "@lrnwebcomponents/simple-modal": "^2.3.6",
+    "@lrnwebcomponents/lrnsys-outline": "^2.3.7",
+    "@lrnwebcomponents/simple-colors": "^2.3.7",
+    "@lrnwebcomponents/simple-modal": "^2.3.7",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.6",
+    "@lrnwebcomponents/storybook-utilities": "^2.3.7",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
