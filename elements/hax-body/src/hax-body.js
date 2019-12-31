@@ -290,11 +290,15 @@ class HaxBody extends SimpleColors {
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener("mouseover", this._mouseOver.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
     }, 0);
   }
   static get tag() {
     return "hax-body";
+  }
+  _mouseOver(e) {
+    this.positionContextMenus();
   }
   /**
    * LitElement render
@@ -450,7 +454,7 @@ class HaxBody extends SimpleColors {
    */
   _openDrawerChanged(newValue, oldValue) {
     if (!newValue) {
-      this.positionContextMenus(this.activeNode, this.activeContainerNode);
+      this.positionContextMenus();
     } else {
       this.hideContextMenus();
     }
@@ -554,6 +558,7 @@ class HaxBody extends SimpleColors {
    */
   _keepContextVisible(e) {
     if (!this.openDrawer && this.editMode) {
+      console.log("/");
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
@@ -687,10 +692,7 @@ class HaxBody extends SimpleColors {
                   this
                 );
                 setTimeout(() => {
-                  this.positionContextMenus(
-                    this.activeNode,
-                    this.activeContainerNode
-                  );
+                  this.positionContextMenus();
                 }, 0);
               }
             } else {
@@ -712,7 +714,7 @@ class HaxBody extends SimpleColors {
       !this.openDrawer &&
       this.editMode &&
       this.shadowRoot
-        .querySelector("#platecontextmenu")
+        .querySelector("#textcontextmenu")
         .classList.contains("hax-active-hover") &&
       this.activeNode &&
       window.HaxStore.instance.isTextElement(this.activeNode)
@@ -728,7 +730,7 @@ class HaxBody extends SimpleColors {
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
         // always on active if we were just typing
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        this.positionContextMenus();
       }, 2000);
     }
   }
@@ -781,7 +783,7 @@ class HaxBody extends SimpleColors {
           local.parentNode.parentNode === this.activeContainerNode ||
           local.parentNode.parentNode.parentNode === this.activeContainerNode
         ) {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+          this.positionContextMenus();
           this.__addActiveHover();
           this.__typeLock = false;
         } else {
@@ -1265,7 +1267,10 @@ class HaxBody extends SimpleColors {
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus(node, container) {
+  positionContextMenus(
+    node = this.activeNode,
+    container = this.activeContainerNode
+  ) {
     if (node) {
       let tag = node.tagName.toLowerCase();
       if (window.HaxStore.instance._isSandboxed && tag === "webview") {
@@ -1354,7 +1359,7 @@ class HaxBody extends SimpleColors {
       } else {
         container.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 5);
+    }, 0);
     return true;
   }
   /**
@@ -1605,7 +1610,23 @@ class HaxBody extends SimpleColors {
           detail.value;
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        this.positionContextMenus();
+        break;
+      case "text-tag-ul":
+        // trigger the default selected value in context menu to match
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
+          "ul";
+        this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.positionContextMenus();
+        break;
+      case "text-tag-ol":
+        // trigger the default selected value in context menu to match
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
+          "ol";
+        this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.positionContextMenus();
         break;
       case "grid-plate-add-element":
         // insert from here
@@ -1631,7 +1652,7 @@ class HaxBody extends SimpleColors {
             } catch (e) {
               console.warn(e);
             }
-          });
+          }, 0);
         }
         break;
       case "text-align-left":
@@ -2011,6 +2032,7 @@ class HaxBody extends SimpleColors {
                 } catch (e) {
                   console.warn(e);
                 }
+                this.positionContextMenus();
               }
             }, 0);
           } else {
@@ -2033,6 +2055,7 @@ class HaxBody extends SimpleColors {
               } catch (e) {
                 console.warn(e);
               }
+              this.positionContextMenus();
             }, 0);
           }
         }, 100);
@@ -2180,18 +2203,24 @@ class HaxBody extends SimpleColors {
   dropEvent(e) {
     clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove(
-            "mover",
-            "hovered",
-            "moving",
-            "grid-plate-active-item"
-          );
+      setTimeout(() => {
+        let children = this.children;
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].classList !== typeof undefined) {
+            children[i].classList.remove(
+              "mover",
+              "hovered",
+              "moving",
+              "grid-plate-active-item"
+            );
+            // special support for grid plates as they manage internal drag/drop
+            if (children[i].tagName === "GRID-PLATE") {
+              children[i].dropEvent(e);
+            }
+          }
         }
-      }
+      }, 0);
       var target = window.HaxStore.instance.__dragTarget;
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
@@ -2229,7 +2258,7 @@ class HaxBody extends SimpleColors {
           this
         );
         setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+          this.positionContextMenus();
         }, 10);
       }
     }
@@ -2477,7 +2506,7 @@ class HaxBody extends SimpleColors {
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
           if (newValue === this.activeNode) {
-            this.positionContextMenus(newValue, this.activeContainerNode);
+            this.positionContextMenus(newValue);
           }
         }, 10);
       } else {
@@ -2552,9 +2581,6 @@ class HaxBody extends SimpleColors {
       menu.style.marginLeft = "";
       this.__typeLock = false;
     }
-    setTimeout(() => {
-      this._keepContextVisible();
-    }, 100);
   }
   /**
    * Simple hide / reset of whatever menu it's handed.

@@ -1273,6 +1273,16 @@ class GridPlate extends LitElement {
               .classList.remove("mover", "hovered", "moving");
           }
         }
+        // support hax and dropping back inside grid plate
+        if (window.HaxStore && window.HaxStore.ready) {
+          let childrenHAX = window.HaxStore.instance.activeHaxBody.children;
+          // walk the children and apply the draggable state needed
+          for (var i in childrenHAX) {
+            if (childrenHAX[i].classList) {
+              childrenHAX[i].classList.remove("mover", "hovered", "moving");
+            }
+          }
+        }
       }, 0);
       // edge case, something caused this to drag and it tried to do
       // itself into itself
@@ -1355,26 +1365,23 @@ class GridPlate extends LitElement {
       } else {
         this.__dragTarget = this.activeItem;
       }
-      this.positionArrows(null, true);
       this.activeItem.classList.add("moving");
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(this.activeItem, 0, 0);
       e.stopPropagation();
       e.stopImmediatePropagation();
-      setTimeout(() => {
-        const children = this.children;
-        // walk the children and apply the draggable state needed
-        for (var i in children) {
-          if (children[i].classList && children[i] !== this.activeItem) {
-            children[i].classList.add("mover");
-          }
+      const children = this.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (children[i].classList && children[i] !== this.activeItem) {
+          children[i].classList.add("mover");
         }
-        for (var j = 1; j <= this.columns; j++) {
-          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-            this.shadowRoot.querySelector("#col" + j).classList.add("mover");
-          }
+      }
+      for (var j = 1; j <= this.columns; j++) {
+        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+          this.shadowRoot.querySelector("#col" + j).classList.add("mover");
         }
-      }, 0);
+      }
     }
   }
 

@@ -158,16 +158,18 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property &&
-      this.getAttribute("on-screen") != null &&
-      e.detail.property === "activeContainerNode"
-    ) {
-      // when activeNode changes make sure we reposition
-      this.__updatePlatePosition();
-    }
+    setTimeout(() => {
+      if (
+        e.detail &&
+        typeof e.detail.value !== typeof undefined &&
+        e.detail.property &&
+        this.getAttribute("on-screen") != null &&
+        ["activeNode", "activeContainerNode"].includes(e.detail.property)
+      ) {
+        // when activeNode changes make sure we reposition
+        this.__updatePlatePosition();
+      }
+    }, 0);
   }
   __updatePlatePosition() {
     setTimeout(() => {
@@ -188,7 +190,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       this.style.height = right.height;
       leftadd.style.top = Math.round(activeRec.y + activeRec.height + 1) + "px";
       leftadd.style.left = Math.round(activeRec.left - 22) + "px";
-    }, 0);
+    }, 100);
   }
   render() {
     this.shadowRoot.innerHTML = null;
@@ -199,19 +201,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
-  static get observedAttributes() {
-    return ["on-screen"];
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name == "on-screen" && newValue) {
-      this.__updatePlatePosition();
-    } else {
-      // offscreen
-    }
-  }
 
   connectedCallback() {
+    super.connectedCallback();
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#drag")
@@ -228,6 +220,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     this.shadowRoot
       .querySelector("#drag")
       .removeEventListener("dragend", this.dragEnd);
+    super.disconnectedCallback();
   }
   /**
    * When we end dragging ensure we remove the mover class.

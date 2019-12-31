@@ -138,7 +138,7 @@ class HaxTextContext extends LitElement {
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-list-bulleted"
-          event-name="ul"
+          event-name="text-tag-ul"
           label="Bulleted list"
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
@@ -146,7 +146,7 @@ class HaxTextContext extends LitElement {
           slot="primary"
           icon="editor:format-list-numbered"
           label="Numbered list"
-          event-name="ol"
+          event-name="text-tag-ol"
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
