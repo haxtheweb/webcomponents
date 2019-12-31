@@ -558,7 +558,6 @@ class HaxBody extends SimpleColors {
    */
   _keepContextVisible(e) {
     if (!this.openDrawer && this.editMode) {
-      console.log("/");
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
         // see if the text context menu is visible
@@ -2267,7 +2266,7 @@ class HaxBody extends SimpleColors {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (!this.openDrawer && this.editMode) {
+    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
       e.preventDefault();
       e.target.classList.add("hovered");
       // perform check for edge of screen
