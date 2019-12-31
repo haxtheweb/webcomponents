@@ -2,6 +2,23 @@
  * A collection of utility functions exported for convenience
  */
 
+/**
+ * Convert dash case to camel case
+ */
+function dashToCamelCase(key) {
+  return key.toLowerCase().replace(/-(.)/g, function(match, group1) {
+    return group1.toUpperCase();
+  });
+}
+/**
+ * Conver camel case to dash case
+ */
+function camelCaseToDash(key) {
+  return key.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`);
+}
+/**
+ * Encapsulate script types in an HTML blob
+ */
 function encapScript(html) {
   // ensure this is a string to then do replacements on, rare but possible w/ null
   if (html && typeof html.replace === "function") {
@@ -219,6 +236,8 @@ export const winEventsElement = function(SuperClass) {
 };
 
 export {
+  dashToCamelCase,
+  camelCaseToDash,
   encapScript,
   findTagsInHTML,
   wipeSlot,
