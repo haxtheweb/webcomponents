@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "eco-json-schema-form.js",
   "module": "eco-json-schema-form.es6.js",
   "umd": "eco-json-schema-form.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "responsive-grid.js",
   "module": "responsive-grid.es6.js",
   "umd": "responsive-grid.umd.js",

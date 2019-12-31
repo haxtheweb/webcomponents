@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "responsive-utility.js",
   "module": "responsive-utility.es6.js",
   "umd": "responsive-utility.umd.js",

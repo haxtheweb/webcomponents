@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "media-behaviors.js",
   "module": "media-behaviors.es6.js",
   "umd": "media-behaviors.umd.js",

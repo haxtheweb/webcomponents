@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "dropdown-select.js",
   "module": "dropdown-select.es6.js",
   "umd": "dropdown-select.umd.js",

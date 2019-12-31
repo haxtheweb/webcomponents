@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "storybook-utilities.js",
   "author": {
     "name": "nikkimk"

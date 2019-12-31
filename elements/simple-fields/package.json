@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-fields.js",
   "module": "simple-fields.es6.js",
   "umd": "simple-fields.umd.js",

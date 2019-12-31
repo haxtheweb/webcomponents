@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "they-live.js",
   "module": "they-live.es6.js",
   "umd": "they-live.umd.js",

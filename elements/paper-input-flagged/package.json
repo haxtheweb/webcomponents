@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "paper-input-flagged.js",
   "module": "paper-input-flagged.es6.js",
   "umd": "paper-input-flagged.umd.js",

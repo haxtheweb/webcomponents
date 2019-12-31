@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "a11y-behaviors.js",
   "module": "a11y-behaviors.es6.js",
   "umd": "a11y-behaviors.umd.js",

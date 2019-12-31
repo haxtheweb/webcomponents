@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "portal-launcher.js",
   "module": "portal-launcher.es6.js",
   "umd": "portal-launcher.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "wikipedia-query.js",
   "module": "wikipedia-query.es6.js",
   "umd": "wikipedia-query.umd.js",

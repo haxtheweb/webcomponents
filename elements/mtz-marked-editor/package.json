@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "mtz-marked-editor.js",
   "module": "mtz-marked-editor.es6.js",
   "umd": "mtz-marked-editor.umd.js",

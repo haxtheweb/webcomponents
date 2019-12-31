@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-blog-card.js",
   "module": "simple-blog-card.es6.js",
   "umd": "simple-blog-card.umd.js",

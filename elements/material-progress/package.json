@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "material-progress.js",
   "module": "material-progress.es6.js",
   "umd": "material-progress.umd.js",

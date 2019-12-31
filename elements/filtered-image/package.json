@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "filtered-image.js",
   "module": "filtered-image.es6.js",
   "umd": "filtered-image.umd.js",

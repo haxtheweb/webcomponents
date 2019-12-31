@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "hax-iconset.js",
   "module": "hax-iconset.es6.js",
   "umd": "hax-iconset.umd.js",

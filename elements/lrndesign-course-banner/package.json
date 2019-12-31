@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrndesign-course-banner.js",
   "module": "lrndesign-course-banner.es6.js",
   "umd": "lrndesign-course-banner.umd.js",

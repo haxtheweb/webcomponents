@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "grafitto-filter.js",
   "module": "grafitto-filter.es6.js",
   "umd": "grafitto-filter.umd.js",

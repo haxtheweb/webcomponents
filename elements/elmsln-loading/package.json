@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "elmsln-loading.js",
   "module": "elmsln-loading.es6.js",
   "umd": "elmsln-loading.umd.js",

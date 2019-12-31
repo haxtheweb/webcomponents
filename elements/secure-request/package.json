@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "secure-request.js",
   "module": "secure-request.es6.js",
   "umd": "secure-request.umd.js",

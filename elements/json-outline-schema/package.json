@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "json-outline-schema.js",
   "module": "json-outline-schema.es6.js",
   "umd": "json-outline-schema.umd.js",

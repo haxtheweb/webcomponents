@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "game-show-quiz.js",
   "module": "game-show-quiz.es6.js",
   "umd": "game-show-quiz.umd.js",

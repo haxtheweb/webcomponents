@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "data-viz.js",
   "module": "data-viz.es6.js",
   "umd": "data-viz.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "undo-manager.js",
   "module": "undo-manager.es6.js",
   "umd": "undo-manager.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "count-up.js",
   "module": "count-up.es6.js",
   "umd": "count-up.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "paper-audio-player.js",
   "module": "paper-audio-player.es6.js",
   "umd": "paper-audio-player.umd.js",

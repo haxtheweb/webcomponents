@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-concept-network.js",
   "module": "simple-concept-network.es6.js",
   "umd": "simple-concept-network.umd.js",

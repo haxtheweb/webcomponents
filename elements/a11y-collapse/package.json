@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "a11y-collapse.js",
   "module": "a11y-collapse.es6.js",
   "umd": "a11y-collapse.umd.js",

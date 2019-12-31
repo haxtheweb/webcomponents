@@ -17,6 +17,7 @@
     "type": "git",
     "url": "git@github.com:elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "hax-body-behaviors.js",
   "module": "hax-body-behaviors.es6.js",
   "umd": "hax-body-behaviors.umd.js",

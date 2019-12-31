@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "schema-behaviors.js",
   "module": "schema-behaviors.es6.js",
   "umd": "schema-behaviors.umd.js",

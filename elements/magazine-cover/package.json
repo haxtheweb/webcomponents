@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "magazine-cover.js",
   "module": "magazine-cover.es6.js",
   "umd": "magazine-cover.umd.js",

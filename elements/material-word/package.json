@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "material-word.js",
   "module": "material-word.es6.js",
   "umd": "material-word.umd.js",

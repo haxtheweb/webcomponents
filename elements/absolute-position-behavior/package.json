@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "absolute-position-behavior.js",
   "module": "absolute-position-behavior.es6.js",
   "umd": "absolute-position-behavior.umd.js",

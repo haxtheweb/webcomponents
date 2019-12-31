@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "grid-plate.js",
   "module": "grid-plate.es6.js",
   "umd": "grid-plate.umd.js",

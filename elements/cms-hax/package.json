@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "cms-hax.js",
   "module": "cms-hax.es6.js",
   "umd": "cms-hax.umd.js",

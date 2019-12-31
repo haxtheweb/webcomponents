@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "exif-data.js",
   "module": "exif-data.es6.js",
   "umd": "exif-data.umd.js",

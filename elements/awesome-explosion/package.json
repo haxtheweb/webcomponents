@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "awesome-explosion.js",
   "module": "awesome-explosion.es6.js",
   "umd": "awesome-explosion.umd.js",

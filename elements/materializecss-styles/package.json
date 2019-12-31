@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "materializecss-styles.js",
   "module": "materializecss-styles.es6.js",
   "umd": "materializecss-styles.umd.js",

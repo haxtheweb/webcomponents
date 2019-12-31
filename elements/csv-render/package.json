@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "csv-render.js",
   "module": "csv-render.es6.js",
   "umd": "csv-render.umd.js",

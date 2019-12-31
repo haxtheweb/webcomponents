@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "aframe-player.js",
   "module": "aframe-player.es6.js",
   "umd": "aframe-player.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-icon-picker.js",
   "module": "simple-icon-picker.es6.js",
   "umd": "simple-icon-picker.umd.js",

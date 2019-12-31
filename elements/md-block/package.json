@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "md-block.js",
   "module": "md-block.es6.js",
   "umd": "md-block.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "app-editor-hax.js",
   "module": "app-editor-hax.es6.js",
   "umd": "app-editor-hax.umd.js",

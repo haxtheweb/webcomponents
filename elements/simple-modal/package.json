@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-modal.js",
   "module": "simple-modal.es6.js",
   "umd": "simple-modal.umd.js",

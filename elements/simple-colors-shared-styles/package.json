@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-colors-shared-styles.js",
   "module": "simple-colors-shared-styles.es6.js",
   "umd": "simple-colors-shared-styles.umd.js",

@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrnsys-pdf.js",
   "module": "lrnsys-pdf.es6.js",
   "umd": "lrnsys-pdf.umd.js",

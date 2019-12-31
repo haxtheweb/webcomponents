@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "editable-table.js",
   "module": "editable-table.es6.js",
   "umd": "editable-table.umd.js",

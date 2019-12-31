@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "jwt-login.js",
   "module": "jwt-login.es6.js",
   "umd": "jwt-login.umd.js",

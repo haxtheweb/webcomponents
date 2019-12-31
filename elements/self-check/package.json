@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "self-check.js",
   "module": "self-check.es6.js",
   "umd": "self-check.umd.js",

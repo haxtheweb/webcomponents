@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "scroll-button.js",
   "module": "scroll-button.es6.js",
   "umd": "scroll-button.umd.js",

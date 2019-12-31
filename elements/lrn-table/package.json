@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "lrn-table.js",
   "module": "lrn-table.es6.js",
   "umd": "lrn-table.umd.js",

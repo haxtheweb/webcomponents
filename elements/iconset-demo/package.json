@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "iconset-demo.js",
   "module": "iconset-demo.es6.js",
   "umd": "iconset-demo.umd.js",

@@ -17,6 +17,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "circle-progress.js",
   "module": "circle-progress.es6.js",
   "umd": "circle-progress.umd.js",

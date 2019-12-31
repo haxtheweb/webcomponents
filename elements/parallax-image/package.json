@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "parallax-image.js",
   "module": "parallax-image.es6.js",
   "umd": "parallax-image.umd.js",
