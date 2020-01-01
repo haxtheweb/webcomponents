@@ -1930,7 +1930,8 @@ class HaxBody extends SimpleColors {
       // ensure this is valid
       if (
         this._validElementTest(containerNode) &&
-        containerNode.parentNode != null
+        containerNode.parentNode &&
+        containerNode.parentNode.tagName
       ) {
         // keep looking til we are juuuust below the container
         // @todo this is where we force a selection on highest level
