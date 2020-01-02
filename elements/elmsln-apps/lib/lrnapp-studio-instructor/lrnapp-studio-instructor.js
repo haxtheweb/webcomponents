@@ -26,12 +26,15 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 class LrnappStudioInstructor extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -205,7 +208,7 @@ class LrnappStudioInstructor extends LitElement {
   render() {
     return html`
     <custom-style>
-    <style include="materializecss-styles">
+    <style>
       vaadin-grid {
         --vaadin-grid-cell: {
           padding: 0;
@@ -608,7 +611,9 @@ class LrnappStudioInstructor extends LitElement {
     this.activeChart = {};
     this.stats = {};
     this.activeData = {
-      student: false,
+      student: {
+        sis: {}
+      },
       assignment: false,
       submission: false
     };
@@ -789,9 +794,8 @@ class LrnappStudioInstructor extends LitElement {
   /**
    * attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  firstUpdated() {
+    setTimeout(() => {
       this.shadowRoot
         .querySelector("#statsdialogbutton")
         .addEventListener("click", this._openStatsDialog.bind(this));
@@ -808,29 +812,7 @@ class LrnappStudioInstructor extends LitElement {
       this.shadowRoot
         .querySelector("#selectedchart")
         .addEventListener("change", this._chartChanged.bind(this));
-    });
-  }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#statsdialogbutton")
-      .removeEventListener("click", this._openStatsDialog.bind(this));
-    // listen for focus event to have fired
-    this.shadowRoot
-      .querySelector("#statsdialog")
-      .removeEventListener("opened-changed", this._accessibleFocus.bind(this));
-    this.shadowRoot
-      .querySelector("#dialog")
-      .removeEventListener("opened-changed", this._accessibleFocus.bind(this));
-    this.shadowRoot
-      .querySelector("#selectedproject")
-      .removeEventListener("change", this._projectChanged.bind(this));
-    this.shadowRoot
-      .querySelector("#selectedchart")
-      .removeEventListener("change", this._chartChanged.bind(this));
-    super.disconnectedCallback();
+    }, 0);
   }
   /**
    * Set ourselves as having focus after the modal closes.

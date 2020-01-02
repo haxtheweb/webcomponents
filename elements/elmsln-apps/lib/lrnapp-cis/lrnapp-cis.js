@@ -1,8 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
@@ -22,7 +18,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./lrnapp-cis-course-card.js";
 /**
  `lrnapp-cis`
@@ -42,6 +38,7 @@ class LrnappCis extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -163,13 +160,6 @@ class LrnappCis extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       <iron-ajax
         auto
         .url="${this.sourcePath}"

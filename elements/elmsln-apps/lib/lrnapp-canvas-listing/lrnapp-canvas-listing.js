@@ -11,13 +11,14 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 class LrnappCanvasListing extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -109,7 +110,7 @@ class LrnappCanvasListing extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style include="materializecss-styles">
+        <style>
           vaadin-grid {
             --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
 

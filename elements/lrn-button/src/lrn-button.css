@@ -1,4 +1,8 @@
-  :host {
+/* 
+  LIST SHARED STYLES BELOW
+  materialCssStyles
+*/
+:host {
     display: block;
     --lrnsys-button-height: 48px;
   }

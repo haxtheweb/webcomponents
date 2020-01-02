@@ -1,15 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 class LrnappOpenStudioProjects extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -45,13 +43,6 @@ class LrnappOpenStudioProjects extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       ${this.showSubmissions
         ? html`
             <h1 class="project-title black-text">

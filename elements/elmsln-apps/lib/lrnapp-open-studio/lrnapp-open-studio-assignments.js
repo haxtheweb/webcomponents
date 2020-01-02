@@ -1,15 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 class LrnappOpenStudioAssignments extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           align-content: center;
@@ -51,18 +49,8 @@ class LrnappOpenStudioAssignments extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       ${this.showSubmissions
         ? html`
-            <h1 class="assignment-title black-text">
-              ${this.activeAssignment.attributes.title}
-            </h1>
             <div class="submission-list">
               ${this.submissions.map(
                 submission => html`
@@ -116,10 +104,16 @@ class LrnappOpenStudioAssignments extends LitElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
-    import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-    import("@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js");
+    this.activeAssignment = {};
+    this.assignments = [];
+    this.submissions = [];
+    this.activeAssignmentId = null;
+    setTimeout(() => {
+      import("@polymer/paper-button/paper-button.js");
+      import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
+      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+      import("@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js");
+    }, 0);
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -257,7 +251,8 @@ class LrnappOpenStudioAssignments extends LitElement {
         attribute: "active-assignment-id"
       },
       activeAssignment: {
-        type: Object
+        type: Object,
+        attribute: "active-assignment"
       },
       activeAuthorId: {
         type: String,
@@ -290,7 +285,7 @@ class LrnappOpenStudioAssignments extends LitElement {
   }
   _activeAssignmentCompute(activeAssignmentId, assignments) {
     let activeAssignment = null;
-    if (assignments) {
+    if (activeAssignmentId && assignments && assignments.length > 0) {
       activeAssignment = assignments.find(assignment => {
         return assignment.id == activeAssignmentId;
       });

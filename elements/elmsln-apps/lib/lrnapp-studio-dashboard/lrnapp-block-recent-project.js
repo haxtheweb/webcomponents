@@ -1,8 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-list/iron-list.js";
@@ -11,13 +7,15 @@ import "@polymer/paper-item/paper-item-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 class LrnappBlockRecentProject extends LitElement {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         #loading {
           width: 100%;
@@ -90,13 +88,6 @@ class LrnappBlockRecentProject extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles paper-item-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       <iron-ajax
         auto=""
         url="${this.sourcePath}"

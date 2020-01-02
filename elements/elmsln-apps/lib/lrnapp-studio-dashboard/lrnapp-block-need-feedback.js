@@ -75,6 +75,7 @@ class LrnappBlockNeedFeedback extends LitElement {
   constructor() {
     super();
     this.loading = true;
+    this.response = {};
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

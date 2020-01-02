@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 
 /**
  * `lrn-button`
@@ -22,10 +22,6 @@ class LrnButton extends LitElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
     this.href = "#";
     this.label = "";
     this.target = "";
@@ -35,6 +31,12 @@ class LrnButton extends LitElement {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
+      this.addEventListener("focusin", this.tapEventOn);
+      this.addEventListener("focusout", this.tapEventOff);
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   firstUpdated() {

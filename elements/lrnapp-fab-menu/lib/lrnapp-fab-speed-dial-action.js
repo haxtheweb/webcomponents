@@ -1,10 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /*
 An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
 
@@ -29,6 +25,7 @@ class LrnappFabSpeedDialAction extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           margin-top: 15px;
@@ -73,17 +70,6 @@ class LrnappFabSpeedDialAction extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style
-          include="iron-flex iron-flex-alignment materializecss-styles-colors"
-        >
-          :host {
-            @apply --layout-horizontal;
-            @apply --layout-center;
-            @apply --layout-end-justified;
-          }
-        </style>
-      </custom-style>
       <div class="flex">
         <span class="label"><slot></slot></span>
       </div>

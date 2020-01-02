@@ -34,22 +34,24 @@ class LrnappBlockRecentSubmissions extends LitElement {
         ?loading=${this.loading}
         size="small"
       ></hexagon-loader>
-      ${this._toArray(this.response.data).map(
-        item => html`
-          <paper-button @click="${this._loadSubmissionUrl}">
-            <lrndesign-gallerycard
-              data-submission-id="${item.id}"
-              title="${item.attributes.title}"
-              author="${item.relationships.author.data}"
-              comments="${item.meta.comment_count}"
-              image="${item.display.image}"
-              icon="${item.display.icon}"
-              class="ferpa-protect"
-            >
-            </lrndesign-gallerycard>
-          </paper-button>
-        `
-      )}
+      ${this.response
+        ? this._toArray(this.response.data).map(
+            item => html`
+              <paper-button @click="${this._loadSubmissionUrl}">
+                <lrndesign-gallerycard
+                  data-submission-id="${item.id}"
+                  title="${item.attributes.title}"
+                  author="${item.relationships.author.data}"
+                  comments="${item.meta.comment_count}"
+                  image="${item.display.image}"
+                  icon="${item.display.icon}"
+                  class="ferpa-protect"
+                >
+                </lrndesign-gallerycard>
+              </paper-button>
+            `
+          )
+        : ``}
     `;
   }
   responseEvent(e) {
@@ -85,7 +87,7 @@ class LrnappBlockRecentSubmissions extends LitElement {
         attribute: "source-path"
       },
       response: {
-        type: Array
+        type: Object
       },
       loading: {
         type: Boolean
@@ -95,6 +97,7 @@ class LrnappBlockRecentSubmissions extends LitElement {
   constructor() {
     super();
     this.loading = true;
+    this.response = {};
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

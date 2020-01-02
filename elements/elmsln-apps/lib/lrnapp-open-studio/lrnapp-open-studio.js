@@ -294,17 +294,23 @@ class LrnappOpenStudio extends LitElement {
   }
   queryParamsAssignmentEvent(e) {
     let attr = this.queryParams.attributes;
-    attr.assignment = e.detail.value;
+    if (attr) {
+      attr.assignment = e.detail.value;
+    }
     this.queryParams.attributes = { ...attr };
   }
   queryParamsProjectEvent(e) {
     let attr = this.queryParams.attributes;
-    attr.project = e.detail.value;
+    if (attr) {
+      attr.project = e.detail.value;
+    }
     this.queryParams.attributes = { ...attr };
   }
   queryParamsAuthorEvent(e) {
     let attr = this.queryParams.attributes;
-    attr.author = e.detail.value;
+    if (attr) {
+      attr.author = e.detail.value;
+    }
     this.queryParams.attributes = { ...attr };
   }
   studioResponseChangedEvent(e) {
@@ -410,8 +416,16 @@ class LrnappOpenStudio extends LitElement {
   constructor() {
     super();
     this.projects = [];
+    this.submissions = [];
+    this.originalSubmissions = [];
+    this.queryParams = {
+      attributes: {}
+    };
     this.assignments = [];
     this.authors = [];
+    this.data = {
+      page: 0
+    };
     this.activeSubmission = null;
     this._blockcycle = false;
     setTimeout(() => {

@@ -9,7 +9,7 @@ import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
 class LrnappOpenStudioTable extends LitElement {
   /**
@@ -17,6 +17,7 @@ class LrnappOpenStudioTable extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -93,7 +94,7 @@ class LrnappOpenStudioTable extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style include="materializecss-styles">
+        <style>
           vaadin-grid {
             --vaadin-grid-cell: {
               padding: 0;

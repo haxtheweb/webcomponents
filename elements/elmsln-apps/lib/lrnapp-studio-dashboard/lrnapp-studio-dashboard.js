@@ -1,10 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-block-recent-project.js";
 import "./lrnapp-block-recent-submissions.js";
 import "./lrnapp-block-recent-comments.js";
@@ -15,7 +11,12 @@ class LrnappStudioDashboard extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
+        :host {
+          display: block;
+          padding: 0 2em;
+        }
         h1.title {
           font-size: 2em;
           color: black;
@@ -40,14 +41,6 @@ class LrnappStudioDashboard extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-            padding: 0 2em;
-          }
-        </style>
-      </custom-style>
       <h1 class="title">Welcome back ${this.username}!</h1>
       <p class="para">Here's what's been going on in the studio</p>
       <div class="dashboard-row">

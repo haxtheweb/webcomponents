@@ -2,11 +2,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 /*
  `lrnapp-cis-course-card`
  Present a course card
@@ -17,6 +14,7 @@ class LrnappCisCourseCard extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: inline-flex;
@@ -116,13 +114,6 @@ class LrnappCisCourseCard extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       <paper-card elevation="${this.elevation}">
         <div class="card-content card-control-height card-control-center">
           <div class="course-preview">
@@ -160,7 +151,7 @@ class LrnappCisCourseCard extends LitElement {
    */
   constructor() {
     super();
-    this.icon = false;
+    this.icon = null;
     this.name = "";
     this.title = "";
     this.color = "grey";

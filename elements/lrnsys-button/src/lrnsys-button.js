@@ -3,13 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `lrnsys-button`
  * `A simple button for use in systems`
@@ -19,6 +15,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 class LrnsysButton extends LitElement {
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -102,15 +99,6 @@ class LrnsysButton extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles-colors">
-          :host {
-            display: block;
-            @apply --paper-font-common-base;
-            @apply --paper-button;
-          }
-        </style>
-      </custom-style>
       <a
         tabindex="-1"
         id="lrnsys-button-link"

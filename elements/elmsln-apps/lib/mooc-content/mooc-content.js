@@ -10,11 +10,8 @@ import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 const makeSlot = name => {
   const slot = document.createElement("slot");
   if (name) {
@@ -41,6 +38,7 @@ class MoocContent extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -111,13 +109,6 @@ class MoocContent extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style include="materializecss-styles">
-          :host {
-            display: block;
-          }
-        </style>
-      </custom-style>
       <div id="hackycontainer"><style id="hackycsspotterhates"></style></div>
       <iron-ajax
         id="fulloutlinepath"

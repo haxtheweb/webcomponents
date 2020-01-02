@@ -22,7 +22,7 @@ import "@lrnwebcomponents/lrnsys-render-html/lrnsys-render-html.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
@@ -32,6 +32,7 @@ class LrnappStudioKanban extends LitElement {
    */
   static get styles() {
     return [
+      materialCssStyles,
       css`
         :host {
           display: block;
@@ -193,7 +194,7 @@ class LrnappStudioKanban extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style include="materializecss-styles">
+        <style>
           .project-card {
             --paper-card-header: {
               max-width: 60%;
@@ -403,7 +404,7 @@ class LrnappStudioKanban extends LitElement {
                 </paper-button>
                 <paper-badge
                   ?hidden="${this.displayNewBadge(
-                    activeAssignmentNode.meta.relatedSubmissions.complete
+                    this.activeAssignmentNode.meta.relatedSubmissions.complete
                       .submission.meta.new
                   )}"
                   for="assignment-${this.activeAssignmentNode.relationships
@@ -529,6 +530,29 @@ class LrnappStudioKanban extends LitElement {
 
   constructor() {
     super();
+    this.activeAssignmentNode = {
+      attributes: {},
+      meta: {
+        relatedSubmissions: {
+          complete: {
+            submission: {
+              meta: {
+                comments: {}
+              }
+            },
+            rationale: {}
+          }
+        }
+      },
+      relationships: {
+        project: {
+          data: {}
+        }
+      }
+    };
+    this.projectResponse = {
+      data: {}
+    };
     this.assignmentToDelete = null;
     this.projectToDelete = null;
     this.activeAssignment = null;
