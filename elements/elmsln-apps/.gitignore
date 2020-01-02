@@ -1,2 +1,4 @@
 node_modules
 analysis-error.json
+data.json
+lib/*/data.json
