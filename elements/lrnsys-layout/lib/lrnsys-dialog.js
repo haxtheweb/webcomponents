@@ -47,13 +47,18 @@ class LrnsysDialog extends SimpleColors {
     this.disabled = false;
     this.dynamicImages = false;
     this.focusState = false;
+    this.avatar = "";
+    this.icon = "";
+    this.text = "";
     this.headingClass = "white-text black";
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/neon-animation/neon-animation.js");
-    import("@polymer/neon-animation/neon-animations.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("./lrnsys-button-inner.js");
+    setTimeout(() => {
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/neon-animation/neon-animation.js");
+      import("@polymer/neon-animation/neon-animations.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("./lrnsys-button-inner.js");
+    }, 0);
     this.__modal = window.SimpleModal.requestAvailability();
   }
   render() {
@@ -62,6 +67,10 @@ class LrnsysDialog extends SimpleColors {
         class="${this.class}"
         id="dialogtrigger"
         @click="${this.openDialog}"
+        @focus-changed="${this.focusToggle}"
+        @mousedown="${this.tapEventOn}"
+        @mouseover="${this.tapEventOn}"
+        @mouseout="${this.tapEventOff}"
         ?raised="${this.raised}"
         ?disabled="${this.disabled}"
         title="${this.alt}"
@@ -283,26 +292,6 @@ class LrnsysDialog extends SimpleColors {
       });
     }
     this.focusState = !this.focusState;
-  }
-  /**
-   * LitElement life cycle - ready
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.shadowRoot
-      .querySelector("#dialogtrigger")
-      .addEventListener("focused-changed", this.focusToggle.bind(this));
-    this.shadowRoot
-      .querySelector("#dialogtrigger")
-      .addEventListener("mousedown", this.tapEventOn.bind(this));
-    this.shadowRoot
-      .querySelector("#dialogtrigger")
-      .addEventListener("mouseover", this.tapEventOn.bind(this));
-    this.shadowRoot
-      .querySelector("#dialogtrigger")
-      .addEventListener("mouseout", this.tapEventOff.bind(this));
   }
 }
 window.customElements.define(LrnsysDialog.tag, LrnsysDialog);

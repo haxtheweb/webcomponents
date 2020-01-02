@@ -410,7 +410,7 @@ class LrnappStudioInstructor extends LitElement {
       </app-header>
       <paper-dialog-scrollable>
         ${
-          this.activeData.submission
+          this.activeData.submission && this.data.submission
             ? html`
                 <lrnapp-studio-submission-page
                   base-path="${this.basePath}"
@@ -587,6 +587,7 @@ class LrnappStudioInstructor extends LitElement {
   }
   constructor() {
     super();
+    this.data = {};
     this.studentParams = {
       projectId: null,
       type: "submission"
@@ -677,26 +678,29 @@ class LrnappStudioInstructor extends LitElement {
     var series = [[]];
     const stats = this.stats.stats;
     const assignments = this._toArray(this.assignments);
-    let parts = type.split("-");
-    if (
-      typeof stats[parts[0]] !== typeof undefined &&
-      typeof stats[parts[0]][parts[1]] !== typeof undefined
-    ) {
-      // make sure the data aligns now w/ the IDs in question
-      // or we'll start mixing up our data.
-      for (var i in assignments) {
-        let title = assignments[i].title;
-        if (
-          typeof stats[parts[0]][parts[1]][assignments[i].id] !==
-          typeof undefined
-        ) {
-          series[0].push(stats[parts[0]][parts[1]][assignments[i].id]);
-          title += ` (${stats[parts[0]][parts[1]][assignments[i].id]})`;
-        } else {
-          series[0].push(0);
-          title += " (0)";
+    // sanity check
+    if (type) {
+      let parts = type.split("-");
+      if (
+        typeof stats[parts[0]] !== typeof undefined &&
+        typeof stats[parts[0]][parts[1]] !== typeof undefined
+      ) {
+        // make sure the data aligns now w/ the IDs in question
+        // or we'll start mixing up our data.
+        for (var i in assignments) {
+          let title = assignments[i].title;
+          if (
+            typeof stats[parts[0]][parts[1]][assignments[i].id] !==
+            typeof undefined
+          ) {
+            series[0].push(stats[parts[0]][parts[1]][assignments[i].id]);
+            title += ` (${stats[parts[0]][parts[1]][assignments[i].id]})`;
+          } else {
+            series[0].push(0);
+            title += " (0)";
+          }
+          labels.push(title);
         }
-        labels.push(title);
       }
     }
     return {
@@ -1062,16 +1066,18 @@ class LrnappStudioInstructor extends LitElement {
   _setActiveSubmission(e) {
     var local = e.target;
     this.__rememberClick = local;
-    var item = local.id.split("-");
-    // find the active elements
-    this.activeData.student = { ...this.students[item[1]] };
-    this.activeData.assignment = { ...this.assignments[item[3]] };
-    this.activeData.submission = {
-      ...this.students[item[1]].assignments[item[3]]
-    };
-    this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
-    document.body.classList.add("scroll-disabled");
-    this.shadowRoot.querySelector("#dialog").toggle();
+    if (local.id) {
+      var item = local.id.split("-");
+      // find the active elements
+      this.activeData.student = { ...this.students[item[1]] };
+      this.activeData.assignment = { ...this.assignments[item[3]] };
+      this.activeData.submission = {
+        ...this.students[item[1]].assignments[item[3]]
+      };
+      this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
+      document.body.classList.add("scroll-disabled");
+      this.shadowRoot.querySelector("#dialog").toggle();
+    }
   }
   /**
    * Set route for active submission via comment click
@@ -1084,16 +1090,18 @@ class LrnappStudioInstructor extends LitElement {
     this.shadowRoot.querySelector("#prevstudent").disabled = true;
     var local = e.target;
     this.__rememberClick = local;
-    var item = local.id.split("-");
-    // find the active elements
-    this.activeData.student = { ...this.students[item[1]] };
-    this.activeData.assignment = { ...this.assignments[item[3]] };
-    this.activeData.submission = {
-      ...this.students[item[1]].assignments[item[3]]
-    };
-    this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
-    document.body.classList.add("scroll-disabled");
-    this.shadowRoot.querySelector("#dialog").toggle();
+    if (local.id) {
+      var item = local.id.split("-");
+      // find the active elements
+      this.activeData.student = { ...this.students[item[1]] };
+      this.activeData.assignment = { ...this.assignments[item[3]] };
+      this.activeData.submission = {
+        ...this.students[item[1]].assignments[item[3]]
+      };
+      this.route.path = this.endPoint + "/submissions/" + item[item.length - 1];
+      document.body.classList.add("scroll-disabled");
+      this.shadowRoot.querySelector("#dialog").toggle();
+    }
   }
   /**
    * Simple way to convert from object to array.

@@ -113,6 +113,7 @@ class LrnappStudioKanban extends LitElement {
           min-height: 10em;
         }
         .project-container {
+          display: inline-flex;
           padding: 1em;
         }
         .project-card .card-content {
@@ -340,7 +341,7 @@ class LrnappStudioKanban extends LitElement {
                             alt="Delete"
                             class="operation"
                             hover-class="amber lighten-4"
-                            hidden="${!assignment.meta.canDelete}"
+                            ?hidden="${!assignment.meta.canDelete}"
                             @click="${this._deleteAssignmentDialog}"
                             icon-class="no-margin red-text text-darken-4"
                           ></lrnsys-button>
@@ -386,34 +387,36 @@ class LrnappStudioKanban extends LitElement {
                 ${this.activeAssignmentNode.meta.relatedSubmissions.complete
                   .submission.title}
               </div>
-              <div
-                spacer=""
-                class="comment-box"
-                ?hidden="${!this.activeAssignmentNode.meta.relatedSubmissions
-                  .complete.submission.id}"
-              >
-                <paper-button
-                  id="assignment-${this.activeAssignmentNode.relationships
-                    .project.data.id}-${this.activeAssignmentNode.id}-comments"
-                  style="margin:0;padding:.25em;text-transform:none;"
-                >
-                  <iron-icon icon="communication:forum"></iron-icon>
-                  ${this.activeAssignmentNode.meta.relatedSubmissions.complete
-                    .submission.meta.comments.count}
-                  Comments
-                </paper-button>
-                <paper-badge
-                  ?hidden="${this.displayNewBadge(
-                    this.activeAssignmentNode.meta.relatedSubmissions.complete
-                      .submission.meta.new
-                  )}"
-                  for="assignment-${this.activeAssignmentNode.relationships
-                    .project.data.id}-${this.activeAssignmentNode.id}-comments"
-                  label="${this.activeAssignmentNode.meta.relatedSubmissions
-                    .complete.submission.meta.comments.new}"
-                ></paper-badge>
-              </div>
-
+              ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                .submission.id
+                ? html`
+                    <div spacer="" class="comment-box">
+                      <paper-button
+                        id="assignment-${this.activeAssignmentNode.relationships
+                          .project.data.id}-${this.activeAssignmentNode
+                          .id}-comments"
+                        style="margin:0;padding:.25em;text-transform:none;"
+                      >
+                        <iron-icon icon="communication:forum"></iron-icon>
+                        ${this.activeAssignmentNode.meta.relatedSubmissions
+                          .complete.submission.meta.comments.count}
+                        Comments
+                      </paper-button>
+                      <paper-badge
+                        ?hidden="${this.displayNewBadge(
+                          this.activeAssignmentNode.meta.relatedSubmissions
+                            .complete.submission.meta.new
+                        )}"
+                        for="assignment-${this.activeAssignmentNode
+                          .relationships.project.data.id}-${this
+                          .activeAssignmentNode.id}-comments"
+                        label="${this.activeAssignmentNode.meta
+                          .relatedSubmissions.complete.submission.meta.comments
+                          .new}"
+                      ></paper-badge>
+                    </div>
+                  `
+                : ``}
               <lrnapp-studio-submission-button
                 spacer
                 auto
@@ -691,6 +694,7 @@ class LrnappStudioKanban extends LitElement {
         this.projectToDelete +
         "?token=" +
         this.csrfToken;
+      this.backendResponse = {};
       this.shadowRoot.querySelector("#backend").generateRequest();
     } else if (this._deleteType == "assignment") {
       this.shadowRoot.querySelector("#backend").method = "DELETE";
@@ -701,6 +705,7 @@ class LrnappStudioKanban extends LitElement {
         this.assignmentToDelete +
         "?token=" +
         this.csrfToken;
+      this.backendResponse = {};
       this.shadowRoot.querySelector("#backend").generateRequest();
     }
   }
@@ -750,6 +755,7 @@ class LrnappStudioKanban extends LitElement {
         status: this.shadowRoot.querySelector("#activetoggle").checked
       };
       // send the request
+      this.backendResponse = {};
       xhr.generateRequest();
     }
   }
@@ -871,6 +877,7 @@ class LrnappStudioKanban extends LitElement {
   _handleProjectCreated(e) {
     this.shadowRoot.querySelector("#toast").text = "Project added";
     this.shadowRoot.querySelector("#toast").toggle();
+    this.projectResponse = {};
     this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 
@@ -880,6 +887,7 @@ class LrnappStudioKanban extends LitElement {
   _handleAssignmentCreated(e) {
     this.shadowRoot.querySelector("#toast").text = "Assignment added";
     this.shadowRoot.querySelector("#toast").toggle();
+    this.projectResponse = {};
     this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 

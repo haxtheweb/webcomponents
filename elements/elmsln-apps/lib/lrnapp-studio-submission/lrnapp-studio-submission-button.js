@@ -84,14 +84,17 @@ class LrnappStudioSubmissionButton extends LitElement {
       },
       assignmentId: {
         type: String,
-        reflect: true
+        reflect: true,
+        attribute: "assignment-id"
       },
       submissionId: {
         type: String,
-        reflect: true
+        reflect: true,
+        attribute: "submission-id"
       },
       displayErrors: {
-        type: Boolean
+        type: Boolean,
+        attribute: "display-errors"
       }
     };
   }

@@ -331,7 +331,7 @@ class LrnappStudioSubmissionDisplay extends LitElement {
    * know which player to display.
    */
   _isGif(url) {
-    if (url.indexOf(".gif") != -1) {
+    if (url && url.indexOf(".gif") != -1) {
       return true;
     }
     return false;

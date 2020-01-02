@@ -123,23 +123,23 @@ class LrnappBlockRecentProject extends LitElement {
                             inner-class="no-left-padding"
                             class="assignment-row-button"
                             button-class="assignment-row-button"
-                            id="assignment-${this.project.id}-${this.assignment
-                              .id}"
+                            id="assignment-${this.project.id}-[[assignment
+                              .id]]"
                             hover-class="amber lighten-5"
                             href="${this.basePath}lrnapp-studio-kanban"
                           >
                             <span class="button-contents">
                               <div
-                                class="status-indicator ${this.assignment
-                                  .metadata.relatedSubmissions.complete.color}"
+                                class="status-indicator [[assignment
+                                  .metadata.relatedSubmissions.complete.color]]"
                               >
                                 <iron-icon
-                                  icon="${this.assignment.metadata
-                                    .relatedSubmissions.complete.icon}"
+                                  icon="[[assignment.metadata
+                                    .relatedSubmissions.complete.icon]]"
                                 ></iron-icon>
                               </div>
                               <div class="assignment-title">
-                                ${this.assignment.title}
+                                [[assignment.title]]
                               </div>
                             </span>
                           </lrnsys-button>
