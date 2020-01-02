@@ -25,23 +25,29 @@ class LrnsysButtonInner extends LitElement {
       `
     ];
   }
+  constructor() {
+    super();
+    this.text = "";
+    this.avatar = "";
+    this.icon = "";
+  }
   /**
    * LitElement render
    */
   render() {
     return html`
       <div>
-        ${this.avatar
+        ${this.avatar != ""
           ? html`
               <paper-avatar src="${this.avatar}"></paper-avatar>
             `
           : ""}
-        ${this.icon
+        ${this.icon != ""
           ? html`
               <lrn-icon icon="${this.icon}"></lrn-icon>
             `
           : ""}
-        ${this.text
+        ${this.text != ""
           ? html`
               <span class="${this._getTextLabelClass(this.avatar, this.icon)}"
                 >${this.text}</span

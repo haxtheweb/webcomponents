@@ -608,6 +608,9 @@ class LrnappCis extends LitElement {
   static get tag() {
     return "lrnapp-cis";
   }
+  __routeChangedEvent(e) {
+    this.route = e.detail.value;
+  }
   /**
    * LitElement properties changed
    */

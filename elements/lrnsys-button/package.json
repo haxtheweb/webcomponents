@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrnsys-button",
   "wcfactory": {
     "className": "LrnsysButton",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrnsys-button",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

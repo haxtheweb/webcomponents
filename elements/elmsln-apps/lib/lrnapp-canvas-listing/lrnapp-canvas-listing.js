@@ -483,6 +483,8 @@ class LrnappCanvasListing extends LitElement {
   constructor() {
     super();
     this.roster = [];
+    this.elmslnCourses = [];
+    this.canvasCourses = [];
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

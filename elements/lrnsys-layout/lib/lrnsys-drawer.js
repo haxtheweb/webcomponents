@@ -66,7 +66,7 @@ class LrnsysDrawer extends SimpleColors {
         </lrnsys-button-inner>
       </paper-button>
       <paper-tooltip for="flyouttrigger" animation-delay="0"
-        >[[alt]]</paper-tooltip
+        >${this.alt}</paper-tooltip
       >
     `;
   }
