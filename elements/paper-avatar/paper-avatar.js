@@ -143,6 +143,7 @@ class PaperAvatar extends LitElement {
    */
   constructor() {
     super();
+    this.label = null;
     this.src = null;
     this.jdenticonExists = false;
     this.twoChars = false;

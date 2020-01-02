@@ -39,9 +39,14 @@ class LrnsysDrawer extends SimpleColors {
     this.align = "left";
     this.disabled = false;
     this.focusState = false;
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
+    this.avatar = "";
+    this.icon = "";
+    this.text = "";
+    setTimeout(() => {
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/iron-icons/iron-icons.js");
+    }, 0);
     this.__modal = window.SimpleDrawer.requestAvailability();
   }
   /**

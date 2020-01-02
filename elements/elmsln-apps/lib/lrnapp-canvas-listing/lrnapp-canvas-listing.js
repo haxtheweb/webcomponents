@@ -331,69 +331,78 @@ class LrnappCanvasListing extends LitElement {
         @response="${this.handleRosterResponse}"
         @last-response-changed="${this.queryResponseRosterEvent}"
       ></iron-ajax>
-      <lrnsys-dialog
-        tabindex="-1"
-        id="details-dialog"
-        body-append
-        header="${this.activeCourse.name}"
-      >
-        <div slot="content">
-          ${!this.roster
-            ? html`
-                <div id="loadingRoster" class="loading">
-                  <h3>Loading..</h3>
-                  <elmsln-loading
-                    color="grey-text"
-                    size="large"
-                  ></elmsln-loading>
-                </div>
-              `
-            : ``}
-        </div>
-        <div slot="header">
-          ${this.roster
-            ? html`
-                ${this.activeCourse.image
+      ${this.activeCourse
+        ? html`
+            <lrnsys-dialog
+              tabindex="-1"
+              id="details-dialog"
+              body-append
+              header="${this.activeCourse.name}"
+            >
+              <div slot="content">
+                ${!this.roster
                   ? html`
-                      <iron-image
-                        style="width:100%; height:200px; background-color: lightgray;"
-                        sizing="cover"
-                        preload
-                        fade
-                        src="${this.activeCourse.image}"
-                      ></iron-image>
+                      <div id="loadingRoster" class="loading">
+                        <h3>Loading..</h3>
+                        <elmsln-loading
+                          color="grey-text"
+                          size="large"
+                        ></elmsln-loading>
+                      </div>
                     `
                   : ``}
-                <span class="heading">
-                  <span>Student count: ${this.activeCourse.student_count}</span>
-                  <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
-                  <span>Term: ${this.activeCourse.term}</span>
-                  <span>Workflow: ${this.activeCourse.workflow_state}</span>
-                </span>
-              `
-            : ``}
-        </div>
-        <div id="loadingContent" slot="content">
-          ${this._toArray(this.roster).map(
-            roleList => html`
-              <h2>${roleList.role}s</h2>
-              ${this._toArray(roleList.users).map(
-                user => html`
-                  <div class="avatar-name" id="user-${user.id}">
-                    <lrndesign-avatar
-                      label="${user.name}"
-                      src="${user.picture}"
-                    ></lrndesign-avatar>
-                  </div>
-                  <paper-tooltip for="user-${user.id}"
-                    >${user.name}</paper-tooltip
-                  >
-                `
-              )}
-            `
-          )}
-        </div>
-      </lrnsys-dialog>
+              </div>
+              <div slot="header">
+                ${this.roster
+                  ? html`
+                      ${this.activeCourse.image
+                        ? html`
+                            <iron-image
+                              style="width:100%; height:200px; background-color: lightgray;"
+                              sizing="cover"
+                              preload
+                              fade
+                              src="${this.activeCourse.image}"
+                            ></iron-image>
+                          `
+                        : ``}
+                      <span class="heading">
+                        <span
+                          >Student count:
+                          ${this.activeCourse.student_count}</span
+                        >
+                        <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
+                        <span>Term: ${this.activeCourse.term}</span>
+                        <span
+                          >Workflow: ${this.activeCourse.workflow_state}</span
+                        >
+                      </span>
+                    `
+                  : ``}
+              </div>
+              <div id="loadingContent" slot="content">
+                ${this._toArray(this.roster).map(
+                  roleList => html`
+                    <h2>${roleList.role}s</h2>
+                    ${this._toArray(roleList.users).map(
+                      user => html`
+                        <div class="avatar-name" id="user-${user.id}">
+                          <lrndesign-avatar
+                            label="${user.name}"
+                            src="${user.picture}"
+                          ></lrndesign-avatar>
+                        </div>
+                        <paper-tooltip for="user-${user.id}"
+                          >${user.name}</paper-tooltip
+                        >
+                      `
+                    )}
+                  `
+                )}
+              </div>
+            </lrnsys-dialog>
+          `
+        : ``}
     `;
   }
   queryResponseEvent(e) {

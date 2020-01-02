@@ -63,10 +63,10 @@ class LrnsysButtonInner extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "avatar") {
+      if (propName == "avatar" && this[propName] != "") {
         import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
       }
-      if (propName == "icon") {
+      if (propName == "icon" && this[propName] != "") {
         import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
         import("@polymer/iron-icons/iron-icons.js");
       }
