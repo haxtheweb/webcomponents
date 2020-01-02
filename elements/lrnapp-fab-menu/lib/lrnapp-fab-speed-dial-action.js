@@ -28,6 +28,9 @@ class LrnappFabSpeedDialAction extends LitElement {
       materialCssStyles,
       css`
         :host {
+          align-items: center;
+          justify-content: flex-end;
+          display: flex;
           margin-top: 15px;
           margin-right: 8px;
           min-width: 270px;
@@ -46,6 +49,9 @@ class LrnappFabSpeedDialAction extends LitElement {
           --lrnapp-fab-keyboard-focus-background: var(
             --lrnapp-fab-speed-dial-action-keyboard-focus-background
           );
+        }
+        .flex {
+          display: inline-flex;
         }
         .label,
         .fab {
