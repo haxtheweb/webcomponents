@@ -1627,7 +1627,12 @@ class HaxBody extends SimpleColors {
         window.HaxStore.write("activeNode", this.activeNode, this);
         this.positionContextMenus();
         break;
-      case "grid-plate-add-element":
+      case "hax-plate-add-element":
+        // support for the Other call, otherwise its a specific element + props
+        if (detail.value == "other") {
+          window.HaxStore.instance.haxInsertAnything({});
+          return true;
+        }
         // insert from here
         let addData = JSON.parse(detail.value);
         this.haxInsert(addData.tag, addData.content, addData.properties, false);
@@ -1659,26 +1664,26 @@ class HaxBody extends SimpleColors {
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "grid-plate-convert":
+      case "hax-plate-convert":
         this.replaceElementWorkflow();
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "grid-plate-create-left":
+      case "hax-plate-create-left":
         this.haxInjectGridplate(this.activeContainerNode, "left");
         break;
-      case "grid-plate-create-right":
+      case "hax-plate-create-right":
         this.haxInjectGridplate(this.activeContainerNode, "right");
         break;
       // duplicate the active item or container
-      case "grid-plate-duplicate":
+      case "hax-plate-duplicate":
         if (this.activeNode === this.activeContainerNode) {
           this.haxDuplicateNode(this.activeNode);
         } else {
           this.haxDuplicateNode(this.activeNode, this.activeContainerNode);
         }
         break;
-      case "grid-plate-delete":
+      case "hax-plate-delete":
         if (this.activeNode != null) {
           let options = [
             {
@@ -1709,14 +1714,14 @@ class HaxBody extends SimpleColors {
           );
         }
         break;
-      case "grid-plate-first":
+      case "hax-plate-first":
         this.haxMoveGridPlate(
           "first",
           this.activeNode,
           this.activeContainerNode
         );
         break;
-      case "grid-plate-up":
+      case "hax-plate-up":
         this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
         break;
       case "hax-manager-open":
@@ -1730,14 +1735,14 @@ class HaxBody extends SimpleColors {
           this
         );
         break;
-      case "grid-plate-down":
+      case "hax-plate-down":
         this.haxMoveGridPlate(
           "down",
           this.activeNode,
           this.activeContainerNode
         );
         break;
-      case "grid-plate-last":
+      case "hax-plate-last":
         this.haxMoveGridPlate(
           "last",
           this.activeNode,

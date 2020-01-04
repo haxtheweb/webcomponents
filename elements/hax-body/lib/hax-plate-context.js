@@ -84,7 +84,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         light
         icon="hardware:keyboard-arrow-up"
         label="Move up"
-        event-name="grid-plate-up"
+        event-name="hax-plate-up"
         direction="left"
       ></hax-context-item>
       <hax-context-item
@@ -99,7 +99,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         light
         icon="hardware:keyboard-arrow-down"
         label="Move down"
-        event-name="grid-plate-down"
+        event-name="hax-plate-down"
         direction="left"
       ></hax-context-item>
     </div>
@@ -109,7 +109,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       class="paddle"
       icon="icons:add"
       label="Add column"
-      event-name="grid-plate-create-left"
+      event-name="hax-plate-create-left"
       direction="right"
       id="left"
     ></hax-context-item>
@@ -119,28 +119,30 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       class="paddle"
       icon="hax:add-brick"
       label="Insert new.."
-      event-name="grid-plate-add-element"
+      event-name="hax-plate-add-element"
       direction="right"
       selected-value="0"
       reset-on-select
     >
     <paper-item value="" hidden></paper-item>
-      <paper-item value='{"tag":"p","content":"", "properties": {}}'
-      ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
-      >
-      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'
-      ><iron-icon icon="hax:h2"></iron-icon>Heading
-    </paper-item>
-      <paper-item value='{"tag":"ul","content":"<li>List</li>", "properties": {}}'
-        ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
-        list</paper-item
-      >
-      <paper-item value='{"tag":"hr","content":"", "properties": {}}'
-        ><iron-icon icon="hax:hr"></iron-icon>Horizontal line
+      <paper-item value='{"tag":"p","content":"", "properties": {}}'>
+        <iron-icon icon="hax:paragraph"></iron-icon>Paragraph
       </paper-item>
-      <paper-item value='{"tag":"place-holder","content":"", "properties": {"type": "image", "text": "Image"}}'
-      ><iron-icon icon="hax:placeholder"></iron-icon>Image placeholder
-    </paper-item>
+      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'>
+        <iron-icon icon="hax:h2"></iron-icon>Heading
+      </paper-item>
+      <paper-item value='{"tag":"ul","content":"<li>List</li>", "properties": {}}'>
+        <iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted list
+      </paper-item>
+      <paper-item value='{"tag":"hr","content":"", "properties": {}}'>
+        <iron-icon icon="hax:hr"></iron-icon>Horizontal line
+      </paper-item>
+      <paper-item value='{"tag":"place-holder","content":"", "properties": {"type": "image", "text": "Image"}}'>
+        <iron-icon icon="hax:placeholder"></iron-icon>Image placeholder
+      </paper-item>
+      <paper-item value='other'>
+        <iron-icon icon="hax:add-brick"></iron-icon>Other element
+      </paper-item>
     </hax-context-item-menu>
     <hax-context-item
       light
@@ -149,7 +151,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       class="paddle"
       icon="icons:add"
       label="Add column"
-      event-name="grid-plate-create-right"
+      event-name="hax-plate-create-right"
       direction="left"
     ></hax-context-item>
   `;

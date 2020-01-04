@@ -1535,12 +1535,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * Present all elements to potentially insert
    */
   haxInsertAnything(e) {
+    let props = {};
+    if (e && e.detail && e.detail.properties) {
+      props = e.detail.properties;
+    }
     let haxElements = [];
     for (var i in window.HaxStore.instance.gizmoList) {
       haxElements.push(
         window.HaxStore.haxElementPrototype(
           window.HaxStore.instance.gizmoList[i],
-          e.detail.properties,
+          props,
           ""
         )
       );

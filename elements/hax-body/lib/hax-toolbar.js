@@ -165,20 +165,20 @@ class HaxToolbar extends LitElement {
           ?hidden="${this.hideTransform}"
           icon="hax:bricks"
           label="Change type"
-          event-name="grid-plate-convert"
+          event-name="hax-plate-convert"
         ></hax-context-item>
         <hax-context-item
           ?hidden="${this.inline}"
           icon="delete"
           label="Remove"
-          event-name="grid-plate-delete"
+          event-name="hax-plate-delete"
         ></hax-context-item>
         <hax-context-item-menu
           ?hidden="${this.hideMode}"
           icon="more-vert"
           label="More operations"
           id="moremenu"
-          event-name="grid-plate-op"
+          event-name="hax-plate-op"
           reset-on-select
         >
           <paper-item value="" hidden></paper-item>
@@ -186,7 +186,7 @@ class HaxToolbar extends LitElement {
           <hax-context-item-textop
             menu
             icon="icons:content-copy"
-            event-name="grid-plate-duplicate"
+            event-name="hax-plate-duplicate"
             >Duplicate</hax-context-item-textop
           >
         </hax-context-item-menu>
