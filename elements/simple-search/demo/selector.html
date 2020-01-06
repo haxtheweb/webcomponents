@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleSearch: simple-search Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-search.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      #container {
+        color: #333;
+        line-height: 160%;
+        max-height: 200px;
+        overflow-y: scroll;
+      }
+      #search {
+        --simple-search-input-line-color: #0044ff;
+        --simple-search-button-hover-color: #0044ff;
+        --simple-search-input-text-color: #000;
+        --simple-search-input-placeholder-color: #222;
+      }
+    
+      simple-search-content {
+        --simple-search-match-text-color: #111;
+        --simple-search-match-bg-color: #dcebff;
+        --simple-search-match-border-color: #b0d5ff;
+        --simple-search-match-padding: 0.16px 4px;
+        --simple-search-match-border-radius: 0.16px;
+        --simple-search-match-font-family: monospace;
+      }
+    </style>
+    </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-search demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-search id="search" label="find something" controls="container" selector="em"></simple-search>
+          <div id="container">
+              <p>
+                Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne
+                <em>lumbering animata corpora quaeritis</em>. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero
+                undead survivor dictum mauris. Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus
+                resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem
+                incessu zomby. The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus. Zonbi tattered for
+                solum oculi eorum defunctis go lum cerebro. Nescio brains an Undead zombies. Sicut malus putrid voodoo
+                horror. Night of the living dead.
+              </p>
+              <p>
+                Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de
+                grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams.
+                Pestilentia est plague haec <em>decaying</em> ambulabat mortuos. Sicut zeder apathetic malus voodoo. Aenean a dolor
+                plan et terror soulless vulnerum contagium accedunt, mortui iam vivam unlife. Qui tardius moveri, brid eof
+                reanimator sed in magna copia sint terribiles undeath legionis. Alii missing oculis aliorum sicut serpere
+                crabs nostram. Putridi braindead odores kill and infect, aere implent left four dead.
+              </p>
+              <p>
+                Lucio fulci tremor est dark vivos magna. Expansis creepy arm yof darkness ulnis
+                witchcraft missing carnem armis Kirkman Moore and Adlard caeruleum in locis. Romero morbo Congress amarus
+                in auras. Nihil horum sagittis tincidunt, zombie slack-jawed gelida survival portenta. The unleashed virus
+                est, <em>et iam zombie mortui ambulabunt super terram</em>. Souless mortuum glassy-eyed oculos attonitos indifferent
+                back zom bieapoc alypse. An hoc dead snow braaaiiiins sociopathic incipere Clairvius Narcisse, an ante? Is
+                bello mundi z?
+              </p>
+            </div>
+          </template>
+        </demo-snippet>
+      </div>
+  </body>
+</html>

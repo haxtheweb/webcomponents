@@ -58,7 +58,6 @@
   /**
    * Number of results.
    */
-
   "resultCount": {
     "attribute": "result-count",
     "type": "Number"
@@ -69,6 +68,13 @@
   "resultPointer": {
     "attribute": "result-pointer",
     "type": "Number"
+  },
+  /**
+   * limits search to within target's elements that match a selectgor
+   */
+  "selector": {
+    "attribute": "selector",
+    "type": "String"
   },
   /**
    * label for search icon

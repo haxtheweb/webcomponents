@@ -34,6 +34,7 @@ Custom property | Description | Default
  *
  * @customElement
  * @demo ./demo/index.html
+ * @demo ./demo/selector.html Searching by CSS selectors
  *
  */
 class SimpleSearch extends LitElement {
@@ -58,6 +59,7 @@ class SimpleSearch extends LitElement {
     this.searchInputLabel = "search";
     this.searchTerms = [];
     this.target = null;
+    this.selector = null;
     this.__hideNext = true;
     this.__hidePrev = true;
   }
@@ -73,15 +75,17 @@ class SimpleSearch extends LitElement {
    * are there any results to navigate?
    */
   _handleChange(e) {
-    let target = this.controls
-      ? this.getRootNode().querySelector(`#${this.controls}`)
-      : null;
-    console.log(this.controls, target, this.getRootNode());
+    let selector = this.selector ? ` ${this.selector}` : ``,
+      selections = this.controls
+        ? this.getRootNode().querySelectorAll(`#${this.controls}${selector}`)
+        : null;
+    console.log(this.controls, selections, this.getRootNode());
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-    if (target && target.innerHTML)
-      target.innerHTML = this.findMatches(target.innerHTML);
+    selections.forEach(selection => {
+      this._searchSelection(selection);
+    });
     /**
      * Fires when search changes (detail = { search: this, content: event })
      *
@@ -92,14 +96,9 @@ class SimpleSearch extends LitElement {
     );
   }
 
-  /**
-   * are there any results to navigate?
-   *
-   * @param {number} total number of results
-   * @returns {boolean} whether or not there are results
-   */
-  _hasNoResults(count) {
-    return count < 1;
+  _searchSelection(selection) {
+    if (selection && selection.innerHTML)
+      selection.innerHTML = this.findMatches(selection.innerHTML);
   }
 
   /**
@@ -109,6 +108,7 @@ class SimpleSearch extends LitElement {
    * @returns {boolean} whether or not there are search terms
    */
   _hasNoSearch(terms) {
+    console.log("_hasNoSearch", terms, terms.length < 1);
     return terms.length < 1;
   }
 
@@ -125,7 +125,7 @@ class SimpleSearch extends LitElement {
       ? pointer + "/" + count
       : count > 0
       ? count
-      : "";
+      : "0";
   }
 
   /**
