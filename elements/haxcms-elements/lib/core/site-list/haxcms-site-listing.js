@@ -1553,7 +1553,20 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _bulkSitesConfirm(e) {
-    this.activeOpertion = e.target.id;
+    let target = false;
+    // resolve what got clicked on
+    if (e.target.id) {
+      target = e.target.id;
+    } else {
+      let path = e.path;
+      while (!target && path.length > 0) {
+        if (path[0].id) {
+          target = path[0].id;
+        }
+        path.shift();
+      }
+    }
+    this.activeOpertion = target;
     this.shadowRoot.querySelector("#confirm").opened = true;
   }
 
