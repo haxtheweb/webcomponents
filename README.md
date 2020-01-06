@@ -15,13 +15,15 @@ ELMS:LN produced web components for any project
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
 $ yarn install
+```
+## To work on any element in our repo
+```bash
+$ cd elements/ELEMENTNAME
 $ yarn start
 ```
-
+Edit files in `lib/`, `src/` and `demo/` in order to modify the element to contribute back to us via PR.
 ## Scripts
 
-- `$ yarn start`
-    - Launch a demo server. This should be continuously running as you develop.
 - `$ wcf element`
     -  Create a new component.
 - `$ yarn run rebuild-wcfcache`
