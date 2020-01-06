@@ -966,6 +966,7 @@ class GridPlate extends LitElement {
       this.positionArrows(this.activeItem);
       this.activeItem.focus();
     }
+    this.__sortChildren();
   }
 
   /**
@@ -1242,6 +1243,31 @@ class GridPlate extends LitElement {
     }
   }
   /**
+   * Sort children based on slot name
+   */
+  __sortChildren() {
+    // select all children w/ a slot attribute and convert to an Array
+    let children = Array.prototype.slice.call(
+      this.querySelectorAll("[slot]"),
+      0
+    );
+    // sort the children by slot id being low to high
+    children = children.sort(function(a, b) {
+      if (
+        parseInt(a.getAttribute("slot").split("-")[1]) <
+        parseInt(b.getAttribute("slot").split("-")[1])
+      ) {
+        return -1;
+      }
+      return 1;
+    });
+    // loop through and append these back into the grid plate.
+    // which will put them in the right order
+    children.forEach(el => {
+      this.appendChild(el);
+    });
+  }
+  /**
    * Drop an item onto another
    */
   dropEvent(e) {
@@ -1283,6 +1309,8 @@ class GridPlate extends LitElement {
             }
           }
         }
+        // sort the children by slot to ensure they are in the correct semantic order
+        this.__sortChildren();
       }, 0);
       // edge case, something caused this to drag and it tried to do
       // itself into itself
