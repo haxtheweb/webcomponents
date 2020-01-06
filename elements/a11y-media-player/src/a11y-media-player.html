@@ -12,7 +12,7 @@
         label="${this._getLocal(this.localization,this.playing ? 'pause' : 'play', 'label')}"
         @button-click="${e => this.togglePlay()}"
         ?audio-only="${this.audioOnly}"
-        ?disabled="${this.audioNoThumb || !this.mediaLoaded}"
+        ?disabled="${this.audioNoThumb || (!this.__duration > 0)}"
         ?hidden="${this.isYouTube && this.thumbnailSrc === null}">
       </a11y-media-play-button>
       <div id="html5">
@@ -330,6 +330,7 @@
           prev-button-label="${this._getLocal(this.localization,'prevResult','label')}"
           search-input-icon="${this._getLocal(this.localization,'search','icon')}"
           search-input-label="${this._getLocal(this.localization,'search','label')}"
+          selector=".searchable"
           ?disabled="${this.disableSearch}"
           ?hidden="${this.disableSearch}"
         >
@@ -383,7 +384,7 @@
               ?active="${cue.track.activeCues && cue.track.activeCues[0] === cue}"
               ?disabled="${this.disableInteractive || this.disableSeek}"
               ?hide-timestamps="${this.hideTimestamps}">
-              ${cue.text}
+              <span class="searchable">${cue.text}</span>
             </a11y-media-transcript-cue>
           `})}
         </div>

@@ -6,6 +6,7 @@ import { html, css } from "lit-element/lit-element.js";
 import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./lib/a11y-media-state-manager.js";
@@ -106,7 +107,6 @@ class A11yMediaPlayer extends SimpleColors {
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-    import("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
@@ -164,7 +164,6 @@ class A11yMediaPlayer extends SimpleColors {
       this.captionsTrack && this.captionsTrack.activeCues
         ? this.captionsTrack.activeCues
         : [];
-    console.log("captionsTrack", this.captionsTrack, cues);
     return cues;
   }
 
@@ -540,7 +539,9 @@ class A11yMediaPlayer extends SimpleColors {
     let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
-    this.__loadedTracks.addEventListener("media-loaded", e =>
+    console.log("connectedCallback");
+    this._handleMediaLoaded();
+    this.media.addEventListener("loadedmetadata", e =>
       root._handleMediaLoaded(e)
     );
     this.__loadedTracks.addEventListener("timeupdate", e =>
@@ -1340,15 +1341,10 @@ class A11yMediaPlayer extends SimpleColors {
    * handles media metadata when media is loaded
    */
   _handleMediaLoaded() {
-    console.log("_handleMediaLoaded");
     let anchor = window.AnchorBehaviors,
       target = anchor.getTarget(this),
       params = anchor.params;
-    this.shadowRoot.querySelector("#playbutton").removeAttribute("disabled");
-
-    // gets and converts video duration
     this._setElapsedTime();
-
     //if this video is part of the page's query string or anchor, seek the video
     if (target === this) this.seek(this._getSeconds(params.t));
   }
@@ -1387,6 +1383,7 @@ class A11yMediaPlayer extends SimpleColors {
    * handles time updates
    */
   _handleTimeUpdate() {
+    console.log("_handleTimeUpdate", this.media.seekable);
     //if play exceeds clip length, stop
     if (this.isYouTube && this.media.duration !== this.media.getDuration()) {
       this.__duration = this.media.duration = this.media.getDuration();
@@ -1524,7 +1521,6 @@ class A11yMediaPlayer extends SimpleColors {
   _updateMediaProperties(propName) {
     let setAttr = (attr, val = this[attr]) => {
       if (["__loadedTracks", attr].includes(propName)) {
-        console.log("_updateMediaProperties", propName, this.loadedTracks);
         if (val) {
           this.loadedTracks.setAttribute(attr, val);
         } else {
