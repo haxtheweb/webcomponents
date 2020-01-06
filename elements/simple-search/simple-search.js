@@ -338,7 +338,6 @@ class SimpleSearch extends LitElement {
    * @returns {boolean} whether or not there are search terms
    */
   _hasNoSearch(terms) {
-    console.log("_hasNoSearch", terms, terms.length < 1);
     return terms.length < 1;
   }
 
