@@ -1,11 +1,9 @@
-
-  
 <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
   ${this.mediaCaption}
 </div>
 <div id="outerplayer" flex-layout="${this.flexLayout}">
   <div id="innerplayer" .style="${this.innerplayerStyle}">
-    <div id="player" .style="${this.playerStyle}">
+    <div id="player" .style="${this.getPlayerStyle(this.aspect,this.audioOnly,this.fullscreen,this.height,this.thumbnailSrc,this.youtubeId)}">
       <a11y-media-play-button
         id="playbutton"
         action="${this.playing ? 'pause' : 'play'}"

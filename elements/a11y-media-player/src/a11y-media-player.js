@@ -77,6 +77,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.stackedLayout = false;
     this.sticky = false;
     this.stickyCorner = "top-right";
+    this.thumbnailSrc = null;
     this.tracks = [];
     this.volume = 70;
     this.width = null;
@@ -266,7 +267,7 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {boolean}
    */
   get isYouTube() {
-    return this.youtubeId;
+    return this.youtubeId ? true : false;
   }
 
   /**
@@ -441,19 +442,20 @@ class A11yMediaPlayer extends SimpleColors {
 
   /**
    * `style` for `#player`
-   * @readonly
    * @returns {string} value for style attribute
    */
-  get playerStyle() {
-    let audio =
-        this.audioOnly && this.thumbnailSrc === null && this.height === null,
-      height = audio ? "60px" : "unset",
-      paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
-      thumbnail =
-        this.thumbnailSrc != null && (this.isYouTube || this.audioOnly)
-          ? "url(" + thumbnailSrc + ")"
+  getPlayerStyle(aspect, audioOnly, fullscreen, height, thumb, yid) {
+    let audio = audioOnly && !thumb && !height,
+      hpx = audio ? "60px" : "unset",
+      paddingTop = fullscreen ? `unset` : `${100 / aspect}%`,
+      background =
+        thumb && (yid || audioOnly)
+          ? thumb
+          : yid
+          ? `https://img.youtube.com/vi/${yid.replace(/[\?&].*/)}/hqdefault.jpg`
           : "none";
-    return `height:${height};padding-top:${paddingTop};background-image:${thumbnail};`;
+    console.log("thumbnail", this, yid, background);
+    return `height:${hpx};padding-top:${paddingTop};background-image:url(${background});`;
   }
 
   /**
@@ -539,7 +541,6 @@ class A11yMediaPlayer extends SimpleColors {
     let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
-    console.log("connectedCallback");
     this._handleMediaLoaded();
     this.media.addEventListener("loadedmetadata", e =>
       root._handleMediaLoaded(e)
@@ -577,8 +578,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {map} changedProperties the properties that have changed
    */
   firstUpdated(changedProperties) {
+    console.log("firstUpdated", this.isYouTube);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "isYouTube" && this.isYouTube) this._youTubeRequest();
+      //if (propName === "isYouTube" && this.isYouTube) this._youTubeRequest();
     });
   }
 
@@ -1031,6 +1033,24 @@ class A11yMediaPlayer extends SimpleColors {
       primary.appendChild(node);
     });
     return primary;
+  }
+  /**
+   *
+   *
+   * @param {*} id
+   * @param {*} thumb
+   * @returns
+   * @memberof A11yMediaPlayer
+   */
+  _getSrcDoc(id, thumb) {
+    return !id
+      ? ``
+      : `<style>
+        *{padding:0;margin:0;overflow:hidden}
+        html,body{height:100%}
+        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
+        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+        </style><a href=https://www.youtube.com/embed/${id}?autoplay=1></a>`;
   }
 
   /**
