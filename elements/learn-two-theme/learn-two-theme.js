@@ -236,6 +236,12 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
           display: flex;
           flex-direction: column;
           flex: 1 1 auto;
+          --map-menu-items-list-display: flex;
+          --map-menu-items-list-flex-direction: column;
+          --map-menu-items-list-flex: 1 1 auto;
+          --map-menu-container-display: flex;
+          --map-menu-container-flex-direction: column;
+          --map-menu-container-flex: 1 1 auto;
         }
       `
     ];
@@ -316,20 +322,6 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
               background-color: transparent !important;
               width: 64px;
               height: 64px;
-            }
-          }
-          site-menu,
-          map-menu,
-          map-menu * {
-            --map-menu-container: {
-              display: flex;
-              flex-direction: column;
-              flex: 1 1 auto;
-            }
-            --map-menu-items-list: {
-              display: flex;
-              flex-direction: column;
-              flex: 1 1 auto;
             }
           }
         </style>

@@ -13,7 +13,7 @@ class MapMenuHeader extends LitElement {
         :host {
           display: block;
           transition: 0.1s all ease-in-out;
-          --map-menu-item-height: 16px;
+          --map-menu-item-height: 24px;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
@@ -36,6 +36,7 @@ class MapMenuHeader extends LitElement {
         a:hover,
         a:visited,
         a:focus {
+          display: block;
           color: var(--map-menu-header-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, inherit);
         }
@@ -67,15 +68,17 @@ class MapMenuHeader extends LitElement {
           color: gray;
         }
 
-        /* @todo this is a hack */
-        .icon iron-icon {
+        iron-icon {
           display: inline-block;
           --iron-icon-height: var(--map-menu-item-height);
-          transform: translateX(10px);
+          --iron-icon-width: var(--map-menu-item-height);
         }
 
         paper-button {
           text-transform: none;
+          width: 100%;
+          justify-content: left;
+          margin: 0px;
         }
       `
     ];
@@ -94,14 +97,12 @@ class MapMenuHeader extends LitElement {
                 ></lrndesign-avatar>
               </div>
             `
-          : html``}
+          : ``}
         ${this.icon
           ? html`
-              <div class="icon">
-                <iron-icon icon="${this.icon}"></iron-icon>
-              </div>
+              <iron-icon icon="${this.icon}"></iron-icon>
             `
-          : html``}
+          : ``}
 
         <div id="center">
           <a tabindex="-1" href="${this.url}">

@@ -7,10 +7,6 @@ import { SmoothScroll } from "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `map-menu`
  * `A series of elements that generate a hierarchical menu`
  *
@@ -36,6 +32,11 @@ class MapMenu extends LitElement {
           opacity: 1;
           background-color: transparent;
         }
+        #itemslist {
+          display: var(--map-menu-items-list-display);
+          flex-direction: var(--map-menu-items-list-flex-direction);
+          flex: var(--map-menu-items-list-flex);
+        }
         #activeindicator {
           background: var(--map-menu-active-color);
           transition: all 0.1s ease-in-out;
@@ -44,6 +45,9 @@ class MapMenu extends LitElement {
 
         map-menu-container {
           padding: var(--map-menu-container-padding, 0);
+          display: var(--map-menu-container-display);
+          flex-direction: var(--map-menu-container-flex-direction);
+          flex: var(--map-menu-container-flex);
         }
 
         /* turn default active color if indicator is on */
@@ -77,19 +81,6 @@ class MapMenu extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          #itemslist {
-            @apply --map-menu-items-list;
-          }
-          #activeindicator {
-            @apply --map-menu-active-indicator;
-          }
-          map-menu-container {
-            @apply --map-menu-container;
-          }
-        </style>
-      </custom-style>
       <div id="itemslist">
         <map-menu-container>
           <div id="activeindicator"></div>

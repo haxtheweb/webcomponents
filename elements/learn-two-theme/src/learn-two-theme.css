@@ -198,4 +198,10 @@ map-menu * {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  --map-menu-items-list-display: flex;
+  --map-menu-items-list-flex-direction: column;
+  --map-menu-items-list-flex: 1 1 auto;
+  --map-menu-container-display: flex;
+  --map-menu-container-flex-direction: column;
+  --map-menu-container-flex: 1 1 auto;
 }
