@@ -3,25 +3,26 @@
 </div>
 <div id="outerplayer" flex-layout="${this.flexLayout}">
   <div id="innerplayer" .style="${this.innerplayerStyle}">
-    <div id="player" .style="${this.getPlayerStyle(this.aspect,this.audioOnly,this.fullscreen,this.height,this.thumbnailSrc,this.youtubeId)}">
+    <div id="player" .style="${this.playerStyle}">
       <a11y-media-play-button
         id="playbutton"
         action="${this.playing ? 'pause' : 'play'}"
         label="${this._getLocal(this.localization,this.playing ? 'pause' : 'play', 'label')}"
         @button-click="${e => this.togglePlay()}"
         ?audio-only="${this.audioOnly}"
-        ?disabled="${this.audioNoThumb || (!this.__duration > 0)}"
-        ?hidden="${this.isYouTube && this.thumbnailSrc === null}">
+        ?disabled="${this.audioNoThumb || (!this.__duration > 0)}">
       </a11y-media-play-button>
       <div id="html5">
         <slot></slot>
       </div>
-      <div id="youtube" 
+      <a11y-media-youtube
+        id="youtube-${this.id}"
+        class="${this.progress ? `progress` : ``}" 
         lang="${this.mediaLang}"
-        video-id="${this.videoId}"
-        ?hidden="${!this.isYouTube}"
-        .elapsed="${this.elapsed}" >
-      </div>
+        video-id="${this.youtubeId}"
+        @timeupdate="${this._handleTimeUpdate}"
+        ?hidden=${!this.isYoutube}>
+      </a11y-media-youtube>
       <div id="customcc" 
         aria-live="polite"
         class="screen-only" 
@@ -35,7 +36,7 @@
   <paper-slider id="slider"
     class="screen-only"
     label="${this._getLocal(this.localization,'seekSlider', 'label')}"
-    min="0"
+    min="${this.isYoutube && this.mediaStart ? this.mediaStart : 0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
     @mousedown="${this._handleSliderStart}"

@@ -221,6 +221,7 @@ class A11yMediaPlayer extends SimpleColors {
           height: 400px;
           position: relative;
           background-size: cover;
+          background-position: center;
         }
         #player > * {
           position: absolute;
@@ -244,10 +245,10 @@ class A11yMediaPlayer extends SimpleColors {
           flex: 0 0 32px;
           height: 32px;
         }
-        :host([thumbnail-src]) #youtube {
+        a11y-media-youtube {
           opacity: 0;
         }
-        #youtube[elapsed] {
+        a11y-media-youtube.progress {
           opacity: 1;
           transition: opacity 0.5s;
         }
@@ -667,19 +668,20 @@ class A11yMediaPlayer extends SimpleColors {
               @button-click="${e => this.togglePlay()}"
               ?audio-only="${this.audioOnly}"
               ?disabled="${this.audioNoThumb || !this.__duration > 0}"
-              ?hidden="${this.isYouTube && this.thumbnailSrc === null}"
             >
             </a11y-media-play-button>
             <div id="html5">
               <slot></slot>
             </div>
-            <div
-              id="youtube"
+            <a11y-media-youtube
+              id="youtube-${this.id}"
+              class="${this.progress ? `progress` : ``}"
               lang="${this.mediaLang}"
-              video-id="${this.videoId}"
-              ?hidden="${!this.isYouTube}"
-              .elapsed="${this.elapsed}"
-            ></div>
+              video-id="${this.youtubeId}"
+              @timeupdate="${this._handleTimeUpdate}"
+              ?hidden=${!this.isYoutube}
+            >
+            </a11y-media-youtube>
             <div
               id="customcc"
               aria-live="polite"
@@ -701,7 +703,7 @@ class A11yMediaPlayer extends SimpleColors {
           id="slider"
           class="screen-only"
           label="${this._getLocal(this.localization, "seekSlider", "label")}"
-          min="0"
+          min="${this.isYoutube && this.mediaStart ? this.mediaStart : 0}"
           max="${this.duration}"
           secondary-progress="${this.buffered}"
           @mousedown="${this._handleSliderStart}"
@@ -1246,6 +1248,12 @@ class A11yMediaPlayer extends SimpleColors {
         type: Boolean
       },
       /**
+       * show closed captions
+       */
+      currentTime: {
+        type: Number
+      },
+      /**
        * crossorigin attribute for <video> and <audio> tags
        */
       crossorigin: {
@@ -1507,35 +1515,10 @@ class A11yMediaPlayer extends SimpleColors {
         type: String
       },
       /**
-       * the YouTube player object
-       */
-      youtube: {
-        attribute: "youtube",
-        type: Object
-      },
-      /**
        * array of cues provided to readOnly `get cues`
        */
       __cues: {
         type: Array
-      },
-      /**
-       * buffered media in seconds provided to readOnly `get buffered`
-       */
-      __buffered: {
-        type: Number
-      },
-      /**
-       * media duration in seconds provided to readOnly `get duration`
-       */
-      __duration: {
-        type: Number
-      },
-      /**
-       * elapsed media in seconds provided to readOnly `get elapsed`
-       */
-      __elapsed: {
-        type: Number
       },
       /**
        * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
@@ -1577,6 +1560,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.autoplay = false;
     this.allowConcurrent = false;
     this.cc = false;
+    this.currentTime = 0;
     this.darkTranscript = false;
     this.disableFullscreen = false;
     this.disableInteractive = false;
@@ -1597,6 +1581,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.mediaTitle = "";
     this.mediaLang = "en";
     this.muted = false;
+    this.preload = "metadata";
     this.playbackRate = 1;
     this.search = null;
     this.standAlone = false;
@@ -1607,16 +1592,13 @@ class A11yMediaPlayer extends SimpleColors {
     this.stackedLayout = false;
     this.sticky = false;
     this.stickyCorner = "top-right";
+    this.thumbnailSrc = null;
     this.tracks = [];
     this.volume = 70;
     this.width = null;
     this.youtubeId = null;
-    this.youtube = null;
-    this.__buffered = 0;
     this.__cues = [];
     this.__captionsOption = -1;
-    this.__duration = 0;
-    this.__elapsed = 0;
     this.__loadedTracks = null;
     this.__playing = false;
     this.__screenfullLoaded = false;
@@ -1681,7 +1663,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} seconds of buffered media
    */
   get buffered() {
-    return this.__buffered;
+    return this.media && this.media.buffered && this.media.buffered > 0
+      ? this.media.buffered
+      : 0;
   }
 
   /**
@@ -1717,16 +1701,13 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} media duration in seconds
    */
   get duration() {
-    return this.__duration;
-  }
-
-  /**
-   * returns elaped media
-   * @readonly
-   * @returns {number} media duration in seconds
-   */
-  get elapsed() {
-    return this.__elapsed;
+    let duration =
+      this.media && this.mediaEnd
+        ? this.mediaEnd - this.mediaStart
+        : this.media.duration && this.media.duration > 0
+        ? this.media.duration
+        : 0;
+    return duration;
   }
 
   /**
@@ -1795,27 +1776,17 @@ class A11yMediaPlayer extends SimpleColors {
    * @readonly
    * @returns {boolean}
    */
-  get isYouTube() {
-    return this.youtubeId;
+  get isYoutube() {
+    return this.youtubeId ? true : false;
   }
 
   /**
    * HTML `audio` or `video` tag where textTracks, if any, can be found
    * @readonly
+   * @returns {object} HTML tag
    */
   get loadedTracks() {
     return this.__loadedTracks;
-  }
-
-  /**
-   * media used for playback
-   * @readonly
-   */
-  get media() {
-    //console.log('get media',this.isYouTube ? this.youTube : this.loadedTracks);
-    //let media = this.isYouTube ? this.youTube : this.loadedTracks;
-    let media = this.loadedTracks;
-    return media;
   }
 
   /**
@@ -1939,6 +1910,14 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * media used for playback
+   * @readonly
+   */
+  get media() {
+    return this.isYoutube ? this.youtube : this.loadedTracks;
+  }
+
+  /**
    * gets media caption
    * @readonly
    * @returns {string} the media caption
@@ -1961,6 +1940,39 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * gets media media time if set
+   * @readonly
+   * @returns {number} end time in seconds
+   */
+  get mediaEnd() {
+    return this.mediaSeekable && this.media.seekable.end(0)
+      ? this.media.seekable.end(0)
+      : false;
+  }
+
+  /**
+   * whether media has a seekable time range
+   * @readonly
+   * @returns {boolean}
+   */
+  get mediaSeekable() {
+    return this.media && this.media.seekable
+      ? this.media.seekable.length > 0
+      : false;
+  }
+
+  /**
+   * gets media start time
+   * @readonly
+   * @returns {number} start time in seconds
+   */
+  get mediaStart() {
+    return this.mediaSeekable && this.media.seekable.start(0)
+      ? this.media.seekable.start(0)
+      : 0;
+  }
+
+  /**
    * whether media is currently playing
    * @readonly
    * @returns {boolean}
@@ -1975,15 +1987,18 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {string} value for style attribute
    */
   get playerStyle() {
-    let audio =
-        this.audioOnly && this.thumbnailSrc === null && this.height === null,
+    let audio = this.audioOnly && !this.thumbnailSrc && !this.height,
       height = audio ? "60px" : "unset",
       paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
       thumbnail =
-        this.thumbnailSrc != null && (this.isYouTube || this.audioOnly)
-          ? "url(" + thumbnailSrc + ")"
+        this.thumbnailSrc && (this.youtubeId || this.audioOnly)
+          ? this.thumbnailSrc
+          : this.youtubeId
+          ? `https://img.youtube.com/vi/${this.youtubeId.replace(
+              /[\?&].*/
+            )}/hqdefault.jpg`
           : "none";
-    return `height:${height};padding-top:${paddingTop};background-image:${thumbnail};`;
+    return `height:${height};padding-top:${paddingTop};background-image:url(${thumbnail});`;
   }
 
   /**
@@ -2007,6 +2022,19 @@ class A11yMediaPlayer extends SimpleColors {
     } else {
       return videoLabel;
     }
+  }
+
+  /**
+   * returns the current playback progress or slider position
+   * @readonly
+   * @returns {number} media duration in seconds
+   */
+  get progress() {
+    let progress =
+      this.__seeking === true
+        ? this.shadowRoot.querySelector("#slider").immediateValue
+        : this.currentTime;
+    return progress - this.mediaStart;
   }
 
   /**
@@ -2034,11 +2062,11 @@ class A11yMediaPlayer extends SimpleColors {
   get shareLink() {
     let url = window.location.href.split(/[#?]/)[0],
       id = this.id ? `?id=${this.id}` : ``,
-      elapsed =
-        id !== "" && this.elapsed && this.elapsed !== 0
-          ? `&t=${this.elapsed}`
+      progress =
+        id !== "" && this.progress && this.progress !== 0
+          ? `&t=${this.progress}`
           : ``;
-    return `${url}${id}${elapsed}`;
+    return `${url}${id}${progress}`;
   }
 
   /**
@@ -2046,32 +2074,39 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {boolean} Should the player show custom CC?
    */
   get showCustomCaptions() {
-    return (this.isYouTube || this.audioOnly) && this.hasCaptions && this.cc;
+    return (this.isYoutube || this.audioOnly) && this.hasCaptions && this.cc;
   }
 
   /**
    * gets playback status text
    *
    * @readonly
-   * @returns {string} status, as either a localized loading message or elapsed/duration
+   * @returns {string} status, as either a localized loading message or progress/duration
    */
   get status() {
     return this.duration > 0
-      ? `${this._getHHMMSS(this.elapsed, this.duration)}/${this._getHHMMSS(
-          this.duration
-        )}`
-      : this.isYouTube
+      ? html`
+          ${this._getHHMMSS(this.progress, this.duration)}/${this._getHHMMSS(
+            this.duration
+          )}
+        `
+      : this.isYoutube
       ? this._getLocal(this.localization, "youTubeLoading", "label")
       : this._getLocal(this.localization, "loading", "label");
+  }
+
+  get youtube() {
+    return this.shadowRoot.querySelector("a11y-media-youtube") !== null
+      ? this.shadowRoot.querySelector("a11y-media-youtube")
+      : false;
   }
 
   connectedCallback() {
     let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
-    console.log("connectedCallback");
     this._handleMediaLoaded();
-    this.media.addEventListener("loadedmetadata", e =>
+    this.__loadedTracks.addEventListener("loadedmetadata", e =>
       root._handleMediaLoaded(e)
     );
     this.__loadedTracks.addEventListener("timeupdate", e =>
@@ -2103,14 +2138,6 @@ class A11yMediaPlayer extends SimpleColors {
     );
     super.disconnectedCallback();
   }
-  /**
-   * @param {map} changedProperties the properties that have changed
-   */
-  firstUpdated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "isYouTube" && this.isYouTube) this._youTubeRequest();
-    });
-  }
 
   /**
    * @param {map} changedProperties the properties that have changed
@@ -2118,13 +2145,18 @@ class A11yMediaPlayer extends SimpleColors {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       //console.log('updated',propName,oldValue);
-      this._updateMediaProperties(propName);
+      if (this.media) this._updateMediaProperties(propName);
       if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
 
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
       if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
+      if (
+        propName === "currentTime" &&
+        this.currentTime !== this.media.currentTime
+      )
+        this.seek(this.currentTime);
 
       this.dispatchEvent(
         new CustomEvent(
@@ -2167,11 +2199,7 @@ class A11yMediaPlayer extends SimpleColors {
    * handles mute change
    */
   _handleMuteChanged() {
-    if (this.isYouTube) {
-      this.media.setMute(this.muted);
-    } else {
-      this.media.muted = this.muted;
-    }
+    this.media.muted = this.muted;
     /**
      * Fires when closed caption is toggled
      * @event mute-changed
@@ -2197,15 +2225,6 @@ class A11yMediaPlayer extends SimpleColors {
       !e.path[0].opened
     )
       this.shadowRoot.querySelector("#settings").close();
-  }
-
-  /**
-   * gets the buffered time
-   */
-  getBufferedTime() {
-    return this.media.buffered.length > 0
-      ? this.media.buffered.end(0)
-      : this.currentTime;
   }
 
   /**
@@ -2323,46 +2342,40 @@ class A11yMediaPlayer extends SimpleColors {
    * plays the media
    */
   play() {
-    if (this.isYouTube && !this.__ytAppended) {
-      ytInit();
-    } else {
-      console.log("play", this.media, this.isYouTube);
-      this.__playing = true;
-      this.media.play();
-      /**
-       * Fires when media plays
-       * @event play
-       */
-      window.dispatchEvent(
-        new CustomEvent("play", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-      /**
-       * DEPRECATED: Fires when media plays
-       * @event a11y-player-playing
-       */
-      window.dispatchEvent(
-        new CustomEvent("a11y-player-playing", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-    }
+    this.__playing = true;
+    if (this.media && this.media.play) this.media.play();
+    /**
+     * Fires when media plays
+     * @event play
+     */
+    window.dispatchEvent(
+      new CustomEvent("play", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+    /**
+     * DEPRECATED: Fires when media plays
+     * @event a11y-player-playing
+     */
+    window.dispatchEvent(
+      new CustomEvent("a11y-player-playing", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
   }
 
   /**
    * pauses the media
    */
   pause() {
-    console.log("pause", this.media);
     this.__playing = false;
-    this.media.pause();
+    if (this.media && this.media.pause) this.media.pause();
     /**
      * Fires when media pauses
      * @event pause
@@ -2470,20 +2483,13 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the time, in seconds, to seek
    */
   seek(time) {
-    let seekable =
-      this.media !== undefined && this.media !== null
-        ? this.media.seekable
-        : [];
     if (
-      seekable.length > 0 &&
-      time >= seekable.start(0) &&
-      time <= seekable.end(0)
+      (this.mediaSeekable &&
+        time >= this.mediaStart &&
+        time <= this.mediaEnd) ||
+      this.duration
     ) {
-      if (this.isToutube) {
-        this.media.seek(time);
-      } else {
-        this.media.currentTime = time;
-      }
+      this.media.seek(time);
       /**
        * Fires when media seeks
        * @event seek
@@ -2526,7 +2532,7 @@ class A11yMediaPlayer extends SimpleColors {
       primary = null;
     media.forEach(medium => {
       medium.removeAttribute("autoplay");
-      medium.setAttribute("preload", "metadata");
+      medium.setAttribute("preload", this.preload);
     });
 
     if (media.length > 0) {
@@ -2560,7 +2566,27 @@ class A11yMediaPlayer extends SimpleColors {
       Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
       primary.appendChild(node);
     });
+    /* provides a seek function for primary media */
+    primary.seek = time => (primary.currentTime = time);
     return primary;
+  }
+  /**
+   *
+   *
+   * @param {*} id
+   * @param {*} thumb
+   * @returns
+   * @memberof A11yMediaPlayer
+   */
+  _getSrcDoc(id, thumb) {
+    return !id
+      ? ``
+      : `<style>
+        *{padding:0;margin:0;overflow:hidden}
+        html,body{height:100%}
+        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
+        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+        </style><a href=https://www.youtube.com/embed/${id}?autoplay=1></a>`;
   }
 
   /**
@@ -2681,11 +2707,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   toggleLoop(mode) {
     this.loop = mode === undefined ? !this.loop : mode;
-    if (this.isYouTube) {
-      this.media.setLoop(this.loop);
-    } else {
-      this.media.loop = mode === true;
-    }
+    this.media.loop = mode === true;
 
     /**
      * Fires when looping is toggled
@@ -2824,7 +2846,7 @@ class A11yMediaPlayer extends SimpleColors {
         }) || 0;
     this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
-    this._setElapsedTime();
+    this._handleTimeUpdate();
   }
 
   /**
@@ -2874,8 +2896,8 @@ class A11yMediaPlayer extends SimpleColors {
     let anchor = window.AnchorBehaviors,
       target = anchor.getTarget(this),
       params = anchor.params;
-    this._setElapsedTime();
-    //if this video is part of the page's query string or anchor, seek the video
+    this._handleTimeUpdate();
+    /* if this video is part of the page's query string or anchor, seek the video */
     if (target === this) this.seek(this._getSeconds(params.t));
   }
 
@@ -2913,34 +2935,22 @@ class A11yMediaPlayer extends SimpleColors {
    * handles time updates
    */
   _handleTimeUpdate() {
-    console.log("_handleTimeUpdate", this.media.seekable);
-    //if play exceeds clip length, stop
-    if (this.isYouTube && this.media.duration !== this.media.getDuration()) {
-      this.__duration = this.media.duration = this.media.getDuration();
-      this.__buffered = this.getBufferedTime() || 0;
-      while (this.__buffered < this.__duration)
-        this.__buffered = this.getBufferedTime();
-      this.disableSeek = false;
-      if (
-        this.media.seekable &&
-        this.media.seekable.length > 0 &&
-        this.media.seekable.start(0) !== 0
-      ) {
-        this.shadowRoot.querySelector(
-          "#slider"
-        ).min = this.media.seekable.start(0);
-      }
-    }
+    //disable seeking until buffered
+    //this.disableSeek = (this.youtube && this.buffered < this.duration);
+
+    /* update current time with media's current time property */
+    this.currentTime =
+      this.media && this.media.currentTime && this.media.currentTime > 0
+        ? this.media.currentTime
+        : 0;
+    /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
-      this.media.seekable !== undefined &&
-      this.media.seekable.length > 0 &&
-      this.media.seekable.end(0) <= this.media.currentTime
+      (this.mediaEnd && this.mediaEnd <= this.elapsed) ||
+      this.mediaStart >= this.duration
     ) {
       this.stop();
       this.__playing = false;
     }
-    //prevent slider and cue updates until finished seeking
-    this._setElapsedTime();
   }
 
   /**
@@ -3017,122 +3027,34 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * sets duration, taking into consideration start and stop times
-   * @param {integer} seek time in seconds, optional
-   * @returns {string} status
-   */
-  _setElapsedTime() {
-    let elapsed =
-        this.__seeking === true
-          ? this.shadowRoot.querySelector("#slider").immediateValue
-          : this.media.currentTime > 0
-          ? this.media.currentTime
-          : 0,
-      duration = this.media.duration > 0 ? this.media.duration : 0;
-    this.__elapsed = elapsed;
-    this.__duration = duration;
-    if (this.media.seekable !== undefined && this.media.seekable.length > 0) {
-      if (this.media.seekable.start(0) !== undefined)
-        elapsed -= this.media.seekable.start(0);
-      if (this.media.seekable.end(0) !== undefined)
-        duration =
-          this.media.seekable.end(0) -
-          (this.media.seekable.start(0) !== undefined
-            ? this.media.seekable.start(0)
-            : 0);
-    }
-  }
-
-  /**
    * When relevant player properties change, updates properties of media
    * @param {string} propName the changed property
    */
 
   _updateMediaProperties(propName) {
-    let setAttr = (attr, val = this[attr]) => {
-      if (["__loadedTracks", attr].includes(propName)) {
-        if (val) {
-          this.loadedTracks.setAttribute(attr, val);
+    let setAttr = (attr, val = this[attr], yt = true) => {
+      if (["__loadedTracks", "youtubeId", "media", attr].includes(propName)) {
+        let media = yt && this.media ? this.media : this.__loadedTracks;
+        if (val && this.media !== null) {
+          media.setAttribute(attr, val);
         } else {
-          this.loadedTracks.removeAttribute(attr, val);
+          media.removeAttribute(attr, val);
         }
       }
     };
-    if (this.media !== null) {
-      setAttr("autoplay");
-      setAttr("cc");
-      setAttr("crossorigin");
-      setAttr("hidden", this.isYouTube);
-      setAttr("lang", this.mediaLang);
-      //TODO setAttr("loop");
-      //TODO setAttr("muted");
-      setAttr("playbackRate");
-      setAttr("poster", this.thumbnailSrc); //TODO
-      //TODO setAttr("volume");
-      setAttr("playing", this.playing);
 
-      if (propName === "__loadedTracks")
-        this._addSourcesAndTracks(this.loadedTracks);
-      if (["media", "muted"].includes(propName)) this._handleMuteChanged();
-      if (["media", "volume"].includes(propName)) this.setVolume(this.volume);
-      if (["media", "autoplay"].includes(propName) && this.autoplay)
-        this.play();
-    }
-  }
-
-  /**
-   * determines if there
-   * @param {string} the url for the thumbnail image
-   * @returns {string} the string for the style attribute
-   */
-  _useYoutubeIframe(thumbnailSrc, isYouTube, __elapsed) {
-    return (
-      isYouTube &&
-      (thumbnailSrc === null || __elapsed === undefined || __elapsed === 0)
-    );
-  }
-
-  /**
-   * gets YouTube iframe
-   */
-  _youTubeRequest() {
-    window.A11yMediaYoutube.requestAvailability();
-    let root = this,
-      ytUtil = window.A11yMediaYoutube.instance;
-
-    document.addEventListener("timeupdate", e => {
-      if (e.detail === root.media) root._handleTimeUpdate(e);
-    });
-    this.disableSeek = true;
-    if (this.__playerReady) {
-      let ytInit = () => {
-          // once metadata is ready on video set it on the media player
-          // initialize the YouTube player
-          this.youtube = ytUtil.initYoutubePlayer({
-            width: "100%",
-            height: "100%",
-            videoId: this.youtubeId
-          });
-          // move the YouTube iframe to the media player's YouTube container
-          this.shadowRoot.querySelector("#youtube").appendChild(this.youtube.a);
-          this.__ytAppended = true;
-        },
-        checkApi = e => {
-          if (ytUtil.apiReady) {
-            window.removeEventListener("youtube-api-ready", checkApi);
-            if (!root.__ytAppended) {
-              ytInit();
-            }
-          }
-        };
-      if (ytUtil.apiReady) {
-        if (!root.__ytAppended) {
-          ytInit();
-        }
-      } else {
-        window.addEventListener("youtube-api-ready", checkApi);
-      }
-    }
+    setAttr("cc", this.cc, false);
+    setAttr("crossorigin");
+    setAttr("hidden", this.isYoutube, false);
+    setAttr("lang", this.mediaLang);
+    setAttr("loop");
+    setAttr("playbackRate");
+    setAttr("poster", this.thumbnailSrc && this.isYoutube);
+    if (propName === "__loadedTracks")
+      this._addSourcesAndTracks(this.loadedTracks);
+    if (["media", "muted"].includes(propName)) this._handleMuteChanged();
+    if (["media", "volume"].includes(propName)) this.setVolume(this.volume);
+    if (["media", "autoplay"].includes(propName) && this.autoplay) this.play();
   }
 
   /**

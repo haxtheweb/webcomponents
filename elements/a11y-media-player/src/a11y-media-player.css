@@ -131,6 +131,7 @@
   height: 400px;
   position: relative;
   background-size: cover;
+  background-position: center;
 }
 #player > * {
   position: absolute;
@@ -154,10 +155,10 @@
   flex: 0 0 32px;
   height: 32px;
 }
-:host([thumbnail-src]) #youtube {
+a11y-media-youtube {
   opacity: 0;
 }
-#youtube[elapsed] {
+a11y-media-youtube.progress {
   opacity: 1;
   transition: opacity 0.5s;
 }

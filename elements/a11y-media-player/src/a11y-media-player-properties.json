@@ -39,6 +39,12 @@
     "type": "Boolean"
   },
   /**
+   * current time for video playback
+   */
+  "currentTime": {
+    "type": "Number"
+  },
+  /**
    * crossorigin attribute for <video> and <audio> tags
    */
   "crossorigin": {
@@ -195,11 +201,19 @@
     "type": "Boolean"
   },
   /**
-   * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
+   * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
    */
   "playbackRate": {
     "attribute": "playback-rate",
     "type": "Number"
+  },
+  /**
+   * Preload `none`, `metadata`, or `auto`.
+   */
+  "preload": {
+    "attribute": "preload",
+    "type": "String",
+    "reflect": true
   },
   /**
    * Size of the a11y media element for responsive styling
@@ -300,35 +314,10 @@
     "type": "String"
   },
   /**
-   * the YouTube player object
-   */
-  "youtube": {
-    "attribute": "youtube",
-    "type": "Object"
-  },
-  /**
    * array of cues provided to readOnly `get cues`
    */
   "__cues": {
     "type": "Array"
-  },
-  /**
-   * buffered media in seconds provided to readOnly `get buffered`
-   */
-  "__buffered": {
-    "type": "Number"
-  },
-  /**
-   * media duration in seconds provided to readOnly `get duration`
-   */
-  "__duration": {
-    "type": "Number"
-  },
-  /**
-   * elapsed media in seconds provided to readOnly `get elapsed`
-   */
-  "__elapsed": {
-    "type": "Number"
   },
   /**
    * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
