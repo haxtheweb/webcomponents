@@ -241,7 +241,7 @@ class HAXCMSSiteListing extends PolymerElement {
           justify-content: space-evenly;
           width: 100%;
         }
-        .selected-operations[data-hidden] {
+        .selected-operations[hidden] {
           visibility: hidden;
           opacity: 0;
         }
@@ -496,10 +496,7 @@ class HAXCMSSiteListing extends PolymerElement {
           </div>
         </app-toolbar>
       </app-header>
-      <app-header
-        class="selected-operations"
-        data-hidden$="[[!hasSelectedItems]]"
-      >
+      <app-header class="selected-operations" id="ops">
         <app-toolbar>
           <div>
             <paper-button
@@ -969,10 +966,6 @@ class HAXCMSSiteListing extends PolymerElement {
         value: false,
         observer: "_editModeChanged"
       },
-      hasSelectedItems: {
-        type: Boolean,
-        value: false
-      },
       hideCamera: {
         type: Boolean,
         value: false
@@ -1010,9 +1003,9 @@ class HAXCMSSiteListing extends PolymerElement {
 
   _selectedItemsChanged(newValue) {
     if (newValue && newValue.length > 0) {
-      this.hasSelectedItems = true;
+      this.shadowRoot.querySelector("#ops").removeAttribute("hidden");
     } else {
-      this.hasSelectedItems = false;
+      this.shadowRoot.querySelector("#ops").setAttribute("hidden", "hidden");
     }
   }
 
@@ -1143,7 +1136,10 @@ class HAXCMSSiteListing extends PolymerElement {
   _gridSelectedItemsChanged(e) {
     // skip splicing, just rebuild whole object
     this.set("selectedItems", []);
-    this.set("selectedItems", e.path[0].selectedItems);
+    this.set(
+      "selectedItems",
+      this.shadowRoot.querySelector("#grid").selectedItems
+    );
   }
   /**
    * Attached life cycle
@@ -1557,9 +1553,15 @@ class HAXCMSSiteListing extends PolymerElement {
     // resolve what got clicked on
     if (e.target.id) {
       target = e.target.id;
+    } else if (!e.path && e.originalTarget) {
+      if (e.originalTarget.id) {
+        target = e.originalTarget.id;
+      } else {
+        target = e.originalTarget.parentElement.id;
+      }
     } else {
       let path = e.path;
-      while (!target && path.length > 0) {
+      while (!target && path && path.length > 0) {
         if (path[0].id) {
           target = path[0].id;
         }
