@@ -379,6 +379,9 @@ class HAXCMSBackendBeaker extends LitElement {
   _jwtTokenFired(e) {
     this.jwt = e.detail;
     store.jwt = this.jwt;
+    if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
+      store.cmsSiteEditor.instance.jwt = this.jwt;
+    }
   }
   /**
    * Generate a uinque ID

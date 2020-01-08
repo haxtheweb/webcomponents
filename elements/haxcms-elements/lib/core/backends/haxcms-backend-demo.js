@@ -27,8 +27,6 @@ class HAXCMSBackendDemo extends LitElement {
       <jwt-login
         auto
         id="jwt"
-        url="${this.jwtLoginLocation}"
-        url-logout="${this.jwtLogoutLocation}"
         jwt="${this.jwt}"
         @jwt-changed="${this.jwtChanged}"
       ></jwt-login>
@@ -36,21 +34,13 @@ class HAXCMSBackendDemo extends LitElement {
   }
   jwtChanged(e) {
     this.jwt = e.detail.value;
+    store.jwt = this.jwt;
+    if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
+      store.cmsSiteEditor.instance.jwt = this.jwt;
+    }
   }
   static get properties() {
     return {
-      /**
-       * Location of what endpoint to hit for
-       */
-      jwtLoginLocation: {
-        type: String
-      },
-      /**
-       * Location of what endpoint to hit for logging out
-       */
-      jwtLogoutLocation: {
-        type: String
-      },
       /**
        * JSON Web token, it'll come from a global call if it's available
        */
@@ -64,30 +54,12 @@ class HAXCMSBackendDemo extends LitElement {
    */
   constructor() {
     super();
-    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
     // this makes it easier to debug things and directly modify the store for
     // development purposes
     window.HAXcmsStore = store;
   }
   _jwtChanged(newValue) {
     console.log(newValue);
-  }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "jwt-token",
-      this._jwtTokenFired.bind(this)
-    );
-    super.disconnectedCallback();
-  }
-  /**
-   * JWT token fired, let's capture it
-   */
-  _jwtTokenFired(e) {
-    this.jwt = e.detail;
-    store.jwt = this.jwt;
   }
   /**
    * LitElement life cycle - properties changed
@@ -104,8 +76,11 @@ class HAXCMSBackendDemo extends LitElement {
    */
   firstUpdated(changedProperties) {
     if (window.appSettings) {
-      this.jwtLoginLocation = window.appSettings.login;
-      this.jwtLogoutLocation = window.appSettings.logout;
+      let jwtlogin = this.shadowRoot.querySelector("#jwt");
+      jwtlogin.url = window.appSettings.login;
+      jwtlogin.refreshUrl = window.appSettings.refreshUrl;
+      jwtlogin.logoutUrl = window.appSettings.logout;
+      jwtlogin.redirectUrl = window.appSettings.redirectUrl;
     }
     try {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(

@@ -308,10 +308,13 @@ class HAXCMSSiteListing extends PolymerElement {
           id="jwt"
           method="[[method]]"
           url="[[__loginPath]]"
+          refresh-url="[[__refreshPath]]"
           logout-url="[[__logoutPath]]"
           jwt="{{jwt}}"
         ></jwt-login>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="loaddata"
           auto=""
           loading="{{__loading}}"
@@ -321,6 +324,8 @@ class HAXCMSSiteListing extends PolymerElement {
           last-response="{{sitesResponse}}"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="createrequest"
           method="[[method]]"
           body="[[createParams]]"
@@ -331,6 +336,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleCreateResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="gitimportrequest"
           method="[[method]]"
           body="[[gitImportParams]]"
@@ -341,6 +348,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleGitImportResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="downloadrequest"
           method="[[method]]"
           body="[[downloadParams]]"
@@ -351,6 +360,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleDownloadResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="archiverequest"
           method="[[method]]"
           body="[[archiveParams]]"
@@ -361,6 +372,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleArchiveResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="deleterequest"
           method="[[method]]"
           body="[[deleteParams]]"
@@ -371,6 +384,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleDeleteResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="clonerequest"
           method="[[method]]"
           body="[[cloneParams]]"
@@ -381,6 +396,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleCloneResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="publishrequest"
           method="[[method]]"
           body="[[publishParams]]"
@@ -391,6 +408,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handlePublishResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="syncrequest"
           method="[[method]]"
           body="[[syncParams]]"
@@ -401,6 +420,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleSyncResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="getconfigrequest"
           method="[[method]]"
           body="[[configParams]]"
@@ -411,6 +432,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleConfigResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="setconfigrequest"
           method="[[method]]"
           body="[[setConfigParams]]"
@@ -421,6 +444,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleSetConfigResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="getuserdatarequest"
           method="[[method]]"
           body="[[getUserDataParams]]"
@@ -479,7 +504,7 @@ class HAXCMSSiteListing extends PolymerElement {
             <paper-button
               hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
               id="login"
-              on-click="_loginUserRoutine"
+              on-click="_logoutUserRoutine"
               title="Logout"
             >
               <template is="dom-if" if="[[!logoutPhoto]]">
@@ -1026,6 +1051,15 @@ class HAXCMSSiteListing extends PolymerElement {
     }
   }
   /**
+   * A token refresh just failed so force to login prompt / state
+   */
+  _tokenRefreshFailed(e) {
+    if (e.detail.value.status == 401) {
+      this.jwt = null;
+      this.loggedIn = false;
+    }
+  }
+  /**
    * Request a user login if we need one or log out
    */
 
@@ -1147,7 +1181,11 @@ class HAXCMSSiteListing extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
-
+    window.addEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
+    window.addEventListener("jwt-token", this.updateJwt.bind(this));
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
       this.shadowRoot.querySelector("#newsnap").style.display = "none";
@@ -1215,6 +1253,7 @@ class HAXCMSSiteListing extends PolymerElement {
           this._gridSelectedItemsChanged.bind(this)
         );
       this.__loginPath = window.appSettings.login;
+      this.__refreshPath = window.appSettings.refreshUrl;
       this.__logoutPath = window.appSettings.logout;
       this.__setConfigPath = window.appSettings.setConfigPath;
       this.__getUserDataPath = window.appSettings.getUserDataPath;
@@ -1272,17 +1311,34 @@ class HAXCMSSiteListing extends PolymerElement {
     selfie.classList.remove("has-snap");
   }
 
+  /**
+   * User login brokering event to sent off to jwt-login events
+   */
   loginPromptEvent(e) {
-    let l = {
+    this._loginUserRoutine({
       u: e.detail.u,
       p: e.detail.p
-    };
-    this.shadowRoot.querySelector("#jwt").body = {};
-    this.shadowRoot.querySelector("#jwt").body = { ...l };
-    this._loginUserRoutine(e);
+    });
   }
-  _loginUserRoutine(e) {
-    this.shadowRoot.querySelector("#jwt").toggleLogin();
+  _logoutUserRoutine() {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {}
+      })
+    );
+  }
+  _loginUserRoutine(detail) {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-login", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: detail
+      })
+    );
   }
   /**
    * queue up the site creation form
@@ -1402,6 +1458,11 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   disconnectedCallback() {
+    window.removeEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
+    window.removeEventListener("jwt-token", this.updateJwt.bind(this));
     window.removeEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this)
@@ -1812,6 +1873,78 @@ class HAXCMSSiteListing extends PolymerElement {
 
   handleSyncResponse(e) {
     this.standardResponse(this.activeItem.title + " published!");
+  }
+
+  /**
+   * Handle the last error rolling in
+   */
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      // check for JWT needing refreshed vs busted but must be 403
+      switch (parseInt(e.detail.value.status)) {
+        // cookie data not found, need to go get it
+        case 401:
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-logout", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                redirect: false
+              }
+            })
+          );
+          break;
+        case 403:
+          // if this was a 403 it should be because of a bad jwt
+          // or out of date one. let's kick off a call to get a new one
+          // hopefully from the timing token, knowing this ALSO could kick
+          // over here.
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-refresh-token", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                element: {
+                  obj: this,
+                  callback: "refreshRequest",
+                  params: [e.path[0]]
+                }
+              }
+            })
+          );
+          break;
+        default:
+          console.error(e);
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              text: e.detail.value.status + " " + e.detail.value.statusText
+            }
+          });
+          window.dispatchEvent(evt);
+          break;
+      }
+    }
+  }
+  updateJwt(e) {
+    this.jwt = e.detail;
+  }
+  /**
+   * Attempt to salvage the request that was kicked off
+   * when our JWT needed refreshed
+   */
+  refreshRequest(jwt, element) {
+    // force the jwt to be the updated jwt
+    // this helps avoid any possible event timing issue
+    this.jwt = jwt;
+    element.body.jwt = jwt;
+    setTimeout(() => {
+      element.generateRequest();
+    }, 0);
   }
 }
 

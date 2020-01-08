@@ -1,28 +1,14 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `jwt-login`
- * @customElement jwt-login
  * `a simple element to check for and fetch JWTs`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
+ * @customElement jwt-login
  */
 class JwtLogin extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
-      <style>
-        :host {
-          display: none;
-        }
-      </style>
-      `
-    ];
-  }
   constructor() {
     super();
     this.auto = false;
@@ -32,18 +18,39 @@ class JwtLogin extends LitElement {
     this.jwt = null;
   }
   /**
+   * Handle the last error rolling in
+   */
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      // check for JWT needing refreshed vs busted but must be 403
+      console.error(e);
+      this.dispatchEvent(
+        new CustomEvent("jwt-login-refresh-error", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            value: e.detail.value
+          }
+        })
+      );
+    }
+  }
+  /**
    * LitElement
    */
   render() {
     return html`
       <iron-ajax
+        reject-with-request
         ?auto="${this.auto}"
-        id="loginrequest"
+        id="request"
         method="${this.method}"
         url="${this.url}"
         handle-as="json"
         content-type="application/json"
         @response="${this.loginResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       >
       </iron-ajax>
     `;
@@ -62,7 +69,28 @@ class JwtLogin extends LitElement {
         type: Boolean
       },
       /**
-       * url
+       * refreshUrl to get a new JSON web token
+       */
+      refreshUrl: {
+        type: String,
+        attribute: "refresh-url"
+      },
+      /**
+       * where to redirect for a login token if we REALLY are logged out
+       */
+      redirectUrl: {
+        type: String,
+        attribute: "redirect-url"
+      },
+      /**
+       * logout url
+       */
+      logoutUrl: {
+        type: String,
+        attribute: "logout-url"
+      },
+      /**
+       * url to get the JWT
        */
       url: {
         type: String
@@ -149,6 +177,35 @@ class JwtLogin extends LitElement {
     }
   }
   /**
+   * HTMLElement
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener(
+      "jwt-login-refresh-token",
+      this.requestRefreshToken.bind(this)
+    );
+    window.addEventListener("jwt-login-toggle", this.toggleLogin.bind(this));
+    window.addEventListener("jwt-login-login", this.loginRequest.bind(this));
+    window.addEventListener("jwt-login-logout", this.logoutRequest.bind(this));
+  }
+  /**
+   * HTMLElement
+   */
+  disconnectedCallback() {
+    window.removeEventListener(
+      "jwt-login-refresh-token",
+      this.requestRefreshToken.bind(this)
+    );
+    window.removeEventListener("jwt-login-login", this.loginRequest.bind(this));
+    window.removeEventListener("jwt-login-toggle", this.toggleLogin.bind(this));
+    window.removeEventListener(
+      "jwt-login-logout",
+      this.logoutRequest.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
@@ -156,25 +213,76 @@ class JwtLogin extends LitElement {
     this.jwt = localStorage.getItem(this.key);
   }
   /**
+   * Request a refresh token
+   */
+  requestRefreshToken(e) {
+    this.__context = "refresh";
+    if (e.detail.element) {
+      this.__element = e.detail.element;
+    }
+    this.shadowRoot.querySelector("#request").url = this.refreshUrl;
+    this.shadowRoot.querySelector("#request").body = {};
+    this.shadowRoot.querySelector("#request").generateRequest();
+  }
+  /**
    * Request a user login if we need one or log out
    */
-  toggleLogin() {
+  toggleLogin(e) {
     // null is default, if we don't have anything go get one
     if (this.jwt == null) {
-      this.shadowRoot.querySelector("#loginrequest").body = { ...this.body };
-      this.shadowRoot.querySelector("#loginrequest").generateRequest();
+      this.loginRequest(e);
     } else {
-      // we were told to logout, reset body
-      this.body = {};
-      // reset jwt which will do all the events / local storage work
-      this.jwt = null;
+      this.logoutRequest(e);
     }
+  }
+  loginRequest(e) {
+    this.__context = "login";
+    // detail of a login request event is the body which should have
+    // the authorization data in it
+    this.body = e.detail;
+    this.shadowRoot.querySelector("#request").url = this.url;
+    this.shadowRoot.querySelector("#request").body = { ...this.body };
+    this.shadowRoot.querySelector("#request").generateRequest();
+  }
+  logoutRequest(e) {
+    this.__context = "logout";
+    this.__redirect = e.detail.redirect;
+    // we were told to logout, reset body
+    this.body = {};
+    // reset jwt which will do all the events / local storage work
+    this.jwt = null;
+    this.shadowRoot.querySelector("#request").url = this.logoutUrl;
+    this.shadowRoot.querySelector("#request").body = {};
+    this.shadowRoot.querySelector("#request").generateRequest();
   }
   /**
    * Login bridge to get a JWT and hang onto it
    */
   loginResponse(e) {
-    this.jwt = e.detail.response;
+    switch (this.__context) {
+      case "login":
+        this.jwt = e.detail.response;
+        break;
+      case "refresh":
+        // jwt change events will propagate and do their thing
+        this.jwt = e.detail.response;
+        // if we had a requesting element, let's let it do its thing
+        if (this.__element) {
+          this.__element.obj[this.__element.callback](
+            this.jwt,
+            ...this.__element.params
+          );
+          this.__element = false;
+        }
+        break;
+      case "logout":
+        if (this.__redirect && this.redirectUrl) {
+          setTimeout(() => {
+            window.location.href = this.redirectUrl;
+          }, 100);
+        }
+        break;
+    }
   }
 }
 window.customElements.define(JwtLogin.tag, JwtLogin);

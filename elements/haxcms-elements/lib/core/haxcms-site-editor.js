@@ -89,6 +89,7 @@ class HAXCMSSiteEditor extends LitElement {
         }
       </style>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="nodeupdateajax"
         .url="${this.saveNodePath}"
@@ -99,6 +100,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="outlineupdateajax"
         .url="${this.saveOutlinePath}"
@@ -109,6 +111,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="manifestupdateajax"
         .url="${this.saveManifestPath}"
@@ -119,6 +122,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="publishajax"
         .loading="${this.publishing}"
@@ -131,6 +135,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="revertajax"
         .url="${this.revertSitePath}"
@@ -141,6 +146,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="syncajax"
         .url="${this.syncSitePath}"
@@ -151,6 +157,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="createajax"
         .url="${this.createNodePath}"
@@ -162,6 +169,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-response-changed="${this.__createNodeResponseChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="deleteajax"
         .url="${this.deleteNodePath}"
@@ -173,6 +181,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-response-changed="${this.__deleteNodeResponseChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="getnodefieldsajax"
         .url="${this.getNodeFieldsPath}"
@@ -183,6 +192,7 @@ class HAXCMSSiteEditor extends LitElement {
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
+        reject-with-request
         headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="getuserdata"
         url="${this.getUserDataPath}"
@@ -201,12 +211,6 @@ class HAXCMSSiteEditor extends LitElement {
       getUserDataPath: {
         type: String,
         attribute: "get-user-data-path"
-      },
-      /**
-       * Singular error reporter / visual based on requests erroring
-       */
-      lastError: {
-        type: Object
       },
 
       /**
@@ -362,25 +366,80 @@ class HAXCMSSiteEditor extends LitElement {
     }
   }
 
-  _lastErrorChanged(newValue) {
-    if (newValue) {
-      console.error(newValue);
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: newValue.error
-        }
-      });
-      window.dispatchEvent(evt);
+  /**
+   * Handle the last error rolling in
+   */
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      console.error(e);
+      // check for JWT needing refreshed vs busted but must be 403
+      switch (parseInt(e.detail.value.status)) {
+        // cookie data not found, need to go get it
+        // @notice this currently isn't possible but we could modify
+        // the backend in the future to support throwing 401s dynamically
+        // if we KNOW an event must expire the timing token
+        case 401:
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-logout", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                redirect: true
+              }
+            })
+          );
+          break;
+        case 403:
+          // if this was a 403 it should be because of a bad jwt
+          // or out of date one. This hopefully gets a new one if not
+          // other listeners will ensure we redirect appropriately
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-refresh-token", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                element: {
+                  obj: this,
+                  callback: "refreshRequest",
+                  params: [e.path[0]]
+                }
+              }
+            })
+          );
+          break;
+        default:
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              text: e.detail.value.status + " " + e.detail.value.statusText
+            }
+          });
+          window.dispatchEvent(evt);
+          break;
+      }
     }
   }
-
-  lastErrorChanged(e) {
-    this.lastError = e.detail.value;
+  /**
+   * Attempt to salvage the request that was kicked off
+   * when our JWT needed refreshed
+   */
+  refreshRequest(jwt, element) {
+    // force the jwt to be the updated jwt
+    // this helps avoid any possible event timing issue
+    this.jwt = jwt;
+    element.body.jwt = jwt;
+    element.headers = {
+      Authorization: `Bearer ${this.jwt}`
+    };
+    // again, sanity check on delay
+    setTimeout(() => {
+      element.generateRequest();
+    }, 0);
   }
-
   loadingChanged(e) {
     this.loading = e.detail.value;
   }
@@ -408,6 +467,10 @@ class HAXCMSSiteEditor extends LitElement {
     });
     window.SimpleToast.requestAvailability();
     window.SimpleModal.requestAvailability();
+    window.addEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
     window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
     window.addEventListener(
       "json-outline-schema-active-item-changed",
@@ -494,10 +557,7 @@ class HAXCMSSiteEditor extends LitElement {
           JSON.stringify(this[propName])
         );
       }
-
-      if (propName == "lastError") {
-        this._lastErrorChanged(this[propName], oldValue);
-      } else if (propName == "publishing") {
+      if (propName == "publishing") {
         this._publishingChanged(this[propName], oldValue);
       } else if (propName == "activeItem") {
         this.dispatchEvent(
@@ -519,6 +579,22 @@ class HAXCMSSiteEditor extends LitElement {
     });
   }
   /**
+   * Respond to a failed request to refresh the token by killing the logout process
+   */
+  _tokenRefreshFailed(e) {
+    if (e.detail.value.status == 401)
+      this.dispatchEvent(
+        new CustomEvent("jwt-login-logout", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            redirect: true
+          }
+        })
+      );
+  }
+  /**
    * Detatched life cycle
    */
 
@@ -531,7 +607,10 @@ class HAXCMSSiteEditor extends LitElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-
+    window.removeEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
     window.removeEventListener(
       "hax-store-ready",
       this._storeReadyToGo.bind(this)

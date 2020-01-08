@@ -221,7 +221,6 @@ class HAXCMSSiteDashboard extends LitElement {
           .body="${this.body}"
           load-endpoint="${this.loadEndpoint}"
           method="${this.method}"
-          @last-error-changed="${this._lastErrorChanged}"
         ></simple-fields-form>
       </div>
       <div class="buttons">
@@ -272,20 +271,6 @@ class HAXCMSSiteDashboard extends LitElement {
         type: Object
       }
     };
-  }
-  _lastErrorChanged(newValue) {
-    if (newValue) {
-      console.error(newValue);
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: newValue.error
-        }
-      });
-      window.dispatchEvent(evt);
-    }
   }
   /**
    * Detatched life cycle

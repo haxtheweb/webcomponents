@@ -77,7 +77,7 @@ class HAXCMSSiteBuilder extends LitElement {
         .url="${this.outlineLocation}${this.file}${this._timeStamp}"
         handle-as="json"
         @last-response-changed="${this._updateManifest}"
-        @last-error-changed="${this._updateLastError}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
         id="activecontent"
@@ -86,7 +86,7 @@ class HAXCMSSiteBuilder extends LitElement {
         handle-as="text"
         @loading-changed="${this._updateLoading}"
         @last-response-changed="${this._updateActiveItemContent}"
-        @last-error-changed="${this._updateLastError}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
       <simple-colors-polymer></simple-colors-polymer>
@@ -104,9 +104,6 @@ class HAXCMSSiteBuilder extends LitElement {
   _updateActiveItemContent(e) {
     this.activeItemContent = e.detail.value;
   }
-  _updateLastError(e) {
-    this.lastError = e.detail.value;
-  }
   firstUpdated() {
     this.shadowRoot.querySelector("#manifest").generateRequest();
   }
@@ -115,9 +112,7 @@ class HAXCMSSiteBuilder extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "lastError") {
-        this._lastErrorChanged(this[propName], oldValue);
-      } else if (propName == "dashboardOpened") {
+      if (propName == "dashboardOpened") {
         this._dashboardOpenedChanged(this[propName], oldValue);
       } else if (propName == "themeData") {
         this._themeChanged(this[propName], oldValue);
@@ -176,12 +171,6 @@ class HAXCMSSiteBuilder extends LitElement {
       activeItemLocation: {
         type: String,
         attribute: "active-item-location"
-      },
-      /**
-       * Singular error reporter / visual based on requests erroring
-       */
-      lastError: {
-        type: Object
       },
       _timeStamp: {
         type: String
@@ -284,15 +273,18 @@ class HAXCMSSiteBuilder extends LitElement {
       this.appendChild(store.themeElement);
     }
   }
-  _lastErrorChanged(newValue) {
-    if (newValue) {
-      console.error(newValue);
+  /**
+   * Alert there was an internal error in getting the file
+   */
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      console.error(e);
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
         composed: true,
-        cancelable: true,
+        cancelable: false,
         detail: {
-          text: newValue.statusText
+          text: e.detail.value.status + " " + e.detail.value.statusText
         }
       });
       window.dispatchEvent(evt);
