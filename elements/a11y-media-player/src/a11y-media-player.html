@@ -6,8 +6,8 @@
     <div id="player" .style="${this.playerStyle}">
       <a11y-media-play-button
         id="playbutton"
-        action="${this.playing ? 'pause' : 'play'}"
-        label="${this._getLocal(this.localization,this.playing ? 'pause' : 'play', 'label')}"
+        action="${this.__playing ? 'pause' : 'play'}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @button-click="${e => this.togglePlay()}"
         ?audio-only="${this.audioOnly}"
         ?disabled="${this.audioNoThumb || (!this.__duration > 0)}">
@@ -44,15 +44,15 @@
     @keyup="${this._handleSliderStop}"
     @keydown="${this._handleSliderStart}"
     @blur="${this._handleSliderStop}"
-    .value="${this.elapsed}"
+    .value="${this.currentTime - this.mediaStart}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
   </paper-slider>
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
-        icon="${this._getLocal(this.localization,this.playing ? 'pause' : 'play', 'icon')}"
-        label="${this._getLocal(this.localization,this.playing ? 'pause' : 'play', 'label')}"
+        icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @click="${e => this.togglePlay()}"
       ></a11y-media-button>
       <a11y-media-button
@@ -88,13 +88,13 @@
         <paper-slider
           id="volume"
           aria-labelledby="volume-slider-label"
-          label="${this.volumeLabel}"
+          label="${this._getLocal(this.localization,'volume','label')}"
           min="0"
           max="100"
           pin
           step="10"
           .value="${this.muted ? 0 : this.volume}"
-          @change="${e => this.volume = e.detail.value}"
+          @change="${this._handleVolumeChanged}"
         ></paper-slider>
       </div>
       <span aria-live="polite" class="play-status control-bar">
@@ -293,12 +293,12 @@
                   aria-labelledby="speed-label"
                   class="setting-slider"
                   min="0.5"
-                  max="4"
+                  max="2.5"
                   pin
-                  step="0.5"
+                  step="0.25"
                   tabindex="-1"
                   .value="${this.playbackRate}"
-                  @change="${e => this.setPlaybackRate(e.path[0].value)}"
+                  @change="${this._handleSpeedChanged}"
                 ></paper-slider>
               </div>
             </div>

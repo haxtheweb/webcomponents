@@ -82,8 +82,8 @@ class A11yMediaPlayer extends SimpleColors {
           --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
           --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
           --paper-slider-knob-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-end-color: var(--a11y-media-bg-color);
+          --paper-slider-knob-start-color: var(--a11y-media-accent-color);
+          --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
           --paper-slider-knob-border-color: var(--a11y-media-accent-color);
           --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
           --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
@@ -366,14 +366,6 @@ class A11yMediaPlayer extends SimpleColors {
           margin-left: -15px;
           margin-right: -15px;
         }
-        #speed {
-          --paper-slider-knob-start-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-border-color: var(
-            --a11y-media-accent-color
-          );
-          --paper-slider-knob-end-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
-        }
         #showvolume {
           display: inline-block;
           position: relative;
@@ -389,8 +381,6 @@ class A11yMediaPlayer extends SimpleColors {
           z-index: 3;
           border-radius: 4px;
           background-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-end-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
         }
 
         #volume:active,
@@ -659,10 +649,10 @@ class A11yMediaPlayer extends SimpleColors {
           <div id="player" .style="${this.playerStyle}">
             <a11y-media-play-button
               id="playbutton"
-              action="${this.playing ? "pause" : "play"}"
+              action="${this.__playing ? "pause" : "play"}"
               label="${this._getLocal(
                 this.localization,
-                this.playing ? "pause" : "play",
+                this.__playing ? "pause" : "play",
                 "label"
               )}"
               @button-click="${e => this.togglePlay()}"
@@ -713,7 +703,7 @@ class A11yMediaPlayer extends SimpleColors {
           @keyup="${this._handleSliderStop}"
           @keydown="${this._handleSliderStart}"
           @blur="${this._handleSliderStop}"
-          .value="${this.elapsed}"
+          .value="${this.currentTime - this.mediaStart}"
           ?disabled="${this.disableSeek || this.duration === 0}"
         >
         </paper-slider>
@@ -722,12 +712,12 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(
                 this.localization,
-                this.playing ? "pause" : "play",
+                this.__playing ? "pause" : "play",
                 "icon"
               )}"
               label="${this._getLocal(
                 this.localization,
-                this.playing ? "pause" : "play",
+                this.__playing ? "pause" : "play",
                 "label"
               )}"
               @click="${e => this.togglePlay()}"
@@ -775,13 +765,13 @@ class A11yMediaPlayer extends SimpleColors {
               <paper-slider
                 id="volume"
                 aria-labelledby="volume-slider-label"
-                label="${this.volumeLabel}"
+                label="${this._getLocal(this.localization, "volume", "label")}"
                 min="0"
                 max="100"
                 pin
                 step="10"
                 .value="${this.muted ? 0 : this.volume}"
-                @change="${e => (this.volume = e.detail.value)}"
+                @change="${this._handleVolumeChanged}"
               ></paper-slider>
             </div>
             <span aria-live="polite" class="play-status control-bar">
@@ -1024,12 +1014,12 @@ class A11yMediaPlayer extends SimpleColors {
                         aria-labelledby="speed-label"
                         class="setting-slider"
                         min="0.5"
-                        max="4"
+                        max="2.5"
                         pin
-                        step="0.5"
+                        step="0.25"
                         tabindex="-1"
                         .value="${this.playbackRate}"
-                        @change="${e => this.setPlaybackRate(e.path[0].value)}"
+                        @change="${this._handleSpeedChanged}"
                       ></paper-slider>
                     </div>
                   </div>
@@ -1607,6 +1597,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.__captionsOption = -1;
     this.__loadedTracks = null;
     this.__playing = false;
+    this.__seeking = false;
     this.__screenfullLoaded = false;
     this.__resumePlaying = false;
     this.__transcriptOption = -1;
@@ -2043,6 +2034,12 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} media duration in seconds
    */
   get progress() {
+    if (this.muted)
+      console.log(
+        this.__seeking,
+        this.shadowRoot.querySelector("#slider").immediateValue,
+        this.currentTime
+      );
     let progress =
       this.__seeking === true
         ? this.shadowRoot.querySelector("#slider").immediateValue
@@ -2449,7 +2446,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   rewind(amt) {
     amt = amt !== undefined ? amt : this.media.duration / 20;
-    this.__resumePlaying = this.playing;
+    this.__resumePlaying = this.__playing;
     this.seek(this.media.currentTime - amt, 0);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
@@ -2473,7 +2470,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   forward(amt) {
     amt = amt !== undefined ? amt : this.media.duration / 20;
-    this.__resumePlaying = this.playing;
+    this.__resumePlaying = this.__playing;
     this.seek(this.media.currentTime + amt);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
@@ -2503,6 +2500,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.duration
     ) {
       this.media.seek(time);
+      this._handleTimeUpdate();
       /**
        * Fires when media seeks
        * @event seek
@@ -2516,6 +2514,7 @@ class A11yMediaPlayer extends SimpleColors {
         })
       );
     }
+    if (this.muted) console.log("seek", time);
   }
 
   /**
@@ -2631,6 +2630,12 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the playback rate, where 1 = 100%
    */
   setPlaybackRate(value) {
+    console.log(
+      "setPlaybackRate",
+      value,
+      this.playbackRate,
+      this.media.playbackRate
+    );
     value = value !== null ? value : 1;
     this.media.playbackRate = value !== null ? value : 1;
     /**
@@ -2651,7 +2656,8 @@ class A11yMediaPlayer extends SimpleColors {
    * set volume of media
    * @param {integer} the volume level from 0-100
    */
-  setVolume(value = 7) {
+  setVolume(value = 70) {
+    console.log("setVolume", value);
     this.volume = Math.max(0, Math.min(value, 100));
     this.media.volume = value / 100;
     /**
@@ -2741,7 +2747,7 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {boolean} Toggle play/pause? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   togglePlay() {
-    if (this.playing) {
+    if (this.__playing) {
       this.pause();
     } else {
       this.play();
@@ -2880,7 +2886,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCopyLink() {
     let el = document.createElement("textarea");
-    this.__resumePlaying = this.playing;
+    this.__resumePlaying = this.__playing;
     this.pause;
     el.value = this.shareLink;
     document.body.appendChild(el);
@@ -2897,7 +2903,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCueSeek(cue) {
     if (!this.standAlone) {
-      this.__resumePlaying = this.playing;
+      this.__resumePlaying = this.__playing;
       this.seek(cue.startTime);
     }
   }
@@ -2916,7 +2922,6 @@ class A11yMediaPlayer extends SimpleColors {
 
   /**
    * sets search the simple-search element
-   *
    * @param {event} e searchbar event
    */
   _handleSearchAdded(e) {
@@ -2924,10 +2929,20 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * handles duration slider dragging with a mouse
+   * handles speed slider change thhat sets playback rate
+   * @param {event} e slider event
    */
-  _handleSliderStart() {
-    this.__resumePlaying = this.playing;
+  _handleSpeedChanged(e) {
+    console.log("_handleSpeedChanged", e, this.playbackRate);
+    this.setPlaybackRate(e.path[0].value);
+  }
+
+  /**
+   * handles duration slider dragging with a mouse
+   * @param {event} e slider start event
+   */
+  _handleSliderStart(e) {
+    this.__resumePlaying = this.__playing;
     this.pause();
     this.__seeking = true;
   }
@@ -2935,8 +2950,14 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * handles duration slider dragging with a mouse
    */
-  _handleSliderStop() {
-    this.seek(this.shadowRoot.querySelector("#slider").immediateValue);
+  _handleSliderStop(e) {
+    console.log(
+      "_handleSliderStop",
+      e,
+      e.path[4].immediateValue,
+      this.__resumePlaying
+    );
+    this.seek(e.path[4].immediateValue);
     this.__seeking = false;
     if (this.__resumePlaying) {
       this.play();
@@ -2958,12 +2979,13 @@ class A11yMediaPlayer extends SimpleColors {
         : 0;
     /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
-      (this.mediaEnd && this.mediaEnd <= this.elapsed) ||
+      (this.mediaEnd && this.mediaEnd <= this.progress) ||
       this.mediaStart >= this.duration
     ) {
       this.stop();
       this.__playing = false;
     }
+    if (this.muted) console.log("_handleTimeUpdate", this.currentTime);
   }
 
   /**
@@ -2981,14 +3003,17 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * handles transcript scroll toggle
+   * handles volume slider change
+   * @param {event} e volume change event
    */
-  _transcriptScroll() {
-    this.disableScroll = !this.disableScroll;
+  _handleVolumeChanged(e) {
+    console.log("_handleVolumeChanged", e, this.volume);
+    this.volume = e.path[0].value;
   }
 
   /**
    * determine which button was clicked and act accordingly
+   * @param {event} e controls change event
    */
   _onControlsChanged(e) {
     if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
@@ -2998,8 +3023,9 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * sets the element's __screenfullLoaded variable to true once screenfull is loaded
    * and adds an event listener for screenfull
+   * @param {event} e screenfull load
    */
-  _onScreenfullLoaded() {
+  _onScreenfullLoaded(e) {
     let root = this;
     this.__screenfullLoaded = true;
 
@@ -3037,6 +3063,14 @@ class A11yMediaPlayer extends SimpleColors {
       };
       scrollingTo(cue.parentNode.parentNode, cue.offsetTop - offset, 250);
     }
+  }
+
+  /**
+   * handles transcript scroll toggle
+   * @param {event} e scroll event
+   */
+  _transcriptScroll(e) {
+    this.disableScroll = !this.disableScroll;
   }
 
   /**
@@ -3099,9 +3133,9 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * converts time in millesconds to HH:MM:SS
    *
-   * @param {float} the elapsed time, in seconds
+   * @param {float} the progress, in seconds
    * @param {float} the duration, in seconds
-   * @returns {string} a human-readable string of elapsed time/duration in HH:MM:SS
+   * @returns {string} a human-readable string of progress/duration in HH:MM:SS
    *
    */
   _getHHMMSS(val, max) {

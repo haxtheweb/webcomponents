@@ -68,6 +68,12 @@ class A11yMediaYoutube extends LitElement {
         type: String
       },
       /**
+       * video playback rate
+       */
+      playbackRate: {
+        type: Number
+      },
+      /**
        * arrray of tracks
        */
       tracks: {
@@ -122,7 +128,7 @@ class A11yMediaYoutube extends LitElement {
     this.width = "100%";
     this.__video = null;
     this.__yt = null;
-    this.volume = 7;
+    this.volume = 0.7;
   }
   /**
    * single instance of YouTube iframe script
@@ -288,6 +294,7 @@ class A11yMediaYoutube extends LitElement {
       if (propName === "muted") this.setMute(this.muted);
       if (propName === "loop") this.setLoop(this.loop);
       if (propName === "currentTime") this.seek(this.currentTime);
+      if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
       if (propName === "volume") this.setVolume(this.volume);
     });
     if (iframeChanged) this.__yt = this._getIframe();
@@ -298,14 +305,6 @@ class A11yMediaYoutube extends LitElement {
    */
   play() {
     if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
-  }
-
-  /**
-   * sets playbackRate function
-   * @param {number} playback rate X normal speed
-   */
-  playbackRate(value) {
-    if (this.__yt && this.__yt.playVideo) this.__yt.setPlaybackRate(value);
   }
 
   /**
@@ -359,11 +358,22 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
+   * sets playbackRate function
+   * @param {number} playback rate X normal speed
+   */
+  setPlaybackRate(value) {
+    console.log("setPlaybackRate", value);
+    if (this.__yt && this.__yt.setPlaybackRate)
+      this.__yt.setPlaybackRate(value);
+  }
+
+  /**
    * sets video volume
    * @param {number} volume from 1 - 10
    */
-  setVolume(volume = 7) {
-    if (this.__yt) this.__yt.setVolume(volume * 10);
+  setVolume(volume = 0.7) {
+    if (this.__yt) this.__yt.setVolume(volume * 100);
+    console.log("setVolume", volume, volume * 100);
   }
 
   /**
@@ -391,7 +401,7 @@ class A11yMediaYoutube extends LitElement {
     }
   }
   _getCaptions(e) {
-    console.log(this.__iframe.getOptions("captions"));
+    console.log("_getCaptions", this, e);
   }
 
   _removeIframe() {
