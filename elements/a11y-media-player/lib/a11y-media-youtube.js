@@ -199,13 +199,13 @@ class A11yMediaYoutube extends LitElement {
    */
   get seekable() {
     let seekable = { length: 0 };
-    if (this.__yt && this.__yt.duration && this.__yt.duration > 0) {
+    if (this.duration > 0) {
       seekable.length = 1;
       seekable.start = index => this.videoData.startSeconds || 0;
       seekable.end = index =>
         this.videoData.endSeconds
-          ? Math.min(this.videoData.endSeconds, this.__yt.duration)
-          : this.__yt.duration;
+          ? Math.min(this.videoData.endSeconds, this.duration)
+          : this.duration;
     }
     return seekable;
   }
@@ -362,7 +362,6 @@ class A11yMediaYoutube extends LitElement {
    * @param {number} playback rate X normal speed
    */
   setPlaybackRate(value) {
-    console.log("setPlaybackRate", value);
     if (this.__yt && this.__yt.setPlaybackRate)
       this.__yt.setPlaybackRate(value);
   }
@@ -373,7 +372,6 @@ class A11yMediaYoutube extends LitElement {
    */
   setVolume(volume = 0.7) {
     if (this.__yt) this.__yt.setVolume(volume * 100);
-    console.log("setVolume", volume, volume * 100);
   }
 
   /**
@@ -385,7 +383,7 @@ class A11yMediaYoutube extends LitElement {
       checkDuration;
     this.__video.cueVideoById(this.videoData);
 
-    if (preload !== "none") {
+    if (preload === "auto") {
       this.setMute(true);
       this.play();
       checkDuration = setInterval(() => {

@@ -1,8 +1,8 @@
 <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
   ${this.mediaCaption}
 </div>
-<div id="outerplayer" flex-layout="${this.flexLayout}">
-  <div id="innerplayer" .style="${this.innerplayerStyle}">
+<div id="player-section" flex-layout="${this.flexLayout}">
+  <div id="player-and-controls" .style="${this.mediaMaxWidth}">
     <div id="player" .style="${this.playerStyle}">
       <a11y-media-play-button
         id="playbutton"
@@ -17,17 +17,17 @@
       </div>
       <a11y-media-youtube
         id="youtube-${this.id}"
-        class="${this.progress > 0 || this.__seeking ? `progress progress-${this.progress}` : ``}" 
+        class="${this.currentTime > 0 || this.__seeking ? `` : `hidden ${this.currentTime}`}" 
         lang="${this.mediaLang}"
         video-id="${this.youtubeId}"
         @timeupdate="${this._handleTimeUpdate}"
         ?hidden=${!this.isYoutube}>
       </a11y-media-youtube>
-      <div id="customcc" 
+      <div id="cc-custom" 
         aria-live="polite"
         class="screen-only" 
         ?hidden="${!this.showCustomCaptions}">
-        <div id="customcctxt">
+        <div id="cc-text">
           ${Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text}`)}
         </div>
       </div>
@@ -38,13 +38,13 @@
     label="${this._getLocal(this.localization,'seekSlider', 'label')}"
     min="${this.isYoutube && this.mediaStart ? this.mediaStart : 0}"
     max="${this.duration}"
-    secondary-progress="${this.buffered}"
+    secondary-currentTime="${this.buffered}"
     @mousedown="${this._handleSliderStart}"
     @mouseup="${this._handleSliderStop}"
     @keyup="${this._handleSliderStop}"
     @keydown="${this._handleSliderStart}"
     @blur="${this._handleSliderStop}"
-    .value="${this.currentTime - this.mediaStart}"
+    .value="${this.__currentTime - this.mediaStart}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
   </paper-slider>
@@ -76,7 +76,7 @@
         ?hidden="${this.responsiveSize === 'xs'}"
         @click="${e => this.restart()}"
       ></a11y-media-button>
-      <div id="showvolume"
+      <div id="volume-and-mute"
           @focus="${e => this.__volumeSlider = true}"
           @blur="${e => this.__volumeSlider = false}">
         <a11y-media-button
@@ -115,8 +115,8 @@
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
-        ?disabled="${this.hideTranscriptButton}"
-        ?hidden="${this.hideTranscriptButton}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -215,7 +215,7 @@
               </div>
             </div>
           </paper-item>
-          <paper-item ?hidden="${this.noTranscriptToggle}">
+          <paper-item ?hidden="${!this.hasCaptions || this.noTranscriptToggle || this.standAlone}">
             <div class="setting">
               <div id="transcript-label" class="setting-text">
                 ${this._getLocal(this.localization,'transcript','label')}
@@ -233,7 +233,7 @@
               </div>
             </div>
           </paper-item>
-          <paper-item>
+          <paper-item ?hidden="${!this.hasCaptions}">
             <div class="setting">
               <div id="print-label" class="setting-text">
                 ${this._getLocal(this.localization,'print','label')}
@@ -250,7 +250,7 @@
             </div>
           </div>
           </paper-item>
-          <paper-item>
+          <paper-item  ?hidden="${!this.hasCaptions}">
             <div class="setting">
               <div id="download-label" class="setting-text">
                 ${this._getLocal(this.localization,'download','label')}
@@ -314,9 +314,9 @@
   </div>
   <div class="print-only media-caption">${this.printCaption}</div>
 </div>
-<img id="printthumb" aria-hidden="true" src="${ifDefined(this.poster)}" />
-<div id="outertranscript" ?hidden="${this.standAlone}">
-  <div id="innertranscript" ?hidden="${this.hideTranscript}">
+<img id="print-thumbnail" aria-hidden="true" src="${ifDefined(this.poster)}" />
+<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions}">
+  <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
     <div id="searchbar">
       <div id="searching">
         <simple-search
@@ -381,7 +381,7 @@
               @click="${e => this._handleCueSeek(cue)}"
               @active-changed="${this._setActiveCue}"
               ?active="${cue.track.activeCues && cue.track.activeCues[0] === cue}"
-              ?disabled="${this.disableInteractive || this.disableSeek}"
+              ?disabled="${this.disableInteractive || this.disableSeek || this.duration === 0}"
               ?hide-timestamps="${this.hideTimestamps}">
               <span class="searchable">${cue.text}</span>
             </a11y-media-transcript-cue>

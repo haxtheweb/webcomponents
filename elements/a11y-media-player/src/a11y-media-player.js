@@ -47,7 +47,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.autoplay = false;
     this.allowConcurrent = false;
     this.cc = false;
-    this.currentTime = 0;
+    this.__currentTime = 0;
     this.darkTranscript = false;
     this.disableFullscreen = false;
     this.disableInteractive = false;
@@ -166,6 +166,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.captionsTrack && this.captionsTrack.activeCues
         ? this.captionsTrack.activeCues
         : [];
+    console.log("this.captionCues", cues, this.captionsTrack);
     return cues;
   }
 
@@ -248,11 +249,11 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * `style` for `#innerplayer`
+   * `style` for `#player-and-controls`
    * @readonly
    * @returns {string} value for style attribute
    */
-  get innerplayerStyle() {
+  get mediaMaxWidth() {
     let maxWidth = this.fullscreen
       ? `unset`
       : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
@@ -524,18 +525,12 @@ class A11yMediaPlayer extends SimpleColors {
    * @readonly
    * @returns {number} media duration in seconds
    */
-  get progress() {
-    if (this.muted)
-      console.log(
-        this.__seeking,
-        this.shadowRoot.querySelector("#slider").immediateValue,
-        this.currentTime
-      );
-    let progress =
+  get currentTime() {
+    let currentTime =
       this.__seeking === true
         ? this.shadowRoot.querySelector("#slider").immediateValue
-        : this.currentTime;
-    return progress - this.mediaStart;
+        : this.__currentTime;
+    return currentTime - this.mediaStart;
   }
 
   /**
@@ -563,11 +558,11 @@ class A11yMediaPlayer extends SimpleColors {
   get shareLink() {
     let url = window.location.href.split(/[#?]/)[0],
       id = this.id ? `?id=${this.id}` : ``,
-      progress =
-        id !== "" && this.progress && this.progress !== 0
-          ? `&t=${this.progress}`
+      currentTime =
+        id !== "" && this.currentTime && this.currentTime !== 0
+          ? `&t=${this.currentTime}`
           : ``;
-    return `${url}${id}${progress}`;
+    return `${url}${id}${currentTime}`;
   }
 
   /**
@@ -587,7 +582,7 @@ class A11yMediaPlayer extends SimpleColors {
   get status() {
     return this.duration > 0
       ? html`
-          ${this._getHHMMSS(this.progress, this.duration)}/${this._getHHMMSS(
+          ${this._getHHMMSS(this.currentTime, this.duration)}/${this._getHHMMSS(
             this.duration
           )}
         `
@@ -653,11 +648,6 @@ class A11yMediaPlayer extends SimpleColors {
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
       if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
-      if (
-        propName === "currentTime" &&
-        this.currentTime !== this.media.currentTime
-      )
-        this.seek(this.currentTime);
 
       this.dispatchEvent(
         new CustomEvent(
@@ -688,6 +678,12 @@ class A11yMediaPlayer extends SimpleColors {
    * updates track mode & `captionsTrack` when `__captionsOption` changes
    */
   _captionsOptionChanged() {
+    console.log(
+      "_captionsOptionChanged",
+      this.captionsTrack,
+      this.cc,
+      this.loadedTracks
+    );
     this.cc = this.__captionsOption > -1;
     Object.keys(this.loadedTracks.textTracks).forEach(key => {
       let showing = parseInt(key) == parseInt(this.__captionsOption);
@@ -983,7 +979,7 @@ class A11yMediaPlayer extends SimpleColors {
    * seeks to a specific time
    * @param {float} the time, in seconds, to seek
    */
-  seek(time) {
+  seek(time = 0) {
     if (
       (this.mediaSeekable &&
         time >= this.mediaStart &&
@@ -1005,7 +1001,6 @@ class A11yMediaPlayer extends SimpleColors {
         })
       );
     }
-    if (this.muted) console.log("seek", time);
   }
 
   /**
@@ -1015,6 +1010,12 @@ class A11yMediaPlayer extends SimpleColors {
     id = parseInt(id);
     if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
     this.cc = id > -1;
+    console.log(
+      "selectCaptionByKey",
+      id,
+      this.captionsTrack,
+      this.loadedTracks.textTracks
+    );
   }
 
   /**
@@ -1121,12 +1122,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the playback rate, where 1 = 100%
    */
   setPlaybackRate(value) {
-    console.log(
-      "setPlaybackRate",
-      value,
-      this.playbackRate,
-      this.media.playbackRate
-    );
     value = value !== null ? value : 1;
     this.media.playbackRate = value !== null ? value : 1;
     /**
@@ -1148,7 +1143,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {integer} the volume level from 0-100
    */
   setVolume(value = 70) {
-    console.log("setVolume", value);
     this.volume = Math.max(0, Math.min(value, 100));
     this.media.volume = value / 100;
     /**
@@ -1194,7 +1188,7 @@ class A11yMediaPlayer extends SimpleColors {
     if (screenfull && this.fullscreenButton) {
       this.fullscreen = mode === undefined ? !this.loop : mode;
       this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#outerplayer"));
+      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled
@@ -1323,6 +1317,12 @@ class A11yMediaPlayer extends SimpleColors {
    * loads a track's cue metadata
    */
   _addSourcesAndTracks(media) {
+    console.log(
+      "_addSourcesAndTracks",
+      media,
+      this.loadedTracks,
+      this.captionsTrack
+    );
     media.style.width = "100%";
     media.style.maxWidth = "100%";
     this.loadedTracks.textTracks.onremovetrack = e => {
@@ -1330,6 +1330,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.__cues = this.cues.filter(cue => cue.track !== e.track);
     };
     this.loadedTracks.textTracks.onaddtrack = e => {
+      console.log("onaddtrack", this.captionsTrack, e.track);
       if (this.captionsTrack === null) this.captionsTrack = e.track;
       e.track.mode = "hidden";
       let loadCueData = setInterval(() => {
@@ -1356,6 +1357,12 @@ class A11yMediaPlayer extends SimpleColors {
         }) || 0;
     this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
+    console.log(
+      " _addSourcesAndTracks done",
+      this.captionsTrack,
+      defaultTrack,
+      this.loadedTracks.textTracks
+    );
     this._handleTimeUpdate();
   }
 
@@ -1424,7 +1431,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e slider event
    */
   _handleSpeedChanged(e) {
-    console.log("_handleSpeedChanged", e, this.playbackRate);
     this.setPlaybackRate(e.path[0].value);
   }
 
@@ -1442,12 +1448,6 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    */
   _handleSliderStop(e) {
-    console.log(
-      "_handleSliderStop",
-      e,
-      e.path[4].immediateValue,
-      this.__resumePlaying
-    );
     this.seek(e.path[4].immediateValue);
     this.__seeking = false;
     if (this.__resumePlaying) {
@@ -1464,19 +1464,18 @@ class A11yMediaPlayer extends SimpleColors {
     //this.disableSeek = (this.youtube && this.buffered < this.duration);
 
     /* update current time with media's current time property */
-    this.currentTime =
+    this.__currentTime =
       this.media && this.media.currentTime && this.media.currentTime > 0
         ? this.media.currentTime
         : 0;
     /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
-      (this.mediaEnd && this.mediaEnd <= this.progress) ||
+      (this.mediaEnd && this.mediaEnd <= this.currentTime) ||
       this.mediaStart >= this.duration
     ) {
       this.stop();
       this.__playing = false;
     }
-    if (this.muted) console.log("_handleTimeUpdate", this.currentTime);
   }
 
   /**
@@ -1498,7 +1497,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e volume change event
    */
   _handleVolumeChanged(e) {
-    console.log("_handleVolumeChanged", e, this.volume);
     this.volume = e.path[0].value;
   }
 

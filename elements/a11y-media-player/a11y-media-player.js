@@ -164,7 +164,7 @@ class A11yMediaPlayer extends SimpleColors {
           );
         }
         :host,
-        #outerplayer {
+        #player-section {
           color: var(--simple-colors-default-theme-grey-12);
           background-color: var(--simple-colors-default-theme-grey-2);
         }
@@ -172,10 +172,10 @@ class A11yMediaPlayer extends SimpleColors {
           transition: all 0.5s;
         }
         :host,
-        #outerplayer,
+        #player-section,
         #player,
-        #outertranscript,
-        #innertranscript {
+        #transcript-section,
+        #transcript-and-controls {
           display: flex;
           flex-flow: column;
           align-items: stretch;
@@ -188,32 +188,32 @@ class A11yMediaPlayer extends SimpleColors {
         *[hidden] {
           display: none !important;
         }
-        #innerplayer,
+        #player-and-controls,
         #player,
         #player > *,
-        #customcc,
-        #customcctxt,
+        #cc-custom,
+        #cc-text,
         #slider,
         #controls,
-        #outertranscript,
-        #innertranscript {
+        #transcript-section,
+        #transcript-and-controls {
           width: 100%;
         }
-        #innertranscript > * {
+        #transcript-and-controls > * {
           width: calc(100% - 1px);
         }
         :host > *,
-        #innerplayer,
+        #player-and-controls,
         #player,
         #player > *,
-        #customcctxt {
+        #cc-text {
           flex: 1 1 auto;
         }
         #controls,
         #searchbar {
           flex: 0 0 44px;
         }
-        #innerplayer {
+        #player-and-controls {
           margin: 0 auto;
           display: flex;
         }
@@ -235,6 +235,7 @@ class A11yMediaPlayer extends SimpleColors {
           z-index: 2;
         }
         #html5 {
+          min-width: 100px;
           display: flex;
           align-items: center;
         }
@@ -246,18 +247,18 @@ class A11yMediaPlayer extends SimpleColors {
           height: 32px;
         }
         a11y-media-youtube {
-          opacity: 0;
-        }
-        a11y-media-youtube.progress {
           opacity: 1;
           transition: opacity 0.5s;
         }
-        #customcc:not([hidden]) {
+        a11y-media-youtube.hidden {
+          opacity: 0;
+        }
+        #cc-custom:not([hidden]) {
           font-size: 20px;
           transition: font-size 0.25s;
           display: flex;
         }
-        #customcctxt:not(:empty) {
+        #cc-text:not(:empty) {
           align-self: flex-end;
           font-family: sans-serif;
           color: white;
@@ -267,7 +268,7 @@ class A11yMediaPlayer extends SimpleColors {
           background-color: rgba(0, 0, 0, 0.8);
           transition: all 0.5s;
         }
-        :host([audio-only]:not([thumbnail-src])) #customcctxt {
+        :host([audio-only]:not([thumbnail-src])) #cc-text {
           align-self: center;
           color: var(--a11y-media-color);
           background-color: transparent;
@@ -366,7 +367,7 @@ class A11yMediaPlayer extends SimpleColors {
           margin-left: -15px;
           margin-right: -15px;
         }
-        #showvolume {
+        #volume-and-mute {
           display: inline-block;
           position: relative;
         }
@@ -387,9 +388,9 @@ class A11yMediaPlayer extends SimpleColors {
         #volume:focus,
         #volume:hover,
         #volume.focus,
-        #showvolume:active #volume,
-        #showvolume:focus #volume,
-        #showvolume:hover #volume {
+        #volume-and-mute:active #volume,
+        #volume-and-mute:focus #volume,
+        #volume-and-mute:hover #volume {
           overflow: visible;
           width: 100px;
         }
@@ -397,12 +398,12 @@ class A11yMediaPlayer extends SimpleColors {
         :host([responsive-size="xs"]) #volume:focus,
         :host([responsive-size="xs"]) #volume:hover,
         :host([responsive-size="xs"]) #volume.focus,
-        :host([responsive-size="xs"]) #showvolume:active #volume,
-        :host([responsive-size="xs"]) #showvolume:focus #volume,
-        :host([responsive-size="xs"]) #showvolume:hover #volume {
+        :host([responsive-size="xs"]) #volume-and-mute:active #volume,
+        :host([responsive-size="xs"]) #volume-and-mute:focus #volume,
+        :host([responsive-size="xs"]) #volume-and-mute:hover #volume {
           top: 0px;
         }
-        #printthumb {
+        #print-thumbnail {
           width: 100%;
           margin: 0;
           display: block;
@@ -464,10 +465,10 @@ class A11yMediaPlayer extends SimpleColors {
           display: flex;
           align-items: center;
         }
-        #outertranscript {
+        #transcript-section {
           padding: 0 1px 0 0;
         }
-        #innertranscript {
+        #transcript-and-controls {
           flex: 1 0 194px;
         }
         #transcript {
@@ -506,16 +507,16 @@ class A11yMediaPlayer extends SimpleColors {
             flex-flow: row;
             padding: 0;
           }
-          :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
+          :host([flex-layout]:not([responsive-size="xs"])) #player-section {
             flex: 1 0 auto;
           }
-          #printthumb,
-          :host([height]) #outertranscript,
-          :host([stand-alone]) #outertranscript,
-          :host([hide-transcript]) #outertranscript {
+          #print-thumbnail,
+          :host([height]) #transcript-section,
+          :host([stand-alone]) #transcript-section,
+          :host([hide-transcript]) #transcript-section {
             display: none;
           }
-          :host([sticky]:not([sticky-corner="none"])) #outerplayer {
+          :host([sticky]:not([sticky-corner="none"])) #player-section {
             position: fixed;
             top: 5px;
             right: 5px;
@@ -526,10 +527,10 @@ class A11yMediaPlayer extends SimpleColors {
             box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
             border-radius: 3.2px;
           }
-          :host([dark][sticky]:not([sticky-corner="none"])) #outerplayer {
+          :host([dark][sticky]:not([sticky-corner="none"])) #player-section {
             border: 1px solid var(--a11y-media-bg-color);
           }
-          :host([sticky][sticky-corner="top-left"]) #outerplayer {
+          :host([sticky][sticky-corner="top-left"]) #player-section {
             right: unset;
             left: 5px;
           }
@@ -537,14 +538,14 @@ class A11yMediaPlayer extends SimpleColors {
             width: 50%;
             flex: 1 1 auto;
           }
-          #innertranscript {
+          #transcript-and-controls {
             position: relative;
           }
-          :host([hide-transcript]) #outerplayer {
+          :host([hide-transcript]) #player-section {
             min-width: 50%;
             max-width: 100%;
           }
-          :host([hide-transcript]) #outertranscript {
+          :host([hide-transcript]) #transcript-section {
             display: none;
           }
           :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
@@ -557,19 +558,19 @@ class A11yMediaPlayer extends SimpleColors {
             overflow-y: scroll;
           }
           :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
-            #innerplayer.totop {
+            #player-and-controls.totop {
             position: absolute;
             top: 0;
             left: 0;
             width: 200px !important;
             z-index: 9999;
           }
-          :host([sticky][sticky-corner="bottom-left"]) #innerplayer {
+          :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {
             top: unset;
             right: unset;
             bottom: 5px;
           }
-          :host([sticky][sticky-corner="bottom-right"]) #innerplayer {
+          :host([sticky][sticky-corner="bottom-right"]) #player-and-controls {
             top: unset;
             bottom: 5px;
           }
@@ -577,23 +578,23 @@ class A11yMediaPlayer extends SimpleColors {
             #controls {
             display: none;
           }
-          :host([responsive-size="lg"]) #customcc {
+          :host([responsive-size="lg"]) #cc-custom {
             font-size: 16px;
           }
-          :host([responsive-size="md"]) #customcc,
-          :host([flex-layout][responsive-size="xl"]) #customcc {
+          :host([responsive-size="md"]) #cc-custom,
+          :host([flex-layout][responsive-size="xl"]) #cc-custom {
             font-size: 14px;
           }
-          :host([responsive-size="sm"]) #customcc,
-          :host([flex-layout][responsive-size="lg"]) #customcc {
+          :host([responsive-size="sm"]) #cc-custom,
+          :host([flex-layout][responsive-size="lg"]) #cc-custom {
             font-size: 12px;
           }
-          :host([responsive-size="xs"]) #customcc,
-          :host([flex-layout][responsive-size="md"]) #customcc,
-          :host([flex-layout][responsive-size="sm"]) #customcc {
+          :host([responsive-size="xs"]) #cc-custom,
+          :host([flex-layout][responsive-size="md"]) #cc-custom,
+          :host([flex-layout][responsive-size="sm"]) #cc-custom {
             font-size: 10px;
           }
-          :host([sticky]:not([sticky-corner="none"])) #customcc {
+          :host([sticky]:not([sticky-corner="none"])) #cc-custom {
             display: none;
           }
           .media-caption {
@@ -619,7 +620,7 @@ class A11yMediaPlayer extends SimpleColors {
           }
           .screen-only,
           #searchbar,
-          #printthumb:not([src]),
+          #print-thumbnail:not([src]),
           :host(:not([thumbnail-src])) #player {
             display: none;
           }
@@ -644,8 +645,8 @@ class A11yMediaPlayer extends SimpleColors {
       <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
         ${this.mediaCaption}
       </div>
-      <div id="outerplayer" flex-layout="${this.flexLayout}">
-        <div id="innerplayer" .style="${this.innerplayerStyle}">
+      <div id="player-section" flex-layout="${this.flexLayout}">
+        <div id="player-and-controls" .style="${this.mediaMaxWidth}">
           <div id="player" .style="${this.playerStyle}">
             <a11y-media-play-button
               id="playbutton"
@@ -665,9 +666,9 @@ class A11yMediaPlayer extends SimpleColors {
             </div>
             <a11y-media-youtube
               id="youtube-${this.id}"
-              class="${this.progress > 0 || this.__seeking
-                ? `progress progress-${this.progress}`
-                : ``}"
+              class="${this.currentTime > 0 || this.__seeking
+                ? ``
+                : `hidden ${this.currentTime}`}"
               lang="${this.mediaLang}"
               video-id="${this.youtubeId}"
               @timeupdate="${this._handleTimeUpdate}"
@@ -675,12 +676,12 @@ class A11yMediaPlayer extends SimpleColors {
             >
             </a11y-media-youtube>
             <div
-              id="customcc"
+              id="cc-custom"
               aria-live="polite"
               class="screen-only"
               ?hidden="${!this.showCustomCaptions}"
             >
-              <div id="customcctxt">
+              <div id="cc-text">
                 ${Object.keys(this.captionCues).map(
                   key =>
                     html`
@@ -697,13 +698,13 @@ class A11yMediaPlayer extends SimpleColors {
           label="${this._getLocal(this.localization, "seekSlider", "label")}"
           min="${this.isYoutube && this.mediaStart ? this.mediaStart : 0}"
           max="${this.duration}"
-          secondary-progress="${this.buffered}"
+          secondary-currentTime="${this.buffered}"
           @mousedown="${this._handleSliderStart}"
           @mouseup="${this._handleSliderStop}"
           @keyup="${this._handleSliderStop}"
           @keydown="${this._handleSliderStart}"
           @blur="${this._handleSliderStop}"
-          .value="${this.currentTime - this.mediaStart}"
+          .value="${this.__currentTime - this.mediaStart}"
           ?disabled="${this.disableSeek || this.duration === 0}"
         >
         </paper-slider>
@@ -744,7 +745,7 @@ class A11yMediaPlayer extends SimpleColors {
               @click="${e => this.restart()}"
             ></a11y-media-button>
             <div
-              id="showvolume"
+              id="volume-and-mute"
               @focus="${e => (this.__volumeSlider = true)}"
               @blur="${e => (this.__volumeSlider = false)}"
             >
@@ -796,8 +797,8 @@ class A11yMediaPlayer extends SimpleColors {
                 "transcript",
                 "label"
               )}"
-              ?disabled="${this.hideTranscriptButton}"
-              ?hidden="${this.hideTranscriptButton}"
+              ?disabled="${!this.hasCaptions}"
+              ?hidden="${!this.hasCaptions}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${e => this.toggleTranscript()}"
             >
@@ -924,7 +925,11 @@ class A11yMediaPlayer extends SimpleColors {
                     </div>
                   </div>
                 </paper-item>
-                <paper-item ?hidden="${this.noTranscriptToggle}">
+                <paper-item
+                  ?hidden="${!this.hasCaptions ||
+                    this.noTranscriptToggle ||
+                    this.standAlone}"
+                >
                   <div class="setting">
                     <div id="transcript-label" class="setting-text">
                       ${this._getLocal(
@@ -946,7 +951,7 @@ class A11yMediaPlayer extends SimpleColors {
                     </div>
                   </div>
                 </paper-item>
-                <paper-item>
+                <paper-item ?hidden="${!this.hasCaptions}">
                   <div class="setting">
                     <div id="print-label" class="setting-text">
                       ${this._getLocal(this.localization, "print", "label")}
@@ -967,7 +972,7 @@ class A11yMediaPlayer extends SimpleColors {
                     </div>
                   </div>
                 </paper-item>
-                <paper-item>
+                <paper-item ?hidden="${!this.hasCaptions}">
                   <div class="setting">
                     <div id="download-label" class="setting-text">
                       ${this._getLocal(this.localization, "download", "label")}
@@ -1037,9 +1042,16 @@ class A11yMediaPlayer extends SimpleColors {
         </div>
         <div class="print-only media-caption">${this.printCaption}</div>
       </div>
-      <img id="printthumb" aria-hidden="true" src="${ifDefined(this.poster)}" />
-      <div id="outertranscript" ?hidden="${this.standAlone}">
-        <div id="innertranscript" ?hidden="${this.hideTranscript}">
+      <img
+        id="print-thumbnail"
+        aria-hidden="true"
+        src="${ifDefined(this.poster)}"
+      />
+      <div
+        id="transcript-section"
+        ?hidden="${this.standAlone || !this.hasCaptions}"
+      >
+        <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
           <div id="searchbar">
             <div id="searching">
               <simple-search
@@ -1155,7 +1167,8 @@ class A11yMediaPlayer extends SimpleColors {
                           ?active="${cue.track.activeCues &&
                             cue.track.activeCues[0] === cue}"
                           ?disabled="${this.disableInteractive ||
-                            this.disableSeek}"
+                            this.disableSeek ||
+                            this.duration === 0}"
                           ?hide-timestamps="${this.hideTimestamps}"
                         >
                           <span class="searchable">${cue.text}</span>
@@ -1511,6 +1524,12 @@ class A11yMediaPlayer extends SimpleColors {
         type: String
       },
       /**
+       * current playback in seconds
+       */
+      __currentTime: {
+        type: Number
+      },
+      /**
        * array of cues provided to readOnly `get cues`
        */
       __cues: {
@@ -1556,7 +1575,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.autoplay = false;
     this.allowConcurrent = false;
     this.cc = false;
-    this.currentTime = 0;
+    this.__currentTime = 0;
     this.darkTranscript = false;
     this.disableFullscreen = false;
     this.disableInteractive = false;
@@ -1675,6 +1694,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.captionsTrack && this.captionsTrack.activeCues
         ? this.captionsTrack.activeCues
         : [];
+    console.log("this.captionCues", cues, this.captionsTrack);
     return cues;
   }
 
@@ -1757,11 +1777,11 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * `style` for `#innerplayer`
+   * `style` for `#player-and-controls`
    * @readonly
    * @returns {string} value for style attribute
    */
-  get innerplayerStyle() {
+  get mediaMaxWidth() {
     let maxWidth = this.fullscreen
       ? `unset`
       : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
@@ -2033,18 +2053,12 @@ class A11yMediaPlayer extends SimpleColors {
    * @readonly
    * @returns {number} media duration in seconds
    */
-  get progress() {
-    if (this.muted)
-      console.log(
-        this.__seeking,
-        this.shadowRoot.querySelector("#slider").immediateValue,
-        this.currentTime
-      );
-    let progress =
+  get currentTime() {
+    let currentTime =
       this.__seeking === true
         ? this.shadowRoot.querySelector("#slider").immediateValue
-        : this.currentTime;
-    return progress - this.mediaStart;
+        : this.__currentTime;
+    return currentTime - this.mediaStart;
   }
 
   /**
@@ -2072,11 +2086,11 @@ class A11yMediaPlayer extends SimpleColors {
   get shareLink() {
     let url = window.location.href.split(/[#?]/)[0],
       id = this.id ? `?id=${this.id}` : ``,
-      progress =
-        id !== "" && this.progress && this.progress !== 0
-          ? `&t=${this.progress}`
+      currentTime =
+        id !== "" && this.currentTime && this.currentTime !== 0
+          ? `&t=${this.currentTime}`
           : ``;
-    return `${url}${id}${progress}`;
+    return `${url}${id}${currentTime}`;
   }
 
   /**
@@ -2096,7 +2110,7 @@ class A11yMediaPlayer extends SimpleColors {
   get status() {
     return this.duration > 0
       ? html`
-          ${this._getHHMMSS(this.progress, this.duration)}/${this._getHHMMSS(
+          ${this._getHHMMSS(this.currentTime, this.duration)}/${this._getHHMMSS(
             this.duration
           )}
         `
@@ -2162,11 +2176,6 @@ class A11yMediaPlayer extends SimpleColors {
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
       if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
-      if (
-        propName === "currentTime" &&
-        this.currentTime !== this.media.currentTime
-      )
-        this.seek(this.currentTime);
 
       this.dispatchEvent(
         new CustomEvent(
@@ -2197,6 +2206,12 @@ class A11yMediaPlayer extends SimpleColors {
    * updates track mode & `captionsTrack` when `__captionsOption` changes
    */
   _captionsOptionChanged() {
+    console.log(
+      "_captionsOptionChanged",
+      this.captionsTrack,
+      this.cc,
+      this.loadedTracks
+    );
     this.cc = this.__captionsOption > -1;
     Object.keys(this.loadedTracks.textTracks).forEach(key => {
       let showing = parseInt(key) == parseInt(this.__captionsOption);
@@ -2492,7 +2507,7 @@ class A11yMediaPlayer extends SimpleColors {
    * seeks to a specific time
    * @param {float} the time, in seconds, to seek
    */
-  seek(time) {
+  seek(time = 0) {
     if (
       (this.mediaSeekable &&
         time >= this.mediaStart &&
@@ -2514,7 +2529,6 @@ class A11yMediaPlayer extends SimpleColors {
         })
       );
     }
-    if (this.muted) console.log("seek", time);
   }
 
   /**
@@ -2524,6 +2538,12 @@ class A11yMediaPlayer extends SimpleColors {
     id = parseInt(id);
     if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
     this.cc = id > -1;
+    console.log(
+      "selectCaptionByKey",
+      id,
+      this.captionsTrack,
+      this.loadedTracks.textTracks
+    );
   }
 
   /**
@@ -2630,12 +2650,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the playback rate, where 1 = 100%
    */
   setPlaybackRate(value) {
-    console.log(
-      "setPlaybackRate",
-      value,
-      this.playbackRate,
-      this.media.playbackRate
-    );
     value = value !== null ? value : 1;
     this.media.playbackRate = value !== null ? value : 1;
     /**
@@ -2657,7 +2671,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {integer} the volume level from 0-100
    */
   setVolume(value = 70) {
-    console.log("setVolume", value);
     this.volume = Math.max(0, Math.min(value, 100));
     this.media.volume = value / 100;
     /**
@@ -2703,7 +2716,7 @@ class A11yMediaPlayer extends SimpleColors {
     if (screenfull && this.fullscreenButton) {
       this.fullscreen = mode === undefined ? !this.loop : mode;
       this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#outerplayer"));
+      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled
@@ -2832,6 +2845,12 @@ class A11yMediaPlayer extends SimpleColors {
    * loads a track's cue metadata
    */
   _addSourcesAndTracks(media) {
+    console.log(
+      "_addSourcesAndTracks",
+      media,
+      this.loadedTracks,
+      this.captionsTrack
+    );
     media.style.width = "100%";
     media.style.maxWidth = "100%";
     this.loadedTracks.textTracks.onremovetrack = e => {
@@ -2839,6 +2858,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.__cues = this.cues.filter(cue => cue.track !== e.track);
     };
     this.loadedTracks.textTracks.onaddtrack = e => {
+      console.log("onaddtrack", this.captionsTrack, e.track);
       if (this.captionsTrack === null) this.captionsTrack = e.track;
       e.track.mode = "hidden";
       let loadCueData = setInterval(() => {
@@ -2865,6 +2885,12 @@ class A11yMediaPlayer extends SimpleColors {
         }) || 0;
     this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
+    console.log(
+      " _addSourcesAndTracks done",
+      this.captionsTrack,
+      defaultTrack,
+      this.loadedTracks.textTracks
+    );
     this._handleTimeUpdate();
   }
 
@@ -2933,7 +2959,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e slider event
    */
   _handleSpeedChanged(e) {
-    console.log("_handleSpeedChanged", e, this.playbackRate);
     this.setPlaybackRate(e.path[0].value);
   }
 
@@ -2951,12 +2976,6 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    */
   _handleSliderStop(e) {
-    console.log(
-      "_handleSliderStop",
-      e,
-      e.path[4].immediateValue,
-      this.__resumePlaying
-    );
     this.seek(e.path[4].immediateValue);
     this.__seeking = false;
     if (this.__resumePlaying) {
@@ -2973,19 +2992,18 @@ class A11yMediaPlayer extends SimpleColors {
     //this.disableSeek = (this.youtube && this.buffered < this.duration);
 
     /* update current time with media's current time property */
-    this.currentTime =
+    this.__currentTime =
       this.media && this.media.currentTime && this.media.currentTime > 0
         ? this.media.currentTime
         : 0;
     /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
-      (this.mediaEnd && this.mediaEnd <= this.progress) ||
+      (this.mediaEnd && this.mediaEnd <= this.currentTime) ||
       this.mediaStart >= this.duration
     ) {
       this.stop();
       this.__playing = false;
     }
-    if (this.muted) console.log("_handleTimeUpdate", this.currentTime);
   }
 
   /**
@@ -3007,7 +3025,6 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {event} e volume change event
    */
   _handleVolumeChanged(e) {
-    console.log("_handleVolumeChanged", e, this.volume);
     this.volume = e.path[0].value;
   }
 

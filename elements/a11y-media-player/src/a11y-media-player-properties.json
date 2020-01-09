@@ -314,6 +314,12 @@
     "type": "String"
   },
   /**
+   * current playback in seconds
+   */
+  "__currentTime": {
+    "type": "Number"
+  },
+  /**
    * array of cues provided to readOnly `get cues`
    */
   "__cues": {
