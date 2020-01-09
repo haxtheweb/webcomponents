@@ -188,6 +188,8 @@ class DragNDrop extends HTMLElement {
     this.__dragging = e.target;
     this.__dragging.className += " hold";
     setTimeout(() => (this.__dragging.className = "invisible"), 0);
+    e.stopPropagation();
+    e.stopImmediatePropagation();
   }
 
   dragEnd(e) {

@@ -3,15 +3,15 @@
   "tags": [
     {
       "name": "paper-avatar",
-      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
       "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label with username\n\nProperty: label"
-        },
         {
           "name": "colors",
           "description": "`colors` {`any[]`} - Array of colors for avatar background\n\nProperty: colors"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label with username\n\nProperty: label\n\nDefault: null"
         },
         {
           "name": "src",
@@ -36,15 +36,15 @@
     },
     {
       "name": "paper-avatar",
-      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
       "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label with username\n\nProperty: label"
-        },
         {
           "name": "colors",
           "description": "`colors` {`any[]`} - Array of colors for avatar background\n\nProperty: colors"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label with username\n\nProperty: label\n\nDefault: null"
         },
         {
           "name": "src",
@@ -73,15 +73,15 @@
     },
     {
       "name": "paper-avatar",
-      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `label` {`string`} - Label with username\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
+      "description": "`paper-avatar`\nUser avatar in material style\n\n### Styling\n\nTo change the background color:\n\n    paper-avatar {\n      --paper-avatar-color: red;\n    }\n\nTo change the size of the avatar:\n\n    paper-avatar {\n      --paper-avatar-width: 60px;\n    }\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`\n`--paper-avatar-color` | Background color of the avatar image |\n\nAttributes:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `two-chars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar\n\nProperties:\n\n  * `colors` {`any[]`} - Array of colors for avatar background\n\n  * `label` {`string`} - Label with username\n\n  * `src` {`string`} - Image address or base64\n\n  * `jdenticonExists` {`boolean`} - Ensure we can support jdenticon before invoking it\n\n  * `twoChars` {`boolean`} - Show two chars in avatar\n\n  * `jdenticon` {`boolean`} - Set true if you want use a jdenticon avatar",
       "attributes": [
-        {
-          "name": "label",
-          "description": "`label` {`string`} - Label with username\n\nProperty: label"
-        },
         {
           "name": "colors",
           "description": "`colors` {`any[]`} - Array of colors for avatar background\n\nProperty: colors"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - Label with username\n\nProperty: label\n\nDefault: null"
         },
         {
           "name": "src",

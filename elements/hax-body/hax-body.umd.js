@@ -2,6 +2,11 @@ import { html, css } from "lit-element/lit-element.js";
 // LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+// variables required as part of the gravity drag and scroll
+var timer = null;
+const maxStep = 25;
+const edgeSize = 100;
+
 /**
  * `hax-body`
  * @customElement hax-body
@@ -47,9 +52,11 @@ class HaxBody extends SimpleColors {
           --hax-body-editable-border-color: #bbbbbb;
           --hax-body-active-border-color: #000000;
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-blue-1
+            --simple-colors-default-theme-grey-3
           );
-          --hax-body-possible-target-background-color: transparent;
+          --hax-body-possible-target-background-color: var(
+            --simple-colors-default-theme-grey-2
+          );
         }
         .hax-context-menu {
           padding: 0;
@@ -223,17 +230,24 @@ class HaxBody extends SimpleColors {
           line-height: 2;
         }
         /* drag and drop */
-        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.mover):before {
           outline: 2px dashed var(--hax-body-editable-border-color);
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(.mover) {
           background-color: var(--hax-body-possible-target-background-color);
-          padding: 16px;
+          content: " ";
+          width: 100%;
+          display: block;
+          position: relative;
+          margin: -20px 0 0 0;
+          z-index: 2;
+          height: 20px;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(.hovered) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+          outline: 2px dashed var(--hax-body-active-border-color);
+          background-color: #eeeeee;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*.hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
           outline: dashed 2px var(--hax-body-active-border-color);
-          z-index: 2;
         }
         .hax-context-menu:not(:defined) {
           display: none;
@@ -276,10 +290,15 @@ class HaxBody extends SimpleColors {
       );
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener("mouseover", this._mouseOver.bind(this));
+      this.addEventListener("drop", this.dropEvent.bind(this));
     }, 0);
   }
   static get tag() {
     return "hax-body";
+  }
+  _mouseOver(e) {
+    this.positionContextMenus();
   }
   /**
    * LitElement render
@@ -435,7 +454,7 @@ class HaxBody extends SimpleColors {
    */
   _openDrawerChanged(newValue, oldValue) {
     if (!newValue) {
-      this.positionContextMenus(this.activeNode, this.activeContainerNode);
+      this.positionContextMenus();
     } else {
       this.hideContextMenus();
     }
@@ -539,33 +558,45 @@ class HaxBody extends SimpleColors {
    */
   _keepContextVisible(e) {
     if (!this.openDrawer && this.editMode) {
-      // see if the text context menu is visible
-      let el = false;
-      if (
-        this.shadowRoot
-          .querySelector("#textcontextmenu")
-          .classList.contains("hax-context-visible")
-      ) {
-        el = this.shadowRoot.querySelector("#textcontextmenu");
-      } else if (
-        this.shadowRoot
-          .querySelector("#cecontextmenu")
-          .classList.contains("hax-context-visible")
-      ) {
-        el = this.shadowRoot.querySelector("#cecontextmenu");
-      }
-      // if we see it, ensure we don't have the pin
-      if (el) {
-        if (this.elementInViewport(el)) {
-          el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
-        } else {
-          if (this.__OffBottom) {
-            el.classList.add("hax-context-pin-top");
+      clearTimeout(this.__contextVisibleLock);
+      this.__contextVisibleLock = setTimeout(() => {
+        // see if the text context menu is visible
+        let el = false;
+        if (
+          this.shadowRoot
+            .querySelector("#textcontextmenu")
+            .classList.contains("hax-context-visible")
+        ) {
+          el = this.shadowRoot.querySelector("#textcontextmenu");
+        } else if (
+          this.shadowRoot
+            .querySelector("#cecontextmenu")
+            .classList.contains("hax-context-visible")
+        ) {
+          el = this.shadowRoot.querySelector("#cecontextmenu");
+        }
+        // if we see it, ensure we don't have the pin
+        if (el) {
+          this._positionContextMenu(
+            this.shadowRoot.querySelector("#platecontextmenu"),
+            this.activeContainerNode,
+            -59,
+            0
+          );
+          if (this.elementInViewport(el)) {
+            el.classList.remove(
+              "hax-context-pin-bottom",
+              "hax-context-pin-top"
+            );
           } else {
-            el.classList.add("hax-context-pin-bottom");
+            if (this.__OffBottom) {
+              el.classList.add("hax-context-pin-top");
+            } else {
+              el.classList.add("hax-context-pin-bottom");
+            }
           }
         }
-      }
+      }, 50);
     }
   }
   _onKeyDown(e) {
@@ -646,7 +677,24 @@ class HaxBody extends SimpleColors {
                 }
                 rng.commonAncestorContainer.parentNode.focus();
                 this.__focusLogic(rng.commonAncestorContainer.parentNode);
+              } else {
+                this.activeNode = rng.commonAncestorContainer;
+                this.activeContainerNode = this.activeNode;
+                window.HaxStore.write(
+                  "activeNode",
+                  rng.commonAncestorContainer,
+                  this
+                );
+                window.HaxStore.write(
+                  "activeContainerNode",
+                  rng.commonAncestorContainer,
+                  this
+                );
+                setTimeout(() => {
+                  this.positionContextMenus();
+                }, 0);
               }
+            } else {
             }
           }, 50);
           break;
@@ -665,7 +713,7 @@ class HaxBody extends SimpleColors {
       !this.openDrawer &&
       this.editMode &&
       this.shadowRoot
-        .querySelector("#platecontextmenu")
+        .querySelector("#textcontextmenu")
         .classList.contains("hax-active-hover") &&
       this.activeNode &&
       window.HaxStore.instance.isTextElement(this.activeNode)
@@ -681,7 +729,7 @@ class HaxBody extends SimpleColors {
       clearTimeout(this.__positionContextTimer);
       this.__positionContextTimer = setTimeout(() => {
         // always on active if we were just typing
-        this.positionContextMenus(this.activeNode, this.activeNode);
+        this.positionContextMenus();
       }, 2000);
     }
   }
@@ -734,7 +782,7 @@ class HaxBody extends SimpleColors {
           local.parentNode.parentNode === this.activeContainerNode ||
           local.parentNode.parentNode.parentNode === this.activeContainerNode
         ) {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+          this.positionContextMenus();
           this.__addActiveHover();
           this.__typeLock = false;
         } else {
@@ -1108,7 +1156,6 @@ class HaxBody extends SimpleColors {
     content = content.replace(/\sdata-editable/g, "");
     content = content.replace(/\scontenteditable/g, "");
     content = content.replace(/\sdraggable/g, "");
-    content = content.replace(/\sdata-draggable/g, "");
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
     // remove HAX specific classes / scoping classes
@@ -1203,6 +1250,10 @@ class HaxBody extends SimpleColors {
    * Hide all context menus.
    */
   hideContextMenus() {
+    // clear the timeouts for anything that could cause these to reapear
+    clearTimeout(this.__keyPressDirection);
+    clearTimeout(this.__contextVisibleLock);
+    clearTimeout(this.__positionContextTimer);
     // primary context menus
     this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
     this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
@@ -1215,7 +1266,10 @@ class HaxBody extends SimpleColors {
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus(node, container) {
+  positionContextMenus(
+    node = this.activeNode,
+    container = this.activeContainerNode
+  ) {
     if (node) {
       let tag = node.tagName.toLowerCase();
       if (window.HaxStore.instance._isSandboxed && tag === "webview") {
@@ -1234,30 +1288,34 @@ class HaxBody extends SimpleColors {
         this.shadowRoot.querySelector("#cecontextmenu").setHaxProperties(props);
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
-          node,
-          -39,
-          -39
+          container,
+          -58,
+          -40
         );
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
-          node,
-          -39,
-          -39
+          container,
+          -58,
+          -40
         );
       }
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        -69,
+        -59,
         0
       );
-      // special case for node not matching container
-      if (container && !this._HTMLPrimativeTest(node) && node !== container) {
-        container.contentEditable = false;
-      } else if (container) {
-        container.contentEditable = true;
+      // special case for node not matching container yet it being editable
+      if (
+        container &&
+        !window.HaxStore.instance.isTextElement(node) &&
+        node !== container
+      ) {
+        container.removeAttribute("contenteditable");
+      } else {
+        container.setAttribute("contenteditable", true);
       }
     }
   }
@@ -1300,7 +1358,7 @@ class HaxBody extends SimpleColors {
       } else {
         container.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 5);
+    }, 0);
     return true;
   }
   /**
@@ -1338,12 +1396,14 @@ class HaxBody extends SimpleColors {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       this.insertBefore(grid, node);
-      let col = "1";
+      let col = "2";
       if (side == "right") {
-        col = "2";
+        col = "1";
       }
       setTimeout(() => {
         grid.appendChild(node);
+        this.activeContainerNode = grid;
+        window.HaxStore.write("activeContainerNode", grid, this);
         node.setAttribute("slot", "col-" + col);
       }, 0);
     }
@@ -1543,51 +1603,87 @@ class HaxBody extends SimpleColors {
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       // text based operations for primatives
-      case "p":
-      case "ol":
-      case "ul":
-      case "h2":
-      case "h3":
-      case "h4":
-      case "h5":
-      case "h6":
-      case "blockquote":
-      case "code":
+      case "text-tag":
         // trigger the default selected value in context menu to match
         this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
-          detail.eventName;
-        this.activeNode = this.haxChangeTagName(
-          this.activeNode,
-          detail.eventName
-        );
+          detail.value;
+        this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        this.positionContextMenus();
+        break;
+      case "text-tag-ul":
+        // trigger the default selected value in context menu to match
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
+          "ul";
+        this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.positionContextMenus();
+        break;
+      case "text-tag-ol":
+        // trigger the default selected value in context menu to match
+        this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue =
+          "ol";
+        this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.positionContextMenus();
+        break;
+      case "hax-plate-add-element":
+        // support for the Other call, otherwise its a specific element + props
+        if (detail.value == "other") {
+          window.HaxStore.instance.haxInsertAnything({});
+          return true;
+        }
+        // insert from here
+        let addData = JSON.parse(detail.value);
+        this.haxInsert(addData.tag, addData.content, addData.properties, false);
+        // focus on 1st row w/ cursor if this a text element
+        if (window.HaxStore.instance.isTextElement(addData)) {
+          setTimeout(() => {
+            try {
+              var range = document.createRange();
+              var sel = window.HaxStore.getSelection();
+              range.setStart(this.activeNode, 0);
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              this.activeNode.focus();
+              this.activeContainerNode = this.activeNode;
+              window.HaxStore.write(
+                "activeContainerNode",
+                this.activeContainerNode,
+                this
+              );
+            } catch (e) {
+              console.warn(e);
+            }
+          }, 0);
+        }
         break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "grid-plate-convert":
+      case "hax-plate-convert":
         this.replaceElementWorkflow();
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "grid-plate-create-left":
-        this.haxInjectGridplate(this.activeNode, "left");
+      case "hax-plate-create-left":
+        this.haxInjectGridplate(this.activeContainerNode, "left");
         break;
-      case "grid-plate-create-right":
-        this.haxInjectGridplate(this.activeNode, "right");
+      case "hax-plate-create-right":
+        this.haxInjectGridplate(this.activeContainerNode, "right");
         break;
       // duplicate the active item or container
-      case "grid-plate-duplicate":
+      case "hax-plate-duplicate":
         if (this.activeNode === this.activeContainerNode) {
           this.haxDuplicateNode(this.activeNode);
         } else {
           this.haxDuplicateNode(this.activeNode, this.activeContainerNode);
         }
         break;
-      case "grid-plate-delete":
+      case "hax-plate-delete":
         if (this.activeNode != null) {
           let options = [
             {
@@ -1618,14 +1714,14 @@ class HaxBody extends SimpleColors {
           );
         }
         break;
-      case "grid-plate-first":
+      case "hax-plate-first":
         this.haxMoveGridPlate(
           "first",
           this.activeNode,
           this.activeContainerNode
         );
         break;
-      case "grid-plate-up":
+      case "hax-plate-up":
         this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
         break;
       case "hax-manager-open":
@@ -1639,14 +1735,14 @@ class HaxBody extends SimpleColors {
           this
         );
         break;
-      case "grid-plate-down":
+      case "hax-plate-down":
         this.haxMoveGridPlate(
           "down",
           this.activeNode,
           this.activeContainerNode
         );
         break;
-      case "grid-plate-last":
+      case "hax-plate-last":
         this.haxMoveGridPlate(
           "last",
           this.activeNode,
@@ -1839,7 +1935,8 @@ class HaxBody extends SimpleColors {
       // ensure this is valid
       if (
         this._validElementTest(containerNode) &&
-        containerNode.parentNode != null
+        containerNode.parentNode &&
+        containerNode.parentNode.tagName
       ) {
         // keep looking til we are juuuust below the container
         // @todo this is where we force a selection on highest level
@@ -1940,6 +2037,7 @@ class HaxBody extends SimpleColors {
                 } catch (e) {
                   console.warn(e);
                 }
+                this.positionContextMenus();
               }
             }, 0);
           } else {
@@ -1962,15 +2060,18 @@ class HaxBody extends SimpleColors {
               } catch (e) {
                 console.warn(e);
               }
+              this.positionContextMenus();
             }, 0);
           }
         }, 100);
       }
     }
     // hide menus when state changes
-    if (newValue === false) {
+    if (newValue == false) {
       this.removeAttribute("contenteditable");
-      this.hideContextMenus();
+      setTimeout(() => {
+        this.hideContextMenus();
+      }, 50);
     }
   }
   /**
@@ -2061,12 +2162,10 @@ class HaxBody extends SimpleColors {
     }
     // oooooo snap, drag and drop..
     if (status) {
-      node.setAttribute("data-draggable", true);
       node.setAttribute("data-editable", status);
       node.setAttribute("data-hax-ray", haxRay);
       listenerMethod = "addEventListener";
     } else {
-      node.removeAttribute("data-draggable");
       node.removeAttribute("data-editable");
       node.removeAttribute("data-hax-ray");
       listenerMethod = "removeEventListener";
@@ -2074,7 +2173,6 @@ class HaxBody extends SimpleColors {
     node[listenerMethod]("drop", this.dropEvent.bind(this));
     node[listenerMethod]("dragenter", this.dragEnter.bind(this));
     node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-    node[listenerMethod]("dragend", this.dragEnd.bind(this));
     node[listenerMethod]("dragover", function(e) {
       e.preventDefault();
     });
@@ -2108,7 +2206,26 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
+    clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
+      setTimeout(() => {
+        let children = this.children;
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].classList !== typeof undefined) {
+            children[i].classList.remove(
+              "mover",
+              "hovered",
+              "moving",
+              "grid-plate-active-item"
+            );
+            // special support for grid plates as they manage internal drag/drop
+            if (children[i].tagName === "GRID-PLATE") {
+              children[i].dropEvent(e);
+            }
+          }
+        }
+      }, 0);
       var target = window.HaxStore.instance.__dragTarget;
       var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
@@ -2125,7 +2242,7 @@ class HaxBody extends SimpleColors {
         // incase this came from a grid plate, drop the slot so it works
         target.removeAttribute("slot");
         try {
-          this.insertBefore(target, local);
+          local.parentNode.insertBefore(target, local);
         } catch (e) {
           console.warn(e);
         }
@@ -2133,18 +2250,21 @@ class HaxBody extends SimpleColors {
         e.preventDefault();
         e.stopPropagation();
       }
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered");
-        }
-      }
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
+        this.activeNode = target;
+        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
+          this.activeContainerNode = this.activeNode.parentNode;
+        }
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        window.HaxStore.write(
+          "activeContainerNode",
+          this.activeContainerNode,
+          this
+        );
         setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 0);
+          this.positionContextMenus();
+        }, 10);
       }
     }
   }
@@ -2152,9 +2272,168 @@ class HaxBody extends SimpleColors {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (!this.openDrawer && this.editMode) {
+    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
       e.preventDefault();
       e.target.classList.add("hovered");
+      // perform check for edge of screen
+      this.handleMousemove(e);
+    }
+  }
+  // refactored from https://github.com/bennadel/JavaScript-Demos/blob/master/demos/window-edge-scrolling/index.htm
+  // I adjust the window scrolling in response to the given mousemove event.
+  handleMousemove(e) {
+    // NOTE: Much of the information here, with regard to document dimensions,
+    // viewport dimensions, and window scrolling is derived from JavaScript.info.
+    // I am consuming it here primarily as NOTE TO SELF.
+    // --
+    // Read More: https://javascript.info/size-and-scroll-window
+    // --
+    // CAUTION: The viewport and document dimensions can all be CACHED and then
+    // recalculated on window-resize events (for the most part). I am keeping it
+    // all here in the mousemove event handler to remove as many of the moving
+    // parts as possible and keep the demo as simple as possible.
+
+    // Get the viewport-relative coordinates of the mousemove event.
+    var viewportX = e.clientX;
+    var viewportY = e.clientY;
+
+    // Get the viewport dimensions.
+    var viewportWidth = document.documentElement.clientWidth;
+    var viewportHeight = document.documentElement.clientHeight;
+
+    // Next, we need to determine if the mouse is within the "edge" of the
+    // viewport, which may require scrolling the window. To do this, we need to
+    // calculate the boundaries of the edge in the viewport (these coordinates
+    // are relative to the viewport grid system).
+    var edgeTop = edgeSize;
+    var edgeLeft = edgeSize;
+    var edgeBottom = viewportHeight - edgeSize;
+    var edgeRight = viewportWidth - edgeSize;
+
+    var isInLeftEdge = viewportX < edgeLeft;
+    var isInRightEdge = viewportX > edgeRight;
+    var isInTopEdge = viewportY < edgeTop;
+    var isInBottomEdge = viewportY > edgeBottom;
+
+    // If the mouse is not in the viewport edge, there's no need to calculate
+    // anything else.
+    if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
+      clearTimeout(timer);
+      return;
+    }
+
+    // If we made it this far, the user's mouse is located within the edge of the
+    // viewport. As such, we need to check to see if scrolling needs to be done.
+
+    // Get the document dimensions.
+    // --
+    // NOTE: The various property reads here are for cross-browser compatibility
+    // as outlined in the JavaScript.info site (link provided above).
+    var documentWidth = Math.max(
+      document.body.scrollWidth,
+      document.body.offsetWidth,
+      document.body.clientWidth,
+      document.documentElement.scrollWidth,
+      document.documentElement.offsetWidth,
+      document.documentElement.clientWidth
+    );
+    var documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight,
+      document.documentElement.clientHeight
+    );
+
+    // Calculate the maximum scroll offset in each direction. Since you can only
+    // scroll the overflow portion of the document, the maximum represents the
+    // length of the document that is NOT in the viewport.
+    var maxScrollX = documentWidth - viewportWidth;
+    var maxScrollY = documentHeight - viewportHeight;
+
+    // As we examine the mousemove event, we want to adjust the window scroll in
+    // immediate response to the event; but, we also want to continue adjusting
+    // the window scroll if the user rests their mouse in the edge boundary. To
+    // do this, we'll invoke the adjustment logic immediately. Then, we'll setup
+    // a timer that continues to invoke the adjustment logic while the window can
+    // still be scrolled in a particular direction.
+    // --
+    // NOTE: There are probably better ways to handle the ongoing animation
+    // check. But, the point of this demo is really about the math logic, not so
+    // much about the interval logic.
+    (function checkForWindowScroll() {
+      clearTimeout(timer);
+
+      if (adjustWindowScroll()) {
+        timer = setTimeout(checkForWindowScroll, 30);
+      }
+    })();
+    // Adjust the window scroll based on the user's mouse position. Returns True
+    // or False depending on whether or not the window scroll was changed.
+    function adjustWindowScroll() {
+      // Get the current scroll position of the document.
+      var currentScrollX = window.pageXOffset;
+      var currentScrollY = window.pageYOffset;
+
+      // Determine if the window can be scrolled in any particular direction.
+      var canScrollUp = currentScrollY > 0;
+      var canScrollDown = currentScrollY < maxScrollY;
+      var canScrollLeft = currentScrollX > 0;
+      var canScrollRight = currentScrollX < maxScrollX;
+
+      // Since we can potentially scroll in two directions at the same time,
+      // let's keep track of the next scroll, starting with the current scroll.
+      // Each of these values can then be adjusted independently in the logic
+      // below.
+      var nextScrollX = currentScrollX;
+      var nextScrollY = currentScrollY;
+
+      // As we examine the mouse position within the edge, we want to make the
+      // incremental scroll changes more "intense" the closer that the user
+      // gets the viewport edge. As such, we'll calculate the percentage that
+      // the user has made it "through the edge" when calculating the delta.
+      // Then, that use that percentage to back-off from the "max" step value.
+
+      // Should we scroll left?
+      if (isInLeftEdge && canScrollLeft) {
+        var intensity = (edgeLeft - viewportX) / edgeSize;
+
+        nextScrollX = nextScrollX - maxStep * intensity;
+
+        // Should we scroll right?
+      } else if (isInRightEdge && canScrollRight) {
+        var intensity = (viewportX - edgeRight) / edgeSize;
+
+        nextScrollX = nextScrollX + maxStep * intensity;
+      }
+
+      // Should we scroll up?
+      if (isInTopEdge && canScrollUp) {
+        var intensity = (edgeTop - viewportY) / edgeSize;
+
+        nextScrollY = nextScrollY - maxStep * intensity;
+
+        // Should we scroll down?
+      } else if (isInBottomEdge && canScrollDown) {
+        var intensity = (viewportY - edgeBottom) / edgeSize;
+
+        nextScrollY = nextScrollY + maxStep * intensity;
+      }
+
+      // Sanitize invalid maximums. An invalid scroll offset won't break the
+      // subsequent .scrollTo() call; however, it will make it harder to
+      // determine if the .scrollTo() method should have been called in the
+      // first place.
+      nextScrollX = Math.max(0, Math.min(maxScrollX, nextScrollX));
+      nextScrollY = Math.max(0, Math.min(maxScrollY, nextScrollY));
+
+      if (nextScrollX !== currentScrollX || nextScrollY !== currentScrollY) {
+        window.scrollTo(nextScrollX, nextScrollY);
+        return true;
+      } else {
+        return false;
+      }
     }
   }
   /**
@@ -2163,35 +2442,6 @@ class HaxBody extends SimpleColors {
   dragLeave(e) {
     if (!this.openDrawer && this.editMode) {
       e.target.classList.remove("hovered");
-    }
-  }
-  /**
-   * Start a drag event, this is an element being dragged
-   */
-  dragStart(e) {
-    if (!this.openDrawer && this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.add("mover");
-        }
-      }
-    }
-  }
-
-  /**
-   * When we end dragging ensure we remove the mover class.
-   */
-  dragEnd(e) {
-    if (!this.openDrawer && this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered");
-        }
-      }
     }
   }
   /**
@@ -2261,7 +2511,7 @@ class HaxBody extends SimpleColors {
         clearTimeout(this.__positionContextTimer);
         this.__positionContextTimer = setTimeout(() => {
           if (newValue === this.activeNode) {
-            this.positionContextMenus(newValue, newValue);
+            this.positionContextMenus(newValue);
           }
         }, 10);
       } else {
@@ -2328,6 +2578,7 @@ class HaxBody extends SimpleColors {
         menu.style["top"] = pos.y + "px";
       }
     }
+    menu.setAttribute("on-screen", "on-screen");
     menu.classList.add("hax-context-visible");
     // text we want to operate this way
     if (this.__activeHover) {
@@ -2335,16 +2586,15 @@ class HaxBody extends SimpleColors {
       menu.style.marginLeft = "";
       this.__typeLock = false;
     }
-    setTimeout(() => {
-      this._keepContextVisible();
-    }, 100);
   }
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu(menu) {
+    menu.removeAttribute("on-screen");
     menu.classList.remove(
       "hax-context-visible",
+      "hax-active-hover",
       "hax-context-pin-top",
       "hax-context-pin-bottom"
     );

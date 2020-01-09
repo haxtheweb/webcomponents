@@ -222,6 +222,12 @@ map-menu * {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  --map-menu-items-list-display: flex;
+  --map-menu-items-list-flex-direction: column;
+  --map-menu-items-list-flex: 1 1 auto;
+  --map-menu-container-display: flex;
+  --map-menu-container-flex-direction: column;
+  --map-menu-container-flex: 1 1 auto;
 }
       `
     ];
@@ -305,20 +311,6 @@ map-menu * {
         height: 64px;
       }
     }
-    site-menu,
-    map-menu,
-    map-menu * {
-      --map-menu-container: {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-      }
-      --map-menu-items-list: {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-      }
-    }
   </style>
 </custom-style>
 <app-drawer-layout responsive-width="900px">
@@ -362,18 +354,21 @@ map-menu * {
   }
   constructor() {
     super();
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    this.HAXCMSThemeSettings.autoScroll = true;
+    setInterval(() => {
+      import("@polymer/app-layout/app-drawer/app-drawer.js");
+      import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    }, 0);
   }
   /**
    * Delay importing site-search until we click to open it directly

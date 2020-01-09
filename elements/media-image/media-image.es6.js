@@ -11,7 +11,7 @@ import { SimpleModalHandler } from "@lrnwebcomponents/simple-modal/lib/simple-mo
  * @demo demo/index.html
  * @customElement media-image
  */
-class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
+class MediaImage extends SchemaBehaviors(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -35,7 +35,7 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
           padding: 20px;
         }
 
-        :host([round]) iron-image {
+        :host([round]) media-image-image {
           border-radius: 50%;
         }
 
@@ -55,11 +55,6 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
           :host([size="small"]) {
             max-width: 25%;
           }
-        }
-
-        iron-image {
-          width: 100%;
-          --iron-image-width: 100%;
         }
 
         :host([offset="left"]) {
@@ -94,8 +89,6 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
   }
   constructor() {
     super();
-    this.modalContent = document.createElement("image-inspector");
-    this.modalContent.noLeft = true;
     this.modalTitle = "";
     this.source = "";
     this.citation = "";
@@ -109,29 +102,13 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
     this.box = false;
     this.offset = "none";
     setTimeout(() => {
-      import("@polymer/iron-image/iron-image.js");
       import("@polymer/iron-icons/iron-icons.js");
-      this.addEventListener(
-        "simple-modal-show",
-        this.__modalShowEvent.bind(this)
-      );
     }, 0);
-  }
-  /**
-   * Only import the definition if they call up the modal because it's a pretty
-   * heavy library tree
-   */
-  __modalShowEvent(e) {
-    import("@lrnwebcomponents/image-inspector/image-inspector.js");
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "caption") {
         this._computeHasCaption(this[propName]);
-      }
-      // ensure pop up matches source url
-      if (propName == "source") {
-        this.modalContent.src = this[propName];
       }
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
         this.__figureLabel = this._hasFigureLabel(
@@ -164,11 +141,12 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
             ></figure-label>
           `
         : ``}
-      <iron-image
+      <media-image-image
         resource="${this.schemaResourceID}-image"
-        src="${this.source}"
+        source="${this.source}"
+        modal-title="${this.modalTitle}"
         alt="${this.alt}"
-      ></iron-image>
+      ></media-image-image>
       <media-image-citation>
         <slot name="citation">
           ${this.citation}
@@ -193,6 +171,9 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
       ...super.properties,
       __figureLabel: {
         type: Boolean
+      },
+      modalTitle: {
+        type: String
       },
       _hasCaption: {
         type: Boolean
@@ -442,6 +423,84 @@ class MediaImage extends SimpleModalHandler(SchemaBehaviors(LitElement)) {
   }
 }
 window.customElements.define(MediaImage.tag, MediaImage);
+
+/**
+ * `media-image-image`
+ * `A simple image presentaiton with minor documented options`
+ * @customElement media-image-image
+ */
+class MediaImageImage extends SimpleModalHandler(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
+        :host(:hover) {
+          cursor: pointer;
+        }
+        iron-image {
+          width: 100%;
+          --iron-image-width: 100%;
+        }
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.modalContent = document.createElement("image-inspector");
+    this.modalContent.noLeft = true;
+    this.modalTitle = "";
+    setTimeout(() => {
+      import("@polymer/iron-image/iron-image.js");
+      this.addEventListener(
+        "simple-modal-show",
+        this.__modalShowEvent.bind(this)
+      );
+    }, 0);
+  }
+  /**
+   * Only import the definition if they call up the modal because it's a pretty
+   * heavy library tree
+   */
+  __modalShowEvent(e) {
+    import("@lrnwebcomponents/image-inspector/image-inspector.js");
+  }
+  render() {
+    return html`
+      <iron-image src="${this.source}" alt="${this.alt}"></iron-image>
+    `;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // ensure pop up matches source url
+      if (propName == "source") {
+        this.modalContent.src = this[propName];
+      }
+    });
+  }
+  static get properties() {
+    return {
+      source: {
+        type: String
+      },
+      alt: {
+        type: String
+      },
+      modalTitle: {
+        type: String,
+        attribute: "modal-title"
+      }
+    };
+  }
+  static get tag() {
+    return "media-image-image";
+  }
+}
+window.customElements.define(MediaImageImage.tag, MediaImageImage);
 
 /**
  * `media-image-citation`

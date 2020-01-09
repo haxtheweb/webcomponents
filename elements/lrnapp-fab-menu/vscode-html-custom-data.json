@@ -3,47 +3,61 @@
   "tags": [
     {
       "name": "lrnapp-fab-menu",
-      "description": "`lrnapp-fab-menu`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnapp-fab-menu`\n`floating action button with menu`\n\nEvents:\n\n  * `opened-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
-        },
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened",
           "valueSet": "v"
         },
         {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
+        },
+        {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
         }
       ]
     },
     {
       "name": "lrnapp-fab-menu",
-      "description": "`lrnapp-fab-menu`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnapp-fab-menu`\n`floating action button with menu`\n\nEvents:\n\n  * `opened-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
-        },
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened",
           "valueSet": "v"
         },
         {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
+        },
+        {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
         }
       ]
     },
     {
       "name": "tag",
-      "attributes": []
+      "description": "Events:\n\n  * `opened-changed` - ",
+      "attributes": [
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
+        }
+      ]
     },
     {
       "name": "demo/index.html",
@@ -83,21 +97,25 @@
     },
     {
       "name": "lrnapp-fab-menu",
-      "description": "`lrnapp-fab-menu`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnapp-fab-menu`\n`floating action button with menu`\n\nEvents:\n\n  * `opened-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - ",
       "attributes": [
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
-        },
         {
           "name": "opened",
           "description": "`opened` {`boolean`} - \n\nProperty: opened",
           "valueSet": "v"
         },
         {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: add"
+        },
+        {
           "name": "disabled",
           "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "onopened-changed",
+          "description": "`opened-changed` - "
         }
       ]
     }

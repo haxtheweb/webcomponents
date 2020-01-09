@@ -3,11 +3,16 @@
   "tags": [
     {
       "name": "image-inspector",
-      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "description": "`image-inspector`\n`Zoom, Rotate, Mirror, Download, and View image`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `no-left` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `noLeft` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
       "attributes": [
         {
           "name": "src",
           "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "no-left",
+          "description": "`no-left` {`boolean`} - \n\nProperty: noLeft\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "degrees",
@@ -21,11 +26,16 @@
     },
     {
       "name": "image-inspector",
-      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "description": "`image-inspector`\n`Zoom, Rotate, Mirror, Download, and View image`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `no-left` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `noLeft` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
       "attributes": [
         {
           "name": "src",
           "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "no-left",
+          "description": "`no-left` {`boolean`} - \n\nProperty: noLeft\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "degrees",
@@ -43,11 +53,16 @@
     },
     {
       "name": "image-inspector",
-      "description": "`image-inspector`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
+      "description": "`image-inspector`\n`Zoom, Rotate, Mirror, Download, and View image`\n\nAttributes:\n\n  * `src` {`string`} - Image source.\n\n  * `no-left` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hover-class` {`string`} - Hover class for button styling\n\nProperties:\n\n  * `src` {`string`} - Image source.\n\n  * `noLeft` {`boolean`} - \n\n  * `degrees` {`number`} - Image rotation\n\n  * `hoverClass` {`string`} - Hover class for button styling",
       "attributes": [
         {
           "name": "src",
           "description": "`src` {`string`} - Image source.\n\nProperty: src"
+        },
+        {
+          "name": "no-left",
+          "description": "`no-left` {`boolean`} - \n\nProperty: noLeft\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "degrees",

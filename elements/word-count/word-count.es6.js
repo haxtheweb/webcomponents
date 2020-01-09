@@ -57,6 +57,9 @@ class WordCount extends LitElement {
   constructor() {
     super();
     this.wordsPrefix = "Word count:";
+  }
+  connectedCallback() {
+    super.connectedCallback();
     this.__observer = new MutationObserver(this._updateWords.bind(this));
     this.__observer.observe(this, {
       attributes: true,

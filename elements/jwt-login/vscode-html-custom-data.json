@@ -3,11 +3,23 @@
   "tags": [
     {
       "name": "jwt-login",
-      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "description": "`jwt-login`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `jwt-login-refresh-error` - \n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logout-url` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `refreshUrl` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirectUrl` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logoutUrl` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
       "attributes": [
         {
+          "name": "refresh-url",
+          "description": "`refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\nProperty: refreshUrl"
+        },
+        {
+          "name": "redirect-url",
+          "description": "`redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\nProperty: redirectUrl"
+        },
+        {
+          "name": "logout-url",
+          "description": "`logout-url` {`string`} - logout url\n\nProperty: logoutUrl"
+        },
+        {
           "name": "url",
-          "description": "`url` {`string`} - url\n\nProperty: url"
+          "description": "`url` {`string`} - url to get the JWT\n\nProperty: url"
         },
         {
           "name": "auto",
@@ -29,6 +41,10 @@
         {
           "name": "jwt",
           "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` - "
         },
         {
           "name": "onjwt-changed",
@@ -46,11 +62,23 @@
     },
     {
       "name": "jwt-login",
-      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "description": "`jwt-login`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `jwt-login-refresh-error` - \n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logout-url` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `refreshUrl` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirectUrl` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logoutUrl` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
       "attributes": [
         {
+          "name": "refresh-url",
+          "description": "`refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\nProperty: refreshUrl"
+        },
+        {
+          "name": "redirect-url",
+          "description": "`redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\nProperty: redirectUrl"
+        },
+        {
+          "name": "logout-url",
+          "description": "`logout-url` {`string`} - logout url\n\nProperty: logoutUrl"
+        },
+        {
           "name": "url",
-          "description": "`url` {`string`} - url\n\nProperty: url"
+          "description": "`url` {`string`} - url to get the JWT\n\nProperty: url"
         },
         {
           "name": "auto",
@@ -72,6 +100,10 @@
         {
           "name": "jwt",
           "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` - "
         },
         {
           "name": "onjwt-changed",
@@ -89,8 +121,12 @@
     },
     {
       "name": "tag",
-      "description": "Events:\n\n  * `jwt-changed` - \n\n  * `jwt-token` - \n\n  * `jwt-logged-in` - ",
+      "description": "Events:\n\n  * `jwt-login-refresh-error` - \n\n  * `jwt-changed` - \n\n  * `jwt-token` - \n\n  * `jwt-logged-in` - ",
       "attributes": [
+        {
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` - "
+        },
         {
           "name": "onjwt-changed",
           "description": "`jwt-changed` - "
@@ -107,11 +143,23 @@
     },
     {
       "name": "jwt-login",
-      "description": "`jwt-login`\n\nEvents:\n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `url` {`string`} - url\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
+      "description": "`jwt-login`\n`a simple element to check for and fetch JWTs`\n\nEvents:\n\n  * `jwt-login-refresh-error` - \n\n  * `jwt-changed` - \n\n  * `jwt-logged-in` - \n\n  * `jwt-token` - \n\nAttributes:\n\n  * `refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logout-url` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around\n\nProperties:\n\n  * `refreshUrl` {`string`} - refreshUrl to get a new JSON web token\n\n  * `redirectUrl` {`string`} - where to redirect for a login token if we REALLY are logged out\n\n  * `logoutUrl` {`string`} - logout url\n\n  * `url` {`string`} - url to get the JWT\n\n  * `auto` {`boolean`} - auto, useful for demos\n\n  * `method` {`string`} - Request method\n\n  * `body` - Optional body, useful when doing posts\n\n  * `key` {`string`} - Key that contains the token in local storage\n\n  * `jwt` {`string`} - JSON Web token to securely pass around",
       "attributes": [
         {
+          "name": "refresh-url",
+          "description": "`refresh-url` {`string`} - refreshUrl to get a new JSON web token\n\nProperty: refreshUrl"
+        },
+        {
+          "name": "redirect-url",
+          "description": "`redirect-url` {`string`} - where to redirect for a login token if we REALLY are logged out\n\nProperty: redirectUrl"
+        },
+        {
+          "name": "logout-url",
+          "description": "`logout-url` {`string`} - logout url\n\nProperty: logoutUrl"
+        },
+        {
           "name": "url",
-          "description": "`url` {`string`} - url\n\nProperty: url"
+          "description": "`url` {`string`} - url to get the JWT\n\nProperty: url"
         },
         {
           "name": "auto",
@@ -133,6 +181,10 @@
         {
           "name": "jwt",
           "description": "`jwt` {`string`} - JSON Web token to securely pass around\n\nProperty: jwt\n\nDefault: null"
+        },
+        {
+          "name": "onjwt-login-refresh-error",
+          "description": "`jwt-login-refresh-error` - "
         },
         {
           "name": "onjwt-changed",

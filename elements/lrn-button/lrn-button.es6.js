@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 
 /**
  * `lrn-button`
@@ -16,6 +16,7 @@ class LrnButton extends LitElement {
   //styles function
   static get styles() {
     return  [
+        materialCssStyles,
       css`
 :host {
     display: block;
@@ -82,13 +83,6 @@ class LrnButton extends LitElement {
   render() {
     return html`
 
-<custom-style>
-<style include="materializecss-styles-colors">
-  :host {
-    @apply --paper-button;
-  }
-</style>
-</custom-style>
 <a tabindex="-1" id="lrnsys-button-link" href="${this.showHref}" data-prefetch-hover="${this.prefetch}" target="${this.target}">
 <paper-button id="button" raised="${this.raised}" class="${this.class} ${this.color} ${this.textColor}" ?disabled="${this.disabled}">
     <div class="inner ${this.innerClass}">
@@ -217,10 +211,6 @@ class LrnButton extends LitElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
     this.href = "#";
     this.label = "";
     this.target = "";
@@ -230,6 +220,12 @@ class LrnButton extends LitElement {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
+      this.addEventListener("focusin", this.tapEventOn);
+      this.addEventListener("focusout", this.tapEventOff);
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
     }, 0);
   }
   firstUpdated() {

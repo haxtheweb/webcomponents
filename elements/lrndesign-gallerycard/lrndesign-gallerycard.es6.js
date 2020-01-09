@@ -1,23 +1,56 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
-`lrndesign-gallerycard`
-A LRN element for presenting a gallery of items as cards
-that can pop up to display more info
-* @demo demo/index.html
-*/
-class LrndesignGallerycard extends PolymerElement {
+ * `lrndesign-gallerycard`
+ * @demo demo/index.html
+ */
+class LrndesignGallerycard extends LitElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/iron-icon/iron-icon.js");
+    this.author = {
+      name: "author",
+      display_name: "Author"
+    };
+    this.title = "Project";
+    this.elevation = 1;
+    this.comments = 0;
+    setTimeout(() => {
+      import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+      import("@polymer/paper-card/paper-card.js");
+      this.addEventListener("mouseenter", this._mouseEnter.bind(this));
+      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
+    }, 0);
   }
-  static get template() {
-    return html`
-      <style>
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        [
+          "size",
+          "image",
+          "icon",
+          "title",
+          "author",
+          "elevation",
+          "comments"
+        ].includes(propName)
+      ) {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            value: this[propName]
+          })
+        );
+      }
+      if (propName == "image" && this[propName] != "") {
+        import("@polymer/iron-image/iron-image.js");
+      }
+      if (propName == "icon" && this[propName] != "") {
+        import("@polymer/iron-icon/iron-icon.js");
+        import("@polymer/iron-icons/iron-icons.js");
+      }
+    });
+  }
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
         }
@@ -127,38 +160,48 @@ class LrndesignGallerycard extends PolymerElement {
         .inline {
           display: inline;
         }
-      </style>
-      <paper-card elevation="[[elevation]]">
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-card elevation="${this.elevation}">
         <div class="card-content card-control-height card-control-center">
           <div class="submission-preview">
-            <iron-icon
-              class="project-icon"
-              icon="[[icon]]"
-              hidden\$="[[!icon]]"
-            ></iron-icon>
-            <iron-image
-              style="width:100%; height:100%; background-color: lightgray;"
-              sizing="cover"
-              preload=""
-              fade=""
-              src="[[image]]"
-              hidden\$="[[!image]]"
-            ></iron-image>
+            ${this.icon
+              ? html`
+                  <iron-icon
+                    class="project-icon"
+                    icon="${this.icon}"
+                  ></iron-icon>
+                `
+              : ``}
+            ${this.image
+              ? html`
+                  <iron-image
+                    style="width:100%; height:100%; background-color: lightgray;"
+                    sizing="cover"
+                    preload=""
+                    fade=""
+                    src="${this.image}"
+                  ></iron-image>
+                `
+              : ``}
           </div>
           <div class="submission-info">
             <div class="divider"></div>
-            <div class="title">[[title]]</div>
+            <div class="title">${this.title}</div>
           </div>
         </div>
         <div class="card-actions">
           <lrndesign-avatar
             id="avatar"
-            label="[[author.name]]"
-            src="[[author.avatar]]"
+            label="${this.author.name}"
+            src="${this.author.avatar}"
           ></lrndesign-avatar>
           <div class="card-action-details">
-            <span class="text-left author">[[author.display_name]]</span>
-            <span class="comments text-right">Comments: [[comments]]</span>
+            <span class="text-left author">${this.author.display_name}</span>
+            <span class="comments text-right">Comments: ${this.comments}</span>
           </div>
         </div>
       </paper-card>
@@ -168,74 +211,51 @@ class LrndesignGallerycard extends PolymerElement {
   static get tag() {
     return "lrndesign-gallerycard";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("mouseenter", this._mouseEnter.bind(this));
-      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("mouseenter", this._mouseEnter.bind(this));
-    this.removeEventListener("mouseleave", this._mouseLeave.bind(this));
-    super.disconnectedCallback();
-  }
   static get properties() {
     return {
       size: {
         type: String,
-        notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Cover image src.
        */
       image: {
         type: String,
-        notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Icon to use if image isn't there.
        */
       icon: {
         type: String,
-        notify: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Title of the gallery item
        */
       title: {
-        type: String,
-        value: "Project",
-        notify: true
+        type: String
       },
       /**
        * Gallery creator
        */
       author: {
-        type: Object,
-        value: { name: "author", display_name: "Author" },
-        notify: true
+        type: Object
       },
       /**
        * Visual elevation of the item off the UI via paper element height
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       },
       /**
        * Number of comments this has
        */
       comments: {
         type: Number,
-        value: 0,
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       }
     };
   }

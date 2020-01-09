@@ -313,9 +313,6 @@ a {
     super();
     this.__cardTags = [];
     this.hoverState = false;
-    // makes this focusable and we normalize the hover / focus state
-    // between CSS, JS and keyboard actions this way
-    this.setAttribute("tabindex", 0);
     setTimeout(() => {
       this.addEventListener("keypress", this._keyPress.bind(this));
       this.addEventListener("mouseover", this._hoverStateOn.bind(this));
@@ -342,9 +339,11 @@ a {
     this.hoverState = true;
   }
   firstUpdated() {
+    // makes this focusable and we normalize the hover / focus state
+    // between CSS, JS and keyboard actions this way
+    this.setAttribute("tabindex", 0);
     // optional support for hoverSource being the default source
     if (!this.hoverSource) {
-      console.log("?");
       this.hoverSource = this.mediaSource;
     }
   }
@@ -364,7 +363,6 @@ a {
       }
       if (propName == "hoverState") {
         this.__source = this[propName] ? this.hoverSource : this.mediaSource;
-        console.log(this.mediaSource);
       }
     });
   }

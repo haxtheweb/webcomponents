@@ -3,13 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SmoothScroll } from "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
 import "@lrnwebcomponents/map-menu/lib/map-menu-container.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `map-menu`
  * `A series of elements that generate a hierarchical menu`
@@ -36,6 +31,11 @@ class MapMenu extends LitElement {
           opacity: 1;
           background-color: transparent;
         }
+        #itemslist {
+          display: var(--map-menu-items-list-display);
+          flex-direction: var(--map-menu-items-list-flex-direction);
+          flex: var(--map-menu-items-list-flex);
+        }
         #activeindicator {
           background: var(--map-menu-active-color);
           transition: all 0.1s ease-in-out;
@@ -44,6 +44,9 @@ class MapMenu extends LitElement {
 
         map-menu-container {
           padding: var(--map-menu-container-padding, 0);
+          display: var(--map-menu-container-display);
+          flex-direction: var(--map-menu-container-flex-direction);
+          flex: var(--map-menu-container-flex);
         }
 
         /* turn default active color if indicator is on */
@@ -64,32 +67,24 @@ class MapMenu extends LitElement {
     this.items = [];
     this.autoScroll = false;
     this.activeIndicator = false;
-    this.addEventListener("link-clicked", this.__linkClickedHandler.bind(this));
-    this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
-    this.addEventListener("active-item", this.__activeItemHandler.bind(this));
-    this.addEventListener(
-      "map-meu-item-hidden-check",
-      this._mapMeuItemHiddenCheckHandler.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "link-clicked",
+        this.__linkClickedHandler.bind(this)
+      );
+      this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
+      this.addEventListener("active-item", this.__activeItemHandler.bind(this));
+      this.addEventListener(
+        "map-meu-item-hidden-check",
+        this._mapMeuItemHiddenCheckHandler.bind(this)
+      );
+    }, 0);
   }
   /**
    * LitElement life cycle - render
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          #itemslist {
-            @apply --map-menu-items-list;
-          }
-          #activeindicator {
-            @apply --map-menu-active-indicator;
-          }
-          map-menu-container {
-            @apply --map-menu-container;
-          }
-        </style>
-      </custom-style>
       <div id="itemslist">
         <map-menu-container>
           <div id="activeindicator"></div>
@@ -141,7 +136,8 @@ class MapMenu extends LitElement {
        * Auto scroll an active element if not in view
        */
       autoScroll: {
-        type: Boolean
+        type: Boolean,
+        attribute: "auto-scroll"
       },
       /**
        * Show active indicator animation
@@ -208,7 +204,7 @@ class MapMenu extends LitElement {
       // if auto scroll enabled then scroll element into view
       if (this.autoScroll) {
         // kick off smooth scroll
-        SmoothScroll.scroll(newValue, {
+        this.__scrollHandler(newValue, {
           duration: 100,
           scrollElement: this
         });
@@ -219,6 +215,66 @@ class MapMenu extends LitElement {
       oldValue.removeAttribute("active");
       this.__updateActiveIndicator(newValue);
     }
+  }
+  __scrollHandler(target, options) {
+    // define default options
+    const defaultOptions = {
+      align: "top",
+      delay: 0,
+      duration: 300,
+      scrollElement: window
+    };
+    // combine default and user defined options
+    const _options = Object.assign({}, defaultOptions, options);
+    // get the bound client
+    const targetPosition = target.getBoundingClientRect();
+    // get the scroll Element position
+    const scrollElementPosition = _options.scrollElement.getBoundingClientRect();
+    // get the height of the scroll Element
+    const scrollElementHeight =
+      _options.scrollElement.getBoundingClientRect().bottom -
+      _options.scrollElement.getBoundingClientRect().top;
+    // get the height of the element target
+    const targetHeight = targetPosition.bottom - targetPosition.top;
+    // get the offset of the scroll Element
+    const startPosition = _options.scrollElement.scrollTop;
+    // get the distance between the top of the scroll and the top of the bounding rectangles
+    let distance =
+      target.getBoundingClientRect().top -
+      _options.scrollElement.getBoundingClientRect().top;
+    /**
+     * @todo weird trick to position the scroll over the target
+     * I'm still not sure why this works :)
+     */
+    distance = distance - scrollElementHeight / 2;
+    // see where the user wants to align the scroll
+    switch (_options.align) {
+      case "center":
+        distance = distance + targetHeight / 2;
+        break;
+      case "bottom":
+        distance = distance + targetHeight;
+        break;
+      default:
+        break;
+    }
+    // record start time
+    let startTime = null;
+    // internal animation function
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      let timeElapsed = currentTime - startTime;
+      let run = ease(timeElapsed, startPosition, distance, _options.duration);
+      _options.scrollElement.scrollTop = run;
+      if (timeElapsed < _options.duration) requestAnimationFrame(animation);
+    }
+    // define a ease-in-out
+    function ease(t, b, c, d) {
+      if ((t /= d / 2) < 1) return (c / 2) * t * t + b;
+      return (-c / 2) * (--t * (t - 2) - 1) + b;
+    }
+    // start animation
+    requestAnimationFrame(animation);
   }
 
   _manifestChanged(newValue) {

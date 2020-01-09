@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "map-menu",
-      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
+      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
       "attributes": [
         {
           "name": "manifest",
@@ -35,8 +35,8 @@
           "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
-          "name": "autoScroll",
-          "description": "`autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
+          "name": "auto-scroll",
+          "description": "`auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -56,7 +56,7 @@
     },
     {
       "name": "map-menu",
-      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
+      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
       "attributes": [
         {
           "name": "manifest",
@@ -88,8 +88,8 @@
           "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
-          "name": "autoScroll",
-          "description": "`autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
+          "name": "auto-scroll",
+          "description": "`auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -302,7 +302,7 @@
     },
     {
       "name": "map-menu",
-      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
+      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` - \n\n  * `map-menu-item-hidden-check` - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
       "attributes": [
         {
           "name": "manifest",
@@ -334,8 +334,8 @@
           "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
         },
         {
-          "name": "autoScroll",
-          "description": "`autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
+          "name": "auto-scroll",
+          "description": "`auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
           "valueSet": "v"
         },
         {
