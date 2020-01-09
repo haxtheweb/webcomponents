@@ -1890,7 +1890,7 @@ class HAXCMSSiteListing extends PolymerElement {
               bubbles: true,
               cancelable: false,
               detail: {
-                redirect: false
+                redirect: true
               }
             })
           );
