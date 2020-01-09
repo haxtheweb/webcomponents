@@ -345,7 +345,8 @@ class Store {
   }
 
   get isLoggedIn() {
-    if (this.jwt) {
+    // account for keypair storage issue since its a string bin
+    if (this.jwt && this.jwt != "null") {
       return true;
     }
     return false;
