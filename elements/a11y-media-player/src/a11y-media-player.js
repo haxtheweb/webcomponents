@@ -162,11 +162,20 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {array} array of cues
    */
   get captionCues() {
-    let cues =
-      this.captionsTrack && this.captionsTrack.activeCues
-        ? this.captionsTrack.activeCues
-        : [];
-    console.log("this.captionCues", cues, this.captionsTrack);
+    let cues = !this.captionsTrack
+      ? []
+      : this.isYoutube
+      ? Object.keys(this.captionsTrack.cues).map(key => {
+          let cue = this.captionsTrack.cues[key];
+          if (
+            cue.startTime <= this.currentTime &&
+            cue.endTime >= this.currentTime
+          )
+            return cue;
+          return {};
+        })
+      : this.captionsTrack.activeCues;
+    console.log(cues);
     return cues;
   }
 
@@ -678,12 +687,6 @@ class A11yMediaPlayer extends SimpleColors {
    * updates track mode & `captionsTrack` when `__captionsOption` changes
    */
   _captionsOptionChanged() {
-    console.log(
-      "_captionsOptionChanged",
-      this.captionsTrack,
-      this.cc,
-      this.loadedTracks
-    );
     this.cc = this.__captionsOption > -1;
     Object.keys(this.loadedTracks.textTracks).forEach(key => {
       let showing = parseInt(key) == parseInt(this.__captionsOption);
@@ -1010,12 +1013,6 @@ class A11yMediaPlayer extends SimpleColors {
     id = parseInt(id);
     if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
     this.cc = id > -1;
-    console.log(
-      "selectCaptionByKey",
-      id,
-      this.captionsTrack,
-      this.loadedTracks.textTracks
-    );
   }
 
   /**
@@ -1317,12 +1314,6 @@ class A11yMediaPlayer extends SimpleColors {
    * loads a track's cue metadata
    */
   _addSourcesAndTracks(media) {
-    console.log(
-      "_addSourcesAndTracks",
-      media,
-      this.loadedTracks,
-      this.captionsTrack
-    );
     media.style.width = "100%";
     media.style.maxWidth = "100%";
     this.loadedTracks.textTracks.onremovetrack = e => {
@@ -1330,7 +1321,6 @@ class A11yMediaPlayer extends SimpleColors {
       this.__cues = this.cues.filter(cue => cue.track !== e.track);
     };
     this.loadedTracks.textTracks.onaddtrack = e => {
-      console.log("onaddtrack", this.captionsTrack, e.track);
       if (this.captionsTrack === null) this.captionsTrack = e.track;
       e.track.mode = "hidden";
       let loadCueData = setInterval(() => {
@@ -1357,12 +1347,6 @@ class A11yMediaPlayer extends SimpleColors {
         }) || 0;
     this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
-    console.log(
-      " _addSourcesAndTracks done",
-      this.captionsTrack,
-      defaultTrack,
-      this.loadedTracks.textTracks
-    );
     this._handleTimeUpdate();
   }
 

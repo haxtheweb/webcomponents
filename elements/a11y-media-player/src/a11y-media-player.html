@@ -28,7 +28,9 @@
         class="screen-only" 
         ?hidden="${!this.showCustomCaptions}">
         <div id="cc-text">
-          ${Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text}`)}
+          ${!this.captionCues ? `` 
+            : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
+          }
         </div>
       </div>
     </div>
