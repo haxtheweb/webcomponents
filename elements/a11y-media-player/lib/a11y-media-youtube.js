@@ -94,9 +94,15 @@ class A11yMediaYoutube extends LitElement {
         type: String
       },
       /**
-       * iframe object
+       * video object
        */
-      __iframe: {
+      __video: {
+        type: Object
+      },
+      /**
+       * youtube object
+       */
+      __yt: {
         type: Object
       }
     };
@@ -114,9 +120,28 @@ class A11yMediaYoutube extends LitElement {
     this.muted = false;
     this.tracks = [];
     this.width = "100%";
-    this.__api = null;
-    this.__iframe = null;
+    this.__video = null;
+    this.__yt = null;
     this.volume = 7;
+  }
+  /**
+   * single instance of YouTube iframe script
+   * @readonly
+   * @returns {object} script tag
+   */
+  get api() {
+    let scriptid = "a11y-media-youtube-api",
+      ytapi = window.document.getElementById(scriptid);
+
+    /* only add if script doesn't already exist */
+    if (!ytapi) {
+      ytapi = document.createElement("script");
+      ytapi.setAttribute("id", scriptid);
+      ytapi.setAttribute("src", "https://www.youtube.com/iframe_api");
+      ytapi.setAttribute("type", "text/javascript");
+      window.document.body.appendChild(ytapi);
+    }
+    return ytapi;
   }
 
   /**
@@ -125,10 +150,8 @@ class A11yMediaYoutube extends LitElement {
    * @returns {number} seconds of buffered media
    */
   get buffered() {
-    return this.__iframe &&
-      this.__iframe.buffered &&
-      this.__iframe.buffered.length > 0
-      ? this.__iframe.buffered.end(0)
+    return this.__yt && this.__yt.buffered && this.__yt.buffered.length > 0
+      ? this.__yt.buffered.end(0)
       : -1;
   }
 
@@ -138,8 +161,8 @@ class A11yMediaYoutube extends LitElement {
    * @returns {number} time in seconds
    */
   get currentTime() {
-    return this.__iframe && this.__iframe.getCurrentTime
-      ? this.__iframe.getCurrentTime()
+    return this.__yt && this.__yt.getCurrentTime
+      ? this.__yt.getCurrentTime()
       : undefined;
   }
 
@@ -149,9 +172,7 @@ class A11yMediaYoutube extends LitElement {
    * @returns {number} duration in seconds
    */
   get duration() {
-    return this.__iframe && this.__iframe.getDuration
-      ? this.__iframe.getDuration()
-      : 0;
+    return this.__yt && this.__yt.getDuration ? this.__yt.getDuration() : 0;
   }
 
   /**
@@ -160,8 +181,8 @@ class A11yMediaYoutube extends LitElement {
    * @returns {boolean}
    */
   get paused() {
-    return this.__iframe && this.__iframe.getPlayerState
-      ? this.__iframe.getPlayerState() !== 1
+    return this.__yt && this.__yt.getPlayerState
+      ? this.__yt.getPlayerState() !== 1
       : true;
   }
 
@@ -172,13 +193,13 @@ class A11yMediaYoutube extends LitElement {
    */
   get seekable() {
     let seekable = { length: 0 };
-    if (this.__iframe && this.__iframe.duration && this.__iframe.duration > 0) {
+    if (this.__yt && this.__yt.duration && this.__yt.duration > 0) {
       seekable.length = 1;
-      seekable.start = index => this.cue.startSeconds || 0;
+      seekable.start = index => this.videoData.startSeconds || 0;
       seekable.end = index =>
-        this.cue.endSeconds
-          ? Math.min(this.cue.endSeconds, this.__iframe.duration)
-          : this.__iframe.duration;
+        this.videoData.endSeconds
+          ? Math.min(this.videoData.endSeconds, this.__yt.duration)
+          : this.__yt.duration;
     }
     return seekable;
   }
@@ -188,12 +209,12 @@ class A11yMediaYoutube extends LitElement {
    * @readonly
    * @returns {object} and object with videoId, startSeconds, and stopSeconds
    */
-  get cue() {
-    let cue = {};
+  get videoData() {
+    let videoData = {};
     if (this.videoId) {
       let vdata = this.videoId.split(/[\?&]/);
-      cue.videoId = vdata[0];
-      cue.startSeconds = 0;
+      videoData.videoId = vdata[0];
+      videoData.startSeconds = 0;
       for (let i = 1; i < vdata.length; i++) {
         let param = vdata[i].split("=");
         if (param[0] === "t") {
@@ -207,65 +228,104 @@ class A11yMediaYoutube extends LitElement {
             h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
             m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
             s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0;
-          cue.startSeconds = Math.max(0, parseInt(h + m + s));
+          videoData.startSeconds = Math.max(0, parseInt(h + m + s));
         } else if (param[0] === "start") {
-          cue.startSeconds = Math.max(0, parseInt(param[1]));
+          videoData.startSeconds = Math.max(0, parseInt(param[1]));
         } else if (param[0] === "end") {
-          cue.endSeconds = Math.max(cue.startSeconds, parseInt(param[1]));
+          videoData.endSeconds = Math.max(
+            videoData.startSeconds,
+            parseInt(param[1])
+          );
         }
       }
     }
-    return cue;
+    return videoData;
+  }
+
+  /**
+   * initializes singleton to manage a11y-manager-youtube instances
+   */
+
+  init() {
+    window.A11yMediaYoutubeManager = window.A11yMediaYoutubeManager || {
+      /* gets iframes for all  */
+      getIframes: () => {
+        window.A11yMediaYoutubeManager.queue.forEach(
+          instance => (instance.__yt = instance._getIframe())
+        );
+        window.A11yMediaYoutubeManager.queue = [];
+      },
+      queue: [] //array of instances waiting for iframes
+    };
+    window.A11yMediaYoutubeManager.queue.push(this);
+    /* checks for api and either uses it to get iframes or gets it */
+    if (window.A11yMediaYoutubeManager.api) {
+      if (window.YT) window.A11yMediaYoutubeManager.getIframes();
+    } else {
+      (window.onYouTubeIframeAPIReady = e =>
+        window.A11yMediaYoutubeManager.getIframes()),
+        (window.A11yMediaYoutubeManager.api = this.api);
+    }
   }
 
   /**
    * @param {map} changedProperties the properties that have changed
    */
   updated(changedProperties) {
+    let iframeChanged = false,
+      videoChanged = false;
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "videoId" && this.videoId && !this.__yt) this.init();
+      if (["id", "height", "width"].includes(propName) && this.__yt)
+        iframeChanged = true;
+
       if (
-        ["id", "autoplay", "height", "width", "videoId", "preload"].includes(
-          propName
-        )
+        ["autoplay", "videoId", "preload", "__video"].includes(propName) &&
+        this.__video
       )
-        this.__iframe = this.newIframe();
+        videoChanged = true;
+
       if (propName === "muted") this.setMute(this.muted);
       if (propName === "loop") this.setLoop(this.loop);
       if (propName === "currentTime") this.seek(this.currentTime);
       if (propName === "volume") this.setVolume(this.volume);
     });
+    if (iframeChanged) this.__yt = this._getIframe();
+    if (videoChanged) this._loadVideo();
   }
-
+  /**
+   * plays video
+   */
   play() {
-    if (this.__iframe && this.__iframe.playVideo) this.__iframe.playVideo();
+    if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
   }
 
+  /**
+   * sets playbackRate function
+   * @param {number} playback rate X normal speed
+   */
   playbackRate(value) {
-    if (this.__iframe && this.__iframe.playVideo)
-      this.__iframe.setPlaybackRate(value);
+    if (this.__yt && this.__yt.playVideo) this.__yt.setPlaybackRate(value);
   }
 
+  /**
+   * pauses video
+   */
   pause() {
-    if (this.__iframe && this.__iframe.pauseVideo) this.__iframe.pauseVideo();
+    if (this.__yt && this.__yt.pauseVideo) this.__yt.pauseVideo();
   }
 
-  newIframe() {
-    console.log("newIframe", window.YT, this.videoId, this.__api);
-    if (window.YT) {
-      return this._loadVideo();
-    } else if (this.videoId) {
-      this._loadApi();
-    }
-    return null;
-  }
-
+  /**
+   * seeks video
+   * @param {number} time in seconds
+   */
   seek(time = 0) {
     let root = this;
-    if (this.__iframe && this.__iframe.seekTo) {
-      this.__iframe.seekTo(time);
+    if (this.__yt && this.__yt.seekTo) {
+      this.__yt.seekTo(time);
       if (this.paused) {
         let seekupdate = setInterval(() => {
-          if (Math.abs(root.__iframe.getCurrentTime() - time) < 1) {
+          if (Math.abs(root.__yt.getCurrentTime() - time) < 1) {
             document.dispatchEvent(
               new CustomEvent("timeupdate", { detail: root })
             );
@@ -276,82 +336,46 @@ class A11yMediaYoutube extends LitElement {
     }
   }
 
+  /**
+   * sets video looping
+   * @param {boolean} whether video should loop after playback finishes
+   */
   setLoop(loop) {
-    if (this.__iframe && this.__iframe.setLoop) this.media.setLoop(loop);
-  }
-
-  setMute(muted) {
-    if (this.__iframe) {
-      if (muted && this.__iframe.mute) {
-        this.__iframe.mute();
-      } else if (this.__iframe.unMute) {
-        this.__iframe.unMute();
-      }
-    }
-  }
-
-  setVolume(volume = 7) {
-    if (this.__iframe) this.__iframe.setVolume(volume * 10);
-  }
-
-  _loadApi() {
-    /**
-     * Fires when YouTube API is ready
-     * @event youtube-api-ready
-     */
-    window.onYouTubeIframeAPIReady = () => {
-      window.dispatchEvent(
-        new CustomEvent("youtube-api-ready", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: window.YT
-        })
-      );
-      console.log("youtube-api-ready", this, window);
-      if (!this.__iframe) this.__iframe = this.newIframe();
-    };
-
-    if (!window.YT) {
-      if (!this.__api) {
-        let scriptid = "a11y-media-youtube-api",
-          ytapi = document.getElementById(scriptid);
-        console.log(ytapi);
-        if (ytapi) {
-          this.__api = ytapi;
-        } else {
-          this.__api = document.createElement("script");
-          this.__api.setAttribute("id", scriptid);
-          this.__api.setAttribute("src", "https://www.youtube.com/iframe_api");
-          this.__api.setAttribute("type", "text/javascript");
-          window.document.body.appendChild(this.__api);
-        }
-      }
-    } else if (!this.__iframe) {
-      console.log("youtube-api-ready already", this, window);
-      this.__iframe = this.newIframe();
-    }
-    console.log(
-      "_loadApi",
-      window.YT,
-      this.__api,
-      this,
-      this.__iframe,
-      !this.__iframe
-    );
+    if (this.__yt && this.__yt.setLoop) this.media.setLoop(loop);
   }
 
   /**
-   * cues video (and optionally preloads) from cue data object {videoId, optional start, optional start}
-   *
+   * mutes or unmutes video
+   * @param {boolean} whether the video should be muted
+   */
+  setMute(muted) {
+    if (this.__yt) {
+      if (muted && this.__yt.mute) {
+        this.__yt.mute();
+      } else if (this.__yt.unMute) {
+        this.__yt.unMute();
+      }
+    }
+  }
+
+  /**
+   * sets video volume
+   * @param {number} volume from 1 - 10
+   */
+  setVolume(volume = 7) {
+    if (this.__yt) this.__yt.setVolume(volume * 10);
+  }
+
+  /**
+   * loads video (and optionally preloads) from video data object {videoId, optional start, optional start}
    * @param {event} e
    */
-  _cueVideo(e) {
+  _loadVideo(preload = this.preload) {
     let ctr = 0,
       checkDuration;
-    e.target.cueVideoById(this.cue);
+    this.__video.cueVideoById(this.videoData);
 
-    if (this.preload !== "none") {
+    if (preload !== "none") {
       this.setMute(true);
       this.play();
       checkDuration = setInterval(() => {
@@ -367,13 +391,13 @@ class A11yMediaYoutube extends LitElement {
     }
   }
   _getCaptions(e) {
-    console.log(player.getOptions("captions"));
+    console.log(this.__iframe.getOptions("captions"));
   }
 
-  _removeVideo() {
-    if (this.__iframe) {
-      this.__iframe.remove;
-      this.__iframe.destroy();
+  _removeIframe() {
+    if (this.__yt) {
+      this.__yt.remove;
+      this.__yt.destroy();
     }
     this.innerHTML = "";
   }
@@ -399,23 +423,21 @@ class A11yMediaYoutube extends LitElement {
    *
    * @returns {object} the YouTube player object
    */
-  _loadVideo() {
-    //get unique id for each youtube iframe
-    // function to create and init iframe
+  _getIframe() {
     let root = this,
       div = document.createElement("div"),
       divid = `container-${this.id}`,
-      iframe = null;
+      youtube = null;
     document.body.appendChild(div);
     div.setAttribute("id", divid);
-    this._removeVideo();
-    if (this.cue.videoId) {
-      let cueVideo = e => root._cueVideo(e),
-        getCaptions = e => root._getCaptions(e);
-      iframe = new YT.Player(divid, {
+
+    if (this.videoData.videoId) {
+      let getCaptions = e => root._getCaptions(e),
+        setYT = e => (this.__video = e.target);
+      youtube = new YT.Player(divid, {
         width: root.width,
         height: root.height,
-        events: { onReady: cueVideo, onApiChange: getCaptions },
+        events: { onReady: setYT, onApiChange: getCaptions },
         playerVars: {
           color: "white",
           controls: 0,
@@ -430,21 +452,21 @@ class A11yMediaYoutube extends LitElement {
           widget_referrer: window.location.href
         }
       });
-      iframe.timeupdate;
-      iframe.addEventListener("onStateChange", () => {
+      youtube.timeupdate;
+      youtube.addEventListener("onStateChange", () => {
         if (root.paused) {
-          clearInterval(iframe.timeupdate);
+          clearInterval(youtube.timeupdate);
         } else {
-          iframe.timeupdate = setInterval(() => root._handleTimeupdate(), 1);
+          youtube.timeupdate = setInterval(() => root._handleTimeupdate(), 1);
         }
       });
-      this.appendChild(iframe.getIframe());
+      this.appendChild(youtube.getIframe());
+      div.remove();
     }
-    console.log("_loadVideo", this, iframe, this.cue);
-    return iframe;
+    return youtube;
   }
   disconnectedCallback() {
-    this._removeVideo();
+    this._removeIframe();
     super.disconnectedCallback();
   }
 }

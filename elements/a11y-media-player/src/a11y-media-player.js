@@ -478,14 +478,21 @@ class A11yMediaPlayer extends SimpleColors {
       height = audio ? "60px" : "unset",
       paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
       thumbnail =
-        this.thumbnailSrc && (this.youtubeId || this.audioOnly)
-          ? this.thumbnailSrc
-          : this.youtubeId
-          ? `https://img.youtube.com/vi/${this.youtubeId.replace(
-              /[\?&].*/
-            )}/hqdefault.jpg`
-          : "none";
-    return `height:${height};padding-top:${paddingTop};background-image:url(${thumbnail});`;
+        this.poster && (this.isYoutube || this.audioOnly)
+          ? `background-image:url(${this.poster});`
+          : ``;
+    return `height:${height};padding-top:${paddingTop};${thumbnail}`;
+  }
+
+  get poster() {
+    if (this.thumbnailSrc) {
+      return this.thumbnailSrc;
+    } else if (this.youtubeId) {
+      return `https://img.youtube.com/vi/${this.youtubeId.replace(
+        /[\?&].*/
+      )}/hqdefault.jpg`;
+    }
+    return null;
   }
 
   /**
@@ -1536,7 +1543,7 @@ class A11yMediaPlayer extends SimpleColors {
     setAttr("lang", this.mediaLang);
     setAttr("loop");
     setAttr("playbackRate");
-    setAttr("poster", this.thumbnailSrc && this.isYoutube);
+    setAttr("poster", !this.isYoutube ? this.thumbnailSrc : false);
     if (propName === "__loadedTracks")
       this._addSourcesAndTracks(this.loadedTracks);
     if (["media", "muted"].includes(propName)) this._handleMuteChanged();

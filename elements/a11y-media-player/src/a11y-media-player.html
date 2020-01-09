@@ -17,7 +17,7 @@
       </div>
       <a11y-media-youtube
         id="youtube-${this.id}"
-        class="${this.progress ? `progress` : ``}" 
+        class="${this.progress > 0 || this.__seeking ? `progress progress-${this.progress}` : ``}" 
         lang="${this.mediaLang}"
         video-id="${this.youtubeId}"
         @timeupdate="${this._handleTimeUpdate}"
@@ -314,7 +314,7 @@
   </div>
   <div class="print-only media-caption">${this.printCaption}</div>
 </div>
-<img id="printthumb" aria-hidden="true" src="${ifDefined(this.thumbnailSrc)}" />
+<img id="printthumb" aria-hidden="true" src="${ifDefined(this.poster)}" />
 <div id="outertranscript" ?hidden="${this.standAlone}">
   <div id="innertranscript" ?hidden="${this.hideTranscript}">
     <div id="searchbar">

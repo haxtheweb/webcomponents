@@ -675,7 +675,9 @@ class A11yMediaPlayer extends SimpleColors {
             </div>
             <a11y-media-youtube
               id="youtube-${this.id}"
-              class="${this.progress ? `progress` : ``}"
+              class="${this.progress > 0 || this.__seeking
+                ? `progress progress-${this.progress}`
+                : ``}"
               lang="${this.mediaLang}"
               video-id="${this.youtubeId}"
               @timeupdate="${this._handleTimeUpdate}"
@@ -1045,11 +1047,7 @@ class A11yMediaPlayer extends SimpleColors {
         </div>
         <div class="print-only media-caption">${this.printCaption}</div>
       </div>
-      <img
-        id="printthumb"
-        aria-hidden="true"
-        src="${ifDefined(this.thumbnailSrc)}"
-      />
+      <img id="printthumb" aria-hidden="true" src="${ifDefined(this.poster)}" />
       <div id="outertranscript" ?hidden="${this.standAlone}">
         <div id="innertranscript" ?hidden="${this.hideTranscript}">
           <div id="searchbar">
@@ -1248,7 +1246,7 @@ class A11yMediaPlayer extends SimpleColors {
         type: Boolean
       },
       /**
-       * show closed captions
+       * current time for video playback
        */
       currentTime: {
         type: Number
@@ -1410,11 +1408,19 @@ class A11yMediaPlayer extends SimpleColors {
         type: Boolean
       },
       /**
-       * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
+       * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
        */
       playbackRate: {
         attribute: "playback-rate",
         type: Number
+      },
+      /**
+       * Preload `none`, `metadata`, or `auto`.
+       */
+      preload: {
+        attribute: "preload",
+        type: String,
+        reflect: true
       },
       /**
        * Size of the a11y media element for responsive styling
@@ -1991,14 +1997,21 @@ class A11yMediaPlayer extends SimpleColors {
       height = audio ? "60px" : "unset",
       paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
       thumbnail =
-        this.thumbnailSrc && (this.youtubeId || this.audioOnly)
-          ? this.thumbnailSrc
-          : this.youtubeId
-          ? `https://img.youtube.com/vi/${this.youtubeId.replace(
-              /[\?&].*/
-            )}/hqdefault.jpg`
-          : "none";
-    return `height:${height};padding-top:${paddingTop};background-image:url(${thumbnail});`;
+        this.poster && (this.isYoutube || this.audioOnly)
+          ? `background-image:url(${this.poster});`
+          : ``;
+    return `height:${height};padding-top:${paddingTop};${thumbnail}`;
+  }
+
+  get poster() {
+    if (this.thumbnailSrc) {
+      return this.thumbnailSrc;
+    } else if (this.youtubeId) {
+      return `https://img.youtube.com/vi/${this.youtubeId.replace(
+        /[\?&].*/
+      )}/hqdefault.jpg`;
+    }
+    return null;
   }
 
   /**
@@ -3049,7 +3062,7 @@ class A11yMediaPlayer extends SimpleColors {
     setAttr("lang", this.mediaLang);
     setAttr("loop");
     setAttr("playbackRate");
-    setAttr("poster", this.thumbnailSrc && this.isYoutube);
+    setAttr("poster", !this.isYoutube ? this.thumbnailSrc : false);
     if (propName === "__loadedTracks")
       this._addSourcesAndTracks(this.loadedTracks);
     if (["media", "muted"].includes(propName)) this._handleMuteChanged();
