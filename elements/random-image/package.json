@@ -16,7 +16,7 @@
       "hax": "src/random-image-hax.json"
     }
   },
-  "version": "2.3.6",
+  "version": "2.4.0",
   "description": "Start of random-image",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
     "lit-element": "2.2.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.6",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

@@ -16,7 +16,7 @@
       "hax": "src/air-horn-hax.json"
     }
   },
-  "version": "2.3.4",
+  "version": "2.4.0",
   "description": "demonstrative purposes via meme",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.1.1",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

@@ -11,7 +11,7 @@
       "js": "src/grid-plate.js"
     }
   },
-  "version": "2.3.7",
+  "version": "2.4.0",
   "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",
@@ -35,8 +35,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-grid": "^2.3.6",
-    "@lrnwebcomponents/simple-colors": "^2.3.7",
+    "@lrnwebcomponents/responsive-grid": "^2.4.0",
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -44,8 +44,8 @@
     "lit-element": "2.2.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.3.7",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

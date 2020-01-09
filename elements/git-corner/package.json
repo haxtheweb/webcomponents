@@ -16,7 +16,7 @@
       "hax": "src/git-corner-hax.json"
     }
   },
-  "version": "2.3.4",
+  "version": "2.4.0",
   "description": "display a quick link with styling to a repo to help with contributions",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "lit-element": "2.2.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",

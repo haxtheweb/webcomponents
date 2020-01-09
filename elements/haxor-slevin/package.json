@@ -16,7 +16,7 @@
       "hax": "src/haxor-slevin-hax.json"
     }
   },
-  "version": "2.3.7",
+  "version": "2.4.0",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.3.7",
-    "@lrnwebcomponents/simple-blog-card": "^2.3.7",
-    "@lrnwebcomponents/simple-colors": "^2.3.7",
-    "@lrnwebcomponents/social-share-link": "^2.3.6",
+    "@lrnwebcomponents/haxcms-elements": "^2.4.0",
+    "@lrnwebcomponents/simple-blog-card": "^2.4.0",
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
+    "@lrnwebcomponents/social-share-link": "^2.4.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-image": "^3.0.1",

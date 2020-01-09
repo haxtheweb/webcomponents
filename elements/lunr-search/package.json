@@ -16,7 +16,7 @@
       "hax": "src/lunr-search-hax.json"
     }
   },
-  "version": "2.3.4",
+  "version": "2.4.0",
   "description": "LunrJS search element",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.1.1",
+    "@lrnwebcomponents/es-global-bridge": "^2.4.0",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/polymer": "^3.3.1",
     "lunr": "^2.3.6"

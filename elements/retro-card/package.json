@@ -16,7 +16,7 @@
       "hax": "src/retro-card-hax.json"
     }
   },
-  "version": "2.3.7",
+  "version": "2.4.0",
   "description": "Simple card in a cool retro design",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.3.7",
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
     "lit-element": "2.2.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.1.1",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.0",
