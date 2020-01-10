@@ -102,8 +102,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
         // this is a unique case since it's server side generated in HAXCMS
         let script = document.createElement("script");
         // IF we're in a live environment this will always be 2 levels back
-        // @todo may want to make this more flexible
-        script.src = `../../haxcms-jwt`;
+        script.src = `../../system/api/connectionSettings`;
         fetch(script.src).then(response => {
           if (response.status != 404) {
             document.documentElement.appendChild(script);
