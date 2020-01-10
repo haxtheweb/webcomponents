@@ -10,7 +10,7 @@
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @button-click="${e => this.togglePlay()}"
         ?audio-only="${this.audioOnly}"
-        ?disabled="${this.audioNoThumb || (!this.__duration > 0)}">
+        ?disabled="${this.audioNoThumb}">
       </a11y-media-play-button>
       <div id="html5">
         <slot></slot>
@@ -21,6 +21,7 @@
         lang="${this.mediaLang}"
         video-id="${this.youtubeId}"
         @timeupdate="${this._handleTimeUpdate}"
+        .preload="${this.preload}"
         ?hidden=${!this.isYoutube}>
       </a11y-media-youtube>
       <div id="cc-custom" 
@@ -60,22 +61,22 @@
       <a11y-media-button
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
-        ?disabled="${this.disableSeek}"
-        ?hidden="${this.responsiveSize === 'xs'}"
+        ?disabled="${this.disableSeek || this._getRewindDisabled()}"
+        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
-        ?disabled="${this.disableSeek}"
-        ?hidden="${this.responsiveSize === 'xs'}"
+        ?disabled="${this.disableSeek || this._getForwardDisabled() }"
+        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
         ?disabled="${this.disableSeek}"
-        ?hidden="${this.responsiveSize === 'xs'}"
+        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
         @click="${e => this.restart()}"
       ></a11y-media-button>
       <div id="volume-and-mute"

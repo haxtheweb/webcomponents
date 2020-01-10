@@ -175,7 +175,6 @@ class A11yMediaPlayer extends SimpleColors {
           return {};
         })
       : this.captionsTrack.activeCues;
-    console.log(cues);
     return cues;
   }
 
@@ -449,6 +448,17 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * gets media media time if set
+   * @readonly
+   * @returns {number} end time in seconds
+   */
+  get mediaForward() {
+    return this.mediaSeekable && this.media.seekable.end(0)
+      ? this.media.seekable.end(0)
+      : false;
+  }
+
+  /**
    * whether media has a seekable time range
    * @readonly
    * @returns {boolean}
@@ -500,7 +510,8 @@ class A11yMediaPlayer extends SimpleColors {
       return this.thumbnailSrc;
     } else if (this.youtubeId) {
       return `https://img.youtube.com/vi/${this.youtubeId.replace(
-        /[\?&].*/
+        /[\?&].*/,
+        ""
       )}/hqdefault.jpg`;
     }
     return null;
@@ -978,16 +989,43 @@ class A11yMediaPlayer extends SimpleColors {
     );
   }
 
+  _getRewindDisabled(time = this.currentTime, equal = true) {
+    console.log(
+      "_getRewindDisabled",
+      time,
+      this.mediaStart,
+      !time || !this.mediaStart || equal
+        ? time <= this.mediaStart
+        : time < this.mediaStart
+    );
+    return !time || !this.mediaStart || equal
+      ? time <= this.mediaStart
+      : time < this.mediaStart;
+  }
+
+  _getForwardDisabled(time = this.currentTime, equal = false) {
+    console.log(
+      "_getForwardDisabled",
+      time,
+      this.duration,
+      !time || !this.duration || equal
+        ? time >= this.duration
+        : time > this.duration
+    );
+    return !time || !this.duration || equal
+      ? time >= this.duration
+      : time > this.duration;
+  }
+
   /**
    * seeks to a specific time
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
     if (
-      (this.mediaSeekable &&
-        time >= this.mediaStart &&
-        time <= this.mediaEnd) ||
-      this.duration
+      this.mediaSeekable &&
+      !this._getRewindDisabled(time, false) &&
+      !this._getForwardDisabled(time, false)
     ) {
       this.media.seek(time);
       this._handleTimeUpdate();
@@ -1455,7 +1493,7 @@ class A11yMediaPlayer extends SimpleColors {
     /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
       (this.mediaEnd && this.mediaEnd <= this.currentTime) ||
-      this.mediaStart >= this.duration
+      this.mediaStart >= this.currentTime
     ) {
       this.stop();
       this.__playing = false;

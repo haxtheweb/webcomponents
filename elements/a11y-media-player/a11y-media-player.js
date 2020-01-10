@@ -47,6 +47,9 @@ class A11yMediaPlayer extends SimpleColors {
           --a11y-media-faded-accent-color: var(
             --simple-colors-default-theme-accent-8
           );
+          --a11y-media-disabled-color: var(
+            --simple-colors-default-theme-grey-5
+          );
           --paper-toast-color: var(--simple-colors-default-theme-grey-11);
           --paper-toast-background-color: var(
             --simple-colors-default-theme-grey-2
@@ -63,6 +66,7 @@ class A11yMediaPlayer extends SimpleColors {
           --a11y-media-button-bg-color: var(--a11y-media-bg-color);
           --a11y-media-button-hover-color: var(--a11y-media-accent-color);
           --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
+          --a11y-media-button-disabled-color: var(--a11y-media-disabled-color);
           --a11y-media-button-toggle-color: var(
             --a11y-media-faded-accent-color
           );
@@ -78,9 +82,9 @@ class A11yMediaPlayer extends SimpleColors {
 
           --paper-slider-active-color: var(--a11y-media-accent-color);
           --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
-          --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
-          --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
-          --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
+          --paper-slider-pin-color: var(--a11y-media-bg-color);
+          --paper-slider-pin-start-color: var(--a11y-media-bg-color);
+          --paper-slider-pin-end-color: var(--a11y-media-bg-color);
           --paper-slider-knob-color: var(--a11y-media-accent-color);
           --paper-slider-knob-start-color: var(--a11y-media-accent-color);
           --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
@@ -658,7 +662,7 @@ class A11yMediaPlayer extends SimpleColors {
               )}"
               @button-click="${e => this.togglePlay()}"
               ?audio-only="${this.audioOnly}"
-              ?disabled="${this.audioNoThumb || !this.__duration > 0}"
+              ?disabled="${this.audioNoThumb}"
             >
             </a11y-media-play-button>
             <div id="html5">
@@ -672,6 +676,7 @@ class A11yMediaPlayer extends SimpleColors {
               lang="${this.mediaLang}"
               video-id="${this.youtubeId}"
               @timeupdate="${this._handleTimeUpdate}"
+              .preload="${this.preload}"
               ?hidden=${!this.isYoutube}
             >
             </a11y-media-youtube>
@@ -730,22 +735,22 @@ class A11yMediaPlayer extends SimpleColors {
             <a11y-media-button
               icon="${this._getLocal(this.localization, "rewind", "icon")}"
               label="${this._getLocal(this.localization, "rewind", "label")}"
-              ?disabled="${this.disableSeek}"
-              ?hidden="${this.responsiveSize === "xs"}"
+              ?disabled="${this.disableSeek || this._getRewindDisabled()}"
+              ?hidden="${this.responsiveSize === "xs" || this.disableSeek}"
               @click="${e => this.rewind()}"
             ></a11y-media-button>
             <a11y-media-button
               icon="${this._getLocal(this.localization, "forward", "icon")}"
               label="${this._getLocal(this.localization, "forward", "label")}"
-              ?disabled="${this.disableSeek}"
-              ?hidden="${this.responsiveSize === "xs"}"
+              ?disabled="${this.disableSeek || this._getForwardDisabled()}"
+              ?hidden="${this.responsiveSize === "xs" || this.disableSeek}"
               @click="${e => this.forward()}"
             ></a11y-media-button>
             <a11y-media-button
               icon="${this._getLocal(this.localization, "restart", "icon")}"
               label="${this._getLocal(this.localization, "restart", "label")}"
               ?disabled="${this.disableSeek}"
-              ?hidden="${this.responsiveSize === "xs"}"
+              ?hidden="${this.responsiveSize === "xs" || this.disableSeek}"
               @click="${e => this.restart()}"
             ></a11y-media-button>
             <div
@@ -1707,7 +1712,6 @@ class A11yMediaPlayer extends SimpleColors {
           return {};
         })
       : this.captionsTrack.activeCues;
-    console.log(cues);
     return cues;
   }
 
@@ -1981,6 +1985,17 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * gets media media time if set
+   * @readonly
+   * @returns {number} end time in seconds
+   */
+  get mediaForward() {
+    return this.mediaSeekable && this.media.seekable.end(0)
+      ? this.media.seekable.end(0)
+      : false;
+  }
+
+  /**
    * whether media has a seekable time range
    * @readonly
    * @returns {boolean}
@@ -2032,7 +2047,8 @@ class A11yMediaPlayer extends SimpleColors {
       return this.thumbnailSrc;
     } else if (this.youtubeId) {
       return `https://img.youtube.com/vi/${this.youtubeId.replace(
-        /[\?&].*/
+        /[\?&].*/,
+        ""
       )}/hqdefault.jpg`;
     }
     return null;
@@ -2510,16 +2526,43 @@ class A11yMediaPlayer extends SimpleColors {
     );
   }
 
+  _getRewindDisabled(time = this.currentTime, equal = true) {
+    console.log(
+      "_getRewindDisabled",
+      time,
+      this.mediaStart,
+      !time || !this.mediaStart || equal
+        ? time <= this.mediaStart
+        : time < this.mediaStart
+    );
+    return !time || !this.mediaStart || equal
+      ? time <= this.mediaStart
+      : time < this.mediaStart;
+  }
+
+  _getForwardDisabled(time = this.currentTime, equal = false) {
+    console.log(
+      "_getForwardDisabled",
+      time,
+      this.duration,
+      !time || !this.duration || equal
+        ? time >= this.duration
+        : time > this.duration
+    );
+    return !time || !this.duration || equal
+      ? time >= this.duration
+      : time > this.duration;
+  }
+
   /**
    * seeks to a specific time
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
     if (
-      (this.mediaSeekable &&
-        time >= this.mediaStart &&
-        time <= this.mediaEnd) ||
-      this.duration
+      this.mediaSeekable &&
+      !this._getRewindDisabled(time, false) &&
+      !this._getForwardDisabled(time, false)
     ) {
       this.media.seek(time);
       this._handleTimeUpdate();
@@ -2987,7 +3030,7 @@ class A11yMediaPlayer extends SimpleColors {
     /* ensure that playback does not go beyond clip stat and end boundaries */
     if (
       (this.mediaEnd && this.mediaEnd <= this.currentTime) ||
-      this.mediaStart >= this.duration
+      this.mediaStart >= this.currentTime
     ) {
       this.stop();
       this.__playing = false;

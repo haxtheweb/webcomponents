@@ -65,7 +65,9 @@ class A11yMediaYoutube extends LitElement {
        * preload settings
        */
       preload: {
-        type: String
+        type: String,
+        attribute: "preload",
+        reflect: true
       },
       /**
        * video playback rate
@@ -123,6 +125,7 @@ class A11yMediaYoutube extends LitElement {
     this.autoplay = false;
     this.height = "100%";
     this.loop = false;
+    this.preload = "metadata";
     this.muted = false;
     this.tracks = [];
     this.width = "100%";
@@ -245,6 +248,7 @@ class A11yMediaYoutube extends LitElement {
         }
       }
     }
+    console.log("videoData", videoData);
     return videoData;
   }
 
@@ -257,7 +261,7 @@ class A11yMediaYoutube extends LitElement {
       /* gets iframes for all  */
       getIframes: () => {
         window.A11yMediaYoutubeManager.queue.forEach(
-          instance => (instance.__yt = instance._getIframe())
+          instance => (instance.__yt = instance._preloadVideo(true))
         );
         window.A11yMediaYoutubeManager.queue = [];
       },
@@ -281,8 +285,15 @@ class A11yMediaYoutube extends LitElement {
     let iframeChanged = false,
       videoChanged = false;
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "muted") this.setMute(this.muted);
+      if (propName === "loop") this.setLoop(this.loop);
+      if (propName === "currentTime") this.seek(this.currentTime);
+      if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
+      if (propName === "volume") this.setVolume(this.volume);
+
+      /* reload one batch of changes at a time */
       if (propName === "videoId" && this.videoId && !this.__yt) this.init();
-      if (["id", "height", "width"].includes(propName) && this.__yt)
+      if (["id", "height", "width", "preload"].includes(propName) && this.__yt)
         iframeChanged = true;
 
       if (
@@ -290,20 +301,19 @@ class A11yMediaYoutube extends LitElement {
         this.__video
       )
         videoChanged = true;
-
-      if (propName === "muted") this.setMute(this.muted);
-      if (propName === "loop") this.setLoop(this.loop);
-      if (propName === "currentTime") this.seek(this.currentTime);
-      if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
-      if (propName === "volume") this.setVolume(this.volume);
     });
-    if (iframeChanged) this.__yt = this._getIframe();
-    if (videoChanged) this._loadVideo();
+    /* reload iframe changes first, video changes will update based on iframe */
+    if (iframeChanged) {
+      this.__yt = this._preloadVideo(true);
+    } else {
+      if (videoChanged) this._loadVideo();
+    }
   }
   /**
    * plays video
    */
   play() {
+    if (!this.__yt) this.__yt = this._preloadVideo(false);
     if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
   }
 
@@ -374,40 +384,8 @@ class A11yMediaYoutube extends LitElement {
     if (this.__yt) this.__yt.setVolume(volume * 100);
   }
 
-  /**
-   * loads video (and optionally preloads) from video data object {videoId, optional start, optional start}
-   * @param {event} e
-   */
-  _loadVideo(preload = this.preload) {
-    let ctr = 0,
-      checkDuration;
-    this.__video.cueVideoById(this.videoData);
-
-    if (preload === "auto") {
-      this.setMute(true);
-      this.play();
-      checkDuration = setInterval(() => {
-        ctr++;
-        if (this.duration && this.duration !== 0) {
-          this.pause();
-          this.setMute(this.muted);
-          this._handleTimeupdate();
-          clearInterval(checkDuration);
-        }
-        this.seek(0);
-      }, 1);
-    }
-  }
   _getCaptions(e) {
     console.log("_getCaptions", this, e);
-  }
-
-  _removeIframe() {
-    if (this.__yt) {
-      this.__yt.remove;
-      this.__yt.destroy();
-    }
-    this.innerHTML = "";
   }
 
   /**
@@ -426,20 +404,53 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
+   * loads video (and optionally preloads) from video data object {videoId, optional start, optional start}
+   * @param {event} e
+   */
+  _loadVideo(preload = this.preload) {
+    let ctr = 0,
+      checkDuration;
+    if (this.videoId) {
+      this.__video.cueVideoById(this.videoData);
+      if (preload === "auto") {
+        this.setMute(true);
+        this.play();
+        checkDuration = setInterval(() => {
+          ctr++;
+          //give the video up to 2 minute to attempt preload
+          if ((this.duration && this.duration !== 0) || ctr > 120000) {
+            this.pause();
+            this.setMute(this.muted);
+            this._handleTimeupdate();
+            clearInterval(checkDuration);
+          }
+          this.seek(0);
+        }, 1);
+      } else if (preload === "none") {
+        this.play();
+      }
+    }
+  }
+
+  /**
    * initializes the youtube player for a given element
    * See https://developers.google.com/youtube/player_parameters for more information
    *
    * @returns {object} the YouTube player object
    */
-  _getIframe() {
+  _preloadVideo(auto = false) {
     let root = this,
+      load =
+        (!auto || this.preload !== "none") &&
+        this.videoData.videoId &&
+        !this.__video,
       div = document.createElement("div"),
       divid = `container-${this.id}`,
       youtube = null;
     document.body.appendChild(div);
     div.setAttribute("id", divid);
 
-    if (this.videoData.videoId) {
+    if (load) {
       let getCaptions = e => root._getCaptions(e),
         setYT = e => (this.__video = e.target);
       youtube = new YT.Player(divid, {
@@ -473,6 +484,18 @@ class A11yMediaYoutube extends LitElement {
     }
     return youtube;
   }
+
+  /**
+   * removes iframe aand resets container
+   */
+  _removeIframe() {
+    if (this.__yt) {
+      this.__yt.remove;
+      this.__yt.destroy();
+    }
+    this.innerHTML = "";
+  }
+
   disconnectedCallback() {
     this._removeIframe();
     super.disconnectedCallback();

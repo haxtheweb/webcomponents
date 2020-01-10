@@ -127,6 +127,10 @@ class A11yMediaButton extends A11yMediaBehaviors {
           color: var(--a11y-media-button-hover-color);
           background-color: var(--a11y-media-button-hover-bg-color);
         }
+        :host([disabled]) #button {
+          color: var(--a11y-media-button-disabled-color);
+          cursor: none;
+        }
         .sr-only {
           position: absolute;
           left: -99999;
