@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
+import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 
@@ -90,7 +91,6 @@ class A11yMediaButton extends A11yMediaBehaviors {
     this.controls = "video";
     this.disabled = false;
     this.icon = null;
-    this.label = null;
     this.toggle = false;
     this.tooltipPosition = "bottom";
     import("@polymer/paper-tooltip/paper-tooltip.js");
@@ -180,7 +180,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
     return html`
       <button
         id="button"
-        aria-label="${this.label}"
+        aria-label="${ifDefined(this.label)}"
         aria-pressed="${this.toggle ? "true" : "false"}"
         controls="${this.controls}"
         tabindex="0"

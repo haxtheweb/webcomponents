@@ -515,7 +515,6 @@ class A11yMediaPlayer extends SimpleColors {
         ""
       )}/hqdefault.jpg`;
     }
-    return null;
   }
 
   /**
@@ -651,14 +650,9 @@ class A11yMediaPlayer extends SimpleColors {
       let paramstring = Object.keys(this.anchor.params)
         .map(key => `${key}=${this.anchor.params[key]}`)
         .join("&");
-      console.log(
-        paramstring,
-        this.youtubeId,
-        this.youtubeId.replace(/[\?\&].*$/, ``)
-      );
-      return this.youtubeId.replace(/[\?\&].*$/, ``);
+      return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
     }
-    return this.youtubeId.replace(/[\?\&].*$/, ``);
+    return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
   }
 
   connectedCallback() {

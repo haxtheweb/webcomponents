@@ -299,9 +299,7 @@ class A11yMediaYoutube extends LitElement {
       if (this.paused) {
         let seekupdate = setInterval(() => {
           if (Math.abs(root.__yt.getCurrentTime() - time) < 1) {
-            document.dispatchEvent(
-              new CustomEvent("timeupdate", { detail: root })
-            );
+            root.dispatchEvent(new CustomEvent("timeupdate", { detail: root }));
             clearInterval(seekupdate);
           }
         }, 1);

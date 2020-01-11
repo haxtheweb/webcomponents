@@ -19,9 +19,9 @@
         id="youtube-${this.id}"
         class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
         lang="${this.mediaLang}"
-        video-id="${this.videoId}"
         @timeupdate="${this._handleTimeUpdate}"
         .preload="${this.preload}"
+        .video-id="${ifDefined(this.youtubeId)}"
         ?hidden=${!this.isYoutube}>
       </a11y-media-youtube>
       <div id="cc-custom" 
@@ -119,7 +119,7 @@
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
         ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions}"
+        ?hidden="${this.responsiveSize === 'xs' || !this.hasCaptions}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -128,7 +128,7 @@
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
         ?disabled="${!this.linkable}"
-        ?hidden="${!this.linkable}"
+        ?hidden="${this.responsiveSize === 'xs' || !this.linkable}"
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
       <a11y-media-button

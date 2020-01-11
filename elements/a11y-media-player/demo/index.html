@@ -63,12 +63,37 @@
           </a11y-media-player>
         </template>
       </demo-snippet>
+      
+      <h2>Video example, no preloading</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player id="example" accent-color="brown" preload="none">
+            <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+            <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
     
-      <!--div class="smaller-examples">
-        <h2>Video example, standalone, with width set and a clip start/stop set and share link enabled</h2>
+      <h2>Video example, auto preloading</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player 
+            accent-color="light-green" 
+            dark thumbnail-src="./samples/stclair.jpg" 
+            preload="auto">
+            <video>
+              <source src="https://personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
+              <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
+            </video>
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
+    
+      <div class="smaller-examples">
+        <h2>Video example, standalone, with width set with a share link enabled</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px"  start-seconds="2" stop-seconds="11">
+            <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px">
               <video>
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">

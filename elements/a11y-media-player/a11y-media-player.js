@@ -674,9 +674,9 @@ class A11yMediaPlayer extends SimpleColors {
                 ? ``
                 : `hidden`}"
               lang="${this.mediaLang}"
-              video-id="${this.videoId}"
               @timeupdate="${this._handleTimeUpdate}"
               .preload="${this.preload}"
+              .video-id="${ifDefined(this.youtubeId)}"
               ?hidden=${!this.isYoutube}
             >
             </a11y-media-youtube>
@@ -808,7 +808,7 @@ class A11yMediaPlayer extends SimpleColors {
                 "label"
               )}"
               ?disabled="${!this.hasCaptions}"
-              ?hidden="${!this.hasCaptions}"
+              ?hidden="${this.responsiveSize === "xs" || !this.hasCaptions}"
               ?toggle="${this.transcriptTrackKey > -1}"
               @click="${e => this.toggleTranscript()}"
             >
@@ -817,7 +817,7 @@ class A11yMediaPlayer extends SimpleColors {
               icon="${this._getLocal(this.localization, "copyLink", "icon")}"
               label="${this._getLocal(this.localization, "copyLink", "label")}"
               ?disabled="${!this.linkable}"
-              ?hidden="${!this.linkable}"
+              ?hidden="${this.responsiveSize === "xs" || !this.linkable}"
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
             <a11y-media-button
@@ -2053,7 +2053,6 @@ class A11yMediaPlayer extends SimpleColors {
         ""
       )}/hqdefault.jpg`;
     }
-    return null;
   }
 
   /**
@@ -2189,14 +2188,9 @@ class A11yMediaPlayer extends SimpleColors {
       let paramstring = Object.keys(this.anchor.params)
         .map(key => `${key}=${this.anchor.params[key]}`)
         .join("&");
-      console.log(
-        paramstring,
-        this.youtubeId,
-        this.youtubeId.replace(/[\?\&].*$/, ``)
-      );
-      return this.youtubeId.replace(/[\?\&].*$/, ``);
+      return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
     }
-    return this.youtubeId.replace(/[\?\&].*$/, ``);
+    return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
   }
 
   connectedCallback() {
