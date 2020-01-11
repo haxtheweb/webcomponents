@@ -254,6 +254,8 @@ class A11yMediaYoutube extends LitElement {
       if (propName === "currentTime") this.seek(this.currentTime);
       if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
       if (propName === "volume") this.setVolume(this.volume);
+      if (propName === "duration" && this.duration > 0 && oldValue > 0)
+        this._handleMediaLoaded();
 
       /* reload one batch of changes at a time */
       if (propName === "videoId" && this.videoId && !this.__yt) this.init();
@@ -345,6 +347,21 @@ class A11yMediaYoutube extends LitElement {
    */
   setVolume(volume = 0.7) {
     if (this.__yt) this.__yt.setVolume(volume * 100);
+  }
+
+  /**
+   * Fires as YouTube video time changes
+   * @event timeupdate
+   */
+  _handleMediaLoaded() {
+    this.dispatchEvent(
+      new CustomEvent("loadedmetadata", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
   /**

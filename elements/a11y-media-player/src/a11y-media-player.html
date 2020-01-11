@@ -20,8 +20,9 @@
         class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
         lang="${this.mediaLang}"
         @timeupdate="${this._handleTimeUpdate}"
-        .preload="${this.preload}"
-        .video-id="${ifDefined(this.youtubeId)}"
+        @loadedmetadata=${this._handleMediaLoaded}
+        preload="${this.preload}"
+        .video-id="${ifDefined(this.videoId)}"
         ?hidden=${!this.isYoutube}>
       </a11y-media-youtube>
       <div id="cc-custom" 
@@ -40,7 +41,7 @@
     class="screen-only"
     label="${this._getLocal(this.localization,'seekSlider', 'label')}"
     min="${0}"
-    max="${this.duraton}"
+    max="${this.duration}"
     secondary-progress="${this.buffered}"
     @mousedown="${this._handleSliderStart}"
     @mouseup="${this._handleSliderStop}"

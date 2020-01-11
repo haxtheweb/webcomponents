@@ -675,8 +675,9 @@ class A11yMediaPlayer extends SimpleColors {
                 : `hidden`}"
               lang="${this.mediaLang}"
               @timeupdate="${this._handleTimeUpdate}"
-              .preload="${this.preload}"
-              .video-id="${ifDefined(this.youtubeId)}"
+              @loadedmetadata=${this._handleMediaLoaded}
+              preload="${this.preload}"
+              .video-id="${ifDefined(this.videoId)}"
               ?hidden=${!this.isYoutube}
             >
             </a11y-media-youtube>
@@ -706,7 +707,7 @@ class A11yMediaPlayer extends SimpleColors {
           class="screen-only"
           label="${this._getLocal(this.localization, "seekSlider", "label")}"
           min="${0}"
-          max="${this.duraton}"
+          max="${this.duration}"
           secondary-progress="${this.buffered}"
           @mousedown="${this._handleSliderStart}"
           @mouseup="${this._handleSliderStop}"
@@ -1666,6 +1667,19 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get anchor() {
     let anchor = window.AnchorBehaviors;
+    /*
+    
+      if (
+        this.anchor.target === this &&
+        this.anchor.params !== {} &&
+        this.isYoutube
+      ) {
+        let paramstring = Object.keys(this.anchor.params)
+          .map(key => `${key}=${this.anchor.params[key]}`)
+          .join("&");
+          if(this.youtubeId) return this.youtubeId.replace(/[\?\&].*$/, ``);
+    */
+
     return {
       target: anchor ? anchor.getTarget(this) : false,
       params: anchor ? anchor.params : {}
@@ -2149,6 +2163,11 @@ class A11yMediaPlayer extends SimpleColors {
       : this._getLocal(this.localization, "loading", "label");
   }
 
+  /**
+   * youtube embed element
+   * @readonly
+   * @returns {object} a11y-media-youtube element
+   */
   get youtube() {
     return this.shadowRoot.querySelector("a11y-media-youtube") !== null
       ? this.shadowRoot.querySelector("a11y-media-youtube")
@@ -2156,41 +2175,12 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * video or video clip
+   * YouTube ID without query perameters
    * @readonly
-   * @returns {object} and object with videoId, startSeconds, and stopSeconds
+   * @returns {string} YouTube ID
    */
-  get videoData() {
-    if (this.videoId) {
-      let vdata = this.videoId.split(/[\?&]/);
-      for (let i = 1; i < vdata.length; i++) {
-        let query = vdata[i].split("="),
-          t = query[1] || ``,
-          hh = t.match(/(\d)+h/),
-          mm = t.match(/(\d)+m/),
-          ss = t.match(/(\d*(\.?\d+)?)(?:s*)$/),
-          h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
-          m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
-          s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0,
-          start = parseInt(h + m + s);
-        if (query[0] === "t" || query[0] === "start") return Math.max(0, start);
-      }
-    }
-    return false;
-  }
-
   get videoId() {
-    if (
-      this.anchor.target === this &&
-      this.anchor.params !== {} &&
-      this.isYoutube
-    ) {
-      let paramstring = Object.keys(this.anchor.params)
-        .map(key => `${key}=${this.anchor.params[key]}`)
-        .join("&");
-      return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
-    }
-    return this.youtubeId ? this.youtubeId.replace(/[\?\&].*$/, ``) : ``;
+    if (this.isYoutube) return this.youtubeId.replace(/[\?\&].*$/, ``);
   }
 
   connectedCallback() {
@@ -2578,7 +2568,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
-    if (this.mediaSeekable && !time < 0 && !time > this.duration) {
+    console.log("seek", this, time, this.mediaSeekable, this.duration);
+    if (this.mediaSeekable && time > 0 && time < this.duration) {
+      console.log("seeking", this, time, this.media);
       this.media.seek(time);
       this._handleTimeUpdate();
       /**
@@ -2623,7 +2615,7 @@ class A11yMediaPlayer extends SimpleColors {
       primary = null;
     media.forEach(medium => {
       medium.removeAttribute("autoplay");
-      medium.setAttribute("preload", this.preload);
+      medium.setAttribute("preload", "metadata");
     });
 
     if (media.length > 0) {
@@ -2987,9 +2979,20 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleMediaLoaded() {
     this._handleTimeUpdate();
+    let timecode = this.anchor.params.t || this.anchor.params.start;
     /* if this video is part of the page's query string or anchor and not youtube, seek the video */
-    if (this.anchor.target === this && !this.isYoutube)
-      this.seek(this._getSeconds(this.anchor.params.t));
+    if (this.anchor.target === this && timecode) {
+      this.seek(this._getSeconds(timecode));
+    } else if (this.isYoutube) {
+      let ytQuery = this.youtubeId.split(/[\?\&]/);
+      ytQuery.forEach(yt => {
+        let param = yt.split(/=/);
+        if (param.length > 1 && (param[0] === "t" || param[0] === "start")) {
+          console.log(param, yt);
+          this.seek(this._getSeconds(param[1]));
+        }
+      });
+    }
   }
 
   /**
@@ -3034,9 +3037,7 @@ class A11yMediaPlayer extends SimpleColors {
    * handles time updates
    */
   _handleTimeUpdate() {
-    //disable seeking until buffered
-    //this.disableSeek = (this.youtube && this.buffered < this.duration);
-
+    //console.log('_handleTimeUpdate',this,this.media,this.media.duration);
     /* update current time with media's current time property */
     this.__currentTime =
       this.media && this.media.currentTime && this.media.currentTime > 0
@@ -3222,6 +3223,7 @@ class A11yMediaPlayer extends SimpleColors {
       hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
       mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
       ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
+    console.log("_getSeconds", this, time);
     return hh * 3600 + mm * 60 + ss;
   }
 
