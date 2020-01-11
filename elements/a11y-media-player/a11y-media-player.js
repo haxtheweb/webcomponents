@@ -670,9 +670,9 @@ class A11yMediaPlayer extends SimpleColors {
             </div>
             <a11y-media-youtube
               id="youtube-${this.id}"
-              class="${this.currentTime > 0 || this.__seeking
+              class="${this.__currentTime > 0.3 || this.__seeking
                 ? ``
-                : `hidden ${this.currentTime}`}"
+                : `hidden`}"
               lang="${this.mediaLang}"
               video-id="${this.videoId}"
               @timeupdate="${this._handleTimeUpdate}"
@@ -1659,6 +1659,11 @@ class A11yMediaPlayer extends SimpleColors {
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
 
+  /**
+   * gets anchors from page and uses their timecodes
+   * @readonly
+   * @returns {number} media width divided by height
+   */
   get anchor() {
     let anchor = window.AnchorBehaviors;
     return {

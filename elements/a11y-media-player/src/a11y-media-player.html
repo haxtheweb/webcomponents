@@ -17,7 +17,7 @@
       </div>
       <a11y-media-youtube
         id="youtube-${this.id}"
-        class="${this.currentTime > 0 || this.__seeking ? `` : `hidden ${this.currentTime}`}" 
+        class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
         lang="${this.mediaLang}"
         video-id="${this.videoId}"
         @timeupdate="${this._handleTimeUpdate}"

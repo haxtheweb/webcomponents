@@ -121,6 +121,11 @@ class A11yMediaPlayer extends SimpleColors {
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
 
+  /**
+   * gets anchors from page and uses their timecodes
+   * @readonly
+   * @returns {number} media width divided by height
+   */
   get anchor() {
     let anchor = window.AnchorBehaviors;
     return {

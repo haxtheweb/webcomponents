@@ -390,10 +390,10 @@ class A11yMediaYoutube extends LitElement {
               this.pause();
               this.setMute(this.muted);
               clearInterval(checkDuration);
-              console.log("checkDuration", this.duration, timeout);
+              this.seek(0);
             }
           }, 1);
-        //this.seek(0);
+        this.seek(0);
       }
     }
   }
