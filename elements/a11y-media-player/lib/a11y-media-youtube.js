@@ -76,6 +76,14 @@ class A11yMediaYoutube extends LitElement {
         type: Number
       },
       /**
+       * youTube's unique identifier for the video
+       */
+      t: {
+        type: Number,
+        attribute: "t",
+        reflect: true
+      },
+      /**
        * arrray of tracks
        */
       tracks: {
@@ -89,6 +97,7 @@ class A11yMediaYoutube extends LitElement {
         attribute: "video-id",
         reflect: true
       },
+
       /**
        * volume between 0 and 100
        */
@@ -170,12 +179,6 @@ class A11yMediaYoutube extends LitElement {
    * @returns {number} time in seconds
    */
   get currentTime() {
-    console.log(
-      "currentTime",
-      this.__yt && this.__yt.getCurrentTime
-        ? this.__yt.getCurrentTime()
-        : undefined
-    );
     return this.__yt && this.__yt.getCurrentTime
       ? this.__yt.getCurrentTime()
       : undefined;
@@ -254,8 +257,6 @@ class A11yMediaYoutube extends LitElement {
       if (propName === "currentTime") this.seek(this.currentTime);
       if (propName === "playbackRate") this.setPlaybackRate(this.playbackRate);
       if (propName === "volume") this.setVolume(this.volume);
-      if (propName === "duration" && this.duration > 0 && oldValue > 0)
-        this._handleMediaLoaded();
 
       /* reload one batch of changes at a time */
       if (propName === "videoId" && this.videoId && !this.__yt) this.init();
@@ -263,7 +264,7 @@ class A11yMediaYoutube extends LitElement {
         iframeChanged = true;
 
       if (
-        ["autoplay", "videoId", "preload", "__video"].includes(propName) &&
+        ["autoplay", "videoId", "preload", "t", "__video"].includes(propName) &&
         this.__video
       )
         videoChanged = true;
@@ -348,12 +349,27 @@ class A11yMediaYoutube extends LitElement {
   setVolume(volume = 0.7) {
     if (this.__yt) this.__yt.setVolume(volume * 100);
   }
+  /**
+   * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
+   * @param {string} time
+   * @returns {float} seconds
+   */
+  _getSeconds(time = 0) {
+    let units = time
+        .replace(/[hm]{1,2}&?/g, ":0")
+        .replace(/[s]{1,2}$/g, "")
+        .split(/:/),
+      hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
+      mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
+      ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
+    return hh * 3600 + mm * 60 + ss;
+  }
 
   /**
    * Fires as YouTube video time changes
    * @event timeupdate
    */
-  _handleMediaLoaded() {
+  _handleMediaLoaded(e) {
     this.dispatchEvent(
       new CustomEvent("loadedmetadata", {
         bubbles: true,
@@ -380,36 +396,34 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
+   * loads metadata by playing a small clip on mute and stopping
+   */
+  _autoMetadata(seek = this.t || 0, autoplay = this.autoplay) {
+    this.setMute(true);
+    this.__yt.playVideo();
+    let timeout = 120000,
+      checkDuration = setInterval(() => {
+        timeout--;
+        //give the video up to 2 minute to attempt preload
+        if ((this.duration && this.duration > 0) || timeout <= 0) {
+          this.pause();
+          this.setMute(this.muted);
+          clearInterval(checkDuration);
+          this.seek(seek);
+          if (autoplay) this.play();
+        }
+      }, 1);
+    this.seek(seek);
+  }
+
+  /**
    * loads video (and optionally preloads) from video data object {videoId, optional start timecode, }
    * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
   _loadVideo(preload = this.preload) {
     if (this.videoId) {
-      this.__video.cueVideoById({ videoId: this.videoId, startSeconds: 0 });
-      console.log(
-        "_loadVideo",
-        this,
-        preload,
-        this.videoId,
-        this.__yt,
-        this.__video
-      );
-      if (preload === "auto") {
-        this.setMute(true);
-        this.__yt.playVideo();
-        let timeout = 120000,
-          checkDuration = setInterval(() => {
-            timeout--;
-            //give the video up to 2 minute to attempt preload
-            if ((this.duration && this.duration > 0) || timeout <= 0) {
-              this.pause();
-              this.setMute(this.muted);
-              clearInterval(checkDuration);
-              this.seek(0);
-            }
-          }, 1);
-        this.seek(0);
-      }
+      this.__video.cueVideoById({ videoId: this.videoId });
+      if (preload === "auto" || this.t) this._autoMetadata();
     }
   }
 
@@ -430,12 +444,11 @@ class A11yMediaYoutube extends LitElement {
     div.setAttribute("id", divid);
 
     if (load) {
-      let getCaptions = e => root._getCaptions(e),
-        setYT = e => (this.__video = e.target);
+      let setYT = e => (this.__video = e.target);
       youtube = new YT.Player(divid, {
         width: root.width,
         height: root.height,
-        events: { onReady: setYT, onApiChange: getCaptions },
+        events: { onReady: setYT },
         playerVars: {
           color: "white",
           controls: 0,

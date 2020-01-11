@@ -674,10 +674,10 @@ class A11yMediaPlayer extends SimpleColors {
                 ? ``
                 : `hidden`}"
               lang="${this.mediaLang}"
+              preload="${this.t ? "auto" : this.preload}"
+              t="${ifDefined(this.t)}"
+              video-id="${ifDefined(this.videoId)}"
               @timeupdate="${this._handleTimeUpdate}"
-              @loadedmetadata=${this._handleMediaLoaded}
-              preload="${this.preload}"
-              .video-id="${ifDefined(this.videoId)}"
               ?hidden=${!this.isYoutube}
             >
             </a11y-media-youtube>
@@ -1667,19 +1667,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get anchor() {
     let anchor = window.AnchorBehaviors;
-    /*
-    
-      if (
-        this.anchor.target === this &&
-        this.anchor.params !== {} &&
-        this.isYoutube
-      ) {
-        let paramstring = Object.keys(this.anchor.params)
-          .map(key => `${key}=${this.anchor.params[key]}`)
-          .join("&");
-          if(this.youtubeId) return this.youtubeId.replace(/[\?\&].*$/, ``);
-    */
-
     return {
       target: anchor ? anchor.getTarget(this) : false,
       params: anchor ? anchor.params : {}
@@ -1818,18 +1805,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get hasCaptions() {
     return this.cues.length > 1;
-  }
-
-  /**
-   * `style` for `#player-and-controls`
-   * @readonly
-   * @returns {string} value for style attribute
-   */
-  get mediaMaxWidth() {
-    let maxWidth = this.fullscreen
-      ? `unset`
-      : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
-    return `max-width:${maxWidth};`;
   }
 
   /**
@@ -2012,6 +1987,18 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * `style` for `#player-and-controls`
+   * @readonly
+   * @returns {string} value for style attribute
+   */
+  get mediaMaxWidth() {
+    let maxWidth = this.fullscreen
+      ? `unset`
+      : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
+    return `max-width:${maxWidth};`;
+  }
+
+  /**
    * whether media has a seekable time range
    * @readonly
    * @returns {boolean}
@@ -2106,23 +2093,6 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * gets transcript cues that should be visible
-   * @readonly
-   * @returns {array} array of cues
-   */
-  get transcriptCues() {
-    let cues = this.cues.slice();
-    return cues.filter(cue => cue.track === this.transcriptTrack);
-  }
-
-  /**
-   * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
-   */
-  get transcriptTrackKey() {
-    return this.hideTranscript ? -1 : this._getTrackId(this.transcriptTrack);
-  }
-
-  /**
    * gets the link for sharing the video at a specific timecode
    * @readonly
    * @returns {string} url for sharing the video
@@ -2164,6 +2134,54 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * gets initial timecode parameter
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get t() {
+    let t = this._getSeconds(
+      this.anchor.params.t || this.anchor.params.start || 0
+    );
+    if (this.anchor && this.anchor.target === this) return t;
+    if (this.videoData) return this.videoData.t || this.videoData.start;
+  }
+
+  /**
+   * gets transcript cues that should be visible
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get transcriptCues() {
+    let cues = this.cues.slice();
+    return cues.filter(cue => cue.track === this.transcriptTrack);
+  }
+
+  /**
+   * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
+   */
+  get transcriptTrackKey() {
+    return this.hideTranscript ? -1 : this._getTrackId(this.transcriptTrack);
+  }
+
+  get videoData() {
+    if (this.youtubeId) {
+      let videoData = this.youtubeId.split(/[\?\&]/),
+        params = {};
+      params.videoId = videoData[0];
+      videoData.forEach((param, index) => {
+        if (index > 0) {
+          let data = param.split(/=/);
+          params[data[0]] = this._getSeconds(data[1]);
+        }
+      });
+      return params;
+    }
+  }
+  get videoId() {
+    if (this.videoData) return this.videoData.videoId;
+  }
+
+  /**
    * youtube embed element
    * @readonly
    * @returns {object} a11y-media-youtube element
@@ -2172,15 +2190,6 @@ class A11yMediaPlayer extends SimpleColors {
     return this.shadowRoot.querySelector("a11y-media-youtube") !== null
       ? this.shadowRoot.querySelector("a11y-media-youtube")
       : false;
-  }
-
-  /**
-   * YouTube ID without query perameters
-   * @readonly
-   * @returns {string} YouTube ID
-   */
-  get videoId() {
-    if (this.isYoutube) return this.youtubeId.replace(/[\?\&].*$/, ``);
   }
 
   connectedCallback() {
@@ -2451,14 +2460,6 @@ class A11yMediaPlayer extends SimpleColors {
    * pauses the media
    */
   pause() {
-    /*console.log(
-      '----->',
-      this.media.seekable,
-      this.duration,
-      this.media.duration,
-      this.currentTime,
-      this.__currentTime,
-      this.media.currentTime);*/
     this.__playing = false;
     if (this.media && this.media.pause) this.media.pause();
     /**
@@ -2568,10 +2569,8 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
-    console.log("seek", this, time, this.mediaSeekable, this.duration);
-    if (this.mediaSeekable && time > 0 && time < this.duration) {
-      console.log("seeking", this, time, this.media);
-      this.media.seek(time);
+    if (this.mediaSeekable) {
+      this.media.seek(Math.max(0, Math.min(time, this.duration)));
       this._handleTimeUpdate();
       /**
        * Fires when media seeks
@@ -2977,21 +2976,14 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * handles media metadata when media is loaded
    */
-  _handleMediaLoaded() {
+  _handleMediaLoaded(e) {
     this._handleTimeUpdate();
-    let timecode = this.anchor.params.t || this.anchor.params.start;
-    /* if this video is part of the page's query string or anchor and not youtube, seek the video */
-    if (this.anchor.target === this && timecode) {
-      this.seek(this._getSeconds(timecode));
-    } else if (this.isYoutube) {
-      let ytQuery = this.youtubeId.split(/[\?\&]/);
-      ytQuery.forEach(yt => {
-        let param = yt.split(/=/);
-        if (param.length > 1 && (param[0] === "t" || param[0] === "start")) {
-          console.log(param, yt);
-          this.seek(this._getSeconds(param[1]));
-        }
-      });
+    if (!this.youtubeId && this.anchor.target === this) {
+      this.seek(
+        this._getSeconds(
+          this.anchor.params.t || this.anchor.params.start || `0s`
+        )
+      );
     }
   }
 
@@ -3037,7 +3029,6 @@ class A11yMediaPlayer extends SimpleColors {
    * handles time updates
    */
   _handleTimeUpdate() {
-    //console.log('_handleTimeUpdate',this,this.media,this.media.duration);
     /* update current time with media's current time property */
     this.__currentTime =
       this.media && this.media.currentTime && this.media.currentTime > 0
@@ -3223,7 +3214,6 @@ class A11yMediaPlayer extends SimpleColors {
       hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
       mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
       ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
-    console.log("_getSeconds", this, time);
     return hh * 3600 + mm * 60 + ss;
   }
 

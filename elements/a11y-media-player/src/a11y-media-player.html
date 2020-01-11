@@ -19,10 +19,10 @@
         id="youtube-${this.id}"
         class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
         lang="${this.mediaLang}"
+        preload="${this.t ? 'auto' : this.preload}"
+        t="${ifDefined(this.t)}"
+        video-id="${ifDefined(this.videoId)}"
         @timeupdate="${this._handleTimeUpdate}"
-        @loadedmetadata=${this._handleMediaLoaded}
-        preload="${this.preload}"
-        .video-id="${ifDefined(this.videoId)}"
         ?hidden=${!this.isYoutube}>
       </a11y-media-youtube>
       <div id="cc-custom" 
