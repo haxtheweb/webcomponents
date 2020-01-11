@@ -170,6 +170,12 @@ class A11yMediaYoutube extends LitElement {
    * @returns {number} time in seconds
    */
   get currentTime() {
+    console.log(
+      "currentTime",
+      this.__yt && this.__yt.getCurrentTime
+        ? this.__yt.getCurrentTime()
+        : undefined
+    );
     return this.__yt && this.__yt.getCurrentTime
       ? this.__yt.getCurrentTime()
       : undefined;
@@ -223,32 +229,20 @@ class A11yMediaYoutube extends LitElement {
     if (this.videoId) {
       let vdata = this.videoId.split(/[\?&]/);
       videoData.videoId = vdata[0];
-      videoData.startSeconds = 0;
       for (let i = 1; i < vdata.length; i++) {
-        let param = vdata[i].split("=");
-        if (param[0] === "t") {
-          let hh = param[1].match(/(\d)+h/),
-            mm = param[1].match(/(\d)+m/),
-            ss = param[1]
-              .replace(/\d+h/, "")
-              .replace(/\d+m/, "")
-              .replace(/s/, "")
-              .match(/(\d)+/),
-            h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
-            m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
-            s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0;
-          videoData.startSeconds = Math.max(0, parseInt(h + m + s));
-        } else if (param[0] === "start") {
-          videoData.startSeconds = Math.max(0, parseInt(param[1]));
-        } else if (param[0] === "end") {
-          videoData.endSeconds = Math.max(
-            videoData.startSeconds,
-            parseInt(param[1])
-          );
-        }
+        let query = vdata[i].split("="),
+          t = query[1] || ``,
+          hh = t.match(/(\d)+h/),
+          mm = t.match(/(\d)+m/),
+          ss = t.match(/(\d*(\.?\d+)?)(?:s*)$/),
+          h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
+          m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
+          s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0,
+          start = parseInt(h + m + s);
+        if (query[0] === "t" || query[0] === "start")
+          videoData.t = Math.max(0, start);
       }
     }
-    console.log("videoData", videoData);
     return videoData;
   }
 
@@ -314,7 +308,23 @@ class A11yMediaYoutube extends LitElement {
    */
   play() {
     if (!this.__yt) this.__yt = this._preloadVideo(false);
-    if (this.__yt && this.__yt.playVideo) this.__yt.playVideo();
+    if (this.__yt && this.__yt.playVideo) {
+      if (this.__seekOnFirstPlay && this.videoData.t > 0) {
+        this._handleQueryString(this.videoData.t);
+      } else {
+        this.__yt.playVideo();
+      }
+    }
+  }
+
+  /**
+   * stops video
+   */
+  stop() {
+    if (this.__yt && this.__yt.pauseVideo) {
+      this.__yt.pauseVideo();
+      this.seek(0);
+    }
   }
 
   /**
@@ -342,6 +352,7 @@ class A11yMediaYoutube extends LitElement {
           }
         }, 1);
       }
+      this._handleTimeupdate();
     }
   }
 
@@ -384,8 +395,41 @@ class A11yMediaYoutube extends LitElement {
     if (this.__yt) this.__yt.setVolume(volume * 100);
   }
 
-  _getCaptions(e) {
-    console.log("_getCaptions", this, e);
+  /**
+   * handles timecode query string
+   * @param {boolean} whether video is playing for user
+   * @param {number} milliseconds until preloading times out
+   * @param {number} seconds to seek to
+   */
+  _handleQueryString(seek = 0, playing = true) {
+    console.log("_handleQueryString", this.videoId, playing);
+    if (this.videoId) {
+      let checkDuration,
+        timeout = 120000;
+      if (this.__yt.playVideo) {
+        if (!playing) this.setMute(true);
+        this.__yt.playVideo();
+        checkDuration = setInterval(() => {
+          timeout--;
+          console.log("duration", this.videoId, this.duration, timeout, seek);
+          //give the video up to 2 minute to attempt preload
+          if ((this.duration && this.duration > 0) || timeout <= 0) {
+            clearInterval(checkDuration);
+            this.pause();
+            this.setMute(this.muted);
+            this.__seekOnFirstPlay = false;
+            console.log(
+              "currentTime",
+              this.videoId,
+              !playing,
+              this.currentTime
+            );
+          }
+        }, 1);
+        this.seek(seek);
+        if (playing) this.play();
+      }
+    }
   }
 
   /**
@@ -404,30 +448,20 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
-   * loads video (and optionally preloads) from video data object {videoId, optional start, optional start}
-   * @param {event} e
+   * loads video (and optionally preloads) from video data object {videoId, optional start timecode, }
+   * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
   _loadVideo(preload = this.preload) {
-    let ctr = 0,
-      checkDuration;
     if (this.videoId) {
       this.__video.cueVideoById(this.videoData);
+      console.log("preload", this.videoId, preload);
+
       if (preload === "auto") {
-        this.setMute(true);
-        this.play();
-        checkDuration = setInterval(() => {
-          ctr++;
-          //give the video up to 2 minute to attempt preload
-          if ((this.duration && this.duration !== 0) || ctr > 120000) {
-            this.pause();
-            this.setMute(this.muted);
-            this._handleTimeupdate();
-            clearInterval(checkDuration);
-          }
-          this.seek(0);
-        }, 1);
+        this._handleQueryString(this.videoData.t, false);
       } else if (preload === "none") {
-        this.play();
+        this._handleQueryString(this.videoData.t);
+      } else {
+        this.__seekOnFirstPlay = true;
       }
     }
   }

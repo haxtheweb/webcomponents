@@ -120,6 +120,15 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /** -------------------------- CALACULATED PROPERTIES ----------------- */
+
+  get anchor() {
+    let anchor = window.AnchorBehaviors;
+    return {
+      target: anchor ? anchor.getTarget(this) : false,
+      params: anchor ? anchor.params : {}
+    };
+  }
+
   /**
    * the aspect ratio of the media, or if unknown, `16/9`
    * @readonly
@@ -199,9 +208,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get duration() {
     let duration =
-      this.media && this.mediaEnd
-        ? this.mediaEnd - this.mediaStart
-        : this.media.duration && this.media.duration > 0
+      this.media && this.media.duration && this.media.duration > 0
         ? this.media.duration
         : 0;
     return duration;
@@ -448,17 +455,6 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * gets media media time if set
-   * @readonly
-   * @returns {number} end time in seconds
-   */
-  get mediaForward() {
-    return this.mediaSeekable && this.media.seekable.end(0)
-      ? this.media.seekable.end(0)
-      : false;
-  }
-
-  /**
    * whether media has a seekable time range
    * @readonly
    * @returns {boolean}
@@ -550,7 +546,7 @@ class A11yMediaPlayer extends SimpleColors {
       this.__seeking === true
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
-    return currentTime - this.mediaStart;
+    return currentTime;
   }
 
   /**
@@ -885,6 +881,14 @@ class A11yMediaPlayer extends SimpleColors {
    * pauses the media
    */
   pause() {
+    /*console.log(
+      '----->',
+      this.media.seekable,
+      this.duration,
+      this.media.duration,
+      this.currentTime,
+      this.__currentTime,
+      this.media.currentTime);*/
     this.__playing = false;
     if (this.media && this.media.pause) this.media.pause();
     /**
@@ -946,9 +950,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the elepsed time, in seconds
    */
   rewind(amt) {
-    amt = amt !== undefined ? amt : this.media.duration / 20;
+    amt = amt !== undefined ? amt : this.duration / 20;
     this.__resumePlaying = this.__playing;
-    this.seek(this.media.currentTime - amt, 0);
+    this.seek(this.currentTime - amt, 0);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
     /**
@@ -970,9 +974,9 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {float} the elepsed time, in seconds
    */
   forward(amt) {
-    amt = amt !== undefined ? amt : this.media.duration / 20;
+    amt = amt !== undefined ? amt : this.duration / 20;
     this.__resumePlaying = this.__playing;
-    this.seek(this.media.currentTime + amt);
+    this.seek(this.currentTime + amt);
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
     /**
@@ -989,44 +993,12 @@ class A11yMediaPlayer extends SimpleColors {
     );
   }
 
-  _getRewindDisabled(time = this.currentTime, equal = true) {
-    console.log(
-      "_getRewindDisabled",
-      time,
-      this.mediaStart,
-      !time || !this.mediaStart || equal
-        ? time <= this.mediaStart
-        : time < this.mediaStart
-    );
-    return !time || !this.mediaStart || equal
-      ? time <= this.mediaStart
-      : time < this.mediaStart;
-  }
-
-  _getForwardDisabled(time = this.currentTime, equal = false) {
-    console.log(
-      "_getForwardDisabled",
-      time,
-      this.duration,
-      !time || !this.duration || equal
-        ? time >= this.duration
-        : time > this.duration
-    );
-    return !time || !this.duration || equal
-      ? time >= this.duration
-      : time > this.duration;
-  }
-
   /**
    * seeks to a specific time
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
-    if (
-      this.mediaSeekable &&
-      !this._getRewindDisabled(time, false) &&
-      !this._getForwardDisabled(time, false)
-    ) {
+    if (this.mediaSeekable && !time < 0 && !time > this.duration) {
       this.media.seek(time);
       this._handleTimeUpdate();
       /**
@@ -1374,7 +1346,9 @@ class A11yMediaPlayer extends SimpleColors {
       });
     };
 
-    let d = this.loadedTracks.querySelector("track[default]"),
+    let d = this.loadedTracks.querySelector("track[default]")
+        ? this.loadedTracks.querySelector("track[default]")
+        : this.loadedTracks.querySelector("track"),
       defaultTrack =
         Object.keys(this.loadedTracks.textTracks).find(key => {
           return (
@@ -1432,12 +1406,10 @@ class A11yMediaPlayer extends SimpleColors {
    * handles media metadata when media is loaded
    */
   _handleMediaLoaded() {
-    let anchor = window.AnchorBehaviors,
-      target = anchor.getTarget(this),
-      params = anchor.params;
     this._handleTimeUpdate();
-    /* if this video is part of the page's query string or anchor, seek the video */
-    if (target === this) this.seek(this._getSeconds(params.t));
+    /* if this video is part of the page's query string or anchor and not youtube, seek the video */
+    if (this.anchor.target === this && !this.isYoutube)
+      this.seek(this._getSeconds(this.anchor.params.t));
   }
 
   /**
@@ -1490,14 +1462,6 @@ class A11yMediaPlayer extends SimpleColors {
       this.media && this.media.currentTime && this.media.currentTime > 0
         ? this.media.currentTime
         : 0;
-    /* ensure that playback does not go beyond clip stat and end boundaries */
-    if (
-      (this.mediaEnd && this.mediaEnd <= this.currentTime) ||
-      this.mediaStart >= this.currentTime
-    ) {
-      this.stop();
-      this.__playing = false;
-    }
   }
 
   /**

@@ -39,15 +39,15 @@
   <paper-slider id="slider"
     class="screen-only"
     label="${this._getLocal(this.localization,'seekSlider', 'label')}"
-    min="${this.isYoutube && this.mediaStart ? this.mediaStart : 0}"
-    max="${this.duration}"
-    secondary-currentTime="${this.buffered}"
+    min="${0}"
+    max="${this.duraton}"
+    secondary-progress="${this.buffered}"
     @mousedown="${this._handleSliderStart}"
     @mouseup="${this._handleSliderStop}"
     @keyup="${this._handleSliderStop}"
     @keydown="${this._handleSliderStart}"
     @blur="${this._handleSliderStop}"
-    .value="${this.__currentTime - this.mediaStart}"
+    .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
   </paper-slider>
@@ -61,14 +61,14 @@
       <a11y-media-button
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
-        ?disabled="${this.disableSeek || this._getRewindDisabled()}"
+        ?disabled="${this.disableSeek || this.currentTime <= 0}"
         ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
-        ?disabled="${this.disableSeek || this._getForwardDisabled() }"
+        ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
         ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
         @click="${e => this.forward()}"
       ></a11y-media-button>
@@ -379,7 +379,7 @@
               end="${this._getHHMMSS(cue.endTime, this.media.duration)}"
               lang="${cue.track.language}"
               role="button"
-              start="${this._getHHMMSS(cue.startTime, this.media.duration)}"
+              start="${this._getHHMMSS(cue.endTime, this.media.duration)}"
               tabindex="0"
               @click="${e => this._handleCueSeek(cue)}"
               @active-changed="${this._setActiveCue}"

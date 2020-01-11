@@ -44,32 +44,69 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>a11y-media-player YouTube</h1>
-      <h2>a11y-media-player YouTube demo with automatic preloading</h2>
+      
+      <!--div class="smaller-examples"> 
+        <h2>a11y-media-player YouTube demo</h2>
+        <demo-snippet>
+          <template>
+            <a11y-media-player accent-color="red" youtube-id="BKorP55Aqvg"></a11y-media-player>
+          </template>
+        </demo-snippet> 
+      </div>
+
+      <h2>a11y-media-player YouTube demo with transcript</h2>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="red" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
+          <a11y-media-player accent-color="pink" dark youtube-id="NP0mQeLWCCo">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default>
+          </a11y-media-player>
+        </template>
+      </demo-snippet-->
+
+      <h2>a11y-media-player YouTube demo with time code automatic preloading</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt">
+          </a11y-media-player>
+        </template>
+      </demo-snippet> 
+
+      <!--h2>a11y-media-player YouTube demo clip no preloading</h2> 
+      <demo-snippet>
+        <template>
+          <a11y-media-player dark accent-color="deep-purple" youtube-id="NP0mQeLWCCo&start=5s&end=15s" preload="none">
             <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
           </a11y-media-player>
         </template>
-      </demo-snippet>      
+      </demo-snippet>         
       
       <div class="smaller-examples"> 
-        <h2>a11y-media-player YouTube demo, standalone with width set, aand default preloading</h2>
+        <h2>a11y-media-player YouTube demo with custom thumbail</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="deep-orange" dark stand-alone width="400px" youtube-id="BKorP55Aqvg"></a11y-media-player>
+            <a11y-media-player 
+              accent-color="cyan" 
+              height="300px" 
+              youtube-id="NP0mQeLWCCo"  
+              thumbnail-src="https://www.memesmonkey.com/images/memesmonkey/d7/d7c0b62fa61f450c2735799b34073f53.jpeg" 
+              width="400px"  
+              preload="none">
+            </a11y-media-player>
           </template>
-        </demo-snippet>
+        </demo-snippet>   
 
-        <h2>a11y-media-player YouTube demo with height (useful for iframes), no preloading, and width set and custom thumbnail</h2>
+        <h2>a11y-media-player YouTube demo, standalone with width set</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="brown" height="300px" youtube-id="NP0mQeLWCCo"  thumbnail-src="https://www.memesmonkey.com/images/memesmonkey/d7/d7c0b62fa61f450c2735799b34073f53.jpeg" width="400px"  preload="none">
-              <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+            <a11y-media-player 
+              accent-color="deep-orange" 
+              stand-alone width="400px" 
+              youtube-id="BKorP55Aqvg">
             </a11y-media-player>
           </template>
         </demo-snippet>      
-      </div>
+      </div-->
     </div>
   </body>
 </html>
