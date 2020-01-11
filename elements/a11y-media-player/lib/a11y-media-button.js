@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
@@ -13,10 +12,9 @@ export { A11yMediaButton };
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
  *
- * @extends A11yMediaBehaviors
  * @customElement
  */
-class A11yMediaButton extends A11yMediaBehaviors {
+class A11yMediaButton extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -98,7 +96,6 @@ class A11yMediaButton extends A11yMediaBehaviors {
 
   static get styles() {
     return [
-      ...super.styles,
       this.buttonStyles,
       css`
         :host {

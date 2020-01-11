@@ -55,6 +55,7 @@
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
+        class="xs"
         icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @click="${e => this.togglePlay()}"
@@ -63,24 +64,25 @@
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
         ?disabled="${this.disableSeek || this.currentTime <= 0}"
-        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
+        ?hidden="${this.disableSeek }"
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
         ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
-        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
+        ?hidden="${this.disableSeek}"
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
         ?disabled="${this.disableSeek}"
-        ?hidden="${this.responsiveSize === 'xs' || this.disableSeek}"
+        ?hidden="${this.responsiveSize === 'xs' || this.responsiveSize === 'sm' || this.disableSeek}"
         @click="${e => this.restart()}"
       ></a11y-media-button>
       <div id="volume-and-mute"
+      class="xs"
           @focus="${e => this.__volumeSlider = true}"
           @blur="${e => this.__volumeSlider = false}">
         <a11y-media-button
@@ -98,15 +100,17 @@
           pin
           step="10"
           .value="${this.muted ? 0 : this.volume}"
-          @change="${this._handleVolumeChanged}"
+          @change="${this._handleVolumeChanged}" 
+          ?hidden="${this.responsiveSize === 'xs'}"
         ></paper-slider>
       </div>
-      <span aria-live="polite" class="play-status control-bar">
+      <span aria-live="polite" class="play-status control-bar sm">
         <span id="statbar">${this.status}</span>
       </span>
     </div>
     <div id="controls-right">
       <a11y-media-button
+        class="sm"
         icon="${this._getLocal(this.localization,'captions','icon')}"
         label="${this._getLocal(this.localization,'captions','label')}"
         ?disabled="${!this.hasCaptions}"
@@ -116,11 +120,12 @@
       >
       </a11y-media-button>
       <a11y-media-button
+        class="sm"
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
         ?disabled="${!this.hasCaptions}"
-        ?hidden="${this.responsiveSize === 'xs' || !this.hasCaptions}"
+        ?hidden="${!this.hasCaptions || this.standAlone }"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -129,13 +134,14 @@
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
         ?disabled="${!this.linkable}"
-        ?hidden="${this.responsiveSize === 'xs' || !this.linkable}"
+        ?hidden="${!this.linkable}"
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
-      <a11y-media-button
-        step="1"
+      <a11y-media-
+        class="xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
+        step="1"
         ?disabled="${this.fullscreenButton}"
         ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
         ?toggle="${this.fullscreen}"
@@ -143,6 +149,7 @@
       >
       </a11y-media-button>
       <paper-menu-button
+        class="sm"
         id="settings"
         allow-outside-scroll
         horizontal-align="right"

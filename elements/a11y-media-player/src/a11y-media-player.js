@@ -72,7 +72,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.playbackRate = 1;
     this.search = null;
     this.standAlone = false;
-    this.responsiveSize = "xs";
+    this.responsiveSize = "sm";
     this.captionsTrack = null;
     this.transcriptTrack = null;
     this.sources = [];
@@ -498,7 +498,7 @@ class A11yMediaPlayer extends SimpleColors {
   get playerStyle() {
     let audio = this.audioOnly && !this.thumbnailSrc && !this.height,
       height = audio ? "60px" : "unset",
-      paddingTop = this.fullscreen ? `unset` : `${100 / this.aspect}%`,
+      paddingTop = this.fullscreen || audio ? `unset` : `${100 / this.aspect}%`,
       thumbnail =
         this.poster && (this.isYoutube || this.audioOnly)
           ? `background-image:url(${this.poster});`
@@ -601,7 +601,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get t() {
     let t = this._getSeconds(
-      this.anchor.params.t || this.anchor.params.start || 0
+      this.anchor.params.t || this.anchor.params.start || `0s`
     );
     if (this.anchor && this.anchor.target === this) return t;
     if (this.videoData) return this.videoData.t || this.videoData.start;
@@ -1632,7 +1632,11 @@ class A11yMediaPlayer extends SimpleColors {
             : {
                 element: root,
                 attribute: "responsive-size",
-                relativeToParent: true
+                relativeToParent: true,
+                sm: 300,
+                md: 600,
+                lg: 1000,
+                xl: 1500
               }
       })
     );

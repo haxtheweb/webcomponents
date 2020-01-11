@@ -250,7 +250,8 @@ class A11yMediaYoutube extends LitElement {
    */
   updated(changedProperties) {
     let iframeChanged = false,
-      videoChanged = false;
+      videoChanged = false,
+      autoChanged = false;
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "muted") this.setMute(this.muted);
       if (propName === "loop") this.setLoop(this.loop);
@@ -263,17 +264,21 @@ class A11yMediaYoutube extends LitElement {
       if (["id", "height", "width", "preload"].includes(propName) && this.__yt)
         iframeChanged = true;
 
-      if (
-        ["autoplay", "videoId", "preload", "t", "__video"].includes(propName) &&
-        this.__video
-      )
+      if (["autoplay", "videoId", "__video"].includes(propName) && this.__video)
         videoChanged = true;
+
+      if (
+        ["preload", "t"].includes(propName) &&
+        (this.preload === "auto" || this.t)
+      )
+        autoChanged = true;
     });
     /* reload iframe changes first, video changes will update based on iframe */
     if (iframeChanged) {
       this.__yt = this._preloadVideo(true);
-    } else {
-      if (videoChanged) this._loadVideo();
+    } else if (videoChanged) {
+      this._loadVideo();
+      if (autoChanged) this._autoMetadata();
     }
   }
   /**
@@ -398,7 +403,9 @@ class A11yMediaYoutube extends LitElement {
   /**
    * loads metadata by playing a small clip on mute and stopping
    */
-  _autoMetadata(seek = this.t || 0, autoplay = this.autoplay) {
+  _autoMetadata() {
+    let seek = this.t || 0,
+      autoplay = this.autoplay;
     this.setMute(true);
     this.__yt.playVideo();
     let timeout = 120000,
@@ -421,10 +428,7 @@ class A11yMediaYoutube extends LitElement {
    * @param {string} preload mode for preloading: `auto`, `metadata`, `none`
    */
   _loadVideo(preload = this.preload) {
-    if (this.videoId) {
-      this.__video.cueVideoById({ videoId: this.videoId });
-      if (preload === "auto" || this.t) this._autoMetadata();
-    }
+    if (this.videoId) this.__video.cueVideoById({ videoId: this.videoId });
   }
 
   /**

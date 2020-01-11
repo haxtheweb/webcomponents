@@ -487,17 +487,30 @@ paper-toast:not(:defined) {
     bottom: 5px;
   }
   :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
-    #controls {
+    .screen-only.media-caption,
+  :host([responsive-size="xs"]) .screen-only.media-caption {
     display: none;
   }
-  :host([responsive-size="lg"]) #cc-custom {
+  :host([sticky][audio-only]:not([thumbnail-src]):not([sticky-corner="none"])) #player-and-controls {
+    max-height: 0px;
+    overflow: hidden;
+  }
+  :host([sticky]:not([sticky-corner="none"])) #controls > * > *:not(.xs),
+  :host([sticky]:not([sticky-corner="none"])) .play-status,
+  :host([responsive-size="xs"]) #controls > * > *:not(.xs),
+  :host([responsive-size="xs"]) .play-status,
+  :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm) {
+    display: none;
+  }
+
+  :host([responsive-size="xl"]) #cc-custom {
     font-size: 16px;
   }
-  :host([responsive-size="md"]) #cc-custom,
+  :host([responsive-size="lg"]) #cc-custom,
   :host([flex-layout][responsive-size="xl"]) #cc-custom {
     font-size: 14px;
   }
-  :host([responsive-size="sm"]) #cc-custom,
+  :host([responsive-size="md"]) #cc-custom,
   :host([flex-layout][responsive-size="lg"]) #cc-custom {
     font-size: 12px;
   }
@@ -506,7 +519,8 @@ paper-toast:not(:defined) {
   :host([flex-layout][responsive-size="sm"]) #cc-custom {
     font-size: 10px;
   }
-  :host([sticky]:not([sticky-corner="none"])) #cc-custom {
+  :host([sticky]:not([sticky-corner="none"])) #cc-custom,
+  :host([flex-layout][responsive-size="xs"]) #cc-custom {
     display: none;
   }
   .media-caption {
