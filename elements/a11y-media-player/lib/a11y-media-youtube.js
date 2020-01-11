@@ -282,16 +282,6 @@ class A11yMediaYoutube extends LitElement {
   }
 
   /**
-   * stops video
-   */
-  stop() {
-    if (this.__yt && this.__yt.pauseVideo) {
-      this.__yt.pauseVideo();
-      this.seek(0);
-    }
-  }
-
-  /**
    * pauses video
    */
   pause() {
@@ -373,31 +363,6 @@ class A11yMediaYoutube extends LitElement {
       })
     );
   }
-  /**
-   * handles timecode query string
-   * @param {boolean} whether video is playing for user
-   */
-  _autoLoad(playing = true) {
-    if (this.videoId) {
-      let checkDuration,
-        timeout = 120000;
-      if (this.__yt.playVideo) {
-        if (!playing) this.setMute(true);
-        this.__yt.playVideo();
-        checkDuration = setInterval(() => {
-          timeout--;
-          //give the video up to 2 minute to attempt preload
-          if ((this.duration && this.duration > 0) || timeout <= 0) {
-            clearInterval(checkDuration);
-            this.pause();
-            if (!playing) this.setMute(this.muted);
-          }
-        }, 1);
-        this.seek(0);
-        if (playing) this.play();
-      }
-    }
-  }
 
   /**
    * loads video (and optionally preloads) from video data object {videoId, optional start timecode, }
@@ -405,9 +370,31 @@ class A11yMediaYoutube extends LitElement {
    */
   _loadVideo(preload = this.preload) {
     if (this.videoId) {
-      this.__video.cueVideoById(this.videoId);
-      if (preload === "auto") this._autoLoad(false);
-      if (preload === "none") this._autoLoad();
+      this.__video.cueVideoById({ videoId: this.videoId, startSeconds: 0 });
+      console.log(
+        "_loadVideo",
+        this,
+        preload,
+        this.videoId,
+        this.__yt,
+        this.__video
+      );
+      if (preload === "auto") {
+        this.setMute(true);
+        this.__yt.playVideo();
+        let timeout = 120000,
+          checkDuration = setInterval(() => {
+            timeout--;
+            //give the video up to 2 minute to attempt preload
+            if ((this.duration && this.duration > 0) || timeout <= 0) {
+              this.pause();
+              this.setMute(this.muted);
+              clearInterval(checkDuration);
+              console.log("checkDuration", this.duration, timeout);
+            }
+          }, 1);
+        //this.seek(0);
+      }
     }
   }
 

@@ -653,7 +653,7 @@ class A11yMediaPlayer extends SimpleColors {
       );
       return this.youtubeId.replace(/[\?\&].*$/, ``);
     }
-    return this.youtubeId;
+    return this.youtubeId.replace(/[\?\&].*$/, ``);
   }
 
   connectedCallback() {

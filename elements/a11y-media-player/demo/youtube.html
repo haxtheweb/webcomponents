@@ -66,7 +66,7 @@
       <h2>a11y-media-player YouTube demo with time code automatic preloading</h2>
       <demo-snippet>
         <template>
-          <a11y-media-player id="timecode" accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
+          <a11y-media-player accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
             <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt">
           </a11y-media-player>
         </template>
@@ -75,7 +75,11 @@
       <!--h2>a11y-media-player YouTube demo clip no preloading</h2> 
       <demo-snippet>
         <template>
-          <a11y-media-player dark accent-color="deep-purple" youtube-id="NP0mQeLWCCo&start=5s&end=15s" preload="none">
+          <a11y-media-player 
+            id="example" 
+            dark accent-color="deep-purple" 
+            youtube-id="NP0mQeLWCCo&start=5s" 
+            preload="none">
             <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
           </a11y-media-player>
         </template>
