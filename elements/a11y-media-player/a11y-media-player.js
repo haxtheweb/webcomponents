@@ -507,11 +507,12 @@ class A11yMediaPlayer extends SimpleColors {
           display: none;
         }
         @media screen {
-          :host([flex-layout]:not([responsive-size="xs"])) {
+          :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"])) {
             flex-flow: row;
             padding: 0;
           }
-          :host([flex-layout]:not([responsive-size="xs"])) #player-section {
+          :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"]))
+            #player-section {
             flex: 1 0 auto;
           }
           #print-thumbnail,
@@ -538,7 +539,8 @@ class A11yMediaPlayer extends SimpleColors {
             right: unset;
             left: 5px;
           }
-          :host([flex-layout]:not([responsive-size="xs"])) > div {
+          :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"]))
+            > div {
             width: 50%;
             flex: 1 1 auto;
           }
@@ -552,7 +554,7 @@ class A11yMediaPlayer extends SimpleColors {
           :host([hide-transcript]) #transcript-section {
             display: none;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
             #transcript {
             position: absolute;
             top: 44px;
@@ -561,7 +563,7 @@ class A11yMediaPlayer extends SimpleColors {
             bottom: 0;
             overflow-y: scroll;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
             #player-and-controls.totop {
             position: absolute;
             top: 0;
@@ -664,523 +666,556 @@ class A11yMediaPlayer extends SimpleColors {
   // render function
   render() {
     return html`
-
-<div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
-  ${this.mediaCaption}
-</div>
-<div id="player-section" flex-layout="${this.flexLayout}">
-  <div id="player-and-controls" .style="${this.mediaMaxWidth}">
-    <div id="player" .style="${this.playerStyle}">
-      <a11y-media-play-button
-        id="playbutton"
-        action="${this.__playing ? "pause" : "play"}"
-        label="${this._getLocal(
-          this.localization,
-          this.__playing ? "pause" : "play",
-          "label"
-        )}"
-        @button-click="${e => this.togglePlay()}"
-        ?audio-only="${this.audioOnly}"
-        ?disabled="${this.audioNoThumb}">
-      </a11y-media-play-button>
-      <div id="html5">
-        <slot></slot>
+      <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
+        ${this.mediaCaption}
       </div>
-      <a11y-media-youtube
-        id="youtube-${this.id}"
-        class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
-        lang="${this.mediaLang}"
-        preload="${this.t ? "auto" : this.preload}"
-        t="${ifDefined(this.t)}"
-        video-id="${ifDefined(this.videoId)}"
-        @timeupdate="${this._handleTimeUpdate}"
-        ?hidden=${!this.isYoutube}>
-      </a11y-media-youtube>
-      <div id="cc-custom" 
-        aria-live="polite"
-        class="screen-only" 
-        ?hidden="${!this.showCustomCaptions}">
-        <div id="cc-text">
-          ${
-            !this.captionCues
-              ? ``
-              : Object.keys(this.captionCues).map(
-                  key =>
-                    html`
-                      ${this.captionCues[key].text
-                        ? this.captionCues[key].text
-                        : ""}
-                    `
-                )
-          }
+      <div id="player-section" flex-layout="${this.flexLayout}">
+        <div id="player-and-controls" .style="${this.mediaMaxWidth}">
+          <div id="player" .style="${this.playerStyle}">
+            <a11y-media-play-button
+              id="playbutton"
+              action="${this.__playing ? "pause" : "play"}"
+              label="${this._getLocal(
+                this.localization,
+                this.__playing ? "pause" : "play",
+                "label"
+              )}"
+              @button-click="${e => this.togglePlay()}"
+              ?audio-only="${this.audioOnly}"
+              ?disabled="${this.audioNoThumb}"
+            >
+            </a11y-media-play-button>
+            <div id="html5">
+              <slot></slot>
+            </div>
+            <a11y-media-youtube
+              id="youtube-${this.id}"
+              class="${this.__currentTime > 0.3 || this.__seeking
+                ? ``
+                : `hidden`}"
+              lang="${this.mediaLang}"
+              preload="${this.t ? "auto" : this.preload}"
+              t="${ifDefined(this.t)}"
+              video-id="${ifDefined(this.videoId)}"
+              @timeupdate="${this._handleTimeUpdate}"
+              ?hidden=${!this.isYoutube}
+            >
+            </a11y-media-youtube>
+            <div
+              id="cc-custom"
+              aria-live="polite"
+              class="screen-only"
+              ?hidden="${!this.showCustomCaptions}"
+            >
+              <div id="cc-text">
+                ${!this.captionCues
+                  ? ``
+                  : Object.keys(this.captionCues).map(
+                      key =>
+                        html`
+                          ${this.captionCues[key].text
+                            ? this.captionCues[key].text
+                            : ""}
+                        `
+                    )}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <paper-slider id="slider"
-    class="screen-only"
-    label="${this._getLocal(this.localization, "seekSlider", "label")}"
-    min="${0}"
-    max="${this.duration}"
-    secondary-progress="${this.buffered}"
-    @mousedown="${this._handleSliderStart}"
-    @mouseup="${this._handleSliderStop}"
-    @keyup="${this._handleSliderStop}"
-    @keydown="${this._handleSliderStart}"
-    @blur="${this._handleSliderStop}"
-    .value="${this.__currentTime}"
-    ?disabled="${this.disableSeek || this.duration === 0}"
-  >
-  </paper-slider>
-  <div id="controls" controls="innerplayer">
-    <div id="controls-left">
-      <a11y-media-button
-        class="xs"
-        icon="${this._getLocal(
-          this.localization,
-          this.__playing ? "pause" : "play",
-          "icon"
-        )}"
-        label="${this._getLocal(
-          this.localization,
-          this.__playing ? "pause" : "play",
-          "label"
-        )}"
-        @click="${e => this.togglePlay()}"
-      ></a11y-media-button>
-      <a11y-media-button
-        icon="${this._getLocal(this.localization, "rewind", "icon")}"
-        label="${this._getLocal(this.localization, "rewind", "label")}"
-        ?disabled="${this.disableSeek || this.currentTime <= 0}"
-        ?hidden="${this.disableSeek}"
-        @click="${e => this.rewind()}"
-      ></a11y-media-button>
-      <a11y-media-button
-        icon="${this._getLocal(this.localization, "forward", "icon")}"
-        label="${this._getLocal(this.localization, "forward", "label")}"
-        ?disabled="${this.disableSeek || this.currentTime >= this.duration}"
-        ?hidden="${this.disableSeek}"
-        @click="${e => this.forward()}"
-      ></a11y-media-button>
-      <a11y-media-button
-        icon="${this._getLocal(this.localization, "restart", "icon")}"
-        label="${this._getLocal(this.localization, "restart", "label")}"
-        ?disabled="${this.disableSeek}"
-        ?hidden="${this.responsiveSize === "xs" ||
-          this.responsiveSize === "sm" ||
-          this.disableSeek}"
-        @click="${e => this.restart()}"
-      ></a11y-media-button>
-      <div id="volume-and-mute"
-      class="xs"
-          @focus="${e => (this.__volumeSlider = true)}"
-          @blur="${e => (this.__volumeSlider = false)}">
-        <a11y-media-button
-          id="mute"
-          icon="${this._getLocal(
-            this.localization,
-            this.muted ? "unmute" : "mute",
-            "icon"
-          )}"
-          label="${this._getLocal(
-            this.localization,
-            this.muted ? "unmute" : "mute",
-            "label"
-          )}"
-          @click="${e => this.toggleMute()}"
-        ></a11y-media-button>
         <paper-slider
-          id="volume"
-          aria-labelledby="volume-slider-label"
-          label="${this._getLocal(this.localization, "volume", "label")}"
-          min="0"
-          max="100"
-          pin
-          step="10"
-          .value="${this.muted ? 0 : this.volume}"
-          @change="${this._handleVolumeChanged}" 
-          ?hidden="${this.responsiveSize === "xs"}"
-        ></paper-slider>
-      </div>
-      <span aria-live="polite" class="play-status control-bar sm">
-        <span id="statbar">${this.status}</span>
-      </span>
-    </div>
-    <div id="controls-right">
-      <a11y-media-button
-        class="sm"
-        icon="${this._getLocal(this.localization, "captions", "icon")}"
-        label="${this._getLocal(this.localization, "captions", "label")}"
-        ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions}"
-        ?toggle="${this.captionsTrackKey > -1}"
-        @click="${e => this.toggleCC()}"
-      >
-      </a11y-media-button>
-      <a11y-media-button
-        class="sm"
-        controls="transcript"
-        icon="${this._getLocal(this.localization, "transcript", "icon")}"
-        label="${this._getLocal(this.localization, "transcript", "label")}"
-        ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions || this.standAlone}"
-        ?toggle="${this.transcriptTrackKey > -1}"
-        @click="${e => this.toggleTranscript()}"
-      >
-      </a11y-media-button>
-      <a11y-media-button
-        icon="${this._getLocal(this.localization, "copyLink", "icon")}"
-        label="${this._getLocal(this.localization, "copyLink", "label")}"
-        ?disabled="${!this.linkable}"
-        ?hidden="${!this.linkable}"
-        @click="${this._handleCopyLink}"
-      ></a11y-media-button>
-      <a11y-media-
-        class="xs"
-        icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
-        label="${this._getLocal(this.localization, "fullscreen", "label")}"
-        step="1"
-        ?disabled="${this.fullscreenButton}"
-        ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-        ?toggle="${this.fullscreen}"
-        @click="${e => this.toggleFullscreen()}"
-      >
-      </a11y-media-button>
-      <paper-menu-button
-        class="sm"
-        id="settings"
-        allow-outside-scroll
-        horizontal-align="right"
-        ignore-select
-        vertical-align="bottom"
-        @change="${this._handleSettingsChanged}"
-      >
-        <paper-icon-button
-          id="settings-button"
-          action="settings"
-          alt="${this._getLocal(this.localization, "settings", "label")}"
-          icon="${this._getLocal(this.localization, "settings", "icon")}"
-          slot="dropdown-trigger"
+          id="slider"
+          class="screen-only"
+          label="${this._getLocal(this.localization, "seekSlider", "label")}"
+          min="${0}"
+          max="${this.duration}"
+          secondary-progress="${this.buffered}"
+          @mousedown="${this._handleSliderStart}"
+          @mouseup="${this._handleSliderStop}"
+          @keyup="${this._handleSliderStop}"
+          @keydown="${this._handleSliderStart}"
+          @blur="${this._handleSliderStop}"
+          .value="${this.__currentTime}"
+          ?disabled="${this.disableSeek || this.duration === 0}"
         >
-        </paper-icon-button>
-        <paper-tooltip for="settings-button">
-          ${this._getLocal(this.localization, "settings", "label")}
-        </paper-tooltip>
-
-        <paper-listbox id="settingslist" slot="dropdown-content">
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div class="setting-text">
-                ${this._getLocal(this.localization, "captions", "label")}
-              </div>
-              <div class="setting-control">
-                <dropdown-select
-                  id="cc_tracks"
-                  no-label-float
-                  value="${this.captionsTrackKey}"
-                  ?hidden="${!this.hasCaptions}"
-                  ?disabled="${!this.hasCaptions}"
-                  @value-changed="${e =>
-                    this.selectCaptionByKey(e.detail.value)}}"
-                >
-                  <paper-item value="-1"
-                    >${this._getLocal(
-                      this.localization,
-                      "captions",
-                      "off"
-                    )}</paper-item
-                  >
-                  ${
-                    !this.loadedTracks
-                      ? ``
-                      : Object.keys(this.loadedTracks.textTracks).map(key => {
-                          return html`
-                            <paper-item value="${key}">
-                              ${this.loadedTracks.textTracks[key].label ||
-                                this.loadedTracks.textTracks.language}
-                            </paper-item>
-                          `;
-                        })
-                  }
-                </dropdown-select>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div class="setting-text">
-                ${this._getLocal(this.localization, "transcript", "label")}
-              </div>
-              <div class="setting-control">
-                <dropdown-select
-                  id="transcript_tracks"
-                  no-label-float
-                  value="${this.transcriptTrackKey}"
-                  ?hidden="${!this.hasCaptions}"
-                  ?disabled="${!this.hasCaptions}"
-                  @value-changed="${e =>
-                    this.selectTranscriptByKey(e.detail.value)}"
-                >
-                  <paper-item value="-1"
-                    >${this._getLocal(
-                      this.localization,
-                      "transcript",
-                      "off"
-                    )}</paper-item
-                  >
-                  ${
-                    !this.loadedTracks
-                      ? ``
-                      : Object.keys(this.loadedTracks.textTracks).map(key => {
-                          return html`
-                            <paper-item value="${key}">
-                              ${this.loadedTracks.textTracks[key].label ||
-                                this.loadedTracks.textTracks.language}
-                            </paper-item>
-                          `;
-                        })
-                  }
-                </dropdown-select>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions ||
-            this.noTranscriptToggle ||
-            this.standAlone}">
-            <div class="setting">
-              <div id="transcript-label" class="setting-text">
-                ${this._getLocal(this.localization, "transcript", "label")}
-              </div>
-              <div class="setting-control">
-                <paper-toggle-button
-                  id="transcript-toggle"
-                  aria-labelledby="transcript-label"
-                  controls="transcript"
-                  ?checked="${!this.hideTranscript}"
-                  ?disabled="${this.noTranscriptToggle}"
-                  @change="${e => this.toggleTranscript()}"
-                >
-                </paper-toggle-button>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div id="print-label" class="setting-text">
-                ${this._getLocal(this.localization, "print", "label")}
-              </div>
-              <div class="setting-control">
+        </paper-slider>
+        <div id="controls" controls="innerplayer">
+          <div id="controls-left">
+            <a11y-media-button
+              class="xs"
+              icon="${this._getLocal(
+                this.localization,
+                this.__playing ? "pause" : "play",
+                "icon"
+              )}"
+              label="${this._getLocal(
+                this.localization,
+                this.__playing ? "pause" : "play",
+                "label"
+              )}"
+              @click="${e => this.togglePlay()}"
+            ></a11y-media-button>
+            <a11y-media-button
+              icon="${this._getLocal(this.localization, "rewind", "icon")}"
+              label="${this._getLocal(this.localization, "rewind", "label")}"
+              ?disabled="${this.disableSeek || this.currentTime <= 0}"
+              ?hidden="${this.disableSeek}"
+              @click="${e => this.rewind()}"
+            ></a11y-media-button>
+            <a11y-media-button
+              icon="${this._getLocal(this.localization, "forward", "icon")}"
+              label="${this._getLocal(this.localization, "forward", "label")}"
+              ?disabled="${this.disableSeek ||
+                this.currentTime >= this.duration}"
+              ?hidden="${this.disableSeek}"
+              @click="${e => this.forward()}"
+            ></a11y-media-button>
+            <a11y-media-button
+              icon="${this._getLocal(this.localization, "restart", "icon")}"
+              label="${this._getLocal(this.localization, "restart", "label")}"
+              ?disabled="${this.disableSeek}"
+              ?hidden="${this.responsiveSize === "xs" ||
+                this.responsiveSize === "sm" ||
+                this.disableSeek}"
+              @click="${e => this.restart()}"
+            ></a11y-media-button>
+            <div
+              id="volume-and-mute"
+              class="xs"
+              @focus="${e => (this.__volumeSlider = true)}"
+              @blur="${e => (this.__volumeSlider = false)}"
+            >
               <a11y-media-button
-                aria-labelledby="print-label"
+                id="mute"
+                icon="${this._getLocal(
+                  this.localization,
+                  this.muted ? "unmute" : "mute",
+                  "icon"
+                )}"
+                label="${this._getLocal(
+                  this.localization,
+                  this.muted ? "unmute" : "mute",
+                  "label"
+                )}"
+                @click="${e => this.toggleMute()}"
+              ></a11y-media-button>
+              <paper-slider
+                id="volume"
+                aria-labelledby="volume-slider-label"
+                label="${this._getLocal(this.localization, "volume", "label")}"
+                min="0"
+                max="100"
+                pin
+                step="10"
+                .value="${this.muted ? 0 : this.volume}"
+                @change="${this._handleVolumeChanged}"
+                ?hidden="${this.responsiveSize === "xs"}"
+              ></paper-slider>
+            </div>
+            <span aria-live="polite" class="play-status control-bar sm">
+              <span id="statbar">${this.status}</span>
+            </span>
+          </div>
+          <div id="controls-right">
+            <a11y-media-button
+              class="sm"
+              icon="${this._getLocal(this.localization, "captions", "icon")}"
+              label="${this._getLocal(this.localization, "captions", "label")}"
+              ?disabled="${!this.hasCaptions}"
+              ?hidden="${!this.hasCaptions}"
+              ?toggle="${this.captionsTrackKey > -1}"
+              @click="${e => this.toggleCC()}"
+            >
+            </a11y-media-button>
+            <a11y-media-button
+              class="sm"
+              controls="transcript"
+              icon="${this._getLocal(this.localization, "transcript", "icon")}"
+              label="${this._getLocal(
+                this.localization,
+                "transcript",
+                "label"
+              )}"
+              ?disabled="${!this.hasCaptions}"
+              ?hidden="${!this.hasCaptions || this.standAlone}"
+              ?toggle="${this.transcriptTrackKey > -1}"
+              @click="${e => this.toggleTranscript()}"
+            >
+            </a11y-media-button>
+            <a11y-media-button
+              icon="${this._getLocal(this.localization, "copyLink", "icon")}"
+              label="${this._getLocal(this.localization, "copyLink", "label")}"
+              ?disabled="${!this.linkable}"
+              ?hidden="${!this.linkable}"
+              @click="${this._handleCopyLink}"
+            ></a11y-media-button>
+            <a11y-media-button
+              class="xs"
+              icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
+              label="${this._getLocal(
+                this.localization,
+                "fullscreen",
+                "label"
+              )}"
+              step="1"
+              ?disabled="${this.fullscreenButton}"
+              ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
+              ?toggle="${this.fullscreen}"
+              @click="${e => this.toggleFullscreen()}"
+            >
+            </a11y-media-button>
+            <paper-menu-button
+              class="sm"
+              id="settings"
+              allow-outside-scroll
+              horizontal-align="right"
+              ignore-select
+              vertical-align="bottom"
+              @change="${this._handleSettingsChanged}"
+            >
+              <paper-icon-button
+                id="settings-button"
+                action="settings"
+                alt="${this._getLocal(this.localization, "settings", "label")}"
+                icon="${this._getLocal(this.localization, "settings", "icon")}"
+                slot="dropdown-trigger"
+              >
+              </paper-icon-button>
+              <paper-tooltip for="settings-button">
+                ${this._getLocal(this.localization, "settings", "label")}
+              </paper-tooltip>
+
+              <paper-listbox id="settingslist" slot="dropdown-content">
+                <paper-item ?hidden="${!this.hasCaptions}">
+                  <div class="setting">
+                    <div class="setting-text">
+                      ${this._getLocal(this.localization, "captions", "label")}
+                    </div>
+                    <div class="setting-control">
+                      <dropdown-select
+                        id="cc_tracks"
+                        no-label-float
+                        value="${this.captionsTrackKey}"
+                        ?hidden="${!this.hasCaptions}"
+                        ?disabled="${!this.hasCaptions}"
+                        @value-changed="${e =>
+                          this.selectCaptionByKey(e.detail.value)}}"
+                      >
+                        <paper-item value="-1"
+                          >${this._getLocal(
+                            this.localization,
+                            "captions",
+                            "off"
+                          )}</paper-item
+                        >
+                        ${!this.loadedTracks
+                          ? ``
+                          : Object.keys(this.loadedTracks.textTracks).map(
+                              key => {
+                                return html`
+                                  <paper-item value="${key}">
+                                    ${this.loadedTracks.textTracks[key].label ||
+                                      this.loadedTracks.textTracks.language}
+                                  </paper-item>
+                                `;
+                              }
+                            )}
+                      </dropdown-select>
+                    </div>
+                  </div>
+                </paper-item>
+                <paper-item ?hidden="${!this.hasCaptions}">
+                  <div class="setting">
+                    <div class="setting-text">
+                      ${this._getLocal(
+                        this.localization,
+                        "transcript",
+                        "label"
+                      )}
+                    </div>
+                    <div class="setting-control">
+                      <dropdown-select
+                        id="transcript_tracks"
+                        no-label-float
+                        value="${this.transcriptTrackKey}"
+                        ?hidden="${!this.hasCaptions}"
+                        ?disabled="${!this.hasCaptions}"
+                        @value-changed="${e =>
+                          this.selectTranscriptByKey(e.detail.value)}"
+                      >
+                        <paper-item value="-1"
+                          >${this._getLocal(
+                            this.localization,
+                            "transcript",
+                            "off"
+                          )}</paper-item
+                        >
+                        ${!this.loadedTracks
+                          ? ``
+                          : Object.keys(this.loadedTracks.textTracks).map(
+                              key => {
+                                return html`
+                                  <paper-item value="${key}">
+                                    ${this.loadedTracks.textTracks[key].label ||
+                                      this.loadedTracks.textTracks.language}
+                                  </paper-item>
+                                `;
+                              }
+                            )}
+                      </dropdown-select>
+                    </div>
+                  </div>
+                </paper-item>
+                <paper-item ?hidden="${!this.hasCaptions}">
+                  <div class="setting">
+                    <div id="print-label" class="setting-text">
+                      ${this._getLocal(this.localization, "print", "label")}
+                    </div>
+                    <div class="setting-control">
+                      <a11y-media-button
+                        aria-labelledby="print-label"
+                        icon="${this._getLocal(
+                          this.localization,
+                          "print",
+                          "icon"
+                        )}"
+                        ?disabled="${this.noPrinting}"
+                        ?hidden="${this.noPrinting}"
+                        @click="${this.print}"
+                      >
+                      </a11y-media-button>
+                    </div>
+                  </div>
+                </paper-item>
+                <paper-item ?hidden="${!this.hasCaptions}">
+                  <div class="setting">
+                    <div id="download-label" class="setting-text">
+                      ${this._getLocal(this.localization, "download", "label")}
+                    </div>
+                    <div class="setting-control">
+                      <a11y-media-button
+                        aria-labelledby="download-label"
+                        icon="${this._getLocal(
+                          this.localization,
+                          "download",
+                          "icon"
+                        )}"
+                        ?disabled="${this.noPrinting}"
+                        ?hidden="${this.noPrinting}"
+                        @click="${this.download}"
+                      >
+                      </a11y-media-button>
+                    </div>
+                  </div>
+                </paper-item>
+                <paper-item>
+                  <div class="setting">
+                    <div id="loop-label" class="setting-text">
+                      ${this._getLocal(this.localization, "loop", "label")}
+                    </div>
+                    <div class="setting-control">
+                      <paper-toggle-button
+                        id="loop"
+                        aria-labelledby="loop-label"
+                        @change="${e => this.toggleLoop()}"
+                        ?checked="${this.loop}"
+                      ></paper-toggle-button>
+                    </div>
+                  </div>
+                </paper-item>
+                <paper-item>
+                  <div class="setting">
+                    <div id="speed-label" class="setting-text">
+                      ${this._getLocal(this.localization, "speed", "label")}
+                    </div>
+                    <div class="setting-control">
+                      <paper-slider
+                        id="speed"
+                        aria-labelledby="speed-label"
+                        class="setting-slider"
+                        min="0.5"
+                        max="2.5"
+                        pin
+                        step="0.25"
+                        tabindex="-1"
+                        .value="${this.playbackRate}"
+                        @change="${this._handleSpeedChanged}"
+                      ></paper-slider>
+                    </div>
+                  </div>
+                </paper-item>
+              </paper-listbox>
+            </paper-menu-button>
+          </div>
+        </div>
+        <div
+          aria-hidden="true"
+          class="screen-only media-caption"
+          ?hidden="${!this.mediaCaption}"
+        >
+          ${this.mediaCaption}
+        </div>
+        <div class="print-only media-caption">${this.printCaption}</div>
+      </div>
+      <img
+        id="print-thumbnail"
+        aria-hidden="true"
+        src="${ifDefined(this.poster)}"
+      />
+      <div
+        id="transcript-section"
+        ?hidden="${this.standAlone || !this.hasCaptions}"
+      >
+        <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
+          <div id="searchbar">
+            <div id="searching">
+              <simple-search
+                id="simplesearch"
+                controls="transcript"
+                no-label-float
+                next-button-icon="${this._getLocal(
+                  this.localization,
+                  "nextResult",
+                  "icon"
+                )}"
+                next-button-label="${this._getLocal(
+                  this.localization,
+                  "nextResult",
+                  "label"
+                )}"
+                prev-button-icon="${this._getLocal(
+                  this.localization,
+                  "prevResult",
+                  "icon"
+                )}"
+                prev-button-label="${this._getLocal(
+                  this.localization,
+                  "prevResult",
+                  "label"
+                )}"
+                search-input-icon="${this._getLocal(
+                  this.localization,
+                  "search",
+                  "icon"
+                )}"
+                search-input-label="${this._getLocal(
+                  this.localization,
+                  "search",
+                  "label"
+                )}"
+                selector=".searchable"
+                ?disabled="${this.disableSearch}"
+                ?hidden="${this.disableSearch}"
+              >
+              </simple-search>
+            </div>
+            <div id="scrolling">
+              <a11y-media-button
+                id="scroll"
+                controls="transcript"
+                icon="${this._getLocal(
+                  this.localization,
+                  "autoScroll",
+                  "icon"
+                )}"
+                label="${this._getLocal(
+                  this.localization,
+                  "autoScroll",
+                  "label"
+                )}"
+                ?toggle="${!this.disableScroll}"
+                @click="${e => (this.disableScroll = !this.disableScroll)}"
+              >
+              </a11y-media-button>
+            </div>
+            <div
+              id="printing"
+              ?hidden="${this.disablePrintButton}"
+              ?disabled="${this.disablePrintButton}"
+            >
+              <a11y-media-button
+                id="download"
+                controls="transcript"
+                icon="${this._getLocal(this.localization, "download", "icon")}"
+                label="${this._getLocal(
+                  this.localization,
+                  "download",
+                  "label"
+                )}"
+                @click="${this.download}"
+              >
+              </a11y-media-button>
+              <a11y-media-button
+                id="print"
+                controls="transcript"
                 icon="${this._getLocal(this.localization, "print", "icon")}"
-                ?disabled="${this.noPrinting}"
-                ?hidden="${this.noPrinting}"
+                label="${this._getLocal(this.localization, "print", "label")}"
                 @click="${this.print}"
               >
               </a11y-media-button>
             </div>
           </div>
-          </paper-item>
-          <paper-item  ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div id="download-label" class="setting-text">
-                ${this._getLocal(this.localization, "download", "label")}
-              </div>
-              <div class="setting-control">
-                <a11y-media-button
-                  aria-labelledby="download-label"
-                  icon="${this._getLocal(
-                    this.localization,
-                    "download",
-                    "icon"
-                  )}"
-                  ?disabled="${this.noPrinting}"
-                  ?hidden="${this.noPrinting}"
-                  @click="${this.download}"
-                >
-                </a11y-media-button>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item>
-            <div class="setting">
-              <div id="loop-label" class="setting-text">
-                ${this._getLocal(this.localization, "loop", "label")}
-              </div>
-              <div class="setting-control">
-                <paper-toggle-button
-                  id="loop"
-                  aria-labelledby="loop-label"
-                  @change="${e => this.toggleLoop()}"
-                  ?checked="${this.loop}"
-                ></paper-toggle-button>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item>
-            <div class="setting">
-              <div id="speed-label" class="setting-text">
-                ${this._getLocal(this.localization, "speed", "label")}
-              </div>
-              <div class="setting-control">
-                <paper-slider
-                  id="speed"
-                  aria-labelledby="speed-label"
-                  class="setting-slider"
-                  min="0.5"
-                  max="2.5"
-                  pin
-                  step="0.25"
-                  tabindex="-1"
-                  .value="${this.playbackRate}"
-                  @change="${this._handleSpeedChanged}"
-                ></paper-slider>
-              </div>
-            </div>
-          </paper-item>
-        </paper-listbox>
-      </paper-menu-button>
-    </div>
-  </div>
-  <div aria-hidden="true"
-    class="screen-only media-caption"
-    ?hidden="${!this.mediaCaption}">
-    ${this.mediaCaption}
-  </div>
-  <div class="print-only media-caption">${this.printCaption}</div>
-</div>
-<img id="print-thumbnail" aria-hidden="true" src="${ifDefined(this.poster)}" />
-<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions}">
-  <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
-    <div id="searchbar">
-      <div id="searching">
-        <simple-search
-          id="simplesearch"
-          controls="transcript"
-          no-label-float
-          next-button-icon="${this._getLocal(
-            this.localization,
-            "nextResult",
-            "icon"
-          )}"
-          next-button-label="${this._getLocal(
-            this.localization,
-            "nextResult",
-            "label"
-          )}"
-          prev-button-icon="${this._getLocal(
-            this.localization,
-            "prevResult",
-            "icon"
-          )}"
-          prev-button-label="${this._getLocal(
-            this.localization,
-            "prevResult",
-            "label"
-          )}"
-          search-input-icon="${this._getLocal(
-            this.localization,
-            "search",
-            "icon"
-          )}"
-          search-input-label="${this._getLocal(
-            this.localization,
-            "search",
-            "label"
-          )}"
-          selector=".searchable"
-          ?disabled="${this.disableSearch}"
-          ?hidden="${this.disableSearch}"
-        >
-        </simple-search>
+          <div id="transcript" aria-live="polite">
+            <a id="transcript-desc" class="sr-only" href="#bottom">
+              ${this._getLocal(this.localization, "transcript", "skip")}
+            </a>
+            ${this.transcriptCues.length > 0
+              ? html`
+                  <div class="transcript-from-track">
+                    ${this.transcriptCues.map((cue, index) => {
+                      return html`
+                        <a11y-media-transcript-cue
+                          controls="html5"
+                          end="${this._getHHMMSS(
+                            cue.endTime,
+                            this.media.duration
+                          )}"
+                          lang="${cue.track.language}"
+                          role="button"
+                          start="${this._getHHMMSS(
+                            cue.endTime,
+                            this.media.duration
+                          )}"
+                          tabindex="0"
+                          @click="${e => this._handleCueSeek(cue)}"
+                          @active-changed="${this._setActiveCue}"
+                          ?active="${cue.track.activeCues &&
+                            cue.track.activeCues[0] === cue}"
+                          ?disabled="${this.disableInteractive ||
+                            this.disableSeek ||
+                            this.duration === 0}"
+                          ?hide-timestamps="${this.hideTimestamps}"
+                        >
+                          <span class="searchable">${cue.text}</span>
+                        </a11y-media-transcript-cue>
+                      `;
+                    })}
+                  </div>
+                `
+              : html`
+                  <div id="loading" class="transcript-from-track">
+                    ${this.status}
+                  </div>
+                `}
+          </div>
+        </div>
       </div>
-      <div id="scrolling">
+      <paper-toast
+        id="link"
+        duration="5000"
+        text="Copied to clipboard: ${this.shareLink}"
+        ?disabled="${!this.linkable}"
+        ?hidden="${!this.linkable}"
+      >
         <a11y-media-button
-          id="scroll"
-          controls="transcript"
-          icon="${this._getLocal(this.localization, "autoScroll", "icon")}"
-          label="${this._getLocal(this.localization, "autoScroll", "label")}"
-          ?toggle="${!this.disableScroll}"
-          @click="${e => (this.disableScroll = !this.disableScroll)}">
-        </a11y-media-button>
-      </div>
-      <div id="printing"
-        ?hidden="${this.disablePrintButton}"
-        ?disabled="${this.disablePrintButton}">
-        <a11y-media-button
-          id="download"
-          controls="transcript"
-          icon="${this._getLocal(this.localization, "download", "icon")}"
-          label="${this._getLocal(this.localization, "download", "label")}"
-          @click="${this.download}">
-        </a11y-media-button>
-        <a11y-media-button
-          id="print"
-          controls="transcript"
-          icon="${this._getLocal(this.localization, "print", "icon")}"
-          label="${this._getLocal(this.localization, "print", "label")}"
-          @click="${this.print}">
-        </a11y-media-button>
-      </div>
-    </div>
-    <div id="transcript" aria-live="polite">
-      <a id="transcript-desc" class="sr-only" href="#bottom">
-        ${this._getLocal(this.localization, "transcript", "skip")}
-      </a>
-      ${
-        this.transcriptCues.length > 0
-          ? html`
-              <div class="transcript-from-track">
-                ${this.transcriptCues.map((cue, index) => {
-                  return html`
-                    <a11y-media-transcript-cue
-                      controls="html5"
-                      end="${this._getHHMMSS(cue.endTime, this.media.duration)}"
-                      lang="${cue.track.language}"
-                      role="button"
-                      start="${this._getHHMMSS(
-                        cue.endTime,
-                        this.media.duration
-                      )}"
-                      tabindex="0"
-                      @click="${e => this._handleCueSeek(cue)}"
-                      @active-changed="${this._setActiveCue}"
-                      ?active="${cue.track.activeCues &&
-                        cue.track.activeCues[0] === cue}"
-                      ?disabled="${this.disableInteractive ||
-                        this.disableSeek ||
-                        this.duration === 0}"
-                      ?hide-timestamps="${this.hideTimestamps}"
-                    >
-                      <span class="searchable">${cue.text}</span>
-                    </a11y-media-transcript-cue>
-                  `;
-                })}
-              </div>
-            `
-          : html`
-              <div id="loading" class="transcript-from-track">
-                ${this.status}
-              </div>
-            `
-      }
-    </div>
-  </div>
-</div>
-<paper-toast id="link" 
-  duration="5000" 
-  text="Copied to clipboard: ${this.shareLink}"
-  ?disabled="${!this.linkable}" 
-  ?hidden="${!this.linkable}">
-  <a11y-media-button
-    action="linkable"
-    icon="${this._getLocal(this.localization, "closeLink", "icon")}"
-    label="${this._getLocal(this.localization, "closeLink", "label")}"
-    tooltip-position="top"
-    @click="${this._handleCloseLink}"
-  ></a11y-media-button>
-</paper-toast>
-<div id="bottom" class="sr-only"></div>`;
+          action="linkable"
+          icon="${this._getLocal(this.localization, "closeLink", "icon")}"
+          label="${this._getLocal(this.localization, "closeLink", "label")}"
+          tooltip-position="top"
+          @click="${this._handleCloseLink}"
+        ></a11y-media-button>
+      </paper-toast>
+      <div id="bottom" class="sr-only"></div>
+    `;
   }
 
   // properties available to the custom element for data binding

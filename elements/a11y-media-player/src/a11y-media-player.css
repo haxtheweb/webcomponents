@@ -415,11 +415,11 @@ paper-toast:not(:defined) {
   display: none;
 }
 @media screen {
-  :host([flex-layout]:not([responsive-size="xs"])) {
+  :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"])) {
     flex-flow: row;
     padding: 0;
   }
-  :host([flex-layout]:not([responsive-size="xs"])) #player-section {
+  :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"])) #player-section {
     flex: 1 0 auto;
   }
   #print-thumbnail,
@@ -446,7 +446,7 @@ paper-toast:not(:defined) {
     right: unset;
     left: 5px;
   }
-  :host([flex-layout]:not([responsive-size="xs"])) > div {
+  :host([flex-layout]:not([responsive-size="xs"]):not([responsive-size="sm"])) > div {
     width: 50%;
     flex: 1 1 auto;
   }
@@ -460,7 +460,7 @@ paper-toast:not(:defined) {
   :host([hide-transcript]) #transcript-section {
     display: none;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
     #transcript {
     position: absolute;
     top: 44px;
@@ -469,7 +469,7 @@ paper-toast:not(:defined) {
     bottom: 0;
     overflow-y: scroll;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
     #player-and-controls.totop {
     position: absolute;
     top: 0;

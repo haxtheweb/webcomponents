@@ -137,7 +137,7 @@
         ?hidden="${!this.linkable}"
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
-      <a11y-media-
+      <a11y-media-button
         class="xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
@@ -223,24 +223,6 @@
                     `;
                   })}
                 </dropdown-select>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions || this.noTranscriptToggle || this.standAlone}">
-            <div class="setting">
-              <div id="transcript-label" class="setting-text">
-                ${this._getLocal(this.localization,'transcript','label')}
-              </div>
-              <div class="setting-control">
-                <paper-toggle-button
-                  id="transcript-toggle"
-                  aria-labelledby="transcript-label"
-                  controls="transcript"
-                  ?checked="${!this.hideTranscript}"
-                  ?disabled="${this.noTranscriptToggle}"
-                  @change="${e => this.toggleTranscript()}"
-                >
-                </paper-toggle-button>
               </div>
             </div>
           </paper-item>
