@@ -19,7 +19,7 @@
         id="youtube-${this.id}"
         class="${this.currentTime > 0 || this.__seeking ? `` : `hidden ${this.currentTime}`}" 
         lang="${this.mediaLang}"
-        video-id="${this.youtubeId}"
+        video-id="${this.videoId}"
         @timeupdate="${this._handleTimeUpdate}"
         .preload="${this.preload}"
         ?hidden=${!this.isYoutube}>

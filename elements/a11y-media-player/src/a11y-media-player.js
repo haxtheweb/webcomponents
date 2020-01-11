@@ -613,6 +613,49 @@ class A11yMediaPlayer extends SimpleColors {
       : false;
   }
 
+  /**
+   * video or video clip
+   * @readonly
+   * @returns {object} and object with videoId, startSeconds, and stopSeconds
+   */
+  get videoData() {
+    if (this.videoId) {
+      let vdata = this.videoId.split(/[\?&]/);
+      for (let i = 1; i < vdata.length; i++) {
+        let query = vdata[i].split("="),
+          t = query[1] || ``,
+          hh = t.match(/(\d)+h/),
+          mm = t.match(/(\d)+m/),
+          ss = t.match(/(\d*(\.?\d+)?)(?:s*)$/),
+          h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
+          m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
+          s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0,
+          start = parseInt(h + m + s);
+        if (query[0] === "t" || query[0] === "start") return Math.max(0, start);
+      }
+    }
+    return false;
+  }
+
+  get videoId() {
+    if (
+      this.anchor.target === this &&
+      this.anchor.params !== {} &&
+      this.isYoutube
+    ) {
+      let paramstring = Object.keys(this.anchor.params)
+        .map(key => `${key}=${this.anchor.params[key]}`)
+        .join("&");
+      console.log(
+        paramstring,
+        this.youtubeId,
+        this.youtubeId.replace(/[\?\&].*$/, ``)
+      );
+      return this.youtubeId.replace(/[\?\&].*$/, ``);
+    }
+    return this.youtubeId;
+  }
+
   connectedCallback() {
     let root = this;
     super.connectedCallback();
