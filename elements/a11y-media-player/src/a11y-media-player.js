@@ -56,7 +56,6 @@ class A11yMediaPlayer extends SimpleColors {
     this.disableScroll = false;
     this.disableSeek = false;
     this.fullscreen = false;
-    this.height = null;
     this.hideElapsedTime = false;
     this.hideTimestamps = false;
     this.hideTranscript = false;
@@ -224,18 +223,25 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {boolean} Is the video in flex layout mode?
    */
   get flexLayout() {
-    if (
+    return (
+      this.hasCaptions &&
       !this.standAlone &&
       !this.hideTranscript &&
       !this.audioNoThumb &&
       !this.stackedLayout
-    ) {
-      this.setAttribute("flex-layout", true);
-      return true;
-    } else {
-      this.removeAttribute("flex-layout");
-      return true;
-    }
+    );
+  }
+
+  /**
+   * determines if parent is wide enough for full flex-layout mode
+   * @returns {boolean}
+   */
+  get fullFlex() {
+    return (
+      this.flexLayout &&
+      this.responsiveSize !== "xs" &&
+      this.responsiveSize !== "sm"
+    );
   }
 
   /**
@@ -244,18 +250,15 @@ class A11yMediaPlayer extends SimpleColors {
    */
   get fullscreenButton() {
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      ) ||
-      this.disableFullscreen ||
-      this.audioNoThumb ||
-      !(typeof screenfull === "object")
-    ) {
-      return false;
-    } else {
-      return true;
-    }
+    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    return (
+      typeof screenfull === "object" &&
+      !mobile &&
+      !this.disableFullscreen &&
+      !this.audioNoThumb
+    );
   }
 
   /**
@@ -453,9 +456,10 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {string} value for style attribute
    */
   get mediaMaxWidth() {
-    let maxWidth = this.fullscreen
-      ? `unset`
-      : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
+    let maxWidth =
+      this.fullscreen || this.audioNoThumb
+        ? `unset`
+        : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
     return `max-width:${maxWidth};`;
   }
 
@@ -496,9 +500,11 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {string} value for style attribute
    */
   get playerStyle() {
-    let audio = this.audioOnly && !this.thumbnailSrc && !this.height,
-      height = audio ? "60px" : "unset",
-      paddingTop = this.fullscreen || audio ? `unset` : `${100 / this.aspect}%`,
+    let height = this.audioNoThumb ? "60px" : "unset",
+      paddingTop =
+        this.fullscreen || this.audioNoThumb
+          ? `unset`
+          : `${100 / this.aspect}%`,
       thumbnail =
         this.poster && (this.isYoutube || this.audioOnly)
           ? `background-image:url(${this.poster});`
@@ -506,15 +512,18 @@ class A11yMediaPlayer extends SimpleColors {
     return `height:${height};padding-top:${paddingTop};${thumbnail}`;
   }
 
+  /**
+   * `poster`  image for video
+   * @readonly
+   * @returns {string} url for poster image
+   */
   get poster() {
-    if (this.thumbnailSrc) {
-      return this.thumbnailSrc;
-    } else if (this.youtubeId) {
-      return `https://img.youtube.com/vi/${this.youtubeId.replace(
-        /[\?&].*/,
-        ""
-      )}/hqdefault.jpg`;
-    }
+    return !this.thumbnailSrc && this.youtubeId
+      ? `https://img.youtube.com/vi/${this.youtubeId.replace(
+          /[\?&].*/,
+          ""
+        )}/hqdefault.jpg`
+      : this.thumbnailSrc;
   }
 
   /**
@@ -595,6 +604,14 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * Show custom CC (for audio and YouTube)?
+   * @returns {boolean} Should the player show custom CC?
+   */
+  get stickyMode() {
+    return this.sticky && this.stickyCorner !== "none";
+  }
+
+  /**
    * gets initial timecode parameter
    * @readonly
    * @returns {array} array of cues
@@ -613,7 +630,7 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {array} array of cues
    */
   get transcriptCues() {
-    let cues = this.cues.slice();
+    let cues = !this.cues ? [] : this.cues.slice();
     return cues.filter(cue => cue.track === this.transcriptTrack);
   }
 
@@ -691,19 +708,76 @@ class A11yMediaPlayer extends SimpleColors {
     super.disconnectedCallback();
   }
 
+  _setAttribute(attr, val) {
+    if (!val) {
+      this.removeAttribute(attr);
+    } else {
+      this.setAttribute(attr, val);
+    }
+  }
+
   /**
    * @param {map} changedProperties the properties that have changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      //console.log('updated',propName,oldValue);
-      if (this.media) this._updateMediaProperties(propName);
+      let change = params => params.includes(propName),
+        mediaChange = param =>
+          change(["__loadedTracks", "youtubeId", "media", param]),
+        flexChange = change([
+          "standAlone",
+          "hideTranscript",
+          "audioNoThumb",
+          "stackedLayout",
+          "__cues"
+        ]),
+        media = this.media ? this.media : this.__loadedTracks;
+
       if (propName === "id" && this.id === null)
         this.id = "a11y-media-player" + Date.now();
 
+      if (change(["media", "muted"])) this._handleMuteChanged();
+      if (change(["media", "volume"])) this.setVolume(this.volume);
+      if (change(["media", "autoplay"]) && this.autoplay) this.play();
+
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
-      if (["cc", "captionsTrack"].includes(propName)) this._captionsChanged();
+      if (propName === "__loadedTracks")
+        this._addSourcesAndTracks(this.loadedTracks);
+      if (change(["cc", "captionsTrack"])) this._captionsChanged();
+
+      /* updates layout */
+      if (flexChange) this._setAttribute("flex-layout", this.flexLayout);
+      if (flexChange || propName === "responsiveSize")
+        this._setAttribute("full-flex", this.fullFlex);
+      if (change(["sticky", "sticky-corner", "__playing"]))
+        this._setAttribute("sticky-mode", this.stickyMode && this.__playing);
+      if (change(["height"]))
+        this.style.setProperty(
+          "--a11y-media-player-height",
+          this.height ? this.height : "unset"
+        );
+
+      /* updates media */
+      if (this.media !== null) {
+        if (mediaChange("cc"))
+          this._setAttribute("cc", this.cc, this.__loadedTracks);
+        if (mediaChange("crossorigin"))
+          this._setAttribute("crossorigin", this.crossorigin, media);
+        if (mediaChange("isYoutube") && this.__loadedTracks)
+          this.__loadedTracks.hidden === this.isYoutube;
+        if (mediaChange("mediaLang"))
+          this._setAttribute("lang", this.mediaLang, media);
+        if (mediaChange("loop")) this._setAttribute("loop", this.loop, media);
+        if (mediaChange("playbackRate"))
+          this._setAttribute("playbackRate", this.playbackRate, media);
+        if (mediaChange("isYoutube"))
+          this._setAttribute(
+            "poster",
+            !this.isYoutube ? this.thumbnailSrc : false,
+            this.__loadedTracks
+          );
+      }
 
       this.dispatchEvent(
         new CustomEvent(
@@ -1087,10 +1161,10 @@ class A11yMediaPlayer extends SimpleColors {
           ? "audio"
           : "video"
       );
+      primary.setAttribute("preload", "metadata");
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) primary.appendChild(node);
       });
-      primary.setAttribute("preload", "metadata");
       this.appendChild(primary);
     }
     primary.style.width = "100%";
@@ -1112,24 +1186,6 @@ class A11yMediaPlayer extends SimpleColors {
     /* provides a seek function for primary media */
     primary.seek = time => (primary.currentTime = time);
     return primary;
-  }
-  /**
-   *
-   *
-   * @param {*} id
-   * @param {*} thumb
-   * @returns
-   * @memberof A11yMediaPlayer
-   */
-  _getSrcDoc(id, thumb) {
-    return !id
-      ? ``
-      : `<style>
-        *{padding:0;margin:0;overflow:hidden}
-        html,body{height:100%}
-        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
-        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-        </style><a href=https://www.youtube.com/embed/${id}?autoplay=1></a>`;
   }
 
   /**
@@ -1579,37 +1635,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _transcriptScroll(e) {
     this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * When relevant player properties change, updates properties of media
-   * @param {string} propName the changed property
-   */
-
-  _updateMediaProperties(propName) {
-    let setAttr = (attr, val = this[attr], yt = true) => {
-      if (["__loadedTracks", "youtubeId", "media", attr].includes(propName)) {
-        let media = yt && this.media ? this.media : this.__loadedTracks;
-        if (val && this.media !== null) {
-          media.setAttribute(attr, val);
-        } else {
-          media.removeAttribute(attr, val);
-        }
-      }
-    };
-
-    setAttr("cc", this.cc, false);
-    setAttr("crossorigin");
-    setAttr("hidden", this.isYoutube, false);
-    setAttr("lang", this.mediaLang);
-    setAttr("loop");
-    setAttr("playbackRate");
-    setAttr("poster", !this.isYoutube ? this.thumbnailSrc : false);
-    if (propName === "__loadedTracks")
-      this._addSourcesAndTracks(this.loadedTracks);
-    if (["media", "muted"].includes(propName)) this._handleMuteChanged();
-    if (["media", "volume"].includes(propName)) this.setVolume(this.volume);
-    if (["media", "autoplay"].includes(propName) && this.autoplay) this.play();
   }
 
   /**

@@ -105,7 +105,8 @@
    */
   "fullscreen": {
     "attribute": "fullscreen",
-    "type": "Boolean"
+    "type": "Boolean",
+    "reflect": true
   },
   /**
    * The height of the media player.

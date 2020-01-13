@@ -1,8 +1,8 @@
 <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
   ${this.mediaCaption}
 </div>
-<div id="player-section" flex-layout="${this.flexLayout}">
-  <div id="player-and-controls" .style="${this.mediaMaxWidth}">
+<div id="player-section">
+  <div id="player-and-controls" .style="${this.mediaMaxWidth}" ?audio-no-thumb="${this.audioNoThumb}">
     <div id="player" .style="${this.playerStyle}">
       <a11y-media-play-button
         id="playbutton"
@@ -29,7 +29,7 @@
         aria-live="polite"
         class="screen-only" 
         ?hidden="${!this.showCustomCaptions}">
-        <div id="cc-text">
+        <div id="cc-text" ?hidden="${Object.keys(this.captionCues || []).length === 0}">
           ${!this.captionCues ? `` 
             : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
           }
@@ -125,7 +125,7 @@
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
         ?disabled="${!this.hasCaptions}"
-        ?hidden="${!this.hasCaptions || this.standAlone }"
+        ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
         ?toggle="${this.transcriptTrackKey > -1}"
         @click="${e => this.toggleTranscript()}"
       >
@@ -308,7 +308,7 @@
   <div class="print-only media-caption">${this.printCaption}</div>
 </div>
 <img id="print-thumbnail" aria-hidden="true" src="${ifDefined(this.poster)}" />
-<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions}">
+<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions || this.height}">
   <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
     <div id="searchbar">
       <div id="searching">
