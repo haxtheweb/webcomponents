@@ -4,6 +4,7 @@
  */
 import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 
 /**
@@ -178,7 +179,7 @@ class HAXCMSBackendBeaker extends LitElement {
     this.manifest.items.forEach((element, index) => {
       // test for things that are not set and build the whole thing out
       if (typeof element.location === typeof undefined) {
-        let id = this.generateResourceID("item-");
+        let id = generateResourceID("item-");
         element.id = id;
         element.location = "pages/" + id + "/index.html";
         element.order = index;
@@ -273,7 +274,7 @@ class HAXCMSBackendBeaker extends LitElement {
       // test for things that are not set and build the whole thing out
       if (typeof element.location === typeof undefined) {
         if (!page.id) {
-          page.id = this.generateResourceID("item-");
+          page.id = generateResourceID("item-");
         }
         if (!page.location) {
           page.location = "pages/" + page.id + "/index.html";
@@ -382,31 +383,6 @@ class HAXCMSBackendBeaker extends LitElement {
     if (store.cmsSiteEditor && store.cmsSiteEditor.instance) {
       store.cmsSiteEditor.instance.jwt = this.jwt;
     }
-  }
-  /**
-   * Generate a uinque ID
-   */
-  generateResourceID(base = "") {
-    function idPart() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return (
-      base +
-      idPart() +
-      idPart() +
-      "-" +
-      idPart() +
-      "-" +
-      idPart() +
-      "-" +
-      idPart() +
-      "-" +
-      idPart() +
-      idPart() +
-      idPart()
-    );
   }
   /**
    * Attached life cycle

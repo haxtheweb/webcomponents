@@ -4,11 +4,11 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `chartist-render`
- * @customElement chartist-render
  * uses chartist library to render a chart
  *
 ### Styling
@@ -50,12 +50,9 @@ Custom property | Description | Default
 `--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
 `--chartist-color-0` | background color for 15th series |  #a748ca
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
-
-
- * @polymer
  * @extends SchemaBehaviors
  * @demo ./demo/index.html 
- *
+ * @customElement chartist-render
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -71,7 +68,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
     this.options = null;
     this.responsiveOptions = [];
     this.showTable = false;
-    this.__chartId = this.generateResourceID().replace("#", "chart-");
+    this.__chartId = generateResourceID("chart-");
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/chartist/dist/chartist.min.js`;
     window.addEventListener(

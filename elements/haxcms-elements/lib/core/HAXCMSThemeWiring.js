@@ -6,6 +6,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state
@@ -122,6 +123,11 @@ const HAXCMSTheme = function(SuperClass) {
           top: 0,
           left: 0
         });
+        // @todo hacky timing thing
+        setTimeout(() => {
+          // try scrolling to the target ID after content gets imported
+          window.AnchorBehaviors.getTarget(store.themeElement);
+        }, 1000);
       }
     }
     /**

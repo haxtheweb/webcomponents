@@ -1,7 +1,11 @@
 import { html, css } from "lit-element/lit-element.js";
 // LitElement based
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { encapScript, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import {
+  encapScript,
+  wipeSlot,
+  generateResourceID
+} from "@lrnwebcomponents/utils/utils.js";
 // variables required as part of the gravity drag and scroll
 var timer = null;
 const maxStep = 25;
@@ -298,7 +302,9 @@ class HaxBody extends SimpleColors {
     return "hax-body";
   }
   _mouseOver(e) {
-    this.positionContextMenus();
+    if (!this.openDrawer && this.editMode && !this.__tabTrap) {
+      this.positionContextMenus();
+    }
   }
   /**
    * LitElement render
@@ -492,6 +498,14 @@ class HaxBody extends SimpleColors {
                   detail: { node: node }
                 })
               );
+              // special support for Header tags showing up w.o. identifiers
+              // this way it's easier to anchor to them in the future
+              if (
+                ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName) &&
+                node.getAttribute("id") == null
+              ) {
+                node.setAttribute("id", generateResourceID("header-"));
+              }
               // set new nodes to be the active one
               // only if we didn't just do a grid plate move
               // if multiple mutations, only accept the 1st one in a group
@@ -1314,7 +1328,7 @@ class HaxBody extends SimpleColors {
         node !== container
       ) {
         container.removeAttribute("contenteditable");
-      } else {
+      } else if (container) {
         container.setAttribute("contenteditable", true);
       }
     }

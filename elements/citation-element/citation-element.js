@@ -1,12 +1,13 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
+import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `citation-element`
- * @customElement citation-element
  * An element dedicated to presenting and managing a correct citation on the web
  * both visually as well as semantically with simple inputs.
  * @demo demo/index.html
+ * @customElement citation-element
  */
 class CitationElement extends SchemaBehaviors(LitElement) {
   /**
@@ -235,7 +236,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
           "resource"
         );
       } else {
-        let uuid = this.generateResourceID();
+        let uuid = generateResourceID();
         this.relatedResource = uuid;
         this.previousElementSibling.setAttribute("resource", uuid);
       }
@@ -250,7 +251,7 @@ class CitationElement extends SchemaBehaviors(LitElement) {
       if (this.parentNode.getAttribute("resource")) {
         this.relatedResource = this.parentNode.getAttribute("resource");
       } else {
-        let uuid = this.generateResourceID();
+        let uuid = generateResourceID();
         this.relatedResource = uuid;
         this.parentNode.setAttribute("resource", uuid);
       }
