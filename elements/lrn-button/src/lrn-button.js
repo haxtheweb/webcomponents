@@ -2,24 +2,16 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement lrn-button
  */
-class LrnButton extends PolymerElement {
+class LrnButton extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -30,40 +22,27 @@ class LrnButton extends PolymerElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+    this.href = "#";
+    this.label = "";
+    this.target = "";
+    this.disabled = false;
+    this.focusState = false;
+    setTimeout(() => {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
-      this.shadowRoot
-        .querySelector("#button")
-        .addEventListener("focused-changed", this.focusToggle);
-    });
+      this.addEventListener("focusin", this.tapEventOn);
+      this.addEventListener("focusout", this.tapEventOff);
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
+    }, 0);
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn);
-    this.removeEventListener("mouseover", this.tapEventOn);
-    this.removeEventListener("mouseout", this.tapEventOff);
+  firstUpdated() {
     this.shadowRoot
       .querySelector("#button")
-      .removeEventListener("focused-changed", this.focusToggle);
-    super.disconnectedCallback();
-  }
-  /**
-   * Go to the href if the button isn't disabled
-   */
-  ready() {
-    super.ready();
+      .addEventListener("focused-changed", this.focusToggle);
     if (!this.disabled) {
       this.showHref = this.href;
     }
@@ -73,16 +52,15 @@ class LrnButton extends PolymerElement {
    * Class processing on un-tap / hover
    */
   tapEventOn(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.add(item);
+          this.shadowRoot.querySelector("#button").classList.add(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.add(item);
+            this.shadowRoot.querySelector("#icon").classList.add(item);
           }
         }
       });
@@ -93,16 +71,15 @@ class LrnButton extends PolymerElement {
    * Undo class processing on un-tap / hover
    */
   tapEventOff(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.remove(item);
+          this.shadowRoot.querySelector("#button").classList.remove(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.remove(item);
+            this.shadowRoot.querySelector("#icon").classList.remove(item);
           }
         }
       });
@@ -113,36 +90,35 @@ class LrnButton extends PolymerElement {
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
   focusToggle(e) {
-    let root = this;
     this.dispatchEvent(
       new CustomEvent("focus-changed", {
         bubbles: true,
         composed: true,
-        detail: { focus: root.focusState }
+        detail: { focus: this.focusState }
       })
     );
     // see if it has hover classes
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          if (root.focusState) {
-            root.shadowRoot.querySelector("#button").classList.add(item);
+          if (this.focusState) {
+            this.shadowRoot.querySelector("#button").classList.add(item);
             if (item.indexOf("-") != -1) {
-              root.shadowRoot.querySelector("#icon").classList.add(item);
+              this.shadowRoot.querySelector("#icon").classList.add(item);
             }
           } else {
-            root.shadowRoot.querySelector("#button").classList.remove(item);
+            this.shadowRoot.querySelector("#button").classList.remove(item);
             if (item.indexOf("-") != -1) {
-              root.shadowRoot.querySelector("#icon").classList.remove(item);
+              this.shadowRoot.querySelector("#icon").classList.remove(item);
             }
           }
         }
       });
     }
-    root.focusState = !root.focusState;
+    this.focusState = !this.focusState;
   }
 }
 window.customElements.define(LrnButton.tag, LrnButton);

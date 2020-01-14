@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the panel\n\nProperty: title\n\nDefault: Block heading"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Height of the paper.\n\nProperty: elevation\n\nDefault: 2"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the panel\n\nProperty: title\n\nDefault: Block heading"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Height of the paper.\n\nProperty: elevation\n\nDefault: 2"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrndesign-panelcard",
+      "description": "`lrndesign-panelcard`\nA LRN element\n\nAttributes:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperties:\n\n  * `title` {`string`} - Title of the panel\n\n  * `elevation` {`number`} - Height of the paper.\n\n  * `coloredText` {`boolean`} - Applies the color to the text instead of the background",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the panel\n\nProperty: title\n\nDefault: Block heading"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Height of the paper.\n\nProperty: elevation\n\nDefault: 2"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Applies the color to the text instead of the background\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

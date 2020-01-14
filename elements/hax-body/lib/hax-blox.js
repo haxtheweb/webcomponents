@@ -40,7 +40,8 @@ Register a blox with HAX store.
   ]
 }]
 ```
-*/
+ * @customElement hax-blox
+ */
 class HAXBlox extends HAXApp {
   constructor() {
     super();

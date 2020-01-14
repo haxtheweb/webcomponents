@@ -1,15 +1,8 @@
 {
   "endpoint": {
-    "name": "endpoint",
-    "type": String,
-    "value": "/service/r-service",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": String
   },
   "__connected": {
-    "name": "connected",
-    "type": Boolean,
-    "value": false,
-    "observer": false
+    "type": Boolean
   }
 }

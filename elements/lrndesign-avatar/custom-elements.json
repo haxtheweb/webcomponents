@@ -1,0 +1,248 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-avatar",
+      "description": "`lrndesign-avatar`\n`Visualize a user account eitehr with an image, a label, or as abstract art.`",
+      "attributes": [
+        {
+          "name": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hexColor",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "link to an image, optional",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "text to use for avatar",
+          "type": "string",
+          "default": "\"avatar\""
+        },
+        {
+          "name": "twoChars",
+          "attribute": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        },
+        {
+          "name": "jdenticon",
+          "attribute": "jdenticon",
+          "description": "Form abstract art from hash of label",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

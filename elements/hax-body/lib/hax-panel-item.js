@@ -9,6 +9,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
 
 /**
  * `hax-panel-item`
+ * @customElement hax-panel-item
  * `A single button in the hax panel for consistency.`
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
@@ -23,7 +24,9 @@ class HAXPanelItem extends LitElement {
     this.label = "editor:text-fields";
     this.eventName = "button";
     this.value = "";
-    this.addEventListener("click", this._fireEvent);
+    setTimeout(() => {
+      this.addEventListener("click", this._fireEvent);
+    }, 0);
   }
   static get properties() {
     return {
@@ -45,7 +48,8 @@ class HAXPanelItem extends LitElement {
        * Support for disabled state buttons
        */
       disabled: {
-        type: Boolean
+        type: Boolean,
+        reflect: true
       },
       /**
        * If we should apply a rounded edge to the button, opposite
@@ -184,13 +188,7 @@ class HAXPanelItem extends LitElement {
           <iron-icon icon="${this.icon}"></iron-icon>
         </div>
       </paper-button>
-      <paper-tooltip
-        fit-to-visible-bounds
-        animation-delay="0"
-        for="button"
-        position="bottom"
-        offset="10"
-      >
+      <paper-tooltip for="button" position="bottom" offset="10">
         ${this.label}
       </paper-tooltip>
     `;
@@ -220,18 +218,20 @@ class HAXPanelItem extends LitElement {
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-item-selected", {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: {
-          target: this,
-          value: this.value,
-          eventName: this.eventName
-        }
-      })
-    );
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent("hax-item-selected", {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+          detail: {
+            target: this,
+            value: this.value,
+            eventName: this.eventName
+          }
+        })
+      );
+    }
   }
 }
 customElements.define(HAXPanelItem.tag, HAXPanelItem);

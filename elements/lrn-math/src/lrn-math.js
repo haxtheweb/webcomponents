@@ -88,7 +88,7 @@ function load_library() {
   document.head.appendChild(script);
 }
 
-class MathTexController extends HTMLElement {
+class LrnMathController extends HTMLElement {
   connectedCallback() {
     if (this.hasAttribute("src")) src = this.getAttribute("src");
     if (!this.hasAttribute("lazy")) load_library();
@@ -102,9 +102,9 @@ class MathTexController extends HTMLElement {
   }
 }
 
-export { MathTexController };
+export { LrnMathController };
 
-window.customElements.define("math-tex-controller", MathTexController);
+window.customElements.define("lrn-math-controller", LrnMathController);
 /*
 Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).
 ##### Example
@@ -116,7 +116,7 @@ Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).
 @homepage http://github.com/janmarthedal/math-tex/
 */
 const TAG_NAME = "lrn-math",
-  CONTROLLER_TAG_NAME = "math-tex-controller",
+  CONTROLLER_TAG_NAME = "lrn-math-controller",
   mutation_config = {
     childList: true,
     characterData: true,
@@ -130,6 +130,7 @@ function check_handler() {
   handler =
     document.querySelector(CONTROLLER_TAG_NAME) ||
     document.createElement(CONTROLLER_TAG_NAME);
+  handler.setAttribute("lazy", "lazy");
   if (!handler || typeof handler.typeset !== "function") {
     console.warn(
       "no %s element defined; %s element will not work",
@@ -157,11 +158,16 @@ function update(elem) {
   }
 }
 
-class MathTex extends HTMLElement {
+/**
+ * lrn-math
+ * A mathjax wrapper tag in vanillaJS
+ *
+ * @demo demo/index.html
+ */
+class LrnMath extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    check_handler();
   }
   static get tag() {
     return "lrn-math";
@@ -169,6 +175,7 @@ class MathTex extends HTMLElement {
 
   connectedCallback() {
     const elem = this;
+    check_handler();
     window.requestAnimationFrame(function() {
       elem._private = {
         check: "",
@@ -204,7 +211,7 @@ class MathTex extends HTMLElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
@@ -241,5 +248,5 @@ class MathTex extends HTMLElement {
   }
 }
 
-window.customElements.define(MathTex.tag, MathTex);
-export { MathTex };
+window.customElements.define(LrnMath.tag, LrnMath);
+export { LrnMath };

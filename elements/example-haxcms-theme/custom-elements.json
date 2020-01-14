@@ -1,0 +1,46 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`"
+    },
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
+          "type": "boolean"
+        },
+        {
+          "name": "active-manifest-index",
+          "description": "Current array index of the active page that's been loaded.",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
+          "type": "boolean"
+        },
+        {
+          "name": "activeManifestIndex",
+          "attribute": "active-manifest-index",
+          "description": "Current array index of the active page that's been loaded.",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "example-haxcms-theme",
+      "description": "`example-haxcms-theme`"
+    }
+  ]
+}

@@ -4,12 +4,13 @@
  */
 /**
  * `example-hax-element`
+ * @customElement example-hax-element
  * `Provide an example to pick apart of a working HAX element`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class ExampleHaxElement extends HTMLElement {

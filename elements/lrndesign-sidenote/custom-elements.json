@@ -1,0 +1,131 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-sidenote",
+      "description": "`lrndesign-sidenote`\nA basic side note",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-sidenote",
+      "description": "`lrndesign-sidenote`\nA basic side note",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-sidenote"
+    },
+    {
+      "name": "lrndesign-sidenote",
+      "description": "`lrndesign-sidenote`\nA basic side note",
+      "attributes": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "bgColor",
+          "attribute": "bgColor",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

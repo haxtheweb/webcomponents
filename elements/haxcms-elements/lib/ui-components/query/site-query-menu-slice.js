@@ -10,7 +10,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-query-menu-slice`
  * `A slice / 1 level within the hierarchy, via relative parent or deep parent`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

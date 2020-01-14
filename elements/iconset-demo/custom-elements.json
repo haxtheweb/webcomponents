@@ -1,0 +1,110 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "iconset-demo",
+      "description": "`iconset-demo`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "iconset-demo",
+      "description": "`iconset-demo`",
+      "attributes": [
+        {
+          "name": "include-sets",
+          "description": "a space-separated whitelist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "exclude-sets",
+          "description": "a space-separated blacklist of iconsets by name",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "includeSets",
+          "attribute": "include-sets",
+          "description": "a space-separated whitelist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "excludeSets",
+          "attribute": "exclude-sets",
+          "description": "a space-separated blacklist of iconsets by name",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "iconset-demo",
+      "description": "`iconset-demo`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

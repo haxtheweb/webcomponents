@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-microphone-iconset-svg` is a iconset for the Material Design Icons collection with the "microphone" tag
+ * `mdi-microphone-iconset-svg`
+ * @customElement mdi-microphone-iconset-svg is a iconset for the Material Design Icons collection with the "microphone" tag
  *
  * Example:
  *   <iron-icon icon="mdi-microphone:microphone-outline"></iron-icon>

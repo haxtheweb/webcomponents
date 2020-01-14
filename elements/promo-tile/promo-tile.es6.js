@@ -3,6 +3,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `promo-tile`
+ * @customElement promo-tile
  * @demo demo/index.html
  */
 class PromoTile extends SchemaBehaviors(PolymerElement) {
@@ -289,7 +290,7 @@ class PromoTile extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

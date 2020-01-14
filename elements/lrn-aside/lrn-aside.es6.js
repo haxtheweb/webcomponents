@@ -1,18 +1,23 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrn-aside`
  * A content aside as a panel
- *
  * @demo demo/index.html
+ * @customElement lrn-aside
  */
-class LrnAside extends PolymerElement {
+class LrnAside extends LitElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js");
+    this.title = "Related content";
+    this.sticky = false;
+    this.direction = "";
+    setTimeout(() => {
+      import("@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js");
+    }, 0);
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
           padding: 8px;
@@ -29,43 +34,42 @@ class LrnAside extends PolymerElement {
           float: right;
           max-width: 480px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <aside>
-        <lrndesign-panelcard title="[[title]]">
+        <lrndesign-panelcard title="${this.title}">
           <slot></slot>
         </lrndesign-panelcard>
       </aside>
     `;
   }
-
   static get tag() {
     return "lrn-aside";
   }
-
   static get properties() {
     return {
       /**
        * Title for the aside.
        */
       title: {
-        type: String,
-        value: "Related content"
+        type: String
       },
       /**
        * Apply CSS sticky styling
        */
       sticky: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Direction to hang off UI if sticky, left or right.
        */
       direction: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
@@ -92,7 +96,7 @@ class LrnAside extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

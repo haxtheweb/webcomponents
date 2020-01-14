@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-active-title`
  * `Title of the active page in the site`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class SiteActiveTitle extends LitElement {

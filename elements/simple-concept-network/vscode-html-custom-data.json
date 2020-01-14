@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.\n\nAttributes:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out\n\nProperties:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "`visualization` {`string`} - Type of visualization\n\nProperty: visualization\n\nDefault: 3d"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - disabled status\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "nodes",
+          "description": "`nodes` {`any[]`} - List of nodes to template stamp out\n\nProperty: nodes\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.\n\nAttributes:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out\n\nProperties:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "`visualization` {`string`} - Type of visualization\n\nProperty: visualization\n\nDefault: 3d"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - disabled status\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "nodes",
+          "description": "`nodes` {`any[]`} - List of nodes to template stamp out\n\nProperty: nodes\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "simple-concept-network-node",
+      "description": "`simple-concept-network-node`\n\nAttributes:\n\n  * `colored-text` {`boolean`} - make the default theme dark?\n\n  * `visualization` {`string`} - Visualization reflected to attribute for styling\n\n  * `icon` {`string`} - Icon to present\n\n  * `image` {`string`} - image to present\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `label` {`string`} - title / label text\n\n  * `description` {`string`} - Longer description used for more info\n\n  * `src` {`string`} - source for a link\n\nProperties:\n\n  * `coloredText` {`boolean`} - make the default theme dark?\n\n  * `visualization` {`string`} - Visualization reflected to attribute for styling\n\n  * `icon` {`string`} - Icon to present\n\n  * `image` {`string`} - image to present\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `label` {`string`} - title / label text\n\n  * `description` {`string`} - Longer description used for more info\n\n  * `src` {`string`} - source for a link\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "colored-text",
+          "description": "`colored-text` {`boolean`} - make the default theme dark?\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "visualization",
+          "description": "`visualization` {`string`} - Visualization reflected to attribute for styling\n\nProperty: visualization\n\nDefault: 3d"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to present\n\nProperty: icon"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - image to present\n\nProperty: image"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - disabled status\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - title / label text\n\nProperty: label"
+        },
+        {
+          "name": "description",
+          "description": "`description` {`string`} - Longer description used for more info\n\nProperty: description"
+        },
+        {
+          "name": "src",
+          "description": "`src` {`string`} - source for a link\n\nProperty: src"
+        }
+      ]
+    },
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.\n\nAttributes:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out\n\nProperties:\n\n  * `visualization` {`string`} - Type of visualization\n\n  * `disabled` {`boolean`} - disabled status\n\n  * `coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\n  * `nodes` {`any[]`} - List of nodes to template stamp out",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "`visualization` {`string`} - Type of visualization\n\nProperty: visualization\n\nDefault: 3d"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - disabled status\n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "coloredText",
+          "description": "`coloredText` {`boolean`} - Apply color to text / icon instead of background.\n\nProperty: coloredText\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "nodes",
+          "description": "`nodes` {`any[]`} - List of nodes to template stamp out\n\nProperty: nodes\n\nDefault: "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

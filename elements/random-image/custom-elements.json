@@ -1,0 +1,98 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "random-image",
+      "description": "`random-image`\nElement to show random image from a given group.",
+      "attributes": [
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagesList",
+          "attribute": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "random-image",
+      "description": "`random-image`\nElement to show random image from a given group.",
+      "attributes": [
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagesList",
+          "attribute": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "random-image",
+      "description": "`random-image`\nElement to show random image from a given group.",
+      "attributes": [
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imagesList",
+          "attribute": "images-list",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    }
+  ]
+}

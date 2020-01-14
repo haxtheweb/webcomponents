@@ -1,45 +1,50 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-
-/*
-`lrnapp-studio-project-button`
-Allows users to create new projects.
-
-Usage:
-```
-<lrnapp-studio-project-button classes="amber white-text" icon="add" display-errors="true" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-project-button>
-*/
-class LrnappStudioProjectButton extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+/**
+ * `lrnapp-studio-project-button`
+ * Allows users to create new projects.
+ */
+class LrnappStudioProjectButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
-      <template is="dom-if" if="[[createProjectsUrl]]">
-        <lrnsys-button
-          raised=""
-          class\$="[[classes]]"
-          button-class\$="[[classes]]"
-          icon="[[icon]]"
-          on-click="_createProject"
-          label="Create project"
-        ></lrnsys-button>
-        <iron-ajax
-          id="ajaxCreateStub"
-          url="[[createProjectsUrl]]"
-          method="POST"
-          handle-as="json"
-          on-response="_ajaxCreateStubHandler"
-        ></iron-ajax>
-      </template>
-      <template is="dom-if" if="[[displayErrors]]">
-        <paper-toast id="toast"></paper-toast>
-      </template>
+      `
+    ];
+  }
+  render() {
+    return html`
+      ${this.createProjectsUrl
+        ? html`
+            <lrnsys-button
+              raised=""
+              class="${this.classes}"
+              button-class="${this.classes}"
+              icon="${this.icon}"
+              @click="${this._createProject}"
+              label="Create project"
+            ></lrnsys-button>
+            <iron-ajax
+              id="ajaxCreateStub"
+              url="${this.createProjectsUrl}"
+              method="POST"
+              handle-as="json"
+              @response="${this._ajaxCreateStubHandler}"
+            ></iron-ajax>
+          `
+        : ``}
+      ${this.displayErrors
+        ? html`
+            <paper-toast id="toast"></paper-toast>
+          `
+        : ``}
     `;
   }
   static get tag() {
@@ -49,49 +54,69 @@ class LrnappStudioProjectButton extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       auto: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false,
-        notify: true
+        reflect: true
       },
       displayErrors: {
         type: Boolean,
-        value: true
+        attribute: "display-errors"
       },
       createProjectsUrl: {
         type: String,
-        value: null
+        attribute: "create-projects-url"
       },
       classes: {
-        type: String,
-        value: ""
+        type: String
       },
       icon: {
-        type: String,
-        value: ""
+        type: String
       }
     };
   }
-
-  ready() {
-    super.ready();
-    this.createProjectsUrl =
-      this.endPoint + "/api/projects/create-stub?token=" + this.csrfToken;
+  constructor() {
+    super();
+    this.icon = "";
+    this.classes = "";
+    this.displayErrors = true;
+    this.auto = false;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["endPoint", "csrfToken"].includes(propName)) {
+        this.createProjectsUrl =
+          this.endPoint + "/api/projects/create-stub?token=" + this.csrfToken;
+      }
+      if (propName == "auto") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("auto-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
 
   _createProject() {

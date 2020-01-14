@@ -12,7 +12,7 @@ import "@polymer/iron-icons/editor-icons.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorHeadingPicker extends RichTextEditorPicker {

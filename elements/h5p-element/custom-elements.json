@@ -1,0 +1,54 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "h5p-element"
+    },
+    {
+      "name": "h5p-element",
+      "description": "`h5p-element`",
+      "properties": [
+        {
+          "name": "contentId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "h5p-element",
+      "description": "`h5p-element`",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "Source of the .h5p file",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Source of the .h5p file",
+          "type": "string"
+        },
+        {
+          "name": "contentId",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "h5p-element"
+    },
+    {
+      "name": "h5p-element",
+      "description": "`h5p-element`",
+      "properties": [
+        {
+          "name": "contentId",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

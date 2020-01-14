@@ -1,0 +1,203 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "attribute": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "attribute": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "attribute": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "attribute": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "attribute": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "attribute": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-blockquote",
+      "description": "`lrndesign-blockquote`\n`A structured blockquote element`",
+      "attributes": [
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "citation",
+          "attribute": "citation",
+          "description": "Source being cited",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Optional image to use",
+          "type": "string"
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "description": "Optional author of the quote",
+          "type": "string"
+        },
+        {
+          "name": "sourceLink",
+          "attribute": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "type": "string"
+        },
+        {
+          "name": "displayMode",
+          "attribute": "display-mode",
+          "description": "Funny 1900s vision.",
+          "type": "string",
+          "default": "\"default\""
+        }
+      ]
+    }
+  ]
+}

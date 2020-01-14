@@ -1,0 +1,170 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageUrl",
+          "attribute": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "topText",
+          "attribute": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottomText",
+          "attribute": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageUrl",
+          "attribute": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "topText",
+          "attribute": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottomText",
+          "attribute": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "meme-maker",
+      "description": "`meme-maker`",
+      "attributes": [
+        {
+          "name": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageUrl",
+          "attribute": "image-url",
+          "description": "url to the meme image",
+          "type": "string"
+        },
+        {
+          "name": "topText",
+          "attribute": "top-text",
+          "description": "Text on top of the image.",
+          "type": "string"
+        },
+        {
+          "name": "bottomText",
+          "attribute": "bottom-text",
+          "description": "Bottom text for the image.",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt data passed down to appropriate tag",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

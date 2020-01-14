@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`void`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`void`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "editing",
+          "description": "`editing` {`void`} - \n\nProperty: editing"
+        }
+      ]
+    },
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `editing` {`boolean`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "editing",
+          "description": "`editing` {`boolean`} - \n\nProperty: editing",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "drag-n-drop",
+      "description": "`drag-n-drop`\n\nAttributes:\n\n  * `editing` {`void`} - \n\nProperties:\n\n  * `editing` {`void`} - \n\n  * `__dragging` - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "editing",
+          "description": "`editing` {`void`} - \n\nProperty: editing"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

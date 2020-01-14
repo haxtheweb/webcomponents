@@ -1,0 +1,123 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "hex-a-gon",
+      "description": "`hex-a-gon`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"hex-a-gon\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-loader",
+      "description": "`hexagon-loader`",
+      "properties": [
+        {
+          "name": "itemCount",
+          "type": "number",
+          "default": "37"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "hexagon-loader",
+      "description": "`hexagon-loader`",
+      "attributes": [
+        {
+          "name": "color",
+          "description": "Color to make the loader",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "The relative size of this loader. Options small, medium, large",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "Loading state",
+          "type": "boolean"
+        },
+        {
+          "name": "item-count",
+          "description": "Count of the items",
+          "type": "number",
+          "default": "37"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color to make the loader",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "The relative size of this loader. Options small, medium, large",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Loading state",
+          "type": "boolean"
+        },
+        {
+          "name": "itemCount",
+          "attribute": "item-count",
+          "description": "Count of the items",
+          "type": "number",
+          "default": "37"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "hexagon-loader",
+      "description": "`hexagon-loader`",
+      "properties": [
+        {
+          "name": "itemCount",
+          "type": "number",
+          "default": "37"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        }
+      ]
+    }
+  ]
+}

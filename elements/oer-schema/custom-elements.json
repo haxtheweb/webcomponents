@@ -1,0 +1,182 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oerProperty",
+          "attribute": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "attribute": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ]
+    },
+    {
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oerProperty",
+          "attribute": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "attribute": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "oer-schema",
+      "description": "`oer-schema`\n`A LRN element to wrap an oer schema prefix onto materials.`",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Text to wire into the middle of the element.\nThis is easier to manage then slotted data though\nthis supports both methods.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "oerProperty",
+          "attribute": "oer-property",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"name\""
+        },
+        {
+          "name": "typeof",
+          "attribute": "typeof",
+          "description": "Property value for this oer resource",
+          "type": "string",
+          "default": "\"Resource\""
+        }
+      ]
+    }
+  ]
+}

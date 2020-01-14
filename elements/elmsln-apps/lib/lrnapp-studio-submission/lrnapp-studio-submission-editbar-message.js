@@ -1,12 +1,20 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-class LrnappStudioSubmissionEditbarMessage extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
+class LrnappStudioSubmissionEditbarMessage extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <slot></slot>
     `;
   }

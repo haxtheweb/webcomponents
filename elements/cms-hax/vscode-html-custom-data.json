@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`\n\nEvents:\n\n  * `hax-body-content-changed` - \n\n  * `simple-toast-show` - \n\nAttributes:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `redirect-location` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `sync-body` {`boolean`} - syncBody\n\n  * `body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hide-message` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - \n\nProperties:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `redirectLocation` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirectOnSave` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `__lock` {`boolean`} - \n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `hideExportButton` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `syncBody` {`boolean`} - syncBody\n\n  * `bodyValue` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hideMessage` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready",
+          "valueSet": "v"
+        },
+        {
+          "name": "allowedTags",
+          "description": "`allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\nProperty: allowedTags"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "__appStore",
+          "description": "`__appStore` {`string`} - \n\nProperty: __appStore"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - State of the panel\n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "redirect-location",
+          "description": "`redirect-location` {`string`} - Optional URL to redirect to once we save.\n\nProperty: redirectLocation"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "`redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\nProperty: redirectOnSave",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
+        },
+        {
+          "name": "open-default",
+          "description": "`open-default` {`boolean`} - Default the panel to open\n\nProperty: openDefault\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "`hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\nProperty: hideExportButton\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\nProperty: hidePanelOps\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "`hide-preferences-button` {`boolean`} - Hide preferences button\n\nProperty: hidePreferencesButton\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align",
+          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Method to save content.\n\nProperty: method\n\nDefault: PUT"
+        },
+        {
+          "name": "sync-body",
+          "description": "`sync-body` {`boolean`} - syncBody\n\nProperty: syncBody\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "body-value",
+          "description": "`body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\nProperty: bodyValue\n\nDefault: "
+        },
+        {
+          "name": "hide-message",
+          "description": "`hide-message` {`boolean`} - Flag to hide the toast.\n\nProperty: hideMessage\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__imported",
+          "description": "`__imported` {`boolean`} - \n\nProperty: __imported\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhax-body-content-changed",
+          "description": "`hax-body-content-changed` - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` - "
+        }
+      ]
+    },
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`\n\nEvents:\n\n  * `hax-body-content-changed` - \n\n  * `simple-toast-show` - \n\nAttributes:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `redirect-location` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `sync-body` {`boolean`} - syncBody\n\n  * `body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hide-message` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - \n\nProperties:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `redirectLocation` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirectOnSave` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `__lock` {`boolean`} - \n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `hideExportButton` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `syncBody` {`boolean`} - syncBody\n\n  * `bodyValue` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hideMessage` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready",
+          "valueSet": "v"
+        },
+        {
+          "name": "allowedTags",
+          "description": "`allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\nProperty: allowedTags"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "__appStore",
+          "description": "`__appStore` {`string`} - \n\nProperty: __appStore"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - State of the panel\n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "redirect-location",
+          "description": "`redirect-location` {`string`} - Optional URL to redirect to once we save.\n\nProperty: redirectLocation"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "`redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\nProperty: redirectOnSave",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
+        },
+        {
+          "name": "open-default",
+          "description": "`open-default` {`boolean`} - Default the panel to open\n\nProperty: openDefault\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "`hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\nProperty: hideExportButton\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\nProperty: hidePanelOps\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "`hide-preferences-button` {`boolean`} - Hide preferences button\n\nProperty: hidePreferencesButton\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align",
+          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Method to save content.\n\nProperty: method\n\nDefault: PUT"
+        },
+        {
+          "name": "sync-body",
+          "description": "`sync-body` {`boolean`} - syncBody\n\nProperty: syncBody\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "body-value",
+          "description": "`body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\nProperty: bodyValue\n\nDefault: "
+        },
+        {
+          "name": "hide-message",
+          "description": "`hide-message` {`boolean`} - Flag to hide the toast.\n\nProperty: hideMessage\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__imported",
+          "description": "`__imported` {`boolean`} - \n\nProperty: __imported\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhax-body-content-changed",
+          "description": "`hax-body-content-changed` - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `hax-body-content-changed` - \n\n  * `simple-toast-show` - ",
+      "attributes": [
+        {
+          "name": "onhax-body-content-changed",
+          "description": "`hax-body-content-changed` - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` - "
+        }
+      ]
+    },
+    {
+      "name": "cms-block",
+      "description": "`cms-block`\n`Render and process a  / block from a content management system.`\n\nAttributes:\n\n  * `block-module` {`string`} - Module supplying the block\n\n  * `block-delta` {`string`} - A delta value relative to the module\n\n  * `block-end-point` {`string`} - block end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just block with some encapsulation.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `block-prefix` {`string`} - Prefix for the block to be processed\n\n  * `block-suffix` {`string`} - Suffix for the block to be processed\n\nProperties:\n\n  * `blockModule` {`string`} - Module supplying the block\n\n  * `blockDelta` {`string`} - A delta value relative to the module\n\n  * `blockEndPoint` {`string`} - block end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just block with some encapsulation.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `blockPrefix` {`string`} - Prefix for the block to be processed\n\n  * `blockSuffix` {`string`} - Suffix for the block to be processed",
+      "attributes": [
+        {
+          "name": "block-module",
+          "description": "`block-module` {`string`} - Module supplying the block\n\nProperty: blockModule"
+        },
+        {
+          "name": "block-delta",
+          "description": "`block-delta` {`string`} - A delta value relative to the module\n\nProperty: blockDelta"
+        },
+        {
+          "name": "block-end-point",
+          "description": "`block-end-point` {`string`} - block end point updated, change the way we do processing.\n\nProperty: blockEndPoint"
+        },
+        {
+          "name": "bodyData",
+          "description": "`bodyData` - Body data which is just block with some encapsulation.\n\nProperty: bodyData"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "block-prefix",
+          "description": "`block-prefix` {`string`} - Prefix for the block to be processed\n\nProperty: blockPrefix\n\nDefault: ["
+        },
+        {
+          "name": "block-suffix",
+          "description": "`block-suffix` {`string`} - Suffix for the block to be processed\n\nProperty: blockSuffix\n\nDefault: ]"
+        }
+      ]
+    },
+    {
+      "name": "cms-entity",
+      "description": "`cms-entity`\n\nAttributes:\n\n  * `entity-type` {`string`} - Type of entity to load\n\n  * `entity-id` {`string`} - ID of the item to load\n\n  * `entity-display-mode` {`string`} - Display mode of the entity\n\n  * `entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just entity with some encapsulation.\n\n  * `entity-data` {`string`} - entity data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entity-prefix` {`string`} - Prefix for the entity to be processed\n\n  * `entity-suffix` {`string`} - Suffix for the entity to be processed\n\nProperties:\n\n  * `entityType` {`string`} - Type of entity to load\n\n  * `entityId` {`string`} - ID of the item to load\n\n  * `entityDisplayMode` {`string`} - Display mode of the entity\n\n  * `entityEndPoint` {`string`} - entity end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just entity with some encapsulation.\n\n  * `entityData` {`string`} - entity data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entityPrefix` {`string`} - Prefix for the entity to be processed\n\n  * `entitySuffix` {`string`} - Suffix for the entity to be processed",
+      "attributes": [
+        {
+          "name": "entity-type",
+          "description": "`entity-type` {`string`} - Type of entity to load\n\nProperty: entityType"
+        },
+        {
+          "name": "entity-id",
+          "description": "`entity-id` {`string`} - ID of the item to load\n\nProperty: entityId"
+        },
+        {
+          "name": "entity-display-mode",
+          "description": "`entity-display-mode` {`string`} - Display mode of the entity\n\nProperty: entityDisplayMode"
+        },
+        {
+          "name": "entity-end-point",
+          "description": "`entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\nProperty: entityEndPoint"
+        },
+        {
+          "name": "bodyData",
+          "description": "`bodyData` - Body data which is just entity with some encapsulation.\n\nProperty: bodyData"
+        },
+        {
+          "name": "entity-data",
+          "description": "`entity-data` {`string`} - entity data from the end point.\n\nProperty: entityData"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "entity-prefix",
+          "description": "`entity-prefix` {`string`} - Prefix for the entity to be processed\n\nProperty: entityPrefix\n\nDefault: ["
+        },
+        {
+          "name": "entity-suffix",
+          "description": "`entity-suffix` {`string`} - Suffix for the entity to be processed\n\nProperty: entitySuffix\n\nDefault: ]"
+        }
+      ]
+    },
+    {
+      "name": "cms-token",
+      "description": "`cms-token`\n`Render and process a shortcode / token from a content management system.`\n\nAttributes:\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just token with some encapsulation.\n\n  * `token-data` {`string`} - Token data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token-prefix` {`string`} - Prefix for the token to be processed\n\n  * `token-suffix` {`string`} - Suffix for the token to be processed\n\n  * `_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `_displayMode` {`string`} - \n\nProperties:\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `tokenEndPoint` {`string`} - Token end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just token with some encapsulation.\n\n  * `tokenData` {`string`} - Token data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `tokenPrefix` {`string`} - Prefix for the token to be processed\n\n  * `tokenSuffix` {`string`} - Suffix for the token to be processed\n\n  * `_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `_displayMode` {`string`} - ",
+      "attributes": [
+        {
+          "name": "token",
+          "description": "`token` {`string`} - Token changed (somehow) do the token processing.\n\nProperty: token"
+        },
+        {
+          "name": "token-end-point",
+          "description": "`token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\nProperty: tokenEndPoint"
+        },
+        {
+          "name": "bodyData",
+          "description": "`bodyData` - Body data which is just token with some encapsulation.\n\nProperty: bodyData"
+        },
+        {
+          "name": "token-data",
+          "description": "`token-data` {`string`} - Token data from the end point.\n\nProperty: tokenData"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "token-prefix",
+          "description": "`token-prefix` {`string`} - Prefix for the token to be processed\n\nProperty: tokenPrefix\n\nDefault: ["
+        },
+        {
+          "name": "token-suffix",
+          "description": "`token-suffix` {`string`} - Suffix for the token to be processed\n\nProperty: tokenSuffix\n\nDefault: ]"
+        },
+        {
+          "name": "_clickInvoked",
+          "description": "`_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\nProperty: _clickInvoked\n\nDefault: false"
+        },
+        {
+          "name": "_displayMode",
+          "description": "`_displayMode` {`string`} - \n\nProperty: _displayMode\n\nDefault: full"
+        }
+      ]
+    },
+    {
+      "name": "cms-views",
+      "description": "`cms-views`\n\nAttributes:\n\n  * `views-name` {`string`} - Name of the views to render\n\n  * `views-display` {`string`} - Display from the views\n\n  * `views-end-point` {`string`} - views end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just views with some encapsulation.\n\n  * `views-data` {`string`} - views data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `views-prefix` {`string`} - Prefix for the views to be processed\n\n  * `views-suffix` {`string`} - Suffix for the views to be processed\n\nProperties:\n\n  * `viewsName` {`string`} - Name of the views to render\n\n  * `viewsDisplay` {`string`} - Display from the views\n\n  * `viewsEndPoint` {`string`} - views end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just views with some encapsulation.\n\n  * `viewsData` {`string`} - views data from the end point.\n\n  * `loading` {`boolean`} - Loading state\n\n  * `viewsPrefix` {`string`} - Prefix for the views to be processed\n\n  * `viewsSuffix` {`string`} - Suffix for the views to be processed",
+      "attributes": [
+        {
+          "name": "views-name",
+          "description": "`views-name` {`string`} - Name of the views to render\n\nProperty: viewsName"
+        },
+        {
+          "name": "views-display",
+          "description": "`views-display` {`string`} - Display from the views\n\nProperty: viewsDisplay"
+        },
+        {
+          "name": "views-end-point",
+          "description": "`views-end-point` {`string`} - views end point updated, change the way we do processing.\n\nProperty: viewsEndPoint"
+        },
+        {
+          "name": "bodyData",
+          "description": "`bodyData` - Body data which is just views with some encapsulation.\n\nProperty: bodyData"
+        },
+        {
+          "name": "views-data",
+          "description": "`views-data` {`string`} - views data from the end point.\n\nProperty: viewsData"
+        },
+        {
+          "name": "loading",
+          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "views-prefix",
+          "description": "`views-prefix` {`string`} - Prefix for the views to be processed\n\nProperty: viewsPrefix\n\nDefault: ["
+        },
+        {
+          "name": "views-suffix",
+          "description": "`views-suffix` {`string`} - Suffix for the views to be processed\n\nProperty: viewsSuffix\n\nDefault: ]"
+        }
+      ]
+    },
+    {
+      "name": "cms-hax",
+      "description": "`cms-hax`\n\nEvents:\n\n  * `hax-body-content-changed` - \n\n  * `simple-toast-show` - \n\nAttributes:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `redirect-location` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `sync-body` {`boolean`} - syncBody\n\n  * `body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hide-message` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - \n\nProperties:\n\n  * `__ready` {`boolean`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `redirectLocation` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirectOnSave` {`boolean`} - Option to redirect once we save successfully\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `__lock` {`boolean`} - \n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `hideExportButton` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `syncBody` {`boolean`} - syncBody\n\n  * `bodyValue` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hideMessage` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "__ready",
+          "description": "`__ready` {`boolean`} - \n\nProperty: __ready",
+          "valueSet": "v"
+        },
+        {
+          "name": "allowedTags",
+          "description": "`allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\nProperty: allowedTags"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
+        },
+        {
+          "name": "app-store-connection",
+          "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "__appStore",
+          "description": "`__appStore` {`string`} - \n\nProperty: __appStore"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - State of the panel\n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "redirect-location",
+          "description": "`redirect-location` {`string`} - Optional URL to redirect to once we save.\n\nProperty: redirectLocation"
+        },
+        {
+          "name": "redirect-on-save",
+          "description": "`redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\nProperty: redirectOnSave",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeHaxBody",
+          "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
+        },
+        {
+          "name": "open-default",
+          "description": "`open-default` {`boolean`} - Default the panel to open\n\nProperty: openDefault\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-export-button",
+          "description": "`hide-export-button` {`boolean`} - Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.\n\nProperty: hideExportButton\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\nProperty: hidePanelOps\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hide-preferences-button",
+          "description": "`hide-preferences-button` {`boolean`} - Hide preferences button\n\nProperty: hidePreferencesButton\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "align",
+          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - Method to save content.\n\nProperty: method\n\nDefault: PUT"
+        },
+        {
+          "name": "sync-body",
+          "description": "`sync-body` {`boolean`} - syncBody\n\nProperty: syncBody\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "body-value",
+          "description": "`body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\nProperty: bodyValue\n\nDefault: "
+        },
+        {
+          "name": "hide-message",
+          "description": "`hide-message` {`boolean`} - Flag to hide the toast.\n\nProperty: hideMessage\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__imported",
+          "description": "`__imported` {`boolean`} - \n\nProperty: __imported\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhax-body-content-changed",
+          "description": "`hax-body-content-changed` - "
+        },
+        {
+          "name": "onsimple-toast-show",
+          "description": "`simple-toast-show` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

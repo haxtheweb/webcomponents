@@ -16,7 +16,8 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  *
  * @microcopy - language worth noting:
  * - `video source` - url / link to the video file
- * ```
+ *
+```
 <video-player 
   accent-color$="[[accentColor]]"                 // Optional accent color for controls, 
                                                   // using the following materialize colors: 
@@ -39,11 +40,11 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
   thumbnail-src$="[[thumbnailSrc]]"               // Optional thumbanil/cover image url
   width$="[[width]]">                              // The width of the media             
   <div slot="caption">Optional caption info.</div>
-</video-player>```
+</video-player>
+```
  *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement video-player
  */
 class VideoPlayer extends MediaBehaviorsVideo(
   A11yBehaviors(SchemaBehaviors(SimpleColorsPolymer))
@@ -195,6 +196,8 @@ class VideoPlayer extends MediaBehaviorsVideo(
         "inputMethod": "haxupload",
         "icon": "link",
         "required": true,
+        "noCamera": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {
@@ -210,9 +213,10 @@ class VideoPlayer extends MediaBehaviorsVideo(
         "property": "thumbnailSrc",
         "title": "Thumbnail image",
         "description": "Optional. The URL for a thumbnail/poster image.",
-        "inputMethod": "textfield",
+        "inputMethod": "haxupload",
         "icon": "link",
         "required": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {

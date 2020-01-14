@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "count-up",
+      "description": "`count-up`\n\nProperties:\n\n  * `start` {`number`} - \n\n  * `end` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `noeasing` {`boolean`} - \n\n  * `decimalplaces` {`number`} - \n\n  * `separator` {`string`} - \n\n  * `decimal` {`string`} - \n\n  * `prefixtext` {`string`} - \n\n  * `suffixtext` {`string`} - \n\n  * `thresholds` {`number[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - ",
+      "attributes": []
+    },
+    {
+      "name": "count-up",
+      "description": "`count-up`\n\nAttributes:\n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `visible-limit` {`number`} - \n\nProperties:\n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - ",
+      "attributes": [
+        {
+          "name": "ratio",
+          "description": "`ratio` {`number`} - \n\nProperty: ratio"
+        },
+        {
+          "name": "start",
+          "description": "`start` {`number`} - Starting point for counting\n\nProperty: start\n\nDefault: 0"
+        },
+        {
+          "name": "end",
+          "description": "`end` {`number`} - End point for counting stopping\n\nProperty: end\n\nDefault: 100"
+        },
+        {
+          "name": "duration",
+          "description": "`duration` {`number`} - Duration to count\n\nProperty: duration\n\nDefault: 2.5"
+        },
+        {
+          "name": "noeasing",
+          "description": "`noeasing` {`boolean`} - Disable easing animation\n\nProperty: noeasing\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "decimalplaces",
+          "description": "`decimalplaces` {`number`} - decimal places to show\n\nProperty: decimalplaces\n\nDefault: 0"
+        },
+        {
+          "name": "separator",
+          "description": "`separator` {`string`} - separator for 100s groupings\n\nProperty: separator\n\nDefault: ,"
+        },
+        {
+          "name": "decimal",
+          "description": "`decimal` {`string`} - decimal point character\n\nProperty: decimal\n\nDefault: ."
+        },
+        {
+          "name": "prefixtext",
+          "description": "`prefixtext` {`string`} - prefix string before the number counting\n\nProperty: prefixtext\n\nDefault:  "
+        },
+        {
+          "name": "suffixtext",
+          "description": "`suffixtext` {`string`} - suffix string after the number counting\n\nProperty: suffixtext\n\nDefault:  "
+        },
+        {
+          "name": "thresholds",
+          "description": "`thresholds` {`any[]`} - \n\nProperty: thresholds\n\nDefault: 0,0.25,0.5,0.75,1"
+        },
+        {
+          "name": "root-margin",
+          "description": "`root-margin` {`string`} - \n\nProperty: rootMargin\n\nDefault: 0px"
+        },
+        {
+          "name": "visible-limit",
+          "description": "`visible-limit` {`number`} - \n\nProperty: visibleLimit\n\nDefault: 0.5"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "count-up",
+      "description": "`count-up`\n\nProperties:\n\n  * `start` {`number`} - \n\n  * `end` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `noeasing` {`boolean`} - \n\n  * `decimalplaces` {`number`} - \n\n  * `separator` {`string`} - \n\n  * `decimal` {`string`} - \n\n  * `prefixtext` {`string`} - \n\n  * `suffixtext` {`string`} - \n\n  * `thresholds` {`number[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

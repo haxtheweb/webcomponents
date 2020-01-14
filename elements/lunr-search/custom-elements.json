@@ -1,0 +1,208 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lunr-search",
+      "description": "`lunr-search`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lunr-search",
+      "description": "`lunr-search`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "search",
+          "type": "string"
+        },
+        {
+          "name": "results",
+          "type": "array"
+        },
+        {
+          "name": "no-stop-words",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fields",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "index-no-stop-words",
+          "type": "object"
+        },
+        {
+          "name": "index",
+          "type": "object"
+        },
+        {
+          "name": "limit",
+          "type": "number",
+          "default": "500"
+        },
+        {
+          "name": "min-score",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "log",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "type": "string"
+        },
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "search",
+          "attribute": "search",
+          "type": "string"
+        },
+        {
+          "name": "results",
+          "attribute": "results",
+          "type": "array"
+        },
+        {
+          "name": "noStopWords",
+          "attribute": "no-stop-words",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fields",
+          "attribute": "fields",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "indexNoStopWords",
+          "attribute": "index-no-stop-words",
+          "type": "object"
+        },
+        {
+          "name": "index",
+          "attribute": "index",
+          "type": "object"
+        },
+        {
+          "name": "limit",
+          "attribute": "limit",
+          "type": "number",
+          "default": "500"
+        },
+        {
+          "name": "minScore",
+          "attribute": "min-score",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "log",
+          "attribute": "log",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lunr-search",
+      "description": "`lunr-search`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

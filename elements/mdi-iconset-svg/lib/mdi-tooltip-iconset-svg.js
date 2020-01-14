@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-tooltip-iconset-svg` is a iconset for the Material Design Icons collection with the "tooltip" tag
+ * `mdi-tooltip-iconset-svg`
+ * @customElement mdi-tooltip-iconset-svg is a iconset for the Material Design Icons collection with the "tooltip" tag
  *
  * Example:
  *   <iron-icon icon="mdi-tooltip:tooltip-outline"></iron-icon>

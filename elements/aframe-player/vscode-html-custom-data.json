@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Source to reference for the 3D object\n\nProperty: source"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - height of the element\n\nProperty: height\n\nDefault: 480px"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - width of the element\n\nProperty: width\n\nDefault: 640px"
+        },
+        {
+          "name": "sky-color",
+          "description": "`sky-color` {`string`} - Color of the sky / background.\n\nProperty: skyColor\n\nDefault: #DCDCDC"
+        },
+        {
+          "name": "ar",
+          "description": "`ar` {`boolean`} - If this is for augmented reality or not.\n\nProperty: ar\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "x",
+          "description": "`x` {`string`} - x position for the AR element.\n\nProperty: x\n\nDefault: 0"
+        },
+        {
+          "name": "y",
+          "description": "`y` {`string`} - y position for the AR element.\n\nProperty: y\n\nDefault: 0"
+        },
+        {
+          "name": "z",
+          "description": "`z` {`string`} - z position for the AR element.\n\nProperty: z\n\nDefault: 0"
+        },
+        {
+          "name": "position",
+          "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
+        }
+      ]
+    },
+    {
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Source to reference for the 3D object\n\nProperty: source"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - height of the element\n\nProperty: height\n\nDefault: 480px"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - width of the element\n\nProperty: width\n\nDefault: 640px"
+        },
+        {
+          "name": "sky-color",
+          "description": "`sky-color` {`string`} - Color of the sky / background.\n\nProperty: skyColor\n\nDefault: #DCDCDC"
+        },
+        {
+          "name": "ar",
+          "description": "`ar` {`boolean`} - If this is for augmented reality or not.\n\nProperty: ar\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "x",
+          "description": "`x` {`string`} - x position for the AR element.\n\nProperty: x\n\nDefault: 0"
+        },
+        {
+          "name": "y",
+          "description": "`y` {`string`} - y position for the AR element.\n\nProperty: y\n\nDefault: 0"
+        },
+        {
+          "name": "z",
+          "description": "`z` {`string`} - z position for the AR element.\n\nProperty: z\n\nDefault: 0"
+        },
+        {
+          "name": "position",
+          "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "aframe-player",
+      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Source to reference for the 3D object\n\nProperty: source"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - height of the element\n\nProperty: height\n\nDefault: 480px"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - width of the element\n\nProperty: width\n\nDefault: 640px"
+        },
+        {
+          "name": "sky-color",
+          "description": "`sky-color` {`string`} - Color of the sky / background.\n\nProperty: skyColor\n\nDefault: #DCDCDC"
+        },
+        {
+          "name": "ar",
+          "description": "`ar` {`boolean`} - If this is for augmented reality or not.\n\nProperty: ar\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "x",
+          "description": "`x` {`string`} - x position for the AR element.\n\nProperty: x\n\nDefault: 0"
+        },
+        {
+          "name": "y",
+          "description": "`y` {`string`} - y position for the AR element.\n\nProperty: y\n\nDefault: 0"
+        },
+        {
+          "name": "z",
+          "description": "`z` {`string`} - z position for the AR element.\n\nProperty: z\n\nDefault: 0"
+        },
+        {
+          "name": "position",
+          "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

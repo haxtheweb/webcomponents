@@ -1,5 +1,8 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -12,7 +15,6 @@ import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -20,14 +22,18 @@ import "@lrnwebcomponents/lrnsys-render-html/lrnsys-render-html.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
-class LrnappStudioKanban extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles">
+class LrnappStudioKanban extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
         :host {
           display: block;
         }
@@ -105,12 +111,9 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0;
           height: 100%;
           min-height: 10em;
-          --paper-card-header: {
-            max-width: 60%;
-            word-break: break-all;
-          }
         }
         .project-container {
+          display: inline-flex;
           padding: 1em;
         }
         .project-card .card-content {
@@ -186,36 +189,56 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0em auto;
           max-width: 20em;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          .project-card {
+            --paper-card-header: {
+              max-width: 60%;
+              word-break: break-all;
+            }
+          }
+        </style>
+      </custom-style>
       <iron-ajax
         auto=""
         id="projectbackend"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{projectResponse}}"
-        on-response="_handleProjectResponse"
+        @last-response-changed="${this.projectResponseChanged}"
+        @response="${this._handleProjectResponse}"
       >
       </iron-ajax>
       <iron-ajax
         id="backend"
-        url="[[sourcePath]]"
+        url="${this.sourcePath}"
         params=""
         handle-as="json"
-        last-response="{{backendResponse}}"
-        on-response="_handleUpdateResponse"
+        @last-response-changed="${this.backendResponseChanged}"
+        @response="${this._handleUpdateResponse}"
       >
       </iron-ajax>
 
       <app-location
-        route="{{route}}"
-        query-params="{{queryParams}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
       ></app-location>
       <app-route
-        route="{{route}}"
-        pattern="[[endPoint]]/:page"
-        data="{{data}}"
-        tail="{{tail}}"
-        query-params="{{queryParams}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        pattern="${this.endPoint}/:page"
+        .data="${this.data}"
+        @data-changed="${this.dataChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
+        .query-params="${this.queryParams}"
+        @query-params-changed="${this.queryParamsChangedEvent}"
       >
       </app-route>
       <div id="loading">
@@ -223,133 +246,124 @@ class LrnappStudioKanban extends PolymerElement {
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
       <lrnapp-studio-project-button
-        hidden\$="[[!projectResponse.data.canCreateProjects]]"
+        ?hidden="${!this.projectResponse.data.canCreateProjects}"
         classes="amber darken-4 white-text"
-        end-point="[[endPoint]]"
-        csrf-token="[[csrfToken]]"
+        end-point="${this.endPoint}"
+        csrf-token="${this.csrfToken}"
         icon="add"
       ></lrnapp-studio-project-button>
       <div class="projects-window">
-        <iron-list
-          items="[[_toArray(projectResponse.data.projects)]]"
-          as="project"
-          class="projects-container"
-          grid=""
-          mutable-data
-        >
-          <template class="projects-container-items">
+        ${this._toArray(this.projectResponse.data.projects).map(
+          project => html`
             <div class="project-container">
               <paper-card
-                id\$="project-[[project.id]]"
+                id="project-${project.id}"
                 class="project-card grey lighten-3"
-                heading="[[project.attributes.title]]"
+                heading="${project.attributes.title}"
                 elevation="2"
               >
                 <div class="project-operations">
                   <lrnsys-button
                     icon-class="no-margin"
-                    id\$="project-[[project.id]]-edit"
+                    id="project-${project.id}-edit"
                     alt="Edit project"
                     class="operation"
                     hover-class="amber lighten-2"
-                    hidden="[[!project.meta.canUpdate]]"
+                    ?hidden="${!project.meta.canUpdate}"
                     icon="create"
-                    on-click="_makeProjectEditLink"
+                    @click="${this._makeProjectEditLink}"
                   >
                   </lrnsys-button>
                   <lrnapp-studio-assignment-button
-                    project-id="[[project.id]]"
+                    project-id="${project.id}"
                     icon-class="no-margin"
-                    id\$="project-[[project.id]]-add"
+                    id="project-${project.id}-add"
                     alt="Add assignment"
                     class="operation"
                     hover-class="amber lighten-2"
-                    hidden="[[!project.meta.canUpdate]]"
+                    ?hidden="${!project.meta.canUpdate}"
                     icon="add"
-                    end-point="[[endPoint]]"
-                    csrf-token="[[csrfToken]]"
+                    end-point="${this.endPoint}"
+                    csrf-token="${this.csrfToken}"
                   >
                   </lrnapp-studio-assignment-button>
                   <lrnsys-button
-                    id\$="project-[[project.id]]-delete"
+                    id="project-${project.id}-delete"
                     alt="Delete project!"
                     class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
-                    hidden="[[!project.meta.canDelete]]"
+                    ?hidden="${!project.meta.canDelete}"
                     icon="delete-forever"
-                    on-click="_deleteProjectDialog"
+                    @click="${this._deleteProjectDialog}"
                     icon-class="no-margin"
                   >
                   </lrnsys-button>
                 </div>
                 <div class="card-content">
-                  <iron-list
-                    items="[[_toArray(project.relationships.assignments)]]"
-                    as="assignment"
-                    mutable-data
-                  >
-                    <template>
+                  ${this._toArray(project.relationships.assignments).map(
+                    assignment => html`
                       <div class="assignment-row" id="assignment">
                         <lrnsys-button
-                          id\$="assignment-[[project.id]]-[[assignment.id]]"
+                          id="assignment-${project.id}-${assignment.id}"
                           class="assignment-row-button"
                           hover-class="amber lighten-5"
-                          on-click="assignmentClick"
-                          icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
+                          @click="${this.assignmentClick}"
+                          icon="${assignment.meta.relatedSubmissions.complete
+                            .icon}"
                         >
-                          [[assignment.attributes.title]]
+                          ${assignment.attributes.title}
                         </lrnsys-button>
                         <span class="assignment-operations">
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
+                            id="assignment-${project.id}-${assignment.id}-add-critique"
                             icon="editor:insert-comment"
                             alt="Add critique"
                             class="operation"
                             hover-class="green lighten-2"
-                            hidden="[[!assignment.meta.canCritique]]"
-                            href\$="[[assignment.meta.critiqueLink]]"
+                            ?hidden="${!assignment.meta.canCritique}"
+                            href="${assignment.meta.critiqueLink}"
                             icon-class="no-margin"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
+                            id="assignment-${project.id}-${assignment.id}-edit"
                             icon="editor:mode-edit"
                             alt="Edit"
                             class="operation"
                             hover-class="amber lighten-4"
-                            hidden="[[!assignment.meta.canUpdate]]"
-                            on-click="_makeAssignmentEditLink"
+                            ?hidden="${!assignment.meta.canUpdate}"
+                            @click="${this._makeAssignmentEditLink}"
                             icon-class="no-margin green-text text-darken-4"
                           ></lrnsys-button>
                           <lrnsys-button
-                            id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
+                            id="assignment-${project.id}-${assignment.id}-delete"
                             icon="delete"
                             alt="Delete"
                             class="operation"
                             hover-class="amber lighten-4"
-                            hidden="[[!assignment.meta.canDelete]]"
-                            on-click="_deleteAssignmentDialog"
+                            ?hidden="${!assignment.meta.canDelete}"
+                            @click="${this._deleteAssignmentDialog}"
                             icon-class="no-margin red-text text-darken-4"
                           ></lrnsys-button>
                         </span>
                       </div>
-                    </template>
-                  </iron-list>
+                    `
+                  )}
                 </div>
               </paper-card>
             </div>
-          </template>
-        </iron-list>
+          `
+        )}
       </div>
       <paper-toast text="Updated" id="toast"></paper-toast>
       <paper-dialog id="delete" modal="">
-        <h3>[[_deleteTitle]]</h3>
-        <p>[[_deleteText]]</p>
+        <h3>${this._deleteTitle}</h3>
+        <p>${this._deleteText}</p>
         <div class="buttons">
           <paper-button dialog-dismiss="">Decline</paper-button>
           <paper-button
             id="deleteaccept"
-            on-click="_handleDelete"
+            @click="${this._handleDelete}"
             dialog-confirm=""
             autofocus=""
             >Accept</paper-button
@@ -360,57 +374,73 @@ class LrnappStudioKanban extends PolymerElement {
         <div id="activecontent">
           <app-header reveals>
             <app-toolbar
-              class\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
+              class="${this.activeAssignmentNode.meta.relatedSubmissions
+                .complete.color}"
             >
               <div>
                 <iron-icon
-                  icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
-                  disabled\$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
+                  icon="${this.activeAssignmentNode.meta.relatedSubmissions
+                    .complete.icon}"
+                  ?disabled="${!this.activeAssignmentNode.meta
+                    .relatedSubmissions.canCreate}"
                 ></iron-icon>
-                [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.title]]
+                ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                  .submission.title}
               </div>
-              <div
-                spacer=""
-                class="comment-box"
-                hidden\$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
-              >
-                <paper-button
-                  id\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
-                  style="margin:0;padding:.25em;text-transform:none;"
-                >
-                  <iron-icon icon="communication:forum"></iron-icon>
-                  [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
-                  Comments
-                </paper-button>
-                <paper-badge
-                  hidden\$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
-                  for\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
-                  label\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
-                ></paper-badge>
-              </div>
-
+              ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                .submission.id
+                ? html`
+                    <div spacer="" class="comment-box">
+                      <paper-button
+                        id="assignment-${this.activeAssignmentNode.relationships
+                          .project.data.id}-${this.activeAssignmentNode
+                          .id}-comments"
+                        style="margin:0;padding:.25em;text-transform:none;"
+                      >
+                        <iron-icon icon="communication:forum"></iron-icon>
+                        ${this.activeAssignmentNode.meta.relatedSubmissions
+                          .complete.submission.meta.comments.count}
+                        Comments
+                      </paper-button>
+                      <paper-badge
+                        ?hidden="${this.displayNewBadge(
+                          this.activeAssignmentNode.meta.relatedSubmissions
+                            .complete.submission.meta.new
+                        )}"
+                        for="assignment-${this.activeAssignmentNode
+                          .relationships.project.data.id}-${this
+                          .activeAssignmentNode.id}-comments"
+                        label="${this.activeAssignmentNode.meta
+                          .relatedSubmissions.complete.submission.meta.comments
+                          .new}"
+                      ></paper-badge>
+                    </div>
+                  `
+                : ``}
               <lrnapp-studio-submission-button
                 spacer
                 auto
-                assignment-id="[[activeAssignmentNode.id]]"
-                submission="{{submission}}"
-                end-point="[[buildSubmissionPath(basePath)]]"
-                csrf-token="[[csrfToken]]"
-                submission-id="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+                assignment-id="${this.activeAssignmentNode.id}"
+                .submission="${this.submission}"
+                end-point="${this.buildSubmissionPath(this.basePath)}"
+                csrf-token="${this.csrfToken}"
+                submission-id="${this.activeAssignmentNode.meta
+                  .relatedSubmissions.complete.submission.id}"
               ></lrnapp-studio-submission-button>
               <paper-toggle-button
                 id="activetoggle"
-                on-click="statusToggle"
+                @click="${this.statusToggle}"
               ></paper-toggle-button>
               <span id="activetoggletext"></span>
             </app-toolbar>
             <div class="status-rationale">
-              [[activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text]]
+              ${this.activeAssignmentNode.meta.relatedSubmissions.complete
+                .rationale.text}
             </div>
           </app-header>
           <lrnsys-render-html
             style="padding:2em;"
-            html="[[activeAssignmentNode.attributes.body]]"
+            html="${this.activeAssignmentNode.attributes.body}"
           ></lrnsys-render-html>
         </div>
       </paper-dialog>
@@ -424,72 +454,112 @@ class LrnappStudioKanban extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
         type: String,
-        notify: true
+        attribute: "base-path"
       },
       csrfToken: {
         type: String,
-        notify: true
+        attribute: "csrf-token"
       },
       endPoint: {
         type: String,
-        notify: true
+        attribute: "end-point"
       },
       activeAssignment: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "active-assignment"
       },
       activeAssignmentNode: {
         type: Object
       },
       projectToDelete: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "project-to-delete"
       },
       assignmentToDelete: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "assignment-to-delete"
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       /**
        * Submission for two-way data binding on return from the button being pushed
        */
       submission: {
-        type: Object,
-        notify: true
+        type: Object
       },
       /**
        * Response from the server.
        */
       projectResponse: {
-        type: Object,
-        notify: true
+        type: Object
       },
       /**
        * Response from the server for non-project requests.
        */
       backendResponse: {
-        type: Object,
-        notify: true
+        type: Object
       }
     };
   }
+  backendResponseChanged(e) {
+    this.backendResponse = { ...e.detail.value };
+  }
+  projectResponseChanged(e) {
+    this.projectResponse = { ...e.detail.value };
+  }
+  routeChangedEvent(e) {
+    this.route = { ...e.detail.value };
+  }
+  queryParamsChangedEvent(e) {
+    this.queryParams = { ...e.detail.value };
+  }
+  tailChangedEvent(e) {
+    this.tail = { ...e.detail.value };
+  }
+  dataChangedEvent(e) {
+    this.data = { ...e.detail.value };
+  }
 
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    this.activeAssignmentNode = {
+      attributes: {},
+      meta: {
+        relatedSubmissions: {
+          complete: {
+            submission: {
+              meta: {
+                comments: {}
+              }
+            },
+            rationale: {}
+          }
+        }
+      },
+      relationships: {
+        project: {
+          data: {}
+        }
+      }
+    };
+    this.projectResponse = {
+      data: {}
+    };
+    this.assignmentToDelete = null;
+    this.projectToDelete = null;
+    this.activeAssignment = null;
+    setTimeout(() => {
       this.addEventListener(
         "project-created",
         this._handleProjectCreated.bind(this)
@@ -498,25 +568,42 @@ class LrnappStudioKanban extends PolymerElement {
         "assignment-created",
         this._handleAssignmentCreated.bind(this)
       );
+    }, 0);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "basePath",
+        "csrfToken",
+        "endPoint",
+        "activeAssignment",
+        "backendResponse",
+        "projectResponse",
+        "submission",
+        "sourcePath",
+        "assignmentToDelete",
+        "projectToDelete"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+      if (propName == "queryParams") {
+        this._deleteToast(this.queryParams.deletetoast);
+      }
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "project-created",
-      this._handleProjectCreated.bind(this)
-    );
-    this.removeEventListener(
-      "assignment-created",
-      this._handleAssignmentCreated.bind(this)
-    );
-    super.disconnectedCallback();
-  }
-
-  static get observers() {
-    return [
-      "_routeChanged(route, endPoint)",
-      "_deleteToast(queryParams.deletetoast)"
-    ];
   }
 
   // If the current route is outside the scope of our app
@@ -547,8 +634,9 @@ class LrnappStudioKanban extends PolymerElement {
           .querySelector("#toast")
           .show("Submission deleted successfully!");
       }
-      this.set("queryParams.deletetoast", undefined);
-      this.notifyPath("queryParams.deletetoast");
+      let attr = this.queryParams;
+      attr.deletetoast = undefined;
+      this.queryParams = { ...attr };
     }
   }
 
@@ -606,6 +694,7 @@ class LrnappStudioKanban extends PolymerElement {
         this.projectToDelete +
         "?token=" +
         this.csrfToken;
+      this.backendResponse = {};
       this.shadowRoot.querySelector("#backend").generateRequest();
     } else if (this._deleteType == "assignment") {
       this.shadowRoot.querySelector("#backend").method = "DELETE";
@@ -616,6 +705,7 @@ class LrnappStudioKanban extends PolymerElement {
         this.assignmentToDelete +
         "?token=" +
         this.csrfToken;
+      this.backendResponse = {};
       this.shadowRoot.querySelector("#backend").generateRequest();
     }
   }
@@ -665,6 +755,7 @@ class LrnappStudioKanban extends PolymerElement {
         status: this.shadowRoot.querySelector("#activetoggle").checked
       };
       // send the request
+      this.backendResponse = {};
       xhr.generateRequest();
     }
   }
@@ -702,7 +793,6 @@ class LrnappStudioKanban extends PolymerElement {
     if (this.activeAssignment) {
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
-        this.set("activeAssignmentNode", {});
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
         ].relationships.assignments["assignment-" + parts[2]];
@@ -725,11 +815,10 @@ class LrnappStudioKanban extends PolymerElement {
       this.shadowRoot.querySelector("#toast").text = "Updated successfully";
       this.shadowRoot.querySelector("#toast").toggle();
       // this will force a repaint of the UI pieces on reload
-      this.set("projectResponse", {});
+      this.projectResponse = {};
       this.shadowRoot.querySelector("#projectbackend").generateRequest();
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
-        this.set("activeAssignmentNode", {});
         this.activeAssignmentNode = this.projectResponse.data.projects[
           "project-" + parts[1]
         ].relationships.assignments["assignment-" + parts[2]];
@@ -788,6 +877,7 @@ class LrnappStudioKanban extends PolymerElement {
   _handleProjectCreated(e) {
     this.shadowRoot.querySelector("#toast").text = "Project added";
     this.shadowRoot.querySelector("#toast").toggle();
+    this.projectResponse = {};
     this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 
@@ -797,6 +887,7 @@ class LrnappStudioKanban extends PolymerElement {
   _handleAssignmentCreated(e) {
     this.shadowRoot.querySelector("#toast").text = "Assignment added";
     this.shadowRoot.querySelector("#toast").toggle();
+    this.projectResponse = {};
     this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 

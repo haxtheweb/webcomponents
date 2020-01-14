@@ -1,0 +1,131 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "punnett-square",
+      "description": "`punnett-square`",
+      "attributes": [
+        {
+          "name": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "variant1",
+          "attribute": "variant1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "variant2",
+          "attribute": "variant2",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "editable",
+          "attribute": "editable",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

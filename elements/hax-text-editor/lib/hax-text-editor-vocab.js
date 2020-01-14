@@ -7,12 +7,13 @@ import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/l
 import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 /**
  * `hax-text-editor-vocab`
+ * @customElement hax-text-editor-vocab
  * `a lrn-vocab button for hax text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class HaxTextEditorVocab extends RichTextEditorPromptButton {

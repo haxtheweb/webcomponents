@@ -1,0 +1,117 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "properties": [
+        {
+          "name": "defaultLevel",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "parentId"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "The relative-heading's UUID.",
+          "type": "string"
+        },
+        {
+          "name": "level",
+          "description": "The heading level (1-6), eg., 1 for <h1>",
+          "type": "number"
+        },
+        {
+          "name": "default-level",
+          "description": "The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "parent-id",
+          "description": "The parent relative-heading's UUID.",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "The heading text.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "The relative-heading's UUID.",
+          "type": "string"
+        },
+        {
+          "name": "level",
+          "attribute": "level",
+          "description": "The heading level (1-6), eg., 1 for <h1>",
+          "type": "number"
+        },
+        {
+          "name": "defaultLevel",
+          "attribute": "default-level",
+          "description": "The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "parentId",
+          "attribute": "parent-id",
+          "description": "The parent relative-heading's UUID.",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "The heading text.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "relative-heading-state-manager",
+      "description": "`relative-heading-state-manager`"
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+      "properties": [
+        {
+          "name": "defaultLevel",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "parentId"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

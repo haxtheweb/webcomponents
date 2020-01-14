@@ -1,0 +1,326 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "promo-tile",
+      "description": "`promo-tile`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "attribute": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "promo-tile",
+      "description": "`promo-tile`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "attribute": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "promo-tile",
+      "description": "`promo-tile`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image source",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for button",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "Url for tile",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "hover",
+          "attribute": "hover",
+          "description": "Hover state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

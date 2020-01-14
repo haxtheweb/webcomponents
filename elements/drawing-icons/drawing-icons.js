@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * `drawing-icons` is a iconset for the Material Design Icons collection
+ * `drawing-icons`
+ * @customElement drawing-icons is a iconset for the Material Design Icons collection
  *
  * Example:
  *   <script>import "@lrnwebcomponents/drawing-icons/drawing-icons.js";</script>

@@ -4,11 +4,9 @@
  *
  * Based on https://github.com/TherapyChat/rss-items
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
  * `rss-items`
  * `visualize RSS items`
@@ -22,35 +20,15 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
   ></rss-items>
   ```
  * It will retrieve the items from the url automatically.
-   ### Styling
-
-    The following custom properties and mixins are available for styling:
-
-    Custom property | Description | Default
-    ----------------|-------------|----------
-    `--rss-items` | Mixin applied to the component | `{}`
-    `--rss-items-article` | Mixin applied to the articles | `{}`
-    `--rss-items-article-mq-m-up` | Mixin applied to the articles on `min-width: 600px` | `{}`
-    `--rss-items-article-mq-l-up` | Mixin applied to the articles on `min-width: 900px` | `{}`
-    `--rss-items-thumbnail` | Mixin applied to the image thumbnails | `{}`
-    `--rss-items-thumbnail-hover` | Mixin applied to the image thumbnails when hover | `{}`
-    `--rss-items-thumbnail-container` | Mixin applied to the image thumbnails container | `{}`
-    `--rss-items-title` | Mixin applied to the title | `{}`
-    `--rss-items-excerpt` | Mixin applied to the excerpt | `{}`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement rss-items
  */
-class RssItems extends PolymerElement {
+class RssItems extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host([hidden]) {
   display: none;
 }
@@ -60,7 +38,6 @@ class RssItems extends PolymerElement {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  @apply --rss-items;
 }
 
 :host * {
@@ -79,8 +56,6 @@ a {
 
 article {
   margin-bottom: 2em;
-
-  @apply --rss-items-article;
 }
 
 .thumbnail-container {
@@ -88,37 +63,27 @@ article {
   overflow: hidden;
   width: 100%;
   height: 180px;
-
-  @apply --rss-items-thumbnail-container;
 }
 
 .thumbnail {
   width: 100%;
   height: 100%;
   transition: transform .5s ease-out;
-
-  @apply --rss-items-thumbnail;
 }
 
 .thumbnail-container:hover .thumbnail,
 .thumbnail-container:focus .thumbnail {
   transform: scale3d(1.3, 1.3, 1);
-
-  @apply --rss-items-thumbnail-hover;
 }
 
 .title {
   min-height: 3em;
   margin: 1em 0 .5em;
-
-  @apply --rss-items-title;
 }
 
 .excerpt {
   min-height: 6em;
   margin: .5em 0 2em;
-
-  @apply --rss-items-excerpt;
 }
 
 @media (max-width: 599px) {
@@ -132,8 +97,6 @@ article {
   article {
     flex: 1 1 40%;
     margin-right: 2em;
-
-    @apply --rss-items-article-mq-m-up;
   }
 
   article:nth-of-type(2n),
@@ -145,8 +108,6 @@ article {
 @media (min-width: 900px) {
   article {
     flex: 1 1 30%;
-
-    @apply --rss-items-article-mq-l-up;
   }
 
   article:nth-of-type(2n) {
@@ -157,26 +118,36 @@ article {
     margin-right: 0;
   }
 }
-        </style>
-<iron-ajax id="rssajax" url="[[url]]" handle-as="xml" last-response="{{xml}}"></iron-ajax>
-<dom-repeat items="[[items]]">
-  <template>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+<iron-ajax
+id="rssajax"
+url="${this.url}"
+handle-as="xml"
+@last-response-changed="${this.xmlEvent}"></iron-ajax>
+${this.items.map(item => html`
   <article>
-    <a class="thumbnail-container" href="[[item.link]]" title="[[item.title]]">
-      <iron-image class="thumbnail" src="[[item.imageSrc]]" alt="[[item.title]]" sizing="cover"></iron-image>
+    ${item.imageSrc ? html`
+    <a class="thumbnail-container" href="${item.link}" title="${item.title}">
+      <iron-image class="thumbnail" src="${item.imageSrc}" alt="${item.title}" sizing="cover"></iron-image>
     </a>
-    <a href="[[item.link]]" title="[[item.title]]">
-      <span class="title">[[_truncateText(item.title, maxTitleLength)]]</span>
+    ` : ``}
+    <a href="${item.link}" title="${item.title}">
+      <span class="title">${this._truncateText(item.title, this.maxTitleLength)}</span>
     </a>
-    <div class="excerpt">[[_truncateText(item.excerpt, maxExcerptLength)]]</div>
-    <template is="dom-if" if="[[showReadMore]]">
-      <a tabindex="-1" href="[[item.link]]" class="read-more" title="[[item.title]]">[[readMoreAnchorText]]
-        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="[[readMoreImageAlt]]"></paper-icon-button>
+    <div class="excerpt">${this._truncateText(item.excerpt, this.maxExcerptLength)}</div>
+    ${this.showReadMore ? html`
+      <a tabindex="-1" href="${item.link}" class="read-more" title="${item.title}">${this.readMoreAnchorText}
+        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="${this.readMoreImageAlt}"></paper-icon-button>
       </a>
-    </template>
+    ` : ``}
   </article>
-  </template>
-</dom-repeat>`;
+`)}`;
   }
 
   // haxProperty definition
@@ -233,69 +204,63 @@ article {
    * If true init rss request.
    */
   "auto": {
-    "type": Boolean,
-    "value": false
+    "type": Boolean
   },
   /**
    * The retrieved items array.
    */
   "items": {
-    "type": Array,
-    "notify": true
+    "type": Array
   },
   /**
    * Max number of items to show. If it is undefined shows all items.
    */
   "max": {
-    "type": Number,
-    "value": 10,
-    "observer": "_maxChanged"
+    "type": Number
   },
   /**
    * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.
    */
   "maxExcerptLength": {
     "type": Number,
-    "value": 100
+    "attribute": "max-excerpt-length"
   },
   /**
    * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.
    */
   "maxTitleLength": {
     "type": Number,
-    "value": 50
+    "attribute": "max-title-length"
   },
   /**
    * Read more anchor text.
    */
   "readMoreAnchorText": {
     "type": Boolean,
-    "value": "Read more"
+    "attribute": "read-more-anchor-text"
   },
   /**
    * Read more image alternative text.
    */
   "readMoreImageAlt": {
     "type": Boolean,
-    "value": "Icono de flecha"
+    "attribute": "read-more-image-alt"
   },
   /**
    * If true the items elements will display a read more link.
    */
   "showReadMore": {
     "type": Boolean,
-    "value": false
+    "attribute": "show-read-more"
   },
   /**
    * The URL of the RSS.
    */
   "url": {
-    "type": String,
-    "observer": "_urlChanged"
+    "type": String
   },
   "xml": {
-    "type": Object,
-    "observer": "xmlToItems"
+    "type": Object
   }
 }
 ;
@@ -315,7 +280,7 @@ article {
     this.shadowRoot.querySelector("#rssajax").generateRequest();
   }
   _maxChanged(newValue) {
-    if (newValue && this._x2js && this.__ready) {
+    if (this.xml && newValue && this._x2js && this.__ready) {
       this.xmlToItems(this.xml);
     }
   }
@@ -328,10 +293,12 @@ article {
       // parse xml to json and get items
       var conversor = new X2JS();
       var json = conversor.xml2json(newValue);
-      var items = json.rss ? json.rss.channel.item : json.channel.item;
-      // truncate with this.max and parse items
-      items = this.max === undefined ? items : items.splice(0, this.max);
-      this.items = this._parseItems(items);
+      if (json) {
+        var items = json.rss ? json.rss.channel.item : json.channel.item;
+        // truncate with this.max and parse items
+        items = this.max === undefined ? items : items.splice(0, this.max);
+        this.items = [...this._parseItems(items)];
+      }
     }
   }
   _urlChanged(newValue) {
@@ -339,18 +306,22 @@ article {
       this.initRequest();
     }
   }
+  xmlEvent(e) {
+    this.xml = {};
+    setTimeout(() => {
+      this.xml = e.detail.value;
+    }, 0);
+  }
   /**
    * Parse items by getting excerpt and image source.
    * @param {Array} items RSS items.
    */
   _parseItems(items) {
-    return items.map(
-      function(item) {
-        item.excerpt = this._getItemExcerpt(item);
-        item.imageSrc = this._getItemImageScr(item);
-        return item;
-      }.bind(this)
-    );
+    return items.map(item => {
+      item.excerpt = this._getItemExcerpt(item);
+      item.imageSrc = this._getItemImageScr(item);
+      return item;
+    });
   }
   /**
    * Get excerpt from item description.
@@ -392,8 +363,43 @@ article {
   pathFromUrl(url) {
     return url.substring(0, url.lastIndexOf("/") + 1);
   }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["items"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "max") {
+        this._maxChanged(this[propName], oldValue);
+      }
+      if (propName == "url") {
+        this._urlChanged(this[propName], oldValue);
+      }
+      if (propName == "xml") {
+        this.xmlToItems(this[propName], oldValue);
+      }
+    });
+  }
   constructor() {
     super();
+    this.items = [];
+    this.auto = false;
+    this.max = 10;
+    this.maxExcerptLength = 100;
+    this.maxTitleLength = 50;
+    this.readMoreAnchorText = "Read more";
+    this.readMoreImageAlt = "";
+    this.showReadMore = false;
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -420,18 +426,15 @@ article {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.__ready = true;
-    afterNextRender(this, function() {
-      if (this._x2js) {
-        if (this.auto) {
-          this.shadowRoot.querySelector("#rssajax").auto = this.auto;
-        } else {
-          this.initRequest();
-        }
+    if (this._x2js) {
+      if (this.auto) {
+        this.shadowRoot.querySelector("#rssajax").auto = this.auto;
+      } else {
+        this.initRequest();
       }
-    });
+    }
   }
   /**
    * life cycle, element is removed from the DOM

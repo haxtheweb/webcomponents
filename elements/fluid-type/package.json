@@ -17,19 +17,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "fluid-type.js",
   "module": "fluid-type.es6.js",
   "umd": "fluid-type.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/fluid-type/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",

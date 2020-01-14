@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image\n\nProperty: image"
+        },
+        {
+          "name": "details",
+          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
+        },
+        {
+          "name": "buttonText",
+          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
+        },
+        {
+          "name": "buttonLink",
+          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
+        }
+      ]
+    },
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image\n\nProperty: image"
+        },
+        {
+          "name": "details",
+          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
+        },
+        {
+          "name": "buttonText",
+          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
+        },
+        {
+          "name": "buttonLink",
+          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title\n\nProperty: title\n\nDefault: Title"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Image\n\nProperty: image"
+        },
+        {
+          "name": "details",
+          "description": "`details` {`string`} - Details / teaser text\n\nProperty: details\n\nDefault: Details"
+        },
+        {
+          "name": "buttonText",
+          "description": "`buttonText` {`string`} - button label\n\nProperty: buttonText\n\nDefault: Find out more"
+        },
+        {
+          "name": "buttonLink",
+          "description": "`buttonLink` {`string`} - url for the button\n\nProperty: buttonLink"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

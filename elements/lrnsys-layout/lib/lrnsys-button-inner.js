@@ -1,15 +1,15 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrnsys-button-inner`
+ * @customElement lrnsys-button-inner
  */
-class LrnsysButtonInner extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnsysButtonInner extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -22,26 +22,62 @@ class LrnsysButtonInner extends PolymerElement {
         .text-label-only {
           margin-left: 0;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.text = "";
+    this.avatar = "";
+    this.icon = "";
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div>
-        <template is="dom-if" if="[[avatar]]">
-          <paper-avatar src\$="[[avatar]]"></paper-avatar>
-        </template>
-        <template is="dom-if" if="[[icon]]">
-          <lrn-icon icon="[[icon]]"></lrn-icon>
-        </template>
-        <template is="dom-if" if="[[text]]">
-          <span class\$="[[_getTextLabelClass(avatar,icon)]]">[[text]]</span>
-        </template>
+        ${this.avatar != ""
+          ? html`
+              <paper-avatar src="${this.avatar}"></paper-avatar>
+            `
+          : ""}
+        ${this.icon != ""
+          ? html`
+              <lrn-icon icon="${this.icon}"></lrn-icon>
+            `
+          : ""}
+        ${this.text != ""
+          ? html`
+              <span class="${this._getTextLabelClass(this.avatar, this.icon)}"
+                >${this.text}</span
+              >
+            `
+          : ""}
       </div>
       <div><slot name="button"></slot><slot></slot></div>
     `;
   }
-
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "avatar" && this[propName] != "") {
+        import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
+      }
+      if (propName == "icon" && this[propName] != "") {
+        import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
+        import("@polymer/iron-icons/iron-icons.js");
+      }
+    });
+  }
   static get tag() {
     return "lrnsys-button-inner";
   }
-
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       /**
@@ -64,7 +100,6 @@ class LrnsysButtonInner extends PolymerElement {
       }
     };
   }
-
   /**
    * Find out if the text does not have an avatar or an icon to the left,
    * and add a class to remove the left margin.

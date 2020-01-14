@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
@@ -8,10 +8,13 @@ import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
-class LrnMarkdownEditorEditor extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnMarkdownEditorEditor extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -24,7 +27,14 @@ class LrnMarkdownEditorEditor extends PolymerElement {
         .mtz-toolbar {
           flex-grow: 5;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <mtz-marked-editor id="markededitor">
         <div slot="controls" class="mtz-controls">
           <mtz-marked-control-generic-wrap
@@ -64,12 +74,15 @@ class LrnMarkdownEditorEditor extends PolymerElement {
         <paper-textarea
           slot="textarea"
           label="Start typing..."
-          value="{{content}}"
+          value="${this.content}"
+          @value-changed="${this._contentChanged}"
         ></paper-textarea>
       </mtz-marked-editor>
     `;
   }
-
+  _contentChanged(e) {
+    this.content = e.detail.value;
+  }
   static get tag() {
     return "lrn-markdown-editor-editor";
   }
@@ -77,15 +90,31 @@ class LrnMarkdownEditorEditor extends PolymerElement {
   static get properties() {
     return {
       content: {
-        type: String,
-        notify: true
+        type: String
       }
     };
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "content") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("content-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
 
   _changed(e) {
     var content = this.shadowRoot.querySelector("#markededitor").getContent();
-    this.set("content", content);
+    this.content = content;
     this.dispatchEvent(
       new CustomEvent("content-updated", {
         bubbles: true,

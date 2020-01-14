@@ -1,0 +1,218 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "attributes": [
+        {
+          "name": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "attribute": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "attribute": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "attribute": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ]
+    },
+    {
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "attributes": [
+        {
+          "name": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "attribute": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "attribute": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "attribute": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "qr-code"
+    },
+    {
+      "name": "q-r",
+      "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+      "attributes": [
+        {
+          "name": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "description": "Data to code via QR code",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Alternate title for the data",
+          "type": "string"
+        },
+        {
+          "name": "modulesize",
+          "attribute": "modulesize",
+          "description": "module size of the square",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "margin",
+          "attribute": "margin",
+          "description": "Margin on the square",
+          "type": "number",
+          "default": "2"
+        },
+        {
+          "name": "format",
+          "attribute": "format",
+          "description": "format to output",
+          "type": "string",
+          "default": "\"png\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-fab/paper-fab.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /*
 An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
 
@@ -20,19 +19,18 @@ Style                                                   | Description
 
 * @demo demo/index.html
 */
-class LrnappFabSpeedDialAction extends PolymerElement {
-  static get tag() {
-    return "lrnapp-fab-speed-dial-action";
-  }
-  static get template() {
-    return html`
-      <style
-        include="iron-flex iron-flex-alignment materializecss-styles-colors"
-      >
+class LrnappFabSpeedDialAction extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
         :host {
-          @apply --layout-horizontal;
-          @apply --layout-center;
-          @apply --layout-end-justified;
+          align-items: center;
+          justify-content: flex-end;
+          display: flex;
           margin-top: 15px;
           margin-right: 8px;
           min-width: 270px;
@@ -52,15 +50,36 @@ class LrnappFabSpeedDialAction extends PolymerElement {
             --lrnapp-fab-speed-dial-action-keyboard-focus-background
           );
         }
+        .flex {
+          display: inline-flex;
+        }
         .label,
         .fab {
           display: flex;
         }
-      </style>
+      `
+    ];
+  }
+  static get tag() {
+    return "lrnapp-fab-speed-dial-action";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.color = "blue";
+    import("@polymer/paper-fab/paper-fab.js");
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div class="flex">
         <span class="label"><slot></slot></span>
       </div>
-      <paper-fab class$="fab [[color]]" icon="[[icon]]" mini></paper-fab>
+      <paper-fab class="fab ${this.color}" icon="${this.icon}" mini></paper-fab>
     `;
   }
   static get properties() {
@@ -75,8 +94,7 @@ class LrnappFabSpeedDialAction extends PolymerElement {
        * Color class work to apply
        */
       color: {
-        type: String,
-        value: "blue"
+        type: String
       }
     };
   }

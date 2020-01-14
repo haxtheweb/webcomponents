@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nProperties:\n\n  * `defaultLevel` {`number`} - \n\n  * `parentId` - \n\n  * `text` {`string`} - ",
+      "attributes": []
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\n  * `default-level` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\n  * `parent-id` {`string`} - The parent relative-heading's UUID.\n\n  * `text` {`string`} - The heading text.\n\nProperties:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\n  * `defaultLevel` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\n  * `parentId` {`string`} - The parent relative-heading's UUID.\n\n  * `text` {`string`} - The heading text.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
+        },
+        {
+          "name": "level",
+          "description": "`level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\nProperty: level"
+        },
+        {
+          "name": "default-level",
+          "description": "`default-level` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+        },
+        {
+          "name": "parent-id",
+          "description": "`parent-id` {`string`} - The parent relative-heading's UUID.\n\nProperty: parentId\n\nDefault: null"
+        },
+        {
+          "name": "text",
+          "description": "`text` {`string`} - The heading text.\n\nProperty: text\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "relative-heading-state-manager",
+      "description": "`relative-heading-state-manager`\n\n",
+      "attributes": []
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nProperties:\n\n  * `defaultLevel` {`number`} - \n\n  * `parentId` - \n\n  * `text` {`string`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `dropdown-select`
+ * @customElement dropdown-select
  * an easy to use, works as expected dropdown menu.
  *
  * @demo demo/index.html

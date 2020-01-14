@@ -1,0 +1,356 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-contactcard",
+      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "attribute": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "attribute": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "attribute": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "attribute": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-contactcard",
+      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "attribute": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "attribute": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "attribute": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "attribute": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-contactcard",
+      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "A url to the image in question.",
+          "type": "string"
+        },
+        {
+          "name": "email",
+          "attribute": "email",
+          "description": "The email address of the user.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "The name of the user.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The job-title / position of the user.",
+          "type": "string"
+        },
+        {
+          "name": "organization",
+          "attribute": "organization",
+          "description": "The employer / organization of the user.",
+          "type": "string"
+        },
+        {
+          "name": "phone",
+          "attribute": "phone",
+          "description": "The phone number of the user.",
+          "type": "string"
+        },
+        {
+          "name": "website",
+          "attribute": "website",
+          "description": "The associated website of the user.",
+          "type": "string"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "Twitter account of the user.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "properties": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"JSON data\""
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "maxRows",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "attributes": [
+        {
+          "name": "format-test",
+          "description": "format test to update value so it's pretty printed",
+          "type": "string"
+        },
+        {
+          "name": "current-data",
+          "description": "The current data object",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "description": "label for the text area",
+          "type": "string",
+          "default": "\"JSON data\""
+        },
+        {
+          "name": "error",
+          "description": "State of being valid JSON object",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "toggling disabled state of the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "max-rows",
+          "description": "max rows in the textarea",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "value",
+          "description": "String based value of the editor, use this to set initial value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "formatTest",
+          "attribute": "format-test",
+          "description": "format test to update value so it's pretty printed",
+          "type": "string"
+        },
+        {
+          "name": "currentData",
+          "attribute": "current-data",
+          "description": "The current data object",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the text area",
+          "type": "string",
+          "default": "\"JSON data\""
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "description": "State of being valid JSON object",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "toggling disabled state of the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "maxRows",
+          "attribute": "max-rows",
+          "description": "max rows in the textarea",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "String based value of the editor, use this to set initial value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "json-editor",
+      "description": "`json-editor`\n`simple JSON blob data binding to a text area`",
+      "properties": [
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"JSON data\""
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "maxRows",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

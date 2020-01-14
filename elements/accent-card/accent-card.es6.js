@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
@@ -7,6 +7,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `accent-card`
+ * @customElement accent-card
  * a card with optional accent stylings.
  * 
 ### Styling
@@ -28,7 +29,7 @@ Custom property | Description | Default
 * Overrides colors set by accent-color and dark attributes.
  *
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/index.html demo
  * @demo ./demo/colors.html colors
  * @demo ./demo/orientation.html card orientation
@@ -47,7 +48,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -371,6 +372,9 @@ class AccentCard extends SimpleColors {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["colors"]
       }
     };
   }

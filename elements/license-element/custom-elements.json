@@ -1,0 +1,344 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "attribute": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "attribute": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList"
+        },
+        {
+          "name": "moreLabel",
+          "attribute": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ]
+    },
+    {
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "attribute": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "attribute": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList"
+        },
+        {
+          "name": "moreLabel",
+          "attribute": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "license-element",
+      "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "moreLink",
+          "attribute": "more-link",
+          "description": "More details link",
+          "type": "string"
+        },
+        {
+          "name": "hasMore",
+          "attribute": "has-more",
+          "description": "See if we have more things to point to",
+          "type": "boolean"
+        },
+        {
+          "name": "licenseList"
+        },
+        {
+          "name": "moreLabel",
+          "attribute": "more-label",
+          "description": "More details label",
+          "type": "string",
+          "default": "\"on the licensing details page\""
+        }
+      ]
+    }
+  ]
+}

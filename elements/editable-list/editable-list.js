@@ -2,26 +2,19 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@polymer/iron-list/iron-list.js";
-import "./lib/editable-list-item.js";
 /**
  * `editable-list`
  * `a listing of items that can be edited in place with operations`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement editable-list
  */
-class EditableList extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class EditableList extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -30,20 +23,27 @@ class EditableList extends PolymerElement {
           display: none;
         }
 
-        iron-list {
+        #list {
           height: 100%;
         }
-      </style>
-      <iron-list id="list" items="[[items]]" as="item" mutable-data>
-        <template>
-          <editable-list-item
-            edit-mode="[[item.metadata.canEdit]]"
-            can-edit="[[item.metadata.canEdit]]"
-            can-delete="[[item.metadata.canDelete]]"
-            value="[[item.title]]"
-          ></editable-list-item>
-        </template>
-      </iron-list>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <div id="list">
+        ${this.items.map(
+          item => html`
+            <editable-list-item
+              ?edit-mode="${item.metadata.canEdit}"
+              ?can-edit="${item.metadata.canEdit}"
+              ?can-delete="${item.metadata.canDelete}"
+              value="${item.title}"
+            ></editable-list-item>
+          `
+        )}
+      </div>
     `;
   }
 
@@ -56,65 +56,71 @@ class EditableList extends PolymerElement {
        * ability to edit the items in the list
        */
       editMode: {
-        name: "editMode",
         type: Boolean,
-        value: false,
-        notify: true,
-        reflectToAttribute: true,
-        observer: "_editModeChanged"
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * items array
        */
       items: {
-        name: "items",
         type: Array,
-        value: [],
-        reflectToAttribute: false,
-        observer: "_itemsChanged"
+        reflect: false
       },
       /**
        * Active element being worked on in the list
        */
       activeElement: {
-        name: "activeElement",
         type: Object
       }
     };
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * convention
    */
   static get tag() {
     return "editable-list";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
-  connectedCallback() {
-    super.connectedCallback();
-    const modal = window.SimpleModal.requestAvailability();
-    this.shadowRoot
-      .querySelector("#list")
-      .addEventListener(
-        "editable-list-item-delete",
-        this.triggerDeleteModal.bind(this)
-      );
+  constructor() {
+    super();
+    this.editMode = false;
+    this.items = [];
+    window.SimpleModal.requestAvailability();
+    import("./lib/editable-list-item.js");
+    setTimeout(() => {
+      this.shadowRoot
+        .querySelector("#list")
+        .addEventListener(
+          "editable-list-item-delete",
+          this.triggerDeleteModal.bind(this)
+        );
+    }, 0);
   }
   /**
-   * life cycle, element is removed from the DOM
+   * LitElement properties changed
    */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#list")
-      .removeEventListener(
-        "editable-list-item-delete",
-        this.triggerDeleteModal.bind(this)
-      );
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "items") {
+        this._itemsChanged(this[propName], oldValue);
+      }
+      if (propName == "editMode") {
+        this._editModeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("edit-mode-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
-
   triggerDeleteModal(e) {
     this.activeElement = e.detail.element;
     let c = document.createElement("div");
@@ -135,6 +141,7 @@ class EditableList extends PolymerElement {
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: true,
+      composed: true,
       detail: {
         title: `Delete ${e.detail.element.value}`,
         elements: {
@@ -155,6 +162,7 @@ class EditableList extends PolymerElement {
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       cancelable: true,
+      composed: true,
       detail: {}
     });
     this.dispatchEvent(evt);
@@ -165,16 +173,18 @@ class EditableList extends PolymerElement {
       this._itemsChanged(this.items);
       for (var i in this.items) {
         if (this.items[i].metadata) {
-          this.items[i].metadata.canEdit = newValue;
-          this.notifyPath(`items.${i}.metadata.canEdit`);
+          let tmp = this.items[i].metadata;
+          tmp.canEdit = newValue;
+          this.items[i].metadata = { ...tmp };
         }
       }
     }
   }
   // Observer items for changes
   _itemsChanged(newValue, oldValue) {
+    // support for string evaluations
     if (typeof newValue !== typeof undefined && typeof newValue === "string") {
-      this.set("items", JSON.parse(newValue));
+      this.items = [...JSON.parse(newValue)];
     }
   }
 }

@@ -6,9 +6,10 @@ import { LrndesignChart } from "../lrndesign-chart.js";
 
 /**
  * `lrndesign-bar`
+ * @customElement lrndesign-bar
  * a bar chart
  *
- * @customElement
+
  * @extends LrndesignChart
  * @see ../lrndesign-chart.js
  * @demo ./demo/bar.html

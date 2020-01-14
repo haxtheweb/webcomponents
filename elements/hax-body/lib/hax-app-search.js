@@ -1,19 +1,21 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-app-search`
+ * @customElement hax-app-search
  * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
  * @microcopy - the mental model for this element
  * - hax-source - a backend that can supply items for selection by the user
  * - hax-manager - controlling the UI for selection of something
  * - hax-body - the text are ultimately we are trying to insert this item into
  */
-class HaxAppSearch extends SimpleColors {
+class HaxAppSearch extends winEventsElement(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -78,6 +80,10 @@ class HaxAppSearch extends SimpleColors {
   }
   constructor() {
     super();
+    // window based events managed in winEventsElement
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
     this.auto = false;
     this.headers = {};
     this.method = "GET";
@@ -91,10 +97,6 @@ class HaxAppSearch extends SimpleColors {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   /**
    * LitElement life cycle - render callback
@@ -121,6 +123,7 @@ class HaxAppSearch extends SimpleColors {
         id="searchinput"
         .label="${this.label}"
         .schema="${this.searchSchema}"
+        @search-values-changed="${this._searchValuesChanged}"
       ></hax-app-search-inputs>
       <hax-app-pagination
         id="pagerbottom"
@@ -313,20 +316,6 @@ class HaxAppSearch extends SimpleColors {
         this.auto = true;
       }
     }
-  }
-  /**
-   * LitElement life cycle - ready callback
-   */
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-    this.shadowRoot
-      .querySelector("#searchinput")
-      .addEventListener(
-        "search-values-changed",
-        this._searchValuesChanged.bind(this)
-      );
   }
   /**
    * Store updated, sync.

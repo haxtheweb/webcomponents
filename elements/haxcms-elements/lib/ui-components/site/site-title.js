@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-title`
  * `Title of the site`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class SiteTitle extends LitElement {

@@ -11,6 +11,7 @@ import "./lrndesign-gallery-details.js";
 export { LrndesignGalleryGrid };
 /**
  * `lrndesign-gallery-grid`
+ * @customElement lrndesign-gallery-grid
  * `An element that renders a collection of gallery items into a grid or a single media item into a layout.`
  *
  * @microcopy - language worth noting:```
@@ -38,7 +39,7 @@ export { LrndesignGalleryGrid };
   "type": "image",                                  //required, "image", "video", "audio", etc.
 }]```
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/grid.html demo
  */

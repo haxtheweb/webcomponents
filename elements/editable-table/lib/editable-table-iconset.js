@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `editable-table-iconset`
+ * @customElement editable-table-iconset
  * `An icon set of sort and filter icons specifically for editable-table.`
  *
  * Example:

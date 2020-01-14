@@ -1,0 +1,100 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"icons:expand-less\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Scroll to top\""
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ]
+    },
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "attributes": [
+        {
+          "name": "target",
+          "type": "object"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"icons:expand-less\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Scroll to top\""
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "target",
+          "attribute": "target",
+          "type": "object"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"icons:expand-less\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"Scroll to top\""
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "scroll-button",
+      "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"icons:expand-less\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"Scroll to top\""
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,541 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "pie-menu",
+      "description": "`pie-menu`",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "attribute": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "centerLabel",
+          "attribute": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "topLabel",
+          "attribute": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "leftLabel",
+          "attribute": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottomLabel",
+          "attribute": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "rightLabel",
+          "attribute": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "centerIcon",
+          "attribute": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "topIcon",
+          "attribute": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "leftIcon",
+          "attribute": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottomIcon",
+          "attribute": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rightIcon",
+          "attribute": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ]
+    },
+    {
+      "name": "pie-menu",
+      "description": "`pie-menu`",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "attribute": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "centerLabel",
+          "attribute": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "topLabel",
+          "attribute": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "leftLabel",
+          "attribute": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottomLabel",
+          "attribute": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "rightLabel",
+          "attribute": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "centerIcon",
+          "attribute": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "topIcon",
+          "attribute": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "leftIcon",
+          "attribute": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottomIcon",
+          "attribute": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rightIcon",
+          "attribute": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ]
+    },
+    {
+      "name": "pie-menu",
+      "description": "`pie-menu`",
+      "attributes": [
+        {
+          "name": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideLabelText",
+          "attribute": "hide-label-text",
+          "description": "hide label text below icons",
+          "type": "string",
+          "default": "\"false\""
+        },
+        {
+          "name": "centerLabel",
+          "attribute": "center-label",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "topLabel",
+          "attribute": "top-label",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"Option 1\""
+        },
+        {
+          "name": "leftLabel",
+          "attribute": "left-label",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"Option 2\""
+        },
+        {
+          "name": "bottomLabel",
+          "attribute": "bottom-label",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"Option 3\""
+        },
+        {
+          "name": "rightLabel",
+          "attribute": "right-label",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"Option 4\""
+        },
+        {
+          "name": "centerIcon",
+          "attribute": "center-icon",
+          "description": "center button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "topIcon",
+          "attribute": "top-icon",
+          "description": "top button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "leftIcon",
+          "attribute": "left-icon",
+          "description": "left button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "bottomIcon",
+          "attribute": "bottom-icon",
+          "description": "bottom button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rightIcon",
+          "attribute": "right-icon",
+          "description": "right button label",
+          "type": "string",
+          "default": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "pie-menu-selection"
+        }
+      ]
+    }
+  ]
+}

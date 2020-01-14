@@ -1,0 +1,143 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ]
+    },
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "image-inspector",
+      "description": "`image-inspector`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Image source.",
+          "type": "string"
+        },
+        {
+          "name": "degrees",
+          "attribute": "degrees",
+          "description": "Image rotation",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Hover class for button styling",
+          "type": "string",
+          "default": "\"blue white-text\""
+        }
+      ]
+    }
+  ]
+}

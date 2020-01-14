@@ -17,20 +17,21 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "punnett-square.js",
   "module": "punnett-square.es6.js",
   "umd": "punnett-square.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/punnett-square/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
-    "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
@@ -41,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/paper-input": "^3.0.0",
-    "lit-element": "^2.2.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -1,30 +1,24 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-spinner/paper-spinner.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `cms-entity`
+ * @customElement cms-entity
  * `Render and process a  / entity from a content management system.`
  */
-class CMSEntity extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class CMSEntity extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           min-width: 112px;
           min-height: 112px;
           transition: 0.6s all ease;
           background-color: transparent;
-        }
-        paper-spinner {
-          visibility: hidden;
-          opacity: 0;
-          height: 80px;
-          width: 80px;
-          padding: 16px;
         }
         #replacementcontent {
           visibility: visible;
@@ -33,29 +27,66 @@ class CMSEntity extends PolymerElement {
         :host([loading]) {
           text-align: center;
         }
-        :host([loading]) paper-spinner {
-          visibility: visible;
-          opacity: 1;
-        }
         :host([loading]) #replacementcontent {
           opacity: 0;
           visibility: hidden;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         id="entityrequest"
         method="GET"
-        params="[[bodyData]]"
-        url="[[entityEndPoint]]"
+        url="${this.entityEndPoint}"
         handle-as="json"
-        last-response="{{entityData}}"
+        @last-response-changed="${this.entityDataChanged}"
       ></iron-ajax>
-      <paper-spinner active="[[loading]]"></paper-spinner>
+      ${this.loading
+        ? html`
+            <hexagon-loader
+              item-count="4"
+              loading
+              size="small"
+            ></hexagon-loader>
+          `
+        : html``}
       <span id="replacementcontent"><slot></slot></span>
     `;
   }
+  entityDataChanged(e) {
+    this.entityData = e.detail.value;
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.loading = false;
+    this.entityPrefix = "[";
+    this.entitySuffix = "]";
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+  }
   static get tag() {
     return "cms-entity";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["entityType", "entityId", "entityDisplayMode"].includes(propName)) {
+        this.bodyData = this._generateBodyData(
+          this.entityType,
+          this.entityId,
+          this.entityDisplayMode
+        );
+      }
+      if (propName == "bodyData") {
+        this._entityChanged(this[propName]);
+      }
+      if (propName == "entityData") {
+        this._handleEntityResponse(this[propName]);
+      }
+    });
   }
   static get properties() {
     return {
@@ -64,64 +95,65 @@ class CMSEntity extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Type of entity to load
        */
       entityType: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "entity-type"
       },
       /**
        * ID of the item to load
        */
       entityId: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "entity-id"
       },
       /**
        * Display mode of the entity
        */
       entityDisplayMode: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "entity-display-mode"
       },
       /**
        * entity end point updated, change the way we do processing.
        */
       entityEndPoint: {
-        type: String
-      },
-      /**
-       * Body data which is just entity with some encapsulation.
-       */
-      bodyData: {
-        type: Object,
-        computed: "_generateBodyData(entityType, entityId, entityDisplayMode)",
-        observer: "_entityChanged"
-      },
-      /**
-       * entity data from the end point.
-       */
-      entityData: {
         type: String,
-        observer: "_handleEntityResponse"
+        attribute: "entity-end-point"
       },
       /**
        * Prefix for the entity to be processed
        */
       entityPrefix: {
         type: String,
-        observer: "["
+        attribute: "entity-prefix"
       },
       /**
        * Suffix for the entity to be processed
        */
       entitySuffix: {
         type: String,
-        observer: "]"
+        attribute: "entity-suffix"
+      },
+      /**
+       * Body data which is just entity with some encapsulation.
+       */
+      bodyData: {
+        type: Object
+      },
+      /**
+       * entity data from the end point.
+       */
+      entityData: {
+        type: String,
+        attribute: "entity-data"
       }
     };
   }
@@ -158,21 +190,17 @@ class CMSEntity extends PolymerElement {
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
-      microTask.run(() => {
-        let frag = document.createElement("span");
-        frag.innerHTML = newValue.content;
-        let newNode = frag.cloneNode(true);
-        this.appendChild(newNode);
-        setTimeout(() => {
-          this.loading = false;
-        }, 600);
-      });
+      let frag = document.createElement("span");
+      frag.innerHTML = newValue.content;
+      let newNode = frag.cloneNode(true);
+      this.appendChild(newNode);
+      this.loading = false;
     }
   }
   /**
    * entity end point changed
    */
-  _entityChanged(newValue, oldValue) {
+  _entityChanged(newValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -188,40 +216,8 @@ class CMSEntity extends PolymerElement {
       }
       if (this.entityEndPoint) {
         this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#entityrequest").generateRequest();
-        });
-      }
-    }
-  }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    if (
-      typeof this.entity !== typeof undefined &&
-      this.entity !== null &&
-      this.entity !== ""
-    ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the entity data needed for the request from globals
-        if (
-          typeof this.entityEndPoint === typeof undefined &&
-          typeof window.cmsentityEndPoint !== typeof undefined
-        ) {
-          this.entityEndPoint = window.cmsentityEndPoint;
-        }
-        if (this.entityEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#entityrequest").generateRequest();
-          });
-        }
+        this.shadowRoot.querySelector("#entityrequest").body = newValue;
+        this.shadowRoot.querySelector("#entityrequest").generateRequest();
       }
     }
   }
@@ -243,7 +239,7 @@ class CMSEntity extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

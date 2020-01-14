@@ -5,12 +5,13 @@
 
 /**
  * `hex-a-gon`
+ * @customElement hex-a-gon
  * `A simple CSS based hexagon`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/hexagon.html
  */
 class Hexagon extends HTMLElement {

@@ -1,35 +1,47 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/cms-hax/cms-hax.js";
-
 /**
  * `wysiwyg-hax`
  * `Integration of wysiwyg edit form for a page with HAX.`
+ * @demo demo/index.html
+ * @customElement wysiwyg-hax
  */
-class WysiwygHax extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class WysiwygHax extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <textarea
-        class$="[[fieldClass]]"
-        id\$="[[fieldId]]"
-        name="[[fieldName]]"
+        class="${this.fieldClass}"
+        id="${this.fieldId}"
+        name="${this.fieldName}"
         hidden=""
       >
-[[bodyValue]]</textarea
+      ${this.bodyValue}
+      </textarea
       >
       <cms-hax
-        open-default="[[openDefault]]"
         hide-message=""
-        redirect-location="[[redirectLocation]]"
-        update-page-data="[[updatePageData]]"
-        end-point="[[endPoint]]"
-        app-store-connection="[[appStoreConnection]]"
-        hide-export-button="[[hideExportButton]]"
-        align="[[align]]"
+        redirect-location="${this.redirectLocation}"
+        update-page-data="${this.updatePageData}"
+        end-point="${this.endPoint}"
+        app-store-connection="${this.appStoreConnection}"
+        ?open-default="${this.openDefault}"
+        ?sync-body="${this.syncBody}"
+        ?hide-export-button="${this.hideExportButton}"
+        ?hide-panel-ops="${this.hidePanelOps}"
+        ?hide-preferences-button="${this.hidePreferencesButton}"
+        align="${this.align}"
       >
       </cms-hax>
     `;
@@ -38,7 +50,34 @@ class WysiwygHax extends PolymerElement {
   static get tag() {
     return "wysiwyg-hax";
   }
-
+  constructor() {
+    super();
+    // import child nodes before things start deleting whats in there
+    let children = this.querySelector("template");
+    if (children) {
+      this.__importContent = children.innerHTML;
+    }
+    this.openDefault = false;
+    this.hideExportButton = false;
+    this.align = "right";
+    this.fieldId = "textarea-input-field";
+    this.fieldName = "data[content]";
+    this.__imported = false;
+    this.redirectLocation = "";
+    this.updatePageData = "";
+    window.addEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "activeHaxBody") {
+        this._activeHaxBodyUpdated(this[propName]);
+      }
+    });
+  }
   static get properties() {
     return {
       /**
@@ -46,137 +85,127 @@ class WysiwygHax extends PolymerElement {
        */
       openDefault: {
         type: Boolean,
-        value: false
+        attribute: "open-default"
       },
       redirectLocation: {
-        type: String
+        type: String,
+        attribute: "redirect-location"
       },
-      /**
-       * Hide the export button, not a common thing to show
-       * in this mode but it's possible for debugging
-       */
       hideExportButton: {
         type: Boolean,
-        value: true
+        attribute: "hide-export-button"
+      },
+      /**
+       * Hide the panel operations (save and cancel),
+       */
+      hidePanelOps: {
+        type: Boolean,
+        attribute: "hide-panel-ops"
+      },
+      /**
+       * Hide preferences button
+       */
+      hidePreferencesButton: {
+        type: Boolean,
+        attribute: "hide-preferences-button"
       },
       /**
        * Direction to align the hax edit panel
        */
       align: {
-        type: String,
-        value: "right"
+        type: String
       },
       /**
        * Data binding of a hidden text area with the value from the hax-body tag
        */
       bodyValue: {
-        type: String
+        type: String,
+        attribute: "body-value"
       },
       /**
        * Connection object for talking to an app store.
        */
       appStoreConnection: {
-        type: Object
+        type: String,
+        attribute: "app-store-connection"
       },
       /**
        * class on the field
        */
       fieldClass: {
-        type: String
+        type: String,
+        attribute: "field-class"
       },
       /**
        * fieldId, id value on the input field.
        */
       fieldId: {
         type: String,
-        value: "textarea-input-field"
+        attribute: "field-id"
       },
       /**
        * fieldName, internal to the form in whatever system it's in.
        */
       fieldName: {
         type: String,
-        value: "data[content]"
+        attribute: "field-name"
+      },
+      syncBody: {
+        type: Boolean,
+        attribute: "sync-body",
+        reflect: true
       },
       /**
        * State of the panel
        */
       editMode: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * Location to save content to.
        */
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       /**
        * Page data, body of text as a string.
        */
       updatePageData: {
-        type: String
+        type: String,
+        attribute: "update-page-data"
       },
       /**
        * Reference to activeBody.
        */
       activeHaxBody: {
-        type: Object,
-        observer: "_activeHaxBodyUpdated"
+        type: Object
       },
       __imported: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
-  /**
-   * highjack shadowDom
-   */
-  _attachDom(dom) {
-    this.appendChild(dom);
+  createRenderRoot() {
+    return this;
   }
-
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated(newValue, oldValue) {
+  _activeHaxBodyUpdated(newValue) {
     // ensure we import our content once we get an initial registration of active body
     if (newValue != null && !this.__imported) {
       this.__imported = true;
-      // see what's inside of this, in a template tag
-      let children = this.querySelector("template");
-      // convert this template content into the real thing
-      // this helps with correctly preserving everything on the way down
-      if (children != null) {
-        newValue.importContent(children.innerHTML);
-        // need to dot his because of juggling unfortunately
-        this.editMode = false;
-        window.HaxStore.write("editMode", this.editMode, this);
-        setTimeout(() => {
-          this.editMode = true;
-          window.HaxStore.write("editMode", this.editMode, this);
-        }, 200);
+      if (this.__importContent) {
+        newValue.importContent(this.__importContent);
       }
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    document.body.addEventListener(
-      "hax-save",
-      this._bodyContentUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
   disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-save",
-      this._bodyContentUpdated.bind(this)
-    );
-    document.body.removeEventListener(
+    window.removeEventListener("hax-save", this._bodyContentUpdated.bind(this));
+    window.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
@@ -192,9 +221,9 @@ class WysiwygHax extends PolymerElement {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
+        this[e.detail.property] = null;
       }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
 

@@ -1,0 +1,269 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`",
+      "properties": [
+        {
+          "name": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "strength",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "strength",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "strength",
+          "attribute": "strength",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "contrast",
+          "attribute": "contrast",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "filtered-image-filters",
+      "description": "`filtered-image-filters`",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "filter1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "filters",
+          "type": "array",
+          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "filter1",
+          "attribute": "filter1",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "filters",
+          "attribute": "filters",
+          "type": "array",
+          "default": "[{\"name\":\"Split Saturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[0,1],[0,1]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Split Desaturation\",\"columns\":{\"levels\":[0,0.1,0.2,0.3,0.4,0.5],\"coords\":[[1,0],[2,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Filter\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Filter\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[1,3],[2,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,0]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Inverse Wash\",\"columns\":{\"levels\":[0,null,null,null,null,null],\"coords\":[[3,1],[3,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"RGB\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[0,0],[1,1],[2,2]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"Opacity\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,3]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}},{\"name\":\"M\",\"columns\":{\"levels\":[0,0.2,0.4,0.6,0.8,1],\"coords\":[[3,4]]},\"rows\":{\"levels\":[\"Example\"],\"coords\":[]}}]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "filtered-image",
+      "description": "`filtered-image`",
+      "properties": [
+        {
+          "name": "src",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "height",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "width",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "strength",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "contrast",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    }
+  ]
+}

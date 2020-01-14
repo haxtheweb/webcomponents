@@ -11,6 +11,7 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 /**
  * `hax-item-button-inner`
+ * @customElement hax-item-button-inner
  * `A button on the hax-gizmo-browser app display`
  * @demo demo/index.html
  */

@@ -1,0 +1,262 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-timer",
+      "description": "`simple-timer`",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "attribute": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "currentTime",
+          "attribute": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "attribute": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "countUp",
+          "attribute": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ]
+    },
+    {
+      "name": "simple-timer",
+      "description": "`simple-timer`",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "attribute": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "currentTime",
+          "attribute": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "attribute": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "countUp",
+          "attribute": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ]
+    },
+    {
+      "name": "simple-timer",
+      "description": "`simple-timer`",
+      "attributes": [
+        {
+          "name": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startTime",
+          "attribute": "start-time",
+          "description": "Start time for the timer in seconds",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "currentTime",
+          "attribute": "current-time",
+          "description": "Current time of the timer, in seconds",
+          "type": "number"
+        },
+        {
+          "name": "isRunning",
+          "attribute": "is-running",
+          "description": "True if the timer is currently running",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "countUp",
+          "attribute": "count-up",
+          "description": "Set to true to have timer count up",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-timer-end"
+        }
+      ]
+    }
+  ]
+}

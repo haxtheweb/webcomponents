@@ -2,26 +2,19 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `r-coder`
  * `R coder interface for the r-service backend.`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement r-coder
  */
-class RCoder extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class RCoder extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -38,12 +31,17 @@ class RCoder extends PolymerElement {
         #button {
           margin: var(--r-code-button-margin, 10px 0);
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <code-editor id="editor" language="r"></code-editor>
       <paper-button
         id="button"
-        disabled="[[!__connected]]"
-        on-click="process"
+        ?disabled="${!this.__connected}"
+        @click="${this.process}"
         raised
         >Process</paper-button
       >
@@ -94,17 +92,10 @@ class RCoder extends PolymerElement {
       ...super.properties,
 
       endpoint: {
-        name: "endpoint",
-        type: String,
-        value: "/service/r-service",
-        reflectToAttribute: false,
-        observer: false
+        type: String
       },
       __connected: {
-        name: "connected",
-        type: Boolean,
-        value: false,
-        observer: false
+        type: Boolean
       }
     };
   }
@@ -119,12 +110,19 @@ class RCoder extends PolymerElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.ping();
     this.shadowRoot.getElementById(
       "editor"
     ).editorValue = this.textContent.trim();
+  }
+  constructor() {
+    super();
+    this.endpoint = "/service/r-service";
+    setTimeout(() => {
+      import("@polymer/paper-button/paper-button.js");
+      import("@lrnwebcomponents/code-editor/code-editor.js");
+    }, 0);
   }
 
   async ping() {

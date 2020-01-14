@@ -372,13 +372,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
               --eco-json-form-active-color
             );
             --code-pen-button-color: var(--eco-json-form-faded-color);
-            --code-editor-code: {
-              border: 1px solid var(--eco-json-form-faded-color);
-              border-radius: 2px;
-            }
-            --code-editor-focus-code: {
-              border: 2px solid var(--eco-json-form-active-color);
-            }
+            --code-editor-code-border: 1px solid
+              var(--eco-json-form-faded-color);
+            --code-editor-code-border-radius: 2px;
+            --code-editor-focus-code-border: 2px solid
+              var(--eco-json-form-active-color);
           }
         </style>
       </custom-style>

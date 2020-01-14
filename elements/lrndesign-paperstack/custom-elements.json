@@ -1,0 +1,110 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-paperstack",
+      "description": "`lrndesign-paperstack`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-paperstack",
+      "description": "`lrndesign-paperstack`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-paperstack",
+      "description": "`lrndesign-paperstack`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"lrn:assignment\""
+        }
+      ]
+    }
+  ]
+}

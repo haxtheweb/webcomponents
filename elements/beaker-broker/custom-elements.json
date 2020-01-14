@@ -1,0 +1,94 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "beaker-broker",
+      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`",
+      "properties": [
+        {
+          "name": "datUrl",
+          "type": "string",
+          "default": "\"host\""
+        }
+      ],
+      "events": [
+        {
+          "name": "archive-changed"
+        },
+        {
+          "name": "dat-url-changed"
+        }
+      ]
+    },
+    {
+      "name": "beaker-broker",
+      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`",
+      "attributes": [
+        {
+          "name": "archive",
+          "description": "Archive",
+          "type": "object"
+        },
+        {
+          "name": "dat-url",
+          "description": "datUrl",
+          "type": "string",
+          "default": "\"host\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "archive",
+          "attribute": "archive",
+          "description": "Archive",
+          "type": "object"
+        },
+        {
+          "name": "datUrl",
+          "attribute": "dat-url",
+          "description": "datUrl",
+          "type": "string",
+          "default": "\"host\""
+        }
+      ],
+      "events": [
+        {
+          "name": "archive-changed"
+        },
+        {
+          "name": "dat-url-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "archive-changed"
+        },
+        {
+          "name": "dat-url-changed"
+        }
+      ]
+    },
+    {
+      "name": "beaker-broker",
+      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`",
+      "properties": [
+        {
+          "name": "datUrl",
+          "type": "string",
+          "default": "\"host\""
+        }
+      ],
+      "events": [
+        {
+          "name": "archive-changed"
+        },
+        {
+          "name": "dat-url-changed"
+        }
+      ]
+    }
+  ]
+}

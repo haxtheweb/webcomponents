@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
@@ -19,6 +17,7 @@ import "../lrnsys-comment.js";
 
 /**
  * `lrnsys-comment-list`
+ * @customElement lrnsys-comment-list
  * `A listing and event handling for comments.`
  * @demo demo/index.html
  */
@@ -225,7 +224,6 @@ class LrnsysCommentList extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.SimpleModal.requestAvailability();
     this.shadowRoot
       .querySelector("#filtercomments")
       .addEventListener("value-changed", e => {
@@ -240,29 +238,11 @@ class LrnsysCommentList extends PolymerElement {
           e.detail.value;
         this.shadowRoot.querySelector("#filteredcomments").like = "";
       });
-    afterNextRender(this, function() {
-      this.addEventListener("comment-save", this.handleSave.bind(this));
-      this.addEventListener("comment-editing", this.handleEditing.bind(this));
-      this.addEventListener("comment-reply", this.handleReply.bind(this));
-      this.addEventListener("comment-like", this.handleLike.bind(this));
-      this.addEventListener(
-        "comment-delete-dialog",
-        this.handleDeleteDialog.bind(this)
-      );
-    });
   }
   /**
    * detached life cycle
    */
   disconnectedCallback() {
-    this.removeEventListener("comment-save", this.handleSave.bind(this));
-    this.removeEventListener("comment-editing", this.handleEditing.bind(this));
-    this.removeEventListener("comment-reply", this.handleReply.bind(this));
-    this.removeEventListener("comment-like", this.handleLike.bind(this));
-    this.removeEventListener(
-      "comment-delete-dialog",
-      this.handleDeleteDialog.bind(this)
-    );
     this.shadowRoot
       .querySelector("#filtercomments")
       .removeEventListener("value-changed", e => {
@@ -293,6 +273,20 @@ class LrnsysCommentList extends PolymerElement {
   handleLike(e) {
     this.activeComment = e.detail.comment;
     this.shadowRoot.querySelector("#ajaxlikerequest").generateRequest();
+  }
+  constructor() {
+    super();
+    window.SimpleModal.requestAvailability();
+    setTimeout(() => {
+      this.addEventListener("comment-save", this.handleSave.bind(this));
+      this.addEventListener("comment-editing", this.handleEditing.bind(this));
+      this.addEventListener("comment-reply", this.handleReply.bind(this));
+      this.addEventListener("comment-like", this.handleLike.bind(this));
+      this.addEventListener(
+        "comment-delete-dialog",
+        this.handleDeleteDialog.bind(this)
+      );
+    }, 0);
   }
   /**
    * @todo not sure we need to do anything post like button

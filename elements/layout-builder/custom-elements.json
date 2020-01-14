@@ -1,0 +1,108 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "layout-builder",
+      "description": "`layout-builder`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "layout-builder",
+      "description": "`layout-builder`",
+      "attributes": [
+        {
+          "name": "type",
+          "type": "boolean",
+          "default": "\"layout\""
+        },
+        {
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "boolean",
+          "default": "\"layout\""
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "layout-builder",
+      "description": "`layout-builder`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

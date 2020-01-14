@@ -57,6 +57,7 @@ class HaxToolbarMenu extends LitElement {
       <paper-menu-button>
         <hax-toolbar-item
           id="button"
+          ?mini="${this.mini}"
           slot="dropdown-trigger"
           icon="${this.icon}"
           .hidden="${!this.icon}"
@@ -66,6 +67,7 @@ class HaxToolbarMenu extends LitElement {
         <paper-listbox
           id="listbox"
           slot="dropdown-content"
+          .selected="${this.selected}"
           @selected-changed="${this.selectedChanged}"
         >
           <slot></slot>
@@ -81,12 +83,14 @@ class HaxToolbarMenu extends LitElement {
   }
   constructor() {
     super();
-    this.addEventListener("click", this._menubuttonTap.bind(this));
     this.corner = "";
     this.resetOnSelect = false;
     this.tooltip = "";
     this.tooltipDirection = "";
-    this.selected = "";
+    this.selected = 0;
+    setTimeout(() => {
+      this.addEventListener("click", this._menubuttonTap.bind(this));
+    }, 0);
   }
   static get properties() {
     return {
@@ -95,6 +99,10 @@ class HaxToolbarMenu extends LitElement {
        */
       corner: {
         type: String,
+        reflect: true
+      },
+      mini: {
+        type: Boolean,
         reflect: true
       },
       icon: {
@@ -115,7 +123,7 @@ class HaxToolbarMenu extends LitElement {
         attribute: "tooltip-direction"
       },
       selected: {
-        type: String
+        type: Number
       }
     };
   }

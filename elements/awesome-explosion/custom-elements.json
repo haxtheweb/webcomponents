@@ -1,0 +1,373 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "awesome-explosion",
+      "description": "`awesome-explosion`\n`An awesome, explosion.`",
+      "attributes": [
+        {
+          "name": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stopped",
+          "attribute": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "attribute": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "resetSound",
+          "attribute": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "awesome-event"
+        }
+      ]
+    },
+    {
+      "name": "awesome-explosion",
+      "description": "`awesome-explosion`\n`An awesome, explosion.`",
+      "attributes": [
+        {
+          "name": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stopped",
+          "attribute": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "attribute": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "resetSound",
+          "attribute": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "awesome-event"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "awesome-event"
+        }
+      ]
+    },
+    {
+      "name": "awesome-explosion",
+      "description": "`awesome-explosion`\n`An awesome, explosion.`",
+      "attributes": [
+        {
+          "name": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "stopped",
+          "attribute": "stopped",
+          "description": "Allow for stopping the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "description": "Allow for playing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "paused",
+          "attribute": "paused",
+          "description": "Allow for pausing the sound effect.",
+          "type": "boolean"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State is for setting:\nPossible values: play, pause, stop",
+          "type": "string",
+          "default": "\"stop\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "This allows you to swap out the image",
+          "type": "string"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "This allows you to swap out the sound.",
+          "type": "string"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "resetSound",
+          "attribute": "reset-sound",
+          "description": "Allow for resetting the sound effect.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "awesome-event"
+        }
+      ]
+    }
+  ]
+}

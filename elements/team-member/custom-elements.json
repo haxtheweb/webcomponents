@@ -1,0 +1,665 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "team-member",
+      "description": "`team-member`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "attribute": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "attribute": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "secondLine",
+          "attribute": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "attribute": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "attribute": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "attribute": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "attribute": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "attribute": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "attribute": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "attribute": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "attribute": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "attribute": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "attribute": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "team-member",
+      "description": "`team-member`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "attribute": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "attribute": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "secondLine",
+          "attribute": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "attribute": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "attribute": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "attribute": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "attribute": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "attribute": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "attribute": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "attribute": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "attribute": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "attribute": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "attribute": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "team-member",
+      "description": "`team-member`",
+      "attributes": [
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "fullName",
+          "attribute": "full-name",
+          "description": "Full name of the team member",
+          "type": "string"
+        },
+        {
+          "name": "firstLine",
+          "attribute": "first-line",
+          "description": "first line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "secondLine",
+          "attribute": "second-line",
+          "description": "second line",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "dribble",
+          "attribute": "dribble",
+          "description": "dribble",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "facebook",
+          "attribute": "facebook",
+          "description": "facebook",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "github",
+          "attribute": "github",
+          "description": "github",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "google",
+          "attribute": "google",
+          "description": "google",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "instagram",
+          "attribute": "instagram",
+          "description": "instagram",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "linkedin",
+          "attribute": "linkedin",
+          "description": "linkedin",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "pinterest",
+          "attribute": "pinterest",
+          "description": "pinterest",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "tumblr",
+          "attribute": "tumblr",
+          "description": "tumblr",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitch",
+          "attribute": "twitch",
+          "description": "twitch",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "twitter",
+          "attribute": "twitter",
+          "description": "twitter",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "whatsapp",
+          "attribute": "whatsapp",
+          "description": "whatsapp",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

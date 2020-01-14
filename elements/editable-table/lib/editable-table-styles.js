@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `editable-table-styles`
+ * @customElement editable-table-styles
  * `a shared set of styles common to editable-table and editable-table-display`
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html
  */

@@ -1,0 +1,83 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jos"
+        }
+      ]
+    },
+    {
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "attributes": [
+        {
+          "name": "items",
+          "description": "A items list of JSON Outline Schema Items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "edit-mode",
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "A items list of JSON Outline Schema Items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jos"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "editable-outline",
+      "description": "`editable-outline`\n`a simple outline thats contenteditable in nature`",
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "jos"
+        }
+      ]
+    }
+  ]
+}

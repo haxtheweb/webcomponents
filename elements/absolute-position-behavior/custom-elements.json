@@ -1,0 +1,175 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "absolute-position-state-manager",
+      "description": "`absolute-position-state-manager`",
+      "attributes": [
+        {
+          "name": "elements",
+          "description": "Stores an array of all elements using manager.",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "elements",
+          "attribute": "elements",
+          "description": "Stores an array of all elements using manager.",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "absolute-position-behavior",
+      "description": "`absolute-position-behavior`",
+      "properties": [
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "for"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "target"
+        }
+      ]
+    },
+    {
+      "name": "absolute-position-behavior",
+      "description": "`absolute-position-behavior`",
+      "attributes": [
+        {
+          "name": "auto",
+          "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fit-to-visible-bounds",
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "for",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+          "type": "string"
+        },
+        {
+          "name": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "target",
+          "description": "The actual target element",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "attribute": "fit-to-visible-bounds",
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "for",
+          "attribute": "for",
+          "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+          "type": "string"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "The actual target element",
+          "type": "object"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "absolute-position-behavior",
+      "description": "`absolute-position-behavior`",
+      "properties": [
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "for"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "target"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "random-item",
+      "description": "`random-item`",
+      "attributes": [
+        {
+          "name": "source"
+        },
+        {
+          "name": "field"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"random-item\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "random-item",
+      "description": "`random-item`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "field",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "field",
+          "attribute": "field",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"random-item\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "random-item",
+      "description": "`random-item`",
+      "attributes": [
+        {
+          "name": "source"
+        },
+        {
+          "name": "field"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"random-item\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-textop`
+ * @customElement hax-context-item-textop
  * `A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`
  * @microcopy - the mental model for this element
  * - context - menu in the page the user can select an item from, this being 1 option in that list
@@ -49,6 +50,7 @@ class HaxContextItemTextop extends LitElement {
     this.inputMethod = null;
     this.propertyToBind = null;
     this.slotToBind = null;
+    this.value = "";
   }
   render() {
     return html`
@@ -83,6 +85,13 @@ class HaxContextItemTextop extends LitElement {
       light: {
         type: Boolean,
         value: false
+      },
+      /**
+       * an optional value to send along in the press. Allows for
+       * reusing events more easily
+       */
+      value: {
+        type: String
       },
       /**
        * Mini theme for making things small and round.
@@ -183,7 +192,8 @@ class HaxContextItemTextop extends LitElement {
         composed: true,
         detail: {
           target: this,
-          eventName: this.eventName
+          eventName: this.eventName,
+          value: this.value
         }
       })
     );

@@ -1,0 +1,1038 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "eco-json-schema-array",
+      "description": "`eco-json-schema-array` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "global-options",
+          "type": "object",
+          "default": "{\"icon\":\"settings\",\"tooltip\":\"configure item\"}"
+        },
+        {
+          "name": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "globalOptions",
+          "attribute": "global-options",
+          "type": "object",
+          "default": "{\"icon\":\"settings\",\"tooltip\":\"configure item\"}"
+        },
+        {
+          "name": "propertyName",
+          "attribute": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "build-fieldset"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-fieldset",
+      "description": "`eco-json-schema-fieldset` takes in a JSON schema of type fieldset and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "propertyName",
+          "attribute": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "build-fieldset"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-tabs",
+      "description": "`eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-markup",
+      "description": "`eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-tabs",
+      "description": "`eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,\nexposing a `value` property that represents an array described by the schema.\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "propertyName",
+          "attribute": "property-name",
+          "type": "string"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "build-fieldset"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-boolean",
+      "attributes": [
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-enum",
+      "attributes": [
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-file",
+      "description": "`eco-json-schema-file` takes in a JSON schema of type number and string and\ncontains a `paper-input`, exposing a `value` property that represents the schema.\n\nValidation is handled for strings and number/integers by mapping JSON schema\nvalidation keywords to `paper-input` attributes; form elements will automatically\ntry and validate themselves as users provide input:\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "type": "object"
+        },
+        {
+          "name": "target",
+          "description": "`target`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accept",
+          "description": "`accept`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "droppable",
+          "description": "`droppable`",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "drop-text",
+          "description": "`dropText`",
+          "type": "string",
+          "default": "\"Drop Files Here\""
+        },
+        {
+          "name": "multi",
+          "description": "`multi`",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "files",
+          "description": "`files`",
+          "type": "array"
+        },
+        {
+          "name": "raised",
+          "description": "`raised`",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "noink",
+          "description": "`noink`",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "headers",
+          "description": "`headers`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "retry-text",
+          "description": "`retryText`",
+          "type": "string",
+          "default": "\"Retry Upload\""
+        },
+        {
+          "name": "remove-text",
+          "description": "`removeText`",
+          "type": "string",
+          "default": "\"Remove\""
+        },
+        {
+          "name": "success-text",
+          "description": "`successText`",
+          "type": "string",
+          "default": "\"Success\""
+        },
+        {
+          "name": "error-text",
+          "description": "`errorText`",
+          "type": "string",
+          "default": "\"Error uploading file...\""
+        },
+        {
+          "name": "additional",
+          "description": "`additional`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "file-data-name",
+          "description": "`fileDataName`",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "paper-button-alt",
+          "description": "`paperButtonAlt`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "paper-button-title",
+          "description": "`paperButtonTitle`",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "attribute": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources",
+          "attribute": "resources"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "object"
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "`target`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "accept",
+          "attribute": "accept",
+          "description": "`accept`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "droppable",
+          "attribute": "droppable",
+          "description": "`droppable`",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dropText",
+          "attribute": "drop-text",
+          "description": "`dropText`",
+          "type": "string",
+          "default": "\"Drop Files Here\""
+        },
+        {
+          "name": "multi",
+          "attribute": "multi",
+          "description": "`multi`",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "files",
+          "attribute": "files",
+          "description": "`files`",
+          "type": "array"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "description": "`raised`",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "description": "`noink`",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "headers",
+          "attribute": "headers",
+          "description": "`headers`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "retryText",
+          "attribute": "retry-text",
+          "description": "`retryText`",
+          "type": "string",
+          "default": "\"Retry Upload\""
+        },
+        {
+          "name": "removeText",
+          "attribute": "remove-text",
+          "description": "`removeText`",
+          "type": "string",
+          "default": "\"Remove\""
+        },
+        {
+          "name": "successText",
+          "attribute": "success-text",
+          "description": "`successText`",
+          "type": "string",
+          "default": "\"Success\""
+        },
+        {
+          "name": "errorText",
+          "attribute": "error-text",
+          "description": "`errorText`",
+          "type": "string",
+          "default": "\"Error uploading file...\""
+        },
+        {
+          "name": "additional",
+          "attribute": "additional",
+          "description": "`additional`",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "fileDataName",
+          "attribute": "file-data-name",
+          "description": "`fileDataName`",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "paperButtonAlt",
+          "attribute": "paper-button-alt",
+          "description": "`paperButtonAlt`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "paperButtonTitle",
+          "attribute": "paper-button-title",
+          "description": "`paperButtonTitle`",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "before-upload"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-input",
+      "description": "`eco-json-schema-input` takes in a JSON schema of type number and string and\ncontains a `paper-input`, exposing a `value` property that represents the schema.\n\nValidation is handled for strings and number/integers by mapping JSON schema\nvalidation keywords to `paper-input` attributes; form elements will automatically\ntry and validate themselves as users provide input:\n\nPlease see the `eco-json-schema-object` documentation for further information.",
+      "attributes": [
+        {
+          "name": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "attribute": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources",
+          "attribute": "resources"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-object",
+      "description": "`eco-json-schema-object` takes in a JSON schema of type object and builds a form,\nexposing a `value` property that represents an object described by the schema.\n\nGiven the element:\n\n```\n<eco-json-schema-object schema=\"[[schema]]\" value=\"{{value}}\"></eco-json-schema-object>\n```\n\nAnd a JSON schema:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\"\n    }\n  }\n}\n```\n\nA form will be generated, with the elements `value` looking something like this:\n\n```\n> this.value\n{\n  \"name\": \"Eric\"\n}\n```\n\nDeep / nested schemas are supported for type array and object:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n    \"phoneNumbers\": {\n      \"title\": \"Phone numbers\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"phoneNumber\": {\n            \"title\": \"Phone Number\",\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  }\n}\n```\n\nValidation is handled for strings and number/integers by mapping JSON schema\nvalidation keywords to `paper-input` attributes; form elements will automatically\ntry and validate themselves as users provide input:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\",\n      \"minLength\": 2\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"exclusiveMinimum\": true\n    },\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\"\n    },\n    \"email\": {\n      \"title\": \"email\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  }\n}\n```\n\nCustomizing components for schema properties is supported by extending your JSON\nschema. For any schema sub-property (`properties` for `\"type\": \"object\"` and\n`items` for `\"type\": \"array\"`) a `component` property may be specified, with\nthe following options:\n\n- `component.name` - specifies the name of the custom component to use\n- `component.valueProperty` - specifies which property of the custom element\n  represents its value\n- `component.properties` - properties that will be set on the element\n\nExample schema using custom components (note that `\"valueProperty\": \"value\"` is\nredundant in this case, `\"valueProperty\": \"value\"` will be the default if not specified):\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"phoneNumber\": {\n      \"title\": \"Phone Number\",\n      \"type\": \"string\",\n      \"component\": {\n        \"name\": \"gold-phone-input\",\n        \"valueProperty\": \"value\",\n        \"properties\": {\n          \"countryCode\": \"1\"\n        }\n      }\n    }\n  }\n}\n```\n\nItems set in `component.properties` will override any attributes / properties set\nby `eco-json-schema-form` elements, making it possible to override JSON schema\nvalidation properties mapped to `paper-input` attributes:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\",\n      \"component\": {\n        \"properties\": {\n          \"autoValidate\": false\n        }\n      }\n    }\n  }\n}\n```\n\nPutting it all together, this schema:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\",\n      \"minLength\": 2\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"exclusiveMinimum\": true\n    },\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\",\n      \"component\": {\n        \"properties\": {\n          \"autoValidate\": false\n        }\n      }\n    },\n    \"phoneNumbers\": {\n      \"title\": \"Phone numbers\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"phoneNumber\": {\n            \"title\": \"Phone Number\",\n            \"type\": \"string\",\n            \"component\": {\n              \"name\": \"gold-phone-input\",\n              \"valueProperty\": \"value\",\n              \"properties\": {\n                \"countryCode\": \"1\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"emailAddresses\": {\n      \"title\": \"Emails\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"email\": {\n            \"title\": \"email\",\n            \"type\": \"string\",\n            \"format\": \"email\"\n          }\n        }\n      }\n    }\n  }\n}\n```\n\nWill build a form describing an object:\n\n```\n> this.value\n{\n  \"name\": \"Eric\",\n  \"age\": 28,\n  \"postalCode\": \"H1W 2C5\",\n  \"phoneNumbers\": [\n    {\n      \"type\": \"Mobile\",\n      \"phoneNumber\": \"123-456-7890\"\n    }\n  ]\n  \"emailAddresses\": [\n    {\n      \"type\": \"Personal\",\n      \"email\": \"eric@wat.com\"\n    }\n  ]\n}\n```\n\nExternal validation is supported via the `error` property. By providing an\nobject tree with each leaf representing an error message for properties, the\nmessage will be attached to the appropriate element.\n\nExample, for the Contact schema:\n\n```\nel.error = {\n  \"name\": \"String is too short (0 chars) minimum 2\",\n  \"phoneNumbers\": [\n    {\n      \"phoneNumber\": \"String does not match required format\"\n    }\n  ]\n}\n```",
+      "attributes": [
+        {
+          "name": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources"
+        },
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "object"
+        },
+        {
+          "name": "error",
+          "type": "object"
+        },
+        {
+          "name": "wizard",
+          "type": "boolean"
+        },
+        {
+          "name": "code-theme",
+          "description": "the name of the code-editor theme",
+          "type": "string",
+          "default": "\"vs-light-2\""
+        },
+        {
+          "name": "autofocus",
+          "description": "automatically set focus on the first field if that field has autofocus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "attribute": "language",
+          "default": "\"en\""
+        },
+        {
+          "name": "resources",
+          "attribute": "resources"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "object"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "object"
+        },
+        {
+          "name": "wizard",
+          "attribute": "wizard",
+          "type": "boolean"
+        },
+        {
+          "name": "codeTheme",
+          "attribute": "code-theme",
+          "description": "the name of the code-editor theme",
+          "type": "string",
+          "default": "\"vs-light-2\""
+        },
+        {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "description": "automatically set focus on the first field if that field has autofocus",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "form-field-changed"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "form-changed"
+        }
+      ]
+    },
+    {
+      "name": "eco-json-schema-wizard",
+      "description": "`eco-json-schema-wizard` takes in a JSON schema of type object and builds a form,\nexposing a `value` property that represents an object described by the schema.\n\nGiven the element:\n\n```\n<eco-json-schema-wizard schema=\"[[schema]]\" value=\"{{value}}\"></eco-json-schema-wizard>\n```\n\nAnd a JSON schema:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\"\n    }\n  }\n}\n```\n\nA form will be generated, with the elements `value` looking something like this:\n\n```\n> this.value\n{\n  \"name\": \"Eric\"\n}\n```\n\nDeep / nested schemas are supported for type array and object:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n    \"phoneNumbers\": {\n      \"title\": \"Phone numbers\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"phoneNumber\": {\n            \"title\": \"Phone Number\",\n            \"type\": \"string\"\n          }\n        }\n      }\n    }\n  }\n}\n```\n\nValidation is handled for strings and number/integers by mapping JSON schema\nvalidation keywords to `paper-input` attributes; form elements will automatically\ntry and validate themselves as users provide input:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\",\n      \"minLength\": 2\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"exclusiveMinimum\": true\n    },\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\"\n    },\n    \"email\": {\n      \"title\": \"email\",\n      \"type\": \"string\",\n      \"format\": \"email\"\n    }\n  }\n}\n```\n\nCustomizing components for schema properties is supported by extending your JSON\nschema. For any schema sub-property (`properties` for `\"type\": \"object\"` and\n`items` for `\"type\": \"array\"`) a `component` property may be specified, with\nthe following options:\n\n- `component.name` - specifies the name of the custom component to use\n- `component.valueProperty` - specifies which property of the custom element\n  represents its value\n- `component.properties` - properties that will be set on the element\n\nExample schema using custom components (note that `\"valueProperty\": \"value\"` is\nredundant in this case, `\"valueProperty\": \"value\"` will be the default if not specified):\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"phoneNumber\": {\n      \"title\": \"Phone Number\",\n      \"type\": \"string\",\n      \"component\": {\n        \"name\": \"gold-phone-input\",\n        \"valueProperty\": \"value\",\n        \"properties\": {\n          \"countryCode\": \"1\"\n        }\n      }\n    }\n  }\n}\n```\n\nItems set in `component.properties` will override any attributes / properties set\nby `eco-json-schema-form` elements, making it possible to override JSON schema\nvalidation properties mapped to `paper-input` attributes:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\",\n      \"component\": {\n        \"properties\": {\n          \"autoValidate\": false\n        }\n      }\n    }\n  }\n}\n```\n\nPutting it all together, this schema:\n\n```\n> this.schema = {\n  \"$schema\": \"http://json-schema.org/schema#\",\n  \"title\": \"Contact\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"name\": {\n      \"title\": \"Name\",\n      \"type\": \"string\",\n      \"minLength\": 2\n    },\n    \"age\": {\n      \"type\": \"integer\",\n      \"minimum\": 0,\n      \"exclusiveMinimum\": true\n    },\n    \"postalCode\": {\n      \"title\": \"Postal/Zip Code\",\n      \"type\": \"string\",\n      \"pattern\": \"[a-zA-Z][0-9][a-zA-Z]\\\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?\",\n      \"component\": {\n        \"properties\": {\n          \"autoValidate\": false\n        }\n      }\n    },\n    \"phoneNumbers\": {\n      \"title\": \"Phone numbers\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"phoneNumber\": {\n            \"title\": \"Phone Number\",\n            \"type\": \"string\",\n            \"component\": {\n              \"name\": \"gold-phone-input\",\n              \"valueProperty\": \"value\",\n              \"properties\": {\n                \"countryCode\": \"1\"\n              }\n            }\n          }\n        }\n      }\n    },\n    \"emailAddresses\": {\n      \"title\": \"Emails\",\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"type\": {\n            \"title\": \"Type\",\n            \"type\": \"string\"\n          },\n          \"email\": {\n            \"title\": \"email\",\n            \"type\": \"string\",\n            \"format\": \"email\"\n          }\n        }\n      }\n    }\n  }\n}\n```\n\nWill build a form describing an object:\n\n```\n> this.value\n{\n  \"name\": \"Eric\",\n  \"age\": 28,\n  \"postalCode\": \"H1W 2C5\",\n  \"phoneNumbers\": [\n    {\n      \"type\": \"Mobile\",\n      \"phoneNumber\": \"123-456-7890\"\n    }\n  ]\n  \"emailAddresses\": [\n    {\n      \"type\": \"Personal\",\n      \"email\": \"eric@wat.com\"\n    }\n  ]\n}\n```\n\nExternal validation is supported via the `error` property. By providing an\nobject tree with each leaf representing an error message for properties, the\nmessage will be attached to the appropriate element.\n\nExample, for the Contact schema:\n\n```\nel.error = {\n  \"name\": \"String is too short (0 chars) minimum 2\",\n  \"phoneNumbers\": [\n    {\n      \"phoneNumber\": \"String does not match required format\"\n    }\n  ]\n}\n```",
+      "attributes": [
+        {
+          "name": "language",
+          "type": "string"
+        },
+        {
+          "name": "resources",
+          "type": "object"
+        },
+        {
+          "name": "schema",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "object"
+        },
+        {
+          "name": "page",
+          "type": "string"
+        },
+        {
+          "name": "pages",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "error",
+          "type": "object"
+        },
+        {
+          "name": "is-review",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "can-submit",
+          "type": "boolean"
+        },
+        {
+          "name": "has-next",
+          "type": "boolean"
+        },
+        {
+          "name": "has-prev",
+          "type": "boolean"
+        },
+        {
+          "name": "titles",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "language",
+          "attribute": "language",
+          "type": "string"
+        },
+        {
+          "name": "resources",
+          "attribute": "resources",
+          "type": "object"
+        },
+        {
+          "name": "schema",
+          "attribute": "schema",
+          "type": "object"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "object"
+        },
+        {
+          "name": "page",
+          "attribute": "page",
+          "type": "string"
+        },
+        {
+          "name": "pages",
+          "attribute": "pages",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "object"
+        },
+        {
+          "name": "isReview",
+          "attribute": "is-review",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "canSubmit",
+          "attribute": "can-submit",
+          "type": "boolean"
+        },
+        {
+          "name": "hasNext",
+          "attribute": "has-next",
+          "type": "boolean"
+        },
+        {
+          "name": "hasPrev",
+          "attribute": "has-prev",
+          "type": "boolean"
+        },
+        {
+          "name": "titles",
+          "attribute": "titles",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "submit"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "build-fieldset"
+        },
+        {
+          "name": "before-upload"
+        },
+        {
+          "name": "form-field-changed"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "form-changed"
+        },
+        {
+          "name": "submit"
+        }
+      ]
+    }
+  ]
+}

@@ -10,9 +10,10 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `learn-two-theme`
+ * @customElement learn-two-theme
  * `Learn2 theme for HAXcms`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class LearnTwoTheme extends HAXCMSLitElementTheme {
@@ -179,6 +180,55 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   site-menu-button[type="next"] {
   display: none;
 }
+
+site-title {
+  position: relative;
+  overflow: hidden;
+}
+site-menu {
+  background-color: #383f45;
+  color: #ffffff;
+  padding: 0;
+  overflow: scroll;
+  max-height: calc(100vh - 200px);
+  --site-menu-active-color: #ffffff;
+  --site-menu-item-active-item-color: #2d3237;
+}
+app-drawer-layout {
+  min-height: 100vh;
+  min-height: -moz-available;
+  min-height: -webkit-fill-available;
+  min-height: fill-available;
+  --app-drawer-width: 300px;
+  --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+}
+site-menu-button {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 300px;
+  z-index: 1;
+  --site-menu-button-icon-width: 64px;
+  --site-menu-button-icon-height: 64px;
+  --site-menu-button-icon-fill-color: #2d3237;
+}
+app-drawer-layout[narrow] site-menu-button {
+  bottom: 0;
+  top: unset;
+}
+site-menu,
+map-menu,
+map-menu * {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  --map-menu-items-list-display: flex;
+  --map-menu-items-list-flex-direction: column;
+  --map-menu-items-list-flex: 1 1 auto;
+  --map-menu-container-display: flex;
+  --map-menu-container-flex-direction: column;
+  --map-menu-container-flex: 1 1 auto;
+}
       `
     ];
   }
@@ -201,8 +251,6 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
       }
     }
     site-title {
-      position: relative;
-      overflow: hidden;
       --site-title-link: {
         display: inline-block;
         color: #fafafa;
@@ -219,12 +267,6 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
       }
     }
     site-menu {
-      background-color: #383f45;
-      color: #ffffff;
-      padding: 0;
-      overflow: scroll;
-      max-height: calc(100vh - 200px);
-      --site-menu-active-color: #ffffff;
       --site-menu: {
         background-color: #383f45;
       }
@@ -232,18 +274,12 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
         padding: 0;
         background-color: #2d3237;
       }
-      --site-menu-item-active-item-color: #2d3237;
     }
     app-drawer-layout {
-      min-height: 100vh;
-      min-height: -moz-available;
-      min-height: -webkit-fill-available;
-      min-height: fill-available;
-      --app-drawer-width: 300px;
-      --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
       --app-drawer-content-container: {
         overflow: hidden;
         background-color: #383f45;
+        position: relative;
       }
     }
     site-print-button {
@@ -252,16 +288,6 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
       }
     }
     site-menu-button {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 300px;
-      z-index: 1;
-      --site-menu-button-icon: {
-        width: 64px;
-        height: 64px;
-        color: #2d3237;
-      }
       --site-menu-button-button: {
         background-color: rgba(0, 0, 0, 0);
         width: 64px;
@@ -279,29 +305,10 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
       }
     }
     app-drawer-layout[narrow] site-menu-button {
-      bottom: 0;
-      top: unset;
       --site-menu-button-button: {
         background-color: transparent !important;
         width: 64px;
         height: 64px;
-      }
-    }
-    site-menu,
-    map-menu,
-    map-menu * {
-      display: flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-      --map-menu-container: {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-      }
-      --map-menu-items-list: {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 auto;
       }
     }
   </style>
@@ -313,7 +320,7 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
     <div class="header-wrapper">
       <div class="header">
         <site-title ?disabled="${this.editMode}"></site-title>
-        <site-modal ?disabled="${this.editMode}" icon="icons:search" title="Search site" button-label="Search">
+        <site-modal @site-modal-click="${this.siteModalClick}" ?disabled="${this.editMode}" icon="icons:search" title="Search site" button-label="Search">
           <site-search></site-search>
         </site-modal>
       </div>
@@ -347,20 +354,27 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    this.HAXCMSThemeSettings.autoScroll = true;
+    setInterval(() => {
+      import("@polymer/app-layout/app-drawer/app-drawer.js");
+      import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+    }, 0);
+  }
+  /**
+   * Delay importing site-search until we click to open it directly
+   */
+  siteModalClick(e) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.

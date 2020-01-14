@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "outline-player",
+      "description": "`outline-player`\n\nEvents:\n\n  * `closed-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `closed` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `closed` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeId",
+          "description": "`activeId` {`string`} - \n\nProperty: activeId"
+        },
+        {
+          "name": "narrow",
+          "description": "`narrow` {`boolean`} - \n\nProperty: narrow",
+          "valueSet": "v"
+        },
+        {
+          "name": "closed",
+          "description": "`closed` {`boolean`} - \n\nProperty: closed\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onclosed-changed",
+          "description": "`closed-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "outline-player",
+      "description": "`outline-player`\n\nEvents:\n\n  * `closed-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `closed` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `closed` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeId",
+          "description": "`activeId` {`string`} - \n\nProperty: activeId"
+        },
+        {
+          "name": "narrow",
+          "description": "`narrow` {`boolean`} - \n\nProperty: narrow",
+          "valueSet": "v"
+        },
+        {
+          "name": "closed",
+          "description": "`closed` {`boolean`} - \n\nProperty: closed\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onclosed-changed",
+          "description": "`closed-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `closed-changed` - ",
+      "attributes": [
+        {
+          "name": "onclosed-changed",
+          "description": "`closed-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "outline-player",
+      "description": "`outline-player`\n\nEvents:\n\n  * `closed-changed` - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `closed` {`boolean`} - \n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `activeId` {`string`} - \n\n  * `narrow` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `closed` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - \n\nProperty: opened",
+          "valueSet": "v"
+        },
+        {
+          "name": "activeId",
+          "description": "`activeId` {`string`} - \n\nProperty: activeId"
+        },
+        {
+          "name": "narrow",
+          "description": "`narrow` {`boolean`} - \n\nProperty: narrow",
+          "valueSet": "v"
+        },
+        {
+          "name": "closed",
+          "description": "`closed` {`boolean`} - \n\nProperty: closed\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onclosed-changed",
+          "description": "`closed-changed` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

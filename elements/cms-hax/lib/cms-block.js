@@ -1,30 +1,24 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-spinner/paper-spinner.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `cms-block`
  * `Render and process a  / block from a content management system.`
+ * @customElement cms-block
  */
-class CMSBlock extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class CMSBlock extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           min-width: 112px;
           min-height: 112px;
           transition: 0.6s all ease;
           background-color: transparent;
-        }
-        paper-spinner {
-          visibility: hidden;
-          opacity: 0;
-          height: 80px;
-          width: 80px;
-          padding: 16px;
         }
         #replacementcontent {
           visibility: visible;
@@ -33,26 +27,39 @@ class CMSBlock extends PolymerElement {
         :host([loading]) {
           text-align: center;
         }
-        :host([loading]) paper-spinner {
-          visibility: visible;
-          opacity: 1;
-        }
         :host([loading]) #replacementcontent {
           opacity: 0;
           visibility: hidden;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <iron-ajax
         id="blockrequest"
         method="GET"
-        params="[[bodyData]]"
-        url="[[blockEndPoint]]"
+        url="${this.blockEndPoint}"
         handle-as="json"
-        last-response="{{blockData}}"
+        @last-response-changed="${this.blockDataChanged}"
       ></iron-ajax>
-      <paper-spinner active="[[loading]]"></paper-spinner>
+      ${this.loading
+        ? html`
+            <hexagon-loader
+              item-count="4"
+              loading
+              size="small"
+            ></hexagon-loader>
+          `
+        : html``}
       <span id="replacementcontent"><slot></slot></span>
     `;
+  }
+  blockDataChanged(e) {
+    this._handleblockResponse(e.detail.value);
   }
   static get tag() {
     return "cms-block";
@@ -64,57 +71,50 @@ class CMSBlock extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Module supplying the block
        */
       blockModule: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "block-module"
       },
       /**
        * A delta value relative to the module
        */
       blockDelta: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "block-delta"
       },
       /**
        * block end point updated, change the way we do processing.
        */
       blockEndPoint: {
-        type: String
+        type: String,
+        attribute: "block-end-point"
       },
       /**
        * Body data which is just block with some encapsulation.
        */
       bodyData: {
-        type: Object,
-        computed: "_generateBodyData(blockModule, blockDelta)",
-        observer: "_blockChanged"
-      },
-      /**
-       * block data from the end point.
-       */
-      blockData: {
-        type: String,
-        observer: "_handleblockResponse"
+        type: Object
       },
       /**
        * Prefix for the block to be processed
        */
       blockPrefix: {
         type: String,
-        observer: "["
+        attribute: "block-prefix"
       },
       /**
        * Suffix for the block to be processed
        */
       blockSuffix: {
         type: String,
-        observer: "]"
+        attribute: "block-suffix"
       }
     };
   }
@@ -137,7 +137,7 @@ class CMSBlock extends PolymerElement {
   /**
    * Handle the response from the block processing endpoint
    */
-  _handleblockResponse(newValue, oldValue) {
+  _handleblockResponse(newValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks
       if (document.getElementById("cmstokenidtolockonto") != null) {
@@ -150,21 +150,17 @@ class CMSBlock extends PolymerElement {
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
-      microTask.run(() => {
-        let frag = document.createElement("span");
-        frag.innerHTML = newValue.content;
-        let newNode = frag.cloneNode(true);
-        this.appendChild(newNode);
-        setTimeout(() => {
-          this.loading = false;
-        }, 600);
-      });
+      let frag = document.createElement("span");
+      frag.innerHTML = newValue.content;
+      let newNode = frag.cloneNode(true);
+      this.appendChild(newNode);
+      this.loading = false;
     }
   }
   /**
    * block end point changed
    */
-  _blockChanged(newValue, oldValue) {
+  _blockChanged(newValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -180,42 +176,36 @@ class CMSBlock extends PolymerElement {
       }
       if (this.blockEndPoint) {
         this.loading = true;
-        microTask.run(() => {
-          this.shadowRoot.querySelector("#blockrequest").generateRequest();
-        });
+        this.shadowRoot.querySelector("#blockrequest").body = newValue;
+        this.shadowRoot.querySelector("#blockrequest").generateRequest();
       }
     }
   }
   /**
-   * Attached to the DOM, now fire.
+   * HTMLElement
    */
-  connectedCallback() {
-    super.connectedCallback();
-    if (
-      typeof this.blockModule !== typeof undefined &&
-      this.blockModule !== null &&
-      this.blockModule !== ""
-    ) {
-      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
-      // only kick off request if there's nothing in it
-      // if it has something in it that means we did some
-      // remote rendering ahead of time
-      if (slot.length === 0 && !this.loading) {
-        // support for autoloading the block data needed for the request from globals
-        if (
-          typeof this.blockEndPoint === typeof undefined &&
-          typeof window.cmsblockEndPoint !== typeof undefined
-        ) {
-          this.blockEndPoint = window.cmsblockEndPoint;
-        }
-        if (this.blockEndPoint) {
-          this.loading = true;
-          microTask.run(() => {
-            this.shadowRoot.querySelector("#blockrequest").generateRequest();
-          });
-        }
+  constructor() {
+    super();
+    this.loading = false;
+    this.blockPrefix = "[";
+    this.blockSuffix = "]";
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["blockModule", "blockDelta"].includes(propName)) {
+        this.bodyData = this._generateBodyData(
+          this.blockModule,
+          this.blockDelta
+        );
       }
-    }
+      if (propName == "bodyData") {
+        this._blockChanged(this[propName]);
+      }
+    });
   }
   static get haxProperties() {
     return {
@@ -235,7 +225,7 @@ class CMSBlock extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

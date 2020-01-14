@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-medical-iconset-svg` is a iconset for the Material Design Icons collection with the "medical" tag
+ * `mdi-medical-iconset-svg`
+ * @customElement mdi-medical-iconset-svg is a iconset for the Material Design Icons collection with the "medical" tag
  * Example:
  *   <iron-icon icon="mdi-medical:ambulance"></iron-icon>
  *

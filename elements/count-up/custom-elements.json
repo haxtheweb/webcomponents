@@ -1,0 +1,307 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "count-up",
+      "description": "`count-up`",
+      "properties": [
+        {
+          "name": "start",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "default": "2.5"
+        },
+        {
+          "name": "noeasing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "decimalplaces",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "separator",
+          "type": "string",
+          "default": "\",\""
+        },
+        {
+          "name": "decimal",
+          "type": "string",
+          "default": "\".\""
+        },
+        {
+          "name": "prefixtext",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "suffixtext",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "thresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "rootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visibleLimit",
+          "type": "number",
+          "default": "0.5"
+        }
+      ]
+    },
+    {
+      "name": "count-up",
+      "description": "`count-up`",
+      "attributes": [
+        {
+          "name": "ratio",
+          "type": "number"
+        },
+        {
+          "name": "start",
+          "description": "Starting point for counting",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "end",
+          "description": "End point for counting stopping",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "duration",
+          "description": "Duration to count",
+          "type": "number",
+          "default": "2.5"
+        },
+        {
+          "name": "noeasing",
+          "description": "Disable easing animation",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "decimalplaces",
+          "description": "decimal places to show",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "separator",
+          "description": "separator for 100s groupings",
+          "type": "string",
+          "default": "\",\""
+        },
+        {
+          "name": "decimal",
+          "description": "decimal point character",
+          "type": "string",
+          "default": "\".\""
+        },
+        {
+          "name": "prefixtext",
+          "description": "prefix string before the number counting",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "suffixtext",
+          "description": "suffix string after the number counting",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "thresholds",
+          "type": "array",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "root-margin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visible-limit",
+          "type": "number",
+          "default": "0.5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "ratio",
+          "attribute": "ratio",
+          "type": "number"
+        },
+        {
+          "name": "start",
+          "attribute": "start",
+          "description": "Starting point for counting",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "end",
+          "attribute": "end",
+          "description": "End point for counting stopping",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "duration",
+          "attribute": "duration",
+          "description": "Duration to count",
+          "type": "number",
+          "default": "2.5"
+        },
+        {
+          "name": "noeasing",
+          "attribute": "noeasing",
+          "description": "Disable easing animation",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "decimalplaces",
+          "attribute": "decimalplaces",
+          "description": "decimal places to show",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "separator",
+          "attribute": "separator",
+          "description": "separator for 100s groupings",
+          "type": "string",
+          "default": "\",\""
+        },
+        {
+          "name": "decimal",
+          "attribute": "decimal",
+          "description": "decimal point character",
+          "type": "string",
+          "default": "\".\""
+        },
+        {
+          "name": "prefixtext",
+          "attribute": "prefixtext",
+          "description": "prefix string before the number counting",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "suffixtext",
+          "attribute": "suffixtext",
+          "description": "suffix string after the number counting",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "thresholds",
+          "attribute": "thresholds",
+          "type": "array",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "rootMargin",
+          "attribute": "root-margin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visibleLimit",
+          "attribute": "visible-limit",
+          "type": "number",
+          "default": "0.5"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "count-up",
+      "description": "`count-up`",
+      "properties": [
+        {
+          "name": "start",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "end",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "duration",
+          "type": "number",
+          "default": "2.5"
+        },
+        {
+          "name": "noeasing",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "decimalplaces",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "separator",
+          "type": "string",
+          "default": "\",\""
+        },
+        {
+          "name": "decimal",
+          "type": "string",
+          "default": "\".\""
+        },
+        {
+          "name": "prefixtext",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "suffixtext",
+          "type": "string",
+          "default": "\" \""
+        },
+        {
+          "name": "thresholds",
+          "type": "number[]",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "rootMargin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visibleLimit",
+          "type": "number",
+          "default": "0.5"
+        }
+      ]
+    }
+  ]
+}

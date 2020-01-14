@@ -2,31 +2,29 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { getRange } from "./lib/shadows-safari.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-
 /**
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement editable-outline
  */
-class EditableOutline extends PolymerElement {
+class EditableOutline extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
+    this.items = [];
+    this.editMode = false;
     this.jos = window.JSONOutlineSchema.requestAvailability();
-    this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    setTimeout(() => {
+      this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
+    }, 0);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -72,6 +70,19 @@ class EditableOutline extends PolymerElement {
       }
     });
   }
+  _onKeyDown(e) {
+    if (this.editMode) {
+      switch (e.key) {
+        case "Tab":
+          if (e.shiftKey) {
+            this._tabBackKeyPressed(e);
+          } else {
+            this._tabKeyPressed(e);
+          }
+          break;
+      }
+    }
+  }
   /**
    * Click handler method needs to walk a little different then normal collapse
    */
@@ -98,7 +109,7 @@ class EditableOutline extends PolymerElement {
    */
   _delete(e) {
     let node = this.getSelectionNode();
-    if (node) {
+    if (node && node.tagName === "LI") {
       const parent = node.parentNode;
       node.remove();
       if (parent.children.length === 0) {
@@ -106,24 +117,41 @@ class EditableOutline extends PolymerElement {
       }
     }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this._observer = new MutationObserver(this._observer.bind(this));
+    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
+      el.target = this.__outlineNode;
+    });
+    this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
+    this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {
       childList: true,
       subtree: true
+    });
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["editMode", "items"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
     });
   }
   /**
    * Mutation observer callback
    * @todo current issue if you copy and paste into the same node
    */
-  _observer(record) {
-    let reference;
+  _observeRecord(record) {
     for (var index in record) {
       let info = record[index];
       // if we've got new nodes to react to that were not imported
@@ -157,14 +185,14 @@ class EditableOutline extends PolymerElement {
    * Disconnected life cycle
    */
   disconnectedCallback() {
+    this.__outlineNode.removeEventListener(
+      "keydown",
+      this._onKeyDown.bind(this)
+    );
+    this._observer.disconnect();
     super.disconnectedCallback();
   }
 
-  // Observer editMode for changes
-  _editModeChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-    }
-  }
   /**
    * Button events internally
    */
@@ -372,23 +400,25 @@ class EditableOutline extends PolymerElement {
    */
   importJsonOutlineSchemaItems() {
     this.__blockScrub = true;
-    // wipe out the outline
-    while (this.__outlineNode.firstChild !== null) {
-      this.__outlineNode.removeChild(this.__outlineNode.firstChild);
-    }
-    if (this.items.length === 0) {
-      // get from JOS items if we have none currently
-      this.set("items", this.jos.items);
-    }
-    let outline = this.jos.itemsToNodes(this.items);
-    // rebuild the outline w/ children we just found
-    while (outline.firstChild !== null) {
-      this.__blockScrub = true;
-      this.__outlineNode.appendChild(outline.firstChild);
-    }
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
-      el.setAttribute("contenteditable", "true");
-    });
+    setTimeout(() => {
+      // wipe out the outline
+      while (this.__outlineNode.firstChild) {
+        this.__outlineNode.removeChild(this.__outlineNode.firstChild);
+      }
+      if (this.items.length === 0) {
+        // get from JOS items if we have none currently
+        this.items = [...this.jos.items];
+      }
+      let outline = this.jos.itemsToNodes(this.items);
+      // rebuild the outline w/ children we just found
+      while (outline.firstChild) {
+        this.__blockScrub = true;
+        this.__outlineNode.appendChild(outline.firstChild);
+      }
+      this.shadowRoot.querySelectorAll("li").forEach(el => {
+        el.setAttribute("contenteditable", "true");
+      });
+    }, 0);
     return outline;
   }
   /**

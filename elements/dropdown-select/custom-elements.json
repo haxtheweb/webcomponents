@@ -1,0 +1,691 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "dropdown-select",
+      "description": "`dropdown-select`",
+      "attributes": [
+        {
+          "name": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "errorMessage",
+          "attribute": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selectedItem",
+          "attribute": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "verticalOffset",
+          "attribute": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allowOutsideScroll",
+          "attribute": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alwaysFloatLabel",
+          "attribute": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamicAlign",
+          "attribute": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontalAlign",
+          "attribute": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "noAnimations",
+          "attribute": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noLabelFloat",
+          "attribute": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restoreFocusOnClose",
+          "attribute": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selectedItemIndex",
+          "attribute": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selectedItemLabel",
+          "attribute": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "verticalAlign",
+          "attribute": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "dropdown-select-changed"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-select",
+      "description": "`dropdown-select`",
+      "attributes": [
+        {
+          "name": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "errorMessage",
+          "attribute": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selectedItem",
+          "attribute": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "verticalOffset",
+          "attribute": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allowOutsideScroll",
+          "attribute": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alwaysFloatLabel",
+          "attribute": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamicAlign",
+          "attribute": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontalAlign",
+          "attribute": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "noAnimations",
+          "attribute": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noLabelFloat",
+          "attribute": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restoreFocusOnClose",
+          "attribute": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selectedItemIndex",
+          "attribute": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selectedItemLabel",
+          "attribute": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "verticalAlign",
+          "attribute": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "dropdown-select-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "change"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "dropdown-select-changed"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-select",
+      "description": "`dropdown-select`",
+      "attributes": [
+        {
+          "name": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "errorMessage",
+          "attribute": "error-message",
+          "description": "The error message to display when invalid.",
+          "type": "string"
+        },
+        {
+          "name": "placeholder",
+          "attribute": "placeholder",
+          "description": "The placeholder for the dropdown.",
+          "type": "string"
+        },
+        {
+          "name": "selectedItem",
+          "attribute": "selected-item",
+          "description": "The last selected item.",
+          "type": "object"
+        },
+        {
+          "name": "verticalOffset",
+          "attribute": "vertical-offset",
+          "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
+          "type": "number"
+        },
+        {
+          "name": "allowOutsideScroll",
+          "attribute": "allow-outside-scroll",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alwaysFloatLabel",
+          "attribute": "always-float-label",
+          "description": "Set to true to always float the label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamicAlign",
+          "attribute": "dynamic-align",
+          "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "horizontalAlign",
+          "attribute": "horizontal-align",
+          "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "The label of the select menu",
+          "type": "string",
+          "default": "\"Select an option.\""
+        },
+        {
+          "name": "noAnimations",
+          "attribute": "no-animations",
+          "description": "Set to true to disable animations when opening and closing the\ndropdown.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noLabelFloat",
+          "attribute": "no-label-float",
+          "description": "Set to true to disable the floating label.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "True if the dropdown is open. Otherwise, false.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "restoreFocusOnClose",
+          "attribute": "restore-focus-on-close",
+          "description": "Whether focus should be restored to the dropdown when the menu closes.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "selectedItemIndex",
+          "attribute": "selected-item-index",
+          "description": "The index of the selected item",
+          "type": "number"
+        },
+        {
+          "name": "selectedItemLabel",
+          "attribute": "selected-item-label",
+          "description": "The label of the selected item",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The default value",
+          "type": "string"
+        },
+        {
+          "name": "verticalAlign",
+          "attribute": "vertical-align",
+          "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
+          "type": "string",
+          "default": "\"top\""
+        }
+      ],
+      "events": [
+        {
+          "name": "change"
+        },
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "dropdown-select-changed"
+        }
+      ]
+    }
+  ]
+}

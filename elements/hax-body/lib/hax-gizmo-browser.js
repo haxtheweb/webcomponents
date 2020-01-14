@@ -1,13 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `hax-gizmo-browser`
+ * @customElement hax-gizmo-browser
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxGizmoBrowser extends LitElement {
+class HaxGizmoBrowser extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -46,20 +48,21 @@ class HaxGizmoBrowser extends LitElement {
   }
   constructor() {
     super();
-    this.title = "Make";
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
+    this.title = "Create page element";
     this.__gizmoList = [];
     this.filtered = [];
     import("@polymer/paper-input/paper-input.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser-item.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   render() {
     return html`
-      <h3 class="title">${this.title}</h3>
+      <h3 class="title">
+        <iron-icon icon="hax:add-brick"></iron-icon> ${this.title}
+      </h3>
       <div class="toolbar-inner">
         <dropdown-select
           id="filtertype"
@@ -125,7 +128,7 @@ class HaxGizmoBrowser extends LitElement {
     };
   }
   filteredChanged(e) {
-    this.filtered = e.detail.value;
+    this.filtered = [...e.detail.value];
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
@@ -163,6 +166,7 @@ class HaxGizmoBrowser extends LitElement {
    */
   resetBrowser() {
     this.__gizmoList = window.HaxStore.instance.gizmoList;
+    this.filtered = this.__gizmoList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "title";
     this.shadowRoot.querySelector("#filter").value = "";

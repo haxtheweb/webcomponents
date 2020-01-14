@@ -5,9 +5,10 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 /**
  * `lrndesign-imagemap`
+ * @customElement lrndesign-imagemap
  * creates an accessible image map
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

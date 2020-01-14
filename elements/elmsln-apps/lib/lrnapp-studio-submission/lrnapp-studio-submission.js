@@ -1,16 +1,17 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "./lrnapp-studio-submission-page.js";
 import "./lrnapp-studio-submission-button.js";
-class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmission extends SecureRequestXhr(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -19,34 +20,57 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
           margin: 0;
           min-width: 1rem;
         }
-      </style>
-      <app-location route="{{route}}"></app-location>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <app-location
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+      ></app-location>
       <app-route
-        route="{{route}}"
-        pattern="[[endPoint]]/submissions/:submission"
-        data="{{data}}"
-        tail="{{tail}}"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        pattern="${this.endPoint}/submissions/:submission"
+        .data="${this.data}"
+        @data-changed="${this.dataChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
       >
       </app-route>
-
-      <template is="dom-if" if="[[data.submission]]">
-        <lrnapp-studio-submission-page
-          base-path="{{basePath}}"
-          route="{{tail}}"
-          id="[[data.submission]]"
-          end-point="[[endPoint]]"
-          csrf-token="[[csrfToken]]"
-          data="{{data}}"
-        ></lrnapp-studio-submission-page>
-      </template>
-      <template is="dom-if" if="[[!data.submission]]">
-        This is the lrnapp-studio-submission page.
-      </template>
-
+      ${this.data.submission
+        ? html`
+            <lrnapp-studio-submission-page
+              base-path="{${this.basePath}"
+              @base-path-changed="${this.basePathChangedEvent}"
+              .route="${this.tail}"
+              @route-changed="${this.tailChangedEvent}"
+              .data="${this.data}"
+              @data-changed="${this.dataChangedEvent}"
+              id="${this.data.submission}"
+              end-point="${this.endPoint}"
+              csrf-token="${this.csrfToken}"
+            ></lrnapp-studio-submission-page>
+          `
+        : html`
+            This is the lrnapp-studio-submission page.
+          `}
       <paper-toast id="toast"></paper-toast>
     `;
   }
-
+  basePathChangedEvent(e) {
+    this.basePath = e.detail.value;
+  }
+  tailChangedEvent(e) {
+    this.tail = e.detail.value;
+  }
+  routeChangedEvent(e) {
+    this.route = e.detail.value;
+  }
+  dataChangedEvent(e) {
+    this.data = e.detail.value;
+  }
   static get tag() {
     return "lrnapp-studio-submission";
   }
@@ -54,44 +78,44 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       activePage: {
-        type: String
-      },
-      basePath: {
-        type: String
-      },
-      endPoint: {
-        type: String
-      },
-      csrfToken: {
-        type: String
+        type: String,
+        attribute: "active-page"
       }
     };
   }
-
-  static get observers() {
-    return [
-      "_routeChanged(route, endPoint)",
-      "_updateCookies(endPoint, csrfToken)"
-    ];
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+      if (["endPoint", "csrfToken"].includes(propName)) {
+        this._updateCookies(this.endPoint, this.csrfToken);
+      }
+    });
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener(
         "submissionDeleted",
         this._handleSubmissionDeletion.bind(this)
@@ -100,24 +124,14 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
         "displaymessage",
         this._handleDisplayMessage.bind(this)
       );
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "submissionDeleted",
-      this._handleSubmissionDeletion.bind(this)
-    );
-    this.removeEventListener(
-      "displaymessage",
-      this._handleDisplayMessage.bind(this)
-    );
-    super.disconnectedCallback();
+    }, 0);
   }
   _handleRouteChange(event) {
     var path = event.detail.path;
     if (path) {
-      this.set("route.path", path);
-      this.notifyPath("route.path");
+      let attr = this.route;
+      attr.path = path;
+      this.route = { ...attr };
     }
   }
 
@@ -139,8 +153,9 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   _handleSubmissionDeletion(e) {
     var submission = e.detail.submission;
     if (submission) {
-      this.set("route.path", this.endPoint);
-      this.notifyPath("route.path");
+      let attr = this.route;
+      attr.path = this.endPoint;
+      this.route = { ...attr };
       this.shadowRoot
         .querySelector("#toast")
         .show("Submission has been deleted.");

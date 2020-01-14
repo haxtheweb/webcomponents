@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-clothing-iconset-svg` is a iconset for the Material Design Icons collection with the "clothing" tag
+ * `mdi-clothing-iconset-svg`
+ * @customElement mdi-clothing-iconset-svg is a iconset for the Material Design Icons collection with the "clothing" tag
  *
  * Example:
  *   <iron-icon icon="mdi-clothing:tie"></iron-icon>

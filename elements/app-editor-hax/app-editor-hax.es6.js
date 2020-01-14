@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 /**
 `app-editor-hax`
@@ -16,17 +15,24 @@ is no edit state and that it is always editing effectively.
  - hax - just to make sure we're aware that it's actually HAX based
 
 */
-class AppEditorHax extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class AppEditorHax extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-size: 16px;
           box-sizing: content-box;
         }
-      </style>
-      <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <h-a-x .app-store="${this.appStoreConnection}"></h-a-x>
     `;
   }
 

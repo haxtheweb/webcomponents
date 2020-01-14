@@ -3,6 +3,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
  * `hax-blox-browser-item`
+ * @customElement hax-blox-browser-item
  * `A button on the hax-gizmo-browser app display`
  */
 class HaxBloxBrowserItem extends LitElement {
@@ -164,7 +165,7 @@ class HaxBloxBrowserItem extends LitElement {
         detail: blox
       })
     );
-    window.HaxStore.instance.haxBloxPicker.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
 }
 window.customElements.define(HaxBloxBrowserItem.tag, HaxBloxBrowserItem);

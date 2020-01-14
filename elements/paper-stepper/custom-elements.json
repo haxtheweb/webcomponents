@@ -1,0 +1,401 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-stepper",
+      "description": "`paper-stepper`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressBar",
+          "attribute": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "backLabel",
+          "attribute": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "nextLabel",
+          "attribute": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disablePrevious",
+          "attribute": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableNext",
+          "attribute": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noButtons",
+          "attribute": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "paper-stepper",
+      "description": "`paper-stepper`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressBar",
+          "attribute": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "backLabel",
+          "attribute": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "nextLabel",
+          "attribute": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disablePrevious",
+          "attribute": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableNext",
+          "attribute": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noButtons",
+          "attribute": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "paper-icon-step",
+      "attributes": [
+        {
+          "name": "icon"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon"
+        }
+      ]
+    },
+    {
+      "name": "paper-icon-stepper",
+      "attributes": [
+        {
+          "name": "selected-values",
+          "description": "Indeces of the steps already selected",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedValues",
+          "attribute": "selected-values",
+          "description": "Indeces of the steps already selected",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "selected-values-changed"
+        }
+      ]
+    },
+    {
+      "name": "paper-step"
+    },
+    {
+      "name": "paper-stepper",
+      "description": "`paper-stepper`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressBar",
+          "attribute": "progress-bar",
+          "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "backLabel",
+          "attribute": "back-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Back\""
+        },
+        {
+          "name": "nextLabel",
+          "attribute": "next-label",
+          "description": "Text for the back button. Use this property to localize the element.",
+          "type": "string",
+          "default": "\"Next\""
+        },
+        {
+          "name": "disablePrevious",
+          "attribute": "disable-previous",
+          "description": "Boolean for disabling the previous button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableNext",
+          "attribute": "disable-next",
+          "description": "Boolean for disabling the next button.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noButtons",
+          "attribute": "no-buttons",
+          "description": "Hide back/next buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

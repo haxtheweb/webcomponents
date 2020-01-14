@@ -1,0 +1,1153 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrnsys-progress-circle",
+      "description": "`lrnsys-progress-circle`",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Current value.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "tool-tip",
+          "description": "Whether to add a tooltip on hover.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "list-view",
+          "description": "If this is in a list view, expand the output.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "icon",
+          "description": "Icon.",
+          "type": "string",
+          "default": "\"icons:description\""
+        },
+        {
+          "name": "icon-complete",
+          "description": "Special icon to use when the item has been completed.",
+          "type": "string",
+          "default": "\"icons:description\""
+        },
+        {
+          "name": "loading-icon",
+          "description": "Loading icon",
+          "type": "string",
+          "default": "\"hourglass-full\""
+        },
+        {
+          "name": "finished-icon",
+          "description": "Finished icon",
+          "type": "string",
+          "default": "\"thumb-up\""
+        },
+        {
+          "name": "active-icon",
+          "description": "Current value.",
+          "type": "string"
+        },
+        {
+          "name": "step",
+          "description": "Array position within a larger body of items.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active",
+          "description": "If this item is active or not in the larger list",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "status",
+          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
+          "type": "string",
+          "default": "\"available\""
+        },
+        {
+          "name": "disabled",
+          "description": "Correctly disable the button if it's status is such.",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "description": "Calculate if something is in a loading status which invokes a swirl.",
+          "type": "boolean"
+        },
+        {
+          "name": "finished",
+          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "description": "Max progression for doing math against.",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "description": "URL to link to on click.",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "data-url",
+          "description": "Data url to bubble up for more advanced implementations.",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "stroke-width",
+          "description": "Stroke width.",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "play-sound",
+          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "play-finish-sound",
+          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "Current value.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "toolTip",
+          "attribute": "tool-tip",
+          "description": "Whether to add a tooltip on hover.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "listView",
+          "attribute": "list-view",
+          "description": "If this is in a list view, expand the output.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon.",
+          "type": "string",
+          "default": "\"icons:description\""
+        },
+        {
+          "name": "iconComplete",
+          "attribute": "icon-complete",
+          "description": "Special icon to use when the item has been completed.",
+          "type": "string",
+          "default": "\"icons:description\""
+        },
+        {
+          "name": "loadingIcon",
+          "attribute": "loading-icon",
+          "description": "Loading icon",
+          "type": "string",
+          "default": "\"hourglass-full\""
+        },
+        {
+          "name": "finishedIcon",
+          "attribute": "finished-icon",
+          "description": "Finished icon",
+          "type": "string",
+          "default": "\"thumb-up\""
+        },
+        {
+          "name": "activeIcon",
+          "attribute": "active-icon",
+          "description": "Current value.",
+          "type": "string"
+        },
+        {
+          "name": "step",
+          "attribute": "step",
+          "description": "Array position within a larger body of items.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "description": "If this item is active or not in the larger list",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "Status of the progression.\nPossible values are disabled, loading, available, complete",
+          "type": "string",
+          "default": "\"available\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Correctly disable the button if it's status is such.",
+          "type": "boolean"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Calculate if something is in a loading status which invokes a swirl.",
+          "type": "boolean"
+        },
+        {
+          "name": "finished",
+          "attribute": "finished",
+          "description": "Boolean to invoke \"finished\" state. Useful for the last circle\nin a series.",
+          "type": "boolean"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "description": "Max progression for doing math against.",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "URL to link to on click.",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "dataUrl",
+          "attribute": "data-url",
+          "description": "Data url to bubble up for more advanced implementations.",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "strokeWidth",
+          "attribute": "stroke-width",
+          "description": "Stroke width.",
+          "type": "number",
+          "default": "4"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied for element consistency\nwhen dealing with focus vs hover states.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "playSound",
+          "attribute": "play-sound",
+          "description": "Play sound status; if this should play sound\nwhen it hits certain milestones or not.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "playFinishSound",
+          "attribute": "play-finish-sound",
+          "description": "Play sound at end; if this should play sound\nwhen it hits certain milestones or not.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "completeSound",
+          "attribute": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "attribute": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "node-percent-milestone"
+        },
+        {
+          "name": "node-is-active"
+        },
+        {
+          "name": "node-status-change"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-progress",
+      "description": "`lrnsys-progress`",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "attribute": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "soundFinish",
+          "attribute": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "completeSound",
+          "attribute": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "attribute": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "keyItems",
+          "attribute": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressiveUnlock",
+          "attribute": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "attribute": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "attribute": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "attribute": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "attribute": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "strokeWidth",
+          "attribute": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "progress-state-change"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "node-load-failed"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-progress",
+      "description": "`lrnsys-progress`",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "attribute": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "soundFinish",
+          "attribute": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "completeSound",
+          "attribute": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "attribute": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "keyItems",
+          "attribute": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressiveUnlock",
+          "attribute": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "attribute": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "attribute": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "attribute": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "attribute": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "strokeWidth",
+          "attribute": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "progress-state-change"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "node-load-failed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "node-percent-milestone"
+        },
+        {
+          "name": "node-is-active"
+        },
+        {
+          "name": "node-status-change"
+        },
+        {
+          "name": "progress-state-change"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "node-load-failed"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-progress",
+      "description": "`lrnsys-progress`",
+      "attributes": [
+        {
+          "name": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disableAjaxCalls",
+          "attribute": "disable-ajax-calls",
+          "description": "Disable internal ajax calls as something is handling them above.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items to display to visualize the progression.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sound",
+          "attribute": "sound",
+          "description": "Play sounds whenever an item is complete.\nThis can get pretty annoying though unless the items\nwon't be completed for awhile.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "soundFinish",
+          "attribute": "sound-finish",
+          "description": "Play sound when the user finishes the progression. This\ncould also be annoying but far less so :)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "completeSound",
+          "attribute": "complete-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "finishedSound",
+          "attribute": "finished-sound",
+          "description": "Play sound on complete.",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of this progression, primarily for accessibility.",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        },
+        {
+          "name": "keyItems",
+          "attribute": "key-items",
+          "description": "Items displayed at specific points on the progression.\nThese aren't filled up but place points along the progression\nwhich can help people see where they are relative to other\nfactors such as % complete as a tick mark or icon.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "description": "ID of the active item.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "progressiveUnlock",
+          "attribute": "progressive-unlock",
+          "description": "Whether to automatically make disabled items available\nor not when the previous one was just complete.",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "state",
+          "attribute": "state",
+          "description": "State of progress in the current progression",
+          "type": "string"
+        },
+        {
+          "name": "overallPercentage",
+          "attribute": "overall-percentage",
+          "description": "How far is the user through this series of items.",
+          "type": "number"
+        },
+        {
+          "name": "activeNodeResponse",
+          "attribute": "active-node-response",
+          "description": "Active response from the node selected.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Active response from the node selected.",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "nodeDataError",
+          "attribute": "node-data-error",
+          "description": "Error.",
+          "type": "object",
+          "default": "[]"
+        },
+        {
+          "name": "vertical",
+          "attribute": "vertical",
+          "description": "Flag to be vertical instead of horizontal.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "Size to make everything, small, medium, large, and epic\nare available class names; default medium.",
+          "type": "string",
+          "default": "\"medium\""
+        },
+        {
+          "name": "strokeWidth",
+          "attribute": "stroke-width",
+          "description": "Calculate width based on the size since we have to convert em to px.",
+          "type": "number"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "progress-state-change"
+        },
+        {
+          "name": "progress-response-loaded"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "node-load-failed"
+        }
+      ]
+    }
+  ]
+}

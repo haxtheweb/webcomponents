@@ -1,0 +1,88 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "material-progress-bars",
+      "attributes": [
+        {
+          "name": "max",
+          "description": "Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "properties": [
+        {
+          "name": "max",
+          "attribute": "max",
+          "description": "Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "material-progress-histo",
+      "attributes": [
+        {
+          "name": "scale-to-sum",
+          "description": "Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "scaleToSum",
+          "attribute": "scale-to-sum",
+          "description": "Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    }
+  ]
+}

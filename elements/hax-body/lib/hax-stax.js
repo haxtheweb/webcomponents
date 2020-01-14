@@ -40,7 +40,8 @@ Register a stax with HAX store.
   ]
 }]
 ```
-*/
+ * @customElement hax-stax
+ */
 class HAXStax extends HAXApp {
   constructor() {
     super();

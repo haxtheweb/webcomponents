@@ -2,7 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 
 /**
@@ -11,35 +12,38 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
  *
  * @microcopy - language worth noting:
  *  - CSV - Comma separated values
- *
- * @customElement
- * @polymer
- * @polymerLegacy
  * @demo demo/index.html
+ * @customElement lrn-table
  */
-class LrnTable extends SchemaBehaviors(PolymerElement) {
+class LrnTable extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
-    import("@lrnwebcomponents/csv-render/csv-render.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/csv-render/csv-render.js");
+    }, 0);
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
         .hidden-title {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div typeof="oer:SupportingMaterial">
-        <div class="hidden-title" property="oer:name">[[title]]</div>
+        <div class="hidden-title" property="oer:name">${this.title}</div>
         <div property="oer:description">
           <slot></slot>
           <csv-render
-            data-source="[[csvFile]]"
-            caption="[[title]]"
-            summary="[[description]]"
+            data-source="${this.csvFile}"
+            caption="${this.title}"
+            summary="${this.description}"
           ></csv-render>
         </div>
       </div>
@@ -50,6 +54,7 @@ class LrnTable extends SchemaBehaviors(PolymerElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Title of this table. This is both for accessibility and presentation.
        */
@@ -60,7 +65,8 @@ class LrnTable extends SchemaBehaviors(PolymerElement) {
        * The file to load material from.
        */
       csvFile: {
-        type: String
+        type: String,
+        attribute: "csv-file"
       },
       /**
        * An extended description of the material in the table for improved accessibility.
@@ -92,7 +98,7 @@ class LrnTable extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -1,0 +1,208 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "hal-9000",
+      "description": "`hal-9000`",
+      "properties": [
+        {
+          "name": "commands",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "type": "string",
+          "default": "\"(hal)\""
+        },
+        {
+          "name": "debug",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pitch",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "rate",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "default": "\"en-US\""
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ]
+    },
+    {
+      "name": "hal-9000",
+      "description": "`hal-9000`",
+      "attributes": [
+        {
+          "name": "auto",
+          "description": "Start automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "enabled",
+          "description": "Status of listening",
+          "type": "boolean"
+        },
+        {
+          "name": "commands",
+          "description": "Commands to listen for and take action on",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "responds-to",
+          "description": "The name that HAL 9000 should respond to.",
+          "type": "string",
+          "default": "\"(hal)\""
+        },
+        {
+          "name": "debug",
+          "description": "Debug mode for annyang",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pitch",
+          "description": "Pitch of speech",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "rate",
+          "description": "Rate of speech",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "language",
+          "description": "Language of the speaker",
+          "type": "string",
+          "default": "\"en-US\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "Start automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "enabled",
+          "attribute": "enabled",
+          "description": "Status of listening",
+          "type": "boolean"
+        },
+        {
+          "name": "commands",
+          "attribute": "commands",
+          "description": "Commands to listen for and take action on",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "attribute": "responds-to",
+          "description": "The name that HAL 9000 should respond to.",
+          "type": "string",
+          "default": "\"(hal)\""
+        },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "description": "Debug mode for annyang",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pitch",
+          "attribute": "pitch",
+          "description": "Pitch of speech",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "rate",
+          "attribute": "rate",
+          "description": "Rate of speech",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "description": "Language of the speaker",
+          "type": "string",
+          "default": "\"en-US\""
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ]
+    },
+    {
+      "name": "hal-9000",
+      "description": "`hal-9000`",
+      "properties": [
+        {
+          "name": "commands",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "respondsTo",
+          "type": "string",
+          "default": "\"(hal)\""
+        },
+        {
+          "name": "debug",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "pitch",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "rate",
+          "type": "number",
+          "default": "0.9"
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "default": "\"en-US\""
+        }
+      ],
+      "events": [
+        {
+          "name": "hal-9000-online"
+        }
+      ]
+    }
+  ]
+}

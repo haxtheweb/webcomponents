@@ -1,11 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-class LrnAssignmentButton extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnAssignmentButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -23,37 +26,49 @@ class LrnAssignmentButton extends PolymerElement {
           margin-left: 8px;
           opacity: 0.8;
         }
-      </style>
-      <a href$="[[url]]">
-        <template is="dom-if" if="[[open]]">
-          <paper-button raised open
-            >[[title]] <iron-icon icon="lrn-icons:input"></iron-icon
-          ></paper-button>
-        </template>
-        <template is="dom-if" if="[[complete]]">
-          <paper-button raised complete
-            >[[title]] <iron-icon icon="lrn-icons:done"></iron-icon
-          ></paper-button>
-        </template>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <a href="${this.url}">
+        ${this.open
+          ? html`
+              <paper-button raised open
+                >${this.title} <iron-icon icon="lrn-icons:input"></iron-icon
+              ></paper-button>
+            `
+          : ``}
+        ${this.complete
+          ? html`
+              <paper-button raised complete
+                >${this.title} <iron-icon icon="lrn-icons:done"></iron-icon
+              ></paper-button>
+            `
+          : ``}
       </a>
     `;
   }
-
   static get tag() {
     return "lrn-assignment-button";
   }
-
+  constructor() {
+    super();
+    this.open = false;
+    this.complete = false;
+  }
   static get properties() {
     return {
-      title: String,
-      url: String,
+      title: { type: String },
+      url: { type: String },
       open: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       complete: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "word-count",
+      "description": "`word-count`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
+      "attributes": [
+        {
+          "name": "words",
+          "description": "`words` {`number`} - \n\nProperty: words"
+        },
+        {
+          "name": "wordsPrefix",
+          "description": "`wordsPrefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count:"
+        }
+      ]
+    },
+    {
+      "name": "word-count",
+      "description": "`word-count`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
+      "attributes": [
+        {
+          "name": "words",
+          "description": "`words` {`number`} - \n\nProperty: words"
+        },
+        {
+          "name": "wordsPrefix",
+          "description": "`wordsPrefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count:"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "word-count",
+      "description": "`word-count`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - ",
+      "attributes": [
+        {
+          "name": "words",
+          "description": "`words` {`number`} - \n\nProperty: words"
+        },
+        {
+          "name": "wordsPrefix",
+          "description": "`wordsPrefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count:"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

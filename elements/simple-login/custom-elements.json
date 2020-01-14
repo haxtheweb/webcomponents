@@ -1,0 +1,302 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-login",
+      "description": "`simple-login`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ]
+    },
+    {
+      "name": "simple-login",
+      "description": "`simple-login`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "error-msg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "description": "Content of the username field",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "description": "Content of the password field",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "user-input-label",
+          "description": "Placeholder of the username field",
+          "type": "string",
+          "default": "\"Username\""
+        },
+        {
+          "name": "user-input-err-msg",
+          "description": "Error message of the username field",
+          "type": "string",
+          "default": "\"Username required\""
+        },
+        {
+          "name": "password-input-label",
+          "description": "Placeholder of the password field",
+          "type": "string",
+          "default": "\"Password\""
+        },
+        {
+          "name": "password-input-err-msg",
+          "description": "Error message of the password field",
+          "type": "string",
+          "default": "\"Password required\""
+        },
+        {
+          "name": "login-btn-text",
+          "description": "Login button label",
+          "type": "string",
+          "default": "\"Login\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "errorMsg",
+          "attribute": "error-msg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "attribute": "username",
+          "description": "Content of the username field",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "attribute": "password",
+          "description": "Content of the password field",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "userInputLabel",
+          "attribute": "user-input-label",
+          "description": "Placeholder of the username field",
+          "type": "string",
+          "default": "\"Username\""
+        },
+        {
+          "name": "userInputErrMsg",
+          "attribute": "user-input-err-msg",
+          "description": "Error message of the username field",
+          "type": "string",
+          "default": "\"Username required\""
+        },
+        {
+          "name": "passwordInputLabel",
+          "attribute": "password-input-label",
+          "description": "Placeholder of the password field",
+          "type": "string",
+          "default": "\"Password\""
+        },
+        {
+          "name": "passwordInputErrMsg",
+          "attribute": "password-input-err-msg",
+          "description": "Error message of the password field",
+          "type": "string",
+          "default": "\"Password required\""
+        },
+        {
+          "name": "loginBtnText",
+          "attribute": "login-btn-text",
+          "description": "Login button label",
+          "type": "string",
+          "default": "\"Login\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ]
+    },
+    {
+      "name": "simple-login-avatar",
+      "description": "`simple-login-avatar`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"simple-login-avatar\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "simple-login-camera",
+      "description": "Inspiration from https://github.com/wanoo21/MyCamera",
+      "attributes": [
+        {
+          "name": "autoplay"
+        },
+        {
+          "name": "controls"
+        },
+        {
+          "name": "audio"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "simple-camera-snap",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"simple-camera-snap\""
+        },
+        {
+          "name": "template"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-camera-snap-image"
+        }
+      ]
+    },
+    {
+      "name": "simple-login",
+      "description": "`simple-login`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-login-login"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-holiday-iconset-svg` is a iconset for the Material Design Icons collection with the "holiday" tag
+ * `mdi-holiday-iconset-svg`
+ * @customElement mdi-holiday-iconset-svg is a iconset for the Material Design Icons collection with the "holiday" tag
  *
  * Example:
  *   <iron-icon icon="mdi-holiday:candycane"></iron-icon>

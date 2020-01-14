@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./hax-item-button-inner.js";
 /**
  * `hax-gizmo-browser-item`
+ * @customElement hax-gizmo-browser-item
  * `A button on the hax-gizmo-browser app display`
  */
 class HaxGizmoBrowserItem extends LitElement {

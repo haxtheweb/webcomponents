@@ -1,19 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-styles/shadow.js";
 /**
  * `lrndesign-blockquote`
  * `A structured blockquote element`
- *
- * @PolymerElement
- * @polymer
- * @webcomponent
+ * @customElement lrndesign-blockquote
  * @demo demo/index.html
  */
-class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class LrndesignBlockquote extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-block;
           position: relative;
@@ -546,16 +545,19 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
           -webkit-filter: grayscale(0);
           filter: none;
         }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
       <div id="wrap" class="mb-wrap">
         <div id="thumb" class="mb-thumb"></div>
-        <blockquote cite$="[[sourceLink]]">
+        <blockquote cite="${this.sourceLink}">
           <p><slot></slot></p>
         </blockquote>
         <div class="mb-attribution">
-          <p class="mb-author">[[author]]</p>
-          <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
+          <p class="mb-author">${this.author}</p>
+          <cite><a href="${this.sourceLink}">${this.citation}</a></cite>
         </div>
       </div>
     `;
@@ -564,54 +566,81 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
   static get tag() {
     return "lrndesign-blockquote";
   }
-
+  constructor() {
+    super();
+    this.displayMode = "default";
+  }
   static get properties() {
     return {
       /**
        * Source being cited
        */
       citation: {
-        type: String,
-        notify: true
+        type: String
       },
       /**
        * Optional image to use
        */
       image: {
-        type: String,
-        notify: true,
-        observer: "_imageChanged"
+        type: String
       },
       /**
        * Optional author of the quote
        */
       author: {
-        type: String,
-        notify: true
+        type: String
       },
       /**
        * Optional source that links to where the quote is from
        */
       sourceLink: {
         type: String,
-        notify: true
+        attribute: "source-link"
       },
       /**
        * Funny 1900s vision.
        */
       displayMode: {
         type: String,
-        reflectToAttribute: true,
-        notify: true,
-        value: "default",
-        observer: "_displayModeChanged"
+        reflect: true,
+        attribute: "display-mode"
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "author",
+        "image",
+        "citation",
+        "displayMode",
+        "sourceLink"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "displayMode") {
+        this._displayModeChanged(this[propName]);
+      }
+      if (propName == "image") {
+        this._imageChanged(this[propName]);
+      }
+    });
   }
   /**
    * Notice display mode change activated so load the font
    */
-  _imageChanged(newValue, oldValue) {
+  _imageChanged(newValue) {
     if (this.displayMode == "hypercard") {
       this.shadowRoot.querySelector("#wrap").style.cssText = "";
       this.shadowRoot.querySelector("#thumb").style.cssText = "";
@@ -632,7 +661,7 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
   /**
    * Notice display mode change activated so load the font
    */
-  _displayModeChanged(newValue, oldValue) {
+  _displayModeChanged(newValue) {
     if (newValue == "hypercard") {
       this.shadowRoot.querySelector("#wrap").style.cssText = "";
       this.shadowRoot.querySelector("#thumb").style.cssText = "";
@@ -679,7 +708,7 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

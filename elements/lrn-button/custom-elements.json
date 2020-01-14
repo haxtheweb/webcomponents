@@ -1,0 +1,460 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "properties": [
+        {
+          "name": "href",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ]
+    },
+    {
+      "name": "lrn-button",
+      "attributes": [
+        {
+          "name": "href",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "show-href",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "focus-state",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "attribute": "href",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "showHref",
+          "attribute": "show-href",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "attribute": "icon-class",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "attribute": "inner-class",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "attribute": "text-color",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "attribute": "prefetch",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "type": "boolean"
+        },
+        {
+          "name": "templateUrl",
+          "type": "string"
+        },
+        {
+          "name": "propertiesUrl",
+          "type": "string"
+        },
+        {
+          "name": "HAXPropertiesUrl",
+          "type": "string"
+        },
+        {
+          "name": "styleUrl",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ]
+    },
+    {
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "attributes": [
+        {
+          "name": "show-href",
+          "description": "What to display for the resource",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "materializeCSS color class",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data on hover",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "showHref",
+          "attribute": "show-href",
+          "description": "What to display for the resource",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "attribute": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "attribute": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "materializeCSS color class",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "attribute": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "attribute": "prefetch",
+          "description": "Allow for prefetch data on hover",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "attribute": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ]
+    },
+    {
+      "name": "lrn-button",
+      "description": "`lrn-button`\n`Simple button wrapper with a few options`",
+      "properties": [
+        {
+          "name": "href",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "focus-changed"
+        }
+      ]
+    }
+  ]
+}

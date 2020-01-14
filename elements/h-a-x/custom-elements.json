@@ -1,0 +1,113 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`",
+      "attributes": [
+        {
+          "name": "app-store"
+        },
+        {
+          "name": "hide-panel-ops"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "hidePanelOps",
+          "type": "string | null"
+        },
+        {
+          "name": "appStore",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"h-a-x\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`",
+      "attributes": [
+        {
+          "name": "appStore",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "app-store"
+        },
+        {
+          "name": "hide-panel-ops"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "hidePanelOps",
+          "type": "string | null"
+        },
+        {
+          "name": "appStore",
+          "attribute": "appStore",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"h-a-x\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "h-a-x"
+    },
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`",
+      "attributes": [
+        {
+          "name": "app-store"
+        },
+        {
+          "name": "hide-panel-ops"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hidePanelOps",
+          "type": "string | null"
+        },
+        {
+          "name": "appStore",
+          "type": "string | null"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"h-a-x\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

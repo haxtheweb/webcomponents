@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-vote-iconset-svg` is a iconset for the Material Design Icons collection with the "vote" tag
+ * `mdi-vote-iconset-svg`
+ * @customElement mdi-vote-iconset-svg is a iconset for the Material Design Icons collection with the "vote" tag
  *
  * Example:
  *   <iron-icon icon="mdi-vote:thumb-up"></iron-icon>

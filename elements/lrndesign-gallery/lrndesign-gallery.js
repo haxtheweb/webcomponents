@@ -11,6 +11,7 @@ import "./lib/lrndesign-gallery-grid.js";
 export { LrndesignGallery };
 /**
  * `lrndesign-gallery`
+ * @customElement lrndesign-gallery
  * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
  *
  * @microcopy - language worth noting:```
@@ -38,7 +39,7 @@ export { LrndesignGallery };
   "type": "image",                                  //required, "image", "video", "audio", etc.
 }]```
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html carousel demo
  * @demo ./demo/grid.html grid demo
@@ -120,7 +121,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

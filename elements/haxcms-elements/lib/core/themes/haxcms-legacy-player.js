@@ -11,7 +11,7 @@ import {
   findTagsInHTML,
   wipeSlot,
   varExists
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -25,7 +25,7 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
  * `haxcms-legacy-player`
  * `A simple slide playing theme`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */
@@ -91,7 +91,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles">
+      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
         :host {
           display: block;
           font-family: libre baskerville;

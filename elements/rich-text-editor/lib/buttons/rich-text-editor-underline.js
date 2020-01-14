@@ -11,7 +11,7 @@ import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js"
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorUnderline extends RichTextEditorPromptButton {

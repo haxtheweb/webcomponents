@@ -1,10 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+
 /**
  * `hax-export-dialog`
+ * @customElement hax-export-dialog
  * `Export dialog with all export options and settings provided.`
  */
-class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
+class HaxExportDialog extends winEventsElement(
+  MtzFileDownloadBehaviors(LitElement)
+) {
   static get styles() {
     return [
       css`
@@ -102,8 +107,14 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
 
   render() {
     return html`
-      <paper-dialog id="dialog">
-        <h3 class="title">${this.title}</h3>
+      <paper-dialog
+        id="dialog"
+        ?opened="${this.opened}"
+        @opened-changed="${this.openedChanged}"
+      >
+        <h3 class="title">
+          <iron-icon icon="icons:code"></iron-icon> ${this.title}
+        </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <div id="wrapper">
             <textarea id="hiddentextarea" hidden></textarea>
@@ -117,24 +128,41 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
             <code-editor id="textarea" title="" theme="vs"></code-editor>
           </div>
           <div id="buttons" class="buttons">
-            <paper-button id="import" raised>Update body area</paper-button>
-            <paper-button id="copy">Copy to clipboard</paper-button>
-            <paper-button id="downloadfull">Download full file</paper-button>
-            <paper-button id="download">Download body area</paper-button>
+            <paper-button id="import" raised @click="${this.importContent}"
+              >Update body area</paper-button
+            >
+            <paper-button id="copy" @click="${this.selectBody}"
+              >Copy to clipboard</paper-button
+            >
+            <paper-button id="downloadfull" @click="${this.downloadfull}"
+              >Download full file</paper-button
+            >
+            <paper-button id="download" @click="${this.download}"
+              >Download body area</paper-button
+            >
             <paper-button
               id="elementexport"
+              @click="${this.htmlToHaxElements}"
               ?hidden="${!this.globalPreferences.haxDeveloperMode}"
               >Copy as HAX schema to clipboard</paper-button
             >
           </div>
         </div>
-        <paper-button id="closedialog" on-click="close">
+        <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>
     `;
   }
-
+  openedChanged(e) {
+    // force close event to align data model if clicking away
+    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
+    }
+  }
+  closeEvent(e) {
+    this.opened = false;
+  }
   static get tag() {
     return "hax-export-dialog";
   }
@@ -146,6 +174,9 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
        */
       title: {
         type: String
+      },
+      opened: {
+        type: Boolean
       },
       /**
        * Access to the global properties object.
@@ -171,29 +202,6 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
         }
       })
     );
-    // add event listeners
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    this.shadowRoot
-      .querySelector("#download")
-      .addEventListener("click", this.download.bind(this));
-    this.shadowRoot
-      .querySelector("#downloadfull")
-      .addEventListener("click", this.downloadfull.bind(this));
-    this.shadowRoot
-      .querySelector("#import")
-      .addEventListener("click", this.importContent.bind(this));
-    this.shadowRoot
-      .querySelector("#copy")
-      .addEventListener("click", this.selectBody.bind(this));
-    this.shadowRoot
-      .querySelector("#closedialog")
-      .addEventListener("click", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#elementexport")
-      .addEventListener("click", this.htmlToHaxElements.bind(this));
   }
   /**
    * Store updated, sync.
@@ -205,9 +213,10 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this[e.detail.property] = null;
+        this[e.detail.property] = { ...e.detail.value };
+      } else {
+        this[e.detail.property] = e.detail.value;
       }
-      this[e.detail.property] = e.detail.value;
     }
   }
 
@@ -277,7 +286,8 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
    * Output entire thing as a file.
    */
   contentToFile(full) {
-    var content = "";
+    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+    var content = body;
     // if you want full HTML headers or not
     if (full) {
       let elementList = window.HaxStore.instance.elementList;
@@ -317,30 +327,18 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
         }
       }
       content += "</head><body>";
-      content += window.HaxStore.instance.activeHaxBody.haxToContent();
+      content += body;
       content += "</body></html>";
-    } else {
-      content = window.HaxStore.instance.activeHaxBody.haxToContent();
     }
     return content;
   }
 
-  /**
-   * Toggle ourselves.
-   */
-  toggleDialog() {
-    if (this.shadowRoot.querySelector("#dialog").opened) {
-      this.close();
-    } else {
-      this.shadowRoot.querySelector(
-        "#textarea"
-      ).editorValue = this.contentToFile(false);
-      window.HaxStore.instance.closeAllDrawers(this);
-    }
-  }
   constructor() {
     super();
-    this.title = "Source view";
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
+    this.title = "View page source";
     this.fileTypes = {
       CSV: "text/csv",
       JSON: "text/json",
@@ -348,6 +346,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
       TXT: "text/plain",
       HTML: "text/html"
     };
+    this.opened = false;
     this.globalPreferences = {};
     import("@polymer/paper-dialog/paper-dialog.js");
   }
@@ -362,7 +361,10 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
     import("@lrnwebcomponents/code-editor/code-editor.js");
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
 
-    this.shadowRoot.querySelector("#dialog").open();
+    this.opened = true;
+    this.shadowRoot.querySelector("#textarea").editorValue = this.contentToFile(
+      false
+    );
     this.shadowRoot.querySelector("#buttons").style.display = "none";
     this.shadowRoot
       .querySelector("#loading")
@@ -381,7 +383,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
    * close the dialog
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
+    this.opened = false;
   }
 }
 window.customElements.define(HaxExportDialog.tag, HaxExportDialog);

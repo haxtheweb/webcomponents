@@ -1,0 +1,333 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-blog",
+      "description": "`simple-blog`",
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "simple-blog",
+      "description": "`simple-blog`",
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "simple-blog-footer",
+      "description": "`simple-blog-footer`",
+      "attributes": [
+        {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "type": "number"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest, JSON Outline Schema object",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "prevTitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "prevChanged",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "nextTitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "nextChanged",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeManifestIndex",
+          "attribute": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "type": "number"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Manifest, JSON Outline Schema object",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "prevTitle",
+          "attribute": "prevTitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "prevChanged",
+          "attribute": "prevChanged",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "nextTitle",
+          "attribute": "nextTitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "nextChanged",
+          "attribute": "nextChanged",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "simple-blog-header",
+      "description": "`simple-blog-header`\n`A simple blog header to the front of the site`",
+      "attributes": [
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "simple-blog-listing",
+      "description": "`simple-blog-listing`"
+    },
+    {
+      "name": "simple-blog-overview",
+      "description": "`simple-blog-overview`",
+      "attributes": [
+        {
+          "name": "item-id",
+          "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "description": "Body of text",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "description": "Link referencing the page content.",
+          "type": "string"
+        },
+        {
+          "name": "changed",
+          "description": "timestamp (unix) of last time changed",
+          "type": "number"
+        },
+        {
+          "name": "elevation",
+          "description": "elevation",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "itemId",
+          "attribute": "item-id",
+          "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "attribute": "body",
+          "description": "Body of text",
+          "type": "string"
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link referencing the page content.",
+          "type": "string"
+        },
+        {
+          "name": "changed",
+          "attribute": "changed",
+          "description": "timestamp (unix) of last time changed",
+          "type": "number"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "elevation",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "simple-blog-post",
+      "description": "`simple-blog-post`",
+      "attributes": [
+        {
+          "name": "has-image",
+          "description": "calculate if we have a header image.",
+          "type": "boolean"
+        },
+        {
+          "name": "image",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hasImage",
+          "attribute": "has-image",
+          "description": "calculate if we have a header image.",
+          "type": "boolean"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "simple-blog",
+      "description": "`simple-blog`",
+      "attributes": [
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-bell-iconset-svg` is a iconset for the Material Design Icons collection with the "bell" tag
+ * `mdi-bell-iconset-svg`
+ * @customElement mdi-bell-iconset-svg is a iconset for the Material Design Icons collection with the "bell" tag
  *
  * Example:
  *   <iron-icon icon="mdi-bell:bell-ring"></iron-icon>

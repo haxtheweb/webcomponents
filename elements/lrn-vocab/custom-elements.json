@@ -1,0 +1,79 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.",
+      "attributes": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "term",
+          "attribute": "term",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.",
+      "attributes": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "term",
+          "attribute": "term",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.",
+      "attributes": [
+        {
+          "name": "term",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "term",
+          "attribute": "term",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    }
+  ]
+}

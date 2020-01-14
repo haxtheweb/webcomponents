@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "a11y-collapse",
+      "description": "`a11y-collapse`\n\nEvents:\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: expand-more"
+        },
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand/collapse"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand/collapse"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
+        },
+        {
+          "name": "ona11y-collapse-detached",
+          "description": "`a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "ona11y-collapse-toggle",
+          "description": "`a11y-collapse-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "ona11y-collapse-click",
+          "description": "`a11y-collapse-click` - Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "a11y-collapse",
+      "description": "`a11y-collapse`\n\nEvents:\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: expand-more"
+        },
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand/collapse"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand/collapse"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
+        },
+        {
+          "name": "ona11y-collapse-detached",
+          "description": "`a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "ona11y-collapse-toggle",
+          "description": "`a11y-collapse-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "ona11y-collapse-click",
+          "description": "`a11y-collapse-click` - Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "a11y-collapse-group",
+      "description": "`a11y-collapse-group`\n\nEvents:\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `global-options` - an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every a11y-collapse item radio button?\n\n  * `__items` {`any[]`} - is radio button\n\n  * `accordion` - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` - is disabled?\n\n  * `expanded` - icon when expanded\n\n  * `icon` - icon for the button\n\n  * `icon-expanded` - icon when expanded\n\n  * `label` - label for the button\n\n  * `label-expanded` - optional label for the button when expanded\n\n  * `tooltip` - tooltip for the button\n\n  * `tooltip-expanded` - optional tooltip for the button when expanded\n\nProperties:\n\n  * `globalOptions` - an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\n  * `radio` {`boolean`} - is every a11y-collapse item radio button?\n\n  * `__items` {`any[]`} - is radio button\n\n  * `accordion` - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` - is disabled?\n\n  * `expanded` - icon when expanded\n\n  * `icon` - icon for the button\n\n  * `iconExpanded` - icon when expanded\n\n  * `label` - label for the button\n\n  * `labelExpanded` - optional label for the button when expanded\n\n  * `tooltip` - tooltip for the button\n\n  * `tooltipExpanded` - optional tooltip for the button when expanded",
+      "attributes": [
+        {
+          "name": "global-options",
+          "description": "`global-options` - an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"\n\nProperty: globalOptions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "radio",
+          "description": "`radio` {`boolean`} - is every a11y-collapse item radio button?\n\nProperty: radio\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - is radio button\n\nProperty: __items\n\nDefault: "
+        },
+        {
+          "name": "accordion",
+          "description": "`accordion` - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: null"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` - is disabled?\n\nProperty: disabled\n\nDefault: null"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` - icon when expanded\n\nProperty: expanded\n\nDefault: null"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` - icon for the button\n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` - label for the button\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` - tooltip for the button\n\nProperty: tooltip\n\nDefault: null"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
+        },
+        {
+          "name": "ona11y-collapse-detached",
+          "description": "`a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "ona11y-collapse-toggle",
+          "description": "`a11y-collapse-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "ona11y-collapse-click",
+          "description": "`a11y-collapse-click` - Fires when clicked."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `a11y-collapse-attached` - \n\n  * `a11y-collapse-detached` - \n\n  * `toggle` - \n\n  * `a11y-collapse-toggle` - \n\n  * `expand` - \n\n  * `collapse` - \n\n  * `a11y-collapse-click` - ",
+      "attributes": [
+        {
+          "name": "ona11y-collapse-attached",
+          "description": "`a11y-collapse-attached` - "
+        },
+        {
+          "name": "ona11y-collapse-detached",
+          "description": "`a11y-collapse-detached` - "
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - "
+        },
+        {
+          "name": "ona11y-collapse-toggle",
+          "description": "`a11y-collapse-toggle` - "
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - "
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - "
+        },
+        {
+          "name": "ona11y-collapse-click",
+          "description": "`a11y-collapse-click` - "
+        }
+      ]
+    },
+    {
+      "name": "a11y-collapse",
+      "description": "`a11y-collapse`\n\nEvents:\n\n  * `a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it.\n\n  * `toggle` - Fires when toggled.\n\n  * `a11y-collapse-toggle` - Deprecated. Fires when toggled.\n\n  * `expand` - Fires when expanded.\n\n  * `collapse` - Fires when collapsed.\n\n  * `a11y-collapse-click` - Fires when clicked.\n\nAttributes:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `icon-expanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `label-expanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperties:\n\n  * `accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\n  * `disabled` {`boolean`} - is disabled?\n\n  * `expanded` {`boolean`} - icon when expanded\n\n  * `icon` {`string`} - icon for the button\n\n  * `iconExpanded` {`string`} - icon when expanded\n\n  * `label` {`string`} - label for the button\n\n  * `labelExpanded` {`string`} - optional label for the button when expanded\n\n  * `tooltip` {`string`} - tooltip for the button\n\n  * `tooltipExpanded` {`string`} - optional tooltip for the button when expanded",
+      "attributes": [
+        {
+          "name": "accordion",
+          "description": "`accordion` {`boolean`} - accordion-style: whole header acts as button? default is just icon.\n\nProperty: accordion\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - is disabled?\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "expanded",
+          "description": "`expanded` {`boolean`} - icon when expanded\n\nProperty: expanded\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for the button\n\nProperty: icon\n\nDefault: expand-more"
+        },
+        {
+          "name": "icon-expanded",
+          "description": "`icon-expanded` {`string`} - icon when expanded\n\nProperty: iconExpanded\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the button\n\nProperty: label\n\nDefault: expand/collapse"
+        },
+        {
+          "name": "label-expanded",
+          "description": "`label-expanded` {`string`} - optional label for the button when expanded\n\nProperty: labelExpanded\n\nDefault: null"
+        },
+        {
+          "name": "tooltip",
+          "description": "`tooltip` {`string`} - tooltip for the button\n\nProperty: tooltip\n\nDefault: toggle expand/collapse"
+        },
+        {
+          "name": "tooltip-expanded",
+          "description": "`tooltip-expanded` {`string`} - optional tooltip for the button when expanded\n\nProperty: tooltipExpanded\n\nDefault: null"
+        },
+        {
+          "name": "ona11y-collapse-detached",
+          "description": "`a11y-collapse-detached` - Fires when detatched, so that parent radio group will no longer listen for it."
+        },
+        {
+          "name": "ontoggle",
+          "description": "`toggle` - Fires when toggled."
+        },
+        {
+          "name": "ona11y-collapse-toggle",
+          "description": "`a11y-collapse-toggle` - Deprecated. Fires when toggled."
+        },
+        {
+          "name": "onexpand",
+          "description": "`expand` - Fires when expanded."
+        },
+        {
+          "name": "oncollapse",
+          "description": "`collapse` - Fires when collapsed."
+        },
+        {
+          "name": "ona11y-collapse-click",
+          "description": "`a11y-collapse-click` - Fires when clicked."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

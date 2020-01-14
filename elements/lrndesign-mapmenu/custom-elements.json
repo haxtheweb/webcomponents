@@ -1,0 +1,258 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-mapmenu-item",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-mapmenu-header",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "avatar-label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "avatarLabel",
+          "attribute": "avatar-label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-mapmenu-submenu",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "avatar-label",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "collapsable",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "expand-children",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "avatarLabel",
+          "attribute": "avatar-label",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "collapsable",
+          "attribute": "collapsable",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "expandChildren",
+          "attribute": "expand-children",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-mapmenu",
+      "description": "`lrndesign-mapmenu`\nA LRN element",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-mapmenu",
+      "description": "`lrndesign-mapmenu`\nA LRN element",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-mapmenu",
+      "description": "`lrndesign-mapmenu`\nA LRN element",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

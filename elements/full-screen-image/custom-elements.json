@@ -1,0 +1,85 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source"
+        }
+      ]
+    },
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "full-screen-image",
+      "description": "`full-screen-image`",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "source"
+        }
+      ]
+    }
+  ]
+}

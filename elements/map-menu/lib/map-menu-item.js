@@ -11,15 +11,14 @@ class MapMenuItem extends LitElement {
       css`
         :host {
           display: block;
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.2s;
+          transition: 0.1s all ease-in-out;
           font-size: var(--map-menu-item-font-size, 14px);
-          --map-menu-item-height: var(--map-menu-item-height);
+          --map-menu-item-height: 24px;
           --map-menu-item-a-color: inherit;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
-          color: var(--site-menu-item-active-item-color, #000000);
+          color: var(--map-menu-item-active-item-color, #000000);
         }
         paper-button {
           width: 100%;
@@ -29,11 +28,13 @@ class MapMenuItem extends LitElement {
         iron-icon {
           display: inline-block;
           --iron-icon-height: var(--map-menu-item-height);
+          --iron-icon-width: var(--map-menu-item-height);
         }
         .title {
           text-transform: none;
         }
         a {
+          display: block;
           color: var(--map-menu-item-a-color);
           text-decoration: var(--map-menu-item-a-text-decoration);
         }
@@ -48,8 +49,7 @@ class MapMenuItem extends LitElement {
           text-decoration: var(--map-menu-item-a-text-decoration);
         }
         #track {
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.5s;
+          transition: 0.1s all ease-in-out;
           position: absolute;
           right: 0;
 
@@ -79,16 +79,17 @@ class MapMenuItem extends LitElement {
     return html`
       <a tabindex="-1" href="${this.url}">
         <paper-button id="wrapper" role="link" noink>
-          <iron-icon
-            ?hidden="${this.icon ? true : false}"
-            icon="${this.icon}"
-          ></iron-icon>
+          ${this.icon
+            ? html`
+                <iron-icon icon="${this.icon}"></iron-icon>
+              `
+            : ``}
           <span class="title">${this.title}</span>
-          <iron-icon
-            id="track"
-            ?hidden="${this.trackIcon ? true : false}"
-            icon="${this.trackIcon}"
-          ></iron-icon>
+          ${this.trackIcon
+            ? html`
+                <iron-icon id="track" icon="${this.trackIcon}"></iron-icon>
+              `
+            : ``}
         </paper-button>
       </a>
     `;
@@ -151,10 +152,12 @@ class MapMenuItem extends LitElement {
     });
   }
   _trackIconChanged(newValue, oldValue) {
-    if (newValue) {
-      this.shadowRoot.querySelector("#track").classList.add("show-icon");
-    } else {
-      this.shadowRoot.querySelector("#track").classList.remove("show-icon");
+    if (this.shadowRoot.querySelector("#track")) {
+      if (newValue) {
+        this.shadowRoot.querySelector("#track").classList.add("show-icon");
+      } else {
+        this.shadowRoot.querySelector("#track").classList.remove("show-icon");
+      }
     }
   }
   __selectedChanged(selected, id) {

@@ -8,6 +8,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 /**
  * `lrnsys-outline`
+ * @customElement lrnsys-outline
  * `Outline that items can be shuffled around in`
  *
  * @demo demo/index.html

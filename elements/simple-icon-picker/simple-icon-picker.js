@@ -8,16 +8,17 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 
 /**
  * `simple-icon-picker`
+ * @customElement simple-icon-picker
  * Uses simple-picker to create an icon picker
  *
- * @customElement
+
  * @demo ./demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
   //styles function
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host(simple-icon-picker) #collapse {
           width: 300px;

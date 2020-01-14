@@ -4,12 +4,13 @@
  */
 /**
  * `lazy-import-discover`
+ * @customElement lazy-import-discover
  * `Break peoples' brains on simplifying webcomponent integrations`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class LazyImportDiscover extends HTMLElement {

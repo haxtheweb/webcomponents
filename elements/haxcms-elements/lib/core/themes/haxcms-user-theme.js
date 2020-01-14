@@ -13,7 +13,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  * `haxcms-custom-theme`
  * `This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

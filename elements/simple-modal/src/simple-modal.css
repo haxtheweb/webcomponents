@@ -13,7 +13,6 @@ paper-dialog-scrollable:not(:defined) {
 :host paper-dialog ::slotted(*) {
   font-size: 14px;
   width: 100%;
-  @apply --simple-modal-content;
 }
 
 #dialog {
@@ -28,7 +27,6 @@ paper-dialog-scrollable:not(:defined) {
   min-height: var(--simple-modal-min-height, unset);
   max-height: var(--simple-modal-max-height, unset);
   border-radius: 3px;
-  @apply --simple-modal-dialog;
 }
 
 #titlebar {
@@ -42,7 +40,6 @@ paper-dialog-scrollable:not(:defined) {
   border-radius: 3px 3px 0 0;
   height: 64px;
   line-height: 64px;
-  @apply --simple-modal-top;
 }
 
 #headerbar {
@@ -50,7 +47,6 @@ paper-dialog-scrollable:not(:defined) {
   padding: 0 16px;
   color: var(--simple-modal-header-color, #222);
   background-color: var(--simple-modal-header-background, #ccc);
-  @apply --simple-modal-headerbar;
 }
 
 h2 {
@@ -59,7 +55,6 @@ h2 {
   flex: auto;
   font-size: 18px;
   line-height: 18px;
-  @apply --simple-modal-title;
 }
 
 #close {
@@ -69,14 +64,12 @@ h2 {
   text-transform: none;
   color: var(--simple-modal-titlebar-color,#444);
   background-color: transparent;
-  @apply --simple-modal-close;
 }
 
 #close iron-icon {
   width: 16px;
   height: 16px;
   color: var(--simple-modal-titlebar-color,#444);
-  @apply --simple-modal-close-icon;
 }
 
 #simple-modal-content {
@@ -85,22 +78,16 @@ h2 {
   margin: 0;
   color: var(--simple-modal-content-container-color, #222);
   background-color: var(--simple-modal-content-container-background, #fff);
-  --paper-dialog-scrollable: {
-    padding: 0;
-  }
-  @apply --simple-modal-content-container;
 }
 .buttons {
   padding: 0;
   margin: 0;
   color: var(--simple-modal-buttons-color, unset);
   background-color: var(--simple-modal-buttons-background, unset);
-  @apply --simple-modal-buttons;
 }
 .buttons ::slotted(*) {
   padding: 0;
   margin: 0;
   color: var(--simple-modal-button-color,--simple-modal-buttons-color);
   background-color: var(--simple-modal-button-background,--simple-modal-buttons-background);
-  @apply --simple-modal-button;
 }

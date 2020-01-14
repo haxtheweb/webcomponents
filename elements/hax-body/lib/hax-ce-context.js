@@ -7,6 +7,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
  * required for populating input.`
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
+ * @customElement hax-ce-context
  */
 class HaxCeContext extends LitElement {
   /**
@@ -93,6 +94,15 @@ class HaxCeContext extends LitElement {
       haxProperties: {
         type: Object,
         attribute: "hax-properties"
+      },
+      __hasSettingsForm: {
+        type: Boolean
+      },
+      __hasParentSettingsForm: {
+        type: Boolean
+      },
+      __parentName: {
+        type: String
       }
     };
   }

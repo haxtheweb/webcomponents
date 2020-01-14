@@ -1,28 +1,20 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-toast/paper-toast.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
+ * @customElement multiple-choice
  */
-class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
-  static get tag() {
-    return "multiple-choice";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class MultipleChoice extends SchemaBehaviors(SimpleColors) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           padding: 16px 16px 54px 16px;
@@ -114,87 +106,163 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
         iron-icon {
           display: inline-flex;
         }
-      </style>
-      <meta property="oer:assessing" content\$="[[relatedResource]]" />
-      <h3 hidden\$="[[hideTitle]]">
-        <span property="oer:name">[[title]]</span>
-      </h3>
-      <div>[[question]]</div>
-      <template is="dom-if" if="[[singleOption]]" restamp>
-        <paper-radio-group>
-          <template
-            is="dom-repeat"
-            items="[[displayedAnswers]]"
-            as="answer"
-            mutable-data
-          >
-            <paper-radio-button
-              disabled\$="[[disabled]]"
-              property="oer:answer"
-              name$="[[index]]"
-              checked="{{answer.userGuess}}"
-              >[[answer.label]]</paper-radio-button
-            >
-          </template>
-        </paper-radio-group>
-      </template>
-      <template is="dom-if" if="[[!singleOption]]" restamp>
-        <ul>
-          <template
-            is="dom-repeat"
-            items="[[displayedAnswers]]"
-            as="answer"
-            mutable-data
-          >
-            <li>
-              <paper-checkbox
-                disabled\$="[[disabled]]"
-                property="oer:answer"
-                checked="{{answer.userGuess}}"
-                >[[answer.label]]</paper-checkbox
+      `
+    ];
+  }
+  static get tag() {
+    return "multiple-choice";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    this.randomize = false;
+    this.hideButtons = false;
+    this.title = "";
+    this.disabled = false;
+    this.singleOption = false;
+    this.checkLabel = "Check answer";
+    this.resetLabel = "Reset";
+    this.hideTitle = false;
+    this.question = "";
+    this.answers = [];
+    this.displayedAnswers = [];
+    this.correctText = "Great job!";
+    this.incorrectText = "Better luck next time!";
+    this.quizName = "default";
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["answers", "displayedAnswers"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["answers", "randomize"].includes(propName)) {
+        this.displayedAnswers = [
+          ...this._computeDisplayedAnswers(this.answers, this.randomize)
+        ];
+      }
+      // single option implies it's a radio group or if multiple, do check boxes
+      if (propName == "singleOption") {
+        this.singleOptionChanged(this[propName]);
+      }
+    });
+  }
+  singleOptionChanged(singleOption) {
+    if (singleOption) {
+      import("@polymer/paper-radio-group/paper-radio-group.js");
+      import("@polymer/paper-radio-button/paper-radio-button.js");
+    } else {
+      import("@polymer/paper-checkbox/paper-checkbox.js");
+    }
+  }
+  render() {
+    return html`
+      <meta property="oer:assessing" content="${this.relatedResource}" />
+      ${this.title
+        ? html`
+            <h3><span property="oer:name">${this.title}</span></h3>
+          `
+        : ``}
+      <div>${this.question}</div>
+      ${this.singleOption
+        ? html`
+            <paper-radio-group>
+              ${this.displayedAnswers.map(
+                (answer, index) => html`
+                  <paper-radio-button
+                    ?disabled="${this.disabled}"
+                    property="oer:answer"
+                    name="${index}"
+                    ?checked="${answer.userGuess}"
+                    @checked-changed="${this.checkedEvent}"
+                    >${answer.label}</paper-radio-button
+                  >
+                `
+              )}
+            </paper-radio-group>
+          `
+        : html`
+            <ul>
+              ${this.displayedAnswers.map(
+                (answer, index) => html`
+                  <li>
+                    <paper-checkbox
+                      ?disabled="${this.disabled}"
+                      property="oer:answer"
+                      name="${index}"
+                      ?checked="${answer.userGuess}"
+                      @checked-changed="${this.checkedEvent}"
+                      >${answer.label}</paper-checkbox
+                    >
+                  </li>
+                `
+              )}
+            </ul>
+          `}
+      ${!this.hideButtons
+        ? html`
+            <div id="buttons">
+              <paper-button
+                id="check"
+                ?disabled="${this.disabled}"
+                raised
+                @click="${this._verifyAnswers}"
+                >${this.checkLabel}</paper-button
               >
-            </li>
-          </template>
-        </ul>
-      </template>
-      <div id="buttons" hidden\$="[[hideButtons]]">
-        <paper-button
-          id="check"
-          disabled\$="[[disabled]]"
-          raised
-          on-click="_verifyAnswers"
-          >[[checkLabel]]</paper-button
-        >
-        <paper-button
-          id="reset"
-          disabled\$="[[disabled]]"
-          raised
-          on-click="resetAnswers"
-          >[[resetLabel]]</paper-button
-        >
-      </div>
+              <paper-button
+                id="reset"
+                ?disabled="${this.disabled}"
+                raised
+                @click="${this.resetAnswers}"
+                >${this.resetLabel}</paper-button
+              >
+            </div>
+          `
+        : ``}
       <paper-toast
         id="toast"
         scroll-action="cancel"
         duration="6000"
-        position-target="[[positionTarget]]"
-        class\$="fit-bottom [[__toastColor]]"
+        position-target="${this.positionTarget}"
+        class="fit-bottom ${this.__toastColor}"
       >
-        [[__toastText]]
-        <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>
+        ${this.__toastText}
+        <iron-icon
+          icon="${this.__toastIcon}"
+          style="margin-left:16px;"
+        ></iron-icon>
       </paper-toast>
     `;
+  }
+  checkedEvent(e) {
+    let attr = this.displayedAnswers;
+    attr[e.target.name].userGuess = e.detail.value;
+    this.displayedAnswers = [...attr];
   }
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title
        */
       title: {
-        type: String,
-        value: ""
+        type: String
       },
       positionTarget: {
         type: Object
@@ -203,131 +271,119 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
        * Support disabling interaction with the entire board
        */
       disabled: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Simple option, otherwise allow multiple via checkbox
        */
       singleOption: {
         type: Boolean,
-        value: false
+        attribute: "single-option"
       },
       /**
        * Text of the label to check your answer
        */
       checkLabel: {
         type: String,
-        value: "Check answer"
+        attribute: "check-label"
       },
       /**
        * Text of the reset button
        */
       resetLabel: {
         type: String,
-        value: "Reset"
+        attribute: "reset-label"
       },
       /**
        * Related Resource ID
        */
       relatedResource: {
-        type: String
+        type: String,
+        attribute: "related-resource"
       },
       /**
        * Flag to hide the title
        */
       hideTitle: {
         type: Boolean,
-        value: false
+        attribute: "hide-title"
       },
       /**
        * Question to ask
        */
       question: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * Array of possible answers
        */
       answers: {
-        type: Array,
-        value: [],
-        notify: true
+        type: Array
       },
       /**
        * Displayed Answer set.
        */
       displayedAnswers: {
-        type: Array,
-        computed: "_computeDisplayedAnswers(answers, randomize)",
-        observer: "_valueChanged",
-        notify: true
+        type: Array
       },
       /**
        * Correct answer text to display
        */
       correctText: {
         type: String,
-        value: "Great job!"
+        attribute: "correct-text"
       },
       /**
        * Incorrect answer text to display
        */
       incorrectText: {
         type: String,
-        value: "Better luck next time!"
+        attribute: "incorrect-text"
       },
       /**
        * Name of the quiz - hardcoded for now from HTML
        */
       quizName: {
         type: String,
-        value: "Default Quiz"
+        attribute: "quiz-name"
       },
       /**
        * Randomize the display of the answers
        */
       randomize: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * flag to hide buttons
        */
       hideButtons: {
         type: Boolean,
-        value: false
+        attribute: "hide-buttons"
+      },
+      __toastText: {
+        type: String
+      },
+      __toastColor: {
+        type: String
+      },
+      __toastIcon: {
+        type: String
       }
     };
   }
-  /**
-   * Notice an answer has changed and update the DOM.
-   */
-  _valueChanged(e) {
-    for (var i in e) {
-      for (var j in e[i]) {
-        this.notifyPath("displayedAnswers." + i + "." + j);
-      }
-    }
-  }
+
   /**
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
     this.shadowRoot.querySelector("#toast").hide();
-    // loop and force all answers to false
-    for (var i in this.displayedAnswers) {
-      if (this.displayedAnswers[i].userGuess) {
-        this.displayedAnswers[i].userGuess = false;
-      }
-    }
-    setTimeout(() => {
-      const answers = this.answers;
-      this.set("answers", []);
-      this.set("answers", answers);
-    }, 100);
+    this.displayedAnswers = [];
+    const answers = this.answers;
+    this.answers.forEach(el => {
+      el.userGuess = false;
+    });
+    this.answers = [...answers];
   }
 
   /**
@@ -434,7 +490,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
         groups: ["Instructional"],
         handles: [],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
@@ -553,25 +609,15 @@ class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
     });
     return detail;
   }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     if (this.shadowRoot.querySelector("#positionTarget")) {
       this.positionTarget = this.shadowRoot.querySelector("#positionTarget");
     }
-    // single option implies it's a radio group or if multiple, do check boxes
-    if (this.singleOption) {
-      import("@polymer/paper-radio-group/paper-radio-group.js");
-      import("@polymer/paper-radio-button/paper-radio-button.js");
-    } else {
-      import("@polymer/paper-checkbox/paper-checkbox.js");
-    }
     this.setAttribute("typeof", "oer:Assessment");
-    afterNextRender(this, function() {
-      this.shadowRoot.querySelector("#toast").fitInto = this;
-    });
+    this.shadowRoot.querySelector("#toast").fitInto = this;
   }
 }
 window.customElements.define(MultipleChoice.tag, MultipleChoice);

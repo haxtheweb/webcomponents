@@ -14,6 +14,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 class HaxPicker extends LitElement {
   constructor() {
     super();
+    this.opened = false;
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
@@ -35,7 +36,8 @@ class HaxPicker extends LitElement {
         }
       })
     );
-    this.appendChild(document.createElement(pickerTag));
+    this.picker = document.createElement(pickerTag);
+    this.appendChild(this.picker);
   }
   static get styles() {
     return [
@@ -93,18 +95,39 @@ class HaxPicker extends LitElement {
 
   render() {
     return html`
-      <app-drawer id="dialog" align="left" transition-duration="300">
-        <h3 class="title">${this.title}</h3>
+      <app-drawer
+        id="dialog"
+        @opened-changed="${this.openedChanged}"
+        ?opened="${this.opened}"
+        align="left"
+        transition-duration="300"
+      >
+        <h3 class="title">
+          <iron-icon icon="${this.icon}"></iron-icon> ${this.title}
+        </h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <slot></slot>
         </div>
-        <paper-button id="closedialog" @click="${this.close}">
+        <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
     `;
   }
-
+  openedChanged(e) {
+    // force close event to align data model if clicking away
+    if (!e.detail.value && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
+    }
+    if (e.detail.value && window.HaxStore.instance[this.refreshOnOpen]) {
+      this.picker[this.refreshOnOpen] = [
+        ...window.HaxStore.instance[this.refreshOnOpen]
+      ];
+    }
+  }
+  closeEvent(e) {
+    this.opened = false;
+  }
   static get properties() {
     return {
       /**
@@ -112,6 +135,12 @@ class HaxPicker extends LitElement {
        */
       title: {
         type: String
+      },
+      icon: {
+        type: String
+      },
+      opened: {
+        type: Boolean
       }
     };
   }
@@ -119,23 +148,13 @@ class HaxPicker extends LitElement {
    * open the dialog
    */
   open() {
-    this.shadowRoot.querySelector("#dialog").open();
+    this.opened = true;
   }
   /**
    * close the dialog
    */
   close() {
-    this.shadowRoot.querySelector("#dialog").close();
-  }
-  /**
-   * Toggle state.
-   */
-  toggleDialog() {
-    if (this.shadowRoot.querySelector("#dialog").opened) {
-      this.close();
-    } else {
-      window.HaxStore.instance.closeAllDrawers(this);
-    }
+    this.opened = false;
   }
 }
 
@@ -143,7 +162,9 @@ class HaxBloxPicker extends HaxPicker {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
-    this.title = "Layouts";
+    this.title = "Insert layout";
+    this.icon = "icons:view-column";
+    this.refreshOnOpen = "bloxList";
     // this sets everything else in motion correctly
     this.setupPicker("haxBloxPicker", "hax-blox-browser");
   }

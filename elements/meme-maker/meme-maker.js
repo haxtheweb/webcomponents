@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `meme-maker`
+ * @customElement meme-maker
  * Connects lrndesign-gallery to HAX
  * @demo demo/index.html
  * @microcopy - the mental model for this element
@@ -143,7 +144,7 @@ class MemeMaker extends LitElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

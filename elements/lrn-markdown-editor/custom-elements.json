@@ -1,0 +1,244 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-markdown-editor-editor",
+      "attributes": [
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-changed"
+        },
+        {
+          "name": "content-updated"
+        }
+      ]
+    },
+    {
+      "name": "lrn-markdown-editor",
+      "description": "`lrn-markdown-editor`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "elReady",
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-changed"
+        }
+      ]
+    },
+    {
+      "name": "lrn-markdown-editor",
+      "description": "`lrn-markdown-editor`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "elReady",
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "content-changed"
+        },
+        {
+          "name": "content-updated"
+        }
+      ]
+    },
+    {
+      "name": "lrn-markdown-editor",
+      "description": "`lrn-markdown-editor`",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "layout",
+          "attribute": "layout",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "content",
+          "attribute": "content",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "cookies",
+          "attribute": "cookies",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "elReady",
+          "attribute": "el-ready",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "content-changed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "full-width-image",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
+    },
+    {
+      "name": "full-width-image",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+      "attributes": [
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "full-width-image"
+    },
+    {
+      "name": "full-width-image",
+      "description": "`full-width-image`\n`full width image that flows beyond boundaries`"
+    }
+  ]
+}

@@ -5,57 +5,59 @@
 
 export const SchemaBehaviors = function(SuperClass) {
   return class extends SuperClass {
+    /**
+     * HTMLElement
+     */
+    constructor() {
+      super();
+      this.schemaResourceID = "";
+      this.schemaMap = {
+        prefix: {
+          oer: "http://oerschema.org/",
+          schema: "http://schema.org/",
+          dc: "http://purl.org/dc/terms/",
+          foaf: "http://xmlns.com/foaf/0.1/",
+          cc: "http://creativecommons.org/ns#",
+          bib: "http://bib.schema.org"
+        }
+      };
+    }
+    /**
+     * Popular convention across libraries
+     */
     static get properties() {
       return {
         ...super.properties,
-
         /**
          * Unique Resource ID, generated when schemaMap processes.
          */
         schemaResourceID: {
           type: String,
-          value: ""
+          attribute: "schema-resource-id"
         },
         /**
          * Schema Map for the element, used to generate a valid prefix on the fly
+         * Props set for Polymer compatibility
          */
         schemaMap: {
           type: Object,
           readOnly: true,
-          value: {
-            prefix: {
-              oer: "http://oerschema.org/",
-              schema: "http://schema.org/",
-              dc: "http://purl.org/dc/terms/",
-              foaf: "http://xmlns.com/foaf/0.1/",
-              cc: "http://creativecommons.org/ns#",
-              bib: "http://bib.schema.org"
-            }
-          },
           observer: "_schemaMapChanged"
         }
       };
     }
     /**
-     * Generate a uinque ID
+     * LitElement support
      */
-    generateResourceID() {
-      function idPart() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
+    updated(changedProperties) {
+      if (super.updated) {
+        super.updated(changedProperties);
       }
-      return (
-        "#" +
-        idPart() +
-        idPart() +
-        "-" +
-        idPart() +
-        "-" +
-        idPart() +
-        "-" +
-        idPart()
-      );
+      changedProperties.forEach((oldValue, propName) => {
+        if (propName == "schemaMap") {
+          this._schemaMapChanged(this[propName], oldValue);
+        }
+      });
     }
     /**
      * Notice the schema map has changed, reprocess attributes.
@@ -82,6 +84,27 @@ export const SchemaBehaviors = function(SuperClass) {
           this.setAttribute("prefix", prefix);
         }
       }
+    }
+    /**
+     * Generate a uinque ID
+     */
+    generateResourceID() {
+      function idPart() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+          .toString(16)
+          .substring(1);
+      }
+      return (
+        "#" +
+        idPart() +
+        idPart() +
+        "-" +
+        idPart() +
+        "-" +
+        idPart() +
+        "-" +
+        idPart()
+      );
     }
   };
 };

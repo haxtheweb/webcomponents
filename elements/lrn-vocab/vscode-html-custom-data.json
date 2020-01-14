@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `term` {`string`} - \n\nProperties:\n\n  * `term` {`string`} - ",
+      "attributes": [
+        {
+          "name": "term",
+          "description": "`term` {`string`} - \n\nProperty: term"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
+    },
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `term` {`string`} - \n\nProperties:\n\n  * `term` {`string`} - ",
+      "attributes": [
+        {
+          "name": "term",
+          "description": "`term` {`string`} - \n\nProperty: term"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `simple-modal-show` - ",
+      "attributes": [
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
+    },
+    {
+      "name": "lrn-vocab",
+      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` - \n\nAttributes:\n\n  * `term` {`string`} - \n\nProperties:\n\n  * `term` {`string`} - ",
+      "attributes": [
+        {
+          "name": "term",
+          "description": "`term` {`string`} - \n\nProperty: term"
+        },
+        {
+          "name": "onsimple-modal-show",
+          "description": "`simple-modal-show` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

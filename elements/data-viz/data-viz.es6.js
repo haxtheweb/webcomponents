@@ -21,12 +21,13 @@ window.DataViz.requestAvailability = () => {
 
 /**
  * `data-viz`
+ * @customElement data-viz
  * `display pouch-db data using graphs`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

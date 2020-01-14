@@ -17,19 +17,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "HAX-specific icons",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "hax-iconset.js",
   "module": "hax-iconset.es6.js",
   "umd": "hax-iconset.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-iconset/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
@@ -42,7 +43,7 @@
   "dependencies": {
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

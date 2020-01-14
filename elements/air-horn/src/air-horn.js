@@ -4,12 +4,13 @@
  */
 /**
  * `air-horn`
+ * @customElement air-horn
  * `demonstrative purposes via meme`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class AirHorn extends HTMLElement {
@@ -36,12 +37,9 @@ class AirHorn extends HTMLElement {
     if (!delayRender) {
       this.render();
     }
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    this.addEventListener("click", this._playSound.bind(this));
+    setTimeout(() => {
+      this.addEventListener("click", this._playSound.bind(this));
+    }, 0);
   }
 
   /**

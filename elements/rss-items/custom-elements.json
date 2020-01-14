@@ -1,0 +1,232 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "maxExcerptLength",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "maxTitleLength",
+          "type": "number",
+          "default": "50"
+        },
+        {
+          "name": "readMoreAnchorText",
+          "type": "string",
+          "default": "\"Read more\""
+        },
+        {
+          "name": "readMoreImageAlt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "showReadMore",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "The URL of the RSS.",
+          "type": "string"
+        },
+        {
+          "name": "xml",
+          "type": "object"
+        },
+        {
+          "name": "items",
+          "description": "The retrieved items array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "auto",
+          "description": "If true init rss request.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "max",
+          "description": "Max number of items to show. If it is undefined shows all items.",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "max-excerpt-length",
+          "description": "Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "max-title-length",
+          "description": "Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.",
+          "type": "number",
+          "default": "50"
+        },
+        {
+          "name": "read-more-anchor-text",
+          "description": "Read more anchor text.",
+          "type": "boolean",
+          "default": "\"Read more\""
+        },
+        {
+          "name": "read-more-image-alt",
+          "description": "Read more image alternative text.",
+          "type": "boolean",
+          "default": "\"\""
+        },
+        {
+          "name": "show-read-more",
+          "description": "If true the items elements will display a read more link.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "The URL of the RSS.",
+          "type": "string"
+        },
+        {
+          "name": "xml",
+          "attribute": "xml",
+          "type": "object"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "The retrieved items array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "If true init rss request.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "max",
+          "attribute": "max",
+          "description": "Max number of items to show. If it is undefined shows all items.",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "maxExcerptLength",
+          "attribute": "max-excerpt-length",
+          "description": "Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "maxTitleLength",
+          "attribute": "max-title-length",
+          "description": "Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.",
+          "type": "number",
+          "default": "50"
+        },
+        {
+          "name": "readMoreAnchorText",
+          "attribute": "read-more-anchor-text",
+          "description": "Read more anchor text.",
+          "type": "boolean",
+          "default": "\"Read more\""
+        },
+        {
+          "name": "readMoreImageAlt",
+          "attribute": "read-more-image-alt",
+          "description": "Read more image alternative text.",
+          "type": "boolean",
+          "default": "\"\""
+        },
+        {
+          "name": "showReadMore",
+          "attribute": "show-read-more",
+          "description": "If true the items elements will display a read more link.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "rss-items",
+      "description": "`rss-items`\n`visualize RSS items`\n\nExample:\n```html\n<rss-items\n  url=\"https://content.therapychat.com/rss.xml\"\n  max=\"4\"\n  auto\n></rss-items>\n```\nIt will retrieve the items from the url automatically.",
+      "properties": [
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "auto",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "maxExcerptLength",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "maxTitleLength",
+          "type": "number",
+          "default": "50"
+        },
+        {
+          "name": "readMoreAnchorText",
+          "type": "string",
+          "default": "\"Read more\""
+        },
+        {
+          "name": "readMoreImageAlt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "showReadMore",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

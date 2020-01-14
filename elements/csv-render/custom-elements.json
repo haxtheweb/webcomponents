@@ -1,0 +1,281 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "attribute": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "attribute": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "csv-render",
+      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Location of the CSV file.",
+          "type": "string"
+        },
+        {
+          "name": "caption",
+          "attribute": "caption",
+          "description": "Caption for the table to improve accessibility and readability.",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "attribute": "summary",
+          "description": "Summary to improve accessibility for screen readers.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "attribute": "table",
+          "description": "Table busted out as an array.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableHeadings",
+          "attribute": "tableHeadings",
+          "description": "Headings from the first row of the csv",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "tableData",
+          "attribute": "table-data",
+          "description": "Raw data pulled in from the csv file.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `paper-stepper`
+ * @customElement paper-stepper
  * `steps to completion in a vertical display`
  * @demo demo/index.html
  */

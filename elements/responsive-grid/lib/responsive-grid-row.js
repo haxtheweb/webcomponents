@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./responsive-grid-col.js";
 import "./responsive-grid-clear.js";
@@ -24,10 +24,13 @@ A LRN element
   </responsive-grid-row>
 
 */
-class ResponsiveGridRow extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class ResponsiveGridRow extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           width: 100%;
@@ -46,9 +49,8 @@ class ResponsiveGridRow extends PolymerElement {
           box-sizing: border-box;
         }
         #row-inner {
-          margin-left: -15px;
-          margin-right: -15px;
-          @apply --responsive-grid-row-inner;
+          margin-left: var(--responsive-grid-row-inner-margin-left, -15px);
+          margin-right: var(--responsive-grid-row-inner-margin-right, -15px);
         }
         :host #row-inner:before,
         :host #row-inner:after {
@@ -183,85 +185,53 @@ class ResponsiveGridRow extends PolymerElement {
         :host #row-inner[gutter="4"] ::slotted(* > #col-inner) {
           padding: 20px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <responsive-utility
-        sm\$="[[sm]]"
-        md\$="[[sm]]"
-        lg\$="[[lg]]"
-        xl\$="[[xl]]"
-        responsive-to-parent\$="[[responsiveToParent]]"
+        xs="${this.xs}"
+        sm="${this.sm}"
+        md="${this.md}"
+        lg="${this.lg}"
+        xl="${this.xl}"
+        responsive-to-parent="${this.responsiveToParent}"
       >
       </responsive-utility>
-      <div id="row-inner" screen\$="[[screen]]" gutter\$="[[gutter]]">
+      <div id="row-inner" screen="${this.screen}" gutter="${this.gutter}">
         <slot></slot>
       </div>
     `;
   }
-
+  /**
+   * convention
+   */
   static get tag() {
     return "responsive-grid-row";
   }
-
-  static get properties() {
-    return {
-      /**
-       * Custom small breakpoint
-       */
-      sm: {
-        type: Number,
-        value: null
-      },
-      /**
-       * Custom medium breakpoint
-       */
-      md: {
-        type: Number,
-        value: null
-      },
-      /**
-       * Custom large breakpoint
-       */
-      lg: {
-        type: Number,
-        value: null
-      },
-      /**
-       * Custom extra-large breakpoint
-       */
-      xl: {
-        type: Number,
-        value: null
-      },
-      /**
-       * the gutter-level for the columns from 0-4
-       */
-      gutter: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * make responsive based on a container instead of the window
-       */
-      responsiveToParent: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-      /*
-       * screen size: xs, sm, md, lg, or xl
-       */
-      screen: {
-        type: String,
-        value: "xs",
-        notify: true,
-        reflectToAttribute: true
-      }
-    };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.xl = null;
+    this.lg = null;
+    this.md = null;
+    this.sm = null;
+    this.xs = null;
+    this.gutter = 0;
+    this.responsiveToParent = false;
+    this.screen = "xs";
     window.ResponsiveUtility.requestAvailability();
+  }
+  /**
+   * LitElement ready
+   */
+  firstUpdated() {
     this.dispatchEvent(
       new CustomEvent("responsive-element", {
         bubbles: true,
@@ -274,6 +244,78 @@ class ResponsiveGridRow extends PolymerElement {
         }
       })
     );
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "screen") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("screen-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  static get properties() {
+    return {
+      /**
+       * Custom x-small breakpoint
+       */
+      xs: {
+        type: Number
+      },
+      /**
+       * Custom small breakpoint
+       */
+      sm: {
+        type: Number
+      },
+      /**
+       * Custom medium breakpoint
+       */
+      md: {
+        type: Number
+      },
+      /**
+       * Custom large breakpoint
+       */
+      lg: {
+        type: Number
+      },
+      /**
+       * Custom extra-large breakpoint
+       */
+      xl: {
+        type: Number
+      },
+      /**
+       * the gutter-level for the columns from 0-4
+       */
+      gutter: {
+        type: Number
+      },
+      /**
+       * make responsive based on a container instead of the window
+       */
+      responsiveToParent: {
+        type: Boolean,
+        reflect: true,
+        attribute: "responsive-to-parent"
+      },
+      /*
+       * screen size: xs, sm, md, lg, or xl
+       */
+      screen: {
+        type: String,
+        reflect: true
+      }
+    };
   }
 }
 window.customElements.define(ResponsiveGridRow.tag, ResponsiveGridRow);

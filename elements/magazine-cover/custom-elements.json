@@ -1,0 +1,359 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "magazine-cover",
+      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```",
+      "attributes": [
+        {
+          "name": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "header",
+          "attribute": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "attribute": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "attribute": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventName",
+          "attribute": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventData",
+          "attribute": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ]
+    },
+    {
+      "name": "magazine-cover",
+      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```",
+      "attributes": [
+        {
+          "name": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "header",
+          "attribute": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "attribute": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "attribute": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventName",
+          "attribute": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventData",
+          "attribute": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "magazine-cover",
+      "description": "`magazine-cover`\n`A Magazine cover element`\n  Example:\n  ```html\n  <magazine-cover image=\"demo/picture2.jpg\" header=\"Sunset\" action=\"Click, Breath, Relax\" link=\"https://www.elmsln.org/\">\n    A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.\n  </magazine-cover>\n  ```",
+      "attributes": [
+        {
+          "name": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "header",
+          "attribute": "header",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "subheader",
+          "attribute": "subheader",
+          "description": "A secondary title",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Internal text.",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Title / heading",
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "attribute": "action",
+          "description": "Call to action",
+          "type": "string",
+          "default": "\"Touch to learn more\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Call to action icon",
+          "type": "string",
+          "default": "\"trending-flat\""
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link to go to on click.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventName",
+          "attribute": "event-name",
+          "description": "Optional event binding for the button press.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "eventData",
+          "attribute": "event-data",
+          "description": "Optional event data to send along",
+          "type": "object",
+          "default": "{}"
+        }
+      ]
+    }
+  ]
+}

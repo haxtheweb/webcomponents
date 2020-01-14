@@ -19,12 +19,13 @@ window.RelativeHeadingStateManager.requestAvailability = () => {
 };
 /**
  * `relative-heading-state-manager`
+ * @customElement relative-heading-state-manager
  * `A utility that determines headings relative to their parents.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RelativeHeadingStateManager extends HTMLElement {

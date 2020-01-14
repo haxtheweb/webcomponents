@@ -1,0 +1,102 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Retro card",
+    "description": "Simple card in a cool retro design",
+    "icon": "icons:android",
+    "color": "purple",
+    "groups": ["Card"],
+    "handles": [
+      {
+        "type": "image",
+        "source2": "mediaSource",
+        "source": "hoverSource",
+        "alt": "subtitle",
+        "title": "title",
+        "name": "title"
+      }
+    ],
+    "meta": {
+      "author": "ELMS:LN",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "mediaSource",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "url",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android",
+        "validationType": "url"
+      },
+      {
+        "property": "subtitle",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "tags",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "mediaSource",
+        "description": "Primary media source",
+        "inputMethod": "haxupload",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "hoverSource",
+        "description": "When user hovers / activates the card",
+        "title": "Source on hover",
+        "inputMethod": "haxupload",
+        "required": false,
+        "validationType": "url",
+        "icon": "icons:android"
+      },
+      {
+        "property": "accentColor",
+        "description": "An accent to apply evenly to the card",
+        "title": "Accent Color",
+        "inputMethod": "colorpicker",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Flips the color mode to be dark mode",
+        "inputMethod": "boolean",
+        "required": false
+      }
+    ],
+    "advanced": []
+  }
+}

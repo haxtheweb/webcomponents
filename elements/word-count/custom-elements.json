@@ -1,0 +1,92 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "word-count",
+      "description": "`word-count`",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "attribute": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ]
+    },
+    {
+      "name": "word-count",
+      "description": "`word-count`",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "attribute": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "word-count",
+      "description": "`word-count`",
+      "attributes": [
+        {
+          "name": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "words",
+          "attribute": "words",
+          "type": "number"
+        },
+        {
+          "name": "wordsPrefix",
+          "attribute": "wordsPrefix",
+          "type": "string",
+          "default": "\"Word count:\""
+        }
+      ]
+    }
+  ]
+}

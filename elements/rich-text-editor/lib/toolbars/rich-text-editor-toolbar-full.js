@@ -12,7 +12,7 @@ import "./rich-text-editor-breadcrumbs.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ../demo/index.html demo
  * @demo ./demo/full.html toolbar with breadcrumb

@@ -1,0 +1,170 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "person-testimonial",
+      "description": "`person-testimonial`",
+      "attributes": [
+        {
+          "name": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "person-testimonial",
+      "description": "`person-testimonial`",
+      "attributes": [
+        {
+          "name": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "person-testimonial",
+      "description": "`person-testimonial`",
+      "attributes": [
+        {
+          "name": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "Visual height of the card.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "The profile image to display to the left of the quote.",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of the person making the quote.",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "The title / position of the person in question.",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

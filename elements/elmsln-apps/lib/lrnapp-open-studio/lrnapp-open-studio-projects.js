@@ -1,28 +1,17 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
-class LrnappOpenStudioProjects extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles"></style>
-      <style>
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
+class LrnappOpenStudioProjects extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
         :host {
           display: block;
           align-content: center;
-        }
-        #loading {
-          width: 100%;
-          z-index: 1000;
-          opacity: 0.8;
-          text-align: center;
-          align-content: center;
-          justify-content: center;
-          height: 100vh;
-          position: absolute;
-          background-color: white;
         }
         h1.empty-title,
         h1.project-title {
@@ -44,127 +33,208 @@ class LrnappOpenStudioProjects extends PolymerElement {
           word-break: break-all;
           word-wrap: break-word;
         }
-      </style>
-      <template is="dom-if" if="[[!showSubmissions]]">
-        <h1 class="empty-title black-text">
-          Please select an Author and Project in order to review their portfolio
-        </h1>
-      </template>
-      <template is="dom-if" if="[[showSubmissions]]">
-        <h1 class="project-title black-text">
-          [[activeProject.attributes.title]]
-        </h1>
-        <div class="project-steps">
-          <template
-            is="dom-repeat"
-            items="[[activeProject.attributes.steps]]"
-            as="assignment"
-          >
-            <lrnsys-button
-              icon\$="[[_getSubmissionIcon(assignment.id)]]"
-              icon-class\$="[[_getSubmissionClass(assignment.id)]]"
-              on-click="_scrollToTarget"
-              label="[[assignment.title]]"
-              data-assignment-id\$="[[assignment.id]]"
-              class="project-step"
-              hover-class="blue white-text"
-              raised=""
-              hidden\$="[[!assignment.title]]"
-            ></lrnsys-button>
-          </template>
-        </div>
-        <template is="dom-repeat" items="[[renderSubmissions]]" as="submission">
-          <a
-            name="[[submission.relationships.assignment.title]]"
-            class\$="assignment-[[submission.relationships.assignment.id]]"
-            ><h2 class="assignment-title">
-              [[submission.relationships.assignment.title]]
-            </h2></a
-          >
-          <lrnapp-studio-submission-display
-            submission="[[submission]]"
-            class="ferpa-protect"
-          ></lrnapp-studio-submission-display>
-        </template>
-      </template>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
+    import("@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js");
+  }
+  render() {
+    return html`
+      ${this.showSubmissions
+        ? html`
+            <h1 class="project-title black-text">
+              ${this.activeProject.attributes.title}
+            </h1>
+            <div class="project-steps">
+              ${this.activeProject.attributes.steps.map(
+                assignment => html`
+                  <lrnsys-button
+                    icon="${this._getSubmissionIcon(assignment.id)}"
+                    icon-class="${this._getSubmissionClass(assignment.id)}"
+                    @click="${this._scrollToTarget}"
+                    label="${assignment.title}"
+                    data-assignment-id="${assignment.id}"
+                    class="project-step"
+                    hover-class="blue white-text"
+                    raised=""
+                    ?hidden="${!assignment.title}"
+                  ></lrnsys-button>
+                `
+              )}
+            </div>
+            ${this.renderSubmissions.map(
+              submission => html`
+                <a
+                  name="${submission.relationships.assignment.title}"
+                  class="assignment-${submission.relationships.assignment.id}"
+                  ><h2 class="assignment-title">
+                    ${submission.relationships.assignment.title}
+                  </h2></a
+                >
+                <lrnapp-studio-submission-display
+                  .submission="${submission}"
+                  class="ferpa-protect"
+                ></lrnapp-studio-submission-display>
+              `
+            )}
+          `
+        : html`
+            <h1 class="empty-title black-text">
+              Please select an Author and Project in order to review their
+              portfolio
+            </h1>
+          `}
     `;
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        ["submissions", "activeProject", "activeAuthorId"].includes(propName)
+      ) {
+        this.renderSubmissions = this._renderSubmissionsCompute(
+          this.submissions,
+          this.activeProject,
+          this.activeAuthorId
+        );
+      }
+      if (propName == "renderSubmissions") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("render-submissions-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "projects") {
+        this.showSubmissions = this._activeProjectCompute(
+          this.activeProjectId,
+          this.activeAuthorId
+        );
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("projects-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "activeAuthorId") {
+        this.showSubmissions = this._showSubmissions(
+          this.activeProjectId,
+          this.activeAuthorId
+        );
+      }
+      if (propName == "activeProjectId") {
+        this.showSubmissions = this._showSubmissions(
+          this.activeProjectId,
+          this.activeAuthorId
+        );
+        this.activeProject = this._activeProjectCompute(
+          this.activeProjectId,
+          this.projects
+        );
+      }
+      if (propName == "submissions") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submissions-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "sourcePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("source-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "basePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("base-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   static get tag() {
     return "lrnapp-open-studio-projects";
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       /**
        * The projects that exist so we can make other calls for data
        */
       projects: {
-        type: Array,
-        notify: true
+        type: Array
       },
       /**
        * The submissions that exist so we can make other calls for data
        */
       submissions: {
-        type: Array,
-        notify: true
+        type: Array
       },
       /**
        * The renderSubmissions we kick to the screen
        */
       renderSubmissions: {
-        type: Array,
-        notify: true,
-        computed:
-          "_renderSubmissionsCompute(submissions, activeProject, activeAuthorId)"
+        type: Array
       },
       activeProjectId: {
         type: String,
-        reflectToAttribute: true,
-        value: null
+        reflect: true,
+        attribute: "active-project-id"
       },
       activeProject: {
-        type: Object,
-        computed: "_activeProjectCompute(activeProjectId, projects)"
+        type: Object
       },
       activeAuthorId: {
         type: String,
-        reflectToAttribute: true,
-        value: null
+        reflect: true
       },
       showSubmissions: {
-        type: Boolean,
-        computed: "_showSubmissions(activeProjectId, activeAuthorId)",
-        value: false
+        type: Boolean
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
-        type: String,
-        notify: true
-      },
-      /**
-       * base path for the app
-       */
-      basePath: {
-        type: String,
-        notify: true
+        type: String
       }
     };
   }
@@ -248,12 +318,6 @@ class LrnappOpenStudioProjects extends PolymerElement {
         behavior: "smooth"
       });
     }
-  }
-  /**
-   * Handle response for the whole projects object.
-   */
-  _handleResponse(event) {
-    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   /**
    * Simple way to convert from object to array.

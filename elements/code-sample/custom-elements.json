@@ -1,0 +1,77 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "properties": [
+        {
+          "name": "theme",
+          "default": "\"oneDark\""
+        },
+        {
+          "name": "copyClipboardButton",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "attributes": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "type": "string",
+          "default": "\"oneDark\""
+        },
+        {
+          "name": "copy-clipboard-button",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string"
+        },
+        {
+          "name": "theme",
+          "attribute": "theme",
+          "type": "string",
+          "default": "\"oneDark\""
+        },
+        {
+          "name": "copyClipboardButton",
+          "attribute": "copy-clipboard-button",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "code-sample",
+      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+      "properties": [
+        {
+          "name": "theme",
+          "default": "\"oneDark\""
+        },
+        {
+          "name": "copyClipboardButton",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}

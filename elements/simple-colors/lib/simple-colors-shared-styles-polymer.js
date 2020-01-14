@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `simple-colors-shared-styles-polymer`
+ * @customElement simple-colors-shared-styles-polymer
  * a shared set of styles for Polymer @lrnwebcomponents
  *
  * @pseudoElement

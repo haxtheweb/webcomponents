@@ -1,0 +1,147 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`",
+      "attributes": [
+        {
+          "name": "hax-schema",
+          "description": "schema to extract for whatever you wanted it for",
+          "type": "string"
+        },
+        {
+          "name": "configure-schema",
+          "description": "configure form schema to extract for whatever you wanted it for",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "advanced-schema",
+          "description": "advanced form schema to extract for whatever you wanted it for",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "source",
+          "description": "Optional remote source to pull in",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "String based value passed between the elements to stitch together",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "haxSchema",
+          "attribute": "hax-schema",
+          "description": "schema to extract for whatever you wanted it for",
+          "type": "string"
+        },
+        {
+          "name": "configureSchema",
+          "attribute": "configure-schema",
+          "description": "configure form schema to extract for whatever you wanted it for",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "advancedSchema",
+          "attribute": "advanced-schema",
+          "description": "advanced form schema to extract for whatever you wanted it for",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Optional remote source to pull in",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "String based value passed between the elements to stitch together",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "haxschema-builder",
+      "description": "`haxschema-builder`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

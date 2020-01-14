@@ -6,17 +6,14 @@ import { html, css } from "lit-element/lit-element.js";
 import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement haxor-slevin
  */
 class HaxorSlevin extends HAXCMSLitElementTheme {
   static get styles() {
@@ -299,6 +296,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           </div>
           <div>
             <site-modal
+              @site-modal-click="${this.siteModalClick}"
               icon="icons:search"
               title="Search site"
               button-label="Search"
@@ -309,7 +307,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         </app-toolbar>
       </app-header>
       <div class="wrapper">
-        <iron-pages selected="${this.selectedPage}">
+        <iron-pages .selected="${this.selectedPage}">
           <div id="home">
             <site-query
               @result-changed="${this.__mainPostsChanged}"
@@ -567,8 +565,15 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       return manifest.metadata.theme.variables.hexCode;
     }
   }
+  /**
+   * Delay importing site-search until we click to open it directly
+   */
+  siteModalClick(e) {
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+  }
   constructor() {
     super();
+    this.__disposer = [];
     this.__mainPosts = [];
     this.__extraPosts = [];
     this.__followUpPosts = [];
@@ -595,7 +600,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/iron-icons/places-icons.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
     autorun(reaction => {
       let location = toJS(store.location);
@@ -674,6 +678,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         left: 0
       });
       this.selectedPage = 1;
+      // @todo hacky timing thing
+      setTimeout(() => {
+        // try scrolling to the target ID after content gets imported
+        window.AnchorBehaviors.getTarget(store.themeElement);
+      }, 1000);
     }
     setTimeout(() => {
       var evt = document.createEvent("UIEvents");

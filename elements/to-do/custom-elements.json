@@ -1,0 +1,248 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "attribute": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabledList",
+          "attribute": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "attribute": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabledList",
+          "attribute": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "to-do",
+      "description": "`to-do`",
+      "attributes": [
+        {
+          "name": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideForm",
+          "attribute": "hide-form",
+          "description": "Allow for hiding the input form for new data.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabledList",
+          "attribute": "disabled-list",
+          "description": "Whether or not the list of items is disabled\ncheckboxes.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this to do list",
+          "type": "string",
+          "default": "\"To do list\""
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "Items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

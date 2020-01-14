@@ -1,48 +1,61 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-class LrnappBlockRecentSubmissions extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="paper-item-styles">
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
+class LrnappBlockRecentSubmissions extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
         paper-button {
           width: 100%;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         auto=""
-        url="{{sourcePath}}"
+        url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{response}}"
-        on-response="handleResponse"
+        @last-response-changed="${this.responseEvent}"
+        @response="${this.handleResponse}"
       ></iron-ajax>
-      <div id="loading">
-        <h3>Loading..</h3>
-        <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-      </div>
-      <iron-list items="[[_toArray(response.data)]]" as="item">
-        <template>
-          <paper-button on-click="_loadSubmissionUrl">
-            <lrndesign-gallerycard
-              data-submission-id\$="[[item.id]]"
-              title="[[item.attributes.title]]"
-              author="[[item.relationships.author.data]]"
-              comments="[[item.meta.comment_count]]"
-              image="[[item.display.image]]"
-              icon="[[item.display.icon]]"
-              class="ferpa-protect"
-            >
-            </lrndesign-gallerycard>
-          </paper-button>
-        </template>
-      </iron-list>
+      <hexagon-loader
+        id="loader"
+        item-count="4"
+        ?loading=${this.loading}
+        size="small"
+      ></hexagon-loader>
+      ${this.response
+        ? this._toArray(this.response.data).map(
+            item => html`
+              <paper-button @click="${this._loadSubmissionUrl}">
+                <lrndesign-gallerycard
+                  data-submission-id="${item.id}"
+                  title="${item.attributes.title}"
+                  author="${item.relationships.author.data}"
+                  comments="${item.meta.comment_count}"
+                  image="${item.display.image}"
+                  icon="${item.display.icon}"
+                  class="ferpa-protect"
+                >
+                </lrndesign-gallerycard>
+              </paper-button>
+            `
+          )
+        : ``}
     `;
+  }
+  responseEvent(e) {
+    this.response = { ...e.detail.value };
   }
   static get tag() {
     return "lrnapp-block-recent-submissions";
@@ -50,29 +63,59 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       response: {
-        type: Array,
-        notify: true
+        type: Object
+      },
+      loading: {
+        type: Boolean
       }
     };
+  }
+  constructor() {
+    super();
+    this.loading = true;
+    this.response = {};
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["sourcePath", "response"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * Handle tap on paper-button above to redirect to the correct submission url.
@@ -86,7 +129,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   }
   handleResponse(e) {
-    this.shadowRoot.querySelector("#loading").hidden = true;
+    this.loading = false;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

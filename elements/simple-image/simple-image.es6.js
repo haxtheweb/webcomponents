@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `simple-image`
+ * @customElement simple-image
  * `A minimalist image that modals and presents info cleanly.`
  * @demo demo/index.html
  */
@@ -174,7 +175,9 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
               <paper-tooltip for="closearea" position="bottom" offset="14">
                 close modal
               </paper-tooltip>
-              <div class="content"><img src\$="[[src]]" alt\$="[[alt]]" /></div>
+              <div class="content">
+                <img loading="lazy" src\$="[[src]]" alt\$="[[alt]]" />
+              </div>
 
               <div class="meta">
                 <div class="credit">[[credit]]</div>
@@ -280,7 +283,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

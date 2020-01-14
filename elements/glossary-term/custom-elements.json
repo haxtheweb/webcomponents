@@ -1,0 +1,133 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "definition",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "serviceType",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "definition",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "serviceType",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "attribute": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "definition",
+          "attribute": "definition",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "display",
+          "attribute": "display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "serviceType",
+          "attribute": "serviceType",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "endpoint",
+          "attribute": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`",
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "definition",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "display",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "serviceType",
+          "type": "string",
+          "default": "\"file\""
+        },
+        {
+          "name": "endpoint",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

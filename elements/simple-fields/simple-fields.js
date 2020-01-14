@@ -4,19 +4,20 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
-import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-fields`
+ * @customElement simple-fields
  * `Uses eco-json-form and HAX wiring to display a series of fields`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html
  */

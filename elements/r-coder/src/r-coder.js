@@ -2,22 +2,15 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `r-coder`
  * `R coder interface for the r-service backend.`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement r-coder
  */
-class RCoder extends PolymerElement {
+class RCoder extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -30,12 +23,19 @@ class RCoder extends PolymerElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.ping();
     this.shadowRoot.getElementById(
       "editor"
     ).editorValue = this.textContent.trim();
+  }
+  constructor() {
+    super();
+    this.endpoint = "/service/r-service";
+    setTimeout(() => {
+      import("@polymer/paper-button/paper-button.js");
+      import("@lrnwebcomponents/code-editor/code-editor.js");
+    }, 0);
   }
 
   async ping() {

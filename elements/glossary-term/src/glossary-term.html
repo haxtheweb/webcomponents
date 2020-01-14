@@ -1,8 +1,5 @@
-<template is="dom-if" if="[[!_fallback]]">
-  <lrn-vocab term="[[display]]">
-    <div>[[definition]]</div>
-  </lrn-vocab>
-</template>
-<template is="dom-if" if="[[_fallback]]">
-  <slot></slot>
-</template>
+${this._fallback ? html`<slot></slot>` : `
+<lrn-vocab term="${this.display}">
+  <div>${this.definition}</div>
+</lrn-vocab>
+`}

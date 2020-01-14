@@ -1,0 +1,215 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "attribute": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "attribute": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "attribute": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "attribute": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "hero-banner",
+      "description": "`hero-banner`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"Title\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image",
+          "type": "string"
+        },
+        {
+          "name": "details",
+          "attribute": "details",
+          "description": "Details / teaser text",
+          "type": "string",
+          "default": "\"Details\""
+        },
+        {
+          "name": "buttonText",
+          "attribute": "buttonText",
+          "description": "button label",
+          "type": "string",
+          "default": "\"Find out more\""
+        },
+        {
+          "name": "buttonLink",
+          "attribute": "buttonLink",
+          "description": "url for the button",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "user-action",
+      "description": "`user-action`",
+      "attributes": [
+        {
+          "name": "track"
+        },
+        {
+          "name": "eventname"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "UserActionBroker"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"user-action\""
+        }
+      ]
+    },
+    {
+      "name": "user-action",
+      "description": "`user-action`",
+      "attributes": [
+        {
+          "name": "every",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visiblelimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "track",
+          "type": "string",
+          "default": "\"visibility\""
+        },
+        {
+          "name": "eventname",
+          "type": "string",
+          "default": "\"user-engagement\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "every",
+          "attribute": "every",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visiblelimit",
+          "attribute": "visiblelimit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "track",
+          "attribute": "track",
+          "type": "string",
+          "default": "\"visibility\""
+        },
+        {
+          "name": "eventname",
+          "attribute": "eventname",
+          "type": "string",
+          "default": "\"user-engagement\""
+        },
+        {
+          "name": "UserActionBroker"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"user-action\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "user-action",
+      "description": "`user-action`",
+      "attributes": [
+        {
+          "name": "track"
+        },
+        {
+          "name": "eventname"
+        }
+      ],
+      "properties": [
+        {
+          "name": "UserActionBroker"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"user-action\""
+        }
+      ]
+    }
+  ]
+}

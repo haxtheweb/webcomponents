@@ -1,13 +1,17 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `parallax-image`
  * @demo demo/index.html
+ * @customElement parallax-image
  */
-class ParallaxImage extends SchemaBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class ParallaxImage extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           --parallax-image-background: "";
@@ -56,17 +60,18 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
             font-size: 16px;
           }
         }
-      </style>
-
-      <a href="[[url]]" target$="[[_urlTarget(url)]]">
-        <div class="parallax_container">
-          <div id="bgParallax" class="parallax">
-            <div class="title" id="titleParallax">
-              <slot name="parallax_heading"></slot>
-            </div>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <div class="parallax_container">
+        <div id="bgParallax" class="parallax">
+          <div class="title" id="titleParallax">
+            <slot name="parallax_heading"></slot>
           </div>
         </div>
-      </a>
+      </div>
     `;
   }
 
@@ -77,70 +82,47 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Image
        */
       imageBg: {
         type: String,
-        value: "",
-        reflectToAttribute: true
-      },
-      /**
-       * Url
-       */
-      url: {
-        type: String,
-        value: "",
-        reflectToAttribute: true
+        attribute: "image-bg",
+        reflect: true
       }
     };
   }
-
-  static get observers() {
-    return ["__updateStyles(imageBg)"];
+  constructor() {
+    super();
+    this.imageBg = "";
   }
-
-  _urlTarget(url) {
-    if (url) {
-      const external = this._outsideLink(url);
-      if (external) {
-        return "_blank";
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "imageBg") {
+        this.style.setProperty(
+          "--parallax-image-background",
+          `url(${this.imageBg})`
+        );
       }
-    }
-    return false;
+    });
   }
-  /**
-   * Internal function to check if a url is external
-   */
-  _outsideLink(url) {
-    if (url.indexOf("http") != 0) return false;
-    var loc = location.href,
-      path = location.pathname,
-      root = loc.substring(0, loc.indexOf(path));
-    return url.indexOf(root) != 0;
-  }
-  __updateStyles(imageBg) {
-    this.updateStyles({ "--parallax-image-background": `url(${imageBg})` });
-  }
-  ready() {
-    super.ready();
+
+  scrollBy(e) {
     const bgParallax = this.shadowRoot.querySelector("#bgParallax");
     const titleParallax = this.shadowRoot.querySelector("#titleParallax");
-    window.addEventListener("scroll", e => {
-      const yParallaxPosition = window.scrollY * -0.2;
-      const yParallaxPositionTitle = yParallaxPosition * 1.4;
-      bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
-      titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
-    });
+    const yParallaxPosition = window.scrollY * -0.2;
+    const yParallaxPositionTitle = yParallaxPosition * 1.4;
+    bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
+    titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    setTimeout(() => {
+      window.addEventListener("scroll", this.scrollBy.bind(this));
+    }, 0);
   }
   disconnectedCallback() {
-    window.removeEventListener("scroll", e => {
-      const yParallaxPosition = window.scrollY * -0.2;
-      const yParallaxPositionTitle = yParallaxPosition * 1.4;
-      bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
-      titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
-    });
+    window.removeEventListener("scroll", this.scrollBy.bind(this));
     super.disconnectedCallback();
   }
   static get haxProperties() {
@@ -149,38 +131,43 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Sample gizmo",
-        description: "The user will be able to see this for selection in a UI.",
+        title: "Parallax image",
+        description: "Image scroll by",
         icon: "av:play-circle-filled",
         color: "grey",
-        groups: ["Video", "Media"],
+        groups: ["Image", "Media"],
         handles: [
           {
-            type: "video",
+            type: "image",
             url: "source"
           }
         ],
         meta: {
-          author: "Your organization on github"
+          author: "ELMS:LN"
         }
       },
       settings: {
         quick: [
           {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            property: "imageBg",
+            title: "Image",
+            description: "image",
+            inputMethod: "haxupload",
+            icon: "image"
           }
         ],
         configure: [
           {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            property: "imageBg",
+            title: "Image",
+            description: "image to be involved in the background",
+            inputMethod: "haxupload"
+          },
+          {
+            slot: "parallax_heading",
+            title: "Heading area",
+            description: "Heading text area",
+            inputMethod: "textarea"
           }
         ],
         advanced: []

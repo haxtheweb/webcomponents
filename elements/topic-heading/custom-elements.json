@@ -1,0 +1,70 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "topic-heading",
+      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "topic-heading",
+      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "topic-heading",
+      "description": "`topic-heading`\n`Semantic and visual meaning behind a heading break`",
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

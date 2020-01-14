@@ -1,0 +1,656 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrnsys-button",
+      "description": "`lrnsys-button`",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "attribute": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "showHref",
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "buttonClass",
+          "attribute": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "attribute": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "attribute": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "attribute": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "attribute": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-button",
+      "description": "`lrnsys-button`",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "attribute": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "showHref",
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "buttonClass",
+          "attribute": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "attribute": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "attribute": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "attribute": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "attribute": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrnsys-button",
+      "description": "`lrnsys-button`",
+      "attributes": [
+        {
+          "name": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "href",
+          "attribute": "href",
+          "description": "Standard href pass down",
+          "type": "string",
+          "default": "\"#\""
+        },
+        {
+          "name": "showHref",
+          "attribute": "show-href",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "description": "If the button should be visually lifted off the UI.",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label to place in the text area",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "Support for target to open in new windows.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "hoverClass",
+          "attribute": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "type": "string"
+        },
+        {
+          "name": "buttonClass",
+          "attribute": "button-class",
+          "description": "Button class.",
+          "type": "string"
+        },
+        {
+          "name": "iconClass",
+          "attribute": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
+          "type": "string"
+        },
+        {
+          "name": "innerClass",
+          "attribute": "inner-class",
+          "description": "Inner container classes.",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "attribute": "text-color",
+          "description": "materializeCSS color class for text",
+          "type": "string"
+        },
+        {
+          "name": "prefetch",
+          "attribute": "prefetch",
+          "description": "Allow for prefetch data automatically",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt via tooltip.",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disabled state.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

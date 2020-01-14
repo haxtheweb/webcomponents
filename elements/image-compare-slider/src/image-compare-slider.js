@@ -1,28 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `image-compare-slider`
  * Layers images over each other with a slider interface to compare them
- * @microcopy - the mental model for this element
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement image-compare-slider
  */
-class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/user-action/user-action.js");
-    import("@polymer/iron-image/iron-image.js");
-    import("@polymer/paper-slider/paper-slider.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class ImageCompareSlider extends SchemaBehaviors(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           width: 100%;
-          @apply --image-compare-slider;
         }
         :host > div,
         :host #container,
@@ -32,7 +25,6 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
         :host #container {
           background-size: cover;
           overflow: visible;
-          @apply --image-compare-slider-container;
         }
         :host #top {
           background-size: auto 100%;
@@ -41,13 +33,23 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
         :host #slider {
           width: calc(100% + 30px);
           margin-left: -15px;
-          @apply --image-compare-slider-control;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.opacity = false;
+    import("@lrnwebcomponents/user-action/user-action.js");
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/paper-slider/paper-slider.js");
+  }
+  render() {
+    return html`
       <div>
-        <h2>[[title]]</h2>
-        <div id="container" style$="background-image: url([[bottomSrc]]);">
-          <div id="top" style$="background-image: url([[topSrc]]);"></div>
+        <h2>${this.title}</h2>
+        <div id="container" style="background-image: url(${this.bottomSrc});">
+          <div id="top" style="background-image: url(${this.topSrc});"></div>
         </div>
         <user-action track="click">
           <paper-slider id="slider" value="50"></paper-slider>
@@ -60,14 +62,10 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
   static get tag() {
     return "image-compare-slider";
   }
-  static get observers() {
-    return ["_setStyles(width,height,sliderPercent)"];
-  }
 
   static get properties() {
     return {
       ...super.properties,
-
       /**
        * Title
        */
@@ -79,22 +77,30 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
        */
       topSrc: {
         type: String,
-        observer: "_updateAspect"
+        attribute: "top-src"
       },
       /**
        * mode for the slider: wipe
        */
       opacity: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * src for top image
        */
       bottomSrc: {
-        type: String
+        type: String,
+        attribute: "bottom-src"
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["topSrc"].includes(propName)) {
+        this._updateAspect();
+        this._slide();
+      }
+    });
   }
   static get haxProperties() {
     return {
@@ -117,7 +123,7 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {
@@ -168,10 +174,7 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
       }
     };
   }
-  ready() {
-    super.ready();
-    this._updateAspect();
-    this._slide();
+  firstUpdated() {
     this.shadowRoot
       .querySelector("#slider")
       .addEventListener("immediate-value-changed", e => {

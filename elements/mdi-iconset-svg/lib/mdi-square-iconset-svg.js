@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-square-iconset-svg` is a iconset for the Material Design Icons collection with the "square" tag
+ * `mdi-square-iconset-svg`
+ * @customElement mdi-square-iconset-svg is a iconset for the Material Design Icons collection with the "square" tag
  *
  * Example:
  *   <iron-icon icon="mdi-square:rss-box"></iron-icon>

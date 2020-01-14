@@ -4,12 +4,13 @@
  */
 /**
  * `random-item`
+ * @customElement random-item
  * `show a random item from a list of items`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class RandomItem extends HTMLElement {

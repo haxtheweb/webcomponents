@@ -118,7 +118,7 @@ class LrndesignPanelcard extends SimpleColorsPolymer {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

@@ -1,0 +1,309 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrnsys-outline",
+      "description": "`lrnsys-outline`",
+      "attributes": [
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array"
+        },
+        {
+          "name": "active-item",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "active-item",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-outline",
+      "description": "`lrnsys-outline`",
+      "attributes": [
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array"
+        },
+        {
+          "name": "active-item",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "active-item",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-outline-item",
+      "description": "`lrnsys-outline-item`\nA LRN element",
+      "attributes": [
+        {
+          "name": "indent-level",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "index",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "indentLevel",
+          "attribute": "indent-level",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "index",
+          "attribute": "index",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "focusState",
+          "attribute": "focus-state",
+          "description": "Tracks if focus state is applied",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "attached-item"
+        },
+        {
+          "name": "focus-item"
+        },
+        {
+          "name": "delete-item"
+        },
+        {
+          "name": "indent-item"
+        },
+        {
+          "name": "add-item"
+        },
+        {
+          "name": "move-item"
+        },
+        {
+          "name": "change-item"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-outline",
+      "description": "`lrnsys-outline`",
+      "attributes": [
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array"
+        },
+        {
+          "name": "active-item",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "active-item",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "simple-modal-hide"
+        }
+      ]
+    }
+  ]
+}

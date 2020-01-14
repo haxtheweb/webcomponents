@@ -7,12 +7,13 @@ import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/l
 import { MathTex } from "@lrnwebcomponents/lrn-math/lrn-math.js";
 /**
  * `hax-text-editor-math`
+ * @customElement hax-text-editor-math
  * `a math button for hax text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class HaxTextEditorMath extends RichTextEditorPromptButton {

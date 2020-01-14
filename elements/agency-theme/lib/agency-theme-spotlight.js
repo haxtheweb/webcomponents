@@ -1,43 +1,20 @@
 /**
- * Copyright 2019 Gotham University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `agency-theme-body`
  * `HAX theme to present an agency style site.`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
+ * @customElement agency-theme-body
  */
-class AgencyThemeSpotlight extends PolymerElement {
+class AgencyThemeSpotlight extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "agency-theme-spotlight";
-  }
-
-  static get properties() {
-    return {
-      image: { type: String }
-    };
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           --agency-theme-spotlight-image-height: 10em;
           --agency-theme-spotlight-content-padding: 3vw;
@@ -89,12 +66,28 @@ class AgencyThemeSpotlight extends PolymerElement {
         .title {
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           margin-bottom: 1em;
-          @apply --agency-theme-spotlight-margin;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "agency-theme-spotlight";
+  }
+
+  static get properties() {
+    return {
+      image: { type: String }
+    };
+  }
+  // render function
+  render() {
+    return html`
       <div class="inner">
         <div class="image">
-          <img loading="lazy" src="[[image]]" alt="" />
+          <img loading="lazy" src="${this.image}" alt="" />
         </div>
         <div class="content">
           <div class="title"><slot name="title"></slot></div>

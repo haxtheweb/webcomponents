@@ -14,7 +14,7 @@ import "@polymer/iron-list/iron-list.js";
  *  which allows you to build things that just work using JSON Outline Schema as it's "backend"
  * and then IF hax is around it'll show up :)`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
@@ -43,20 +43,11 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles">
+      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
         :host {
           display: block;
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
-        }
-        site-render-query.cardlist {
-          --site-query-iron-list: {
-            padding: 16px;
-            margin: 0 auto;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-          }
         }
         paper-card {
           width: 200px;
@@ -105,12 +96,6 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           --site-children-block-button-active: {
             background-color: #37474f;
             color: #ffffff;
-          }
-        }
-        site-menu-button {
-          --site-menu-button-icon: {
-            width: 32px;
-            height: 32px;
           }
         }
         site-print-button {

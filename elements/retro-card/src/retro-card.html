@@ -1,0 +1,10 @@
+<a tabindex="-1" class="link ${this.color}" href="${this.url}">
+    <img class="img" loading="lazy" src="${this.__source}" alt="">
+    <span class="title">${this.title}</span>
+    <span class="name">${this.subtitle}</span>
+    <span class="description"><slot></slot></span>
+    <hr/>
+    <div class="card-tags">
+        ${this.__cardTags.map(tag => html`<span class="project-tag">${tag.trim()}</span>`)}
+    </div>
+</a>

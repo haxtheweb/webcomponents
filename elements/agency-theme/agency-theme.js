@@ -1,28 +1,18 @@
 /**
- * Copyright 2019 Gotham University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/agency-theme-band.js";
-import "./lib/agency-theme-spotlight.js";
-
-export { AgencyTheme };
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `agency-theme`
- * ``
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement agency-theme
  */
-class AgencyTheme extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class AgencyTheme extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -30,7 +20,12 @@ class AgencyTheme extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <slot></slot>
     `;
   }
@@ -47,15 +42,11 @@ class AgencyTheme extends PolymerElement {
   static get tag() {
     return "agency-theme";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    import("./lib/agency-theme-band.js");
+    import("./lib/agency-theme-spotlight.js");
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(AgencyTheme.tag, AgencyTheme);
+export { AgencyTheme };

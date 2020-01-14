@@ -1,8 +1,9 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
-class HaxUploadField extends SimpleColors {
+class HaxUploadField extends winEventsElement(SimpleColors) {
   /**
    * LitElement life cycle - styles addition
    */
@@ -111,8 +112,14 @@ class HaxUploadField extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-app-picker-selection": "_haxAppPickerSelection"
+    };
     this.label = null;
     this.noCamera = false;
+    // @todo leave this off until we can do more testing
+    // the wiring is all there but the UI pattern is not
+    this.noVoiceRecord = true;
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
@@ -129,7 +136,7 @@ class HaxUploadField extends SimpleColors {
             id="picker"
             aria-label="Source..."
             required
-            .value="${this.option}"
+            value="${this.option}"
             @value-changed="${this.optionChanged}"
             .options="${this.options}"
           >
@@ -137,7 +144,7 @@ class HaxUploadField extends SimpleColors {
           <paper-input
             id="url"
             ?hidden="${this.option !== "url"}"
-            .value="${this.value}"
+            value="${this.value}"
             @value-changed="${this.valueChanged}"
             label="URL"
             type="url"
@@ -148,8 +155,11 @@ class HaxUploadField extends SimpleColors {
             form-data-name="file-upload"
             ?hidden="${this.option !== "fileupload"}"
             id="fileupload"
+            @upload-before="${this._fileAboutToUpload}"
+            @upload-response="${this._fileUploadResponse}"
           ></vaadin-upload>
           <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
+          <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
         </div>
       </fieldset>
     `;
@@ -203,6 +213,13 @@ class HaxUploadField extends SimpleColors {
       noCamera: {
         type: Boolean,
         attribute: "no-camera"
+      },
+      /**
+       * No Voice Recording
+       */
+      noVoiceRecord: {
+        type: Boolean,
+        attribute: "no-voice-record"
       }
     };
   }
@@ -333,49 +350,45 @@ class HaxUploadField extends SimpleColors {
    */
   _setInputOptions() {
     // hide the button if this environment can't support it anyway
+    let options = [
+      [
+        {
+          alt: "URL",
+          icon: "icons:link",
+          value: "url"
+        }
+      ],
+      [
+        {
+          alt: "Upload",
+          icon: "icons:file-upload",
+          value: "fileupload"
+        }
+      ]
+    ];
     if (!navigator.mediaDevices || this.noCamera) {
-      this.options = [
-        [
-          {
-            alt: "URL",
-            icon: "icons:link",
-            value: "url"
-          }
-        ],
-        [
-          {
-            alt: "Upload",
-            icon: "icons:file-upload",
-            value: "fileupload"
-          }
-        ]
-      ];
       this.shadowRoot.querySelector("#camerahole").style.display = "none";
     } else {
-      this.options = [
-        [
-          {
-            alt: "URL",
-            icon: "icons:link",
-            value: "url"
-          }
-        ],
-        [
-          {
-            alt: "Upload",
-            icon: "icons:file-upload",
-            value: "fileupload"
-          }
-        ],
-        [
-          {
-            alt: "Camera",
-            icon: "image:photo-camera",
-            value: "selfie"
-          }
-        ]
-      ];
+      options.push([
+        {
+          alt: "Camera",
+          icon: "image:photo-camera",
+          value: "selfie"
+        }
+      ]);
     }
+    if (!navigator.mediaDevices || this.noVoiceRecord) {
+      this.shadowRoot.querySelector("#voicerecorder").style.display = "none";
+    } else {
+      /*options.push([
+        {
+          alt: "Audio",
+          icon: "hardware:keyboard-voice",
+          value: "audio"
+        }
+      ]);*/
+    }
+    return options;
   }
   /**
    * LitElement
@@ -385,49 +398,30 @@ class HaxUploadField extends SimpleColors {
       super.firstUpdated(changedProperties);
     }
     // test on load for if we have a media device
-    this._setInputOptions();
+    this.options = [...this._setInputOptions()];
     // default to URL if we have a value of any kind
     if (this.value) {
       this.option = "url";
     } else {
       this.option = "fileupload";
     }
-    // event handlers for file work
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
     this.shadowRoot.querySelector("#picker").addEventListener("change", e => {
       if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
+      if (e && e.detail && e.detail.value === "audio") this._voiceRecorder(e);
     });
-    this.shadowRoot
-      .querySelector("#camerahole")
-      .addEventListener(
-        "simple-camera-snap-image",
-        this.__newPhotoShowedUp.bind(this)
-      );
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-  }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * We got a new photo
    */
   __newPhotoShowedUp(e) {
     let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+  }
+  /**
+   * We got a new photo
+   */
+  __newAudioShowedUp(e) {
+    let file = new File([e.detail.value], "voice-memo" + e.timeStamp + ".mp3");
     this.shadowRoot.querySelector("#fileupload")._addFile(file);
   }
   /**
@@ -438,7 +432,22 @@ class HaxUploadField extends SimpleColors {
       import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
       this.camera = document.createElement("simple-camera-snap");
       this.camera.autoplay = true;
+      this.camera.addEventListener(
+        "simple-camera-snap-image",
+        this.__newPhotoShowedUp.bind(this)
+      );
       this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+    }
+  }
+  _voiceRecorder(e) {
+    if (!this.voice) {
+      import("@lrnwebcomponents/voice-recorder/voice-recorder.js");
+      this.voice = document.createElement("voice-recorder");
+      this.voice.addEventListener(
+        "voice-recorder-recording",
+        this.__newAudioShowedUp.bind(this)
+      );
+      this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
     }
   }
   /**

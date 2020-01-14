@@ -4,12 +4,13 @@
  */
 /**
  * `html-block`
+ * @customElement html-block
  * `A basic HTML block that provides HAXschema wiring`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HtmlBlock extends HTMLElement {

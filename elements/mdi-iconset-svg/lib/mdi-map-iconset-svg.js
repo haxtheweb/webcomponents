@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-map-iconset-svg` is a iconset for the Material Design Icons collection with the "map" tag
+ * `mdi-map-iconset-svg`
+ * @customElement mdi-map-iconset-svg is a iconset for the Material Design Icons collection with the "map" tag
  *
  * Example:
  *   <iron-icon icon="mdi-map:map-marker"></iron-icon>

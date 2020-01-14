@@ -1,0 +1,81 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`",
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "the title of the timeline",
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "timeline-size",
+          "description": "the timline size, calculated by responsive utility",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "the title of the timeline",
+          "type": "string"
+        },
+        {
+          "name": "events",
+          "attribute": "events",
+          "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "timelineSize",
+          "attribute": "timeline-size",
+          "description": "the timline size, calculated by responsive utility",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-timeline",
+      "description": "`lrndesign-timeline`",
+      "events": [
+        {
+          "name": "responsive-element"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "code-editor",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "attribute": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "attribute": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "showCodePen",
+          "attribute": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readOnly",
+          "attribute": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "attribute": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "fontSize",
+          "attribute": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideLineNumbers",
+          "attribute": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "show-code-pen-changed"
+        },
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "code-editor",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "attribute": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "attribute": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "showCodePen",
+          "attribute": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readOnly",
+          "attribute": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "attribute": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "fontSize",
+          "attribute": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideLineNumbers",
+          "attribute": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "show-code-pen-changed"
+        },
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "show-code-pen-changed"
+        },
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "code-pen-button",
+      "description": "`code-pen-button`\n`Post data to codepen to form a new pen`",
+      "attributes": [
+        {
+          "name": "data-string",
+          "description": "Data object as a JSON string for the POST data in page.",
+          "type": "string"
+        },
+        {
+          "name": "check-it-out",
+          "type": "string",
+          "default": "\"Check it out on codepen\""
+        },
+        {
+          "name": "end-point",
+          "description": "End point for posting should it change in the future.",
+          "type": "string",
+          "default": "\"https://codepen.io/pen/define\""
+        },
+        {
+          "name": "data",
+          "description": "Data object to post to code pen",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataString",
+          "attribute": "data-string",
+          "description": "Data object as a JSON string for the POST data in page.",
+          "type": "string"
+        },
+        {
+          "name": "checkItOut",
+          "attribute": "check-it-out",
+          "type": "string",
+          "default": "\"Check it out on codepen\""
+        },
+        {
+          "name": "endPoint",
+          "attribute": "end-point",
+          "description": "End point for posting should it change in the future.",
+          "type": "string",
+          "default": "\"https://codepen.io/pen/define\""
+        },
+        {
+          "name": "data",
+          "attribute": "data",
+          "description": "Data object to post to code pen",
+          "type": "object",
+          "default": "{}"
+        }
+      ]
+    },
+    {
+      "name": "code-editor",
+      "description": "`code-editor`\n`Wrapper on top of a code editor`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string"
+        },
+        {
+          "name": "codePenData",
+          "attribute": "codePenData",
+          "description": "Code pen data, computed based on the HTML editor",
+          "type": "object"
+        },
+        {
+          "name": "editorValue",
+          "attribute": "editorValue",
+          "description": "contents of the editor",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "value of the editor after the fact",
+          "type": "string"
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "description": "Mode / language for editor",
+          "type": "string"
+        },
+        {
+          "name": "showCodePen",
+          "attribute": "show-code-pen",
+          "description": "Show codePen button to fork it to there to run",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "readOnly",
+          "attribute": "read-only",
+          "description": "Readonly setting for the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme",
+          "attribute": "theme",
+          "description": "Theme for the Ace editor.",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "description": "Language to present color coding for",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "fontSize",
+          "attribute": "font-size",
+          "description": "font size for the editor",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "description": "automatically set focus on the editor",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideLineNumbers",
+          "attribute": "hide-line-numbers",
+          "description": "hide the line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "does the monaco-editor have focus",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "show-code-pen-changed"
+        },
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "monaco-element",
+      "description": "`monaco-element`\nWebcomponent wrapper for the monaco editor.\n\nSets value, language and theme.\nOffers a value-changed event.\n\nPartly influenced by https://github.com/PolymerVis/monaco-editor",
+      "attributes": [
+        {
+          "name": "unique-key",
+          "description": "THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "font-size",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "read-only",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "eventTypes",
+          "type": "object",
+          "default": "{\"ready\":\"ready\",\"focus\":\"focus\",\"blur\":\"blur\",\"valueChanged\":\"valueChanged\",\"languageChanged\":\"languageChanged\",\"themeChanged\":\"themeChanged\"}"
+        },
+        {
+          "name": "language",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "theme",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "lib-path",
+          "type": "string",
+          "default": "\"node_modules/monaco-editor/min/vs\""
+        },
+        {
+          "name": "autofocus",
+          "description": "automatically set focus on the iframe",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-line-numbers",
+          "description": "hide line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "editor-reference",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "uniqueKey",
+          "attribute": "unique-key",
+          "description": "THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS\nDO NOT MESS WITH THIS AND IT HAS TO BE SET",
+          "type": "string"
+        },
+        {
+          "name": "document"
+        },
+        {
+          "name": "iframe"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "fontSize",
+          "attribute": "font-size",
+          "type": "number",
+          "default": "16"
+        },
+        {
+          "name": "readOnly",
+          "attribute": "read-only",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "eventTypes",
+          "attribute": "eventTypes",
+          "type": "object",
+          "default": "{\"ready\":\"ready\",\"focus\":\"focus\",\"blur\":\"blur\",\"valueChanged\":\"valueChanged\",\"languageChanged\":\"languageChanged\",\"themeChanged\":\"themeChanged\"}"
+        },
+        {
+          "name": "language",
+          "attribute": "language",
+          "type": "string",
+          "default": "\"javascript\""
+        },
+        {
+          "name": "theme",
+          "attribute": "theme",
+          "type": "string",
+          "default": "\"vs-dark\""
+        },
+        {
+          "name": "libPath",
+          "attribute": "lib-path",
+          "type": "string",
+          "default": "\"node_modules/monaco-editor/min/vs\""
+        },
+        {
+          "name": "autofocus",
+          "attribute": "autofocus",
+          "description": "automatically set focus on the iframe",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideLineNumbers",
+          "attribute": "hide-line-numbers",
+          "description": "hide line numbers",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "editorReference",
+          "attribute": "editor-reference",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed"
+        },
+        {
+          "name": "code-editor-focus"
+        },
+        {
+          "name": "code-editor-blur"
+        },
+        {
+          "name": "monaco-element-ready"
+        }
+      ]
+    }
+  ]
+}

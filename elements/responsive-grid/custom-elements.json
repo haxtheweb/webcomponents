@@ -1,0 +1,272 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "responsive-grid-col",
+      "description": "`responsive-grid-col`\nA column for the responsive grid",
+      "attributes": [
+        {
+          "name": "xl",
+          "description": "the width when viewed on an extra large screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "lg",
+          "description": "the width when viewed on a large screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "md",
+          "description": "the width when viewed on a medium screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "sm",
+          "description": "the width when viewed on a small screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "xs",
+          "description": "the width when viewed on an extra-small screen",
+          "type": "number",
+          "default": "1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "the width when viewed on an extra large screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "the width when viewed on a large screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "the width when viewed on a medium screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "the width when viewed on a small screen",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "xs",
+          "attribute": "xs",
+          "description": "the width when viewed on an extra-small screen",
+          "type": "number",
+          "default": "1"
+        }
+      ]
+    },
+    {
+      "name": "responsive-grid-clear",
+      "description": "`responsive-grid-clear`\nA clearumn for the responsive grid",
+      "attributes": [
+        {
+          "name": "xl",
+          "description": "clear the float and force a new worw on an extra-large screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "lg",
+          "description": "clear the float and force a new worw on a large screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "md",
+          "description": "clear the float and force a new worw on a medium screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sm",
+          "description": "clear the float and force a new worw on a small screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "xs",
+          "description": "clear the float and force a new worw on an extra-small screen?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "clear the float and force a new worw on an extra-large screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "clear the float and force a new worw on a large screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "clear the float and force a new worw on a medium screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "clear the float and force a new worw on a small screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "xs",
+          "attribute": "xs",
+          "description": "clear the float and force a new worw on an extra-small screen?",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "responsive-grid-row",
+      "description": "`responsive-grid-row`\nA LRN element",
+      "attributes": [
+        {
+          "name": "xl",
+          "description": "Custom extra-large breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "lg",
+          "description": "Custom large breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "md",
+          "description": "Custom medium breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "sm",
+          "description": "Custom small breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "xs",
+          "description": "Custom x-small breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "gutter",
+          "description": "the gutter-level for the columns from 0-4",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "responsive-to-parent",
+          "description": "make responsive based on a container instead of the window",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "screen",
+          "description": "screen size: xs, sm, md, lg, or xl",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "xl",
+          "attribute": "xl",
+          "description": "Custom extra-large breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "lg",
+          "attribute": "lg",
+          "description": "Custom large breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "md",
+          "attribute": "md",
+          "description": "Custom medium breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "sm",
+          "attribute": "sm",
+          "description": "Custom small breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "xs",
+          "attribute": "xs",
+          "description": "Custom x-small breakpoint",
+          "type": "number"
+        },
+        {
+          "name": "gutter",
+          "attribute": "gutter",
+          "description": "the gutter-level for the columns from 0-4",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "responsiveToParent",
+          "attribute": "responsive-to-parent",
+          "description": "make responsive based on a container instead of the window",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "screen",
+          "attribute": "screen",
+          "description": "screen size: xs, sm, md, lg, or xl",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "screen-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "screen-changed"
+        }
+      ]
+    }
+  ]
+}

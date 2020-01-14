@@ -17,19 +17,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.1",
+  "version": "2.4.0",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "hax-bookmarklet.js",
   "module": "hax-bookmarklet.es6.js",
   "umd": "hax-bookmarklet.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-bookmarklet/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
@@ -40,15 +41,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^2.2.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.2.0",
+    "@lrnwebcomponents/cms-hax": "^2.4.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.4.0",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-agriculture-iconset-svg` is a iconset for the Material Design Icons collection with the "agriculture" tag
+ * `mdi-agriculture-iconset-svg`
+ * @customElement mdi-agriculture-iconset-svg is a iconset for the Material Design Icons collection with the "agriculture" tag
  * Example:
  *   <iron-icon icon="mdi-agriculture:cow"></iron-icon>
  *

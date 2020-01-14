@@ -7,10 +7,9 @@ import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-
-export { LrndesignGalleryZoom };
 /**
  * `lrndesign-gallery-zoom`
+ * @customElement lrndesign-gallery-zoom
  * `An element that renders the zoom feature for the gallery.`
  *
  * @microcopy - language worth noting:```
@@ -32,7 +31,7 @@ export { LrndesignGalleryZoom };
 --lrndesign-gallery-dialog-header-color                 //text color of dialog header
 --lrndesign-gallery-dialog-header-background-color      //background-color of dialog header```
  * 
- * @customElement
+
  * @polymer
  */
 class LrndesignGalleryZoom extends PolymerElement {
@@ -245,3 +244,4 @@ class LrndesignGalleryZoom extends PolymerElement {
   }
 }
 window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
+export { LrndesignGalleryZoom };

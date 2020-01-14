@@ -5,12 +5,13 @@
 
 /**
  * `to-element`
+ * @customElement to-element
  * `Replicate any DOM node passed in and turn it into a web component`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class ToElement extends HTMLElement {
@@ -319,7 +320,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *
  * @originalSite - This code is based on work originally found on
  *   - ${this.sourceUrl}
- * @customElement
+
  * @polymer
  */
 class ${this.dashToCamel(this.name)} extends PolymerElement {

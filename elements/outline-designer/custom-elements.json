@@ -1,0 +1,420 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "attributes": [
+        {
+          "name": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sortable",
+          "attribute": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "attribute": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "sort-finish"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "description": "`outline-designer`",
+      "attributes": [
+        {
+          "name": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sortable",
+          "attribute": "sortable",
+          "description": "This is a CSS selector string. If this is set, only items that\nmatch the CSS selector are sortable.",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "description": "The list of sortable items.",
+          "type": "array"
+        },
+        {
+          "name": "dragging",
+          "attribute": "dragging",
+          "description": "Returns true when an item is being drag.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Disables the draggable if set to true.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "sort-finish"
+        }
+      ]
+    },
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    },
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "attributes": [
+        {
+          "name": "view-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"cards\""
+        },
+        {
+          "name": "view-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "view-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "details-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"mid\""
+        },
+        {
+          "name": "details-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "details-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "selected-view",
+          "description": "Data binding to show the selected view",
+          "type": "number"
+        },
+        {
+          "name": "edit-mode",
+          "description": "Whether or not we are in an editing state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mini-map",
+          "description": "Whether or to show the mini map",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "outline-schema-url",
+          "description": "end point / JSON to load",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "manifest",
+          "description": "JSON outline schema manifest",
+          "type": "object"
+        },
+        {
+          "name": "outline-data",
+          "description": "Data in outline format",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "viewMode",
+          "attribute": "view-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"cards\""
+        },
+        {
+          "name": "viewModeIcon",
+          "attribute": "view-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "viewModeLabel",
+          "attribute": "view-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "detailsMode",
+          "attribute": "details-mode",
+          "description": "Which layout to the outline to display",
+          "type": "string",
+          "default": "\"mid\""
+        },
+        {
+          "name": "detailsModeIcon",
+          "attribute": "details-mode-icon",
+          "description": "Icon for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "detailsModeLabel",
+          "attribute": "details-mode-label",
+          "description": "Label for the selected view mode",
+          "type": "string"
+        },
+        {
+          "name": "selectedView",
+          "attribute": "selected-view",
+          "description": "Data binding to show the selected view",
+          "type": "number"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Whether or not we are in an editing state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "miniMap",
+          "attribute": "mini-map",
+          "description": "Whether or to show the mini map",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "outlineSchemaUrl",
+          "attribute": "outline-schema-url",
+          "description": "end point / JSON to load",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "JSON outline schema manifest",
+          "type": "object"
+        },
+        {
+          "name": "outlineData",
+          "attribute": "outline-data",
+          "description": "Data in outline format",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "events": [
+        {
+          "name": "sort-finish"
+        }
+      ]
+    },
+    {
+      "name": "outline-designer",
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    },
+    {
+      "name": "outline-designer",
+      "description": "`outline-designer`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "StampedTemplate | HTMLElement | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "iron-resize"
+        }
+      ]
+    }
+  ]
+}

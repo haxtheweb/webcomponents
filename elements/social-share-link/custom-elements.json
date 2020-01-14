@@ -1,0 +1,173 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "social-share-link",
+      "description": "`social-share-link`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "social-share-link",
+      "description": "`social-share-link`",
+      "attributes": [
+        {
+          "name": "button-style",
+          "description": "display link as a button",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "image",
+          "description": "optional image to attach to the share\n(Pinterest only)",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "message",
+          "description": "the message to attach to the social share\n(not used in Facebook)",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mode",
+          "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "description": "the link text; if null, the text will be \"Share on (type of social)\"",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+          "type": "string",
+          "default": "\"Twitter\""
+        },
+        {
+          "name": "url",
+          "description": "the url to share",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "buttonStyle",
+          "attribute": "button-style",
+          "description": "display link as a button",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "optional image to attach to the share\n(Pinterest only)",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "message",
+          "attribute": "message",
+          "description": "the message to attach to the social share\n(not used in Facebook)",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "the link text; if null, the text will be \"Share on (type of social)\"",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+          "type": "string",
+          "default": "\"Twitter\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "the url to share",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "social-share-link",
+      "description": "`social-share-link`",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

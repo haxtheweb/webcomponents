@@ -1,26 +1,36 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "./lrnapp-studio-submission-display.js";
 import "./lrnapp-studio-submission-edit.js";
 import "./lrnapp-studio-submission-critique.js";
-class LrnappStudioSubmissionObject extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmissionObject extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
-      <iron-pages selected="[[selectedPage]]">
+      `
+    ];
+  }
+  render() {
+    return html`
+      <iron-pages selected="${this.selectedPage}">
         <lrnapp-studio-submission-display
-          submission="{{submission}}"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
         ></lrnapp-studio-submission-display>
         <lrnapp-studio-submission-edit
-          submission="{{submission}}"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
         ></lrnapp-studio-submission-edit>
         <lrnapp-studio-submission-critique
-          submission="{{submission}}"
-          edit="[[edit]]"
+          .submission="${this.submission}"
+          @submission-changed="${this.submissionChanged}"
+          ?edit="${this.edit}"
         ></lrnapp-studio-submission-critique>
       </iron-pages>
     `;
@@ -31,38 +41,65 @@ class LrnappStudioSubmissionObject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       submission: {
-        type: Object,
-        value: null,
-        notify: true
+        type: Object
       },
       edit: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       selectedPage: {
         type: Number,
-        value: 0
+        attribute: "selected-page"
       }
     };
   }
-
-  static get observers() {
-    return ["_selectedPageChanged(edit, submission.meta.submissionType)"];
+  submissionChanged(e) {
+    this.submission = { ...e.detail.value };
+  }
+  constructor() {
+    super();
+    this.submission = null;
+    this.edit = false;
+    this.selectedPage = 0;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "submission") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submission-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["edit", "submission"].includes(propName)) {
+        this._selectedPageChanged(
+          this.edit,
+          this.submission.meta.submissionType
+        );
+      }
+    });
   }
 
   _selectedPageChanged(edit, type) {
@@ -86,7 +123,7 @@ class LrnappStudioSubmissionObject extends PolymerElement {
           break;
       }
     }
-    this.set("selectedPage", selected);
+    this.selectedPage = selected;
   }
 }
 window.customElements.define(

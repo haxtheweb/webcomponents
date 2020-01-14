@@ -1,13 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-autoloader`
+ * @customElement hax-autoloader
  * `Automatically load elements based on the most logical location with future fallback support for CDNs.`
  * @microcopy - the mental model for this element
  * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed
+ * @customElement hax-autoloader
  */
 class HaxAutoloader extends HAXElement(LitElement) {
   /**
@@ -36,6 +38,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * List of elements processed so we don't double process
        */
@@ -64,18 +67,22 @@ class HaxAutoloader extends HAXElement(LitElement) {
         }
       })
     );
-    // notice elements when they update
-    this._observer = new FlattenedNodesObserver(this, info => {
-      // if we've got new nodes, we have to react to that
-      if (info.addedNodes.length > 0) {
-        setTimeout(() => {
-          this.processNewElements(info.addedNodes);
-        }, 5);
-      }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          this.processNewElements(node);
+        });
+      });
+    });
+    this.observer.observe(this, {
+      childList: true
     });
   }
   disconnectedCallback() {
-    this._observer.disconnect();
+    this.observer.disconnect();
     super.disconnectedCallback();
   }
   /**
@@ -83,9 +90,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
    */
   processNewElements(e) {
     // when new nodes show up in the slots then fire the needed pieces
-    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
-      this
-    ).filter(n => n.nodeType === Node.ELEMENT_NODE);
+    let effectiveChildren = this.childNodes;
     for (var i = 0; i < effectiveChildren.length; i++) {
       // strip invalid tags / textnodes
       if (
@@ -186,6 +191,7 @@ class HaxAutoloader extends HAXElement(LitElement) {
           // error in the event this is a double registration
         }
       }
+      effectiveChildren[i].remove();
     }
   }
 }

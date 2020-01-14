@@ -1,18 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `q-r`
  * `Polymer wrapper for a qr code.`
  *
  * @demo demo/index.html
+ * @customElement q-r
  */
-class QR extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/q-r/lib/qr-code.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class QR extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -20,15 +20,26 @@ class QR extends PolymerElement {
           visibility: hidden;
           opacity: 0;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.modulesize = 4;
+    this.margin = 2;
+    this.format = "png";
+    import("@lrnwebcomponents/q-r/lib/qr-code.js");
+  }
+  render() {
+    return html`
       <qr-code
         id="qr"
-        data$="[[data]]"
-        modulesize$="[[modulesize]]"
-        margin$="[[margin]]"
-        format$="[[format]]"
+        data="${this.data}"
+        modulesize="${this.modulesize}"
+        margin="${this.margin}"
+        format="${this.format}"
       ></qr-code>
-      <a href$="[[data]]" id="link">[[title]]</a>
+      <a href="${this.data}" id="link">${this.title}</a>
     `;
   }
   static get tag() {
@@ -52,22 +63,19 @@ class QR extends PolymerElement {
        * module size of the square
        */
       modulesize: {
-        type: Number,
-        value: 4
+        type: Number
       },
       /**
        * Margin on the square
        */
       margin: {
-        type: Number,
-        value: 2
+        type: Number
       },
       /**
        * format to output
        */
       format: {
-        type: String,
-        value: "png"
+        type: String
       }
     };
   }
@@ -104,7 +112,7 @@ class QR extends PolymerElement {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

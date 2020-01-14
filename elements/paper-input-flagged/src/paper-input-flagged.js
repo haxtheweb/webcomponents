@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
 `paper-input-flagged`
 A LRN element
@@ -12,17 +12,13 @@ A LRN element
 @microcopy - the mental model for this element
  - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.
 */
-class PaperInputFlagged extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class PaperInputFlagged extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -58,25 +54,109 @@ class PaperInputFlagged extends PolymerElement {
           overflow: hidden;
           height: 1px;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.disabled = false;
+    this.label = "";
+    this.value = "";
+    this.inputSuccess = {
+      message: "You passed our simple accessibility checks.",
+      status: "info"
+    };
+    this.flaggedInput = [
+      {
+        match: null,
+        message:
+          "Alt data is required for everything except decoration images.",
+        status: "notice"
+      },
+      {
+        match: "image",
+        message:
+          "Screenreaders will say the word image, don't put it in the descriptive text",
+        status: "error"
+      },
+      {
+        match: "photo",
+        message:
+          "Screenreaders will say the word image, don't put photo in the descriptive text",
+        status: "error"
+      },
+      {
+        match: "picture",
+        message:
+          "Screenreaders will say the word image, don't put picture in the descriptive text",
+        status: "error"
+      },
+      {
+        match: 3,
+        message:
+          "Description not effective enough. This should be at least a sentance about what the image is.",
+        status: "error"
+      },
+      {
+        match: 10,
+        message:
+          "Make sure your alt text is descriptive enough for those that can't see the media.",
+        status: "warning"
+      }
+    ];
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["value"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "status") {
+        this.icon = this._iconFromStatus(this.status);
+      }
+      if (propName == "flaggedInput" || propName == "value") {
+        this.status = this.testStatus(this.flaggedInput, this.value);
+      }
+    });
+  }
+  valueEvent(e) {
+    this.value = e.detail.value;
+  }
+  render() {
+    return html`
       <paper-input
-        label="[[label]]"
-        value="{{value}}"
-        char-counter="[[charCounter]]"
-        disabled="[[disabled]]"
-        minlength="[[minlength]]"
-        maxlength="[[minlength]]"
+        label="${this.label}"
+        value="${this.value}"
+        @value-changed="${this.valueEvent}"
+        ?char-counter="${this.charCounter}"
+        ?disabled="${this.disabled}"
+        minlength="${this.minlength}"
+        maxlength="${this.maxlength}"
       >
-        <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
+        <iron-icon id="icon" icon="${this.icon}" slot="prefix"></iron-icon>
       </paper-input>
-      <div class="element-invisible">[[__activeMessage]]</div>
+      <div class="element-invisible">${this.__activeMessage}</div>
       <paper-tooltip
         for="icon"
         position="top"
         offset="20"
         fit-to-visible-bounds
       >
-        [[__activeMessage]]
+        ${this.__activeMessage}
       </paper-tooltip>
     `;
   }
@@ -85,82 +165,53 @@ class PaperInputFlagged extends PolymerElement {
   }
   static get properties() {
     return {
+      label: {
+        type: String
+      },
+      disabled: {
+        type: Boolean
+      },
       /**
        * Icon based on status
        */
       icon: {
-        type: String,
-        computed: "_iconFromStatus(status)"
+        type: String
+      },
+      maxlength: {
+        type: Number
+      },
+      minlength: {
+        type: Number
       },
       /**
        * Status based on test for flagged words
        */
       status: {
         type: String,
-        reflectToAttribute: true,
-        computed: "testStatus(flaggedInput, value)"
+        reflect: true
       },
       /**
        * value
        */
       value: {
-        type: String,
-        notify: true,
-        value: ""
+        type: String
       },
       /**
        * Input to trap and offer feedback about.
        */
       flaggedInput: {
         type: Array,
-        value: [
-          {
-            match: null,
-            message:
-              "Alt data is required for everything except decoration images.",
-            status: "notice"
-          },
-          {
-            match: "image",
-            message:
-              "Screenreaders will say the word image, don't put it in the descriptive text",
-            status: "error"
-          },
-          {
-            match: "photo",
-            message:
-              "Screenreaders will say the word image, don't put photo in the descriptive text",
-            status: "error"
-          },
-          {
-            match: "picture",
-            message:
-              "Screenreaders will say the word image, don't put picture in the descriptive text",
-            status: "error"
-          },
-          {
-            match: 3,
-            message:
-              "Description not effective enough. This should be at least a sentance about what the image is.",
-            status: "error"
-          },
-          {
-            match: 10,
-            message:
-              "Make sure your alt text is descriptive enough for those that can't see the media.",
-            status: "warning"
-          }
-        ]
+        attribute: "flagged-input"
       },
       /**
        * Passed tests / success data.
        */
       inputSuccess: {
         type: Object,
-        value: {
-          message: "You passed our simple accessibility checks.",
-          status: "info"
-        }
+        attribute: "input-success"
+      },
+      __activeMessage: {
+        type: String
       }
     };
   }

@@ -9,7 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-dot-indicator`
  * `list of items based on manifest`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

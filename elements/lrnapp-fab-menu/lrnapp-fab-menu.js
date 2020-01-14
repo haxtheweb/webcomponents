@@ -1,26 +1,32 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-styles/paper-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrnapp-fab-menu`
  * `floating action button with menu`
- *
  * @demo demo/index.html
+ * @customElement lrnapp-fab-menu
  */
-class LrnappFabMenu extends PolymerElement {
+class LrnappFabMenu extends LitElement {
   constructor() {
     super();
-    import("@polymer/paper-fab/paper-fab.js");
-    import("@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");
-    import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
-    import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
+    this.icon = "add";
+    this.disabled = false;
+    setTimeout(() => {
+      import("@polymer/paper-fab/paper-fab.js");
+      import("@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");
+      import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
+      import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
+    }, 0);
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+        }
         lrnapp-fab-speed-dial-action:not(:defined),
         paper-fab-speed-dial-overlay:not(:defined),
         paper-fab-speed-dial:not(:defined) {
@@ -47,25 +53,47 @@ class LrnappFabMenu extends PolymerElement {
         .overlay {
           text-align: right;
         }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-fab
-        icon="[[icon]]"
+        icon="${this.icon}"
         class="open"
-        on-click="open"
-        hidden$="[[opened]]"
-        disabled$="[[disabled]]"
+        @click="${this.open}"
+        ?hidden="${this.opened}"
+        ?disabled="${this.disabled}"
       ></paper-fab>
 
       <paper-fab-speed-dial-overlay
         class="overlay"
-        opened="{{opened}}"
+        ?opened="${this.opened}"
+        @opened-changed="${this.openedChangedEvent}"
         with-backdrop
       >
         <slot></slot>
-        <paper-fab icon="close" class="close" on-click="close"></paper-fab>
+        <paper-fab
+          icon="close"
+          class="close"
+          @click="${this.close}"
+        ></paper-fab>
       </paper-fab-speed-dial-overlay>
     `;
+  }
+  openedChangedEvent(e) {
+    this.opened = e.detail.value;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "opened") {
+        this.dispatchEvent(
+          new CustomEvent("opened-changed", {
+            value: this[propName]
+          })
+        );
+      }
+    });
   }
   static get tag() {
     return "lrnapp-fab-menu";
@@ -73,16 +101,13 @@ class LrnappFabMenu extends PolymerElement {
   static get properties() {
     return {
       icon: {
-        type: String,
-        value: "add"
+        type: String
       },
       opened: {
-        type: Boolean,
-        notify: true
+        type: Boolean
       },
       disabled: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }

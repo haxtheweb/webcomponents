@@ -1,0 +1,398 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "pdf-element",
+      "description": "Polymer element which renders PDF documents. It uses [PDF.js](https://mozilla.github.io/pdf.js/) library behind.\n\nExample:\n\nMinimum configuration:\n```html\n<pdf-element src=\"../example.pdf\" width=800 height=600></pdf-element>\n```\nOptionally following parameters could be triggered:\n- `elevation` material elevation;\n- `downloadable` to be able to download document;\n- `show-file-name` to show name of the file in the PDF toolbar.\n\n\n```html\n<pdf-element src=\"../example.pdf\" elevation=\"5\" downloadable show-file-name width=800 height=600></pdf-element>\n```\n\nAnother awesome feature is dynamically load PDF file. So you can change the `src` attribute of the element and document will be automatically reloaded (checkout the demo):\n\n```html\n<pdf-element src=\"[[pdfFile]]\" width=800 height=600></pdf-element>\n```",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "attribute": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showFileName",
+          "attribute": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSpinner",
+          "attribute": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enableTextSelection",
+          "attribute": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitWidth",
+          "attribute": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "pdf-element",
+      "description": "Polymer element which renders PDF documents. It uses [PDF.js](https://mozilla.github.io/pdf.js/) library behind.\n\nExample:\n\nMinimum configuration:\n```html\n<pdf-element src=\"../example.pdf\" width=800 height=600></pdf-element>\n```\nOptionally following parameters could be triggered:\n- `elevation` material elevation;\n- `downloadable` to be able to download document;\n- `show-file-name` to show name of the file in the PDF toolbar.\n\n\n```html\n<pdf-element src=\"../example.pdf\" elevation=\"5\" downloadable show-file-name width=800 height=600></pdf-element>\n```\n\nAnother awesome feature is dynamically load PDF file. So you can change the `src` attribute of the element and document will be automatically reloaded (checkout the demo):\n\n```html\n<pdf-element src=\"[[pdfFile]]\" width=800 height=600></pdf-element>\n```",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "attribute": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showFileName",
+          "attribute": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSpinner",
+          "attribute": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enableTextSelection",
+          "attribute": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitWidth",
+          "attribute": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "pdf-element",
+      "description": "Polymer element which renders PDF documents. It uses [PDF.js](https://mozilla.github.io/pdf.js/) library behind.\n\nExample:\n\nMinimum configuration:\n```html\n<pdf-element src=\"../example.pdf\" width=800 height=600></pdf-element>\n```\nOptionally following parameters could be triggered:\n- `elevation` material elevation;\n- `downloadable` to be able to download document;\n- `show-file-name` to show name of the file in the PDF toolbar.\n\n\n```html\n<pdf-element src=\"../example.pdf\" elevation=\"5\" downloadable show-file-name width=800 height=600></pdf-element>\n```\n\nAnother awesome feature is dynamically load PDF file. So you can change the `src` attribute of the element and document will be automatically reloaded (checkout the demo):\n\n```html\n<pdf-element src=\"[[pdfFile]]\" width=800 height=600></pdf-element>\n```",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of a PDF file.",
+          "type": "string"
+        },
+        {
+          "name": "elevation",
+          "attribute": "elevation",
+          "description": "The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be \"deeper\" than the last.",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "downloadable",
+          "attribute": "downloadable",
+          "description": "If provided then download icon will appear on the toolbar to download file.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showFileName",
+          "attribute": "show-file-name",
+          "description": "If provided then file name will be shown on the toolbar.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showSpinner",
+          "attribute": "show-spinner",
+          "description": "If provided then during page rendering loading spinner will be shown.\nMaybe used for documents with many images for example.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "enableTextSelection",
+          "attribute": "enable-text-selection",
+          "description": "If provided then text selection will be enabled.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fitWidth",
+          "attribute": "fit-width",
+          "description": "If provided then the document will be zoomed to maximum width initially.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "If provided then the width will be set.",
+          "type": "number",
+          "default": "500"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

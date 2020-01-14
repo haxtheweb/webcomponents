@@ -1,0 +1,535 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "item-overlay-ops",
+      "description": "`item-overlay-ops`",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeTitle",
+          "attribute": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "attribute": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "attribute": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "attribute": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "attribute": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixedHeight",
+          "attribute": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "attribute": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "attribute": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "attribute": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-op-changed"
+        },
+        {
+          "name": "item-overlay-option-selected"
+        }
+      ]
+    },
+    {
+      "name": "item-overlay-ops",
+      "description": "`item-overlay-ops`",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeTitle",
+          "attribute": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "attribute": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "attribute": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "attribute": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "attribute": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixedHeight",
+          "attribute": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "attribute": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "attribute": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "attribute": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-op-changed"
+        },
+        {
+          "name": "item-overlay-option-selected"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "item-overlay-op-changed"
+        },
+        {
+          "name": "item-overlay-option-selected"
+        }
+      ]
+    },
+    {
+      "name": "item-overlay-ops",
+      "description": "`item-overlay-ops`",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "focused",
+          "attribute": "focused",
+          "description": "Edit mode whether it is shown or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeTitle",
+          "attribute": "active-title",
+          "description": "Title to present of active option",
+          "type": "string"
+        },
+        {
+          "name": "activeOp",
+          "attribute": "active-op",
+          "description": "Active operation",
+          "type": "string"
+        },
+        {
+          "name": "add",
+          "attribute": "add",
+          "description": "Add opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit",
+          "attribute": "edit",
+          "description": "Edit opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "move",
+          "attribute": "move",
+          "description": "Move opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fixedHeight",
+          "attribute": "fixed-height",
+          "description": "Allow height to be defined rather than calculated",
+          "type": "number"
+        },
+        {
+          "name": "disableAutoHeight",
+          "attribute": "disable-auto-height",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "remove",
+          "attribute": "remove",
+          "description": "Remove opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "duplicate",
+          "attribute": "duplicate",
+          "description": "Duplicate opertaions",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "item-overlay-op-changed"
+        },
+        {
+          "name": "item-overlay-option-selected"
+        }
+      ]
+    }
+  ]
+}

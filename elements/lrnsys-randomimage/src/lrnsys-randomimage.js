@@ -8,6 +8,7 @@ import "@lrnwebcomponents/random-image/random-image.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `lrnsys-randomimage`
+ * @customElement lrnsys-randomimage
  * @demo demo/index.html
  */
 class LrnsysRandomimage extends PolymerElement {

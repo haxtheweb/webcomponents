@@ -1,0 +1,697 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "map-menu",
+      "description": "`map-menu`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "attribute": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeIndicator",
+          "attribute": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "selected"
+        },
+        {
+          "name": "map-menu-item-hidden-check"
+        }
+      ]
+    },
+    {
+      "name": "map-menu",
+      "description": "`map-menu`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "attribute": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeIndicator",
+          "attribute": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "selected"
+        },
+        {
+          "name": "map-menu-item-hidden-check"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "selected"
+        },
+        {
+          "name": "map-menu-item-hidden-check"
+        }
+      ]
+    },
+    {
+      "name": "map-menu-builder",
+      "attributes": [
+        {
+          "name": "selected",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "map-menu-item",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "track-icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "trackIcon",
+          "attribute": "track-icon",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "active-item"
+        },
+        {
+          "name": "link-clicked"
+        }
+      ]
+    },
+    {
+      "name": "map-menu-submenu",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "collapsable",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "expand-children",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "avatar-label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "collapsable",
+          "attribute": "collapsable",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "expandChildren",
+          "attribute": "expand-children",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "avatarLabel",
+          "attribute": "avatar-label",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "map-meu-item-hidden-check"
+        },
+        {
+          "name": "toggle-updated"
+        }
+      ]
+    },
+    {
+      "name": "map-menu-container",
+      "description": "`map-menu`\nA LRN element"
+    },
+    {
+      "name": "map-menu-header",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "type": "string"
+        },
+        {
+          "name": "avatar-label",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "type": "string"
+        },
+        {
+          "name": "avatarLabel",
+          "attribute": "avatar-label",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "url",
+          "attribute": "url",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "active",
+          "attribute": "active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "active-item"
+        },
+        {
+          "name": "toggle-header"
+        }
+      ]
+    },
+    {
+      "name": "map-menu",
+      "description": "`map-menu`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Support for JSON Outline Schema manifest format",
+          "type": "object"
+        },
+        {
+          "name": "selected",
+          "attribute": "selected",
+          "description": "Current selected item.",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Content outline\""
+        },
+        {
+          "name": "data",
+          "attribute": "data",
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "attribute": "items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "autoScroll",
+          "attribute": "autoScroll",
+          "description": "Auto scroll an active element if not in view",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeIndicator",
+          "attribute": "active-indicator",
+          "description": "Show active indicator animation",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "selected"
+        },
+        {
+          "name": "map-menu-item-hidden-check"
+        }
+      ]
+    }
+  ]
+}

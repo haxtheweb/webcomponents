@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-text-iconset-svg` is a iconset for the Material Design Icons collection with the "text" tag
+ * `mdi-text-iconset-svg`
+ * @customElement mdi-text-iconset-svg is a iconset for the Material Design Icons collection with the "text" tag
  *
  * Example:
  *   <iron-icon icon="mdi-text:clipboard-text"></iron-icon>

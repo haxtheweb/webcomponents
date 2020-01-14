@@ -1,43 +1,24 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@polymer/iron-list/iron-list.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js";
 /**
  * `simple-blog-listing`
+ * @customElement simple-blog-listing
  * `A simple blog and associated elements`
  */
-class SimpleBlogListing extends PolymerElement {
+class SimpleBlogListing extends SimpleColors {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement render styles
    */
-  static get tag() {
-    return "simple-blog-listing";
-  }
-  constructor() {
-    super();
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js");
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.shadowRoot.querySelector("iron-list").dispatchEvent(
-        new CustomEvent("iron-resize", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: true
-        })
-      );
-    });
-  }
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
-        iron-list {
+        .listing {
           width: 100%;
           max-width: 640px;
           margin: 0 auto;
@@ -46,7 +27,7 @@ class SimpleBlogListing extends PolymerElement {
           box-sizing: border-box;
         }
         @media only screen and (max-width: 800px) {
-          iron-list {
+          .listing {
             padding: 0 32px;
           }
         }
@@ -57,23 +38,62 @@ class SimpleBlogListing extends PolymerElement {
           width: 100%;
           border: 1px solid #f2f2f0;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "simple-blog-listing";
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.__items = [];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <site-query
-        result="{{__items}}"
+        @result-changed="${this.__itemsChanged}"
         sort='{"metadata.created": "DESC"}'
       ></site-query>
-      <iron-list items="[[__items]]">
-        <template>
-          <simple-blog-overview
-            item-id="[[item.id]]"
-            title="[[item.title]]"
-            description="[[item.description]]"
-            link="[[item.location]]"
-            changed="[[item.metadata.created]]"
-          ></simple-blog-overview>
-        </template>
-      </iron-list>
+      <div class="listing">
+        ${this.__items.map(
+          item => html`
+            <simple-blog-overview
+              item-id="${item.id}"
+              title="${item.title}"
+              description="${item.description}"
+              link="${item.location}"
+              changed="${item.metadata.created}"
+            ></simple-blog-overview>
+          `
+        )}
+      </div>
     `;
+  }
+  /**
+   * Respond to change in query
+   */
+  __itemsChanged(e) {
+    this.__items = [...e.detail.value];
+  }
+  /**
+   * LitElement / popular convention
+   */
+  static get properties() {
+    return {
+      ...super.properties,
+      __items: {
+        type: Array
+      }
+    };
   }
 }
 window.customElements.define(SimpleBlogListing.tag, SimpleBlogListing);

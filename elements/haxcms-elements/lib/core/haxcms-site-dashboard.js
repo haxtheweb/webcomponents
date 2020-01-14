@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varGet, varExists } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -221,7 +221,6 @@ class HAXCMSSiteDashboard extends LitElement {
           .body="${this.body}"
           load-endpoint="${this.loadEndpoint}"
           method="${this.method}"
-          @last-error-changed="${this._lastErrorChanged}"
         ></simple-fields-form>
       </div>
       <div class="buttons">
@@ -272,20 +271,6 @@ class HAXCMSSiteDashboard extends LitElement {
         type: Object
       }
     };
-  }
-  _lastErrorChanged(newValue) {
-    if (newValue) {
-      console.error(newValue);
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: newValue.error
-        }
-      });
-      window.dispatchEvent(evt);
-    }
   }
   /**
    * Detatched life cycle

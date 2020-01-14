@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/awesome-explosion",
   "wcfactory": {
     "className": "AwesomeExplosion",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "awesome-explosion",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": false,
@@ -12,19 +12,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "An awesome, explosion.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "awesome-explosion.js",
   "module": "awesome-explosion.es6.js",
   "umd": "awesome-explosion.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/awesome-explosion/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
@@ -35,11 +36,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-format-iconset-svg` is a iconset for the Material Design Icons collection with the "format" tag
+ * `mdi-format-iconset-svg`
+ * @customElement mdi-format-iconset-svg is a iconset for the Material Design Icons collection with the "format" tag
  *
  * Example:
  *   <iron-icon icon="mdi-format:format-align-left"></iron-icon>

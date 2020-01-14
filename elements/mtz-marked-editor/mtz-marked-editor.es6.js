@@ -5,6 +5,7 @@ import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 /**
  * `mtz-marked-editor`
+ * @customElement mtz-marked-editor
  * `Creates a textarea with common editor logic and can be controlled by UI elements`
  * @demo demo/index.html
  */

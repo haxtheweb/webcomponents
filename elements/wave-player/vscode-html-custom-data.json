@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - \n\nProperty: wavesurfer"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - \n\nProperty: coverart\n\nDefault: "
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - \n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - \n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - \n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - \n\nProperty: wavesurfer"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - \n\nProperty: coverart\n\nDefault: "
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - \n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - \n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - \n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`\n`A player for visualizing a sound file`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `wavesurfer` - \n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `coverart` {`string`} - \n\n  * `lean` {`string`} - \n\n  * `wavecolor` {`string`} - \n\n  * `progresscolor` {`string`} - ",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "`src` {`string`} - \n\nProperty: src"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "`wavesurfer` - \n\nProperty: wavesurfer"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "subtitle",
+          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
+        },
+        {
+          "name": "coverart",
+          "description": "`coverart` {`string`} - \n\nProperty: coverart\n\nDefault: "
+        },
+        {
+          "name": "lean",
+          "description": "`lean` {`string`} - \n\nProperty: lean\n\nDefault: left"
+        },
+        {
+          "name": "wavecolor",
+          "description": "`wavecolor` {`string`} - \n\nProperty: wavecolor\n\nDefault: #ffffff"
+        },
+        {
+          "name": "progresscolor",
+          "description": "`progresscolor` {`string`} - \n\nProperty: progresscolor\n\nDefault: #CFD8DC"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

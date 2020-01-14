@@ -13,7 +13,7 @@ import "../buttons/rich-text-editor-button-styles.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorBreadcrumb extends PolymerElement {

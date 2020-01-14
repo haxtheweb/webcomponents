@@ -7,12 +7,13 @@
 
 /**
  * `drag-n-drop`
+ * @customElement drag-n-drop
  * `drag and drop elements and manager`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class DragNDrop extends HTMLElement {
@@ -187,6 +188,8 @@ class DragNDrop extends HTMLElement {
     this.__dragging = e.target;
     this.__dragging.className += " hold";
     setTimeout(() => (this.__dragging.className = "invisible"), 0);
+    e.stopPropagation();
+    e.stopImmediatePropagation();
   }
 
   dragEnd(e) {

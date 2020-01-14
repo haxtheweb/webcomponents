@@ -1,0 +1,186 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "type": "string",
+          "default": "\"icons:cancel\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-closed"
+        },
+        {
+          "name": "simple-drawer-opened"
+        }
+      ]
+    },
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`",
+      "attributes": [
+        {
+          "name": "invoked-by",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "align",
+          "description": "alignment of the drawer",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "opened",
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"icons:cancel\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "invokedBy",
+          "attribute": "invoked-by",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "alignment of the drawer",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "attribute": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "attribute": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"icons:cancel\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-closed"
+        },
+        {
+          "name": "simple-drawer-opened"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-drawer-opened"
+        },
+        {
+          "name": "simple-drawer-closed"
+        }
+      ]
+    },
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "align",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "type": "string",
+          "default": "\"icons:cancel\""
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-drawer-closed"
+        },
+        {
+          "name": "simple-drawer-opened"
+        }
+      ]
+    }
+  ]
+}

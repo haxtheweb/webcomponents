@@ -1,0 +1,68 @@
+{
+  "name": "@lrnwebcomponents/retro-card",
+  "wcfactory": {
+    "className": "RetroCard",
+    "customElementClass": "LitElement",
+    "elementName": "retro-card",
+    "generator-wcfactory-version": "0.7.4",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/retro-card.css",
+      "scss": "src/retro-card.scss",
+      "html": "src/retro-card.html",
+      "js": "src/retro-card.js",
+      "properties": "src/retro-card-properties.json",
+      "hax": "src/retro-card-hax.json"
+    }
+  },
+  "version": "2.4.0",
+  "description": "Simple card in a cool retro design",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "type": "module",
+  "main": "retro-card.js",
+  "module": "retro-card.es6.js",
+  "umd": "retro-card.umd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/retro-card/test/",
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --outFile custom-elements.json",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
+    "lit-element": "2.2.1"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "^2.4.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.0",
+    "concurrently": "4.1.2",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-build": "3.1.4",
+    "polymer-cli": "1.9.11",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

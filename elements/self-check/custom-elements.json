@@ -1,0 +1,260 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "self-check",
+      "description": "`self-check`",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "attribute": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ]
+    },
+    {
+      "name": "self-check",
+      "description": "`self-check`",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "attribute": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "self-check",
+      "description": "`self-check`",
+      "attributes": [
+        {
+          "name": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "link",
+          "attribute": "link",
+          "description": "Link for more information.",
+          "type": "string"
+        },
+        {
+          "name": "correct",
+          "attribute": "correct",
+          "description": "Property for toggling \"checkbtn\".",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "Image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "question",
+          "attribute": "question",
+          "description": "Question.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title.",
+          "type": "string",
+          "default": "\"Self-Check\""
+        }
+      ]
+    }
+  ]
+}

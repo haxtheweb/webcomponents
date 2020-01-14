@@ -1,19 +1,23 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
-import { getRange } from "./shadows-safari.js";
 import {
+  winEventsElement,
+  getRange,
   encapScript,
   wipeSlot,
   stripMSWord
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-
-class HaxStore extends HAXElement(LitElement) {
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "./hax-app.js";
+import "./hax-stax.js";
+import "./hax-blox.js";
+/**
+ * @customElement hax-store
+ */
+class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -26,13 +30,17 @@ class HaxStore extends HAXElement(LitElement) {
       `
     ];
   }
+  /**
+   * LitElement render
+   */
   render() {
     return html`
       <slot></slot>
+      <undoer-element></undoer-element>
       <iron-ajax
         id="appstore"
         url="${this.appStore.url}"
-        params="${this.appStore.params}"
+        .params="${this.appStore.params}"
         method="GET"
         content-type="application/json"
         handle-as="json"
@@ -48,231 +56,242 @@ class HaxStore extends HAXElement(LitElement) {
   __appStoreDataChanged(e) {
     this.__appStoreData = e.detail.value;
   }
+  /**
+   * convention
+   */
   static get tag() {
     return "hax-store";
   }
-
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
-    return Object.assign(
-      {
-        voiceDebug: {
-          type: Boolean
-        },
-        voiceRespondsTo: {
-          type: String,
-          attribute: "voice-responses-to"
-        },
-        /**
-         * skipHAXConfirmation
-         */
-        skipHAXConfirmation: {
-          type: Boolean,
-          reflect: true,
-          attribute: "skip-hax-confirmation"
-        },
-        /**
-         * Local storage bridge
-         */
-        storageData: {
-          type: Object
-        },
-        /**
-         * Hax app picker element.
-         */
-        haxAppPicker: {
-          type: Object
-        },
-        /**
-         * Hax stax picker element.
-         */
-        haxStaxPicker: {
-          type: Object
-        },
-        /**
-         * Hax manager element.
-         */
-        haxManager: {
-          type: Object
-        },
-        /**
-         * Hax autoloader element.
-         */
-        haxAutoloader: {
-          type: Object
-        },
-        /**
-         * A list of all haxBodies that exist
-         */
-        haxBodies: {
-          type: Array
-        },
-        /**
-         * An active place holder item reference. This is used
-         * for inline drag and drop event detection so that we
-         * know what element replace in context.
-         */
-        activePlaceHolder: {
-          type: Object
-        },
-        /**
-         * The hax-body that is currently active.
-         */
-        activeHaxBody: {
-          type: Object
-        },
-        /**
-         * Possible appStore endpoint for loading in things dynamically.
-         */
-        appStore: {
-          type: Object,
-          attribute: "app-store"
-        },
-        /**
-         * HAX Toast message.
-         */
-        haxToast: {
-          type: Object
-        },
-        /**
-         * Hax panel element.
-         */
-        haxPanel: {
-          type: Object
-        },
-        /**
-         * Hax export dialog element.
-         */
-        haxExport: {
-          type: Object
-        },
-        /**
-         * Hax preferences dialog element.
-         */
-        haxPreferences: {
-          type: Object
-        },
-        /**
-         * Active HAX Element if we have one we are working on.
-         */
-        activeHaxElement: {
-          type: Object
-        },
-        /**
-         * Active Node.
-         */
-        activeNode: {
-          type: Object
-        },
-        /**
-         * Active container Node, 2nd highest parent of activeNode.
-         */
-        activeContainerNode: {
-          type: Object
-        },
-        /**
-         * Session object bridged in from a session method of some kind
-         */
-        sessionObject: {
-          type: Object
-        },
-        /**
-         * editMode
-         */
-        editMode: {
-          type: Boolean
-        },
-        /**
-         * Boolean for if this instance has backends that support uploading
-         */
-        canSupportUploads: {
-          type: Boolean
-        },
-        /**
-         * skip the exit trap to prevent losing data
-         */
-        skipExitTrap: {
-          type: Boolean
-        },
-        /**
-         * Available gizmos.
-         */
-        gizmoList: {
-          type: Array
-        },
-        /**
-         * Available elements keyed by tagName and with
-         * their haxProperties centrally registered.
-         */
-        elementList: {
-          type: Object
-        },
-        /**
-         * Available apps of things supplying media / content.
-         */
-        appList: {
-          type: Array
-        },
-        /**
-         * Available hax stax which are just re-usable templates
-         */
-        staxList: {
-          type: Array
-        },
-        /**
-         * Available hax blox which are grid plate / layout elements
-         */
-        bloxList: {
-          type: Array
-        },
-        /**
-         * Global preferences that HAX can write to and
-         * other elements can use to go off of.
-         */
-        globalPreferences: {
-          type: Object
-        },
-        /**
-         * Globally active app, used for brokering communications
-         */
-        activeApp: {
-          type: Object
-        },
-        /**
-         * Valid tag list, tag only and including primatives for a baseline.
-         */
-        validTagList: {
-          type: Array
-        },
-        /**
-         * Gizmo types which can be used to bridge apps to gizmos.
-         */
-        validGizmoTypes: {
-          type: Array
-        },
-        /**
-         * Sandboxed environment test
-         */
-        _isSandboxed: {
-          type: Boolean
-        },
-        /**
-         * Internal app store data property after request
-         */
-        __appStoreData: {
-          type: Object
-        },
-        __ready: {
-          type: Boolean
-        },
-        /**
-         * Support for deploy specific rewriting for things like JWTs
-         */
-        connectionRewrites: {
-          type: Object
-        }
+    return {
+      ...super.properties,
+      openDrawer: {
+        type: Object
       },
-      super.properties
-    );
+      voiceDebug: {
+        type: Boolean
+      },
+      voiceRespondsTo: {
+        type: String,
+        attribute: "voice-responses-to"
+      },
+      /**
+       * skipHAXConfirmation
+       */
+      skipHAXConfirmation: {
+        type: Boolean,
+        reflect: true,
+        attribute: "skip-hax-confirmation"
+      },
+      /**
+       * Local storage bridge
+       */
+      storageData: {
+        type: Object
+      },
+      /**
+       * Hax app picker element.
+       */
+      haxAppPicker: {
+        type: Object
+      },
+      /**
+       * Hax stax picker element.
+       */
+      haxStaxPicker: {
+        type: Object
+      },
+      /**
+       * Hax stax picker element.
+       */
+      haxBloxPicker: {
+        type: Object
+      },
+      /**
+       * Hax manager element.
+       */
+      haxManager: {
+        type: Object
+      },
+      /**
+       * Hax autoloader element.
+       */
+      haxAutoloader: {
+        type: Object
+      },
+      /**
+       * A list of all haxBodies that exist
+       */
+      haxBodies: {
+        type: Array
+      },
+      /**
+       * An active place holder item reference. This is used
+       * for inline drag and drop event detection so that we
+       * know what element replace in context.
+       */
+      activePlaceHolder: {
+        type: Object
+      },
+      /**
+       * The hax-body that is currently active.
+       */
+      activeHaxBody: {
+        type: Object
+      },
+      /**
+       * Possible appStore endpoint for loading in things dynamically.
+       */
+      appStore: {
+        type: Object
+      },
+      /**
+       * HAX Toast message.
+       */
+      haxToast: {
+        type: Object
+      },
+      /**
+       * Hax panel element.
+       */
+      haxPanel: {
+        type: Object
+      },
+      /**
+       * Hax export dialog element.
+       */
+      haxExport: {
+        type: Object
+      },
+      /**
+       * Hax preferences dialog element.
+       */
+      haxPreferences: {
+        type: Object
+      },
+      /**
+       * Active HAX Element if we have one we are working on.
+       */
+      activeHaxElement: {
+        type: Object
+      },
+      /**
+       * Active Node.
+       */
+      activeNode: {
+        type: Object
+      },
+      /**
+       * Active container Node, 2nd highest parent of activeNode.
+       */
+      activeContainerNode: {
+        type: Object
+      },
+      /**
+       * Session object bridged in from a session method of some kind
+       */
+      sessionObject: {
+        type: Object
+      },
+      /**
+       * editMode
+       */
+      editMode: {
+        type: Boolean
+      },
+      /**
+       * Boolean for if this instance has backends that support uploading
+       */
+      canSupportUploads: {
+        type: Boolean
+      },
+      /**
+       * skip the exit trap to prevent losing data
+       */
+      skipExitTrap: {
+        type: Boolean
+      },
+      /**
+       * Available gizmos.
+       */
+      gizmoList: {
+        type: Array
+      },
+      /**
+       * Available elements keyed by tagName and with
+       * their haxProperties centrally registered.
+       */
+      elementList: {
+        type: Object
+      },
+      /**
+       * Available apps of things supplying media / content.
+       */
+      appList: {
+        type: Array
+      },
+      /**
+       * Available hax stax which are just re-usable templates
+       */
+      staxList: {
+        type: Array
+      },
+      /**
+       * Available hax blox which are grid plate / layout elements
+       */
+      bloxList: {
+        type: Array
+      },
+      /**
+       * Global preferences that HAX can write to and
+       * other elements can use to go off of.
+       */
+      globalPreferences: {
+        type: Object
+      },
+      /**
+       * Globally active app, used for brokering communications
+       */
+      activeApp: {
+        type: Object
+      },
+      /**
+       * Valid tag list, tag only and including primatives for a baseline.
+       */
+      validTagList: {
+        type: Array
+      },
+      /**
+       * Gizmo types which can be used to bridge apps to gizmos.
+       */
+      validGizmoTypes: {
+        type: Array
+      },
+      /**
+       * Sandboxed environment test
+       */
+      _isSandboxed: {
+        type: Boolean
+      },
+      /**
+       * Internal app store data property after request
+       */
+      __appStoreData: {
+        type: Object
+      },
+      __ready: {
+        type: Boolean
+      },
+      /**
+       * Support for deploy specific rewriting for things like JWTs
+       */
+      connectionRewrites: {
+        type: Object
+      }
+    };
   }
   /**
    * Local storage data changed; callback to store this data in user storage
@@ -553,90 +572,6 @@ class HaxStore extends HAXElement(LitElement) {
     }
   }
   /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    // notice hax property definitions coming from anywhere
-    window.removeEventListener(
-      "hax-register-properties",
-      this._haxStoreRegisterProperties.bind(this)
-    );
-    // app registration can come in automatically from app-stores
-    // or through direct definition in the DOM
-    document.body.removeEventListener(
-      "hax-register-app",
-      this._haxStoreRegisterApp.bind(this)
-    );
-    // register stax which are groupings of haxElements
-    document.body.removeEventListener(
-      "hax-register-stax",
-      this._haxStoreRegisterStax.bind(this)
-    );
-    // register blox which are grid plate configurations
-    document.body.removeEventListener(
-      "hax-register-blox",
-      this._haxStoreRegisterBlox.bind(this)
-    );
-    // register the pieces of the body of what we call HAX
-    // think of this like the core of the system required
-    // to do anything like have buttons or state management
-
-    // write data to the store
-    document.body.removeEventListener(
-      "hax-store-write",
-      this._writeHaxStore.bind(this)
-    );
-    // register the autoloader area for elements
-    document.body.removeEventListener(
-      "hax-register-core-piece",
-      this._haxStorePieceRegistrationManager.bind(this)
-    );
-    // register a body, kind of a big deal
-    document.body.removeEventListener(
-      "hax-register-body",
-      this._haxStoreRegisterBody.bind(this)
-    );
-    // notice content insert and help it along to the body
-    document.body.removeEventListener(
-      "hax-insert-content",
-      this._haxStoreInsertContent.bind(this)
-    );
-    // grid plate add item event
-    document.body.removeEventListener(
-      "grid-plate-add-item",
-      this.haxInsertAnything.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-insert-content-array",
-      this._haxStoreInsertMultiple.bind(this)
-    );
-    window.removeEventListener(
-      "hax-add-voice-command",
-      this._addVoiceCommand.bind(this)
-    );
-    // capture events and intercept them globally
-    window.removeEventListener(
-      "onbeforeunload",
-      this._onBeforeUnload.bind(this)
-    );
-    window.removeEventListener(
-      "hax-consent-tap",
-      this._haxConsentTap.bind(this)
-    );
-    window.removeEventListener("paste", this._onPaste.bind(this));
-    // send that hax store is ready to go so now we can setup the rest
-    this.dispatchEvent(
-      new CustomEvent("hax-store-ready", {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: false
-      })
-    );
-    window.HaxStore.ready = false;
-    super.disconnectedCallback();
-  }
-  /**
    * This only send if they consented to storage of data locally
    */
   _haxConsentTap(e) {
@@ -650,8 +585,10 @@ class HaxStore extends HAXElement(LitElement) {
   }
   updated(changedProperties) {
     let loadAppStoreData = false;
-    let storePiecesAllHere = false;
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "openDrawer") {
+        this.openDrawersCallback(this[propName], oldValue);
+      }
       if (propName == "appStore") {
         this._appStoreChanged(this[propName], oldValue);
       }
@@ -675,10 +612,23 @@ class HaxStore extends HAXElement(LitElement) {
           "haxPreferences",
           "haxManager",
           "haxStaxPicker",
+          "haxBloxPicker",
           "haxAppPicker"
         ].includes(propName)
       ) {
-        storePiecesAllHere = true;
+        // allow this to verify if everything is here or not
+        this._storePiecesAllHere(
+          this.haxAutoloader,
+          this.activeHaxBody,
+          this.haxPanel,
+          this.haxToast,
+          this.haxExport,
+          this.haxPreferences,
+          this.haxManager,
+          this.haxStaxPicker,
+          this.haxBloxPicker,
+          this.haxAppPicker
+        );
       }
     });
     if (loadAppStoreData) {
@@ -686,19 +636,6 @@ class HaxStore extends HAXElement(LitElement) {
         this.__ready,
         this.__appStoreData,
         this.haxAutoloader
-      );
-    }
-    if (storePiecesAllHere) {
-      this._storePiecesAllHere(
-        this.haxAutoloader,
-        this.activeHaxBody,
-        this.haxPanel,
-        this.haxToast,
-        this.haxExport,
-        this.haxPreferences,
-        this.haxManager,
-        this.haxStaxPicker,
-        this.haxAppPicker
       );
     }
   }
@@ -785,6 +722,7 @@ class HaxStore extends HAXElement(LitElement) {
     haxPreferences,
     haxManager,
     haxStaxPicker,
+    haxBloxPicker,
     haxAppPicker
   ) {
     if (
@@ -797,6 +735,7 @@ class HaxStore extends HAXElement(LitElement) {
       haxPreferences &&
       haxManager &&
       haxStaxPicker &&
+      haxBloxPicker &&
       haxAppPicker
     ) {
       // send that hax store is ready to go so now we can setup the rest
@@ -841,7 +780,7 @@ class HaxStore extends HAXElement(LitElement) {
       this.__hal.speak("Yeah what do you want");
     };
     this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
-      window.HaxStore.instance.closeAllDrawers();
+      window.HaxStore.write("openDrawer", false, this);
     };
   }
   /**
@@ -1034,11 +973,30 @@ class HaxStore extends HAXElement(LitElement) {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-register-properties": "_haxStoreRegisterProperties",
+      "hax-consent-tap": "_haxConsentTap",
+      onbeforeunload: "_onBeforeUnload",
+      paste: "_onPaste",
+      "hax-register-app": "_haxStoreRegisterApp",
+      "hax-register-stax": "_haxStoreRegisterStax",
+      "hax-register-blox": "_haxStoreRegisterBlox",
+      "hax-store-write": "_writeHaxStore",
+      "hax-register-core-piece": "_haxStorePieceRegistrationManager",
+      "hax-register-body": "_haxStoreRegisterBody",
+      "grid-plate-add-item": "haxInsertAnything",
+      "hax-insert-content": "_haxStoreInsertContent",
+      "hax-insert-content-array": "_haxStoreInsertMultiple",
+      "hax-add-voice-command": "_addVoiceCommand"
+    };
     this.voiceRespondsTo = "(worker)";
     this.voiceCommands = {};
     this.skipHAXConfirmation = false;
     this.storageData = {};
-    this.appStore = {};
+    this.appStore = {
+      url: "",
+      params: {}
+    };
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
@@ -1053,12 +1011,14 @@ class HaxStore extends HAXElement(LitElement) {
     this.globalPreferences = {};
     this.activeApp = {};
     this.connectionRewrites = {};
-    this.voiceDebug = true;
+    // change this in order to debug voice commands
+    this.voiceDebug = false;
     this.validTagList = this.__validTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
+    // polymer specific thing
     setPassiveTouchGestures(true);
     // helps promose polyfill for this to be 1 execution chain as opposed to multiple
     import("@lrnwebcomponents/hax-body/lib/hax-store-dynamic.js");
@@ -1068,67 +1028,6 @@ class HaxStore extends HAXElement(LitElement) {
       window.HaxStore.instance = this;
     }
     this.haxToast = window.SimpleToast.requestAvailability();
-    // notice hax property definitions coming from anywhere
-    window.addEventListener(
-      "hax-register-properties",
-      this._haxStoreRegisterProperties.bind(this)
-    );
-    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
-    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // app registration can come in automatically from app-stores
-    // or through direct definition in the DOM
-    document.body.addEventListener(
-      "hax-register-app",
-      this._haxStoreRegisterApp.bind(this)
-    );
-    // register stax which are groupings of haxElements
-    document.body.addEventListener(
-      "hax-register-stax",
-      this._haxStoreRegisterStax.bind(this)
-    );
-    // register blox which are grid plate configurations
-    document.body.addEventListener(
-      "hax-register-blox",
-      this._haxStoreRegisterBlox.bind(this)
-    );
-    // register the pieces of the body of what we call HAX
-    // think of this like the core of the system required
-    // to do anything like have buttons or state management
-
-    // write data to the store
-    document.body.addEventListener(
-      "hax-store-write",
-      this._writeHaxStore.bind(this)
-    );
-    // register pieces of the system
-    document.body.addEventListener(
-      "hax-register-core-piece",
-      this._haxStorePieceRegistrationManager.bind(this)
-    );
-    // register a body, kind of a big deal
-    document.body.addEventListener(
-      "hax-register-body",
-      this._haxStoreRegisterBody.bind(this)
-    );
-    // grid plate add item event
-    document.body.addEventListener(
-      "grid-plate-add-item",
-      this.haxInsertAnything.bind(this)
-    );
-    // notice content insert and help it along to the body
-    document.body.addEventListener(
-      "hax-insert-content",
-      this._haxStoreInsertContent.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-insert-content-array",
-      this._haxStoreInsertMultiple.bind(this)
-    );
-    window.addEventListener(
-      "hax-add-voice-command",
-      this._addVoiceCommand.bind(this)
-    );
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   }
 
@@ -1440,10 +1339,10 @@ class HaxStore extends HAXElement(LitElement) {
     this.setHaxProperties(p, "p");
     let hr = {
       canScale: {
-        min: 10,
-        step: 5
+        min: 25,
+        step: 25
       },
-      canPosition: true,
+      canPosition: false,
       canEditSource: false,
       settings: {
         quick: [],
@@ -1470,12 +1369,13 @@ class HaxStore extends HAXElement(LitElement) {
   /**
    * Close all drawers
    */
-  closeAllDrawers(active = false) {
+  openDrawersCallback(active = false, oldValue) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
     let drawers = [
       "haxManager",
+      "haxAppPicker",
       "haxBloxPicker",
       "haxStaxPicker",
       "haxPreferences",
@@ -1635,12 +1535,16 @@ class HaxStore extends HAXElement(LitElement) {
    * Present all elements to potentially insert
    */
   haxInsertAnything(e) {
+    let props = {};
+    if (e && e.detail && e.detail.properties) {
+      props = e.detail.properties;
+    }
     let haxElements = [];
     for (var i in window.HaxStore.instance.gizmoList) {
       haxElements.push(
         window.HaxStore.haxElementPrototype(
           window.HaxStore.instance.gizmoList[i],
-          e.detail.properties,
+          props,
           ""
         )
       );
@@ -1752,7 +1656,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterApp(e) {
     if (e.detail) {
       e.detail.index = this.appList.length;
-      this.appList.push(e.detail);
+      this.appList = [...this.appList, e.detail];
       window.HaxStore.write("appList", this.appList, this);
       // preconnect apps at registration time
       if (
@@ -1782,7 +1686,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterStax(e) {
     if (e.detail) {
       e.detail.index = this.staxList.length;
-      this.staxList.push(e.detail);
+      this.staxList = [...this.staxList, e.detail];
       window.HaxStore.write("staxList", this.staxList, this);
       // we don't care about this after it's launched
       if (
@@ -1800,7 +1704,7 @@ class HaxStore extends HAXElement(LitElement) {
   _haxStoreRegisterBlox(e) {
     if (e.detail) {
       e.detail.index = this.bloxList.length;
-      this.bloxList.push(e.detail);
+      this.bloxList = [...this.bloxList, e.detail];
       window.HaxStore.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
@@ -1847,6 +1751,7 @@ class HaxStore extends HAXElement(LitElement) {
     }
   }
 }
+window.customElements.define(HaxStore.tag, HaxStore);
 /**
  * Trick to write the store to the DOM if it wasn't there already.
  * This is not used yet but could be if you wanted to dynamically
@@ -2072,7 +1977,7 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           if (newNode.set) {
             newNode.set(attributeName, properties[property]);
           } else {
-            newNode[attributeName] = properties[property];
+            newNode[attributeName] = [...properties[property]];
           }
         }
       } else if (
@@ -2090,7 +1995,7 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           if (newNode.set) {
             newNode.set(attributeName, properties[property]);
           } else {
-            newNode[attributeName] = properties[property];
+            newNode[attributeName] = { ...properties[property] };
           }
         }
       } else {
@@ -2293,7 +2198,7 @@ window.HaxStore.nodeToContent = node => {
   // try and work against anything NOT a P tag
   if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
     // get content that is in the slots
-    let slotnodes = FlattenedNodesObserver.getFlattenedNodes(node);
+    let slotnodes = node.childNodes;
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
@@ -2415,7 +2320,7 @@ window.HaxStore.getHAXSlot = node => {
     return node.innerHTML;
   }
   let content = "";
-  var slotnodes = node.children;
+  var slotnodes = node.childNodes;
   // ensure there's something inside of this
   if (slotnodes.length > 0) {
     // loop through everything found in the slotted area and put it back in
@@ -2639,6 +2544,75 @@ window.HaxStore.getRange = () => {
     return sel;
   } else false;
 };
+import { Undoer } from "undoer/undoer.js";
+class UndoerElement extends HTMLElement {
+  static get observedAttributes() {
+    return ["state"];
+  }
 
-window.customElements.define(HaxStore.tag, HaxStore);
-export { HaxStore };
+  constructor() {
+    super();
+    this.openDrawer = false;
+    this._root = this.attachShadow({ mode: "open" });
+
+    // hide from the first attributeChangedCallback call
+    this._selfAttributeChange = true;
+    window.setTimeout(() => {
+      this._selfAttributeChange = false;
+    });
+
+    const callback = data => {
+      const { value, attr } = data;
+      this._updateAttribute(attr ? value : null);
+
+      // hooray! tell the client
+      this.dispatchEvent(new CustomEvent("state", { detail: value }));
+    };
+
+    // set up initial zero undo state from attr
+    const zero = this.getAttribute("state");
+    const attr = this.hasAttribute("state");
+    this._undoer = new Undoer(callback, { value: zero, attr });
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "state" && !this._selfAttributeChange) {
+      this._internalSet(newValue, true);
+    }
+  }
+
+  set state(value) {
+    if (!this.isConnected) {
+      throw new Error("can't push state while disconnected");
+    }
+
+    // render if simple "attribute safe" state
+    const attr = typeof value === "string" || typeof value === "number";
+    this._internalSet(value, attr);
+  }
+
+  get state() {
+    const { value } = this._undoer.data;
+    return value;
+  }
+
+  _updateAttribute(value) {
+    this._selfAttributeChange = true;
+    try {
+      if (value) {
+        this.setAttribute("state", value);
+      } else {
+        this.removeAttribute("state");
+      }
+    } finally {
+      this._selfAttributeChange = false;
+    }
+  }
+
+  _internalSet(value, attr) {
+    this._updateAttribute(attr ? value : null);
+    this._undoer.push({ value, attr }, this._root);
+  }
+}
+window.customElements.define("undoer-element", UndoerElement);
+export { HaxStore, UndoerElement };

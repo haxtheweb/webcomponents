@@ -1,0 +1,398 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "wave-player",
+      "description": "`wave-player`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "attribute": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "attribute": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "attribute": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "attribute": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "attribute": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "attribute": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "attribute": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "attribute": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "attribute": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "attribute": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "wave-player",
+      "description": "`wave-player`",
+      "attributes": [
+        {
+          "name": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The source of the audio file to be played",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "The main (bold) title",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "type": "string",
+          "default": "\"NULL\""
+        },
+        {
+          "name": "coverart",
+          "attribute": "coverart",
+          "description": "The sourse for cover art",
+          "type": "string",
+          "default": "\"art.jpg\""
+        },
+        {
+          "name": "wavesurfer",
+          "attribute": "wavesurfer",
+          "description": "container for the wave object",
+          "type": "object"
+        },
+        {
+          "name": "lean",
+          "attribute": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "attribute": "wavecolor",
+          "description": "Color of the Wave",
+          "type": "string",
+          "default": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "attribute": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "type": "string",
+          "default": "\"#CFD8DC\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

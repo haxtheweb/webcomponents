@@ -10,21 +10,15 @@
 paper-icon-button {
   background-color: rgba(0,0,0,.6);
   color: white;
-  @apply --scroll-button-button;
 }
 paper-icon-button:hover,
 paper-icon-button:active,
 paper-icon-button:focus {
   background-color: rgba(0,0,0,1);
-  @apply --scroll-button-button-active;
 }
 paper-tooltip {
   --paper-tooltip-background: #000000;
   --paper-tooltip-opacity: 1;
   --paper-tooltip-text-color: #ffffff;
   --paper-tooltip-delay-in: 0;
-  --paper-tooltip: {
-    border-radius: 0;
-  }
-  @apply --scroll-button-tooltip;
 }

@@ -1,0 +1,49 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "figure-label"
+    },
+    {
+      "name": "figure-label",
+      "description": "`figure-label`"
+    },
+    {
+      "name": "figure-label",
+      "description": "`figure-label`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "figure-label"
+    },
+    {
+      "name": "figure-label",
+      "description": "`figure-label`"
+    }
+  ]
+}

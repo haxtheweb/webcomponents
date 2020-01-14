@@ -1,0 +1,33 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "they-live",
+      "description": "`they-live`"
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`",
+      "attributes": [
+        {
+          "name": "truth",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "truth",
+          "attribute": "truth",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "they-live"
+    },
+    {
+      "name": "they-live",
+      "description": "`they-live`"
+    }
+  ]
+}

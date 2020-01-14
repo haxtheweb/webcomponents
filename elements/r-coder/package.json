@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/r-coder",
   "wcfactory": {
     "className": "RCoder",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "r-coder",
     "generator-wcfactory-version": "0.7.3",
     "useHAX": true,
@@ -17,20 +17,21 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "R coder interface for the r-service backend.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "r-coder.js",
   "module": "r-coder.es6.js",
   "umd": "r-coder.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/r-coder/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
-    "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
@@ -40,9 +41,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.2.0",
+    "@lrnwebcomponents/code-editor": "^2.4.0",
     "@polymer/paper-button": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

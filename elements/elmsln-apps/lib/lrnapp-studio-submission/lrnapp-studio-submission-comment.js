@@ -1,14 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-class LrnappStudioSubmissionComment extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmissionComment extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
         }
@@ -67,24 +69,28 @@ class LrnappStudioSubmissionComment extends PolymerElement {
         .center {
           padding: 0;
         }
-      </style>
-      <div class\$="center comment-depth-[[comment.attributes.threadDepth]]">
+      `
+    ];
+  }
+  render() {
+    return html`
+      <div class="center comment-depth-${this.comment.attributes.threadDepth}">
         <lrndesign-avatar
-          label="[[comment.relationships.author.data.name]]"
+          label="${this.comment.relationships.author.data.name}"
           class="float-left"
         ></lrndesign-avatar>
       </div>
       <paper-card
-        class\$="paper-card-length-[[comment.attributes.threadDepth]]"
+        class="paper-card-length-${this.comment.attributes.threadDepth}"
       >
         <div id="body" class="comment-body nowrap">
           <h4>
-            [[comment.relationships.author.data.name]]
+            ${this.comment.relationships.author.data.name}
             <span class="grey-said"> said:</span>
           </h4>
-          <word-count>[[comment.attributes.body]]</word-count>
+          <word-count>${this.comment.attributes.body}</word-count>
         </div>
-        <div class\$="card-actions">
+        <div class="card-actions">
           <paper-icon-button
             class="right-actions"
             id="reply"
@@ -120,22 +126,12 @@ class LrnappStudioSubmissionComment extends PolymerElement {
   /**
    * attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  firstUpdated() {
+    setTimeout(() => {
       this.shadowRoot.querySelector("#body").addEventListener("click", e => {
         this.shadowRoot.querySelector("#body").classList.toggle("nowrap");
       });
-    });
-  }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot.querySelector("#body").removeEventListener("click", e => {
-      this.shadowRoot.querySelector("#body").classList.toggle("nowrap");
-    });
-    super.disconnectedCallback();
+    }, 0);
   }
 }
 window.customElements.define(

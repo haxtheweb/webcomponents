@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
@@ -13,6 +12,7 @@ import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
  * `Polymer-based web component displaying a circular progress bar.`
  *
  * @demo demo/index.html
+ * @customElement circle-progress
  */
 class CircleProgress extends mixinBehaviors(
   [IronResizableBehavior],
@@ -152,17 +152,12 @@ class CircleProgress extends mixinBehaviors(
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  constructor() {
+    super();
+    setTimeout(() => {
       this.addEventListener("iron-resize", this._onIronResize.bind(this));
-    });
+    }, 0);
   }
-  disconnectedCallback() {
-    this.removeEventListener("iron-resize", this._onIronResize.bind(this));
-    super.disconnectedCallback();
-  }
-
   _computeDashArray(radius) {
     return 2 * Math.PI * radius;
   }

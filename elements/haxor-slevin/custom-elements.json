@@ -1,0 +1,166 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "attribute": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "attribute": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxor-slevin",
+      "description": "`haxor-slevin`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "type": "string"
+        },
+        {
+          "name": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "type": "string"
+        },
+        {
+          "name": "stateClass",
+          "attribute": "state-class",
+          "type": "string"
+        },
+        {
+          "name": "selectedPage",
+          "attribute": "selected-page",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-item-changed"
+        }
+      ]
+    }
+  ]
+}

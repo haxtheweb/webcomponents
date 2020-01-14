@@ -1,0 +1,37 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "page-scroll-position",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "page-scroll-position",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "page-scroll-position",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "page-scroll-position",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    }
+  ]
+}

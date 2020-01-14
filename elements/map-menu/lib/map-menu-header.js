@@ -12,13 +12,12 @@ class MapMenuHeader extends LitElement {
       css`
         :host {
           display: block;
-          transition: 0.2s all ease-in-out;
-          transition-delay: 0.2s;
-          --map-menu-item-height: 16px;
+          transition: 0.1s all ease-in-out;
+          --map-menu-item-height: 24px;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
-          color: var(--site-menu-item-active-item-color, #000000);
+          color: var(--map-menu-item-active-item-color, #000000);
         }
         #container {
           display: flex;
@@ -37,6 +36,7 @@ class MapMenuHeader extends LitElement {
         a:hover,
         a:visited,
         a:focus {
+          display: block;
           color: var(--map-menu-header-a-color, inherit);
           text-decoration: var(--map-menu-header-a-text-decoration, inherit);
         }
@@ -68,15 +68,17 @@ class MapMenuHeader extends LitElement {
           color: gray;
         }
 
-        /* @todo this is a hack */
-        .icon iron-icon {
+        iron-icon {
           display: inline-block;
           --iron-icon-height: var(--map-menu-item-height);
-          transform: translateX(10px);
+          --iron-icon-width: var(--map-menu-item-height);
         }
 
         paper-button {
           text-transform: none;
+          width: 100%;
+          justify-content: left;
+          margin: 0px;
         }
       `
     ];
@@ -91,18 +93,16 @@ class MapMenuHeader extends LitElement {
           ? html`
               <div class="avatarlabel">
                 <lrndesign-avatar
-                  .label="${this.avatarLabel}"
+                  label="${this.avatarLabel}"
                 ></lrndesign-avatar>
               </div>
             `
-          : html``}
+          : ``}
         ${this.icon
           ? html`
-              <div class="icon">
-                <iron-icon icon="${this.icon}"></iron-icon>
-              </div>
+              <iron-icon icon="${this.icon}"></iron-icon>
             `
-          : html``}
+          : ``}
 
         <div id="center">
           <a tabindex="-1" href="${this.url}">
@@ -133,11 +133,14 @@ class MapMenuHeader extends LitElement {
    */
   constructor() {
     super();
-    this.avatarLabel = false;
+    this.avatarLabel = "";
     this.url = "";
+    this.opened = false;
     this.active = false;
-    this.__collapseIcon = "arrow-drop-up";
-    this.__collapseAria = "expand menu";
+    setTimeout(() => {
+      this.addEventListener("click", this.__tap.bind(this));
+      this.addEventListener("keypress", this.__keypress.bind(this));
+    }, 0);
   }
   /**
    * LitElement life cycle - properties changed callback
@@ -202,10 +205,10 @@ class MapMenuHeader extends LitElement {
   }
   _openedChanged(newValue, oldValue) {
     if (newValue) {
-      this.__collapseIcon = "arrow-drop-down";
+      this.__collapseIcon = "icons:expand-more";
       this.__collapseAria = "collapse menu";
     } else {
-      this.__collapseIcon = "arrow-drop-up";
+      this.__collapseIcon = "icons:chevron-right";
       this.__collapseAria = "expand menu";
     }
   }
@@ -220,22 +223,6 @@ class MapMenuHeader extends LitElement {
         })
       );
     }
-  }
-
-  /**
-   * LitElement life cycle - ready
-   */
-  firstUpdated(changedProperties) {
-    this.addEventListener("click", this.__tap.bind(this));
-    this.addEventListener("keypress", this.__keypress.bind(this));
-  }
-  /**
-   * HTMLElement life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener("click", this.__tap.bind(this));
-    this.removeEventListener("keypress", this.__keypress.bind(this));
-    super.disconnectedCallback();
   }
 
   __tap(e) {

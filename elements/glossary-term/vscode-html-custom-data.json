@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
+      "attributes": []
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nAttributes:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - \n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "name",
+          "description": "`name` {`string`} - \n\nProperty: name\n\nDefault: "
+        },
+        {
+          "name": "definition",
+          "description": "`definition` {`string`} - \n\nProperty: definition\n\nDefault: "
+        },
+        {
+          "name": "display",
+          "description": "`display` {`string`} - \n\nProperty: display\n\nDefault: "
+        },
+        {
+          "name": "serviceType",
+          "description": "`serviceType` {`string`} - \n\nProperty: serviceType\n\nDefault: file"
+        },
+        {
+          "name": "endpoint",
+          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: "
+        },
+        {
+          "name": "_fallback",
+          "description": "`_fallback` {`boolean`} - \n\nProperty: _fallback\n\nDefault: true",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "glossary-term",
+      "description": "`glossary-term`\n`Glossary term that shows a popup for the answer`\n\nProperties:\n\n  * `name` {`string`} - \n\n  * `definition` {`string`} - \n\n  * `display` {`string`} - \n\n  * `serviceType` {`string`} - \n\n  * `endpoint` {`string`} - \n\n  * `_fallback` {`boolean`} - ",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

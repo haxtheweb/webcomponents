@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `__now` {`string`} - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title"
+        },
+        {
+          "name": "_title",
+          "description": "`_title` {`string`} - \n\nProperty: _title"
+        },
+        {
+          "name": "search",
+          "description": "`search` {`string`} - Search string.\n\nProperty: search"
+        },
+        {
+          "name": "hide-title",
+          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__now",
+          "description": "`__now` {`string`} - \n\nProperty: __now"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

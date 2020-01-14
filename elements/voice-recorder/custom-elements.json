@@ -1,0 +1,139 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "attributes": [
+        {
+          "name": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconState",
+          "attribute": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "attribute": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "attribute": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "voice-recorder-recording"
+        }
+      ]
+    },
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "attributes": [
+        {
+          "name": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconState",
+          "attribute": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "attribute": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "attribute": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "voice-recorder-recording"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "voice-recorder-recording"
+        }
+      ]
+    },
+    {
+      "name": "voice-recorder",
+      "description": "`voice-recorder`\n`LAME bridge`",
+      "attributes": [
+        {
+          "name": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "iconState",
+          "attribute": "iconState",
+          "type": "string"
+        },
+        {
+          "name": "textState",
+          "attribute": "textState",
+          "type": "string"
+        },
+        {
+          "name": "recording",
+          "attribute": "recording",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "voice-recorder-recording"
+        }
+      ]
+    }
+  ]
+}

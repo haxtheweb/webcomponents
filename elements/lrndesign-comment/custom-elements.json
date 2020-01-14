@@ -1,0 +1,206 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-comment",
+      "description": "`lrndesign-comment`",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "attribute": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-comment",
+      "description": "`lrndesign-comment`",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "attribute": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-comment",
+      "description": "`lrndesign-comment`",
+      "attributes": [
+        {
+          "name": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "avatar",
+          "attribute": "avatar",
+          "type": "object"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "type": "string",
+          "default": "\"2014-04-01T00:00:00.000Z\""
+        },
+        {
+          "name": "links",
+          "attribute": "links",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

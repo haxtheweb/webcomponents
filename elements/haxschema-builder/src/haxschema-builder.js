@@ -2,24 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 /**
  * `haxschema-builder`
  * `dynamically build and visualize HAXschema`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement haxschema-builder
  */
-class HaxschemaBuilder extends PolymerElement {
+class HaxschemaBuilder extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -29,18 +25,37 @@ class HaxschemaBuilder extends PolymerElement {
   static get tag() {
     return "haxschema-builder";
   }
+  constructor() {
+    super();
+    this.HAXWiring = new HAXWiring();
+    this.haxSchema = "{}";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "haxSchema") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("hax-schema-changed", {
+            value: this[propName]
+          })
+        );
+        this._haxSchemaChanged(this[propName], oldValue);
+      }
+    });
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
-    if (!this.source) {
-      this.haxSchema = JSON.stringify(
-        this.HAXWiring.prototypeHaxProperties(),
-        null,
-        2
-      );
-    }
+  firstUpdated() {
+    setTimeout(() => {
+      if (!this.source) {
+        this.haxSchema = JSON.stringify(
+          this.HAXWiring.prototypeHaxProperties(),
+          null,
+          2
+        );
+      }
+    }, 0);
     // HACK to get initial paint to have the correct form
     this.shadowRoot.querySelector("#form").modeTab = "advanced";
     setTimeout(() => {
@@ -64,7 +79,10 @@ class HaxschemaBuilder extends PolymerElement {
     let hs = JSON.parse(this.haxSchema);
     for (var key in hs.settings) {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
-      this.set(key + "Schema", schema);
+      this.shadowRoot.querySelector("#form")[key + "Schema"] = Object.assign(
+        {},
+        schema
+      );
     }
   }
   addAdvanced(e) {
@@ -80,7 +98,10 @@ class HaxschemaBuilder extends PolymerElement {
   __refreshSchemas(hs) {
     for (var key in hs.settings) {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
-      this.set(key + "Schema", schema);
+      this.shadowRoot.querySelector("#form")[key + "Schema"] = Object.assign(
+        {},
+        schema
+      );
     }
     this.haxSchema = JSON.stringify(hs);
   }
@@ -95,10 +116,12 @@ class HaxschemaBuilder extends PolymerElement {
       validationType: "text"
     };
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
+  __haxSchemaChanged(e) {
+    this.haxSchema = e.detail.value;
+  }
+  __valueChanged(e) {
+    this.value = e.detail.value;
+  }
 }
 window.customElements.define(HaxschemaBuilder.tag, HaxschemaBuilder);
 export { HaxschemaBuilder };

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "random-item",
+      "description": "`random-item`\n\nAttributes:\n\n  * `source` {} - \n\n  * `field` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {} - \n\n"
+        },
+        {
+          "name": "field",
+          "description": "`field` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "random-item",
+      "description": "`random-item`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `field` {`string`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `source` {`string`} - \n\n  * `field` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source"
+        },
+        {
+          "name": "field",
+          "description": "`field` {`string`} - \n\nProperty: field"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "random-item",
+      "description": "`random-item`\n\nAttributes:\n\n  * `source` {} - \n\n  * `field` {} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {} - \n\n"
+        },
+        {
+          "name": "field",
+          "description": "`field` {} - \n\n"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

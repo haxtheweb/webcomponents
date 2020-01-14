@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "chartist-render",
+      "description": "`chartist-render`\n\nEvents:\n\n  * `chartist-render-draw` - Fired when chart is being drawn.\n\n  * `chartist-render-created` - Fired once chart is created and accessibility features are added.\n\nProperties:\n\n  * `id` {`string`} - \n\n  * `type` {`string`} - \n\n  * `scale` {`string`} - \n\n  * `chartTitle` - \n\n  * `chartDesc` - \n\n  * `data` - \n\n  * `options` - \n\n  * `responsiveOptions` {`never[]`} - \n\n  * `showTable` {`boolean`} - \n\n  * `__chartId` - ",
+      "attributes": [
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` - Fired when chart is being drawn."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` - Fired once chart is created and accessibility features are added."
+        }
+      ]
+    },
+    {
+      "name": "chartist-render",
+      "description": "`chartist-render`\n\nEvents:\n\n  * `chartist-render-draw` - Fired when chart is being drawn.\n\n  * `chartist-render-created` - Fired once chart is created and accessibility features are added.\n\nAttributes:\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `chart-title` {`string`} - The chart title used for accessibility.\n\n  * `chart-desc` {`string`} - The chart description used for accessibility.\n\n  * `data` - The chart data.\n\n  * `options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\n  * `responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperties:\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `chartTitle` {`string`} - The chart title used for accessibility.\n\n  * `chartDesc` {`string`} - The chart description used for accessibility.\n\n  * `data` - The chart data.\n\n  * `options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\n  * `responsiveOptions` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `showTable` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `__chartId` - ",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The unique identifier of the chart.\n\nProperty: id\n\nDefault: chart"
+        },
+        {
+          "name": "type",
+          "description": "`type` {`string`} - The type of chart:bar, line, or pie\n\nProperty: type\n\nDefault: bar"
+        },
+        {
+          "name": "scale",
+          "description": "`scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\nProperty: scale\n\nDefault: ct-minor-seventh"
+        },
+        {
+          "name": "chart-title",
+          "description": "`chart-title` {`string`} - The chart title used for accessibility.\n\nProperty: chartTitle\n\nDefault: null"
+        },
+        {
+          "name": "chart-desc",
+          "description": "`chart-desc` {`string`} - The chart description used for accessibility.\n\nProperty: chartDesc\n\nDefault: null"
+        },
+        {
+          "name": "data",
+          "description": "`data` - The chart data.\n\nProperty: data\n\nDefault: null"
+        },
+        {
+          "name": "options",
+          "description": "`options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\nProperty: options\n\nDefault: null"
+        },
+        {
+          "name": "responsive-options",
+          "description": "`responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\nProperty: responsiveOptions\n\nDefault: "
+        },
+        {
+          "name": "show-table",
+          "description": "`show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperty: showTable\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` - Fired when chart is being drawn."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` - Fired once chart is created and accessibility features are added."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `chartist-render-ready` - \n\n  * `chartist-render-draw` - \n\n  * `chartist-render-created` - ",
+      "attributes": [
+        {
+          "name": "onchartist-render-ready",
+          "description": "`chartist-render-ready` - "
+        },
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` - "
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` - "
+        }
+      ]
+    },
+    {
+      "name": "chartist-render",
+      "description": "`chartist-render`\n\nEvents:\n\n  * `chartist-render-draw` - Fired when chart is being drawn.\n\n  * `chartist-render-created` - Fired once chart is created and accessibility features are added.\n\nProperties:\n\n  * `id` {`string`} - \n\n  * `type` {`string`} - \n\n  * `scale` {`string`} - \n\n  * `chartTitle` - \n\n  * `chartDesc` - \n\n  * `data` - \n\n  * `options` - \n\n  * `responsiveOptions` {`never[]`} - \n\n  * `showTable` {`boolean`} - \n\n  * `__chartId` - ",
+      "attributes": [
+        {
+          "name": "onchartist-render-draw",
+          "description": "`chartist-render-draw` - Fired when chart is being drawn."
+        },
+        {
+          "name": "onchartist-render-created",
+          "description": "`chartist-render-created` - Fired once chart is created and accessibility features are added."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-battery-iconset-svg` is a iconset for the Material Design Icons collection with the "battery" tag
+ * `mdi-battery-iconset-svg`
+ * @customElement mdi-battery-iconset-svg is a iconset for the Material Design Icons collection with the "battery" tag
  *
  * Example:
  *   <iron-icon icon="mdi-battery:battery-plus"></iron-icon>

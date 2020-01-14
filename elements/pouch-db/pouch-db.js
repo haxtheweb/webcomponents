@@ -20,12 +20,13 @@ window.PouchDb.requestAvailability = () => {
 
 /**
  * `pouch-db`
+ * @customElement pouch-db
  * `read and write localized data elements`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

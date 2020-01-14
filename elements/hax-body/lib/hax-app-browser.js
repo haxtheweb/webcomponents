@@ -1,14 +1,17 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-app-browser`
+ * @customElement hax-app-browser
+ *
  * `Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`
  * @microcopy - the mental model for this element
  * - hax-app - expression of how to communicate and visualize a data source
  * - gizmo - silly name for the general public when talking about hax-app and what it provides in the end
  */
-class HaxAppBrowser extends LitElement {
+class HaxAppBrowser extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -49,10 +52,14 @@ class HaxAppBrowser extends LitElement {
   }
   constructor() {
     super();
-    this.title = "Find";
+    this.__winEvents = {
+      "hax-app-selected": "_appSelected",
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
+    };
+    this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
-    this.__appList = [];
+    this.appList = [];
     this.filtered = [];
     this.hasActive = false;
     import("@polymer/paper-input/paper-input.js");
@@ -60,18 +67,10 @@ class HaxAppBrowser extends LitElement {
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
-    document.body.addEventListener(
-      "hax-app-selected",
-      this._appSelected.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   }
   render() {
     return html`
-      <h3 class="title">${this.title}</h3>
+      <h3 class="title"><iron-icon icon="search"></iron-icon> ${this.title}</h3>
       <div class="toolbar-inner">
         <dropdown-select
           id="filtertype"
@@ -92,7 +91,7 @@ class HaxAppBrowser extends LitElement {
       </div>
       <grafitto-filter
         id="filter"
-        .items="${this.__appList}"
+        .items="${this.appList}"
         like=""
         @filtered-changed="${this.filteredChanged}"
         where="details.title"
@@ -101,17 +100,17 @@ class HaxAppBrowser extends LitElement {
       ${this.filtered.map(
         app => html`
           <hax-app-browser-item
-            .index="${app.index}"
-            .title="${app.details.title}"
-            .icon="${app.details.icon}"
-            .image="${app.details.tag}"
-            .color="${app.details.color}"
-            .meta="${app.details.meta}"
-            .groups="${app.details.groups}"
-            .handles="${app.details.handles}"
-            .description="${app.details.description}"
-            .rating="${app.details.rating}"
-            .tags="${app.details.tags}"
+            index="${app.index}"
+            title="${app.details.title}"
+            icon="${app.details.icon}"
+            image="${app.details.tag}"
+            color="${app.details.color}"
+            meta="${app.details.meta}"
+            groups="${app.details.groups}"
+            handles="${app.details.handles}"
+            description="${app.details.description}"
+            rating="${app.details.rating}"
+            tags="${app.details.tags}"
           ></hax-app-browser-item>
         `
       )}
@@ -163,13 +162,13 @@ class HaxAppBrowser extends LitElement {
       filtered: {
         type: Array
       },
-      __appList: {
+      appList: {
         type: Array
       }
     };
   }
   filteredChanged(e) {
-    this.filtered = e.detail.value;
+    this.filtered = [...e.detail.value];
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
@@ -197,7 +196,7 @@ class HaxAppBrowser extends LitElement {
     if (typeof e.detail !== typeof undefined) {
       this.__activeApp = e.detail;
       this.searching = true;
-      window.HaxStore.write("activeApp", this.__appList[e.detail], this);
+      window.HaxStore.write("activeApp", this.appList[e.detail], this);
     }
   }
 
@@ -212,7 +211,6 @@ class HaxAppBrowser extends LitElement {
       this.hasActive = false;
     }
   }
-
   /**
    * Store updated, sync.
    */
@@ -230,8 +228,8 @@ class HaxAppBrowser extends LitElement {
    */
   resetBrowser() {
     this.searching = false;
-    this.__appList = window.HaxStore.instance.appList;
-    this.filtered = this.__appList;
+    this.appList = [...window.HaxStore.instance.appList];
+    this.filtered = this.appList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";

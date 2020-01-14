@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `hax-app-browser-item`
+ * @customElement hax-app-browser-item
  * `A button on the hax-app-browser display`
  * @microcopy - the mental model for this element
  * - hax-app - data wiring for an app, this element uses the visual side of this

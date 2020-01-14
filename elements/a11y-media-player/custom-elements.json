@@ -1,0 +1,1876 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "a11y-media-behaviors",
+      "description": "`a11y-media-behaviors`",
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-state-manager",
+      "description": "`a11y-media-state-manager`",
+      "attributes": [
+        {
+          "name": "players",
+          "description": "Stores an array of all the players on the page.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "screenfull-loaded",
+          "description": "Is the screenfull library loaded and screenfull constant set.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky-player",
+          "description": "Manages which player is sticky.",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "players",
+          "attribute": "players",
+          "description": "Stores an array of all the players on the page.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "screenfullLoaded",
+          "attribute": "screenfull-loaded",
+          "description": "Is the screenfull library loaded and screenfull constant set.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "stickyPlayer",
+          "attribute": "sticky-player",
+          "description": "Manages which player is sticky.",
+          "type": "object"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-button",
+      "description": "`a11y-media-button`",
+      "attributes": [
+        {
+          "name": "action",
+          "description": "is button action to send as an event",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "description": "id of element button controls",
+          "type": "string",
+          "default": "\"video\""
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon type",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "button label",
+          "type": "string"
+        },
+        {
+          "name": "toggle",
+          "description": "Is it toggled on?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "description": "Is it disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "tooltip-position",
+          "description": "Is it disabled?",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "action",
+          "attribute": "action",
+          "description": "is button action to send as an event",
+          "type": "string"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "description": "id of element button controls",
+          "type": "string",
+          "default": "\"video\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon type",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "button label",
+          "type": "string"
+        },
+        {
+          "name": "toggle",
+          "attribute": "toggle",
+          "description": "Is it toggled on?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Is it disabled?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "tooltipPosition",
+          "attribute": "tooltip-position",
+          "description": "Is it disabled?",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "click"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-controls",
+      "description": "`a11y-media-controls`",
+      "attributes": [
+        {
+          "name": "compact-controls",
+          "description": "Use compact controls?",
+          "type": "boolean"
+        },
+        {
+          "name": "fixed-height",
+          "description": "Is the player a fixed height (iframe mode) so that theure is no transcript toggle?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-transcript-button",
+          "description": "hide the transcript toggle menu item?",
+          "type": "boolean"
+        },
+        {
+          "name": "link-url",
+          "description": "url for deeplinking",
+          "type": "string",
+          "default": "\"test\""
+        },
+        {
+          "name": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "no-printing",
+          "description": "hide the print transcript feature available?",
+          "type": "boolean"
+        },
+        {
+          "name": "no-transcript-toggle",
+          "description": "Is the transctipt toggle feature available?",
+          "type": "boolean"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "compactControls",
+          "attribute": "compact-controls",
+          "description": "Use compact controls?",
+          "type": "boolean"
+        },
+        {
+          "name": "fixedHeight",
+          "attribute": "fixed-height",
+          "description": "Is the player a fixed height (iframe mode) so that theure is no transcript toggle?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreen",
+          "attribute": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreenButton",
+          "attribute": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hasCaptions",
+          "attribute": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTranscript",
+          "attribute": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTranscriptButton",
+          "attribute": "hide-transcript-button",
+          "description": "hide the transcript toggle menu item?",
+          "type": "boolean"
+        },
+        {
+          "name": "linkUrl",
+          "attribute": "link-url",
+          "description": "url for deeplinking",
+          "type": "string",
+          "default": "\"test\""
+        },
+        {
+          "name": "muteUnmute",
+          "attribute": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "noPrinting",
+          "attribute": "no-printing",
+          "description": "hide the print transcript feature available?",
+          "type": "boolean"
+        },
+        {
+          "name": "noTranscriptToggle",
+          "attribute": "no-transcript-toggle",
+          "description": "Is the transctipt toggle feature available?",
+          "type": "boolean"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        }
+      ],
+      "events": [
+        {
+          "name": "select-track"
+        },
+        {
+          "name": "toggle-cc"
+        },
+        {
+          "name": "controls-change"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-html5",
+      "description": "`a11y-media-html5`",
+      "attributes": [
+        {
+          "name": "controls",
+          "description": "id of element button controls",
+          "type": "string",
+          "default": "\"video\""
+        },
+        {
+          "name": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Is it disabled?",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon type",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "button label",
+          "type": "string"
+        },
+        {
+          "name": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "paused",
+          "description": "Is it paused?",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "seekable",
+          "description": "the seekable range of the media",
+          "type": "object",
+          "default": "{\"length\":0,\"start\":null,\"stop\":null}"
+        },
+        {
+          "name": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "description": "id of element button controls",
+          "type": "string",
+          "default": "\"video\""
+        },
+        {
+          "name": "crossorigin",
+          "attribute": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Is it disabled?",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "iron-icon type",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "button label",
+          "type": "string"
+        },
+        {
+          "name": "mediaLang",
+          "attribute": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "paused",
+          "attribute": "paused",
+          "description": "Is it paused?",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "seekable",
+          "attribute": "seekable",
+          "description": "the seekable range of the media",
+          "type": "object",
+          "default": "{\"length\":0,\"start\":null,\"stop\":null}"
+        },
+        {
+          "name": "thumbnailSrc",
+          "attribute": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "media-loaded"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-transcript-cue",
+      "description": "`a11y-media-transcript-cue`",
+      "attributes": [
+        {
+          "name": "active",
+          "description": "is cue active",
+          "type": "boolean"
+        },
+        {
+          "name": "active-cues",
+          "description": "array of currently active cues",
+          "type": "array"
+        },
+        {
+          "name": "cue",
+          "description": "array of cue data",
+          "type": "array"
+        },
+        {
+          "name": "disabled",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "text",
+          "description": "parsed cue text",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "active",
+          "attribute": "active",
+          "description": "is cue active",
+          "type": "boolean"
+        },
+        {
+          "name": "activeCues",
+          "attribute": "active-cues",
+          "description": "array of currently active cues",
+          "type": "array"
+        },
+        {
+          "name": "cue",
+          "attribute": "cue",
+          "description": "array of cue data",
+          "type": "array"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "parsed cue text",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "cue-seek"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-transcript",
+      "description": "`a11y-media-transcript`",
+      "attributes": [
+        {
+          "name": "active-cues",
+          "description": "array of cues",
+          "type": "array"
+        },
+        {
+          "name": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "lang",
+          "description": "Language",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "media-id",
+          "description": "the id of media",
+          "type": "string"
+        },
+        {
+          "name": "tab-index",
+          "description": "tabindex of cues",
+          "type": "number"
+        },
+        {
+          "name": "role",
+          "description": "tabindex of cues",
+          "type": "number"
+        },
+        {
+          "name": "selected-transcript",
+          "description": "selected transcript track id",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "status",
+          "description": "the status of the transcript loading",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "description": "array of cues",
+          "type": "array"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeCues",
+          "attribute": "active-cues",
+          "description": "array of cues",
+          "type": "array"
+        },
+        {
+          "name": "disableInteractive",
+          "attribute": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTimestamps",
+          "attribute": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "lang",
+          "attribute": "lang",
+          "description": "Language",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "mediaId",
+          "attribute": "media-id",
+          "description": "the id of media",
+          "type": "string"
+        },
+        {
+          "name": "tabIndex",
+          "attribute": "tab-index",
+          "description": "tabindex of cues",
+          "type": "number"
+        },
+        {
+          "name": "role",
+          "attribute": "role",
+          "description": "tabindex of cues",
+          "type": "number"
+        },
+        {
+          "name": "selectedTranscript",
+          "attribute": "selected-transcript",
+          "description": "selected transcript track id",
+          "type": "string",
+          "default": "\"0\""
+        },
+        {
+          "name": "status",
+          "attribute": "status",
+          "description": "the status of the transcript loading",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "attribute": "tracks",
+          "description": "array of cues",
+          "type": "array"
+        }
+      ],
+      "events": [
+        {
+          "name": "transcript-ready"
+        },
+        {
+          "name": "transcript-seek"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-transcript-controls",
+      "description": "`a11y-media-transcript-controls`",
+      "attributes": [
+        {
+          "name": "target",
+          "description": "target of the controls",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "target of the controls",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "searchbar-added"
+        },
+        {
+          "name": "toggle-scroll"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-youtube",
+      "description": "`a11y-media-youtube`",
+      "attributes": [
+        {
+          "name": "api-ready",
+          "description": "whether or not the YouTube API is ready",
+          "type": "boolean"
+        },
+        {
+          "name": "counter",
+          "description": "a counter for creating unique ideas for each YouTube player container",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "apiReady",
+          "attribute": "api-ready",
+          "description": "whether or not the YouTube API is ready",
+          "type": "boolean"
+        },
+        {
+          "name": "counter",
+          "attribute": "counter",
+          "description": "a counter for creating unique ideas for each YouTube player container",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "youtube-api-ready"
+        },
+        {
+          "name": "timeupdate"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-player",
+      "description": "`a11y-media-player`",
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        }
+      ]
+    },
+    {
+      "name": "`",
+      "description": "`a11y-media-player`",
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-player",
+      "description": "`a11y-media-player`",
+      "attributes": [
+        {
+          "name": "allow-concurrent",
+          "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "audio-no-thumb",
+          "description": "Is it an audio player with no thumbnail?",
+          "type": "boolean"
+        },
+        {
+          "name": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disable-fullscreen",
+          "description": "disable fullscreen option",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "flex-layout",
+          "description": "Determines if video and transcript are in a flex layout",
+          "type": "boolean"
+        },
+        {
+          "name": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean"
+        },
+        {
+          "name": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-elapsed-time",
+          "description": "Hide elapsed time?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "description": "initially hide the transcript?",
+          "type": "string"
+        },
+        {
+          "name": "media-caption",
+          "description": "The default media caption if none is given.",
+          "type": "string"
+        },
+        {
+          "name": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "print-caption",
+          "description": "The media caption that displays when the page is printed.",
+          "type": "string"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "screenfull-loaded",
+          "description": "Has screenfull loaded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "share-link",
+          "description": "Has screenfull loaded?",
+          "type": "string"
+        },
+        {
+          "name": "show-custom-captions",
+          "description": "is YouTube?",
+          "type": "boolean"
+        },
+        {
+          "name": "sources",
+          "description": "Optional array ouf sources.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "stacked-layout",
+          "description": "stacked layout instead of side-by-side?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky",
+          "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "description": "Optional array ouf tracks.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "play-pause",
+          "description": "play/pause button",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "allowConcurrent",
+          "attribute": "allow-concurrent",
+          "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "audioNoThumb",
+          "attribute": "audio-no-thumb",
+          "description": "Is it an audio player with no thumbnail?",
+          "type": "boolean"
+        },
+        {
+          "name": "darkTranscript",
+          "attribute": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "crossorigin",
+          "attribute": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disableFullscreen",
+          "attribute": "disable-fullscreen",
+          "description": "disable fullscreen option",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableInteractive",
+          "attribute": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "flexLayout",
+          "attribute": "flex-layout",
+          "description": "Determines if video and transcript are in a flex layout",
+          "type": "boolean"
+        },
+        {
+          "name": "fullscreen",
+          "attribute": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreenButton",
+          "attribute": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean"
+        },
+        {
+          "name": "hasCaptions",
+          "attribute": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideElapsedTime",
+          "attribute": "hide-elapsed-time",
+          "description": "Hide elapsed time?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTimestamps",
+          "attribute": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTranscript",
+          "attribute": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "initially hide the transcript?",
+          "type": "string"
+        },
+        {
+          "name": "mediaCaption",
+          "attribute": "media-caption",
+          "description": "The default media caption if none is given.",
+          "type": "string"
+        },
+        {
+          "name": "mediaLang",
+          "attribute": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "muteUnmute",
+          "attribute": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "printCaption",
+          "attribute": "print-caption",
+          "description": "The media caption that displays when the page is printed.",
+          "type": "string"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "screenfullLoaded",
+          "attribute": "screenfull-loaded",
+          "description": "Has screenfull loaded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shareLink",
+          "attribute": "share-link",
+          "description": "Has screenfull loaded?",
+          "type": "string"
+        },
+        {
+          "name": "showCustomCaptions",
+          "attribute": "show-custom-captions",
+          "description": "is YouTube?",
+          "type": "boolean"
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "Optional array ouf sources.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "stackedLayout",
+          "attribute": "stacked-layout",
+          "description": "stacked layout instead of side-by-side?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky",
+          "attribute": "sticky",
+          "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "stickyCorner",
+          "attribute": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "thumbnailSrc",
+          "attribute": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "attribute": "tracks",
+          "description": "Optional array ouf tracks.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "playPause",
+          "attribute": "play-pause",
+          "description": "play/pause button",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        }
+      ]
+    },
+    {
+      "name": "`",
+      "description": "`a11y-media-player`",
+      "attributes": [
+        {
+          "name": "allow-concurrent",
+          "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "audio-no-thumb",
+          "description": "Is it an audio player with no thumbnail?",
+          "type": "boolean"
+        },
+        {
+          "name": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disable-fullscreen",
+          "description": "disable fullscreen option",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "flex-layout",
+          "description": "Determines if video and transcript are in a flex layout",
+          "type": "boolean"
+        },
+        {
+          "name": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean"
+        },
+        {
+          "name": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-elapsed-time",
+          "description": "Hide elapsed time?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "description": "initially hide the transcript?",
+          "type": "string"
+        },
+        {
+          "name": "media-caption",
+          "description": "The default media caption if none is given.",
+          "type": "string"
+        },
+        {
+          "name": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "print-caption",
+          "description": "The media caption that displays when the page is printed.",
+          "type": "string"
+        },
+        {
+          "name": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "screenfull-loaded",
+          "description": "Has screenfull loaded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "share-link",
+          "description": "Has screenfull loaded?",
+          "type": "string"
+        },
+        {
+          "name": "show-custom-captions",
+          "description": "is YouTube?",
+          "type": "boolean"
+        },
+        {
+          "name": "sources",
+          "description": "Optional array ouf sources.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "stacked-layout",
+          "description": "stacked layout instead of side-by-side?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky",
+          "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "description": "Optional array ouf tracks.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "play-pause",
+          "description": "play/pause button",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "allowConcurrent",
+          "attribute": "allow-concurrent",
+          "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "audioNoThumb",
+          "attribute": "audio-no-thumb",
+          "description": "Is it an audio player with no thumbnail?",
+          "type": "boolean"
+        },
+        {
+          "name": "darkTranscript",
+          "attribute": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "crossorigin",
+          "attribute": "crossorigin",
+          "description": "crossorigin attribute for <video> and <audio> tags",
+          "type": "string"
+        },
+        {
+          "name": "disableFullscreen",
+          "attribute": "disable-fullscreen",
+          "description": "disable fullscreen option",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableInteractive",
+          "attribute": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "flexLayout",
+          "attribute": "flex-layout",
+          "description": "Determines if video and transcript are in a flex layout",
+          "type": "boolean"
+        },
+        {
+          "name": "fullscreen",
+          "attribute": "fullscreen",
+          "description": "Is fullscreen mode?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "fullscreenButton",
+          "attribute": "fullscreen-button",
+          "description": "show the FullscreenButton?",
+          "type": "boolean"
+        },
+        {
+          "name": "hasCaptions",
+          "attribute": "has-captions",
+          "description": "Does the player have tracks?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideElapsedTime",
+          "attribute": "hide-elapsed-time",
+          "description": "Hide elapsed time?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTimestamps",
+          "attribute": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTranscript",
+          "attribute": "hide-transcript",
+          "description": "initially hide the transcript?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "initially hide the transcript?",
+          "type": "string"
+        },
+        {
+          "name": "mediaCaption",
+          "attribute": "media-caption",
+          "description": "The default media caption if none is given.",
+          "type": "string"
+        },
+        {
+          "name": "mediaLang",
+          "attribute": "media-lang",
+          "description": "the language of the media (if different from user interface language)",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "muteUnmute",
+          "attribute": "mute-unmute",
+          "description": "mute/unmute button",
+          "type": "object"
+        },
+        {
+          "name": "printCaption",
+          "attribute": "print-caption",
+          "description": "The media caption that displays when the page is printed.",
+          "type": "string"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "Size of the a11y media element for responsive styling",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "screenfullLoaded",
+          "attribute": "screenfull-loaded",
+          "description": "Has screenfull loaded?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "shareLink",
+          "attribute": "share-link",
+          "description": "Has screenfull loaded?",
+          "type": "string"
+        },
+        {
+          "name": "showCustomCaptions",
+          "attribute": "show-custom-captions",
+          "description": "is YouTube?",
+          "type": "boolean"
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "Optional array ouf sources.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "stackedLayout",
+          "attribute": "stacked-layout",
+          "description": "stacked layout instead of side-by-side?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sticky",
+          "attribute": "sticky",
+          "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "stickyCorner",
+          "attribute": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "thumbnailSrc",
+          "attribute": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "attribute": "tracks",
+          "description": "Optional array ouf tracks.",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "playPause",
+          "attribute": "play-pause",
+          "description": "play/pause button",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        },
+        {
+          "name": "click"
+        },
+        {
+          "name": "select-track"
+        },
+        {
+          "name": "toggle-cc"
+        },
+        {
+          "name": "controls-change"
+        },
+        {
+          "name": "media-loaded"
+        },
+        {
+          "name": "cue-seek"
+        },
+        {
+          "name": "transcript-ready"
+        },
+        {
+          "name": "transcript-seek"
+        },
+        {
+          "name": "searchbar-added"
+        },
+        {
+          "name": "toggle-scroll"
+        },
+        {
+          "name": "youtube-api-ready"
+        },
+        {
+          "name": "timeupdate"
+        },
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-play-button",
+      "description": "`a11y-media-play-button`",
+      "attributes": [
+        {
+          "name": "action",
+          "description": "is button action to send as an event",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "is button disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "playing",
+          "description": "is media playing",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "action",
+          "attribute": "action",
+          "description": "is button action to send as an event",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "is button disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "playing",
+          "attribute": "playing",
+          "description": "is media playing",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "controls-change"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "print-transcript"
+        },
+        {
+          "name": "download-transcript"
+        },
+        {
+          "name": "downloading-transcript"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "a11y-media-player",
+      "description": "`a11y-media-player`",
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    },
+    {
+      "name": "`",
+      "description": "`a11y-media-player`",
+      "events": [
+        {
+          "name": "a11y-player"
+        },
+        {
+          "name": "a11y-player-playing"
+        },
+        {
+          "name": "player-sticky"
+        },
+        {
+          "name": "transcript-toggle"
+        },
+        {
+          "name": "printing-transcript"
+        }
+      ]
+    }
+  ]
+}

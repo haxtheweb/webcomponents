@@ -1,28 +1,24 @@
-import { html } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
+import { html, css } from "lit-element/lit-element.js";
+import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
+import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
 /**
  * `simple-blog`
+ * @customElement simple-blog
  * `A simple blog and associated elements`
  * @demo demo/index.html
  */
-class SimpleBlog extends HAXCMSPolymerElementTheme {
+class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "simple-blog";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         html,
         body {
           background-color: #fafafa;
@@ -76,7 +72,6 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
           visibility: hidden;
         }
         :host([selected-page="0"]) simple-blog-post {
-          visibility: visible;
           opacity: 0;
           visibility: hidden;
         }
@@ -90,8 +85,20 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
         a:focus {
           color: inherit;
         }
-      </style>
-      <iron-pages selected="[[selectedPage]]">
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "simple-blog";
+  }
+  // render function
+  render() {
+    return html`
+      <iron-pages .selected="${this.selectedPage}">
         <section>
           <simple-blog-header></simple-blog-header>
           <simple-blog-listing></simple-blog-listing>
@@ -100,16 +107,16 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
           <paper-icon-button
             id="backbutton"
             icon="icons:arrow-back"
-            on-click="_goBack"
+            @click="${this._goBack}"
           ></paper-icon-button>
           <paper-tooltip
             for="backbutton"
             position="right"
             offset="14"
-            animation-delay="100"
+            animation-delay="0"
             >Back to listing
           </paper-tooltip>
-          <simple-blog-post edit-mode="[[editMode]]"
+          <simple-blog-post ?edit-mode="${this.editMode}"
             ><slot></slot
           ></simple-blog-post>
           <simple-blog-footer id="footer"></simple-blog-footer>
@@ -121,51 +128,68 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
    * Mix in an opened status
    */
   static get properties() {
-    let props = super.properties;
-    props.selectedPage = {
-      type: Number,
-      reflectToAttribute: true,
-      value: 0
+    return {
+      ...super.properties,
+      selectedPage: {
+        type: Number,
+        reflect: true,
+        attribute: "selected-page"
+      }
     };
-    return props;
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
     this.__disposer = [];
-    autorun(reaction => {
-      this.activeId = toJS(store.activeId);
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this._locationChanged(store.location);
-      this.__disposer.push(reaction);
-    });
+    this.selectedPage = 0;
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
+      import("@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js");
+    }, 0);
+  }
+  /**
+   * LitElement ready
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // bc of async rendering and this being in a shadow of a shadow
+    // we need to pause to ensure its painted
+    setTimeout(() => {
+      this.contentContainer = this.shadowRoot
+        .querySelector("simple-blog-post")
+        .shadowRoot.querySelector("#contentcontainer");
+    }, 0);
   }
   /**
    * attached life cycle
    */
   connectedCallback() {
     super.connectedCallback();
-    this.contentContainer = this.shadowRoot
-      .querySelector("simple-blog-post")
-      .shadowRoot.querySelector("#contentcontainer");
+    autorun(reaction => {
+      this.activeId = toJS(store.activeId);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      let location = toJS(store.location);
+      this._locationChanged(location);
+      this.__disposer.push(reaction);
+    });
   }
   /**
    * detatched life cycle
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     // clean up state
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    super.disconnectedCallback();
   }
   /**
    * Listen for router location changes
-   * @param {event} e
    */
   _locationChanged(location) {
     if (!location || typeof location.route === "undefined") return;
@@ -179,6 +203,11 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
       });
       this.selectedPage = 1;
     }
+    setTimeout(() => {
+      var evt = document.createEvent("UIEvents");
+      evt.initUIEvent("resize", true, false, window, 0);
+      window.dispatchEvent(evt);
+    }, 50);
   }
   /**
    * Reset the active item to reset state
@@ -210,6 +239,7 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
     const evt = new CustomEvent("json-outline-schema-active-item-changed", {
       bubbles: true,
       cancelable: true,
+      composed: true,
       detail: {}
     });
     this.dispatchEvent(evt);

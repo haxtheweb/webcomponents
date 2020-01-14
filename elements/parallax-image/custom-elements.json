@@ -1,0 +1,71 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "parallax-image",
+      "description": "`parallax-image`",
+      "attributes": [
+        {
+          "name": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "imageBg",
+          "attribute": "image-bg",
+          "description": "Image",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

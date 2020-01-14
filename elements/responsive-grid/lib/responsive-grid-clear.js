@@ -1,10 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**  
 `responsive-grid-clear`
 A clearumn for the responsive grid
-
-* @demo demo/index.html
-
 @microcopy - the mental model for this element
   Example: 
   <responsive-grid-clear 
@@ -13,58 +10,66 @@ A clearumn for the responsive grid
     md    //clears the floated columns on a medium-width screen
     lg/>  //clears the floated columns on a large-width screen
 */
-class ResponsiveGridClear extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class ResponsiveGridClear extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: none;
           clear: both;
         }
-      </style>
-    `;
+      `
+    ];
+  }
+  render() {
+    return html``;
   }
 
   static get tag() {
     return "responsive-grid-clear";
   }
-
+  constructor() {
+    super();
+    this.xl = false;
+    this.lg = false;
+    this.md = false;
+    this.sm = false;
+    this.xs = false;
+  }
   static get properties() {
     return {
       /**
        * clear the float and force a new worw on an extra-large screen?
        */
       xl: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * clear the float and force a new worw on a large screen?
        */
       lg: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * clear the float and force a new worw on a medium screen?
        */
       md: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * clear the float and force a new worw on a small screen?
        */
       sm: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * clear the float and force a new worw on an extra-small screen?
        */
       xs: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }

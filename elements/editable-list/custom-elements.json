@@ -1,0 +1,166 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "editable-list-item\n`an individual list item`",
+      "description": "`editable-list-item`",
+      "jsDoc": "/**\n * `editable-list-item`\n * @customElement editable-list-item\n * `an individual list item`\n *\n * @microcopy - language worth noting:\n *  - an item is a thing in a list of many which can be modified\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "The value that gets bound into the text field",
+          "jsDoc": "/**\n       * The value that gets bound into the text field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "ability to edit the items in the list",
+          "jsDoc": "/**\n       * ability to edit the items in the list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editing",
+          "description": "Editing state of the item",
+          "jsDoc": "/**\n       * Editing state of the item\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "can-edit",
+          "description": "Permission to edit this",
+          "jsDoc": "/**\n       * Permission to edit this\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "can-delete",
+          "description": "Permission to delete this",
+          "jsDoc": "/**\n       * Permission to delete this\n       */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "value",
+          "description": "The value that gets bound into the text field",
+          "jsDoc": "/**\n       * The value that gets bound into the text field\n       */",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "description": "ability to edit the items in the list",
+          "jsDoc": "/**\n       * ability to edit the items in the list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "editing",
+          "description": "Editing state of the item",
+          "jsDoc": "/**\n       * Editing state of the item\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "canEdit",
+          "description": "Permission to edit this",
+          "jsDoc": "/**\n       * Permission to edit this\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "canDelete",
+          "description": "Permission to delete this",
+          "jsDoc": "/**\n       * Permission to delete this\n       */",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "editable-list-item-delete"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "editable-list\n`a listing of items that can be edited in place with operations`",
+      "description": "`editable-list`",
+      "jsDoc": "/**\n * `editable-list`\n * @customElement editable-list\n * `a listing of items that can be edited in place with operations`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "editable-list\n`a listing of items that can be edited in place with operations`",
+      "description": "`editable-list`",
+      "jsDoc": "/**\n * `editable-list`\n * @customElement editable-list\n * `a listing of items that can be edited in place with operations`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "ability to edit the items in the list",
+          "jsDoc": "/**\n       * ability to edit the items in the list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "items array",
+          "jsDoc": "/**\n       * items array\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "active-element",
+          "description": "Active element being worked on in the list",
+          "jsDoc": "/**\n       * Active element being worked on in the list\n       */",
+          "type": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "description": "ability to edit the items in the list",
+          "jsDoc": "/**\n       * ability to edit the items in the list\n       */",
+          "type": "boolean"
+        },
+        {
+          "name": "items",
+          "description": "items array",
+          "jsDoc": "/**\n       * items array\n       */",
+          "type": "any[]"
+        },
+        {
+          "name": "activeElement",
+          "description": "Active element being worked on in the list",
+          "jsDoc": "/**\n       * Active element being worked on in the list\n       */",
+          "type": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "name": "editable-list\n`a listing of items that can be edited in place with operations`",
+      "description": "`editable-list`",
+      "jsDoc": "/**\n * `editable-list`\n * @customElement editable-list\n * `a listing of items that can be edited in place with operations`\n *\n * @microcopy - language worth noting:\n *  -\n *\n\n * @polymer\n * @demo demo/index.html\n */",
+      "attributes": [],
+      "properties": [],
+      "events": [
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "simple-modal-show"
+        }
+      ],
+      "slots": []
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 {
   "name": "@lrnwebcomponents/deduping-fix",
-  "version": "2.1.1",
+  "version": "2.4.0",
   "description": "A very simple fix for Failed to execute 'define' on 'CustomElementRegistry'",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "deduping-fix.js",
   "author": {
     "name": "btopro"

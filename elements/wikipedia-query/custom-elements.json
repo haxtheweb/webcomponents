@@ -1,0 +1,209 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "attribute": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "attribute": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "renderAs",
+          "attribute": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ]
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "attribute": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "attribute": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "renderAs",
+          "attribute": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "wikipedia-query",
+      "description": "`wikipedia-query`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string"
+        },
+        {
+          "name": "searchResponse",
+          "attribute": "searchResponse",
+          "description": "Response to parse.",
+          "type": "object"
+        },
+        {
+          "name": "hideTitle",
+          "attribute": "hide-title",
+          "description": "hideTitle",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "search",
+          "attribute": "search",
+          "description": "Search string.",
+          "type": "string",
+          "default": "\"Web_Components\""
+        },
+        {
+          "name": "renderAs",
+          "attribute": "render-as",
+          "description": "Render the response as..",
+          "type": "string",
+          "default": "\"content\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "air-horn",
+      "description": "`air-horn`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"air-horn\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "air-horn",
+      "description": "`air-horn`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"air-horn\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "air-horn",
+      "description": "`air-horn`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"air-horn\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

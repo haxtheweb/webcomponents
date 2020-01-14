@@ -26,7 +26,7 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html demo
  * @demo ./demo/config.html custom configuration

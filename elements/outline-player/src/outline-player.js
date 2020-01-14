@@ -9,6 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `outline-player`
+ * @customElement outline-player
  * `A basic outline presentation`
  *
  * @demo demo/index.html

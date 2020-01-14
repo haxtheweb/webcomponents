@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./lib/a11y-tab.js";/**
  * `a11y-tabs`
+ * @customElement a11y-tabs
  * an accessible and responsive tabbed interface
  * 
 ### Styling
@@ -14,7 +15,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
  *
- * @customElement
+
  * @polymer
  * @demo ./demo/index.html
  */class A11yTabs extends LitElement{//styles function

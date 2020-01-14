@@ -8,13 +8,14 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
  * `simple-colors-picker`
+ * @customElement simple-colors-picker
  * a select element for changing `simple-colors` attributes in demos
  *
 ### Styling
 See demo of "all of the colors" (`demo/colors.html`) for styling.
 * 
  * @extends SimpleColors
- * @customElement
+
  * @demo ./demo/picker.html demo
  * @see "../simple-colors.js"
  * @see "./demo/simple-colors-picker-demo.js"
@@ -22,7 +23,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
 class SimpleColorsPicker extends SimpleColors {
   static get styles() {
     return [
-      super.styles,
+      ...super.styles,
       css`
         :host {
           display: inline-block;
@@ -217,9 +218,7 @@ class SimpleColorsPicker extends SimpleColors {
    * @event value-changed
    */
   _fireValueChangedEvent() {
-    this.dispatchEvent(
-      new CustomEvent("value-changed", { bubbles: true, detail: this })
-    );
+    this.dispatchEvent(new CustomEvent("value-changed", { detail: this }));
   }
 
   /**

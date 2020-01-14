@@ -46,9 +46,8 @@ class HAXCMSSiteListing extends PolymerElement {
           --paper-icon-button-ink-color: var(--haxcms-system-action-color);
         }
         app-toolbar div.main-title {
-          margin-left: 8px;
+          margin-left: 50px;
           font-size: 24px;
-          min-width: 50px;
         }
         app-header {
           color: var(--haxcms-site-listing-color-light);
@@ -202,11 +201,10 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         .operations paper-button {
           font-weight: 500;
-          font-size: 20px;
+          font-size: 18px;
           color: var(--haxcms-site-listing-color-light);
           margin: 0;
           padding: 8px;
-          min-width: 100px;
           width: auto;
           display: inline-flex;
           height: 48px;
@@ -216,6 +214,11 @@ class HAXCMSSiteListing extends PolymerElement {
         .operations paper-button:focus {
           background-color: var(--haxcms-site-listing-color-light);
           color: var(--haxcms-site-listing-color-hover);
+        }
+        .operations.right {
+          right: 0;
+          position: absolute;
+          display: inline-flex;
         }
         #add {
           background-color: var(--haxcms-site-listing-color-hover);
@@ -234,11 +237,11 @@ class HAXCMSSiteListing extends PolymerElement {
           display: inline-flex;
           visibility: visible;
           opacity: 1;
-          border-left: 2px solid var(--haxcms-site-listing-color-light);
-          border-right: 2px solid var(--haxcms-site-listing-color-light);
-          height: 64px;
+          align-content: center;
+          justify-content: space-evenly;
+          width: 100%;
         }
-        .selected-operations[data-hidden] {
+        .selected-operations[hidden] {
           visibility: hidden;
           opacity: 0;
         }
@@ -278,16 +281,40 @@ class HAXCMSSiteListing extends PolymerElement {
             display: block !important;
           }
         }
+        #userphoto {
+          width: 40px;
+          height: 40px;
+          margin-right: 4px;
+          border-radius: 50%;
+        }
+        @media screen and (max-width: 1080px) {
+          .selected-operations .small-hide {
+            display:none;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          .main-title {
+            display:none;
+          }
+        }
+        @media screen and (max-width: 700px) {
+          .small-hide {
+            display:none;
+          }
+        }
       </style>
       <div>
         <jwt-login
           id="jwt"
           method="[[method]]"
           url="[[__loginPath]]"
+          refresh-url="[[__refreshPath]]"
           logout-url="[[__logoutPath]]"
           jwt="{{jwt}}"
         ></jwt-login>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="loaddata"
           auto=""
           loading="{{__loading}}"
@@ -297,6 +324,8 @@ class HAXCMSSiteListing extends PolymerElement {
           last-response="{{sitesResponse}}"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="createrequest"
           method="[[method]]"
           body="[[createParams]]"
@@ -307,6 +336,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleCreateResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="gitimportrequest"
           method="[[method]]"
           body="[[gitImportParams]]"
@@ -317,6 +348,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleGitImportResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="downloadrequest"
           method="[[method]]"
           body="[[downloadParams]]"
@@ -327,6 +360,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleDownloadResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="archiverequest"
           method="[[method]]"
           body="[[archiveParams]]"
@@ -337,6 +372,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleArchiveResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="deleterequest"
           method="[[method]]"
           body="[[deleteParams]]"
@@ -347,6 +384,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleDeleteResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="clonerequest"
           method="[[method]]"
           body="[[cloneParams]]"
@@ -357,6 +396,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleCloneResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="publishrequest"
           method="[[method]]"
           body="[[publishParams]]"
@@ -367,6 +408,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handlePublishResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="syncrequest"
           method="[[method]]"
           body="[[syncParams]]"
@@ -377,6 +420,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleSyncResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="getconfigrequest"
           method="[[method]]"
           body="[[configParams]]"
@@ -387,6 +432,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleConfigResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="setconfigrequest"
           method="[[method]]"
           body="[[setConfigParams]]"
@@ -397,6 +444,8 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleSetConfigResponse"
         ></iron-ajax>
         <iron-ajax
+          reject-with-request
+          on-last-error-changed="lastErrorChanged"
           id="getuserdatarequest"
           method="[[method]]"
           body="[[getUserDataParams]]"
@@ -424,60 +473,112 @@ class HAXCMSSiteListing extends PolymerElement {
               id="add"
               raised
               hidden$="[[!loggedIn]]"
+              title="Create new site"
             >
-              <iron-icon icon="icons:add"></iron-icon> Create
+              <iron-icon icon="icons:add"></iron-icon>
+              <span class="small-hide">Create</span>
             </paper-button>
             <paper-button
               on-click="_importTap"
               id="import"
               raised
               hidden$="[[!loggedIn]]"
+              title="Import site"
             >
-              <iron-icon icon="icons:cloud-download"></iron-icon> Import
+              <iron-icon icon="icons:cloud-download"></iron-icon>
+              <span class="small-hide">Import</span>
             </paper-button>
           </div>
           <div class="main-title" hidden$="[[!loggedIn]]">[[title]]</div>
-          <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
-            <paper-button on-click="_bulkSitesConfirm" id="publish" raised>
-              <iron-icon icon="editor:publish"></iron-icon> Publish
+          <div class="operations right">
+            <paper-button
+              on-click="_settingsTap"
+              id="settings"
+              raised
+              title="Settings"
+              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
+            >
+              <iron-icon icon="icons:settings"></iron-icon>
+              <span class="small-hide">Settings</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="sync" raised>
-              <iron-icon icon="notification:sync"></iron-icon> Sync
+            <paper-button
+              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
+              id="login"
+              on-click="_logoutUserRoutine"
+              title="Logout"
+            >
+              <template is="dom-if" if="[[!logoutPhoto]]">
+                <iron-icon
+                  icon="[[__loginIcon]]"
+                  class="small-hide"
+                ></iron-icon>
+              </template>
+              <template is="dom-if" if="[[logoutPhoto]]">
+                <img id="userphoto" src="[[logoutPhoto]]" class="small-hide" />
+              </template>
+              [[__loginText]]</paper-button
+            >
+          </div>
+        </app-toolbar>
+      </app-header>
+      <app-header class="selected-operations" id="ops">
+        <app-toolbar>
+          <div>
+            <paper-button
+              title="Publish"
+              on-click="_bulkSitesConfirm"
+              id="publish"
+              raised
+            >
+              <iron-icon icon="editor:publish"></iron-icon>
+              <span class="small-hide">Publish site</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="clone" raised>
-              <iron-icon icon="icons:content-copy"></iron-icon> Clone
+            <paper-button
+              title="Sync git"
+              on-click="_bulkSitesConfirm"
+              id="sync"
+              raised
+            >
+              <iron-icon icon="notification:sync"></iron-icon>
+              <span class="small-hide">Sync git</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="download" raised>
-              <iron-icon icon="icons:file-download"></iron-icon> Download
+            <paper-button
+              title="Copy site"
+              on-click="_bulkSitesConfirm"
+              id="clone"
+              raised
+            >
+              <iron-icon icon="icons:content-copy"></iron-icon>
+              <span class="small-hide">Copy site</span>
             </paper-button>
-            <paper-button on-click="_bulkSitesConfirm" id="archive" raised>
-              <iron-icon icon="icons:archive"></iron-icon> Archive
+            <paper-button
+              title="Download zip"
+              on-click="_bulkSitesConfirm"
+              id="download"
+              raised
+            >
+              <iron-icon icon="icons:file-download"></iron-icon>
+              <span class="small-hide">Download zip</span>
+            </paper-button>
+            <paper-button
+              title="Archive"
+              on-click="_bulkSitesConfirm"
+              id="archive"
+              raised
+            >
+              <iron-icon icon="icons:archive"></iron-icon>
+              <span class="small-hide">Archive site</span>
             </paper-button>
             <paper-button
               on-click="_bulkSitesConfirm"
               id="delete"
               raised
               class="danger"
+              title="Delete forever"
             >
-              <iron-icon icon="icons:delete-forever"></iron-icon> Delete
+              <iron-icon icon="icons:delete-forever"></iron-icon>
+              <span class="small-hide">Delete forever</span>
             </paper-button>
-          </div>
-          <div class="operations">
-            <paper-button
-              on-click="_settingsTap"
-              id="settings"
-              raised
-              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
-            >
-              <iron-icon icon="icons:settings"></iron-icon> Settings
-            </paper-button>
-            <paper-button
-              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
-              id="login"
-              on-click="_loginUserRoutine"
-              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
-              [[__loginText]]</paper-button
-            >
           </div>
         </app-toolbar>
       </app-header>
@@ -805,7 +906,8 @@ class HAXCMSSiteListing extends PolymerElement {
       },
       userData: {
         type: Object,
-        value: {}
+        value: {},
+        observer: "_userDataChanged"
       },
 
       /**
@@ -889,15 +991,24 @@ class HAXCMSSiteListing extends PolymerElement {
         value: false,
         observer: "_editModeChanged"
       },
-      hasSelectedItems: {
-        type: Boolean,
-        value: false
-      },
       hideCamera: {
         type: Boolean,
         value: false
+      },
+      logoutPhoto: {
+        type: String,
+        value: false
       }
     };
+  }
+
+  _userDataChanged(newValue) {
+    if (newValue.userName) {
+      this.title = newValue.userName + " sites";
+    }
+    if (newValue.userPicture) {
+      this.logoutPhoto = newValue.userPicture;
+    }
   }
   /**
    * Show the login button if we have cause
@@ -917,9 +1028,9 @@ class HAXCMSSiteListing extends PolymerElement {
 
   _selectedItemsChanged(newValue) {
     if (newValue && newValue.length > 0) {
-      this.hasSelectedItems = true;
+      this.shadowRoot.querySelector("#ops").removeAttribute("hidden");
     } else {
-      this.hasSelectedItems = false;
+      this.shadowRoot.querySelector("#ops").setAttribute("hidden", "hidden");
     }
   }
 
@@ -936,6 +1047,15 @@ class HAXCMSSiteListing extends PolymerElement {
     if (e.detail) {
       this.loggedIn = true;
     } else {
+      this.loggedIn = false;
+    }
+  }
+  /**
+   * A token refresh just failed so force to login prompt / state
+   */
+  _tokenRefreshFailed(e) {
+    if (e.detail.value.status == 401) {
+      this.jwt = null;
       this.loggedIn = false;
     }
   }
@@ -1050,7 +1170,10 @@ class HAXCMSSiteListing extends PolymerElement {
   _gridSelectedItemsChanged(e) {
     // skip splicing, just rebuild whole object
     this.set("selectedItems", []);
-    this.set("selectedItems", e.path[0].selectedItems);
+    this.set(
+      "selectedItems",
+      this.shadowRoot.querySelector("#grid").selectedItems
+    );
   }
   /**
    * Attached life cycle
@@ -1058,7 +1181,11 @@ class HAXCMSSiteListing extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
-
+    window.addEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
+    window.addEventListener("jwt-token", this.updateJwt.bind(this));
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
       this.shadowRoot.querySelector("#newsnap").style.display = "none";
@@ -1126,6 +1253,7 @@ class HAXCMSSiteListing extends PolymerElement {
           this._gridSelectedItemsChanged.bind(this)
         );
       this.__loginPath = window.appSettings.login;
+      this.__refreshPath = window.appSettings.refreshUrl;
       this.__logoutPath = window.appSettings.logout;
       this.__setConfigPath = window.appSettings.setConfigPath;
       this.__getUserDataPath = window.appSettings.getUserDataPath;
@@ -1183,17 +1311,34 @@ class HAXCMSSiteListing extends PolymerElement {
     selfie.classList.remove("has-snap");
   }
 
+  /**
+   * User login brokering event to sent off to jwt-login events
+   */
   loginPromptEvent(e) {
-    let l = {
+    this._loginUserRoutine({
       u: e.detail.u,
       p: e.detail.p
-    };
-    this.shadowRoot.querySelector("#jwt").body = {};
-    this.shadowRoot.querySelector("#jwt").body = { ...l };
-    this._loginUserRoutine(e);
+    });
   }
-  _loginUserRoutine(e) {
-    this.shadowRoot.querySelector("#jwt").toggleLogin();
+  _logoutUserRoutine() {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-logout", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: {}
+      })
+    );
+  }
+  _loginUserRoutine(detail) {
+    this.dispatchEvent(
+      new CustomEvent("jwt-login-login", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: detail
+      })
+    );
   }
   /**
    * queue up the site creation form
@@ -1313,6 +1458,11 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   disconnectedCallback() {
+    window.removeEventListener(
+      "jwt-login-refresh-error",
+      this._tokenRefreshFailed.bind(this)
+    );
+    window.removeEventListener("jwt-token", this.updateJwt.bind(this));
     window.removeEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this)
@@ -1460,7 +1610,26 @@ class HAXCMSSiteListing extends PolymerElement {
    */
 
   _bulkSitesConfirm(e) {
-    this.activeOpertion = e.target.id;
+    let target = false;
+    // resolve what got clicked on
+    if (e.target.id) {
+      target = e.target.id;
+    } else if (!e.path && e.originalTarget) {
+      if (e.originalTarget.id) {
+        target = e.originalTarget.id;
+      } else {
+        target = e.originalTarget.parentElement.id;
+      }
+    } else {
+      let path = e.path;
+      while (!target && path && path.length > 0) {
+        if (path[0].id) {
+          target = path[0].id;
+        }
+        path.shift();
+      }
+    }
+    this.activeOpertion = target;
     this.shadowRoot.querySelector("#confirm").opened = true;
   }
 
@@ -1704,6 +1873,78 @@ class HAXCMSSiteListing extends PolymerElement {
 
   handleSyncResponse(e) {
     this.standardResponse(this.activeItem.title + " published!");
+  }
+
+  /**
+   * Handle the last error rolling in
+   */
+  lastErrorChanged(e) {
+    if (e.detail.value) {
+      // check for JWT needing refreshed vs busted but must be 403
+      switch (parseInt(e.detail.value.status)) {
+        // cookie data not found, need to go get it
+        case 401:
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-logout", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                redirect: true
+              }
+            })
+          );
+          break;
+        case 403:
+          // if this was a 403 it should be because of a bad jwt
+          // or out of date one. let's kick off a call to get a new one
+          // hopefully from the timing token, knowing this ALSO could kick
+          // over here.
+          this.dispatchEvent(
+            new CustomEvent("jwt-login-refresh-token", {
+              composed: true,
+              bubbles: true,
+              cancelable: false,
+              detail: {
+                element: {
+                  obj: this,
+                  callback: "refreshRequest",
+                  params: [e.path[0]]
+                }
+              }
+            })
+          );
+          break;
+        default:
+          console.error(e);
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              text: e.detail.value.status + " " + e.detail.value.statusText
+            }
+          });
+          window.dispatchEvent(evt);
+          break;
+      }
+    }
+  }
+  updateJwt(e) {
+    this.jwt = e.detail;
+  }
+  /**
+   * Attempt to salvage the request that was kicked off
+   * when our JWT needed refreshed
+   */
+  refreshRequest(jwt, element) {
+    // force the jwt to be the updated jwt
+    // this helps avoid any possible event timing issue
+    this.jwt = jwt;
+    element.body.jwt = jwt;
+    setTimeout(() => {
+      element.generateRequest();
+    }, 0);
   }
 }
 

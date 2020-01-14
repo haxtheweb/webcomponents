@@ -1,17 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
 /*
  `lrnapp-cis-course-card`
  Present a course card
 */
-class LrnappCisCourseCard extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles">
+class LrnappCisCourseCard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
         :host {
           display: inline-flex;
         }
@@ -102,28 +106,35 @@ class LrnappCisCourseCard extends PolymerElement {
         .inline {
           display: inline;
         }
-      </style>
-      <paper-card elevation="[[elevation]]">
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <paper-card elevation="${this.elevation}">
         <div class="card-content card-control-height card-control-center">
           <div class="course-preview">
             <iron-icon
               class="course-icon"
-              icon="[[icon]]"
-              hidden\$="[[!icon]]"
+              icon="${this.icon}"
+              ?hidden="${!this.icon}"
             ></iron-icon>
             <iron-image
               style="width:100%; height:100%; background-color: lightgray;"
               sizing="cover"
               preload=""
               fade=""
-              src="[[image]]"
-              hidden\$="[[!image]]"
+              src="${this.image}"
+              ?hidden="${!this.image}"
             ></iron-image>
           </div>
           <div class="course-info">
             <div class="divider"></div>
-            <div class="name">[[name]]</div>
-            <div class="title">[[title]]</div>
+            <div class="name">${this.name}</div>
+            <div class="title">${this.title}</div>
           </div>
         </div>
         <div class="card-actions" hidden="">
@@ -135,19 +146,21 @@ class LrnappCisCourseCard extends PolymerElement {
   static get tag() {
     return "lrnapp-cis-course-card";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.icon = null;
+    this.name = "";
+    this.title = "";
+    this.color = "grey";
+    this.elevation = 1;
+    setTimeout(() => {
       this.addEventListener("mouseenter", this._mouseEnter.bind(this));
       this.addEventListener("mouseleave", this._mouseLeave.bind(this));
-    });
+    }, 0);
   }
-  disconnectedCallback() {
-    this.removeEventListener("mouseenter", this._mouseEnter.bind(this));
-    this.removeEventListener("mouseleave", this._mouseLeave.bind(this));
-    super.disconnectedCallback();
-  }
-
   static get properties() {
     return {
       size: {
@@ -163,37 +176,32 @@ class LrnappCisCourseCard extends PolymerElement {
        * Icon to use if image isn't there.
        */
       icon: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * name of the course like sing100
        */
       name: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * title of the course like Intro to studies
        */
       title: {
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * color of the course item
        */
       color: {
-        type: String,
-        value: "grey"
+        type: String
       },
       /**
        * Visual elevation of the item off the UI via paper element height
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

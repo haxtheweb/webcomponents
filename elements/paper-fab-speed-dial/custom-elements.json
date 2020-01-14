@@ -1,0 +1,226 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-fab-speed-dial",
+      "description": "`paper-fab-speed-dial`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "paper-fab-speed-dial",
+      "description": "`paper-fab-speed-dial`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "paper-fab-speed-dial-action",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon that is shown next to the content"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon that is shown next to the content"
+        }
+      ]
+    },
+    {
+      "name": "paper-fab-speed-dial-overlay",
+      "properties": [
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "paper-fab-speed-dial",
+      "description": "`paper-fab-speed-dial`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

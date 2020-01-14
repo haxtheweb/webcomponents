@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`\n\nAttributes:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `download-label` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\nProperties:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `downloadLabel` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title prior to the PDF\n\nProperty: title\n\nDefault: lrnsys-pdf"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Whether or not to present this as a card.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "download-label",
+          "description": "`download-label` {`string`} - Download Label.\n\nProperty: downloadLabel"
+        },
+        {
+          "name": "page",
+          "description": "`page` {`string`} - Active Page\n\nProperty: page"
+        },
+        {
+          "name": "file",
+          "description": "`file` {`string`} - File to present\n\nProperty: file"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`\n\nAttributes:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `download-label` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\nProperties:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `downloadLabel` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title prior to the PDF\n\nProperty: title\n\nDefault: lrnsys-pdf"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Whether or not to present this as a card.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "download-label",
+          "description": "`download-label` {`string`} - Download Label.\n\nProperty: downloadLabel"
+        },
+        {
+          "name": "page",
+          "description": "`page` {`string`} - Active Page\n\nProperty: page"
+        },
+        {
+          "name": "file",
+          "description": "`file` {`string`} - File to present\n\nProperty: file"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrnsys-pdf",
+      "description": "`lrnsys-pdf`\n\nAttributes:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `download-label` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\nProperties:\n\n  * `title` {`string`} - Title prior to the PDF\n\n  * `card` {`boolean`} - Whether or not to present this as a card.\n\n  * `downloadLabel` {`string`} - Download Label.\n\n  * `page` {`string`} - Active Page\n\n  * `file` {`string`} - File to present\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title prior to the PDF\n\nProperty: title\n\nDefault: lrnsys-pdf"
+        },
+        {
+          "name": "card",
+          "description": "`card` {`boolean`} - Whether or not to present this as a card.\n\nProperty: card\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "download-label",
+          "description": "`download-label` {`string`} - Download Label.\n\nProperty: downloadLabel"
+        },
+        {
+          "name": "page",
+          "description": "`page` {`string`} - Active Page\n\nProperty: page"
+        },
+        {
+          "name": "file",
+          "description": "`file` {`string`} - File to present\n\nProperty: file"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

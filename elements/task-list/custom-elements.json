@@ -1,0 +1,143 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ]
+    },
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "relatedResource",
+          "attribute": "related-resource",
+          "description": "Related Resource ID",
+          "type": "string"
+        },
+        {
+          "name": "tasks",
+          "attribute": "tasks",
+          "description": "Task list",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "name",
+          "attribute": "name",
+          "description": "Name of this task list",
+          "type": "string",
+          "default": "\"Steps to completion\""
+        }
+      ]
+    }
+  ]
+}

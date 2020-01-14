@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `a11y-tab`
+ * @customElement a11y-tab
  * a single tab within `a11y-tabs`
  * 
 ### Styling
@@ -18,7 +19,7 @@ Custom property | Description | Default
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
- * @customElement
+
  * @demo ./demo/index.html
  * @see ../a11y-tabs.js
  */

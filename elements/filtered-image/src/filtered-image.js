@@ -2,21 +2,23 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { html, css } from "lit-element/lit-element.js";
+
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `filtered-image`
+ * @customElement filtered-image
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  * @demo demo/filters.html Filters
  */
-class FilteredImage extends SimpleColorsPolymer {
+class FilteredImage extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -27,11 +29,43 @@ class FilteredImage extends SimpleColorsPolymer {
     return "filtered-image";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this._srcChanged();
+  constructor() {
+    super();
+    this.src = "";
+    this.alt = "";
+    this.height = "";
+    this.width = "";
+    this.color = "#ffffff";
+    this.strength = 1;
+    this.contrast = 0;
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "src") {
+        this._srcChanged(this[propName]);
+      }
+      if (propName == "height") {
+        this._heightChanged(this[propName]);
+      }
+      if (propName == "width") {
+        this._widthChanged(this[propName]);
+      }
+      if (["src", "matrix"].includes(propName)) {
+        this.__id = this._getID(this.src, this.matrix);
+      }
+      if (["color", "contrast", "strength"].includes(propName)) {
+        this.__matrix = this._getMatrix(
+          this.color,
+          this.contrast,
+          this.strength
+        );
+      }
+    });
   }
   _heightChanged() {
     let svg = this.shadowRoot.querySelector("#svg"),
@@ -48,9 +82,6 @@ class FilteredImage extends SimpleColorsPolymer {
     svg.setAttribute("width", this.width);
     image.setAttribute("width", this.width);
     rect.setAttribute("width", this.width);
-  }
-  _getViewBox(height, width) {
-    return `0 0 ${width} ${height}`;
   }
   _srcChanged() {
     let svg = this.shadowRoot.querySelector("#svg"),
@@ -92,7 +123,6 @@ class FilteredImage extends SimpleColorsPolymer {
       values[2][2] = parseInt(rgba[2] / 255);
       values[3][3] = values[3][3] || "1";
     }
-    //console.log(values);
 
     if (contrast !== 0) {
       values[0][3] = (values[0][0] * contrast) / 100;
@@ -100,18 +130,10 @@ class FilteredImage extends SimpleColorsPolymer {
       values[2][3] = (values[2][2] * contrast) / 100;
     }
     if (strength !== 1) {
-      let adjust = function(val, strength) {
-        let diff = 1 - val,
-          pct = diff / 100,
-          adjustment = pct * (1 - strength);
-        return val + (1 - val) * 0.01 * (1 - strength);
-      };
       values[0][0] = values[0][0] + (1 - strength) * (1 - values[0][0]);
       values[1][1] = values[1][1] + (1 - strength) * (1 - values[1][1]);
       values[2][2] = values[2][2] + (1 - strength) * (1 - values[2][2]);
     }
-
-    console.log(values);
 
     matrix.setAttribute(
       "values",

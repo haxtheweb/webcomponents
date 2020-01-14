@@ -10,7 +10,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-login`
  * `Visual element to broker a user login`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

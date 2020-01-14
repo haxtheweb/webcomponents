@@ -2,22 +2,22 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `awesome-explosion`
  * `An awesome, explosion.`
  *
- * @customElement
- * @polymer
- * @polymerLegacy
  * @silly
  * @demo demo/index.html
+ * @customElement awesome-explosion
  */
-class AwesomeExplosion extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class AwesomeExplosion extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-block;
         }
@@ -61,29 +61,51 @@ class AwesomeExplosion extends PolymerElement {
           width: 240px;
           height: 240px;
         }
-      </style>
-      <img loading="lazy" src="[[image]]" id="image" class="image-tag" alt="" />
+      `
+    ];
+  }
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
+  constructor() {
+    super();
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    this.state = "stop";
+    this.image = basePath + "assets/explode.gif";
+    this.sound = basePath + "assets/273320__clagnut__fireworks.mp3";
+    this.size = "medium";
+    this.color = "";
+    this.resetSound = false;
+    setTimeout(() => {
+      this.addEventListener("click", this._setPlaySound.bind(this));
+      this.addEventListener("mouseover", this._setPlaySound.bind(this));
+      this.addEventListener("mouseout", this._setStopSound.bind(this));
+    }, 0);
+  }
+  render() {
+    return html`
+      <img
+        loading="lazy"
+        src="${this.image}"
+        id="image"
+        class="image-tag"
+        alt=""
+      />
     `;
   }
 
   static get tag() {
     return "awesome-explosion";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._setPlaySound.bind(this));
-      this.addEventListener("mouseover", this._setPlaySound.bind(this));
-      this.addEventListener("mouseout", this._setStopSound.bind(this));
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "state") {
+        this.stopped = this._calculateStopped(this.state);
+        this.playing = this._calculatePlaying(this.state);
+        this.paused = this._calculatePaused(this.state);
+      }
     });
   }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._setPlaySound.bind(this));
-    this.removeEventListener("mouseover", this._setPlaySound.bind(this));
-    this.removeEventListener("mouseout", this._setStopSound.bind(this));
-    super.disconnectedCallback();
-  }
-
   static get properties() {
     return {
       /**
@@ -92,45 +114,37 @@ class AwesomeExplosion extends PolymerElement {
        */
       state: {
         type: String,
-        value: "stop",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Allow for stopping the sound effect.
        */
       stopped: {
-        type: Boolean,
-        computed: "_calculateStopped(state)"
+        type: Boolean
       },
       /**
        * Allow for playing the sound effect.
        */
       playing: {
-        type: Boolean,
-        computed: "_calculatePlaying(state)"
+        type: Boolean
       },
       /**
        * Allow for pausing the sound effect.
        */
       paused: {
-        type: Boolean,
-        computed: "_calculatePaused(state)"
+        type: Boolean
       },
       /**
        * This allows you to swap out the image
        */
       image: {
-        type: String,
-        value: "assets/explode.gif",
-        reflectToAttribute: true
+        type: String
       },
       /**
        * This allows you to swap out the sound.
        */
       sound: {
-        type: String,
-        value: "assets/273320__clagnut__fireworks.mp3",
-        reflectToAttribute: true
+        type: String
       },
       /**
        * This is the size of the element. Possible values are:
@@ -138,8 +152,7 @@ class AwesomeExplosion extends PolymerElement {
        */
       size: {
         type: String,
-        value: "medium",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * This is to change the color of the element. Possible values are:
@@ -147,16 +160,15 @@ class AwesomeExplosion extends PolymerElement {
        */
       color: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Allow for resetting the sound effect.
        */
       resetSound: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "reset-sound"
       }
     };
   }

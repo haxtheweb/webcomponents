@@ -2,18 +2,12 @@
   // Set to true to show a copy to clipboard button.
   "copyClipboardButton": {
     "type": Boolean,
-    "value": false
+    "attribute": "copy-clipboard-button"
   },
   // Tagged template literal with custom styles.
   // Only supported in Shadow DOM.
   "theme": {
-    "type": String,
-    "observer": "_themeChanged"
-  },
-  // Set to true to render the code inside the template.
-  "render": {
-    "type": Boolean,
-    "value": false
+    "type": String
   },
   // Code type (optional). (eg.: html, js, css)
   // Options are the same as the available classes for `<code>` tag using highlight.js

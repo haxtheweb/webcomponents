@@ -56,7 +56,10 @@ class PaperAvatar extends LitElement {
         :host > * {
           pointer-events: none;
         }
-
+        img {
+          width: var(--paper-avatar-width);
+          height: var(--paper-avatar-width);
+        }
         #label,
         #img,
         #jdenticon {
@@ -124,14 +127,15 @@ class PaperAvatar extends LitElement {
         ? html`
             <img
               id="img"
+              loading="lazy"
               src="${this.src}"
               title="${this.label}"
               @load="${this._onImgLoad}"
               @error="${this._onImgError}"
-              title="${this.color}"
+              alt=""
             />
           `
-        : ""}
+        : ``}
     `;
   }
   /**
@@ -139,6 +143,7 @@ class PaperAvatar extends LitElement {
    */
   constructor() {
     super();
+    this.label = null;
     this.src = null;
     this.jdenticonExists = false;
     this.twoChars = false;

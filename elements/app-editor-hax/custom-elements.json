@@ -1,0 +1,97 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "app-editor-hax",
+      "description": "`app-editor-hax`\nstand alone editor intended for use in a larger application\nas the editor. It is like cms-hax in that it's prepackaged\nthe way HAX will be integrated but the connotation is that there\nis no edit state and that it is always editing effectively.",
+      "attributes": [
+        {
+          "name": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "appStoreConnection",
+          "attribute": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "app-editor-hax-save"
+        },
+        {
+          "name": "app-editor-hax-import"
+        }
+      ]
+    },
+    {
+      "name": "app-editor-hax",
+      "description": "`app-editor-hax`\nstand alone editor intended for use in a larger application\nas the editor. It is like cms-hax in that it's prepackaged\nthe way HAX will be integrated but the connotation is that there\nis no edit state and that it is always editing effectively.",
+      "attributes": [
+        {
+          "name": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "appStoreConnection",
+          "attribute": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "app-editor-hax-save"
+        },
+        {
+          "name": "app-editor-hax-import"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "app-editor-hax-save"
+        },
+        {
+          "name": "app-editor-hax-import"
+        }
+      ]
+    },
+    {
+      "name": "app-editor-hax",
+      "description": "`app-editor-hax`\nstand alone editor intended for use in a larger application\nas the editor. It is like cms-hax in that it's prepackaged\nthe way HAX will be integrated but the connotation is that there\nis no edit state and that it is always editing effectively.",
+      "attributes": [
+        {
+          "name": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "appStoreConnection",
+          "attribute": "appStoreConnection",
+          "description": "Establish the app store connection to pull in our JSON",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "app-editor-hax-save"
+        },
+        {
+          "name": "app-editor-hax-import"
+        }
+      ]
+    }
+  ]
+}

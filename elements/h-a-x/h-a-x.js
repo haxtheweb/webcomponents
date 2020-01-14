@@ -1,17 +1,18 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
 /**
  * `h-a-x`
+ * @customElement h-a-x
  * `Single tag to transform authoring`
  *
  * @microcopy - language worth noting:
  *  - HAX - Headless Authoring eXperience
  *  - Body - the editable area that can be worked on and gets saved as a string / blob
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
@@ -123,7 +124,7 @@ ol {
     return "h-a-x";
   }
   /**
-   * life cycle
+   * HTMLElement
    */
   constructor(delayRender = false) {
     super();
@@ -178,9 +179,11 @@ ol {
    */
   storeReady(e) {
     if (e.detail) {
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
+      setTimeout(() => {
+        window.HaxStore.instance.appStore = {
+          ...JSON.parse(this.getAttribute("app-store"))
+        };
+      }, 0);
     }
   }
   /**
@@ -258,9 +261,9 @@ ol {
     if (this.__rendered) {
       this.setAttribute("app-store", newValue);
       // bind to the hax store global on change
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
+      window.HaxStore.instance.appStore = {
+        ...JSON.parse(this.getAttribute("app-store"))
+      };
     }
   }
   attributeChangedCallback(attr, oldValue, newValue) {}

@@ -11,7 +11,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-drawer`
  * `Basic off canvas drawer element`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class SiteDrawer extends LitElement {

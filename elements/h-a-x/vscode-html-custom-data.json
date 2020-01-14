@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`\n\nAttributes:\n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "app-store",
+          "description": "`app-store` {} - \n\n"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`\n\nAttributes:\n\n  * `appStore` {`string`} - \n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "appStore",
+          "description": "`appStore` {`string`} - \n\nProperty: appStore\n\nDefault: "
+        },
+        {
+          "name": "app-store",
+          "description": "`app-store` {} - \n\n"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {} - \n\n"
+        }
+      ]
+    },
+    {
+      "name": "h-a-x",
+      "attributes": []
+    },
+    {
+      "name": "h-a-x",
+      "description": "`h-a-x`\n\nAttributes:\n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
+      "attributes": [
+        {
+          "name": "app-store",
+          "description": "`app-store` {} - \n\n"
+        },
+        {
+          "name": "hide-panel-ops",
+          "description": "`hide-panel-ops` {} - \n\n"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

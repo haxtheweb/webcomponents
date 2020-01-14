@@ -13,7 +13,6 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-menu`
  * `Menu hierarchy`
  *
- * @customElement
  */
 class SiteMenu extends LitElement {
   /**
@@ -100,13 +99,11 @@ class SiteMenu extends LitElement {
         ?active-indicator="${!this.hideActiveIndicator}"
         selected="${this.activeId}"
         ?auto-scroll="${!this.preventAutoScroll}"
+        @active-item="${this.mapMenuActiveChanged}"
       ></map-menu>
     `;
   }
   firstUpdated(changedProperties) {
-    this.shadowRoot
-      .querySelector("map-menu")
-      .addEventListener("active-item", this.mapMenuActiveChanged.bind(this));
     // executing this here ensures that the timing is correct with highlighting the active item in the menu
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
@@ -159,9 +156,6 @@ class SiteMenu extends LitElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    this.shadowRoot
-      .querySelector("map-menu")
-      .removeEventListener("active-item", this.mapMenuActiveChanged.bind(this));
     super.disconnectedCallback();
   }
   /**

@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `hax-schema-form`
+ * @customElement hax-schema-form
  * `An element that can generate a form from HAXschema`
  * @demo demo/index.html
  * @microcopy - the mental model for this element

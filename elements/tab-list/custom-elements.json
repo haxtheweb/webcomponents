@@ -1,0 +1,91 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "tab-list",
+      "description": "`tab-list`",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "attribute": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ]
+    },
+    {
+      "name": "tab-list",
+      "description": "`tab-list`",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "attribute": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ]
+    },
+    {
+      "name": "tab-list",
+      "description": "`tab-list`",
+      "attributes": [
+        {
+          "name": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tabs",
+          "attribute": "tabs",
+          "description": "List of tabs",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "tabs-changed"
+        }
+      ]
+    }
+  ]
+}

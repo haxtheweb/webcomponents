@@ -1,0 +1,268 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`",
+      "properties": [
+        {
+          "name": "animated",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "desc",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageSrc",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageAlt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "total",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "options-changed",
+          "description": "Fired when options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`",
+      "attributes": [
+        {
+          "name": "start-angle",
+          "description": "Donut angle where progress starts",
+          "type": "number"
+        },
+        {
+          "name": "animated",
+          "description": "Whether progress animates on first load",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "description": "An array of completed values",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "desc",
+          "description": "Accessible long description",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "description": "Title of donut",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image-src",
+          "description": "Source of image in the center of the object.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "image-alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "total",
+          "description": "Array of incomplete values",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "properties": [
+        {
+          "name": "startAngle",
+          "attribute": "start-angle",
+          "description": "Donut angle where progress starts",
+          "type": "number"
+        },
+        {
+          "name": "animated",
+          "attribute": "animated",
+          "description": "Whether progress animates on first load",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "attribute": "complete",
+          "description": "An array of completed values",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "desc",
+          "attribute": "desc",
+          "description": "Accessible long description",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of donut",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageSrc",
+          "attribute": "image-src",
+          "description": "Source of image in the center of the object.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageAlt",
+          "attribute": "image-alt",
+          "description": "Alt text for image.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "total",
+          "attribute": "total",
+          "description": "Array of incomplete values",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "options-changed",
+          "description": "Fired when options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "options-changed"
+        },
+        {
+          "name": "chart-changed"
+        }
+      ]
+    },
+    {
+      "name": "progress-donut",
+      "description": "`progress-donut`",
+      "properties": [
+        {
+          "name": "animated",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "type": "string",
+          "default": "\"grey\""
+        },
+        {
+          "name": "dark",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "complete",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "desc",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageSrc",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "imageAlt",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "total",
+          "type": "number",
+          "default": "100"
+        }
+      ],
+      "events": [
+        {
+          "name": "options-changed",
+          "description": "Fired when options change."
+        },
+        {
+          "name": "chart-changed",
+          "description": "Fired when chart changes."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-abbreviation",
+      "description": "`lrndesign-abbreviation`",
+      "attributes": [
+        {
+          "name": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "abbr",
+          "attribute": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "attribute": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-abbreviation",
+      "description": "`lrndesign-abbreviation`",
+      "attributes": [
+        {
+          "name": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "abbr",
+          "attribute": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "attribute": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-abbreviation",
+      "description": "`lrndesign-abbreviation`",
+      "attributes": [
+        {
+          "name": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "abbr",
+          "attribute": "abbr",
+          "description": "Abbreviation text.",
+          "type": "string"
+        },
+        {
+          "name": "phrase",
+          "attribute": "phrase",
+          "description": "The thing the abbreviation represents.",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

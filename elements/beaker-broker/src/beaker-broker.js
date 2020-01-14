@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
 /**
  * `beaker-broker`
  * `An element to help check for and broker calls to read and write beaker browser dat sites.
@@ -12,11 +13,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  *  - beaker browser - a transformative, decentralized platform
  *  - dat - a communication protocol for serving sites up p2p
  *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement beaker-broker
  */
-class BeakerBroker extends PolymerElement {
+class BeakerBroker extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -27,21 +27,55 @@ class BeakerBroker extends PolymerElement {
     return "beaker-broker";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * LitElement ready
    */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     if (typeof DatArchive === typeof undefined) {
       console.log("Beaker is not available from this site loading methodology");
     }
   }
   /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.datUrl = window.location.host;
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "archive") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("archive-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "datUrl") {
+        this._datUrlChanged(this[propName]);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("dat-url-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  /**
    * notice dat address has changed, build the object for it
    */
-  async _datUrlChanged(newValue, oldValue) {
+  async _datUrlChanged(newValue) {
     if (typeof DatArchive !== typeof undefined && newValue) {
       // load current site, set to archive
-      this.set("archive", new DatArchive(newValue));
+      this.archive = new DatArchive(newValue);
     }
   }
 
@@ -90,11 +124,6 @@ class BeakerBroker extends PolymerElement {
     }
     return await response;
   }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(BeakerBroker.tag, BeakerBroker);
 export { BeakerBroker };

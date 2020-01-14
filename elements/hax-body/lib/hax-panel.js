@@ -1,5 +1,6 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
@@ -17,7 +18,7 @@ as the events being bubbled up include HTML nodes to inject into something
  - element - buttons on the panel which when pressed will trigger an event
 
 */
-class HaxPanel extends SimpleColors {
+class HaxPanel extends winEventsElement(SimpleColors) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -147,6 +148,13 @@ class HaxPanel extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-active-hover-name": "_activeNameChange",
+      "hax-panel-operation": "_processItemEvent"
+    };
+    this.canUndo = true;
+    this.canRedo = true;
     this.align = "left";
     this.hideExportButton = false;
     this.haxDeveloperMode = false;
@@ -164,10 +172,17 @@ class HaxPanel extends SimpleColors {
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel-item.js");
     import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-    this.addEventListener(
-      "hax-item-selected",
-      this._processItemEvent.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "hax-item-selected",
+        this._processItemEvent.bind(this)
+      );
+    }, 0);
+  }
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -179,18 +194,6 @@ class HaxPanel extends SimpleColors {
           object: this
         }
       })
-    );
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-active-hover-name",
-      this._activeNameChange.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-panel-operation",
-      this._processItemEvent.bind(this)
     );
   }
   render() {
@@ -275,12 +278,12 @@ class HaxPanel extends SimpleColors {
         ></hax-panel-item>
         <hax-panel-item
           icon="icons:view-column"
-          label="Insert layout block"
+          label="Insert layout"
           event-name="hax-blox-picker-open"
           voice-command="insert (page) layout"
         ></hax-panel-item>
         <hax-panel-item
-          icon="icons:view-stream"
+          icon="hax:templates"
           label="Insert template"
           event-name="hax-stax-picker-open"
           voice-command="insert (page) template"
@@ -293,27 +296,6 @@ class HaxPanel extends SimpleColors {
           class="hide-small"
         ></hax-panel-item>
         <hax-panel-item
-          icon="hax:h2"
-          label="Insert heading"
-          event-name="header"
-          voice-command="insert (header)(heading)"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:hr"
-          label="Insert horizontal line"
-          event-name="divider"
-          voice-command="insert (divider)(horizontal line)"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:placeholder"
-          label="Insert media placeholder"
-          event-name="placeholder"
-          voice-command="insert (image) placeholder"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
           ?hidden="${this.hideExportButton}"
           event-name="open-export-dialog"
           icon="code"
@@ -321,6 +303,22 @@ class HaxPanel extends SimpleColors {
           voice-command="view (page) source"
         ></hax-panel-item>
         <slot></slot>
+        <hax-panel-item
+          icon="icons:undo"
+          ?disabled="${!this.canUndo}"
+          label="Undo previous action"
+          event-name="undo"
+          voice-command="undo"
+          class="hide-small"
+        ></hax-panel-item>
+        <hax-panel-item
+          icon="icons:redo"
+          ?disabled="${!this.canRedo}"
+          label="Redo previous action"
+          event-name="redo"
+          voice-command="redo"
+          class="hide-small"
+        ></hax-panel-item>
         <hax-panel-item
           right
           ?hidden="${this.hidePreferencesButton}"
@@ -417,6 +415,27 @@ class HaxPanel extends SimpleColors {
        */
       globalPreferences: {
         type: Object
+      },
+      /**
+       * If we can currently undo based on stack position
+       */
+      canUndo: {
+        type: Boolean,
+        attribute: "can-undo"
+      },
+      /**
+       * If we can currently redo based on stack position
+       */
+      canRedo: {
+        type: Boolean,
+        attribute: "can-redo"
+      },
+      /**
+       * If we're "dirty" meaning stackPosition and savePosition out of sync
+       */
+      isDirty: {
+        type: Boolean,
+        attribute: "is-dirty"
       }
     };
   }
@@ -492,10 +511,18 @@ class HaxPanel extends SimpleColors {
         );
         break;
       case "open-preferences-dialog":
-        window.HaxStore.instance.haxPreferences.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxPreferences,
+          this
+        );
         break;
       case "open-export-dialog":
-        window.HaxStore.instance.haxExport.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxExport,
+          this
+        );
         break;
       case "divider":
         detail.tag = "hr";
@@ -556,13 +583,25 @@ class HaxPanel extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        window.HaxStore.instance.haxManager.toggleDialog(false);
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxManager,
+          this
+        );
         break;
       case "hax-stax-picker-open":
-        window.HaxStore.instance.haxStaxPicker.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxStaxPicker,
+          this
+        );
         break;
       case "hax-blox-picker-open":
-        window.HaxStore.instance.haxBloxPicker.toggleDialog();
+        window.HaxStore.write(
+          "openDrawer",
+          window.HaxStore.instance.haxBloxPicker,
+          this
+        );
         break;
       case "undo":
         document.execCommand("undo");
@@ -632,7 +671,7 @@ class HaxPanel extends SimpleColors {
     window.HaxStore.write("editMode", !this.editMode, this);
     this.shadowRoot.querySelector("#drawer").opened = this.editMode;
     if (!this.shadowRoot.querySelector("#drawer").opened) {
-      window.HaxStore.instance.closeAllDrawers();
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
 }

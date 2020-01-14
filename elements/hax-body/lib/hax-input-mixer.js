@@ -1,6 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `hax-input-mixer`
+ * @customElement hax-input-mixer
  * A context menu that provides common custom-element based authoring options. While
  * trying to call for haxProperties which can automatically generate the buttons
  * required for populating input.
@@ -314,10 +315,12 @@ class HaxInputMixer extends LitElement {
   firstUpdated(changedProperties) {
     // prime methods even though invisible most likely
     this._resetInputMethods();
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+    }, 0);
   }
   /**
    * Input method changes, allow our templates to rebind correctly.

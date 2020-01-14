@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `material-word`
+ * @customElement material-word
  * `Outputs word in material alphabet`
  * @demo demo/index.html
  */

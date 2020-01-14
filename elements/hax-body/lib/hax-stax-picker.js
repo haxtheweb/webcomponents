@@ -12,7 +12,9 @@ class HaxStaxPicker extends HaxPicker {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
-    this.title = "Templates";
+    this.title = "Insert template";
+    this.icon = "hax:templates";
+    this.refreshOnOpen = "staxList";
     // this sets everything else in motion correctly
     this.setupPicker("haxStaxPicker", "hax-stax-browser");
   }

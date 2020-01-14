@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `rich-text-editor-styles`
+ * @customElement rich-text-editor-styles
  * `a shared set of styles for rich-text-editor`
  *
  * @microcopy - language worth noting:

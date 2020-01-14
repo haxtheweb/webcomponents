@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/glossary-term",
   "wcfactory": {
     "className": "GlossaryTerm",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "glossary-term",
     "generator-wcfactory-version": "0.7.0",
     "useHAX": true,
@@ -17,20 +17,21 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "Glossary element that connects to the glossary service.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "glossary-term.js",
   "module": "glossary-term.es6.js",
   "umd": "glossary-term.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/glossary-term/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
-    "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
+    "dev": "concurrently --kill-others 'yarn run watch' 'yarn run serve'",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
@@ -40,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-vocab": "^2.2.0",
-    "@polymer/polymer": "^3.0.5",
+    "@lrnwebcomponents/lrn-vocab": "^2.4.0",
+    "@polymer/polymer": "^3.3.1",
     "@ui5/webcomponents": "^0.7.0"
   },
   "devDependencies": {

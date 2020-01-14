@@ -1,0 +1,284 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrn-gitgraph",
+      "description": "`lrn-gitgraph`",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverseArrow",
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrn-gitgraph",
+      "description": "`lrn-gitgraph`",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverseArrow",
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrn-gitgraph",
+      "description": "`lrn-gitgraph`",
+      "attributes": [
+        {
+          "name": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "commits",
+          "attribute": "commits",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "template",
+          "attribute": "template",
+          "type": "string",
+          "default": "\"blackarrow\""
+        },
+        {
+          "name": "orientation",
+          "attribute": "orientation",
+          "type": "string",
+          "default": "\"horizontal\""
+        },
+        {
+          "name": "mode",
+          "attribute": "mode",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "reverseArrow",
+          "attribute": "reverse-arrow",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "config",
+          "attribute": "config",
+          "type": "{template: String, reverseArrow: Boolean, orientation: String, element: Object}"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

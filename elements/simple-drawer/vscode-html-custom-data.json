@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`\n\nEvents:\n\n  * `simple-drawer-closed` - \n\n  * `simple-drawer-opened` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `align` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - ",
+      "attributes": [
+        {
+          "name": "onsimple-drawer-closed",
+          "description": "`simple-drawer-closed` - "
+        },
+        {
+          "name": "onsimple-drawer-opened",
+          "description": "`simple-drawer-opened` - "
+        }
+      ]
+    },
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`\n\nEvents:\n\n  * `simple-drawer-closed` - \n\n  * `simple-drawer-opened` - \n\nAttributes:\n\n  * `invoked-by` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `align` {`string`} - alignment of the drawer\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon",
+      "attributes": [
+        {
+          "name": "invoked-by",
+          "description": "`invoked-by` - The element that invoked this. This way we can track our way back accessibly\n\nProperty: invokedBy"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - heading / label of the modal\n\nProperty: title\n\nDefault: "
+        },
+        {
+          "name": "align",
+          "description": "`align` {`string`} - alignment of the drawer\n\nProperty: align\n\nDefault: left"
+        },
+        {
+          "name": "opened",
+          "description": "`opened` {`boolean`} - open state\n\nProperty: opened\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "close-label",
+          "description": "`close-label` {`string`} - Close label\n\nProperty: closeLabel\n\nDefault: Close"
+        },
+        {
+          "name": "close-icon",
+          "description": "`close-icon` {`string`} - Close icon\n\nProperty: closeIcon\n\nDefault: icons:cancel"
+        },
+        {
+          "name": "onsimple-drawer-closed",
+          "description": "`simple-drawer-closed` - "
+        },
+        {
+          "name": "onsimple-drawer-opened",
+          "description": "`simple-drawer-opened` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `simple-drawer-opened` - \n\n  * `simple-drawer-closed` - ",
+      "attributes": [
+        {
+          "name": "onsimple-drawer-opened",
+          "description": "`simple-drawer-opened` - "
+        },
+        {
+          "name": "onsimple-drawer-closed",
+          "description": "`simple-drawer-closed` - "
+        }
+      ]
+    },
+    {
+      "name": "simple-drawer",
+      "description": "`simple-drawer`\n\nEvents:\n\n  * `simple-drawer-closed` - \n\n  * `simple-drawer-opened` - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `align` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `closeLabel` {`string`} - \n\n  * `closeIcon` {`string`} - ",
+      "attributes": [
+        {
+          "name": "onsimple-drawer-closed",
+          "description": "`simple-drawer-closed` - "
+        },
+        {
+          "name": "onsimple-drawer-opened",
+          "description": "`simple-drawer-opened` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

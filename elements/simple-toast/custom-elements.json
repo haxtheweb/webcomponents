@@ -1,0 +1,101 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-toast",
+      "description": "`simple-toast`"
+    },
+    {
+      "name": "simple-toast",
+      "description": "`simple-toast`",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean"
+        },
+        {
+          "name": "text",
+          "description": "Plain text based message to display",
+          "type": "string"
+        },
+        {
+          "name": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "close-text",
+          "description": "Text for the close button",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number"
+        },
+        {
+          "name": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "close-button",
+          "description": "If there should be a close button shown",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "Opened state of the toast, use event to change",
+          "type": "boolean"
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "description": "Plain text based message to display",
+          "type": "string"
+        },
+        {
+          "name": "classStyle",
+          "attribute": "class-style",
+          "description": "Class name, fit-bottom being a useful one",
+          "type": "string"
+        },
+        {
+          "name": "closeText",
+          "attribute": "close-text",
+          "description": "Text for the close button",
+          "type": "string"
+        },
+        {
+          "name": "duration",
+          "attribute": "duration",
+          "description": "How long the toast message should be displayed",
+          "type": "number"
+        },
+        {
+          "name": "eventCallback",
+          "attribute": "event-callback",
+          "description": "Event callback when hide is called",
+          "type": "string"
+        },
+        {
+          "name": "closeButton",
+          "attribute": "close-button",
+          "description": "If there should be a close button shown",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "simple-toast",
+      "description": "`simple-toast`"
+    }
+  ]
+}

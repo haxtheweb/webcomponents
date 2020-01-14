@@ -1,25 +1,28 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+/**
  * `simple-blog-footer`
+ * @customElement simple-blog-footer
  * `Footer to blog posts`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - footer of the page for blog posts relating back to the main overview page
  */
-class SimpleBlogFooter extends PolymerElement {
+class SimpleBlogFooter extends SimpleColors {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement style render
    */
-  static get tag() {
-    return "simple-blog-footer";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           width: 100%;
@@ -115,10 +118,6 @@ class SimpleBlogFooter extends PolymerElement {
           line-height: 44px;
           margin: 16px 0;
           padding: 0;
-          --site-menu-button-button: {
-            height: 44px;
-            width: 100%;
-          }
         }
         paper-button:focus,
         paper-button:active,
@@ -138,52 +137,98 @@ class SimpleBlogFooter extends PolymerElement {
           color: black;
           display: inline-flex;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "simple-blog-footer";
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          paper-button,
+          site-menu-button:not([disabled]) {
+            --site-menu-button-button: {
+              height: 44px;
+              width: 100%;
+            }
+          }
+        </style>
+      </custom-style>
       <div class="background-closer-image-wrap">
         <div
           class="background-closer-image"
-          style\$="background-image: url([[manifest.metadata.theme.variables.image]])"
+          style="background-image: url(${varExists(
+            this.manifest,
+            "metadata.theme.variables.image"
+          )
+            ? this.manifest.metadata.theme.variables.image
+            : ""})"
         ></div>
       </div>
       <div class="inner">
-        <site-menu-button type="prev" position="right" label="Previous post">
+        <site-menu-button type="prev" position="right">
           <simple-datetime
             format="M jS"
-            timestamp="[[nextChanged]]"
+            .timestamp="${this.prevChanged}"
             unix
             slot="suffix"
           >
           </simple-datetime>
-          <span slot="suffix">[[nextTitle]]</span>
+          <span slot="suffix">${this.prevTitle}</span>
         </site-menu-button>
-        <site-menu-button type="next" position="right" label="Next post">
+        <site-menu-button type="next" position="right">
           <simple-datetime
             format="M jS"
-            timestamp="[[prevChanged]]"
+            .timestamp="${this.nextChanged}"
             unix
             slot="prefix"
           ></simple-datetime>
-          <span slot="prefix">[[prevTitle]]</span>
+          <span slot="prefix">${this.nextTitle}</span>
         </site-menu-button>
-        <paper-button raised on-click="_backButtonTap"
+        <paper-button raised @click="${this._backButtonTap}"
           >Back to list</paper-button
         >
-        <h2 class="blog-title">[[manifest.title]]</h2>
-        <h3 class="blog-description">[[manifest.description]]</h3>
+        <h2 class="blog-title">
+          ${varExists(this.manifest, "title") ? this.manifest.title : ""}
+        </h2>
+        <h3 class="blog-description">
+          ${varExists(this.manifest, "description")
+            ? this.manifest.description
+            : ""}
+        </h3>
       </div>
     `;
   }
   /**
-   * Mix in an opened status
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "activeManifestIndex") {
+        this._activeManifestIndexChanged(this[propName], oldValue);
+      }
+    });
+  }
+  /**
+   * LitElement / popular convention
    */
   static get properties() {
     return {
+      ...super.properties,
       /**
        * active manifest index, key to location in the manifest itemsarray
        */
       activeManifestIndex: {
         type: Number,
-        observer: "_activeManifestIndexChanged"
+        attribute: "active-manifest-index"
       },
       /**
        * Manifest, JSON Outline Schema object
@@ -193,7 +238,20 @@ class SimpleBlogFooter extends PolymerElement {
       },
       editMode: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "edit-mode"
+      },
+      prevChanged: {
+        type: String
+      },
+      nextChanged: {
+        type: String
+      },
+      prevTitle: {
+        type: String
+      },
+      nextTitle: {
+        type: String
       }
     };
   }
@@ -217,13 +275,14 @@ class SimpleBlogFooter extends PolymerElement {
   }
   constructor() {
     super();
+    this.prevTitle = "";
+    this.prevChanged = "";
+    this.nextTitle = "";
+    this.nextChanged = "";
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
   }
-  /**
-   * attached life cycle
-   */
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
@@ -253,7 +312,7 @@ class SimpleBlogFooter extends PolymerElement {
     });
   }
   /**
-   * detatched life cycle
+   * HTMLElement
    */
   disconnectedCallback() {
     for (var i in this.__disposer) {
@@ -261,7 +320,6 @@ class SimpleBlogFooter extends PolymerElement {
     }
     super.disconnectedCallback();
   }
-
   /**
    * Fire event to unset the global activeItem.
    */

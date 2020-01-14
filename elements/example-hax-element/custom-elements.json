@@ -1,0 +1,82 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "example-hax-element",
+      "description": "`example-hax-element`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"example-hax-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "example-hax-element",
+      "description": "`example-hax-element`",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"My Example\""
+        },
+        {
+          "name": "available",
+          "type": "boolean",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"My Example\""
+        },
+        {
+          "name": "available",
+          "attribute": "available",
+          "type": "boolean",
+          "default": "\"\""
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"example-hax-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "example-hax-element",
+      "description": "`example-hax-element`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"example-hax-element\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

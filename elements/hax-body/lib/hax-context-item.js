@@ -11,6 +11,7 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item`
+ * @customElement hax-context-item
  * `A single button in the hax context menu for consistency.`
  * @microcopy - the mental model for this element
  * - context - menu in the page the user can select an item from, this being 1 option in that list
@@ -20,6 +21,7 @@ class HaxContextItem extends LitElement {
   constructor() {
     super();
     this.light = false;
+    this.large = false;
     this.disabled = false;
     this.mini = false;
     this.menu = false;
@@ -42,6 +44,7 @@ class HaxContextItem extends LitElement {
           height: 36px;
           width: 36px;
         }
+        :host([large]),
         :host([mini]) {
           height: unset;
           width: unset;
@@ -57,19 +60,21 @@ class HaxContextItem extends LitElement {
   render() {
     return html`
       <hax-toolbar-item
-        .disabled="${this.disabled}"
-        .light="${this.light}"
-        .mini="${this.mini}"
+        ?disabled="${this.disabled}"
+        ?light="${this.light}"
+        ?mini="${this.mini}"
+        ?large="${this.large}"
         id="button"
+        height="${this.height}"
         icon="${this.icon}"
-        .hidden="${!this.icon}"
+        ?hidden="${!this.icon}"
         icon-class="${this.iconClass}"
         @mousedown="${this._storeSelection}"
         @click="${this._fireEvent}"
         tooltip="${this.label}"
         tooltip-direction="${this.direction}"
-        .default="${this.default}"
-        .menu="${this.menu}"
+        ?default="${this.default}"
+        ?menu="${this.menu}"
       >
         <slot></slot>
       </hax-toolbar-item>
@@ -86,6 +91,9 @@ class HaxContextItem extends LitElement {
        */
       light: {
         type: Boolean
+      },
+      height: {
+        type: String
       },
       /**
        * disabled state
@@ -174,6 +182,10 @@ class HaxContextItem extends LitElement {
        */
       description: {
         type: String,
+        reflect: true
+      },
+      large: {
+        type: Boolean,
         reflect: true
       },
       /**

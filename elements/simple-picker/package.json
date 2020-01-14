@@ -16,19 +16,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.0",
+  "version": "2.4.0",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "simple-picker.js",
   "module": "simple-picker.es6.js",
   "umd": "simple-picker.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-picker/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
@@ -43,7 +44,7 @@
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
-    "lit-element": "^2.2.1"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

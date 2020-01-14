@@ -1,0 +1,388 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-search-content",
+      "description": "`simple-search-content`"
+    },
+    {
+      "name": "simple-search-match",
+      "description": "`simple-search-match`",
+      "attributes": [
+        {
+          "name": "match-number",
+          "type": "number"
+        }
+      ],
+      "properties": [
+        {
+          "name": "matchNumber",
+          "attribute": "match-number",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "simple-search",
+      "description": "`simple-search`",
+      "properties": [
+        {
+          "name": "alwaysFloatLabel",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "caseSensitive"
+        },
+        {
+          "name": "controls"
+        },
+        {
+          "name": "nextButtonIcon",
+          "type": "string",
+          "default": "\"arrow-forward\""
+        },
+        {
+          "name": "nextButtonLabel",
+          "type": "string",
+          "default": "\"next result\""
+        },
+        {
+          "name": "noLabelFloat",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "prevButtonIcon",
+          "type": "string",
+          "default": "\"arrow-back\""
+        },
+        {
+          "name": "prevButtonLabel",
+          "type": "string",
+          "default": "\"previous result\""
+        },
+        {
+          "name": "resultCount",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "resultPointer",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "searchInputIcon",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchInputLabel",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchTerms",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "target"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-search",
+          "description": "Fires when search changes (detail = { search: this, content: event })"
+        },
+        {
+          "name": "goto-result"
+        }
+      ]
+    },
+    {
+      "name": "simple-search",
+      "description": "`simple-search`",
+      "attributes": [
+        {
+          "name": "always-float-label",
+          "description": "always float the label",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "Is the search case-sensitive",
+          "type": "boolean"
+        },
+        {
+          "name": "controls",
+          "description": "The id of the container element that the navigation buttons control",
+          "type": "string"
+        },
+        {
+          "name": "next-button-icon",
+          "description": "label for next result icon",
+          "type": "string",
+          "default": "\"arrow-forward\""
+        },
+        {
+          "name": "next-button-label",
+          "description": "label for next result button",
+          "type": "string",
+          "default": "\"next result\""
+        },
+        {
+          "name": "no-label-float",
+          "description": "never float the label",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "prev-button-icon",
+          "description": "label for previous result icon",
+          "type": "string",
+          "default": "\"arrow-back\""
+        },
+        {
+          "name": "prev-button-label",
+          "description": "label for previous result button",
+          "type": "string",
+          "default": "\"previous result\""
+        },
+        {
+          "name": "result-count",
+          "description": "Number of results.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "result-pointer",
+          "description": "Which result are we currently on?",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "search-input-icon",
+          "description": "label for search icon",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "search-input-label",
+          "description": "label for search input",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "search-terms",
+          "description": "an array of search terms",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "target",
+          "description": "The container element that the navigation buttons control",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alwaysFloatLabel",
+          "attribute": "always-float-label",
+          "description": "always float the label",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "caseSensitive",
+          "attribute": "case-sensitive",
+          "description": "Is the search case-sensitive",
+          "type": "boolean"
+        },
+        {
+          "name": "controls",
+          "attribute": "controls",
+          "description": "The id of the container element that the navigation buttons control",
+          "type": "string"
+        },
+        {
+          "name": "nextButtonIcon",
+          "attribute": "next-button-icon",
+          "description": "label for next result icon",
+          "type": "string",
+          "default": "\"arrow-forward\""
+        },
+        {
+          "name": "nextButtonLabel",
+          "attribute": "next-button-label",
+          "description": "label for next result button",
+          "type": "string",
+          "default": "\"next result\""
+        },
+        {
+          "name": "noLabelFloat",
+          "attribute": "no-label-float",
+          "description": "never float the label",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "prevButtonIcon",
+          "attribute": "prev-button-icon",
+          "description": "label for previous result icon",
+          "type": "string",
+          "default": "\"arrow-back\""
+        },
+        {
+          "name": "prevButtonLabel",
+          "attribute": "prev-button-label",
+          "description": "label for previous result button",
+          "type": "string",
+          "default": "\"previous result\""
+        },
+        {
+          "name": "resultCount",
+          "attribute": "result-count",
+          "description": "Number of results.",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "resultPointer",
+          "attribute": "result-pointer",
+          "description": "Which result are we currently on?",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "searchInputIcon",
+          "attribute": "search-input-icon",
+          "description": "label for search icon",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchInputLabel",
+          "attribute": "search-input-label",
+          "description": "label for search input",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchTerms",
+          "attribute": "search-terms",
+          "description": "an array of search terms",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "target",
+          "attribute": "target",
+          "description": "The container element that the navigation buttons control",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-search",
+          "description": "Fires when search changes (detail = { search: this, content: event })"
+        },
+        {
+          "name": "goto-result"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-search"
+        },
+        {
+          "name": "goto-result"
+        }
+      ]
+    },
+    {
+      "name": "simple-search",
+      "description": "`simple-search`",
+      "properties": [
+        {
+          "name": "alwaysFloatLabel",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "caseSensitive"
+        },
+        {
+          "name": "controls"
+        },
+        {
+          "name": "nextButtonIcon",
+          "type": "string",
+          "default": "\"arrow-forward\""
+        },
+        {
+          "name": "nextButtonLabel",
+          "type": "string",
+          "default": "\"next result\""
+        },
+        {
+          "name": "noLabelFloat",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "prevButtonIcon",
+          "type": "string",
+          "default": "\"arrow-back\""
+        },
+        {
+          "name": "prevButtonLabel",
+          "type": "string",
+          "default": "\"previous result\""
+        },
+        {
+          "name": "resultCount",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "resultPointer",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "searchInputIcon",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchInputLabel",
+          "type": "string",
+          "default": "\"search\""
+        },
+        {
+          "name": "searchTerms",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "target"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-search",
+          "description": "Fires when search changes (detail = { search: this, content: event })"
+        },
+        {
+          "name": "goto-result"
+        }
+      ]
+    }
+  ]
+}

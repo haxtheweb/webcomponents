@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-time-iconset-svg` is a iconset for the Material Design Icons collection with the "time" tag
+ * `mdi-time-iconset-svg`
+ * @customElement mdi-time-iconset-svg is a iconset for the Material Design Icons collection with the "time" tag
  *
  * Example:
  *   <iron-icon icon="mdi-time:clock"></iron-icon>

@@ -1,28 +1,29 @@
 /**
  * @license MIT, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { oneDark } from "./lib/themes/one-dark.js";
 import { hljs } from "./lib/highlightjs/highlight.js";
 import { javascript } from "./lib/highlightjs/languages/javascript.js";
+import { yaml } from "./lib/highlightjs/languages/yaml.js";
+import { jsonLang } from "./lib/highlightjs/languages/json.js";
 import { xml } from "./lib/highlightjs/languages/xml.js";
 hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("json", jsonLang);
+hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 window["hljs"] = hljs;
 /**
  * `code-sample`
  * `<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.
- * @polymer
- * @customElement
- * @extends {PolymerElement}
  * @demo demo/index.html
+ * @customElement code-sample
  */
-class CodeSample extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class CodeSample extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -34,7 +35,6 @@ class CodeSample extends PolymerElement {
 
         pre {
           margin: 0;
-          @apply --code-sample-pre;
         }
 
         pre,
@@ -54,29 +54,14 @@ class CodeSample extends PolymerElement {
         .hljs {
           padding: 0 1.25rem;
           line-height: var(--code-sample-line-height, 1.3);
-          @apply --code-sample-hljs;
         }
 
         .demo:not(:empty) {
           padding: var(--code-sample-demo-padding, 0 0 1.25rem);
-          @apply --code-sample-demo-not-empty;
-        }
-
-        .demo {
-          @apply --code-sample-demo;
         }
 
         #code-container {
           position: relative;
-          @apply --code-sample-code-container;
-        }
-
-        #code-container:hover {
-          @apply --code-sample-code-container-hover;
-        }
-
-        #code-container:hover > button {
-          @apply --code-sample-code-container-hover-button;
         }
 
         button {
@@ -88,20 +73,23 @@ class CodeSample extends PolymerElement {
           right: 0;
           top: 0;
           text-transform: uppercase;
-          @apply --code-sample-copy-clipboard-button;
         }
-      </style>
-      <div id="theme">${this.constructor.theme || oneDark}</div>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <div id="theme"></div>
       <div id="demo" class="demo"></div>
-      <slot id="content"></slot>
-
+      <slot></slot>
       <div id="code-container">
         <button
           type="button"
-          hidden="[[!copyClipboardButton]]"
+          ?hidden="${!this.copyClipboardButton}"
           id="copyButton"
           title="Copy to clipboard"
-          on-click="_copyToClipboard"
+          @click="${this._copyToClipboard}"
         >
           Copy
         </button>
@@ -158,18 +146,12 @@ class CodeSample extends PolymerElement {
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
         type: Boolean,
-        value: false
+        attribute: "copy-clipboard-button"
       },
       // Tagged template literal with custom styles.
       // Only supported in Shadow DOM.
       theme: {
-        type: String,
-        observer: "_themeChanged"
-      },
-      // Set to true to render the code inside the template.
-      render: {
-        type: Boolean,
-        value: false
+        type: String
       },
       // Code type (optional). (eg.: html, js, css)
       // Options are the same as the available classes for `<code>` tag using highlight.js
@@ -180,85 +162,90 @@ class CodeSample extends PolymerElement {
   }
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Convention
    */
   static get tag() {
     return "code-sample";
   }
+  constructor() {
+    super();
+    this._observer = null;
+    this.theme = oneDark;
+    this.copyClipboardButton = false;
+  }
+  firstUpdated() {
+    this._updateContent();
+  }
   /**
-   * life cycle, element is afixed to the DOM
+   * HTMLElement
    */
   connectedCallback() {
     super.connectedCallback();
-    setTimeout(() => {
-      if (this.querySelector("template")) {
-        this._observer = new FlattenedNodesObserver(
-          this.shadowRoot.querySelector("#content"),
-          () => this._updateContent()
-        );
-      } else if (this.childNodes.length) {
-        console.error(
-          "<code-sample>:",
-          "content must be provided inside a <template> tag"
-        );
-      }
-    });
+    if (this.querySelector("template")) {
+      this._observer = new MutationObserver(mutations => {
+        if (this.shadowRoot) {
+          this._updateContent();
+        }
+      });
+      this._observer.observe(this, {
+        attributes: true,
+        childList: true,
+        subtree: true
+      });
+    } else if (this.childNodes.length) {
+      console.error(
+        "<code-sample>:",
+        "content must be provided inside a <template> tag"
+      );
+    }
   }
   /**
-   * life cycle, element is removed from the DOM
+   * HTMLElement
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;
     }
+    super.disconnectedCallback();
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "theme") {
+        this._themeChanged(this[propName]);
+      }
+    });
   }
   _themeChanged(theme) {
-    if (theme && this._themeCanBeChanged()) {
-      const previousTheme = this.shadowRoot
-        .querySelector("#theme")
-        .querySelector("style");
+    if (theme && this._themeCanBeChanged(theme)) {
+      while (this.shadowRoot.querySelector("#theme").childNodes > 0) {
+        this.shadowRoot
+          .querySelector("#theme")
+          .removeChild(this.shadowRoot.querySelector("#theme").firstChild);
+      }
       this.shadowRoot
         .querySelector("#theme")
-        .replaceChild(document.importNode(theme.content, true), previousTheme);
+        .appendChild(document.importNode(theme.content, true));
     }
   }
-  _themeCanBeChanged() {
-    if (window.ShadyCSS) {
-      console.error(
-        "<code-sample>:",
-        "Theme changing is not supported in Shady DOM."
-      );
-      return;
-    }
-
-    if (this.theme.tagName !== "TEMPLATE") {
+  _themeCanBeChanged(theme) {
+    if (theme.tagName !== "TEMPLATE") {
       console.error("<code-sample>:", "theme must be a template");
       return;
     }
-
     return true;
   }
   _updateContent() {
     if (this._code) this._code.parentNode.removeChild(this._code);
-    if (this._demo) this.shadowRoot.querySelector("#demo").innerHTML = "";
 
     const template = this._getCodeTemplate();
-
-    if (this.render) {
-      this._demo = this.shadowRoot
-        .querySelector("#demo")
-        .appendChild(document.importNode(template.content, true));
-    }
-
     this._highlight(template.innerHTML);
   }
   _getCodeTemplate() {
-    const nodes = FlattenedNodesObserver.getFlattenedNodes(
-      this.shadowRoot.querySelector("#content")
-    );
+    const nodes = this.children;
     return [].filter.call(
       nodes,
       node => node.nodeType === Node.ELEMENT_NODE

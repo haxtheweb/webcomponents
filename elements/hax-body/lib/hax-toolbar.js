@@ -21,12 +21,11 @@ class HaxToolbar extends LitElement {
         .wrapper {
           display: flex;
           border: 1px solid var(--hax-color-border-outline, black);
+          border-bottom: none;
           color: #222222;
           background-color: #ffffff;
-          height: 35px;
+          height: 38px;
           align-items: center;
-          padding: 1px;
-          margin-top: -2px;
         }
         :host .wrapper ::slotted(*) {
           pointer-events: all;
@@ -95,26 +94,28 @@ class HaxToolbar extends LitElement {
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
+    setTimeout(() => {
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+    }, 0);
   }
   render() {
     return html`
       <hax-context-item
-        .hidden="${this.inline}"
+        ?hidden="${this.inline}"
         mini
         light
         icon="close"
-        label="Close"
+        label="Hide menu"
         event-name="close-menu"
         class="close-cap"
         direction="left"
       ></hax-context-item>
       <div class="wrapper">
         <hax-context-item-menu
-          .hidden="${!this.haxProperties.canPosition}"
+          ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
           icon="${this.justifyIcon}"
@@ -152,7 +153,7 @@ class HaxToolbar extends LitElement {
           @value-changed="${this.sizeChanged}"
         ></paper-slider>
         <paper-tooltip
-          .hidden="${this.inline}"
+          ?hidden="${this.inline}"
           for="slider"
           position="top"
           offset="10"
@@ -161,23 +162,23 @@ class HaxToolbar extends LitElement {
         </paper-tooltip>
         <slot name="primary"></slot>
         <hax-context-item
-          .hidden="${this.hideTransform}"
+          ?hidden="${this.hideTransform}"
           icon="hax:bricks"
           label="Change type"
-          event-name="grid-plate-convert"
+          event-name="hax-plate-convert"
         ></hax-context-item>
         <hax-context-item
-          .hidden="${this.inline}"
+          ?hidden="${this.inline}"
           icon="delete"
           label="Remove"
-          event-name="grid-plate-delete"
+          event-name="hax-plate-delete"
         ></hax-context-item>
         <hax-context-item-menu
-          .hidden="${this.hideMode}"
+          ?hidden="${this.hideMode}"
           icon="more-vert"
-          label="More"
+          label="More operations"
           id="moremenu"
-          event-name="grid-plate-op"
+          event-name="hax-plate-op"
           reset-on-select
         >
           <paper-item value="" hidden></paper-item>
@@ -185,7 +186,7 @@ class HaxToolbar extends LitElement {
           <hax-context-item-textop
             menu
             icon="icons:content-copy"
-            event-name="grid-plate-duplicate"
+            event-name="hax-plate-duplicate"
             >Duplicate</hax-context-item-textop
           >
         </hax-context-item-menu>
@@ -291,6 +292,16 @@ class HaxToolbar extends LitElement {
   _haxPropertiesChanged(newValue, oldValue) {
     // value doesn't matter, just look at what's active
     if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
+      if (
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        ) ||
+        window.HaxStore.instance.activeNode.tagName == "HR"
+      ) {
+        this.hideTransform = true;
+      } else {
+        this.hideTransform = false;
+      }
       if (window.HaxStore.instance.activeNode.style.width != "") {
         this.size = window.HaxStore.instance.activeNode.style.width.replace(
           "%",

@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-form-iconset-svg` is a iconset for the Material Design Icons collection with the "form" tag
+ * `mdi-form-iconset-svg`
+ * @customElement mdi-form-iconset-svg is a iconset for the Material Design Icons collection with the "form" tag
  *
  * Example:
  *   <iron-icon icon="mdi-form:checked-marked-circle-outline"></iron-icon>

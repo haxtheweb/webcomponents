@@ -1,26 +1,20 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-material/paper-material.js";
-import "@polymer/paper-fab/paper-fab.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `wave-player`
  * `A player for visualizing a sound file`
- *
- * @customElement
- * @polymer
- * @polymerLegacy
  * @demo demo/index.html
+ * @customElement wave-player
  */
-class WavePlayer extends SchemaBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class WavePlayer extends SchemaBehaviors(LitElement) {
+  static get styles() {
+    return [
+      css`
         :host {
           height: 150px;
           background-color: var(--dark-primary-color);
@@ -160,154 +154,114 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
         .right {
           left: calc(75% - 20px);
         }
-
         .hidden {
           display: none;
         }
-
         @media only screen and (max-width: 500px) {
           .albuminfo {
             width: 100%;
           }
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-fab
         id="playbutton"
         class="circleAnimation"
         disabled=""
         icon="av:play-arrow"
-        on-click="togglePlay"
+        @click="${this.togglePlay}"
       ></paper-fab>
       <paper-material id="controls" class="controls hidden" elevation="2">
         <paper-icon-button
           class="centred middle"
           style="color: white;"
           icon="av:pause"
-          on-click="togglePlay"
+          @click="${this.togglePlay}"
         ></paper-icon-button>
         <paper-icon-button
           id="replay"
           class="centred"
           style="color: white;"
           icon="av:replay-30"
-          on-click="throwBack"
+          @click="${this.throwBack}"
         ></paper-icon-button>
         <paper-icon-button
           id="mute"
           class="centred"
           style="color: white;"
           icon="av:volume-up"
-          on-click="toggleMute"
+          @click="${this.toggleMute}"
         ></paper-icon-button>
       </paper-material>
       <div id="container" class="waveContainer" elevation="0"></div>
       <div id="albuminfo" class="albuminfo">
-        <img loading="lazy" class="coverart" src="[[coverart]]" />
-        <span class="title">[[title]]</span>
-        <span class="subtitle">[[subtitle]]</span>
+        <img loading="lazy" class="coverart" src="${this.coverart}" />
+        <span class="title">${this.title}</span>
+        <span class="subtitle">${this.subtitle}</span>
       </div>
     `;
   }
-
   static get tag() {
     return "wave-player";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "src",
+        "title",
+        "subtitle",
+        "coverart",
+        "lean",
+        "wavecolor",
+        "progresscolor"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "src") {
+        this._srcChanged(this[propName], oldValue);
+      }
+    });
   }
   static get properties() {
     return {
       ...super.properties,
-
-      /**
-       * The source of the audio file to be played
-       *
-       * @attribute src
-       * @type String
-       * @default NULL
-       */
       src: {
-        type: String,
-        notify: true,
-        observer: "_srcChanged"
+        type: String
       },
-      /**
-       * The main (bold) title
-       *
-       * @attribute title
-       * @type String
-       * @default NULL
-       */
       title: {
-        type: String,
-        value: "",
-        notify: true
+        type: String
       },
-      /**
-       * The smaller subtitle, for chapter heading or composer.
-       *
-       * @attribute subtitle
-       * @type String
-       * @default NULL
-       */
       subtitle: {
-        type: String,
-        value: "",
-        notify: true
+        type: String
       },
-      /**
-       * The sourse for cover art
-       *
-       * @attribute coverart
-       * @type String
-       * @default art.jpg
-       */
       coverart: {
-        type: String,
-        value: "",
-        notify: true
+        type: String
       },
-      /**
-       * container for the wave object
-       *
-       * @attribute wavesurfer
-       * @type Object
-       */
       wavesurfer: {
         type: Object
       },
-      /**
-       * Determines if the FOB is on the left or the right
-       *
-       * @attribute lean
-       * @type String
-       * @default left
-       */
       lean: {
-        type: String,
-        value: "left",
-        notify: true
+        type: String
       },
-      /**
-       * Color of the Wave
-       *
-       * @attribute wavecolor
-       * @type String
-       * @default #ffffff
-       */
       wavecolor: {
-        type: String,
-        value: "#ffffff",
-        notify: true
+        type: String
       },
-      /**
-       * Color of the completed section of the wave
-       *
-       * @attribute progresscolor
-       * @type String
-       * @default #CFD8DC
-       */
       progresscolor: {
-        type: String,
-        value: "#CFD8DC",
-        notify: true
+        type: String
       }
     };
   }
@@ -325,8 +279,19 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    */
   constructor() {
     super();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
+    this.title = "";
+    this.subtitle = "";
+    this.coverart = "";
+    this.lean = "left";
+    this.wavecolor = "#ffffff";
+    this.progresscolor = "#CFD8DC";
+    setTimeout(() => {
+      import("@polymer/paper-material/paper-material.js");
+      import("@polymer/paper-fab/paper-fab.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/av-icons.js");
+    }, 0);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(
@@ -346,8 +311,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
   /**
    * Ready life cycle
    */
-  ready() {
-    super.ready();
+  firstUpdated() {
     if (this.lean === "right") {
       this.shadowRoot.querySelector("#playbutton").style.right = "25";
       this.shadowRoot.querySelector("#controls").style.right = "0";
@@ -373,6 +337,10 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    */
   _wavesurferLoaded() {
     this.__wavesurfer = true;
+    window.removeEventListener(
+      "es-bridge-wavesurfer-loaded",
+      this._wavesurferLoaded.bind(this)
+    );
     this.initWaveSurfer();
   }
   /**
@@ -523,7 +491,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
           }
         ],
         meta: {
-          author: "LRNWebComponents"
+          author: "ELMS:LN"
         }
       },
       settings: {

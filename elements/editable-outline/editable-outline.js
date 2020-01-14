@@ -2,30 +2,21 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { getRange } from "./lib/shadows-safari.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { getRange } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-
 /**
  * `editable-outline`
  * `a simple outline thats contenteditable in nature`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
+ * @customElement editable-outline
  */
-class EditableOutline extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class EditableOutline extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-family: "Noto Serif", serif;
@@ -43,12 +34,8 @@ class EditableOutline extends PolymerElement {
           background-color: white;
           display: block;
           justify-content: space-evenly;
-          @apply --editable-outline-button-wrapper;
         }
         @media (max-width: 1000px) {
-          .button-wrapper {
-            @apply --editable-outline-button-wrapper-mobile;
-          }
           button span {
             opacity: 0;
             visibility: hidden;
@@ -80,14 +67,12 @@ class EditableOutline extends PolymerElement {
           overflow: hidden;
           height: auto;
           transition: 0.2s ease-in-out all;
-          @apply --editable-outline-button-list;
         }
         li {
           font-size: 16px;
           line-height: 32px;
           padding: 4px;
           transition: 0.2s linear all;
-          @apply --editable-outline-button-list-item;
         }
         ul:hover {
           outline: 1px solid #eeeeee;
@@ -119,49 +104,38 @@ class EditableOutline extends PolymerElement {
         li:hover {
           background-color: #eeeeee;
           outline: 1px solid #cccccc;
-          @apply --editable-outline-button-list-item-active;
         }
 
         iron-icon {
           pointer-events: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <iron-a11y-keys
-        target="[[__outlineNode]]"
-        keys="shift+tab"
-        on-keys-pressed="_tabBackKeyPressed"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        target="[[__outlineNode]]"
-        keys="tab"
-        on-keys-pressed="_tabKeyPressed"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        target="[[__outlineNode]]"
         keys="enter"
-        on-keys-pressed="_enterPressed"
+        @keys-pressed="${this._enterPressed}"
         stop-keyboard-event-propagation
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[__outlineNode]]"
         keys="up"
-        on-keys-pressed="_upPressed"
+        @keys-pressed="${this._upPressed}"
         stop-keyboard-event-propagation
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[__outlineNode]]"
         keys="down"
-        on-keys-pressed="_downPressed"
+        @keys-pressed="${this._downPressed}"
         stop-keyboard-event-propagation
       ></iron-a11y-keys>
       <div class="button-wrapper">
-        <button on-click="buttonEvents" id="add" title="Add a new node">
+        <button @click="${this.buttonEvents}" id="add" title="Add a new node">
           <iron-icon icon="icons:add"></iron-icon><span>Add</span>
         </button>
         <button
-          on-click="buttonEvents"
+          @click="${this.buttonEvents}"
           id="collapse"
           title="Toggle active node collapsed status"
         >
@@ -169,44 +143,64 @@ class EditableOutline extends PolymerElement {
           ><span>Toggle active</span>
         </button>
         <button
-          on-click="buttonEvents"
+          @click="${this.buttonEvents}"
           id="collapseall"
           title="Collapse all nodes"
         >
           <iron-icon icon="icons:swap-vert"></iron-icon
           ><span>Collapse all</span>
         </button>
-        <button on-click="buttonEvents" id="expandall" title="Expand all nodes">
+        <button
+          @click="${this.buttonEvents}"
+          id="expandall"
+          title="Expand all nodes"
+        >
           <iron-icon icon="icons:swap-vert"></iron-icon><span>Expand all</span>
         </button>
-        <button on-click="buttonEvents" id="down" title="Move active node down">
+        <button
+          @click="${this.buttonEvents}"
+          id="down"
+          title="Move active node down"
+        >
           <iron-icon icon="icons:arrow-downward"></iron-icon
           ><span>Move down</span>
         </button>
-        <button on-click="buttonEvents" id="up" title="Move active node up">
+        <button
+          @click="${this.buttonEvents}"
+          id="up"
+          title="Move active node up"
+        >
           <iron-icon icon="icons:arrow-upward"></iron-icon><span>Move up</span>
         </button>
         <button
-          on-click="buttonEvents"
+          @click="${this.buttonEvents}"
           id="outdent"
           title="Outdent active node"
         >
           <iron-icon icon="editor:format-indent-decrease"></iron-icon
           ><span>Outdent</span>
         </button>
-        <button on-click="buttonEvents" id="indent" title="Indent active node">
+        <button
+          @click="${this.buttonEvents}"
+          id="indent"
+          title="Indent active node"
+        >
           <iron-icon icon="editor:format-indent-increase"></iron-icon
           ><span>Indent</span>
         </button>
         <button
-          on-click="buttonEvents"
+          @click="${this.buttonEvents}"
           id="duplicate"
           title="Duplicate active node tree"
         >
           <iron-icon icon="icons:content-copy"></iron-icon
           ><span>Duplicate</span>
         </button>
-        <button on-click="buttonEvents" id="delete" title="Delete active node">
+        <button
+          @click="${this.buttonEvents}"
+          id="delete"
+          title="Delete active node"
+        >
           <iron-icon icon="icons:delete"></iron-icon><span>Delete</span>
         </button>
       </div>
@@ -223,33 +217,34 @@ class EditableOutline extends PolymerElement {
        * A items list of JSON Outline Schema Items
        */
       items: {
-        name: "items",
-        type: Array,
-        value: [],
-        notify: true
+        type: Array
       },
       /**
        * Edit mode
        */
       editMode: {
-        name: "editMode",
         type: Boolean,
-        notify: true,
-        observer: "_editModeChanged"
+        attribute: "edit-mode"
       },
       /**
        * Outline node for keyboard key binding
        */
       __outlineNode: {
-        name: "__outlineNode",
         type: Object
       }
     };
   }
   constructor() {
     super();
+    this.items = [];
+    this.editMode = false;
     this.jos = window.JSONOutlineSchema.requestAvailability();
-    this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    setTimeout(() => {
+      this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
+    }, 0);
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -295,6 +290,19 @@ class EditableOutline extends PolymerElement {
       }
     });
   }
+  _onKeyDown(e) {
+    if (this.editMode) {
+      switch (e.key) {
+        case "Tab":
+          if (e.shiftKey) {
+            this._tabBackKeyPressed(e);
+          } else {
+            this._tabKeyPressed(e);
+          }
+          break;
+      }
+    }
+  }
   /**
    * Click handler method needs to walk a little different then normal collapse
    */
@@ -321,7 +329,7 @@ class EditableOutline extends PolymerElement {
    */
   _delete(e) {
     let node = this.getSelectionNode();
-    if (node) {
+    if (node && node.tagName === "LI") {
       const parent = node.parentNode;
       node.remove();
       if (parent.children.length === 0) {
@@ -329,24 +337,41 @@ class EditableOutline extends PolymerElement {
       }
     }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
-    this._observer = new MutationObserver(this._observer.bind(this));
+    this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
+      el.target = this.__outlineNode;
+    });
+    this.__outlineNode.addEventListener("keydown", this._onKeyDown.bind(this));
+    this._observer = new MutationObserver(this._observeRecord.bind(this));
     this._observer.observe(this.__outlineNode, {
       childList: true,
       subtree: true
+    });
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["editMode", "items"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
     });
   }
   /**
    * Mutation observer callback
    * @todo current issue if you copy and paste into the same node
    */
-  _observer(record) {
-    let reference;
+  _observeRecord(record) {
     for (var index in record) {
       let info = record[index];
       // if we've got new nodes to react to that were not imported
@@ -380,14 +405,14 @@ class EditableOutline extends PolymerElement {
    * Disconnected life cycle
    */
   disconnectedCallback() {
+    this.__outlineNode.removeEventListener(
+      "keydown",
+      this._onKeyDown.bind(this)
+    );
+    this._observer.disconnect();
     super.disconnectedCallback();
   }
 
-  // Observer editMode for changes
-  _editModeChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-    }
-  }
   /**
    * Button events internally
    */
@@ -595,23 +620,25 @@ class EditableOutline extends PolymerElement {
    */
   importJsonOutlineSchemaItems() {
     this.__blockScrub = true;
-    // wipe out the outline
-    while (this.__outlineNode.firstChild !== null) {
-      this.__outlineNode.removeChild(this.__outlineNode.firstChild);
-    }
-    if (this.items.length === 0) {
-      // get from JOS items if we have none currently
-      this.set("items", this.jos.items);
-    }
-    let outline = this.jos.itemsToNodes(this.items);
-    // rebuild the outline w/ children we just found
-    while (outline.firstChild !== null) {
-      this.__blockScrub = true;
-      this.__outlineNode.appendChild(outline.firstChild);
-    }
-    this.shadowRoot.querySelectorAll("li").forEach(el => {
-      el.setAttribute("contenteditable", "true");
-    });
+    setTimeout(() => {
+      // wipe out the outline
+      while (this.__outlineNode.firstChild) {
+        this.__outlineNode.removeChild(this.__outlineNode.firstChild);
+      }
+      if (this.items.length === 0) {
+        // get from JOS items if we have none currently
+        this.items = [...this.jos.items];
+      }
+      let outline = this.jos.itemsToNodes(this.items);
+      // rebuild the outline w/ children we just found
+      while (outline.firstChild) {
+        this.__blockScrub = true;
+        this.__outlineNode.appendChild(outline.firstChild);
+      }
+      this.shadowRoot.querySelectorAll("li").forEach(el => {
+        el.setAttribute("contenteditable", "true");
+      });
+    }, 0);
     return outline;
   }
   /**

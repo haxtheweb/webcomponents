@@ -1,0 +1,71 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "tag"
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`"
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "source to point to",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "description": "alt text",
+          "type": "string"
+        },
+        {
+          "name": "corner",
+          "description": "Whether or not to be rendered in the top corner, common on tech sites",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "description": "basic size adjustment",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "source to point to",
+          "type": "string"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "alt text",
+          "type": "string"
+        },
+        {
+          "name": "corner",
+          "attribute": "corner",
+          "description": "Whether or not to be rendered in the top corner, common on tech sites",
+          "type": "boolean"
+        },
+        {
+          "name": "size",
+          "attribute": "size",
+          "description": "basic size adjustment",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "git-corner",
+      "description": "`git-corner`"
+    }
+  ]
+}

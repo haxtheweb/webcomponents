@@ -1,0 +1,220 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` - "
+        }
+      ]
+    },
+    {
+      "name": "a11y-tab",
+      "description": "`a11y-tab`\n\nEvents:\n\n  * `a11y-tab-changed` - handles any change in the tab attributes\n\nAttributes:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\n  * `__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)\n\nProperties:\n\n  * `flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\n  * `flagIcon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\n  * `hidden` {`boolean`} - whether the tab is hidden\n\n  * `icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\n  * `id` {`string`} - the unique identifier and anchor for the tab\n\n  * `label` {`string`} - label for the tab\n\n  * `__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\n  * `__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)",
+      "attributes": [
+        {
+          "name": "flag",
+          "description": "`flag` {`string`} - optional flag the tab, eg. `new`, `alert`, or `error`\n\nProperty: flag\n\nDefault: null"
+        },
+        {
+          "name": "flag-icon",
+          "description": "`flag-icon` {`string`} - optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`\n\nProperty: flagIcon\n\nDefault: null"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - whether the tab is hidden\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`\n\nProperty: icon\n\nDefault: null"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - the unique identifier and anchor for the tab\n\nProperty: id\n\nDefault: null"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - label for the tab\n\nProperty: label\n\nDefault: null"
+        },
+        {
+          "name": "__xOfY",
+          "description": "`__xOfY` {`string`} - tab x of y text, eg. `2 of 3`\n\nProperty: __xOfY\n\nDefault: null"
+        },
+        {
+          "name": "__toTop",
+          "description": "`__toTop` {`string`} - the anchor back to the top of the tab list (`a11y-tabs` id)\n\nProperty: __toTop\n\nDefault: null"
+        },
+        {
+          "name": "ona11y-tab-changed",
+          "description": "`a11y-tab-changed` - handles any change in the tab attributes"
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "description": "Events:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nAttributes:\n\n  * `active-tab` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `icon-breakpoint` {`number`} - \n\n  * `id` {`string`} - \n\n  * `layout-breakpoint` {`number`} - \n\n  * `responsive-size` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`any[]`} - \n\n  * `__observer` - \n\nProperties:\n\n  * `activeTab` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `iconBreakpoint` {`number`} - \n\n  * `id` {`string`} - \n\n  * `layoutBreakpoint` {`number`} - \n\n  * `responsiveSize` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`any[]`} - \n\n  * `__observer` - ",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "description": "`active-tab` {`string`} - \n\nProperty: activeTab\n\nDefault: null"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - \n\nProperty: hidden",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon-breakpoint",
+          "description": "`icon-breakpoint` {`number`} - \n\nProperty: iconBreakpoint\n\nDefault: 400"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - \n\nProperty: id\n\nDefault: null"
+        },
+        {
+          "name": "layout-breakpoint",
+          "description": "`layout-breakpoint` {`number`} - \n\nProperty: layoutBreakpoint\n\nDefault: 600"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - \n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "vertical",
+          "description": "`vertical` {`boolean`} - \n\nProperty: vertical",
+          "valueSet": "v"
+        },
+        {
+          "name": "__hasIcons",
+          "description": "`__hasIcons` {`boolean`} - \n\nProperty: __hasIcons",
+          "valueSet": "v"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
+        },
+        {
+          "name": "__observer",
+          "description": "`__observer` - \n\nProperty: __observer"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` - "
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "description": "`a11y-tabs`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nAttributes:\n\n  * `active-tab` {`string`} - the id of the active tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `icon-breakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layout-breakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\n  * `responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\n  * `__has-icons` {`boolean`} - whether the tabbed interface has icons for each tab\n\n  * `__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__observer` - a mutation observer to monitor slotted `a11y-tab` elements\n\nProperties:\n\n  * `activeTab` {`string`} - the id of the active tab\n\n  * `disabled` {`boolean`} - whether the tabbed interface is disabled\n\n  * `hidden` {`boolean`} - whether the tabbed interface is hidden\n\n  * `iconBreakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\n  * `id` {`string`} - unique identifier/anchor for the tabbed interface\n\n  * `layoutBreakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\n  * `responsiveSize` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\n  * `vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\n  * `__hasIcons` {`boolean`} - whether the tabbed interface has icons for each tab\n\n  * `__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\n  * `__observer` - a mutation observer to monitor slotted `a11y-tab` elements",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "description": "`active-tab` {`string`} - the id of the active tab\n\nProperty: activeTab\n\nDefault: null"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - whether the tabbed interface is disabled\n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "hidden",
+          "description": "`hidden` {`boolean`} - whether the tabbed interface is hidden\n\nProperty: hidden\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon-breakpoint",
+          "description": "`icon-breakpoint` {`number`} - the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons\n\nProperty: iconBreakpoint\n\nDefault: 400"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - unique identifier/anchor for the tabbed interface\n\nProperty: id\n\nDefault: null"
+        },
+        {
+          "name": "layout-breakpoint",
+          "description": "`layout-breakpoint` {`number`} - the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only\n\nProperty: layoutBreakpoint\n\nDefault: 600"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "vertical",
+          "description": "`vertical` {`boolean`} - whether the tabbed interface is in vertical layout mode\n\nProperty: vertical\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__has-icons",
+          "description": "`__has-icons` {`boolean`} - whether the tabbed interface has icons for each tab\n\nProperty: __hasIcons\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - an array of tab data based on slotted `a11y-tab` elements\n\nProperty: __items\n\nDefault: "
+        },
+        {
+          "name": "__observer",
+          "description": "`__observer` - a mutation observer to monitor slotted `a11y-tab` elements\n\nProperty: __observer"
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` - "
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `a11y-tab-changed` - \n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - ",
+      "attributes": [
+        {
+          "name": "ona11y-tab-changed",
+          "description": "`a11y-tab-changed` - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` - "
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "description": "`a11y-tabs`\n\nEvents:\n\n  * `responsive-element` - \n\n  * `responsive-element-deleted` - \n\nProperties:\n\n  * `activeTab` - \n\n  * `disabled` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `iconBreakpoint` {`number`} - \n\n  * `id` - \n\n  * `layoutBreakpoint` {`number`} - \n\n  * `responsiveSize` {`string`} - \n\n  * `vertical` {`boolean`} - \n\n  * `__hasIcons` {`boolean`} - \n\n  * `__items` {`never[]`} - \n\n  * `__observer` - ",
+      "attributes": [
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` - "
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

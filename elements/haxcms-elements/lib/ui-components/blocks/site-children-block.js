@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * `site-children-block`
  * `Child pages of whatever is active`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

@@ -15,12 +15,8 @@
   background-color: white;
   display: block;
   justify-content: space-evenly;
-  @apply --editable-outline-button-wrapper;
 }
 @media (max-width: 1000px) {
-  .button-wrapper {
-    @apply --editable-outline-button-wrapper-mobile;
-  }
   button span {
     opacity: 0;
     visibility: hidden;
@@ -52,14 +48,12 @@ ul {
   overflow: hidden;
   height: auto;
   transition: .2s ease-in-out all;
-  @apply --editable-outline-button-list;
 }
 li {
   font-size: 16px;
   line-height: 32px;
   padding: 4px;
   transition: .2s linear all;
-  @apply --editable-outline-button-list-item;
 }
 ul:hover {
   outline: 1px solid #EEEEEE;
@@ -91,7 +85,6 @@ li:active,
 li:hover {
   background-color: #EEEEEE;
   outline: 1px solid #CCCCCC;
-  @apply --editable-outline-button-list-item-active;
 }
 
 iron-icon {

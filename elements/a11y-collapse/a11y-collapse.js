@@ -4,6 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `a11y-collapse`
+ * @customElement a11y-collapse
  * an accessible expand collapse
  * 
 ### Styling
@@ -26,7 +27,7 @@ Custom property | Description | Default
 `--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset
 `--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset
  *
- * @customElement
+
  * @demo ./demo/index.html demo
  * @demo ./demo/group.html collapse groups
  */

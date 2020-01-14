@@ -1,0 +1,235 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-icon-picker",
+      "description": "`simple-icon-picker`",
+      "attributes": [
+        {
+          "name": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideOptionLabels",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "allowNull",
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "optionsPerRow",
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed",
+          "description": "fires when value changes"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-picker",
+      "description": "`simple-icon-picker`",
+      "attributes": [
+        {
+          "name": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideOptionLabels",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "allowNull",
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "optionsPerRow",
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed",
+          "description": "fires when value changes"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "value-changed"
+        }
+      ]
+    },
+    {
+      "name": "simple-icon-picker",
+      "description": "`simple-icon-picker`",
+      "attributes": [
+        {
+          "name": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hideOptionLabels",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "allowNull",
+          "attribute": "allowNull",
+          "description": "Allow a null option to be selected?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icons",
+          "attribute": "icons",
+          "description": "An array of icons by name: ```\n[\n\"editor:format-paint\",\n\"content-copy\",\n\"av:volume-off\"\n\n]```",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "value",
+          "attribute": "value",
+          "description": "The value of the option.",
+          "type": "string"
+        },
+        {
+          "name": "options",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "optionsPerRow",
+          "attribute": "optionsPerRow",
+          "description": "the maximum number of options per row",
+          "type": "number",
+          "default": "10"
+        }
+      ],
+      "events": [
+        {
+          "name": "value-changed",
+          "description": "fires when value changes"
+        }
+      ]
+    }
+  ]
+}

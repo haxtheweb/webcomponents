@@ -6,12 +6,13 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `layout-builder`
+ * @customElement layout-builder
  * `A new UI for adding content to layouts`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

@@ -1,0 +1,234 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "type": "string",
+          "default": "\"close\""
+        },
+        {
+          "name": "modal",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-closed"
+        },
+        {
+          "name": "simple-modal-opened"
+        }
+      ]
+    },
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```",
+      "attributes": [
+        {
+          "name": "invokedBy",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"close\""
+        },
+        {
+          "name": "modal",
+          "description": "support for modal flag",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "invokedBy",
+          "attribute": "invokedBy",
+          "description": "The element that invoked this. This way we can track our way back accessibly",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "heading / label of the modal",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "open state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "attribute": "close-label",
+          "description": "Close label",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "attribute": "close-icon",
+          "description": "Close icon",
+          "type": "string",
+          "default": "\"close\""
+        },
+        {
+          "name": "modal",
+          "attribute": "modal",
+          "description": "support for modal flag",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-closed"
+        },
+        {
+          "name": "simple-modal-opened"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-modal-opened"
+        },
+        {
+          "name": "simple-modal-closed"
+        }
+      ]
+    },
+    {
+      "name": "simple-modal-template",
+      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`",
+      "attributes": [
+        {
+          "name": "modal-id",
+          "description": "the desired id for the modal",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "description": "the modal title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "modal",
+          "description": "the simple-modal",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "modalId",
+          "attribute": "modal-id",
+          "description": "the desired id for the modal",
+          "type": "object"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "the modal title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "modal",
+          "attribute": "modal",
+          "description": "the simple-modal",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "simple-modal",
+      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\nCSS Variables: ```\n--simple-modal-titlebar-color: #444;\n--simple-modal-titlebar-background: #ddd;\n--simple-modal-header-color: #222;\n--simple-modal-header-background: #ccc;\n--simple-modal-content-container-color: #222;\n--simple-modal-content-container-background: #fff;\n--simple-modal-buttons-color: unset;\n--simple-modal-buttons-background: unset;\n--simple-modal-button-color: var(--simple-modal-buttons-color);\n--simple-modal-button-background: var(--simple-modal-buttons-background-color);\n```",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "closeLabel",
+          "type": "string",
+          "default": "\"Close\""
+        },
+        {
+          "name": "closeIcon",
+          "type": "string",
+          "default": "\"close\""
+        },
+        {
+          "name": "modal",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-closed"
+        },
+        {
+          "name": "simple-modal-opened"
+        }
+      ]
+    }
+  ]
+}

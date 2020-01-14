@@ -9,7 +9,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * content that can be searched with simple-search (DEPRECATED)
  *
  *
- * @customElement
+
  * @demo ./demo/index.html
  */
 class SimpleSearchContent extends LitElement {

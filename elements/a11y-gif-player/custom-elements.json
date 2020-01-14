@@ -1,0 +1,281 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "a11y-gif-player",
+      "description": "`a11y-gif-player`",
+      "attributes": [
+        {
+          "name": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "attribute": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "a11y-gif-player",
+      "description": "`a11y-gif-player`",
+      "attributes": [
+        {
+          "name": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "attribute": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "a11y-gif-player",
+      "description": "`a11y-gif-player`",
+      "attributes": [
+        {
+          "name": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ],
+      "properties": [
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt text of gif",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "Whether button is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "Source of animated gif",
+          "type": "string"
+        },
+        {
+          "name": "tooltip",
+          "attribute": "tooltip",
+          "description": "default tooltip",
+          "type": "string",
+          "default": "\"Toggle animation\""
+        },
+        {
+          "name": "tooltipPlaying",
+          "attribute": "tooltip-playing",
+          "description": "tooltip when playing",
+          "type": "string"
+        },
+        {
+          "name": "srcWithoutAnimation",
+          "attribute": "src-without-animation",
+          "description": "Source of static version of image",
+          "type": "string"
+        },
+        {
+          "name": "noImage",
+          "attribute": "noImage",
+          "description": "Boolean for if theres a source image or not",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    }
+  ]
+}

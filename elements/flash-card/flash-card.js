@@ -7,6 +7,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `flash-card`
+ * @customElement flash-card
  * @demo demo/index.html
  */
 class FlashCard extends SchemaBehaviors(PolymerElement) {
@@ -82,22 +83,12 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
     import("@polymer/paper-card/paper-card.js");
-  }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
+    setTimeout(() => {
       this.addEventListener("mouseenter", this._flipup.bind(this));
       this.addEventListener("mouseleave", this._flipback.bind(this));
-    });
+    }, 0);
   }
-  disconnectedCallback() {
-    this.removeEventListener("mouseenter", this._flipup.bind(this));
-    this.removeEventListener("mouseleave", this._flipback.bind(this));
-    super.disconnectedCallback();
-  }
+
   static get haxProperties() {
     return {
       canScale: true,

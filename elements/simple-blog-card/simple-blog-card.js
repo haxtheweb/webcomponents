@@ -8,12 +8,13 @@ import "@lrnwebcomponents/simple-popover/simple-popover.js";
 
 /**
  * `simple-blog-card`
+ * @customElement simple-blog-card
  * `a card commonly found on a blogging website`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @lit-element
  * @demo demo/index.html
  */

@@ -8,7 +8,7 @@ import {
   findTagsInHTML,
   wipeSlot,
   varExists
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+} from "@lrnwebcomponents/utils/utils.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -17,7 +17,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-render-item`
  * `Title of the active page in the site`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

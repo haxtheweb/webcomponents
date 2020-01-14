@@ -13,7 +13,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * `site-menu-button`
  * `Menu button based on the hierarchy`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */
@@ -34,7 +34,7 @@ class SiteMenuButton extends LitElement {
           opacity: 0.3;
         }
         a {
-          color: black;
+          color: var(--site-menu-button-link-color, black);
           text-decoration: underline;
         }
         paper-button {
@@ -44,6 +44,24 @@ class SiteMenuButton extends LitElement {
         iron-icon {
           display: block;
           font-size: 16px;
+          --iron-icon-width: var(--site-menu-button-icon-width, 32px);
+          --iron-icon-height: var(--site-menu-button-icon-height, 32px);
+          --iron-icon-fill-color: var(
+            --site-menu-button-icon-fill-color,
+            black
+          );
+        }
+        paper-tooltip {
+          --paper-tooltip-background: var(
+            --site-menu-button-tooltip-bg,
+            #000000
+          );
+          --paper-tooltip-opacity: 1;
+          --paper-tooltip-text-color: var(
+            --site-menu-button-tooltip-text,
+            #ffffff
+          );
+          --paper-tooltip-delay-in: 0;
         }
       `
     ];
@@ -79,9 +97,6 @@ class SiteMenuButton extends LitElement {
     return html`
       <custom-style>
         <style>
-          a {
-            @apply --site-menu-button-link;
-          }
           paper-button {
             @apply --site-menu-button-button;
           }
@@ -90,20 +105,7 @@ class SiteMenuButton extends LitElement {
           paper-button:active {
             @apply --site-menu-button-button-hover;
           }
-          iron-icon {
-            @apply --site-menu-button-icon;
-          }
           paper-tooltip {
-            --paper-tooltip-background: var(
-              --site-menu-button-tooltip-bg,
-              #000000
-            );
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: var(
-              --site-menu-button-tooltip-text,
-              #ffffff
-            );
-            --paper-tooltip-delay-in: 0;
             --paper-tooltip: {
               border-radius: 0;
             }

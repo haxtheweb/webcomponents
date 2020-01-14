@@ -1,0 +1,371 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "a11y-tab",
+      "description": "`a11y-tab`",
+      "attributes": [
+        {
+          "name": "flag",
+          "description": "optional flag the tab, eg. `new`, `alert`, or `error`",
+          "type": "string"
+        },
+        {
+          "name": "flag-icon",
+          "description": "optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`",
+          "type": "string"
+        },
+        {
+          "name": "hidden",
+          "description": "whether the tab is hidden",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "description": "the unique identifier and anchor for the tab",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "label for the tab",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "flag",
+          "attribute": "flag",
+          "description": "optional flag the tab, eg. `new`, `alert`, or `error`",
+          "type": "string"
+        },
+        {
+          "name": "flagIcon",
+          "attribute": "flag-icon",
+          "description": "optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`",
+          "type": "string"
+        },
+        {
+          "name": "hidden",
+          "attribute": "hidden",
+          "description": "whether the tab is hidden",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "the unique identifier and anchor for the tab",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the tab",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "a11y-tab-changed",
+          "description": "handles any change in the tab attributes"
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "icon-breakpoint",
+          "type": "number",
+          "default": "400"
+        },
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "layout-breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "responsive-size",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "vertical",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeTab",
+          "attribute": "active-tab",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "hidden",
+          "attribute": "hidden",
+          "type": "boolean"
+        },
+        {
+          "name": "iconBreakpoint",
+          "attribute": "icon-breakpoint",
+          "type": "number",
+          "default": "400"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string"
+        },
+        {
+          "name": "layoutBreakpoint",
+          "attribute": "layout-breakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "vertical",
+          "attribute": "vertical",
+          "type": "boolean"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "description": "`a11y-tabs`",
+      "attributes": [
+        {
+          "name": "active-tab",
+          "description": "the id of the active tab",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "whether the tabbed interface is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hidden",
+          "description": "whether the tabbed interface is hidden",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon-breakpoint",
+          "description": "the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons",
+          "type": "number",
+          "default": "400"
+        },
+        {
+          "name": "id",
+          "description": "unique identifier/anchor for the tabbed interface",
+          "type": "string"
+        },
+        {
+          "name": "layout-breakpoint",
+          "description": "the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "responsive-size",
+          "description": "the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "vertical",
+          "description": "whether the tabbed interface is in vertical layout mode",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeTab",
+          "attribute": "active-tab",
+          "description": "the id of the active tab",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "whether the tabbed interface is disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hidden",
+          "attribute": "hidden",
+          "description": "whether the tabbed interface is hidden",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "iconBreakpoint",
+          "attribute": "icon-breakpoint",
+          "description": "the minimum breakpoint for showing tab text with icons, or\n- use `0` to always show icons only\n- use `-1` to always show text with icons",
+          "type": "number",
+          "default": "400"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "description": "unique identifier/anchor for the tabbed interface",
+          "type": "string"
+        },
+        {
+          "name": "layoutBreakpoint",
+          "attribute": "layout-breakpoint",
+          "description": "the minimum breakpoint for horizontal layout of tabs, or\n- use `0` for horizontal-only\n- use `-1` for vertical-only",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "responsiveSize",
+          "attribute": "responsive-size",
+          "description": "the size of the tabs,\nwhere `xs` is the smaller breakpoint\nand `xs` is the larger breakpoint",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "vertical",
+          "attribute": "vertical",
+          "description": "whether the tabbed interface is in vertical layout mode",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "a11y-tab-changed"
+        },
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    },
+    {
+      "name": "a11y-tabs",
+      "description": "`a11y-tabs`",
+      "properties": [
+        {
+          "name": "activeTab"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hidden",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "iconBreakpoint",
+          "type": "number",
+          "default": "400"
+        },
+        {
+          "name": "id"
+        },
+        {
+          "name": "layoutBreakpoint",
+          "type": "number",
+          "default": "600"
+        },
+        {
+          "name": "responsiveSize",
+          "type": "string",
+          "default": "\"xs\""
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "responsive-element"
+        },
+        {
+          "name": "responsive-element-deleted"
+        }
+      ]
+    }
+  ]
+}

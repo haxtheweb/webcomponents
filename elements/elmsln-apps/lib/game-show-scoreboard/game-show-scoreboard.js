@@ -1,6 +1,8 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -21,10 +23,13 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
-class GameShowScoreboard extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class GameShowScoreboard extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           align-content: center;
@@ -33,80 +38,51 @@ class GameShowScoreboard extends PolymerElement {
         vaadin-grid-table-body > vaadin-grid-cell-content {
           height: unset !important;
         }
-        vaadin-grid#material {
+        vaadin-grid {
           height: 75vh;
           font-family: Roboto, sans-serif;
           --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
-
-          --vaadin-grid-cell: {
-            padding: 0;
-          }
-
-          --vaadin-grid-header-cell: {
-            height: 3.5em;
-            color: rgba(0, 0, 0, var(--dark-secondary-opacity));
-            font-size: 1em;
-          }
-
-          --vaadin-grid-body-cell: {
-            height: 3em;
-            color: rgba(0, 0, 0, var(--dark-primary-opacity));
-            font-size: 0.8em;
-          }
-
-          --vaadin-grid-body-row-hover-cell: {
-            background-color: var(--paper-grey-200);
-          }
-
-          --vaadin-grid-body-row-selected-cell: {
-            background-color: var(--paper-grey-100);
-          }
-
-          --vaadin-grid-focused-cell: {
-            box-shadow: none;
-            font-weight: bold;
-          }
         }
 
-        vaadin-grid#material .cell {
+        vaadin-grid .cell {
           overflow: hidden;
           text-overflow: ellipsis;
           padding-right: 56px;
         }
 
-        vaadin-grid#material .cell.last {
+        vaadin-grid .cell.last {
           padding-right: 24px;
         }
 
-        vaadin-grid#material .cell.numeric {
+        vaadin-grid .cell.numeric {
           text-align: right;
         }
 
-        vaadin-grid#material paper-checkbox {
+        vaadin-grid paper-checkbox {
           --primary-color: var(--paper-indigo-500);
           margin: 0 24px;
         }
 
-        vaadin-grid#material vaadin-grid-sorter .cell {
+        vaadin-grid vaadin-grid-sorter .cell {
           flex: 1;
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
 
-        vaadin-grid#material vaadin-grid-sorter iron-icon {
+        vaadin-grid vaadin-grid-sorter iron-icon {
           transform: scale(0.8);
         }
 
-        vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
           color: rgba(0, 0, 0, var(--dark-disabled-opacity));
         }
 
-        vaadin-grid#material vaadin-grid-sorter[direction] {
+        vaadin-grid vaadin-grid-sorter[direction] {
           color: rgba(0, 0, 0, var(--dark-primary-opacity));
         }
 
-        vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
+        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
           transform: scale(0.8) rotate(180deg);
         }
         vaadin-grid-sorter {
@@ -133,46 +109,92 @@ class GameShowScoreboard extends PolymerElement {
         .score:hover {
           background-color: #dddddd;
         }
-      </style>
-      <app-location route="{{route}}"></app-location>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          vaadin-grid {
+            --vaadin-grid-cell: {
+              padding: 0;
+            }
+
+            --vaadin-grid-header-cell: {
+              height: 3.5em;
+              color: rgba(0, 0, 0, var(--dark-secondary-opacity));
+              font-size: 1em;
+            }
+
+            --vaadin-grid-body-cell: {
+              height: 3em;
+              color: rgba(0, 0, 0, var(--dark-primary-opacity));
+              font-size: 0.8em;
+            }
+
+            --vaadin-grid-body-row-hover-cell: {
+              background-color: var(--paper-grey-200);
+            }
+
+            --vaadin-grid-body-row-selected-cell: {
+              background-color: var(--paper-grey-100);
+            }
+
+            --vaadin-grid-focused-cell: {
+              box-shadow: none;
+              font-weight: bold;
+            }
+          }
+        </style>
+      </custom-style>
+      <app-location
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+      ></app-location>
       <app-route
-        route="{{route}}"
-        pattern="[[endPoint]]/submissions/:submission"
-        data="{{data}}"
-        tail="{{tail}}"
+        pattern="${this.endPoint}/submissions/:submission"
+        .route="${this.route}"
+        @route-changed="${this.routeChangedEvent}"
+        .data="${this.data}"
+        @data-changed="${this.dataChangedEvent}"
+        .tail="${this.tail}"
+        @tail-changed="${this.tailChangedEvent}"
       >
       </app-route>
       <iron-ajax
         auto
         id="optionsrequest"
-        url="[[optionsPath]]"
+        url="${this.optionsPath}"
         handle-as="json"
-        last-response="{{optionsData}}"
+        @last-response-changed="${this.optionsDataChangedEvent}"
       ></iron-ajax>
       <simple-picker
         id="section"
         label="Section"
-        value="{{section}}"
-        options="[[sectionOptions]]"
+        value="${this.section}"
+        @value-changed="${this.sectionEvent}"
+        .options="${this.sectionOptions}"
       ></simple-picker>
       <simple-picker
         id="game"
         label="Game"
-        value="{{game}}"
-        options="[[gameOptions]]"
+        value="${this.game}"
+        @value-changed="${this.gameEvent}"
+        .options="${this.gameOptions}"
       ></simple-picker>
       <iron-ajax
         auto
         id="datarequest"
-        url="[[dataRequestUrl]]"
+        url="${this.dataRequestUrl}"
         handle-as="json"
-        last-response="{{activeData}}"
+        @last-response-changed="${this.activeDataEvent}"
       ></iron-ajax>
       <vaadin-grid
-        hidden$="[[!visibleData]]"
+        ?hidden="${!this.visibleData}"
         id="material"
         aria-label="Student project list"
-        items="[[_toArray(visibleData)]]"
+        .items="${this._toArray(this.visibleData)}"
         theme="row-dividers"
         column-reordering-allowed
         multi-sort
@@ -292,10 +314,6 @@ class GameShowScoreboard extends PolymerElement {
   static get tag() {
     return "game-show-scoreboard";
   }
-
-  static get observers() {
-    return ["_routeChanged(route, endPoint)"];
-  }
   /**
    * props
    */
@@ -303,36 +321,42 @@ class GameShowScoreboard extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       optionsPath: {
-        type: String
+        type: String,
+        attribute: "options-path"
       },
       dataPath: {
-        type: String
+        type: String,
+        attribute: "data-path"
       },
       section: {
         type: String
       },
       game: {
-        type: String,
-        value: ""
+        type: String
       },
       dataRequestUrl: {
         type: String,
-        computed: "_computeDataRequestUrl(dataPath, section, game)"
+        attribute: "data-request-url"
       },
 
       /**
@@ -345,30 +369,86 @@ class GameShowScoreboard extends PolymerElement {
         type: String
       },
       optionsData: {
-        type: Object,
-        value: {},
-        observer: "_optionsDataChanged"
+        type: Object
       },
       sectionOptions: {
-        type: Array,
-        value: []
+        type: Array
       },
       gameOptions: {
-        type: Array,
-        value: []
+        type: Array
       },
       activeData: {
-        type: Object,
-        value: {},
-        observer: "_activeDataChanged"
+        type: Object
       },
       visibleData: {
-        type: Array,
-        value: []
+        type: Array
       }
     };
   }
-
+  constructor() {
+    super();
+    this.game = "";
+    this.optionsData = {};
+    this.sectionOptions = [];
+    this.gameOptions = [];
+    this.activeData = {};
+    this.visibleData = [];
+  }
+  sectionEvent(e) {
+    this.section = e.detail.value;
+  }
+  gameEvent(e) {
+    this.game = e.detail.value;
+  }
+  activeDataEvent(e) {
+    this.activeData = { ...e.detail.value };
+  }
+  optionsDataChangedEvent(e) {
+    this.optionsData = { ...e.detail.value };
+  }
+  dataChangedEvent(e) {
+    this.data = e.detail.value;
+  }
+  routeChangedEvent(e) {
+    this.route = e.detail.value;
+  }
+  tailChangedEvent(e) {
+    this.tail = e.detail.value;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["sourcePath", "response"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["dataPath", "section", "game"].includes(propName)) {
+        this.dataRequestUrl = this._computeDataRequestUrl(
+          this.dataPath,
+          this.section,
+          this.game
+        );
+      }
+      if (["route", "endPoint"].includes(propName)) {
+        this._routeChanged(this.route, this.endPoint);
+      }
+      if (propName == "optionsData") {
+        this._optionsDataChanged(propName);
+      }
+      if (propName == "activeData") {
+        this._activeDataChanged(propName);
+      }
+    });
+  }
   _computeDataRequestUrl(dataPath, section, game) {
     return `${dataPath}&section=${section}&game=${game}`;
   }
@@ -397,13 +477,13 @@ class GameShowScoreboard extends PolymerElement {
         ]);
       }
 
-      this.set("sectionOptions", sections);
-      this.set("gameOptions", games);
+      this.sectionOptions = [...sections];
+      this.gameOptions = [...games];
     }
   }
 
   _activeDataChanged(newValue) {
-    this.set("visibleData", newValue.data);
+    this.visibleData = [...newValue.data];
   }
   /**
    * Route changed

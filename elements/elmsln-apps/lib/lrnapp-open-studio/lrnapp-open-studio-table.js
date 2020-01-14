@@ -1,41 +1,101 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 import "@polymer/paper-input/paper-input.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
-class LrnappOpenStudioTable extends PolymerElement {
-  static get template() {
+class LrnappOpenStudioTable extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
+        :host {
+          display: block;
+          align-content: center;
+          padding: 0.8em;
+        }
+        #loading {
+          width: 100%;
+          z-index: 1000;
+          opacity: 0.8;
+          text-align: center;
+          align-content: center;
+          justify-content: center;
+          height: 100vh;
+          position: absolute;
+          background-color: white;
+        }
+        .center-data {
+          text-align: center;
+        }
+        vaadin-grid {
+          height: 75vh;
+          font-family: Roboto, sans-serif;
+          --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
+        }
+
+        vaadin-grid .cell {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-right: 56px;
+        }
+
+        vaadin-grid .cell.last {
+          padding-right: 24px;
+        }
+
+        vaadin-grid .cell.numeric {
+          text-align: right;
+        }
+
+        vaadin-grid paper-checkbox {
+          --primary-color: var(--paper-indigo-500);
+          margin: 0 24px;
+        }
+
+        vaadin-grid vaadin-grid-sorter .cell {
+          flex: 1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        vaadin-grid vaadin-grid-sorter iron-icon {
+          transform: scale(0.8);
+        }
+
+        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
+          color: rgba(0, 0, 0, var(--dark-disabled-opacity));
+        }
+
+        vaadin-grid vaadin-grid-sorter[direction] {
+          color: rgba(0, 0, 0, var(--dark-primary-opacity));
+        }
+
+        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
+          transform: scale(0.8) rotate(180deg);
+        }
+        vaadin-grid-sorter {
+          text-align: center;
+        }
+      `
+    ];
+  }
+  render() {
     return html`
       <custom-style>
-        <style is="custom-style" include="materializecss-styles">
-          :host {
-            display: block;
-            align-content: center;
-            padding: 0.8em;
-          }
-          #loading {
-            width: 100%;
-            z-index: 1000;
-            opacity: 0.8;
-            text-align: center;
-            align-content: center;
-            justify-content: center;
-            height: 100vh;
-            position: absolute;
-            background-color: white;
-          }
-          .center-data {
-            text-align: center;
-          }
-          vaadin-grid#material {
-            height: 75vh;
-            font-family: Roboto, sans-serif;
-            --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
-
+        <style>
+          vaadin-grid {
             --vaadin-grid-cell: {
               padding: 0;
             }
@@ -66,55 +126,10 @@ class LrnappOpenStudioTable extends PolymerElement {
             }
           }
 
-          vaadin-grid#material .cell {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            padding-right: 56px;
-          }
-
-          vaadin-grid#material .cell.last {
-            padding-right: 24px;
-          }
-
-          vaadin-grid#material .cell.numeric {
-            text-align: right;
-          }
-
-          vaadin-grid#material paper-checkbox {
-            --primary-color: var(--paper-indigo-500);
-            margin: 0 24px;
-          }
-
-          vaadin-grid#material vaadin-grid-sorter {
+          vaadin-grid vaadin-grid-sorter {
             --vaadin-grid-sorter-arrow: {
               display: none !important;
             }
-          }
-
-          vaadin-grid#material vaadin-grid-sorter .cell {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-          }
-
-          vaadin-grid#material vaadin-grid-sorter iron-icon {
-            transform: scale(0.8);
-          }
-
-          vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
-            color: rgba(0, 0, 0, var(--dark-disabled-opacity));
-          }
-
-          vaadin-grid#material vaadin-grid-sorter[direction] {
-            color: rgba(0, 0, 0, var(--dark-primary-opacity));
-          }
-
-          vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
-            transform: scale(0.8) rotate(180deg);
-          }
-          vaadin-grid-sorter {
-            text-align: center;
           }
         </style>
       </custom-style>
@@ -122,7 +137,8 @@ class LrnappOpenStudioTable extends PolymerElement {
         column-reordering-allowed=""
         id="material"
         aria-label="Course list"
-        items="{{submissions}}"
+        .items="${this.submissions}"
+        @items-changed="${this.submissionsEvent}"
       >
         <vaadin-grid-column resizable="">
           <template class="header">
@@ -132,9 +148,9 @@ class LrnappOpenStudioTable extends PolymerElement {
           </template>
           <template>
             <paper-button
-              on-click="_loadProjectRoute"
-              data-project-id\$="{{item.relationships.project.data.id}}"
-              data-author-id\$="{{item.relationships.author.data.id}}"
+              @click="${this._loadProjectRoute}"
+              data-project-id="[[item.relationships.project.data.id]]"
+              data-author-id="[[item.relationships.author.data.id]]"
               >[[item.relationships.project.data.title]]</paper-button
             >
           </template>
@@ -157,8 +173,8 @@ class LrnappOpenStudioTable extends PolymerElement {
           </template>
           <template>
             <paper-button
-              on-click="_loadSubmissionUrl"
-              data-submission-id\$="{{item.id}}"
+              @click="${this._loadSubmissionUrl}"
+              data-submission-id="{{item.id}}"
               >[[item.attributes.title]]</paper-button
             >
           </template>
@@ -334,58 +350,105 @@ class LrnappOpenStudioTable extends PolymerElement {
       </vaadin-grid>
     `;
   }
+  submissionsEvent(e) {
+    this.submissions = [...e.detail.value];
+  }
   static get tag() {
     return "lrnapp-open-studio-table";
+  }
+  constructor() {
+    super();
+    this._numWidth = "2.25em";
+    this.activeSubmission = null;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "submissions") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("submissions-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "sourcePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("source-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "basePath") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("base-path-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (propName == "activeSubmission") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("active-submission-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       /**
        * The submissions to render
        */
       submissions: {
-        type: Array,
-        notify: true
+        type: Array
       },
       _numWidth: {
-        type: String,
-        value: "2.25em"
+        type: String
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        notify: true
-      },
-      /**
-       * base path for the app
-       */
-      basePath: {
-        type: String,
-        notify: true
+        attribute: "source-path"
       },
       /**
        * Active / clicked submission.
        */
       activeSubmission: {
         type: String,
-        value: null,
-        notify: true
+        attribute: "active-submission"
       }
     };
   }

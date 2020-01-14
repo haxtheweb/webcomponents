@@ -1,29 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-
+import { varGet } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`
- * @demo demo/index.html
+ * @customElement simple-blog-header
  */
-class SimpleBlogHeader extends PolymerElement {
+class SimpleBlogHeader extends SimpleColors {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "simple-blog-header";
-  }
-  constructor() {
-    super();
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
@@ -101,17 +93,33 @@ class SimpleBlogHeader extends PolymerElement {
         site-rss-button {
           margin: 0 4px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "simple-blog-header";
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+  }
+  // render function
+  render() {
+    return html`
       <div class="teaserimage">
         <div
           class="teaserimage-image"
-          style\$="background-image: url([[image]]);"
+          style="background-image: url(${this.image});"
         ></div>
       </div>
       <header class="blog-header">
-        <iron-icon class="blog-logo" icon="[[icon]]"></iron-icon>
-        <h1 class="site-title">[[title]]</h1>
-        <h2 class="blog-description">[[description]]</h2>
+        <iron-icon class="blog-logo" icon="${this.icon}"></iron-icon>
+        <h1 class="site-title">${this.title}</h1>
+        <h2 class="blog-description">${this.description}</h2>
         <div class="custom-links">
           <site-rss-button type="atom"></site-rss-button>
           <site-rss-button type="rss"></site-rss-button>
@@ -122,6 +130,7 @@ class SimpleBlogHeader extends PolymerElement {
 
   static get properties() {
     return {
+      ...super.properties,
       description: {
         type: String
       },

@@ -1,19 +1,23 @@
-<iron-ajax id="rssajax" url="[[url]]" handle-as="xml" last-response="{{xml}}"></iron-ajax>
-<dom-repeat items="[[items]]">
-  <template>
+<iron-ajax
+id="rssajax"
+url="${this.url}"
+handle-as="xml"
+@last-response-changed="${this.xmlEvent}"></iron-ajax>
+${this.items.map(item => html`
   <article>
-    <a class="thumbnail-container" href="[[item.link]]" title="[[item.title]]">
-      <iron-image class="thumbnail" src="[[item.imageSrc]]" alt="[[item.title]]" sizing="cover"></iron-image>
+    ${item.imageSrc ? html`
+    <a class="thumbnail-container" href="${item.link}" title="${item.title}">
+      <iron-image class="thumbnail" src="${item.imageSrc}" alt="${item.title}" sizing="cover"></iron-image>
     </a>
-    <a href="[[item.link]]" title="[[item.title]]">
-      <span class="title">[[_truncateText(item.title, maxTitleLength)]]</span>
+    ` : ``}
+    <a href="${item.link}" title="${item.title}">
+      <span class="title">${this._truncateText(item.title, this.maxTitleLength)}</span>
     </a>
-    <div class="excerpt">[[_truncateText(item.excerpt, maxExcerptLength)]]</div>
-    <template is="dom-if" if="[[showReadMore]]">
-      <a tabindex="-1" href="[[item.link]]" class="read-more" title="[[item.title]]">[[readMoreAnchorText]]
-        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="[[readMoreImageAlt]]"></paper-icon-button>
+    <div class="excerpt">${this._truncateText(item.excerpt, this.maxExcerptLength)}</div>
+    ${this.showReadMore ? html`
+      <a tabindex="-1" href="${item.link}" class="read-more" title="${item.title}">${this.readMoreAnchorText}
+        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="${this.readMoreImageAlt}"></paper-icon-button>
       </a>
-    </template>
+    ` : ``}
   </article>
-  </template>
-</dom-repeat>
+`)}

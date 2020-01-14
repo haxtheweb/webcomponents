@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `paper-fab-speed-dial`
+ * @customElement paper-fab-speed-dial
  * `A speed dial setup for a floating action button`
  *
  * @demo demo/index.html

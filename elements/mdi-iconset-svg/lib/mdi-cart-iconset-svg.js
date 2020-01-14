@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-cart-iconset-svg` is a iconset for the Material Design Icons collection with the "cart" tag
+ * `mdi-cart-iconset-svg`
+ * @customElement mdi-cart-iconset-svg is a iconset for the Material Design Icons collection with the "cart" tag
  *
  * Example:
  *   <iron-icon icon="mdi-cart:basket"></iron-icon>

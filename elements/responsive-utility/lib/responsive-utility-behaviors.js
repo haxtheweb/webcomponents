@@ -1,6 +1,7 @@
 import "../responsive-utility.js";
 /**
  * `responsive-utility-nehaviors`
+ * @customElement responsive-utility-nehaviors
  * `A simpler way to use responsive utility.`
  */
 export const ResponsiveUtilityBehaviors = function(SuperClass) {

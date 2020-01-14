@@ -1,0 +1,69 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "micro-copy-heading",
+      "description": "`micro-copy-heading`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"micro-copy-heading\""
+        }
+      ]
+    },
+    {
+      "name": "micro-copy-heading",
+      "description": "`micro-copy-heading`",
+      "attributes": [
+        {
+          "name": "heading",
+          "description": "Heading / call to action to display",
+          "type": "string",
+          "default": "\"Telling our story\""
+        },
+        {
+          "name": "endcap",
+          "description": "ending cap to the statement, possibly a character, icon, etc",
+          "type": "string",
+          "default": "\"//\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "heading",
+          "attribute": "heading",
+          "description": "Heading / call to action to display",
+          "type": "string",
+          "default": "\"Telling our story\""
+        },
+        {
+          "name": "endcap",
+          "attribute": "endcap",
+          "description": "ending cap to the statement, possibly a character, icon, etc",
+          "type": "string",
+          "default": "\"//\""
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"micro-copy-heading\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "micro-copy-heading",
+      "description": "`micro-copy-heading`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"micro-copy-heading\""
+        }
+      ]
+    }
+  ]
+}

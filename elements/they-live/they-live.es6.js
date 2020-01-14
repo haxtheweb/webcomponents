@@ -6,12 +6,13 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `they-live`
+ * @customElement they-live
  * `To demonstrate the hidden reality behind the component`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @lit-html
  * @lit-element
  * @demo demo/index.html

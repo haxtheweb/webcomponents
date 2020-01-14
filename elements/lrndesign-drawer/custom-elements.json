@@ -1,0 +1,248 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "lrndesign-drawer",
+      "description": "`lrndesign-drawer`",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "State for if it is currently open.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to present for clicking.",
+          "type": "string",
+          "default": "\"icon\""
+        },
+        {
+          "name": "align",
+          "attribute": "align",
+          "description": "Side of the screen to align the flyout (right or left)",
+          "type": "string",
+          "default": "\"left\""
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "description": "Alt / hover text for this link",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

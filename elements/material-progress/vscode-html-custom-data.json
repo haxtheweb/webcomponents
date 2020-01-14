@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "material-progress-bars",
+      "description": "Attributes:\n\n  * `max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\nProperties:\n\n  * `max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "max",
+          "description": "`max` {`number`} - Maximum value represented by all progress bars.\nBars will be scaled according to their `data-value` attribute\nand this maximum.\nNote that, if the sum of all the bars' values are superior to this\n`max`\n\nProperty: max\n\nDefault: 100"
+        }
+      ]
+    },
+    {
+      "name": "material-progress-histo",
+      "description": "Attributes:\n\n  * `scale-to-sum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\nProperties:\n\n  * `scaleToSum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "scale-to-sum",
+          "description": "`scale-to-sum` {`boolean`} - Scales the bar relatively to the sum of all bars\ninstead of the maximum bar `data-value`.\n\nProperty: scaleToSum\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

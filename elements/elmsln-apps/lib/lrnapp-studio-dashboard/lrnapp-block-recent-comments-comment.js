@@ -1,19 +1,15 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-class LrnappBlockRecentCommentsComment extends mixinBehaviors(
-  [IronResizableBehavior],
-  PolymerElement
-) {
-  static get template() {
-    return html`
-      <style>
+class LrnappBlockRecentCommentsComment extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -47,11 +43,6 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           margin-right: 1em;
         }
 
-        .flex-wrap {
-          @apply --layout-horizontal;
-          @apply --layout-wrap;
-        }
-
         .inactive {
           max-height: 4.6em;
           overflow: hidden;
@@ -71,14 +62,18 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
         .hidden {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-card elevation="3" class="flex-wrap">
         <div class="card-content">
           <lrndesign-avatar
-            label="[[commentUser.name]]"
-            src="[[commentUser.avatar]]"
+            label="${this.commentUser.name}"
+            src="${this.commentUser.avatar}"
           ></lrndesign-avatar>
-          <h3>[[commentUser.display_name]]</h3>
+          <h3>${this.commentUser.display_name}</h3>
           <div id="wrapper" class="button-wrapper">
             <div id="comment" class="inactive"><slot></slot></div>
             <paper-button id="btn" class="hidden">
@@ -87,11 +82,13 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
           </div>
         </div>
         <div class="card-actions">
-          <template is="dom-if" if="[[actionView]]">
-            <a href$="[[actionView]]" tabindex="-1">
-              <paper-button raised="" id="view">View thread</paper-button>
-            </a>
-          </template>
+          ${this.actionView
+            ? html`
+                <a href="${this.actionView}" tabindex="-1">
+                  <paper-button raised="" id="view">View thread</paper-button>
+                </a>
+              `
+            : ``}
         </div>
       </paper-card>
     `;
@@ -112,73 +109,83 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       commentTitle: {
         type: String,
-        value: "Comment title",
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       },
       actionView: {
         type: String,
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       },
       dateUpdated: {
         type: String,
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       },
       commentUser: {
         type: Object,
-        value: {},
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = [
+        "commentTitle",
+        "actionView",
+        "dateUpdated",
+        "commentUser"
+      ];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
   }
   /**
    * attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.shadowRoot
-        .querySelector("#wrapper")
-        .addEventListener("click", function(e) {
-          this.shadowRoot
-            .querySelector("#comment")
-            .classList.toggle("inactive", this.inactive);
-        });
+  constructor() {
+    super();
+    this.commentTitle = "Comment title";
+    this.commentUser = {};
+    setTimeout(() => {
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
-    });
+    }, 0);
   }
-  /**
-   * detached life cycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#wrapper")
-      .removeEventListener("click", function(e) {
-        this.shadowRoot
-          .querySelector("#comment")
-          .classList.toggle("inactive", this.inactive);
-      });
-    this.removeEventListener("iron-resize", this.onHeightChange.bind(this));
-    super.disconnectedCallback();
+  firstUpdated() {
+    this.shadowRoot.querySelector("#wrapper").addEventListener("click", e => {
+      this.shadowRoot
+        .querySelector("#comment")
+        .classList.toggle("inactive", this.inactive);
+    });
   }
 }
 window.customElements.define(

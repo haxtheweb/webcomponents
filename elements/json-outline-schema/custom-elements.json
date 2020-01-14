@@ -1,0 +1,390 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "json-outline-schema-item",
+      "description": "`json-outline-schema-item`",
+      "properties": [
+        {
+          "name": "id",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"New item\""
+        },
+        {
+          "name": "location",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "parent",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "order",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "indent",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "json-outline-schema",
+      "description": "`json-outline-schema`",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
+        },
+        {
+          "name": "template"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    },
+    {
+      "name": "json-outline-schema",
+      "description": "`json-outline-schema`",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
+        },
+        {
+          "name": "template"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    },
+    {
+      "name": "json-outline-schema",
+      "description": "`json-outline-schema`",
+      "attributes": [
+        {
+          "name": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"json-outline-schema\""
+        },
+        {
+          "name": "template"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
+          "type": "string | null"
+        },
+        {
+          "name": "id",
+          "attribute": "id",
+          "type": "string | null"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string | null",
+          "default": "\"New site\""
+        },
+        {
+          "name": "author",
+          "attribute": "author",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "type": "string | null",
+          "default": "\"\""
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "type": "string | null",
+          "default": "\"by-sa\""
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "items",
+          "type": "never[]",
+          "default": "[]"
+        },
+        {
+          "name": "debug",
+          "attribute": "debug",
+          "type": "string | null",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-ready"
+        },
+        {
+          "name": "json-outline-schema-unready"
+        }
+      ]
+    }
+  ]
+}

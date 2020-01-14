@@ -1,0 +1,367 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "video-player",
+      "description": "`video-player`"
+    },
+    {
+      "name": "video-player",
+      "description": "`video-player`",
+      "attributes": [
+        {
+          "name": "audio-only",
+          "description": "Is the media an audio file only?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accent-color",
+          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
+          "type": "string"
+        },
+        {
+          "name": "crossorigin",
+          "description": "Cross origin flag for transcripts to load",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "description": "Enables darker player.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "height",
+          "description": "The height of the media player for non-a11y-media.",
+          "type": "string"
+        },
+        {
+          "name": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-transcript",
+          "description": "hide the transcript by default",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "iframed",
+          "description": "Computed if this should be in an iframe or not.",
+          "type": "boolean"
+        },
+        {
+          "name": "is-a11y-media",
+          "description": "Computed if this should be in a11y-media-player.",
+          "type": "boolean"
+        },
+        {
+          "name": "is-youtube",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "boolean"
+        },
+        {
+          "name": "lang",
+          "description": "The language of the media",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "linkable",
+          "description": "Include a share link?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "media-title",
+          "description": "Simple caption for the video",
+          "type": "string"
+        },
+        {
+          "name": "player-id",
+          "description": "ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "description": "What to preload for a11y-media-player: auto, metadata (default), or none.",
+          "type": "string",
+          "default": "\"metadata\""
+        },
+        {
+          "name": "sandboxed",
+          "description": "Compute if this is a sandboxed system or not",
+          "type": "boolean"
+        },
+        {
+          "name": "source",
+          "description": "Source of the video",
+          "type": "string"
+        },
+        {
+          "name": "sources",
+          "description": "Source of the video",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "source-data",
+          "description": "List of source objects",
+          "type": "array"
+        },
+        {
+          "name": "source-type",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "string"
+        },
+        {
+          "name": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "track",
+          "description": "The url for a single subtitle track",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "description": "Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "track-data",
+          "description": "Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
+          "type": "array"
+        },
+        {
+          "name": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "description": "The width of the media player for non-a11y-media.",
+          "type": "string"
+        },
+        {
+          "name": "youtube-id",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "audioOnly",
+          "attribute": "audio-only",
+          "description": "Is the media an audio file only?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "accentColor",
+          "attribute": "accent-color",
+          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
+          "type": "string"
+        },
+        {
+          "name": "crossorigin",
+          "attribute": "crossorigin",
+          "description": "Cross origin flag for transcripts to load",
+          "type": "string"
+        },
+        {
+          "name": "dark",
+          "attribute": "dark",
+          "description": "Enables darker player.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "darkTranscript",
+          "attribute": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "disableInteractive",
+          "attribute": "disable-interactive",
+          "description": "disable interactive mode that makes the transcript clickable",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "height",
+          "attribute": "height",
+          "description": "The height of the media player for non-a11y-media.",
+          "type": "string"
+        },
+        {
+          "name": "hideTimestamps",
+          "attribute": "hide-timestamps",
+          "description": "show cue's start and end time",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideTranscript",
+          "attribute": "hide-transcript",
+          "description": "hide the transcript by default",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "iframed",
+          "attribute": "iframed",
+          "description": "Computed if this should be in an iframe or not.",
+          "type": "boolean"
+        },
+        {
+          "name": "isA11yMedia",
+          "attribute": "is-a11y-media",
+          "description": "Computed if this should be in a11y-media-player.",
+          "type": "boolean"
+        },
+        {
+          "name": "isYoutube",
+          "attribute": "is-youtube",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "boolean"
+        },
+        {
+          "name": "lang",
+          "attribute": "lang",
+          "description": "The language of the media",
+          "type": "string",
+          "default": "\"en\""
+        },
+        {
+          "name": "linkable",
+          "attribute": "linkable",
+          "description": "Include a share link?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "mediaTitle",
+          "attribute": "media-title",
+          "description": "Simple caption for the video",
+          "type": "string"
+        },
+        {
+          "name": "playerId",
+          "attribute": "player-id",
+          "description": "ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.",
+          "type": "string"
+        },
+        {
+          "name": "preload",
+          "attribute": "preload",
+          "description": "What to preload for a11y-media-player: auto, metadata (default), or none.",
+          "type": "string",
+          "default": "\"metadata\""
+        },
+        {
+          "name": "sandboxed",
+          "attribute": "sandboxed",
+          "description": "Compute if this is a sandboxed system or not",
+          "type": "boolean"
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Source of the video",
+          "type": "string"
+        },
+        {
+          "name": "sources",
+          "attribute": "sources",
+          "description": "Source of the video",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "sourceData",
+          "attribute": "source-data",
+          "description": "List of source objects",
+          "type": "array"
+        },
+        {
+          "name": "sourceType",
+          "attribute": "source-type",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "string"
+        },
+        {
+          "name": "stickyCorner",
+          "attribute": "sticky-corner",
+          "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+          "type": "string",
+          "default": "\"top-right\""
+        },
+        {
+          "name": "track",
+          "attribute": "track",
+          "description": "The url for a single subtitle track",
+          "type": "string"
+        },
+        {
+          "name": "tracks",
+          "attribute": "tracks",
+          "description": "Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "trackData",
+          "attribute": "track-data",
+          "description": "Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]",
+          "type": "array"
+        },
+        {
+          "name": "thumbnailSrc",
+          "attribute": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "type": "string"
+        },
+        {
+          "name": "width",
+          "attribute": "width",
+          "description": "The width of the media player for non-a11y-media.",
+          "type": "string"
+        },
+        {
+          "name": "youtubeId",
+          "attribute": "youtube-id",
+          "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "video-player",
+      "description": "`video-player`"
+    }
+  ]
+}

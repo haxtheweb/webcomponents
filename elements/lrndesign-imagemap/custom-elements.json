@@ -1,0 +1,313 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrndesign-imagemap",
+      "description": "`lrndesign-imagemap`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "attribute": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopicOf",
+          "attribute": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "attribute": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-imagemap",
+      "description": "`lrndesign-imagemap`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "attribute": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopicOf",
+          "attribute": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "attribute": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-imagemap-hotspot",
+      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the hotspot",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-id",
+          "description": "Id of hotspot element inside the SVG",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the hotspot",
+          "type": "string"
+        },
+        {
+          "name": "hotspotId",
+          "attribute": "hotspot-id",
+          "description": "Id of hotspot element inside the SVG",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-imagemap",
+      "description": "`lrndesign-imagemap`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label for the imagemap",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "The path of the SVG",
+          "type": "string"
+        },
+        {
+          "name": "hotspotDetails",
+          "attribute": "hotspot-details",
+          "description": "The path of the SVG",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "subtopicOf",
+          "attribute": "subtopic-of",
+          "description": "optional: the id of the heading element that this imagemap is a subtopic of",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "attribute": "tag",
+          "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-modal-show"
+        }
+      ]
+    }
+  ]
+}

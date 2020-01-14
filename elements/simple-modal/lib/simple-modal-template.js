@@ -1,60 +1,22 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "../simple-modal.js";
 /**
  * `simple-modal-template`
  * `A simple modal that ensures accessibility and stack order context appropriately`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo ./demo/template.html
+ * @customElement simple-modal-template
  */
-class SimpleModalTemplate extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
+class SimpleModalTemplate extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "simple-modal-template";
-  }
-
-  //render function
-  static get properties() {
-    return {
-      /**
-       * the desired id for the modal
-       */
-      modalId: {
-        type: Object,
-        value: null
-      },
-      /**
-       * the simple-modal
-       */
-      modal: {
-        type: Object,
-        computed: "_getModal()"
-      },
-      /**
-       * the modal title
-       */
-      title: {
-        type: String,
-        value: ""
-      }
-    };
-  }
-  //render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: none;
           --simple-modal-width: auto;
@@ -76,7 +38,48 @@ class SimpleModalTemplate extends PolymerElement {
             --simple-modal-buttons-background-color
           );
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "simple-modal-template";
+  }
+  constructor() {
+    super();
+    this.modalId = null;
+    this.title = "";
+    this.modal = window.SimpleModal.requestAvailability();
+  }
+  //render function
+  static get properties() {
+    return {
+      /**
+       * the desired id for the modal
+       */
+      modalId: {
+        type: Object,
+        attribute: "modal-id"
+      },
+      /**
+       * the simple-modal
+       */
+      modal: {
+        type: Object
+      },
+      /**
+       * the modal title
+       */
+      title: {
+        type: String
+      }
+    };
+  }
+  //render function
+  render() {
+    return html`
       <slot name="header"></slot> <slot name="content"></slot>
       <slot name="buttons"></slot>
     `;
@@ -96,14 +99,7 @@ class SimpleModalTemplate extends PolymerElement {
     });
     return this.modal;
   }
-  /**
-   * gets the simple-modal
-   *
-   * @returns {object} the modal object
-   */
-  _getModal() {
-    return window.SimpleModal.requestAvailability();
-  }
+
   /**
    * dispatches event to populate and open the simple modal based template values
    *
@@ -161,8 +157,16 @@ class SimpleModalTemplate extends PolymerElement {
    * @returns {object} a clone of the slotted content (or false if there is no slotted content)
    */
   _getSlot(slotName) {
-    let slot = this.querySelector('[slot="' + slotName + '"]');
-    return slot !== null ? slot.cloneNode(true) : false;
+    let slot = this.querySelectorAll('[slot="' + slotName + '"]');
+    // account for slot passing down from parent element
+    if (slot && slot[0] && slot[0].tagName == "SLOT") {
+      slot = slot[0].assignedNodes({ flatten: true });
+    }
+    let container = document.createElement("div");
+    slot.forEach(el => {
+      container.appendChild(el.cloneNode(true));
+    });
+    return slot !== null ? container.cloneNode(true) : false;
   }
 }
 window.customElements.define(SimpleModalTemplate.tag, SimpleModalTemplate);

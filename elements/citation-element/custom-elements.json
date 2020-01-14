@@ -1,0 +1,341 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "citation-element",
+      "description": "`citation-element`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "displayMethod",
+          "attribute": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "attribute": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "citation-element",
+      "description": "`citation-element`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "displayMethod",
+          "attribute": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "attribute": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "citation-element",
+      "description": "`citation-element`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the work.",
+          "type": "string"
+        },
+        {
+          "name": "displayMethod",
+          "attribute": "display-method",
+          "description": "How to present the citation on the interface.\nCan be popup, footnote, or default behavior which is visible",
+          "type": "string"
+        },
+        {
+          "name": "creator",
+          "attribute": "creator",
+          "description": "Person or group that owns / created the work.",
+          "type": "string"
+        },
+        {
+          "name": "date",
+          "attribute": "date",
+          "description": "Date the work was accessed.",
+          "type": "string"
+        },
+        {
+          "name": "licenseName",
+          "attribute": "license-name",
+          "description": "License name, calculated or supplied by the end user if we don't have them.",
+          "type": "string"
+        },
+        {
+          "name": "licenseLink",
+          "attribute": "license-link",
+          "description": "License link for more details",
+          "type": "string"
+        },
+        {
+          "name": "license",
+          "attribute": "license",
+          "description": "License short hand. Options cc0,",
+          "type": "string"
+        },
+        {
+          "name": "scope",
+          "attribute": "scope",
+          "description": "License scope",
+          "type": "string",
+          "default": "\"sibling\""
+        },
+        {
+          "name": "source",
+          "attribute": "source",
+          "description": "Original Source of the work in question",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "lrnapp-fab-menu",
+      "description": "`lrnapp-fab-menu`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-fab-menu",
+      "description": "`lrnapp-fab-menu`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "demo/index.html",
+      "description": "",
+      "attributes": [
+        {
+          "name": "demo/index.html"
+        },
+        {
+          "name": "icon",
+          "description": "Icon that is shown next to the content",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "demo/index.html",
+          "attribute": "demo/index.html"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon that is shown next to the content",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        }
+      ],
+      "slots": [
+        {
+          "name": "demo/index.html"
+        }
+      ],
+      "cssProperties": [
+        {
+          "name": "demo/index.html"
+        }
+      ],
+      "cssParts": [
+        {
+          "name": "demo/index.html"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-fab-speed-dial-action",
+      "description": "",
+      "attributes": [
+        {
+          "name": "demo/index.html"
+        },
+        {
+          "name": "icon",
+          "description": "Icon that is shown next to the content",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "demo/index.html",
+          "attribute": "demo/index.html"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon that is shown next to the content",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string",
+          "default": "\"blue\""
+        }
+      ],
+      "slots": [
+        {
+          "name": "demo/index.html"
+        }
+      ],
+      "cssProperties": [
+        {
+          "name": "demo/index.html"
+        }
+      ],
+      "cssParts": [
+        {
+          "name": "demo/index.html"
+        }
+      ]
+    },
+    {
+      "name": "lrnapp-fab-menu",
+      "description": "`lrnapp-fab-menu`",
+      "attributes": [
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"add\""
+        },
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

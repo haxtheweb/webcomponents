@@ -1,0 +1,185 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "material-word",
+      "description": "`material-word`",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "attribute": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "halfLetters",
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "material-word",
+      "description": "`material-word`",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "attribute": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "halfLetters",
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "material-word",
+      "description": "`material-word`",
+      "attributes": [
+        {
+          "name": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "word",
+          "attribute": "word",
+          "type": "string"
+        },
+        {
+          "name": "letters",
+          "attribute": "letters",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "halfLetters",
+          "attribute": "half-letters",
+          "type": "array",
+          "default": "[\"e\",\"f\",\"h\",\"i\"]"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    }
+  ]
+}

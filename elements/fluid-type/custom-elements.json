@@ -1,0 +1,58 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "fluid-type",
+      "description": "`fluid-type`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"fluid-type\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "fluid-type",
+      "description": "`fluid-type`",
+      "properties": [
+        {
+          "name": "html",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"fluid-type\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "fluid-type",
+      "description": "`fluid-type`",
+      "properties": [
+        {
+          "name": "tag",
+          "type": "string",
+          "default": "\"fluid-type\""
+        },
+        {
+          "name": "template"
+        }
+      ]
+    }
+  ]
+}

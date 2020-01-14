@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-auth-iconset-svg` is a iconset for the Material Design Icons collection with the "authentication" tag
+ * `mdi-auth-iconset-svg`
+ * @customElement mdi-auth-iconset-svg is a iconset for the Material Design Icons collection with the "authentication" tag
  *
  * Example:
  *   <iron-icon icon="mdi-auth:login"></iron-icon>

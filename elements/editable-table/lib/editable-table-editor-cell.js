@@ -9,12 +9,13 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
 
 /**
  * `editable-table-editor-cell`
+ * @customElement editable-table-editor-cell
  * `An editable cell in the editable-table-editor (editable-table-editor.html) interface.`
  *
  * @demo ./demo/editor.html
  *
  * @polymer
- * @customElement
+
  * @appliesMixin cellBehaviors
  */
 class EditableTableEditorCell extends cellBehaviors(PolymerElement) {

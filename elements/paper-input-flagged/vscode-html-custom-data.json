@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element\n\nAttributes:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `input-success` - Passed tests / success data.\n\n  * `flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperties:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `inputSuccess` - Passed tests / success data.\n\n  * `flaggedInput` {`any[]`} - Input to trap and offer feedback about.",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon based on status\n\nProperty: icon"
+        },
+        {
+          "name": "maxlength",
+          "description": "`maxlength` {`number`} - \n\nProperty: maxlength"
+        },
+        {
+          "name": "minlength",
+          "description": "`minlength` {`number`} - \n\nProperty: minlength"
+        },
+        {
+          "name": "status",
+          "description": "`status` {`string`} - Status based on test for flagged words\n\nProperty: status"
+        },
+        {
+          "name": "__activeMessage",
+          "description": "`__activeMessage` {`string`} - \n\nProperty: __activeMessage"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - value\n\nProperty: value\n\nDefault: "
+        },
+        {
+          "name": "input-success",
+          "description": "`input-success` - Passed tests / success data.\n\nProperty: inputSuccess\n\nDefault: [object Object]"
+        },
+        {
+          "name": "flagged-input",
+          "description": "`flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperty: flaggedInput\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+        }
+      ]
+    },
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element\n\nAttributes:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `input-success` - Passed tests / success data.\n\n  * `flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperties:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `inputSuccess` - Passed tests / success data.\n\n  * `flaggedInput` {`any[]`} - Input to trap and offer feedback about.",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon based on status\n\nProperty: icon"
+        },
+        {
+          "name": "maxlength",
+          "description": "`maxlength` {`number`} - \n\nProperty: maxlength"
+        },
+        {
+          "name": "minlength",
+          "description": "`minlength` {`number`} - \n\nProperty: minlength"
+        },
+        {
+          "name": "status",
+          "description": "`status` {`string`} - Status based on test for flagged words\n\nProperty: status"
+        },
+        {
+          "name": "__activeMessage",
+          "description": "`__activeMessage` {`string`} - \n\nProperty: __activeMessage"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - value\n\nProperty: value\n\nDefault: "
+        },
+        {
+          "name": "input-success",
+          "description": "`input-success` - Passed tests / success data.\n\nProperty: inputSuccess\n\nDefault: [object Object]"
+        },
+        {
+          "name": "flagged-input",
+          "description": "`flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperty: flaggedInput\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "paper-input-flagged",
+      "description": "`paper-input-flagged`\nA LRN element\n\nAttributes:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `input-success` - Passed tests / success data.\n\n  * `flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperties:\n\n  * `icon` {`string`} - Icon based on status\n\n  * `maxlength` {`number`} - \n\n  * `minlength` {`number`} - \n\n  * `status` {`string`} - Status based on test for flagged words\n\n  * `__activeMessage` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `value` {`string`} - value\n\n  * `inputSuccess` - Passed tests / success data.\n\n  * `flaggedInput` {`any[]`} - Input to trap and offer feedback about.",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon based on status\n\nProperty: icon"
+        },
+        {
+          "name": "maxlength",
+          "description": "`maxlength` {`number`} - \n\nProperty: maxlength"
+        },
+        {
+          "name": "minlength",
+          "description": "`minlength` {`number`} - \n\nProperty: minlength"
+        },
+        {
+          "name": "status",
+          "description": "`status` {`string`} - Status based on test for flagged words\n\nProperty: status"
+        },
+        {
+          "name": "__activeMessage",
+          "description": "`__activeMessage` {`string`} - \n\nProperty: __activeMessage"
+        },
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "label",
+          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+        },
+        {
+          "name": "value",
+          "description": "`value` {`string`} - value\n\nProperty: value\n\nDefault: "
+        },
+        {
+          "name": "input-success",
+          "description": "`input-success` - Passed tests / success data.\n\nProperty: inputSuccess\n\nDefault: [object Object]"
+        },
+        {
+          "name": "flagged-input",
+          "description": "`flagged-input` {`any[]`} - Input to trap and offer feedback about.\n\nProperty: flaggedInput\n\nDefault: [object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

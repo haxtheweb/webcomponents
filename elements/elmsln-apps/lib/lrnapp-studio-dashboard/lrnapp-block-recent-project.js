@@ -1,21 +1,22 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-item/paper-item-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-class LrnappBlockRecentProject extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="materializecss-styles paper-item-styles">
-        :host {
-          display: block;
-        }
+import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+
+class LrnappBlockRecentProject extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      materialCssStyles,
+      css`
         #loading {
           width: 100%;
           z-index: 1000;
@@ -82,80 +83,92 @@ class LrnappBlockRecentProject extends PolymerElement {
           margin: 0;
           padding: 0;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
         auto=""
-        url="{{sourcePath}}"
+        url="${this.sourcePath}"
         handle-as="json"
-        last-response="{{response}}"
-        on-response="handleResponse"
+        @last-response-changed="${this.responseChanged}"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <div id="loading">
         <h3>Loading..</h3>
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
-      <template is="dom-if" if="[[hasProject]]">
-        <a tabindex="-1" href\$="[[basePath]]lrnapp-studio-kanban">
-          <paper-button class="whole-project ferpa-protect">
-            <paper-card
-              id\$="project-[[project.id]]"
-              class="project-card grey lighten-3"
-              heading="{{project.attributes.title}}"
-              elevation="2"
-            >
-              <div class="card-content">
-                <iron-list
-                  items="[[_toArray(project.relationships.assignments)]]"
-                  as="assignment"
-                  mutable-data
+      ${this.hasProject
+        ? html`
+            <a tabindex="-1" href="${this.basePath}lrnapp-studio-kanban">
+              <paper-button class="whole-project ferpa-protect">
+                <paper-card
+                  id="project-${this.project.id}"
+                  class="project-card grey lighten-3"
+                  heading="${this.project.attributes.title}"
+                  elevation="2"
                 >
-                  <template>
-                    <div class="assignment-row" id="assignment">
-                      <lrnsys-button
-                        inner-class="no-left-padding"
-                        class="assignment-row-button"
-                        button-class="assignment-row-button"
-                        id\$="assignment-[[project.id]]-[[assignment.id]]"
-                        hover-class="amber lighten-5"
-                        href\$="[[basePath]]lrnapp-studio-kanban"
-                      >
-                        <span class="button-contents">
-                          <div
-                            class\$="status-indicator [[assignment.metadata.relatedSubmissions.complete.color]]"
+                  <div class="card-content">
+                    <iron-list
+                      .items="${this._toArray(
+                        this.project.relationships.assignments
+                      )}"
+                      as="assignment"
+                      mutable-data
+                    >
+                      <template>
+                        <div class="assignment-row" id="assignment">
+                          <lrnsys-button
+                            inner-class="no-left-padding"
+                            class="assignment-row-button"
+                            button-class="assignment-row-button"
+                            id="assignment-${this.project.id}-[[assignment
+                              .id]]"
+                            hover-class="amber lighten-5"
+                            href="${this.basePath}lrnapp-studio-kanban"
                           >
-                            <iron-icon
-                              icon="[[assignment.metadata.relatedSubmissions.complete.icon]]"
-                            ></iron-icon>
-                          </div>
-                          <div class="assignment-title">
-                            [[assignment.title]]
-                          </div>
-                        </span>
-                      </lrnsys-button>
-                    </div>
-                  </template>
-                </iron-list>
-              </div>
-            </paper-card>
-          </paper-button>
-        </a>
-      </template>
-      <template is="dom-if" if="[[!hasProject]]">
-        <lrnsys-button
-          inner-class="no-left-padding"
-          button-class="assignment-row-button"
-          class="assignment-row-button"
-          href\$="[[basePath]]lrnapp-studio-kanban"
-          hover-class="amber lighten-5"
-        >
-          <span class="button-contents">
-            <div class="status-indicator">
-              <iron-icon icon="assignment"></iron-icon>
-            </div>
-            <div class="assignment-title">Tap to start your first project!</div>
-          </span>
-        </lrnsys-button>
-      </template>
+                            <span class="button-contents">
+                              <div
+                                class="status-indicator [[assignment
+                                  .metadata.relatedSubmissions.complete.color]]"
+                              >
+                                <iron-icon
+                                  icon="[[assignment.metadata
+                                    .relatedSubmissions.complete.icon]]"
+                                ></iron-icon>
+                              </div>
+                              <div class="assignment-title">
+                                [[assignment.title]]
+                              </div>
+                            </span>
+                          </lrnsys-button>
+                        </div>
+                      </template>
+                    </iron-list>
+                  </div>
+                </paper-card>
+              </paper-button>
+            </a>
+          `
+        : html`
+            <lrnsys-button
+              inner-class="no-left-padding"
+              button-class="assignment-row-button"
+              class="assignment-row-button"
+              href="${this.basePath}lrnapp-studio-kanban"
+              hover-class="amber lighten-5"
+            >
+              <span class="button-contents">
+                <div class="status-indicator">
+                  <iron-icon icon="assignment"></iron-icon>
+                </div>
+                <div class="assignment-title">
+                  Tap to start your first project!
+                </div>
+              </span>
+            </lrnsys-button>
+          `}
     `;
   }
   static get tag() {
@@ -165,41 +178,63 @@ class LrnappBlockRecentProject extends PolymerElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String
+        type: String,
+        attribute: "elmsln-course"
       },
       elmslnSection: {
-        type: String
+        type: String,
+        attribute: "elmsln-section"
       },
       basePath: {
-        type: String
+        type: String,
+        attribute: "base-path"
       },
       csrfToken: {
-        type: String
+        type: String,
+        attribute: "csrf-token"
       },
       endPoint: {
-        type: String
+        type: String,
+        attribute: "end-point"
       },
       sourcePath: {
         type: String,
-        notify: true
+        attribute: "source-path"
       },
       response: {
-        type: Object,
-        notify: true
+        type: Object
       },
       project: {
-        type: Object,
-        notify: true
+        type: Object
       },
       hasProject: {
         type: Boolean,
-        notify: true,
-        reflectToAttribute: true,
-        computed: "_getHasProject(project)"
+        reflect: true
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // computed
+      if (["project"].includes(propName)) {
+        this.hasProject = this._getHasProject(this[propName]);
+      }
+      let notifiedProps = ["sourcePath", "response", "hasProject", "project"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   /**
    * Generate the correct boolean for having a project.
    */
@@ -209,7 +244,9 @@ class LrnappBlockRecentProject extends PolymerElement {
     }
     return false;
   }
-
+  responseChanged(e) {
+    this.response = e.detail.value;
+  }
   /**
    * Swap off the loading with project data.
    */

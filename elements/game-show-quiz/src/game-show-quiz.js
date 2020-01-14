@@ -4,8 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -15,6 +14,7 @@ import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";
 /**
  * `game-show-quiz`
+ * @customElement game-show-quiz
  * `Simple game show with questions and answers`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
@@ -26,6 +26,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
   }
   constructor() {
     super();
+    window.SimpleToast.requestAvailability();
     import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js");
     import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js");
@@ -105,16 +106,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           }
         }
         responsive-grid-row {
-          --responsive-grid-row-inner: {
-            margin-left: 0;
-            margin-right: 0;
-          }
+          --responsive-grid-row-inner-margin-left: 0;
+          --responsive-grid-row-inner-margin-right: 0;
         }
         responsive-grid-col {
-          --responsive-grid-col-inner: {
-            padding-left: 0;
-            padding-right: 0;
-          }
+          --responsive-grid-col-inner-padding-left: 0;
+          --responsive-grid-col-inner-padding-right: 0;
         }
         #contentcontainer {
           margin: 0 auto;
@@ -1105,8 +1102,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.SimpleToast.requestAvailability();
-    afterNextRender(this, function() {
+    setTimeout(() => {
       // punch a basic hole for elms:ln to make life easier for IDs
       if (
         window.Drupal &&
@@ -1137,7 +1133,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.shadowRoot
         .querySelector("#question")
         .addEventListener("click", this.registerTap.bind(this));
-    });
+    }, 0);
   }
   /**
    * detached life cycke

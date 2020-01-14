@@ -1,10 +1,8 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-export { LrndesignGalleryDetails };
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrndesign-gallery-details`
  * `An element that renders the print view of a gallery item.`
@@ -14,32 +12,47 @@ export { LrndesignGalleryDetails };
   details="<strong>HTML MARKUP HERE</strong>"       //required, an array of item data
 </lrndesign-gallery-details>```
  *
- * @customElement
- * @polymer
+ * @customElement lrndesign-gallery-details
  */
-class LrndesignGalleryDetails extends PolymerElement {
+class LrndesignGalleryDetails extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "lrndesign-gallery-details";
-  }
-
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "lrndesign-gallery-details";
+  }
+  // render function
+  render() {
+    return html`
       <div id="details"></div>
     `;
   }
-
+  constructor() {
+    super();
+    this.details = null;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "details") {
+        this._detailsChanged(this[propName]);
+      }
+    });
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -47,31 +60,21 @@ class LrndesignGalleryDetails extends PolymerElement {
        * image's details in as a string of HTML
        */
       details: {
-        type: String,
-        value: null,
-        observer: "_detailsChanged"
+        type: String
       }
     };
   }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this._detailsChanged();
-  }
-
   /**
    * updates the details
-   *
-   * @param {details} the details to be updated
    */
-  _detailsChanged() {
-    this.shadowRoot.querySelector("#details").innerHTML = this.details;
+  _detailsChanged(newValue) {
+    if (this.shadowRoot) {
+      this.shadowRoot.querySelector("#details").innerHTML = newValue;
+    }
   }
 }
 window.customElements.define(
   LrndesignGalleryDetails.tag,
   LrndesignGalleryDetails
 );
+export { LrndesignGalleryDetails };

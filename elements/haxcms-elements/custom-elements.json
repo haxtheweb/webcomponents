@@ -1,0 +1,3873 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "haxcms-dev-theme",
+      "description": "`haxcms-dev-theme`\n`A theme intended as the starting point to fork from and build new themes for HAXCMS\n  which allows you to build things that just work using JSON Outline Schema as it's \"backend\"\nand then IF hax is around it'll show up :)`",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-theme-developer",
+      "description": "`haxcms-dev-theme`\n`This is a theme used to make new themes (wwaaaaaaa?)",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "HAXWiring"
+        },
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-editor-builder",
+      "description": "`haxcms-editor-builder`\nFigure out what our context is and setup based on that",
+      "events": [
+        {
+          "name": "haxcms-editor-builder-ready"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-outline-editor-dialog",
+      "description": "`haxcms-outline-editor-dialog`\n`Dialog for presenting an editable outline`",
+      "attributes": [
+        {
+          "name": "opened",
+          "description": "opened state of the dialog inside here",
+          "type": "boolean"
+        },
+        {
+          "name": "manifestItems",
+          "description": "Outline of items in json outline schema format",
+          "type": "array"
+        },
+        {
+          "name": "manifest-items-static",
+          "description": "Stringify'ed representation of items",
+          "type": "string"
+        },
+        {
+          "name": "view-label",
+          "description": "Display label, switch when hitting the toggle button",
+          "type": "string"
+        },
+        {
+          "name": "view-mode",
+          "description": "Which edit mode to display",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "opened",
+          "attribute": "opened",
+          "description": "opened state of the dialog inside here",
+          "type": "boolean"
+        },
+        {
+          "name": "manifestItems",
+          "attribute": "manifestItems",
+          "description": "Outline of items in json outline schema format",
+          "type": "array"
+        },
+        {
+          "name": "manifestItemsStatic",
+          "attribute": "manifest-items-static",
+          "description": "Stringify'ed representation of items",
+          "type": "string"
+        },
+        {
+          "name": "viewLabel",
+          "attribute": "view-label",
+          "description": "Display label, switch when hitting the toggle button",
+          "type": "string"
+        },
+        {
+          "name": "viewMode",
+          "attribute": "view-mode",
+          "description": "Which edit mode to display",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "opened-changed"
+        },
+        {
+          "name": "manifest-edit-mode-changed"
+        },
+        {
+          "name": "haxcms-save-outline"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-router",
+      "description": "`haxcms-site-router`\n`front-end router for haxcms`",
+      "properties": [
+        {
+          "name": "router"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-builder",
+      "description": "`haxcms-site-builder`\n`build the site and everything off of this`",
+      "attributes": [
+        {
+          "name": "lastError",
+          "description": "Singular error reporter / visual based on requests erroring",
+          "type": "object"
+        },
+        {
+          "name": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest from file",
+          "type": "object"
+        },
+        {
+          "name": "themeData",
+          "description": "Theme, used to boot a design element",
+          "type": "object"
+        },
+        {
+          "name": "themeName",
+          "description": "Theme name, which we then use to setup the theme",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "description": "Active item which is in JSON Outline Schema",
+          "type": "object"
+        },
+        {
+          "name": "activeItemContent",
+          "description": "Active item content",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "description": "Location of the site.json file",
+          "type": "string"
+        },
+        {
+          "name": "baseURI",
+          "description": "Injected by HAXcms",
+          "type": "string"
+        },
+        {
+          "name": "queryParams",
+          "description": "queryParams",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "loading",
+          "description": "Loading status of the page to render.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "theme-loaded",
+          "description": "theme loaded to indicate to the theme we have a theme ready to go",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "outline-location",
+          "description": "support for alternate locations.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "active-item-location",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "lastError",
+          "attribute": "lastError",
+          "description": "Singular error reporter / visual based on requests erroring",
+          "type": "object"
+        },
+        {
+          "name": "dashboardOpened",
+          "attribute": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Manifest from file",
+          "type": "object"
+        },
+        {
+          "name": "themeData",
+          "attribute": "themeData",
+          "description": "Theme, used to boot a design element",
+          "type": "object"
+        },
+        {
+          "name": "themeName",
+          "attribute": "themeName",
+          "description": "Theme name, which we then use to setup the theme",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "description": "Active item which is in JSON Outline Schema",
+          "type": "object"
+        },
+        {
+          "name": "activeItemContent",
+          "attribute": "activeItemContent",
+          "description": "Active item content",
+          "type": "string"
+        },
+        {
+          "name": "file",
+          "attribute": "file",
+          "description": "Location of the site.json file",
+          "type": "string"
+        },
+        {
+          "name": "baseURI",
+          "attribute": "baseURI",
+          "description": "Injected by HAXcms",
+          "type": "string"
+        },
+        {
+          "name": "queryParams",
+          "attribute": "queryParams",
+          "description": "queryParams",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "Loading status of the page to render.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "themeLoaded",
+          "attribute": "theme-loaded",
+          "description": "theme loaded to indicate to the theme we have a theme ready to go",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "outlineLocation",
+          "attribute": "outline-location",
+          "description": "support for alternate locations.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "activeItemLocation",
+          "attribute": "active-item-location",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "events": [
+        {
+          "name": "outline-location-changed"
+        },
+        {
+          "name": "manifest-changed"
+        },
+        {
+          "name": "active-item-changed"
+        },
+        {
+          "name": "active-item-content-changed"
+        },
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "haxcms-ready"
+        },
+        {
+          "name": "json-outline-schema-active-body-changed"
+        },
+        {
+          "name": "json-outline-schema-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-dashboard",
+      "description": "`haxcms-site-dashboard`\n`Off screen dashboard for modifying internal settings to the site`",
+      "attributes": [
+        {
+          "name": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "method",
+          "description": "Allow method to be overridden, useful in local testing",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "publishing",
+          "description": "Publishing end point, this has CDN implications so show message",
+          "type": "boolean"
+        },
+        {
+          "name": "manifest",
+          "description": "Outline of items in json outline schema format",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dashboardOpened",
+          "attribute": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Allow method to be overridden, useful in local testing",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "publishing",
+          "attribute": "publishing",
+          "description": "Publishing end point, this has CDN implications so show message",
+          "type": "boolean"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Outline of items in json outline schema format",
+          "type": "object",
+          "default": "{}"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "haxcms-save-site-data"
+        },
+        {
+          "name": "haxcms-load-site-dashboard"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-editor-ui",
+      "description": "`haxcms-site-editor-ui`\n`haxcms editor element buttons that you see`",
+      "attributes": [
+        {
+          "name": "user-name",
+          "type": "string"
+        },
+        {
+          "name": "user-picture",
+          "type": "string"
+        },
+        {
+          "name": "active-title",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "painting",
+          "description": "small visual lock that events break on initial paint",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "page-allowed",
+          "description": "page allowed",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit-mode",
+          "description": "if the page is in an edit state or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "manifest-edit-mode",
+          "description": "Manifest editing state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "userName",
+          "attribute": "user-name",
+          "type": "string"
+        },
+        {
+          "name": "userPicture",
+          "attribute": "user-picture",
+          "type": "string"
+        },
+        {
+          "name": "activeTitle",
+          "attribute": "active-title",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "dashboardOpened",
+          "attribute": "dashboard-opened",
+          "type": "boolean"
+        },
+        {
+          "name": "painting",
+          "attribute": "painting",
+          "description": "small visual lock that events break on initial paint",
+          "type": "boolean",
+          "default": "true"
+        },
+        {
+          "name": "pageAllowed",
+          "attribute": "page-allowed",
+          "description": "page allowed",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "if the page is in an edit state or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "manifestEditMode",
+          "attribute": "manifest-edit-mode",
+          "description": "Manifest editing state",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-load-user-data"
+        },
+        {
+          "name": "hax-add-voice-command"
+        },
+        {
+          "name": "edit-mode-changed"
+        },
+        {
+          "name": "manifest-edit-mode-changed"
+        },
+        {
+          "name": "haxcms-save-node"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-load-node-fields"
+        },
+        {
+          "name": "hax-cancel"
+        },
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "haxcms-create-node"
+        },
+        {
+          "name": "haxcms-save-node-details"
+        },
+        {
+          "name": "haxcms-delete-node"
+        },
+        {
+          "name": "haxcms-load-site-dashboard"
+        },
+        {
+          "name": "haxcms-outline-edit-mode-changed"
+        },
+        {
+          "name": "haxcms-manifest-edit-mode-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-editor",
+      "description": "`haxcms-site-editor`\n`haxcms editor element that provides all editing capabilities`",
+      "attributes": [
+        {
+          "name": "get-user-data-path",
+          "type": "string"
+        },
+        {
+          "name": "lastError",
+          "description": "Singular error reporter / visual based on requests erroring",
+          "type": "object"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "save-node-path",
+          "description": "end point for saving nodes",
+          "type": "string"
+        },
+        {
+          "name": "create-node-path",
+          "description": "end point for create new nodes",
+          "type": "string"
+        },
+        {
+          "name": "delete-node-path",
+          "description": "end point for delete nodes",
+          "type": "string"
+        },
+        {
+          "name": "save-manifest-path",
+          "description": "end point for saving manifest",
+          "type": "string"
+        },
+        {
+          "name": "publish-site-path",
+          "description": "end point for publishing",
+          "type": "string"
+        },
+        {
+          "name": "revert-site-path",
+          "description": "end point for revert",
+          "type": "string"
+        },
+        {
+          "name": "appendTarget",
+          "type": "object"
+        },
+        {
+          "name": "appElement",
+          "type": "object"
+        },
+        {
+          "name": "sync-site-path",
+          "description": "end point for sync",
+          "type": "string"
+        },
+        {
+          "name": "publishing",
+          "description": "Publishing end point, this has CDN implications so show message",
+          "type": "boolean"
+        },
+        {
+          "name": "save-outline-path",
+          "description": "end point for saving outline",
+          "type": "string"
+        },
+        {
+          "name": "appStore",
+          "description": "appStore object from backend",
+          "type": "object"
+        },
+        {
+          "name": "activeItem",
+          "description": "Active item of the node being worked on, JSON outline schema item format",
+          "type": "object"
+        },
+        {
+          "name": "manifest",
+          "description": "Outline of items in json outline schema format",
+          "type": "object"
+        },
+        {
+          "name": "get-node-fields-path",
+          "type": "string"
+        },
+        {
+          "name": "save-site-fields-path",
+          "type": "string"
+        },
+        {
+          "name": "get-form-token",
+          "type": "string"
+        },
+        {
+          "name": "siteDashboard",
+          "description": "Site dashboard element reference",
+          "type": "object"
+        },
+        {
+          "name": "method",
+          "description": "Allow method to be overridden, useful in local testing",
+          "type": "string",
+          "default": "\"POST\""
+        },
+        {
+          "name": "edit-mode",
+          "description": "if the node is in an edit state or not",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "getUserDataPath",
+          "attribute": "get-user-data-path",
+          "type": "string"
+        },
+        {
+          "name": "lastError",
+          "attribute": "lastError",
+          "description": "Singular error reporter / visual based on requests erroring",
+          "type": "object"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "saveNodePath",
+          "attribute": "save-node-path",
+          "description": "end point for saving nodes",
+          "type": "string"
+        },
+        {
+          "name": "createNodePath",
+          "attribute": "create-node-path",
+          "description": "end point for create new nodes",
+          "type": "string"
+        },
+        {
+          "name": "deleteNodePath",
+          "attribute": "delete-node-path",
+          "description": "end point for delete nodes",
+          "type": "string"
+        },
+        {
+          "name": "saveManifestPath",
+          "attribute": "save-manifest-path",
+          "description": "end point for saving manifest",
+          "type": "string"
+        },
+        {
+          "name": "publishSitePath",
+          "attribute": "publish-site-path",
+          "description": "end point for publishing",
+          "type": "string"
+        },
+        {
+          "name": "revertSitePath",
+          "attribute": "revert-site-path",
+          "description": "end point for revert",
+          "type": "string"
+        },
+        {
+          "name": "appendTarget",
+          "attribute": "appendTarget",
+          "type": "object"
+        },
+        {
+          "name": "appElement",
+          "attribute": "appElement",
+          "type": "object"
+        },
+        {
+          "name": "syncSitePath",
+          "attribute": "sync-site-path",
+          "description": "end point for sync",
+          "type": "string"
+        },
+        {
+          "name": "publishing",
+          "attribute": "publishing",
+          "description": "Publishing end point, this has CDN implications so show message",
+          "type": "boolean"
+        },
+        {
+          "name": "saveOutlinePath",
+          "attribute": "save-outline-path",
+          "description": "end point for saving outline",
+          "type": "string"
+        },
+        {
+          "name": "appStore",
+          "attribute": "appStore",
+          "description": "appStore object from backend",
+          "type": "object"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "description": "Active item of the node being worked on, JSON outline schema item format",
+          "type": "object"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Outline of items in json outline schema format",
+          "type": "object"
+        },
+        {
+          "name": "getNodeFieldsPath",
+          "attribute": "get-node-fields-path",
+          "type": "string"
+        },
+        {
+          "name": "getSiteFieldsPath",
+          "attribute": "save-site-fields-path",
+          "type": "string"
+        },
+        {
+          "name": "getFormToken",
+          "attribute": "get-form-token",
+          "type": "string"
+        },
+        {
+          "name": "siteDashboard",
+          "attribute": "siteDashboard",
+          "description": "Site dashboard element reference",
+          "type": "object"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Allow method to be overridden, useful in local testing",
+          "type": "string",
+          "default": "\"POST\""
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "if the node is in an edit state or not",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "haxcms-site-editor-loaded"
+        },
+        {
+          "name": "manifest-changed"
+        },
+        {
+          "name": "simple-modal-show"
+        },
+        {
+          "name": "haxcms-save-node-details"
+        },
+        {
+          "name": "simple-modal-hide"
+        },
+        {
+          "name": "haxcms-save-site-data"
+        },
+        {
+          "name": "haxcms-trigger-update"
+        },
+        {
+          "name": "json-outline-schema-active-item-changed"
+        },
+        {
+          "name": "haxcms-trigger-update-node"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-beaker",
+      "description": "`haxcms-backend-beaker`\n`a simple element to check for and fetch JWTs`",
+      "attributes": [
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "description": "Store manifest that makes up the site.",
+          "type": "object"
+        },
+        {
+          "name": "activeItem",
+          "description": "Track activeItem",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "Store manifest that makes up the site.",
+          "type": "object"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "description": "Track activeItem",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-trigger-update-node"
+        },
+        {
+          "name": "haxcms-trigger-update"
+        },
+        {
+          "name": "json-outline-schema-changed"
+        },
+        {
+          "name": "haxcms-not-logged-in"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-demo",
+      "description": "`haxcms-backend-demo`\n`a simple element to check for and fetch JWTs`",
+      "attributes": [
+        {
+          "name": "jwtLoginLocation",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwtLogoutLocation",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "jwtLoginLocation",
+          "attribute": "jwtLoginLocation",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwtLogoutLocation",
+          "attribute": "jwtLogoutLocation",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-nodejs",
+      "description": "`haxcms-backend-nodejs`\n`a simple element to check for and fetch JWTs`",
+      "attributes": [
+        {
+          "name": "jwt-login-location",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwt-logout-location",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "jwtLoginLocation",
+          "attribute": "jwt-login-location",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwtLogoutLocation",
+          "attribute": "jwt-logout-location",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-not-logged-in"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-backend-php",
+      "description": "`haxcms-backend-php`\n`a simple element to check for and fetch JWTs`",
+      "attributes": [
+        {
+          "name": "jwt-login-location",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwt-logout-location",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "jwtLoginLocation",
+          "attribute": "jwt-login-location",
+          "description": "Location of what endpoint to hit for",
+          "type": "string"
+        },
+        {
+          "name": "jwtLogoutLocation",
+          "attribute": "jwt-logout-location",
+          "description": "Location of what endpoint to hit for logging out",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token, it'll come from a global call if it's available",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-not-logged-in"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-site-listing",
+      "description": "`haxcms-site-listing`\n`A listing of all sites being managed by this instance.`",
+      "attributes": [
+        {
+          "name": "sites-response",
+          "description": "Object, JSON Outline Schema format",
+          "type": "object"
+        },
+        {
+          "name": "method",
+          "type": "string",
+          "default": "\"POST\""
+        },
+        {
+          "name": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"My sites\""
+        },
+        {
+          "name": "sites",
+          "type": "array"
+        },
+        {
+          "name": "base-path",
+          "description": "Base path of where this is located.",
+          "type": "string"
+        },
+        {
+          "name": "hide-login",
+          "description": "If we should hide the login button all the time or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-global-settings",
+          "description": "If we should hide the login button all the time or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "data-source",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token",
+          "type": "string"
+        },
+        {
+          "name": "user-data",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "create-params",
+          "description": "Request params for creating a new site",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "download-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "delete-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "clone-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "publish-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sync-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "archive-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "config-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "set-config-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "get-user-data-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "active-opertion",
+          "type": "string"
+        },
+        {
+          "name": "selected-items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "active-item",
+          "description": "Active item that's being reviewed / has bubbled up.",
+          "type": "object"
+        },
+        {
+          "name": "logged-in",
+          "description": "Logged in state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "edit-mode",
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "has-selected-items",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hide-camera",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "logout-photo",
+          "type": "string",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sitesResponse",
+          "attribute": "sites-response",
+          "description": "Object, JSON Outline Schema format",
+          "type": "object"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "type": "string",
+          "default": "\"POST\""
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title",
+          "type": "string",
+          "default": "\"My sites\""
+        },
+        {
+          "name": "sites",
+          "attribute": "sites",
+          "type": "array"
+        },
+        {
+          "name": "basePath",
+          "attribute": "base-path",
+          "description": "Base path of where this is located.",
+          "type": "string"
+        },
+        {
+          "name": "hideLogin",
+          "attribute": "hide-login",
+          "description": "If we should hide the login button all the time or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideGlobalSettings",
+          "attribute": "hide-global-settings",
+          "description": "If we should hide the login button all the time or not",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "description": "Data Source to power the loading of sites in JSON Outline Schema format.",
+          "type": "string"
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token",
+          "type": "string"
+        },
+        {
+          "name": "userData",
+          "attribute": "user-data",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "createParams",
+          "attribute": "create-params",
+          "description": "Request params for creating a new site",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "downloadParams",
+          "attribute": "download-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "deleteParams",
+          "attribute": "delete-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "cloneParams",
+          "attribute": "clone-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "publishParams",
+          "attribute": "publish-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "syncParams",
+          "attribute": "sync-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "archiveParams",
+          "attribute": "archive-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "configParams",
+          "attribute": "config-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "setConfigParams",
+          "attribute": "set-config-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "getUserDataParams",
+          "attribute": "get-user-data-params",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "activeOpertion",
+          "attribute": "active-opertion",
+          "type": "string"
+        },
+        {
+          "name": "selectedItems",
+          "attribute": "selected-items",
+          "type": "array",
+          "default": "[]"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "active-item",
+          "description": "Active item that's being reviewed / has bubbled up.",
+          "type": "object"
+        },
+        {
+          "name": "loggedIn",
+          "attribute": "logged-in",
+          "description": "Logged in state",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "Edit mode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hasSelectedItems",
+          "attribute": "has-selected-items",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "hideCamera",
+          "attribute": "hide-camera",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "logoutPhoto",
+          "attribute": "logout-photo",
+          "type": "string",
+          "default": "false"
+        },
+        {
+          "name": "SimpleColors"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "simple-toast-show"
+        },
+        {
+          "name": "sites-listing-refresh-data"
+        }
+      ]
+    },
+    {
+      "name": "site-login",
+      "description": "`site-login`\n`Visual element to broker a user login`",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "Title of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "error-msg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "description": "Content of the username field",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "description": "Content of the password field",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "user-input-label",
+          "description": "Placeholder of the username field",
+          "type": "string",
+          "default": "\"Username\""
+        },
+        {
+          "name": "user-input-err-msg",
+          "description": "Error message of the username field",
+          "type": "string",
+          "default": "\"Username required\""
+        },
+        {
+          "name": "password-input-label",
+          "description": "Placeholder of the password field",
+          "type": "string",
+          "default": "\"Password\""
+        },
+        {
+          "name": "password-input-err-msg",
+          "description": "Error message of the password field",
+          "type": "string",
+          "default": "\"Password required\""
+        },
+        {
+          "name": "login-btn-text",
+          "description": "Login button label",
+          "type": "string",
+          "default": "\"Login\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "Title of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "attribute": "subtitle",
+          "description": "Subtitle of the loginscreen",
+          "type": "string"
+        },
+        {
+          "name": "errorMsg",
+          "attribute": "error-msg",
+          "description": "Error message to show (example : \"Invalid username\")",
+          "type": "string"
+        },
+        {
+          "name": "username",
+          "attribute": "username",
+          "description": "Content of the username field",
+          "type": "string"
+        },
+        {
+          "name": "password",
+          "attribute": "password",
+          "description": "Content of the password field",
+          "type": "string"
+        },
+        {
+          "name": "loading",
+          "attribute": "loading",
+          "description": "When true, all fields are disabled and the progress bar is visible",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "userInputLabel",
+          "attribute": "user-input-label",
+          "description": "Placeholder of the username field",
+          "type": "string",
+          "default": "\"Username\""
+        },
+        {
+          "name": "userInputErrMsg",
+          "attribute": "user-input-err-msg",
+          "description": "Error message of the username field",
+          "type": "string",
+          "default": "\"Username required\""
+        },
+        {
+          "name": "passwordInputLabel",
+          "attribute": "password-input-label",
+          "description": "Placeholder of the password field",
+          "type": "string",
+          "default": "\"Password\""
+        },
+        {
+          "name": "passwordInputErrMsg",
+          "attribute": "password-input-err-msg",
+          "description": "Error message of the password field",
+          "type": "string",
+          "default": "\"Password required\""
+        },
+        {
+          "name": "loginBtnText",
+          "attribute": "login-btn-text",
+          "description": "Login button label",
+          "type": "string",
+          "default": "\"Login\""
+        }
+      ],
+      "events": [
+        {
+          "name": "login-btn-click"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-basic-theme",
+      "description": "`haxcms-basic-theme`\n`An incredibly basic theme. Great starting point for new site discussions.",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-legacy-player",
+      "description": "`haxcms-legacy-player`\n`A simple slide playing theme`",
+      "attributes": [
+        {
+          "name": "file",
+          "description": "Location of the site.json file",
+          "type": "string"
+        },
+        {
+          "name": "active-item-content",
+          "description": "Active item content",
+          "type": "string"
+        },
+        {
+          "name": "active-item-location",
+          "type": "string"
+        },
+        {
+          "name": "active-item",
+          "type": "object"
+        },
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "router-manifest",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "file",
+          "attribute": "file",
+          "description": "Location of the site.json file",
+          "type": "string"
+        },
+        {
+          "name": "activeItemContent",
+          "attribute": "active-item-content",
+          "description": "Active item content",
+          "type": "string"
+        },
+        {
+          "name": "activeItemLocation",
+          "attribute": "active-item-location",
+          "type": "string"
+        },
+        {
+          "name": "activeItem",
+          "attribute": "active-item",
+          "type": "object"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "routerManifest",
+          "attribute": "router-manifest",
+          "type": "object"
+        },
+        {
+          "name": "router"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "json-outline-schema-active-body-changed"
+        },
+        {
+          "name": "json-outline-schema-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-minimalist-theme",
+      "description": "`haxcms-minimalist-theme`\n`Minimalist design, just a whole page really.",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-slide-theme",
+      "description": "`haxcms-slide-theme`\n`A simple slide playing theme`",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "haxcms-user-theme",
+      "description": "`haxcms-custom-theme`\n`This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`",
+      "attributes": [
+        {
+          "name": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "hexColor",
+          "attribute": "hex-color",
+          "description": "Class for the color",
+          "type": "string"
+        },
+        {
+          "name": "color",
+          "attribute": "color",
+          "description": "Color class work to apply",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "isLoggedIn",
+          "attribute": "is-logged-in",
+          "description": "editting state for the page",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "contentContainer",
+          "attribute": "content-container",
+          "description": "DOM node that wraps the slot",
+          "type": "object"
+        },
+        {
+          "name": "HAXCMSThemeWiring"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ],
+      "events": [
+        {
+          "name": "haxcms-custom-theme-template-ready"
+        },
+        {
+          "name": "haxcms-active-item-changed"
+        }
+      ]
+    },
+    {
+      "name": "site-active-fields",
+      "description": "`site-active-fields`\n`Title of the active page in the site`",
+      "attributes": [
+        {
+          "name": "fields",
+          "type": "object"
+        }
+      ],
+      "properties": [
+        {
+          "name": "fields",
+          "attribute": "fields",
+          "type": "object"
+        }
+      ],
+      "events": [
+        {
+          "name": "fields-changed"
+        }
+      ]
+    },
+    {
+      "name": "site-active-title",
+      "description": "`site-active-title`\n`Title of the active page in the site`",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "dynamicMethodology",
+          "type": "string",
+          "default": "\"active\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "noFallback",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "dynamicMethodology",
+          "attribute": "dynamicMethodology",
+          "type": "string",
+          "default": "\"active\""
+        }
+      ]
+    },
+    {
+      "name": "site-git-corner",
+      "attributes": [
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"See page source\""
+        },
+        {
+          "name": "direction",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "active-git-file-link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"See page source\""
+        },
+        {
+          "name": "direction",
+          "attribute": "direction",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "activeGitFileLink",
+          "attribute": "active-git-file-link",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "site-render-item",
+      "description": "`site-render-item`\n`Title of the active page in the site`",
+      "attributes": [
+        {
+          "name": "render",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "item-id",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "type": "string"
+        },
+        {
+          "name": "item-content",
+          "description": "item content",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "render",
+          "attribute": "render",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "itemId",
+          "attribute": "item-id",
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "attribute": "location",
+          "type": "string"
+        },
+        {
+          "name": "itemContent",
+          "attribute": "item-content",
+          "description": "item content",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "site-share-widget",
+      "attributes": [
+        {
+          "name": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "show",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "type": "string",
+          "default": "\"Share page\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"social:share\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeItem",
+          "attribute": "activeItem",
+          "type": "object"
+        },
+        {
+          "name": "show",
+          "attribute": "show",
+          "type": "boolean"
+        },
+        {
+          "name": "alt",
+          "attribute": "alt",
+          "type": "string",
+          "default": "\"Share page\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"social:share\""
+        },
+        {
+          "name": "activeGitFileLink",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "site-children-block",
+      "description": "`site-children-block`\n`Child pages of whatever is active`",
+      "attributes": [
+        {
+          "name": "dynamic-methodology",
+          "description": "How we should obtain the parent who's children we should show\noptions are direct, above, or root",
+          "type": "string",
+          "default": "\"direct\""
+        },
+        {
+          "name": "start",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "end",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "parent",
+          "description": "parent for the menu id",
+          "type": "string"
+        },
+        {
+          "name": "fixed-id",
+          "description": "Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noink",
+          "description": "to control ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "dynamicMethodology",
+          "attribute": "dynamic-methodology",
+          "description": "How we should obtain the parent who's children we should show\noptions are direct, above, or root",
+          "type": "string",
+          "default": "\"direct\""
+        },
+        {
+          "name": "start",
+          "attribute": "start",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "end",
+          "attribute": "end",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "description": "parent for the menu id",
+          "type": "string"
+        },
+        {
+          "name": "fixedId",
+          "attribute": "fixed-id",
+          "description": "Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "description": "to control ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "site-outline-block",
+      "description": "`site-outline-block`\n`Menu on top of the site typically a bar of options`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "manifest of everything, in case we need to check on children of parents",
+          "type": "object"
+        },
+        {
+          "name": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "sticky",
+          "description": "visually stick to top of interface at all times",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indicator",
+          "description": "visualize the indicator as a a line, arrow, or not at all",
+          "type": "string",
+          "default": "\"line\""
+        },
+        {
+          "name": "noink",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "notitle",
+          "description": "hide title on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showindex",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "arrow-size",
+          "description": "Stupid but faster then calculating on the fly for sure",
+          "type": "number",
+          "default": "6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "manifest of everything, in case we need to check on children of parents",
+          "type": "object"
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "sticky",
+          "attribute": "sticky",
+          "description": "visually stick to top of interface at all times",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indicator",
+          "attribute": "indicator",
+          "description": "visualize the indicator as a a line, arrow, or not at all",
+          "type": "string",
+          "default": "\"line\""
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "notitle",
+          "attribute": "notitle",
+          "description": "hide title on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showindex",
+          "attribute": "showindex",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "arrowSize",
+          "attribute": "arrow-size",
+          "description": "Stupid but faster then calculating on the fly for sure",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "site-recent-content-block",
+      "description": "`site-recent-content-block`\n`Block to display recent content`",
+      "attributes": [
+        {
+          "name": "limit",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "start-index",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "sort",
+          "description": "optional sort",
+          "type": "object",
+          "default": "{\"metadata.created\":\"ASC\"}"
+        },
+        {
+          "name": "conditions",
+          "description": "conditions to query on",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "title",
+          "description": "title for the block;",
+          "type": "string",
+          "default": "\"Recent content\""
+        },
+        {
+          "name": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "limit",
+          "attribute": "limit",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "10"
+        },
+        {
+          "name": "startIndex",
+          "attribute": "start-index",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "sort",
+          "attribute": "sort",
+          "description": "optional sort",
+          "type": "object",
+          "default": "{\"metadata.created\":\"ASC\"}"
+        },
+        {
+          "name": "conditions",
+          "attribute": "conditions",
+          "description": "conditions to query on",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "description": "title for the block;",
+          "type": "string",
+          "default": "\"Recent content\""
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "site-drawer",
+      "description": "`site-drawer`\n`Basic off canvas drawer element`",
+      "attributes": [
+        {
+          "name": "align",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"menu\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "align",
+          "attribute": "align",
+          "type": "string",
+          "default": "\"right\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"menu\""
+        }
+      ]
+    },
+    {
+      "name": "site-footer",
+      "description": "`site-footer`\n`A basic site footer`",
+      "attributes": [
+        {
+          "name": "site-title",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "siteTitle",
+          "attribute": "site-title",
+          "type": "string"
+        },
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "type": "object"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "site-modal",
+      "description": "`site-modal`\n`A basic site dialog`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Dialog\""
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "default": "\"icons:menu\""
+        },
+        {
+          "name": "button-label",
+          "type": "string",
+          "default": "\"Open dialog\""
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Dialog\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string",
+          "default": "\"icons:menu\""
+        },
+        {
+          "name": "buttonLabel",
+          "attribute": "button-label",
+          "type": "string",
+          "default": "\"Open dialog\""
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        }
+      ],
+      "events": [
+        {
+          "name": "site-modal-click"
+        }
+      ]
+    },
+    {
+      "name": "site-breadcrumb",
+      "description": "`site-breadcrumb`\n`A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`"
+    },
+    {
+      "name": "site-dot-indicator",
+      "description": "`site-dot-indicator`\n`list of items based on manifest`",
+      "attributes": [
+        {
+          "name": "active-id",
+          "type": "string"
+        },
+        {
+          "name": "router-manifest",
+          "type": "object"
+        },
+        {
+          "name": "sticky",
+          "type": "string"
+        },
+        {
+          "name": "scroll-on-active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "type": "string"
+        },
+        {
+          "name": "routerManifest",
+          "attribute": "router-manifest",
+          "type": "object"
+        },
+        {
+          "name": "sticky",
+          "attribute": "sticky",
+          "type": "string"
+        },
+        {
+          "name": "scrollOnActive",
+          "attribute": "scroll-on-active",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "site-menu-button",
+      "description": "`site-menu-button`\n`Menu button based on the hierarchy`",
+      "attributes": [
+        {
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "name": "active-router-manifest-index",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "router-manifest",
+          "type": "object"
+        },
+        {
+          "name": "link",
+          "type": "string"
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string"
+        },
+        {
+          "name": "activeRouterManifestIndex",
+          "attribute": "active-router-manifest-index",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "routerManifest",
+          "attribute": "router-manifest",
+          "type": "object"
+        },
+        {
+          "name": "link",
+          "attribute": "link",
+          "type": "string"
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "type": "string"
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "site-menu",
+      "description": "`site-menu`\n`Menu hierarchy`",
+      "attributes": [
+        {
+          "name": "routerManifest",
+          "description": "Manifest with router / location enhancements",
+          "type": "object"
+        },
+        {
+          "name": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "hide-active-indicator",
+          "description": "Binding for active indicator and auto scrolling",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "prevent-auto-scroll",
+          "description": "prevent the automatic scrolling when items become active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "track-icon",
+          "description": "allow for visualizing the tracking of page requests",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "routerManifest",
+          "attribute": "routerManifest",
+          "description": "Manifest with router / location enhancements",
+          "type": "object"
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "hideActiveIndicator",
+          "attribute": "hide-active-indicator",
+          "description": "Binding for active indicator and auto scrolling",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preventAutoScroll",
+          "attribute": "prevent-auto-scroll",
+          "description": "prevent the automatic scrolling when items become active",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "trackIcon",
+          "attribute": "track-icon",
+          "description": "allow for visualizing the tracking of page requests",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "site-top-menu",
+      "description": "`site-top-menu`\n`Menu on top of the site typically a bar of options`",
+      "attributes": [
+        {
+          "name": "manifest",
+          "description": "manifest of everything, in case we need to check on children of parents",
+          "type": "object"
+        },
+        {
+          "name": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "sticky",
+          "description": "visually stick to top of interface at all times",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indicator",
+          "description": "visualize the indicator as a a line, arrow, or not at all",
+          "type": "string",
+          "default": "\"line\""
+        },
+        {
+          "name": "noink",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "notitle",
+          "description": "hide title on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showindex",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "arrow-size",
+          "description": "Stupid but faster then calculating on the fly for sure",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "sort",
+          "description": "Allow customization of sort",
+          "type": "object",
+          "default": "{\"order\":\"ASC\"}"
+        },
+        {
+          "name": "conditions",
+          "description": "Allow customization of the conditions if needed",
+          "type": "object",
+          "default": "{\"parent\":null}"
+        },
+        {
+          "name": "mobile-title",
+          "type": "string",
+          "default": "\"Navigation\""
+        },
+        {
+          "name": "edit-mode",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "manifest",
+          "attribute": "manifest",
+          "description": "manifest of everything, in case we need to check on children of parents",
+          "type": "object"
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "acitvely selected item",
+          "type": "string"
+        },
+        {
+          "name": "sticky",
+          "attribute": "sticky",
+          "description": "visually stick to top of interface at all times",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "indicator",
+          "attribute": "indicator",
+          "description": "visualize the indicator as a a line, arrow, or not at all",
+          "type": "string",
+          "default": "\"line\""
+        },
+        {
+          "name": "noink",
+          "attribute": "noink",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "notitle",
+          "attribute": "notitle",
+          "description": "hide title on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "showindex",
+          "attribute": "showindex",
+          "description": "ink on the buttons",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "arrowSize",
+          "attribute": "arrow-size",
+          "description": "Stupid but faster then calculating on the fly for sure",
+          "type": "number",
+          "default": "6"
+        },
+        {
+          "name": "sort",
+          "attribute": "sort",
+          "description": "Allow customization of sort",
+          "type": "object",
+          "default": "{\"order\":\"ASC\"}"
+        },
+        {
+          "name": "conditions",
+          "attribute": "conditions",
+          "description": "Allow customization of the conditions if needed",
+          "type": "object",
+          "default": "{\"parent\":null}"
+        },
+        {
+          "name": "mobileTitle",
+          "attribute": "mobile-title",
+          "type": "string",
+          "default": "\"Navigation\""
+        },
+        {
+          "name": "editMode",
+          "attribute": "edit-mode",
+          "type": "boolean"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "active-when-visible",
+      "description": "`active-when-visible`\n`Title of the site`",
+      "attributes": [
+        {
+          "name": "item-id",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "type": "array",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "root-margin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visible-limit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "is-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "itemId",
+          "attribute": "item-id",
+          "type": "string"
+        },
+        {
+          "name": "thresholds",
+          "attribute": "thresholds",
+          "type": "array",
+          "default": "[0,0.25,0.5,0.75,1]"
+        },
+        {
+          "name": "rootMargin",
+          "attribute": "root-margin",
+          "type": "string",
+          "default": "\"0px\""
+        },
+        {
+          "name": "visibleLimit",
+          "attribute": "visible-limit",
+          "type": "number",
+          "default": "0.5"
+        },
+        {
+          "name": "isVisible",
+          "attribute": "is-visible",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "is-visible-changed"
+        }
+      ]
+    },
+    {
+      "name": "site-query-menu-slice",
+      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`",
+      "attributes": [
+        {
+          "name": "parent",
+          "description": "parent for the menu id",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "description": "Results which can be binded to something else",
+          "type": "array"
+        },
+        {
+          "name": "start",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "end",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "dynamic-methodology",
+          "description": "How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor",
+          "type": "string",
+          "default": "\"active\""
+        },
+        {
+          "name": "fixed-id",
+          "description": "Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "no-dynamic-level",
+          "description": "Allow disabling the dynamic leveling",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "parent",
+          "attribute": "parent",
+          "description": "parent for the menu id",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "attribute": "result",
+          "description": "Results which can be binded to something else",
+          "type": "array"
+        },
+        {
+          "name": "start",
+          "attribute": "start",
+          "description": "starting level for the menu items",
+          "type": "number",
+          "default": "1"
+        },
+        {
+          "name": "end",
+          "attribute": "end",
+          "description": "ending level for the menu items",
+          "type": "number",
+          "default": "1000"
+        },
+        {
+          "name": "dynamicMethodology",
+          "attribute": "dynamic-methodology",
+          "description": "How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor",
+          "type": "string",
+          "default": "\"active\""
+        },
+        {
+          "name": "fixedId",
+          "attribute": "fixed-id",
+          "description": "Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "noDynamicLevel",
+          "attribute": "no-dynamic-level",
+          "description": "Allow disabling the dynamic leveling",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "result-changed"
+        }
+      ]
+    },
+    {
+      "name": "site-query",
+      "attributes": [
+        {
+          "name": "routerManifest",
+          "description": "Manifest with router / location enhancements",
+          "type": "object"
+        },
+        {
+          "name": "active-id",
+          "description": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "description": "result to help illustrate this only lives here",
+          "type": "array"
+        },
+        {
+          "name": "entity",
+          "description": "Entity to focus on",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "conditions",
+          "description": "Conditions that can be used to slice the data differently in the manifest",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "random",
+          "description": "Randomize results",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sort",
+          "description": "Establish the order items should be displayed in",
+          "type": "object",
+          "default": "{\"order\":\"ASC\"}"
+        },
+        {
+          "name": "force-rebuild",
+          "description": "Boolean flag to force a repaint of what's in the item",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "limit",
+          "description": "Limit the number of results returned",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "start-index",
+          "description": "Where to start returning results from",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "routerManifest",
+          "attribute": "routerManifest",
+          "description": "Manifest with router / location enhancements",
+          "type": "object"
+        },
+        {
+          "name": "activeId",
+          "attribute": "active-id",
+          "description": "activeId",
+          "type": "string"
+        },
+        {
+          "name": "result",
+          "attribute": "result",
+          "description": "result to help illustrate this only lives here",
+          "type": "array"
+        },
+        {
+          "name": "entity",
+          "attribute": "entity",
+          "description": "Entity to focus on",
+          "type": "string",
+          "default": "\"node\""
+        },
+        {
+          "name": "conditions",
+          "attribute": "conditions",
+          "description": "Conditions that can be used to slice the data differently in the manifest",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "random",
+          "attribute": "random",
+          "description": "Randomize results",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "sort",
+          "attribute": "sort",
+          "description": "Establish the order items should be displayed in",
+          "type": "object",
+          "default": "{\"order\":\"ASC\"}"
+        },
+        {
+          "name": "forceRebuild",
+          "attribute": "force-rebuild",
+          "description": "Boolean flag to force a repaint of what's in the item",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "limit",
+          "attribute": "limit",
+          "description": "Limit the number of results returned",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "startIndex",
+          "attribute": "start-index",
+          "description": "Where to start returning results from",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "site-render-query",
+      "description": "`site-render-query`\n`Render a query result as an iron-list`",
+      "attributes": [
+        {
+          "name": "conditions",
+          "description": "Conditions that can be used to slice the data differently in the manifest",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sort",
+          "description": "Establish the order items should be displayed in",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "grid",
+          "description": "iron-list helper for this 1 flag",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "result",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "conditions",
+          "attribute": "conditions",
+          "description": "Conditions that can be used to slice the data differently in the manifest",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "sort",
+          "attribute": "sort",
+          "description": "Establish the order items should be displayed in",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "grid",
+          "attribute": "grid",
+          "description": "iron-list helper for this 1 flag",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "result",
+          "attribute": "result",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "events": [
+        {
+          "name": "result-changed"
+        }
+      ]
+    },
+    {
+      "name": "site-print-button",
+      "description": "`site-print-button`\n`Dynamic print button to request and generate what to print`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "label for the button",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"icons:print\""
+        },
+        {
+          "name": "position",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "type",
+          "description": "How much do you want to print right now",
+          "type": "string",
+          "default": "\"page\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "label for the button",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "icon",
+          "type": "string",
+          "default": "\"icons:print\""
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "label for the button",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "description": "How much do you want to print right now",
+          "type": "string",
+          "default": "\"page\""
+        }
+      ]
+    },
+    {
+      "name": "site-rss-button",
+      "description": "`site-rss-button`\n`A button that references RSS feeds in a standards based way`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "default": "\"rss\""
+        },
+        {
+          "name": "raised",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "type": "string"
+        },
+        {
+          "name": "href",
+          "attribute": "href",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "attribute": "type",
+          "type": "string",
+          "default": "\"rss\""
+        },
+        {
+          "name": "raised",
+          "attribute": "raised",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "site-search",
+      "description": "`site-search`\n`Searching HAXcms content using the auto-generated lunr search configuration`",
+      "attributes": [
+        {
+          "name": "data-source",
+          "type": "string"
+        },
+        {
+          "name": "search",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "dataSource",
+          "attribute": "data-source",
+          "type": "string"
+        },
+        {
+          "name": "search",
+          "attribute": "search",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
+      "name": "site-title",
+      "description": "`site-title`\n`Title of the site`",
+      "attributes": [
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "site-title",
+          "description": "Site title",
+          "type": "string"
+        },
+        {
+          "name": "home-link",
+          "description": "HREF to the home page",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "description": "optional icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "description": "Label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "notitle",
+          "description": "If the title should be displayed or not",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "properties": [
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "siteTitle",
+          "attribute": "site-title",
+          "description": "Site title",
+          "type": "string"
+        },
+        {
+          "name": "homeLink",
+          "attribute": "home-link",
+          "description": "HREF to the home page",
+          "type": "string"
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "optional icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "Label",
+          "type": "string",
+          "default": "\"Home\""
+        },
+        {
+          "name": "notitle",
+          "attribute": "notitle",
+          "description": "If the title should be displayed or not",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "basic-template"
+    },
+    {
+      "name": "minimalist-template"
+    }
+  ]
+}

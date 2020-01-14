@@ -11,7 +11,7 @@ import "../rich-text-editor-styles.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorSelection extends PolymerElement {

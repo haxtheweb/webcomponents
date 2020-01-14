@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-drawing-iconset-svg` is a iconset for the Material Design Icons collection with the "drawing" tag
+ * `mdi-drawing-iconset-svg`
+ * @customElement mdi-drawing-iconset-svg is a iconset for the Material Design Icons collection with the "drawing" tag
  *
  * Example:
  *   <iron-icon icon="mdi-drawing:pencil"></iron-icon>

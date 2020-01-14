@@ -1,19 +1,20 @@
 {
   "name": "@lrnwebcomponents/storybook-utilities",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "storybook-utilities.js",
   "author": {
     "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/simple-colors": "^2.2.0",
+    "@lrnwebcomponents/es-global-bridge": "^2.4.0",
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
     "@storybook/addon-knobs": "^4.1.13",
     "@storybook/polymer": "^4.1.13"
   },

@@ -1,27 +1,28 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lrnapp-studio-submission-comment.js";
 
-class LrnappStudioSubmissionComments extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmissionComments extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
-      </style>
-      <template is="dom-if" if="[[submission.relationships.comments]]">
-        <template
-          is="dom-repeat"
-          items="[[_toArray(submission.relationships.comments.data)]]"
-          as="comment"
-        >
+      `
+    ];
+  }
+  render() {
+    return html`
+      ${this._toArray(this.submission.relationships.comments.data).map(
+        comment => html`
           <lrnapp-studio-submission-comment
-            comment="{{comment}}"
+            .comment="${comment}"
           ></lrnapp-studio-submission-comment>
-        </template>
-      </template>
+        `
+      )}
     `;
   }
   static get tag() {

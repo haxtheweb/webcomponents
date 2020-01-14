@@ -77,17 +77,6 @@ class PaperSearchBar extends mixinBehaviors(
   focus() {
     this.shadowRoot.querySelector("#input").focus();
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("keypress", this._search.bind(this));
-    });
-  }
-
-  disconnectedCallback() {
-    this.removeEventListener("keypress", this._search.bind(this));
-    super.disconnectedCallback();
-  }
   // Private methods
   _filter(e) {
     this.dispatchEvent(
@@ -98,6 +87,12 @@ class PaperSearchBar extends mixinBehaviors(
         detail: true
       })
     );
+  }
+  constructor() {
+    super();
+    setTimeout(() => {
+      this.addEventListener("keypress", this._search.bind(this));
+    }, 0);
   }
   _clear() {
     this.query = "";

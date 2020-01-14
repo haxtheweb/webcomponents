@@ -1,0 +1,302 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "visualization",
+          "attribute": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "attribute": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "visualization",
+          "attribute": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "attribute": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "simple-concept-network-node",
+      "description": "`simple-concept-network-node`",
+      "attributes": [
+        {
+          "name": "colored-text",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualization",
+          "description": "Visualization reflected to attribute for styling",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "icon",
+          "description": "Icon to present",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "description": "image to present",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "description": "title / label text",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "description": "Longer description used for more info",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "description": "source for a link",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "coloredText",
+          "attribute": "colored-text",
+          "description": "make the default theme dark?",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "visualization",
+          "attribute": "visualization",
+          "description": "Visualization reflected to attribute for styling",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "icon",
+          "attribute": "icon",
+          "description": "Icon to present",
+          "type": "string"
+        },
+        {
+          "name": "image",
+          "attribute": "image",
+          "description": "image to present",
+          "type": "string"
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "title / label text",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "attribute": "description",
+          "description": "Longer description used for more info",
+          "type": "string"
+        },
+        {
+          "name": "src",
+          "attribute": "src",
+          "description": "source for a link",
+          "type": "string"
+        },
+        {
+          "name": "rootPath",
+          "type": "string"
+        },
+        {
+          "name": "importPath",
+          "type": "string"
+        },
+        {
+          "name": "root",
+          "type": "HTMLElement | StampedTemplate | ShadowRoot | null"
+        },
+        {
+          "name": "$",
+          "type": "{ [key: string]: Element; }"
+        },
+        {
+          "name": "PROPERTY_EFFECT_TYPES",
+          "type": "{ [key: string]: string; }"
+        }
+      ]
+    },
+    {
+      "name": "simple-concept-network",
+      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.",
+      "attributes": [
+        {
+          "name": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ],
+      "properties": [
+        {
+          "name": "visualization",
+          "attribute": "visualization",
+          "description": "Type of visualization",
+          "type": "string",
+          "default": "\"3d\""
+        },
+        {
+          "name": "disabled",
+          "attribute": "disabled",
+          "description": "disabled status",
+          "type": "boolean"
+        },
+        {
+          "name": "coloredText",
+          "attribute": "coloredText",
+          "description": "Apply color to text / icon instead of background.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "nodes",
+          "attribute": "nodes",
+          "description": "List of nodes to template stamp out",
+          "type": "array",
+          "default": "[]"
+        }
+      ]
+    }
+  ]
+}

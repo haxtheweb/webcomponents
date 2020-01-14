@@ -1,0 +1,298 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "attribute": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "attribute": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "jwt-changed"
+        },
+        {
+          "name": "jwt-logged-in"
+        },
+        {
+          "name": "jwt-token"
+        }
+      ]
+    },
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "attribute": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "attribute": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "jwt-changed"
+        },
+        {
+          "name": "jwt-logged-in"
+        },
+        {
+          "name": "jwt-token"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "events": [
+        {
+          "name": "jwt-changed"
+        },
+        {
+          "name": "jwt-token"
+        },
+        {
+          "name": "jwt-logged-in"
+        }
+      ]
+    },
+    {
+      "name": "jwt-login",
+      "description": "`jwt-login`",
+      "attributes": [
+        {
+          "name": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "properties": [
+        {
+          "name": "url",
+          "attribute": "url",
+          "description": "url",
+          "type": "string"
+        },
+        {
+          "name": "auto",
+          "attribute": "auto",
+          "description": "auto, useful for demos",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "method",
+          "attribute": "method",
+          "description": "Request method",
+          "type": "string",
+          "default": "\"GET\""
+        },
+        {
+          "name": "body",
+          "attribute": "body",
+          "description": "Optional body, useful when doing posts",
+          "type": "object",
+          "default": "{}"
+        },
+        {
+          "name": "key",
+          "attribute": "key",
+          "description": "Key that contains the token in local storage",
+          "type": "string",
+          "default": "\"jwt\""
+        },
+        {
+          "name": "jwt",
+          "attribute": "jwt",
+          "description": "JSON Web token to securely pass around",
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "name": "jwt-changed"
+        },
+        {
+          "name": "jwt-logged-in"
+        },
+        {
+          "name": "jwt-token"
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
  * `site-recent-content-block`
  * `Block to display recent content`
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

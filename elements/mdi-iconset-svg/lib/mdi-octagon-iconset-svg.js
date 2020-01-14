@@ -1,6 +1,7 @@
 /**
  * Material design: [Icons](https://material.io/guidelines/style/icons.html)
- * `mdi-octagon-iconset-svg` is a iconset for the Material Design Icons collection with the "octagon" tag
+ * `mdi-octagon-iconset-svg`
+ * @customElement mdi-octagon-iconset-svg is a iconset for the Material Design Icons collection with the "octagon" tag
  *
  * Example:
  *   <iron-icon icon="mdi-octagon:pause-octagon"></iron-icon>

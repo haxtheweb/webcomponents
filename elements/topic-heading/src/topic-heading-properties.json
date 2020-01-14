@@ -1,12 +1,8 @@
 {
   "icon": {
-    "name": "icon",
-    "type": String,
-    "value": ""
+    "type": String
   },
   "title": {
-    "name": "title",
-    "type": String,
-    "value": "Heading"
+    "type": String
   }
 }

@@ -9,7 +9,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `site-active-fields`
  * `Title of the active page in the site`
  *
- * @customElement
+
  * @demo demo/index.html
  */
 class SiteActiveFields extends LitElement {

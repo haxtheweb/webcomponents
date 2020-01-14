@@ -4,29 +4,3 @@
 :host([hidden]) {
   display: none;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply --relative-heading-style;
-}
-h1 {
-  @apply --relative-heading-h1;
-}
-h2 {
-  @apply --relative-heading-h2;
-}
-h3 {
-  @apply --relative-heading-h3;
-}
-h4 {
-  @apply --relative-heading-h4;
-}
-h5 {
-  @apply --relative-heading-h5;
-}
-h6 {
-  @apply --relative-heading-h6;
-}

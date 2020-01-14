@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "_resourceLink",
+          "description": "`_resourceLink` - \n\nProperty: _resourceLink"
+        },
+        {
+          "name": "tasks",
+          "description": "`tasks` {`any[]`} - Task list\n\nProperty: tasks\n\nDefault: "
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - Name of this task list\n\nProperty: name\n\nDefault: Steps to completion"
+        }
+      ]
+    },
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "_resourceLink",
+          "description": "`_resourceLink` - \n\nProperty: _resourceLink"
+        },
+        {
+          "name": "tasks",
+          "description": "`tasks` {`any[]`} - Task list\n\nProperty: tasks\n\nDefault: "
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - Name of this task list\n\nProperty: name\n\nDefault: Steps to completion"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "task-list",
+      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!\n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list\n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `_resourceLink` - \n\n  * `tasks` {`any[]`} - Task list\n\n  * `name` {`string`} - Name of this task list",
+      "attributes": [
+        {
+          "name": "related-resource",
+          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+        },
+        {
+          "name": "_resourceLink",
+          "description": "`_resourceLink` - \n\nProperty: _resourceLink"
+        },
+        {
+          "name": "tasks",
+          "description": "`tasks` {`any[]`} - Task list\n\nProperty: tasks\n\nDefault: "
+        },
+        {
+          "name": "name",
+          "description": "`name` {`string`} - Name of this task list\n\nProperty: name\n\nDefault: Steps to completion"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

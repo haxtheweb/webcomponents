@@ -1,16 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-collapse/iron-collapse.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
-`lrnsys-collapselist-item`
-
-
-* @demo demo/index.html
-*/
-class LrnsysCollapselistItem extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+ * `lrnsys-collapselist-item`
+ * @customElement lrnsys-collapselist-item
+ * @demo demo/index.html
+ */
+class LrnsysCollapselistItem extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           color: var(--lrnsys-collapselist-text-color, #000);
@@ -47,20 +47,42 @@ class LrnsysCollapselistItem extends PolymerElement {
         .collapse-content {
           padding: 16px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement
+   */
+  constructor() {
+    super();
+    this.value = false;
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-collapse/iron-collapse.js");
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <paper-button
-        on-click="collapseToggle"
+        @click="${this.collapseToggle}"
         id="collapse-trigger"
         aria-controls="collapse"
       >
         <span class="collapse-label"> <slot name="label"></slot> </span>
       </paper-button>
-      <iron-collapse id="collapse" opened="{{opened}}">
+      <iron-collapse
+        id="collapse"
+        .opened="${this.opened}"
+        @opened-changed="${this.__openedChanged}"
+      >
         <div class="collapse-content"><slot name="content"></slot></div>
       </iron-collapse>
     `;
   }
-
+  __openedChanged(e) {
+    this.opened = e.detail.value;
+  }
   static get tag() {
     return "lrnsys-collapselist-item";
   }
@@ -72,13 +94,24 @@ class LrnsysCollapselistItem extends PolymerElement {
        */
       opened: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        notify: true
+        reflect: true
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "opened") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("opened-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
   /**
    * Toggling collapse on an iron element.
    */

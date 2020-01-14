@@ -16,7 +16,7 @@ import "../singletons/rich-text-editor-selection.js";
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+
  * @polymer
  */
 class RichTextEditorButton extends PolymerElement {

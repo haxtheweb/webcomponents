@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`\n\nAttributes:\n\n  * `images` - An array of images to pick from at random.\n\nProperties:\n\n  * `images` - An array of images to pick from at random.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "`images` - An array of images to pick from at random.\n\nProperty: images"
+        }
+      ]
+    },
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`\n\nAttributes:\n\n  * `images` - An array of images to pick from at random.\n\nProperties:\n\n  * `images` - An array of images to pick from at random.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "`images` - An array of images to pick from at random.\n\nProperty: images"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrnsys-randomimage",
+      "description": "`lrnsys-randomimage`\n\nAttributes:\n\n  * `images` - An array of images to pick from at random.\n\nProperties:\n\n  * `images` - An array of images to pick from at random.\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "images",
+          "description": "`images` - An array of images to pick from at random.\n\nProperty: images"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

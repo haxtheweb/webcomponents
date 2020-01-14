@@ -10,7 +10,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
  * `haxcms-minimalist-theme`
  * `Minimalist design, just a whole page really.
  *
- * @customElement
+
  * @polymer
  * @demo demo/index.html
  */

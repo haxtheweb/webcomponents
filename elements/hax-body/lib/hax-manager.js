@@ -2,12 +2,14 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-pages/iron-pages.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-manager`
+ * @customElement hax-manager
  * `A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`
  * @microcopy - the mental model for this element
  * - hax-manager - the modal for selecting a app for getting something added to hax-body. This will bubble an event up to an app which will then invoke the haxInsert function on hax-body in order to get the selected item onto the body area for usage.
@@ -16,7 +18,7 @@ import "@polymer/polymer/lib/elements/custom-style.js";
  * - app - an API end point for querying and returning possible items for insert. For example, if a youtube is a source then it'll be expected to return data that can be mapped in such a way that it can display a grid of videos. Hitting vimeo we'd expect the same thing; enough data to be able to assemble a grid of videos to select / work with.
  * - endpoints - much of hax-manager is about routing data to and from the current application to backends. So uploads need to go some place, this is managing the UI aspect of that transaction while expecting to be fed an endpoint to handle the backend aspect.
  */
-class HaxManager extends SimpleColors {
+class HaxManager extends winEventsElement(SimpleColors) {
   /**
    * LitElement life cycle - styles addition
    */
@@ -161,9 +163,14 @@ class HaxManager extends SimpleColors {
    */
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-app-picker-selection": "_haxAppPickerSelection",
+      "place-holder-file-drop": "_placeHolderFileDrop"
+    };
     this.opened = false;
     this.editExistingNode = false;
-    this.addTitle = "Add content";
+    this.addTitle = "Upload media";
     this.activeStep = 0;
     this.searching = false;
     this.activePage = 0;
@@ -250,7 +257,10 @@ class HaxManager extends SimpleColors {
                 fallback-selection="link"
               >
                 <div class="page-area add-area">
-                  <h3 class="title">${this.addTitle}</h3>
+                  <h3 class="title">
+                    <iron-icon icon="icons:file-upload"></iron-icon> ${this
+                      .addTitle}
+                  </h3>
                   <div class="add-area-content-wrapper">
                     <div class="add-url-area">
                       <paper-input
@@ -265,12 +275,17 @@ class HaxManager extends SimpleColors {
                     </div>
                     <div class="add-upload-area">
                       <vaadin-upload
+                        @upload-before="${this._fileAboutToUpload}"
+                        @upload-response="${this._fileUploadResponse}"
                         form-data-name="file-upload"
                         id="fileupload"
                         ?hidden="${!this.canSupportUploads}"
                       ></vaadin-upload>
                     </div>
-                    <paper-button id="newassetconfigure" raised=""
+                    <paper-button
+                      @click="${this.newAssetConfigure}"
+                      id="newassetconfigure"
+                      raised=""
                       >Configure item</paper-button
                     >
                   </div>
@@ -291,7 +306,7 @@ class HaxManager extends SimpleColors {
           </iron-pages>
           <paper-button
             id="closedialog"
-            @click="${this.cancel}"
+            @click="${this.closeEvent}"
             ?hidden="${this.activeStep === 0 ? false : true}"
           >
             <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
@@ -391,6 +406,9 @@ class HaxManager extends SimpleColors {
   }
   openedChanged(e) {
     this.opened = e.detail.value;
+    if (this.opened) {
+      import("@lrnwebcomponents/hax-body/lib/hax-manager-openeddeps.js");
+    }
   }
   activeStepChanged(e) {
     this.activeStep = Number(e.detail.value);
@@ -413,40 +431,6 @@ class HaxManager extends SimpleColors {
         }
       })
     );
-    // add event listeners
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    // specialized support for the place-holder tag
-    // and a drag and drop event
-    document.body.addEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-
-    this.shadowRoot
-      .querySelector("#dialog")
-      .addEventListener("iron-overlay-canceled", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#dialog")
-      .addEventListener("iron-overlay-closed", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#closedialog")
-      .addEventListener("click", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#newassetconfigure")
-      .addEventListener("click", this.newAssetConfigure.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
   }
   /**
    * LitElement life cycle - properties changed
@@ -464,6 +448,9 @@ class HaxManager extends SimpleColors {
       }
       if (propName == "activeHaxElement" && this[propName] !== oldValue) {
         this._activeHaxElementChanged(this[propName], oldValue);
+      }
+      if (propName == "opened") {
+        this._openedChanged(this[propName], oldValue);
       }
     });
   }
@@ -487,7 +474,7 @@ class HaxManager extends SimpleColors {
     // reset the manager back to the first page
     this.resetManager();
     // trigger a self open request
-    this.open();
+    window.HaxStore.write("openDrawer", this, this);
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
     window.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
@@ -674,6 +661,7 @@ class HaxManager extends SimpleColors {
       this.shadowRoot.querySelector("#preview").advancedForm = false;
       if (newValue && typeof newValue.tag === typeof undefined) {
         this.resetManager(this.activePage);
+        this.shadowRoot.querySelector("#preview").activeHaxElement = {};
       } else {
         // reset files so it doesn't bloat up
         this.shadowRoot.querySelector("#fileupload").set("files", []);
@@ -717,7 +705,7 @@ class HaxManager extends SimpleColors {
     }
     window.HaxStore.toast(toast, 2000);
     // close window
-    this.close();
+    window.HaxStore.write("openDrawer", false, this);
   }
   /**
    * Reset things on the display to their defaults.
@@ -726,7 +714,7 @@ class HaxManager extends SimpleColors {
     this.selectStep("select");
     this.activePage = activePage;
     document.body.style.overflow = null;
-    this.appList = window.HaxStore.instance.appList;
+    this.appList = [...window.HaxStore.instance.appList];
     this.searching = false;
     window.HaxStore.write("activeApp", null, this);
     this.editExistingNode = false;
@@ -746,9 +734,9 @@ class HaxManager extends SimpleColors {
   /**
    * Cancel interaction with the modal
    */
-  cancel(e) {
+  closeEvent(e) {
     // reset and close dialog
-    this.close();
+    this.opened = false;
   }
 
   /**
@@ -759,6 +747,9 @@ class HaxManager extends SimpleColors {
       document.body.style.overflow = null;
     } else if (newValue && !oldValue) {
       document.body.style.overflow = "hidden";
+    }
+    if (!newValue && window.HaxStore.instance.openDrawer === this) {
+      window.HaxStore.write("openDrawer", false, this);
     }
   }
 
@@ -814,17 +805,6 @@ class HaxManager extends SimpleColors {
       window.HaxStore.toast(
         "Sorry, HAX doesn't know how to handle that type of link yet."
       );
-    }
-  }
-
-  /**
-   * Toggle ourselves.
-   */
-  toggleDialog(toggle = true) {
-    if (this.opened && toggle) {
-      this.close();
-    } else {
-      window.HaxStore.instance.closeAllDrawers(this);
     }
   }
 

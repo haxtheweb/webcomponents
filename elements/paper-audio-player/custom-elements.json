@@ -1,0 +1,350 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "attribute": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "attribute": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "attribute": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "attribute": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "attribute": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "attribute": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "attribute": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "attribute": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "attribute": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "attribute": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "attribute": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "attribute": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "attribute": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "attribute": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "paper-audio-player",
+      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n   <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n   <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n   paper-audio-player {\n      --paper-audio-player-color: #e91e63;\n   }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "attributes": [
+        {
+          "name": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "src",
+          "attribute": "src",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"Click to play this audio file\""
+        },
+        {
+          "name": "autoPlay",
+          "attribute": "autoPlay",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "preload",
+          "attribute": "preload",
+          "type": "string",
+          "default": "\"auto\""
+        },
+        {
+          "name": "currentTime",
+          "attribute": "currentTime",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timeLeft",
+          "attribute": "timeLeft",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "smallSkip",
+          "attribute": "smallSkip",
+          "type": "number",
+          "default": "15"
+        },
+        {
+          "name": "largeSkip",
+          "attribute": "largeSkip",
+          "type": "number",
+          "default": "60"
+        },
+        {
+          "name": "error",
+          "attribute": "error",
+          "type": "boolean"
+        },
+        {
+          "name": "timeOffset",
+          "attribute": "timeOffset",
+          "type": "number",
+          "default": "0"
+        }
+      ]
+    }
+  ]
+}

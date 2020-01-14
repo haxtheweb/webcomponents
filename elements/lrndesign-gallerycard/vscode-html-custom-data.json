@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\n\nAttributes:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has\n\nProperties:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "`size` {`string`} - \n\nProperty: size"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Cover image src.\n\nProperty: image"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to use if image isn't there.\n\nProperty: icon"
+        },
+        {
+          "name": "author",
+          "description": "`author` - Gallery creator\n\nProperty: author\n\nDefault: [object Object]"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the gallery item\n\nProperty: title\n\nDefault: Project"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
+          "name": "comments",
+          "description": "`comments` {`number`} - Number of comments this has\n\nProperty: comments\n\nDefault: 0"
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\n\nAttributes:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has\n\nProperties:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "`size` {`string`} - \n\nProperty: size"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Cover image src.\n\nProperty: image"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to use if image isn't there.\n\nProperty: icon"
+        },
+        {
+          "name": "author",
+          "description": "`author` - Gallery creator\n\nProperty: author\n\nDefault: [object Object]"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the gallery item\n\nProperty: title\n\nDefault: Project"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
+          "name": "comments",
+          "description": "`comments` {`number`} - Number of comments this has\n\nProperty: comments\n\nDefault: 0"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "attributes": []
+    },
+    {
+      "name": "lrndesign-gallerycard",
+      "description": "`lrndesign-gallerycard`\n\nAttributes:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has\n\nProperties:\n\n  * `size` {`string`} - \n\n  * `image` {`string`} - Cover image src.\n\n  * `icon` {`string`} - Icon to use if image isn't there.\n\n  * `author` - Gallery creator\n\n  * `title` {`string`} - Title of the gallery item\n\n  * `elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\n  * `comments` {`number`} - Number of comments this has",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "`size` {`string`} - \n\nProperty: size"
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - Cover image src.\n\nProperty: image"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - Icon to use if image isn't there.\n\nProperty: icon"
+        },
+        {
+          "name": "author",
+          "description": "`author` - Gallery creator\n\nProperty: author\n\nDefault: [object Object]"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - Title of the gallery item\n\nProperty: title\n\nDefault: Project"
+        },
+        {
+          "name": "elevation",
+          "description": "`elevation` {`number`} - Visual elevation of the item off the UI via paper element height\n\nProperty: elevation\n\nDefault: 1"
+        },
+        {
+          "name": "comments",
+          "description": "`comments` {`number`} - Number of comments this has\n\nProperty: comments\n\nDefault: 0"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

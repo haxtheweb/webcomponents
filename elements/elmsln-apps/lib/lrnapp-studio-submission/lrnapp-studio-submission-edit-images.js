@@ -1,21 +1,19 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-image.js";
-class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
-  PolymerElement
-) {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           position: relative;
@@ -40,17 +38,26 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
           width: 50vmax;
           padding: 16px;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * LitElement render
+   */
+  render() {
+    return html`
       <div class="images__images">
-        <template is="dom-repeat" items="[[images]]" as="image">
-          <lrnapp-studio-submission-edit-image
-            image="[[image]]"
-            on-deleted="_deleteImage"
-            data-index\$="[[index]]"
-          ></lrnapp-studio-submission-edit-image>
-        </template>
+        ${this.images.map(
+          (image, index) => html`
+            <lrnapp-studio-submission-edit-image
+              .image="${image}"
+              @deleted="${this._deleteImage}"
+              data-index="${index}"
+            ></lrnapp-studio-submission-edit-image>
+          `
+        )}
         <lrnapp-studio-submission-edit-add-asset
-          on-click="_addImage"
+          @click="${this._addImage}"
           icon="image:photo-library"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
@@ -58,20 +65,22 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
         <h2>Add Image(s)</h2>
         <paper-dialog-scrollable>
           <div class="images__upload">
-            <template is="dom-if" if="[[uploadUrl]]">
-              <vaadin-upload
-                accept="[[fileTypes]]"
-                target="[[uploadUrl]]"
-                method="POST"
-                form-data-name="file-upload"
-                on-upload-success="_handleImageUploadSuccess"
-              >
-                <div class="images__drop-label">
-                  <iron-icon icon="description"></iron-icon>
-                  Upload files here:
-                </div>
-              </vaadin-upload>
-            </template>
+            ${this.uploadUrl
+              ? html`
+                  <vaadin-upload
+                    accept="${this.fileTypes}"
+                    target="${this.uploadUrl}"
+                    method="POST"
+                    form-data-name="file-upload"
+                    @upload-success="${this._handleImageUploadSuccess}"
+                  >
+                    <div class="images__drop-label">
+                      <iron-icon icon="description"></iron-icon>
+                      Upload files here:
+                    </div>
+                  </vaadin-upload>
+                `
+              : ``}
           </div>
         </paper-dialog-scrollable>
         <div class="buttons">
@@ -86,17 +95,19 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
   static get properties() {
     return {
       images: {
-        type: Array,
-        notify: true,
-        value: []
+        type: Array
       },
       selectedPage: {
         type: String,
-        value: 0
+        attribute: "selected-page"
+      },
+      fileTypes: {
+        type: String,
+        attribute: "file-types"
       },
       uploadUrl: {
         type: String,
-        value: null
+        attribute: "upload-url"
       }
     };
   }
@@ -108,11 +119,11 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
 
   _selectPage(e) {
     var page = e.target.getAttribute("data-page");
-    this.set("selectedPage", page);
+    this.selectedPage = page;
   }
 
   _handleImageUploadSuccess(e) {
-    this.set("selectedPage", 0);
+    this.selectedPage = 0;
     var images = [];
     var response = e.detail.xhr.response;
     // normalize response string
@@ -138,25 +149,20 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       if (!replacement) {
         images.push(file);
       }
-      this.set("images", []);
-      this.set("images", images);
+      this.images = [...images];
       this.shadowRoot.querySelector("#dialog").close();
     }
   }
 
   _deleteImage(e) {
     var deleteIndex = e.target.getAttribute("data-index");
-    this.splice("images", deleteIndex, 1);
+    this.images.splice(deleteIndex, 1);
   }
-  /**
-   * attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    const uploadUrl = this.generateUrl("/api/files");
-    if (uploadUrl !== null) {
-      this.set("uploadUrl", uploadUrl);
-    }
+  constructor() {
+    super();
+    this.images = [];
+    this.selectedPage = "0";
+    this.uploadUrl = this.generateUrl("/api/files");
   }
 }
 window.customElements.define(

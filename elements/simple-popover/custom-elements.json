@@ -1,0 +1,53 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`",
+      "properties": [
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`",
+      "properties": [
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "simple-popover",
+      "description": "`simple-popover`",
+      "properties": [
+        {
+          "name": "offset",
+          "type": "number"
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "true"
+        }
+      ]
+    }
+  ]
+}

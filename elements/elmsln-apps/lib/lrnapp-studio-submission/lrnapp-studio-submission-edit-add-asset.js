@@ -1,11 +1,13 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-ripple/paper-ripple.js";
-class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
+class LrnappStudioSubmissionEditAddAsset extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           cursor: pointer;
         }
@@ -36,22 +38,28 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
           --iron-icon-height: 50px;
           --iron-icon-width: 50px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-button>
-        <iron-icon icon="[[icon]]"></iron-icon>
-        <paper-ripple></paper-ripple>
+        <iron-icon icon="${this.icon}"></iron-icon>
       </paper-button>
     `;
   }
   static get tag() {
     return "lrnapp-studio-submission-edit-add-asset";
   }
-
+  constructor() {
+    super();
+    this.icon = "add";
+    this.display = "box";
+  }
   static get properties() {
     return {
       icon: {
-        type: String,
-        value: "add"
+        type: String
       },
       /**
        * Change the display of the add asset element
@@ -60,8 +68,7 @@ class LrnappStudioSubmissionEditAddAsset extends PolymerElement {
        */
       display: {
         type: String,
-        value: "box",
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }

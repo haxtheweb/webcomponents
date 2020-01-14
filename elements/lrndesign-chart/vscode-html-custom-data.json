@@ -1,0 +1,446 @@
+{
+  "version": 1,
+  "tags": [
+    {
+      "name": "lrndesign-chart-behaviors",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.",
+      "attributes": [
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.",
+      "attributes": [
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart-behaviors",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `raw-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `rawData` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
+        },
+        {
+          "name": "raw-data",
+          "description": "`raw-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: rawData"
+        },
+        {
+          "name": "reverse-data",
+          "description": "`reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\nProperty: reverseData",
+          "valueSet": "v"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `raw-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `rawData` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').",
+      "attributes": [
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
+        },
+        {
+          "name": "raw-data",
+          "description": "`raw-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: rawData"
+        },
+        {
+          "name": "reverse-data",
+          "description": "`reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\nProperty: reverseData",
+          "valueSet": "v"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-pie",
+      "description": "`lrndesign-pie`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `labelPosition` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `raw-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\n  * `donut` {`boolean`} - Displays chart as donut instead of pie.\n\n  * `donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\n  * `donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\n  * `ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\n  * `labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\n  * `labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\n  * `labelPosition` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\n  * `showLabel` {`boolean`} - If a label should be shown.\n\n  * `startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\n  * `total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `rawData` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').",
+      "attributes": [
+        {
+          "name": "chartPadding",
+          "description": "`chartPadding` {`number`} - Padding of chart drawing area to container element and labels\n\nProperty: chartPadding"
+        },
+        {
+          "name": "donut",
+          "description": "`donut` {`boolean`} - Displays chart as donut instead of pie.\n\nProperty: donut",
+          "valueSet": "v"
+        },
+        {
+          "name": "donutSolid",
+          "description": "`donutSolid` {`boolean`} - Draw donut segments as shapes instead of strokes.\n\nProperty: donutSolid",
+          "valueSet": "v"
+        },
+        {
+          "name": "donutWidth",
+          "description": "`donutWidth` {`number`} - Donut stroke width, currently done in javascript.\n\nProperty: donutWidth"
+        },
+        {
+          "name": "ignoreEmptyValues",
+          "description": "`ignoreEmptyValues` {`boolean`} - Empty values will be ignored to avoid drawing\nunncessary slices and labels\n\nProperty: ignoreEmptyValues",
+          "valueSet": "v"
+        },
+        {
+          "name": "labelDirection",
+          "description": "`labelDirection` {`string`} - Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.\n\nProperty: labelDirection"
+        },
+        {
+          "name": "labelOffset",
+          "description": "`labelOffset` {`number`} - Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.\n\nProperty: labelOffset"
+        },
+        {
+          "name": "labelPosition",
+          "description": "`labelPosition` {`string`} - This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.\n\nProperty: labelPosition"
+        },
+        {
+          "name": "showLabel",
+          "description": "`showLabel` {`boolean`} - If a label should be shown.\n\nProperty: showLabel",
+          "valueSet": "v"
+        },
+        {
+          "name": "startAngle",
+          "description": "`startAngle` {`number`} - Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..\n\nProperty: startAngle"
+        },
+        {
+          "name": "total",
+          "description": "`total` {`number`} - Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.\n\nProperty: total"
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
+        },
+        {
+          "name": "raw-data",
+          "description": "`raw-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: rawData"
+        },
+        {
+          "name": "reverse-data",
+          "description": "`reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\nProperty: reverseData",
+          "valueSet": "v"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-line",
+      "description": "`lrndesign-line`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `area-base` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `full-width` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `line-smooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `show-area` {`boolean`} - If the line chart should draw an area.\n\n  * `show-line` {`boolean`} - If the line should be drawn or not.\n\n  * `show-point` {`boolean`} - If the line should be drawn or not.\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `raw-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `areaBase` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\n  * `fullWidth` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\n  * `lineSmooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\n  * `showArea` {`boolean`} - If the line chart should draw an area.\n\n  * `showLine` {`boolean`} - If the line should be drawn or not.\n\n  * `showPoint` {`boolean`} - If the line should be drawn or not.\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `rawData` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').",
+      "attributes": [
+        {
+          "name": "area-base",
+          "description": "`area-base` {`number`} - The base for the area chart that will be used\nto close the area shape (is normally 0).\n\nProperty: areaBase"
+        },
+        {
+          "name": "full-width",
+          "description": "`full-width` {`boolean`} - When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.\n\nProperty: fullWidth",
+          "valueSet": "v"
+        },
+        {
+          "name": "line-smooth",
+          "description": "`line-smooth` {`boolean`} - Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..\n\nProperty: lineSmooth",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-area",
+          "description": "`show-area` {`boolean`} - If the line chart should draw an area.\n\nProperty: showArea",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-line",
+          "description": "`show-line` {`boolean`} - If the line should be drawn or not.\n\nProperty: showLine",
+          "valueSet": "v"
+        },
+        {
+          "name": "show-point",
+          "description": "`show-point` {`boolean`} - If the line should be drawn or not.\n\nProperty: showPoint",
+          "valueSet": "v"
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
+        },
+        {
+          "name": "raw-data",
+          "description": "`raw-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: rawData"
+        },
+        {
+          "name": "reverse-data",
+          "description": "`reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\nProperty: reverseData",
+          "valueSet": "v"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-bar",
+      "description": "`lrndesign-bar`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.\n\nAttributes:\n\n  * `axis-x-only-integer` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axis-x-min-space` {`number`} - TODO\n\n  * `distribute-series` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontal-bars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `reference-value` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `series-bar-distance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stack-bars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stack-mode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `raw-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperties:\n\n  * `axisXOnlyInteger` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\n  * `axisXScaleMinSpace` {`number`} - TODO\n\n  * `distributeSeries` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\n  * `horizontalBars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\n  * `referenceValue` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\n  * `seriesBarDistance` {`number`} - Specify the distance in pixel of bars in a group.\n\n  * `stackBars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\n  * `stackMode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\n  * `rawData` {`string`} - Raw data pulled in from the csv file.\n\n  * `reverseData` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\n  * `width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').",
+      "attributes": [
+        {
+          "name": "axis-x-only-integer",
+          "description": "`axis-x-only-integer` {`boolean`} - Use only integer values (whole numbers) for the scale steps\n\nProperty: axisXOnlyInteger",
+          "valueSet": "v"
+        },
+        {
+          "name": "axis-x-min-space",
+          "description": "`axis-x-min-space` {`number`} - TODO\n\nProperty: axisXScaleMinSpace"
+        },
+        {
+          "name": "distribute-series",
+          "description": "`distribute-series` {`boolean`} - If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.\n\nProperty: distributeSeries",
+          "valueSet": "v"
+        },
+        {
+          "name": "horizontal-bars",
+          "description": "`horizontal-bars` {`boolean`} - Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.\n\nProperty: horizontalBars",
+          "valueSet": "v"
+        },
+        {
+          "name": "reference-value",
+          "description": "`reference-value` {`number`} - Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.\n\nProperty: referenceValue"
+        },
+        {
+          "name": "series-bar-distance",
+          "description": "`series-bar-distance` {`number`} - Specify the distance in pixel of bars in a group.\n\nProperty: seriesBarDistance"
+        },
+        {
+          "name": "stack-bars",
+          "description": "`stack-bars` {`boolean`} - If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.\n\nProperty: stackBars",
+          "valueSet": "v"
+        },
+        {
+          "name": "stack-mode",
+          "description": "`stack-mode` {`boolean`} - If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.\n\nProperty: stackMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "data-source",
+          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Fixed height for the chart as a string (i.e. '100px' or '50%').\n\nProperty: height"
+        },
+        {
+          "name": "raw-data",
+          "description": "`raw-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: rawData"
+        },
+        {
+          "name": "reverse-data",
+          "description": "`reverse-data` {`boolean`} - Reverse data including labels, the series order as well as\nthe whole series data arrays.\n\nProperty: reverseData",
+          "valueSet": "v"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Fixed width for the chart as a string (i.e. '100px' or '50%').\n\nProperty: width"
+        },
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "description": "Events:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - \n\n  * `chart-changed` - ",
+      "attributes": [
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - "
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart-behaviors",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.",
+      "attributes": [
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    },
+    {
+      "name": "lrndesign-chart",
+      "description": "`lrndesign-chart-behaviors`\n\nEvents:\n\n  * `data-source-changed` - \n\n  * `raw-data-changed` - \n\n  * `options-changed` - Fired when chart options change.\n\n  * `chart-changed` - Fired when chart changes.",
+      "attributes": [
+        {
+          "name": "ondata-source-changed",
+          "description": "`data-source-changed` - "
+        },
+        {
+          "name": "onraw-data-changed",
+          "description": "`raw-data-changed` - "
+        },
+        {
+          "name": "onoptions-changed",
+          "description": "`options-changed` - Fired when chart options change."
+        },
+        {
+          "name": "onchart-changed",
+          "description": "`chart-changed` - Fired when chart changes."
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [],
+  "valueSets": []
+}

@@ -17,19 +17,20 @@
     },
     "sharedStyles": []
   },
-  "version":  "2.2.1",
+  "version": "2.4.0",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
+  "type": "module",
   "main": "haxor-slevin.js",
   "module": "haxor-slevin.es6.js",
   "umd": "haxor-slevin.umd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/haxor-slevin/test/",
     "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
@@ -40,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.2.1",
-    "@lrnwebcomponents/simple-blog-card": "^2.2.0",
-    "@lrnwebcomponents/simple-colors": "^2.2.0",
-    "@lrnwebcomponents/social-share-link": "^2.2.0",
+    "@lrnwebcomponents/haxcms-elements": "^2.4.0",
+    "@lrnwebcomponents/simple-blog-card": "^2.4.0",
+    "@lrnwebcomponents/simple-colors": "^2.4.0",
+    "@lrnwebcomponents/social-share-link": "^2.4.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-image": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.2.0",
