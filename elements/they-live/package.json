@@ -14,7 +14,8 @@
       "js": "src/they-live.js",
       "properties": "src/they-live-properties.json",
       "hax": "src/they-live-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "To demonstrate the hidden reality behind the component",

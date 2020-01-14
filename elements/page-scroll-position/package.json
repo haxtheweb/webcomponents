@@ -14,7 +14,8 @@
       "js": "src/page-scroll-position.js",
       "properties": "src/page-scroll-position-properties.json",
       "hax": "src/page-scroll-position-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of page-scroll-position/",

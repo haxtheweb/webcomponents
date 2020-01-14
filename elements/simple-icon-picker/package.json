@@ -14,7 +14,8 @@
       "js": "src/simple-icon-picker.js",
       "properties": "src/simple-icon-picker-properties.json",
       "hax": "src/simple-icon-picker-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Uses simple-picker to create an icon picker",

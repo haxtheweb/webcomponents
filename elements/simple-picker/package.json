@@ -13,7 +13,8 @@
       "html": "src/simple-picker.html",
       "js": "src/simple-picker.js",
       "properties": "src/simple-picker-properties.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a simple picker for swatches, icons, etc.",

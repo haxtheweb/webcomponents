@@ -14,7 +14,8 @@
       "js": "src/paper-search.js",
       "properties": "src/paper-search-properties.json",
       "hax": "src/paper-search-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of paper-search",

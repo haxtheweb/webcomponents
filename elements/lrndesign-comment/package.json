@@ -14,7 +14,8 @@
       "js": "src/lrndesign-comment.js",
       "properties": "src/lrndesign-comment-properties.json",
       "hax": "src/lrndesign-comment-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-comment/",

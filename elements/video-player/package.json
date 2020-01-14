@@ -14,7 +14,8 @@
       "js": "src/video-player.js",
       "properties": "src/video-player-properties.json",
       "hax": "src/video-player-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of video-player/",

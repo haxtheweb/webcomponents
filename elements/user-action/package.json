@@ -14,7 +14,8 @@
       "js": "src/user-action.js",
       "properties": "src/user-action-properties.json",
       "hax": "src/user-action-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "track user actions and allow them to talk to xAPI stores easily",

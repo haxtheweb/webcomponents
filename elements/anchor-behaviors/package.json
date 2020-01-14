@@ -14,7 +14,8 @@
       "js": "src/anchor-behaviors.js",
       "properties": "src/anchor-behaviors-properties.json",
       "hax": "src/anchor-behaviors-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "handles anchors and params in the url",

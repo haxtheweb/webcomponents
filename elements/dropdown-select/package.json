@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/dropdown-select.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A dropdown element with better event and data binding",

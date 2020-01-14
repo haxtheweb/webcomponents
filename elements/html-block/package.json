@@ -14,7 +14,8 @@
       "js": "src/html-block.js",
       "properties": "src/html-block-properties.json",
       "hax": "src/html-block-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A basic HTML block that provides HAXschema wiring",

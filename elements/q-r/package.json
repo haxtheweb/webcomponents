@@ -14,7 +14,8 @@
       "js": "src/q-r.js",
       "properties": "src/q-r-properties.json",
       "hax": "src/q-r-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of q-r/",

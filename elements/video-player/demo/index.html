@@ -13,6 +13,11 @@
       import '../video-player.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      .max-600 {
+        max-width: 600px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -21,9 +26,9 @@
       <demo-snippet>
         <template>
           <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" track="samples/HAXshort.vtt"></video-player>
-          <video-player dark source="https://www.youtube-nocookie.com/embed/LrS7dqokTLE"></video-player>
-          <video-player accent-color="orange" source="https://www.youtube.com/embed/LrS7dqokTLE"></video-player>
-          <video-player accent-color="orange" dark source="https://youtu.be/LrS7dqokTLE"></video-player>
+          <video-player class="max-600" dark source="https://www.youtube-nocookie.com/embed/LrS7dqokTLE"></video-player>
+          <video-player class="max-600" accent-color="orange" source="https://www.youtube.com/embed/LrS7dqokTLE"></video-player>
+          <video-player class="max-600" accent-color="orange" dark source="https://youtu.be/LrS7dqokTLE"></video-player>
         </template>
       </demo-snippet>
 
@@ -32,6 +37,7 @@
         <template>
           <video-player 
             accent-color="red" 
+            preload="none"
             source="https://www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s">
           </video-player>
           <video-player 

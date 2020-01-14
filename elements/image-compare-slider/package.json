@@ -14,7 +14,8 @@
       "js": "src/image-compare-slider.js",
       "properties": "src/image-compare-slider-properties.json",
       "hax": "src/image-compare-slider-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Slider that allows comparison of two images",

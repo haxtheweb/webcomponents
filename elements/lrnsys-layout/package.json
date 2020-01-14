@@ -14,7 +14,8 @@
       "js": "src/lrnsys-layout.js",
       "properties": "src/lrnsys-layout-properties.json",
       "hax": "src/lrnsys-layout-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrnsys-layout/",

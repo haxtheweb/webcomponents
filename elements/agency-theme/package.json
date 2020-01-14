@@ -14,7 +14,8 @@
       "js": "src/agency-theme.js",
       "properties": "src/agency-theme-properties.json",
       "hax": "src/agency-theme-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "",

@@ -14,7 +14,8 @@
       "js": "src/simple-blog.js",
       "properties": "src/simple-blog-properties.json",
       "hax": "src/simple-blog-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of simple-blog/",

@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/schema-behaviors.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",

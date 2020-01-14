@@ -14,7 +14,8 @@
       "js": "src/r-coder.js",
       "properties": "src/r-coder-properties.json",
       "hax": "src/r-coder-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "R coder interface for the r-service backend.",

@@ -14,7 +14,8 @@
       "js": "src/lrn-content.js",
       "properties": "src/lrn-content-properties.json",
       "hax": "src/lrn-content-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Simple content wrapper for OER Schema meta-data",

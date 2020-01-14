@@ -14,7 +14,8 @@
       "js": "src/random-item.js",
       "properties": "src/random-item-properties.json",
       "hax": "src/random-item-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "show a random item from a list of items",

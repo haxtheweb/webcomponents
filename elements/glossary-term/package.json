@@ -14,7 +14,8 @@
       "js": "src/glossary-term.js",
       "properties": "src/glossary-term-properties.json",
       "hax": "src/glossary-term-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Glossary element that connects to the glossary service.",

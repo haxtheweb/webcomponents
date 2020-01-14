@@ -14,7 +14,8 @@
       "js": "src/person-testimonial.js",
       "properties": "src/person-testimonial-properties.json",
       "hax": "src/person-testimonial-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of person-testimonial/",

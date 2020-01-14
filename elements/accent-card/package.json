@@ -14,7 +14,8 @@
       "js": "src/accent-card.js",
       "properties": "src/accent-card-properties.json",
       "hax": "src/accent-card-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of accent-card",

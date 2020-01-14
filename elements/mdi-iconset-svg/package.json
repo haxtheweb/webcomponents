@@ -14,7 +14,8 @@
       "js": "src/mdi-iconset-svg.js",
       "properties": "src/mdi-iconset-svg-properties.json",
       "hax": "src/mdi-iconset-svg-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of mdi-iconset-svg fork",

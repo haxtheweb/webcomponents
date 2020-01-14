@@ -14,7 +14,8 @@
       "js": "src/app-editor-hax.js",
       "properties": "src/app-editor-hax-properties.json",
       "hax": "src/app-editor-hax-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "HAX but for mobile / desktop application development",

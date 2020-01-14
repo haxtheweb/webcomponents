@@ -14,7 +14,8 @@
       "js": "src/select-menu.js",
       "properties": "src/select-menu-properties.json",
       "hax": "src/select-menu-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of select-menu/",

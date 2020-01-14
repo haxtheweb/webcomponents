@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/a11y-behaviors.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Accessibility behaviors / mix-ins to improve a11y overall",

@@ -14,7 +14,8 @@
       "js": "src/lrndesign-imagemap.js",
       "properties": "src/lrndesign-imagemap-properties.json",
       "hax": "src/lrndesign-imagemap-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-imagemap/",

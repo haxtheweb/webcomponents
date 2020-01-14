@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/grafitto-filter.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of grafitto-filter fork",

@@ -14,7 +14,8 @@
       "js": "src/lrndesign-blockquote.js",
       "properties": "src/lrndesign-blockquote-properties.json",
       "hax": "src/lrndesign-blockquote-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-blockquote/",

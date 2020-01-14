@@ -14,7 +14,8 @@
       "js": "src/pdf-browser-viewer.js",
       "properties": "src/pdf-browser-viewer-properties.json",
       "hax": "src/pdf-browser-viewer-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of pdf-browser-viewer",

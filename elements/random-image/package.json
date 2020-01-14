@@ -14,7 +14,8 @@
       "js": "src/random-image.js",
       "properties": "src/random-image-properties.json",
       "hax": "src/random-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of random-image",

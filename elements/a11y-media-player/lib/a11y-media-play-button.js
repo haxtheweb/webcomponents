@@ -2,53 +2,22 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { A11yMediaButton } from "./a11y-media-button.js";
 
-export { A11yMediaPlayButton };
 /**
  * `a11y-media-play-button`
- * @customElement a11y-media-play-button
- * `A giant play button that overlays the media in a11y-media-player.`
- *
- * @microcopy - language worth noting:
+ * a giant play button that overlays the media in a11y-media-player.
 ```
 Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
  * @extends A11yMediaBehaviors
-
- * @polymer
+ * @customElement
  */
-class A11yMediaPlayButton extends A11yMediaBehaviors {
+class A11yMediaPlayButton extends A11yMediaButton {
   // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * is button action to send as an event
-       */
-      action: {
-        type: String,
-        value: null
-      },
-      /**
-       * is button disabled
-       */
-      disabled: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * is media playing
-       */
-      playing: {
-        type: Boolean,
-        value: false
-      }
-    };
-  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -58,100 +27,75 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     return "a11y-media-play-button";
   }
 
-  //inherit styles from a11y-media-player or a11y-media-transcript
-  constructor() {
-    super();
-  }
-
-  //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles() {
+    return [
+      ...super.buttonStyles,
+      css`
         :host {
           display: block;
           opacity: 1;
           transition: opacity 0.5s;
         }
-        :host([disabled]),
-        :host([elapsed]) {
+        :host([action="pause"]) {
           opacity: 0;
         }
         :host,
-        :host #thumbnail,
-        :host #background,
-        :host #button {
+        #button {
           width: 100%;
           top: 0;
           left: 0;
           opacity: 1;
           transition: opacity 0.5s;
         }
-        :host #thumbnail,
-        :host #background,
-        :host #button {
+        #button {
           position: absolute;
           height: 100%;
           padding: 0;
-          margin: 0;
-          border: none;
-        }
-        :host #thumbnail {
-          height: auto;
-          overflow: hidden;
-        }
-        :host #button {
-          overflow: hidden;
-          background: transparent;
-        }
-        :host #button:hover {
-          cursor: pointer;
-        }
-        :host #background {
-          opacity: 0.3;
           background: var(--a11y-play-button-bg-color);
         }
-        :host #button:focus #background,
-        :host #button:hover #background {
+        #button:focus,
+        #button:hover {
           background: var(--a11y-play-button-focus-bg-color);
-          opacity: 0.1;
+          opacity: 0.2;
         }
-        :host #arrow {
+        #arrow {
           stroke: #ffffff;
           fill: #000000;
         }
-        :host #text {
+        #text {
           fill: #ffffff;
         }
-        :host .sr-only {
-          font-size: 0;
-        }
         @media print {
-          :host(:not([thumbnail-src])),
-          :host #background,
-          :host #svg {
+          :host,
+          #background,
+          #svg {
             display: none;
           }
         }
-      </style>
+      `
+    ];
+  }
+
+  //render function
+  render() {
+    return html`
       <button
         id="button"
-        aria-pressed$="[[playing]]"
-        aria-hidden$="[[disabled]]"
+        aria-hidden="${this.disabled ? "true" : "false"}"
         controls="video"
-        disabled$="[[disabled]]"
-        label="[[playPause.label]]"
-        on-click="_handleButtonClick"
+        label="${this.label}"
         tabindex="0"
-        title$="[[label]]"
+        @click="${this._buttonClick}"
+        ?disabled="${this.disabled}"
       >
         <svg
           id="svg"
-          aria-hidden
+          aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 200"
           width="30%"
           height="30%"
-          opacity="0.7"
+          opacity="0.5"
         >
           <g>
             <polygon
@@ -169,35 +113,13 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
               fill="#ffffff"
               font-size="30px"
             >
-              [[playPause.label]]
+              ${this.label}
             </text>
           </g>
         </svg>
       </button>
     `;
   }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.shadowRoot.querySelector("#text").innerText = this.playLabel;
-  }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-    this.target = this.shadowRoot.querySelector("#button");
-  }
-
-  /**
-   * handle button tap
-   */
-  _handleButtonClick(e) {
-    this.dispatchEvent(new CustomEvent("controls-change", { detail: this }));
-  }
 }
 window.customElements.define(A11yMediaPlayButton.tag, A11yMediaPlayButton);
+export { A11yMediaPlayButton };

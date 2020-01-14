@@ -14,7 +14,8 @@
       "js": "src/relative-heading.js",
       "properties": "src/relative-heading-properties.json",
       "hax": "src/relative-heading-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of relative-heading",

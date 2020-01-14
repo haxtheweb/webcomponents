@@ -14,7 +14,8 @@
       "js": "src/parallax-image.js",
       "properties": "src/parallax-image-properties.json",
       "hax": "src/parallax-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of parallax-image/",

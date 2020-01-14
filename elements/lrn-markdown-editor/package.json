@@ -14,7 +14,8 @@
       "js": "src/lrn-markdown-editor.js",
       "properties": "src/lrn-markdown-editor-properties.json",
       "hax": "src/lrn-markdown-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "markdown editor wrapper with preview editor",

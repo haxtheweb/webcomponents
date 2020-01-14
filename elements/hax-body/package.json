@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/hax-body.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future.",

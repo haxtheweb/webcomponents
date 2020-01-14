@@ -14,7 +14,8 @@
       "js": "src/hax-logo.js",
       "properties": "src/hax-logo-properties.json",
       "hax": "src/hax-logo-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "logo element for hax, obviously as a hax capable element.",

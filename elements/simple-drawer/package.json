@@ -14,7 +14,8 @@
       "js": "src/simple-drawer.js",
       "properties": "src/simple-drawer-properties.json",
       "hax": "src/simple-drawer-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a singleton drawer element",

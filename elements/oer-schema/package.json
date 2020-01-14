@@ -14,7 +14,8 @@
       "js": "src/oer-schema.js",
       "properties": "src/oer-schema-properties.json",
       "hax": "src/oer-schema-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of oer-schema/",

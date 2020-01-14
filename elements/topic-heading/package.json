@@ -14,7 +14,8 @@
       "js": "src/topic-heading.js",
       "properties": "src/topic-heading-properties.json",
       "hax": "src/topic-heading-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Semantic and visual meaning behind a heading break",

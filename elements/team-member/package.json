@@ -14,7 +14,8 @@
       "js": "src/team-member.js",
       "properties": "src/team-member-properties.json",
       "hax": "src/team-member-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of team-member/",

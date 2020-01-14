@@ -14,7 +14,8 @@
       "js": "src/pdf-element.js",
       "properties": "src/pdf-element-properties.json",
       "hax": "src/pdf-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of pdf-element/",

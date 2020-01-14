@@ -112,7 +112,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
                 srclang$="[[track.lang]]"
               />
             </template>
-            <slot name="caption"></slot>
           </a11y-media-player>
         </template>
         <template is="dom-if" if="[[!isA11yMedia]]">

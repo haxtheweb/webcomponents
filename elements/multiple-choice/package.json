@@ -14,7 +14,8 @@
       "js": "src/multiple-choice.js",
       "properties": "src/multiple-choice-properties.json",
       "hax": "src/multiple-choice-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of multiple-choice/",

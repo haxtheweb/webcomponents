@@ -5,209 +5,261 @@
    */
 
   "allowConcurrent": {
-    "name": "allowConcurrent",
-    "type": "Boolean",
-    "value": false
+    "attribute": "allow-concurrent",
+    "type": "Boolean"
   },
   /**
-   * Is it an audio player with no thumbnail?
+   * Is this an audio file?
    */
-  "audioNoThumb": {
-    "name": "audioNoThumb",
+  "audioOnly": {
+    "attribute": "audio-only",
     "type": "Boolean",
-    "computed": "_getAudioNoThumb(audioOnly,thumbnailSrc)"
+    "reflect": true
   },
   /**
-   * Use dark theme on transcript? Default is false, even when player is dark.
+   * autoplay is an option,
+   * but generally not recommended for a11y
    */
-  "darkTranscript": {
-    "name": "darkTranscript",
-    "type": "Boolean",
-    "value": false
+  "autoplay": {
+    "attribute": "autoplay",
+    "type": "Boolean"
+  },
+  /**
+   * the selected track
+   */
+  "captionsTrack": {
+    "attribute": "captions-track",
+    "type": "Object"
+  },
+  /**
+   * show closed captions
+   */
+  "cc": {
+    "attribute": "cc",
+    "type": "Boolean"
+  },
+  /**
+   * current time for video playback
+   */
+  "currentTime": {
+    "type": "Number"
   },
   /**
    * crossorigin attribute for <video> and <audio> tags
    */
   "crossorigin": {
-    "type": "String",
-    "value": null
+    "attribute": "crossorigin",
+    "type": "String"
+  },
+  /**
+   * disable transcript print button
+   */
+  "disablePrintButton": {
+    "attribute": "disable-print-button",
+    "type": "Boolean"
+  },
+  /**
+   * disable transcript search feature
+   */
+  "disableSearch": {
+    "attribute": "disable-search",
+    "type": "Boolean"
+  },
+  /**
+   * disable autoscrolling as transcript plays
+   */
+  "disableScroll": {
+    "attribute": "disable-scroll",
+    "type": "Boolean"
+  },
+  /**
+   * disables seeking
+   */
+  "disableSeek": {
+    "attribute": "disable-seek",
+    "type": "Boolean"
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "attribute": "dark-transcript",
+    "type": "Boolean"
   },
   /**
    * disable fullscreen option
    */
   "disableFullscreen": {
-    "name": "disableFullscreen",
-    "type": "Boolean",
-    "value": false
+    "attribute": "disable-fullscreen",
+    "type": "Boolean"
   },
   /**
    * disable interactive mode that makes the transcript clickable
    */
   "disableInteractive": {
-    "name": "disableInteractive",
-    "type": "Boolean",
-    "value": false
-  },
-  /**
-   * Determines if video and transcript are in a flex layout
-   */
-  "flexLayout": {
-    "name": "flexLayout",
-    "type": "Boolean",
-    "computed": "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
-    "reflectToAttribute": true
+    "attribute": "disable-interactive",
+    "type": "Boolean"
   },
   /**
    * Is fullscreen mode?
    */
   "fullscreen": {
-    "name": "fullscreen",
+    "attribute": "fullscreen",
     "type": "Boolean",
-    "value": false
+    "reflect": true
   },
   /**
-   * show the FullscreenButton?
+   * The height of the media player.
    */
-  "fullscreenButton": {
-    "name": "fullscreenButton",
-    "type": "Boolean",
-    "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
-    "notify": true
-  },
-  /**
-   * Does the player have tracks?
-   */
-  "hasCaptions": {
-    "name": "hasCaptions",
-    "type": "Boolean",
-    "value": false
+  "height": {
+    "attribute": "height",
+    "type": "String"
   },
   /**
    * Hide elapsed time?
    */
   "hideElapsedTime": {
-    "name": "hideElapsedTime",
-    "type": "Boolean",
-    "value": false
+    "attribute": "hide-elapsed-time",
+    "type": "Boolean"
   },
   /**
    * show cue's start and end time
    */
   "hideTimestamps": {
-    "name": "hideTimestamps",
-    "type": "Boolean",
-    "value": false
+    "attribute": "hide-timestamps",
+    "type": "Boolean"
   },
   /**
    * initially hide the transcript?
    */
   "hideTranscript": {
-    "name": "hideTranscript",
+    "attribute": "hide-transcript",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * initially hide the transcript?
    */
   "id": {
-    "name": "id",
+    "attribute": "id",
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
-   * The default media caption if none is given.
+   * Language
    */
-  "mediaCaption": {
-    "name": "mediaCaption",
-    "type": "String",
-    "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
+  "lang": {
+    "attribute": "lang",
+    "type": "String"
+  },
+  /**
+   * has link button
+   */
+  "linkable": {
+    "attribute": "linkable",
+    "type": "Boolean"
+  },
+  /**
+   * custom localization settings
+   */
+  "localization": {
+    "attribute": "localization",
+    "type": "Object"
+  },
+  /**
+   * Loop the video?
+   */
+  "loop": {
+    "attribute": "loop",
+    "type": "Boolean"
+  },
+  /**
+   * Dash.js manifest source?
+   * /
+  "manifest": {
+    "attribute": "manifest",
+    "type": "String"
   },
   /**
    * the language of the media (if different from user interface language)
    */
   "mediaLang": {
-    "name": "mediaLang",
-    "type": "String",
-    "value": "en"
+    "attribute": "media-lang",
+    "type": "String"
   },
   /**
-   * mute/unmute button
+   * optional title of media (shows when printed)
    */
-  "muteUnmute": {
-    "name": "muteUnmute",
-    "type": "Object",
-    "computed": "_getMuteUnmute(muted)"
+  "mediaTitle": {
+    "attribute": "media-title",
+    "type": "String"
   },
   /**
-   * The media caption that displays when the page is printed.
+   * Is audio muted?
    */
-  "printCaption": {
-    "name": "printCaption",
+  "muted": {
+    "attribute": "muted",
+    "type": "Boolean"
+  },
+  /**
+   * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
+   */
+  "playbackRate": {
+    "attribute": "playback-rate",
+    "type": "Number"
+  },
+  /**
+   * Preload `none`, `metadata`, or `auto`.
+   */
+  "preload": {
+    "attribute": "preload",
     "type": "String",
-    "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
+    "reflect": true
   },
   /**
    * Size of the a11y media element for responsive styling
    */
   "responsiveSize": {
-    "name": "responsiveSize",
+    "attribute": "responsive-size",
     "type": "String",
-    "notify": true,
-    "value": "xs",
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
-   * Has screenfull loaded?
+   * the search tool for the transcript
    */
-  "screenfullLoaded": {
-    "name": "screenfullLoaded",
+  "search": {
+    "attribute": "search",
+    "type": "Object"
+  },
+  /**
+   * Is stand-alone player (without transcript)?
+   */
+  "standAlone": {
+    "attribute": "stand-alone",
     "type": "Boolean",
-    "value": false,
-    "notify": true
+    "reflect": true
   },
   /**
-   * Has screenfull loaded?
-   */
-  "shareLink": {
-    "name": "shareLink",
-    "type": "String",
-    "computed": "_getShareLink(__elapsed)"
-  },
-
-  /**
-   * is YouTube?
-   */
-  "showCustomCaptions": {
-    "name": "showCustomCaptions",
-    "type": "Boolean",
-    "computed": "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
-  },
-  /**
-   * Optional array ouf sources.
+   * DEPRECATED: array ouf sources
    */
   "sources": {
-    "name": "sources",
-    "type": "Array",
-    "value": []
+    "attribute": "sources",
+    "type": "Array"
   },
   /**
    * stacked layout instead of side-by-side?
    */
   "stackedLayout": {
-    "name": "stackedLayout",
-    "type": "Boolean",
-    "value": false
+    "attribute": "stacked-layout",
+    "type": "Boolean"
   },
   /**
    * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
    */
   "sticky": {
-    "name": "sticky",
+    "attribute": "sticky",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * When playing but scrolled off screen, to which corner does it "stick":
@@ -215,62 +267,81 @@
    * Default is "top-right". "None" disables stickiness.
    */
   "stickyCorner": {
-    "name": "stickyCorner",
+    "attribute": "sticky-corner",
     "type": "String",
-    "value": "top-right",
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * Source of optional thumbnail image
    */
   "thumbnailSrc": {
-    "name": "thumbnailSrc",
+    "attribute": "thumbnail-src",
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
-   * Optional array ouf tracks.
+   * DEPRECATED: array of tracks.
    */
   "tracks": {
-    "name": "tracks",
-    "type": "Array",
-    "value": []
+    "attribute": "tracks",
+    "type": "Array"
   },
   /**
-   * play/pause button
+   * the selected track for the transcript
    */
-  "playPause": {
-    "name": "playPause",
-    "type": "Object",
-    "computed": "_getPlayPause(__playing)"
+  "transcriptTrack": {
+    "attribute": "transcript-track",
+    "type": "Object"
   },
   /**
-   * Notice if the elapsed time changes
+   * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
    */
-  "__elapsed": {
-    "name": "__elapsed",
-    "type": "Number",
-    "value": null,
-    "notify": true
+  "volume": {
+    "attribute": "volume",
+    "type": "Number"
   },
   /**
-   * Notice if the video is playing
+   * The width of the media player.
+   */
+  "width": {
+    "attribute": "width",
+    "type": "String"
+  },
+  /**
+   * the id for the video
+   */
+  "youtubeId": {
+    "attribute": "youtube-id",
+    "type": "String"
+  },
+  /**
+   * current playback in seconds
+   */
+  "__currentTime": {
+    "type": "Number"
+  },
+  /**
+   * array of cues provided to readOnly `get cues`
+   */
+  "__cues": {
+    "type": "Array"
+  },
+  /**
+   * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
+   */
+  "__loadedTracks": {
+    "type": "Object"
+  },
+  /**
+   * media playing status readOnly `get playing`
    */
   "__playing": {
-    "name": "__playing",
-    "type": "Boolean",
-    "value": false,
-    "notify": true,
-    "reflectToAttribute": true
+    "type": "Boolean"
   },
   /**
-   * Notice if the video is playing
+   * Has screenfull loaded?
    */
-  "__captionHref": {
-    "name": "__captionHref",
-    "type": "String",
-    "value": null,
-    "notify": true
+  "__screenfullLoaded": {
+    "type": "Boolean"
   }
 }

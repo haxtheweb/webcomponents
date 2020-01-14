@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/eco-json-schema-form.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "JSON Schema form data binding magic",

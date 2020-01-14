@@ -14,7 +14,8 @@
       "js": "src/haxor-slevin.js",
       "properties": "src/haxor-slevin-properties.json",
       "hax": "src/haxor-slevin-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Tech blogger theme",

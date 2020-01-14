@@ -14,7 +14,8 @@
       "js": "src/rich-text-editor.js",
       "properties": "src/rich-text-editor-properties.json",
       "hax": "src/rich-text-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a standalone rich text editor",

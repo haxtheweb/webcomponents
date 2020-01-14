@@ -14,7 +14,8 @@
       "js": "src/simple-toast.js",
       "properties": "src/simple-toast-properties.json",
       "hax": "src/simple-toast-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A singular toast / message for conistency",

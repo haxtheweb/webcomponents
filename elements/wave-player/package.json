@@ -14,7 +14,8 @@
       "js": "src/wave-player.js",
       "properties": "src/wave-player-properties.json",
       "hax": "src/wave-player-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of wave-player/",

@@ -14,7 +14,8 @@
       "js": "src/lrndesign-avatar.js",
       "properties": "src/lrndesign-avatar-properties.json",
       "hax": "src/lrndesign-avatar-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-avatar/",

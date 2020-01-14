@@ -14,7 +14,8 @@
       "js": "src/hax-bookmarklet.js",
       "properties": "src/hax-bookmarklet-properties.json",
       "hax": "src/hax-bookmarklet-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "HAX as a bookmarklet script",

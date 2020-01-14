@@ -14,7 +14,8 @@
       "js": "src/figure-label.js",
       "properties": "src/figure-label-properties.json",
       "hax": "src/figure-label-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Figure label element to mark media assets within content.",

@@ -14,7 +14,8 @@
       "js": "src/hexagon-loader.js",
       "properties": "src/hexagon-loader-properties.json",
       "hax": "src/hexagon-loader-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a simple VJS element that is for showing something is loading",

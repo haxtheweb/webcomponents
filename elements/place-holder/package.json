@@ -14,7 +14,8 @@
       "js": "src/place-holder.js",
       "properties": "src/place-holder-properties.json",
       "hax": "src/place-holder-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of place-holder/",

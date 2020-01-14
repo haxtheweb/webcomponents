@@ -14,7 +14,8 @@
       "js": "src/md-block.js",
       "properties": "src/md-block-properties.json",
       "hax": "src/md-block-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a markdown block",

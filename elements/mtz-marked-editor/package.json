@@ -14,7 +14,8 @@
       "js": "src/mtz-marked-editor.js",
       "properties": "src/mtz-marked-editor-properties.json",
       "hax": "src/mtz-marked-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of mtz-marked-editor",

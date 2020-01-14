@@ -14,7 +14,8 @@
       "js": "src/paper-fab-speed-dial.js",
       "properties": "src/paper-fab-speed-dial-properties.json",
       "hax": "src/paper-fab-speed-dial-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of paper-fab-speed-dial fork",

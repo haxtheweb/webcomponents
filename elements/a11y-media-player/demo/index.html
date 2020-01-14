@@ -42,12 +42,14 @@
       <h1>a11y-media-player Demo</h1>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="pink">
-            <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
-            <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-            <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
-            <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
-            <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
+          <a11y-media-player id="example" accent-color="pink" linkable>
+            <video>
+              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
+              <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
+              <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+              <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
+            </video>
           </a11y-media-player>
         </template>
       </demo-snippet>
@@ -55,7 +57,34 @@
       <h2>Video example, dark, with no timestamps, no interactive transcript, and no search feature</h2>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="Video" disable-interactive disable-search hide-timestamps>
+          <a11y-media-player accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="St.Clair Interview" disable-interactive disable-search hide-timestamps>
+            <video>
+              <source src="https://personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
+              <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
+            </video>
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
+
+      <h2>Video example, no preloading</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player accent-color="brown" preload="none">
+            <video>
+              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+              <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">   
+            </video>
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
+    
+      <h2>Video example, auto preloading</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player 
+            accent-color="light-green" 
+            dark thumbnail-src="./samples/stclair.jpg" 
+            preload="auto">
             <video>
               <source src="https://personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
               <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
@@ -65,10 +94,10 @@
       </demo-snippet>
     
       <div class="smaller-examples">
-        <h2>Video example, standalone, with width set and a clip start/stop set and share link enabled</h2>
+        <h2>Video example, standalone, with width set with a share link enabled</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px"  start-seconds="2" stop-seconds="11">
+            <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px">
               <video>
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">

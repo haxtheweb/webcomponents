@@ -14,7 +14,8 @@
       "js": "src/hax-iconset.js",
       "properties": "src/hax-iconset-properties.json",
       "hax": "src/hax-iconset-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "HAX-specific icons",

@@ -10,7 +10,7 @@
   <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     ${this._getResultsSpan(this.resultPointer, this.resultCount)}
   </div>
-  <div ?shrink-hide="${this._hasNoResults(this.resultCount)}">
+  <div  ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     <button
       id="prev"
       aria-label="${this.prevButtonLabel}"

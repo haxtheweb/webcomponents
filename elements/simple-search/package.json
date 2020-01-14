@@ -12,7 +12,8 @@
       "html": "src/simple-search.html",
       "css": "src/simple-search.css",
       "js": "src/simple-search.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of simple-search",

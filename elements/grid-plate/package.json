@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/grid-plate.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a grid element with 1 to 4 columns via slots",

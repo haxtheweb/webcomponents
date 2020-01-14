@@ -14,7 +14,8 @@
       "js": "src/flash-card.js",
       "properties": "src/flash-card-properties.json",
       "hax": "src/flash-card-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A simple flash card that you can flip",

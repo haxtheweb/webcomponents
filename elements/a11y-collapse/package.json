@@ -14,7 +14,8 @@
       "js": "src/a11y-collapse.js",
       "properties": "src/a11y-collapse-properties.json",
       "hax": "src/a11y-collapse-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of a11y-collapse",

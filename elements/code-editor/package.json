@@ -14,7 +14,8 @@
       "js": "src/code-editor.js",
       "properties": "src/code-editor-properties.json",
       "hax": "src/code-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Data binding wrapped on top of a popular code editor",

@@ -14,7 +14,8 @@
       "js": "src/code-sample.js",
       "properties": "src/code-sample-properties.json",
       "hax": "src/code-sample-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A wrapper element for highlight.js",

@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/lrn-table.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Accessibly render a HTML table from a csv file",

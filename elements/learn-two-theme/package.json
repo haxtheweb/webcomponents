@@ -14,7 +14,8 @@
       "js": "src/learn-two-theme.js",
       "properties": "src/learn-two-theme-properties.json",
       "hax": "src/learn-two-theme-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Learn2 theme for HAXcms",

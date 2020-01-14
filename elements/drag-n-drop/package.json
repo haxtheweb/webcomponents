@@ -14,7 +14,8 @@
       "js": "src/drag-n-drop.js",
       "properties": "src/drag-n-drop-properties.json",
       "hax": "src/drag-n-drop-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "drag and drop elements and manager",

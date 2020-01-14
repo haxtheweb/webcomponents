@@ -14,7 +14,8 @@
       "js": "src/lrndesign-course-banner.js",
       "properties": "src/lrndesign-course-banner-properties.json",
       "hax": "src/lrndesign-course-banner-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-course-banner/",

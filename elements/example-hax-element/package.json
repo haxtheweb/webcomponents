@@ -14,7 +14,8 @@
       "js": "src/example-hax-element.js",
       "properties": "src/example-hax-element-properties.json",
       "hax": "src/example-hax-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Provide an example to pick apart of a working HAX element",

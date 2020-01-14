@@ -14,7 +14,8 @@
       "js": "src/lrndesign-paperstack.js",
       "properties": "src/lrndesign-paperstack-properties.json",
       "hax": "src/lrndesign-paperstack-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-paperstack/",

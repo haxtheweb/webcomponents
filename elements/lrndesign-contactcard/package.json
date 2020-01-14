@@ -14,7 +14,8 @@
       "js": "src/lrndesign-contactcard.js",
       "properties": "src/lrndesign-contactcard-properties.json",
       "hax": "src/lrndesign-contactcard-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-contactcard/",

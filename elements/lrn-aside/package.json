@@ -14,7 +14,8 @@
       "js": "src/lrn-aside.js",
       "properties": "src/lrn-aside-properties.json",
       "hax": "src/lrn-aside-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A simple textual aside",

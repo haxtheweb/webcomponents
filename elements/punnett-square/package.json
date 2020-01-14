@@ -14,7 +14,8 @@
       "js": "src/punnett-square.js",
       "properties": "src/punnett-square-properties.json",
       "hax": "src/punnett-square-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "",

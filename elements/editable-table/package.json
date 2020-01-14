@@ -14,7 +14,8 @@
       "js": "src/editable-table.js",
       "properties": "src/editable-table-properties.json",
       "hax": "src/editable-table-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A table that's editable",

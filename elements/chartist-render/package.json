@@ -14,7 +14,8 @@
       "js": "src/chartist-render.js",
       "properties": "src/chartist-render-properties.json",
       "hax": "src/chartist-render-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Rendering Chartist",

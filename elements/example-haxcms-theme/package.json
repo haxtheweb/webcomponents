@@ -14,7 +14,8 @@
       "js": "src/example-haxcms-theme.js",
       "properties": "src/example-haxcms-theme-properties.json",
       "hax": "src/example-haxcms-theme-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A basic, well documented example theme for HAXcms",

@@ -14,7 +14,8 @@
       "js": "src/image-inspector.js",
       "properties": "src/image-inspector-properties.json",
       "hax": "src/image-inspector-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Inspector tools on an image wrapping open seadragon library",

@@ -14,7 +14,8 @@
       "js": "src/map-menu.js",
       "properties": "src/map-menu-properties.json",
       "hax": "src/map-menu-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of map-menu/",

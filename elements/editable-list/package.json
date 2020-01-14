@@ -14,7 +14,8 @@
       "js": "src/editable-list.js",
       "properties": "src/editable-list-properties.json",
       "hax": "src/editable-list-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a listing of items that can be edited in place with operations",

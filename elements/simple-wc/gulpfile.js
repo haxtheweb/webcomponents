@@ -58,25 +58,7 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-          let styleRegex = /\/\*[\s]*LIST SHARED STYLES BELOW[\s]*((?:(?:\w+)[\s,]*)*)\*\//g,
-            styleArray =
-              cssResult.match(styleRegex) &&
-              cssResult.match(styleRegex).length > 0
-                ? cssResult
-                    .match(styleRegex)[0]
-                    .replace(styleRegex, "$1")
-                    .match(/(\w+)[\s,]*/g)
-                : [];
-          sharedStyles =
-            styleArray && styleArray.length > 0
-              ? styleArray.map(style =>
-                  style.replace(
-                    /(\w+)[\s,]*/g,
-                    `
-        $1`
-                  )
-                )
-              : ``;
+
           cssResult = stripCssComments(cssResult).trim();
           let litResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
@@ -84,7 +66,13 @@ gulp.task("merge", () => {
                 : `
   //styles function
   static get styles() {
-    return  [${sharedStyles ? `${sharedStyles},` : ``}
+    return  [
+      ${
+        packageJson.wcfactory.sharedStyles &&
+        packageJson.wcfactory.sharedStyles.length > 0
+          ? `${packageJson.wcfactory.sharedStyles.join(",")},`
+          : ``
+      }
       css\`
 ${cssResult}
       \`

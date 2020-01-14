@@ -14,7 +14,8 @@
       "js": "src/lrndesign-contentblock.js",
       "properties": "src/lrndesign-contentblock-properties.json",
       "hax": "src/lrndesign-contentblock-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-contentblock/",

@@ -14,7 +14,8 @@
       "js": "src/stop-note.js",
       "properties": "src/stop-note-properties.json",
       "hax": "src/stop-note-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of stop-note/",

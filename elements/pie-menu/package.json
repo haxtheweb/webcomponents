@@ -14,7 +14,8 @@
       "js": "src/pie-menu.js",
       "properties": "src/pie-menu-properties.json",
       "hax": "src/pie-menu-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of pie-menu/",

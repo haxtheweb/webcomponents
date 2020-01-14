@@ -14,7 +14,8 @@
       "js": "src/to-element.js",
       "properties": "src/to-element-properties.json",
       "hax": "src/to-element-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Replicate any DOM node passed in and turn it into a web component",

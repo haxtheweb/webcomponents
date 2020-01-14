@@ -14,7 +14,8 @@
       "js": "src/hax-text-editor.js",
       "properties": "src/hax-text-editor-properties.json",
       "hax": "src/hax-text-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "rich-text-editor configured for HAX",

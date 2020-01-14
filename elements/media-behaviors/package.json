@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/media-behaviors.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of media-behaviors/",

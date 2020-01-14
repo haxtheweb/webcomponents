@@ -14,7 +14,8 @@
       "js": "src/air-horn.js",
       "properties": "src/air-horn-properties.json",
       "hax": "src/air-horn-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "demonstrative purposes via meme",

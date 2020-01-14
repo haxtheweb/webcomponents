@@ -9,7 +9,8 @@
     "useSass": false,
     "files": {
       "js": "src/citation-element.js"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A simple way of citing things on the web.",

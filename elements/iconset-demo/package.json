@@ -14,7 +14,8 @@
       "js": "src/iconset-demo.js",
       "properties": "src/iconset-demo-properties.json",
       "hax": "src/iconset-demo-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "iterates through an iconset array to generate a demo of all of the icons",

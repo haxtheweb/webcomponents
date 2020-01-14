@@ -14,7 +14,8 @@
       "js": "src/media-image.js",
       "properties": "src/media-image-properties.json",
       "hax": "src/media-image-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of media-image/",

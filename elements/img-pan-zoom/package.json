@@ -14,7 +14,8 @@
       "js": "src/img-pan-zoom.js",
       "properties": "src/img-pan-zoom-properties.json",
       "hax": "src/img-pan-zoom-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of img-pan-zoom",

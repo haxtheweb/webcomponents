@@ -14,7 +14,8 @@
       "js": "src/lrndesign-drawer.js",
       "properties": "src/lrndesign-drawer-properties.json",
       "hax": "src/lrndesign-drawer-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of lrndesign-drawer/",

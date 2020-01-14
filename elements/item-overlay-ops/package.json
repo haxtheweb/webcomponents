@@ -14,7 +14,8 @@
       "js": "src/item-overlay-ops.js",
       "properties": "src/item-overlay-ops-properties.json",
       "hax": "src/item-overlay-ops-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "A wrapper that provides an overlay of operations to any element, usually a card.",

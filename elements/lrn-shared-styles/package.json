@@ -14,7 +14,8 @@
       "js": "src/lrn-shared-styles.js",
       "properties": "src/lrn-shared-styles-properties.json",
       "hax": "src/lrn-shared-styles-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "a shared set of styles for all @lrnwebcomponents",

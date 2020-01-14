@@ -14,7 +14,8 @@
       "js": "src/lrndesign-gallery.js",
       "properties": "src/lrndesign-gallery-properties.json",
       "hax": "src/lrndesign-gallery-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Start of lrndesign-gallery",

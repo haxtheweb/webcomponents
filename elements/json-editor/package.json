@@ -14,7 +14,8 @@
       "js": "src/json-editor.js",
       "properties": "src/json-editor-properties.json",
       "hax": "src/json-editor-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "simple JSON blob data binding to a text area",

@@ -14,7 +14,8 @@
       "js": "src/rss-items.js",
       "properties": "src/rss-items-properties.json",
       "hax": "src/rss-items-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "visualize RSS items",

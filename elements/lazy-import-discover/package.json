@@ -14,7 +14,8 @@
       "js": "src/lazy-import-discover.js",
       "properties": "src/lazy-import-discover-properties.json",
       "hax": "src/lazy-import-discover-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Break people&#39;s brains on simplifying webcomponent integrations",

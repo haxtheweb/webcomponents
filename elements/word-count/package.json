@@ -14,7 +14,8 @@
       "js": "src/word-count.js",
       "properties": "src/word-count-properties.json",
       "hax": "src/word-count-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "Automated conversion of word-count/",

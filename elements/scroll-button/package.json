@@ -14,7 +14,8 @@
       "js": "src/scroll-button.js",
       "properties": "src/scroll-button-properties.json",
       "hax": "src/scroll-button-hax.json"
-    }
+    },
+    "sharedStyles": []
   },
   "version": "2.4.0",
   "description": "button to scroll to an area or back to top",
