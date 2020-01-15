@@ -11,8 +11,6 @@ export { A11yMediaButton };
 /**
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
- *
- * @customElement
  */
 class A11yMediaButton extends LitElement {
   // properties available to the custom element for data binding
