@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
 
@@ -76,9 +76,9 @@ class EditableTableFilter extends LitElement {
         <iron-icon id="filter" icon="editable-table:filter"></iron-icon>
         <iron-icon id="filter-off" icon="editable-table:filter-off"></iron-icon>
       </paper-button>
-      <paper-tooltip for="button"
+      <simple-tooltip for="button"
         >Toggle Column ${this.columnIndex} filter for
-        "${this.text}"</paper-tooltip
+        "${this.text}"</simple-tooltip
       >
     `;
   }

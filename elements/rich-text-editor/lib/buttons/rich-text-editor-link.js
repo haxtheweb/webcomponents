@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-button-styles.js";
 import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";

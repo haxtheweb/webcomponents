@@ -38,7 +38,7 @@ const css = html`
     :host(rich-text-editor-symbol-picker) {
       --simple-picker-option-label-padding: 2px;
     }
-    :host paper-tooltip {
+    :host simple-tooltip {
       z-index: 2;
     }
     :host .rtebutton {

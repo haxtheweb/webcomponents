@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-button-styles.js";
@@ -55,7 +55,7 @@ class RichTextEditorButton extends PolymerElement {
         </iron-icon>
         <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
+      <simple-tooltip id="tooltip" for="button">[[__label]]</simple-tooltip>
     `;
   }
 

@@ -119,7 +119,7 @@ class RichTextEditorPrompt extends PolymerElement {
               <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
               <span id="label" class="offscreen">Cancel</span>
             </paper-button>
-            <paper-tooltip id="tooltip" for="cancel">Cancel</paper-tooltip>
+            <simple-tooltip id="tooltip" for="cancel">Cancel</simple-tooltip>
             <paper-button
               id="confirm"
               class="rtebutton"
@@ -130,7 +130,7 @@ class RichTextEditorPrompt extends PolymerElement {
               <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>
               <span id="label" class="offscreen">OK</span>
             </paper-button>
-            <paper-tooltip id="tooltip" for="confirm">OK</paper-tooltip>
+            <simple-tooltip id="tooltip" for="confirm">OK</simple-tooltip>
           </div>
           <iron-a11y-keys
             id="a11ycancel"

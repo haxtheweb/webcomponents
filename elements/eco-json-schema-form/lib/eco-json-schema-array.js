@@ -176,8 +176,8 @@ class EcoJsonSchemaArray extends mixinBehaviors(
                     role="button"
                   >
                   </paper-icon-button>
-                  <paper-tooltip for="remove-[[index]]"
-                    >Remove this item</paper-tooltip
+                  <simple-tooltip for="remove-[[index]]"
+                    >Remove this item</simple-tooltip
                   >
                 </div>
               </div>

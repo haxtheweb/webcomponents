@@ -177,7 +177,7 @@ function _mooc_content_render_options() {
     $content .= '
       <paper-menu-button dynamic-align>
         <paper-icon-button id="outlineoptions" class="blue-text" icon="editor:linear-scale" slot="dropdown-trigger" alt="' . t('Edit outline') . '" title="' . t('Edit outline') . '"></paper-icon-button>
-        <paper-tooltip for="outlineoptions" animation-delay="200" offset="0">' . t('Outline options') . '</paper-tooltip>
+        <simple-tooltip for="outlineoptions" animation-delay="200" offset="0">' . t('Outline options') . '</simple-tooltip>
         <paper-listbox slot="dropdown-content">
           <a tabindex="-1" href="' . $node_path . '/outline/children" class="accessible-grey-text"><paper-item>' . t('Child outline') . '</paper-item></a>
           <a tabindex="-1" href="' . base_path() . 'admin/content/book/' . $node->book['bid'] . '" class="accessible-grey-text"><paper-item>' . t('Course outline') . '</paper-item></a>
@@ -186,7 +186,7 @@ function _mooc_content_render_options() {
   }
   $content .= '<paper-menu-button dynamic-align>
     <paper-icon-button id="printoptions" icon="print" slot="dropdown-trigger" alt="' . t('Print options') . '" title="' . t('Print options') . '"></paper-icon-button>
-    <paper-tooltip for="printoptions" animation-delay="200" offset="0">' . t('Print options') . '</paper-tooltip>
+    <simple-tooltip for="printoptions" animation-delay="200" offset="0">' . t('Print options') . '</simple-tooltip>
     <paper-listbox slot="dropdown-content">
       <a tabindex="-1" target="_blank" href="' . base_path() . 'book/export/html/' . $node->nid . '" class="accessible-grey-text"><paper-item>' . t('Page') . '</paper-item></a>';
   // support print / book printing

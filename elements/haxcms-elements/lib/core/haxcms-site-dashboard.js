@@ -8,7 +8,7 @@ import { varGet, varExists } from "@lrnwebcomponents/utils/utils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -191,9 +191,9 @@ class HAXCMSSiteDashboard extends LitElement {
             ></paper-icon-button
           ></a>
         </portal-launcher>
-        <paper-tooltip for="homebutton" offset="14" position="bottom">
+        <simple-tooltip for="homebutton" offset="14" position="bottom">
           Back to site list
-        </paper-tooltip>
+        </simple-tooltip>
         <h2 class="title">${this.manifest.title} settings</h2>
         ${varExists(this.manifest, "metadata.site.static.publishedLocation")
           ? html`

@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lrnapp-studio-submission-editbar-message.js";
 class LrnappStudioSubmissionEditbar extends LitElement {
   /**
@@ -16,9 +16,9 @@ class LrnappStudioSubmissionEditbar extends LitElement {
   }
   render() {
     return html`
-      <paper-tooltip position="top" animation-delay="0" offset="-20">
+      <simple-tooltip position="top" animation-delay="0" offset="-20">
         <slot name="lrnapp-studio-submission-editbar-message"></slot>
-      </paper-tooltip>
+      </simple-tooltip>
       <slot></slot>
     `;
   }

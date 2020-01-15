@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/device-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./editable-table-iconset.js";
 
 /**
@@ -98,8 +98,8 @@ class EditableTableEditorToggle extends PolymerElement {
         <span class="sr-only">[[label]]</span>
         <iron-icon icon$="[[icon]]" aria-hidden="true"></iron-icon>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button" aria-hidden
-        >[[label]]</paper-tooltip
+      <simple-tooltip id="tooltip" for="button" aria-hidden
+        >[[label]]</simple-tooltip
       >
     `;
   }

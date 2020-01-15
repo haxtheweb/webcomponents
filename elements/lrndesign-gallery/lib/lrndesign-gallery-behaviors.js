@@ -8,7 +8,7 @@ import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsi
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lrndesign-gallery-shared-styles.js";
 
 /**

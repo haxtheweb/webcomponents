@@ -1,7 +1,7 @@
 import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
   constructor(delayRender = false) {
@@ -82,7 +82,7 @@ class SimpleCameraSnap extends HTMLElement {
     </simple-login-avatar>
     <div class="buttons">
       <paper-icon-button id="snap" icon="image:camera-alt"></paper-icon-button>
-      <paper-tooltip for="snap">Take Photo</paper-tooltip>
+      <simple-tooltip for="snap">Take Photo</simple-tooltip>
     </div>
     `;
   }

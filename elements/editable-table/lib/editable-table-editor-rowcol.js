@@ -7,7 +7,7 @@ import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
 
@@ -98,7 +98,9 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           </paper-item>
         </paper-listbox>
       </paper-menu-button>
-      <paper-tooltip for="menu">[[_getType(row)]] [[label]] Menu</paper-tooltip>
+      <simple-tooltip for="menu"
+        >[[_getType(row)]] [[label]] Menu</simple-tooltip
+      >
     `;
   }
   static get tag() {

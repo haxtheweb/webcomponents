@@ -30,8 +30,8 @@ class LrnsysDialogToolbarButton extends LitElement {
       >
         <iron-icon icon="${this.icon}"></iron-icon> ${this.title}
       </paper-button>
-      <paper-tooltip for="${this.id}" animation-delay="0"
-        >${this.title}</paper-tooltip
+      <simple-tooltip for="${this.id}" animation-delay="0"
+        >${this.title}</simple-tooltip
       >
     `;
   }
@@ -46,7 +46,7 @@ class LrnsysDialogToolbarButton extends LitElement {
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**
    * LitElement / popular convention
