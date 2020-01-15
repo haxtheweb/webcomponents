@@ -728,11 +728,8 @@ class A11yMediaPlayer extends SimpleColors {
           min="${0}"
           max="${this.duration}"
           secondary-progress="${this.buffered}"
-          @mousedown="${this._handleSliderStart}"
-          @mouseup="${this._handleSliderStop}"
-          @keyup="${this._handleSliderStop}"
-          @keydown="${this._handleSliderStart}"
-          @blur="${this._handleSliderStop}"
+          @immediate-value-changed="${this._handleSliderChanged}"
+          @focused-changed="${this._handleSliderChanged}"
           .value="${this.__currentTime}"
           ?disabled="${this.disableSeek || this.duration === 0}"
         >
@@ -1620,7 +1617,6 @@ class A11yMediaPlayer extends SimpleColors {
     this.stackedLayout = false;
     this.sticky = false;
     this.stickyCorner = "top-right";
-    this.thumbnailSrc = null;
     this.tracks = [];
     this.volume = 70;
     this.width = null;
@@ -2097,8 +2093,13 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} media duration in seconds
    */
   get currentTime() {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
     let currentTime =
-      this.__seeking === true
+      slider &&
+      !slider.disabled &&
+      (slider.focused || slider.dragging || slider.pointerDown)
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -3066,21 +3067,16 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    * @param {event} e slider start event
    */
-  _handleSliderStart(e) {
-    this.__resumePlaying = this.__playing;
-    this.pause();
-    this.__seeking = true;
-  }
-
-  /**
-   * handles duration slider dragging with a mouse
-   */
-  _handleSliderStop(e) {
-    this.seek(e.path[4].immediateValue);
-    this.__seeking = false;
-    if (this.__resumePlaying) {
-      this.play();
-      this.__resumePlaying = false;
+  _handleSliderChanged(e) {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    if (
+      slider &&
+      !slider.disabled &&
+      (slider.focused || slider.dragging || slider.pointerDown)
+    ) {
+      this.seek(slider.immediateValue);
     }
   }
 
