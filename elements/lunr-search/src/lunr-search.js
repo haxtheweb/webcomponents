@@ -3,25 +3,25 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lunr-search`
- * @customElement lunr-search
  * `LunrJS search element`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement lunr-search
  */
-class LunrSearch extends PolymerElement {
+class LunrSearch extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
+    this.method = "GET";
+    this.noStopWords = false;
+    this.fields = [];
+    this.limit = 500;
+    this.minScore = 0;
+    this.log = false;
     const basePath = this.pathFromUrl(import.meta.url);
     const location = `${basePath}../../lunr/lunr.js`;
     window.addEventListener(
@@ -36,6 +36,43 @@ class LunrSearch extends PolymerElement {
     ) {
       this.__lunrLoaded = true;
     }
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let notifiedProps = ["data", "search", "results", "noStopWords"];
+      if (notifiedProps.includes(propName)) {
+        // notify
+        let eventName = `${propName
+          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+          .toLowerCase()}-changed`;
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+      if (["data", "search", "index", "minScore", "limit"].includes(propName)) {
+        this.results = this.searched(
+          this.data,
+          this.search,
+          this.index,
+          this.minScore,
+          this.limit
+        );
+      }
+      if (
+        ["data", "fields", "noStopWords", "__lunrLoaded"].includes(propName)
+      ) {
+        this.index = this.searched(
+          this.data,
+          this.fields,
+          this.noStopWords,
+          this.__lunrLoaded
+        );
+      }
+    });
   }
   // simple path from a url modifier
   pathFromUrl(url) {
@@ -60,8 +97,7 @@ class LunrSearch extends PolymerElement {
     return "lunr-search";
   }
   _dataResponse(e) {
-    this.set("data", e.detail.response);
-    this.notifyPath("data.*");
+    this.data = [...e.detail.response];
   }
   /**
     Filters your input data
