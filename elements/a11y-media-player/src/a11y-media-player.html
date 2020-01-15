@@ -43,11 +43,8 @@
     min="${0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
-    @mousedown="${this._handleSliderStart}"
-    @mouseup="${this._handleSliderStop}"
-    @keyup="${this._handleSliderStop}"
-    @keydown="${this._handleSliderStart}"
-    @blur="${this._handleSliderStop}"
+    @immediate-value-changed="${this._handleSliderChanged}"
+    @focused-changed="${this._handleSliderChanged}"
     .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >

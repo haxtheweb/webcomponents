@@ -321,6 +321,12 @@
     "type": "Number"
   },
   /**
+   * the index of the selected closed captions
+   */
+  "__captionsOption": {
+    "type": "Number"
+  },
+  /**
    * array of cues provided to readOnly `get cues`
    */
   "__cues": {
@@ -339,9 +345,21 @@
     "type": "Boolean"
   },
   /**
+   * temporarily duration in seconds until fully loaded
+   */
+  "__preloadedDuration": {
+    "type": "Number"
+  },
+  /**
    * Has screenfull loaded?
    */
   "__screenfullLoaded": {
     "type": "Boolean"
+  },
+  /**
+   * the index of the selected transcript
+   */
+  "__transcriptOption": {
+    "type": "Number"
   }
 }
