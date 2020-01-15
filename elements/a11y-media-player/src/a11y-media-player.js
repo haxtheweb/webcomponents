@@ -47,7 +47,6 @@ class A11yMediaPlayer extends SimpleColors {
     this.autoplay = false;
     this.allowConcurrent = false;
     this.cc = false;
-    this.__currentTime = 0;
     this.darkTranscript = false;
     this.disableFullscreen = false;
     this.disableInteractive = false;
@@ -83,13 +82,17 @@ class A11yMediaPlayer extends SimpleColors {
     this.width = null;
     this.youtubeId = null;
     this.__cues = [];
+    this.__currentTime = 0;
     this.__captionsOption = -1;
     this.__loadedTracks = null;
     this.__playing = false;
-    this.__seeking = false;
     this.__screenfullLoaded = false;
-    this.__resumePlaying = false;
     this.__transcriptOption = -1;
+    this.querySelectorAll("video,audio").forEach(html5 => {
+      html5.addEventListener("loadedmetadata", e => {
+        this.__preloadedDuration = html5.duration;
+      });
+    });
 
     window.A11yMediaStateManager.requestAvailability();
     import("./lib/a11y-media-youtube.js");
@@ -213,6 +216,8 @@ class A11yMediaPlayer extends SimpleColors {
     let duration =
       this.media && this.media.duration && this.media.duration > 0
         ? this.media.duration
+        : this.__preloadedDuration
+        ? this.__preloadedDuration
         : 0;
     return duration;
   }
@@ -400,7 +405,8 @@ class A11yMediaPlayer extends SimpleColors {
         label: "Volume"
       },
       youTubeLoading: {
-        label: "Ready."
+        label: "Loading...",
+        startLoading: "Press play."
       },
       youTubeTranscript: {
         label: "Transcript will load once media plays."
@@ -602,9 +608,11 @@ class A11yMediaPlayer extends SimpleColors {
             this.duration
           )}
         `
-      : this.isYoutube
+      : !this.isYoutube
+      ? this._getLocal(this.localization, "loading", "label")
+      : this.__playing
       ? this._getLocal(this.localization, "youTubeLoading", "label")
-      : this._getLocal(this.localization, "loading", "label");
+      : this._getLocal(this.localization, "youTubeLoading", "startLoading");
   }
 
   /**
@@ -1061,10 +1069,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   rewind(amt) {
     amt = amt !== undefined ? amt : this.duration / 20;
-    this.__resumePlaying = this.__playing;
     this.seek(this.currentTime - amt, 0);
-    if (this.__resumePlaying) this.play();
-    this.__resumePlaying = false;
     /**
      * Fires when media moves backward
      * @event backward
@@ -1085,10 +1090,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   forward(amt) {
     amt = amt !== undefined ? amt : this.duration / 20;
-    this.__resumePlaying = this.__playing;
     this.seek(this.currentTime + amt);
-    if (this.__resumePlaying) this.play();
-    this.__resumePlaying = false;
     /**
      * Fires when media moves forward
      * @event forward
@@ -1463,8 +1465,6 @@ class A11yMediaPlayer extends SimpleColors {
       this.shadowRoot.querySelector("#link").close
     )
       this.shadowRoot.querySelector("#link").close();
-    if (this.__resumePlaying) this.play();
-    this.__resumePlaying = false;
   }
 
   /**
@@ -1472,8 +1472,7 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCopyLink() {
     let el = document.createElement("textarea");
-    this.__resumePlaying = this.__playing;
-    this.pause;
+    this.pause();
     el.value = this.shareLink;
     document.body.appendChild(el);
     el.select();
@@ -1489,7 +1488,6 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _handleCueSeek(cue) {
     if (!this.standAlone) {
-      this.__resumePlaying = this.__playing;
       this.seek(cue.startTime);
     }
   }

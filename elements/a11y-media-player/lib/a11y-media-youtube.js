@@ -84,12 +84,6 @@ class A11yMediaYoutube extends LitElement {
         reflect: true
       },
       /**
-       * arrray of tracks
-       */
-      tracks: {
-        type: Array
-      },
-      /**
        * youTube's unique identifier for the video
        */
       videoId: {
@@ -97,7 +91,6 @@ class A11yMediaYoutube extends LitElement {
         attribute: "video-id",
         reflect: true
       },
-
       /**
        * volume between 0 and 100
        */
@@ -134,13 +127,13 @@ class A11yMediaYoutube extends LitElement {
     this.autoplay = false;
     this.height = "100%";
     this.loop = false;
+    this.playbackRate = 1;
     this.preload = "metadata";
     this.muted = false;
-    this.tracks = [];
+    this.volume = 0.7;
     this.width = "100%";
     this.__video = null;
     this.__yt = null;
-    this.volume = 0.7;
   }
   /**
    * single instance of YouTube iframe script
