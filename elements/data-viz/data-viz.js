@@ -2,8 +2,7 @@
  * Copyright 2019
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};
@@ -21,21 +20,15 @@ window.DataViz.requestAvailability = () => {
 
 /**
  * `data-viz`
- * @customElement data-viz
  * `display pouch-db data using graphs`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement data-viz
  */
-class DataViz extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class DataViz extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -43,36 +36,11 @@ class DataViz extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
-      <slot></slot>
-      <div>[[title]]</div>
-    `;
+      `
+    ];
   }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      ...super.properties,
-
-      title: {
-        name: "title",
-        type: String,
-        value: "data-viz-default-value",
-        reflectToAttribute: false,
-        observer: false
-      }
-    };
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "data-viz";
-  }
-
-  static get template() {
+  // render function
+  render() {
     return html`
       <chartist-render
         id="barChart"
@@ -85,6 +53,22 @@ class DataViz extends PolymerElement {
     `;
   }
 
+  // properties available to the custom element for data binding
+  static get properties() {
+    return { ...super.properties };
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "data-viz";
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/chartist-render/chartist-render.js");
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -113,8 +97,8 @@ class DataViz extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("show-data", this.showDataFunction.bind(this));
+    super.disconnectedCallback();
   }
   /**
    * Hide callback
