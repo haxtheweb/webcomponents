@@ -65,7 +65,7 @@ class LunrSearch extends LitElement {
       if (
         ["data", "fields", "noStopWords", "__lunrLoaded"].includes(propName)
       ) {
-        this.index = this.searched(
+        this.index = this._createIndex(
           this.data,
           this.fields,
           this.noStopWords,
