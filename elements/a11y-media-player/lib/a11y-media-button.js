@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
+import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-element/node_modules/lit-html/directives/if-defined.js";
+import { ifDefined } from "lit-html/directives/if-defined.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
