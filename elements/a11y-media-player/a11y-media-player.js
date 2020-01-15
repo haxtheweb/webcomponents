@@ -19,7 +19,6 @@ import "./lib/a11y-media-transcript-cue.js";
  *
  * @extends A11yMediaBehaviors
  * @extends SimpleColorsPolymer
- * @customElement
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo

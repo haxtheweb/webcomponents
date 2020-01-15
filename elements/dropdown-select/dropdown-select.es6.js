@@ -245,6 +245,14 @@ class DropdownSelect extends LitElement {
    */
   _onOpen() {
     this.opened = true;
+    this.dispatchEvent(
+      new CustomEvent("open", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
   /**
@@ -252,6 +260,14 @@ class DropdownSelect extends LitElement {
    */
   _onClose() {
     this.opened = false;
+    this.dispatchEvent(
+      new CustomEvent("close", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * updates value when dropdown-menu's selected item changes

@@ -14,6 +14,7 @@ class GlossaryTerm extends LitElement {
   //styles function
   static get styles() {
     return  [
+      
       css`
 :host {
   display: inline-block;

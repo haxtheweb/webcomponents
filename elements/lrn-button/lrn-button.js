@@ -15,7 +15,6 @@ class LrnButton extends LitElement {
   //styles function
   static get styles() {
     return [
-      materialCssStyles,
       css`
         :host {
           display: block;

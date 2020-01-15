@@ -21,6 +21,7 @@ class LearnTwoTheme extends HAXCMSLitElementTheme {
   //styles function
   static get styles() {
     return  [
+      
       css`
 :host {
   --__learn-two-theme-default-font-family: var(--learn-two-theme-default-font-family,"Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif");

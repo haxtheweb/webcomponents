@@ -3,18 +3,13 @@
   "tags": [
     {
       "name": "data-viz",
-      "description": "`data-viz`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`data-viz`\n`display pouch-db data using graphs`\n\n",
       "attributes": []
     },
     {
       "name": "data-viz",
-      "description": "`data-viz`\n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: data-viz-default-value"
-        }
-      ]
+      "description": "`data-viz`\n`display pouch-db data using graphs`\n\n",
+      "attributes": []
     },
     {
       "name": "tag",
@@ -22,7 +17,7 @@
     },
     {
       "name": "data-viz",
-      "description": "`data-viz`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`data-viz`\n`display pouch-db data using graphs`\n\n",
       "attributes": []
     }
   ],

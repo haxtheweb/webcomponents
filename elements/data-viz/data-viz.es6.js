@@ -2,8 +2,7 @@
  * Copyright 2019
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};
@@ -21,22 +20,17 @@ window.DataViz.requestAvailability = () => {
 
 /**
  * `data-viz`
- * @customElement data-viz
  * `display pouch-db data using graphs`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement data-viz
  */
-class DataViz extends PolymerElement {
+class DataViz extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      
+      css`
 :host {
   display: block;
 }
@@ -44,25 +38,26 @@ class DataViz extends PolymerElement {
 :host([hidden]) {
   display: none;
 }
-        </style>
-<slot></slot>
-<div>[[title]]</div>`;
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+<chartist-render
+id="barChart"
+type="bar"
+scale="ct-major-twelfth"
+chart-title="Quiz Distribution"
+chart-desc="A bar graph of quizzes completed by student"
+>
+</chartist-render>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
-  
-  ...super.properties,
-  
-  "title": {
-    "name": "title",
-    "type": String,
-    "value": "data-viz-default-value",
-    "reflectToAttribute": false,
-    "observer": false
-  }
-}
+    return {...super.properties}
 ;
   }
 
@@ -73,20 +68,10 @@ class DataViz extends PolymerElement {
   static get tag() {
     return "data-viz";
   }
-
-  static get template() {
-    return html`
-      <chartist-render
-        id="barChart"
-        type="bar"
-        scale="ct-major-twelfth"
-        chart-title="Quiz Distribution"
-        chart-desc="A bar graph of quizzes completed by student"
-      >
-      </chartist-render>
-    `;
+  constructor() {
+    super();
+    import("@lrnwebcomponents/chartist-render/chartist-render.js");
   }
-
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -115,8 +100,8 @@ class DataViz extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("show-data", this.showDataFunction.bind(this));
+    super.disconnectedCallback();
   }
   /**
    * Hide callback

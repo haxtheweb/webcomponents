@@ -202,13 +202,12 @@ class SimpleTooltip extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties
+      ...super.properties,
       /**
        * The id of the element that the tooltip is anchored to. This element
        * must be a sibling of the tooltip. If this property is not set,
        * then the tooltip will be centered to the parent node containing it.
-       */,
-      for: { type: String },
+       */ for: { type: String },
       /**
        * Set this to true if you want to manually control when the tooltip
        * is shown or hidden.
@@ -221,7 +220,10 @@ class SimpleTooltip extends LitElement {
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
        */
-      fitToVisibleBounds: { type: Boolean, attribute: "fit-to-visible-bounds" },
+      fitToVisibleBounds: {
+        type: Boolean,
+        attribute: "fit-to-visible-bounds"
+      },
       /**
        * The spacing between the top of the tooltip and the element it is
        * anchored to.

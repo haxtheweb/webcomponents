@@ -3,18 +3,239 @@
   "tags": [
     {
       "name": "simple-tooltip",
-      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api`"
+      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",
+      "properties": [
+        {
+          "name": "target",
+          "description": "Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.",
+          "type": "Node"
+        },
+        {
+          "name": "manualMode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "marginTop",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "animationEntry",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationExit",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationConfig",
+          "type": "object",
+          "default": "{\"entry\":[{\"name\":\"fade-in-animation\",\"timing\":{\"delay\":0}}],\"exit\":[{\"name\":\"fade-out-animation\"}]}"
+        }
+      ]
     },
     {
       "name": "simple-tooltip",
-      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api`"
+      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",
+      "attributes": [
+        {
+          "name": "for",
+          "type": "string"
+        },
+        {
+          "name": "animation-delay",
+          "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+          "type": "number"
+        },
+        {
+          "name": "manual-mode",
+          "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "fit-to-visible-bounds",
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "margin-top",
+          "description": "This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.",
+          "type": "number",
+          "default": "14",
+          "deprecatedMessage": "since version 1.0.3"
+        },
+        {
+          "name": "animation-entry",
+          "description": "The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animation-exit",
+          "description": "The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "for",
+          "attribute": "for",
+          "type": "string"
+        },
+        {
+          "name": "animationDelay",
+          "attribute": "animation-delay",
+          "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+          "type": "number"
+        },
+        {
+          "name": "target",
+          "description": "Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.",
+          "type": "Node"
+        },
+        {
+          "name": "manualMode",
+          "attribute": "manual-mode",
+          "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "position",
+          "attribute": "position",
+          "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "attribute": "fit-to-visible-bounds",
+          "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "attribute": "offset",
+          "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "marginTop",
+          "attribute": "margin-top",
+          "description": "This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.",
+          "type": "number",
+          "default": "14",
+          "deprecatedMessage": "since version 1.0.3"
+        },
+        {
+          "name": "animationEntry",
+          "attribute": "animation-entry",
+          "description": "The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationExit",
+          "attribute": "animation-exit",
+          "description": "The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationConfig",
+          "type": "object",
+          "default": "{\"entry\":[{\"name\":\"fade-in-animation\",\"timing\":{\"delay\":0}}],\"exit\":[{\"name\":\"fade-out-animation\"}]}"
+        }
+      ]
     },
     {
       "name": "tag"
     },
     {
       "name": "simple-tooltip",
-      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api`"
+      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`",
+      "properties": [
+        {
+          "name": "target",
+          "description": "Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.",
+          "type": "Node"
+        },
+        {
+          "name": "manualMode",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "default": "\"bottom\""
+        },
+        {
+          "name": "fitToVisibleBounds",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "name": "offset",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "marginTop",
+          "type": "number",
+          "default": "14"
+        },
+        {
+          "name": "animationEntry",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationExit",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "animationConfig",
+          "type": "object",
+          "default": "{\"entry\":[{\"name\":\"fade-in-animation\",\"timing\":{\"delay\":0}}],\"exit\":[{\"name\":\"fade-out-animation\"}]}"
+        }
+      ]
     }
   ]
 }

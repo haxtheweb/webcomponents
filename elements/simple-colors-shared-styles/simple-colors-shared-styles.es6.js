@@ -20,6 +20,7 @@ class SimpleColorsSharedStyles extends LitElement {
   //styles function 
   static get styles() {
     return  [
+      
       css`
 html {
   --simple-colors-default-theme-accent-1: #ffffff;
