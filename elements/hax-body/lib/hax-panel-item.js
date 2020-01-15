@@ -1,12 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/iron-icon/iron-icon.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-
 /**
  * `hax-panel-item`
  * @customElement hax-panel-item
@@ -156,14 +151,16 @@ class HAXPanelItem extends LitElement {
         :host([dark]) paper-button:hover {
           border: solid #0085ba 1px;
         }
-        paper-tooltip {
+        simple-tooltip {
           font-size: 16px;
-          --paper-tooltip-background: #000000;
-          --paper-tooltip-opacity: 1;
-          --paper-tooltip-text-color: #ffffff;
-          --paper-tooltip-delay-in: 0;
-          --paper-tooltip-duration-in: 200ms;
-          --paper-tooltip-duration-out: 0;
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-duration-in: 100ms;
+          --simple-tooltip-duration-out: 0;
+          --simple-tooltip-border-radius: 0;
+          --simple-tooltip-font-size: 14px;
         }
       `
     ];
@@ -173,24 +170,14 @@ class HAXPanelItem extends LitElement {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-tooltip {
-            --paper-tooltip: {
-              border-radius: 0;
-              font-size: 14px;
-            }
-          }
-        </style>
-      </custom-style>
       <paper-button raised id="button" .disabled="${this.disabled}">
         <div class="button-inner">
           <iron-icon icon="${this.icon}"></iron-icon>
         </div>
       </paper-button>
-      <paper-tooltip for="button" position="bottom" offset="10">
+      <simple-tooltip for="button" position="bottom" offset="10">
         ${this.label}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   /**

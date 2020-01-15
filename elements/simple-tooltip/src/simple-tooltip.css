@@ -1,0 +1,165 @@
+/* 
+  LIST SHARED STYLES BELOW
+
+*/
+  :host {
+    display: block;
+    position: absolute;
+    outline: none;
+    z-index: 1002;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
+
+  #tooltip {
+    display: block;
+    outline: none;
+    font-size: var(--simple-tooltip-font-size, 10px);
+    line-height: 1;
+    background-color: var(--simple-tooltip-background, #616161);
+    color: var(--simple-tooltip-text-color, white);
+    padding: 8px;
+    border-radius: var(--simple-tooltip-border-radius, 2px);
+    width: var(--simple-tooltip-width)
+  }
+
+  @keyframes keyFrameScaleUp {
+    0% {
+      transform: scale(0.0);
+    }
+    100% {
+      transform: scale(1.0);
+    }
+  }
+
+  @keyframes keyFrameScaleDown {
+    0% {
+      transform: scale(1.0);
+    }
+    100% {
+      transform: scale(0.0);
+    }
+  }
+
+  @keyframes keyFrameFadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+  }
+
+  @keyframes keyFrameFadeOutOpacity {
+    0% {
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes keyFrameSlideDownIn {
+    0% {
+      transform: translateY(-2000px);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+  }
+
+  @keyframes keyFrameSlideDownOut {
+    0% {
+      transform: translateY(0);
+      opacity: var(--simple-tooltip-opacity, 0.9);
+    }
+    10% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateY(-2000px);
+      opacity: 0;
+    }
+  }
+
+  .fade-in-animation {
+    opacity: 0;
+    animation-delay: var(--simple-tooltip-delay-in, 500ms);
+    animation-name: keyFrameFadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-in, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .fade-out-animation {
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 0ms);
+    animation-name: keyFrameFadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .scale-up-animation {
+    transform: scale(0);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-in, 500ms);
+    animation-name: keyFrameScaleUp;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-in, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .scale-down-animation {
+    transform: scale(1);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameScaleDown;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .slide-down-animation {
+    transform: translateY(-2000px);
+    opacity: 0;
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameSlideDownIn;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .slide-down-animation-out {
+    transform: translateY(0);
+    opacity: var(--simple-tooltip-opacity, 0.9);
+    animation-delay: var(--simple-tooltip-delay-out, 500ms);
+    animation-name: keyFrameSlideDownOut;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+    animation-duration: var(--simple-tooltip-duration-out, 500ms);
+    animation-fill-mode: forwards;
+  }
+
+  .cancel-animation {
+    animation-delay: -30s !important;
+  }
+
+  /* Thanks IE 10. */
+
+  .hidden {
+    display: none !important;
+  }

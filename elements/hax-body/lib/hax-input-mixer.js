@@ -76,7 +76,7 @@ class HaxInputMixer extends LitElement {
     import("@polymer/paper-input/paper-textarea.js");
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
   }
@@ -187,9 +187,9 @@ class HaxInputMixer extends LitElement {
               `
             : html``}
         </span>
-        <paper-tooltip for="input" position="top" offset="14">
+        <simple-tooltip for="input" position="top" offset="14">
           ${this.description}
-        </paper-tooltip>
+        </simple-tooltip>
         <hax-context-item
           id="updatebutton"
           icon="subdirectory-arrow-right"

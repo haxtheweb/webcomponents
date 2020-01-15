@@ -28,6 +28,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     super();
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-icons/iron-icons.js");
+    import("@lrnwebcomponents/simple-toolip/simple-tooltip.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
@@ -103,13 +104,11 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
             color: white;
           }
           --site-print-button-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+            --simple-tooltip-background: #000000;
+            --simple-tooltip-opacity: 1;
+            --simple-tooltip-text-color: #ffffff;
+            --simple-tooltip-delay-in: 0;
+            --simple-tooltip-border-radius: 0;
           }
         }
       </style>

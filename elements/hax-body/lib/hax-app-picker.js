@@ -1,9 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
  a decision to be made. This is used when multiple things match either on upload
@@ -116,17 +112,6 @@ class HaxAppPicker extends LitElement {
   }
   render() {
     return html`
-      <custom-style>
-        <style>
-          #dialog {
-            @apply --hax-app-picker-dialog;
-          }
-          #title {
-            @apply --paper-font-title;
-            @apply --hax-app-picker-dialog-title;
-          }
-        </style>
-      </custom-style>
       <paper-dialog id="dialog" ?opened="${this.opened}">
         <h3 id="title">${this.title}</h3>
         <div id="buttonlist">
