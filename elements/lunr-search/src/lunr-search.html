@@ -1,7 +1,7 @@
 <iron-ajax
   auto
-  url="[[dataSource]]"
-  method="[[method]]"
+  url="${this.dataSource}"
+  method="${this.method}"
   handle-as="json"
-  on-response="_dataResponse"
+  @response="${this._dataResponse}"
 ></iron-ajax>

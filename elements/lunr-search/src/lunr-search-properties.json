@@ -1,56 +1,43 @@
 {
   "dataSource": {
-    "name": "dataSource",
-    "type": String
+    "type": String,
+    "attribute": "data-source"
   },
   "data": {
-    "name": "data",
-    "type": Array,
-    "notify": true
+    "type": Array
   },
   "method": {
-    "name": "method",
-    "type": String,
-    "value": "GET"
+    "type": String
   },
   "search": {
-    "type": String,
-    "notify": true
+    "type": String
   },
   "results": {
-    "type": Array,
-    "computed": "searched(data, search, index, minScore, limit)",
-    "notify": true
+    "type": Array
   },
   "noStopWords": {
     "type": Boolean,
-    "value": false,
-    "notify": true
+    "attribute": "no-stop-words"
   },
   "fields": {
-    "type": Array,
-    "value": []
+    "type": Array
   },
   "indexNoStopWords": {
     "type": Object
   },
   "index": {
-    "type": Object,
-    "computed": "_createIndex(data, fields, noStopWords, __lunrLoaded)"
+    "type": Object
   },
   "__lunrLoaded": {
     "type": Boolean
   },
   "limit": {
-    "type": Number,
-    "value": 500
+    "type": Number
   },
   "minScore": {
-    "type": Number,
-    "value": 0
+    "type": Number
   },
   "log": {
-    "type": Boolean,
-    "value": false
+    "type": Boolean
   }
 }
