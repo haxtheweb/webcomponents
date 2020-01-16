@@ -7,7 +7,7 @@ import { LitElement, html } from "lit-element/lit-element.js";
 /**
  * `a11y-media-youtube`
  * uses YouTubeAPI to create and control an embedded YouTube video.
- * @customElement
+ * @customElement a11y-media-youtube
  */
 class A11yMediaYoutube extends LitElement {
   // properties available to the custom element for data binding
@@ -18,6 +18,18 @@ class A11yMediaYoutube extends LitElement {
    */
   static get tag() {
     return "a11y-media-youtube";
+  }
+
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+        iframe .ytp-pause-overlay {
+          display: none !important;
+        }
+      `
+    ];
   }
 
   //render function
@@ -296,7 +308,7 @@ class A11yMediaYoutube extends LitElement {
   seek(time = 0) {
     let root = this;
     if (this.__yt && this.__yt.seekTo) {
-      this.__yt.seekTo(time);
+      this.__yt.seekTo(time, true);
       if (this.paused) {
         let seekupdate = setInterval(() => {
           if (Math.abs(root.__yt.getCurrentTime() - time) < 1) {
@@ -441,7 +453,9 @@ class A11yMediaYoutube extends LitElement {
     div.setAttribute("id", divid);
 
     if (load) {
-      let setYT = e => (this.__video = e.target);
+      let setYT = e => (this.__video = e.target),
+        port = window.location.port ? `:${window.location.port}` : ``,
+        origin = `//${window.location.hostname}${port}`;
       youtube = new YT.Player(divid, {
         width: root.width,
         height: root.height,
@@ -452,7 +466,7 @@ class A11yMediaYoutube extends LitElement {
           autoplay: root.autoplay,
           disablekb: 1,
           enablejsapi: 1,
-          origin: window.location.hostname,
+          origin: origin,
           iv_load_policy: 3,
           modestbranding: 1,
           //todo research playsinline

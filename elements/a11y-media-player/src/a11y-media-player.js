@@ -2,8 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -17,8 +16,8 @@ import "./lib/a11y-media-transcript-cue.js";
  * `a11y-media-player`
  * an accessible video player
  *
- * @extends A11yMediaBehaviors
- * @extends SimpleColorsPolymer
+ * @customElement a11y-media-player
+ * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
@@ -1534,6 +1533,17 @@ class A11yMediaPlayer extends SimpleColors {
       !slider.disabled &&
       (slider.focused || slider.dragging || slider.pointerDown)
     ) {
+      if (this.isYoutube) {
+        if (this.__playing && slider.dragging) {
+          let startDrag = setInterval(() => {
+            if (!slider.dragging) {
+              this.play();
+              clearInterval(startDrag);
+            }
+          });
+          this.pause();
+        }
+      }
       this.seek(slider.immediateValue);
     }
   }

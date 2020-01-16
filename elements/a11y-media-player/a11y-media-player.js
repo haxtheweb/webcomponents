@@ -2,8 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -17,9 +16,8 @@ import "./lib/a11y-media-transcript-cue.js";
  * `a11y-media-player`
  * an accessible video player
  *
- * @extends A11yMediaBehaviors
- * @extends SimpleColorsPolymer
- * @customElement
+ * @customElement a11y-media-player
+ * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
@@ -658,7 +656,7 @@ class A11yMediaPlayer extends SimpleColors {
   // render function
   render() {
     return html`
-      <div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
+      <div class="sr-only" ?hidden="${!this.mediaCaption}">
         ${this.mediaCaption}
       </div>
       <div id="player-section">
@@ -684,41 +682,42 @@ class A11yMediaPlayer extends SimpleColors {
             <div id="html5">
               <slot></slot>
             </div>
-            <a11y-media-youtube
-              id="youtube-${this.id}"
-              class="${this.__currentTime > 0.3 || this.__seeking
-                ? ``
-                : `hidden`}"
-              lang="${this.mediaLang}"
-              preload="${this.t ? "auto" : this.preload}"
-              t="${ifDefined(this.t)}"
-              video-id="${ifDefined(this.videoId)}"
-              @timeupdate="${this._handleTimeUpdate}"
-              ?hidden=${!this.isYoutube}
-            >
-            </a11y-media-youtube>
-            <div
-              id="cc-custom"
-              aria-live="polite"
-              class="screen-only"
-              ?hidden="${!this.showCustomCaptions}"
-            >
-              <div
-                id="cc-text"
-                ?hidden="${Object.keys(this.captionCues || []).length === 0}"
-              >
-                ${!this.captionCues
-                  ? ``
-                  : Object.keys(this.captionCues).map(
-                      key =>
-                        html`
-                          ${this.captionCues[key].text
-                            ? this.captionCues[key].text
-                            : ""}
-                        `
-                    )}
-              </div>
-            </div>
+            ${!this.videoId
+              ? html``
+              : html`
+                  <a11y-media-youtube
+                    id="youtube-${this.id}"
+                    class="${this.__currentTime > 0.3 || this.__seeking
+                      ? ``
+                      : `hidden`}"
+                    lang="${this.mediaLang}"
+                    preload="${this.t ? "auto" : this.preload}"
+                    .t="${this.t}"
+                    video-id="${this.videoId}"
+                    @timeupdate="${this._handleTimeUpdate}"
+                    ?hidden=${!this.isYoutube}
+                  >
+                  </a11y-media-youtube>
+                `}
+            ${Object.keys(this.captionCues || []).length === 0 ||
+            !this.showCustomCaptions
+              ? html``
+              : html`
+                  <div id="cc-custom" aria-live="polite" class="screen-only">
+                    <div id="cc-text">
+                      ${!this.captionCues
+                        ? ``
+                        : Object.keys(this.captionCues).map(
+                            key =>
+                              html`
+                                ${this.captionCues[key].text
+                                  ? this.captionCues[key].text
+                                  : ""}
+                              `
+                          )}
+                    </div>
+                  </div>
+                `}
           </div>
         </div>
         <paper-slider
@@ -1052,11 +1051,15 @@ class A11yMediaPlayer extends SimpleColors {
         </div>
         <div class="print-only media-caption">${this.printCaption}</div>
       </div>
-      <img
-        id="print-thumbnail"
-        aria-hidden="true"
-        src="${ifDefined(this.poster)}"
-      />
+      ${this.poster
+        ? html`
+            <img
+              id="print-thumbnail"
+              aria-hidden="true"
+              .src="${this.poster}"
+            />
+          `
+        : ``}
       <div
         id="transcript-section"
         ?hidden="${this.standAlone || !this.hasCaptions || this.height}"
@@ -3092,6 +3095,17 @@ class A11yMediaPlayer extends SimpleColors {
       !slider.disabled &&
       (slider.focused || slider.dragging || slider.pointerDown)
     ) {
+      if (this.isYoutube) {
+        if (this.__playing && slider.dragging) {
+          let startDrag = setInterval(() => {
+            if (!slider.dragging) {
+              this.play();
+              clearInterval(startDrag);
+            }
+          });
+          this.pause();
+        }
+      }
       this.seek(slider.immediateValue);
     }
   }
