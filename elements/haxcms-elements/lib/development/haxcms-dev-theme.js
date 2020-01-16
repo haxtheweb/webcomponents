@@ -28,7 +28,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
     super();
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@lrnwebcomponents/simple-toolip/simple-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
