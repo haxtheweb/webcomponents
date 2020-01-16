@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./lib/a11y-tab.js";/**
+ */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/simple-tooltip/simple-tooltip.js";import"./lib/a11y-tab.js";/**
  * `a11y-tabs`
  * @customElement a11y-tabs
  * an accessible and responsive tabbed interface
@@ -143,7 +143,7 @@ static get styles(){return[css`
 :host #tabs.icons-only span.label {
   display:none;
 }
-:host #tabs:not(.icons-only) paper-tooltip {
+:host #tabs:not(.icons-only) simple-tooltip {
   display:none;
 }
       `]}// render function
@@ -175,7 +175,7 @@ render(){return html`
           .icon="${tab.icon}">
         </iron-icon>
       </paper-button>
-      <paper-tooltip for="${tab.id}-button">${tab.label}</paper-tooltip>
+      <simple-tooltip for="${tab.id}-button">${tab.label}</simple-tooltip>
     </li>
   `)}
 </ul>

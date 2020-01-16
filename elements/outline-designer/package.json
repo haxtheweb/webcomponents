@@ -56,7 +56,7 @@
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-progress": "^3.0.1",
-    "@polymer/paper-tooltip": "^3.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^2.4.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

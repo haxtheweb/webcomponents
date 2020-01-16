@@ -127,7 +127,7 @@ class CsvRender extends SimpleColors {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   /**
    * LitElement life cycle - property changed
@@ -164,8 +164,8 @@ class CsvRender extends SimpleColors {
           ><iron-icon icon="file-download"></iron-icon
         ></paper-button>
       </a>
-      <paper-tooltip for="download" animation-delay="200" offset="14"
-        >Download table data</paper-tooltip
+      <simple-tooltip for="download" animation-delay="200" offset="14"
+        >Download table data</simple-tooltip
       >
       <table class="table" summary="${this.summary}">
         ${this.caption

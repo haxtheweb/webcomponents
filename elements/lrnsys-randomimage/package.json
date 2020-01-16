@@ -44,7 +44,7 @@
     "@lrnwebcomponents/random-image": "^2.4.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/paper-tooltip": "^3.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^2.4.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

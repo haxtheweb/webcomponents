@@ -23,7 +23,7 @@ class LrnsysComment extends PolymerElement {
   constructor() {
     super();
     import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/marked-element/marked-element.js");
     import("@polymer/paper-badge/paper-badge.js");
     import("@lrnwebcomponents/moment-element/moment-element.js");
@@ -201,11 +201,11 @@ class LrnsysComment extends PolymerElement {
               src="[[comment.relationships.author.data.avatar]]"
               class="float-left ferpa-protect"
             ></lrndesign-avatar>
-            <paper-tooltip
+            <simple-tooltip
               for="avatar"
               animation-delay="0"
               class="ferpa-protect"
-              >[[displayName]]</paper-tooltip
+              >[[displayName]]</simple-tooltip
             >
             <template
               is="dom-if"

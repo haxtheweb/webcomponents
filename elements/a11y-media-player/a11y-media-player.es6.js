@@ -453,7 +453,7 @@ paper-icon-button {
 }
 paper-menu-button:not(:defined) paper-listbox, 
 paper-listbox:not(:defined), 
-paper-tooltip:not(:defined), 
+simple-tooltip:not(:defined), 
 paper-toast:not(:defined) {
   display: none;
 }
@@ -764,9 +764,9 @@ paper-toast:not(:defined) {
           slot="dropdown-trigger"
         >
         </paper-icon-button>
-        <paper-tooltip for="settings-button">
+        <simple-tooltip for="settings-button">
           ${this._getLocal(this.localization,'settings','label')}
-        </paper-tooltip>
+        </simple-tooltip>
 
         <paper-listbox id="settingslist" slot="dropdown-content">
           <paper-item ?hidden="${!this.hasCaptions}">
@@ -1456,7 +1456,7 @@ paper-toast:not(:defined) {
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/paper-menu-button/paper-menu-button.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);

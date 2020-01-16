@@ -57,7 +57,7 @@
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
-    "@polymer/paper-tooltip": "^3.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^2.4.0",
     "@polymer/polymer": "^3.3.1",
     "juicy-html": "^2.0.0",
     "openseadragon": "^2.4.0",

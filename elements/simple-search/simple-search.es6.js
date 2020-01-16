@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
@@ -133,7 +133,7 @@ button:not([controls]) {
     >
       <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
     </button>
-    <paper-tooltip for="prev">${this.prevButtonLabel}</paper-tooltip>
+    <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
     <button
       id="next"
       aria-label="${this.nextButtonLabel}"
@@ -145,7 +145,7 @@ button:not([controls]) {
     >
       <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
     </button>
-    <paper-tooltip for="next">${this.nextButtonLabel}</paper-tooltip>
+    <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
   </div>`;
   }
 

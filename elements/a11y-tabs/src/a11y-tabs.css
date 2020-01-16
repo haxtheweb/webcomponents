@@ -121,6 +121,6 @@
 :host #tabs.icons-only span.label {
   display:none;
 }
-:host #tabs:not(.icons-only) paper-tooltip {
+:host #tabs:not(.icons-only) simple-tooltip {
   display:none;
 }

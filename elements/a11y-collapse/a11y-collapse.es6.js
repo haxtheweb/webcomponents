@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `a11y-collapse`
  * @customElement a11y-collapse
@@ -488,12 +488,12 @@ class A11yCollapse extends LitElement {
         >
         </iron-icon>
       </div>
-      <paper-tooltip for="heading"
+      <simple-tooltip for="heading"
         >${this._getExpanded(
           this.tooltip,
           this.tooltipExpanded,
           this.expanded
-        )}</paper-tooltip
+        )}</simple-tooltip
       >
     `;
   }
@@ -524,12 +524,12 @@ class A11yCollapse extends LitElement {
           aria-expanded="${this.expanded ? "true" : "false"}"
         >
         </paper-icon-button>
-        <paper-tooltip for="expand"
+        <simple-tooltip for="expand"
           >${this._getExpanded(
             this.tooltip,
             this.tooltipExpanded,
             this.expanded
-          )}</paper-tooltip
+          )}</simple-tooltip
         >
       </div>
     `;

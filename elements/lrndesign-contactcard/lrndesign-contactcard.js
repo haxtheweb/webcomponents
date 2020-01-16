@@ -14,7 +14,7 @@ class LrndesignContactcard extends PolymerElement {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/social-media-icons/social-media-icons.js");
   }
   static get template() {
@@ -154,7 +154,9 @@ class LrndesignContactcard extends PolymerElement {
                   <iron-icon icon="mail" class="mail_icon"></iron-icon>
                 </paper-button>
               </a>
-              <paper-tooltip for="mail" position="bottom">Email</paper-tooltip>
+              <simple-tooltip for="mail" position="bottom"
+                >Email</simple-tooltip
+              >
             </template>
             <template is="dom-if" if="[[phone]]">
               <a tabindex="-1" href\$="tel:[[phone]]">
@@ -165,7 +167,9 @@ class LrndesignContactcard extends PolymerElement {
                   ></iron-icon>
                 </paper-button>
               </a>
-              <paper-tooltip for="phone" position="bottom">Call</paper-tooltip>
+              <simple-tooltip for="phone" position="bottom"
+                >Call</simple-tooltip
+              >
             </template>
             <template is="dom-if" if="[[website]]">
               <a tabindex="-1" href\$="[[website]]">
@@ -176,8 +180,8 @@ class LrndesignContactcard extends PolymerElement {
                   ></iron-icon>
                 </paper-button>
               </a>
-              <paper-tooltip for="website" position="bottom"
-                >Visit</paper-tooltip
+              <simple-tooltip for="website" position="bottom"
+                >Visit</simple-tooltip
               >
             </template>
             <template is="dom-if" if="[[twitter]]">
@@ -191,8 +195,8 @@ class LrndesignContactcard extends PolymerElement {
                   ></social-media-icons>
                 </paper-button>
               </a>
-              <paper-tooltip for="twitter" position="bottom"
-                >Connect</paper-tooltip
+              <simple-tooltip for="twitter" position="bottom"
+                >Connect</simple-tooltip
               >
             </template>
           </div>

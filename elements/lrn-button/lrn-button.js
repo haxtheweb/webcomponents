@@ -114,8 +114,8 @@ class LrnButton extends LitElement {
           </div>
         </paper-button>
       </a>
-      <paper-tooltip for="lrnsys-button-link" animation-delay="0"
-        >${this.alt}</paper-tooltip
+      <simple-tooltip for="lrnsys-button-link" animation-delay="0"
+        >${this.alt}</simple-tooltip
       >
     `;
   }
@@ -241,7 +241,7 @@ class LrnButton extends LitElement {
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
       import("@polymer/paper-button/paper-button.js");
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icon/iron-icon.js");
     }, 0);

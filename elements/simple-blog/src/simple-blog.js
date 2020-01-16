@@ -111,13 +111,13 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             icon="icons:arrow-back"
             @click="${this._goBack}"
           ></paper-icon-button>
-          <paper-tooltip
+          <simple-tooltip
             for="backbutton"
             position="right"
             offset="14"
             animation-delay="0"
             >Back to listing
-          </paper-tooltip>
+          </simple-tooltip>
           <simple-blog-post ?edit-mode="${this.editMode}"
             ><slot></slot
           ></simple-blog-post>

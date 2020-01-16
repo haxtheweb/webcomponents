@@ -1019,6 +1019,103 @@
       ]
     },
     {
+      "name": "site-active-fields",
+      "description": "`site-active-fields`\n`Title of the active page in the site`\n\nEvents:\n\n  * `fields-changed` - \n\nAttributes:\n\n  * `fields` - \n\nProperties:\n\n  * `fields` - ",
+      "attributes": [
+        {
+          "name": "fields",
+          "description": "`fields` - \n\nProperty: fields"
+        },
+        {
+          "name": "onfields-changed",
+          "description": "`fields-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "site-active-title",
+      "description": "`site-active-title`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `noFallback` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "dynamicMethodology",
+          "description": "`dynamicMethodology` {`string`} - \n\nProperty: dynamicMethodology\n\nDefault: active"
+        },
+        {
+          "name": "__title",
+          "description": "`__title` {`string`} - \n\nProperty: __title\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "site-git-corner",
+      "description": "Attributes:\n\n  * `alt` {`string`} - \n\n  * `direction` {`string`} - \n\n  * `active-git-file-link` {`string`} - \n\nProperties:\n\n  * `alt` {`string`} - \n\n  * `direction` {`string`} - \n\n  * `activeGitFileLink` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: See page source"
+        },
+        {
+          "name": "direction",
+          "description": "`direction` {`string`} - \n\nProperty: direction\n\nDefault: right"
+        },
+        {
+          "name": "active-git-file-link",
+          "description": "`active-git-file-link` {`string`} - \n\nProperty: activeGitFileLink\n\nDefault: "
+        }
+      ]
+    },
+    {
+      "name": "site-render-item",
+      "description": "`site-render-item`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `render` {`boolean`} - \n\n  * `item-id` {`string`} - \n\n  * `location` {`string`} - \n\n  * `item-content` {`string`} - item content\n\nProperties:\n\n  * `render` {`boolean`} - \n\n  * `itemId` {`string`} - \n\n  * `location` {`string`} - \n\n  * `itemContent` {`string`} - item content\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "attributes": [
+        {
+          "name": "render",
+          "description": "`render` {`boolean`} - \n\nProperty: render\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "item-id",
+          "description": "`item-id` {`string`} - \n\nProperty: itemId"
+        },
+        {
+          "name": "location",
+          "description": "`location` {`string`} - \n\nProperty: location"
+        },
+        {
+          "name": "item-content",
+          "description": "`item-content` {`string`} - item content\n\nProperty: itemContent"
+        }
+      ]
+    },
+    {
+      "name": "site-share-widget",
+      "description": "Attributes:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeGitFileLink` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "activeItem",
+          "description": "`activeItem` - \n\nProperty: activeItem"
+        },
+        {
+          "name": "show",
+          "description": "`show` {`boolean`} - \n\nProperty: show",
+          "valueSet": "v"
+        },
+        {
+          "name": "alt",
+          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: Share page"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: social:share"
+        }
+      ]
+    },
+    {
       "name": "site-children-block",
       "description": "`site-children-block`\n`Child pages of whatever is active`\n\nAttributes:\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are direct, above, or root\n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noink` {`boolean`} - to control ink on the buttons\n\n  * `__items` {`any[]`} - just to bind data between things\n\n  * `active-id` {`string`} - acitvely selected item\n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are direct, above, or root\n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noink` {`boolean`} - to control ink on the buttons\n\n  * `__items` {`any[]`} - just to bind data between things\n\n  * `activeId` {`string`} - acitvely selected item\n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` {`never[]`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
@@ -1132,167 +1229,6 @@
         {
           "name": "active-id",
           "description": "`active-id` {`string`} - acitvely selected item\n\nProperty: activeId"
-        }
-      ]
-    },
-    {
-      "name": "site-active-fields",
-      "description": "`site-active-fields`\n`Title of the active page in the site`\n\nEvents:\n\n  * `fields-changed` - \n\nAttributes:\n\n  * `fields` - \n\nProperties:\n\n  * `fields` - ",
-      "attributes": [
-        {
-          "name": "fields",
-          "description": "`fields` - \n\nProperty: fields"
-        },
-        {
-          "name": "onfields-changed",
-          "description": "`fields-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "site-active-title",
-      "description": "`site-active-title`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `edit-mode` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - \n\n  * `noFallback` {`boolean`} - \n\n  * `dynamicMethodology` {`string`} - \n\n  * `__title` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "dynamicMethodology",
-          "description": "`dynamicMethodology` {`string`} - \n\nProperty: dynamicMethodology\n\nDefault: active"
-        },
-        {
-          "name": "__title",
-          "description": "`__title` {`string`} - \n\nProperty: __title\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "site-git-corner",
-      "description": "Attributes:\n\n  * `alt` {`string`} - \n\n  * `direction` {`string`} - \n\n  * `active-git-file-link` {`string`} - \n\nProperties:\n\n  * `alt` {`string`} - \n\n  * `direction` {`string`} - \n\n  * `activeGitFileLink` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: See page source"
-        },
-        {
-          "name": "direction",
-          "description": "`direction` {`string`} - \n\nProperty: direction\n\nDefault: right"
-        },
-        {
-          "name": "active-git-file-link",
-          "description": "`active-git-file-link` {`string`} - \n\nProperty: activeGitFileLink\n\nDefault: "
-        }
-      ]
-    },
-    {
-      "name": "site-render-item",
-      "description": "`site-render-item`\n`Title of the active page in the site`\n\nAttributes:\n\n  * `render` {`boolean`} - \n\n  * `item-id` {`string`} - \n\n  * `location` {`string`} - \n\n  * `item-content` {`string`} - item content\n\nProperties:\n\n  * `render` {`boolean`} - \n\n  * `itemId` {`string`} - \n\n  * `location` {`string`} - \n\n  * `itemContent` {`string`} - item content\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
-        {
-          "name": "render",
-          "description": "`render` {`boolean`} - \n\nProperty: render\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - \n\nProperty: itemId"
-        },
-        {
-          "name": "location",
-          "description": "`location` {`string`} - \n\nProperty: location"
-        },
-        {
-          "name": "item-content",
-          "description": "`item-content` {`string`} - item content\n\nProperty: itemContent"
-        }
-      ]
-    },
-    {
-      "name": "site-share-widget",
-      "description": "Attributes:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `activeItem` - \n\n  * `show` {`boolean`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeGitFileLink` {`string`} - \n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "activeItem",
-          "description": "`activeItem` - \n\nProperty: activeItem"
-        },
-        {
-          "name": "show",
-          "description": "`show` {`boolean`} - \n\nProperty: show",
-          "valueSet": "v"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: Share page"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: social:share"
-        }
-      ]
-    },
-    {
-      "name": "site-drawer",
-      "description": "`site-drawer`\n`Basic off canvas drawer element`\n\nAttributes:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - ",
-      "attributes": [
-        {
-          "name": "align",
-          "description": "`align` {`string`} - \n\nProperty: align\n\nDefault: right"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: menu"
-        }
-      ]
-    },
-    {
-      "name": "site-footer",
-      "description": "`site-footer`\n`A basic site footer`\n\nAttributes:\n\n  * `site-title` {`string`} - \n\n  * `manifest` - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `siteTitle` {`string`} - \n\n  * `manifest` - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` {`never[]`} - ",
-      "attributes": [
-        {
-          "name": "site-title",
-          "description": "`site-title` {`string`} - \n\nProperty: siteTitle"
-        },
-        {
-          "name": "manifest",
-          "description": "`manifest` - \n\nProperty: manifest"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "site-modal",
-      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Dialog"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:menu"
-        },
-        {
-          "name": "button-label",
-          "description": "`button-label` {`string`} - \n\nProperty: buttonLabel\n\nDefault: Open dialog"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: bottom"
-        },
-        {
-          "name": "onsite-modal-click",
-          "description": "`site-modal-click` - "
         }
       ]
     },
@@ -1451,6 +1387,70 @@
         {
           "name": "onresult-changed",
           "description": "`result-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "site-drawer",
+      "description": "`site-drawer`\n`Basic off canvas drawer element`\n\nAttributes:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - ",
+      "attributes": [
+        {
+          "name": "align",
+          "description": "`align` {`string`} - \n\nProperty: align\n\nDefault: right"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: menu"
+        }
+      ]
+    },
+    {
+      "name": "site-footer",
+      "description": "`site-footer`\n`A basic site footer`\n\nAttributes:\n\n  * `site-title` {`string`} - \n\n  * `manifest` - \n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `siteTitle` {`string`} - \n\n  * `manifest` - \n\n  * `editMode` {`boolean`} - \n\n  * `__disposer` {`never[]`} - ",
+      "attributes": [
+        {
+          "name": "site-title",
+          "description": "`site-title` {`string`} - \n\nProperty: siteTitle"
+        },
+        {
+          "name": "manifest",
+          "description": "`manifest` - \n\nProperty: manifest"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
+          "valueSet": "v"
+        }
+      ]
+    },
+    {
+      "name": "site-modal",
+      "description": "`site-modal`\n`A basic site dialog`\n\nEvents:\n\n  * `site-modal-click` - \n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `button-label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `buttonLabel` {`string`} - \n\n  * `position` {`string`} - ",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "valueSet": "v"
+        },
+        {
+          "name": "title",
+          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Dialog"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:menu"
+        },
+        {
+          "name": "button-label",
+          "description": "`button-label` {`string`} - \n\nProperty: buttonLabel\n\nDefault: Open dialog"
+        },
+        {
+          "name": "position",
+          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: bottom"
+        },
+        {
+          "name": "onsite-modal-click",
+          "description": "`site-modal-click` - "
         }
       ]
     },

@@ -105,7 +105,7 @@ class A11yMediaPlayer extends SimpleColors {
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/paper-menu-button/paper-menu-button.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
