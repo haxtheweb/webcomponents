@@ -10,7 +10,9 @@
     "groups": ["Block"],
     "handles": [
       {
-        "type": "todo:read-the-docs-for-usage"
+        "type": "markdown",
+        "source": "source",
+        "src": "source"
       }
     ],
     "meta": {

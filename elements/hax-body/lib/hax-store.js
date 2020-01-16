@@ -962,6 +962,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "image",
       "csv",
       "doc",
+      "archive",
+      "markdown",
+      "html",
       "content",
       "text",
       "inline",
@@ -2386,6 +2389,28 @@ window.HaxStore.guessGizmoType = guess => {
       return "svg";
     } else if (guess.source.indexOf(".csv") != -1) {
       return "csv";
+    } else if (guess.source.indexOf(".md") != -1) {
+      return "markdown";
+    } else if (
+      guess.source.indexOf(".html") != -1 ||
+      guess.source.indexOf(".htm") != -1
+    ) {
+      return "html";
+    } else if (
+      guess.source.indexOf(".txt") != -1 ||
+      guess.source.indexOf(".doc") != -1 ||
+      guess.source.indexOf(".docx") != -1 ||
+      guess.source.indexOf(".xls") != -1 ||
+      guess.source.indexOf(".xlsx") != -1 ||
+      guess.source.indexOf(".ppt") != -1
+    ) {
+      return "document";
+    } else if (
+      guess.source.indexOf(".zip") != -1 ||
+      guess.source.indexOf(".tar.gz") != -1 ||
+      guess.source.indexOf(".tar") != -1
+    ) {
+      return "archive";
     }
     // if it's external we can't assume what it actually is
     else if (
