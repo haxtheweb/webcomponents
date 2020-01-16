@@ -65,10 +65,8 @@ window.MediaBehaviors.Video = {
         return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
       }
       // copy and paste from the URL
-      else if (input.indexOf("youtube-no-cookie.com/embed") != -1) {
-        return (
-          input.replace("youtube-no-cookie.com/embed", "youtube.com/embed/") + v
-        );
+      else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+        return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
       }
       // weird share-ly style version
       else if (input.indexOf("youtu.be") != -1) {
@@ -182,11 +180,8 @@ export const MediaBehaviorsVideo = function(SuperClass) {
           return input.replace("youtube.com/watch", "youtube.com/embed/") + v;
         }
         // copy and paste from the URL
-        else if (input.indexOf("youtube-no-cookie.com/embed") != -1) {
-          return (
-            input.replace("youtube-no-cookie.com/embed", "youtube.com/embed/") +
-            v
-          );
+        else if (input.indexOf("youtube-no-cookie.com/") != -1) {
+          return input.replace("youtube-no-cookie.com/", "youtube.com/") + v;
         }
         // weird share-ly style version
         else if (input.indexOf("youtu.be") != -1) {
