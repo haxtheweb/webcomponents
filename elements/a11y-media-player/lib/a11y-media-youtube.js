@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `a11y-media-youtube`
@@ -23,7 +23,6 @@ class A11yMediaYoutube extends LitElement {
   //styles function
   static get styles() {
     return [
-      ...super.styles,
       css`
         iframe .ytp-pause-overlay {
           display: none !important;

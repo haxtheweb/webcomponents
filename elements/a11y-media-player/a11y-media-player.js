@@ -1535,6 +1535,7 @@ class A11yMediaPlayer extends SimpleColors {
        */
       youtubeId: {
         attribute: "youtube-id",
+        reflect: true,
         type: String
       },
       /**

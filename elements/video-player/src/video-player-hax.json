@@ -111,6 +111,12 @@
         "inputMethod": "boolean"
       },
       {
+        "property": "linkable",
+        "title": "Include a share link?",
+        "description": "Provides a link to share the video.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "preload",
         "title": "Preload source(s).",
         "description": "How the sources should be preloaded, i.e. auto, metadata (default), or none.",
