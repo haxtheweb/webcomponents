@@ -1232,14 +1232,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         icon: "icons:link",
         color: "grey",
         groups: ["Link"],
-        handles: [
-          {
-            type: "link",
-            source: "href",
-            title: "innerText",
-            alt: "title"
-          }
-        ],
+        handles: [],
         meta: {
           author: "W3C"
         }
@@ -1304,6 +1297,15 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         advanced: []
       }
     };
+    // anything can be presented as a link
+    this.validGizmoTypes.forEach(val => {
+      ahref.gizmo.handles.push({
+        type: val,
+        source: "href",
+        title: "innerText",
+        alt: "title"
+      });
+    });
     this.setHaxProperties(ahref, "a");
     let p = {
       canScale: false,
