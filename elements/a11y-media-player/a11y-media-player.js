@@ -581,11 +581,16 @@ class A11yMediaPlayer extends SimpleColors {
             max-height: 0px;
             overflow: hidden;
           }
+          :host([sticky-mode]) #settings,
           :host([sticky-mode]) #controls > * > *:not(.xs),
           :host([sticky-mode]) .play-status,
           :host([responsive-size="xs"]) #controls > * > *:not(.xs),
           :host([responsive-size="xs"]) .play-status,
-          :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm) {
+          :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm),
+          :host([flex-layout][responsive-size="md"])
+            #controls
+            > *
+            > *:not(.xs):not(.play-status) {
             display: none;
           }
 
@@ -844,7 +849,7 @@ class A11yMediaPlayer extends SimpleColors {
               @click="${this._handleCopyLink}"
             ></a11y-media-button>
             <a11y-media-button
-              class="xs"
+              class="sm"
               icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
               label="${this._getLocal(
                 this.localization,
@@ -859,8 +864,8 @@ class A11yMediaPlayer extends SimpleColors {
             >
             </a11y-media-button>
             <paper-menu-button
-              class="sm"
               id="settings"
+              class="xs"
               allow-outside-scroll
               horizontal-align="right"
               ignore-select
