@@ -40,7 +40,7 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   static get styles() {
     return [
@@ -246,9 +246,9 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
                 noink
                 @click="${this.openAnswer}"
               ></paper-icon-button>
-              <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
+              <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
-              </paper-tooltip>
+              </simple-tooltip>
             </div>
           </div>
           <div
@@ -280,13 +280,13 @@ class SelfCheck extends SchemaBehaviors(SimpleColors) {
                   noink
                 >
                 </paper-icon-button>
-                <paper-tooltip
+                <simple-tooltip
                   aria-hidden="true"
                   for="closeBtn"
                   position="left"
                 >
                   Close
-                </paper-tooltip>
+                </simple-tooltip>
               </div>
             </div>
           </div>

@@ -27,7 +27,7 @@ class HAXCMSSlideTheme extends SimpleColorsSuper(HAXCMSLitElementTheme) {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
   /**

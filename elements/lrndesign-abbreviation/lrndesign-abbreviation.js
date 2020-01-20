@@ -14,7 +14,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 class LrndesignAbbreviation extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   static get template() {
     return html`
@@ -48,8 +48,8 @@ class LrndesignAbbreviation extends SchemaBehaviors(PolymerElement) {
         }
       </style>
       <abbr tabindex="0" title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
-      <paper-tooltip for="abbr" position="top" offset="2" animation-delay="300"
-        >[[phrase]]</paper-tooltip
+      <simple-tooltip for="abbr" position="top" offset="2" animation-delay="300"
+        >[[phrase]]</simple-tooltip
       >
     `;
   }

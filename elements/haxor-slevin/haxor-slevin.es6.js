@@ -7,17 +7,13 @@ import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/cor
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/utils/utils.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+
 /**
  * `haxor-slevin`
- * @customElement haxor-slevin
  * `Tech blogger theme`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement haxor-slevin
  */
 class HaxorSlevin extends HAXCMSLitElementTheme {
   static get styles() {
@@ -682,6 +678,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         left: 0
       });
       this.selectedPage = 1;
+      // @todo hacky timing thing
+      setTimeout(() => {
+        // try scrolling to the target ID after content gets imported
+        window.AnchorBehaviors.getTarget(store.themeElement);
+      }, 1000);
     }
     setTimeout(() => {
       var evt = document.createEvent("UIEvents");

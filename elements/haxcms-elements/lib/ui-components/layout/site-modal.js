@@ -46,14 +46,14 @@ class SiteModal extends LitElement {
     this.icon = "icons:menu";
     this.buttonLabel = "Open dialog";
     this.position = "bottom";
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
   // render function
   render() {
     return html`
       <custom-style>
         <style>
-          paper-tooltip {
+          simple-tooltip {
             @apply --site-modal-tooltip;
           }
           simple-modal-template {
@@ -68,9 +68,9 @@ class SiteModal extends LitElement {
         .icon="${this.icon}"
         .title="${this.buttonLabel}"
       ></paper-icon-button>
-      <paper-tooltip for="btn" .position="${this.position}" offset="14">
+      <simple-tooltip for="btn" .position="${this.position}" offset="14">
         ${this.buttonLabel}
-      </paper-tooltip>
+      </simple-tooltip>
       <simple-modal-template id="smt" .title="${this.title}">
         <div id="content" slot="content"></div>
       </simple-modal-template>

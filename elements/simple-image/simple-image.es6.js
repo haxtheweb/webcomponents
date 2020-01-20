@@ -172,9 +172,9 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
                 icon="icons:fullscreen-exit"
                 class="close-modal modal--close"
               ></paper-icon-button>
-              <paper-tooltip for="closearea" position="bottom" offset="14">
+              <simple-tooltip for="closearea" position="bottom" offset="14">
                 close modal
-              </paper-tooltip>
+              </simple-tooltip>
               <div class="content">
                 <img loading="lazy" src\$="[[src]]" alt\$="[[alt]]" />
               </div>

@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/simple-search-content.js";
 import "./lib/simple-search-match.js";
 /**
@@ -35,6 +35,7 @@ Custom property | Description | Default
  *
 
  * @demo ./demo/index.html
+ * @demo ./demo/selector.html Searching by CSS selectors
  *
  */
 class SimpleSearch extends LitElement {
@@ -42,6 +43,7 @@ class SimpleSearch extends LitElement {
   //styles function
   static get styles() {
     return  [
+      
       css`
 :host {
   display: flex;
@@ -119,7 +121,7 @@ button:not([controls]) {
   <div id="xofy" ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     ${this._getResultsSpan(this.resultPointer, this.resultCount)}
   </div>
-  <div ?shrink-hide="${this._hasNoResults(this.resultCount)}">
+  <div  ?shrink-hide="${this._hasNoSearch(this.searchTerms)}">
     <button
       id="prev"
       aria-label="${this.prevButtonLabel}"
@@ -131,7 +133,7 @@ button:not([controls]) {
     >
       <iron-icon icon="${this.prevButtonIcon}"></iron-icon>
     </button>
-    <paper-tooltip for="prev">${this.prevButtonLabel}</paper-tooltip>
+    <simple-tooltip for="prev">${this.prevButtonLabel}</simple-tooltip>
     <button
       id="next"
       aria-label="${this.nextButtonLabel}"
@@ -143,7 +145,7 @@ button:not([controls]) {
     >
       <iron-icon icon="${this.nextButtonIcon}"></iron-icon>
     </button>
-    <paper-tooltip for="next">${this.nextButtonLabel}</paper-tooltip>
+    <simple-tooltip for="next">${this.nextButtonLabel}</simple-tooltip>
   </div>`;
   }
 
@@ -212,7 +214,6 @@ button:not([controls]) {
   /**
    * Number of results.
    */
-
   "resultCount": {
     "attribute": "result-count",
     "type": Number
@@ -223,6 +224,13 @@ button:not([controls]) {
   "resultPointer": {
     "attribute": "result-pointer",
     "type": Number
+  },
+  /**
+   * limits search to within target's elements that match a selectgor
+   */
+  "selector": {
+    "attribute": "selector",
+    "type": String
   },
   /**
    * label for search icon
@@ -246,7 +254,7 @@ button:not([controls]) {
     "type": Array
   },
   /**
-   * The container element that the navigation buttons control
+   * If set, search will be automated and restricted to this object.
    */
   "target": {
     "type": Object
@@ -286,6 +294,7 @@ button:not([controls]) {
     this.searchInputLabel = "search";
     this.searchTerms = [];
     this.target = null;
+    this.selector = null;
     this.__hideNext = true;
     this.__hidePrev = true;
   }
@@ -301,10 +310,17 @@ button:not([controls]) {
    * are there any results to navigate?
    */
   _handleChange(e) {
+    let selector = this.selector ? ` ${this.selector}` : ``,
+      selections = this.controls
+        ? this.getRootNode().querySelectorAll(`#${this.controls}${selector}`)
+        : null;
+    console.log(this.controls, selections, this.getRootNode());
     this._getSearchText();
     this.resultCount = 0;
     this.resultPointer = 0;
-
+    selections.forEach(selection => {
+      this._searchSelection(selection);
+    });
     /**
      * Fires when search changes (detail = { search: this, content: event })
      *
@@ -315,14 +331,9 @@ button:not([controls]) {
     );
   }
 
-  /**
-   * are there any results to navigate?
-   *
-   * @param {number} total number of results
-   * @returns {boolean} whether or not there are results
-   */
-  _hasNoResults(count) {
-    return count < 1;
+  _searchSelection(selection) {
+    if (selection && selection.innerHTML)
+      selection.innerHTML = this.findMatches(selection.innerHTML);
   }
 
   /**
@@ -348,7 +359,7 @@ button:not([controls]) {
       ? pointer + "/" + count
       : count > 0
       ? count
-      : "";
+      : "0";
   }
 
   /**

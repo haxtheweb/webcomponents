@@ -36,11 +36,12 @@ class ScrollButton extends LitElement {
         paper-icon-button:focus {
           background-color: rgba(0, 0, 0, 1);
         }
-        paper-tooltip {
-          --paper-tooltip-background: #000000;
-          --paper-tooltip-opacity: 1;
-          --paper-tooltip-text-color: #ffffff;
-          --paper-tooltip-delay-in: 0;
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
       `
     ];
@@ -58,10 +59,7 @@ class ScrollButton extends LitElement {
           paper-icon-button:focus {
             @apply --scroll-button-button-active;
           }
-          paper-tooltip {
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+          simple-tooltip {
             @apply --scroll-button-tooltip;
           }
         </style>
@@ -72,9 +70,9 @@ class ScrollButton extends LitElement {
         icon="${this.icon}"
         title="${this.label}"
       ></paper-icon-button>
-      <paper-tooltip for="btn" position="${this.position}" offset="14">
+      <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
 
@@ -154,7 +152,7 @@ class ScrollButton extends LitElement {
     this.label = "Scroll to top";
     this.position = "top";
     import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-icons/iron-icons.js");
   }
   /**

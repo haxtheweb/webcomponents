@@ -1,0 +1,56 @@
+{
+  /**
+   * The id of the element that the tooltip is anchored to. This element
+   * must be a sibling of the tooltip. If this property is not set,
+   * then the tooltip will be centered to the parent node containing it.
+   */
+  "for": { "type": String },
+  /**
+   * Set this to true if you want to manually control when the tooltip
+   * is shown or hidden.
+   */
+  "manualMode": { "type": Boolean, "attribute": "manual-mode" },
+  /**
+   * Positions the tooltip to the top, right, bottom, left of its content.
+   */
+  "position": { "type": String },
+  /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "fitToVisibleBounds": {
+    "type": Boolean,
+    "attribute": "fit-to-visible-bounds"
+  },
+  /**
+   * The spacing between the top of the tooltip and the element it is
+   * anchored to.
+   */
+  "offset": { "type": Number },
+  /**
+   * This property is deprecated, but left over so that it doesn't
+   * break exiting code. Please use `offset` instead. If both `offset` and
+   * `marginTop` are provided, `marginTop` will be ignored.
+   * @deprecated since version 1.0.3
+   */
+  "marginTop": { "type": Number, "attribute": "margin-top" },
+  /**
+   * The delay that will be applied before the `entry` animation is
+   * played when showing the tooltip.
+   */
+  "animationDelay": { "type": Number, "attribute": "animation-delay" },
+  /**
+   * The animation that will be played on entry.  This replaces the
+   * deprecated animationConfig.  Entries here will override the
+   * animationConfig settings.  You can enter your own animation
+   * by setting it to the css class name.
+   */
+  "animationEntry": { "type": String, "attribute": "animation-entry" },
+  /**
+   * The animation that will be played on exit.  This replaces the
+   * deprecated animationConfig.  Entries here will override the
+   * animationConfig settings.  You can enter your own animation
+   * by setting it to the css class name.
+   */
+  "animationExit": { "type": String, "attribute": "animation-exit" },
+  "_showing": { "type": Boolean }
+}

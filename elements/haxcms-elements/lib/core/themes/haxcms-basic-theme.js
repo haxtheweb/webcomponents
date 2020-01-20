@@ -145,13 +145,11 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         site-modal {
           --site-modal-icon-color: white;
           --site-modal-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+            --simple-tooltip-background: #000000;
+            --simple-tooltip-opacity: 1;
+            --simple-tooltip-text-color: #ffffff;
+            --simple-tooltip-delay-in: 0;
+            --simple-tooltip-border-radius: 0;
           }
         }
         scroll-button {
@@ -168,13 +166,11 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
             color: white;
           }
           --site-print-button-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+            --simple-tooltip-background: #000000;
+            --simple-tooltip-opacity: 1;
+            --simple-tooltip-text-color: #ffffff;
+            --simple-tooltip-delay-in: 0;
+            --simple-tooltip-border-radius: 0;
           }
         }
       </style>

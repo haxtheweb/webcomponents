@@ -7,7 +7,7 @@ import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -393,8 +393,8 @@ class LrnappCanvasListing extends LitElement {
                             src="${user.picture}"
                           ></lrndesign-avatar>
                         </div>
-                        <paper-tooltip for="user-${user.id}"
-                          >${user.name}</paper-tooltip
+                        <simple-tooltip for="user-${user.id}"
+                          >${user.name}</simple-tooltip
                         >
                       `
                     )}

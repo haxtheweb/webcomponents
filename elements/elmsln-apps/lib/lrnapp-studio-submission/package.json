@@ -7,7 +7,7 @@
   "dependencies": {
     "@polymer/polymer": "^3.2.0",
     "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/paper-tooltip": "^3.0.1",
+    "@polymer/simple-tooltip": "^3.0.1",
     "@polymer/paper-tabs": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0"
   },

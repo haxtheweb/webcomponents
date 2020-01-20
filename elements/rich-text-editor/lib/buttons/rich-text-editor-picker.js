@@ -58,7 +58,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
       >
         <span id="label" class$="[[super.labelStyle]]">[[__label]]</span>
       </simple-picker>
-      <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
+      <simple-tooltip id="tooltip" for="button">[[__label]]</simple-tooltip>
     `;
   }
 

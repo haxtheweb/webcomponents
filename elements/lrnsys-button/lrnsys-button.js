@@ -94,7 +94,7 @@ class LrnsysButton extends LitElement {
       this.addEventListener("focusout", this.tapEventOff.bind(this));
       this.addEventListener("mouseout", this.tapEventOff.bind(this));
       import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
   render() {
@@ -127,11 +127,11 @@ class LrnsysButton extends LitElement {
           </div>
         </paper-button>
       </a>
-      <paper-tooltip
+      <simple-tooltip
         for="lrnsys-button-link"
         animation-delay="0"
         ?hidden="${!this.alt}"
-        >${this.alt}</paper-tooltip
+        >${this.alt}</simple-tooltip
       >
     `;
   }

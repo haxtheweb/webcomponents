@@ -8,18 +8,15 @@
     paper-icon-button:focus {
       @apply --scroll-button-button-active;
     }
-    paper-tooltip {
-      --paper-tooltip: {
-        border-radius: 0;
-      }
+    simple-tooltip {
       @apply --scroll-button-tooltip;
     }
   </style>
 </custom-style>
 <paper-icon-button @click="${this.scrollEvent}" id="btn" icon="${this.icon}" title="${this.label}"></paper-icon-button>
-<paper-tooltip
+<simple-tooltip
   for="btn"
   position="${this.position}"
   offset="14">
   ${this.label}
-</paper-tooltip>
+</simple-tooltip>

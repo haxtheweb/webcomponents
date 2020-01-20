@@ -90,7 +90,7 @@ class A11yMediaButton extends LitElement {
     this.icon = null;
     this.toggle = false;
     this.tooltipPosition = "bottom";
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
   }
 
   static get styles() {
@@ -135,10 +135,10 @@ class A11yMediaButton extends LitElement {
           width: 0;
           overflow: hidden;
         }
-        paper-tooltip {
+        simple-tooltip {
           z-index: 100;
         }
-        paper-tooltip:not(:defined) {
+        simple-tooltip:not(:defined) {
           display: none;
         }
         iron-icon {
@@ -162,10 +162,10 @@ class A11yMediaButton extends LitElement {
           width: 0;
           overflow: hidden;
         }
-        paper-tooltip {
+        simple-tooltip {
           z-index: 100;
         }
-        paper-tooltip:not(:defined) {
+        simple-tooltip:not(:defined) {
           display: none;
         }
       `

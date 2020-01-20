@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
  * `a11y-tabs`
@@ -179,7 +179,7 @@ class A11yTabs extends LitElement {
         :host #tabs.icons-only span.label {
           display: none;
         }
-        :host #tabs:not(.icons-only) paper-tooltip {
+        :host #tabs:not(.icons-only) simple-tooltip {
           display: none;
         }
       `
@@ -225,7 +225,9 @@ class A11yTabs extends LitElement {
                 >
                 </iron-icon>
               </paper-button>
-              <paper-tooltip for="${tab.id}-button">${tab.label}</paper-tooltip>
+              <simple-tooltip for="${tab.id}-button"
+                >${tab.label}</simple-tooltip
+              >
             </li>
           `
         )}

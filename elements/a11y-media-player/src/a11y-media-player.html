@@ -167,9 +167,9 @@
           slot="dropdown-trigger"
         >
         </paper-icon-button>
-        <paper-tooltip for="settings-button">
+        <simple-tooltip for="settings-button">
           ${this._getLocal(this.localization,'settings','label')}
-        </paper-tooltip>
+        </simple-tooltip>
 
         <paper-listbox id="settingslist" slot="dropdown-content">
           <paper-item ?hidden="${!this.hasCaptions}">

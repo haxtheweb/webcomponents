@@ -3,12 +3,12 @@
   "tags": [
     {
       "name": "lunr-search",
-      "description": "`lunr-search`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lunr-search`\n`LunrJS search element`\n\nProperties:\n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `fields` {`never[]`} - \n\n  * `limit` {`number`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
       "attributes": []
     },
     {
       "name": "lunr-search",
-      "description": "`lunr-search`\n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `method` {`string`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `no-stop-words` {`boolean`} - \n\n  * `fields` {`any[]`} - \n\n  * `index-no-stop-words` - \n\n  * `index` - \n\n  * `__lunr-loaded` {`boolean`} - \n\n  * `limit` {`number`} - \n\n  * `min-score` {`number`} - \n\n  * `log` {`boolean`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `method` {`string`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `fields` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `limit` {`number`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lunr-search`\n`LunrJS search element`\n\nAttributes:\n\n  * `data-source` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `no-stop-words` {`boolean`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - \n\nProperties:\n\n  * `dataSource` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `search` {`string`} - \n\n  * `results` {`any[]`} - \n\n  * `indexNoStopWords` - \n\n  * `index` - \n\n  * `__lunrLoaded` {`boolean`} - \n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `fields` {`any[]`} - \n\n  * `limit` {`number`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
       "attributes": [
         {
           "name": "data-source",
@@ -19,16 +19,29 @@
           "description": "`data` {`any[]`} - \n\nProperty: data"
         },
         {
-          "name": "method",
-          "description": "`method` {`string`} - \n\nProperty: method\n\nDefault: GET"
-        },
-        {
           "name": "search",
           "description": "`search` {`string`} - \n\nProperty: search"
         },
         {
           "name": "results",
           "description": "`results` {`any[]`} - \n\nProperty: results"
+        },
+        {
+          "name": "indexNoStopWords",
+          "description": "`indexNoStopWords` - \n\nProperty: indexNoStopWords"
+        },
+        {
+          "name": "index",
+          "description": "`index` - \n\nProperty: index"
+        },
+        {
+          "name": "__lunrLoaded",
+          "description": "`__lunrLoaded` {`boolean`} - \n\nProperty: __lunrLoaded",
+          "valueSet": "v"
+        },
+        {
+          "name": "method",
+          "description": "`method` {`string`} - \n\nProperty: method\n\nDefault: GET"
         },
         {
           "name": "no-stop-words",
@@ -40,25 +53,12 @@
           "description": "`fields` {`any[]`} - \n\nProperty: fields\n\nDefault: "
         },
         {
-          "name": "index-no-stop-words",
-          "description": "`index-no-stop-words` - \n\nProperty: indexNoStopWords"
-        },
-        {
-          "name": "index",
-          "description": "`index` - \n\nProperty: index"
-        },
-        {
-          "name": "__lunr-loaded",
-          "description": "`__lunr-loaded` {`boolean`} - \n\nProperty: __lunrLoaded",
-          "valueSet": "v"
-        },
-        {
           "name": "limit",
           "description": "`limit` {`number`} - \n\nProperty: limit\n\nDefault: 500"
         },
         {
-          "name": "min-score",
-          "description": "`min-score` {`number`} - \n\nProperty: minScore\n\nDefault: 0"
+          "name": "minScore",
+          "description": "`minScore` {`number`} - \n\nProperty: minScore\n\nDefault: 0"
         },
         {
           "name": "log",
@@ -73,7 +73,7 @@
     },
     {
       "name": "lunr-search",
-      "description": "`lunr-search`\n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lunr-search`\n`LunrJS search element`\n\nProperties:\n\n  * `method` {`string`} - \n\n  * `noStopWords` {`boolean`} - \n\n  * `fields` {`never[]`} - \n\n  * `limit` {`number`} - \n\n  * `minScore` {`number`} - \n\n  * `log` {`boolean`} - ",
       "attributes": []
     }
   ],

@@ -272,8 +272,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 >
                   <iron-icon icon="chevron-left"></iron-icon>
                 </paper-button>
-                <paper-tooltip for="carouselprev" position="top"
-                  >previous</paper-tooltip
+                <simple-tooltip for="carouselprev" position="top"
+                  >previous</simple-tooltip
                 >
                 <paper-button
                   id="carouselnext"
@@ -288,8 +288,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 >
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
-                <paper-tooltip for="carouselnext" position="top"
-                  >next</paper-tooltip
+                <simple-tooltip for="carouselnext" position="top"
+                  >next</simple-tooltip
                 >
               </div>
             </div>
@@ -337,13 +337,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                           >
                           </iron-image>
                         </paper-button>
-                        <paper-tooltip
+                        <simple-tooltip
                           for$="[[item.id]]"
                           hidden$="[[_isSelected(selected,item)]]"
                           position="top"
                         >
                           [[item.alt]]
-                        </paper-tooltip>
+                        </simple-tooltip>
                       </template>
                     </div>
                   </div>

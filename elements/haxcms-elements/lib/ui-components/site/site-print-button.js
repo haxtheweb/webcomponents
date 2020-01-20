@@ -40,7 +40,7 @@ class SitePrintButton extends LitElement {
     this.icon = "icons:print";
     this.position = "bottom";
     this.type = "page";
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
   }
   // render function
@@ -56,7 +56,7 @@ class SitePrintButton extends LitElement {
           paper-icon-button:active {
             @apply --site-print-button-button-hover;
           }
-          paper-tooltip {
+          simple-tooltip {
             @apply --site-print-button-tooltip;
           }
         </style>
@@ -68,9 +68,9 @@ class SitePrintButton extends LitElement {
         .title="${this.label}"
         ?disabled="${this.disabled}"
       ></paper-icon-button>
-      <paper-tooltip for="btn" position="${this.position}" offset="14">
+      <simple-tooltip for="btn" position="${this.position}" offset="14">
         ${this.label}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   updated(changedProperties) {

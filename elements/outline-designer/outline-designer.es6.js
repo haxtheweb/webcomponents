@@ -15,7 +15,7 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -261,10 +261,10 @@ paper-card.card-high-detail {
   <app-toolbar>
     View: [[viewModeLabel]]
     <paper-icon-button on-click="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
-    <paper-tooltip for="viewmode">[[viewModeLabel]]</paper-tooltip>
+    <simple-tooltip for="viewmode">[[viewModeLabel]]</simple-tooltip>
     Detail: [[detailsModeLabel]]
     <paper-icon-button on-click="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
-    <paper-tooltip for="detailsmode">[[detailsModeLabel]]</paper-tooltip>
+    <simple-tooltip for="detailsmode">[[detailsModeLabel]]</simple-tooltip>
     <div main-title class="flex layout breadcrumb_layout">
       <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
       <a class="breadcrumb" id="main">[[manifest.title]]</a>
@@ -277,9 +277,9 @@ paper-card.card-high-detail {
     </div>
     <div>
       <paper-icon-button on-click="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
-      <paper-tooltip for="helpbutton">Toggle mini-map</paper-tooltip>
+      <simple-tooltip for="helpbutton">Toggle mini-map</simple-tooltip>
       <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
-      <paper-tooltip for="helpbutton">Help</paper-tooltip>
+      <simple-tooltip for="helpbutton">Help</simple-tooltip>
     </div>
     <paper-progress value="10" indeterminate bottom-item hidden$="[[!__loading]]"></paper-progress>
   </app-toolbar>
@@ -318,7 +318,7 @@ paper-card.card-high-detail {
         <li>
           <span class="tf-nc">
             <div class="tf-label" id$="item-tip-[[item.id]]">[[item.title]]</div>
-            <paper-tooltip for$="item-tip-[[item.id]]">[[item.title]]</paper-tooltip>
+            <simple-tooltip for$="item-tip-[[item.id]]">[[item.title]]</simple-tooltip>
             <iron-image src="[[item.metadata.image]]" preload sizing="cover" class="high-detail"></iron-image>
           </span>
         </li>

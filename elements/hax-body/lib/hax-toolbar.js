@@ -86,7 +86,7 @@ class HaxToolbar extends LitElement {
     this.inline = false;
     this.justifyValue = "";
     import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/paper-item/paper-item.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/editor-icons.js");
@@ -152,14 +152,14 @@ class HaxToolbar extends LitElement {
           @immediate-value-changed="${this.sizeChanged}"
           @value-changed="${this.sizeChanged}"
         ></paper-slider>
-        <paper-tooltip
+        <simple-tooltip
           ?hidden="${this.inline}"
           for="slider"
           position="top"
           offset="10"
         >
           Resize
-        </paper-tooltip>
+        </simple-tooltip>
         <slot name="primary"></slot>
         <hax-context-item
           ?hidden="${this.hideTransform}"

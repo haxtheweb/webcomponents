@@ -13,7 +13,7 @@ class SimpleConceptNetworkNode extends PolymerElement {
   constructor() {
     super();
     import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
   }
@@ -158,9 +158,9 @@ class SimpleConceptNetworkNode extends PolymerElement {
           </div>
         </paper-button>
       </a>
-      <paper-tooltip for="button" position="bottom" offset="45">
+      <simple-tooltip for="button" position="bottom" offset="45">
         [[label]]
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   static get properties() {

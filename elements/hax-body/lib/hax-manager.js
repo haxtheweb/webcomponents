@@ -784,7 +784,7 @@ class HaxManager extends winEventsElement(SimpleColors) {
       source: this.shadowRoot.querySelector("#url").value
     };
     // we have no clue what this is.. let's try and guess..
-    var type = window.HaxStore.guessGizmoType(values);
+    let type = window.HaxStore.guessGizmoType(values);
     let haxElements = window.HaxStore.guessGizmo(type, values);
     // see if we got anything
     if (haxElements.length > 0) {

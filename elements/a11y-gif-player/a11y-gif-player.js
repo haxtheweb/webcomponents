@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `a11y-gif-player`
- * @customElement a11y-gif-player
  * plays gifs in an accessible way by having the user click to play their animation
 ### Styling
 
@@ -31,6 +30,7 @@ Custom property | Description | Default
 `--a11y-gif-player-button-bg` | button background color when no static image | #cccccc
  *
  * @demo ./demo/index.html
+ * @customElement a11y-gif-player
  */
 class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   constructor() {
@@ -43,7 +43,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
     this.srcWithoutAnimation = null;
     this.__playing = false;
     this.noImage = true;
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-image/iron-image.js");
   }
   /**
@@ -123,11 +123,11 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         button[aria-pressed="true"][data-no-image] .button-bg {
           background-color: transparent;
         }
-        paper-tooltip {
-          --paper-tooltip-background: #000000;
-          --paper-tooltip-opacity: 1;
-          --paper-tooltip-text-color: #ffffff;
-          --paper-tooltip-delay-in: 0;
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
         }
       `
     ];
@@ -168,11 +168,11 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         </div>
       </button>
 
-      <paper-tooltip for="button" offset="30" animation-delay="0">
+      <simple-tooltip for="button" offset="30" animation-delay="0">
         ${this.__playing && this.tooltipPlaying
           ? this.tooltipPlaying
           : this.tooltip}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   /**

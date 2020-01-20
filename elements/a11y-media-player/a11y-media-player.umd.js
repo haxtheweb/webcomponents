@@ -1,2 +1,3084 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("@polymer/polymer/polymer-element.js"),require("@polymer/polymer/lib/utils/render-status.js"),require("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js"),require("@lrnwebcomponents/responsive-utility/responsive-utility.js"),require("@lrnwebcomponents/es-global-bridge/es-global-bridge.js"),require("@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js"),require("@polymer/paper-toast/paper-toast.js"),require("@polymer/iron-resizable-behavior/iron-resizable-behavior.js"),require("@polymer/paper-menu-button/paper-menu-button.js"),require("@polymer/paper-listbox/paper-listbox.js"),require("@polymer/paper-input/paper-input.js"),require("@polymer/paper-item/paper-item.js"),require("@polymer/paper-icon-button/paper-icon-button.js"),require("@polymer/paper-toggle-button/paper-toggle-button.js"),require("@lrnwebcomponents/dropdown-select/dropdown-select.js"),require("@polymer/paper-slider/paper-slider.js"),require("@polymer/paper-tooltip/paper-tooltip.js"),require("@polymer/iron-icons/iron-icons.js"),require("@polymer/iron-icons/av-icons.js"),require("@lrnwebcomponents/simple-search/lib/simple-search-content.js"),require("@lrnwebcomponents/simple-search/simple-search.js")):"function"==typeof define&&define.amd?define(["exports","@polymer/polymer/polymer-element.js","@polymer/polymer/lib/utils/render-status.js","@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js","@lrnwebcomponents/responsive-utility/responsive-utility.js","@lrnwebcomponents/es-global-bridge/es-global-bridge.js","@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js","@polymer/paper-toast/paper-toast.js","@polymer/iron-resizable-behavior/iron-resizable-behavior.js","@polymer/paper-menu-button/paper-menu-button.js","@polymer/paper-listbox/paper-listbox.js","@polymer/paper-input/paper-input.js","@polymer/paper-item/paper-item.js","@polymer/paper-icon-button/paper-icon-button.js","@polymer/paper-toggle-button/paper-toggle-button.js","@lrnwebcomponents/dropdown-select/dropdown-select.js","@polymer/paper-slider/paper-slider.js","@polymer/paper-tooltip/paper-tooltip.js","@polymer/iron-icons/iron-icons.js","@polymer/iron-icons/av-icons.js","@lrnwebcomponents/simple-search/lib/simple-search-content.js","@lrnwebcomponents/simple-search/simple-search.js"],t):t((e=e||self).A11yMediaPlayer={},e.polymerElement_js,null,e.simpleColorsPolymer_js)}(this,function(e,t,n,a){"use strict";function o(e){return(o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function r(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}function l(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}function s(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function c(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);t&&(a=a.filter(function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable})),n.push.apply(n,a)}return n}function d(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&p(e,t)}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function p(e,t){return(p=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function h(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function y(e,t){return!t||"object"!=typeof t&&"function"!=typeof t?h(e):t}function m(e,t,n){return(m="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,t,n){var a=function(e,t){for(;!Object.prototype.hasOwnProperty.call(e,t)&&null!==(e=u(e)););return e}(e,t);if(a){var o=Object.getOwnPropertyDescriptor(a,t);return o.get?o.get.call(n):o.value}})(e,t,n||e)}function v(e,t){return t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}var b=function(e){function t(){return i(this,t),y(this,u(t).apply(this,arguments))}return d(t,a.SimpleColorsPolymer),l(t,[{key:"_getShareLink",value:function(e){var t=window.location.href.split(/[#?]/)[0],n=this.id?"?id=".concat(this.id):"",a=""!==n&&this.__elapsed&&0!==this.__elapsed?"&t=".concat(this.__elapsed):"";return"".concat(t).concat(n).concat(a)}},{key:"_hasAttribute",value:function(e){return null!=e}},{key:"_testAttribute",value:function(e,t){return e===t}},{key:"_addResponsiveUtility",value:function(e){window.ResponsiveUtility.requestAvailability(),window.dispatchEvent(new CustomEvent("responsive-element",{detail:void 0!==e?e:{element:this,attribute:"responsive-size",relativeToParent:!0}}))}},{key:"_getHHMMSS",value:function(e,t){t=void 0===t?e:t;var n=function(e){return e<10?"0"+e:e},a=function(e,a,o){return t>=a?n(Math.floor(e/a))+":":o};return a(e,3600,"")+a(e%3600,60,"00:")+n(Math.round(e%60))}},{key:"_getSeconds",value:function(){var e=(arguments.length>0&&void 0!==arguments[0]?arguments[0]:0).replace(/[hm]{1,2}&?/g,":0").replace(/[s]{1,2}$/g,"").split(/:/);return 3600*(e.length>2?parseInt(e[e.length-3]):0)+60*(e.length>1?parseInt(e[e.length-2]):0)+(e.length>0?parseFloat(e[e.length-1]):0)}},{key:"_getLocal",value:function(e,t){var n="",a=this.localization;return void 0!==a&&void 0!==a[e]&&void 0!==a[e][t]?n=a[e][t]:void 0!==this.localizationDefaults&&void 0!==this.localizationDefaults[e]&&void 0!==this.localizationDefaults[e][t]&&(n=this.localizationDefaults[e][t]),n}},{key:"_handlePrintClick",value:function(e){this.dispatchEvent(new CustomEvent("print-transcript",{detail:this}))}},{key:"_handleDownloadClick",value:function(e){this.dispatchEvent(new CustomEvent("download-transcript",{detail:this}))}},{key:"_handleDownload",value:function(e){this.dispatchEvent(new CustomEvent("downloading-transcript",{detail:this})),this.shadowRoot.querySelector("#transcript").download(this.mediaTitle)}},{key:"_handlePrinting",value:function(e){this.dispatchEvent(new CustomEvent("printing-transcript",{detail:this})),this.shadowRoot.querySelector("#transcript").print(this.mediaTitle)}}],[{key:"tag",get:function(){return"a11y-media-behaviors"}},{key:"properties",get:function(){return Object.assign(a.SimpleColorsPolymer.properties,{audioOnly:{name:"audioOnly",type:Boolean,value:!1,reflectToAttribute:!0},autoplay:{name:"autoplay",type:Boolean,value:!1},cc:{name:"cc",type:Boolean,value:!1},disablePrintButton:{name:"disablePrintButton",type:Boolean,value:!1},disableSearch:{name:"disableSearch",type:Boolean,value:!1},disableScroll:{name:"disableScroll",type:Boolean,value:!1},disableSeek:{name:"disableSeek",type:Boolean,value:!1},hasTranscript:{name:"hasTranscript",type:Boolean,value:!1},height:{name:"height",type:String,value:null},isYoutube:{name:"isYoutube",type:Boolean,computed:"_hasAttribute(youtubeId)"},lang:{name:"lang",type:String,value:"en"},linkable:{name:"linkable",type:Boolean,value:!1},localization:{name:"localization",type:Object,value:{}},localizationDefaults:{name:"localizationDefaults",type:Object,value:{audio:{label:"Audio"},autoScroll:{label:"Scroll transcript with video.",icon:"swap-vert"},captions:{label:"Closed Captions",icon:"av:closed-caption",off:"Off"},download:{label:"Download the transcript.",icon:"file-download"},forward:{label:"Forward",icon:"av:fast-forward"},fullscreen:{label:"Fullscreen",icon:"fullscreen"},copyLink:{label:"Copy Media Link",icon:"link"},closeLink:{label:"Close",icon:"close"},loading:{label:"Loading..."},loop:{label:"Loop Playback"},mute:{label:"Mute",icon:"av:volume-up"},nextResult:{label:"Next",icon:"arrow-forward"},pause:{label:"Pause",icon:"av:pause"},play:{label:"Play",icon:"av:play-arrow"},prevResult:{label:"Previous",icon:"arrow-back"},print:{label:"Print the transcript.",icon:"print"},restart:{label:"Restart",icon:"av:replay"},rewind:{label:"Backward",icon:"av:fast-rewind"},search:{label:"Search the transcript.",icon:"search"},seekSlider:{label:"Seek Slider"},settings:{label:"Settings",icon:"settings"},speed:{label:"Speed %"},transcript:{label:"Transcript",icon:"description",loading:"Loading the transcript(s)...",skip:"Skip to the transcript."},unmute:{label:"Unmute",icon:"av:volume-off"},video:{label:"Video"},volume:{label:"Volume"},youTubeLoading:{label:"Ready."},youTubeTranscript:{label:"Transcript will load once media plays."}},readOnly:!0},loop:{name:"loop",type:Boolean,value:!1},manifest:{name:"manifest",type:String,value:null},media:{name:"media",type:Object,value:null},mediaTitle:{name:"mediaTitle",type:String,value:""},muted:{name:"muted",type:Boolean,value:!1},playbackRate:{name:"playbackRate",type:Number,value:1},playing:{name:"playing",type:Boolean,value:!1},playPause:{name:"playPause",type:Object},preload:{name:"preload",type:String,value:"metadata"},search:{name:"search",type:Object,value:null},selectedTrack:{name:"selectedTrack",type:Object,value:null},selectedTrackID:{name:"selectedTrackID",type:Number,value:null},standAlone:{name:"standAlone",type:Boolean,value:!1,reflectToAttribute:!0},status:{name:"status",type:String,value:"loading..."},target:{name:"target",type:Object,value:null},tracks:{name:"tracks",type:Array,value:null},volume:{name:"volume",type:Number,value:70},width:{name:"width",type:String,value:null},youtubeId:{name:"youtubeId",type:String,value:null},youTube:{name:"youTube",type:Object,value:{}}})}},{key:"behaviors",get:function(){return[ResponsiveUtility]}}]),t}();window.customElements.define(b.tag,b),window.A11yMediaStateManager=window.A11yMediaStateManager||{},window.A11yMediaStateManager.requestAvailability=function(){return window.A11yMediaStateManager.instance||(window.A11yMediaStateManager.instance=document.createElement("a11y-media-state-manager"),document.body.appendChild(window.A11yMediaStateManager.instance)),window.A11yMediaStateManager.instance};var g=function(e){function n(){var e;i(this,n);var t=h(e=y(this,u(n).call(this)));return t.__playerLoader=function(e){t.players.push(e.detail)},window.A11yMediaStateManager.instance||(window.A11yMediaStateManager.instance=h(e),window.addEventListener("a11y-player",t.__playerLoader)),e}return d(n,t.PolymerElement),l(n,null,[{key:"tag",get:function(){return"a11y-media-state-manager"}},{key:"properties",get:function(){return{players:{type:Array,value:[]},screenfullLoaded:{type:Boolean,value:!1},stickyPlayer:{type:Object,value:null}}}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this);var e=this;this.__stickyManager=function(t){e.setStickyPlayer(t.detail)},this.__scrollChecker=function(t){e._checkScroll()},window.addEventListener("a11y-player-playing",e.__stickyManager),window.addEventListener("scroll",e.__scrollChecker)}},{key:"checkConcurrentPlayers",value:function(){for(var e=this.stickyPlayer,t=0;t<this.players.length;t++){var n=this.players[t];n===e||e.allowConcurrent&&n.allowConcurrent||n.pause()}}},{key:"setStickyPlayer",value:function(e){var t=this._getParentNode(e);this.__playerTop=t.offsetTop,this.__playerUpperMiddle=this.__playerTop+.9*t.offsetHeight,this.__playerLowerMiddle=this.__playerTop+.1*t.offsetHeight,e!==this.stickyPlayer&&void 0!==this.stickyPlayer&&null!==this.stickyPlayer&&(this.stickyPlayer.toggleSticky(!1),this.__parent.style.height="unset"),t.style.height=t.offsetHeight+"px",this.__parent=t,this.stickyPlayer=e,e.allowConcurrent||this.checkConcurrentPlayers(),this._checkScroll()}},{key:"_checkScroll",value:function(){var e=window.pageYOffset,t=e+window.innerHeight;void 0!==this.stickyPlayer&&null!==this.stickyPlayer&&(this.stickyPlayer.__playing&&(this.__playerLowerMiddle>t||this.__playerUpperMiddle<e)?this.stickyPlayer.toggleSticky(!0):this.stickyPlayer.toggleSticky(!1))}},{key:"_getParentNode",value:function(e){var t=e.parentNode;return null!=t&&t.nodeType===Node.DOCUMENT_FRAGMENT_NODE&&(t=t.host),t}},{key:"disconnectedCallback",value:function(){m(u(n.prototype),"disconnectedCallback",this).call(this);window.removeEventListener("a11y-player",this.__playerLoader),window.removeEventListener("a11y-player-playing",this.__stickyManager),window.removeEventListener("scroll",this.__scrollChecker)}}]),n}();function f(){var e=v(['\n      <style include="simple-colors-shared-styles-polymer">\n        :host {\n          margin: 0;\n          padding: 0;\n        }\n        :host #button {\n          margin: 0;\n          padding: 8px;\n          line-height: 1;\n          border: none;\n          transition: color 0.25s;\n          color: var(--a11y-media-button-color);\n          background-color: var(--a11y-media-button-bg-color);\n        }\n        :host([toggle]) #button {\n          color: var(--a11y-media-button-toggle-color);\n          background-color: var(--a11y-media-button-toggle-bg-color);\n        }\n        :host([toggle]:active) #button,\n        :host([toggle]:focus) #button,\n        :host([toggle]:hover) #button,\n        :host(:active) #button,\n        :host(:focus) #button,\n        :host(:hover) #button {\n          cursor: pointer;\n          color: var(--a11y-media-button-hover-color);\n          background-color: var(--a11y-media-button-hover-bg-color);\n        }\n        :host .sr-only {\n          position: absolute;\n          left: -99999;\n          top: 0;\n          height: 0;\n          width: 0;\n          overflow: hidden;\n        }\n        :host paper-tooltip {\n          z-index: 100;\n        }\n        iron-icon {\n          display: inline-block;\n        }\n      </style>\n      <button\n        id="button"\n        aria-label$="[[label]]"\n        aria-pressed$="[[toggle]]"\n        controls="[[controls]]"\n        disabled$="[[disabled]]"\n        on-click="_buttonTap"\n        role="button"\n        tabindex="0"\n        toggle$="[[toggle]]"\n      >\n        <iron-icon icon="[[icon]]"></iron-icon>\n      </button>\n      <paper-tooltip for="button" position$="[[tooltipPosition]]"\n        >[[label]]</paper-tooltip\n      >\n    ']);return f=function(){return e},e}window.customElements.define(g.tag,g);var k=function(e){function n(){return i(this,n),y(this,u(n).call(this))}return d(n,b),l(n,null,[{key:"properties",get:function(){return{action:{type:String,value:null},controls:{type:String,value:"video"},icon:{type:String,value:null},label:{type:String,value:null},toggle:{type:Boolean,value:!1,reflectToAttribute:!0},disabled:{type:Boolean,value:!1},tooltipPosition:{type:String,value:null}}}},{key:"tag",get:function(){return"a11y-media-button"}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this)}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this),this.__target=this.shadowRoot.querySelector("#button")}},{key:"_buttonTap",value:function(){this.dispatchEvent(new CustomEvent("click",{detail:this}))}}],[{key:"template",get:function(){return t.html(f())}}]),n}();function _(){var e=v(['\n      <style is="custom-style" include="simple-colors-shared-styles-polymer">\n        :host {\n          display: block;\n          width: 100%;\n          max-width: 100%;\n          height: 44px;\n          max-height: 44px;\n          position: relative;\n          color: var(--a11y-media-color);\n          --primary-text-color: var(--a11y-media-settings-menu-color);\n          --paper-menu-button-dropdown-background: var(--a11y-media-settings-menu-bg-color);\n          --paper-listbox-background-color: var(--a11y-media-settings-menu-bg-color);\n          --paper-listbox-color: var(--a11y-media-settings-menu-color);\n          --paper-listbox: {\n            padding: 0;\n          };\n          --paper-menu-button: {\n            background-color: var(--a11y-media-settings-menu-bg-color);\n            color: var(--a11y-media-settings-menu-color);\n          };\n          --paper-menu-button-dropdown: {\n            background-color: var(--a11y-media-settings-menu-bg-color);\n            color: var(--a11y-media-settings-menu-color);\n            margin-top: 0 !important;\n            margin-bottom: 0 !important;\n          };\n          --paper-item-selected: {\n            color: var(--a11y-media-settings-menu-hover-color);\n          };\n          --paper-item-focused: {\n            color: var(--a11y-media-settings-menu-hover-color);\n          };\n        }\n        :host > #controls-left {\n          position: absolute;\n          left: 0;\n          min-width: 200px;\n        }\n        :host > #controls-right {\n          position: absolute;\n          right: 0;\n          top: -2px;\n        }\n        :host paper-menu-button,\n        :host dropdown-select {\n          padding: 0;\n        }\n        :host paper-icon-button {\n          background-color: var(--a11y-media-settings-menu-bg-color);\n          color: var(--a11y-media-settings-menu-color);\n        }\n        :host paper-icon-button:active,\n        :host paper-icon-button:focus,\n        :host paper-icon-button:hover {\n          background-color: var(--a11y-media-settings-menu-bg-color);\n          color: var(--a11y-media-settings-menu-color);\n        }\n        :host paper-item {\n          min-height: 40;\n        }\n        :host paper-slider {\n          @apply --a11y-media-slider;\n        }\n        :host .play-status,\n        :host paper-icon-button {\n          border: none;\n          position: relative;\n        }\n        :host .play-status {\n          font-size: 85%;\n        }\n        :host .play-status.control-bar {\n          padding: 8px 13px 8px;\n        }\n        :host([hide-play-status]) .play-status {\n          display: none;\n        }\n        :host .setting {\n          display: flex;\n          justify-content: space-between;\n          align-items: center;\n          width: 100%;\n        }\n        :host .setting-text {\n          min-width: 125px;\n        }\n        :host .setting-control {\n          max-width: 100px;\n        }\n        :host .setting-slider {\n          width: 130px;\n          margin-left: -15px;\n          margin-right: -15px;\n          @apply --a11y-media-slider;\n        }\n        :host #speed {\n          --paper-slider-knob-start-color: var(--a11y-media-accent-color);\n          --paper-slider-knob-start-border-color: var(--a11y-media-accent-color);\n          --paper-slider-knob-end-color: var(--a11y-media-accent-color);\n          --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);\n        }\n        :host #showvolume {\n          display: inline;\n          position: relative;\n        }\n        :host #volume {\n          z-index: 1;\n          position: absolute;\n          left: 30px;\n          top: -5px;\n          width: 0;\n          overflow: hidden;\n          transition: width 0.5s;\n          z-index: 3;\n          background-color: var(--a11y-media-bg-color);\n          --paper-slider-knob-end-color: var(--a11y-media-accent-color);\n          --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);\n\n        }\n        :host #volume:active,\n        :host #volume:focus,\n        :host #volume:hover,\n        :host #volume.focus,\n        :host #showvolume:active #volume,\n        :host #showvolume:focus #volume,\n        :host #showvolume:hover #volume {\n          overflow: visible;\n          width: 100px;\n        }\n        :host([responsive-size="xs"]) #volume:active,\n        :host([responsive-size="xs"]) #volume:focus,\n        :host([responsive-size="xs"]) #volume:hover,\n        :host([responsive-size="xs"]) #volume.focus,\n        :host([responsive-size="xs"]) #showvolume:active #volume,\n        :host([responsive-size="xs"]) #showvolume:focus #volume,\n        :host([responsive-size="xs"]) #showvolume:hover #volume {\n          top: -35px\n          border-radius: 4px;\n        }\n        :host .sr-only {\n          position: absolute;\n          left: -99999;\n          top: 0;\n          height: 0;\n          width: 0;\n          overflow: hidden;\n        }\n      </style>\n      <div id="controls-left">\n        <a11y-media-button\n          action$="[[playPause.action]]"\n          icon$="[[playPause.icon]]"\n          label$="[[playPause.label]]"\n          on-click="_onButtonTap"\n        ></a11y-media-button>\n        <a11y-media-button\n          action="rewind"\n          disabled$="[[disableSeek]]"\n          hidden$="[[compactControls]]"\n          icon$="[[_getLocal(\'rewind\',\'icon\')]]"\n          label$="[[_getLocal(\'rewind\',\'label\')]]"\n          on-click="_onButtonTap"\n        ></a11y-media-button>\n        <a11y-media-button\n          action="forward"\n          disabled$="[[disableSeek]]"\n          hidden$="[[compactControls]]"\n          icon$="[[_getLocal(\'forward\',\'icon\')]]"\n          label$="[[_getLocal(\'forward\',\'label\')]]"\n          on-click="_onButtonTap"\n        ></a11y-media-button>\n        <a11y-media-button\n          action="restart"\n          disabled$="[[disableSeek]]"\n          hidden$="[[compactControls]]"\n          icon$="[[_getLocal(\'restart\',\'icon\')]]"\n          label$="[[_getLocal(\'restart\',\'label\')]]"\n          on-click="_onButtonTap"\n        ></a11y-media-button>\n        <div id="showvolume">\n          <a11y-media-button\n            id="mute"\n            action$="[[muteUnmute.action]]"\n            icon$="[[muteUnmute.icon]]"\n            label$="[[muteUnmute.label]]"\n            on-click="_onButtonTap"\n          ></a11y-media-button>\n          <paper-slider\n            id="volume"\n            aria-labelledby="volume-slider-label"\n            label$="[[volumeLabel]]"\n            min="0"\n            max="100"\n            on-change="_onSettingsChanged"\n            pin\n            step="10"\n            value$="[[volume]]"\n          ></paper-slider>\n        </div>\n        <span aria-live="polite" class="play-status control-bar">\n          <span id="statbar"></span>\n        </span>\n      </div>\n      <div id="controls-right">\n        <a11y-media-button\n          action="captions"\n          disabled$="[[!hasCaptions]]"\n          hidden$="[[!hasCaptions]]"\n          icon$="[[_getLocal(\'captions\',\'icon\')]]"\n          label$="[[_getLocal(\'captions\',\'label\')]]"\n          on-click="_onButtonTap"\n          toggle$="[[cc]]"\n        >\n        </a11y-media-button>\n        <a11y-media-button\n          action="transcript"\n          controls="transcript"\n          disabled$="[[hideTranscriptButton]]"\n          hidden$="[[hideTranscriptButton]]"\n          icon$="[[_getLocal(\'transcript\',\'icon\')]]"\n          label$="[[_getLocal(\'transcript\',\'label\')]]"\n          on-click="_onButtonTap"\n          toggle$="[[hideTranscript]]"\n        >\n        </a11y-media-button>\n        <a11y-media-button\n          action="linkable"\n          disabled$="[[!linkable]]"\n          hidden$="[[!linkable]]"\n          icon="[[_getLocal(\'copyLink\',\'icon\')]]"\n          label="[[_getLocal(\'copyLink\',\'label\')]]"\n          on-click="_onButtonTap"\n        ></a11y-media-button>\n        <a11y-media-button\n          action="print"\n          disabled$="[[noPrinting]]"\n          hidden$="[[noPrinting]]"\n          icon$="[[_getLocal(\'print\',\'icon\')]]"\n          label="[[_getLocal(\'print\',\'label\')]]"\n          on-click="_handlePrintClick"\n        >\n        </a11y-media-button>\n        <a11y-media-button\n          action="download"\n          disabled$="[[noPrinting]]"\n          hidden$="[[noPrinting]]"\n          icon$="[[_getLocal(\'download\',\'icon\')]]"\n          label="[[_getLocal(\'download\',\'label\')]]"\n          on-click="_handleDownloadClick"\n        >\n        </a11y-media-button>\n        <template is="dom-if" if="[[fullscreenButton]]">\n          <a11y-media-button\n            action="fullscreen"\n            hidden$="[[audioNoThumb]]"\n            icon$="[[_getLocal(\'fullscreen\',\'icon\')]]"\n            label$="[[_getLocal(\'fullscreen\',\'label\')]]"\n            on-click="_onButtonTap"\n            toggle$="[[fullscreen]]"\n            step="1"\n          >\n          </a11y-media-button>\n        </template>\n        <paper-menu-button\n          id="settings"\n          allow-outside-scroll\n          horizontal-align="right"\n          ignore-select\n          on-change="_onSettingsChanged"\n          on-iron-activate="_handleSettingsActivate"\n          on-iron-select="_handleSettingsSelect"\n          vertical-align="bottom"\n        >\n          <paper-icon-button\n            action="settings"\n            alt$="[[_getLocal(\'settings\',\'label\')]]"\n            icon$="[[_getLocal(\'settings\',\'icon\')]]"\n            slot="dropdown-trigger"\n          >\n          </paper-icon-button>\n          <paper-listbox id="settingslist" slot="dropdown-content">\n            <paper-item hidden$="[[!hasCaptions]]">\n              <div class="setting">\n                <div class="setting-text">\n                  [[_getLocal(\'captions\',\'label\')]]\n                </div>\n                <div class="setting-control">\n                  <dropdown-select\n                    id="tracks"\n                    disabled$="[[!hasCaptions]]"\n                    no-label-float\n                    on-change="_handleTrackChange"\n                    value\n                  >\n                    <paper-item value=""\n                      >[[_getLocal(\'captions\',\'off\')]]</paper-item\n                    >\n                    <template is="dom-repeat" items="{{tracks}}" as="option">\n                      <paper-item value$="{{option.value}}"\n                        >{{option.text}}</paper-item\n                      >\n                    </template>\n                  </dropdown-select>\n                </div>\n              </div>\n            </paper-item>\n            <paper-item hidden$="[[noTranscriptToggle]]">\n              <div class="setting">\n                <div id="transcript-label" class="setting-text">\n                  [[_getLocal(\'transcript\',\'label\')]]\n                </div>\n                <div class="setting-control">\n                  <paper-toggle-button\n                    id="transcript-toggle"\n                    aria-labelledby="transcript-label"\n                    checked$="[[!hideTranscript]]"\n                    controls="transcript"\n                    disabled$="[[noTranscriptToggle]]"\n                  >\n                  </paper-toggle-button>\n                </div>\n              </div>\n            </paper-item>\n            <paper-item>\n              <div class="setting">\n                <div id="loop-label" class="setting-text">\n                  [[_getLocal(\'loop\',\'label\')]]\n                </div>\n                <div class="setting-control">\n                  <paper-toggle-button\n                    id="loop"\n                    aria-labelledby="loop-label"\n                    checked$="[[loop]]"\n                  ></paper-toggle-button>\n                </div>\n              </div>\n            </paper-item>\n            <paper-item>\n              <div class="setting">\n                <div id="speed-label" class="setting-text">\n                  [[_getLocal(\'speed\',\'label\')]]\n                </div>\n                <div class="setting-control">\n                  <paper-slider\n                    id="speed"\n                    aria-labelledby="speed-label"\n                    class="setting-slider"\n                    min="0.5"\n                    max="4"\n                    pin\n                    step="0.5"\n                    tab-index="-1"\n                    value$="[[playbackRate]]"\n                  ></paper-slider>\n                </div>\n              </div>\n            </paper-item>\n          </paper-listbox>\n        </paper-menu-button>\n        <paper-tooltip for="settings">\n          [[_getLocal(\'settings\',\'label\')]]\n        </paper-tooltip>\n      </div>\n    ']);return _=function(){return e},e}window.customElements.define(k.tag,k);var w=function(e){function n(){return i(this,n),y(this,u(n).call(this))}return d(n,b),l(n,null,[{key:"properties",get:function(){return{compactControls:{name:"compactControls",type:Boolean,computed:"_getCompactControls(responsiveSize)"},fixedHeight:{type:Boolean,value:!1},fullscreen:{name:"fullscreen",type:Boolean,value:!1},fullscreenButton:{name:"fullscreenButton",type:Boolean,value:!1,nofity:!0},hasCaptions:{name:"hasCaptions",type:Boolean,value:!1,notify:!0},hideTranscript:{name:"hideTranscript",type:Boolean,value:!1},hideTranscriptButton:{type:Boolean,computed:"_hideTranscriptButton(noTranscriptToggle,compactControls)"},linkUrl:{type:String,value:"test"},muteUnmute:{name:"muteUnmute",type:Object},noPrinting:{type:Boolean,computed:"_noPrinting(standAlone,fixedHeight)"},noTranscriptToggle:{type:Boolean,computed:"_noTranscriptToggle(standAlone,fixedHeight,hasTranscript)"},responsiveSize:{name:"responsiveSize",type:String,notify:!0,value:"xs",reflectToAttribute:!0}}}},{key:"tag",get:function(){return"a11y-media-controls"}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this);this._addResponsiveUtility({element:this,attribute:"responsive-size",relativeToParent:!0,sm:300,md:600,lg:900,xl:1200})}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this);var e=this;e.shadowRoot.querySelector("#mute").shadowRoot.querySelector("#button").onfocus=function(){e.shadowRoot.querySelector("#volume").classList.add("focus")},e.shadowRoot.querySelector("#mute").shadowRoot.querySelector("#button").onblur=function(){e.shadowRoot.querySelector("#volume").classList.remove("focus")}}},{key:"setStatus",value:function(e){this.shadowRoot.querySelector("#statbar").innerText=e}},{key:"setTracks",value:function(e){this.set("tracks",[]),this.set("tracks",e.slice(0))}},{key:"_getCompactControls",value:function(e){return this._testAttribute(e,"xs")||this._testAttribute(e,"sm")}},{key:"_handleTrackChange",value:function(e){null!==this.__selectedTrack&&(""!==e.detail.value?(this.dispatchEvent(new CustomEvent("select-track",{detail:{control:this,value:e.detail.value}})),this.dispatchEvent(new CustomEvent("toggle-cc",{detail:{control:this,value:!0}}))):this.dispatchEvent(new CustomEvent("toggle-cc",{detail:{control:this,value:!1}})))}},{key:"_handleSettingsSelect",value:function(e){}},{key:"_handleSettingsActivate",value:function(e){}},{key:"_onButtonTap",value:function(e){this.dispatchEvent(new CustomEvent("controls-change",{detail:e.detail})),this.shadowRoot.querySelector("#settings").close()}},{key:"_onSettingsChanged",value:function(e){this.dispatchEvent(new CustomEvent("controls-change",{detail:e.target})),this.shadowRoot.querySelector("#settings").close()}},{key:"_hideTranscriptButton",value:function(e,t){return e||t}},{key:"_noPrinting",value:function(e,t){return e||!t}},{key:"_noTranscriptToggle",value:function(e,t,n){return e||t||!n}}],[{key:"template",get:function(){return t.html(_())}}]),n}();function S(){var e=v(['\n      <style include="simple-colors-shared-styles-polymer">\n        :host {\n          height: 100%;\n          display: flex;\n          align-items: stretch;\n          position: relative;\n        }\n        :host([hidden]) {\n          display: none;\n        }\n        #video {\n          width: 100%;\n          max-width: 100%;\n        }\n      </style>\n      <video\n        id="video"\n        aria-hidden$="[[isYoutube]]"\n        autoplay$="[[autoplay]]"\n        crossorigin$="[[crossorigin]]"\n        hidden$="[[audioOnly]]"\n        lang$="[[mediaLang]]"\n        on-loadedmetadata="_handleMetadata"\n        poster$="[[thumbnailSrc]]"\n        src$="[[manifest]]"\n        preload="metadata"\n      >\n        HTML5 video not supported\n      </video>\n      <audio\n        id="audio"\n        autoplay$="[[autoplay]]"\n        crossorigin$="[[crossorigin]]"\n        hidden$="[[!audioOnly]]"\n        lang$="[[mediaLang]]"\n        on-loadedmetadata="_handleMetadata"\n        poster$="[[thumbnailSrc]]"\n        preload="metadata"\n      >\n        HTML5 audio not supported\n      </audio>\n    ']);return S=function(){return e},e}window.customElements.define(w.tag,w);var x=function(e){function n(){return i(this,n),y(this,u(n).call(this))}return d(n,b),l(n,null,[{key:"properties",get:function(){return{controls:{type:String,value:"video"},crossorigin:{type:String,value:null},disabled:{type:Boolean,value:null},icon:{type:String,value:null},label:{type:String,value:null},mediaLang:{name:"mediaLang",type:String,value:"en"},paused:{type:Boolean,value:!0},seekable:{type:Object,value:{length:0,start:null,stop:null}},thumbnailSrc:{name:"thumbnailSrc",type:String,value:null,reflectToAttribute:!0}}}},{key:"tag",get:function(){return"a11y-media-html5"}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this)}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this);this.media=void 0===this.shadowRoot.querySelector("#video")||this.audioOnly?this.shadowRoot.querySelector("#audio"):this.shadowRoot.querySelector("#video")}},{key:"_handleMetadata",value:function(){this.duration=this.media.duration>0?this.media.duration:0,this.tracks=[],this.volume=this.muted?0:Math.max(this.volume,10),this.seekable=this.media.seekable,this.setVolume(this.volume),this.setMute(this.muted),this.setCC(this.cc),this.setLoop(this.loop),this.setPlaybackRate(this.playbackRate),this.aspectRatio=this.media.videoWidth/this.media.videoHeight,this.dispatchEvent(new CustomEvent("media-loaded",{detail:this}))}},{key:"getBufferedTime",value:function(){return this.media.buffered.length>0?this.media.buffered.end(0):this.getCurrentTime()}},{key:"getCurrentTime",value:function(){return this.media.currentTime}},{key:"play",value:function(){this.paused=!1,this.media.play()}},{key:"pause",value:function(){this.paused=!0,this.media.pause()}},{key:"selectTrack",value:function(e){this.selectedTrack=this.media.textTracks[e];for(var t=0;t<this.media.textTracks.length;t++)parseInt(e)===t?this.media.textTracks[t].mode="showing":null!==this.media.textTracks[t]&&(this.media.textTracks[t].mode="hidden")}},{key:"stop",value:function(){this.pause(),this.seek(0)}},{key:"restart",value:function(){this.seek(0),this.play()}},{key:"seek",value:function(e){this.media.currentTime=e}},{key:"setCC",value:function(e){this.media.cc=!0===e,void 0!==this.selectedTrack&&1==e?(this.selectedTrack.mode="showing",this.shadowRoot.querySelector("#video").textTracks.value=this.selectedTrackId):void 0!==this.selectedTrack&&null!==this.selectedTrack&&(this.selectedTrack.mode="hidden",this.shadowRoot.querySelector("#video").textTracks.value="")}},{key:"setVolume",value:function(e){this.media.volume=e/100}},{key:"setPlaybackRate",value:function(e){this.media.playbackRate=null!==e?e:1}},{key:"setLoop",value:function(e){this.media.loop=!0===e}},{key:"setMute",value:function(e){this.media.muted=e}}],[{key:"template",get:function(){return t.html(S())}}]),n}();function T(){var e=v(['\n      <style is="custom-style" include="simple-colors-shared-styles-polymer">\n        :host {\n          cursor: default;\n          display: table-row;\n          width: 100%;\n          color: var(--a11y-media-transcript-cue-color);\n          background-color: var(--a11y-media-transcript-cue-bg-color);\n          transition: color 0.25s, background-color 0.25s;\n        }\n        :host([hide-timestamps]) {\n          display: inline;\n        }\n        :host(:not([active]):not([disabled]):active),\n        :host(:not([active]):not([disabled]):focus),\n        :host(:not([active]):not([disabled]):hover) {\n          cursor: pointer;\n          color: var(--a11y-media-transcript-focused-cue-color);\n          background-color: var(--a11y-media-transcript-focused-cue-bg-color);\n          outline: 1px dotted var(--a11y-media-transcript-focused-cue-color);\n          @apply --a11y-media-transcript-focused-cue;\n        }\n        :host([active]) {\n          color: var(--a11y-media-transcript-active-cue-color);\n          background-color: var(--a11y-media-transcript-active-cue-bg-color);\n          @apply --a11y-media-transcript-active-cue;\n        }\n        :host #text {\n          display: table-cell;\n          width: 100%;\n          line-height: 200%;\n        }\n        :host([hide-timestamps]) #text {\n          display: inline;\n        }\n        :host #time {\n          display: table-cell;\n          font-size: 80%;\n          padding: 0 16px 0 0;\n          white-space: nowrap;\n          font-family: monospace;\n        }\n        :host([hide-timestamps]) #time {\n          display: none;\n        }\n        :host simple-search-content {\n          --simple-search-match-text-color: var(\n            --a11y-media-transcript-match-color\n          );\n          --simple-search-match-bg-color: var(\n            --a11y-media-transcript-match-bg-color\n          );\n          --simple-search-match-border-color: var(\n            --a11y-media-transcript-match-border-color\n          );\n          --simple-search-match-border: none;\n          --simple-search-match-border-radius: 4px;\n          --simple-search-match-font-weight: normal;\n        }\n        @media print {\n          :host,\n          :host([active]),\n          :host(:not([active]):not([disabled]):active),\n          :host(:not([active]):not([disabled]):focus),\n          :host(:not([active]):not([disabled]):hover) {\n            color: #000000;\n            background-color: #ffffff;\n          }\n        }\n      </style>\n      <span id="time">[[cue.start]] - [[cue.end]]</span>\n      <span id="text">\n        <simple-search-content id="content">\n          [[cue.text]]\n        </simple-search-content>\n      </span>\n    ']);return T=function(){return e},e}window.customElements.define(x.tag,x);var C=function(e){function n(){return i(this,n),y(this,u(n).call(this))}return d(n,b),l(n,null,[{key:"properties",get:function(){return{active:s({type:Boolean,reflectToAttribute:!0,computed:"_getActiveCue(cue,activeCues)",notify:!0},"reflectToAttribute",!0),activeCues:{type:Array,value:null,notify:!0},cue:{type:Array,value:null},disabled:{type:Boolean,value:!1},text:{type:String,value:""}}}},{key:"tag",get:function(){return"a11y-media-transcript-cue"}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this)}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this);var e=this.search;this.disabled||(this.__target=this,this.setAttribute("aria-role","button"),this.setAttribute("controls",this.mediaId)),this.disableSearch||void 0===this.search||null===this.search||this.shadowRoot.querySelector("#content").enableSearch(e),this.addEventListener("click",this._handleTap)}},{key:"_getActiveCue",value:function(e,t){return!(null===t||!t.includes(e.order.toString()))}},{key:"_handleTap",value:function(e){this.dispatchEvent(new CustomEvent("cue-seek",{detail:this.cue.seek}))}}],[{key:"template",get:function(){return t.html(T())}}]),n}();function $(){var e=v(['\n      <style>\n        :host {\n          color: var(--a11y-media-transcript-cue-color);\n          background-color: var(--a11y-media-transcript-cue-bg-color);\n          border-left: 1px solid var(--a11y-media-transcript-bg-color);\n        }\n        :host([hidden]) {\n          display: none !important;\n        }\n        :host .transcript-from-track {\n          display: none;\n          width: calc(100% - 30px);\n          padding: 0 15px 15px;\n          color: var(--a11y-media-transcript-cue-color);\n          background-color: var(--a11y-media-transcript-cue-bg-color);\n        }\n        :host .transcript-from-track[active] {\n          display: table;\n        }\n        :host .transcript-from-track[active][hideTimestamps] {\n          display: block;\n        }\n        :host .sr-only:not(:focus) {\n          position: absolute;\n          left: -99999;\n          top: 0;\n          height: 0;\n          width: 0;\n          overflow: hidden;\n        }\n        @media print {\n          :host {\n            padding: 0 15px 5px;\n            color: #000;\n            background-color: #ffffff;\n            border-top: 1px solid #aaa;\n          }\n        }\n      </style>\n      <a id="transcript-desc" class="sr-only" href="#bottom">\n        [[_getLocal(\'transcript\',\'skip\')]]\n      </a>\n      <div\n        aria-live="polite"\n        id="loading"\n        active$="[[_isLoading(selectedTranscript, tracks)]]"\n        class="transcript-from-track"\n      >\n        [[status]]\n      </div>\n      <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">\n        <div\n          aria-live="polite"\n          id="track"\n          class="transcript-from-track"\n          lang="{{track.language}}"\n          active$="[[_isActive(selectedTranscript,index)]]"\n        >\n          <template is="dom-repeat" items="{{track.cues}}" as="cue">\n            <a11y-media-transcript-cue\n              accent-color$="[[accentColor]]"\n              active-cues$="[[activeCues]]"\n              controls$="[[mediaId]]"\n              cue$="{{cue}}"\n              disabled$="[[disableCue]]"\n              disable-search$="[[disableSearch]]"\n              hide-timestamps$="[[hideTimestamps]]"\n              on-cue-seek="_handleCueSeek"\n              order$="{{cue.order}}"\n              role="button"\n              search="[[search]]"\n              tabindex="0"\n            >\n            </a11y-media-transcript-cue>\n          </template>\n        </div>\n      </template>\n      <template is="dom-repeat" items="{{tracks}}" as="track">\n        <div\n          id="download"\n          class="downloadable-track"\n          hidden\n          active$="[[_isActive(selectedTranscript,index)]]"\n        >\n          <template is="dom-repeat" items="{{track.cues}}" as="cue">\n            [[cue.start]] - [[cue.end]]: [[cue.text]]\n          </template>\n        </div>\n      </template>\n      <div id="bottom" class="sr-only"></div>\n    ']);return $=function(){return e},e}function L(){var e=v(["\n        <h1>Transcript</h1>\n      "]);return L=function(){return e},e}function P(){var e=v(["\n        <style>\n          a11y-media-transcript-cue {\n            display: table-row;\n            background-color: #fff;\n            color: #000;\n          }\n          a11y-media-transcript-cue[hide-timestamps],\n          a11y-media-transcript-cue[hide-timestamps] #text {\n            display: inline;\n          }\n          a11y-media-transcript-cue #text {\n            display: table-cell;\n            line-height: 200%;\n          }\n          a11y-media-transcript-cue #time {\n            display: table-cell;\n            font-size: 80%;\n            padding: 0 16px;\n            white-space: nowrap;\n            font-family: monospace;\n          }\n          a11y-media-transcript-cue[hide-timestamps] #time {\n            display: none;\n          }\n          a11y-media-transcript-cue [matched] {\n            background-color: #fff;\n            color: #eee;\n            padding: 3px 4px;\n            border-radius: 3px;\n          }\n        </style>\n      "]);return P=function(){return e},e}window.customElements.define(C.tag,C);var R=function(e){function n(){return i(this,n),y(this,u(n).apply(this,arguments))}return d(n,b),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this),this.dispatchEvent(new CustomEvent("transcript-ready",{detail:this}))}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this),this.__ready=!0}},{key:"download",value:function(e){var t=document.createElement("a"),n=null!==e&&""!==e?e:this._getLocal("transcript","label"),a=null!==e&&""!==e?e.replace(/[^\w\d]/g,""):"Transcript",o=this.shadowRoot.querySelector("#download[active]"),i=null!==o?o.innerText:"";t.setAttribute("href","data:text/plain;charset=UTF-8,"+encodeURIComponent(n+"\n"+i)),t.setAttribute("download",a+".txt"),t.style.display="none",document.body.appendChild(t),t.click(),document.body.removeChild(t)}},{key:"print",value:function(e){var n=this.shadowRoot.querySelector("#track[active]").cloneNode(!0),a=t.html(P()),o=t.html(L());if(void 0!==e&&(o.innerHTML=e),null!==n&void 0!==n){var i=window.open("","","left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0");i.document.body.appendChild(a),i.document.body.appendChild(o),i.document.body.appendChild(n),i.document.close(),i.focus(),i.print(),i.close()}}},{key:"setActiveCues",value:function(e){var t=null!==this.shadowRoot.querySelector("#track")&&void 0!==this.shadowRoot.querySelector("#track")?this.shadowRoot.querySelector("#track").offsetTop:0,n=this.shadowRoot.querySelector("#track a11y-media-transcript-cue[active]");if(this.set("activeCues",e.slice(0)),!this.disableScroll&&null!=n&&void 0!==this.activeCues&&n.getAttribute("order")!==this.activeCues[0]){!function e(t,n,a){if(!(a<=0)){var o=(n-t.scrollTop)/a*10;setTimeout(function(){t.scrollTop=t.scrollTop+o,t.scrollTop!==n&&e(t,n,a-10)},10)}}(this,n.offsetTop-t,250)}}},{key:"setMedia",value:function(e){this.media=e,this.dispatchEvent(new CustomEvent("transcript-ready",{detail:this}))}},{key:"setTracks",value:function(e){this.set("tracks",e.slice(0)),this.notifyPath("tracks"),void 0!==this.tracks&&this.tracks.length>0&&this.shadowRoot.querySelector("#tracks").render()}},{key:"toggleHidden",value:function(e){var t=document.getElementById("inner");null!=t&&t.querySelector("a11y-media-transcript-cue[active]"),null!=t&&t.querySelector("a11y-media-transcript-cue");e=void 0!==e?e:this.hidden,this.hidden=e}},{key:"_getTabIndex",value:function(e){return e?-1:0}},{key:"_getRole",value:function(e){return e?null:"button"}},{key:"_handleCueSeek",value:function(e){this.disableInteractive||this.dispatchEvent(new CustomEvent("transcript-seek",{detail:e.detail}))}},{key:"_isActive",value:function(e,t){return null!=e&&parseInt(e)===parseInt(t)}},{key:"_isLoading",value:function(e,t){return null==e||null==t||0===t.length}},{key:"_stampLoadingStatus",value:function(e,t){if(t)return this.shadowRoot.querySelector("#loading").innerHTML=!1===e?this._getLocal("transcript","label"):this._getLocal("youTubeTranscript","label"),this.shadowRoot.querySelector("#loading").innerHTML}}],[{key:"properties",get:function(){return{activeCues:{type:Array,value:null,reflectToAttribute:!0,notify:!0},disableInteractive:{name:"disableInteractive",type:Boolean,value:!1},hideTimestamps:{name:"hideTimestamps",type:Boolean,value:!1},lang:{type:String,value:"en",reflectToAttribute:!0},mediaId:{type:String,value:null},tabIndex:{type:Number,computed:"_getTabIndex(disableInteractive)"},role:{type:Number,computed:"_getRole(disableInteractive)"},selectedTranscript:{type:String,value:"0"},status:{type:String,computed:"_stampLoadingStatus(disableSeek, __ready)"},__ready:{type:Boolean,value:!1},tracks:{type:Array,value:null}}}},{key:"tag",get:function(){return"a11y-media-transcript"}},{key:"template",get:function(){return t.html($())}}]),n}();function A(){var e=v(['\n      <style include="simple-colors-shared-styles-polymer">\n        :host {\n          display: flex;\n          height: 44px;\n          max-height: 44px;\n          min-height: 44px;\n          color: var(--a11y-media-color);\n          background-color: var(--a11y-media-transcript-bg-color);\n          --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);\n          --a11y-media-button-hover-bg-color: var(\n            --a11y-media-transcript-bg-color\n          );\n          --simple-search-input-text-color: var(--a11y-media-color);\n          --simple-search-input-line-color: var(--a11y-media-accent-color);\n          --simple-search-input-placeholder-color: var(\n            --a11y-media-transcript-color\n          );\n          --simple-search-button-color: var(--a11y-media-accent-color);\n          --simple-search-button-hover-color: var(\n            --a11y-media-faded-accent-color\n          );\n          --simple-search-button-bg-color: var(--a11y-media-bg-color);\n          --simple-search-button-border-color: var(--a11y-media-bg-color);\n          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);\n          --simple-search-button-disabled-color: var(\n            --simple-colors-default-theme-grey-5\n          );\n          --simple-search-button-disabled-bg-color: var(\n            --simple-colors-default-theme-grey-2\n          );\n          --simple-search-button-disabled-border-color: var(\n            --simple-colors-default-theme-grey-3\n          );\n          --paper-input-container-input-color: var(--a11y-media-color);\n          --simple-search-padding: 0 15px;\n        }\n        :host #searchbar {\n          display: flex;\n          align-items: stretch;\n          justify-content: space-between;\n          width: 100%;\n        }\n        :host #searching {\n          flex-grow: 2;\n        }\n        :host #autoscroll {\n          padding-right: 8px;\n        }\n        :host #scrolling,\n        :host #printing {\n          display: flex;\n          align-items: center;\n        }\n        @media print {\n          :host {\n            display: none;\n          }\n        }\n      </style>\n      <div id="searchbar">\n        <div id="searching">\n          <simple-search\n            id="simplesearch"\n            controls="transcript"\n            disabled$="[[disableSearch]]"\n            hidden$="[[disableSearch]]"\n            no-label-float\n            next-button-icon$="[[_getLocal(\'nextResult\',\'icon\')]]"\n            next-button-label$="[[_getLocal(\'nextResult\',\'label\')]]"\n            prev-button-icon$="[[_getLocal(\'prevResult\',\'icon\')]]"\n            prev-button-label$="[[_getLocal(\'prevResult\',\'label\')]]"\n            search-input-icon$="[[_getLocal(\'search\',\'icon\')]]"\n            search-input-label$="[[_getLocal(\'search\',\'label\')]]"\n            target="[[target]]"\n          >\n          </simple-search>\n        </div>\n        <div id="scrolling">\n          <a11y-media-button\n            id="scroll"\n            controls="transcript"\n            icon="[[_getLocal(\'autoScroll\',\'icon\')]]"\n            label="[[_getLocal(\'autoScroll\',\'label\')]]"\n            on-tap="_handleScrollClick"\n            toggle$="[[!disableScroll]]"\n          >\n          </a11y-media-button>\n        </div>\n        <div\n          id="printing"\n          hidden$="[[disablePrintButton]]"\n          disabled$="[[disablePrintButton]]"\n        >\n          <a11y-media-button\n            id="download"\n            controls="transcript"\n            icon$="[[_getLocal(\'download\',\'icon\')]]"\n            label="[[_getLocal(\'download\',\'label\')]]"\n            on-tap="_handleDownloadClick"\n          >\n          </a11y-media-button>\n          <a11y-media-button\n            id="print"\n            controls="transcript"\n            icon$="[[_getLocal(\'print\',\'icon\')]]"\n            label="[[_getLocal(\'print\',\'label\')]]"\n            on-tap="_handlePrintClick"\n          >\n          </a11y-media-button>\n        </div>\n      </div>\n    ']);return A=function(){return e},e}window.customElements.define(R.tag,R);var E=function(e){function n(){return i(this,n),y(this,u(n).call(this))}return d(n,b),l(n,null,[{key:"properties",get:function(){return{target:{type:Object,value:null}}}},{key:"tag",get:function(){return"a11y-media-transcript-controls"}}]),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this);this.search=this.shadowRoot.querySelector("#simplesearch"),this.dispatchEvent(new CustomEvent("searchbar-added",{detail:this.search}))}},{key:"_handleScrollClick",value:function(e){this.dispatchEvent(new CustomEvent("toggle-scroll",{detail:this}))}}],[{key:"template",get:function(){return t.html(A())}}]),n}();window.customElements.define(E.tag,E),window.A11yMediaYoutube=window.A11yMediaYoutube||{},window.A11yMediaYoutube.requestAvailability=function(){return window.A11yMediaYoutube.instance||(window.A11yMediaYoutube.instance=document.createElement("a11y-media-youtube"),document.body.appendChild(window.A11yMediaYoutube.instance)),window.A11yMediaYoutube.instance};var q=function(e){function n(){return i(this,n),y(this,u(n).apply(this,arguments))}return d(n,t.PolymerElement),l(n,[{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this);var e=this,t=document.createElement("script");t.setAttribute("src","https://www.youtube.com/iframe_api"),t.setAttribute("type","text/javascript"),document.body.appendChild(t),window.onYouTubeIframeAPIReady=function(){var t=new CustomEvent("youtube-api-ready");e.apiReady=!0,document.dispatchEvent(t)}}},{key:"initYoutubePlayer",value:function(e){var t="a11y-media-yt-",n=document.createElement("div"),a=e.videoId.split(/[\?&]/),o=a[0],i=null,r=null,l={videoId:o};this.counter++,t+=this.counter,document.body.appendChild(n),n.setAttribute("id",t);var s=new YT.Player(t,{width:e.width,height:e.height,events:{onReady:function(e){for(var t=1;t<a.length;t++){var n=a[t].split("=");if("t"===n[0]){var o=n[1].match(/(\d)+h/),s=n[1].match(/(\d)+m/),c=n[1].replace(/\d+h/,"").replace(/\d+m/,"").replace(/s/,"").match(/(\d)+/),d=null!==o&&o.length>1?360*parseInt(o[1]):0,u=null!==s&&s.length>1?60*parseInt(s[1]):0,p=null!==c&&c.length>1?parseInt(c[1]):0;i=parseInt(d+u+p)}else"start"===n[0]?i=parseInt(n[1]):"end"===n[0]&&(r=parseInt(n[1]))}null!==i?(i=Math.max(0,i),l.startSeconds=i):i=0,null!==r&&(r=null!==i?Math.max(i,r):Math.max(0,r),l.endSeconds=r),e.target.cueVideoById(l)}},playerVars:{color:"white",controls:0,autoplay:e.autoplay,disablekb:1,enablejsapi:1,iv_load_policy:3,modestbranding:1,showinfo:0,rel:0}});return s.tracks=[],s.duration=0,s.seekable={length:1,start:function(e){s.seekable.start=function(e){return i||0}},end:function(e){s.seekable.end=function(e){return null!==r?Math.min(r,s.duration):s.duration}}},s.paused=!0,s.play=function(){void 0!==s.playVideo&&s.playVideo()},s.addEventListener("onStateChange",function(){s.paused=1!==s.getPlayerState(),s.paused?clearInterval(s.timeupdate):s.timeupdate=setInterval(function(){document.dispatchEvent(new CustomEvent("timeupdate",{detail:s}))},1)}),s.pause=function(){void 0!==s.pauseVideo&&s.pauseVideo()},s.seek=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;void 0!==s.seekTo&&(s.seekTo(e),s.paused&&(s.seekupdate=setInterval(function(){Math.abs(s.getCurrentTime()-e)<1&&(document.dispatchEvent(new CustomEvent("timeupdate",{detail:s})),clearInterval(s.seekupdate))},1)))},s.setMute=function(e){void 0!==s.mute&&(e?s.mute():s.unMute())},s}}],[{key:"tag",get:function(){return"a11y-media-youtube"}},{key:"properties",get:function(){return{apiReady:{type:Boolean,value:void 0!==window.YT},counter:{type:Number,value:0}}}}]),n}();function j(){var e=v(['\n<style>\n:host {\n  display: block;\n  width: calc(100% - 2px);\n  border: 1px solid var(--simple-colors-default-theme-grey-3);\n  --a11y-media-color: var(--simple-colors-default-theme-grey-11);\n  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);\n  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);\n  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);\n  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);\n  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);\n  --paper-toast-color: var(--simple-colors-default-theme-grey-11);\n  --paper-toast-background-color: var(--simple-colors-default-theme-grey-2);\n\n  \n  --a11y-media-settings-menu-color: var(--a11y-media-color);\n  --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);\n  --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);\n  --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);\n\n  \n  --a11y-media-button-color: var(--a11y-media-color);\n  --a11y-media-button-bg-color: var(--a11y-media-bg-color);\n  --a11y-media-button-hover-color: var(--a11y-media-accent-color);\n  --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);\n  --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);\n\n  \n  --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);\n  --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);\n  --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);\n  --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);\n\n  \n  --paper-slider-active-color: var(--a11y-media-accent-color);\n  --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);\n  --paper-slider-pin-color: var(--a11y-media-faded-bg-color);\n  --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);\n  --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);\n  --paper-slider-knob-color: var(--a11y-media-accent-color);\n  --paper-slider-knob-start-color: var(--a11y-media-bg-color);\n  --paper-slider-knob-end-color: var(--a11y-media-bg-color);\n  --paper-slider-knob-border-color: var(--a11y-media-accent-color);\n  --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);\n  --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);\n  \n  \n  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);\n  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);\n  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);\n  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);\n  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);\n  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);\n  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);\n  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);\n  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);\n  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);\n  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);\n  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);\n  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);\n}\n:host([dark]) {\n  border: 1px solid var(--simple-colors-default-theme-grey-1);\n}\n:host([dark-transcript]) {\n  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);\n  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);\n  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);\n  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);\n  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);\n  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);\n  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);\n  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);\n  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);\n  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);\n}\n:host,\n:host #outerplayer {\n  color: var(--simple-colors-default-theme-grey-12);\n  background-color: var(--simple-colors-default-theme-grey-2);\n}\n:host > * {\n  transition: all 0.5s;\n}\n:host,\n:host #outerplayer,\n:host #player,\n:host #outertranscript,\n:host #innertranscript {\n  display: flex;\n  flex-flow: column;\n  align-items: stretch;\n  align-content: stretch;\n} \n:host #captionlink:link {\n  text-decoration: none;\n}\n:host #innerplayer {\n  display: flex;\n}\n:host([hidden]),\n:host *[hidden] {\n  display: none !important;\n}\n:host #innerplayer,\n:host #player, \n:host #player > *,\n:host #customcc,\n:host #customcctxt,\n:host #slider,\n:host #controls,\n:host #outertranscript,\n:host #innertranscript {\n  width: 100%;\n}\n:host #innertranscript > * {\n  width: calc(100% - 1px);\n}\n:host > *,\n:host #innerplayer,\n:host #player,\n:host #player > *,\n:host #customcctxt {\n  flex: 1 1 auto;\n}\n:host #controls,\n:host #tcontrols {\n  flex: 0 0 44px;\n}\n:host #innerplayer {\n  margin: 0 auto;\n}\n:host #player {\n  height: 400px;\n  position: relative;\n}\n:host #player > * {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n}\n:host #playbutton,\n:host #slider,\n:host #controls {\n  z-index: 2;\n}\n:host([audio-only]) #playbutton {\n  opacity: 0;\n}\n:host #slider {\n  flex: 0 0 32px;\n  height: 32px;\n}\n:host([thumbnail-src]) #youtube {\n  opacity: 0;\n}\n:host #youtube[elapsed] {\n  opacity: 1;\n  transition: opacity 0.5s;\n}\n:host #customcc:not([hidden]) {\n  font-size: 20px;\n  transition: font-size 0.25s;\n  display: flex;\n}\n:host #customcctxt:not(:empty) {\n  align-self: flex-end;\n  font-family: sans-serif;\n  color: white;\n  margin: 4px 10px;\n  padding: 0.15em 4px;\n  background-color: black;\n  background-color: rgba(0, 0, 0, 0.8);\n  transition: all 0.5s;\n}\n:host([audio-only]:not([thumbnail-src])) #customcctxt {\n  align-self: center;\n  color: var(--a11y-media-color);\n  background-color: transparent;\n}\n:host #printthumb {\n  width: 100%;\n  margin: 0;\n  display: block;\n  border-top: 1px solid #aaaaaa;\n}\n:host .media-caption:not(:empty) {\n  width: calc(100% - 30px);\n  padding: 5px 15px;\n}\n:host .media-type {\n  font-style: italic;\n}\n:host #outertranscript {\n  padding: 0 1px 0 0;\n}\n:host #innertranscript {\n  flex: 1 0 194px;\n}\n:host #transcript {\n  flex: 1 0 150px;\n  overflow-y: scroll;\n}\n:host .sr-only {\n  position: absolute;\n  left: -9999px;\n  font-size: 0;\n  height: 0;\n  width: 0;\n  overflow: hidden;\n}\n@media screen {\n  :host([flex-layout]:not([responsive-size="xs"])) {\n    flex-flow: row;\n    padding: 0;\n  }\n  :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {\n    flex: 1 0 auto;\n  }\n  :host #printthumb,\n  :host([height]) #outertranscript,\n  :host([stand-alone]) #outertranscript,\n  :host([hide-transcript]) #outertranscript {\n    display: none;\n  }\n  :host([sticky]:not([sticky-corner="none"])) #outerplayer {\n    position: fixed;\n    top: 5px;\n    right: 5px;\n    width: 200px;\n    max-width: 200px;\n    z-index: 999999;\n    border: 1px solid var(--a11y-media-bg-color);\n    box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);\n    border-radius: 3.2px;\n  }\n  :host([dark][sticky]:not([sticky-corner="none"])) #outerplayer {\n    border: 1px solid var(--a11y-media-bg-color);\n  }\n  :host([sticky][sticky-corner="top-left"]) #outerplayer {\n    right: unset;\n    left: 5px;\n  }\n  :host([flex-layout]:not([responsive-size="xs"])) > div {\n    width: 50%;\n    flex: 1 1 auto;\n  }\n  :host #innertranscript {\n    position: relative;\n  }\n  :host([hide-transcript]) #outerplayer {\n    min-width: 50%;\n    max-width: 100%;\n  }\n  :host([hide-transcript]) #outertranscript {\n    display: none;\n  }\n  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))\n    #transcript {\n    position: absolute;\n    top: 44px;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    overflow-y: scroll;\n  }\n  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))\n    #innerplayer.totop {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 200px !important;\n    z-index: 9999;\n  }\n  :host([sticky][sticky-corner="bottom-left"]) #innerplayer {\n    top: unset;\n    right: unset;\n    bottom: 5px;\n  }\n  :host([sticky][sticky-corner="bottom-right"]) #innerplayer {\n    top: unset;\n    bottom: 5px;\n  }\n  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))\n    #controls {\n    display: none;\n  }\n  :host([responsive-size="lg"]) #customcc {\n    font-size: 16px;\n  }\n  :host([responsive-size="md"]) #customcc,\n  :host([flex-layout][responsive-size="xl"]) #customcc {\n    font-size: 14px;\n  }\n  :host([responsive-size="sm"]) #customcc,\n  :host([flex-layout][responsive-size="lg"]) #customcc {\n    font-size: 12px;\n  }\n  :host([responsive-size="xs"]) #customcc,\n  :host([flex-layout][responsive-size="md"]) #customcc,\n  :host([flex-layout][responsive-size="sm"]) #customcc {\n    font-size: 10px;\n  }\n  :host([sticky]:not([sticky-corner="none"])) #customcc {\n    display: none;\n  }\n  :host .media-caption {\n    color: var(--a11y-media-bg-color);\n    background-color: var(--a11y-media-accent-color);\n  }\n  :host #audio-only {\n    text-align: center;\n    font-style: italic;\n    width: 100%;\n    line-height: 160%;\n  }\n  :host .print-only {\n    display: none;\n  }\n}\n\n@media print {\n  :host,\n  :host([dark]) {\n    outline: 1px solid #aaaaaa;\n    background-color: #ffffff;\n  }\n  :host .screen-only,\n  :host #printthumb:not([src]),\n  :host(:not([thumbnail-src])) #player {\n    display: none;\n  }\n  :host #searchbar {\n    display: none;\n  }\n  :host .media-caption {\n    background-color: #cccccc;\n    color: #000000;\n    font-size: 120%;\n  }\n}\n        </style>\n<style include="simple-colors-shared-styles-polymer"></style>\n  <div class="sr-only">\n      <a href$="[[__captionHref]]">[[mediaCaption]]</a>\n  </div>\n  <div id="outerplayer">\n    <div id="innerplayer">\n      <div id="player"\n        style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">\n        <a11y-media-play-button\n          id="playbutton"\n          action$="[[playPause.action]]"\n          audio-only$="[[audioOnly]]"\n          disabled="true"\n          elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"\n          hidden$="[[audioNoThumb]]"\n          disabled$="[[audioNoThumb]]"\n          on-controls-change="_onControlsChanged"\n          localization$="[[localization]]">\n        </a11y-media-play-button>\n        <a11y-media-html5\n          id="html5"\n          audio-only$="[[audioOnly]]"\n          autoplay$="[[autoplay]]"\n          cc$="[[cc]]"\n          crossorigin$="[[crossorigin]]"\n          hidden$="[[isYoutube]]"\n          media-lang$="[[mediaLang]]"\n          loop$="[[loop]]"\n          muted$="[[muted]]"\n          manifest$="[[manifest]]"\n          on-media-loaded="_handleMediaLoaded"\n          ontimeupdate="_handleTimeUpdate"\n          playing$="[[__playing]]"\n          playback-rate$="[[playbackRate]]"\n          thumbnail-src$="[[thumbnailSrc]]"\n          preload$="[[preload]]"\n          volume$="[[volume]]"\n        >\n          <slot></slot>\n        </a11y-media-html5>\n        <div id="youtube" \n          elapsed$="[[__elapsed]]" \n          lang$="[[mediaLang]]"\n          video-id$="[[videoId]]">\n        </div>\n        <div id="customcc" \n          aria-live="polite"\n          class="screen-only" \n          hidden$="[[!showCustomCaptions]]">\n          <div id="customcctxt"></div>\n        </div>\n      </div>\n    </div>\n    <paper-slider id="slider"\n      class="screen-only"\n      disabled$="[[disableSeek]]"\n      label$="[[seekSlider.label]]"\n      min="0"\n      max="[[__duration]]"\n      on-mousedown="_handleSliderStart"\n      on-mouseup="_handleSliderStop"\n      on-keyup="_handleSliderStop"\n      on-keydown="_handleSliderStart"\n      on-blur="_handleSliderStop"\n      secondary-progress="[[__buffered]]"\n      value="[[__elapsed]]"\n    >\n    </paper-slider>\n    <a11y-media-controls id="controls"\n      cc$="[[cc]]"\n      disable-seek$="[[disableSeek]]"\n      fixed-height$="[[height]]"\n      fullscreen$="[[fullscreen]]"\n      fullscreen-button$="[[fullscreenButton]]"\n      has-captions$="[[hasCaptions]]"\n      has-transcript$="[[hasTranscript]]"\n      hide-transcript$="[[hideTranscript]]"\n      linkable$="[[linkable]]"\n      mute-unmute="[[muteUnmute]]"\n      on-controls-change="_onControlsChanged"\n      on-print-transcript="_handlePrinting"\n      on-download-transcript="_handleDownload"\n      responsive-size$="[[responsiveSize]]"\n      play-pause="[[playPause]]"\n      stand-alone$="[[standAlone]]"\n      volume="[[__volume]]">\n    </a11y-media-controls>\n    <a id="captionlink" href$="[[__captionHref]]">\n      <div\n        aria-hidden="true"\n        class="screen-only media-caption"\n        hidden$="[[!_hasAttribute(mediaCaption)]]">\n        [[mediaCaption]]\n      </div>\n    </a>\n    <div class="print-only media-caption">[[printCaption]]</div>\n  </div>\n  <img loading="lazy" id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />\n  <div id="outertranscript" hidden$="[[standAlone]]">\n    <div id="innertranscript" hidden$="[[hideTranscript]]">\n      <a11y-media-transcript-controls id="tcontrols"\n        accent-color$="[[accentColor]]"\n        localization$="[[localization]]"\n        dark$="[[darkTranscript]]"\n        disable-print-button$="[[disablePrintButton]]"\n        disable-scroll$="[[disableScroll]]"\n        disable-search$="[[disableSearch]]"\n        has-transcript$="[[hasTranscript]]"\n        localization$="[[localization]]"\n        on-searchbar-added="_handleSearchAdded"\n        on-toggle-scroll="_handleTranscriptScrollToggle"\n        on-print-transcript="_handlePrinting"\n        on-download-transcript="_handleDownload"\n        stand-alone$="[[standAlone]]">\n      </a11y-media-transcript-controls>\n      <a11y-media-transcript id="transcript" \n        accent-color$="[[accentColor]]"\n        dark$="[[darkTranscript]]"\n        disable-scroll$="[[disableScroll]]"\n        disable-search$="[[disableSearch]]"\n        disable-seek$="[[disableSeek]]"\n        disable-interactive$="[[disableInteractive]]"\n        hide-timestamps$="[[hideTimestamps]]"\n        media-id$="[[id]]"\n        on-transcript-seek="_handleTranscriptSeek"\n        localization$="[[localization]]"\n        search="[[search]]"\n        selected-transcript$="[[__selectedTrack]]">\n      </a11y-media-transcript>\n    </div>\n  </div>\n  <paper-toast id="link" \n    disabled$="[[!linkable]]" \n    hidden$="[[!linkable]]" \n    duration="5000" \n    text="Copied to clipboard: [[shareLink]]">\n    <a11y-media-button\n      action="linkable"\n      icon="[[_getLocal(\'closeLink\',\'icon\')]]"\n      label="[[_getLocal(\'closeLink\',\'label\')]]"\n      on-click="_handleCloseLink"\n      tooltip-position="top"\n    ></a11y-media-button>\n  </paper-toast>']);return j=function(){return e},e}window.customElements.define(q.tag,q);var B=function(e){function n(){var e;i(this,n),e=y(this,u(n).call(this)),import("@polymer/paper-slider/paper-slider.js"),import("@polymer/iron-icons/iron-icons.js"),import("@polymer/iron-icons/av-icons.js"),import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");var t=e.pathFromUrl(decodeURIComponent("undefined"!=typeof document?document.currentScript&&document.currentScript.src||document.baseURI:new("undefined"!=typeof URL?URL:require("url").URL)("file:"+__filename).href)),a="".concat(t,"lib/screenfull/dist/screenfull.js");return window.ESGlobalBridge.requestAvailability(),window.ESGlobalBridge.instance.load("screenfullLib",a),window.addEventListener("es-bridge-screenfullLib-loaded",e._onScreenfullLoaded.bind(h(e))),e.__playerAttached=!0,window.A11yMediaStateManager.requestAvailability(),e}return d(n,b),l(n,null,[{key:"template",get:function(){return t.html(j())}},{key:"properties",get:function(){return function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?c(Object(n),!0).forEach(function(t){s(e,t,n[t])}):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):c(Object(n)).forEach(function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))})}return e}({},m(u(n),"properties",this),{allowConcurrent:{name:"allowConcurrent",type:Boolean,value:!1},audioNoThumb:{name:"audioNoThumb",type:Boolean,computed:"_getAudioNoThumb(audioOnly,thumbnailSrc)"},darkTranscript:{name:"darkTranscript",type:Boolean,value:!1},crossorigin:{type:String,value:null},disableFullscreen:{name:"disableFullscreen",type:Boolean,value:!1},disableInteractive:{name:"disableInteractive",type:Boolean,value:!1},flexLayout:{name:"flexLayout",type:Boolean,computed:"_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",reflectToAttribute:!0},fullscreen:{name:"fullscreen",type:Boolean,value:!1},fullscreenButton:{name:"fullscreenButton",type:Boolean,computed:"_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",notify:!0},hasCaptions:{name:"hasCaptions",type:Boolean,value:!1},hideElapsedTime:{name:"hideElapsedTime",type:Boolean,value:!1},hideTimestamps:{name:"hideTimestamps",type:Boolean,value:!1},hideTranscript:{name:"hideTranscript",type:Boolean,value:!1,reflectToAttribute:!0},id:{name:"id",type:String,value:null,reflectToAttribute:!0},mediaCaption:{name:"mediaCaption",type:String,computed:"_getMediaCaption(audioOnly,localization,mediaTitle)"},mediaLang:{name:"mediaLang",type:String,value:"en"},muteUnmute:{name:"muteUnmute",type:Object,computed:"_getMuteUnmute(muted)"},printCaption:{name:"printCaption",type:String,computed:"_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"},responsiveSize:{name:"responsiveSize",type:String,notify:!0,value:"xs",reflectToAttribute:!0},screenfullLoaded:{name:"screenfullLoaded",type:Boolean,value:!1,notify:!0},shareLink:{name:"shareLink",type:String,computed:"_getShareLink(__elapsed)"},showCustomCaptions:{name:"showCustomCaptions",type:Boolean,computed:"_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"},sources:{name:"sources",type:Array,value:[]},stackedLayout:{name:"stackedLayout",type:Boolean,value:!1},sticky:{name:"sticky",type:Boolean,value:!1,reflectToAttribute:!0},stickyCorner:{name:"stickyCorner",type:String,value:"top-right",reflectToAttribute:!0},thumbnailSrc:{name:"thumbnailSrc",type:String,value:null,reflectToAttribute:!0},tracks:{name:"tracks",type:Array,value:[]},playPause:{name:"playPause",type:Object,computed:"_getPlayPause(__playing)"},__elapsed:{name:"__elapsed",type:Number,value:null,notify:!0},__playing:{name:"__playing",type:Boolean,value:!1,notify:!0,reflectToAttribute:!0},__captionHref:{name:"__captionHref",type:String,value:null,notify:!0}})}}]),l(n,[{key:"pathFromUrl",value:function(e){return e.substring(0,e.lastIndexOf("/")+1)}},{key:"connectedCallback",value:function(){m(u(n.prototype),"connectedCallback",this).call(this),this._addResponsiveUtility(),null===this.id&&(this.id="a11y-media-player"+Date.now()),window.dispatchEvent(new CustomEvent("a11y-player",{detail:this})),this.isYoutube&&this._youTubeRequest()}},{key:"ready",value:function(){m(u(n.prototype),"ready",this).call(this);var e=this;"object"===("undefined"==typeof screenfull?"undefined":o(screenfull))&&e._onScreenfullLoaded.bind(e),e.__playerReady=!0,e.target=e.shadowRoot.querySelector("#transcript"),e.__status=e._getLocal("loading","label"),e.__slider=e.shadowRoot.querySelector("#slider"),e.__slider.min=0,e.__volume=e.muted?0:Math.max(this.volume,10),e.__resumePlaying=!1,e.__duration=0,e.shadowRoot.querySelector("#controls").setStatus(e.__status),e.width=null!==e.width?e.width:"100%",e.style.maxWidth=null!==e.width?e.width:"100%",e._setPlayerHeight(16/9),e.isYoutube?(e._youTubeRequest(),document.addEventListener("timeupdate",function(t){t.detail===e.media&&e._handleTimeUpdate(t)})):(e.media=e.shadowRoot.querySelector("#html5"),e.media.media.addEventListener("timeupdate",function(t){e._handleTimeUpdate(t)}),e._addSourcesAndTracks()),e.shadowRoot.querySelector("#transcript").setMedia(e.shadowRoot.querySelector("#innerplayer"))}},{key:"play",value:function(){this.__playing;this.isYoutube&&!this.__ytAppended?ytInit():(this.__playing=!0,this.media.play(),window.dispatchEvent(new CustomEvent("a11y-player-playing",{detail:this})))}},{key:"pause",value:function(){this.__playing=!1,this.media.pause()}},{key:"stop",value:function(){this.pause(),this.seek(0)}},{key:"restart",value:function(){this.seek(0),this.play()}},{key:"rewind",value:function(e){e=void 0!==e?e:this.media.duration/20,this.__resumePlaying=this.__playing,this.seek(this.media.getCurrentTime()-e,0),this.__resumePlaying&&this.play(),this.__resumePlaying=!1}},{key:"forward",value:function(e){e=void 0!==e?e:this.media.duration/20,this.__resumePlaying=this.__playing,this.seek(this.media.getCurrentTime()+e),this.__resumePlaying&&this.play(),this.__resumePlaying=!1}},{key:"seek",value:function(e){var t=void 0!==this.media&&null!==this.media?this.media.seekable:[];t.length>0&&e>=t.start(0)&&e<=t.end(0)&&this.media.seek(e)}},{key:"selectTrack",value:function(e){this.__selectedTrack=e,this.shadowRoot.querySelector("#html5").selectTrack(e)}},{key:"setVolume",value:function(e){this.volume=null!==e?e:70,this.media.setVolume(this.volume),this.muted=0===this.volume}},{key:"setPlaybackRate",value:function(e){e=null!==e?e:1,this.media.setPlaybackRate(e)}},{key:"toggleCC",value:function(e){this.cc=void 0===e?!this.cc:e,this.shadowRoot.querySelector("#html5").setCC(this.cc)}},{key:"toggleLoop",value:function(e){this.isYoutube||(this.loop=void 0===e?!this.loop:e,this.media.setLoop(this.loop))}},{key:"toggleMute",value:function(e){this.muted=void 0===e?!this.muted:e,this.__volume=this.muted?0:Math.max(this.volume,10),this.media.setMute(this.muted)}},{key:"toggleSticky",value:function(e){e=void 0===e?!this.sticky:e,this.sticky=e,this.dispatchEvent(new CustomEvent("player-sticky",{detail:this}))}},{key:"toggleTranscript",value:function(e){e=void 0===e?this.hideTranscript:e,this.hideTranscript=!e,void 0!==this.shadowRoot.querySelector("#transcript")&&null!==this.shadowRoot.querySelector("#transcript")&&this.dispatchEvent(new CustomEvent("transcript-toggle",{detail:this}))}},{key:"_appendToPlayer",value:function(e,t){if(null!=e&&e!==[])for(var n=Array.isArray(e)?e:JSON.parse(e),a=0;a<n.length;a++){var o=document.createElement(t);for(var i in this.__captionHref||"source"!==t||(this.__captionHref=n[a].src),n[a])o.setAttribute(i,n[a][i]);this.shadowRoot.querySelector("#html5").media.appendChild(o)}}},{key:"_setPlayerHeight",value:function(e){this.shadowRoot.querySelector("#player").style.height="unset",this.audioOnly&&null===this.thumbnailSrc&&null===this.height?this.shadowRoot.querySelector("#player").style.height="60px":null===this.height?(this.shadowRoot.querySelector("#player").style.paddingTop=100/e+"%",this.shadowRoot.querySelector("#innerplayer").style.maxWidth="calc("+100*e+"vh - "+80*e+"px)"):this.shadowRoot.querySelector("#outerplayer").style.height=this.height}},{key:"_getMediaCaption",value:function(e,t,n){var a=this._getLocal("audio","label"),o=null!=n&&""!==n;return e&&o?n+" ("+a+")":e?a:o?n:null}},{key:"_getMuteUnmute",value:function(e){return e?{label:this._getLocal("unmute","label"),icon:this._getLocal("unmute","icon"),action:"unmute"}:{label:this._getLocal("mute","label"),icon:this._getLocal("mute","icon"),action:"mute"}}},{key:"_getPrintCaption",value:function(e,t,n){var a=this._getLocal("audio","label"),o=this._getLocal("video","label"),i=null!=n&&""!==n;return e&&i?n+" ("+a+")":e?a:i?n+" ("+o+")":o}},{key:"_getThumbnailCSS",value:function(e,t,n){return null!=e&&(t||n)?"background-image: url("+e+"); background-size: cover;":null}},{key:"_addSourcesAndTracks",value:function(){var e=this,t=0;e.audioOnly=e.audioOnly||null!==e.querySelector("audio"),e.querySelectorAll("source,track").forEach(function(t){e.__captionHref||"SOURCE"!==t.tagName||(e.__captionHref=t.getAttribute("src")),e.shadowRoot.querySelector("#html5").media.appendChild(t)}),e._appendToPlayer(e.tracks,"track"),e._appendToPlayer(e.sources,"source"),e.shadowRoot.querySelector("#html5").media.textTracks.onaddtrack=function(n){e.hasCaptions=!0,e.hasTranscript=!e.standAlone,e._getTrackData(n.track,t++)}}},{key:"_getAudioNoThumb",value:function(e,t){return e&&null==t}},{key:"_getFullscreenButton",value:function(e,t,n){return"object"===("undefined"==typeof screenfull?"undefined":o(screenfull))&&this._onScreenfullLoaded.bind(this),!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||e||t||"object"!==("undefined"==typeof screenfull?"undefined":o(screenfull)))}},{key:"_getPlayPause",value:function(e){return!1!==e?{label:this._getLocal("pause","label"),icon:this._getLocal("pause","icon"),action:"pause"}:{label:this._getLocal("play","label"),icon:this._getLocal("play","icon"),action:"play"}}},{key:"_getShareLink",value:function(e){var t=window.location.href.split(/[#?]/)[0],n=this.id?"?id=".concat(this.id):"",a=""!==n&&this.__elapsed&&0!==this.__elapsed?"&t=".concat(this.__elapsed):"";return"".concat(t).concat(n).concat(a)}},{key:"_getTrackData",value:function(e,t){var n,a=this,o=!0===e.default||void 0===a.__selectedTrack;o&&a.selectTrack(t),e.mode=o&&!0===this.cc?"showing":"hidden",n=setInterval(function(){if(void 0!==e.cues&&null!==e.cues&&e.cues.length>0){clearInterval(n);var o=Object.keys(e.cues).map(function(t){return{order:""!==e.cues[t].id?e.cues[t].id:t,seek:e.cues[t].startTime,seekEnd:e.cues[t].endTime,start:a._getHHMMSS(e.cues[t].startTime,a.media.duration),end:a._getHHMMSS(e.cues[t].endTime,a.media.duration),text:e.cues[t].text}});void 0===a.__tracks&&(a.__tracks=[]),a.push("__tracks",{value:t,language:e.language,text:void 0!==e.label?e.label:void 0!==e.language?e.language:"Track "+t,cues:o}),a.shadowRoot.querySelector("#controls").setTracks(a.__tracks),a.shadowRoot.querySelector("#transcript").setTracks(a.__tracks),a.push("__tracks"),e.oncuechange=function(e){a.shadowRoot.querySelector("#transcript").setActiveCues(Object.keys(e.currentTarget.activeCues).map(function(t){return e.currentTarget.activeCues[t].id}))}}},1)}},{key:"_handleCloseLink",value:function(){this.shadowRoot.querySelector("#link").close(),this.__resumePlaying&&this.play(),this.__resumePlaying=!1}},{key:"_handleCopyLink",value:function(){var e=document.createElement("textarea");this.__resumePlaying=this.__playing,this.pause,e.value=this.shareLink,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e),this.shadowRoot.querySelector("#link").open()}},{key:"_handleTranscriptSeek",value:function(e){this.standAlone||void 0===this.shadowRoot.querySelector("#transcript")||null===this.shadowRoot.querySelector("#transcript")||(this.__resumePlaying=this.__playing,this.seek(e.detail))}},{key:"_handleMediaLoaded",value:function(e){var t=window.AnchorBehaviors,n=t.getTarget(this),a=t.params,o=this.media.aspectRatio;this._setPlayerHeight(o),this.shadowRoot.querySelector("#playbutton").removeAttribute("disabled"),this._setElapsedTime(),this._getTrackData(this.shadowRoot.querySelector("#html5").media),n===this&&this.seek(this._getSeconds(a.t))}},{key:"_hidePlayButton",value:function(e,t,n){return t&&null===e||!(void 0===n||0===n)}},{key:"_handlePrinting",value:function(e){this.dispatchEvent(new CustomEvent("printing-transcript",{detail:this})),this.shadowRoot.querySelector("#transcript").print(this.mediaTitle)}},{key:"_handleSearchAdded",value:function(e){this.search=e.detail}},{key:"_handleSliderStart",value:function(e){this.__resumePlaying=!this.paused,this.pause(),this.__seeking=!0}},{key:"_handleSliderStop",value:function(e){this.seek(this.shadowRoot.querySelector("#slider").immediateValue),this.__seeking=!1,this.__resumePlaying&&(this.play(),this.__resumePlaying=null)}},{key:"_handleTimeUpdate",value:function(e){this.isYoutube&&this.media.duration!==this.media.getDuration()&&(this.__duration=this.media.duration=this.media.getDuration(),this.disableSeek=!1,this._addSourcesAndTracks(),this.media.seekable&&this.media.seekable.length>0&&0!==this.media.seekable.start(0)&&(this.shadowRoot.querySelector("#slider").min=this.media.seekable.start(0))),void 0!==this.media.seekable&&this.media.seekable.length>0&&this.media.seekable.end(0)<=this.media.getCurrentTime()&&(this.stop(),this.__playing=!1),this._updateCustomTracks(),this._setElapsedTime()}},{key:"_handleTranscriptScrollToggle",value:function(e){this.disableScroll=!this.disableScroll}},{key:"_isFlexLayout",value:function(e,t,n,a){return!(e||t||n||a)}},{key:"_onControlsChanged",value:function(e){var t=void 0!==e.detail.action?e.detail.action:e.detail.id;"backward"===t||"rewind"===t?this.rewind():"captions"===t?this.toggleCC():"transcript"===t||"transcript-toggle"===t?this.toggleTranscript():"tracks"===e.detail.id?""===e.detail.value?this.toggleCC(!1):(this.toggleCC(!0),this.selectTrack(e.detail.value)):"forward"===t?this.forward():"fullscreen"===t&&this.fullscreenButton?(this.toggleTranscript(this.fullscreen),screenfull.toggle(this.shadowRoot.querySelector("#outerplayer"))):"loop"===t?this.toggleLoop():"mute"===t||"unmute"===t?this.toggleMute():"pause"===t?this.pause():"play"===t?this.play():"restart"===t?(this.seek(0),this.play()):"speed"===t?this.setPlaybackRate(e.detail.value):"volume"===t?this.setVolume(e.detail.value):"linkable"===t&&this._handleCopyLink()}},{key:"_onScreenfullLoaded",value:function(){var e=this;e.screenfullLoaded=!0,screenfull&&screenfull.on("change",function(){screenfull.enabled&&(e.fullscreen=screenfull.isFullscreen)})}},{key:"_setElapsedTime",value:function(){var e=!0===this.__seeking?this.shadowRoot.querySelector("#slider").immediateValue:this.media.getCurrentTime()>0?this.media.getCurrentTime():0,t=this.media.duration>0?this.media.duration:0;this.__elapsed=e,this.__duration=t,void 0!==this.media.seekable&&this.media.seekable.length>0&&(void 0!==this.media.seekable.start(0)&&(e-=this.media.seekable.start(0)),void 0!==this.media.seekable.end(0)&&(t=this.media.seekable.end(0)-(void 0!==this.media.seekable.start(0)?this.media.seekable.start(0):0))),this.__status=this._getHHMMSS(e,t)+"/"+this._getHHMMSS(t),this.shadowRoot.querySelector("#controls").setStatus(this.__status)}},{key:"_showCustomCaptions",value:function(e,t,n,a){return(e||t)&&n&&a}},{key:"_useYoutubeIframe",value:function(e,t,n){return t&&(null===e||void 0===n||0===n)}},{key:"_youTubeRequest",value:function(){window.A11yMediaYoutube.requestAvailability();var e=this,t=window.A11yMediaYoutube.instance;if(e.disableSeek=!0,e.__playerAttached&&e.__playerReady){var n=function(){e.media=t.initYoutubePlayer({width:"100%",height:"100%",videoId:e.youtubeId}),e.__status=e._getLocal("youTubeLoading","label"),e.shadowRoot.querySelector("#controls").setStatus(e.__status),e.shadowRoot.querySelector("#youtube").appendChild(e.media.a),e.__ytAppended=!0,e._updateCustomTracks()};t.apiReady?e.__ytAppended||n():document.addEventListener("youtube-api-ready",function a(o){t.apiReady&&(document.removeEventListener("youtube-api-ready",a),e.__ytAppended||n())})}}},{key:"_updateCustomTracks",value:function(){if((this.isYoutube||this.audioOnly)&&this.__tracks){var e=this.__tracks[this.shadowRoot.querySelector("#transcript").selectedTranscript],t=[],n="";if(null!=e&&void 0!==e.cues&&null!==e.cues){for(var a=0;a<e.cues.length;a++)e.cues[a].seek<this.__elapsed&&e.cues[a].seekEnd>this.__elapsed&&(t.push(e.cues[a].order),n=""===n?e.cues[a].text:n);this.shadowRoot.querySelector("#customcctxt").innerText=n,this.shadowRoot.querySelector("#transcript").setActiveCues(t)}}}},{key:"disconnectedCallback",value:function(){window.removeEventListener("es-bridge-screenfullLib-loaded",this._onScreenfullLoaded.bind(this)),m(u(n.prototype),"disconnectedCallback",this).call(this)}}],[{key:"tag",get:function(){return"a11y-media-player"}}]),n}();window.customElements.define(B.tag,B),e.A11yMediaPlayer=B,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=a11y-media-player.umd.js.map
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, css } from "lit-element/lit-element.js";
+import { ifDefined } from "lit-html/directives/if-defined.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/simple-search/simple-search.js";
+import "./lib/a11y-media-state-manager.js";
+import "./lib/a11y-media-button.js";
+import "./lib/a11y-media-transcript-cue.js";
+
+/**
+ * `a11y-media-player`
+ * an accessible video player
+ *
+ * @extends A11yMediaBehaviors
+ * @extends SimpleColorsPolymer
+ * @demo ./demo/index.html video demo
+ * @demo ./demo/audio.html audio demo
+ * @demo ./demo/youtube.html YouTube demo
+ *
+ */
+class A11yMediaPlayer extends SimpleColors {
+  
+  //styles function
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
+:host {
+  display: block;
+  width: calc(100% - 2px);
+  border: 1px solid var(--simple-colors-default-theme-grey-3);
+  --a11y-media-player-height: unset;
+  --a11y-media-color: var(--simple-colors-default-theme-grey-11);
+  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
+  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
+  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
+  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
+  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5);
+  --paper-toast-color: var(--simple-colors-default-theme-grey-11);
+  --paper-toast-background-color: var(--simple-colors-default-theme-grey-2);
+
+  
+  --a11y-media-settings-menu-color: var(--a11y-media-color);
+  --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
+  --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
+  --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
+
+  
+  --a11y-media-button-color: var(--a11y-media-color);
+  --a11y-media-button-bg-color: var(--a11y-media-bg-color);
+  --a11y-media-button-hover-color: var(--a11y-media-accent-color);
+  --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
+  --a11y-media-button-disabled-color: var(--a11y-media-disabled-color);
+  --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
+
+  
+  --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
+  --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
+  --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
+  --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
+
+  
+  --paper-slider-active-color: var(--a11y-media-accent-color);
+  --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
+  --paper-slider-pin-color: var(--a11y-media-bg-color);
+  --paper-slider-pin-start-color: var(--a11y-media-bg-color);
+  --paper-slider-pin-end-color: var(--a11y-media-bg-color);
+  --paper-slider-knob-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-start-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
+  --paper-slider-knob-border-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
+  --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+  
+  
+  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);
+  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
+  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
+  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
+  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
+  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
+}
+:host([dark]) {
+  border: 1px solid var(--simple-colors-default-theme-grey-1);
+}
+:host([dark-transcript]) {
+  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
+}
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+:host([height]) {
+  height: calc(var(--a11y-media-player-height) - 2px);
+  max-height: calc(var(--a11y-media-player-height) - 2px);
+  overflow: hidden;
+}
+:host[height] #transcript-section {
+  display: none;
+}
+:host,
+#player-section {
+  color: var(--simple-colors-default-theme-grey-12);
+  background-color: var(--simple-colors-default-theme-grey-2);
+}
+:host > * {
+  transition: all 0.5s;
+}
+:host,
+#player-section,
+#player,
+#transcript-section,
+#transcript-and-controls {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  align-content: stretch;
+} 
+#captionlink:link {
+  text-decoration: none;
+}
+#player-and-controls,
+#player, 
+#player > *,
+#cc-custom,
+#cc-text,
+#slider,
+#controls,
+#player-section,
+#transcript-section,
+#transcript-and-controls {
+  width: 100%;
+}
+#transcript-and-controls > * {
+  width: calc(100% - 1px);
+}
+:host > *,
+#player-and-controls,
+#player,
+#player > *,
+#cc-text {
+  flex: 1 1 auto;
+}
+#controls,
+#searchbar {
+  flex: 0 0 44px;
+}
+#player-and-controls {
+  margin: 0 auto;
+  display: flex;
+}
+#player {
+  height: 400px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+#player > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+#playbutton,
+#slider,
+#controls {
+  z-index: 2;
+}
+#html5 {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+}
+:host([audio-only]) #playbutton {
+  opacity: 0;
+}
+#slider {
+  flex: 0 0 32px;
+  height: 32px;
+}
+a11y-media-youtube {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+a11y-media-youtube.hidden {
+  opacity: 0;
+}
+#cc-custom:not([hidden]) {
+  font-size: 20px;
+  transition: font-size 0.25s;
+  display: flex;
+}
+#cc-text {
+  align-self: flex-end;
+  font-family: sans-serif;
+  color: white;
+  margin: 4px 10px;
+  padding: 0.15em 4px;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s;
+}
+#player-and-controls[audio-no-thumb] #cc-text {
+  align-self: center;
+  color: var(--a11y-media-color);
+  background-color: transparent;
+}
+#controls {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 44px;
+  max-height: 44px;
+  position: relative;
+  color: var(--a11y-media-color);
+  --primary-text-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-background: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-background-color: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-color: var(--a11y-media-settings-menu-color);
+  --paper-listbox: {
+    padding: 0;
+  }
+  --paper-menu-button: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+  }
+  --paper-menu-button-dropdown: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  --paper-item-selected: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+  --paper-item-focused: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+}
+#controls-left {
+  position: absolute;
+  left: 0;
+  min-width: 200px;
+}
+#controls-right {
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+paper-menu-button,
+dropdown-select {
+  padding: 0;
+}
+paper-icon-button {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-icon-button:active,
+paper-icon-button:focus,
+paper-icon-button:hover {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-item {
+  min-height: 40;
+}
+.play-status,
+paper-icon-button {
+  border: none;
+  position: relative;
+}
+.play-status {
+  font-size: 85%;
+}
+.play-status.control-bar {
+  padding: 8px 13px 8px;
+}
+:host([hide-play-status]) .play-status {
+  display: none;
+}
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.setting-text {
+  min-width: 125px;
+}
+.setting-control {
+  max-width: 100px;
+}
+.setting-slider {
+  width: 130px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#volume-and-mute {
+  display: inline-block;
+  position: relative;
+}
+#volume {
+  position: absolute;
+  left: 30px;
+  top: 0px;
+  width: 0;
+  height: 40px;
+  overflow: hidden;
+  transition: width 0.5s;
+  z-index: 3;
+  border-radius: 4px;
+  background-color: var(--a11y-media-bg-color);
+}
+
+#volume:active,
+#volume:focus,
+#volume:hover,
+#volume.focus,
+#volume-and-mute:active #volume,
+#volume-and-mute:focus #volume,
+#volume-and-mute:hover #volume {
+  overflow: visible;
+  width: 100px;
+}
+:host([responsive-size="xs"]) #volume:active,
+:host([responsive-size="xs"]) #volume:focus,
+:host([responsive-size="xs"]) #volume:hover,
+:host([responsive-size="xs"]) #volume.focus,
+:host([responsive-size="xs"]) #volume-and-mute:active #volume,
+:host([responsive-size="xs"]) #volume-and-mute:focus #volume,
+:host([responsive-size="xs"]) #volume-and-mute:hover #volume {
+  top: 0px;
+}
+#print-thumbnail {
+  width: 100%;
+  margin: 0;
+  display: block;
+  border-top: 1px solid #aaaaaa;
+}
+.media-caption:not(:empty) {
+  width: calc(100% - 30px);
+  padding: 5px 15px;
+}
+.media-type {
+  font-style: italic;
+}
+#searchbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 44px;
+  max-height: 44px;
+  min-height: 44px;
+  width: 100%;
+  color: var(--a11y-media-color);
+  background-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-hover-bg-color: var(
+    --a11y-media-transcript-bg-color
+  );
+  --simple-search-input-text-color: var(--a11y-media-color);
+  --simple-search-input-line-color: var(--a11y-media-accent-color);
+  --simple-search-input-placeholder-color: var(
+    --a11y-media-transcript-color
+  );
+  --simple-search-button-color: var(--a11y-media-accent-color);
+  --simple-search-button-hover-color: var(
+    --a11y-media-faded-accent-color
+  );
+  --simple-search-button-bg-color: var(--a11y-media-bg-color);
+  --simple-search-button-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-disabled-color: var(
+    --simple-colors-default-theme-grey-5
+  );
+  --simple-search-button-disabled-bg-color: var(
+    --simple-colors-default-theme-grey-2
+  );
+  --simple-search-button-disabled-border-color: var(
+    --simple-colors-default-theme-grey-3
+  );
+  --paper-input-container-input-color: var(--a11y-media-color);
+  --simple-search-padding: 0 15px;
+}
+#searching {
+  flex-grow: 2;
+}
+#autoscroll {
+  padding-right: 8px;
+}
+#scrolling,
+#printing {
+  display: flex;
+  align-items: center;
+}
+#transcript-section {
+  padding: 0 1px 0 0;
+}
+#transcript-and-controls {
+  flex: 1 0 194px;
+}
+#transcript {
+  flex: 1 0 150px;
+  overflow-y: scroll;
+  color: var(--a11y-media-transcript-cue-color);
+  background-color: var(--a11y-media-transcript-cue-bg-color);
+  border-left: 1px solid var(--a11y-media-transcript-bg-color);
+}
+.transcript-from-track {
+  display: table;
+  width: calc(100% - 30px);
+  padding: 0 15px 15px;
+  color: var(--a11y-media-transcript-cue-color);
+  background-color: var(--a11y-media-transcript-cue-bg-color);
+}
+.transcript-from-track[hideTimestamps] {
+  display: block;
+}
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  font-size: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+paper-menu-button:not(:defined) paper-listbox, 
+paper-listbox:not(:defined), 
+simple-tooltip:not(:defined), 
+paper-toast:not(:defined) {
+  display: none;
+}
+@media screen {
+  :host([full-flex]) {
+    flex-flow: row;
+    padding: 0;
+  }
+  :host([full-flex]) #player-section {
+    max-width: 50%;
+    flex: 1 0 auto;
+  }
+  :host([full-flex]) #transcript-section {
+    min-width: 50%;
+    flex: 0 1 auto;
+  }
+  :host([full-flex]) #transcript {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+  }
+  #transcript-and-controls {
+    position: relative;
+  }
+  :host([sticky-mode]) #player-section {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 200px;
+    max-width: 200px;
+    z-index: 999999;
+    border: 1px solid var(--a11y-media-bg-color);
+    box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
+    border-radius: 3.2px;
+  }
+  :host([dark][sticky-mode]) #player-section {
+    border: 1px solid var(--a11y-media-bg-color);
+  }
+  :host([sticky][sticky-corner="top-left"]) #player-section {
+    right: unset;
+    left: 5px;
+  }
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
+    #player-and-controls.totop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px !important;
+    z-index: 9999;
+  }
+  :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {
+    top: unset;
+    right: unset;
+    bottom: 5px;
+  }
+  :host([sticky][sticky-corner="bottom-right"]) #player-and-controls {
+    top: unset;
+    bottom: 5px;
+  }
+  :host([sticky-mode]) .screen-only.media-caption,
+  :host([responsive-size="xs"]) .screen-only.media-caption {
+    display: none;
+  }
+  :host([sticky-mode]) #player-and-controls[audio-no-thumb] {
+    max-height: 0px;
+    overflow: hidden;
+  }
+  :host([sticky-mode]) #controls > * > *:not(.xs),
+  :host([sticky-mode]) .play-status,
+  :host([responsive-size="xs"]) #controls > * > *:not(.xs),
+  :host([responsive-size="xs"]) .play-status,
+  :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm) {
+    display: none;
+  }
+
+  :host([responsive-size="xl"]) #cc-custom {
+    font-size: 16px;
+  }
+  :host([responsive-size="lg"]) #cc-custom,
+  :host([flex-layout][responsive-size="xl"]) #cc-custom {
+    font-size: 14px;
+  }
+  :host([responsive-size="md"]) #cc-custom,
+  :host([flex-layout][responsive-size="lg"]) #cc-custom {
+    font-size: 12px;
+  }
+  :host([responsive-size="xs"]) #cc-custom,
+  :host([flex-layout][responsive-size="md"]) #cc-custom,
+  :host([flex-layout][responsive-size="sm"]) #cc-custom {
+    font-size: 10px;
+  }
+  :host([sticky-mode]) #cc-custom,
+  :host([flex-layout][responsive-size="xs"]) #cc-custom {
+    display: none;
+  }
+  .media-caption {
+    color: var(--a11y-media-bg-color);
+    background-color: var(--a11y-media-accent-color);
+  }
+  #audio-only {
+    text-align: center;
+    font-style: italic;
+    width: 100%;
+    line-height: 160%;
+  }
+  #print-thumbnail,
+  .print-only {
+    width: 0;
+    display: none;
+  }
+}
+
+@media print {
+  :host,
+  :host([dark]) {
+    outline: 1px solid #aaaaaa;
+    background-color: #ffffff;
+  }
+  .screen-only,
+  #searchbar,
+  #print-thumbnail:not([src]),
+  :host(:not([thumbnail-src])) #player {
+    display: none;
+  }
+  .media-caption {
+    background-color: #cccccc;
+    color: #000000;
+    font-size: 120%;
+  }
+  #transcript {
+    padding: 0 15px 5px;
+    color: #000;
+    background-color: #ffffff;
+    border-top: 1px solid #aaa;
+  }
+}
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+<div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
+  ${this.mediaCaption}
+</div>
+<div id="player-section">
+  <div id="player-and-controls" .style="${this.mediaMaxWidth}" ?audio-no-thumb="${this.audioNoThumb}">
+    <div id="player" .style="${this.playerStyle}">
+      <a11y-media-play-button
+        id="playbutton"
+        action="${this.__playing ? 'pause' : 'play'}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
+        @button-click="${e => this.togglePlay()}"
+        ?audio-only="${this.audioOnly}"
+        ?disabled="${this.audioNoThumb}">
+      </a11y-media-play-button>
+      <div id="html5">
+        <slot></slot>
+      </div>
+      <a11y-media-youtube
+        id="youtube-${this.id}"
+        class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
+        lang="${this.mediaLang}"
+        preload="${this.t ? 'auto' : this.preload}"
+        t="${ifDefined(this.t)}"
+        video-id="${ifDefined(this.videoId)}"
+        @timeupdate="${this._handleTimeUpdate}"
+        ?hidden=${!this.isYoutube}>
+      </a11y-media-youtube>
+      <div id="cc-custom" 
+        aria-live="polite"
+        class="screen-only" 
+        ?hidden="${!this.showCustomCaptions}">
+        <div id="cc-text" ?hidden="${Object.keys(this.captionCues || []).length === 0}">
+          ${!this.captionCues ? `` 
+            : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <paper-slider id="slider"
+    class="screen-only"
+    label="${this._getLocal(this.localization,'seekSlider', 'label')}"
+    min="${0}"
+    max="${this.duration}"
+    secondary-progress="${this.buffered}"
+    @immediate-value-changed="${this._handleSliderChanged}"
+    @focused-changed="${this._handleSliderChanged}"
+    .value="${this.__currentTime}"
+    ?disabled="${this.disableSeek || this.duration === 0}"
+  >
+  </paper-slider>
+  <div id="controls" controls="innerplayer">
+    <div id="controls-left">
+      <a11y-media-button
+        class="xs"
+        icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
+        @click="${e => this.togglePlay()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        icon="${this._getLocal(this.localization,'rewind','icon')}"
+        label="${this._getLocal(this.localization,'rewind','label')}"
+        ?disabled="${this.disableSeek || this.currentTime <= 0}"
+        ?hidden="${this.disableSeek }"
+        @click="${e => this.rewind()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        icon="${this._getLocal(this.localization,'forward','icon')}"
+        label="${this._getLocal(this.localization,'forward','label')}"
+        ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
+        ?hidden="${this.disableSeek}"
+        @click="${e => this.forward()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        icon="${this._getLocal(this.localization,'restart','icon')}"
+        label="${this._getLocal(this.localization,'restart','label')}"
+        ?disabled="${this.disableSeek}"
+        ?hidden="${this.responsiveSize === 'xs' || this.responsiveSize === 'sm' || this.disableSeek}"
+        @click="${e => this.restart()}"
+      ></a11y-media-button>
+      <div id="volume-and-mute"
+      class="xs"
+          @focus="${e => this.__volumeSlider = true}"
+          @blur="${e => this.__volumeSlider = false}">
+        <a11y-media-button
+          id="mute"
+          icon="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'icon')}"
+          label="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'label')}"
+          @click="${e => this.toggleMute()}"
+        ></a11y-media-button>
+        <paper-slider
+          id="volume"
+          aria-labelledby="volume-slider-label"
+          label="${this._getLocal(this.localization,'volume','label')}"
+          min="0"
+          max="100"
+          pin
+          step="10"
+          .value="${this.muted ? 0 : this.volume}"
+          @change="${this._handleVolumeChanged}" 
+          ?hidden="${this.responsiveSize === 'xs'}"
+        ></paper-slider>
+      </div>
+      <span aria-live="polite" class="play-status control-bar sm">
+        <span id="statbar">${this.status}</span>
+      </span>
+    </div>
+    <div id="controls-right">
+      <a11y-media-button
+        class="sm"
+        icon="${this._getLocal(this.localization,'captions','icon')}"
+        label="${this._getLocal(this.localization,'captions','label')}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions}"
+        ?toggle="${this.captionsTrackKey > -1}"
+        @click="${e => this.toggleCC()}"
+      >
+      </a11y-media-button>
+      <a11y-media-button
+        class="sm"
+        controls="transcript"
+        icon="${this._getLocal(this.localization,'transcript','icon')}"
+        label="${this._getLocal(this.localization,'transcript','label')}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
+        ?toggle="${this.transcriptTrackKey > -1}"
+        @click="${e => this.toggleTranscript()}"
+      >
+      </a11y-media-button>
+      <a11y-media-button
+        icon="${this._getLocal(this.localization,'copyLink','icon')}"
+        label="${this._getLocal(this.localization,'copyLink','label')}"
+        ?disabled="${!this.linkable}"
+        ?hidden="${!this.linkable}"
+        @click="${this._handleCopyLink}"
+      ></a11y-media-button>
+      <a11y-media-button
+        class="xs"
+        icon="${this._getLocal(this.localization,'fullscreen','icon')}"
+        label="${this._getLocal(this.localization,'fullscreen','label')}"
+        step="1"
+        ?disabled="${this.fullscreenButton}"
+        ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
+        ?toggle="${this.fullscreen}"
+        @click="${e => this.toggleFullscreen()}"
+      >
+      </a11y-media-button>
+      <paper-menu-button
+        class="sm"
+        id="settings"
+        allow-outside-scroll
+        horizontal-align="right"
+        ignore-select
+        vertical-align="bottom"
+        @change="${this._handleSettingsChanged}"
+      >
+        <paper-icon-button
+          id="settings-button"
+          action="settings"
+          alt="${this._getLocal(this.localization,'settings','label')}"
+          icon="${this._getLocal(this.localization,'settings','icon')}"
+          slot="dropdown-trigger"
+        >
+        </paper-icon-button>
+        <simple-tooltip for="settings-button">
+          ${this._getLocal(this.localization,'settings','label')}
+        </simple-tooltip>
+
+        <paper-listbox id="settingslist" slot="dropdown-content">
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div class="setting-text">
+                ${this._getLocal(this.localization,'captions','label')}
+              </div>
+              <div class="setting-control">
+                <dropdown-select
+                  id="cc_tracks"
+                  no-label-float
+                  value="${this.captionsTrackKey}"
+                  ?hidden="${!this.hasCaptions}"
+                  ?disabled="${!this.hasCaptions}"
+                  @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+                >
+                  <paper-item value="-1"
+                    >${this._getLocal(this.localization,'captions','off')}</paper-item
+                  >
+                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+                    return html`
+                      <paper-item value="${key}">
+                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+                      </paper-item>
+                    `;
+                  })}
+                </dropdown-select>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div class="setting-text">
+                ${this._getLocal(this.localization,'transcript','label')}
+              </div>
+              <div class="setting-control">
+                <dropdown-select
+                  id="transcript_tracks"
+                  no-label-float
+                  value="${this.transcriptTrackKey}"
+                  ?hidden="${!this.hasCaptions}"
+                  ?disabled="${!this.hasCaptions}"
+                  @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+                >
+                  <paper-item value="-1"
+                    >${this._getLocal(this.localization,'transcript','off')}</paper-item
+                  >
+                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+                    return html`
+                      <paper-item value="${key}">
+                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+                      </paper-item>
+                    `;
+                  })}
+                </dropdown-select>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div id="print-label" class="setting-text">
+                ${this._getLocal(this.localization,'print','label')}
+              </div>
+              <div class="setting-control">
+              <a11y-media-button
+                aria-labelledby="print-label"
+                icon="${this._getLocal(this.localization,'print','icon')}"
+                ?disabled="${this.noPrinting}"
+                ?hidden="${this.noPrinting}"
+                @click="${this.print}"
+              >
+              </a11y-media-button>
+            </div>
+          </div>
+          </paper-item>
+          <paper-item  ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div id="download-label" class="setting-text">
+                ${this._getLocal(this.localization,'download','label')}
+              </div>
+              <div class="setting-control">
+                <a11y-media-button
+                  aria-labelledby="download-label"
+                  icon="${this._getLocal(this.localization,'download','icon')}"
+                  ?disabled="${this.noPrinting}"
+                  ?hidden="${this.noPrinting}"
+                  @click="${this.download}"
+                >
+                </a11y-media-button>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item>
+            <div class="setting">
+              <div id="loop-label" class="setting-text">
+                ${this._getLocal(this.localization,'loop','label')}
+              </div>
+              <div class="setting-control">
+                <paper-toggle-button
+                  id="loop"
+                  aria-labelledby="loop-label"
+                  @change="${e => this.toggleLoop()}"
+                  ?checked="${this.loop}"
+                ></paper-toggle-button>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item>
+            <div class="setting">
+              <div id="speed-label" class="setting-text">
+                ${this._getLocal(this.localization,'speed','label')}
+              </div>
+              <div class="setting-control">
+                <paper-slider
+                  id="speed"
+                  aria-labelledby="speed-label"
+                  class="setting-slider"
+                  min="0.5"
+                  max="2.5"
+                  pin
+                  step="0.25"
+                  tabindex="-1"
+                  .value="${this.playbackRate}"
+                  @change="${this._handleSpeedChanged}"
+                ></paper-slider>
+              </div>
+            </div>
+          </paper-item>
+        </paper-listbox>
+      </paper-menu-button>
+    </div>
+  </div>
+  <div aria-hidden="true"
+    class="screen-only media-caption"
+    ?hidden="${!this.mediaCaption}">
+    ${this.mediaCaption}
+  </div>
+  <div class="print-only media-caption">${this.printCaption}</div>
+</div>
+<img id="print-thumbnail" aria-hidden="true" src="${ifDefined(this.poster)}" />
+<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions || this.height}">
+  <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
+    <div id="searchbar">
+      <div id="searching">
+        <simple-search
+          id="simplesearch"
+          controls="transcript"
+          no-label-float
+          next-button-icon="${this._getLocal(this.localization,'nextResult','icon')}"
+          next-button-label="${this._getLocal(this.localization,'nextResult','label')}"
+          prev-button-icon="${this._getLocal(this.localization,'prevResult','icon')}"
+          prev-button-label="${this._getLocal(this.localization,'prevResult','label')}"
+          search-input-icon="${this._getLocal(this.localization,'search','icon')}"
+          search-input-label="${this._getLocal(this.localization,'search','label')}"
+          selector=".searchable"
+          ?disabled="${this.disableSearch}"
+          ?hidden="${this.disableSearch}"
+        >
+        </simple-search>
+      </div>
+      <div id="scrolling">
+        <a11y-media-button
+          id="scroll"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'autoScroll','icon')}"
+          label="${this._getLocal(this.localization,'autoScroll','label')}"
+          ?toggle="${!this.disableScroll}"
+          @click="${e => this.disableScroll = !this.disableScroll}">
+        </a11y-media-button>
+      </div>
+      <div id="printing"
+        ?hidden="${this.disablePrintButton}"
+        ?disabled="${this.disablePrintButton}">
+        <a11y-media-button
+          id="download"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'download','icon')}"
+          label="${this._getLocal(this.localization,'download','label')}"
+          @click="${this.download}">
+        </a11y-media-button>
+        <a11y-media-button
+          id="print"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'print','icon')}"
+          label="${this._getLocal(this.localization,'print','label')}"
+          @click="${this.print}">
+        </a11y-media-button>
+      </div>
+    </div>
+    <div id="transcript" aria-live="polite">
+      <a id="transcript-desc" class="sr-only" href="#bottom">
+        ${this._getLocal(this.localization,'transcript','skip')}
+      </a>
+      ${this.transcriptCues.length > 0 ? html`
+        <div class="transcript-from-track">
+          ${this.transcriptCues.map((cue,index) => { return html`
+            <a11y-media-transcript-cue
+              controls="html5"
+              end="${this._getHHMMSS(cue.endTime, this.media.duration)}"
+              lang="${cue.track.language}"
+              role="button"
+              start="${this._getHHMMSS(cue.endTime, this.media.duration)}"
+              tabindex="0"
+              @click="${e => this._handleCueSeek(cue)}"
+              @active-changed="${this._setActiveCue}"
+              ?active="${cue.track.activeCues && cue.track.activeCues[0] === cue}"
+              ?disabled="${this.disableInteractive || this.disableSeek || this.duration === 0}"
+              ?hide-timestamps="${this.hideTimestamps}">
+              <span class="searchable">${cue.text}</span>
+            </a11y-media-transcript-cue>
+          `})}
+        </div>
+      ` : html`
+        <div id="loading"
+          class="transcript-from-track">
+          ${this.status}
+        </div>`
+      }
+    </div>
+  </div>
+</div>
+<paper-toast id="link" 
+  duration="5000" 
+  text="Copied to clipboard: ${this.shareLink}"
+  ?disabled="${!this.linkable}" 
+  ?hidden="${!this.linkable}">
+  <a11y-media-button
+    action="linkable"
+    icon="${this._getLocal(this.localization,'closeLink','icon')}"
+    label="${this._getLocal(this.localization,'closeLink','label')}"
+    tooltip-position="top"
+    @click="${this._handleCloseLink}"
+  ></a11y-media-button>
+</paper-toast>
+<div id="bottom" class="sr-only"></div>`;
+  }
+
+  // properties available to the custom element for data binding
+    static get properties() {
+    
+    return {
+  
+  ...super.properties,
+  
+  /**
+   * Allow this media to play concurrently with other a11y-media-players?
+   * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
+   */
+
+  "allowConcurrent": {
+    "attribute": "allow-concurrent",
+    "type": Boolean
+  },
+  /**
+   * Is this an audio file?
+   */
+  "audioOnly": {
+    "attribute": "audio-only",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * autoplay is an option,
+   * but generally not recommended for a11y
+   */
+  "autoplay": {
+    "attribute": "autoplay",
+    "type": Boolean
+  },
+  /**
+   * the selected track
+   */
+  "captionsTrack": {
+    "attribute": "captions-track",
+    "type": Object
+  },
+  /**
+   * show closed captions
+   */
+  "cc": {
+    "attribute": "cc",
+    "type": Boolean
+  },
+  /**
+   * current time for video playback
+   */
+  "currentTime": {
+    "type": Number
+  },
+  /**
+   * crossorigin attribute for <video> and <audio> tags
+   */
+  "crossorigin": {
+    "attribute": "crossorigin",
+    "type": String
+  },
+  /**
+   * disable transcript print button
+   */
+  "disablePrintButton": {
+    "attribute": "disable-print-button",
+    "type": Boolean
+  },
+  /**
+   * disable transcript search feature
+   */
+  "disableSearch": {
+    "attribute": "disable-search",
+    "type": Boolean
+  },
+  /**
+   * disable autoscrolling as transcript plays
+   */
+  "disableScroll": {
+    "attribute": "disable-scroll",
+    "type": Boolean
+  },
+  /**
+   * disables seeking
+   */
+  "disableSeek": {
+    "attribute": "disable-seek",
+    "type": Boolean
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "attribute": "dark-transcript",
+    "type": Boolean
+  },
+  /**
+   * disable fullscreen option
+   */
+  "disableFullscreen": {
+    "attribute": "disable-fullscreen",
+    "type": Boolean
+  },
+  /**
+   * disable interactive mode that makes the transcript clickable
+   */
+  "disableInteractive": {
+    "attribute": "disable-interactive",
+    "type": Boolean
+  },
+  /**
+   * Is fullscreen mode?
+   */
+  "fullscreen": {
+    "attribute": "fullscreen",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * The height of the media player.
+   */
+  "height": {
+    "attribute": "height",
+    "type": String
+  },
+  /**
+   * Hide elapsed time?
+   */
+  "hideElapsedTime": {
+    "attribute": "hide-elapsed-time",
+    "type": Boolean
+  },
+  /**
+   * show cue's start and end time
+   */
+  "hideTimestamps": {
+    "attribute": "hide-timestamps",
+    "type": Boolean
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "hideTranscript": {
+    "attribute": "hide-transcript",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "id": {
+    "attribute": "id",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Language
+   */
+  "lang": {
+    "attribute": "lang",
+    "type": String
+  },
+  /**
+   * has link button
+   */
+  "linkable": {
+    "attribute": "linkable",
+    "type": Boolean
+  },
+  /**
+   * custom localization settings
+   */
+  "localization": {
+    "attribute": "localization",
+    "type": Object
+  },
+  /**
+   * Loop the video?
+   */
+  "loop": {
+    "attribute": "loop",
+    "type": Boolean
+  },
+  /**
+   * Dash.js manifest source?
+   * /
+  "manifest": {
+    "attribute": "manifest",
+    "type": String
+  },
+  /**
+   * the language of the media (if different from user interface language)
+   */
+  "mediaLang": {
+    "attribute": "media-lang",
+    "type": String
+  },
+  /**
+   * optional title of media (shows when printed)
+   */
+  "mediaTitle": {
+    "attribute": "media-title",
+    "type": String
+  },
+  /**
+   * Is audio muted?
+   */
+  "muted": {
+    "attribute": "muted",
+    "type": Boolean
+  },
+  /**
+   * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
+   */
+  "playbackRate": {
+    "attribute": "playback-rate",
+    "type": Number
+  },
+  /**
+   * Preload `none`, `metadata`, or `auto`.
+   */
+  "preload": {
+    "attribute": "preload",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Size of the a11y media element for responsive styling
+   */
+  "responsiveSize": {
+    "attribute": "responsive-size",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * the search tool for the transcript
+   */
+  "search": {
+    "attribute": "search",
+    "type": Object
+  },
+  /**
+   * Is stand-alone player (without transcript)?
+   */
+  "standAlone": {
+    "attribute": "stand-alone",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * DEPRECATED: array ouf sources
+   */
+  "sources": {
+    "attribute": "sources",
+    "type": Array
+  },
+  /**
+   * stacked layout instead of side-by-side?
+   */
+  "stackedLayout": {
+    "attribute": "stacked-layout",
+    "type": Boolean
+  },
+  /**
+   * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+   */
+  "sticky": {
+    "attribute": "sticky",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * When playing but scrolled off screen, to which corner does it "stick":
+   * top-left, top-right, bottom-left, bottom-right, or none?
+   * Default is "top-right". "None" disables stickiness.
+   */
+  "stickyCorner": {
+    "attribute": "sticky-corner",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Source of optional thumbnail image
+   */
+  "thumbnailSrc": {
+    "attribute": "thumbnail-src",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * DEPRECATED: array of tracks.
+   */
+  "tracks": {
+    "attribute": "tracks",
+    "type": Array
+  },
+  /**
+   * the selected track for the transcript
+   */
+  "transcriptTrack": {
+    "attribute": "transcript-track",
+    "type": Object
+  },
+  /**
+   * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
+   */
+  "volume": {
+    "attribute": "volume",
+    "type": Number
+  },
+  /**
+   * The width of the media player.
+   */
+  "width": {
+    "attribute": "width",
+    "type": String
+  },
+  /**
+   * the id for the video
+   */
+  "youtubeId": {
+    "attribute": "youtube-id",
+    "type": String
+  },
+  /**
+   * current playback in seconds
+   */
+  "__currentTime": {
+    "type": Number
+  },
+  /**
+   * the index of the selected closed captions
+   */
+  "__captionsOption": {
+    "type": Number
+  },
+  /**
+   * array of cues provided to readOnly `get cues`
+   */
+  "__cues": {
+    "type": Array
+  },
+  /**
+   * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
+   */
+  "__loadedTracks": {
+    "type": Object
+  },
+  /**
+   * media playing status readOnly `get playing`
+   */
+  "__playing": {
+    "type": Boolean
+  },
+  /**
+   * temporarily duration in seconds until fully loaded
+   */
+  "__preloadedDuration": {
+    "type": Number
+  },
+  /**
+   * Has screenfull loaded?
+   */
+  "__screenfullLoaded": {
+    "type": Boolean
+  },
+  /**
+   * the index of the selected transcript
+   */
+  "__transcriptOption": {
+    "type": Number
+  }
+}
+;
+  }
+
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "a11y-media-player";
+  }
+
+  constructor() {
+    super();
+    this.audioOnly = false;
+    this.autoplay = false;
+    this.allowConcurrent = false;
+    this.cc = false;
+    this.darkTranscript = false;
+    this.disableFullscreen = false;
+    this.disableInteractive = false;
+    this.disablePrintButton = false;
+    this.disableSearch = false;
+    this.disableScroll = false;
+    this.disableSeek = false;
+    this.fullscreen = false;
+    this.hideElapsedTime = false;
+    this.hideTimestamps = false;
+    this.hideTranscript = false;
+    this.id = null;
+    this.lang = "en";
+    this.linkable = false;
+    this.localization = {};
+    this.loop = false;
+    this.mediaTitle = "";
+    this.mediaLang = "en";
+    this.muted = false;
+    this.preload = "metadata";
+    this.playbackRate = 1;
+    this.search = null;
+    this.standAlone = false;
+    this.responsiveSize = "sm";
+    this.captionsTrack = null;
+    this.transcriptTrack = null;
+    this.sources = [];
+    this.stackedLayout = false;
+    this.sticky = false;
+    this.stickyCorner = "top-right";
+    this.tracks = [];
+    this.volume = 70;
+    this.width = null;
+    this.youtubeId = null;
+    this.__cues = [];
+    this.__currentTime = 0;
+    this.__captionsOption = -1;
+    this.__loadedTracks = null;
+    this.__playing = false;
+    this.__screenfullLoaded = false;
+    this.__transcriptOption = -1;
+    this.querySelectorAll("video,audio").forEach(html5 => {
+      html5.addEventListener("loadedmetadata", e => {
+        this.__preloadedDuration = html5.duration;
+      });
+    });
+
+    window.A11yMediaStateManager.requestAvailability();
+    import("./lib/a11y-media-youtube.js");
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/paper-menu-button/paper-menu-button.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("screenfullLib", location);
+    window.addEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded.bind(this)
+    );
+  }
+
+  /** -------------------------- CALACULATED PROPERTIES ----------------- */
+
+  /**
+   * gets anchors from page and uses their timecodes
+   * @readonly
+   * @returns {number} media width divided by height
+   */
+  get anchor() {
+    let anchor = window.AnchorBehaviors;
+    return {
+      target: anchor ? anchor.getTarget(this) : false,
+      params: anchor ? anchor.params : {}
+    };
+  }
+
+  /**
+   * the aspect ratio of the media, or if unknown, `16/9`
+   * @readonly
+   * @returns {number} media width divided by height
+   */
+  get aspect() {
+    let aspect =
+      this.media && this.media.aspectRatio ? this.media.aspectRatio : 16 / 9;
+    this.width !== null ? this.width : "100%";
+    this.style.maxWidth = this.width;
+    return aspect;
+  }
+
+  /**
+   * returns true if an attribute is set to a value
+   * @readonly
+   * @returns {boolean} Should height of audio/thumbnail area be set to 0?
+   */
+  get audioNoThumb() {
+    return (
+      this.audioOnly &&
+      (this.thumbnailSrc === null || this.thumbnailSrc === undefined)
+    );
+  }
+
+  /**
+   * returns buffered media
+   * @readonly
+   * @returns {number} seconds of buffered media
+   */
+  get buffered() {
+    return this.media && this.media.buffered && this.media.buffered > 0
+      ? this.media.buffered
+      : 0;
+  }
+
+  /**
+   * gets caption cues that should be visible for custom captions
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get captionCues() {
+    let cues = !this.captionsTrack
+      ? []
+      : this.isYoutube
+      ? Object.keys(this.captionsTrack.cues).map(key => {
+          let cue = this.captionsTrack.cues[key];
+          if (
+            cue.startTime <= this.currentTime &&
+            cue.endTime >= this.currentTime
+          )
+            return cue;
+          return {};
+        })
+      : this.captionsTrack.activeCues;
+    return cues;
+  }
+
+  /**
+   * `key` of selected textTrack based on `captionsTrack` and `cc` values
+   */
+  get captionsTrackKey() {
+    return !this.cc ? -1 : this._getTrackId(this.captionsTrack);
+  }
+
+  /**
+   * returns cues array
+   */
+  get cues() {
+    return this.__cues;
+  }
+
+  /**
+   * returns media duration
+   * @readonly
+   * @returns {number} media duration in seconds
+   */
+  get duration() {
+    let duration =
+      this.media && this.media.duration && this.media.duration > 0
+        ? this.media.duration
+        : this.__preloadedDuration
+        ? this.__preloadedDuration
+        : 0;
+    return duration;
+  }
+
+  /**
+   * determines if player is in flex-layout mode
+   * @returns {boolean} Is the video in flex layout mode?
+   */
+  get flexLayout() {
+    return (
+      this.hasCaptions &&
+      !this.standAlone &&
+      !this.hideTranscript &&
+      !this.audioNoThumb &&
+      !this.stackedLayout
+    );
+  }
+
+  /**
+   * determines if parent is wide enough for full flex-layout mode
+   * @returns {boolean}
+   */
+  get fullFlex() {
+    return (
+      this.flexLayout &&
+      this.responsiveSize !== "xs" &&
+      this.responsiveSize !== "sm"
+    );
+  }
+
+  /**
+   * whether or not the fullscreen mode is be disabled
+   * @returns {boolean}
+   */
+  get fullscreenButton() {
+    if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
+    let mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    return (
+      typeof screenfull === "object" &&
+      !mobile &&
+      !this.disableFullscreen &&
+      !this.audioNoThumb
+    );
+  }
+
+  /**
+   * whether the media has any tracks
+   *
+   * @readonly
+   * @returns {boolean}
+   */
+  get hasCaptions() {
+    return this.cues.length > 1;
+  }
+
+  /**
+   * whether media is YouTube
+   * @readonly
+   * @returns {boolean}
+   */
+  get isYoutube() {
+    return this.youtubeId ? true : false;
+  }
+
+  /**
+   * HTML `audio` or `video` tag where textTracks, if any, can be found
+   * @readonly
+   * @returns {object} HTML tag
+   */
+  get loadedTracks() {
+    return this.__loadedTracks;
+  }
+
+  /**
+   * object that contains default localization
+   *
+   * @readonly
+   * @returns {object} default localization object
+   */
+  get localizationDefaults() {
+    return {
+      audio: {
+        label: "Audio",
+        notSupported: "HTML5 video is not supported."
+      },
+      autoScroll: {
+        label: "Scroll Transcript",
+        icon: "swap-vert"
+      },
+      captions: {
+        label: "Closed Captions",
+        icon: "av:closed-caption",
+        off: "Off"
+      },
+      download: {
+        label: "Download Transcript",
+        icon: "file-download"
+      },
+      forward: {
+        label: "Forward",
+        icon: "av:fast-forward"
+      },
+      fullscreen: {
+        label: "Fullscreen",
+        icon: "fullscreen"
+      },
+      copyLink: {
+        label: "Copy Media Link",
+        icon: "link"
+      },
+      closeLink: {
+        label: "Close",
+        icon: "close"
+      },
+      loading: {
+        label: "Loading..."
+      },
+      loop: {
+        label: "Loop Playback"
+      },
+      mute: {
+        label: "Mute",
+        icon: "av:volume-up"
+      },
+      nextResult: {
+        label: "Next",
+        icon: "arrow-forward"
+      },
+      pause: {
+        label: "Pause",
+        icon: "av:pause"
+      },
+      play: {
+        label: "Play",
+        icon: "av:play-arrow"
+      },
+      prevResult: {
+        label: "Previous",
+        icon: "arrow-back"
+      },
+      print: {
+        label: "Print Transcript",
+        icon: "print"
+      },
+      restart: {
+        label: "Restart",
+        icon: "av:replay"
+      },
+      rewind: {
+        label: "Backward",
+        icon: "av:fast-rewind"
+      },
+      search: {
+        label: "Search the transcript.",
+        icon: "search"
+      },
+      seekSlider: {
+        label: "Seek Slider"
+      },
+      settings: {
+        label: "Settings",
+        icon: "settings"
+      },
+      speed: {
+        label: "Speed %"
+      },
+      transcript: {
+        label: "Transcript",
+        icon: "description",
+        loading: "Loading the transcript(s)...",
+        off: "Off",
+        skip: "Skip to the transcript."
+      },
+      unmute: {
+        label: "Unmute",
+        icon: "av:volume-off"
+      },
+      video: {
+        label: "Video",
+        notSupported: "HTML5 video is not supported."
+      },
+      volume: {
+        label: "Volume"
+      },
+      youTubeLoading: {
+        label: "Loading...",
+        startLoading: "Press play."
+      },
+      youTubeTranscript: {
+        label: "Transcript will load once media plays."
+      }
+    };
+  }
+
+  /**
+   * media used for playback
+   * @readonly
+   */
+  get media() {
+    return this.isYoutube ? this.youtube : this.loadedTracks;
+  }
+
+  /**
+   * gets media caption
+   * @readonly
+   * @returns {string} the media caption
+   */
+  get mediaCaption() {
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+      hasMediaTitle =
+        this.mediaTitle !== undefined &&
+        this.mediaTitle !== null &&
+        this.mediaTitle !== "";
+    if (this.audioOnly && hasMediaTitle) {
+      return this.mediaTitle + " (" + audioLabel + ")";
+    } else if (this.audioOnly) {
+      return audioLabel;
+    } else if (hasMediaTitle) {
+      return this.mediaTitle;
+    } else {
+      return undefined;
+    }
+  }
+
+  /**
+   * gets media media time if set
+   * @readonly
+   * @returns {number} end time in seconds
+   */
+  get mediaEnd() {
+    return this.mediaSeekable && this.media.seekable.end(0)
+      ? this.media.seekable.end(0)
+      : false;
+  }
+
+  /**
+   * `style` for `#player-and-controls`
+   * @readonly
+   * @returns {string} value for style attribute
+   */
+  get mediaMaxWidth() {
+    let maxWidth =
+      this.fullscreen || this.audioNoThumb
+        ? `unset`
+        : `calc(${this.aspect * 100}vh - ${this.aspect * 80}px)`;
+    return `max-width:${maxWidth};`;
+  }
+
+  /**
+   * whether media has a seekable time range
+   * @readonly
+   * @returns {boolean}
+   */
+  get mediaSeekable() {
+    return this.media && this.media.seekable
+      ? this.media.seekable.length > 0
+      : false;
+  }
+
+  /**
+   * gets media start time
+   * @readonly
+   * @returns {number} start time in seconds
+   */
+  get mediaStart() {
+    return this.mediaSeekable && this.media.seekable.start(0)
+      ? this.media.seekable.start(0)
+      : 0;
+  }
+
+  /**
+   * whether media is currently playing
+   * @readonly
+   * @returns {boolean}
+   */
+  get playing() {
+    return this.__playing;
+  }
+
+  /**
+   * `style` for `#player`
+   * @readonly
+   * @returns {string} value for style attribute
+   */
+  get playerStyle() {
+    let height = this.audioNoThumb ? "60px" : "unset",
+      paddingTop =
+        this.fullscreen || this.audioNoThumb
+          ? `unset`
+          : `${100 / this.aspect}%`,
+      thumbnail =
+        this.poster && (this.isYoutube || this.audioOnly)
+          ? `background-image:url(${this.poster});`
+          : ``;
+    return `height:${height};padding-top:${paddingTop};${thumbnail}`;
+  }
+
+  /**
+   * `poster`  image for video
+   * @readonly
+   * @returns {string} url for poster image
+   */
+  get poster() {
+    return !this.thumbnailSrc && this.youtubeId
+      ? `https://img.youtube.com/vi/${this.youtubeId.replace(
+          /[\?&].*/,
+          ""
+        )}/hqdefault.jpg`
+      : this.thumbnailSrc;
+  }
+
+  /**
+   * gets print caption
+   * @readonly
+   * @returns {string} the media caption when the page is printed
+   */
+  get printCaption() {
+    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+      videoLabel = this._getLocal(this.localization, "video", "label"),
+      hasMediaTitle =
+        this.mediaTitle !== undefined &&
+        this.mediaTitle !== null &&
+        this.mediaTitle !== "";
+    if (this.audioOnly && hasMediaTitle) {
+      return this.mediaTitle + " (" + audioLabel + ")";
+    } else if (this.audioOnly) {
+      return audioLabel;
+    } else if (hasMediaTitle) {
+      return this.mediaTitle + " (" + videoLabel + ")";
+    } else {
+      return videoLabel;
+    }
+  }
+
+  /**
+   * returns the current playback progress or slider position
+   * @readonly
+   * @returns {number} media duration in seconds
+   */
+  get currentTime() {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    let currentTime =
+      slider &&
+      !slider.disabled &&
+      (slider.focused || slider.dragging || slider.pointerDown)
+        ? this.shadowRoot.querySelector("#slider").immediateValue
+        : this.__currentTime;
+    return currentTime;
+  }
+
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @readonly
+   * @returns {string} url for sharing the video
+   */
+  get shareLink() {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      currentTime =
+        id !== "" && this.currentTime && this.currentTime !== 0
+          ? `&t=${this.currentTime}`
+          : ``;
+    return `${url}${id}${currentTime}`;
+  }
+
+  /**
+   * Show custom CC (for audio and YouTube)?
+   * @returns {boolean} Should the player show custom CC?
+   */
+  get showCustomCaptions() {
+    return (this.isYoutube || this.audioOnly) && this.hasCaptions && this.cc;
+  }
+
+  /**
+   * gets playback status text
+   *
+   * @readonly
+   * @returns {string} status, as either a localized loading message or progress/duration
+   */
+  get status() {
+    return this.duration > 0
+      ? html`
+          ${this._getHHMMSS(this.currentTime, this.duration)}/${this._getHHMMSS(
+            this.duration
+          )}
+        `
+      : !this.isYoutube
+      ? this._getLocal(this.localization, "loading", "label")
+      : this.__playing
+      ? this._getLocal(this.localization, "youTubeLoading", "label")
+      : this._getLocal(this.localization, "youTubeLoading", "startLoading");
+  }
+
+  /**
+   * Show custom CC (for audio and YouTube)?
+   * @returns {boolean} Should the player show custom CC?
+   */
+  get stickyMode() {
+    return this.sticky && this.stickyCorner !== "none";
+  }
+
+  /**
+   * gets initial timecode parameter
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get t() {
+    let t = this._getSeconds(
+      this.anchor.params.t || this.anchor.params.start || `0s`
+    );
+    if (this.anchor && this.anchor.target === this) return t;
+    if (this.videoData) return this.videoData.t || this.videoData.start;
+  }
+
+  /**
+   * gets transcript cues that should be visible
+   * @readonly
+   * @returns {array} array of cues
+   */
+  get transcriptCues() {
+    let cues = !this.cues ? [] : this.cues.slice();
+    return cues.filter(cue => cue.track === this.transcriptTrack);
+  }
+
+  /**
+   * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
+   */
+  get transcriptTrackKey() {
+    return this.hideTranscript ? -1 : this._getTrackId(this.transcriptTrack);
+  }
+
+  get videoData() {
+    if (this.youtubeId) {
+      let videoData = this.youtubeId.split(/[\?\&]/),
+        params = {};
+      params.videoId = videoData[0];
+      videoData.forEach((param, index) => {
+        if (index > 0) {
+          let data = param.split(/=/);
+          params[data[0]] = this._getSeconds(data[1]);
+        }
+      });
+      return params;
+    }
+  }
+  get videoId() {
+    if (this.videoData) return this.videoData.videoId;
+  }
+
+  /**
+   * youtube embed element
+   * @readonly
+   * @returns {object} a11y-media-youtube element
+   */
+  get youtube() {
+    return this.shadowRoot.querySelector("a11y-media-youtube") !== null
+      ? this.shadowRoot.querySelector("a11y-media-youtube")
+      : false;
+  }
+
+  connectedCallback() {
+    let root = this;
+    super.connectedCallback();
+    this.__loadedTracks = this.getloadedTracks();
+    this._handleMediaLoaded();
+    this.__loadedTracks.addEventListener("loadedmetadata", e =>
+      root._handleMediaLoaded(e)
+    );
+    this.__loadedTracks.addEventListener("timeupdate", e =>
+      root._handleTimeUpdate(e)
+    );
+    this._addResponsiveUtility();
+    /**
+     * Fires when a new player is ready for a11y-media-state-manager
+     * @event a11y-player
+     */
+    window.dispatchEvent(
+      new CustomEvent("a11y-player", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+    this.__playerReady = true;
+  }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+
+  _setAttribute(attr, val) {
+    if (!val) {
+      this.removeAttribute(attr);
+    } else {
+      this.setAttribute(attr, val);
+    }
+  }
+
+  /**
+   * @param {map} changedProperties the properties that have changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let change = params => params.includes(propName),
+        mediaChange = param =>
+          change(["__loadedTracks", "youtubeId", "media", param]),
+        flexChange = change([
+          "standAlone",
+          "hideTranscript",
+          "audioNoThumb",
+          "stackedLayout",
+          "__cues"
+        ]),
+        media = this.media ? this.media : this.__loadedTracks;
+
+      if (propName === "id" && this.id === null)
+        this.id = "a11y-media-player" + Date.now();
+
+      if (change(["media", "muted"])) this._handleMuteChanged();
+      if (change(["media", "volume"])) this.setVolume(this.volume);
+      if (change(["media", "autoplay"]) && this.autoplay) this.play();
+
+      /* updates captions */
+      if (propName === "__captionsOption") this._captionsOptionChanged();
+      if (propName === "__loadedTracks")
+        this._addSourcesAndTracks(this.loadedTracks);
+      if (change(["cc", "captionsTrack"])) this._captionsChanged();
+
+      /* updates layout */
+      if (flexChange) this._setAttribute("flex-layout", this.flexLayout);
+      if (flexChange || propName === "responsiveSize")
+        this._setAttribute("full-flex", this.fullFlex);
+      if (change(["sticky", "sticky-corner", "__playing"]))
+        this._setAttribute("sticky-mode", this.stickyMode && this.__playing);
+      if (change(["height"]))
+        this.style.setProperty(
+          "--a11y-media-player-height",
+          this.height ? this.height : "unset"
+        );
+
+      /* updates media */
+      if (this.media !== null) {
+        if (mediaChange("cc"))
+          this._setAttribute("cc", this.cc, this.__loadedTracks);
+        if (mediaChange("crossorigin"))
+          this._setAttribute("crossorigin", this.crossorigin, media);
+        if (mediaChange("isYoutube") && this.__loadedTracks)
+          this.__loadedTracks.hidden === this.isYoutube;
+        if (mediaChange("mediaLang"))
+          this._setAttribute("lang", this.mediaLang, media);
+        if (mediaChange("loop")) this._setAttribute("loop", this.loop, media);
+        if (mediaChange("playbackRate"))
+          this._setAttribute("playbackRate", this.playbackRate, media);
+        if (mediaChange("isYoutube"))
+          this._setAttribute(
+            "poster",
+            !this.isYoutube ? this.thumbnailSrc : false,
+            this.__loadedTracks
+          );
+      }
+
+      this.dispatchEvent(
+        new CustomEvent(
+          `${propName
+            .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+            .toLowerCase()}-changed`,
+          { detail: { value: this[propName] } }
+        )
+      );
+    });
+  }
+
+  /**
+   * updates track mode & `__captionsOption` when `captionsTrack` or `cc` changes
+   */
+  _captionsChanged() {
+    let ccNum = -1;
+    Object.keys(this.loadedTracks.textTracks).forEach(key => {
+      let showing =
+        this.cc && this.loadedTracks.textTracks[key] === this.captionsTrack;
+      this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
+      if (showing) ccNum = key;
+    });
+    this.__captionsOption = ccNum;
+  }
+
+  /**
+   * updates track mode & `captionsTrack` when `__captionsOption` changes
+   */
+  _captionsOptionChanged() {
+    this.cc = this.__captionsOption > -1;
+    Object.keys(this.loadedTracks.textTracks).forEach(key => {
+      let showing = parseInt(key) == parseInt(this.__captionsOption);
+      this.loadedTracks.textTracks[key].mode = showing ? "showing" : "hidden";
+      if (showing) this.captionsTrack = this.loadedTracks.textTracks[key];
+    });
+  }
+
+  /**
+   * handles mute change
+   */
+  _handleMuteChanged() {
+    this.media.muted = this.muted;
+    /**
+     * Fires when closed caption is toggled
+     * @event mute-changed
+     */
+    window.dispatchEvent(
+      new CustomEvent("mute-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * determine which button was clicked and act accordingly
+   */
+  _handleSettingsChanged(e) {
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#settings") &&
+      this.shadowRoot.querySelector("#settings").close &&
+      !e.path[0].opened
+    )
+      this.shadowRoot.querySelector("#settings").close();
+  }
+
+  /**
+   * gets download data for the active transcript
+   * @param {string} the title of the media
+   */
+  download() {
+    let a = document.createElement("a"),
+      title =
+        this.mediaTitle && this.mediaTitle.trim() != ""
+          ? `${this.mediaTitle} (${this._getLocal(
+              this.localization,
+              "transcript",
+              "label"
+            )})`
+          : this._getLocal(this.localization, "transcript", "label"),
+      filename = title.replace(/[^\w\d]/g, ""),
+      cues = this.transcriptTrack.cues,
+      data = Object.keys(cues)
+        .map(
+          key =>
+            `${this._getHHMMSS(cues[key].startTime)} - ${this._getHHMMSS(
+              cues[key].endTime
+            )}: \t${cues[key].text.replace(/[\n\r\s*]/g, " ")}\n`
+        )
+        .join("");
+    a.setAttribute(
+      "href",
+      "data:text/plain;charset=UTF-8," + encodeURIComponent(title + "\n" + data)
+    );
+    a.setAttribute("download", filename + ".txt");
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    /**
+     * Fires when transcript is downloaded
+     * @event transcript-downloaded
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-downloaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * prints the active transcript
+   * @param {string} the title of the media
+   */
+  print() {
+    let cues = this.transcriptTrack.cues,
+      title =
+        this.mediaTitle && this.mediaTitle.trim() != ""
+          ? `${this.mediaTitle} (${this._getLocal(
+              this.localization,
+              "transcript",
+              "label"
+            )})`
+          : this._getLocal(this.localization, "transcript", "label"),
+      print = window.open(
+        "",
+        "",
+        "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
+      );
+    print.document.body.innerHTML = `
+    <h1>${title}</h1>
+    ${Object.keys(cues)
+      .map(
+        key =>
+          `<div style="display: table-row;">
+        ${
+          this.hideTimestamps
+            ? ``
+            : `
+            <span style="display: table-cell;
+              font-size: 80%;
+              padding: 0 16px;
+              white-space: nowrap;
+              font-family: monospace;">
+              ${this._getHHMMSS(cues[key].startTime)} - 
+              ${this._getHHMMSS(cues[key].endTime)}:
+            </span>`
+        }
+        <span style="display: table-cell; line-height: 200%;">
+          ${cues[key].text}
+        </span>
+      </div>`
+      )
+      .join("")}
+    `;
+    print.document.close();
+    print.focus();
+    print.print();
+    print.close();
+
+    /**
+     * Fires when transcript is printed
+     * @event transcript-printed
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-printed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * plays the media
+   */
+  play() {
+    this.__playing = true;
+    if (this.media && this.media.play) this.media.play();
+    /**
+     * Fires when media plays
+     * @event play
+     */
+    window.dispatchEvent(
+      new CustomEvent("play", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+    /**
+     * DEPRECATED: Fires when media plays
+     * @event a11y-player-playing
+     */
+    window.dispatchEvent(
+      new CustomEvent("a11y-player-playing", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * pauses the media
+   */
+  pause() {
+    this.__playing = false;
+    if (this.media && this.media.pause) this.media.pause();
+    /**
+     * Fires when media pauses
+     * @event pause
+     */
+    window.dispatchEvent(
+      new CustomEvent("pause", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * stops the media
+   */
+  stop() {
+    this.pause();
+    this.seek(0);
+    /**
+     * Fires when media stops
+     * @event stop
+     */
+    window.dispatchEvent(
+      new CustomEvent("stop", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * restarts the media
+   */
+  restart() {
+    this.seek(0);
+    this.play();
+    /**
+     * Fires when media retarts
+     * @event restart
+     */
+    window.dispatchEvent(
+      new CustomEvent("restart", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * seeks media backward at a set increment
+   * @param {float} the elepsed time, in seconds
+   */
+  rewind(amt) {
+    amt = amt !== undefined ? amt : this.duration / 20;
+    this.seek(this.currentTime - amt, 0);
+    /**
+     * Fires when media moves backward
+     * @event backward
+     */
+    window.dispatchEvent(
+      new CustomEvent("backward", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * seeks media forward at a set increment
+   * @param {float} the elepsed time, in seconds
+   */
+  forward(amt) {
+    amt = amt !== undefined ? amt : this.duration / 20;
+    this.seek(this.currentTime + amt);
+    /**
+     * Fires when media moves forward
+     * @event forward
+     */
+    window.dispatchEvent(
+      new CustomEvent("forward", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * seeks to a specific time
+   * @param {float} the time, in seconds, to seek
+   */
+  seek(time = 0) {
+    if (this.mediaSeekable) {
+      this.media.seek(Math.max(0, Math.min(time, this.duration)));
+      this._handleTimeUpdate();
+      /**
+       * Fires when media seeks
+       * @event seek
+       */
+      window.dispatchEvent(
+        new CustomEvent("seek", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
+   * selects `captionsTrack` by key and adjusts `cc` accordingly
+   */
+  selectCaptionByKey(id) {
+    id = parseInt(id);
+    if (id > -1) this.captionsTrack = this.loadedTracks.textTracks[id];
+    this.cc = id > -1;
+  }
+
+  /**
+   * selects `transcriptTrack` by key and adjusts `hideTranscript` accordingly
+   */
+  selectTranscriptByKey(id) {
+    id = parseInt(id);
+    if (id > -1) this.transcriptTrack = this.loadedTracks.textTracks[id];
+    this.hideTranscript = id < 0;
+  }
+
+  /**
+   * media tag where sources and tracks can be found
+   * @readonly
+   */
+  getloadedTracks() {
+    let media = this.querySelectorAll("audio,video"),
+      primary = null;
+    media.forEach(medium => {
+      medium.removeAttribute("autoplay");
+      medium.setAttribute("preload", "metadata");
+    });
+
+    if (media.length > 0) {
+      primary = media[0];
+      this.audioOnly = primary.tagName === "AUDIO";
+    } else {
+      primary = document.createElement(
+        this.querySelectorAll('source[type*="audio"]').length > 0
+          ? "audio"
+          : "video"
+      );
+      primary.setAttribute("preload", "metadata");
+      this.querySelectorAll("source,track").forEach(node => {
+        if (node.parentNode === this) primary.appendChild(node);
+      });
+      this.appendChild(primary);
+    }
+    primary.style.width = "100%";
+    primary.style.maxWidth = "100%";
+
+    /* handle deprecated tracks */
+    this.tracks.forEach(track => {
+      let node = document.createElement("track");
+      Object.keys(track).forEach(key => node.setAttribute(key, track[key]));
+      primary.appendChild(node);
+    });
+
+    /* handle deprecated sources */
+    this.sources.forEach(source => {
+      let node = document.createElement("source");
+      Object.keys(source).forEach(key => node.setAttribute(key, source[key]));
+      primary.appendChild(node);
+    });
+    /* provides a seek function for primary media */
+    primary.seek = time => (primary.currentTime = time);
+    return primary;
+  }
+
+  /**
+   * selects a specific transcript track
+   * @param {track} track text track
+   */
+  _getTrack(track) {
+    if (!track) {
+      let defaultTracks = this.loadedTracks.textTracks.filter(
+        track => track.default === true
+      );
+      return defaultTracks
+        ? defaultTracks[0].track
+        : this.loadedTracks.textTracks[0].track;
+    }
+    return track;
+  }
+
+  /**
+   * selects a specific track as transcript
+   * @param {track} track text track
+   */
+  selectTranscript(track) {
+    this.transcriptTrack = this._getTrack(track);
+  }
+
+  /**
+   * set speed/playback rate of media
+   * @param {float} the playback rate, where 1 = 100%
+   */
+  setPlaybackRate(value) {
+    value = value !== null ? value : 1;
+    this.media.playbackRate = value !== null ? value : 1;
+    /**
+     * Fires when video playback rate changes
+     * @event playback-rate-changed
+     */
+    window.dispatchEvent(
+      new CustomEvent("playback-rate-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * set volume of media
+   * @param {integer} the volume level from 0-100
+   */
+  setVolume(value = 70) {
+    this.volume = Math.max(0, Math.min(value, 100));
+    this.media.volume = value / 100;
+    /**
+     * Fires when video volume changes
+     * @event volume-changed
+     */
+    window.dispatchEvent(
+      new CustomEvent("volume-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles captions
+   * @param {boolean} Toggle CC on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleCC(mode) {
+    this.cc = typeof mode === typeof undefined ? !this.cc : mode;
+
+    /**
+     * Fires when closed caption is toggled
+     * @event cc-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("cc-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles fullscreen
+   * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleFullscreen(mode) {
+    if (screenfull && this.fullscreenButton) {
+      this.fullscreen = mode === undefined ? !this.loop : mode;
+      this.toggleTranscript(this.fullscreen);
+      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+
+      /**
+       * Fires when fullscreen is toggled
+       * @event fullscreen-toggle
+       */
+      window.dispatchEvent(
+        new CustomEvent("fullscreen-toggle", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
+   * toggles looping
+   * @param {boolean} Toggle looping on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleLoop(mode) {
+    this.loop = mode === undefined ? !this.loop : mode;
+    this.media.loop = mode === true;
+
+    /**
+     * Fires when looping is toggled
+     * @event loop-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("loop-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles play
+   * @param {boolean} Toggle play/pause? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  togglePlay() {
+    if (this.__playing) {
+      this.pause();
+    } else {
+      this.play();
+    }
+    /**
+     * Fires when play/pause is toggled
+     * @event play-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("play-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles mute
+   * @param {boolean} Toggle mute on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleMute(mode) {
+    this.muted = typeof mode === typeof undefined ? !this.muted : mode;
+    /**
+     * Fires when mute is toggled
+     * @event muted-toggle
+     */
+    window.dispatchEvent(
+      new CustomEvent("muted-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles sticky attribute
+   * @param {boolean} Toggle sticky mode on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleSticky(mode) {
+    mode = mode === undefined ? !this.sticky : mode;
+    this.sticky = mode;
+    /**
+     * Fires when video video's sticky behavior is toggled
+     * @event player-sticky
+     */
+    this.dispatchEvent(
+      new CustomEvent("player-sticky", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * toggles transcript
+   * @param {boolean} Toggle transcript on? `true` is on, `false` is off, and `null` toggles based on current state.
+   */
+  toggleTranscript(mode) {
+    mode = mode === undefined ? this.hideTranscript : mode;
+    this.hideTranscript = !mode;
+    /**
+     * Fires when transcript toggles
+     * @event transcript-toggle
+     */
+    this.dispatchEvent(
+      new CustomEvent("transcript-toggle", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
+
+  /**
+   * loads a track's cue metadata
+   */
+  _addSourcesAndTracks(media) {
+    media.style.width = "100%";
+    media.style.maxWidth = "100%";
+    this.loadedTracks.textTracks.onremovetrack = e => {
+      this.loadedTracks.textTracks.filter(track => track !== e.track);
+      this.__cues = this.cues.filter(cue => cue.track !== e.track);
+    };
+    this.loadedTracks.textTracks.onaddtrack = e => {
+      if (this.captionsTrack === null) this.captionsTrack = e.track;
+      e.track.mode = "hidden";
+      let loadCueData = setInterval(() => {
+        if (e.track.cues && e.track.cues.length > 0) {
+          clearInterval(loadCueData);
+          let cues = Object.keys(e.track.cues).map(key => e.track.cues[key]);
+          this.__cues = this.cues.concat(cues).sort((a, b) => {
+            let start = a.startTime - b.startTime,
+              end = a.endTime - b.endTime;
+            return start !== 0 ? start : end !== 0 ? end : a.track - b.track;
+          });
+        }
+      });
+    };
+
+    let d = this.loadedTracks.querySelector("track[default]")
+        ? this.loadedTracks.querySelector("track[default]")
+        : this.loadedTracks.querySelector("track"),
+      defaultTrack =
+        Object.keys(this.loadedTracks.textTracks).find(key => {
+          return (
+            d.label === this.loadedTracks.textTracks[key].label &&
+            d.kind === this.loadedTracks.textTracks[key].kind &&
+            d.srclang === this.loadedTracks.textTracks[key].scrlang
+          );
+        }) || 0;
+    this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
+    this.transcriptTrack = this.captionsTrack;
+    this._handleTimeUpdate();
+  }
+
+  /**
+   * handles closing the share link toast
+   */
+  _handleCloseLink() {
+    if (
+      this.shadowRoot.querySelector("#link") &&
+      this.shadowRoot.querySelector("#link").close
+    )
+      this.shadowRoot.querySelector("#link").close();
+  }
+
+  /**
+   * handles copying the share link
+   */
+  _handleCopyLink() {
+    let el = document.createElement("textarea");
+    this.pause();
+    el.value = this.shareLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    this.shadowRoot.querySelector("#link").open();
+  }
+
+  /**
+   * handles the seek function when a transcript cue is activated
+   *
+   * @param {event} e seek event
+   */
+  _handleCueSeek(cue) {
+    if (!this.standAlone) {
+      this.seek(cue.startTime);
+    }
+  }
+
+  /**
+   * handles media metadata when media is loaded
+   */
+  _handleMediaLoaded(e) {
+    this._handleTimeUpdate();
+    if (!this.youtubeId && this.anchor.target === this) {
+      this.seek(
+        this._getSeconds(
+          this.anchor.params.t || this.anchor.params.start || `0s`
+        )
+      );
+    }
+  }
+
+  /**
+   * sets search the simple-search element
+   * @param {event} e searchbar event
+   */
+  _handleSearchAdded(e) {
+    this.search = e.detail;
+  }
+
+  /**
+   * handles speed slider change thhat sets playback rate
+   * @param {event} e slider event
+   */
+  _handleSpeedChanged(e) {
+    this.setPlaybackRate(e.path[0].value);
+  }
+
+  /**
+   * handles duration slider dragging with a mouse
+   * @param {event} e slider start event
+   */
+  _handleSliderChanged(e) {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    if (
+      slider &&
+      !slider.disabled &&
+      (slider.focused || slider.dragging || slider.pointerDown)
+    ) {
+      this.seek(slider.immediateValue);
+    }
+  }
+
+  /**
+   * handles time updates
+   */
+  _handleTimeUpdate() {
+    /* update current time with media's current time property */
+    this.__currentTime =
+      this.media && this.media.currentTime && this.media.currentTime > 0
+        ? this.media.currentTime
+        : 0;
+  }
+
+  /**
+   * gets `key` of given track
+   *
+   * @param {object} track textTrack
+   * @returns {number} key
+   */
+  _getTrackId(track) {
+    return (
+      Object.keys(this.loadedTracks.textTracks).find(
+        key => this.loadedTracks.textTracks[key] === track
+      ) || -1
+    );
+  }
+
+  /**
+   * handles volume slider change
+   * @param {event} e volume change event
+   */
+  _handleVolumeChanged(e) {
+    this.volume = e.path[0].value;
+  }
+
+  /**
+   * determine which button was clicked and act accordingly
+   * @param {event} e controls change event
+   */
+  _onControlsChanged(e) {
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
+      this.shadowRoot.querySelector("#settings").close();
+  }
+
+  /**
+   * sets the element's __screenfullLoaded variable to true once screenfull is loaded
+   * and adds an event listener for screenfull
+   * @param {event} e screenfull load
+   */
+  _onScreenfullLoaded(e) {
+    let root = this;
+    this.__screenfullLoaded = true;
+
+    // handles fullscreen
+    if (screenfull) {
+      screenfull.on("change", () => {
+        if (screenfull.enabled) root.fullscreen = screenfull.isFullscreen;
+      });
+    }
+  }
+
+  /**
+   * on a cue.onenter event scrolls the first active cue to position
+   * @param {event} e onenter event
+   */
+  _setActiveCue(e) {
+    let cue = e.detail.element,
+      transcript = cue.parentNode,
+      offset =
+        transcript !== null && transcript !== undefined
+          ? transcript.offsetTop
+          : 0;
+    if (!this.disableScroll) {
+      //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
+      let scrollingTo = (element, to, duration) => {
+        if (duration <= 0) return;
+        var difference = to - element.scrollTop;
+        var perTick = (difference / duration) * 10;
+
+        setTimeout(() => {
+          element.scrollTop = element.scrollTop + perTick;
+          if (element.scrollTop === to) return;
+          scrollingTo(element, to, duration - 10);
+        }, 10);
+      };
+      scrollingTo(cue.parentNode.parentNode, cue.offsetTop - offset, 250);
+    }
+  }
+
+  /**
+   * handles transcript scroll toggle
+   * @param {event} e scroll event
+   */
+  _transcriptScroll(e) {
+    this.disableScroll = !this.disableScroll;
+  }
+
+  /**
+   * calls responsive-utility to get parent's responsive size
+   *
+   * @param {object} a set of responsive for options, eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
+   */
+  _addResponsiveUtility(options) {
+    let root = this;
+    window.ResponsiveUtility.requestAvailability();
+    /**
+     * Fires player needs the size of parent container to add responsive styling
+     * @event responsive-element
+     */
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail:
+          options !== undefined
+            ? options
+            : {
+                element: root,
+                attribute: "responsive-size",
+                relativeToParent: true,
+                sm: 300,
+                md: 600,
+                lg: 1000,
+                xl: 1500
+              }
+      })
+    );
+  }
+
+  /**
+   * converts time in millesconds to HH:MM:SS
+   *
+   * @param {float} the progress, in seconds
+   * @param {float} the duration, in seconds
+   * @returns {string} a human-readable string of progress/duration in HH:MM:SS
+   *
+   */
+  _getHHMMSS(val, max) {
+    val = parseFloat(val);
+    max = max === undefined ? val : parseFloat(max);
+    let a = val => {
+        return val < 10 ? `0${val}` : val;
+      },
+      b = (val, i, none) => {
+        return max >= i ? a(Math.floor(val / i)) + ":" : none;
+      },
+      c = val => {
+        return val < 100 ? val + "0" : val;
+      };
+    return (
+      b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
+    );
+  }
+  /**
+   * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
+   * @param {string} time
+   * @returns {float} seconds
+   */
+  _getSeconds(time = 0) {
+    let units = time
+        .replace(/[hm]{1,2}&?/g, ":0")
+        .replace(/[s]{1,2}$/g, "")
+        .split(/:/),
+      hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
+      mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
+      ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
+    return hh * 3600 + mm * 60 + ss;
+  }
+
+  /**
+   * gets the localization by compaing the localization set to the defaults
+   *
+   * @param {object} the localization object
+   * @param {string} the key to search for
+   * @param {string} the subkey to search for
+   * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
+   */
+  _getLocal(localization, key, subkey) {
+    let local = "";
+    if (
+      localization !== undefined &&
+      localization[key] !== undefined &&
+      localization[key][subkey] !== undefined
+    ) {
+      local = localization[key][subkey];
+    } else if (
+      this.localizationDefaults !== undefined &&
+      this.localizationDefaults[key] !== undefined &&
+      this.localizationDefaults[key][subkey] !== undefined
+    ) {
+      local = this.localizationDefaults[key][subkey];
+    }
+    return local;
+  }
+}
+window.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
+export { A11yMediaPlayer };

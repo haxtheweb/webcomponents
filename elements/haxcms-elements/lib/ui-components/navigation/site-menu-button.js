@@ -51,17 +51,18 @@ class SiteMenuButton extends LitElement {
             black
           );
         }
-        paper-tooltip {
-          --paper-tooltip-background: var(
+        simple-tooltip {
+          --simple-tooltip-background: var(
             --site-menu-button-tooltip-bg,
             #000000
           );
-          --paper-tooltip-opacity: 1;
-          --paper-tooltip-text-color: var(
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: var(
             --site-menu-button-tooltip-text,
             #ffffff
           );
-          --paper-tooltip-delay-in: 0;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-border-radius: 0;
         }
       `
     ];
@@ -89,7 +90,7 @@ class SiteMenuButton extends LitElement {
     });
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/paper-button/paper-button.js");
   }
   // render function
@@ -104,11 +105,6 @@ class SiteMenuButton extends LitElement {
           paper-button:focus,
           paper-button:active {
             @apply --site-menu-button-button-hover;
-          }
-          paper-tooltip {
-            --paper-tooltip: {
-              border-radius: 0;
-            }
           }
         </style>
       </custom-style>
@@ -125,9 +121,9 @@ class SiteMenuButton extends LitElement {
           <slot name="suffix"></slot>
         </paper-button>
       </a>
-      <paper-tooltip for="menulink" offset="8" .position="${this.position}">
+      <simple-tooltip for="menulink" offset="8" .position="${this.position}">
         ${this.label}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   /**

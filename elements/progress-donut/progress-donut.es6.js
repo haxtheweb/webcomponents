@@ -26,6 +26,7 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
   //styles function
   static get styles() {
     return  [
+      
       css`
 :host {
   --chartist-color-1: var(--simple-colors-default-theme-red-8);

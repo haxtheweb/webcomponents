@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import { displayBehaviors } from "./lib/editable-table-behaviors.js";

@@ -2,10 +2,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
  *
@@ -55,7 +51,7 @@ class HAXCMSSiteEditorUI extends LitElement {
           display: none;
         }
         paper-fab:not(:defined),
-        paper-tooltip:not(:defined),
+        simple-tooltip:not(:defined),
         paper-icon-button:not(:defined) {
           display: none !important;
         }
@@ -140,13 +136,16 @@ class HAXCMSSiteEditorUI extends LitElement {
         :host(:focus) {
           opacity: 1;
         }
-        paper-tooltip {
-          --paper-tooltip-background: #000000;
-          --paper-tooltip-opacity: 1;
-          --paper-tooltip-text-color: #ffffff;
-          --paper-tooltip-delay-in: 0;
-          --paper-tooltip-duration-in: 200ms;
-          --paper-tooltip-duration-out: 0;
+        simple-tooltip {
+          --simple-tooltip-background: #000000;
+          --simple-tooltip-opacity: 1;
+          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-delay-in: 0;
+          --simple-tooltip-duration-in: 200ms;
+          --simple-tooltip-duration-out: 0;
+          --simple-tooltip-border-radius: 0;
+          --simple-tooltip-font-size: 14px;
+          --simple-tooltip-width: 145px;
         }
       `
     ];
@@ -179,7 +178,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@polymer/iron-icons/editor-icons.js");
@@ -190,17 +189,6 @@ class HAXCMSSiteEditorUI extends LitElement {
   // render function
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-tooltip {
-            --paper-tooltip: {
-              border-radius: 0;
-              font-size: 14px;
-              width: 145px;
-            }
-          }
-        </style>
-      </custom-style>
       <paper-avatar
         id="username"
         label="${this.userName}"
@@ -257,29 +245,29 @@ class HAXCMSSiteEditorUI extends LitElement {
         title="${this.__settingsText}"
         voice-command="edit site settings"
       ></paper-icon-button>
-      <paper-tooltip for="username" position="right" offset="14"
-        >${this.userName}</paper-tooltip
+      <simple-tooltip for="username" position="right" offset="14"
+        >${this.userName}</simple-tooltip
       >
-      <paper-tooltip for="cancelbutton" position="right" offset="14"
-        >Cancel editing</paper-tooltip
+      <simple-tooltip for="cancelbutton" position="right" offset="14"
+        >Cancel editing</simple-tooltip
       >
-      <paper-tooltip for="editbutton" position="right" offset="14"
-        >${this.__editText}</paper-tooltip
+      <simple-tooltip for="editbutton" position="right" offset="14"
+        >${this.__editText}</simple-tooltip
       >
-      <paper-tooltip for="editdetails" position="right" offset="14"
-        >Edit page details</paper-tooltip
+      <simple-tooltip for="editdetails" position="right" offset="14"
+        >Edit page details</simple-tooltip
       >
-      <paper-tooltip for="deletebutton" position="right" offset="14"
-        >Delete this page</paper-tooltip
+      <simple-tooltip for="deletebutton" position="right" offset="14"
+        >Delete this page</simple-tooltip
       >
-      <paper-tooltip for="addbutton" position="right" offset="14"
-        >Add new page</paper-tooltip
+      <simple-tooltip for="addbutton" position="right" offset="14"
+        >Add new page</simple-tooltip
       >
-      <paper-tooltip for="outlinebutton" position="right" offset="14"
-        >Organize site content</paper-tooltip
+      <simple-tooltip for="outlinebutton" position="right" offset="14"
+        >Organize site content</simple-tooltip
       >
-      <paper-tooltip for="manifestbutton" position="right" offset="14"
-        >${this.__settingsText}</paper-tooltip
+      <simple-tooltip for="manifestbutton" position="right" offset="14"
+        >${this.__settingsText}</simple-tooltip
       >
     `;
   }

@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/neon-animation/neon-animation.js";
@@ -191,7 +191,7 @@ class LrnsysProgressCircle extends PolymerElement {
           }
         </style>
       </custom-style>
-      <paper-tooltip
+      <simple-tooltip
         hidden$="[[!toolTip]]"
         for="button"
         position="bottom"
@@ -199,7 +199,7 @@ class LrnsysProgressCircle extends PolymerElement {
         animation-delay="0"
       >
         [[label]]
-      </paper-tooltip>
+      </simple-tooltip>
       <paper-button
         id="button"
         class="button"

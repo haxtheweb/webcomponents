@@ -21,7 +21,7 @@ class ScrollButton extends LitElement {
     this.label = "Scroll to top";
     this.position = "top";
     import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-icons/iron-icons.js");
   }
   /**

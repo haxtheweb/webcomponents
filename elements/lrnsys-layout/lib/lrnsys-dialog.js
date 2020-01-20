@@ -52,7 +52,7 @@ class LrnsysDialog extends SimpleColors {
     this.text = "";
     this.headingClass = "white-text black";
     setTimeout(() => {
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@polymer/paper-button/paper-button.js");
       import("@polymer/neon-animation/neon-animation.js");
       import("@polymer/neon-animation/neon-animations.js");
@@ -84,11 +84,11 @@ class LrnsysDialog extends SimpleColors {
           <slot name="button"></slot>
         </lrnsys-button-inner>
       </paper-button>
-      <paper-tooltip
+      <simple-tooltip
         for="dialogtrigger"
         animation-delay="0"
         ?hidden="${!this.alt}"
-        >${this.alt}</paper-tooltip
+        >${this.alt}</simple-tooltip
       >
     `;
   }

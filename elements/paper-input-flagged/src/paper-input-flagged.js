@@ -28,8 +28,8 @@ class PaperInputFlagged extends LitElement {
           height: 24px;
           margin-right: 4px;
         }
-        paper-tooltip {
-          --paper-tooltip-delay-in: 100;
+        simple-tooltip {
+          --simple-tooltip-delay-in: 100;
           font-size: 11px;
         }
         #icon {
@@ -105,7 +105,7 @@ class PaperInputFlagged extends LitElement {
       }
     ];
     import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
   }
@@ -150,14 +150,14 @@ class PaperInputFlagged extends LitElement {
         <iron-icon id="icon" icon="${this.icon}" slot="prefix"></iron-icon>
       </paper-input>
       <div class="element-invisible">${this.__activeMessage}</div>
-      <paper-tooltip
+      <simple-tooltip
         for="icon"
         position="top"
         offset="20"
         fit-to-visible-bounds
       >
         ${this.__activeMessage}
-      </paper-tooltip>
+      </simple-tooltip>
     `;
   }
   static get tag() {

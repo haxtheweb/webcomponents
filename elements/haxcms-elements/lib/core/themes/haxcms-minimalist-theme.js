@@ -175,15 +175,6 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
             color: black;
             display: inline-flex;
           }
-          --site-title-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
-          }
           --site-title-link-hover: {
             background-color: #dee2e6;
           }
@@ -248,13 +239,11 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
             justify-content: center;
           }
           --site-top-menu-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+            --simple-tooltip-background: #000000;
+            --simple-tooltip-opacity: 1;
+            --simple-tooltip-text-color: #ffffff;
+            --simple-tooltip-delay-in: 0;
+            --simple-tooltip-border-radius: 0;
           }
           color: #007bff;
           --site-top-menu-bg: white;
@@ -278,13 +267,11 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
             color: black;
           }
           --site-print-button-tooltip: {
-            --paper-tooltip-background: #000000;
-            --paper-tooltip-opacity: 1;
-            --paper-tooltip-text-color: #ffffff;
-            --paper-tooltip-delay-in: 0;
-            --paper-tooltip: {
-              border-radius: 0;
-            }
+            --simple-tooltip-background: #000000;
+            --simple-tooltip-opacity: 1;
+            --simple-tooltip-text-color: #ffffff;
+            --simple-tooltip-delay-in: 0;
+            --simple-tooltip-border-radius: 0;
           }
           --site-print-button-button-hover: {
             background-color: #dee2e6;

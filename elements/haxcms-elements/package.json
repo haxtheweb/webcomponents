@@ -67,7 +67,7 @@
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-item": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
-    "@polymer/paper-tooltip": "^3.0.1",
+    "@lrnwebcomponents/simple-tooltip": "^2.4.0",
     "@polymer/polymer": "^3.3.1",
     "@vaadin/router": "^1.5.2",
     "mobx": "^5.15.0",

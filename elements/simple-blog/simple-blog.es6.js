@@ -5,11 +5,13 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { SimpleColorsSuper } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+
 /**
  * `simple-blog`
- * @customElement simple-blog
  * `A simple blog and associated elements`
  * @demo demo/index.html
+ * @customElement simple-blog
  */
 class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
   /**
@@ -109,13 +111,13 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
             icon="icons:arrow-back"
             @click="${this._goBack}"
           ></paper-icon-button>
-          <paper-tooltip
+          <simple-tooltip
             for="backbutton"
             position="right"
             offset="14"
             animation-delay="0"
             >Back to listing
-          </paper-tooltip>
+          </simple-tooltip>
           <simple-blog-post ?edit-mode="${this.editMode}"
             ><slot></slot
           ></simple-blog-post>
@@ -202,6 +204,11 @@ class SimpleBlog extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         left: 0
       });
       this.selectedPage = 1;
+      // @todo hacky timing thing
+      setTimeout(() => {
+        // try scrolling to the target ID after content gets imported
+        window.AnchorBehaviors.getTarget(store.themeElement);
+      }, 1000);
     }
     setTimeout(() => {
       var evt = document.createEvent("UIEvents");

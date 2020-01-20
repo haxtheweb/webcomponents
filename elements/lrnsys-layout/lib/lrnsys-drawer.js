@@ -43,7 +43,7 @@ class LrnsysDrawer extends SimpleColors {
     this.icon = "";
     this.text = "";
     setTimeout(() => {
-      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
       import("@polymer/paper-button/paper-button.js");
       import("@polymer/iron-icons/iron-icons.js");
     }, 0);
@@ -70,8 +70,8 @@ class LrnsysDrawer extends SimpleColors {
           <slot name="button"></slot>
         </lrnsys-button-inner>
       </paper-button>
-      <paper-tooltip for="flyouttrigger" animation-delay="0"
-        >${this.alt}</paper-tooltip
+      <simple-tooltip for="flyouttrigger" animation-delay="0"
+        >${this.alt}</simple-tooltip
       >
     `;
   }

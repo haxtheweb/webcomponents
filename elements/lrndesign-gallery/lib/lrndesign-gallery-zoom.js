@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrndesign-gallery-zoom`
  * @customElement lrndesign-gallery-zoom
@@ -96,7 +96,9 @@ class LrndesignGalleryZoom extends PolymerElement {
       >
         <slot></slot>
       </paper-button>
-      <paper-tooltip for="zoombtn" position="right">[[tooltip]]</paper-tooltip>
+      <simple-tooltip for="zoombtn" position="right"
+        >[[tooltip]]</simple-tooltip
+      >
       <simple-modal-template
         id="zoomtpl"
         modal-id="zoomdialog"

@@ -4,7 +4,7 @@ import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";

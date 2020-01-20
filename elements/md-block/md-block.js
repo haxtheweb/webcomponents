@@ -30,7 +30,10 @@ class MdBlock extends LitElement {
       <div>
         <marked-element markdown="${this.markdown}">
           <div slot="markdown-html"></div>
-          <script type="text/markdown" src="${this.source}"></script>
+          <script
+            type="text/markdown"
+            .src="${this.source ? this.source : undefined}"
+          ></script>
         </marked-element>
       </div>
     `;
@@ -50,7 +53,9 @@ class MdBlock extends LitElement {
         groups: ["Block"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "markdown",
+            source: "source",
+            src: "source"
           }
         ],
         meta: {

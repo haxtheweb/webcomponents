@@ -43,7 +43,7 @@ class HaxToolbarMenu extends LitElement {
           transform: rotateY(180deg);
         }
 
-        paper-tooltip {
+        simple-tooltip {
           pointer-events: none;
         }
         paper-listbox {

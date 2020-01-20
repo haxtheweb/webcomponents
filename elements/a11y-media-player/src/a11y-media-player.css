@@ -420,7 +420,7 @@ paper-icon-button {
 }
 paper-menu-button:not(:defined) paper-listbox, 
 paper-listbox:not(:defined), 
-paper-tooltip:not(:defined), 
+simple-tooltip:not(:defined), 
 paper-toast:not(:defined) {
   display: none;
 }

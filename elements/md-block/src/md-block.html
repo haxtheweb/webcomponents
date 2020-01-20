@@ -1,6 +1,6 @@
 <div>
   <marked-element markdown="${this.markdown}">
     <div slot="markdown-html"></div>
-    <script type="text/markdown" src="${this.source}"></script>
+      <script type="text/markdown" .src="${this.source ? this.source : undefined}"></script>
   </marked-element>
 </div>

@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-
+import { generateResourceID } from "@lrnwebcomponents/utils/utils.js";
 export const SchemaBehaviors = function(SuperClass) {
   return class extends SuperClass {
     /**
@@ -67,8 +67,12 @@ export const SchemaBehaviors = function(SuperClass) {
         // use this to tie into schemaResourceID build
         this.schemaResourceID = this.getAttribute("resource");
         // if it still doesn't have one then we have to check
-        if (this.schemaResourceID == "" || this.schemaResourceID == null) {
-          this.schemaResourceID = this.generateResourceID();
+        if (
+          this.schemaResourceID == "" ||
+          this.schemaResourceID == null ||
+          this.schemaResourceID == "null"
+        ) {
+          this.schemaResourceID = generateResourceID();
           this.setAttribute("resource", this.schemaResourceID);
         }
         let prefixes = newValue.prefix;
@@ -84,27 +88,6 @@ export const SchemaBehaviors = function(SuperClass) {
           this.setAttribute("prefix", prefix);
         }
       }
-    }
-    /**
-     * Generate a uinque ID
-     */
-    generateResourceID() {
-      function idPart() {
-        return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
-      }
-      return (
-        "#" +
-        idPart() +
-        idPart() +
-        "-" +
-        idPart() +
-        "-" +
-        idPart() +
-        "-" +
-        idPart()
-      );
     }
   };
 };
