@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 
@@ -11,6 +10,8 @@ export { A11yMediaButton };
 /**
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
+ *
+ * @customElement a11y-media-button
  */
 class A11yMediaButton extends LitElement {
   // properties available to the custom element for data binding
@@ -175,7 +176,7 @@ class A11yMediaButton extends LitElement {
     return html`
       <button
         id="button"
-        aria-label="${ifDefined(this.label)}"
+        .aria-label="${this.label}"
         aria-pressed="${this.toggle ? "true" : "false"}"
         controls="${this.controls}"
         tabindex="0"
@@ -185,9 +186,13 @@ class A11yMediaButton extends LitElement {
       >
         <iron-icon icon="${this.icon}"></iron-icon>
       </button>
-      <simple-tooltip for="button" position="${this.tooltipPosition}"
-        >${this.label}</simple-tooltip
-      >
+      ${this.label
+        ? html`
+            <paper-tooltip for="button" position="${this.tooltipPosition}"
+              >${this.label}</paper-tooltip
+            >
+          `
+        : ``}
     `;
   }
 

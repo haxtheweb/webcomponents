@@ -1,246 +1,156 @@
 {
   /**
-   * Is the media an audio file only?
+   * Is media an audio file only?
    */
   "audioOnly": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
    * Optional accent color for controls,
-   * using the following materialize "colors":
-   * red, pink, purple, deep-purple, indigo, blue,
-   * light blue, cyan, teal, green, light green, lime,
-   * yellow, amber, orange, deep-orange, and brown.
+   * using these colors:
+   * `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,
+   * `light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,
+   * `yellow`, `amber`, orange, deep-orange, and brown.
    * Default is null.
    */
   "accentColor": {
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "attribute": "accent-color",
+    "reflect": true
   },
   /**
    * Cross origin flag for transcripts to load
    */
   "crossorigin": {
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "attribute": "crossorigin",
+    "reflect": true
   },
   /**
    * Enables darker player.
    */
   "dark": {
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "attribute": "dark",
+    "reflect": true
   },
   /**
    * Use dark theme on transcript? Default is false, even when player is dark.
    */
   "darkTranscript": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
-   * disable interactive mode that makes the transcript clickable
+   * disable interactive mode that makes transcript clickable
    */
   "disableInteractive": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
-   * The height of the media player for non-a11y-media.
+   * Height of media player.
    */
   "height": {
-    "type": "String",
-    "value": null
+    "type": "String"
   },
   /**
    * show cue's start and end time
    */
   "hideTimestamps": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
-   * hide the transcript by default
+   * Hide transcript by default
    */
   "hideTranscript": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
-   * Computed if this should be in an iframe or not.
+   * Hide transcript by default
    */
-  "iframed": {
-    "type": "Boolean",
-    "computed": "_computeIframed(sourceData, sandboxed)"
+  "id": {
+    "type": "String",
+    "attribute": "id",
+    "reflect": true
   },
   /**
-   * Computed if this should be in a11y-media-player.
-   */
-  "isA11yMedia": {
-    "type": "Boolean",
-    "computed": "_computeA11yMedia(sourceType, sandboxed)"
-  },
-  /**
-   * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */
-  "isYoutube": {
-    "type": "Boolean",
-    "computed": "_computeYoutube(sourceType)"
-  },
-  /**
-   * The language of the media
+   * Language of media
    */
   "lang": {
-    "type": "String",
-    "value": "en"
+    "type": "String"
   },
   /**
    * Include a share link?
    */
   "linkable": {
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
   /**
-   * Simple caption for the video
+   * Simple caption for video
    */
   "mediaTitle": {
     "type": "String"
   },
   /**
-   * ID for a11y-media-player. 
-   If none specified it will be modified from schema-resource-id.
+   * ID for a11y-media-player.
+   * If none specified it will be modified from schema-resource-id.
    */
   "playerId": {
-    "type": "String",
-    "value": null
+    "type": "String"
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
    */
   "preload": {
-    "type": "String",
-    "value": "metadata"
-  },
-  /* *
-     * Responsive video, calculated from not-responsive.
-     * /
-    "responsive": {
-      "type": Boolean,
-      "reflectToAttribute": true,
-      "value": true,
-    },*/
-  /**
-   * Compute if this is a sandboxed system or not
-   */
-  "sandboxed": {
-    "type": "Boolean",
-    "computed": "_computeSandboxed(sourceData)"
+    "type": "String"
   },
   /**
-   * Source of the video
+   * Single sources of video
    */
   "source": {
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "attribute": "source",
+    "reflect": true
   },
   /**
-   * Source of the video
+   * Array of multiple video sources
    */
   "sources": {
-    "type": "Array",
-    "value": []
-  },
-  /**
-   * List of source objects
-   */
-  "sourceData": {
-    "type": "Array",
-    "computed": "_getSourceData(source,sources,trackData)"
-  },
-  /**
-   * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */
-  "sourceType": {
-    "type": "String",
-    "computed": "_computeSourceType(sourceData)"
+    "type": "Array"
   },
   /**
    * When playing but scrolled off screen, to which corner does it "stick":
-   * top-left, top-right, bottom-left, bottom-right, or none?
-   * Default is "top-right". "None" disables stickiness.
+   * `top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?
+   * Default is `top-right`. `None` disables stickiness.
    */
   "stickyCorner": {
     "type": "String",
-    "value": "top-right",
-    "reflectToAttribute": true
+    "attribute": "sticky-corner",
+    "reflect": true
   },
   /**
-   * The url for a single subtitle track
+   * Url for a single subtitle track
    */
   "track": {
-    "type": "String",
-    "value": null
+    "type": "String"
   },
   /**
-   * Array of text tracks
-   * [{
-   *  "src": "path/to/track.vtt",
-   *  "label": "English",
-   *  "srclang": "en",
-   *  "kind": "subtitles",
-   * }]
+   * Array of text tracks, eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles", }]`
    */
   "tracks": {
-    "type": "Array",
-    "value": []
-  },
-  /**
-   * Cleaned array of text tracks
-   * [{
-   *  "src": "path/to/track.vtt",
-   *  "label": "English",
-   *  "srclang": "en",
-   *  "kind": "subtitles",
-   * }]
-   */
-  "trackData": {
-    "type": "Array",
-    "computed": "_getTrackData(track,tracks)"
+    "type": "Array"
   },
   /**
    * Source of optional thumbnail image
    */
   "thumbnailSrc": {
     "type": "String",
-    "value": null,
-    "reflectToAttribute": true
+    "attribute": "thumbnail-src",
+    "reflect": true
   },
-  /* *
-     * Calculate vimeo color based on accent color.
-     * /
-    "vimeoColor": {
-      "type": String,
-      "computed": getVimeoColor(dark,accentColor),
-    }, 
-    */
   /**
-   * The width of the media player for non-a11y-media.
+   * Width of media player for non-a11y-media.
    */
   "width": {
-    "type": "String",
-    "value": null
-  },
-  /**
-   * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */
-  "youtubeId": {
-    "type": "String",
-    "computed": "_computeYoutubeId(source,sourceType)"
+    "type": "String"
   }
 }

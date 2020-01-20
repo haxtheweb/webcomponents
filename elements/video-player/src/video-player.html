@@ -1,74 +1,59 @@
-<style include="simple-colors-shared-styles-polymer"></style>
-<div style$="[[playerStyle]]">
-<template is="dom-if" if="[[isA11yMedia]]" restamp>
+
+${this.isA11yMedia ? html`
   <a11y-media-player
-    accent-color$="[[accentColor]]"
-    audio-only$="[[audioOnly]]"
-    dark$="[[dark]]"
-    dark-transcript$="[[darkTranscript]]"
-    disable-interactive$="[[disableInteractive]]"
-    hide-timestamps$="[[hideTimestamps]]"
-    hide-transcript$="[[hideTiranscript]]"
-    id="[[_getPlayerId(playerId,schemaResourceID)]]"
-    lang$="[[lang]]"
-    linkable$="[[linkable]]"
-    media-type$="[[sourceType]]"
-    preload$="[[preload]]"
-    media-title$="[[mediaTitle]]"
-    sources$="[[sourceData]]"
-    stand-alone$="[[__standAlone]]"
-    sticky-corner$="[[stickyCorner]]"
-    thumbnail-src$="[[thumbnailSrc]]"
-    tracks$="[[trackData]]"
-    crossorigin$="[[crossorigin]]"
-    youtube-id$="[[youtubeId]]"
-  >
-    <template id="sources" is="dom-repeat" items="[[sourceData]]" as="sd" restamp>
-      <source src$="[[sd.src]]" type$="[[sd.type]]" />
-    </template>
-    <template id="tracks" is="dom-repeat" items="[[trackData]]" as="track" restamp>
-      <track
-        src$="[[track.src]]"
-        kind$="[[track.kind]]"
-        label$="[[track.label]]"
-        srclang$="[[track.lang]]"
-      />
-    </template>
-  </a11y-media-player>
-</template>
-<template is="dom-if" if="[[!isA11yMedia]]">
-  <template is="dom-if" if="[[sandboxed]]">
-    <div class="responsive-video-container" lang$="[[lang]]">
+    .accent-color="${this.accentColor || undefined}"
+    ?audio-only="${this.audioOnly}"
+    ?dark="${this.dark}"
+    ?dark-transcript="${this.darkTranscript}"
+    ?disable-interactive="${this.disableInteractive}"
+    ?hide-timestamps="${this.hideTimestamps}"
+    ?hide-transcript="${this.hideTiranscript}"
+    id="${this.playerId}"
+    lang="${this.lang || 'en'}"
+    ?linkable="${this.linkable}"
+    preload="${this.preload || 'metadata'}"
+    .media-title="${this.mediaTitle || undefined}"
+    .sources="${this.sourceData}"
+    ?stand-alone="${this.standAlone}"
+    sticky-corner="${this.stickyCorner || 'top-right'}"
+    .thumbnail-src="${this.thumbnailSrc}"
+    .tracks="${this.trackData}"
+    .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
+    .width="${this.width}"
+    .height="${this.height}"
+    youtube-id="${this.youtubeId}"
+    >
+    ${this.audioOnly 
+      ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
+      : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
+    }  
+  </a11y-media-player>` : html`
+  <div class="responsive-video-container" .lang="${this.lang || undefined}">
+    ${this.sandboxed ? html``: html`
       <webview
-        resource$="[[schemaResourceID]]-video"
-        src$="[[sourceData.0.src]]"
-        width$="[[width]]"
-        height$="[[height]]"
+        resource="${this.schemaResourceID}-video"
+        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+        .width="${this.width || undefined }"
+        .height="${this.height || undefined }"
+        frameborder="0">
+      </webview>`}
+    ${!(!this.sandboxed && this.iframed) ? html``: html`
+      <iframe
+        resource="${this.schemaResourceID}-video"
+        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+        width="${this.width}"
+        height="${this.height}"
         frameborder="0"
-      ></webview>
-    </div>
-  </template>
-  <template is="dom-if" if="[[!sandboxed]]">
-    <template is="dom-if" if="[[iframed]]">
-      <div class="responsive-video-container" lang$="[[lang]]">
-        <iframe
-          resource$="[[schemaResourceID]]-video"
-          src$="[[sourceData.0.src]]"
-          width$="[[width]]"
-          height$="[[height]]"
-          frameborder="0"
-          webkitallowfullscreen=""
-          mozallowfullscreen=""
-          allowfullscreen=""
-        ></iframe>
-      </div>
-    </template>
-  </template>
-  <div id="videocaption" class$="video-caption">
+        webkitallowfullscreen=""
+        mozallowfullscreen=""
+        allowfullscreen=""
+      ></iframe>
+    `}
+  </div>
+  <div id="videocaption" class="video-caption">
     <p>
-      [[mediaTitle]]
+      ${this.mediaTitle}
       <span class="media-type print-only">(embedded media)</span>
     </p>
     <slot name="caption"></slot>
-  </div>
-</template>
+  </div>`}

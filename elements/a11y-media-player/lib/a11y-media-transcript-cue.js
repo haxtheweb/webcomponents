@@ -23,7 +23,7 @@ import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
 --a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd
 --a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```
  *
- * @customElement
+ * @customElement a11y-media-transcript-cue
  */
 class A11yMediaTranscriptCue extends LitElement {
   // properties available to the custom element for data binding
