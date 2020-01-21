@@ -5,8 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
-
-export { A11yMediaButton };
 /**
  * `a11y-media-button`
  * a button used in a11y-media-controls and a11y-media-transcript-controls.
@@ -186,8 +184,8 @@ class A11yMediaButton extends LitElement {
       </button>
       ${this.label
         ? html`
-            <paper-tooltip for="button" position="${this.tooltipPosition}"
-              >${this.label}</paper-tooltip
+            <simple-tooltip for="button" position="${this.tooltipPosition}"
+              >${this.label}</simple-tooltip
             >
           `
         : ``}
@@ -206,3 +204,4 @@ class A11yMediaButton extends LitElement {
   }
 }
 window.customElements.define(A11yMediaButton.tag, A11yMediaButton);
+export { A11yMediaButton };

@@ -1,8 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-array` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.
@@ -22,11 +22,14 @@ class EcoJsonSchemaArray extends mixinBehaviors(
   }
   constructor() {
     super();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
-    import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+    setTimeout(() => {
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
+      import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+    }, 0);
   }
   static get template() {
     return html`
@@ -143,12 +146,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           class="vertical flex layout"
           global-options="[[globalOptions]]"
         >
-          <template
-            is="dom-repeat"
-            items="[[_toArray(schema.value)]]"
-            as="item"
-            restamp
-          >
+          <template is="dom-repeat" items="[[schema.value]]" as="item">
             <a11y-collapse
               accordion
               id$="item-[[index]]"
@@ -199,7 +197,6 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     if (obj == null) {
       return [];
     }
-
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
@@ -253,7 +250,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
    */
   _schemaChanged() {
     //make sure the content is there first
-    afterNextRender(this, () => {
+    setTimeout(() => {
       let itemLabel = this.schema.items.itemLabel;
       if (this.schema && Array.isArray(this.schema.value)) {
         this.schema.value.forEach(val => {
@@ -287,7 +284,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           })
         );
       });
-    });
+    }, 0);
   }
   /**
    * handles adding an array item
@@ -300,6 +297,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       val[prop.name] = prop.value;
     });
     this.push("schema.value", val);
+    this.notifyPath("schema.*");
     this.notifyPath("schema.value.*");
     this._schemaChanged();
   }
@@ -311,6 +309,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     //remove the data for an item at a given index
     let index = e.target.controls.replace(/item-/, "");
     this.splice("schema.value", index, 1);
+    this.notifyPath("schema.*");
     this.notifyPath("schema.value.*");
     this._schemaChanged();
   }

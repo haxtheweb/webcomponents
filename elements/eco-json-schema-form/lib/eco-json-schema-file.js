@@ -7,6 +7,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-file` takes in a JSON schema of type number and string and
 contains a `paper-input`, exposing a `value` property that represents the schema.

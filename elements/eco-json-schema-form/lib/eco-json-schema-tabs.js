@@ -3,6 +3,7 @@ import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
 `eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.

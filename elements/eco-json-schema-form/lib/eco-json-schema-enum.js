@@ -5,7 +5,7 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
-
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 class EcoJsonSchemaEnum extends mixinBehaviors(
   [IronValidatableBehavior],
   PolymerElement
