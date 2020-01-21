@@ -14,6 +14,7 @@ ELMS:LN produced web components for any project
 ```bash
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
+$ yarn global add symlink-dir
 $ yarn install
 ```
 ## To work on any element in our repo
