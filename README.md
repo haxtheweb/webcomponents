@@ -23,7 +23,7 @@ $ yarn install
 
 ## Windows
 
-[![Cygwin command line]https://www.cygwin.com/] is lightly tested, but slower than true Bash environment.
+[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than true Bash environment.
 
 ### Windows Install
 
