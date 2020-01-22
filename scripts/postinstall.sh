@@ -10,18 +10,17 @@ esac
 # where am i? move to where I am. This ensures source is properly sourced
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
+cd ..
+rm -rf node_modules/@lrnwebcomponents
+mkdir node_modules/@lrnwebcomponents
 # go back a level so we can snag everything
-cd ../elements/
+cd elements/
 # walk each directory and update it's demo automatically
 for project in */ ; do
   cd ${project}
   p="$(basename -- $project)"
   rm -rf node_modules
   symlink-dir ../../node_modules node_modules
-  DIRECTORY="../../node_modules/@lrnwebcomponents/${p}"
-  if [ -d "$DIRECTORY" ]; then
-    rm ../../node_modules/@lrnwebcomponents/${p}
-  fi
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ $machine == "Cygwin" ]; then
     if [ -f "${p}.js" ]; then

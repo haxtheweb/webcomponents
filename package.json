@@ -103,7 +103,9 @@
       "web-component-tester": "6.9.2",
       "webpack": "4.29.3",
       "whatwg-fetch": "3.0.0",
-      "yo": "2.0.6"
+      "yo": "2.0.6",
+      "imagemin-lint-staged":"0.4.0",
+      "stylelint": "13.0.0"
   },
   "dependencies": {
       "fetch-ie8": "1.5.0",
@@ -111,7 +113,10 @@
       "promise-polyfill": "8.1.0"
   },
   "lint-staged": {
-    "*.{js,json}": "prettier --write"
+    "*.{js,json}": "prettier --write",
+    "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
+    "*.css": "stylelint",
+    "*.scss": "stylelint --syntax=scss"
   },
   "keywords": [
       "yeoman-generator",
