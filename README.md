@@ -27,6 +27,11 @@ $ yarn install
 
 ### Windows Install
 
+To properly configure git endlines for Windows, run this configuration
+```bash
+$ git config --global core.autocrlf true
+```
+
 ```bash
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
