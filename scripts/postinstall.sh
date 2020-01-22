@@ -9,7 +9,7 @@ for project in */ ; do
   cd ${project}
   p="$(basename -- $project)"
   rm -rf node_modules
-  symlink-dir ../../node_modules
+  symlink-dir ../../node_modules node_modules
   DIRECTORY="../../node_modules/@lrnwebcomponents/${p}"
   if [ -d "$DIRECTORY" ]; then
     rm ../../node_modules/@lrnwebcomponents/${p}

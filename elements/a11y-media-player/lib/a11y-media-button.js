@@ -82,10 +82,8 @@ class A11yMediaButton extends LitElement {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
-    this.action = null;
     this.controls = "video";
     this.disabled = false;
-    this.icon = null;
     this.toggle = false;
     this.tooltipPosition = "bottom";
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");

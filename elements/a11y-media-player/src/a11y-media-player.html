@@ -48,8 +48,8 @@
     min="${0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
-    @immediate-value-changed="${this._handleSliderChanged}"
-    @focused-changed="${this._handleSliderChanged}"
+    @change="${this._handleSliderChanged}"
+    @dragging-changed="${this._handleSliderDragging}"
     .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
@@ -57,12 +57,12 @@
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
-        class="xs"
         icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @click="${e => this.togglePlay()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
         ?disabled="${this.disableSeek || this.currentTime <= 0}"
@@ -70,6 +70,7 @@
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
         ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
@@ -77,6 +78,7 @@
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
         ?disabled="${this.disableSeek}"
@@ -84,7 +86,6 @@
         @click="${e => this.restart()}"
       ></a11y-media-button>
       <div id="volume-and-mute"
-      class="xs"
           @focus="${e => this.__volumeSlider = true}"
           @blur="${e => this.__volumeSlider = false}">
         <a11y-media-button
@@ -106,13 +107,13 @@
           ?hidden="${this.responsiveSize === 'xs'}"
         ></paper-slider>
       </div>
-      <span aria-live="polite" class="play-status control-bar sm">
+      <span aria-live="polite" class="play-status control-bar hide-full-xs">
         <span id="statbar">${this.status}</span>
       </span>
     </div>
     <div id="controls-right">
       <a11y-media-button
-        class="sm"
+        class="hide-full-xs"
         icon="${this._getLocal(this.localization,'captions','icon')}"
         label="${this._getLocal(this.localization,'captions','label')}"
         ?disabled="${!this.hasCaptions}"
@@ -122,7 +123,7 @@
       >
       </a11y-media-button>
       <a11y-media-button
-        class="sm"
+        class="hide-full-xs"
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
@@ -133,6 +134,7 @@
       >
       </a11y-media-button>
       <a11y-media-button
+        class="hide-full-sm"
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
         ?disabled="${!this.linkable}"
@@ -140,7 +142,7 @@
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
       <a11y-media-button
-        class="sm"
+        class="hide-full-xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
         step="1"
@@ -152,7 +154,7 @@
       </a11y-media-button>
       <paper-menu-button
         id="settings"
-        class="xs"
+        class="hide-sticky"
         allow-outside-scroll
         horizontal-align="right"
         ignore-select
