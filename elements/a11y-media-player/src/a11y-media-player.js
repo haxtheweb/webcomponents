@@ -563,8 +563,7 @@ class A11yMediaPlayer extends SimpleColors {
       : false;
     let currentTime =
       slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
+      !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -1524,28 +1523,32 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    * @param {event} e slider start event
    */
+  _handleSliderDragging(e) {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    if (slider && !slider.disabled && slider.dragging) {
+      if (this.__playing && slider.dragging) {
+        let startDrag = setInterval(() => {
+          if (!slider.dragging) {
+            this.play();
+            clearInterval(startDrag);
+          }
+        });
+        this.pause();
+      }
+    }
+  }
+
+  /**
+   * handles duration slider dragging with a mouse
+   * @param {event} e slider start event
+   */
   _handleSliderChanged(e) {
     let slider = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : false;
-    if (
-      slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
-    ) {
-      if (this.isYoutube) {
-        if (this.__playing && slider.dragging) {
-          let startDrag = setInterval(() => {
-            if (!slider.dragging) {
-              this.play();
-              clearInterval(startDrag);
-            }
-          });
-          this.pause();
-        }
-      }
-      this.seek(slider.immediateValue);
-    }
+    this.seek(slider.immediateValue);
   }
 
   /**

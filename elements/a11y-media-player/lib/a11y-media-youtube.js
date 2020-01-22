@@ -308,15 +308,6 @@ class A11yMediaYoutube extends LitElement {
     let root = this;
     if (this.__yt && this.__yt.seekTo) {
       this.__yt.seekTo(time, true);
-      if (this.paused) {
-        let seekupdate = setInterval(() => {
-          if (Math.abs(root.__yt.getCurrentTime() - time) < 1) {
-            root.dispatchEvent(new CustomEvent("timeupdate", { detail: root }));
-            clearInterval(seekupdate);
-          }
-        }, 1);
-      }
-      this._handleTimeupdate();
     }
   }
 
