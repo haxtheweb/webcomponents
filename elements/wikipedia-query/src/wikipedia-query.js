@@ -127,6 +127,9 @@ class WikipediaQuery extends LitElement {
       }
     };
   }
+  /**
+   * HAXproperties
+   */
   static get haxProperties() {
     return {
       canScale: true,
