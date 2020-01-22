@@ -3,21 +3,18 @@
    * source to point to
    */
   "source": {
-    "name": "source",
     "type": String
   },
   /**
    * alt text
    */
   "alt": {
-    "name": "alt",
     "type": String
   },
   /**
    * Whether or not to be rendered in the top corner, common on tech sites
    */
   "corner": {
-    "name": "corner",
     "type": Boolean,
     "reflect": true
   },
@@ -25,7 +22,6 @@
    * basic size adjustment
    */
   "size": {
-    "name": "size",
     "type": String,
     "reflect": true
   }
