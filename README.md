@@ -14,9 +14,31 @@ ELMS:LN produced web components for any project
 ```bash
 $ git clone https://github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
-$ yarn global add symlink-dir
+$ yarn global add @wcfactory/cli
+$ yarn global add polymer-cli
+$ yarn global add lerna
+$ yarn global add web-component-analyzer
 $ yarn install
 ```
+
+## Windows
+
+[![Cygwin command line]https://www.cygwin.com/] is lightly tested, but slower than true Bash environment.
+
+### Windows Install
+
+```bash
+$ git clone https://github.com/elmsln/lrnwebcomponents.git
+$ cd lrnwebcomponents
+$ yarn global add symlink-dir
+$ yarn global add @wcfactory/cli
+$ yarn global add polymer-cli
+$ yarn global add lerna
+$ yarn global add web-component-analyzer
+$ yarn install
+```
+
+
 ## To work on any element in our repo
 ```bash
 $ cd elements/ELEMENTNAME
