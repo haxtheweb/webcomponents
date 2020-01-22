@@ -110,6 +110,9 @@
       "lunr": "2.3.6",
       "promise-polyfill": "8.1.0"
   },
+  "lint-staged": {
+    "*.{js,json}": "prettier --write"
+  },
   "keywords": [
       "yeoman-generator",
       "custom-elements",
