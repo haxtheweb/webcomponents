@@ -16,19 +16,19 @@ for project in */ ; do
   fi
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ -f "${p}.js" ]; then
-    symlink-dir ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+    symlink-dir ../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
   fi
   if [ -d "lib" ]; then
-    symlink-dir ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
+    symlink-dir ../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
   fi
   if [ -d "build" ]; then
-    symlink-dir ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
+    symlink-dir ../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
   fi
   if [ -d "src" ]; then
-    symlink-dir ../../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
+    symlink-dir ../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
   fi
   if [ -d "dist" ]; then
-    symlink-dir ../../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
+    symlink-dir ../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
   fi
   cd ../
 done
