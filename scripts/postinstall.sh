@@ -20,7 +20,7 @@ for project in */ ; do
   symlink-dir ../../node_modules node_modules
   DIRECTORY="../../node_modules/@lrnwebcomponents/${p}"
   if [ -d "$DIRECTORY" ]; then
-    rm -rf ../../node_modules/@lrnwebcomponents/${p}
+    rm ../../node_modules/@lrnwebcomponents/${p}
   fi
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ $machine == "Cygwin" ]; then
