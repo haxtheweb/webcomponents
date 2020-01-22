@@ -6,29 +6,30 @@ cd $DIR
 cd ../elements/
 # walk each directory and update it's demo automatically
 for project in */ ; do
-  cd ${project}
+  cd $DIR
+  cd ../elements/${project}
   p="$(basename -- $project)"
   rm -rf node_modules
   symlink-dir ../../node_modules node_modules
   DIRECTORY="../../node_modules/@lrnwebcomponents/${p}"
   if [ -d "$DIRECTORY" ]; then
-    rm ../../node_modules/@lrnwebcomponents/${p}
+    rm -rf ../../node_modules/@lrnwebcomponents/${p}
   fi
   mkdir ../../node_modules/@lrnwebcomponents/${p}
-  if [ -f "${p}.js" ]; then
-    symlink-dir ../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+  cd ../../node_modules/@lrnwebcomponents/${p}
+  if [ -f "../../../elements/${p}/${p}.js" ]; then
+    symlink-dir ../../../elements/${p}/${p}.js ${p}.js
   fi
-  if [ -d "lib" ]; then
-    symlink-dir ../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
+  if [ -d "../../../elements/${p}/lib" ]; then
+    symlink-dir ../../../elements/${p}/lib lib
   fi
-  if [ -d "build" ]; then
-    symlink-dir ../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
+  if [ -d "../../../elements/${p}/build" ]; then
+    symlink-dir ../../../elements/${p}/build build
   fi
-  if [ -d "src" ]; then
-    symlink-dir ../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
+  if [ -d "../../../elements/${p}/src" ]; then
+    symlink-dir ../../../elements/${p}/src src
   fi
-  if [ -d "dist" ]; then
-    symlink-dir ../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
+  if [ -d "../../../elements/${p}/dist" ]; then
+    symlink-dir ../../../elements/${p}/dist dist
   fi
-  cd ../
 done
