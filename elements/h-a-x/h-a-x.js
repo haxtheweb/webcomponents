@@ -27,18 +27,15 @@ class HAX extends HTMLElement {
   line-height: var(--haxcms-base-styles-body-line-height, 1.8);
   letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
 }
-
 :host([hidden]) {
   display: none;
 }
-
 hax-body {
   font-size: var(--haxcms-base-styles-body-font-size, 16px);
   font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
   line-height: var(--haxcms-base-styles-body-line-height, 1.8);
   letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
 }
-
 h1 {
   font-size: var(--hax-base-styles-h1-font-size, 2.5em);
   line-height: var(--hax-base-styles-h1-line-height, 2.5em);

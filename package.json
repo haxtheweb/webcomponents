@@ -115,8 +115,8 @@
   "lint-staged": {
     "*.{js,json}": "prettier --write",
     "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
-    "*.css": "stylelint",
-    "*.scss": "stylelint --syntax=scss"
+    "*.css": "stylelint --fix",
+    "*.scss": "stylelint --syntax=scss --fix"
   },
   "keywords": [
       "yeoman-generator",
