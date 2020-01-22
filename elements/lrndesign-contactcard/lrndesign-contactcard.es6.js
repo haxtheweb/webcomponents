@@ -154,7 +154,9 @@ class LrndesignContactcard extends PolymerElement {
                   <iron-icon icon="mail" class="mail_icon"></iron-icon>
                 </paper-button>
               </a>
-              <simple-tooltip for="mail" position="bottom">Email</simple-tooltip>
+              <simple-tooltip for="mail" position="bottom"
+                >Email</simple-tooltip
+              >
             </template>
             <template is="dom-if" if="[[phone]]">
               <a tabindex="-1" href\$="tel:[[phone]]">
@@ -165,7 +167,9 @@ class LrndesignContactcard extends PolymerElement {
                   ></iron-icon>
                 </paper-button>
               </a>
-              <simple-tooltip for="phone" position="bottom">Call</simple-tooltip>
+              <simple-tooltip for="phone" position="bottom"
+                >Call</simple-tooltip
+              >
             </template>
             <template is="dom-if" if="[[website]]">
               <a tabindex="-1" href\$="[[website]]">

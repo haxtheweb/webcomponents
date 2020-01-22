@@ -2,8 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
-import { ifDefined } from "lit-html/directives/if-defined.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -17,8 +16,8 @@ import "./lib/a11y-media-transcript-cue.js";
  * `a11y-media-player`
  * an accessible video player
  *
- * @extends A11yMediaBehaviors
- * @extends SimpleColorsPolymer
+ * @customElement a11y-media-player
+ * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
@@ -524,11 +523,16 @@ paper-toast:not(:defined) {
     max-height: 0px;
     overflow: hidden;
   }
-  :host([sticky-mode]) #controls > * > *:not(.xs),
-  :host([sticky-mode]) .play-status,
-  :host([responsive-size="xs"]) #controls > * > *:not(.xs),
-  :host([responsive-size="xs"]) .play-status,
-  :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm) {
+  :host([sticky-mode]) .hide-sticky,
+  :host([sticky-mode]) .hide-full-xs,
+  :host([sticky-mode]) .hide-full-sm,
+  :host([sticky-mode]) .hide-flex,
+  :host([responsive-size="xs"]) .hide-full-xs,
+  :host([responsive-size="xs"]) .hide-full-sm,
+  :host([responsive-size="xs"]) .hide-full-flex,
+  :host([responsive-size="sm"]) .hide-full-sm,
+  :host([responsive-size="sm"]) .hide-full-flex,
+  :host([flex-layout]) .hide-flex {
     display: none;
   }
 
@@ -600,7 +604,7 @@ paper-toast:not(:defined) {
   render() {
     return html`
 
-<div class="sr-only" ?hidden="${this.mediaCaption === undefined}">
+<div class="sr-only" ?hidden="${!this.mediaCaption}">
   ${this.mediaCaption}
 </div>
 <div id="player-section">
@@ -617,26 +621,31 @@ paper-toast:not(:defined) {
       <div id="html5">
         <slot></slot>
       </div>
-      <a11y-media-youtube
-        id="youtube-${this.id}"
-        class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
-        lang="${this.mediaLang}"
-        preload="${this.t ? 'auto' : this.preload}"
-        t="${ifDefined(this.t)}"
-        video-id="${ifDefined(this.videoId)}"
-        @timeupdate="${this._handleTimeUpdate}"
-        ?hidden=${!this.isYoutube}>
-      </a11y-media-youtube>
-      <div id="cc-custom" 
-        aria-live="polite"
-        class="screen-only" 
-        ?hidden="${!this.showCustomCaptions}">
-        <div id="cc-text" ?hidden="${Object.keys(this.captionCues || []).length === 0}">
-          ${!this.captionCues ? `` 
-            : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
-          }
+      ${!this.videoId ? html`` : html`
+        <a11y-media-youtube
+          id="youtube-${this.id}"
+          class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
+          lang="${this.mediaLang}"
+          preload="${this.t ? 'auto' : this.preload}"
+          .t="${this.t}"
+          video-id="${this.videoId}"
+          @timeupdate="${this._handleTimeUpdate}"
+          ?hidden=${!this.isYoutube}>
+        </a11y-media-youtube>
+        `
+      }
+      ${Object.keys(this.captionCues || []).length === 0 || !this.showCustomCaptions ? html`` : html`
+        <div id="cc-custom" 
+          aria-live="polite"
+          class="screen-only">
+            <div id="cc-text">
+              ${!this.captionCues ? `` 
+                : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
+              }
+            </div>
         </div>
-      </div>
+        `
+      }
     </div>
   </div>
   <paper-slider id="slider"
@@ -645,8 +654,8 @@ paper-toast:not(:defined) {
     min="${0}"
     max="${this.duration}"
     secondary-progress="${this.buffered}"
-    @immediate-value-changed="${this._handleSliderChanged}"
-    @focused-changed="${this._handleSliderChanged}"
+    @change="${this._handleSliderChanged}"
+    @dragging-changed="${this._handleSliderDragging}"
     .value="${this.__currentTime}"
     ?disabled="${this.disableSeek || this.duration === 0}"
   >
@@ -654,12 +663,12 @@ paper-toast:not(:defined) {
   <div id="controls" controls="innerplayer">
     <div id="controls-left">
       <a11y-media-button
-        class="xs"
         icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
         label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
         @click="${e => this.togglePlay()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'rewind','icon')}"
         label="${this._getLocal(this.localization,'rewind','label')}"
         ?disabled="${this.disableSeek || this.currentTime <= 0}"
@@ -667,6 +676,7 @@ paper-toast:not(:defined) {
         @click="${e => this.rewind()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'forward','icon')}"
         label="${this._getLocal(this.localization,'forward','label')}"
         ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
@@ -674,6 +684,7 @@ paper-toast:not(:defined) {
         @click="${e => this.forward()}"
       ></a11y-media-button>
       <a11y-media-button
+        class="hide-flex"
         icon="${this._getLocal(this.localization,'restart','icon')}"
         label="${this._getLocal(this.localization,'restart','label')}"
         ?disabled="${this.disableSeek}"
@@ -681,7 +692,6 @@ paper-toast:not(:defined) {
         @click="${e => this.restart()}"
       ></a11y-media-button>
       <div id="volume-and-mute"
-      class="xs"
           @focus="${e => this.__volumeSlider = true}"
           @blur="${e => this.__volumeSlider = false}">
         <a11y-media-button
@@ -703,13 +713,13 @@ paper-toast:not(:defined) {
           ?hidden="${this.responsiveSize === 'xs'}"
         ></paper-slider>
       </div>
-      <span aria-live="polite" class="play-status control-bar sm">
+      <span aria-live="polite" class="play-status control-bar hide-full-xs">
         <span id="statbar">${this.status}</span>
       </span>
     </div>
     <div id="controls-right">
       <a11y-media-button
-        class="sm"
+        class="hide-full-xs"
         icon="${this._getLocal(this.localization,'captions','icon')}"
         label="${this._getLocal(this.localization,'captions','label')}"
         ?disabled="${!this.hasCaptions}"
@@ -719,7 +729,7 @@ paper-toast:not(:defined) {
       >
       </a11y-media-button>
       <a11y-media-button
-        class="sm"
+        class="hide-full-xs"
         controls="transcript"
         icon="${this._getLocal(this.localization,'transcript','icon')}"
         label="${this._getLocal(this.localization,'transcript','label')}"
@@ -730,6 +740,7 @@ paper-toast:not(:defined) {
       >
       </a11y-media-button>
       <a11y-media-button
+        class="hide-full-sm"
         icon="${this._getLocal(this.localization,'copyLink','icon')}"
         label="${this._getLocal(this.localization,'copyLink','label')}"
         ?disabled="${!this.linkable}"
@@ -737,7 +748,7 @@ paper-toast:not(:defined) {
         @click="${this._handleCopyLink}"
       ></a11y-media-button>
       <a11y-media-button
-        class="xs"
+        class="hide-full-xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
         step="1"
@@ -748,8 +759,8 @@ paper-toast:not(:defined) {
       >
       </a11y-media-button>
       <paper-menu-button
-        class="sm"
         id="settings"
+        class="hide-sticky"
         allow-outside-scroll
         horizontal-align="right"
         ignore-select
@@ -906,7 +917,10 @@ paper-toast:not(:defined) {
   </div>
   <div class="print-only media-caption">${this.printCaption}</div>
 </div>
-<img id="print-thumbnail" aria-hidden="true" src="${ifDefined(this.poster)}" />
+${this.poster 
+  ? html`<img id="print-thumbnail" aria-hidden="true" .src="${this.poster}" />` 
+  : ``
+}
 <div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions || this.height}">
   <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
     <div id="searchbar">
@@ -1324,6 +1338,7 @@ paper-toast:not(:defined) {
    */
   "youtubeId": {
     "attribute": "youtube-id",
+    "reflect": true,
     "type": String
   },
   /**
@@ -1915,8 +1930,7 @@ paper-toast:not(:defined) {
       : false;
     let currentTime =
       slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
+      !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -2876,17 +2890,32 @@ paper-toast:not(:defined) {
    * handles duration slider dragging with a mouse
    * @param {event} e slider start event
    */
+  _handleSliderDragging(e) {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    if (slider && !slider.disabled && slider.dragging) {
+      if (this.__playing && slider.dragging) {
+        let startDrag = setInterval(() => {
+          if (!slider.dragging) {
+            this.play();
+            clearInterval(startDrag);
+          }
+        });
+        this.pause();
+      }
+    }
+  }
+
+  /**
+   * handles duration slider dragging with a mouse
+   * @param {event} e slider start event
+   */
   _handleSliderChanged(e) {
     let slider = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : false;
-    if (
-      slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
-    ) {
-      this.seek(slider.immediateValue);
-    }
+    this.seek(slider.immediateValue);
   }
 
   /**

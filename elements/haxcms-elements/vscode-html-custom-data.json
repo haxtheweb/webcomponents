@@ -1233,164 +1233,6 @@
       ]
     },
     {
-      "name": "active-when-visible",
-      "description": "`active-when-visible`\n`Title of the site`\n\nEvents:\n\n  * `is-visible-changed` - \n\nAttributes:\n\n  * `item-id` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `visible-limit` {`number`} - \n\n  * `is-visible` {`boolean`} - \n\nProperties:\n\n  * `itemId` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - \n\n  * `isVisible` {`boolean`} - ",
-      "attributes": [
-        {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - \n\nProperty: itemId"
-        },
-        {
-          "name": "_a",
-          "description": "`_a` {`string`} - \n\nProperty: _a"
-        },
-        {
-          "name": "thresholds",
-          "description": "`thresholds` {`any[]`} - \n\nProperty: thresholds\n\nDefault: 0,0.25,0.5,0.75,1"
-        },
-        {
-          "name": "root-margin",
-          "description": "`root-margin` {`string`} - \n\nProperty: rootMargin\n\nDefault: 0px"
-        },
-        {
-          "name": "visible-limit",
-          "description": "`visible-limit` {`number`} - \n\nProperty: visibleLimit\n\nDefault: 0.5"
-        },
-        {
-          "name": "is-visible",
-          "description": "`is-visible` {`boolean`} - \n\nProperty: isVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onis-visible-changed",
-          "description": "`is-visible-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "site-query-menu-slice",
-      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
-      "attributes": [
-        {
-          "name": "parent",
-          "description": "`parent` {`string`} - parent for the menu id\n\nProperty: parent"
-        },
-        {
-          "name": "result",
-          "description": "`result` {`any[]`} - Results which can be binded to something else\n\nProperty: result"
-        },
-        {
-          "name": "_router-manifest",
-          "description": "`_router-manifest` - \n\nProperty: _routerManifest"
-        },
-        {
-          "name": "start",
-          "description": "`start` {`number`} - starting level for the menu items\n\nProperty: start\n\nDefault: 1"
-        },
-        {
-          "name": "end",
-          "description": "`end` {`number`} - ending level for the menu items\n\nProperty: end\n\nDefault: 1000"
-        },
-        {
-          "name": "dynamic-methodology",
-          "description": "`dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\nProperty: dynamicMethodology\n\nDefault: active"
-        },
-        {
-          "name": "fixed-id",
-          "description": "`fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\nProperty: fixedId\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-dynamic-level",
-          "description": "`no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperty: noDynamicLevel\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onresult-changed",
-          "description": "`result-changed` - "
-        }
-      ]
-    },
-    {
-      "name": "site-query",
-      "description": "Attributes:\n\n  * `routerManifest` - Manifest with router / location enhancements\n\n  * `active-id` {`string`} - activeId\n\n  * `result` {`any[]`} - result to help illustrate this only lives here\n\n  * `entity` {`string`} - Entity to focus on\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `random` {`boolean`} - Randomize results\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `force-rebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\n  * `limit` {`number`} - Limit the number of results returned\n\n  * `start-index` {`number`} - Where to start returning results from\n\nProperties:\n\n  * `routerManifest` - Manifest with router / location enhancements\n\n  * `activeId` {`string`} - activeId\n\n  * `result` {`any[]`} - result to help illustrate this only lives here\n\n  * `entity` {`string`} - Entity to focus on\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `random` {`boolean`} - Randomize results\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `forceRebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\n  * `limit` {`number`} - Limit the number of results returned\n\n  * `startIndex` {`number`} - Where to start returning results from",
-      "attributes": [
-        {
-          "name": "routerManifest",
-          "description": "`routerManifest` - Manifest with router / location enhancements\n\nProperty: routerManifest"
-        },
-        {
-          "name": "active-id",
-          "description": "`active-id` {`string`} - activeId\n\nProperty: activeId"
-        },
-        {
-          "name": "result",
-          "description": "`result` {`any[]`} - result to help illustrate this only lives here\n\nProperty: result"
-        },
-        {
-          "name": "entity",
-          "description": "`entity` {`string`} - Entity to focus on\n\nProperty: entity\n\nDefault: node"
-        },
-        {
-          "name": "conditions",
-          "description": "`conditions` - Conditions that can be used to slice the data differently in the manifest\n\nProperty: conditions\n\nDefault: [object Object]"
-        },
-        {
-          "name": "random",
-          "description": "`random` {`boolean`} - Randomize results\n\nProperty: random\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "sort",
-          "description": "`sort` - Establish the order items should be displayed in\n\nProperty: sort\n\nDefault: [object Object]"
-        },
-        {
-          "name": "force-rebuild",
-          "description": "`force-rebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\nProperty: forceRebuild\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "limit",
-          "description": "`limit` {`number`} - Limit the number of results returned\n\nProperty: limit\n\nDefault: 0"
-        },
-        {
-          "name": "start-index",
-          "description": "`start-index` {`number`} - Where to start returning results from\n\nProperty: startIndex\n\nDefault: 0"
-        }
-      ]
-    },
-    {
-      "name": "site-render-query",
-      "description": "`site-render-query`\n`Render a query result as an iron-list`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - \n\nProperties:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - ",
-      "attributes": [
-        {
-          "name": "conditions",
-          "description": "`conditions` - Conditions that can be used to slice the data differently in the manifest\n\nProperty: conditions\n\nDefault: [object Object]"
-        },
-        {
-          "name": "sort",
-          "description": "`sort` - Establish the order items should be displayed in\n\nProperty: sort\n\nDefault: [object Object]"
-        },
-        {
-          "name": "grid",
-          "description": "`grid` {`boolean`} - iron-list helper for this 1 flag\n\nProperty: grid\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "result",
-          "description": "`result` {`any[]`} - \n\nProperty: result\n\nDefault: "
-        },
-        {
-          "name": "__items",
-          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
-        },
-        {
-          "name": "onresult-changed",
-          "description": "`result-changed` - "
-        }
-      ]
-    },
-    {
       "name": "site-drawer",
       "description": "`site-drawer`\n`Basic off canvas drawer element`\n\nAttributes:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `align` {`string`} - \n\n  * `icon` {`string`} - ",
       "attributes": [
@@ -1451,6 +1293,41 @@
         {
           "name": "onsite-modal-click",
           "description": "`site-modal-click` - "
+        }
+      ]
+    },
+    {
+      "name": "active-when-visible",
+      "description": "`active-when-visible`\n`Title of the site`\n\nEvents:\n\n  * `is-visible-changed` - \n\nAttributes:\n\n  * `item-id` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `visible-limit` {`number`} - \n\n  * `is-visible` {`boolean`} - \n\nProperties:\n\n  * `itemId` {`string`} - \n\n  * `_a` {`string`} - \n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `visibleLimit` {`number`} - \n\n  * `isVisible` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "item-id",
+          "description": "`item-id` {`string`} - \n\nProperty: itemId"
+        },
+        {
+          "name": "_a",
+          "description": "`_a` {`string`} - \n\nProperty: _a"
+        },
+        {
+          "name": "thresholds",
+          "description": "`thresholds` {`any[]`} - \n\nProperty: thresholds\n\nDefault: 0,0.25,0.5,0.75,1"
+        },
+        {
+          "name": "root-margin",
+          "description": "`root-margin` {`string`} - \n\nProperty: rootMargin\n\nDefault: 0px"
+        },
+        {
+          "name": "visible-limit",
+          "description": "`visible-limit` {`number`} - \n\nProperty: visibleLimit\n\nDefault: 0.5"
+        },
+        {
+          "name": "is-visible",
+          "description": "`is-visible` {`boolean`} - \n\nProperty: isVisible\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onis-visible-changed",
+          "description": "`is-visible-changed` - "
         }
       ]
     },
@@ -1619,6 +1496,137 @@
       ]
     },
     {
+      "name": "basic-template",
+      "attributes": []
+    },
+    {
+      "name": "minimalist-template",
+      "attributes": []
+    },
+    {
+      "name": "site-query-menu-slice",
+      "description": "`site-query-menu-slice`\n`A slice / 1 level within the hierarchy, via relative parent or deep parent`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_router-manifest` - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperties:\n\n  * `parent` {`string`} - parent for the menu id\n\n  * `result` {`any[]`} - Results which can be binded to something else\n\n  * `_routerManifest` - \n\n  * `__disposer` {`never[]`} - \n\n  * `start` {`number`} - starting level for the menu items\n\n  * `end` {`number`} - ending level for the menu items\n\n  * `dynamicMethodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\n  * `fixedId` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\n  * `noDynamicLevel` {`boolean`} - Allow disabling the dynamic leveling",
+      "attributes": [
+        {
+          "name": "parent",
+          "description": "`parent` {`string`} - parent for the menu id\n\nProperty: parent"
+        },
+        {
+          "name": "result",
+          "description": "`result` {`any[]`} - Results which can be binded to something else\n\nProperty: result"
+        },
+        {
+          "name": "_router-manifest",
+          "description": "`_router-manifest` - \n\nProperty: _routerManifest"
+        },
+        {
+          "name": "start",
+          "description": "`start` {`number`} - starting level for the menu items\n\nProperty: start\n\nDefault: 1"
+        },
+        {
+          "name": "end",
+          "description": "`end` {`number`} - ending level for the menu items\n\nProperty: end\n\nDefault: 1000"
+        },
+        {
+          "name": "dynamic-methodology",
+          "description": "`dynamic-methodology` {`string`} - How we should obtain the parent who's children we should show\noptions are active, parent, or ancestor\n\nProperty: dynamicMethodology\n\nDefault: active"
+        },
+        {
+          "name": "fixed-id",
+          "description": "`fixed-id` {`boolean`} - Use this boolean to force this to fix to 1 parent\nOtherwise it will dynamically update (default behavior)\n\nProperty: fixedId\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "no-dynamic-level",
+          "description": "`no-dynamic-level` {`boolean`} - Allow disabling the dynamic leveling\n\nProperty: noDynamicLevel\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onresult-changed",
+          "description": "`result-changed` - "
+        }
+      ]
+    },
+    {
+      "name": "site-query",
+      "description": "Attributes:\n\n  * `routerManifest` - Manifest with router / location enhancements\n\n  * `active-id` {`string`} - activeId\n\n  * `result` {`any[]`} - result to help illustrate this only lives here\n\n  * `entity` {`string`} - Entity to focus on\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `random` {`boolean`} - Randomize results\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `force-rebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\n  * `limit` {`number`} - Limit the number of results returned\n\n  * `start-index` {`number`} - Where to start returning results from\n\nProperties:\n\n  * `routerManifest` - Manifest with router / location enhancements\n\n  * `activeId` {`string`} - activeId\n\n  * `result` {`any[]`} - result to help illustrate this only lives here\n\n  * `entity` {`string`} - Entity to focus on\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `random` {`boolean`} - Randomize results\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `forceRebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\n  * `limit` {`number`} - Limit the number of results returned\n\n  * `startIndex` {`number`} - Where to start returning results from",
+      "attributes": [
+        {
+          "name": "routerManifest",
+          "description": "`routerManifest` - Manifest with router / location enhancements\n\nProperty: routerManifest"
+        },
+        {
+          "name": "active-id",
+          "description": "`active-id` {`string`} - activeId\n\nProperty: activeId"
+        },
+        {
+          "name": "result",
+          "description": "`result` {`any[]`} - result to help illustrate this only lives here\n\nProperty: result"
+        },
+        {
+          "name": "entity",
+          "description": "`entity` {`string`} - Entity to focus on\n\nProperty: entity\n\nDefault: node"
+        },
+        {
+          "name": "conditions",
+          "description": "`conditions` - Conditions that can be used to slice the data differently in the manifest\n\nProperty: conditions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "random",
+          "description": "`random` {`boolean`} - Randomize results\n\nProperty: random\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "sort",
+          "description": "`sort` - Establish the order items should be displayed in\n\nProperty: sort\n\nDefault: [object Object]"
+        },
+        {
+          "name": "force-rebuild",
+          "description": "`force-rebuild` {`boolean`} - Boolean flag to force a repaint of what's in the item\n\nProperty: forceRebuild\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "limit",
+          "description": "`limit` {`number`} - Limit the number of results returned\n\nProperty: limit\n\nDefault: 0"
+        },
+        {
+          "name": "start-index",
+          "description": "`start-index` {`number`} - Where to start returning results from\n\nProperty: startIndex\n\nDefault: 0"
+        }
+      ]
+    },
+    {
+      "name": "site-render-query",
+      "description": "`site-render-query`\n`Render a query result as an iron-list`\n\nEvents:\n\n  * `result-changed` - \n\nAttributes:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - \n\nProperties:\n\n  * `conditions` - Conditions that can be used to slice the data differently in the manifest\n\n  * `sort` - Establish the order items should be displayed in\n\n  * `grid` {`boolean`} - iron-list helper for this 1 flag\n\n  * `result` {`any[]`} - \n\n  * `__items` {`any[]`} - ",
+      "attributes": [
+        {
+          "name": "conditions",
+          "description": "`conditions` - Conditions that can be used to slice the data differently in the manifest\n\nProperty: conditions\n\nDefault: [object Object]"
+        },
+        {
+          "name": "sort",
+          "description": "`sort` - Establish the order items should be displayed in\n\nProperty: sort\n\nDefault: [object Object]"
+        },
+        {
+          "name": "grid",
+          "description": "`grid` {`boolean`} - iron-list helper for this 1 flag\n\nProperty: grid\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "result",
+          "description": "`result` {`any[]`} - \n\nProperty: result\n\nDefault: "
+        },
+        {
+          "name": "__items",
+          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
+        },
+        {
+          "name": "onresult-changed",
+          "description": "`result-changed` - "
+        }
+      ]
+    },
+    {
       "name": "site-print-button",
       "description": "`site-print-button`\n`Dynamic print button to request and generate what to print`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now\n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `label` {`string`} - label for the button\n\n  * `icon` {`string`} - icon\n\n  * `position` {`string`} - label for the button\n\n  * `type` {`string`} - How much do you want to print right now",
       "attributes": [
@@ -1726,14 +1734,6 @@
           "valueSet": "v"
         }
       ]
-    },
-    {
-      "name": "basic-template",
-      "attributes": []
-    },
-    {
-      "name": "minimalist-template",
-      "attributes": []
     }
   ],
   "globalAttributes": [],

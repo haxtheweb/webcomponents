@@ -3,25 +3,57 @@
   "tags": [
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\n",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceData` {`any[]`} - Gets source and adds to sources list\n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `audioOnly` {`boolean`} - \n\n  * `dark` {`boolean`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - ",
       "attributes": []
     },
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `audioOnly` {`boolean`} - Is the media an audio file only?\n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\n  * `height` {`string`} - The height of the media player for non-a11y-media.\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - hide the transcript by default\n\n  * `iframed` {`boolean`} - Computed if this should be in an iframe or not.\n\n  * `isA11yMedia` {`boolean`} - Computed if this should be in a11y-media-player.\n\n  * `isYoutube` {`boolean`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\n  * `lang` {`string`} - The language of the media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `mediaTitle` {`string`} - Simple caption for the video\n\n  * `playerId` {`string`} - ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sandboxed` {`boolean`} - Compute if this is a sandboxed system or not\n\n  * `source` {`string`} - Source of the video\n\n  * `sources` {`any[]`} - Source of the video\n\n  * `sourceData` {`any[]`} - List of source objects\n\n  * `sourceType` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\n  * `track` {`string`} - The url for a single subtitle track\n\n  * `tracks` {`any[]`} - Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\n  * `trackData` {`any[]`} - Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - The width of the media player for non-a11y-media.\n\n  * `youtubeId` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\nProperties:\n\n  * `audioOnly` {`boolean`} - Is the media an audio file only?\n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\n  * `height` {`string`} - The height of the media player for non-a11y-media.\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - hide the transcript by default\n\n  * `iframed` {`boolean`} - Computed if this should be in an iframe or not.\n\n  * `isA11yMedia` {`boolean`} - Computed if this should be in a11y-media-player.\n\n  * `isYoutube` {`boolean`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\n  * `lang` {`string`} - The language of the media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `mediaTitle` {`string`} - Simple caption for the video\n\n  * `playerId` {`string`} - ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sandboxed` {`boolean`} - Compute if this is a sandboxed system or not\n\n  * `source` {`string`} - Source of the video\n\n  * `sources` {`any[]`} - Source of the video\n\n  * `sourceData` {`any[]`} - List of source objects\n\n  * `sourceType` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\n  * `track` {`string`} - The url for a single subtitle track\n\n  * `tracks` {`any[]`} - Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\n  * `trackData` {`any[]`} - Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - The width of the media player for non-a11y-media.\n\n  * `youtubeId` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Hide transcript by default\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `playerId` {`string`} - ID for a11y-media-player.\nIf none specified it will be modified from schema-resource-id.\n\n  * `audioOnly` {`boolean`} - Is media an audio file only?\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperties:\n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Hide transcript by default\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `source` {`string`} - Single sources of video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceData` {`any[]`} - Gets source and adds to sources list\n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - ID for a11y-media-player.\nIf none specified it will be modified from schema-resource-id.\n\n  * `audioOnly` {`boolean`} - Is media an audio file only?\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `lang` {`string`} - Language of media\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`",
       "attributes": [
         {
-          "name": "audioOnly",
-          "description": "`audioOnly` {`boolean`} - Is the media an audio file only?\n\nProperty: audioOnly\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accentColor",
-          "description": "`accentColor` {`string`} - Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor\n\nDefault: null"
+          "name": "accent-color",
+          "description": "`accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor"
         },
         {
           "name": "crossorigin",
-          "description": "`crossorigin` {`string`} - Cross origin flag for transcripts to load\n\nProperty: crossorigin\n\nDefault: null"
+          "description": "`crossorigin` {`string`} - Cross origin flag for transcripts to load\n\nProperty: crossorigin"
+        },
+        {
+          "name": "height",
+          "description": "`height` {`string`} - Height of media player.\n\nProperty: height"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - Hide transcript by default\n\nProperty: id"
+        },
+        {
+          "name": "mediaTitle",
+          "description": "`mediaTitle` {`string`} - Simple caption for video\n\nProperty: mediaTitle"
+        },
+        {
+          "name": "source",
+          "description": "`source` {`string`} - Single sources of video\n\nProperty: source"
+        },
+        {
+          "name": "track",
+          "description": "`track` {`string`} - Url for a single subtitle track\n\nProperty: track"
+        },
+        {
+          "name": "thumbnail-src",
+          "description": "`thumbnail-src` {`string`} - Source of optional thumbnail image\n\nProperty: thumbnailSrc"
+        },
+        {
+          "name": "width",
+          "description": "`width` {`string`} - Width of media player for non-a11y-media.\n\nProperty: width"
+        },
+        {
+          "name": "playerId",
+          "description": "`playerId` {`string`} - ID for a11y-media-player.\nIf none specified it will be modified from schema-resource-id.\n\nProperty: playerId"
+        },
+        {
+          "name": "audioOnly",
+          "description": "`audioOnly` {`boolean`} - Is media an audio file only?\n\nProperty: audioOnly\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "dark",
@@ -35,12 +67,8 @@
         },
         {
           "name": "disableInteractive",
-          "description": "`disableInteractive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\nProperty: disableInteractive\n\nDefault: false",
+          "description": "`disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\nProperty: disableInteractive\n\nDefault: false",
           "valueSet": "v"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - The height of the media player for non-a11y-media.\n\nProperty: height\n\nDefault: null"
         },
         {
           "name": "hideTimestamps",
@@ -49,27 +77,12 @@
         },
         {
           "name": "hideTranscript",
-          "description": "`hideTranscript` {`boolean`} - hide the transcript by default\n\nProperty: hideTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "iframed",
-          "description": "`iframed` {`boolean`} - Computed if this should be in an iframe or not.\n\nProperty: iframed",
-          "valueSet": "v"
-        },
-        {
-          "name": "isA11yMedia",
-          "description": "`isA11yMedia` {`boolean`} - Computed if this should be in a11y-media-player.\n\nProperty: isA11yMedia",
-          "valueSet": "v"
-        },
-        {
-          "name": "isYoutube",
-          "description": "`isYoutube` {`boolean`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\nProperty: isYoutube",
+          "description": "`hideTranscript` {`boolean`} - Hide transcript by default\n\nProperty: hideTranscript\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "lang",
-          "description": "`lang` {`string`} - The language of the media\n\nProperty: lang\n\nDefault: en"
+          "description": "`lang` {`string`} - Language of media\n\nProperty: lang\n\nDefault: en"
         },
         {
           "name": "linkable",
@@ -77,65 +90,20 @@
           "valueSet": "v"
         },
         {
-          "name": "mediaTitle",
-          "description": "`mediaTitle` {`string`} - Simple caption for the video\n\nProperty: mediaTitle"
-        },
-        {
-          "name": "playerId",
-          "description": "`playerId` {`string`} - ID for a11y-media-player. \nIf none specified it will be modified from schema-resource-id.\n\nProperty: playerId\n\nDefault: null"
-        },
-        {
           "name": "preload",
           "description": "`preload` {`string`} - What to preload for a11y-media-player: auto, metadata (default), or none.\n\nProperty: preload\n\nDefault: metadata"
         },
         {
-          "name": "sandboxed",
-          "description": "`sandboxed` {`boolean`} - Compute if this is a sandboxed system or not\n\nProperty: sandboxed",
-          "valueSet": "v"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - Source of the video\n\nProperty: source\n\nDefault: null"
-        },
-        {
           "name": "sources",
-          "description": "`sources` {`any[]`} - Source of the video\n\nProperty: sources\n\nDefault: "
+          "description": "`sources` {`any[]`} - Array of multiple video sources\n\nProperty: sources\n\nDefault: "
         },
         {
-          "name": "sourceData",
-          "description": "`sourceData` {`any[]`} - List of source objects\n\nProperty: sourceData"
-        },
-        {
-          "name": "sourceType",
-          "description": "`sourceType` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\nProperty: sourceType"
-        },
-        {
-          "name": "stickyCorner",
-          "description": "`stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\nProperty: stickyCorner\n\nDefault: top-right"
-        },
-        {
-          "name": "track",
-          "description": "`track` {`string`} - The url for a single subtitle track\n\nProperty: track\n\nDefault: null"
+          "name": "sticky-corner",
+          "description": "`sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\nProperty: stickyCorner\n\nDefault: top-right"
         },
         {
           "name": "tracks",
-          "description": "`tracks` {`any[]`} - Array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\nProperty: tracks\n\nDefault: "
-        },
-        {
-          "name": "trackData",
-          "description": "`trackData` {`any[]`} - Cleaned array of text tracks\n[{\n  \"src\": \"path/to/track.vtt\",\n  \"label\": \"English\",\n  \"srclang\": \"en\",\n  \"kind\": \"subtitles\",\n}]\n\nProperty: trackData"
-        },
-        {
-          "name": "thumbnailSrc",
-          "description": "`thumbnailSrc` {`string`} - Source of optional thumbnail image\n\nProperty: thumbnailSrc\n\nDefault: null"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - The width of the media player for non-a11y-media.\n\nProperty: width\n\nDefault: null"
-        },
-        {
-          "name": "youtubeId",
-          "description": "`youtubeId` {`string`} - The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.\n\nProperty: youtubeId"
+          "description": "`tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperty: tracks\n\nDefault: "
         }
       ]
     },
@@ -145,7 +113,7 @@
     },
     {
       "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\n",
+      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nProperties:\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceData` {`any[]`} - Gets source and adds to sources list\n\n  * `standAlone` {`boolean`} - \n\n  * `sourceType` {`string`} - Gets type of source based on src attribute\n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `audioOnly` {`boolean`} - \n\n  * `dark` {`boolean`} - \n\n  * `darkTranscript` {`boolean`} - \n\n  * `disableInteractive` {`boolean`} - \n\n  * `hideTimestamps` {`boolean`} - \n\n  * `hideTranscript` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `linkable` {`boolean`} - \n\n  * `preload` {`string`} - \n\n  * `sources` {`never[]`} - \n\n  * `stickyCorner` {`string`} - \n\n  * `tracks` {`never[]`} - ",
       "attributes": []
     }
   ],
