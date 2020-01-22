@@ -24,1384 +24,1182 @@ import "./lib/a11y-media-transcript-cue.js";
  *
  */
 class A11yMediaPlayer extends SimpleColors {
+  
   //styles function
   static get styles() {
     return [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          width: calc(100% - 2px);
-          border: 1px solid var(--simple-colors-default-theme-grey-3);
-          --a11y-media-player-height: unset;
-          --a11y-media-color: var(--simple-colors-default-theme-grey-11);
-          --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
-          --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
-          --a11y-media-hover-bg-color: var(
-            --simple-colors-default-theme-grey-2
-          );
-          --a11y-media-accent-color: var(
-            --simple-colors-default-theme-accent-9
-          );
-          --a11y-media-faded-accent-color: var(
-            --simple-colors-default-theme-accent-8
-          );
-          --a11y-media-disabled-color: var(
-            --simple-colors-default-theme-grey-5
-          );
-          --paper-toast-color: var(--simple-colors-default-theme-grey-11);
-          --paper-toast-background-color: var(
-            --simple-colors-default-theme-grey-2
-          );
+:host {
+  display: block;
+  width: calc(100% - 2px);
+  border: 1px solid var(--simple-colors-default-theme-grey-3);
+  --a11y-media-player-height: unset;
+  --a11y-media-color: var(--simple-colors-default-theme-grey-11);
+  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
+  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
+  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
+  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
+  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5);
+  --paper-toast-color: var(--simple-colors-default-theme-grey-11);
+  --paper-toast-background-color: var(--simple-colors-default-theme-grey-2);
 
-          --a11y-media-settings-menu-color: var(--a11y-media-color);
-          --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
-          --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
-          --a11y-media-settings-menu-hover-bg-color: var(
-            --a11y-media-hover-bg-color
-          );
+  
+  --a11y-media-settings-menu-color: var(--a11y-media-color);
+  --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
+  --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
+  --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
 
-          --a11y-media-button-color: var(--a11y-media-color);
-          --a11y-media-button-bg-color: var(--a11y-media-bg-color);
-          --a11y-media-button-hover-color: var(--a11y-media-accent-color);
-          --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
-          --a11y-media-button-disabled-color: var(--a11y-media-disabled-color);
-          --a11y-media-button-toggle-color: var(
-            --a11y-media-faded-accent-color
-          );
+  
+  --a11y-media-button-color: var(--a11y-media-color);
+  --a11y-media-button-bg-color: var(--a11y-media-bg-color);
+  --a11y-media-button-hover-color: var(--a11y-media-accent-color);
+  --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
+  --a11y-media-button-disabled-color: var(--a11y-media-disabled-color);
+  --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
 
-          --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
-          --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
-          --paper-toggle-button-checked-bar-color: var(
-            --a11y-media-accent-color
-          );
-          --paper-toggle-button-checked-button-color: var(
-            --a11y-media-accent-color
-          );
+  
+  --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
+  --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
+  --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
+  --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
 
-          --paper-slider-active-color: var(--a11y-media-accent-color);
-          --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
-          --paper-slider-pin-color: var(--a11y-media-bg-color);
-          --paper-slider-pin-start-color: var(--a11y-media-bg-color);
-          --paper-slider-pin-end-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
-          --paper-slider-knob-border-color: var(--a11y-media-accent-color);
-          --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
-          --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+  
+  --paper-slider-active-color: var(--a11y-media-accent-color);
+  --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
+  --paper-slider-pin-color: var(--a11y-media-bg-color);
+  --paper-slider-pin-start-color: var(--a11y-media-bg-color);
+  --paper-slider-pin-end-color: var(--a11y-media-bg-color);
+  --paper-slider-knob-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-start-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-end-color: var(--a11y-media-bg-accent-color);
+  --paper-slider-knob-border-color: var(--a11y-media-accent-color);
+  --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
+  --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+  
+  
+  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);
+  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
+  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
+  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
+  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
+  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
+}
+:host([dark]) {
+  border: 1px solid var(--simple-colors-default-theme-grey-1);
+}
+:host([dark-transcript]) {
+  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
+}
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+:host([height]) {
+  height: calc(var(--a11y-media-player-height) - 2px);
+  max-height: calc(var(--a11y-media-player-height) - 2px);
+  overflow: hidden;
+}
+:host[height] #transcript-section {
+  display: none;
+}
+:host,
+#player-section {
+  color: var(--simple-colors-default-theme-grey-12);
+  background-color: var(--simple-colors-default-theme-grey-2);
+}
+:host > * {
+  transition: all 0.5s;
+}
+:host,
+#player-section,
+#player,
+#transcript-section,
+#transcript-and-controls {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  align-content: stretch;
+} 
+#captionlink:link {
+  text-decoration: none;
+}
+#player-and-controls,
+#player, 
+#player > *,
+#cc-custom,
+#cc-text,
+#slider,
+#controls,
+#player-section,
+#transcript-section,
+#transcript-and-controls {
+  width: 100%;
+}
+#transcript-and-controls > * {
+  width: calc(100% - 1px);
+}
+:host > *,
+#player-and-controls,
+#player,
+#player > *,
+#cc-text {
+  flex: 1 1 auto;
+}
+#controls,
+#searchbar {
+  flex: 0 0 44px;
+}
+#player-and-controls {
+  margin: 0 auto;
+  display: flex;
+}
+#player {
+  height: 400px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+#player > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+#playbutton,
+#slider,
+#controls {
+  z-index: 2;
+}
+#html5 {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+}
+:host([audio-only]) #playbutton {
+  opacity: 0;
+}
+#slider {
+  flex: 0 0 32px;
+  height: 32px;
+}
+a11y-media-youtube {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+a11y-media-youtube.hidden {
+  opacity: 0;
+}
+#cc-custom:not([hidden]) {
+  font-size: 20px;
+  transition: font-size 0.25s;
+  display: flex;
+}
+#cc-text {
+  align-self: flex-end;
+  font-family: sans-serif;
+  color: white;
+  margin: 4px 10px;
+  padding: 0.15em 4px;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s;
+}
+#player-and-controls[audio-no-thumb] #cc-text {
+  align-self: center;
+  color: var(--a11y-media-color);
+  background-color: transparent;
+}
+#controls {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 44px;
+  max-height: 44px;
+  position: relative;
+  color: var(--a11y-media-color);
+  --primary-text-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-background: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-background-color: var(
+    --a11y-media-settings-menu-bg-color
+  );
+  --paper-listbox-color: var(--a11y-media-settings-menu-color);
+  --paper-listbox: {
+    padding: 0;
+  }
+  --paper-menu-button: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+  }
+  --paper-menu-button-dropdown: {
+    background-color: var(--a11y-media-settings-menu-bg-color);
+    color: var(--a11y-media-settings-menu-color);
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  --paper-item-selected: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+  --paper-item-focused: {
+    color: var(--a11y-media-settings-menu-hover-color);
+  }
+}
+#controls-left {
+  position: absolute;
+  left: 0;
+  min-width: 200px;
+}
+#controls-right {
+  position: absolute;
+  right: 0;
+  top: -2px;
+}
+paper-menu-button,
+dropdown-select {
+  padding: 0;
+}
+paper-icon-button {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-icon-button:active,
+paper-icon-button:focus,
+paper-icon-button:hover {
+  background-color: var(--a11y-media-settings-menu-bg-color);
+  color: var(--a11y-media-settings-menu-color);
+}
+paper-item {
+  min-height: 40;
+}
+.play-status,
+paper-icon-button {
+  border: none;
+  position: relative;
+}
+.play-status {
+  font-size: 85%;
+}
+.play-status.control-bar {
+  padding: 8px 13px 8px;
+}
+:host([hide-play-status]) .play-status {
+  display: none;
+}
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.setting-text {
+  min-width: 125px;
+}
+.setting-control {
+  max-width: 100px;
+}
+.setting-slider {
+  width: 130px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#volume-and-mute {
+  display: inline-block;
+  position: relative;
+}
+#volume {
+  position: absolute;
+  left: 30px;
+  top: 0px;
+  width: 0;
+  height: 40px;
+  overflow: hidden;
+  transition: width 0.5s;
+  z-index: 3;
+  border-radius: 4px;
+  background-color: var(--a11y-media-bg-color);
+}
 
-          --a11y-media-transcript-color: var(
-            --simple-colors-default-theme-grey-7
-          );
-          --a11y-media-transcript-bg-color: var(
-            --simple-colors-default-theme-grey-1
-          );
-          --a11y-media-transcript-accent-color: var(
-            --simple-colors-default-theme-accent-8
-          );
-          --a11y-media-transcript-faded-accent-color: var(
-            --simple-colors-default-theme-accent-10
-          );
-          --a11y-media-transcript-cue-color: var(
-            --simple-colors-fixed-theme-grey-12
-          );
-          --a11y-media-transcript-cue-bg-color: var(
-            --simple-colors-fixed-theme-grey-1
-          );
-          --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-fixed-theme-grey-12
-          );
-          --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-fixed-theme-accent-1
-          );
-          --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-fixed-theme-grey-12
-          );
-          --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-fixed-theme-grey-2
-          );
-          --a11y-media-transcript-match-color: var(
-            --simple-colors-fixed-theme-grey-1
-          );
-          --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-fixed-theme-accent-10
-          );
-          --a11y-media-transcript-match-border-color: var(
-            --simple-colors-fixed-theme-accent-12
-          );
-        }
-        :host([dark]) {
-          border: 1px solid var(--simple-colors-default-theme-grey-1);
-        }
-        :host([dark-transcript]) {
-          --a11y-media-transcript-bg-color: var(
-            --simple-colors-dark-theme-grey-1
-          );
-          --a11y-media-transcript-cue-color: var(
-            --simple-colors-dark-theme-grey-12
-          );
-          --a11y-media-transcript-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-1
-          );
-          --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-dark-theme-accent-10
-          );
-          --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-1
-          );
-          --a11y-media-transcript-match-color: var(
-            --simple-colors-dark-theme-grey-1
-          );
-          --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-dark-theme-accent-10
-          );
-          --a11y-media-transcript-match-border-color: var(
-            --simple-colors-dark-theme-accent-12
-          );
-          --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-dark-theme-grey-12
-          );
-          --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-dark-theme-grey-2
-          );
-        }
-        :host([hidden]),
-        *[hidden] {
-          display: none !important;
-        }
-        :host([height]) {
-          height: calc(var(--a11y-media-player-height) - 2px);
-          max-height: calc(var(--a11y-media-player-height) - 2px);
-          overflow: hidden;
-        }
-        :host[height] #transcript-section {
-          display: none;
-        }
-        :host,
-        #player-section {
-          color: var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-grey-2);
-        }
-        :host > * {
-          transition: all 0.5s;
-        }
-        :host,
-        #player-section,
-        #player,
-        #transcript-section,
-        #transcript-and-controls {
-          display: flex;
-          flex-flow: column;
-          align-items: stretch;
-          align-content: stretch;
-        }
-        #captionlink:link {
-          text-decoration: none;
-        }
-        #player-and-controls,
-        #player,
-        #player > *,
-        #cc-custom,
-        #cc-text,
-        #slider,
-        #controls,
-        #player-section,
-        #transcript-section,
-        #transcript-and-controls {
-          width: 100%;
-        }
-        #transcript-and-controls > * {
-          width: calc(100% - 1px);
-        }
-        :host > *,
-        #player-and-controls,
-        #player,
-        #player > *,
-        #cc-text {
-          flex: 1 1 auto;
-        }
-        #controls,
-        #searchbar {
-          flex: 0 0 44px;
-        }
-        #player-and-controls {
-          margin: 0 auto;
-          display: flex;
-        }
-        #player {
-          height: 400px;
-          position: relative;
-          background-size: cover;
-          background-position: center;
-        }
-        #player > * {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-        }
-        #playbutton,
-        #slider,
-        #controls {
-          z-index: 2;
-        }
-        #html5 {
-          min-width: 100px;
-          display: flex;
-          align-items: center;
-        }
-        :host([audio-only]) #playbutton {
-          opacity: 0;
-        }
-        #slider {
-          flex: 0 0 32px;
-          height: 32px;
-        }
-        a11y-media-youtube {
-          opacity: 1;
-          transition: opacity 0.5s;
-        }
-        a11y-media-youtube.hidden {
-          opacity: 0;
-        }
-        #cc-custom:not([hidden]) {
-          font-size: 20px;
-          transition: font-size 0.25s;
-          display: flex;
-        }
-        #cc-text {
-          align-self: flex-end;
-          font-family: sans-serif;
-          color: white;
-          margin: 4px 10px;
-          padding: 0.15em 4px;
-          background-color: black;
-          background-color: rgba(0, 0, 0, 0.8);
-          transition: all 0.5s;
-        }
-        #player-and-controls[audio-no-thumb] #cc-text {
-          align-self: center;
-          color: var(--a11y-media-color);
-          background-color: transparent;
-        }
-        #controls {
-          display: block;
-          width: 100%;
-          max-width: 100%;
-          height: 44px;
-          max-height: 44px;
-          position: relative;
-          color: var(--a11y-media-color);
-          --primary-text-color: var(--a11y-media-settings-menu-color);
-          --paper-menu-button-dropdown-background: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-listbox-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-listbox-color: var(--a11y-media-settings-menu-color);
-          --paper-listbox: {
-            padding: 0;
-          }
-          --paper-menu-button: {
-            background-color: var(--a11y-media-settings-menu-bg-color);
-            color: var(--a11y-media-settings-menu-color);
-          }
-          --paper-menu-button-dropdown: {
-            background-color: var(--a11y-media-settings-menu-bg-color);
-            color: var(--a11y-media-settings-menu-color);
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
-          }
-          --paper-item-selected: {
-            color: var(--a11y-media-settings-menu-hover-color);
-          }
-          --paper-item-focused: {
-            color: var(--a11y-media-settings-menu-hover-color);
-          }
-        }
-        #controls-left {
-          position: absolute;
-          left: 0;
-          min-width: 200px;
-        }
-        #controls-right {
-          position: absolute;
-          right: 0;
-          top: -2px;
-        }
-        paper-menu-button,
-        dropdown-select {
-          padding: 0;
-        }
-        paper-icon-button {
-          background-color: var(--a11y-media-settings-menu-bg-color);
-          color: var(--a11y-media-settings-menu-color);
-        }
-        paper-icon-button:active,
-        paper-icon-button:focus,
-        paper-icon-button:hover {
-          background-color: var(--a11y-media-settings-menu-bg-color);
-          color: var(--a11y-media-settings-menu-color);
-        }
-        paper-item {
-          min-height: 40;
-        }
-        .play-status,
-        paper-icon-button {
-          border: none;
-          position: relative;
-        }
-        .play-status {
-          font-size: 85%;
-        }
-        .play-status.control-bar {
-          padding: 8px 13px 8px;
-        }
-        :host([hide-play-status]) .play-status {
-          display: none;
-        }
-        .setting {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-        }
-        .setting-text {
-          min-width: 125px;
-        }
-        .setting-control {
-          max-width: 100px;
-        }
-        .setting-slider {
-          width: 130px;
-          margin-left: -15px;
-          margin-right: -15px;
-        }
-        #volume-and-mute {
-          display: inline-block;
-          position: relative;
-        }
-        #volume {
-          position: absolute;
-          left: 30px;
-          top: 0px;
-          width: 0;
-          height: 40px;
-          overflow: hidden;
-          transition: width 0.5s;
-          z-index: 3;
-          border-radius: 4px;
-          background-color: var(--a11y-media-bg-color);
-        }
+#volume:active,
+#volume:focus,
+#volume:hover,
+#volume.focus,
+#volume-and-mute:active #volume,
+#volume-and-mute:focus #volume,
+#volume-and-mute:hover #volume {
+  overflow: visible;
+  width: 100px;
+}
+:host([responsive-size="xs"]) #volume:active,
+:host([responsive-size="xs"]) #volume:focus,
+:host([responsive-size="xs"]) #volume:hover,
+:host([responsive-size="xs"]) #volume.focus,
+:host([responsive-size="xs"]) #volume-and-mute:active #volume,
+:host([responsive-size="xs"]) #volume-and-mute:focus #volume,
+:host([responsive-size="xs"]) #volume-and-mute:hover #volume {
+  top: 0px;
+}
+#print-thumbnail {
+  width: 100%;
+  margin: 0;
+  display: block;
+  border-top: 1px solid #aaaaaa;
+}
+.media-caption:not(:empty) {
+  width: calc(100% - 30px);
+  padding: 5px 15px;
+}
+.media-type {
+  font-style: italic;
+}
+#searchbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 44px;
+  max-height: 44px;
+  min-height: 44px;
+  width: 100%;
+  color: var(--a11y-media-color);
+  background-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
+  --a11y-media-button-hover-bg-color: var(
+    --a11y-media-transcript-bg-color
+  );
+  --simple-search-input-text-color: var(--a11y-media-color);
+  --simple-search-input-line-color: var(--a11y-media-accent-color);
+  --simple-search-input-placeholder-color: var(
+    --a11y-media-transcript-color
+  );
+  --simple-search-button-color: var(--a11y-media-accent-color);
+  --simple-search-button-hover-color: var(
+    --a11y-media-faded-accent-color
+  );
+  --simple-search-button-bg-color: var(--a11y-media-bg-color);
+  --simple-search-button-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
+  --simple-search-button-disabled-color: var(
+    --simple-colors-default-theme-grey-5
+  );
+  --simple-search-button-disabled-bg-color: var(
+    --simple-colors-default-theme-grey-2
+  );
+  --simple-search-button-disabled-border-color: var(
+    --simple-colors-default-theme-grey-3
+  );
+  --paper-input-container-input-color: var(--a11y-media-color);
+  --simple-search-padding: 0 15px;
+}
+#searching {
+  flex-grow: 2;
+}
+#autoscroll {
+  padding-right: 8px;
+}
+#scrolling,
+#printing {
+  display: flex;
+  align-items: center;
+}
+#transcript-section {
+  padding: 0 1px 0 0;
+}
+#transcript-and-controls {
+  flex: 1 0 194px;
+}
+#transcript {
+  flex: 1 0 150px;
+  overflow-y: scroll;
+  color: var(--a11y-media-transcript-cue-color);
+  background-color: var(--a11y-media-transcript-cue-bg-color);
+  border-left: 1px solid var(--a11y-media-transcript-bg-color);
+}
+.transcript-from-track {
+  display: table;
+  width: calc(100% - 30px);
+  padding: 0 15px 15px;
+  color: var(--a11y-media-transcript-cue-color);
+  background-color: var(--a11y-media-transcript-cue-bg-color);
+}
+.transcript-from-track[hideTimestamps] {
+  display: block;
+}
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  font-size: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+paper-menu-button:not(:defined) paper-listbox, 
+paper-listbox:not(:defined), 
+simple-tooltip:not(:defined), 
+paper-toast:not(:defined) {
+  display: none;
+}
+@media screen {
+  :host([full-flex]) {
+    flex-flow: row;
+    padding: 0;
+  }
+  :host([full-flex]) #player-section {
+    max-width: 50%;
+    flex: 1 0 auto;
+  }
+  :host([full-flex]) #transcript-section {
+    min-width: 50%;
+    flex: 0 1 auto;
+  }
+  :host([full-flex]) #transcript {
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+  }
+  #transcript-and-controls {
+    position: relative;
+  }
+  :host([sticky-mode]) #player-section {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 200px;
+    max-width: 200px;
+    z-index: 999999;
+    border: 1px solid var(--a11y-media-bg-color);
+    box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
+    border-radius: 3.2px;
+  }
+  :host([dark][sticky-mode]) #player-section {
+    border: 1px solid var(--a11y-media-bg-color);
+  }
+  :host([sticky][sticky-corner="top-left"]) #player-section {
+    right: unset;
+    left: 5px;
+  }
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
+    #player-and-controls.totop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px !important;
+    z-index: 9999;
+  }
+  :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {
+    top: unset;
+    right: unset;
+    bottom: 5px;
+  }
+  :host([sticky][sticky-corner="bottom-right"]) #player-and-controls {
+    top: unset;
+    bottom: 5px;
+  }
+  :host([sticky-mode]) .screen-only.media-caption,
+  :host([responsive-size="xs"]) .screen-only.media-caption {
+    display: none;
+  }
+  :host([sticky-mode]) #player-and-controls[audio-no-thumb] {
+    max-height: 0px;
+    overflow: hidden;
+  }
+  :host([sticky-mode]) .hide-sticky,
+  :host([sticky-mode]) .hide-full-xs,
+  :host([sticky-mode]) .hide-full-sm,
+  :host([sticky-mode]) .hide-flex,
+  :host([responsive-size="xs"]) .hide-full-xs,
+  :host([responsive-size="xs"]) .hide-full-sm,
+  :host([responsive-size="xs"]) .hide-full-flex,
+  :host([responsive-size="sm"]) .hide-full-sm,
+  :host([responsive-size="sm"]) .hide-full-flex,
+  :host([flex-layout]) .hide-flex {
+    display: none;
+  }
 
-        #volume:active,
-        #volume:focus,
-        #volume:hover,
-        #volume.focus,
-        #volume-and-mute:active #volume,
-        #volume-and-mute:focus #volume,
-        #volume-and-mute:hover #volume {
-          overflow: visible;
-          width: 100px;
-        }
-        :host([responsive-size="xs"]) #volume:active,
-        :host([responsive-size="xs"]) #volume:focus,
-        :host([responsive-size="xs"]) #volume:hover,
-        :host([responsive-size="xs"]) #volume.focus,
-        :host([responsive-size="xs"]) #volume-and-mute:active #volume,
-        :host([responsive-size="xs"]) #volume-and-mute:focus #volume,
-        :host([responsive-size="xs"]) #volume-and-mute:hover #volume {
-          top: 0px;
-        }
-        #print-thumbnail {
-          width: 100%;
-          margin: 0;
-          display: block;
-          border-top: 1px solid #aaaaaa;
-        }
-        .media-caption:not(:empty) {
-          width: calc(100% - 30px);
-          padding: 5px 15px;
-        }
-        .media-type {
-          font-style: italic;
-        }
-        #searchbar {
-          display: flex;
-          align-items: stretch;
-          justify-content: space-between;
-          height: 44px;
-          max-height: 44px;
-          min-height: 44px;
-          width: 100%;
-          color: var(--a11y-media-color);
-          background-color: var(--a11y-media-transcript-bg-color);
-          --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
-          --a11y-media-button-hover-bg-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-input-text-color: var(--a11y-media-color);
-          --simple-search-input-line-color: var(--a11y-media-accent-color);
-          --simple-search-input-placeholder-color: var(
-            --a11y-media-transcript-color
-          );
-          --simple-search-button-color: var(--a11y-media-accent-color);
-          --simple-search-button-hover-color: var(
-            --a11y-media-faded-accent-color
-          );
-          --simple-search-button-bg-color: var(--a11y-media-bg-color);
-          --simple-search-button-border-color: var(--a11y-media-bg-color);
-          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
-          --simple-search-button-disabled-color: var(
-            --simple-colors-default-theme-grey-5
-          );
-          --simple-search-button-disabled-bg-color: var(
-            --simple-colors-default-theme-grey-2
-          );
-          --simple-search-button-disabled-border-color: var(
-            --simple-colors-default-theme-grey-3
-          );
-          --paper-input-container-input-color: var(--a11y-media-color);
-          --simple-search-padding: 0 15px;
-        }
-        #searching {
-          flex-grow: 2;
-        }
-        #autoscroll {
-          padding-right: 8px;
-        }
-        #scrolling,
-        #printing {
-          display: flex;
-          align-items: center;
-        }
-        #transcript-section {
-          padding: 0 1px 0 0;
-        }
-        #transcript-and-controls {
-          flex: 1 0 194px;
-        }
-        #transcript {
-          flex: 1 0 150px;
-          overflow-y: scroll;
-          color: var(--a11y-media-transcript-cue-color);
-          background-color: var(--a11y-media-transcript-cue-bg-color);
-          border-left: 1px solid var(--a11y-media-transcript-bg-color);
-        }
-        .transcript-from-track {
-          display: table;
-          width: calc(100% - 30px);
-          padding: 0 15px 15px;
-          color: var(--a11y-media-transcript-cue-color);
-          background-color: var(--a11y-media-transcript-cue-bg-color);
-        }
-        .transcript-from-track[hideTimestamps] {
-          display: block;
-        }
-        .sr-only {
-          position: absolute;
-          left: -9999px;
-          font-size: 0;
-          height: 0;
-          width: 0;
-          overflow: hidden;
-        }
-        paper-menu-button:not(:defined) paper-listbox,
-        paper-listbox:not(:defined),
-        simple-tooltip:not(:defined),
-        paper-toast:not(:defined) {
-          display: none;
-        }
-        @media screen {
-          :host([full-flex]) {
-            flex-flow: row;
-            padding: 0;
-          }
-          :host([full-flex]) #player-section {
-            max-width: 50%;
-            flex: 1 0 auto;
-          }
-          :host([full-flex]) #transcript-section {
-            min-width: 50%;
-            flex: 0 1 auto;
-          }
-          :host([full-flex]) #transcript {
-            position: absolute;
-            top: 44px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow-y: scroll;
-          }
-          #transcript-and-controls {
-            position: relative;
-          }
-          :host([sticky-mode]) #player-section {
-            position: fixed;
-            top: 5px;
-            right: 5px;
-            width: 200px;
-            max-width: 200px;
-            z-index: 999999;
-            border: 1px solid var(--a11y-media-bg-color);
-            box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
-            border-radius: 3.2px;
-          }
-          :host([dark][sticky-mode]) #player-section {
-            border: 1px solid var(--a11y-media-bg-color);
-          }
-          :host([sticky][sticky-corner="top-left"]) #player-section {
-            right: unset;
-            left: 5px;
-          }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
-            #player-and-controls.totop {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 200px !important;
-            z-index: 9999;
-          }
-          :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {
-            top: unset;
-            right: unset;
-            bottom: 5px;
-          }
-          :host([sticky][sticky-corner="bottom-right"]) #player-and-controls {
-            top: unset;
-            bottom: 5px;
-          }
-          :host([sticky-mode]) .screen-only.media-caption,
-          :host([responsive-size="xs"]) .screen-only.media-caption {
-            display: none;
-          }
-          :host([sticky-mode]) #player-and-controls[audio-no-thumb] {
-            max-height: 0px;
-            overflow: hidden;
-          }
-          :host([sticky-mode]) #settings,
-          :host([sticky-mode]) #controls > * > *:not(.xs),
-          :host([sticky-mode]) .play-status,
-          :host([responsive-size="xs"]) #controls > * > *:not(.xs),
-          :host([responsive-size="xs"]) .play-status,
-          :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm),
-          :host([flex-layout][responsive-size="md"])
-            #controls
-            > *
-            > *:not(.xs):not(.play-status) {
-            display: none;
-          }
+  :host([responsive-size="xl"]) #cc-custom {
+    font-size: 16px;
+  }
+  :host([responsive-size="lg"]) #cc-custom,
+  :host([flex-layout][responsive-size="xl"]) #cc-custom {
+    font-size: 14px;
+  }
+  :host([responsive-size="md"]) #cc-custom,
+  :host([flex-layout][responsive-size="lg"]) #cc-custom {
+    font-size: 12px;
+  }
+  :host([responsive-size="xs"]) #cc-custom,
+  :host([flex-layout][responsive-size="md"]) #cc-custom,
+  :host([flex-layout][responsive-size="sm"]) #cc-custom {
+    font-size: 10px;
+  }
+  :host([sticky-mode]) #cc-custom,
+  :host([flex-layout][responsive-size="xs"]) #cc-custom {
+    display: none;
+  }
+  .media-caption {
+    color: var(--a11y-media-bg-color);
+    background-color: var(--a11y-media-accent-color);
+  }
+  #audio-only {
+    text-align: center;
+    font-style: italic;
+    width: 100%;
+    line-height: 160%;
+  }
+  #print-thumbnail,
+  .print-only {
+    width: 0;
+    display: none;
+  }
+}
 
-          :host([responsive-size="xl"]) #cc-custom {
-            font-size: 16px;
-          }
-          :host([responsive-size="lg"]) #cc-custom,
-          :host([flex-layout][responsive-size="xl"]) #cc-custom {
-            font-size: 14px;
-          }
-          :host([responsive-size="md"]) #cc-custom,
-          :host([flex-layout][responsive-size="lg"]) #cc-custom {
-            font-size: 12px;
-          }
-          :host([responsive-size="xs"]) #cc-custom,
-          :host([flex-layout][responsive-size="md"]) #cc-custom,
-          :host([flex-layout][responsive-size="sm"]) #cc-custom {
-            font-size: 10px;
-          }
-          :host([sticky-mode]) #cc-custom,
-          :host([flex-layout][responsive-size="xs"]) #cc-custom {
-            display: none;
-          }
-          .media-caption {
-            color: var(--a11y-media-bg-color);
-            background-color: var(--a11y-media-accent-color);
-          }
-          #audio-only {
-            text-align: center;
-            font-style: italic;
-            width: 100%;
-            line-height: 160%;
-          }
-          #print-thumbnail,
-          .print-only {
-            width: 0;
-            display: none;
-          }
-        }
-
-        @media print {
-          :host,
-          :host([dark]) {
-            outline: 1px solid #aaaaaa;
-            background-color: #ffffff;
-          }
-          .screen-only,
-          #searchbar,
-          #print-thumbnail:not([src]),
-          :host(:not([thumbnail-src])) #player {
-            display: none;
-          }
-          .media-caption {
-            background-color: #cccccc;
-            color: #000000;
-            font-size: 120%;
-          }
-          #transcript {
-            padding: 0 15px 5px;
-            color: #000;
-            background-color: #ffffff;
-            border-top: 1px solid #aaa;
-          }
-        }
+@media print {
+  :host,
+  :host([dark]) {
+    outline: 1px solid #aaaaaa;
+    background-color: #ffffff;
+  }
+  .screen-only,
+  #searchbar,
+  #print-thumbnail:not([src]),
+  :host(:not([thumbnail-src])) #player {
+    display: none;
+  }
+  .media-caption {
+    background-color: #cccccc;
+    color: #000000;
+    font-size: 120%;
+  }
+  #transcript {
+    padding: 0 15px 5px;
+    color: #000;
+    background-color: #ffffff;
+    border-top: 1px solid #aaa;
+  }
+}
       `
     ];
   }
   // render function
-  render() {
-    return html`
-      <div class="sr-only" ?hidden="${!this.mediaCaption}">
-        ${this.mediaCaption}
-      </div>
-      <div id="player-section">
-        <div
-          id="player-and-controls"
-          .style="${this.mediaMaxWidth}"
-          ?audio-no-thumb="${this.audioNoThumb}"
-        >
-          <div id="player" .style="${this.playerStyle}">
-            <a11y-media-play-button
-              id="playbutton"
-              action="${this.__playing ? "pause" : "play"}"
-              label="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "label"
-              )}"
-              @button-click="${e => this.togglePlay()}"
-              ?audio-only="${this.audioOnly}"
-              ?disabled="${this.audioNoThumb}"
-            >
-            </a11y-media-play-button>
-            <div id="html5">
-              <slot></slot>
-            </div>
-            ${!this.videoId
-              ? html``
-              : html`
-                  <a11y-media-youtube
-                    id="youtube-${this.id}"
-                    class="${this.__currentTime > 0.3 || this.__seeking
-                      ? ``
-                      : `hidden`}"
-                    lang="${this.mediaLang}"
-                    preload="${this.t ? "auto" : this.preload}"
-                    .t="${this.t}"
-                    video-id="${this.videoId}"
-                    @timeupdate="${this._handleTimeUpdate}"
-                    ?hidden=${!this.isYoutube}
-                  >
-                  </a11y-media-youtube>
-                `}
-            ${Object.keys(this.captionCues || []).length === 0 ||
-            !this.showCustomCaptions
-              ? html``
-              : html`
-                  <div id="cc-custom" aria-live="polite" class="screen-only">
-                    <div id="cc-text">
-                      ${!this.captionCues
-                        ? ``
-                        : Object.keys(this.captionCues).map(
-                            key =>
-                              html`
-                                ${this.captionCues[key].text
-                                  ? this.captionCues[key].text
-                                  : ""}
-                              `
-                          )}
-                    </div>
-                  </div>
-                `}
-          </div>
-        </div>
-        <paper-slider
-          id="slider"
-          class="screen-only"
-          label="${this._getLocal(this.localization, "seekSlider", "label")}"
-          min="${0}"
-          max="${this.duration}"
-          secondary-progress="${this.buffered}"
-          @immediate-value-changed="${this._handleSliderChanged}"
-          @focused-changed="${this._handleSliderChanged}"
-          .value="${this.__currentTime}"
-          ?disabled="${this.disableSeek || this.duration === 0}"
-        >
-        </paper-slider>
-        <div id="controls" controls="innerplayer">
-          <div id="controls-left">
-            <a11y-media-button
-              class="xs"
-              icon="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "icon"
-              )}"
-              label="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "label"
-              )}"
-              @click="${e => this.togglePlay()}"
-            ></a11y-media-button>
-            <a11y-media-button
-              icon="${this._getLocal(this.localization, "rewind", "icon")}"
-              label="${this._getLocal(this.localization, "rewind", "label")}"
-              ?disabled="${this.disableSeek || this.currentTime <= 0}"
-              ?hidden="${this.disableSeek}"
-              @click="${e => this.rewind()}"
-            ></a11y-media-button>
-            <a11y-media-button
-              icon="${this._getLocal(this.localization, "forward", "icon")}"
-              label="${this._getLocal(this.localization, "forward", "label")}"
-              ?disabled="${this.disableSeek ||
-                this.currentTime >= this.duration}"
-              ?hidden="${this.disableSeek}"
-              @click="${e => this.forward()}"
-            ></a11y-media-button>
-            <a11y-media-button
-              icon="${this._getLocal(this.localization, "restart", "icon")}"
-              label="${this._getLocal(this.localization, "restart", "label")}"
-              ?disabled="${this.disableSeek}"
-              ?hidden="${this.responsiveSize === "xs" ||
-                this.responsiveSize === "sm" ||
-                this.disableSeek}"
-              @click="${e => this.restart()}"
-            ></a11y-media-button>
-            <div
-              id="volume-and-mute"
-              class="xs"
-              @focus="${e => (this.__volumeSlider = true)}"
-              @blur="${e => (this.__volumeSlider = false)}"
-            >
-              <a11y-media-button
-                id="mute"
-                icon="${this._getLocal(
-                  this.localization,
-                  this.muted ? "unmute" : "mute",
-                  "icon"
-                )}"
-                label="${this._getLocal(
-                  this.localization,
-                  this.muted ? "unmute" : "mute",
-                  "label"
-                )}"
-                @click="${e => this.toggleMute()}"
-              ></a11y-media-button>
-              <paper-slider
-                id="volume"
-                aria-labelledby="volume-slider-label"
-                label="${this._getLocal(this.localization, "volume", "label")}"
-                min="0"
-                max="100"
-                pin
-                step="10"
-                .value="${this.muted ? 0 : this.volume}"
-                @change="${this._handleVolumeChanged}"
-                ?hidden="${this.responsiveSize === "xs"}"
-              ></paper-slider>
-            </div>
-            <span aria-live="polite" class="play-status control-bar sm">
-              <span id="statbar">${this.status}</span>
-            </span>
-          </div>
-          <div id="controls-right">
-            <a11y-media-button
-              class="sm"
-              icon="${this._getLocal(this.localization, "captions", "icon")}"
-              label="${this._getLocal(this.localization, "captions", "label")}"
-              ?disabled="${!this.hasCaptions}"
-              ?hidden="${!this.hasCaptions}"
-              ?toggle="${this.captionsTrackKey > -1}"
-              @click="${e => this.toggleCC()}"
-            >
-            </a11y-media-button>
-            <a11y-media-button
-              class="sm"
-              controls="transcript"
-              icon="${this._getLocal(this.localization, "transcript", "icon")}"
-              label="${this._getLocal(
-                this.localization,
-                "transcript",
-                "label"
-              )}"
-              ?disabled="${!this.hasCaptions}"
-              ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
-              ?toggle="${this.transcriptTrackKey > -1}"
-              @click="${e => this.toggleTranscript()}"
-            >
-            </a11y-media-button>
-            <a11y-media-button
-              icon="${this._getLocal(this.localization, "copyLink", "icon")}"
-              label="${this._getLocal(this.localization, "copyLink", "label")}"
-              ?disabled="${!this.linkable}"
-              ?hidden="${!this.linkable}"
-              @click="${this._handleCopyLink}"
-            ></a11y-media-button>
-            <a11y-media-button
-              class="sm"
-              icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
-              label="${this._getLocal(
-                this.localization,
-                "fullscreen",
-                "label"
-              )}"
-              step="1"
-              ?disabled="${this.fullscreenButton}"
-              ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
-              ?toggle="${this.fullscreen}"
-              @click="${e => this.toggleFullscreen()}"
-            >
-            </a11y-media-button>
-            <paper-menu-button
-              id="settings"
-              class="xs"
-              allow-outside-scroll
-              horizontal-align="right"
-              ignore-select
-              vertical-align="bottom"
-              @change="${this._handleSettingsChanged}"
-            >
-              <paper-icon-button
-                id="settings-button"
-                action="settings"
-                alt="${this._getLocal(this.localization, "settings", "label")}"
-                icon="${this._getLocal(this.localization, "settings", "icon")}"
-                slot="dropdown-trigger"
-              >
-              </paper-icon-button>
-              <simple-tooltip for="settings-button">
-                ${this._getLocal(this.localization, "settings", "label")}
-              </simple-tooltip>
+  render() {
+    return html`
 
-              <paper-listbox id="settingslist" slot="dropdown-content">
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div class="setting-text">
-                      ${this._getLocal(this.localization, "captions", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <dropdown-select
-                        id="cc_tracks"
-                        no-label-float
-                        value="${this.captionsTrackKey}"
-                        ?hidden="${!this.hasCaptions}"
-                        ?disabled="${!this.hasCaptions}"
-                        @value-changed="${e =>
-                          this.selectCaptionByKey(e.detail.value)}}"
-                      >
-                        <paper-item value="-1"
-                          >${this._getLocal(
-                            this.localization,
-                            "captions",
-                            "off"
-                          )}</paper-item
-                        >
-                        ${!this.loadedTracks
-                          ? ``
-                          : Object.keys(this.loadedTracks.textTracks).map(
-                              key => {
-                                return html`
-                                  <paper-item value="${key}">
-                                    ${this.loadedTracks.textTracks[key].label ||
-                                      this.loadedTracks.textTracks.language}
-                                  </paper-item>
-                                `;
-                              }
-                            )}
-                      </dropdown-select>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div class="setting-text">
-                      ${this._getLocal(
-                        this.localization,
-                        "transcript",
-                        "label"
-                      )}
-                    </div>
-                    <div class="setting-control">
-                      <dropdown-select
-                        id="transcript_tracks"
-                        no-label-float
-                        value="${this.transcriptTrackKey}"
-                        ?hidden="${!this.hasCaptions}"
-                        ?disabled="${!this.hasCaptions}"
-                        @value-changed="${e =>
-                          this.selectTranscriptByKey(e.detail.value)}"
-                      >
-                        <paper-item value="-1"
-                          >${this._getLocal(
-                            this.localization,
-                            "transcript",
-                            "off"
-                          )}</paper-item
-                        >
-                        ${!this.loadedTracks
-                          ? ``
-                          : Object.keys(this.loadedTracks.textTracks).map(
-                              key => {
-                                return html`
-                                  <paper-item value="${key}">
-                                    ${this.loadedTracks.textTracks[key].label ||
-                                      this.loadedTracks.textTracks.language}
-                                  </paper-item>
-                                `;
-                              }
-                            )}
-                      </dropdown-select>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div id="print-label" class="setting-text">
-                      ${this._getLocal(this.localization, "print", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <a11y-media-button
-                        aria-labelledby="print-label"
-                        icon="${this._getLocal(
-                          this.localization,
-                          "print",
-                          "icon"
-                        )}"
-                        ?disabled="${this.noPrinting}"
-                        ?hidden="${this.noPrinting}"
-                        @click="${this.print}"
-                      >
-                      </a11y-media-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div id="download-label" class="setting-text">
-                      ${this._getLocal(this.localization, "download", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <a11y-media-button
-                        aria-labelledby="download-label"
-                        icon="${this._getLocal(
-                          this.localization,
-                          "download",
-                          "icon"
-                        )}"
-                        ?disabled="${this.noPrinting}"
-                        ?hidden="${this.noPrinting}"
-                        @click="${this.download}"
-                      >
-                      </a11y-media-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item>
-                  <div class="setting">
-                    <div id="loop-label" class="setting-text">
-                      ${this._getLocal(this.localization, "loop", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <paper-toggle-button
-                        id="loop"
-                        aria-labelledby="loop-label"
-                        @change="${e => this.toggleLoop()}"
-                        ?checked="${this.loop}"
-                      ></paper-toggle-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item>
-                  <div class="setting">
-                    <div id="speed-label" class="setting-text">
-                      ${this._getLocal(this.localization, "speed", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <paper-slider
-                        id="speed"
-                        aria-labelledby="speed-label"
-                        class="setting-slider"
-                        min="0.5"
-                        max="2.5"
-                        pin
-                        step="0.25"
-                        tabindex="-1"
-                        .value="${this.playbackRate}"
-                        @change="${this._handleSpeedChanged}"
-                      ></paper-slider>
-                    </div>
-                  </div>
-                </paper-item>
-              </paper-listbox>
-            </paper-menu-button>
-          </div>
-        </div>
-        <div
-          aria-hidden="true"
-          class="screen-only media-caption"
-          ?hidden="${!this.mediaCaption}"
-        >
-          ${this.mediaCaption}
-        </div>
-        <div class="print-only media-caption">${this.printCaption}</div>
+<div class="sr-only" ?hidden="${!this.mediaCaption}">
+  ${this.mediaCaption}
+</div>
+<div id="player-section">
+  <div id="player-and-controls" .style="${this.mediaMaxWidth}" ?audio-no-thumb="${this.audioNoThumb}">
+    <div id="player" .style="${this.playerStyle}">
+      <a11y-media-play-button
+        id="playbutton"
+        action="${this.__playing ? 'pause' : 'play'}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
+        @button-click="${e => this.togglePlay()}"
+        ?audio-only="${this.audioOnly}"
+        ?disabled="${this.audioNoThumb}">
+      </a11y-media-play-button>
+      <div id="html5">
+        <slot></slot>
       </div>
-      ${this.poster
-        ? html`
-            <img
-              id="print-thumbnail"
-              aria-hidden="true"
-              .src="${this.poster}"
-            />
-          `
-        : ``}
-      <div
-        id="transcript-section"
-        ?hidden="${this.standAlone || !this.hasCaptions || this.height}"
+      ${!this.videoId ? html`` : html`
+        <a11y-media-youtube
+          id="youtube-${this.id}"
+          class="${this.__currentTime > 0.3 || this.__seeking ? `` : `hidden`}" 
+          lang="${this.mediaLang}"
+          preload="${this.t ? 'auto' : this.preload}"
+          .t="${this.t}"
+          video-id="${this.videoId}"
+          @timeupdate="${this._handleTimeUpdate}"
+          ?hidden=${!this.isYoutube}>
+        </a11y-media-youtube>
+        `
+      }
+      ${Object.keys(this.captionCues || []).length === 0 || !this.showCustomCaptions ? html`` : html`
+        <div id="cc-custom" 
+          aria-live="polite"
+          class="screen-only">
+            <div id="cc-text">
+              ${!this.captionCues ? `` 
+                : Object.keys(this.captionCues).map(key => html`${this.captionCues[key].text ? this.captionCues[key].text : ""}`)
+              }
+            </div>
+        </div>
+        `
+      }
+    </div>
+  </div>
+  <paper-slider id="slider"
+    class="screen-only"
+    label="${this._getLocal(this.localization,'seekSlider', 'label')}"
+    min="${0}"
+    max="${this.duration}"
+    secondary-progress="${this.buffered}"
+    @change="${this._handleSliderChanged}"
+    @dragging-changed="${this._handleSliderDragging}"
+    .value="${this.__currentTime}"
+    ?disabled="${this.disableSeek || this.duration === 0}"
+  >
+  </paper-slider>
+  <div id="controls" controls="innerplayer">
+    <div id="controls-left">
+      <a11y-media-button
+        icon="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'icon')}"
+        label="${this._getLocal(this.localization,this.__playing ? 'pause' : 'play', 'label')}"
+        @click="${e => this.togglePlay()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        class="hide-flex"
+        icon="${this._getLocal(this.localization,'rewind','icon')}"
+        label="${this._getLocal(this.localization,'rewind','label')}"
+        ?disabled="${this.disableSeek || this.currentTime <= 0}"
+        ?hidden="${this.disableSeek }"
+        @click="${e => this.rewind()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        class="hide-flex"
+        icon="${this._getLocal(this.localization,'forward','icon')}"
+        label="${this._getLocal(this.localization,'forward','label')}"
+        ?disabled="${this.disableSeek || this.currentTime >= this.duration }"
+        ?hidden="${this.disableSeek}"
+        @click="${e => this.forward()}"
+      ></a11y-media-button>
+      <a11y-media-button
+        class="hide-flex"
+        icon="${this._getLocal(this.localization,'restart','icon')}"
+        label="${this._getLocal(this.localization,'restart','label')}"
+        ?disabled="${this.disableSeek}"
+        ?hidden="${this.responsiveSize === 'xs' || this.responsiveSize === 'sm' || this.disableSeek}"
+        @click="${e => this.restart()}"
+      ></a11y-media-button>
+      <div id="volume-and-mute"
+          @focus="${e => this.__volumeSlider = true}"
+          @blur="${e => this.__volumeSlider = false}">
+        <a11y-media-button
+          id="mute"
+          icon="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'icon')}"
+          label="${this._getLocal(this.localization,this.muted ? 'unmute' : 'mute', 'label')}"
+          @click="${e => this.toggleMute()}"
+        ></a11y-media-button>
+        <paper-slider
+          id="volume"
+          aria-labelledby="volume-slider-label"
+          label="${this._getLocal(this.localization,'volume','label')}"
+          min="0"
+          max="100"
+          pin
+          step="10"
+          .value="${this.muted ? 0 : this.volume}"
+          @change="${this._handleVolumeChanged}" 
+          ?hidden="${this.responsiveSize === 'xs'}"
+        ></paper-slider>
+      </div>
+      <span aria-live="polite" class="play-status control-bar hide-full-xs">
+        <span id="statbar">${this.status}</span>
+      </span>
+    </div>
+    <div id="controls-right">
+      <a11y-media-button
+        class="hide-full-xs"
+        icon="${this._getLocal(this.localization,'captions','icon')}"
+        label="${this._getLocal(this.localization,'captions','label')}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions}"
+        ?toggle="${this.captionsTrackKey > -1}"
+        @click="${e => this.toggleCC()}"
       >
-        <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
-          <div id="searchbar">
-            <div id="searching">
-              <simple-search
-                id="simplesearch"
-                controls="transcript"
-                no-label-float
-                next-button-icon="${this._getLocal(
-                  this.localization,
-                  "nextResult",
-                  "icon"
-                )}"
-                next-button-label="${this._getLocal(
-                  this.localization,
-                  "nextResult",
-                  "label"
-                )}"
-                prev-button-icon="${this._getLocal(
-                  this.localization,
-                  "prevResult",
-                  "icon"
-                )}"
-                prev-button-label="${this._getLocal(
-                  this.localization,
-                  "prevResult",
-                  "label"
-                )}"
-                search-input-icon="${this._getLocal(
-                  this.localization,
-                  "search",
-                  "icon"
-                )}"
-                search-input-label="${this._getLocal(
-                  this.localization,
-                  "search",
-                  "label"
-                )}"
-                selector=".searchable"
-                ?disabled="${this.disableSearch}"
-                ?hidden="${this.disableSearch}"
-              >
-              </simple-search>
+      </a11y-media-button>
+      <a11y-media-button
+        class="hide-full-xs"
+        controls="transcript"
+        icon="${this._getLocal(this.localization,'transcript','icon')}"
+        label="${this._getLocal(this.localization,'transcript','label')}"
+        ?disabled="${!this.hasCaptions}"
+        ?hidden="${!this.hasCaptions || this.standAlone || this.height}"
+        ?toggle="${this.transcriptTrackKey > -1}"
+        @click="${e => this.toggleTranscript()}"
+      >
+      </a11y-media-button>
+      <a11y-media-button
+        class="hide-full-sm"
+        icon="${this._getLocal(this.localization,'copyLink','icon')}"
+        label="${this._getLocal(this.localization,'copyLink','label')}"
+        ?disabled="${!this.linkable}"
+        ?hidden="${!this.linkable}"
+        @click="${this._handleCopyLink}"
+      ></a11y-media-button>
+      <a11y-media-button
+        class="hide-full-xs"
+        icon="${this._getLocal(this.localization,'fullscreen','icon')}"
+        label="${this._getLocal(this.localization,'fullscreen','label')}"
+        step="1"
+        ?disabled="${this.fullscreenButton}"
+        ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
+        ?toggle="${this.fullscreen}"
+        @click="${e => this.toggleFullscreen()}"
+      >
+      </a11y-media-button>
+      <paper-menu-button
+        id="settings"
+        class="hide-sticky"
+        allow-outside-scroll
+        horizontal-align="right"
+        ignore-select
+        vertical-align="bottom"
+        @change="${this._handleSettingsChanged}"
+      >
+        <paper-icon-button
+          id="settings-button"
+          action="settings"
+          alt="${this._getLocal(this.localization,'settings','label')}"
+          icon="${this._getLocal(this.localization,'settings','icon')}"
+          slot="dropdown-trigger"
+        >
+        </paper-icon-button>
+        <simple-tooltip for="settings-button">
+          ${this._getLocal(this.localization,'settings','label')}
+        </simple-tooltip>
+
+        <paper-listbox id="settingslist" slot="dropdown-content">
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div class="setting-text">
+                ${this._getLocal(this.localization,'captions','label')}
+              </div>
+              <div class="setting-control">
+                <dropdown-select
+                  id="cc_tracks"
+                  no-label-float
+                  value="${this.captionsTrackKey}"
+                  ?hidden="${!this.hasCaptions}"
+                  ?disabled="${!this.hasCaptions}"
+                  @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+                >
+                  <paper-item value="-1"
+                    >${this._getLocal(this.localization,'captions','off')}</paper-item
+                  >
+                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+                    return html`
+                      <paper-item value="${key}">
+                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+                      </paper-item>
+                    `;
+                  })}
+                </dropdown-select>
+              </div>
             </div>
-            <div id="scrolling">
-              <a11y-media-button
-                id="scroll"
-                controls="transcript"
-                icon="${this._getLocal(
-                  this.localization,
-                  "autoScroll",
-                  "icon"
-                )}"
-                label="${this._getLocal(
-                  this.localization,
-                  "autoScroll",
-                  "label"
-                )}"
-                ?toggle="${!this.disableScroll}"
-                @click="${e => (this.disableScroll = !this.disableScroll)}"
-              >
-              </a11y-media-button>
+          </paper-item>
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div class="setting-text">
+                ${this._getLocal(this.localization,'transcript','label')}
+              </div>
+              <div class="setting-control">
+                <dropdown-select
+                  id="transcript_tracks"
+                  no-label-float
+                  value="${this.transcriptTrackKey}"
+                  ?hidden="${!this.hasCaptions}"
+                  ?disabled="${!this.hasCaptions}"
+                  @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+                >
+                  <paper-item value="-1"
+                    >${this._getLocal(this.localization,'transcript','off')}</paper-item
+                  >
+                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+                    return html`
+                      <paper-item value="${key}">
+                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+                      </paper-item>
+                    `;
+                  })}
+                </dropdown-select>
+              </div>
             </div>
-            <div
-              id="printing"
-              ?hidden="${this.disablePrintButton}"
-              ?disabled="${this.disablePrintButton}"
-            >
+          </paper-item>
+          <paper-item ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div id="print-label" class="setting-text">
+                ${this._getLocal(this.localization,'print','label')}
+              </div>
+              <div class="setting-control">
               <a11y-media-button
-                id="download"
-                controls="transcript"
-                icon="${this._getLocal(this.localization, "download", "icon")}"
-                label="${this._getLocal(
-                  this.localization,
-                  "download",
-                  "label"
-                )}"
-                @click="${this.download}"
-              >
-              </a11y-media-button>
-              <a11y-media-button
-                id="print"
-                controls="transcript"
-                icon="${this._getLocal(this.localization, "print", "icon")}"
-                label="${this._getLocal(this.localization, "print", "label")}"
+                aria-labelledby="print-label"
+                icon="${this._getLocal(this.localization,'print','icon')}"
+                ?disabled="${this.noPrinting}"
+                ?hidden="${this.noPrinting}"
                 @click="${this.print}"
               >
               </a11y-media-button>
             </div>
           </div>
-          <div id="transcript" aria-live="polite">
-            <a id="transcript-desc" class="sr-only" href="#bottom">
-              ${this._getLocal(this.localization, "transcript", "skip")}
-            </a>
-            ${this.transcriptCues.length > 0
-              ? html`
-                  <div class="transcript-from-track">
-                    ${this.transcriptCues.map((cue, index) => {
-                      return html`
-                        <a11y-media-transcript-cue
-                          controls="html5"
-                          end="${this._getHHMMSS(
-                            cue.endTime,
-                            this.media.duration
-                          )}"
-                          lang="${cue.track.language}"
-                          role="button"
-                          start="${this._getHHMMSS(
-                            cue.endTime,
-                            this.media.duration
-                          )}"
-                          tabindex="0"
-                          @click="${e => this._handleCueSeek(cue)}"
-                          @active-changed="${this._setActiveCue}"
-                          ?active="${cue.track.activeCues &&
-                            cue.track.activeCues[0] === cue}"
-                          ?disabled="${this.disableInteractive ||
-                            this.disableSeek ||
-                            this.duration === 0}"
-                          ?hide-timestamps="${this.hideTimestamps}"
-                        >
-                          <span class="searchable">${cue.text}</span>
-                        </a11y-media-transcript-cue>
-                      `;
-                    })}
-                  </div>
-                `
-              : html`
-                  <div id="loading" class="transcript-from-track">
-                    ${this.status}
-                  </div>
-                `}
-          </div>
-        </div>
+          </paper-item>
+          <paper-item  ?hidden="${!this.hasCaptions}">
+            <div class="setting">
+              <div id="download-label" class="setting-text">
+                ${this._getLocal(this.localization,'download','label')}
+              </div>
+              <div class="setting-control">
+                <a11y-media-button
+                  aria-labelledby="download-label"
+                  icon="${this._getLocal(this.localization,'download','icon')}"
+                  ?disabled="${this.noPrinting}"
+                  ?hidden="${this.noPrinting}"
+                  @click="${this.download}"
+                >
+                </a11y-media-button>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item>
+            <div class="setting">
+              <div id="loop-label" class="setting-text">
+                ${this._getLocal(this.localization,'loop','label')}
+              </div>
+              <div class="setting-control">
+                <paper-toggle-button
+                  id="loop"
+                  aria-labelledby="loop-label"
+                  @change="${e => this.toggleLoop()}"
+                  ?checked="${this.loop}"
+                ></paper-toggle-button>
+              </div>
+            </div>
+          </paper-item>
+          <paper-item>
+            <div class="setting">
+              <div id="speed-label" class="setting-text">
+                ${this._getLocal(this.localization,'speed','label')}
+              </div>
+              <div class="setting-control">
+                <paper-slider
+                  id="speed"
+                  aria-labelledby="speed-label"
+                  class="setting-slider"
+                  min="0.5"
+                  max="2.5"
+                  pin
+                  step="0.25"
+                  tabindex="-1"
+                  .value="${this.playbackRate}"
+                  @change="${this._handleSpeedChanged}"
+                ></paper-slider>
+              </div>
+            </div>
+          </paper-item>
+        </paper-listbox>
+      </paper-menu-button>
+    </div>
+  </div>
+  <div aria-hidden="true"
+    class="screen-only media-caption"
+    ?hidden="${!this.mediaCaption}">
+    ${this.mediaCaption}
+  </div>
+  <div class="print-only media-caption">${this.printCaption}</div>
+</div>
+${this.poster 
+  ? html`<img id="print-thumbnail" aria-hidden="true" .src="${this.poster}" />` 
+  : ``
+}
+<div id="transcript-section" ?hidden="${this.standAlone || !this.hasCaptions || this.height}">
+  <div id="transcript-and-controls" ?hidden="${this.hideTranscript}">
+    <div id="searchbar">
+      <div id="searching">
+        <simple-search
+          id="simplesearch"
+          controls="transcript"
+          no-label-float
+          next-button-icon="${this._getLocal(this.localization,'nextResult','icon')}"
+          next-button-label="${this._getLocal(this.localization,'nextResult','label')}"
+          prev-button-icon="${this._getLocal(this.localization,'prevResult','icon')}"
+          prev-button-label="${this._getLocal(this.localization,'prevResult','label')}"
+          search-input-icon="${this._getLocal(this.localization,'search','icon')}"
+          search-input-label="${this._getLocal(this.localization,'search','label')}"
+          selector=".searchable"
+          ?disabled="${this.disableSearch}"
+          ?hidden="${this.disableSearch}"
+        >
+        </simple-search>
       </div>
-      <paper-toast
-        id="link"
-        duration="5000"
-        text="Copied to clipboard: ${this.shareLink}"
-        ?disabled="${!this.linkable}"
-        ?hidden="${!this.linkable}"
-      >
+      <div id="scrolling">
         <a11y-media-button
-          action="linkable"
-          icon="${this._getLocal(this.localization, "closeLink", "icon")}"
-          label="${this._getLocal(this.localization, "closeLink", "label")}"
-          tooltip-position="top"
-          @click="${this._handleCloseLink}"
-        ></a11y-media-button>
-      </paper-toast>
-      <div id="bottom" class="sr-only"></div>
-    `;
+          id="scroll"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'autoScroll','icon')}"
+          label="${this._getLocal(this.localization,'autoScroll','label')}"
+          ?toggle="${!this.disableScroll}"
+          @click="${e => this.disableScroll = !this.disableScroll}">
+        </a11y-media-button>
+      </div>
+      <div id="printing"
+        ?hidden="${this.disablePrintButton}"
+        ?disabled="${this.disablePrintButton}">
+        <a11y-media-button
+          id="download"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'download','icon')}"
+          label="${this._getLocal(this.localization,'download','label')}"
+          @click="${this.download}">
+        </a11y-media-button>
+        <a11y-media-button
+          id="print"
+          controls="transcript"
+          icon="${this._getLocal(this.localization,'print','icon')}"
+          label="${this._getLocal(this.localization,'print','label')}"
+          @click="${this.print}">
+        </a11y-media-button>
+      </div>
+    </div>
+    <div id="transcript" aria-live="polite">
+      <a id="transcript-desc" class="sr-only" href="#bottom">
+        ${this._getLocal(this.localization,'transcript','skip')}
+      </a>
+      ${this.transcriptCues.length > 0 ? html`
+        <div class="transcript-from-track">
+          ${this.transcriptCues.map((cue,index) => { return html`
+            <a11y-media-transcript-cue
+              controls="html5"
+              end="${this._getHHMMSS(cue.endTime, this.media.duration)}"
+              lang="${cue.track.language}"
+              role="button"
+              start="${this._getHHMMSS(cue.endTime, this.media.duration)}"
+              tabindex="0"
+              @click="${e => this._handleCueSeek(cue)}"
+              @active-changed="${this._setActiveCue}"
+              ?active="${cue.track.activeCues && cue.track.activeCues[0] === cue}"
+              ?disabled="${this.disableInteractive || this.disableSeek || this.duration === 0}"
+              ?hide-timestamps="${this.hideTimestamps}">
+              <span class="searchable">${cue.text}</span>
+            </a11y-media-transcript-cue>
+          `})}
+        </div>
+      ` : html`
+        <div id="loading"
+          class="transcript-from-track">
+          ${this.status}
+        </div>`
+      }
+    </div>
+  </div>
+</div>
+<paper-toast id="link" 
+  duration="5000" 
+  text="Copied to clipboard: ${this.shareLink}"
+  ?disabled="${!this.linkable}" 
+  ?hidden="${!this.linkable}">
+  <a11y-media-button
+    action="linkable"
+    icon="${this._getLocal(this.localization,'closeLink','icon')}"
+    label="${this._getLocal(this.localization,'closeLink','label')}"
+    tooltip-position="top"
+    @click="${this._handleCloseLink}"
+  ></a11y-media-button>
+</paper-toast>
+<div id="bottom" class="sr-only"></div>`;
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
+    
     return {
-      ...super.properties,
+  
+  ...super.properties,
+  
+  /**
+   * Allow this media to play concurrently with other a11y-media-players?
+   * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
+   */
 
-      /**
-       * Allow this media to play concurrently with other a11y-media-players?
-       * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
-       */
-
-      allowConcurrent: {
-        attribute: "allow-concurrent",
-        type: Boolean
-      },
-      /**
-       * Is this an audio file?
-       */
-      audioOnly: {
-        attribute: "audio-only",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * autoplay is an option,
-       * but generally not recommended for a11y
-       */
-      autoplay: {
-        attribute: "autoplay",
-        type: Boolean
-      },
-      /**
-       * the selected track
-       */
-      captionsTrack: {
-        attribute: "captions-track",
-        type: Object
-      },
-      /**
-       * show closed captions
-       */
-      cc: {
-        attribute: "cc",
-        type: Boolean
-      },
-      /**
-       * current time for video playback
-       */
-      currentTime: {
-        type: Number
-      },
-      /**
-       * crossorigin attribute for <video> and <audio> tags
-       */
-      crossorigin: {
-        attribute: "crossorigin",
-        type: String
-      },
-      /**
-       * disable transcript print button
-       */
-      disablePrintButton: {
-        attribute: "disable-print-button",
-        type: Boolean
-      },
-      /**
-       * disable transcript search feature
-       */
-      disableSearch: {
-        attribute: "disable-search",
-        type: Boolean
-      },
-      /**
-       * disable autoscrolling as transcript plays
-       */
-      disableScroll: {
-        attribute: "disable-scroll",
-        type: Boolean
-      },
-      /**
-       * disables seeking
-       */
-      disableSeek: {
-        attribute: "disable-seek",
-        type: Boolean
-      },
-      /**
-       * Use dark theme on transcript? Default is false, even when player is dark.
-       */
-      darkTranscript: {
-        attribute: "dark-transcript",
-        type: Boolean
-      },
-      /**
-       * disable fullscreen option
-       */
-      disableFullscreen: {
-        attribute: "disable-fullscreen",
-        type: Boolean
-      },
-      /**
-       * disable interactive mode that makes the transcript clickable
-       */
-      disableInteractive: {
-        attribute: "disable-interactive",
-        type: Boolean
-      },
-      /**
-       * Is fullscreen mode?
-       */
-      fullscreen: {
-        attribute: "fullscreen",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * The height of the media player.
-       */
-      height: {
-        attribute: "height",
-        type: String
-      },
-      /**
-       * Hide elapsed time?
-       */
-      hideElapsedTime: {
-        attribute: "hide-elapsed-time",
-        type: Boolean
-      },
-      /**
-       * show cue's start and end time
-       */
-      hideTimestamps: {
-        attribute: "hide-timestamps",
-        type: Boolean
-      },
-      /**
-       * initially hide the transcript?
-       */
-      hideTranscript: {
-        attribute: "hide-transcript",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * initially hide the transcript?
-       */
-      id: {
-        attribute: "id",
-        type: String,
-        reflect: true
-      },
-      /**
-       * Language
-       */
-      lang: {
-        attribute: "lang",
-        type: String
-      },
-      /**
-       * has link button
-       */
-      linkable: {
-        attribute: "linkable",
-        type: Boolean
-      },
-      /**
-       * custom localization settings
-       */
-      localization: {
-        attribute: "localization",
-        type: Object
-      },
-      /**
-       * Loop the video?
-       */
-      loop: {
-        attribute: "loop",
-        type: Boolean
-      },
-      /**
+  "allowConcurrent": {
+    "attribute": "allow-concurrent",
+    "type": Boolean
+  },
+  /**
+   * Is this an audio file?
+   */
+  "audioOnly": {
+    "attribute": "audio-only",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * autoplay is an option,
+   * but generally not recommended for a11y
+   */
+  "autoplay": {
+    "attribute": "autoplay",
+    "type": Boolean
+  },
+  /**
+   * the selected track
+   */
+  "captionsTrack": {
+    "attribute": "captions-track",
+    "type": Object
+  },
+  /**
+   * show closed captions
+   */
+  "cc": {
+    "attribute": "cc",
+    "type": Boolean
+  },
+  /**
+   * current time for video playback
+   */
+  "currentTime": {
+    "type": Number
+  },
+  /**
+   * crossorigin attribute for <video> and <audio> tags
+   */
+  "crossorigin": {
+    "attribute": "crossorigin",
+    "type": String
+  },
+  /**
+   * disable transcript print button
+   */
+  "disablePrintButton": {
+    "attribute": "disable-print-button",
+    "type": Boolean
+  },
+  /**
+   * disable transcript search feature
+   */
+  "disableSearch": {
+    "attribute": "disable-search",
+    "type": Boolean
+  },
+  /**
+   * disable autoscrolling as transcript plays
+   */
+  "disableScroll": {
+    "attribute": "disable-scroll",
+    "type": Boolean
+  },
+  /**
+   * disables seeking
+   */
+  "disableSeek": {
+    "attribute": "disable-seek",
+    "type": Boolean
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "attribute": "dark-transcript",
+    "type": Boolean
+  },
+  /**
+   * disable fullscreen option
+   */
+  "disableFullscreen": {
+    "attribute": "disable-fullscreen",
+    "type": Boolean
+  },
+  /**
+   * disable interactive mode that makes the transcript clickable
+   */
+  "disableInteractive": {
+    "attribute": "disable-interactive",
+    "type": Boolean
+  },
+  /**
+   * Is fullscreen mode?
+   */
+  "fullscreen": {
+    "attribute": "fullscreen",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * The height of the media player.
+   */
+  "height": {
+    "attribute": "height",
+    "type": String
+  },
+  /**
+   * Hide elapsed time?
+   */
+  "hideElapsedTime": {
+    "attribute": "hide-elapsed-time",
+    "type": Boolean
+  },
+  /**
+   * show cue's start and end time
+   */
+  "hideTimestamps": {
+    "attribute": "hide-timestamps",
+    "type": Boolean
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "hideTranscript": {
+    "attribute": "hide-transcript",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "id": {
+    "attribute": "id",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Language
+   */
+  "lang": {
+    "attribute": "lang",
+    "type": String
+  },
+  /**
+   * has link button
+   */
+  "linkable": {
+    "attribute": "linkable",
+    "type": Boolean
+  },
+  /**
+   * custom localization settings
+   */
+  "localization": {
+    "attribute": "localization",
+    "type": Object
+  },
+  /**
+   * Loop the video?
+   */
+  "loop": {
+    "attribute": "loop",
+    "type": Boolean
+  },
+  /**
    * Dash.js manifest source?
    * /
   "manifest": {
@@ -1411,187 +1209,188 @@ class A11yMediaPlayer extends SimpleColors {
   /**
    * the language of the media (if different from user interface language)
    */
-      mediaLang: {
-        attribute: "media-lang",
-        type: String
-      },
-      /**
-       * optional title of media (shows when printed)
-       */
-      mediaTitle: {
-        attribute: "media-title",
-        type: String
-      },
-      /**
-       * Is audio muted?
-       */
-      muted: {
-        attribute: "muted",
-        type: Boolean
-      },
-      /**
-       * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
-       */
-      playbackRate: {
-        attribute: "playback-rate",
-        type: Number
-      },
-      /**
-       * Preload `none`, `metadata`, or `auto`.
-       */
-      preload: {
-        attribute: "preload",
-        type: String,
-        reflect: true
-      },
-      /**
-       * Size of the a11y media element for responsive styling
-       */
-      responsiveSize: {
-        attribute: "responsive-size",
-        type: String,
-        reflect: true
-      },
-      /**
-       * the search tool for the transcript
-       */
-      search: {
-        attribute: "search",
-        type: Object
-      },
-      /**
-       * Is stand-alone player (without transcript)?
-       */
-      standAlone: {
-        attribute: "stand-alone",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * DEPRECATED: array ouf sources
-       */
-      sources: {
-        attribute: "sources",
-        type: Array
-      },
-      /**
-       * stacked layout instead of side-by-side?
-       */
-      stackedLayout: {
-        attribute: "stacked-layout",
-        type: Boolean
-      },
-      /**
-       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
-       */
-      sticky: {
-        attribute: "sticky",
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * When playing but scrolled off screen, to which corner does it "stick":
-       * top-left, top-right, bottom-left, bottom-right, or none?
-       * Default is "top-right". "None" disables stickiness.
-       */
-      stickyCorner: {
-        attribute: "sticky-corner",
-        type: String,
-        reflect: true
-      },
-      /**
-       * Source of optional thumbnail image
-       */
-      thumbnailSrc: {
-        attribute: "thumbnail-src",
-        type: String,
-        reflect: true
-      },
-      /**
-       * DEPRECATED: array of tracks.
-       */
-      tracks: {
-        attribute: "tracks",
-        type: Array
-      },
-      /**
-       * the selected track for the transcript
-       */
-      transcriptTrack: {
-        attribute: "transcript-track",
-        type: Object
-      },
-      /**
-       * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
-       */
-      volume: {
-        attribute: "volume",
-        type: Number
-      },
-      /**
-       * The width of the media player.
-       */
-      width: {
-        attribute: "width",
-        type: String
-      },
-      /**
-       * the id for the video
-       */
-      youtubeId: {
-        attribute: "youtube-id",
-        reflect: true,
-        type: String
-      },
-      /**
-       * current playback in seconds
-       */
-      __currentTime: {
-        type: Number
-      },
-      /**
-       * the index of the selected closed captions
-       */
-      __captionsOption: {
-        type: Number
-      },
-      /**
-       * array of cues provided to readOnly `get cues`
-       */
-      __cues: {
-        type: Array
-      },
-      /**
-       * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
-       */
-      __loadedTracks: {
-        type: Object
-      },
-      /**
-       * media playing status readOnly `get playing`
-       */
-      __playing: {
-        type: Boolean
-      },
-      /**
-       * temporarily duration in seconds until fully loaded
-       */
-      __preloadedDuration: {
-        type: Number
-      },
-      /**
-       * Has screenfull loaded?
-       */
-      __screenfullLoaded: {
-        type: Boolean
-      },
-      /**
-       * the index of the selected transcript
-       */
-      __transcriptOption: {
-        type: Number
-      }
-    };
+  "mediaLang": {
+    "attribute": "media-lang",
+    "type": String
+  },
+  /**
+   * optional title of media (shows when printed)
+   */
+  "mediaTitle": {
+    "attribute": "media-title",
+    "type": String
+  },
+  /**
+   * Is audio muted?
+   */
+  "muted": {
+    "attribute": "muted",
+    "type": Boolean
+  },
+  /**
+   * Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed
+   */
+  "playbackRate": {
+    "attribute": "playback-rate",
+    "type": Number
+  },
+  /**
+   * Preload `none`, `metadata`, or `auto`.
+   */
+  "preload": {
+    "attribute": "preload",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Size of the a11y media element for responsive styling
+   */
+  "responsiveSize": {
+    "attribute": "responsive-size",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * the search tool for the transcript
+   */
+  "search": {
+    "attribute": "search",
+    "type": Object
+  },
+  /**
+   * Is stand-alone player (without transcript)?
+   */
+  "standAlone": {
+    "attribute": "stand-alone",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * DEPRECATED: array ouf sources
+   */
+  "sources": {
+    "attribute": "sources",
+    "type": Array
+  },
+  /**
+   * stacked layout instead of side-by-side?
+   */
+  "stackedLayout": {
+    "attribute": "stacked-layout",
+    "type": Boolean
+  },
+  /**
+   * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+   */
+  "sticky": {
+    "attribute": "sticky",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
+   * When playing but scrolled off screen, to which corner does it "stick":
+   * top-left, top-right, bottom-left, bottom-right, or none?
+   * Default is "top-right". "None" disables stickiness.
+   */
+  "stickyCorner": {
+    "attribute": "sticky-corner",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * Source of optional thumbnail image
+   */
+  "thumbnailSrc": {
+    "attribute": "thumbnail-src",
+    "type": String,
+    "reflect": true
+  },
+  /**
+   * DEPRECATED: array of tracks.
+   */
+  "tracks": {
+    "attribute": "tracks",
+    "type": Array
+  },
+  /**
+   * the selected track for the transcript
+   */
+  "transcriptTrack": {
+    "attribute": "transcript-track",
+    "type": Object
+  },
+  /**
+   * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
+   */
+  "volume": {
+    "attribute": "volume",
+    "type": Number
+  },
+  /**
+   * The width of the media player.
+   */
+  "width": {
+    "attribute": "width",
+    "type": String
+  },
+  /**
+   * the id for the video
+   */
+  "youtubeId": {
+    "attribute": "youtube-id",
+    "reflect": true,
+    "type": String
+  },
+  /**
+   * current playback in seconds
+   */
+  "__currentTime": {
+    "type": Number
+  },
+  /**
+   * the index of the selected closed captions
+   */
+  "__captionsOption": {
+    "type": Number
+  },
+  /**
+   * array of cues provided to readOnly `get cues`
+   */
+  "__cues": {
+    "type": Array
+  },
+  /**
+   * media captions/transcript tracks array  provided to readOnly `get loadedTracks`
+   */
+  "__loadedTracks": {
+    "type": Object
+  },
+  /**
+   * media playing status readOnly `get playing`
+   */
+  "__playing": {
+    "type": Boolean
+  },
+  /**
+   * temporarily duration in seconds until fully loaded
+   */
+  "__preloadedDuration": {
+    "type": Number
+  },
+  /**
+   * Has screenfull loaded?
+   */
+  "__screenfullLoaded": {
+    "type": Boolean
+  },
+  /**
+   * the index of the selected transcript
+   */
+  "__transcriptOption": {
+    "type": Number
+  }
+}
+;
   }
 
   // simple path from a url modifier
@@ -2131,8 +1930,7 @@ class A11yMediaPlayer extends SimpleColors {
       : false;
     let currentTime =
       slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
+      !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -3092,28 +2890,32 @@ class A11yMediaPlayer extends SimpleColors {
    * handles duration slider dragging with a mouse
    * @param {event} e slider start event
    */
+  _handleSliderDragging(e) {
+    let slider = this.shadowRoot
+      ? this.shadowRoot.querySelector("#slider")
+      : false;
+    if (slider && !slider.disabled && slider.dragging) {
+      if (this.__playing && slider.dragging) {
+        let startDrag = setInterval(() => {
+          if (!slider.dragging) {
+            this.play();
+            clearInterval(startDrag);
+          }
+        });
+        this.pause();
+      }
+    }
+  }
+
+  /**
+   * handles duration slider dragging with a mouse
+   * @param {event} e slider start event
+   */
   _handleSliderChanged(e) {
     let slider = this.shadowRoot
       ? this.shadowRoot.querySelector("#slider")
       : false;
-    if (
-      slider &&
-      !slider.disabled &&
-      (slider.focused || slider.dragging || slider.pointerDown)
-    ) {
-      if (this.isYoutube) {
-        if (this.__playing && slider.dragging) {
-          let startDrag = setInterval(() => {
-            if (!slider.dragging) {
-              this.play();
-              clearInterval(startDrag);
-            }
-          });
-          this.pause();
-        }
-      }
-      this.seek(slider.immediateValue);
-    }
+    this.seek(slider.immediateValue);
   }
 
   /**

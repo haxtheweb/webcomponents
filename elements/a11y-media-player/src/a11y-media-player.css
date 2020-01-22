@@ -491,13 +491,16 @@ paper-toast:not(:defined) {
     max-height: 0px;
     overflow: hidden;
   }
-  :host([sticky-mode]) #settings,
-  :host([sticky-mode]) #controls > * > *:not(.xs),
-  :host([sticky-mode]) .play-status,
-  :host([responsive-size="xs"]) #controls > * > *:not(.xs),
-  :host([responsive-size="xs"]) .play-status,
-  :host([responsive-size="sm"]) #controls > * > *:not(.xs):not(.sm),
-  :host([flex-layout][responsive-size="md"]) #controls > * > *:not(.xs):not(.play-status) {
+  :host([sticky-mode]) .hide-sticky,
+  :host([sticky-mode]) .hide-full-xs,
+  :host([sticky-mode]) .hide-full-sm,
+  :host([sticky-mode]) .hide-flex,
+  :host([responsive-size="xs"]) .hide-full-xs,
+  :host([responsive-size="xs"]) .hide-full-sm,
+  :host([responsive-size="xs"]) .hide-full-flex,
+  :host([responsive-size="sm"]) .hide-full-sm,
+  :host([responsive-size="sm"]) .hide-full-flex,
+  :host([flex-layout]) .hide-flex {
     display: none;
   }
 
