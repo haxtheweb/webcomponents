@@ -10,7 +10,7 @@
     ],
     "declaration-colon-space-after": "always",
     "indentation": [
-      "tab",
+      2,
       {
         "except": ["value"]
       }
