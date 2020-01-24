@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
@@ -9,7 +10,6 @@ import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -370,8 +370,8 @@ class LrnappCanvasListing extends PolymerElement {
                   src$="{{user.picture}}"
                 ></lrndesign-avatar>
               </div>
-              <paper-tooltip for$="user-{{user.id}}"
-                >{{user.name}}</paper-tooltip
+              <simple-tooltip for$="user-{{user.id}}"
+                >{{user.name}}</simple-tooltip
               >
             </template>
           </template>

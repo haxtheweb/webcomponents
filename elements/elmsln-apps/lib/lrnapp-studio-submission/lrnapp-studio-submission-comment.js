@@ -1,8 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-card/paper-card.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 class LrnappStudioSubmissionComment extends PolymerElement {
@@ -90,19 +90,21 @@ class LrnappStudioSubmissionComment extends PolymerElement {
             id="reply"
             icon="icons:reply"
           ></paper-icon-button>
-          <paper-tooltip for="reply" animation-delay="0">Reply</paper-tooltip>
+          <simple-tooltip for="reply" animation-delay="0">Reply</simple-tooltip>
           <paper-icon-button
             class="right-actions"
             id="edit"
             icon="icons:create"
           ></paper-icon-button>
-          <paper-tooltip for="edit" animation-delay="0">Edit</paper-tooltip>
+          <simple-tooltip for="edit" animation-delay="0">Edit</simple-tooltip>
           <paper-icon-button
             class="right-actions"
             id="delete"
             icon="icons:delete-forever"
           ></paper-icon-button>
-          <paper-tooltip for="delete" animation-delay="0">Delete</paper-tooltip>
+          <simple-tooltip for="delete" animation-delay="0"
+            >Delete</simple-tooltip
+          >
         </div>
       </paper-card>
     `;

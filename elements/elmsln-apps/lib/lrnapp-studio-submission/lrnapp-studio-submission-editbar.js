@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lrnapp-studio-submission-editbar-message.js";
 class LrnappStudioSubmissionEditbar extends PolymerElement {
   static get template() {
@@ -9,9 +9,9 @@ class LrnappStudioSubmissionEditbar extends PolymerElement {
           display: block;
         }
       </style>
-      <paper-tooltip position="top" animation-delay="0" offset="-20">
+      <simple-tooltip position="top" animation-delay="0" offset="-20">
         <slot name="lrnapp-studio-submission-editbar-message"></slot>
-      </paper-tooltip>
+      </simple-tooltip>
       <slot></slot>
     `;
   }
