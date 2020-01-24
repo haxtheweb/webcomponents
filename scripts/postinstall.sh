@@ -20,7 +20,7 @@ for project in */ ; do
   cd ${project}
   p="$(basename -- $project)"
   rm -rf node_modules
-  symlink-dir ../../node_modules node_modules
+  symlink-dir ../../node_modules/ node_modules/
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ $machine == "Cygwin" ]; then
     if [ -f "${p}.js" ]; then
@@ -56,19 +56,19 @@ for project in */ ; do
     fi
   else
     if [ -f "${p}.js" ]; then
-      symlink-dir ../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
+     ln -s ../../../elements/${p}/${p}.js ../../node_modules/@lrnwebcomponents/${p}/${p}.js
     fi
     if [ -d "lib" ]; then
-      symlink-dir ../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
+       ln -s ../../../elements/${p}/lib ../../node_modules/@lrnwebcomponents/${p}/lib
     fi
     if [ -d "build" ]; then
-      symlink-dir ../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
+       ln -s ../../../elements/${p}/build ../../node_modules/@lrnwebcomponents/${p}/build
     fi
     if [ -d "src" ]; then
-      symlink-dir ../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
+       ln -s ../../../elements/${p}/src ../../node_modules/@lrnwebcomponents/${p}/src
     fi
     if [ -d "dist" ]; then
-      symlink-dir ../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
+       ln -s ../../../elements/${p}/dist ../../node_modules/@lrnwebcomponents/${p}/dist
     fi
   fi
   cd ../
