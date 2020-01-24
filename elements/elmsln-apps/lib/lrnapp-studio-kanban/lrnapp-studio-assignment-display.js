@@ -1,12 +1,9 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/marked-element/marked-element.js";
-class LrnappStudioAssignmentDisplay extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioAssignmentDisplay extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           padding: 16px;
@@ -14,15 +11,11 @@ class LrnappStudioAssignmentDisplay extends LitElement {
         #assignment-body {
           font-size: 21px;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      <h1>${this.assignment.attributes.title}</h1>
+      </style>
+      <h1>[[assignment.attributes.title]]</h1>
       <marked-element
         id="assignment-body"
-        markdown="${this.assignment.attributes.body}"
+        markdown="[[assignment.attributes.body]]"
       ></marked-element>
     `;
   }
@@ -32,24 +25,19 @@ class LrnappStudioAssignmentDisplay extends LitElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       assignment: {
         type: Object

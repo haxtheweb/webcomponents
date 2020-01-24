@@ -1,10 +1,16 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -18,7 +24,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-cis-course-card.js";
 /**
  `lrnapp-cis`
@@ -32,14 +38,10 @@ import "./lrnapp-cis-course-card.js";
 
 */
 
-class LrnappCis extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
+class LrnappCis extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="materializecss-styles">
         :host {
           display: block;
           align-content: center;
@@ -86,14 +88,13 @@ class LrnappCis extends LitElement {
           background-color: #ff6f00;
           color: white;
         }
-        .list-container {
-          display: block;
+        .iron-list-container {
+          display: flex;
           flex-direction: column;
           min-height: 50vh;
-          flex: 1 1 auto;
         }
-        .list-container .coursecard-wrapper {
-          display: inline-flex;
+        iron-list {
+          flex: 1 1 auto;
         }
         .dialog-header {
           height: unset !important;
@@ -133,53 +134,30 @@ class LrnappCis extends LitElement {
         .dialog-body lrndesign-avatar.service-confirm-icon {
           display: inline-block;
         }
-      `
-    ];
-  }
-  /**
-   * HTMLElement
-   */
-  constructor() {
-    super();
-    this.courses = [];
-    this.originalCourses = [];
-    this.programs = [];
-    this.academics = [];
-    this.endPoint = "/";
-    this.basePath = "/";
-    this.queryParams = {};
-    this.data = {};
-    this.activeCourse = {};
-    this._activeService = {};
-    setTimeout(() => {
-      this.addEventListener("route-change", this._routeChange.bind(this));
-    }, 0);
-  }
-  /**
-   * LitElement render
-   */
-  render() {
-    return html`
+      </style>
       <iron-ajax
-        auto
-        .url="${this.sourcePath}"
+        auto=""
+        url="[[sourcePath]]"
+        params=""
         handle-as="json"
-        @last-response-changed="${this.__cisResponseChanged}"
-        @response="${this._handleResponse}"
+        last-response="{{_cisResponse}}"
+        on-response="_handleResponse"
       ></iron-ajax>
       <iron-ajax
-        .url="${this.courseDataPath}"
+        url="[[courseDataPath]]"
+        params="[[_courseDataParams]]"
         handle-as="json"
         id="courserequest"
-        @last-response-changed="${this.__courseResponseChanged}"
-        @response="${this._handleCourseResponse}"
+        last-response="{{_courseResponse}}"
+        on-response="_handleCourseResponse"
       ></iron-ajax>
       <iron-ajax
-        .url="${this.makeServicePath}"
+        url="[[makeServicePath]]"
+        params=""
         handle-as="json"
         id="makeservice"
-        @last-response-changed="${this.__makeServiceResponseChanged}"
-        @response="${this._handleMakeServiceResponse}"
+        last-response="{{_makeServiceResponse}}"
+        on-response="_handleMakeServiceResponse"
       ></iron-ajax>
       <div id="loading">
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
@@ -190,215 +168,199 @@ class LrnappCis extends LitElement {
         <span
           top-item=""
           style="text-align:right;font-size:.5em;padding-right:1em;"
-          >Displaying ${this.courses.length} of
-          ${this.originalCourses.length}</span
+          >Displaying [[courses.length]] of [[originalCourses.length]]</span
         >
-        <paper-dropdown-menu
-          label="Course"
-          ?hidden="${this.courses.length == 0 ? true : false}"
-        >
+        <paper-dropdown-menu label="Course" hidden\$="[[!courses]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            .selected="${this.queryParams.course}"
-            @selected-changed="${this._queryParamsCourseChanged}"
+            selected="{{queryParams.course}}"
             attr-for-selected="item-id"
           >
             <paper-item>-- Any --</paper-item>
-            ${this.originalCourses.map(
-              course => html`
-                <paper-item item-id="${course.id}">
-                  ${course.attributes.name}
-                </paper-item>
-              `
-            )}
+            <template
+              is="dom-repeat"
+              items="[[_toArray(originalCourses)]]"
+              as="course"
+            >
+              <paper-item item-id="[[course.id]]"
+                >[[course.attributes.name]]</paper-item
+              >
+            </template>
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu
-          label="Program"
-          ?hidden="${this.programs.length == 0 ? true : false}"
-        >
+        <paper-dropdown-menu label="Program" hidden\$="[[!programs]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            .selected="${this.queryParams.program}"
-            @selected-changed="${this._queryParamsProgramChanged}"
+            selected="{{queryParams.program}}"
             attr-for-selected="item-id"
           >
             <paper-item>-- Any --</paper-item>
-            ${this.programs.map(
-              program => html`
-                <paper-item item-id="${program.id}">
-                  ${program.attributes.name}
-                </paper-item>
-              `
-            )}
+            <template
+              is="dom-repeat"
+              items="[[_toArray(programs)]]"
+              as="program"
+            >
+              <paper-item item-id="[[program.id]]"
+                >[[program.attributes.name]]</paper-item
+              >
+            </template>
           </paper-listbox>
         </paper-dropdown-menu>
-        <paper-dropdown-menu
-          label="Academic home"
-          ?hidden="${this.academics.length == 0 ? true : false}"
-        >
+        <paper-dropdown-menu label="Academic home" hidden\$="[[!academics]]">
           <paper-listbox
             slot="dropdown-content"
             class="dropdown-content"
-            .selected="${this.queryParams.academic}"
-            @selected-changed="${this._queryParamsAcademicChanged}"
+            selected="{{queryParams.academic}}"
             attr-for-selected="item-id"
           >
             <paper-item>-- Any --</paper-item>
-            ${this.academics.map(
-              academic => html`
-                <paper-item item-id="${academic.id}">
-                  ${academic.attributes.name}
-                </paper-item>
-              `
-            )}
+            <template
+              is="dom-repeat"
+              items="[[_toArray(academics)]]"
+              as="academic"
+            >
+              <paper-item item-id="[[academic.id]]"
+                >[[academic.attributes.name]]</paper-item
+              >
+            </template>
           </paper-listbox>
         </paper-dropdown-menu>
       </app-toolbar>
       <div class="courses-grid">
-        <div class="list-container">
-          ${this.courses.map(
-            course => html`
-              <paper-button
-                data-course-id="${course.id}"
-                class="coursecard-wrapper"
-                @click="${this._loadCourseUrl}"
-              >
-                <lrnapp-cis-course-card
-                  elevation="2"
-                  data-course-id="${course.id}"
-                  .name="${course.attributes.name}"
-                  .image="${course.attributes.image}"
-                  .title="${course.attributes.title}"
-                  .color="${course.attributes.color}"
+        <iron-pages
+          selected="{{data.page}}"
+          attr-for-selected="name"
+          fallback-selection="courses"
+          role="main"
+        >
+          <div class="iron-list-container" name="courses">
+            <iron-list id="ironlist" items="[[courses]]" as="course" grid="">
+              <template>
+                <paper-button
+                  data-course-id\$="[[course.id]]"
+                  class="coursecard-wrapper"
+                  on-click="_loadCourseUrl"
                 >
-                </lrnapp-cis-course-card>
-              </paper-button>
-            `
-          )}
-        </div>
+                  <lrnapp-cis-course-card
+                    elevation="2"
+                    data-course-id\$="[[course.id]]"
+                    name="[[course.attributes.name]]"
+                    image="[[course.attributes.image]]"
+                    title="[[course.attributes.title]]"
+                    color="[[course.attributes.color]]"
+                  >
+                  </lrnapp-cis-course-card>
+                </paper-button>
+              </template>
+            </iron-list>
+          </div>
+        </iron-pages>
       </div>
       <app-location
-        .route="${this.route}"
-        @route-changed="${this.__routeChangedEvent}"
-        .query-params="${this.queryParams}"
-        @query-params-changed="${this.queryParamsChanged}"
+        route="{{route}}"
+        query-params="{{queryParams}}"
       ></app-location>
       <app-route
-        .route="${this.route}"
-        @route-changed="${this.__routeChangedEvent}"
-        pattern="${this.endPoint}/:page"
-        .tail="${this.tail}"
-        @tail="${this.__tailChanged}"
-        .data="${this.data}"
-        @data="${this.__dataChanged}"
-        .query-params="${this.queryParams}"
-        @query-params-changed="${this.queryParamsChanged}"
+        route="{{route}}"
+        pattern="[[endPoint]]/:page"
+        data="{{data}}"
+        tail="{{tail}}"
+        query-params="{{queryParams}}"
       >
       </app-route>
       <paper-dialog id="dialog" with-backdrop>
         <h2>Course details</h2>
         <paper-dialog-scrollable>
           <div class="dialog-header">
-            ${this.activeCourse.attributes
-              ? html`
-                  <lrndesign-course-banner
-                    .image="${this.activeCourse.attributes.image}"
-                    .name="${this.activeCourse.attributes.name}"
-                    .title="${this.activeCourse.attributes.title}"
-                    .color="${this.activeCourse.attributes.color} darken-4"
-                  >
-                  </lrndesign-course-banner>
-                `
-              : ``}
+            <lrndesign-course-banner
+              image="[[activeCourse.attributes.image]]"
+              name="[[activeCourse.attributes.name]]"
+              title="[[activeCourse.attributes.title]]"
+              color="[[activeCourse.attributes.color]] darken-4"
+            >
+            </lrndesign-course-banner>
+          </div>
+          <div>
+            <div id="loadingCourse" class="loading">
+              <h3>Loading..</h3>
+              <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+            </div>
           </div>
           <div id="coursedetails">
-            ${this.activeCourse.attributes
-              ? html`
-                  <responsive-grid-row gutter="5">
-                    <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-                      <div class="column">
-                        <h4>Details</h4>
-                        <ul>
-                          <li
-                            ?hidden="${!this.activeCourse.relationships.academic
-                              .attributes.name}"
-                          >
-                            Academic unit:
-                            ${this.activeCourse.relationships.academic
-                              .attributes.name}
-                          </li>
-                          <li
-                            ?hidden="${!this.activeCourse.relationships.program
-                              .attributes.name}"
-                          >
-                            Program:
-                            ${this.activeCourse.relationships.program.attributes
-                              .name}
-                          </li>
-                        </ul>
-                        <h4>Learning Network</h4>
-                        ${this.activeCourse.topology
-                          ? html`
-                              ${this.activeCourse.topology.Network.map(
-                                service => html`
-                                  ${service._exists
-                                    ? html`
-                                        <lrnsys-button
-                                          raised=""
-                                          href="${service.url}"
-                                          hover-class="${service.color} lighten-4"
-                                        >
-                                          <lrn-icon
-                                            icon="${service.icon}"
-                                            class="elmsln-hover-icon"
-                                          ></lrn-icon>
-                                          <span>${service.title}</span>
-                                        </lrnsys-button>
-                                      `
-                                    : html`
-                                        <lrnsys-button
-                                          raised=""
-                                          @click="${this._makeService}"
-                                          color="grey lighten-4"
-                                          icon-class="grey lighten-5"
-                                          data-machine-name="${service.machine_name}"
-                                        >
-                                          <lrn-icon
-                                            data-machine-name="${service.machine_name}"
-                                            icon="${service.icon}"
-                                            class="elmsln-hover-icon"
-                                          ></lrn-icon>
-                                          <span
-                                            data-machine-name="${service.machine_name}"
-                                            >Make the ${service.title}
-                                            service</span
-                                          >
-                                        </lrnsys-button>
-                                      `}
-                                `
-                              )}
-                            `
-                          : ``}
-                      </div>
-                    </responsive-grid-col>
-                    <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-                      <div class="column">
-                        <h4>Operations</h4>
-                        ${this.activeCourse.meta.canUpdate
-                          ? html`
+            <responsive-grid-row gutter="5">
+              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
+                <div class="column">
+                  <h4>Details</h4>
+                  <ul>
+                    <li
+                      hidden\$="[[!activeCourse.relationships.academic.attributes.name]]"
+                    >
+                      Academic unit:
+                      [[activeCourse.relationships.academic.attributes.name]]
+                    </li>
+                    <li
+                      hidden\$="[[!activeCourse.relationships.program.attributes.name]]"
+                    >
+                      Program:
+                      [[activeCourse.relationships.program.attributes.name]]
+                    </li>
+                  </ul>
+                  <h4>Learning Network</h4>
+                  <template
+                    is="dom-repeat"
+                    items="[[activeCourse.topology.Network]]"
+                    as="service"
+                  >
+                    <template is="dom-if" if="[[!service._exists]]">
+                      <lrnsys-button
+                        raised=""
+                        on-click="_makeService"
+                        color="grey lighten-4"
+                        icon-class="grey lighten-5"
+                        data-machine-name\$="[[service.machine_name]]"
+                      >
+                        <lrn-icon
+                          data-machine-name\$="[[service.machine_name]]"
+                          icon="[[service.icon]]"
+                          class="elmsln-hover-icon"
+                        ></lrn-icon>
+                        <span data-machine-name\$="[[service.machine_name]]"
+                          >Make the [[service.title]] service</span
+                        >
+                      </lrnsys-button>
+                    </template>
+                    <template is="dom-if" if="[[service._exists]]">
+                      <lrnsys-button
+                        raised=""
+                        href="[[service.url]]"
+                        hover-class="[[service.color]] lighten-4"
+                      >
+                        <lrn-icon
+                          icon="[[service.icon]]"
+                          class="elmsln-hover-icon"
+                        ></lrn-icon>
+                        <span>[[service.title]]</span>
+                      </lrnsys-button>
+                    </template>
+                  </template>
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
+                <div class="column">
+                  <h4>Operations</h4>
+                  <template is="dom-if" if="[[activeCourse.meta.canUpdate]]">
                     <lrnsys-button
                       raised=""
-                      href="${this.activeCourse.uris.edit}"
+                      href="[[activeCourse.uris.edit]]"
                       label="Edit"
                       hover-class="green lighten-4"
                       icon="create"
                     ></lrnsys-button>
                     <lrnsys-button
                       raised=""
-                      href="${this.activeCourse.uris.addOffering}"
+                      href="[[activeCourse.uris.addOffering]]"
                       label="Add offering"
                       hover-class="amber lighten-3"
                       icon="icons:add"
@@ -406,263 +368,154 @@ class LrnappCis extends LitElement {
                   </template>
                   <lrnsys-button
                     raised=""
-                    href="${this.activeCourse.uris.offerings}"
+                    href="[[activeCourse.uris.offerings]]"
                     label="Offerings"
                     hover-class="amber lighten-4"
                     icon="social:people"
                   ></lrnsys-button>
                   <lrnsys-button
                     raised=""
-                    href="${this.activeCourse.uris.sync}"
+                    href="[[activeCourse.uris.sync]]"
                     label="Sync Roster"
                     hover-class="amber lighten-4"
                     icon="notification:sync"
                   ></lrnsys-button>
                   <lrnsys-button
                     raised=""
-                    href="${this.activeCourse.uris.uri}"
+                    href="[[activeCourse.uris.uri]]"
                     label="Course page (legacy)"
                     hover-class="brown lighten-4"
                     icon="delete"
                   ></lrnsys-button>
-                  ${
-                    this.activeCourse.meta.canDelete
-                      ? html`
-                          <div
-                            style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
-                          >
-                            <h4>Danger zone</h4>
-                            <lrnsys-button
-                              raised=""
-                              href="${this.activeCourse.uris.delete}"
-                              label="Delete"
-                              hover-class="red lighten-1"
-                              color="red lighten-3"
-                              icon="delete"
-                            ></lrnsys-button>
-                          </div>
-                        `
-                      : html``
-                  }
-                `
-                          : html``}
-                      </div>
-                    </responsive-grid-col>
-                  </responsive-grid-row>
-                  <p>${this.activeCourse.attributes.body}</p>
-                `
-              : ``}
+                  <template is="dom-if" if="[[activeCourse.meta.canDelete]]">
+                    <div
+                      style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
+                    >
+                      <h4>Danger zone</h4>
+                      <lrnsys-button
+                        raised=""
+                        href="[[activeCourse.uris.delete]]"
+                        label="Delete"
+                        hover-class="red lighten-1"
+                        color="red lighten-3"
+                        icon="delete"
+                      ></lrnsys-button>
+                    </div>
+                  </template>
+                </div>
+              </responsive-grid-col>
+            </responsive-grid-row>
+            <p>[[activeCourse.attributes.body]]</p>
           </div>
         </paper-dialog-scrollable>
       </paper-dialog>
-      ${this.activeCourse.attributes
-        ? html`
-            <lrnsys-dialog id="confirm">
-              <div class="dialog-header" slot="header">
-                Add this to the
-                <strong>${this.activeCourse.attributes.title}</strong> network?
-              </div>
-              <div class="dialog-body">
-                <responsive-grid-row gutter="5">
-                  <responsive-grid-col
-                    xl="3"
-                    lg="3"
-                    md="3"
-                    sm="3"
-                    xs="3"
-                  ></responsive-grid-col>
-                  <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
-                    >Add</responsive-grid-col
-                  >
-                  <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-                    ><lrn-icon
-                      icon="${this._activeService.icon}"
-                      class="${this._activeService
-                        .color}-text elmsln-hover-icon service-confirm-icon"
-                    ></lrn-icon
-                  ></responsive-grid-col>
-                  <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
-                    ><strong
-                      >${this._activeService.title}</strong
-                    ></responsive-grid-col
-                  >
-                  <responsive-grid-col
-                    xl="3"
-                    lg="3"
-                    md="3"
-                    sm="3"
-                    xs="3"
-                  ></responsive-grid-col>
-                </responsive-grid-row>
-                <responsive-grid-row gutter="5">
-                  <responsive-grid-col
-                    xl="3"
-                    lg="3"
-                    md="3"
-                    sm="3"
-                    xs="3"
-                  ></responsive-grid-col>
-                  <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
-                    >To</responsive-grid-col
-                  >
-                  <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
-                    ><lrndesign-avatar
-                      class="service-confirm-icon"
-                      label="${this.activeCourse.attributes.name}"
-                      jdenticon=""
-                      color="${this.activeCourse.attributes.color} darken-4"
-                    >
-                    </lrndesign-avatar
-                  ></responsive-grid-col>
-                  <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
-                    ><strong
-                      >${this.activeCourse.attributes.title}</strong
-                    ></responsive-grid-col
-                  >
-                  <responsive-grid-col
-                    xl="3"
-                    lg="3"
-                    md="3"
-                    sm="3"
-                    xs="3"
-                  ></responsive-grid-col>
-                </responsive-grid-row>
-                <div style="margin-top:1em;">This will take a few moments.</div>
-              </div>
-              <div class="buttons">
-                <paper-button
-                  raised=""
-                  dialog-confirm=""
-                  autofocus=""
-                  @click="${this._confirmBuild}"
-                  class="green"
-                  >Let's do it!</paper-button
-                >
-                <paper-button dialog-dismiss="" class="red-text"
-                  >Oops, go back.</paper-button
-                >
-              </div>
-            </lrnsys-dialog>
-          `
-        : ``}
+      <lrnsys-dialog id="confirm">
+        <div class="dialog-header" slot="header">
+          Add this to the
+          <strong>[[activeCourse.attributes.title]]</strong> network?
+        </div>
+        <div class="dialog-body">
+          <responsive-grid-row gutter="5">
+            <responsive-grid-col
+              xl="3"
+              lg="3"
+              md="3"
+              sm="3"
+              xs="3"
+            ></responsive-grid-col>
+            <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
+              >Add</responsive-grid-col
+            >
+            <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
+              ><lrn-icon
+                icon="[[_activeService.icon]]"
+                class\$="[[_activeService.color]]-text elmsln-hover-icon service-confirm-icon"
+              ></lrn-icon
+            ></responsive-grid-col>
+            <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
+              ><strong>[[_activeService.title]]</strong></responsive-grid-col
+            >
+            <responsive-grid-col
+              xl="3"
+              lg="3"
+              md="3"
+              sm="3"
+              xs="3"
+            ></responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row gutter="5">
+            <responsive-grid-col
+              xl="3"
+              lg="3"
+              md="3"
+              sm="3"
+              xs="3"
+            ></responsive-grid-col>
+            <responsive-grid-col xl="1" lg="1" md="1" sm="1" xs="1"
+              >To</responsive-grid-col
+            >
+            <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2"
+              ><lrndesign-avatar
+                class="service-confirm-icon"
+                label="[[activeCourse.attributes.name]]"
+                jdenticon=""
+                color="[[activeCourse.attributes.color]] darken-4"
+              >
+              </lrndesign-avatar
+            ></responsive-grid-col>
+            <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3"
+              ><strong
+                >[[activeCourse.attributes.title]]</strong
+              ></responsive-grid-col
+            >
+            <responsive-grid-col
+              xl="3"
+              lg="3"
+              md="3"
+              sm="3"
+              xs="3"
+            ></responsive-grid-col>
+          </responsive-grid-row>
+          <div style="margin-top:1em;">This will take a few moments.</div>
+        </div>
+        <div class="buttons">
+          <paper-button
+            raised=""
+            dialog-confirm=""
+            autofocus=""
+            on-click="_confirmBuild"
+            class="green"
+            >Let's do it!</paper-button
+          >
+          <paper-button dialog-dismiss="" class="red-text"
+            >Oops, go back.</paper-button
+          >
+        </div>
+      </lrnsys-dialog>
       <paper-toast id="toast"></paper-toast>
     `;
   }
-  queryParamsChanged(e) {
-    this.queryParams = { ...e.detail.value };
-  }
-  __tailChanged(e) {
-    this.tail = e.detail.value;
-  }
-  __dataChanged(e) {
-    this.data = { ...e.detail.value };
-  }
-  _dataPageChanged(e) {
-    let data = this.data;
-    data.page = e.detail.value;
-    this.data = { ...data };
-  }
-  _queryParamsAcademicChanged(e) {
-    let queryParams = this.queryParams;
-    queryParams.academic = e.detail.value;
-    if (queryParams.academic == null) {
-      delete queryParams.academic;
-    }
-    this.queryParams = { ...queryParams };
-  }
-  _queryParamsProgramChanged(e) {
-    let queryParams = this.queryParams;
-    queryParams.program = e.detail.value;
-    if (queryParams.program == null) {
-      delete queryParams.program;
-    }
-    this.queryParams = { ...queryParams };
-  }
-  _queryParamsCourseChanged(e) {
-    let queryParams = this.queryParams;
-    queryParams.course = e.detail.value;
-    if (queryParams.course == null) {
-      delete queryParams.course;
-    }
-    this.queryParams = { ...queryParams };
-  }
-  __courseResponseChanged(e) {
-    this._courseResponse = e.detail.value;
-  }
-  __makeServiceResponseChanged(e) {
-    this._makeServiceResponse = e.detail.value;
-  }
-  __cisResponseChanged(e) {
-    this._cisResponse = e.detail.value;
-  }
+
   static get tag() {
     return "lrnapp-cis";
   }
-  __routeChangedEvent(e) {
-    this.route = e.detail.value;
-  }
-  /**
-   * LitElement properties changed
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (["route", "endPoint"].includes(propName)) {
-        _routeChanged(this.route, this.endPoint);
-      }
-      if (["originalCourses", "queryParams"].includes(propName)) {
-        this.courses = [
-          ...this._coursesCompute(this.originalCourses, this.queryParams)
-        ];
-      }
-      if (propName === "originalCourses") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("original-courses-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName === "queryParams") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("query-params-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
-  /**
-   * LitElement / popular convention
-   */
+
   static get properties() {
     return {
-      _activeService: {
-        type: Object
-      },
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
 
       /**
@@ -690,52 +543,55 @@ class LrnappCis extends LitElement {
        * The courses to render; potentially filtered
        */
       courses: {
-        type: Array
+        type: Array,
+        value: [],
+        computed: "_coursesCompute(originalCourses, queryParams)"
       },
 
       /**
        * The original courses array; used to filter against
        */
       originalCourses: {
-        type: Array
+        type: Array,
+        value: [],
+        notify: true
       },
 
       /**
        * The programs to render
        */
       programs: {
-        type: Array
+        type: Array,
+        value: []
       },
 
       /**
        * The academics to render
        */
       academics: {
-        type: Array
+        type: Array,
+        value: []
       },
 
       /**
        * sourcePath for data.
        */
       sourcePath: {
-        type: String,
-        attribute: "source-path"
+        type: String
       },
 
       /**
        * pathway to access info about a single course.
        */
       courseDataPath: {
-        type: String,
-        attribute: "course-data-path"
+        type: String
       },
 
       /**
        * pathway to creating new service instances
        */
       makeServicePath: {
-        type: String,
-        attribute: "make-service-path"
+        type: String
       },
 
       /**
@@ -743,19 +599,36 @@ class LrnappCis extends LitElement {
        */
       endPoint: {
         type: String,
-        attribute: "end-point"
+        value: "/"
       },
+
+      /**
+       * base path for the app
+       */
+      basePath: {
+        type: String,
+        value: "/"
+      },
+
       /**
        * Active / clicked course.
        */
       activeCourse: {
-        type: Array
+        type: Array,
+        value: null
       },
       queryParams: {
-        type: Object
+        type: Object,
+        notify: true
       }
     };
   }
+
+  static get observers() {
+    return ["_routeChanged(route, endPoint)"];
+  } // If the current route is outside the scope of our app
+  // then allow the website to break out of the single page
+  // application routing
 
   _routeChanged(route, endPoint) {
     if (typeof route.path === "string") {
@@ -765,9 +638,9 @@ class LrnappCis extends LitElement {
           return;
         }
       }
-      if (this.shadowRoot) {
-        this.shadowRoot.querySelector("#loading").hidden = false; // reload the page which since route changed will load that page
-      }
+
+      this.$.loading.hidden = false; // reload the page which since route changed will load that page
+
       window.location.reload();
     }
   }
@@ -777,25 +650,22 @@ class LrnappCis extends LitElement {
 
   _routeChange(e) {
     var details = e.detail;
-    let queryParams = this.queryParams;
-    let data = this.data;
+
     if (typeof details.queryParams.course !== typeof undefined) {
-      queryParams.course = details.queryParams.course;
+      this.set("queryParams.course", details.queryParams.course);
     }
 
     if (typeof details.queryParams.academic !== typeof undefined) {
-      queryParams.academic = details.queryParams.academic;
+      this.set("queryParams.academic", details.queryParams.academic);
     }
 
     if (typeof details.queryParams.program !== typeof undefined) {
-      queryParams.program = details.queryParams.program;
+      this.set("queryParams.program", details.queryParams.program);
     }
 
     if (typeof details.data.page !== typeof undefined) {
-      data.page = details.data.page;
+      this.set("data.page", details.data.page);
     }
-    this.data = { ...data };
-    this.queryParams = { ...queryParams };
   }
   /**
    * Simple way to convert from object to array.
@@ -820,8 +690,9 @@ class LrnappCis extends LitElement {
 
     let activeCourse = this.__addServiceLinks(response.data.course);
 
-    this.activeCourse = activeCourse;
-    this.shadowRoot.querySelector("#toast").show(response.message);
+    this.set("activeCourse", []);
+    this.set("activeCourse", activeCourse);
+    this.$.toast.show(response.message);
   }
   /**
    * Handle course response for additional details about the item
@@ -832,7 +703,10 @@ class LrnappCis extends LitElement {
     var activeCourse = this._courseResponse.data.course;
 
     this.__addServiceLinks(activeCourse);
-    this.activeCourse = activeCourse;
+
+    this.set("activeCourse", []);
+    this.set("activeCourse", activeCourse);
+    this.$.loadingCourse.hidden = true;
   }
   /**
    * Helper to mash up services that exist with those that could.
@@ -895,8 +769,10 @@ class LrnappCis extends LitElement {
 
     var courses = this._toArray(this._cisResponse.data.courses);
 
-    this.services = [...this._toArray(this._cisResponse.data.services)];
-    this.originalCourses = [...courses];
+    this.set("services", this._toArray(this._cisResponse.data.services)); // original = active off the bat then we apply filters later to chang this
+
+    this.set("originalCourses", courses); // figure out courses, programs and academics
+
     for (var index = 0; index < courses.length; index++) {
       course = courses[index];
       program = courses[index].relationships.program;
@@ -913,16 +789,17 @@ class LrnappCis extends LitElement {
     tmp.academics.forEach(function(element) {
       academics.push(element);
     });
-    this.shadowRoot.querySelector("#loading").hidden = true;
-    this.academics = [...academics];
-    this.programs = [...programs];
+    this.$.loading.hidden = true;
+    this.set("academics", academics);
+    this.set("programs", programs);
   }
   /**
    * Request a new service to kick off.
    */
 
   _makeService(e) {
-    let active = e.target.getAttribute("data-machine-name");
+    var normalizedEvent = dom(e);
+    let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
     let service = network.filter(service => {
       if (service.machine_name !== active) {
@@ -934,13 +811,13 @@ class LrnappCis extends LitElement {
 
     if (service.length > 0) {
       service = service.pop();
-      this.shadowRoot.querySelector("#makeservice").params = {
+      this.$.makeservice.params = {
         course: this.activeCourse.attributes.machine_name,
         service: service.machine_name
       };
-      this._activeService = { ...service }; // confirm via paper prompt
+      this._activeService = service; // confirm via paper prompt
 
-      this.shadowRoot.querySelector("#confirm").toggleDialog();
+      this.$.confirm.toggleDialog();
     } else {
       console.log("that was not a valid service..");
     }
@@ -950,16 +827,36 @@ class LrnappCis extends LitElement {
    */
 
   _confirmBuild(e) {
-    this.shadowRoot.querySelector("#makeservice").generateRequest();
+    this.$.makeservice.generateRequest();
   }
+  /**
+   * lifecycle
+   */
 
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("route-change", this._routeChange.bind(this));
+    });
+  }
+  /**
+   * lifecycle
+   */
+
+  disconnectedCallback() {
+    // listen for focus event to have fired
+    this.removeEventListener("route-change", this._routeChange.bind(this));
+    super.disconnectedCallback();
+  }
   /**
    * Handle tap on paper-button above to redirect to the correct course url.
    */
 
   _loadCourseUrl(e) {
     // reset dialog to appear to be loading
-    var local = e.target; // this will have the id of the current course
+    this.$.loadingCourse.hidden = false;
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget; // this will have the id of the current course
 
     var active = local.getAttribute("data-course-id"); // find the course by it's unique id and filter just to it
 
@@ -981,11 +878,9 @@ class LrnappCis extends LitElement {
       id: this.activeCourse.id
     }; // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
-    this.shadowRoot.querySelector(
-      "#courserequest"
-    ).params = this._courseDataParams;
-    this.shadowRoot.querySelector("#courserequest").generateRequest();
-    this.shadowRoot.querySelector("#dialog").toggle();
+
+    this.$.courserequest.generateRequest();
+    this.$.dialog.toggle();
   }
   /**
    * Compute the active list of courses
@@ -997,36 +892,43 @@ class LrnappCis extends LitElement {
       return [];
     } // define vars
 
+    const root = this;
     let filteredCourses = []; // filter the courses by the query params
 
     filteredCourses = originalCourses.filter(course => {
-      if (typeof this.queryParams.course !== "undefined") {
-        if (course.id !== this.queryParams.course) {
+      if (typeof root.queryParams.course !== "undefined") {
+        if (course.id !== root.queryParams.course) {
           return false;
         }
       }
 
-      if (typeof this.queryParams.program !== "undefined") {
-        if (course.relationships.program.id !== this.queryParams.program) {
+      if (typeof root.queryParams.program !== "undefined") {
+        if (course.relationships.program.id !== root.queryParams.program) {
           return false;
         }
       }
 
-      if (typeof this.queryParams.academic !== "undefined") {
-        if (course.relationships.academic.id !== this.queryParams.academic) {
+      if (typeof root.queryParams.academic !== "undefined") {
+        if (course.relationships.academic.id !== root.queryParams.academic) {
           return false;
         }
       }
+
       return true;
     }); // delay and repaint, can help with refresh issues
+
+    setTimeout(() => {
+      this.$.ironlist.fire("iron-resize");
+    }, 200);
     return filteredCourses;
   }
   /**
-   * Shadow Hijack
+   * highjack shadowDom
    */
-  //createRenderRoot() {
-  //  return this;
-  //}
+
+  _attachDom(dom) {
+    this.appendChild(dom);
+  }
 }
 
 window.customElements.define(LrnappCis.tag, LrnappCis);

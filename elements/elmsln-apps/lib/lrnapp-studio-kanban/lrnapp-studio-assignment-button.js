@@ -1,49 +1,44 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-/**
- *`lrnapp-studio-assignment-button`
- * Allows users to either start a assignment or link to a assignment.
- */
-class LrnappStudioAssignmentButton extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+/*
+`lrnapp-studio-assignment-button`
+Allows users to either start a assignment or link to a assignment.
+
+Usage:
+```
+<lrnapp-studio-assignment-button assignment-id="[[id]]" assignment-id="{{assignmentId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-assignment-button>
+*/
+class LrnappStudioAssignmentButton extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <lrnsys-button
-        @click="${this._createAssignment}"
-        icon-class="${this.iconClass}"
-        alt="${this.alt}"
-        class="${this.classes}"
-        button-class="${this.classes}"
-        hover-class="${this.hoverClass}"
-        icon="${this.icon}"
+        on-click="_createAssignment"
+        icon-class="[[iconClass]]"
+        alt="[[alt]]"
+        class\$="[[classes]]"
+        button-class\$="[[classes]]"
+        hover-class="[[hoverClass]]"
+        icon="[[icon]]"
       ></lrnsys-button>
       <iron-ajax
         id="ajaxCreateStub"
-        url="${this.endPoint}/api/assignments/create-stub?token=${this
-          .csrfToken}"
+        url="[[endPoint]]/api/assignments/create-stub?token=[[csrfToken]]"
         method="POST"
-        body="${this.projectId}"
+        body="[[projectId]]"
         handle-as="json"
-        @response="${this._ajaxCreateStubHandler}"
+        on-response="_ajaxCreateStubHandler"
       ></iron-ajax>
-      ${this.displayErrors
-        ? html`
-            <paper-toast id="toast"></paper-toast>
-          `
-        : ``}
+      <template is="dom-if" if="[[displayErrors]]">
+        <paper-toast id="toast"></paper-toast>
+      </template>
     `;
   }
 
@@ -53,110 +48,59 @@ class LrnappStudioAssignmentButton extends LitElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
         type: String,
-        attribute: "base-path"
-      },
-      projectId: {
-        type: String,
-        attribute: "project-id"
-      },
-      iconClass: {
-        type: String,
-        attribute: "icon-class"
-      },
-      alt: {
-        type: String
-      },
-      classes: {
-        type: String
-      },
-      hoverClass: {
-        type: String,
-        attribute: "hover-class"
-      },
-      icon: {
-        type: String
+        notify: true
       },
       csrfToken: {
         type: String,
-        attribute: "csrf-token",
-        reflect: true
+        notify: true,
+        reflectToAttribute: true
       },
       endPoint: {
         type: String,
-        attribute: "end-point",
-        reflect: true
+        notify: true,
+        reflectToAttribute: true
       },
       auto: {
         type: Boolean,
-        reflect: true
+        reflectToAttribute: true,
+        value: false,
+        notify: true
       },
       displayErrors: {
-        type: Boolean
+        type: Boolean,
+        value: true
+      },
+      projectId: {
+        type: String
+      },
+      iconClass: {
+        type: String,
+        value: null
+      },
+      alt: {
+        type: String,
+        value: null
+      },
+      classes: {
+        type: String,
+        value: null
+      },
+      hoverClass: {
+        type: String,
+        value: null
+      },
+      icon: {
+        type: String,
+        value: null
       }
     };
-  }
-  constructor() {
-    super();
-    this.icon = null;
-    this.hoverClass = null;
-    this.classes = null;
-    this.alt = null;
-    this.iconClass = null;
-    this.displayErrors = true;
-    this.auto = false;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "auto") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("auto-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "basePath") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("base-path-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "csrfToken") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("csrf-token-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "endPoint") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("end-point-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
   }
   _createAssignment() {
     this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
@@ -179,6 +123,7 @@ class LrnappStudioAssignmentButton extends LitElement {
     }
     // if we have errors to display
     if (typeof response.errors !== "undefined") {
+      var ul = document.createElement("ul");
       var text = "";
       response.errors.forEach(function(error) {
         text = text + " " + error;

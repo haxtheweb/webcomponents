@@ -1,12 +1,9 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
-class LrnappStudioSubmissionEditFile extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditFile extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: inline-flex;
           justify-content: space-around;
@@ -25,16 +22,13 @@ class LrnappStudioSubmissionEditFile extends LitElement {
         .file_url {
           margin: 1em;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
+
       <lrnapp-studio-submission-media-editoverlay
-        data-index="${this.index}"
-        embedcode="${this.embedcode}"
+        data-index\$="[[index]]"
+        embedcode="{{embedcode}}"
       >
-        <div class="file_url">${this.file.filename}</div>
+        <div class="file_url">[[file.filename]]</div>
       </lrnapp-studio-submission-media-editoverlay>
     `;
   }
@@ -42,23 +36,15 @@ class LrnappStudioSubmissionEditFile extends LitElement {
   static get tag() {
     return "lrnapp-studio-submission-edit-file";
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "file") {
-        this.embedcode = this._computeEmbedCode(this[propName]);
-      }
-    });
-  }
+
   static get properties() {
     return {
       file: {
         type: Object
       },
-      index: {
-        type: String
-      },
       embedcode: {
-        type: String
+        type: String,
+        computed: "_computeEmbedCode(file)"
       }
     };
   }

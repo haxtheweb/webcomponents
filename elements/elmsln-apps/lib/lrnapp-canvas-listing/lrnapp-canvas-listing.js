@@ -1,25 +1,23 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-class LrnappCanvasListing extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
+
+class LrnappCanvasListing extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="materializecss-styles">
         :host {
           display: block;
           margin: 0 2em;
@@ -35,50 +33,86 @@ class LrnappCanvasListing extends LitElement {
           position: absolute;
           background-color: white;
         }
-        vaadin-grid {
+        vaadin-grid#material {
           height: 75vh;
           font-family: Roboto, sans-serif;
+          --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
+
+          --vaadin-grid-cell: {
+            padding: 0;
+          }
+
+          --vaadin-grid-header-cell: {
+            height: 3.5em;
+            color: rgba(0, 0, 0, var(--dark-secondary-opacity));
+            font-size: 1em;
+          }
+
+          --vaadin-grid-body-cell: {
+            height: 3em;
+            color: rgba(0, 0, 0, var(--dark-primary-opacity));
+            font-size: 0.8em;
+          }
+
+          --vaadin-grid-body-row-hover-cell: {
+            background-color: var(--paper-grey-200);
+          }
+
+          --vaadin-grid-body-row-selected-cell: {
+            background-color: var(--paper-grey-100);
+          }
+
+          --vaadin-grid-focused-cell: {
+            box-shadow: none;
+            font-weight: bold;
+          }
         }
 
-        vaadin-grid .cell {
+        vaadin-grid#material .cell {
           overflow: hidden;
           text-overflow: ellipsis;
           padding-right: 56px;
         }
 
-        vaadin-grid .cell.last {
+        vaadin-grid#material .cell.last {
           padding-right: 24px;
         }
 
-        vaadin-grid .cell.numeric {
+        vaadin-grid#material .cell.numeric {
           text-align: right;
         }
 
-        vaadin-grid paper-checkbox {
+        vaadin-grid#material paper-checkbox {
           --primary-color: var(--paper-indigo-500);
           margin: 0 24px;
         }
 
-        vaadin-grid vaadin-grid-sorter .cell {
+        vaadin-grid#material vaadin-grid-sorter {
+          --vaadin-grid-sorter-arrow: {
+            display: none !important;
+          }
+        }
+
+        vaadin-grid#material vaadin-grid-sorter .cell {
           flex: 1;
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
 
-        vaadin-grid vaadin-grid-sorter iron-icon {
+        vaadin-grid#material vaadin-grid-sorter iron-icon {
           transform: scale(0.8);
         }
 
-        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
+        vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
           color: rgba(0, 0, 0, var(--dark-disabled-opacity));
         }
 
-        vaadin-grid vaadin-grid-sorter[direction] {
+        vaadin-grid#material vaadin-grid-sorter[direction] {
           color: rgba(0, 0, 0, var(--dark-primary-opacity));
         }
 
-        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
+        vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
           transform: scale(0.8) rotate(180deg);
         }
         vaadin-grid-sorter {
@@ -104,59 +138,14 @@ class LrnappCanvasListing extends LitElement {
           margin: 0;
           width: 100%;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      <custom-style>
-        <style>
-          vaadin-grid {
-            --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
-
-            --vaadin-grid-cell: {
-              padding: 0;
-            }
-
-            --vaadin-grid-header-cell: {
-              height: 3.5em;
-              color: rgba(0, 0, 0, var(--dark-secondary-opacity));
-              font-size: 1em;
-            }
-
-            --vaadin-grid-body-cell: {
-              height: 3em;
-              color: rgba(0, 0, 0, var(--dark-primary-opacity));
-              font-size: 0.8em;
-            }
-
-            --vaadin-grid-body-row-hover-cell: {
-              background-color: var(--paper-grey-200);
-            }
-
-            --vaadin-grid-body-row-selected-cell: {
-              background-color: var(--paper-grey-100);
-            }
-
-            --vaadin-grid-focused-cell: {
-              box-shadow: none;
-              font-weight: bold;
-            }
-          }
-          vaadin-grid vaadin-grid-sorter {
-            --vaadin-grid-sorter-arrow: {
-              display: none !important;
-            }
-          }
-        </style>
-      </custom-style>
+      </style>
       <iron-ajax
         auto
-        url="${this.sourcePath}"
+        url="[[sourcePath]]"
         params='{"return": "courses"}'
         handle-as="json"
-        @response="${this.handleResponse}"
-        @last-response-changed="${this.queryResponseEvent}"
+        on-response="handleResponse"
+        last-response="{{queryResponse}}"
       ></iron-ajax>
       <div id="loading" class="loading">
         <h3>Loading..</h3>
@@ -166,7 +155,7 @@ class LrnappCanvasListing extends LitElement {
         column-reordering-allowed
         id="material"
         aria-label="Course list"
-        .items="${this._toArray(this.canvasCourses)}"
+        items="[[_toArray(canvasCourses)]]"
       >
         <vaadin-grid-column width="50px" flex-grow="0">
           <template class="header"
@@ -190,12 +179,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Semester"
               path="term"
-              value="${this._filterTerm}"
+              value="[[_filterTerm]]"
             >
               <paper-input
                 slot="filter"
                 label="Semester"
-                @value-changed="${this._filterTermEvent}"
+                value="{{_filterTerm::input}}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -212,12 +201,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Course"
               path="name"
-              value="${this._filterCourse}"
+              value="[[_filterCourse]]"
             >
               <paper-input
                 slot="filter"
                 label="Course"
-                @value-changed="${this._filterCourseEvent}"
+                value="{{_filterCourse::input}}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -234,12 +223,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Student information system ID"
               path="sis_course_id"
-              value="${this._filterSIS}"
+              value="[[_filterSIS]]"
             >
               <paper-input
                 slot="filter"
                 label="SIS"
-                @value-changed="${this._filterSISChanged}"
+                value="{{_filterSIS::input}}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -266,12 +255,12 @@ class LrnappCanvasListing extends LitElement {
             <vaadin-grid-filter
               aria-label="Workflow state"
               path="workflow_state"
-              value="${this._filterWorkflow}"
+              value="[[_filterWorkflow]]"
             >
               <paper-input
                 slot="filter"
                 label="State"
-                value="${this._filterWorkflowChanged}"
+                value="{{_filterWorkflow::input}}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -283,29 +272,31 @@ class LrnappCanvasListing extends LitElement {
           >
           <template>
             <select
-              name="elmsln--map--:key:[[item.sis_course_id]]:key:[[item.term]]:key:[[item.start]]:key:[[item.end]]"
+              name$="elmsln--map--:key:[[item.sis_course_id]]:key:[[item.term]]:key:[[item.start]]:key:[[item.end]]"
               class="listing-select"
               value="{{item.elmslnCourse::input}}"
             >
-              ${this.elmslnCourses.map(
-                elmsCourse => html`
-                  <option value="${elmsCourse.machineName}">
-                    ${elmsCourse.name} (${elmsCourse.machineName})
-                  </option>
-                `
-              )}
+              <template
+                is="dom-repeat"
+                items="[[elmslnCourses]]"
+                as="elmsCourse"
+              >
+                <option value="[[elmsCourse.machineName]]"
+                  >[[elmsCourse.name]] ([[elmsCourse.machineName]])</option
+                >
+              </template>
             </select>
           </template>
           <template class="footer">
             <vaadin-grid-filter
               aria-label="Course"
               path="elmslnCourse"
-              value="${this._filterELMSLNCourse}"
+              value="[[_filterELMSLNCourse]]"
             >
               <paper-input
                 slot="filter"
                 label="Course"
-                @value-changed="${this.filterELMSLNCourseEvent}"
+                value="{{_filterELMSLNCourse::input}}"
                 focus-target
               ></paper-input>
             </vaadin-grid-filter>
@@ -316,8 +307,8 @@ class LrnappCanvasListing extends LitElement {
           <template>
             <paper-button
               raised
-              @click="${this._triggerDialog}"
-              id="{{item.sis_course_id}}"
+              on-click="_triggerDialog"
+              id$="{{item.sis_course_id}}"
               >Details</paper-button
             >
           </template>
@@ -326,200 +317,115 @@ class LrnappCanvasListing extends LitElement {
       </vaadin-grid>
       <iron-ajax
         id="request"
-        url="${this.sourcePath}"
+        url="[[sourcePath]]"
         params='{"return": "users"}'
         handle-as="json"
-        @response="${this.handleRosterResponse}"
-        @last-response-changed="${this.queryResponseRosterEvent}"
+        on-response="handleRosterResponse"
+        last-response="{{queryResponse}}"
       ></iron-ajax>
-      ${this.activeCourse
-        ? html`
-            <lrnsys-dialog
-              tabindex="-1"
-              id="details-dialog"
-              body-append
-              header="${this.activeCourse.name}"
+      <lrnsys-dialog
+        tabindex="-1"
+        id="details-dialog"
+        body-append
+        header="{{activeCourse.name}}"
+      >
+        <div slot="content">
+          <template is="dom-if" if="{{!roster}}">
+            <div id="loadingRoster" class="loading">
+              <h3>Loading..</h3>
+              <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+            </div>
+          </template>
+        </div>
+        <div slot="header">
+          <template is="dom-if" if="{{roster}}">
+            <template is="dom-if" if="{{activeCourse.image}}">
+              <iron-image
+                style="width:100%; height:200px; background-color: lightgray;"
+                sizing="cover"
+                preload
+                fade
+                src$="{{activeCourse.image}}"
+              ></iron-image>
+            </template>
+            <span class="heading">
+              <span>Student count: {{activeCourse.student_count}}</span>
+              <span>SIS ID: {{activeCourse.sis_course_id}}</span>
+              <span>Term: {{activeCourse.term}}</span>
+              <span>Workflow: {{activeCourse.workflow_state}}</span>
+            </span>
+          </template>
+        </div>
+        <div id="loadingContent" slot="content">
+          <template is="dom-repeat" items="[[_toArray(roster)]]" as="roleList">
+            <h2>{{roleList.role}}s</h2>
+            <template
+              is="dom-repeat"
+              items="[[_toArray(roleList.users)]]"
+              as="user"
             >
-              <div slot="content">
-                ${!this.roster
-                  ? html`
-                      <div id="loadingRoster" class="loading">
-                        <h3>Loading..</h3>
-                        <elmsln-loading
-                          color="grey-text"
-                          size="large"
-                        ></elmsln-loading>
-                      </div>
-                    `
-                  : ``}
+              <div class="avatar-name" id$="user-{{user.id}}">
+                <lrndesign-avatar
+                  label$="{{user.name}}"
+                  src$="{{user.picture}}"
+                ></lrndesign-avatar>
               </div>
-              <div slot="header">
-                ${this.roster
-                  ? html`
-                      ${this.activeCourse.image
-                        ? html`
-                            <iron-image
-                              style="width:100%; height:200px; background-color: lightgray;"
-                              sizing="cover"
-                              preload
-                              fade
-                              src="${this.activeCourse.image}"
-                            ></iron-image>
-                          `
-                        : ``}
-                      <span class="heading">
-                        <span
-                          >Student count:
-                          ${this.activeCourse.student_count}</span
-                        >
-                        <span>SIS ID: ${this.activeCourse.sis_course_id}</span>
-                        <span>Term: ${this.activeCourse.term}</span>
-                        <span
-                          >Workflow: ${this.activeCourse.workflow_state}</span
-                        >
-                      </span>
-                    `
-                  : ``}
-              </div>
-              <div id="loadingContent" slot="content">
-                ${this._toArray(this.roster).map(
-                  roleList => html`
-                    <h2>${roleList.role}s</h2>
-                    ${this._toArray(roleList.users).map(
-                      user => html`
-                        <div class="avatar-name" id="user-${user.id}">
-                          <lrndesign-avatar
-                            label="${user.name}"
-                            src="${user.picture}"
-                          ></lrndesign-avatar>
-                        </div>
-                        <simple-tooltip for="user-${user.id}"
-                          >${user.name}</simple-tooltip
-                        >
-                      `
-                    )}
-                  `
-                )}
-              </div>
-            </lrnsys-dialog>
-          `
-        : ``}
+              <paper-tooltip for$="user-{{user.id}}"
+                >{{user.name}}</paper-tooltip
+              >
+            </template>
+          </template>
+        </div>
+      </lrnsys-dialog>
     `;
-  }
-  queryResponseEvent(e) {
-    this.queryResponse = { ...e.detail.value };
-  }
-  queryResponseRosterEvent(e) {
-    this.queryResponseRoster = { ...e.detail.value };
-  }
-  _filterWorkflowChanged(e) {
-    this._filterWorkflow = e.detail.value;
-  }
-  _filterCourseEvent(e) {
-    this._filterCourse = e.detail.value;
-  }
-  filterELMSLNCourseEvent(e) {
-    this._filterELMSLNCourse = e.detail.value;
-  }
-  _filterTermEvent(e) {
-    this._filterTerm = e.detail.value;
-  }
-  _filterSISChanged(e) {
-    this._filterSIS = e.detail.value;
   }
   static get tag() {
     return "lrnapp-canvas-listing";
   }
   static get properties() {
     return {
-      _filterWorkflow: {
-        type: String
-      },
-      _filterSIS: {
-        type: String
-      },
-      _filterCourse: {
-        type: String
-      },
-      _filterTerm: {
-        type: String
-      },
-      _filterELMSLNCourse: {
-        type: String
-      },
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
+      },
+      elmslnCourses: {
+        type: Array,
+        notify: true
       },
       canvasCourses: {
-        type: Array
+        type: Array,
+        notify: true
       },
       roster: {
-        type: Array
+        type: Array,
+        notify: true,
+        value: false
       },
       queryResponse: {
-        type: Object
-      },
-      queryResponseRoster: {
-        type: Object
+        type: Array,
+        notify: true
       },
       sourcePath: {
         type: String,
-        attribute: "source-path"
+        notify: true
       },
       activeCourse: {
         type: String,
-        reflect: true,
-        attribute: "active-course"
+        notify: true,
+        reflectToAttribute: true
       }
     };
-  }
-  constructor() {
-    super();
-    this.roster = [];
-    this.elmslnCourses = [];
-    this.canvasCourses = [];
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = [
-        "activeCourse",
-        "sourcePath",
-        "queryResponse",
-        "roster",
-        "canvasCourses",
-        "elmslnCourses"
-      ];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
   }
   /**
    * Simple way to convert from object to array.
@@ -551,17 +457,20 @@ class LrnappCanvasListing extends LitElement {
     this.querySelector("#request").generateRequest();
     this.querySelector("#loadingContent").style.display = "none";
   }
-  handleResponse(e) {
+  handleResponse() {
     this.elmslnCourses = this.queryResponse.data.elmslnCourses;
     this.canvasCourses = this.queryResponse.data.canvasCourses;
-    this.querySelector("#loading").hidden = true;
+    this.$.loading.hidden = true;
   }
-  handleRosterResponse(e) {
-    this.roster = this.queryResponseRoster.data;
+  handleRosterResponse() {
+    this.roster = this.queryResponse.data;
     this.querySelector("#loadingContent").style.display = "block";
   }
-  createRenderRoot() {
-    return this;
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   }
 }
 window.customElements.define(LrnappCanvasListing.tag, LrnappCanvasListing);

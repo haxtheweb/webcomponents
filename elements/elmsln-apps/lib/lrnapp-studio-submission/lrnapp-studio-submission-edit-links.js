@@ -1,18 +1,16 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
-class LrnappStudioSubmissionEditLinks extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditLinks extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
@@ -40,32 +38,27 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
           width: 50vmax;
           padding: 1em;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      ${this.links.map(
-        (link, index) => html`
-          <div class="item">
-            <div class="info">
-              <div class="linksfield__url">${link.url}</div>
-            </div>
-            <div class="linksfield__actions">
-              <paper-icon-button
-                icon="delete"
-                class="linksfield__delete"
-                data-index="${index}"
-                @click="${this._deleteLink}"
-              ></paper-icon-button>
-            </div>
+      </style>
+
+      <template is="dom-repeat" items="{{links}}" as="link">
+        <div class="item">
+          <div class="info">
+            <div class="linksfield__url">{{link.url}}</div>
           </div>
-        `
-      )}
+          <div class="linksfield__actions">
+            <paper-icon-button
+              icon="delete"
+              class="linksfield__delete"
+              data-index\$="{{index}}"
+              on-click="_deleteLink"
+            ></paper-icon-button>
+          </div>
+        </div>
+      </template>
       <lrnapp-studio-submission-edit-add-asset
         icon="link"
         display="pill"
-        @click="${this._openDialog}"
+        on-click="_openDialog"
       ></lrnapp-studio-submission-edit-add-asset>
 
       <paper-dialog id="dialog">
@@ -75,22 +68,19 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
             id="link-input"
             class="input"
             label="URL"
-            value="${this.newlink}"
-            @value-changed="${this.newlinkEvent}"
+            value="{{newlink}}"
           ></paper-input>
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" @click="${this._createLink}"
+          <paper-button dialog-confirm="" on-click="_createLink"
             >Add Link</paper-button
           >
         </div>
       </paper-dialog>
     `;
   }
-  newlinkEvent(e) {
-    this.newlink = e.detail.value;
-  }
+
   static get tag() {
     return "lrnapp-studio-submission-edit-links";
   }
@@ -98,53 +88,35 @@ class LrnappStudioSubmissionEditLinks extends LitElement {
   static get properties() {
     return {
       links: {
-        type: Array
+        type: Array,
+        value: null,
+        notify: true
       },
       newlink: {
-        type: String
+        type: String,
+        value: ""
       }
     };
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ["links"];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
-  constructor() {
-    super();
-    this.newlink = "";
-    this.links = [];
-  }
+
   _openDialog() {
     // @todo switch to singleton
-    this.shadowRoot.querySelector("#dialog").open();
+    this.$.dialog.open();
   }
 
   _createLink(e) {
     var links = this.links;
     if (links === null) {
-      this.links = [];
+      this.set("links", []);
     }
-    this.links.push({ url: this.newlink });
+    this.push("links", { url: this.newlink });
     this.newlink = "";
   }
 
   _deleteLink(e) {
-    var deleteIndex = e.target.getAttribute("data-index");
-    this.links.splice(deleteIndex, 1);
+    var normalizedEvent = dom(e);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    this.splice("links", deleteIndex, 1);
   }
 }
 window.customElements.define(

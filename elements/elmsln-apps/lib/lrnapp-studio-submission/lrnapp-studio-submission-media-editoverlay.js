@@ -1,14 +1,13 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-ripple/paper-ripple.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
-class LrnappStudioSubmissionMediaEditoverlay extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: flex;
           align-items: stretch;
@@ -49,41 +48,34 @@ class LrnappStudioSubmissionMediaEditoverlay extends LitElement {
           width: 50vmax;
           padding: 1em;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <div class="wrapper">
         <slot></slot>
         <div class="actions">
-          ${this.embedcode
-            ? html`
-                <paper-icon-button
-                  icon="code"
-                  class="embed"
-                  @click="${this._embedClicked}"
-                ></paper-icon-button>
-              `
-            : ``}
+          <template is="dom-if" if="[[embedcode]]">
+            <paper-icon-button
+              icon="code"
+              class="embed"
+              on-click="_embedClicked"
+            ></paper-icon-button>
+          </template>
           <paper-icon-button
             icon="delete"
             class="delete"
-            @click="${this._deleteClicked}"
+            on-click="_deleteClicked"
           ></paper-icon-button>
+          <paper-ripple></paper-ripple>
         </div>
       </div>
-      ${this.embedcode
-        ? html`
-            <paper-dialog id="dialog">
-              <h2>Embed Code</h2>
-              <p>Paste this into the text area and your image will appear.</p>
-              <paper-dialog-scrollable>
-                <pre>${this.embedcode}</pre>
-              </paper-dialog-scrollable>
-            </paper-dialog>
-          `
-        : ``}
+      <template is="dom-if" if="[[embedcode]]">
+        <paper-dialog id="dialog">
+          <h2>Embed Code</h2>
+          <p>Paste this into the text area and your image will appear.</p>
+          <paper-dialog-scrollable>
+            <pre>{{embedcode}}</pre>
+          </paper-dialog-scrollable>
+        </paper-dialog>
+      </template>
     `;
   }
   static get tag() {
@@ -97,6 +89,7 @@ class LrnappStudioSubmissionMediaEditoverlay extends LitElement {
     };
   }
   _embedClicked(e) {
+    // @todo switch to singleton
     this.shadowRoot.querySelector("#dialog").open();
   }
   _deleteClicked(e) {

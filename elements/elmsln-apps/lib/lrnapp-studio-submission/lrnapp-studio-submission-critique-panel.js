@@ -1,15 +1,13 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/marked-element/marked-element.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "./lrnapp-studio-block.js";
 import "./lrnapp-studio-submission-edit-textarea.js";
-class LrnappStudioSubmissionCritiquePanel extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionCritiquePanel extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
@@ -38,18 +36,13 @@ class LrnappStudioSubmissionCritiquePanel extends LitElement {
           lrnapp-studio-block {
           padding: 0;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <!-- Body -->
       <div class="field">
         <div class="submission-critique-outline">
           <lrnapp-studio-block title="Directions" icon="info-outline">
             <marked-element
-              markdown="${this.submission.relationships.assignment.attributes
-                .critiqueOutline}"
+              markdown="[[submission.relationships.assignment.attributes.critiqueOutline]]"
             ></marked-element>
           </lrnapp-studio-block>
         </div>
@@ -57,60 +50,50 @@ class LrnappStudioSubmissionCritiquePanel extends LitElement {
           class="submission-critique-outline submission-critique-outline--feedback"
         >
           <lrnapp-studio-block title="Feedback" icon="communication:comment">
-            ${this.edit
-              ? html`
-                  <lrnapp-studio-submission-edit-textarea
-                    content="${this.submission.attributes.body}"
-                    @content-changed="${this.submissionAttributesBody}"
-                  ></lrnapp-studio-submission-edit-textarea>
-                `
-              : html`
-                  <marked-element
-                    markdown="${this.submission.attributes.body}"
-                    @markdown-changed="${this.submissionAttributesBody}"
-                  ></marked-element>
-                `}
+            <template is="dom-if" if="[[edit]]">
+              <lrnapp-studio-submission-edit-textarea
+                content="{{submission.attributes.body}}"
+              ></lrnapp-studio-submission-edit-textarea>
+            </template>
+            <template is="dom-if" if="[[!edit]]">
+              <marked-element
+                markdown="{{submission.attributes.body}}"
+              ></marked-element>
+            </template>
           </lrnapp-studio-block>
         </div>
       </div>
-      ${this.edit
-        ? html`
-            <div class="actions">
-              <lrnsys-button
-                id="publish"
-                icon="check"
-                label="Publish Feedback"
-                @click="${this._publishClicked}"
-                hover-class="amber lighten-5 green-text text-darken-4"
-                icon-class="green-text"
-              ></lrnsys-button>
-              <lrnsys-button
-                id="save-draft"
-                icon="drafts"
-                label="Save Draft"
-                @click="${this._saveDraftClicked}"
-                hover-class="amber lighten-5 amber-text text-darken-4"
-                icon-class="amber-text text-darken-4"
-              ></lrnsys-button>
-              <span class="spacer"></span>
-              <lrnsys-button
-                id="delete"
-                label="Delete Feedback"
-                icon="delete"
-                @click="${this._deleteClicked}"
-                hover-class="amber lighten-5 red-text"
-                icon-class="red-text text-darken-4"
-              >
-              </lrnsys-button>
-            </div>
-          `
-        : ``}
+      <template is="dom-if" if="[[edit]]">
+        <div class="actions">
+          <lrnsys-button
+            id="publish"
+            icon="check"
+            label="Publish Feedback"
+            on-click="_publishClicked"
+            hover-class="amber lighten-5 green-text text-darken-4"
+            icon-class="green-text"
+          ></lrnsys-button>
+          <lrnsys-button
+            id="save-draft"
+            icon="drafts"
+            label="Save Draft"
+            on-click="_saveDraftClicked"
+            hover-class="amber lighten-5 amber-text text-darken-4"
+            icon-class="amber-text text-darken-4"
+          ></lrnsys-button>
+          <span class="spacer"></span>
+          <lrnsys-button
+            id="delete"
+            label="Delete Feedback"
+            icon="delete"
+            on-click="_deleteClicked"
+            hover-class="amber lighten-5 red-text"
+            icon-class="red-text text-darken-4"
+          >
+          </lrnsys-button>
+        </div>
+      </template>
     `;
-  }
-  submissionAttributesBody(e) {
-    let attr = this.submission.attributes;
-    attr.body = e.detail.value;
-    this.submission.attributes = { ...attr };
   }
   static get tag() {
     return "lrnapp-studio-submission-critique-panel";
@@ -118,36 +101,19 @@ class LrnappStudioSubmissionCritiquePanel extends LitElement {
   static get properties() {
     return {
       submission: {
-        type: Object
+        type: Object,
+        notify: true
       },
       edit: {
         type: Boolean,
-        reflect: true
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
-  constructor() {
-    super();
-    this.edit = false;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "submission") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("submission-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
   _publishClicked(e) {
-    let attr = this.submission.attributes;
-    attr.state = "submission_ready";
-    this.submission.attributes = { ...attr };
+    this.set("submission.attributes.state", "submission_ready");
+    this.notifyPath("submission.attributes.state");
     this.dispatchEvent(
       new CustomEvent("submissionPublishClicked", {
         bubbles: true,
@@ -158,9 +124,8 @@ class LrnappStudioSubmissionCritiquePanel extends LitElement {
     );
   }
   _saveDraftClicked(e) {
-    let attr = this.submission.attributes;
-    attr.state = "submission_in_progress";
-    this.submission.attributes = { ...attr };
+    this.set("submission.attributes.state", "submission_in_progress");
+    this.notifyPath("submission.attributes.state");
     this.dispatchEvent(
       new CustomEvent("submissionSaveDraftClicked", {
         bubbles: true,

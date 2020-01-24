@@ -1,24 +1,17 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lrnapp-studio-submission-editbar-message.js";
-class LrnappStudioSubmissionEditbar extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditbar extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      <simple-tooltip position="top" animation-delay="0" offset="-20">
+      </style>
+      <paper-tooltip position="top" animation-delay="0" offset="-20">
         <slot name="lrnapp-studio-submission-editbar-message"></slot>
-      </simple-tooltip>
+      </paper-tooltip>
       <slot></slot>
     `;
   }

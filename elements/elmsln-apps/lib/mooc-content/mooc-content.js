@@ -1,24 +1,19 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-
-const makeSlot = name => {
-  const slot = document.createElement("slot");
-  if (name) {
-    slot.name = name;
-  }
-  return slot;
-};
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
  * A LRN element
@@ -32,307 +27,198 @@ const makeSlot = name => {
  * - bar - the underlayed bar that's tracking overall progression
  * - author mode - authoring mode
  */
-class MoocContent extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
-        :host {
-          display: block;
-          font-size: 16px;
-          box-sizing: content-box;
-        }
-        #content[data-loading] {
-          opacity: 0.2 !important;
-          pointer-events: none;
-        }
-        #content {
-          opacity: 1;
-          visibility: visible;
-          transition: all 0.4s ease;
-        }
-      `
-    ];
-  }
-  /**
-   * HTMLElement
-   */
-  constructor() {
-    super();
-    this.__modal = window.SimpleModal.requestAvailability();
-    this.requestParams = {
-      node: null
-    };
-    this.pageData = {};
-    this.outlineData = {};
-    this.resetScroll = false;
-    this.responseData = {};
-    this.loading = false;
-    this.activeNodeItem = null;
-    this.shadowRoot.appendChild(makeSlot("outlinemodal"));
-    this.shadowRoot.appendChild(makeSlot("navigation"));
-    this.shadowRoot.appendChild(makeSlot("options"));
-    this.shadowRoot.appendChild(makeSlot("outline"));
-    this.shadowRoot.appendChild(makeSlot("content"));
-    this.shadowRoot.appendChild(makeSlot("blocks"));
-  }
-  /**
-   * HTMLElement
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.removedNodes.forEach(node => {
-          if (node.nodeType !== Node.COMMENT_NODE) {
-            this.appendChild(node);
-          }
-        });
-      });
-    });
-    this.observer.observe(this, {
-      childList: true
-    });
-  }
-  /**
-   * LitElement shadow root thing
-   */
-  createRenderRoot() {
-    this.attachShadow({ mode: "open" });
-    return this;
-  }
-  /**
-   * LitElement render
-   */
-  render() {
+class MoocContent extends PolymerElement {
+  static get template() {
     return html`
-      <div id="hackycontainer"><style id="hackycsspotterhates"></style></div>
-      <iron-ajax
-        id="fulloutlinepath"
-        url="${this.fullOutlinePath}"
-        handle-as="json"
-        @response="${this.handleOutlineResponse}"
-        @last-response-changed="${this.outlineDataChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        id="pageajax"
-        .params="${this.requestParams}"
-        url="${this.sourcePath}"
-        handle-as="json"
-        @response="${this.handleResponse}"
-        @last-response-changed="${this.pageDataChanged}"
-        loading="${this._loading}"
-        @loading-changed="${this._loadingChanged}"
-      ></iron-ajax>
-      <app-location
-        route="${this.route}"
-        @route-changed="${this.routeChangedEvent}"
-        .query-params="${this.queryParams}"
-        @query-params-changed="${this.queryParamsChanged}"
-      ></app-location>
-      <app-route
-        route="${this.route}"
-        @route-changed="${this.routeChangedEvent}"
-        pattern="${this.endPoint}/:type/:id"
-        data="${this.data}"
-        @data-changed="${this.dataChanged}"
-        tail="${this.tail}"
-        @tail-changed="${this.tailChanged}"
-        .query-params="${this.queryParams}"
-        @query-params-changed="${this.queryParamsChanged}"
-      >
-      </app-route>
-      <main id="etb-tool-nav" data-offcanvas="">
-        <div id="anchor"></div>
-        <div class="inner-wrap">
-          <section class="main-section etb-book" style="min-height: 318px;">
-            <h2 class="element-invisible">Content navigation</h2>
-            <div class="r-header row">
-              <div class="r-header__left">
-                <div
-                  class="book-navigation-header book-sibling-nav-container book-navigation-header-2"
-                >
-                  <div
-                    class="book-navigation-header book-sibling-nav-container"
-                  >
-                    <lrnsys-dialog
-                      id="outlinepopover"
-                      data-voicecommand="open outline"
-                      label="Outline"
-                      header="Outline"
-                    >
-                      <span slot="button">
-                        <iron-icon icon="explore"></iron-icon>
-                        Outline
-                      </span>
-                      <div
-                        class="elmsln-modal-content"
-                        id="block-mooc-helper-mooc-helper-toc-nav-modal"
-                      >
-                        <div id="outlinemodal" @click="${this._modalTap}">
-                          <slot name="outlinemodal"></slot>
-                        </div>
-                      </div>
-                    </lrnsys-dialog>
-                    <div id="navigation"><slot name="navigation"></slot></div>
-                  </div>
+    <style include="materializecss-styles">
+      :host {
+        display: block;
+        font-size: 16px;
+        box-sizing: content-box;
+      }
+      #content[data-loading] {
+        opacity: .2 !important;
+        pointer-events: none;
+      }
+      #content {
+        opacity: 1;
+        visibility: visible;
+        transition: all .4s ease;
+      }
+    </style>
+    <div id="hackycontainer"><style id="hackycsspotterhates"></style></div>
+    <iron-ajax
+      id="fulloutlinepath"
+      url="[[fullOutlinePath]]"
+      handle-as="json"
+      on-response="handleOutlineResponse"
+      last-response="{{outlineData}}"></iron-ajax>
+    <iron-ajax
+      id="pageajax"
+      params="[[requestParams]]"
+      url="[[sourcePath]]"
+      handle-as="json"
+      on-response="handleResponse"
+      last-response="{{pageData}}"
+      loading="{{_loading}}"></iron-ajax>
+    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/:type/:id"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}">
+    </app-route>
+    <main id="etb-tool-nav" data-offcanvas="">
+      <div id="anchor"></div>
+      <div class="inner-wrap">
+        <section class="main-section etb-book" style="min-height: 318px;">
+          <h2 class="element-invisible">Content navigation</h2>
+          <div class="r-header row">
+            <div class="r-header__left">
+              <div class="book-navigation-header book-sibling-nav-container book-navigation-header-2">
+                <div class="book-navigation-header book-sibling-nav-container">
+                  <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" label="Outline" header="Outline">
+                    <span slot="button">
+                      <iron-icon icon="explore"></iron-icon>
+                      Outline
+                    </span>
+                    <div class="elmsln-modal-content" id="block-mooc-helper-mooc-helper-toc-nav-modal">
+                      <div id="outlinemodal" on-click="_modalTap"><slot name="outlinemodal"></slot></div>
+                    </div>
+                  </lrnsys-dialog>
+                  <div id="navigation"><slot name="navigation"></slot></div>
                 </div>
               </div>
-              <div id="options" class="r-header__right">
-                <slot name="options"></slot>
+            </div>
+            <div id="options" class="r-header__right">
+              <slot name="options"></slot>
+            </div>
+          </div>
+          <div class="elmsln-content-wrap" role="main">
+          <responsive-grid-row gutter="4">
+            <responsive-grid-col xl="3" lg="3" md="3" sm="4" xs="12">
+              <section id="block-mooc-nav-block-mooc-nav-nav" class="mooc-nav-block-left block block-mooc-nav-block contextual-links-region block-mooc-nav-block-mooc-nav column" role="navigation" aria-label$="[[outlineTitle]]">
+                <div class="block-mooc-nav-block-mooc-title black white-text">[[outlineTitle]]</div>
+                <div id="outline"><slot name="outline"></slot></div>
+              </section>
+              <div id="blocks"><slot name="blocks"></slot></div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="8" lg="8" md="9" sm="7" xs="12">
+              <a id="main-content" class="scrollspy" data-scrollspy="scrollspy"></a>
+              <div class="column">
+                <div id="content" data-loading$="[[loading]]"><slot name="content"></slot></div>
               </div>
-            </div>
-            <div class="elmsln-content-wrap" role="main">
-              <responsive-grid-row gutter="4">
-                <responsive-grid-col xl="3" lg="3" md="3" sm="4" xs="12">
-                  <section
-                    id="block-mooc-nav-block-mooc-nav-nav"
-                    class="mooc-nav-block-left block block-mooc-nav-block contextual-links-region block-mooc-nav-block-mooc-nav column"
-                    role="navigation"
-                    aria-label="${this.outlineTitle}"
-                  >
-                    <div
-                      class="block-mooc-nav-block-mooc-title black white-text"
-                    >
-                      ${this.outlineTitle}
-                    </div>
-                    <div id="outline"><slot name="outline"></slot></div>
-                  </section>
-                  <div id="blocks"><slot name="blocks"></slot></div>
-                </responsive-grid-col>
-                <responsive-grid-col xl="8" lg="8" md="9" sm="7" xs="12">
-                  <a
-                    id="main-content"
-                    class="scrollspy"
-                    data-scrollspy="scrollspy"
-                  ></a>
-                  <div class="column">
-                    <div id="content" ?data-loading="${this.loading}">
-                      <slot name="content"></slot>
-                    </div>
-                  </div>
-                </responsive-grid-col>
-              </responsive-grid-row>
-            </div>
-          </section>
-          <a class="exit-off-canvas"></a>
-        </div>
-      </main>
-    `;
-  }
-  tailChanged(e) {
-    this.tail = e.detail.value;
-  }
-  dataChanged(e) {
-    this.data = e.detail.value;
-  }
-  queryParamsChanged(e) {
-    this.queryParams = e.detail.value;
-  }
-  routeChangedEvent(e) {
-    this.route = e.detail.value;
-  }
-  outlineDataChanged(e) {
-    this.outlineData = e.detail.value;
-  }
-  _loadingChanged(e) {
-    this._loading = e.detail.value;
-  }
-  pageDataChanged(e) {
-    this.pageData = e.detail.value;
+            </responsive-grid-col>
+          </responsive-grid-row>
+        </section>
+        <a class="exit-off-canvas"></a>
+      </div>
+    </main>`;
   }
   static get tag() {
     return "mooc-content";
   }
+  static get observers() {
+    return ["_routeChanged(data, route, endPoint)"];
+  }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       /**
        * Source of data
        */
       sourcePath: {
-        type: String,
-        attribute: "source-path"
+        type: String
       },
       /**
        * Full outline path
        */
       fullOutlinePath: {
-        type: String,
-        attribute: "full-outline-path"
+        type: String
       },
       /**
        * App route tracking.
        */
       route: {
-        type: Object
+        type: Object,
+        notify: true
       },
       /**
        * Title for the content
        */
       currentTitle: {
-        type: String,
-        attribute: "current-title"
+        type: String
       },
       /**
        * Params for the request for outline/book to load.
        */
       requestParams: {
-        type: Object
+        type: Object,
+        notify: true,
+        value: {
+          node: null
+        }
       },
       /**
        * Returned data for processing.
        */
       pageData: {
-        type: Object
+        type: Object,
+        value: {}
       },
       /**
        * Returned data for processing.
        */
       outlineData: {
-        type: Object
+        type: Object,
+        value: {}
       },
       /**
        * Ensure scrolling doesn't influence during a transition.
        */
       resetScroll: {
         type: Boolean,
-        attribute: "reset-scroll"
+        value: false
       },
       /**
        * Store current page data.
        */
       responseData: {
-        type: Object
+        type: Object,
+        value: {}
+      },
+      /**
+       * BasePath from drupal
+       */
+      basePath: {
+        type: String
+      },
+      /**
+       * elmslnCourse from drupal
+       */
+      elmslnCourse: {
+        type: String
       },
       /**
        * nav title
        */
       outlineTitle: {
-        type: String,
-        attribute: "outline-title"
+        type: String
       },
       /**
        * Node ID
@@ -344,14 +230,16 @@ class MoocContent extends LitElement {
        * loading pegged to the ajax call running
        */
       _loading: {
-        type: Boolean
+        type: Boolean,
+        observer: "_contentLoading"
       },
       /**
        * loading pegged to the ajax call running
        */
       loading: {
         type: Boolean,
-        reflect: true
+        reflectToAttribute: true,
+        value: false
       },
       /**
        * Aliases
@@ -363,48 +251,17 @@ class MoocContent extends LitElement {
        * active item for tracking reference after clicks.
        */
       activeNodeItem: {
-        type: Object
+        type: Object,
+        value: null
       }
     };
-  }
-  /**
-   * LitElement properties changed
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (["data", "route", "endPoint"].includes(propName)) {
-        this._routeChanged(this.data, this.route, this.endPoint);
-      }
-      if (propName === "route") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("route-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName === "requestParams") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("request-params-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName === "_loading") {
-        this._contentLoading(this[propName], oldValue);
-      }
-    });
   }
   /**
    * Ensure modal is closed on tap of an item.
    */
   _modalTap(e) {
-    var local = e.target;
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
     // verify that it is a buttonß
     if (local.tagName === "LRNSYS-BUTTON") {
       if (this.activeNodeItem != null) {
@@ -412,22 +269,23 @@ class MoocContent extends LitElement {
       }
       this.activeNodeItem = local;
       this.activeNodeItem.classList.add("book-menu-item-active");
-      this.shadowRoot.querySelector("#outlinepopover").toggleDialog();
+      this.$.outlinepopover.toggleDialog();
     }
   }
   /**
    * Notice loading state has changed.
    */
   _contentLoading(newValue, oldValue) {
+    var _this = this;
     if (
       (typeof newValue === "undefined" ? "undefined" : typeof newValue) !==
         (typeof undefined === "undefined" ? "undefined" : typeof undefined) &&
       !newValue
     ) {
-      setTimeout(() => {
-        this.loading = false;
-        this._resetScroll("anchor");
-        this.shadowRoot.querySelector("#main-content").focus();
+      setTimeout(function() {
+        _this.loading = false;
+        _this._resetScroll("anchor");
+        _this.$["main-content"].focus();
       }, 500);
     } else {
       this.loading = true;
@@ -448,16 +306,14 @@ class MoocContent extends LitElement {
         typeof data.ops.redirect !==
         (typeof undefined === "undefined" ? "undefined" : typeof undefined)
       ) {
-        this.route.path = data.ops.redirect;
+        this.set("route.path", data.ops.redirect);
         this._routeChanged(this.data, this.route, this.endPoint);
       } else {
         this.outlineTitle = data.bookOutline.subject;
-        this.shadowRoot.querySelector("#content").innerHTML = data.content;
-        this.shadowRoot.querySelector("#navigation").innerHTML =
-          data.topNavigation;
-        this.shadowRoot.querySelector("#outline").innerHTML =
-          data.bookOutline.content;
-        this.shadowRoot.querySelector("#options").innerHTML = data.options;
+        this.$.content.innerHTML = data.content;
+        this.$.navigation.innerHTML = data.topNavigation;
+        this.$.outline.innerHTML = data.bookOutline.content;
+        this.$.options.innerHTML = data.options;
         // inject styles, destroying previous ones
         this.__injectStyle(data.styles);
         // fire drupal behaviors.. this is evil. Polymer is invoking Drupal behaviors..
@@ -469,9 +325,11 @@ class MoocContent extends LitElement {
           typeof this.outlineData.data ===
           (typeof undefined === "undefined" ? "undefined" : typeof undefined)
         ) {
-          this.shadowRoot.querySelector("#fulloutlinepath").generateRequest();
+          this.$.fulloutlinepath.generateRequest();
         }
-        window.dispatchEvent(new Event("resize"));
+        microTask.run(() => {
+          window.dispatchEvent(new Event("resize"));
+        });
       }
     }
   }
@@ -485,18 +343,17 @@ class MoocContent extends LitElement {
       (typeof data === "undefined" ? "undefined" : typeof data) !==
       (typeof undefined === "undefined" ? "undefined" : typeof undefined)
     ) {
-      this.shadowRoot.querySelector("#outlinemodal").innerHTML = data.outline;
+      this.$.outlinemodal.innerHTML = data.outline;
       this.aliases = data.aliases;
     }
   }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    if (window.Drupal) {
-      window.Drupal.attachBehaviors(document, window.Drupal.settings);
-    }
-    this.observer.disconnect();
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      if (window.Drupal) {
+        window.Drupal.attachBehaviors(document, window.Drupal.settings);
+      }
+    });
   }
   /**
    * If the current route is outside the scope of our app then allow
@@ -524,7 +381,7 @@ class MoocContent extends LitElement {
           // trigger change if data location changed
           this.requestParams.node = this.nid;
           // send request out the door to the actual end point
-          this.shadowRoot.querySelector("#pageajax").generateRequest();
+          this.$.pageajax.generateRequest();
           // if open, close this
           if (this.__modal && this.__modal.opened) {
             window.dispatchEvent(
@@ -548,7 +405,7 @@ class MoocContent extends LitElement {
         this.nid = this.aliases[urlAlias].replace("node/", "");
         // trigger change if data location changed
         this.requestParams.node = this.nid;
-        this.shadowRoot.querySelector("#pageajax").generateRequest();
+        this.$.pageajax.generateRequest();
         // if this is open, close it
         if (this.__modal && this.__modal.opened) {
           window.dispatchEvent(
@@ -565,8 +422,8 @@ class MoocContent extends LitElement {
       else if (urlAlias == "") {
         this.requestParams.node = this.nid;
         // ensure that we don't see this again
-        this.route.path = "/" + this.elmslnCourse + "/node/" + this.nid;
-        this.shadowRoot.querySelector("#pageajax").generateRequest();
+        this.set("route.path", "/" + this.elmslnCourse + "/node/" + this.nid);
+        this.$.pageajax.generateRequest();
         return;
       }
     }
@@ -577,6 +434,10 @@ class MoocContent extends LitElement {
       window.location.reload();
     }
   }
+  ready() {
+    super.ready();
+    this.__modal = window.SimpleModal.requestAvailability();
+  }
   /**
    * Reset scroll position visually and internally data wise.
    */
@@ -586,9 +447,7 @@ class MoocContent extends LitElement {
         ? arguments[0]
         : "anchor";
     this.resetScroll = true;
-    this.shadowRoot
-      .querySelector("#" + item)
-      .scrollIntoView({ block: "nearest", behavior: "smooth" });
+    this.$[item].scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
   /**
    * Simple way to convert from object to array.
@@ -612,8 +471,8 @@ class MoocContent extends LitElement {
    */
   __injectStyle(style) {
     // target and wipe our id area by force
-    if (this.shadowRoot.querySelector("#hackycsspotterhates") != null) {
-      this.shadowRoot.querySelector("#hackycontainer").innerHTML = "";
+    if (this.$.hackycsspotterhates != null) {
+      dom(this.$.hackycontainer).innerHTML = "";
     }
     // construct a new style tag and inject it overtop of what was there previously
     var customStyle = document.createElement("style", "custom-style");
@@ -621,7 +480,13 @@ class MoocContent extends LitElement {
     // inject our styles
     customStyle.textContent = style;
     // we have now successfully ruined something encapsulated and once beautiful
-    this.shadowRoot.querySelector("#hackycontainer").appendChild(customStyle);
+    dom(this.$.hackycontainer).appendChild(customStyle);
+  }
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   }
 }
 window.customElements.define(MoocContent.tag, MoocContent);

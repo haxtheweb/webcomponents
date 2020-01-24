@@ -1,17 +1,9 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icon/iron-icon.js";
-class LrnappStudioBlock extends LitElement {
-  constructor() {
-    super();
-    this.title = null;
-    this.icon = null;
-  }
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioBlock extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           font-size: 12px;
@@ -36,16 +28,12 @@ class LrnappStudioBlock extends LitElement {
           font-style: none;
           font-size: inherit;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <div class="studio-block__header">
         <div class="studio-block__icon-wrapper">
-          <iron-icon icon="${this.icon}" ?hidden="${!this.icon}"></iron-icon>
+          <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
         </div>
-        <h3 ?hidden="${!this.title}">${this.title}</h3>
+        <h3 hidden\$="[[!title]]">[[title]]</h3>
       </div>
       <div class="studio-block__content"><slot></slot></div>
     `;
@@ -57,10 +45,12 @@ class LrnappStudioBlock extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String
+        type: String,
+        value: null
       },
-      icon: {
-        type: String
+      icons: {
+        type: String,
+        value: null
       }
     };
   }

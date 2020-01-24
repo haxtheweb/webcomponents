@@ -1,5 +1,8 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
@@ -8,13 +11,10 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
-class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: flex;
           position: relative;
@@ -44,124 +44,117 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(LitElement) {
           width: 50vmax;
           padding: 1em;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      ${this.videos.map(
-        (video, index) => html`
+      </style>
+
+      <dom-repeat items="[[videos]]" as="video">
+        <template>
           <lrnapp-studio-submission-media-editoverlay
-            @deleted="${this._videoDelete}"
-            data-index="${index}"
+            on-deleted="_videoDelete"
+            data-index\$="[[index]]"
           >
             <iframe
               class="videosfield__iframe"
-              src="${video.video_src}"
+              src$="[[video.video_src]]"
             ></iframe>
           </lrnapp-studio-submission-media-editoverlay>
-        `
-      )}
+        </template>
+      </dom-repeat>
 
       <lrnapp-studio-submission-edit-add-asset
         icon="av:video-library"
-        @click="${this._openDialog}"
+        on-click="_openDialog"
       ></lrnapp-studio-submission-edit-add-asset>
 
       <paper-dialog id="dialog">
         <h2>Add Video</h2>
         <paper-dialog-scrollable>
-          <paper-input
-            label="Video URL"
-            value="${this.newvideo}"
-            @value-changed="${this.newvideoEvent}"
-          ></paper-input>
+          <paper-input label="Video URL" value="{{newvideo}}"></paper-input>
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button dialog-dismiss="">Cancel</paper-button>
-          <paper-button dialog-confirm="" @click="${this._addVideo}"
+          <paper-button dialog-confirm="" on-click="_addImage"
             >Add Video</paper-button
           >
         </div>
       </paper-dialog>
-      ${this.videoGenerateSourceUrl
-        ? html`
-            <!-- Generate Video Source Url for preview -->
-            <iron-ajax
-              id="videourl"
-              url="${this.videoGenerateSourceUrl}"
-              method="POST"
-              .body="${this.newvideo}"
-              content-type="application/json"
-              handle-as="json"
-              @response="${this._addVideoAjax}"
-            ></iron-ajax>
-          `
-        : ``}
+
+      <template is="dom-if" if="[[videoGenerateSourceUrl]]">
+        <!-- Generate Video Source Url for preview -->
+        <iron-ajax
+          id="videoGenerateSourceUrl"
+          url="[[videoGenerateSourceUrl]]"
+          method="POST"
+          body="[[newvideo]]"
+          content-type="application/json"
+          handle-as="json"
+          on-response="_addImage"
+        ></iron-ajax>
+      </template>
     `;
   }
   static get tag() {
     return "lrnapp-studio-submission-edit-video";
   }
-  newvideoEvent(e) {
-    this.newvideo = e.detail.value;
-  }
-  constructor() {
-    super();
-    this.videos = [];
-    this.selectedPage = "0";
-    this.newvideo = "";
-    this.videoGenerateSourceUrl = this.generateUrl(
-      "/api/video/generate-source-url"
-    );
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "videos") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("videos-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
+
   static get properties() {
     return {
       videos: {
-        type: Array
+        type: Array,
+        notify: true
       },
       selectedPage: {
         type: String,
-        attribute: "selected-page"
+        value: "0"
       },
       newvideo: {
-        type: String
+        type: String,
+        value: ""
       },
       videoGenerateSourceUrl: {
         type: String,
-        attribute: "video-generate-source-url"
+        value: null
       }
     };
   }
   _openDialog(e) {
-    this.shadowRoot.querySelector("#dialog").open();
+    this.$.dialog.open();
   }
-  _addVideoAjax(e) {
-    var video_src = e.detail.response.data;
-    this.videos.push({ video_url: this.newvideo, video_src: video_src });
-    this.newvideo = "";
-  }
-  _addVideo(e) {
-    this.shadowRoot.querySelector("#videourl").generateRequest();
+
+  _addImage(e) {
+    var video_url = this.newvideo;
+    var normalizedEvent = dom(e);
+    var tagname = normalizedEvent.localTarget.tagName;
+    // find out if the component that called this function
+    // if it's the iron-ajax then that means we have what we
+    // need to add this new video to the array.
+    if (tagname === "IRON-AJAX") {
+      var video_src = e.detail.response.data;
+      // make sure we upgrade from NULL to an array if needed
+      if (Object.prototype.toString.call(this.videos) != "[object Array]") {
+        this.videos = [];
+      }
+      this.push("videos", { video_url: this.newvideo, video_src: video_src });
+      this.newvideo = "";
+    }
+    // if it wasn't iron ajax, then we need to go get the
+    // newvideo's source url from the api
+    else {
+      this.shadowRoot
+        .querySelector("#videoGenerateSourceUrl")
+        .generateRequest();
+    }
   }
 
   _videoDelete(e) {
-    var deleteIndex = e.target.getAttribute("data-index");
-    this.videos.splice(deleteIndex, 1);
+    var normalizedEvent = dom(e);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    this.splice("videos", deleteIndex, 1);
+  }
+
+  ready() {
+    super.ready();
+    const url = this.generateUrl("/api/video/generate-source-url");
+    this.set("videoGenerateSourceUrl", url);
   }
 }
 window.customElements.define(
