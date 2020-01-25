@@ -68,7 +68,7 @@ gulp.task("merge", () => {
                 : `
   //styles function
   static get styles() {
-    return  [
+    return  [...super.styles,
       ${
         packageJson.wcfactory.sharedStyles &&
         packageJson.wcfactory.sharedStyles.length > 0
