@@ -1660,29 +1660,24 @@ class A11yMediaPlayer extends SimpleColors {
         this.__preloadedDuration = html5.duration;
       });
     });
-    setTimeout(() => {
-      import("@lrnwebcomponents/simple-search/simple-search.js");
-      import("./lib/a11y-media-state-manager.js");
-      import("./lib/a11y-media-button.js");
-      import("./lib/a11y-media-transcript-cue.js");
-      import("./lib/a11y-media-youtube.js");
-      import("@polymer/paper-slider/paper-slider.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/av-icons.js");
-      import("@polymer/paper-toast/paper-toast.js");
-      import("@polymer/paper-listbox/paper-listbox.js");
-      import("@polymer/paper-input/paper-input.js");
-      import("@polymer/paper-item/paper-item.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@polymer/paper-menu-button/paper-menu-button.js");
-      import("@polymer/paper-toggle-button/paper-toggle-button.js");
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-      import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-      import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
-      setTimeout(() => {
-        window.A11yMediaStateManager.requestAvailability();
-      }, 100);
-    }, 0);
+    import("@lrnwebcomponents/simple-search/simple-search.js");
+    import("./lib/a11y-media-state-manager.js");
+    import("./lib/a11y-media-button.js");
+    import("./lib/a11y-media-transcript-cue.js");
+    import("./lib/a11y-media-youtube.js");
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/paper-toast/paper-toast.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/paper-menu-button/paper-menu-button.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
@@ -3183,6 +3178,11 @@ class A11yMediaPlayer extends SimpleColors {
         if (screenfull.enabled) root.fullscreen = screenfull.isFullscreen;
       });
     }
+  }
+  firstUpdated() {
+    setTimeout(() => {
+      window.A11yMediaStateManager.requestAvailability();
+    }, 1000);
   }
   /**
    * on a cue.onenter event scrolls the first active cue to position
