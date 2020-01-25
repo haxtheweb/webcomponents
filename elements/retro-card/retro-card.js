@@ -19,7 +19,6 @@ class RetroCard extends SimpleColors {
   static get styles() {
     return [
       ...super.styles,
-
       css`
         :host {
           display: block;

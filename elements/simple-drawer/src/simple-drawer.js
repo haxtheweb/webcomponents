@@ -28,15 +28,9 @@ window.SimpleDrawer.requestAvailability = () => {
 };
 /**
  * `simple-drawer`
- * @customElement simple-drawer
  * `a singleton drawer element`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement simple-drawer
  */
 class SimpleDrawer extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

@@ -14,7 +14,8 @@
       "js": "src/retro-card.js",
       "properties": "src/retro-card-properties.json",
       "hax": "src/retro-card-hax.json"
-    }
+    },
+    "sharedStyles": [ "...super.styles" ]
   },
   "version": "2.4.0",
   "description": "Simple card in a cool retro design",
