@@ -7,10 +7,6 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/simple-search/simple-search.js";
-import "./lib/a11y-media-state-manager.js";
-import "./lib/a11y-media-button.js";
-import "./lib/a11y-media-transcript-cue.js";
 
 /**
  * `a11y-media-player`
@@ -91,22 +87,26 @@ class A11yMediaPlayer extends SimpleColors {
         this.__preloadedDuration = html5.duration;
       });
     });
-
-    window.A11yMediaStateManager.requestAvailability();
-    import("./lib/a11y-media-youtube.js");
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-menu-button/paper-menu-button.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/simple-search/simple-search.js");
+      import("./lib/a11y-media-state-manager.js");
+      import("./lib/a11y-media-button.js");
+      import("./lib/a11y-media-transcript-cue.js");
+      import("./lib/a11y-media-youtube.js");
+      import("@polymer/paper-slider/paper-slider.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/av-icons.js");
+      import("@polymer/paper-toast/paper-toast.js");
+      import("@polymer/paper-listbox/paper-listbox.js");
+      import("@polymer/paper-input/paper-input.js");
+      import("@polymer/paper-item/paper-item.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@polymer/paper-menu-button/paper-menu-button.js");
+      import("@polymer/paper-toggle-button/paper-toggle-button.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
+      import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    }, 0);
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
@@ -562,8 +562,7 @@ class A11yMediaPlayer extends SimpleColors {
       ? this.shadowRoot.querySelector("#slider")
       : false;
     let currentTime =
-      slider &&
-      !slider.disabled && slider.dragging
+      slider && !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -1609,7 +1608,11 @@ class A11yMediaPlayer extends SimpleColors {
       });
     }
   }
-
+  firstUpdated() {
+    setTimeout(() => {
+      window.A11yMediaStateManager.requestAvailability();
+    }, 0);
+  }
   /**
    * on a cue.onenter event scrolls the first active cue to position
    * @param {event} e onenter event
