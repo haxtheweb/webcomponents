@@ -20,7 +20,6 @@ for project in */ ; do
   cd ${project}
   p="$(basename -- $project)"
   rm -rf node_modules
-  symlink-dir ../../node_modules/ node_modules/
   mkdir ../../node_modules/@lrnwebcomponents/${p}
   if [ $machine == "Cygwin" ]; then
     if [ -f "${p}.js" ]; then
