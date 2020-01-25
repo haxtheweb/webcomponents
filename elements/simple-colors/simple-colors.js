@@ -1221,7 +1221,6 @@ const SimpleColorsSuper = function(SuperClass) {
 };
 /**
  * `simple-colors`
- * @customElement simple-colors
  * a shared set of styles for `@lrnwebcomponents`
 ### Styling
 See demo of "all of the colors" (`demo/colors.html`) for styling.
@@ -1232,6 +1231,7 @@ See demo of "all of the colors" (`demo/colors.html`) for styling.
  * @demo ./demo/colors.html all of the colors
  * @demo ./demo/picker.html simple-colors-picker
  * @demo ./demo/extending.html extending simple-colors
+ * @customElement simple-colors
  */
 class SimpleColors extends SimpleColorsSuper(LitElement) {}
 window.customElements.define(SimpleColors.tag, SimpleColors);
