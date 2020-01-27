@@ -13,12 +13,14 @@ const edgeSize = 100;
 
 /**
  * `hax-body`
- * @customElement hax-body
  * `Manager of the body area that can be modified`
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
  *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
  *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
+ * @demo demo/index.html
+ * @LitElement
+ * @customElement hax-body
  */
 class HaxBody extends SimpleColors {
   /**

@@ -28,7 +28,7 @@
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}' && wca analyze \"**/*.js\" --format vscode --outFile vscode-html-custom-data.json",
     "dev": "../../node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
-    "serve": "../../node_modules/.bin/es-dev-server -c ../../es-dev-server.config.js",
+    "serve": "../../node_modules/.bin/polymer serve --npm --module-resolution=node --open --root=../../ --open-path=elements/cms-hax/demo/index.html",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
