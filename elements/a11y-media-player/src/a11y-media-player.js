@@ -7,10 +7,6 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/simple-search/simple-search.js";
-import "./lib/a11y-media-state-manager.js";
-import "./lib/a11y-media-button.js";
-import "./lib/a11y-media-transcript-cue.js";
 
 /**
  * `a11y-media-player`
@@ -159,8 +155,10 @@ class A11yMediaPlayer extends SimpleColors {
         this.__preloadedDuration = html5.duration;
       });
     });
-
-    window.A11yMediaStateManager.requestAvailability();
+    import("@lrnwebcomponents/simple-search/simple-search.js");
+    import("./lib/a11y-media-state-manager.js");
+    import("./lib/a11y-media-button.js");
+    import("./lib/a11y-media-transcript-cue.js");
     import("./lib/a11y-media-youtube.js");
     import("@polymer/paper-slider/paper-slider.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -630,8 +628,7 @@ class A11yMediaPlayer extends SimpleColors {
       ? this.shadowRoot.querySelector("#slider")
       : false;
     let currentTime =
-      slider &&
-      !slider.disabled && slider.dragging
+      slider && !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -1686,7 +1683,11 @@ class A11yMediaPlayer extends SimpleColors {
       });
     }
   }
-
+  firstUpdated() {
+    setTimeout(() => {
+      window.A11yMediaStateManager.requestAvailability();
+    }, 1000);
+  }
   /**
    * on a cue.onenter event scrolls the first active cue to position
    * @param {event} e onenter event

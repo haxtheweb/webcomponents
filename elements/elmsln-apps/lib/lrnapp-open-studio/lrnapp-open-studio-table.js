@@ -1,101 +1,42 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
-/**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-input/paper-input.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
-class LrnappOpenStudioTable extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
-        :host {
-          display: block;
-          align-content: center;
-          padding: 0.8em;
-        }
-        #loading {
-          width: 100%;
-          z-index: 1000;
-          opacity: 0.8;
-          text-align: center;
-          align-content: center;
-          justify-content: center;
-          height: 100vh;
-          position: absolute;
-          background-color: white;
-        }
-        .center-data {
-          text-align: center;
-        }
-        vaadin-grid {
-          height: 75vh;
-          font-family: Roboto, sans-serif;
-          --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
-        }
-
-        vaadin-grid .cell {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          padding-right: 56px;
-        }
-
-        vaadin-grid .cell.last {
-          padding-right: 24px;
-        }
-
-        vaadin-grid .cell.numeric {
-          text-align: right;
-        }
-
-        vaadin-grid paper-checkbox {
-          --primary-color: var(--paper-indigo-500);
-          margin: 0 24px;
-        }
-
-        vaadin-grid vaadin-grid-sorter .cell {
-          flex: 1;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        vaadin-grid vaadin-grid-sorter iron-icon {
-          transform: scale(0.8);
-        }
-
-        vaadin-grid vaadin-grid-sorter:not([direction]) iron-icon {
-          color: rgba(0, 0, 0, var(--dark-disabled-opacity));
-        }
-
-        vaadin-grid vaadin-grid-sorter[direction] {
-          color: rgba(0, 0, 0, var(--dark-primary-opacity));
-        }
-
-        vaadin-grid vaadin-grid-sorter[direction="desc"] iron-icon {
-          transform: scale(0.8) rotate(180deg);
-        }
-        vaadin-grid-sorter {
-          text-align: center;
-        }
-      `
-    ];
-  }
-  render() {
+class LrnappOpenStudioTable extends PolymerElement {
+  static get template() {
     return html`
       <custom-style>
-        <style>
-          vaadin-grid {
+        <style is="custom-style" include="materializecss-styles">
+          :host {
+            display: block;
+            align-content: center;
+            padding: 0.8em;
+          }
+          #loading {
+            width: 100%;
+            z-index: 1000;
+            opacity: 0.8;
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            height: 100vh;
+            position: absolute;
+            background-color: white;
+          }
+          .center-data {
+            text-align: center;
+          }
+          vaadin-grid#material {
+            height: 75vh;
+            font-family: Roboto, sans-serif;
+            --divider-color: rgba(0, 0, 0, var(--dark-divider-opacity));
+
             --vaadin-grid-cell: {
               padding: 0;
             }
@@ -126,10 +67,55 @@ class LrnappOpenStudioTable extends LitElement {
             }
           }
 
-          vaadin-grid vaadin-grid-sorter {
+          vaadin-grid#material .cell {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 56px;
+          }
+
+          vaadin-grid#material .cell.last {
+            padding-right: 24px;
+          }
+
+          vaadin-grid#material .cell.numeric {
+            text-align: right;
+          }
+
+          vaadin-grid#material paper-checkbox {
+            --primary-color: var(--paper-indigo-500);
+            margin: 0 24px;
+          }
+
+          vaadin-grid#material vaadin-grid-sorter {
             --vaadin-grid-sorter-arrow: {
               display: none !important;
             }
+          }
+
+          vaadin-grid#material vaadin-grid-sorter .cell {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          vaadin-grid#material vaadin-grid-sorter iron-icon {
+            transform: scale(0.8);
+          }
+
+          vaadin-grid#material vaadin-grid-sorter:not([direction]) iron-icon {
+            color: rgba(0, 0, 0, var(--dark-disabled-opacity));
+          }
+
+          vaadin-grid#material vaadin-grid-sorter[direction] {
+            color: rgba(0, 0, 0, var(--dark-primary-opacity));
+          }
+
+          vaadin-grid#material vaadin-grid-sorter[direction="desc"] iron-icon {
+            transform: scale(0.8) rotate(180deg);
+          }
+          vaadin-grid-sorter {
+            text-align: center;
           }
         </style>
       </custom-style>
@@ -137,8 +123,7 @@ class LrnappOpenStudioTable extends LitElement {
         column-reordering-allowed=""
         id="material"
         aria-label="Course list"
-        .items="${this.submissions}"
-        @items-changed="${this.submissionsEvent}"
+        items="{{submissions}}"
       >
         <vaadin-grid-column resizable="">
           <template class="header">
@@ -148,9 +133,9 @@ class LrnappOpenStudioTable extends LitElement {
           </template>
           <template>
             <paper-button
-              @click="${this._loadProjectRoute}"
-              data-project-id="[[item.relationships.project.data.id]]"
-              data-author-id="[[item.relationships.author.data.id]]"
+              on-click="_loadProjectRoute"
+              data-project-id\$="{{item.relationships.project.data.id}}"
+              data-author-id\$="{{item.relationships.author.data.id}}"
               >[[item.relationships.project.data.title]]</paper-button
             >
           </template>
@@ -173,8 +158,8 @@ class LrnappOpenStudioTable extends LitElement {
           </template>
           <template>
             <paper-button
-              @click="${this._loadSubmissionUrl}"
-              data-submission-id="{{item.id}}"
+              on-click="_loadSubmissionUrl"
+              data-submission-id\$="{{item.id}}"
               >[[item.attributes.title]]</paper-button
             >
           </template>
@@ -350,110 +335,64 @@ class LrnappOpenStudioTable extends LitElement {
       </vaadin-grid>
     `;
   }
-  submissionsEvent(e) {
-    this.submissions = [...e.detail.value];
-  }
   static get tag() {
     return "lrnapp-open-studio-table";
-  }
-  constructor() {
-    super();
-    this._numWidth = "2.25em";
-    this.activeSubmission = null;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "submissions") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("submissions-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "sourcePath") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("source-path-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "basePath") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("base-path-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "activeSubmission") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("active-submission-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       /**
        * The submissions to render
        */
       submissions: {
-        type: Array
+        type: Array,
+        notify: true
       },
       _numWidth: {
-        type: String
+        type: String,
+        value: "2.25em"
       },
       /**
        * Endpoint for submission data.
        */
       sourcePath: {
         type: String,
-        attribute: "source-path"
+        notify: true
+      },
+      /**
+       * base path for the app
+       */
+      basePath: {
+        type: String,
+        notify: true
       },
       /**
        * Active / clicked submission.
        */
       activeSubmission: {
         type: String,
-        attribute: "active-submission"
+        value: null,
+        notify: true
       }
     };
   }
   _loadProjectRoute(e) {
-    var local = e.target;
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
     var project = local.getAttribute("data-project-id");
     var author = local.getAttribute("data-author-id");
@@ -475,7 +414,8 @@ class LrnappOpenStudioTable extends LitElement {
    */
   _loadSubmissionUrl(e) {
     let root = this;
-    var local = e.target;
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
     var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
@@ -487,7 +427,7 @@ class LrnappOpenStudioTable extends LitElement {
    * Handle response for the whole projects object.
    */
   _handleResponse(event) {
-    this.shadowRoot.querySelector("#loading").hidden = true;
+    this.$.loading.hidden = true;
   }
 
   /**

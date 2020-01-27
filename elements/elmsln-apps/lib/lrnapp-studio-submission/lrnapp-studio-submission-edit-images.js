@@ -1,19 +1,22 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-image.js";
-class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
+  PolymerElement
+) {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           position: relative;
@@ -38,26 +41,17 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
           width: 50vmax;
           padding: 16px;
         }
-      `
-    ];
-  }
-  /**
-   * LitElement render
-   */
-  render() {
-    return html`
+      </style>
       <div class="images__images">
-        ${this.images.map(
-          (image, index) => html`
-            <lrnapp-studio-submission-edit-image
-              .image="${image}"
-              @deleted="${this._deleteImage}"
-              data-index="${index}"
-            ></lrnapp-studio-submission-edit-image>
-          `
-        )}
+        <template is="dom-repeat" items="[[images]]" as="image">
+          <lrnapp-studio-submission-edit-image
+            image="[[image]]"
+            on-deleted="_deleteImage"
+            data-index\$="[[index]]"
+          ></lrnapp-studio-submission-edit-image>
+        </template>
         <lrnapp-studio-submission-edit-add-asset
-          @click="${this._addImage}"
+          on-click="_addImage"
           icon="image:photo-library"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
@@ -65,22 +59,20 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
         <h2>Add Image(s)</h2>
         <paper-dialog-scrollable>
           <div class="images__upload">
-            ${this.uploadUrl
-              ? html`
-                  <vaadin-upload
-                    accept="${this.fileTypes}"
-                    target="${this.uploadUrl}"
-                    method="POST"
-                    form-data-name="file-upload"
-                    @upload-success="${this._handleImageUploadSuccess}"
-                  >
-                    <div class="images__drop-label">
-                      <iron-icon icon="description"></iron-icon>
-                      Upload files here:
-                    </div>
-                  </vaadin-upload>
-                `
-              : ``}
+            <template is="dom-if" if="[[uploadUrl]]">
+              <vaadin-upload
+                accept="[[fileTypes]]"
+                target="[[uploadUrl]]"
+                method="POST"
+                form-data-name="file-upload"
+                on-upload-success="_handleImageUploadSuccess"
+              >
+                <div class="images__drop-label">
+                  <iron-icon icon="description"></iron-icon>
+                  Upload files here:
+                </div>
+              </vaadin-upload>
+            </template>
           </div>
         </paper-dialog-scrollable>
         <div class="buttons">
@@ -95,35 +87,34 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
   static get properties() {
     return {
       images: {
-        type: Array
+        type: Array,
+        notify: true,
+        value: []
       },
       selectedPage: {
         type: String,
-        attribute: "selected-page"
-      },
-      fileTypes: {
-        type: String,
-        attribute: "file-types"
+        value: 0
       },
       uploadUrl: {
         type: String,
-        attribute: "upload-url"
+        value: null
       }
     };
   }
 
   _addImage(e) {
     // @todo switch to singleton
-    this.shadowRoot.querySelector("#dialog").open();
+    this.$.dialog.open();
   }
 
   _selectPage(e) {
-    var page = e.target.getAttribute("data-page");
-    this.selectedPage = page;
+    var normalizedEvent = dom(e);
+    var page = normalizedEvent.localTarget.getAttribute("data-page");
+    this.set("selectedPage", page);
   }
 
   _handleImageUploadSuccess(e) {
-    this.selectedPage = 0;
+    this.set("selectedPage", 0);
     var images = [];
     var response = e.detail.xhr.response;
     // normalize response string
@@ -149,20 +140,27 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(LitElement) {
       if (!replacement) {
         images.push(file);
       }
-      this.images = [...images];
-      this.shadowRoot.querySelector("#dialog").close();
+      this.set("images", []);
+      this.set("images", images);
+      this.$.dialog.close();
     }
   }
 
   _deleteImage(e) {
-    var deleteIndex = e.target.getAttribute("data-index");
-    this.images.splice(deleteIndex, 1);
+    var normalizedEvent = dom(e);
+    // console.log(normalizedEvent.localTarget);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    this.splice("images", deleteIndex, 1);
   }
-  constructor() {
-    super();
-    this.images = [];
-    this.selectedPage = "0";
-    this.uploadUrl = this.generateUrl("/api/files");
+  /**
+   * attached life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    const uploadUrl = this.generateUrl("/api/files");
+    if (uploadUrl !== null) {
+      this.set("uploadUrl", uploadUrl);
+    }
   }
 }
 window.customElements.define(

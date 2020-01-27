@@ -1,56 +1,50 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /**
  * `lrnapp-studio-submission-button`
  * `Allows users to either start a submission or link to a submission.`
- */
-class LrnappStudioSubmissionButton extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+
+Usage:
+```
+<lrnapp-studio-submission-button assignment-id="[[id]]" submission-id="{{submissionId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-submission-button>
+*/
+class LrnappStudioSubmissionButton extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      ${this.submissionId
-        ? html`
-            <lrnsys-button
-              raised=""
-              label="View submission"
-              show-href="${this._submissionUrl(this.submissionId)}"
-              href="${this._submissionUrl(this.submissionId)}"
-            ></lrnsys-button>
-          `
-        : html`
-            <lrnsys-button
-              raised
-              @click="${this._createSubmission}"
-              label="Create submission"
-            ></lrnsys-button>
-            <iron-ajax
-              id="ajaxCreateStub"
-              url="${this.endPoint}/api/submissions/create-stub?token=${this
-                .csrfToken}"
-              method="POST"
-              body="${this.assignmentId}"
-              handle-as="json"
-              @response="${this._ajaxCreateStubHandler}"
-            ></iron-ajax>
-          `}
-      ${this.displayErrors
-        ? html`
-            <paper-toast id="toast"></paper-toast>
-          `
-        : ``}
+      </style>
+      <template is="dom-if" if="[[!submissionId]]">
+        <lrnsys-button
+          raised
+          on-click="_createSubmission"
+          label="Create submission"
+        ></lrnsys-button>
+        <iron-ajax
+          id="ajaxCreateStub"
+          url="[[endPoint]]/api/submissions/create-stub?token=[[csrfToken]]"
+          method="POST"
+          body="[[assignmentId]]"
+          handle-as="json"
+          on-response="_ajaxCreateStubHandler"
+        ></iron-ajax>
+      </template>
+      <template is="dom-if" if="[[submissionId]]">
+        <lrnsys-button
+          raised=""
+          label="View submission"
+          show-href="[[_submissionUrl(submissionId)]]"
+          href="[[_submissionUrl(submissionId)]]"
+        ></lrnsys-button>
+      </template>
+      <template is="dom-if" if="[[displayErrors]]">
+        <paper-toast id="toast"></paper-toast>
+      </template>
     `;
   }
   static get tag() {
@@ -58,70 +52,49 @@ class LrnappStudioSubmissionButton extends LitElement {
   }
   static get properties() {
     return {
-      elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
-      },
-      elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
-      },
-      basePath: {
-        type: String,
-        attribute: "base-path"
-      },
-      csrfToken: {
-        type: String,
-        attribute: "csrf-token"
-      },
-      endPoint: {
-        type: String,
-        attribute: "end-point"
-      },
       auto: {
         type: Boolean,
-        reflect: true
+        reflectToAttribute: true,
+        value: false,
+        notify: true
       },
       assignmentId: {
         type: String,
-        reflect: true,
-        attribute: "assignment-id"
+        reflectToAttribute: true
       },
       submissionId: {
         type: String,
-        reflect: true,
-        attribute: "submission-id"
+        value: false,
+        reflectToAttribute: true
       },
       displayErrors: {
         type: Boolean,
-        attribute: "display-errors"
+        value: true
+      },
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      endPoint: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
       }
     };
   }
-  constructor() {
-    super();
-    this.auto = false;
-    this.submissionId = false;
-    this.displayErrors = true;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ["csrfToken", "endPoint", "basePath", "auto"];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
+
   _createSubmission() {
     this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
   }

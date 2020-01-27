@@ -1,15 +1,19 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-class LrnappBlockRecentCommentsComment extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappBlockRecentCommentsComment extends mixinBehaviors(
+  [IronResizableBehavior],
+  PolymerElement
+) {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
@@ -43,6 +47,11 @@ class LrnappBlockRecentCommentsComment extends LitElement {
           margin-right: 1em;
         }
 
+        .flex-wrap {
+          @apply --layout-horizontal;
+          @apply --layout-wrap;
+        }
+
         .inactive {
           max-height: 4.6em;
           overflow: hidden;
@@ -62,18 +71,14 @@ class LrnappBlockRecentCommentsComment extends LitElement {
         .hidden {
           display: none;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <paper-card elevation="3" class="flex-wrap">
         <div class="card-content">
           <lrndesign-avatar
-            label="${this.commentUser.name}"
-            src="${this.commentUser.avatar}"
+            label="[[commentUser.name]]"
+            src="[[commentUser.avatar]]"
           ></lrndesign-avatar>
-          <h3>${this.commentUser.display_name}</h3>
+          <h3>[[commentUser.display_name]]</h3>
           <div id="wrapper" class="button-wrapper">
             <div id="comment" class="inactive"><slot></slot></div>
             <paper-button id="btn" class="hidden">
@@ -82,13 +87,11 @@ class LrnappBlockRecentCommentsComment extends LitElement {
           </div>
         </div>
         <div class="card-actions">
-          ${this.actionView
-            ? html`
-                <a href="${this.actionView}" tabindex="-1">
-                  <paper-button raised="" id="view">View thread</paper-button>
-                </a>
-              `
-            : ``}
+          <template is="dom-if" if="[[actionView]]">
+            <a href$="[[actionView]]" tabindex="-1">
+              <paper-button raised="" id="view">View thread</paper-button>
+            </a>
+          </template>
         </div>
       </paper-card>
     `;
@@ -99,93 +102,73 @@ class LrnappBlockRecentCommentsComment extends LitElement {
   }
 
   onHeightChange() {
-    var height = this.shadowRoot.querySelector("#comment").offsetHeight;
+    var height = this.$.comment.offsetHeight;
     if (height > 80) {
-      this.shadowRoot
-        .querySelector("#btn")
-        .classList.toggle("hidden", this.hidden);
+      this.$.btn.classList.toggle("hidden", this.hidden);
     }
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       commentTitle: {
         type: String,
-        reflect: true
+        value: "Comment title",
+        reflectToAttribute: true,
+        notify: true
       },
       actionView: {
         type: String,
-        reflect: true
+        reflectToAttribute: true,
+        notify: true
       },
       dateUpdated: {
         type: String,
-        reflect: true
+        reflectToAttribute: true,
+        notify: true
       },
       commentUser: {
         type: Object,
-        reflect: true
+        value: {},
+        reflectToAttribute: true,
+        notify: true
       }
     };
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = [
-        "commentTitle",
-        "actionView",
-        "dateUpdated",
-        "commentUser"
-      ];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
   }
   /**
    * attached life cycle
    */
-  constructor() {
-    super();
-    this.commentTitle = "Comment title";
-    this.commentUser = {};
-    setTimeout(() => {
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.$.wrapper.addEventListener("click", function(e) {
+        this.$.comment.classList.toggle("inactive", this.inactive);
+      });
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
-    }, 0);
-  }
-  firstUpdated() {
-    this.shadowRoot.querySelector("#wrapper").addEventListener("click", e => {
-      this.shadowRoot
-        .querySelector("#comment")
-        .classList.toggle("inactive", this.inactive);
     });
+  }
+  /**
+   * detached life cycle
+   */
+  disconnectedCallback() {
+    this.$.wrapper.removeEventListener("click", function(e) {
+      this.$.comment.classList.toggle("inactive", this.inactive);
+    });
+    this.removeEventListener("iron-resize", this.onHeightChange.bind(this));
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(

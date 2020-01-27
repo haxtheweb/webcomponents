@@ -12,110 +12,114 @@ import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
  * @customElement relative-heading
  */
 class RelativeHeading extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
-        :host([hidden]) {
-          display: none;
-        }
+:host {
+  display: block;
+}
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div><slot></slot></div>
-    `;
+
+<div><slot></slot></div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Relative heading",
-        description:
-          "outputs the correct heading hierarchy based on parent's heading",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Heading"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "parentHeading",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android"
-          },
-          {
-            property: "tag",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Relative heading",
+    "description": "outputs the correct heading hierarchy based on parent's heading",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Heading"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "parentHeading",
+        "description": "",
+        "inputMethod": "array",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "tag",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
-       */
-      defaultLevel: {
-        type: Number,
-        attribute: "default-level"
-      },
-      /**
-       * The relative-heading's UUID.
-       */
-      id: {
-        type: String
-      },
-      /**
-       * The parent relative-heading's UUID.
-       */
-      parentId: {
-        type: String,
-        attribute: "parent-id"
-      },
-      /**
-       * The heading text.
-       */
-      text: {
-        type: String
-      },
-      /**
-       * The heading level (1-6), eg., 1 for <h1>
-       */
-      level: {
-        type: Number,
-        reflect: true
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
+   */
+  "defaultLevel": {
+    "type": Number,
+    "attribute": "default-level"
+  },
+  /**
+   * The relative-heading's UUID.
+   */
+  "id": {
+    "type": String
+  },
+  /**
+   * The parent relative-heading's UUID.
+   */
+  "parentId": {
+    "type": String,
+    "attribute": "parent-id"
+  },
+  /**
+   * The heading text.
+   */
+  "text": {
+    "type": String
+  },
+  /**
+   * The heading level (1-6), eg., 1 for <h1>
+   */
+  "level": {
+    "type": Number,
+    "reflect": true
+  }
+}
+;
   }
 
   /**

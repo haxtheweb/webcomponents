@@ -1,19 +1,26 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-
-class LrnappGalleryGrid extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+class LrnappGalleryGrid extends PolymerElement {
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("click", this._triggerDialog.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("click", this._triggerDialog.bind(this));
+    super.disconnectedCallback();
+  }
+  static get template() {
+    return html`
+      <style include="materializecss-styles">
         :host {
           display: block;
         }
@@ -42,93 +49,52 @@ class LrnappGalleryGrid extends LitElement {
           font-size: 0.8em;
           background-color: white;
         }
-      `
-    ];
-  }
-  constructor() {
-    super();
-    setTimeout(() => {
-      this.addEventListener("click", this._triggerDialog.bind(this));
-    }, 0);
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = [
-        "sourcePath",
-        "submissions",
-        "activeImage",
-        "activeTitle",
-        "activeUrl",
-        "activeComments",
-        "activeAuthor"
-      ];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
-  render() {
-    return html`
+      </style>
       <iron-ajax
         id="ajax"
-        url="${this.sourcePath}"
+        url="[[sourcePath]]"
         params=""
         handle-as="json"
-        @last-response-changed="${this.submissionsChangedEvent}"
+        last-response="{{submissions}}"
       ></iron-ajax>
-      <iron-scroll-threshold
-        @lower-threshold="${this._loadMoreData}"
-        id="threshold"
-      >
-        <iron-list
-          grid
-          .items="${this._toArray(this.submissions.data)}"
-          as="item"
-        >
-          ${this._toArray(item.images).map(
-            image => html`
-              <paper-button>
-                <iron-image
-                  preload
-                  open-url="${item.url}"
-                  title="${item.title}"
-                  alt="${item.title}"
-                  src="${image.src}"
-                  author="${item.author}"
-                  comments="${item.comments}"
-                  height="${image.height}"
-                  width="${image.width}"
-                ></iron-image>
-              </paper-button>
-            `
-          )}
+      <iron-scroll-threshold on-lower-threshold="_loadMoreData" id="threshold">
+        <iron-list grid items="[[_toArray(submissions.data)]]" as="item">
+          <template
+            is="dom-repeat"
+            items="[[_toArray(item.images)]]"
+            as="image"
+          >
+            <paper-button>
+              <iron-image
+                preload
+                open-url="{{item.url}}"
+                title="{{item.title}}"
+                alt="{{item.title}}"
+                src="{{image.src}}"
+                author="{{item.author}}"
+                comments="{{item.comments}}"
+                height="{{image.height}}"
+                width="{{image.width}}"
+              ></iron-image>
+            </paper-button>
+          </template>
         </iron-list>
       </iron-scroll-threshold>
       <paper-dialog id="dialog">
         <paper-dialog-scrollable id="dialogResponse">
-          <iron-image src="${this.activeImage}"></iron-image>
+          <iron-image src$="[[activeImage]]"></iron-image>
           <div id="details">
             <div class="title">
-              <span>Title:</span> <span>${this.activeTitle}</span>
+              <span>Title:</span> <span>{{{activeTitle}}}</span>
             </div>
             <div class="author">
-              <span>Author:</span> <span>${this.activeAuthor}</span>
+              <span>Author:</span> <span>{{activeAuthor}}</span>
             </div>
             <div class="comments">
-              <span>Comments:</span> <span>${this.activeComments}</span>
+              <span>Comments:</span> <span>{{activeComments}}</span>
             </div>
             <div class="comment-on-work">
-              <a href="${this.activeUrl}">
+              <a href$="[[activeUrl]]">
                 <paper-button raised>Comment on this work</paper-button>
               </a>
             </div>
@@ -137,65 +103,58 @@ class LrnappGalleryGrid extends LitElement {
       </paper-dialog>
     `;
   }
-  submissionsChangedEvent(e) {
-    this.submissions = [...e.detail.value];
-  }
   static get tag() {
     return "lrnapp-gallery-grid";
   }
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       sourcePath: {
         type: String,
-        attribute: "source-path"
+        notify: true
       },
       submissions: {
-        type: Array
+        type: Array,
+        notify: true
       },
       activeImage: {
         type: String,
-        reflect: true,
-        attribute: "active-image"
+        reflectToAttribute: true,
+        notify: true
       },
       activeTitle: {
         type: String,
-        reflect: true,
-        attribute: "active-title"
+        reflectToAttribute: true,
+        notify: true
       },
       activeAuthor: {
         type: String,
-        reflect: true,
-        attribute: "active-author"
+        reflectToAttribute: true,
+        notify: true
       },
       activeComments: {
         type: String,
-        reflect: true,
-        attribute: "active-comments"
+        reflectToAttribute: true,
+        notify: true
       },
       activeUrl: {
         type: String,
-        reflect: true,
-        attribute: "active-url"
+        reflectToAttribute: true,
+        notify: true
       }
     };
   }

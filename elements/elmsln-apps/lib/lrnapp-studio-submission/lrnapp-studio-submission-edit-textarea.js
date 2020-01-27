@@ -1,46 +1,15 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrn-markdown-editor/lrn-markdown-editor.js";
-class LrnappStudioSubmissionEditTextArea extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class LrnappStudioSubmissionEditTextArea extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
-      <lrn-markdown-editor
-        content="${this.content}"
-        @content-changed="${this.contentEvent}"
-      ></lrn-markdown-editor>
+      </style>
+      <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
     `;
-  }
-  contentEvent(e) {
-    this.content = e.detail.value;
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      let notifiedProps = ["content"];
-      if (notifiedProps.includes(propName)) {
-        // notify
-        let eventName = `${propName
-          .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-          .toLowerCase()}-changed`;
-        this.dispatchEvent(
-          new CustomEvent(eventName, {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
   }
   static get tag() {
     return "lrnapp-studio-submission-edit-textarea";
@@ -48,7 +17,8 @@ class LrnappStudioSubmissionEditTextArea extends LitElement {
   static get properties() {
     return {
       content: {
-        type: String
+        type: String,
+        notify: true
       }
     };
   }

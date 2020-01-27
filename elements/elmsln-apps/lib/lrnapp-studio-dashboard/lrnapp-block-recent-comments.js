@@ -1,63 +1,44 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-block-recent-comments-comment.js";
-import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-class LrnappBlockRecentComments extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      materialCssStyles,
-      css`
+class LrnappBlockRecentComments extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="paper-item-styles">
         :host {
           display: block;
         }
-      `
-    ];
-  }
-  constructor() {
-    super();
-    this.response = {
-      data: {}
-    };
-  }
-  render() {
-    return html`
+      </style>
       <div id="loading">
         <h3>Loading..</h3>
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
       <iron-ajax
         auto=""
-        url="${this.sourcePath}"
+        url="{{sourcePath}}"
         handle-as="json"
-        @last-response-changed="${this.responseChangedEvent}"
-        @response="${this.handleResponse}"
+        last-response="{{response}}"
+        on-response="handleResponse"
       ></iron-ajax>
-      ${this.response
-        ? this._toArray(this.response.data).map(
-            comment => html`
-              <lrnapp-block-recent-comments-comment
-                .comment-user="${comment.relationships.author.data}"
-                comment-title="${comment.attributes.subject}"
-                action-view="${this._getViewLink(
-                  comment.relationships.node.data.id
-                )}"
-                date-updated="${comment.attributes.changed}"
-                class="ferpa-protect"
-              >
-                ${comment.attributes.body}
-              </lrnapp-block-recent-comments-comment>
-            `
-          )
-        : ""}
+      <template
+        is="dom-repeat"
+        items="[[_toArray(response.data)]]"
+        as="comment"
+      >
+        <lrnapp-block-recent-comments-comment
+          comment-user="{{comment.relationships.author.data}}"
+          comment-title="{{comment.attributes.subject}}"
+          action-view="{{_getViewLink(comment.relationships.node.data.id)}}"
+          date-updated="{{comment.attributes.changed}}"
+          class="ferpa-protect"
+        >
+          [[comment.attributes.body]]
+        </lrnapp-block-recent-comments-comment>
+      </template>
     `;
-  }
-  responseChangedEvent(e) {
-    this.response = e.detail.value;
   }
   static get tag() {
     return "lrnapp-block-recent-comments";
@@ -65,60 +46,32 @@ class LrnappBlockRecentComments extends LitElement {
   static get properties() {
     return {
       elmslnCourse: {
-        type: String,
-        attribute: "elmsln-course"
+        type: String
       },
       elmslnSection: {
-        type: String,
-        attribute: "elmsln-section"
+        type: String
       },
       basePath: {
-        type: String,
-        attribute: "base-path"
+        type: String
       },
       csrfToken: {
-        type: String,
-        attribute: "csrf-token"
+        type: String
       },
       endPoint: {
-        type: String,
-        attribute: "end-point"
+        type: String
       },
       sourcePath: {
         type: String,
-        attribute: "source-path"
+        notify: true
       },
       response: {
-        type: Object
+        type: Array,
+        notify: true
       }
     };
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "response") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("response-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-      if (propName == "sourcePath") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("source-path-changed", {
-            detail: {
-              value: this[propName]
-            }
-          })
-        );
-      }
-    });
-  }
   handleResponse(e) {
-    this.shadowRoot.querySelector("#loading").hidden = true;
+    this.$.loading.hidden = true;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

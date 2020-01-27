@@ -8,11 +8,10 @@ import "./simple-colors-shared-styles-polymer.js";
 
 /**
  * `simple-colors-polymer`
- * @customElement simple-colors-polymer
  * shared set of styles for Polymer @lrnwebcomponents
  *
-
  * @polymer
+ * @customElement simple-colors-polymer
  */
 
 class SimpleColorsPolymer extends PolymerElement {
