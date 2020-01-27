@@ -146,7 +146,6 @@
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
         step="1"
-        ?disabled="${this.fullscreenButton}"
         ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
         ?toggle="${this.fullscreen}"
         @click="${e => this.toggleFullscreen()}"

@@ -6,5 +6,6 @@
     "elements/*/vscode-html-custom-data.json",
     "vscode-html-custom-data.json",
     "custom-elements.json"
-  ]
+  ],
+  "cSpell.enabled": false
 }

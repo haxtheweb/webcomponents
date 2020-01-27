@@ -95,6 +95,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
    * @returns {Boolean}
    */
   get isA11yMedia() {
+    console.log(this,this.sourceType);
     if (
       !this.sandboxed &&
       (this.sourceType == "youtube" || this.sourceType == "local")
@@ -143,12 +144,18 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     let temp =
       typeof this.sources === "string"
         ? JSON.parse(this.sources)
-        : this.sources.slice();
+        : this.sources.slice(), 
+      slotted = this.querySelectorAll('video source, audio source, iframe');
     if (this.source) temp.unshift({ src: this.source });
+    slotted.forEach(slot=>{
+      this.sources.unshift({ src: slot.src });
+      slot.remove();
+    });
     if (temp && temp.length > 0)
       temp.forEach(item => {
         item.type = item.type || this._computeMediaType(item.src);
         item.src = this._computeSRC(item.src, item.type);
+        console.log(this,item);
       });
     return temp;
   }
@@ -166,6 +173,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
    * @returns {String} `local`, `vimeo`, `youtube`, etc.
    */
   get sourceType() {
+    console.log(this,this.sourceData);
     if (
       this.sourceData &&
       this.sourceData.length > 0 &&
@@ -187,7 +195,17 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     let temp =
       typeof this.tracks === "string"
         ? JSON.parse(this.tracks).slice()
-        : this.tracks.slice();
+        : this.tracks.slice(), 
+        slotted = this.querySelectorAll('video track, audio track');
+    slotted.forEach(slot=>{
+      let track = { src: slot.src };
+      if(slot.lang) track.lang = slot.lang;
+      if(slot.srclang) track.srclang = slot.srclang;
+      if(slot.label) track.label = slot.label;
+      if(slot.kind) track.kind = slot.kind;
+      this.tracks.unshift(track);
+      slot.remove();
+    });
     if (this.track !== undefined && this.track !== null && this.track !== "")
       temp.push({
         src: this.track,

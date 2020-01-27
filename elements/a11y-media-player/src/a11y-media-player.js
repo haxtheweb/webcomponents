@@ -15,13 +15,81 @@ import "./lib/a11y-media-transcript-cue.js";
 /**
  * `a11y-media-player`
  * an accessible video player
+ * 
+### Styling
+`<a11y-media-player>` provides the following basic custom properties
+for styling:
+
+#### Basic Styling
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`
+`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`
+`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`
+`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`
+`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`
+`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`
+`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`
+`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`
+`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`
+`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`
+`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`
+`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`
+`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`
+`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`
+`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`
+`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
+`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
+`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+
+#### Buttons
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-button-color` | button text color | `--a11y-media-color`
+`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`
+`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`
+`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`
+`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`
+`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`
+
+#### Sliders
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-slider-active-color` | slider color when active | `--a11y-media-accent-color`
+`--paper-slider-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
+`--paper-slider-pin-color` | slider pin color | `--a11y-media-bg-color`
+`--paper-slider-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
+`--paper-slider-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
+`--paper-slider-knob-color` | slider knob color | `--a11y-media-accent-color`
+`--paper-slider-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
+`--paper-slider-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
+`--paper-slider-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
+`--paper-slider-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
+`--paper-slider-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
+
+#### Settings Menu
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`
+`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`
+`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`
+`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`
+
+#### Link Sharing Toast
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-toast-color` | toast text color | `--a11y-media-color`
+`--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
  * @customElement a11y-media-player
  * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
- *
  */
 class A11yMediaPlayer extends SimpleColors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -1154,6 +1222,14 @@ class A11yMediaPlayer extends SimpleColors {
       medium.removeAttribute("autoplay");
       medium.setAttribute("preload", "metadata");
     });
+    if(!this.youtubeId) {
+      let iframeSrc = this.querySelector('iframe') && this.querySelector('iframe') ? this.querySelector('iframe').src : false,
+        yt = iframeSrc? iframeSrc.match(/youtube(-\w*)*.com/) || iframeSrc.src.match(/youtu.be/) : false;
+      if(yt && iframeSrc) {
+        this.youtubeId = iframeSrc.replace(/.*\//g,'');
+        this.querySelector('iframe').remove();
+      }
+    }
 
     if (media.length > 0) {
       primary = media[0];
@@ -1569,11 +1645,12 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} key
    */
   _getTrackId(track) {
-    return (
-      Object.keys(this.loadedTracks.textTracks).find(
-        key => this.loadedTracks.textTracks[key] === track
-      ) || -1
-    );
+    return this.loadedTracks 
+      ? (
+        Object.keys(this.loadedTracks.textTracks).find(
+          key => this.loadedTracks.textTracks[key] === track
+        ) || -1)
+      : -1;
   }
 
   /**
