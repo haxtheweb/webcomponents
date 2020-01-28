@@ -49,9 +49,9 @@ class A11yMediaStateManager extends LitElement {
         type: Boolean
       },
       /**
-       * Manages which player is sticky.
+       * Manages which player is currently active.
        */
-      stickyPlayer: {
+      activePlayer: {
         type: Object
       }
     };
@@ -64,11 +64,10 @@ class A11yMediaStateManager extends LitElement {
     super();
     this.players = [];
     this.screenfullLoaded = false;
-    this.stickyPlayer = null;
-    let root = this;
-    this.__stickyManager = e => root.setStickyPlayer(e.detail);
-    this.__scrollChecker = e => root._checkScroll(e);
-    this.__playerLoader = e => root.players.push(e.detail);
+    this.__stickyManager = e => this.setStickyPlayer(e.detail);
+    this.__activeManager = e => this.setActivePlayer(e.detail);
+    this.__scrollChecker = e => this._checkScroll(e);
+    this.__playerLoader = e => this.players.push(e.detail);
 
     // sets the instance to the current instance
     if (!window.A11yMediaStateManager.instance) {
@@ -80,17 +79,23 @@ class A11yMediaStateManager extends LitElement {
    * if a player disallows concurrent players, pauses other players
    */
   checkConcurrentPlayers() {
-    let root = this,
-      player = root.stickyPlayer;
-    for (let i = 0; i < root.players.length; i++) {
-      let playeri = root.players[i];
-      if (
-        playeri !== player &&
-        (!player.allowConcurrent || !playeri.allowConcurrent)
-      ) {
-        playeri.pause();
+    let active = this.activePlayer;
+    this.players.forEach(player=>{
+      if (player !== active) {
+        player.toggleFullscreen(false);
+        if ((!player.allowConcurrent && !active.allowConcurrent) || active.fullscreen) player.pause();
       }
-    }
+    });
+  }
+
+  /**
+   * sets the active player
+   *
+   * @param {object} the player to set stickiness
+   */
+  setActivePlayer(player) {
+    this.activePlayer = player;
+    this.checkConcurrentPlayers();
   }
 
   /**
@@ -99,42 +104,38 @@ class A11yMediaStateManager extends LitElement {
    * @param {object} the player to set stickiness
    */
   setStickyPlayer(player) {
-    let root = this,
-      parent = root._getParentNode(player);
-    root.__playerTop = parent.offsetTop;
-    root.__playerUpperMiddle = root.__playerTop + parent.offsetHeight * 0.9;
-    root.__playerLowerMiddle = root.__playerTop + parent.offsetHeight * 0.1;
+    let parent = this._getParentNode(player);
+    this.__playerTop = parent.offsetTop;
+    this.__playerUpperMiddle = this.__playerTop + parent.offsetHeight * 0.9;
+    this.__playerLowerMiddle = this.__playerTop + parent.offsetHeight * 0.1;
     if (
-      player !== root.stickyPlayer &&
-      root.stickyPlayer !== undefined &&
-      root.stickyPlayer !== null
+      player !== this.activePlayer &&
+      this.activePlayer !== undefined &&
+      this.activePlayer !== null
     ) {
-      root.stickyPlayer.toggleSticky(false);
-      root.__parent.style.height = "unset";
+      this.activePlayer.toggleSticky(false);
+      this.__parent.style.height = "unset";
     }
     parent.style.height = parent.offsetHeight + "px";
-    root.__parent = parent;
-    root.stickyPlayer = player;
-    if (!player.allowConcurrent) root.checkConcurrentPlayers();
-    root._checkScroll();
+    this.setActivePlayer(player);
+    this._checkScroll();
   }
 
   /**
    * checks the wondow's scroll position and compares it to active player to set sticky attribute
    */
   _checkScroll() {
-    let root = this,
-      wintop = window.pageYOffset,
+    let wintop = window.pageYOffset,
       winbottom = wintop + window.innerHeight;
-    if (root.stickyPlayer !== undefined && root.stickyPlayer !== null) {
+    if (this.activePlayer !== undefined && this.activePlayer !== null) {
       if (
-        root.stickyPlayer.__playing &&
-        (root.__playerLowerMiddle > winbottom ||
-          root.__playerUpperMiddle < wintop)
+        this.activePlayer.__playing &&
+        (this.__playerLowerMiddle > winbottom ||
+          this.__playerUpperMiddle < wintop)
       ) {
-        root.stickyPlayer.toggleSticky(true);
+        this.activePlayer.toggleSticky(true);
       } else {
-        root.stickyPlayer.toggleSticky(false);
+        this.activePlayer.toggleSticky(false);
       }
     }
   }
@@ -159,10 +160,11 @@ class A11yMediaStateManager extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
-    // listen for a player that starts playing,
-    // make it the player that can be sticky,
-    // and check for concurrent players
+    // listen for a player that starts playing
     window.addEventListener("a11y-player-playing", root.__stickyManager);
+
+    // listen for a player toggles fullscreen mode
+    window.addEventListener("a11y-player-fullscreen", root.__activeManager);
 
     // listen for scrolling and find out if a player is off-screen
     window.addEventListener("scroll", root.__scrollChecker);
@@ -177,6 +179,7 @@ class A11yMediaStateManager extends LitElement {
     let root = this;
     window.removeEventListener("a11y-player", root.__playerLoader);
     window.removeEventListener("a11y-player-playing", root.__stickyManager);
+    window.removeEventListener("a11y-player-fullscreen", root.__activeManager);
     window.removeEventListener("scroll", root.__scrollChecker);
     super.disconnectedCallback();
   }

@@ -273,6 +273,7 @@
   },
   /**
    * Source of optional thumbnail image
+   * Highly recommended for Safari.
    */
   "thumbnailSrc": {
     "attribute": "thumbnail-src",

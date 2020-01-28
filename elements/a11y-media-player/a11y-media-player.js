@@ -98,14 +98,14 @@ class A11yMediaPlayer extends SimpleColors {
   display: block;
   width: calc(100% - 2px);
   --a11y-media-player-height: unset;
-  --a11y-media-color: var(--simple-colors-default-theme-grey-11);
-  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-border-color: var(--simple-colors-default-theme-grey-3);
-  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
-  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
-  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
-  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5);
+  --a11y-media-color: var(--simple-colors-default-theme-grey-11, #111111);
+  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+  --a11y-media-border-color: var(--simple-colors-default-theme-grey-3, #dddddd);
+  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12, #000000);
+  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9, #333333);
+  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8, #444444);
+  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5, #bbbbbb);
   border: 1px solid var(--a11y-media-border-color, var(--simple-colors-default-theme-grey-3));
 
   
@@ -140,34 +140,34 @@ class A11yMediaPlayer extends SimpleColors {
   --paper-toast-background-color: var(--a11y-media-bg-color);
   
   
-  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);
-  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
-  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
-  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
-  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
-  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
+  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7, #666666);
+  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1, #ffffff);
+  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8, #444444);
+  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10, #222222);
+  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1, #ffffff);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1, #ffffff);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2, #eeeeee);
+  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1, #ffffff);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10, #222222);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12, #000000);
 }
 :host([dark]) {
-  border: 1px solid var(--simple-colors-default-theme-grey-1);
+  border: 1px solid var(--simple-colors-default-theme-grey-1, #000000);
 }
 :host([dark-transcript]) {
-  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
+  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12, #ffffff);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10, #dddddd);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10, #ddddddx);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12, #ffffff);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12, #ffffff);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2, #111111);
 }
 :host([hidden]),
 *[hidden] {
@@ -180,6 +180,16 @@ class A11yMediaPlayer extends SimpleColors {
 }
 :host[height] #transcript-section {
   display: none;
+}
+:host([height]) #player-section {
+  max-height: var(--a11y-media-player-height);
+}
+:host([height]) #player-and-controls {
+  max-height: calc(100% - 32px - 44px);
+}
+:host([height]) #player {
+  height: calc(100% - 32px - 44px);
+  padding-top: unset;
 }
 :host,
 #player-section {
@@ -260,6 +270,7 @@ class A11yMediaPlayer extends SimpleColors {
 #slider {
   flex: 0 0 32px;
   height: 32px;
+  background-color: var(--a11y-media-bg-color);
 }
 a11y-media-youtube {
   opacity: 1;
@@ -296,6 +307,7 @@ a11y-media-youtube.hidden {
   max-height: 44px;
   position: relative;
   color: var(--a11y-media-color);
+  background-color: var(--a11y-media-bg-color);
   --primary-text-color: var(--a11y-media-settings-menu-color);
   --paper-menu-button-dropdown-background: var(
     --a11y-media-settings-menu-bg-color
@@ -304,25 +316,15 @@ a11y-media-youtube.hidden {
     --a11y-media-settings-menu-bg-color
   );
   --paper-listbox-color: var(--a11y-media-settings-menu-color);
-  --paper-listbox: {
-    padding: 0;
-  }
-  --paper-menu-button: {
-    background-color: var(--a11y-media-settings-menu-bg-color);
-    color: var(--a11y-media-settings-menu-color);
-  }
-  --paper-menu-button-dropdown: {
-    background-color: var(--a11y-media-settings-menu-bg-color);
-    color: var(--a11y-media-settings-menu-color);
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  --paper-item-selected: {
-    color: var(--a11y-media-settings-menu-hover-color);
-  }
-  --paper-item-focused: {
-    color: var(--a11y-media-settings-menu-hover-color);
-  }
+  --paper-listbox-padding: 0;
+  --paper-menu-button-background-color: var(--a11y-media-settings-menu-bg-color);
+  --paper-menu-button-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-background-color: var(--a11y-media-settings-menu-bg-color);
+  --paper-menu-button-dropdown-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-margin-top: 0 !important;
+  --paper-menu-button-dropdown-margin-bottom: 0 !important;
+  --paper-item-selected-color: var(--a11y-media-settings-menu-hover-color);
+  --paper-item-focused-color: var(--a11y-media-settings-menu-hover-color);
 }
 #controls-left {
   position: absolute;
@@ -332,7 +334,7 @@ a11y-media-youtube.hidden {
 #controls-right {
   position: absolute;
   right: 0;
-  top: -2px;
+  top: 0;
 }
 paper-menu-button,
 dropdown-select {
@@ -415,7 +417,14 @@ paper-icon-button {
 :host([responsive-size="xs"]) #volume.focus,
 :host([responsive-size="xs"]) #volume-and-mute:active #volume,
 :host([responsive-size="xs"]) #volume-and-mute:focus #volume,
-:host([responsive-size="xs"]) #volume-and-mute:hover #volume {
+:host([responsive-size="xs"]) #volume-and-mute:hover #volume,
+:host([width]) #volume:active,
+:host([width]) #volume:focus,
+:host([width]) #volume:hover,
+:host([width]) #volume.focus,
+:host([width]) #volume-and-mute:active #volume,
+:host([width]) #volume-and-mute:focus #volume,
+:host([width]) #volume-and-mute:hover #volume {
   top: 0px;
 }
 #print-thumbnail {
@@ -555,6 +564,17 @@ paper-toast:not(:defined) {
     box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
     border-radius: 3.2px;
   }
+  :host([fullscreen]) #player-section {
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    position: absolute;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 100000;
+    transition: all 0.5s;
+  }
   :host([dark][sticky-mode]) #player-section {
     border: 1px solid var(--a11y-media-bg-color);
   }
@@ -591,6 +611,9 @@ paper-toast:not(:defined) {
   :host([sticky-mode]) .hide-full-xs,
   :host([sticky-mode]) .hide-full-sm,
   :host([sticky-mode]) .hide-flex,
+  :host([width]) .hide-full-xs,
+  :host([width]) .hide-full-sm,
+  :host([width]) .hide-full-flex,
   :host([responsive-size="xs"]) .hide-full-xs,
   :host([responsive-size="xs"]) .hide-full-sm,
   :host([responsive-size="xs"]) .hide-full-flex,
@@ -612,11 +635,13 @@ paper-toast:not(:defined) {
     font-size: 12px;
   }
   :host([responsive-size="xs"]) #cc-custom,
+  :host([width]) #cc-custom,
   :host([flex-layout][responsive-size="md"]) #cc-custom,
   :host([flex-layout][responsive-size="sm"]) #cc-custom {
     font-size: 10px;
   }
   :host([sticky-mode]) #cc-custom,
+  :host([flex-layout][width]) #cc-custom,
   :host([flex-layout][responsive-size="xs"]) #cc-custom {
     display: none;
   }
@@ -1362,6 +1387,7 @@ ${this.poster
   },
   /**
    * Source of optional thumbnail image
+   * Highly recommended for Safari.
    */
   "thumbnailSrc": {
     "attribute": "thumbnail-src",
@@ -1673,6 +1699,7 @@ ${this.poster
   get fullFlex() {
     return (
       this.flexLayout &&
+      !this.height &&
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
@@ -1937,7 +1964,7 @@ ${this.poster
   get playerStyle() {
     let height = this.audioNoThumb ? "60px" : "unset",
       paddingTop =
-        this.fullscreen || this.audioNoThumb
+        this.fullscreen || this.audioNoThumb || this.height
           ? `unset`
           : `${100 / this.aspect}%`,
       thumbnail =
@@ -1953,12 +1980,17 @@ ${this.poster
    * @returns {string} url for poster image
    */
   get poster() {
+    let thumbnail = this.thumbnailSrc 
+      ? this.thumbnailSrc 
+      : this.media && !this.media.poster 
+        ? this.media.poster 
+        : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[\?&].*/,
           ""
         )}/hqdefault.jpg`
-      : this.thumbnailSrc;
+      : thumbnail;
   }
 
   /**
@@ -2217,6 +2249,12 @@ ${this.poster
             !this.isYoutube ? this.thumbnailSrc : false,
             this.__loadedTracks
           );
+        if (
+          change(["isYoutube","poster","media","audioOnly"]) && 
+          this.poster && !this.isYoutube && 
+          !this.audioOnly && 
+          !this.media.poster
+        ) this.media.poster = this.poster;
       }
 
       this.dispatchEvent(
@@ -2722,10 +2760,10 @@ ${this.poster
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleFullscreen(mode) {
-    if (screenfull && this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.loop : mode;
-      this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+    if (this.fullscreenButton) {
+      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
+      //this.toggleTranscript(this.fullscreen);
+      if(screenfull) screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled

@@ -307,6 +307,7 @@ class A11yMediaPlayer extends SimpleColors {
   get fullFlex() {
     return (
       this.flexLayout &&
+      !this.height &&
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
@@ -571,7 +572,7 @@ class A11yMediaPlayer extends SimpleColors {
   get playerStyle() {
     let height = this.audioNoThumb ? "60px" : "unset",
       paddingTop =
-        this.fullscreen || this.audioNoThumb
+        this.fullscreen || this.audioNoThumb || this.height
           ? `unset`
           : `${100 / this.aspect}%`,
       thumbnail =
@@ -587,12 +588,17 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {string} url for poster image
    */
   get poster() {
+    let thumbnail = this.thumbnailSrc 
+      ? this.thumbnailSrc 
+      : this.media && !this.media.poster 
+        ? this.media.poster 
+        : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[\?&].*/,
           ""
         )}/hqdefault.jpg`
-      : this.thumbnailSrc;
+      : thumbnail;
   }
 
   /**
@@ -851,6 +857,12 @@ class A11yMediaPlayer extends SimpleColors {
             !this.isYoutube ? this.thumbnailSrc : false,
             this.__loadedTracks
           );
+        if (
+          change(["isYoutube","poster","media","audioOnly"]) && 
+          this.poster && !this.isYoutube && 
+          !this.audioOnly && 
+          !this.media.poster
+        ) this.media.poster = this.poster;
       }
 
       this.dispatchEvent(
@@ -1356,10 +1368,10 @@ class A11yMediaPlayer extends SimpleColors {
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleFullscreen(mode) {
-    if (screenfull && this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.loop : mode;
-      this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+    if (this.fullscreenButton) {
+      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
+      //this.toggleTranscript(this.fullscreen);
+      if(screenfull) screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled
