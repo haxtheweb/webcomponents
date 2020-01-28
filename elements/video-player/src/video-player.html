@@ -21,8 +21,11 @@ ${this.isA11yMedia ? html`
     .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
     .width="${this.width}"
     .height="${this.height}"
-    youtube-id="${this.youtubeId}"
     >
+    ${this.youtubeId 
+      ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
+      : html``
+    }
     ${this.audioOnly 
       ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
       : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
@@ -56,4 +59,5 @@ ${this.isA11yMedia ? html`
       <span class="media-type print-only">(embedded media)</span>
     </p>
     <slot name="caption"></slot>
+    <slot hidden></slot>
   </div>`}

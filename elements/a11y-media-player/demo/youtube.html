@@ -58,7 +58,19 @@
       <demo-snippet>
         <template>
           <a11y-media-player accent-color="pink" dark youtube-id="NP0mQeLWCCo">
-            <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default>
+            <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default></video>
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
+
+
+
+      <h2>a11y-media-player with YouTube's iframe for progressive enhancement</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player accent-color="yellow" dark>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/NP0mQeLWCCo" allowfullscreen></iframe>
+            <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"default></video>
           </a11y-media-player>
         </template>
       </demo-snippet>
@@ -67,7 +79,7 @@
       <demo-snippet>
         <template>
           <a11y-media-player accent-color="purple" youtube-id="NP0mQeLWCCo&t=18s" preload="auto">
-            <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt">
+            <video><track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt"></video>
           </a11y-media-player>
         </template>
       </demo-snippet> 

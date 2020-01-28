@@ -7,21 +7,85 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@lrnwebcomponents/simple-search/simple-search.js";
-import "./lib/a11y-media-state-manager.js";
-import "./lib/a11y-media-button.js";
-import "./lib/a11y-media-transcript-cue.js";
 
 /**
  * `a11y-media-player`
  * an accessible video player
+ * 
+### Styling
+`<a11y-media-player>` provides the following basic custom properties
+for styling:
+
+#### Basic Styling
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`
+`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`
+`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`
+`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`
+`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`
+`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`
+`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`
+`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`
+`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`
+`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`
+`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`
+`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`
+`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`
+`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`
+`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`
+`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`
+`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
+`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
+`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+
+#### Buttons
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-button-color` | button text color | `--a11y-media-color`
+`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`
+`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`
+`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`
+`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`
+`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`
+
+#### Sliders
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-slider-active-color` | slider color when active | `--a11y-media-accent-color`
+`--paper-slider-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`
+`--paper-slider-pin-color` | slider pin color | `--a11y-media-bg-color`
+`--paper-slider-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`
+`--paper-slider-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`
+`--paper-slider-knob-color` | slider knob color | `--a11y-media-accent-color`
+`--paper-slider-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`
+`--paper-slider-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`
+`--paper-slider-knob-border-color` | slider knob border color | `--a11y-media-accent-color`
+`--paper-slider-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`
+`--paper-slider-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`
+
+#### Settings Menu
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`
+`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`
+`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`
+`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`
+
+#### Link Sharing Toast
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-toast-color` | toast text color | `--a11y-media-color`
+`--paper-toast-background-color` | toast background color | `--a11y-media-bg-color`
  *
  * @customElement a11y-media-player
  * @extends SimpleColors
  * @demo ./demo/index.html video demo
  * @demo ./demo/audio.html audio demo
  * @demo ./demo/youtube.html YouTube demo
- *
  */
 class A11yMediaPlayer extends SimpleColors {
   
@@ -33,17 +97,16 @@ class A11yMediaPlayer extends SimpleColors {
 :host {
   display: block;
   width: calc(100% - 2px);
-  border: 1px solid var(--simple-colors-default-theme-grey-3);
   --a11y-media-player-height: unset;
-  --a11y-media-color: var(--simple-colors-default-theme-grey-11);
-  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
-  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
-  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
-  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5);
-  --paper-toast-color: var(--simple-colors-default-theme-grey-11);
-  --paper-toast-background-color: var(--simple-colors-default-theme-grey-2);
+  --a11y-media-color: var(--simple-colors-default-theme-grey-11, #111111);
+  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+  --a11y-media-border-color: var(--simple-colors-default-theme-grey-3, #dddddd);
+  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12, #000000);
+  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9, #333333);
+  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8, #444444);
+  --a11y-media-disabled-color: var(--simple-colors-default-theme-grey-5, #bbbbbb);
+  border: 1px solid var(--a11y-media-border-color, var(--simple-colors-default-theme-grey-3));
 
   
   --a11y-media-settings-menu-color: var(--a11y-media-color);
@@ -60,12 +123,6 @@ class A11yMediaPlayer extends SimpleColors {
   --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
 
   
-  --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
-  --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
-  --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
-  --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
-
-  
   --paper-slider-active-color: var(--a11y-media-accent-color);
   --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
   --paper-slider-pin-color: var(--a11y-media-bg-color);
@@ -77,36 +134,40 @@ class A11yMediaPlayer extends SimpleColors {
   --paper-slider-knob-border-color: var(--a11y-media-accent-color);
   --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
   --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+
+  
+  --paper-toast-color: var(--a11y-media-color);
+  --paper-toast-background-color: var(--a11y-media-bg-color);
   
   
-  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);
-  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
-  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
-  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
-  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
-  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
+  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7, #666666);
+  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1, #ffffff);
+  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8, #444444);
+  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10, #222222);
+  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1, #ffffff);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1, #ffffff);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12, #000000);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2, #eeeeee);
+  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1, #ffffff);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10, #222222);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12, #000000);
 }
 :host([dark]) {
-  border: 1px solid var(--simple-colors-default-theme-grey-1);
+  border: 1px solid var(--simple-colors-default-theme-grey-1, #000000);
 }
 :host([dark-transcript]) {
-  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
+  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12, #ffffff);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10, #dddddd);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1, #000000);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10, #ddddddx);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12, #ffffff);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12, #ffffff);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2, #111111);
 }
 :host([hidden]),
 *[hidden] {
@@ -120,10 +181,20 @@ class A11yMediaPlayer extends SimpleColors {
 :host[height] #transcript-section {
   display: none;
 }
+:host([height]) #player-section {
+  max-height: var(--a11y-media-player-height);
+}
+:host([height]) #player-and-controls {
+  max-height: calc(100% - 32px - 44px);
+}
+:host([height]) #player {
+  height: calc(100% - 32px - 44px);
+  padding-top: unset;
+}
 :host,
 #player-section {
-  color: var(--simple-colors-default-theme-grey-12);
-  background-color: var(--simple-colors-default-theme-grey-2);
+  color: var(--a11y-media-hover-color);
+  background-color: var(--a11y-media-bg-color);
 }
 :host > * {
   transition: all 0.5s;
@@ -199,6 +270,7 @@ class A11yMediaPlayer extends SimpleColors {
 #slider {
   flex: 0 0 32px;
   height: 32px;
+  background-color: var(--a11y-media-bg-color);
 }
 a11y-media-youtube {
   opacity: 1;
@@ -235,6 +307,7 @@ a11y-media-youtube.hidden {
   max-height: 44px;
   position: relative;
   color: var(--a11y-media-color);
+  background-color: var(--a11y-media-bg-color);
   --primary-text-color: var(--a11y-media-settings-menu-color);
   --paper-menu-button-dropdown-background: var(
     --a11y-media-settings-menu-bg-color
@@ -243,25 +316,15 @@ a11y-media-youtube.hidden {
     --a11y-media-settings-menu-bg-color
   );
   --paper-listbox-color: var(--a11y-media-settings-menu-color);
-  --paper-listbox: {
-    padding: 0;
-  }
-  --paper-menu-button: {
-    background-color: var(--a11y-media-settings-menu-bg-color);
-    color: var(--a11y-media-settings-menu-color);
-  }
-  --paper-menu-button-dropdown: {
-    background-color: var(--a11y-media-settings-menu-bg-color);
-    color: var(--a11y-media-settings-menu-color);
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  --paper-item-selected: {
-    color: var(--a11y-media-settings-menu-hover-color);
-  }
-  --paper-item-focused: {
-    color: var(--a11y-media-settings-menu-hover-color);
-  }
+  --paper-listbox-padding: 0;
+  --paper-menu-button-background-color: var(--a11y-media-settings-menu-bg-color);
+  --paper-menu-button-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-background-color: var(--a11y-media-settings-menu-bg-color);
+  --paper-menu-button-dropdown-color: var(--a11y-media-settings-menu-color);
+  --paper-menu-button-dropdown-margin-top: 0 !important;
+  --paper-menu-button-dropdown-margin-bottom: 0 !important;
+  --paper-item-selected-color: var(--a11y-media-settings-menu-hover-color);
+  --paper-item-focused-color: var(--a11y-media-settings-menu-hover-color);
 }
 #controls-left {
   position: absolute;
@@ -271,7 +334,7 @@ a11y-media-youtube.hidden {
 #controls-right {
   position: absolute;
   right: 0;
-  top: -2px;
+  top: 0;
 }
 paper-menu-button,
 dropdown-select {
@@ -354,7 +417,14 @@ paper-icon-button {
 :host([responsive-size="xs"]) #volume.focus,
 :host([responsive-size="xs"]) #volume-and-mute:active #volume,
 :host([responsive-size="xs"]) #volume-and-mute:focus #volume,
-:host([responsive-size="xs"]) #volume-and-mute:hover #volume {
+:host([responsive-size="xs"]) #volume-and-mute:hover #volume,
+:host([width]) #volume:active,
+:host([width]) #volume:focus,
+:host([width]) #volume:hover,
+:host([width]) #volume.focus,
+:host([width]) #volume-and-mute:active #volume,
+:host([width]) #volume-and-mute:focus #volume,
+:host([width]) #volume-and-mute:hover #volume {
   top: 0px;
 }
 #print-thumbnail {
@@ -397,13 +467,13 @@ paper-icon-button {
   --simple-search-button-border-color: var(--a11y-media-bg-color);
   --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
   --simple-search-button-disabled-color: var(
-    --simple-colors-default-theme-grey-5
+    --a11y-media-disabled-color
   );
   --simple-search-button-disabled-bg-color: var(
-    --simple-colors-default-theme-grey-2
+    --a11y-media-bg-color
   );
   --simple-search-button-disabled-border-color: var(
-    --simple-colors-default-theme-grey-3
+    --a11y-media-border-color
   );
   --paper-input-container-input-color: var(--a11y-media-color);
   --simple-search-padding: 0 15px;
@@ -456,6 +526,9 @@ simple-tooltip:not(:defined),
 paper-toast:not(:defined) {
   display: none;
 }
+::slotted(iframe) {
+  display:none; 
+}
 @media screen {
   :host([full-flex]) {
     flex-flow: row;
@@ -490,6 +563,16 @@ paper-toast:not(:defined) {
     border: 1px solid var(--a11y-media-bg-color);
     box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
     border-radius: 3.2px;
+  }
+  :host([fullscreen]) #player-section {
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100000;
+    transition: all 0.5s;
   }
   :host([dark][sticky-mode]) #player-section {
     border: 1px solid var(--a11y-media-bg-color);
@@ -527,6 +610,9 @@ paper-toast:not(:defined) {
   :host([sticky-mode]) .hide-full-xs,
   :host([sticky-mode]) .hide-full-sm,
   :host([sticky-mode]) .hide-flex,
+  :host([width]) .hide-full-xs,
+  :host([width]) .hide-full-sm,
+  :host([width]) .hide-full-flex,
   :host([responsive-size="xs"]) .hide-full-xs,
   :host([responsive-size="xs"]) .hide-full-sm,
   :host([responsive-size="xs"]) .hide-full-flex,
@@ -548,11 +634,13 @@ paper-toast:not(:defined) {
     font-size: 12px;
   }
   :host([responsive-size="xs"]) #cc-custom,
+  :host([width]) #cc-custom,
   :host([flex-layout][responsive-size="md"]) #cc-custom,
   :host([flex-layout][responsive-size="sm"]) #cc-custom {
     font-size: 10px;
   }
   :host([sticky-mode]) #cc-custom,
+  :host([flex-layout][width]) #cc-custom,
   :host([flex-layout][responsive-size="xs"]) #cc-custom {
     display: none;
   }
@@ -752,7 +840,6 @@ paper-toast:not(:defined) {
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
         step="1"
-        ?disabled="${this.fullscreenButton}"
         ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
         ?toggle="${this.fullscreen}"
         @click="${e => this.toggleFullscreen()}"
@@ -1299,6 +1386,7 @@ ${this.poster
   },
   /**
    * Source of optional thumbnail image
+   * Highly recommended for Safari.
    */
   "thumbnailSrc": {
     "attribute": "thumbnail-src",
@@ -1458,8 +1546,10 @@ ${this.poster
         this.__preloadedDuration = html5.duration;
       });
     });
-
-    window.A11yMediaStateManager.requestAvailability();
+    import("@lrnwebcomponents/simple-search/simple-search.js");
+    import("./lib/a11y-media-state-manager.js");
+    import("./lib/a11y-media-button.js");
+    import("./lib/a11y-media-transcript-cue.js");
     import("./lib/a11y-media-youtube.js");
     import("@polymer/paper-slider/paper-slider.js");
     import("@polymer/iron-icons/iron-icons.js");
@@ -1608,6 +1698,7 @@ ${this.poster
   get fullFlex() {
     return (
       this.flexLayout &&
+      !this.height &&
       this.responsiveSize !== "xs" &&
       this.responsiveSize !== "sm"
     );
@@ -1872,7 +1963,7 @@ ${this.poster
   get playerStyle() {
     let height = this.audioNoThumb ? "60px" : "unset",
       paddingTop =
-        this.fullscreen || this.audioNoThumb
+        this.fullscreen || this.audioNoThumb || this.height
           ? `unset`
           : `${100 / this.aspect}%`,
       thumbnail =
@@ -1888,12 +1979,17 @@ ${this.poster
    * @returns {string} url for poster image
    */
   get poster() {
+    let thumbnail = this.thumbnailSrc 
+      ? this.thumbnailSrc 
+      : this.media && !this.media.poster 
+        ? this.media.poster 
+        : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[\?&].*/,
           ""
         )}/hqdefault.jpg`
-      : this.thumbnailSrc;
+      : thumbnail;
   }
 
   /**
@@ -1929,8 +2025,7 @@ ${this.poster
       ? this.shadowRoot.querySelector("#slider")
       : false;
     let currentTime =
-      slider &&
-      !slider.disabled && slider.dragging
+      slider && !slider.disabled && slider.dragging
         ? this.shadowRoot.querySelector("#slider").immediateValue
         : this.__currentTime;
     return currentTime;
@@ -2153,6 +2248,12 @@ ${this.poster
             !this.isYoutube ? this.thumbnailSrc : false,
             this.__loadedTracks
           );
+        if (
+          change(["isYoutube","poster","media","audioOnly"]) && 
+          this.poster && !this.isYoutube && 
+          !this.audioOnly && 
+          !this.media.poster
+        ) this.media.poster = this.poster;
       }
 
       this.dispatchEvent(
@@ -2521,6 +2622,14 @@ ${this.poster
       medium.removeAttribute("autoplay");
       medium.setAttribute("preload", "metadata");
     });
+    if(!this.youtubeId) {
+      let iframeSrc = this.querySelector('iframe') && this.querySelector('iframe') ? this.querySelector('iframe').src : false,
+        yt = iframeSrc? iframeSrc.match(/youtube(-\w*)*.com/) || iframeSrc.src.match(/youtu.be/) : false;
+      if(yt && iframeSrc) {
+        this.youtubeId = iframeSrc.replace(/.*\//g,'');
+        this.querySelector('iframe').remove();
+      }
+    }
 
     if (media.length > 0) {
       primary = media[0];
@@ -2650,10 +2759,10 @@ ${this.poster
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleFullscreen(mode) {
-    if (screenfull && this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.loop : mode;
-      this.toggleTranscript(this.fullscreen);
-      screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+    if (this.fullscreenButton) {
+      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
+      //this.toggleTranscript(this.fullscreen);
+      if(screenfull) screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled
@@ -2936,11 +3045,12 @@ ${this.poster
    * @returns {number} key
    */
   _getTrackId(track) {
-    return (
-      Object.keys(this.loadedTracks.textTracks).find(
-        key => this.loadedTracks.textTracks[key] === track
-      ) || -1
-    );
+    return this.loadedTracks 
+      ? (
+        Object.keys(this.loadedTracks.textTracks).find(
+          key => this.loadedTracks.textTracks[key] === track
+        ) || -1)
+      : -1;
   }
 
   /**
@@ -2976,7 +3086,11 @@ ${this.poster
       });
     }
   }
-
+  firstUpdated() {
+    setTimeout(() => {
+      window.A11yMediaStateManager.requestAvailability();
+    }, 1000);
+  }
   /**
    * on a cue.onenter event scrolls the first active cue to position
    * @param {event} e onenter event

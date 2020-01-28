@@ -121,7 +121,7 @@ class A11yMediaButton extends LitElement {
         }
         :host([disabled]) #button {
           color: var(--a11y-media-button-disabled-color);
-          cursor: none;
+          cursor: not-allowed;
         }
         .sr-only {
           position: absolute;
