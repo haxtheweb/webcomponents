@@ -754,7 +754,6 @@ class A11yMediaPlayer extends SimpleColors {
     let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
-    console.log('loadedtracks',this.getloadedTracks());
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", e =>
       root._handleMediaLoaded(e)

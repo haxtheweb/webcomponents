@@ -2895,9 +2895,10 @@ ${this.poster
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    Object.keys(this.loadedTracks.textTracks).forEach(track => this._onAddTrack(this.loadedTracks.textTracks[track]));
+    this.loadedTracks.textTracks.forEach(track => this._onAddTrack(track));
     this.loadedTracks.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
     this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
+    console.log('_addSourcesAndTracks',media,this.loadedTracks.textTracks,this.cues);
     
 
     let d = this.loadedTracks.querySelector("track[default]")
