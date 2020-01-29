@@ -754,6 +754,7 @@ class A11yMediaPlayer extends SimpleColors {
     let root = this;
     super.connectedCallback();
     this.__loadedTracks = this.getloadedTracks();
+    console.log('loadedtracks',this.getloadedTracks());
     this._handleMediaLoaded();
     this.__loadedTracks.addEventListener("loadedmetadata", e =>
       root._handleMediaLoaded(e)
@@ -1498,29 +1499,16 @@ class A11yMediaPlayer extends SimpleColors {
 
   /**
    * loads a track's cue metadata
+   * @param {object} HTML audio or video object
    */
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    this.loadedTracks.textTracks.onremovetrack = e => {
-      this.loadedTracks.textTracks.filter(track => track !== e.track);
-      this.__cues = this.cues.filter(cue => cue.track !== e.track);
-    };
-    this.loadedTracks.textTracks.onaddtrack = e => {
-      if (this.captionsTrack === null) this.captionsTrack = e.track;
-      e.track.mode = "hidden";
-      let loadCueData = setInterval(() => {
-        if (e.track.cues && e.track.cues.length > 0) {
-          clearInterval(loadCueData);
-          let cues = Object.keys(e.track.cues).map(key => e.track.cues[key]);
-          this.__cues = this.cues.concat(cues).sort((a, b) => {
-            let start = a.startTime - b.startTime,
-              end = a.endTime - b.endTime;
-            return start !== 0 ? start : end !== 0 ? end : a.track - b.track;
-          });
-        }
-      });
-    };
+    this.loadedTracks.textTracks.forEach(track => this._onAddTrack(track));
+    this.loadedTracks.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
+    this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
+    console.log('_addSourcesAndTracks',media,this.loadedTracks.textTracks,this.cues);
+    
 
     let d = this.loadedTracks.querySelector("track[default]")
         ? this.loadedTracks.querySelector("track[default]")
@@ -1671,12 +1659,42 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
+   * adds a track's cues to cues array
+   * @param {object} textTrack
+   */
+  _onAddTrack(track){
+    if (this.captionsTrack === null) this.captionsTrack = track;
+    track.mode = "hidden";
+    let loadCueData = setInterval(() => {
+      if (track.cues && track.cues.length > 0) {
+        clearInterval(loadCueData);
+        let cues = Object.keys(track.cues).map(key => track.cues[key]);
+        this.__cues = this.cues.concat(cues).sort((a, b) => {
+          let start = a.startTime - b.startTime,
+            end = a.endTime - b.endTime;
+          return start !== 0 ? start : end !== 0 ? end : a.track - b.track;
+        });
+      }
+    });
+
+  }
+
+  /**
    * determine which button was clicked and act accordingly
    * @param {event} e controls change event
    */
   _onControlsChanged(e) {
     if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
       this.shadowRoot.querySelector("#settings").close();
+  }
+
+  /**
+   * removes a track's cues from cues array
+   * @param {object} textTrack
+   */
+  _onRemoveTrack(track){
+    this.loadedTracks.textTracks.filter(textTrack => textTrack !== track);
+    this.__cues = this.cues.filter(cue => cue.track !== track);
   }
 
   /**
