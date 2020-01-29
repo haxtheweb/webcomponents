@@ -5,11 +5,11 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `meme-maker`
- * @customElement meme-maker
  * Connects lrndesign-gallery to HAX
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  *  - go forth and make dank memes yo
+ * @customElement meme-maker
  */
 class MemeMaker extends LitElement {
   static get styles() {
@@ -121,6 +121,16 @@ class MemeMaker extends LitElement {
     };
   }
   /**
+   * Hook for HAX to support progressive enhancement and return a string
+   * to place in the slot of this tag for RSS, bots and legacy formats
+   */
+  haxProgressiveEnhancement() {
+    return `
+    ${this.topText ? `<div>${this.topText}</div>` : ""}
+      <img src="${this.imageUrl}" alt="${this.alt}" preload="lazy"/>
+    ${this.bottomText ? `<div>${this.bottomText}</div>` : ""}`;
+  }
+  /**
    * Attached to the DOM, now fire.
    */
   static get haxProperties() {
@@ -188,6 +198,9 @@ class MemeMaker extends LitElement {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        wipeSlot: true
       }
     };
   }

@@ -2241,6 +2241,10 @@ window.HaxStore.nodeToContent = node => {
       }
     }
   }
+  // optional support for intentional progressive enhancement
+  if (typeof node.haxProgressiveEnhancement === "function") {
+    content += node.haxProgressiveEnhancement();
+  }
   // don't put return for span since it's an inline tag
   if (tag === "span") {
     content += "</" + tag + ">";
