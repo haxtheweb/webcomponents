@@ -1,0 +1,9 @@
+{
+  "title": {
+    "name": "title",
+    "type": String,
+    "value": "cool stuff",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
