@@ -3,13 +3,13 @@
    * heading / label of the modal
    */
   "title": {
-    "type": String
+    "type": "String"
   },
   /**
    * open state
    */
   "opened": {
-    "type": Boolean,
+    "type": "Boolean",
     "reflect": true
   },
   /**
@@ -17,25 +17,25 @@
    */
   "closeLabel": {
     "attribute": "close-label",
-    "type": String
+    "type": "String"
   },
   /**
    * Close icon
    */
   "closeIcon": {
-    "type": String,
+    "type": "String",
     "attribute": "close-icon"
   },
   /**
    * The element that invoked this. This way we can track our way back accessibly
    */
   "invokedBy": {
-    "type": Object
+    "type": "Object"
   },
   /**
    * support for modal flag
    */
   "modal": {
-    "type": Boolean
+    "type": "Boolean"
   }
 }
