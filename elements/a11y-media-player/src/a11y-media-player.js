@@ -241,19 +241,20 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {array} array of cues
    */
   get captionCues() {
-    let cues = !this.captionsTrack || !this.captionsTrack.cues
-      ? []
-      : this.isYoutube
-      ? Object.keys(this.captionsTrack.cues).map(key => {
-          let cue = this.captionsTrack.cues[key];
-          if (
-            cue.startTime <= this.currentTime &&
-            cue.endTime >= this.currentTime
-          )
-            return cue;
-          return {};
-        })
-      : this.captionsTrack.activeCues;
+    let cues =
+      !this.captionsTrack || !this.captionsTrack.cues
+        ? []
+        : this.isYoutube
+        ? Object.keys(this.captionsTrack.cues).map(key => {
+            let cue = this.captionsTrack.cues[key];
+            if (
+              cue.startTime <= this.currentTime &&
+              cue.endTime >= this.currentTime
+            )
+              return cue;
+            return {};
+          })
+        : this.captionsTrack.activeCues;
     return cues;
   }
 
@@ -588,11 +589,11 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {string} url for poster image
    */
   get poster() {
-    let thumbnail = this.thumbnailSrc 
-      ? this.thumbnailSrc 
-      : this.media && !this.media.poster 
-        ? this.media.poster 
-        : false;
+    let thumbnail = this.thumbnailSrc
+      ? this.thumbnailSrc
+      : this.media && !this.media.poster
+      ? this.media.poster
+      : false;
     return !this.thumbnailSrc && this.youtubeId
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[\?&].*/,
@@ -858,11 +859,13 @@ class A11yMediaPlayer extends SimpleColors {
             this.__loadedTracks
           );
         if (
-          change(["isYoutube","poster","media","audioOnly"]) && 
-          this.poster && !this.isYoutube && 
-          !this.audioOnly && 
+          change(["isYoutube", "poster", "media", "audioOnly"]) &&
+          this.poster &&
+          !this.isYoutube &&
+          !this.audioOnly &&
           !this.media.poster
-        ) this.media.poster = this.poster;
+        )
+          this.media.poster = this.poster;
       }
 
       this.dispatchEvent(
@@ -1231,12 +1234,18 @@ class A11yMediaPlayer extends SimpleColors {
       medium.removeAttribute("autoplay");
       medium.setAttribute("preload", "metadata");
     });
-    if(!this.youtubeId) {
-      let iframeSrc = this.querySelector('iframe') && this.querySelector('iframe') ? this.querySelector('iframe').src : false,
-        yt = iframeSrc? iframeSrc.match(/youtube(-\w*)*.com/) || iframeSrc.src.match(/youtu.be/) : false;
-      if(yt && iframeSrc) {
-        this.youtubeId = iframeSrc.replace(/.*\//g,'');
-        this.querySelector('iframe').remove();
+    if (!this.youtubeId) {
+      let iframeSrc =
+          this.querySelector("iframe") && this.querySelector("iframe")
+            ? this.querySelector("iframe").src
+            : false,
+        yt = iframeSrc
+          ? iframeSrc.match(/youtube(-\w*)*.com/) ||
+            iframeSrc.src.match(/youtu.be/)
+          : false;
+      if (yt && iframeSrc) {
+        this.youtubeId = iframeSrc.replace(/.*\//g, "");
+        this.querySelector("iframe").remove();
       }
     }
 
@@ -1371,7 +1380,8 @@ class A11yMediaPlayer extends SimpleColors {
     if (this.fullscreenButton) {
       this.fullscreen = mode === undefined ? !this.fullscreen : mode;
       //this.toggleTranscript(this.fullscreen);
-      if(screenfull) screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+      if (screenfull)
+        screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
 
       /**
        * Fires when fullscreen is toggled
@@ -1503,8 +1513,11 @@ class A11yMediaPlayer extends SimpleColors {
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    Object.keys(this.loadedTracks.textTracks).forEach(track => this._onAddTrack(track));
-    this.loadedTracks.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
+    Object.keys(this.loadedTracks.textTracks).forEach(track =>
+      this._onAddTrack(track)
+    );
+    this.loadedTracks.textTracks.onremovetrack = e =>
+      this._onRemoveTrack(e.track);
     this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
 
     let d = this.loadedTracks.querySelector("track[default]")
@@ -1639,11 +1652,10 @@ class A11yMediaPlayer extends SimpleColors {
    * @returns {number} key
    */
   _getTrackId(track) {
-    return this.loadedTracks 
-      ? (
-        Object.keys(this.loadedTracks.textTracks).find(
+    return this.loadedTracks
+      ? Object.keys(this.loadedTracks.textTracks).find(
           key => this.loadedTracks.textTracks[key] === track
-        ) || -1)
+        ) || -1
       : -1;
   }
 
@@ -1659,7 +1671,7 @@ class A11yMediaPlayer extends SimpleColors {
    * adds a track's cues to cues array
    * @param {object} textTrack
    */
-  _onAddTrack(track){
+  _onAddTrack(track) {
     if (this.captionsTrack === null) this.captionsTrack = track;
     track.mode = "hidden";
     let loadCueData = setInterval(() => {
@@ -1673,7 +1685,6 @@ class A11yMediaPlayer extends SimpleColors {
         });
       }
     });
-
   }
 
   /**
@@ -1689,7 +1700,7 @@ class A11yMediaPlayer extends SimpleColors {
    * removes a track's cues from cues array
    * @param {object} textTrack
    */
-  _onRemoveTrack(track){
+  _onRemoveTrack(track) {
     this.loadedTracks.textTracks.filter(textTrack => textTrack !== track);
     this.__cues = this.cues.filter(cue => cue.track !== track);
   }

@@ -770,7 +770,9 @@ class HaxPreview extends winEventsElement(LitElement) {
               // vanilla / anything else we should just be able to set the prop
               else if (newValue[property]) {
                 try {
-                  newValue[property] = this.activeHaxElement.properties[property];
+                  newValue[property] = this.activeHaxElement.properties[
+                    property
+                  ];
                 } catch (e) {
                   console.warn(e);
                 }
