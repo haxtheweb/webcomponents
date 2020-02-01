@@ -1633,7 +1633,7 @@ ${this.poster
    * @returns {array} array of cues
    */
   get captionCues() {
-    let cues = !this.captionsTrack
+    let cues = !this.captionsTrack || !this.captionsTrack.cues
       ? []
       : this.isYoutube
       ? Object.keys(this.captionsTrack.cues).map(key => {
@@ -2895,11 +2895,9 @@ ${this.poster
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    this.loadedTracks.textTracks.forEach(track => this._onAddTrack(track));
+    Object.keys(this.loadedTracks.textTracks).forEach(track => this._onAddTrack(track));
     this.loadedTracks.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
     this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
-    console.log('_addSourcesAndTracks',media,this.loadedTracks.textTracks,this.cues);
-    
 
     let d = this.loadedTracks.querySelector("track[default]")
         ? this.loadedTracks.querySelector("track[default]")

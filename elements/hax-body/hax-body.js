@@ -1845,6 +1845,7 @@ class HaxBody extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
         haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
+
         window.HaxStore.write("activeHaxElement", haxElement, this);
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
