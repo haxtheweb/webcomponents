@@ -38,7 +38,9 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   // render function
   render() {
     return html`
-      ${this.isA11yMedia
+      ${!this.sourceData || this.sourceData.length < 1
+        ? html``
+        : this.isA11yMedia
         ? html`
             <a11y-media-player
               .accent-color="${this.accentColor || undefined}"
@@ -187,10 +189,8 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
           {
             property: "source",
             title: "Source",
-            description: "The URL for this video.",
+            description: "The URL for this media.",
             inputMethod: "haxupload",
-            icon: "link",
-            required: true,
             noCamera: true,
             noVoiceRecord: true,
             validationType: "url"
@@ -199,9 +199,9 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             property: "track",
             title: "Closed captions",
             description: "The URL for the captions file.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
+            inputMethod: "haxupload",
+            noCamera: true,
+            noVoiceRecord: true,
             validationType: "url"
           },
           {
@@ -209,8 +209,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             title: "Thumbnail image",
             description: "Optional. The URL for a thumbnail/poster image.",
             inputMethod: "haxupload",
-            icon: "link",
-            required: true,
             noVoiceRecord: true,
             validationType: "url"
           },
@@ -219,26 +217,33 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             title: "Title",
             description: "Simple title for under video",
             inputMethod: "textfield",
-            icon: "av:video-label",
-            required: false,
             validationType: "text"
           },
           {
             property: "accentColor",
             title: "Accent color",
             description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
+            inputMethod: "colorpicker"
           },
           {
             attribute: "dark",
             title: "Dark theme",
             description: "Enable dark theme for the player.",
-            inputMethod: "boolean",
-            icon: "invert-colors"
+            inputMethod: "boolean"
           }
         ],
         advanced: [
+          {
+            property: "crossorigin",
+            title: "Crossorigin",
+            description: "Indicates whether to use CORS.",
+            inputMethod: "select",
+            options: {
+              "": "",
+              anonymous: "anonymous",
+              "use-credentials": "use-credentials"
+            }
+          },
           {
             property: "darkTranscript",
             title: "Dark theme for transcript",
@@ -246,10 +251,37 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             inputMethod: "boolean"
           },
           {
+            property: "disableInteractive",
+            title: "Disable Interactive",
+            description:
+              "Disable interactive mode that makes transcript clickable.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "height",
+            title: "Height",
+            inputMethod: "textfield",
+            required: false,
+            validationType: "text"
+          },
+          {
             property: "hideTimestamps",
             title: "Hide timestamps",
             description: "Hide the time stamps on the transcript.",
             inputMethod: "boolean"
+          },
+          {
+            property: "hideTranscript",
+            title: "Hide Transcript",
+            description: "Hide transcript by default.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "lang",
+            title: "Language",
+            description: "Language of the media.",
+            inputMethod: "textfield",
+            validationType: "text"
           },
           {
             property: "linkable",
@@ -292,8 +324,12 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
               {
                 property: "src",
                 title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield"
+                description: "The URL for this source.",
+                inputMethod: "haxupload",
+                required: true,
+                noCamera: true,
+                noVoiceRecord: true,
+                validationType: "url"
               },
               {
                 property: "type",
@@ -327,13 +363,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
                 description: "Kind of track",
                 inputMethod: "select",
                 options: {
-                  subtitles:
-                    "subtitles" /*,
-              Future Features
-              'description': 'description',
-              'thumbnails': 'thumbnails',
-              'interactive': 'interactive',
-              'annotation': 'annotation'*/
+                  subtitles: "subtitles"
                 }
               },
               {
@@ -346,8 +376,12 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
               {
                 property: "src",
                 title: "Source",
-                description: "Source of the track",
-                inputMethod: "textfield"
+                description: "The source for the captions file.",
+                inputMethod: "haxupload",
+                required: false,
+                noCamera: true,
+                noVoiceRecord: true,
+                validationType: "url"
               },
               {
                 property: "srclang",
@@ -357,6 +391,13 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
                 inputMethod: "textfield"
               }
             ]
+          },
+          {
+            property: "width",
+            title: "width",
+            inputMethod: "textfield",
+            required: false,
+            validationType: "text"
           }
         ]
       }
@@ -433,7 +474,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         type: Boolean
       },
       /**
-       * Hide transcript by default
+       * Unique id
        */
       id: {
         type: String,
@@ -456,13 +497,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
        * Simple caption for video
        */
       mediaTitle: {
-        type: String
-      },
-      /**
-       * ID for a11y-media-player.
-       * If none specified it will be modified from schema-resource-id.
-       */
-      playerId: {
         type: String
       },
       /**

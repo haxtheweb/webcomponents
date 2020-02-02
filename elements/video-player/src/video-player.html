@@ -1,63 +1,67 @@
-
-${this.isA11yMedia ? html`
-  <a11y-media-player
-    .accent-color="${this.accentColor || undefined}"
-    ?audio-only="${this.audioOnly}"
-    ?dark="${this.dark}"
-    ?dark-transcript="${this.darkTranscript}"
-    ?disable-interactive="${this.disableInteractive}"
-    ?hide-timestamps="${this.hideTimestamps}"
-    ?hide-transcript="${this.hideTiranscript}"
-    id="${this.playerId}"
-    lang="${this.lang || 'en'}"
-    ?linkable="${this.linkable}"
-    preload="${this.preload || 'metadata'}"
-    .media-title="${this.mediaTitle || undefined}"
-    .sources="${this.sourceData}"
-    ?stand-alone="${this.standAlone}"
-    sticky-corner="${this.stickyCorner || 'top-right'}"
-    .thumbnail-src="${this.thumbnailSrc}"
-    .tracks="${this.trackData}"
-    .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
-    .width="${this.width}"
-    .height="${this.height}"
-    >
-    ${this.youtubeId 
-      ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
-      : html``
-    }
-    ${this.audioOnly 
-      ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
-      : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
-    }  
-  </a11y-media-player>` : html`
-  <div class="responsive-video-container" .lang="${this.lang || undefined}">
-    ${this.sandboxed ? html``: html`
-      <webview
-        resource="${this.schemaResourceID}-video"
-        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
-        .width="${this.width || undefined }"
-        .height="${this.height || undefined }"
-        frameborder="0">
-      </webview>`}
-    ${!(!this.sandboxed && this.iframed) ? html``: html`
-      <iframe
-        resource="${this.schemaResourceID}-video"
-        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
-        width="${this.width}"
-        height="${this.height}"
-        frameborder="0"
-        webkitallowfullscreen=""
-        mozallowfullscreen=""
-        allowfullscreen=""
-      ></iframe>
-    `}
-  </div>
-  <div id="videocaption" class="video-caption">
-    <p>
-      ${this.mediaTitle}
-      <span class="media-type print-only">(embedded media)</span>
-    </p>
-    <slot name="caption"></slot>
-    <slot hidden></slot>
-  </div>`}
+${!this.sourceData || this.sourceData.length < 1 
+  ? html`` 
+  : this.isA11yMedia 
+    ? html`
+      <a11y-media-player
+        .accent-color="${this.accentColor || undefined}"
+        ?audio-only="${this.audioOnly}"
+        ?dark="${this.dark}"
+        ?dark-transcript="${this.darkTranscript}"
+        ?disable-interactive="${this.disableInteractive}"
+        ?hide-timestamps="${this.hideTimestamps}"
+        ?hide-transcript="${this.hideTiranscript}"
+        id="${this.playerId}"
+        lang="${this.lang || 'en'}"
+        ?linkable="${this.linkable}"
+        preload="${this.preload || 'metadata'}"
+        .media-title="${this.mediaTitle || undefined}"
+        .sources="${this.sourceData}"
+        ?stand-alone="${this.standAlone}"
+        sticky-corner="${this.stickyCorner || 'top-right'}"
+        .thumbnail-src="${this.thumbnailSrc}"
+        .tracks="${this.trackData}"
+        .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
+        .width="${this.width}"
+        .height="${this.height}"
+        >
+        ${this.youtubeId 
+          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
+          : html``
+        }
+        ${this.audioOnly 
+          ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
+          : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
+        }  
+      </a11y-media-player>` 
+    : html`
+      <div class="responsive-video-container" .lang="${this.lang || undefined}">
+        ${this.sandboxed ? html``: html`
+          <webview
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            .width="${this.width || undefined }"
+            .height="${this.height || undefined }"
+            frameborder="0">
+          </webview>`}
+        ${!(!this.sandboxed && this.iframed) ? html``: html`
+          <iframe
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            width="${this.width}"
+            height="${this.height}"
+            frameborder="0"
+            webkitallowfullscreen=""
+            mozallowfullscreen=""
+            allowfullscreen=""
+          ></iframe>
+        `}
+      </div>
+      <div id="videocaption" class="video-caption">
+        <p>
+          ${this.mediaTitle}
+          <span class="media-type print-only">(embedded media)</span>
+        </p>
+        <slot name="caption"></slot>
+        <slot hidden></slot>
+      </div>`
+}

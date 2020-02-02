@@ -66,6 +66,11 @@ h2 {
   background-color: transparent;
 }
 
+#close:focus, 
+#close:hover {
+  opacity: 0.7;
+}
+
 #close iron-icon {
   width: 16px;
   height: 16px;

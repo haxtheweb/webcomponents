@@ -65,7 +65,7 @@
     "type": "Boolean"
   },
   /**
-   * Hide transcript by default
+   * Unique id
    */
   "id": {
     "type": "String",
@@ -88,13 +88,6 @@
    * Simple caption for video
    */
   "mediaTitle": {
-    "type": "String"
-  },
-  /**
-   * ID for a11y-media-player.
-   * If none specified it will be modified from schema-resource-id.
-   */
-  "playerId": {
     "type": "String"
   },
   /**
