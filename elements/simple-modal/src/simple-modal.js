@@ -201,11 +201,11 @@ class SimpleModal extends LitElement {
         element.setAttribute("slot", slots[i]);
         this.appendChild(element);
       }
-    }   
+    }
     // minor delay to help the above happen prior to opening
     setTimeout(() => {
       this.opened = true;
-      this.shadowRoot.querySelector('#close').focus(); 
+      this.shadowRoot.querySelector("#close").focus();
       this._resizeContent();
     }, 100);
   }

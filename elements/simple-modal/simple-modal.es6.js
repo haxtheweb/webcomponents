@@ -104,6 +104,11 @@ h2 {
   background-color: transparent;
 }
 
+#close:focus, 
+#close:hover {
+  opacity: 0.7;
+}
+
 #close iron-icon {
   width: 16px;
   height: 16px;
@@ -427,10 +432,11 @@ h2 {
         element.setAttribute("slot", slots[i]);
         this.appendChild(element);
       }
-    }
+    }   
     // minor delay to help the above happen prior to opening
     setTimeout(() => {
       this.opened = true;
+      this.shadowRoot.querySelector('#close').focus(); 
       this._resizeContent();
     }, 100);
   }
