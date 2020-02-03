@@ -123,6 +123,7 @@ class PersonTestimonial extends SimpleColorsPolymer {
         <div class="image">
           <iron-image
             src="[[image]]"
+            alt="[[alt]]"
             sizing="cover"
             preload=""
             fade=""
@@ -166,6 +167,12 @@ class PersonTestimonial extends SimpleColorsPolymer {
        * The profile image to display to the left of the quote.
        */
       image: {
+        type: String
+      },
+      /**
+       * The alt text for profile image.
+       */
+      alt: {
         type: String
       },
       /**
@@ -215,6 +222,13 @@ class PersonTestimonial extends SimpleColorsPolymer {
             icon: "editor:insert-photo"
           },
           {
+            property: "alt",
+            title: "Alt Text",
+            description: "Alt text for profile image",
+            inputMethod: "textfield",
+            icon: "editor:text-fields"
+          },
+          {
             property: "name",
             title: "Full Name",
             description: "Credit the person making the testimonial",
@@ -250,6 +264,13 @@ class PersonTestimonial extends SimpleColorsPolymer {
             description: "Adds image to testimonial",
             inputMethod: "haxupload",
             icon: "editor:insert-photo"
+          },
+          {
+            property: "alt",
+            title: "Alt",
+            description: "Alt text for profile image",
+            inputMethod: "textfield",
+            icon: "editor:text-fields"
           },
           {
             property: "accentColor",
