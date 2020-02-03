@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Automated conversion of lrndesign-drawer/",
   "repository": {
     "type": "git",
@@ -41,15 +41,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/simple-tooltip": "^2.4.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/paper-icon-button": "^3.0.1",
-    "@lrnwebcomponents/simple-tooltip": "^2.4.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/lrn-icons": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
+    "@lrnwebcomponents/lrn-icons": "^2.4.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

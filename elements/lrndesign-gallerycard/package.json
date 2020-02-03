@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Automated conversion of lrndesign-gallerycard/",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.4.0",
-    "@lrnwebcomponents/materializecss-styles": "^2.4.0",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.4.1",
+    "@lrnwebcomponents/materializecss-styles": "^2.4.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

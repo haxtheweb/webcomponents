@@ -16,7 +16,7 @@
       "hax": "src/voice-recorder-hax.json"
     }
   },
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "LAME bridge",
   "repository": {
     "type": "git",
