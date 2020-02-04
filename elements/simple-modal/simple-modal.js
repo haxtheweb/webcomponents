@@ -95,7 +95,8 @@ class SimpleModal extends LitElement {
 
         #close {
           top: 0;
-          padding: 10px 0;
+          border: var(--simple-modal-titlebar-button-border, none);
+          padding: var(--simple-modal-titlebar-button-padding, 10px 0);
           min-width: unset;
           text-transform: none;
           color: var(--simple-modal-titlebar-color, #444);
@@ -105,11 +106,16 @@ class SimpleModal extends LitElement {
         #close:focus,
         #close:hover {
           opacity: 0.7;
+          outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
+          outline-offset: var(
+            --simple-modal-titlebar-button-outline-offset,
+            2px
+          );
         }
 
         #close iron-icon {
-          width: 16px;
-          height: 16px;
+          width: var(--simple-modal-titlebar-icon-width, 16px);
+          height: var(--simple-modal-titlebar-icon-height, 16px);
           color: var(--simple-modal-titlebar-color, #444);
         }
 
