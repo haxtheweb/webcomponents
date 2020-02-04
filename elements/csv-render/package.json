@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Remote render a CSV file in place as an accessible table.",
   "repository": {
     "type": "git",
@@ -37,7 +37,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hexagon-loader": "^2.4.1",
-    "@lrnwebcomponents/simple-colors": "^2.4.1",
+    "@lrnwebcomponents/simple-colors": "^2.4.2",
     "@lrnwebcomponents/simple-tooltip": "^2.4.1",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icon": "^3.0.1",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",

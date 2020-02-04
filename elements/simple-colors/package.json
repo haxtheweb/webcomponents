@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -50,8 +50,8 @@
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@lrnwebcomponents/simple-colors-shared-styles": "^2.4.1",
-    "@lrnwebcomponents/simple-modal": "^2.4.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.1",
+    "@lrnwebcomponents/simple-modal": "^2.4.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
