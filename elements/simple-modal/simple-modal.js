@@ -103,8 +103,7 @@ class SimpleModal extends LitElement {
           background-color: transparent;
         }
 
-        #close:focus,
-        #close:hover {
+        #close:focus {
           opacity: 0.7;
           outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
           outline-offset: var(
@@ -129,12 +128,14 @@ class SimpleModal extends LitElement {
             #fff
           );
         }
+
         .buttons {
           padding: 0;
           margin: 0;
           color: var(--simple-modal-buttons-color, unset);
           background-color: var(--simple-modal-buttons-background, unset);
         }
+
         .buttons ::slotted(*) {
           padding: 0;
           margin: 0;

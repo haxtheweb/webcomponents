@@ -67,8 +67,7 @@ h2 {
   background-color: transparent;
 }
 
-#close:focus, 
-#close:hover {
+#close:focus {
   opacity: 0.7;
   outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
   outline-offset: var(--simple-modal-titlebar-button-outline-offset, 2px);
