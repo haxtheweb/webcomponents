@@ -1,0 +1,90 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "type-writer",
+      "description": "`type-writer`\n`typewritter effect`"
+    },
+    {
+      "name": "type-writer",
+      "description": "`type-writer`\n`typewritter effect`",
+      "attributes": [
+        {
+          "name": "delay",
+          "type": "number",
+          "default": "\"0\""
+        },
+        {
+          "name": "cursorDuration",
+          "type": "number",
+          "default": "\"0\""
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "default": "\"150\""
+        },
+        {
+          "name": "eraseSpeed",
+          "type": "number",
+          "default": "\"150\""
+        },
+        {
+          "name": "typing",
+          "type": "boolean",
+          "default": "\"false\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "delay",
+          "attribute": "delay",
+          "type": "number",
+          "default": "\"0\""
+        },
+        {
+          "name": "cursorDuration",
+          "attribute": "cursorDuration",
+          "type": "number",
+          "default": "\"0\""
+        },
+        {
+          "name": "text",
+          "attribute": "text",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
+          "name": "speed",
+          "attribute": "speed",
+          "type": "number",
+          "default": "\"150\""
+        },
+        {
+          "name": "eraseSpeed",
+          "attribute": "eraseSpeed",
+          "type": "number",
+          "default": "\"150\""
+        },
+        {
+          "name": "typing",
+          "attribute": "typing",
+          "type": "boolean",
+          "default": "\"false\""
+        }
+      ]
+    },
+    {
+      "name": "tag"
+    },
+    {
+      "name": "type-writer",
+      "description": "`type-writer`\n`typewritter effect`"
+    }
+  ]
+}
