@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Single tag to transform authoring",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body": "^2.4.3",
+    "@lrnwebcomponents/hax-body": "^2.4.4",
     "@lrnwebcomponents/hax-iconset": "^2.4.1",
     "@lrnwebcomponents/lrn-icons": "^2.4.1",
     "@polymer/iron-icon": "^3.0.1",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.3",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.4",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
