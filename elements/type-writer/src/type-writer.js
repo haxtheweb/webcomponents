@@ -35,8 +35,8 @@ class TypeWriter extends LitElement {
 
   _observeText(text, delay) {
     if (text && delay !== undefined) {
-      if (this.shadowRoot.querySelector('#text').textContent) {
-        this._oldText = this.shadowRoot.querySelector('#text').textContent;
+      if (this.shadowRoot.querySelector("#text").textContent) {
+        this._oldText = this.shadowRoot.querySelector("#text").textContent;
         if (this.typing && this._cancel) {
           clearTimeout(this._cancel);
           this._cancel = null;
@@ -44,29 +44,47 @@ class TypeWriter extends LitElement {
         return this.erase();
       }
       this._length = 0;
-      setTimeout(() => { this.type(); }, this.delay);
+      setTimeout(() => {
+        this.type();
+      }, this.delay);
     }
   }
 
-  type(){
+  type() {
     this.typing = true;
-    this.shadowRoot.querySelector('#text').textContent = this.text.substr(0, this._length++);
+    this.shadowRoot.querySelector("#text").textContent = this.text.substr(
+      0,
+      this._length++
+    );
     if (this._length < this.text.length + 1) {
-      this._cancel = setTimeout(() => { this.type() }, this.speed + (Math.random() - 0.5) * this.speed / 2);
+      this._cancel = setTimeout(() => {
+        this.type();
+      }, this.speed + ((Math.random() - 0.5) * this.speed) / 2);
       return;
     }
     setTimeout(() => {
       this.typing = false;
-      this.dispatchEvent(new CustomEvent('type-writer-end', { detail: this.text, bubbles: true, composed: true }));
+      this.dispatchEvent(
+        new CustomEvent("type-writer-end", {
+          detail: this.text,
+          bubbles: true,
+          composed: true
+        })
+      );
     }, this.cursorDuration);
   }
 
-  erase(){
+  erase() {
     this.typing = true;
-    this.shadowRoot.querySelector('#text').textContent = this._oldText.substr(0, this._length--);
+    this.shadowRoot.querySelector("#text").textContent = this._oldText.substr(
+      0,
+      this._length--
+    );
     if (this._length >= 0) {
-      this._cancel = setTimeout(() => { this.erase() }, this.eraseSpeed || this.speed);
-      return
+      this._cancel = setTimeout(() => {
+        this.erase();
+      }, this.eraseSpeed || this.speed);
+      return;
     }
     this.type();
   }
@@ -75,7 +93,7 @@ class TypeWriter extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (['text', 'delay'].includes(propName)) {
+      if (["text", "delay"].includes(propName)) {
         this._observeText(this.text, this.delay);
       }
     });
