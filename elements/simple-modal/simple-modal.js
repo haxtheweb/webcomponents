@@ -62,7 +62,7 @@ class SimpleModal extends LitElement {
           max-width: var(--simple-modal-max-width, unset);
           min-height: var(--simple-modal-min-height, unset);
           max-height: var(--simple-modal-max-height, unset);
-          border-radius: 3px;
+          border-radius: 0;
         }
 
         #titlebar {
@@ -73,7 +73,7 @@ class SimpleModal extends LitElement {
           justify-content: space-between;
           color: var(--simple-modal-titlebar-color, #444);
           background-color: var(--simple-modal-titlebar-background, #ddd);
-          border-radius: 3px 3px 0 0;
+          border-radius: 0;
           height: 64px;
           line-height: 64px;
         }
