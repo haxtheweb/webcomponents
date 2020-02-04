@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Start of lrndesign-gallery",
   "repository": {
     "type": "git",
@@ -44,10 +44,10 @@
     "@lrnwebcomponents/image-inspector": "^2.4.1",
     "@lrnwebcomponents/img-pan-zoom": "^2.4.1",
     "@lrnwebcomponents/lrnsys-button": "^2.4.1",
-    "@lrnwebcomponents/lrnsys-layout": "^2.4.2",
+    "@lrnwebcomponents/lrnsys-layout": "^2.4.3",
     "@lrnwebcomponents/responsive-utility": "^2.4.1",
     "@lrnwebcomponents/schema-behaviors": "^2.4.1",
-    "@lrnwebcomponents/simple-colors": "^2.4.2",
+    "@lrnwebcomponents/simple-colors": "^2.4.3",
     "@lrnwebcomponents/simple-tooltip": "^2.4.1",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.4.3",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
