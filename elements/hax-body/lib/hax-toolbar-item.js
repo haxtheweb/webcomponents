@@ -19,7 +19,7 @@ class HaxToolbarItem extends LitElement {
         }
         :host([disabled]) {
           pointer-events: none;
-          opacity: .5;
+          opacity: 0.5;
         }
         :host([menu]) {
           width: 100%;

@@ -1407,8 +1407,7 @@ class HaxBody extends SimpleColors {
             changed = true;
             break;
         }
-      }
-      else {
+      } else {
         switch (node.layout) {
           // @todo need to kill the grid plate if going below 0
           case "1":
@@ -1430,29 +1429,34 @@ class HaxBody extends SimpleColors {
           case "1-1-1-1-1":
             node.layout = "1-1-1-1";
             changed = true;
-          break;
+            break;
           case "1-1-1-1-1-1":
             node.layout = "1-1-1-1-1";
             changed = true;
-          break;
+            break;
         }
       }
       // if left, nudge everything over 1, right simple
       if (changed) {
-        let platecontextmenu = this.shadowRoot.querySelector('#platecontextmenu');
+        let platecontextmenu = this.shadowRoot.querySelector(
+          "#platecontextmenu"
+        );
         let right = platecontextmenu.shadowRoot.querySelector("#right");
         let left = platecontextmenu.shadowRoot.querySelector("#left");
-        let rightremove = platecontextmenu.shadowRoot.querySelector("#rightremove");
-        let leftremove = platecontextmenu.shadowRoot.querySelector("#leftremove");
+        let rightremove = platecontextmenu.shadowRoot.querySelector(
+          "#rightremove"
+        );
+        let leftremove = platecontextmenu.shadowRoot.querySelector(
+          "#leftremove"
+        );
         right.disabled = false;
         left.disabled = false;
         rightremove.disabled = false;
         leftremove.disabled = false;
-        if (node.layout == '1') {
+        if (node.layout == "1") {
           rightremove.disabled = true;
           leftremove.disabled = true;
-        }
-        else if (node.layout == '1-1-1-1-1-1') {
+        } else if (node.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }
@@ -1466,8 +1470,7 @@ class HaxBody extends SimpleColors {
           });
         }
       }
-    }
-    else {
+    } else {
       let grid = document.createElement("grid-plate");
       grid.layout = "1-1";
       this.insertBefore(grid, node);
@@ -1751,11 +1754,11 @@ class HaxBody extends SimpleColors {
         this.haxInjectGridplate(this.activeContainerNode, "right");
         break;
       case "hax-plate-remove-left":
-          this.haxInjectGridplate(this.activeContainerNode, "left", false);
-          break;
-       case "hax-plate-remove-right":
-          this.haxInjectGridplate(this.activeContainerNode, "right", false);
-          break;
+        this.haxInjectGridplate(this.activeContainerNode, "left", false);
+        break;
+      case "hax-plate-remove-right":
+        this.haxInjectGridplate(this.activeContainerNode, "right", false);
+        break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
         if (this.activeNode === this.activeContainerNode) {

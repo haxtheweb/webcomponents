@@ -210,16 +210,18 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
 
       right.style.top = Math.round(rect.y - 1) + "px";
       right.style.left = Math.round(rect.left + rect.width + 2) + "px";
-      rightremove.style.top = Math.round(rect.y - 1 + ((rect.height/2) + 2)) + "px";
+      rightremove.style.top =
+        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
       rightremove.style.left = Math.round(rect.left + rect.width + 2) + "px";
 
       left.style.top = Math.round(rect.y - 1) + "px";
       left.style.left = Math.round(rect.left - 22) + "px";
 
-      leftremove.style.top = Math.round(rect.y- 1 + ((rect.height/2) + 2)) + "px";
+      leftremove.style.top =
+        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
       leftremove.style.left = Math.round(rect.left - 22) + "px";
 
-      right.height = Math.round((rect.height/2) + 2) + "px";
+      right.height = Math.round(rect.height / 2 + 2) + "px";
       rightremove.height = right.height;
 
       left.height = right.height;
@@ -234,17 +236,15 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       left.disabled = false;
       rightremove.disabled = false;
       leftremove.disabled = false;
-      if (active && active.tagName == 'GRID-PLATE') {
-        if (active.layout == '1') {
+      if (active && active.tagName == "GRID-PLATE") {
+        if (active.layout == "1") {
           rightremove.disabled = true;
           leftremove.disabled = true;
-        }
-        else if (active.layout == '1-1-1-1-1-1') {
+        } else if (active.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }
-      }
-      else {
+      } else {
         rightremove.disabled = true;
         leftremove.disabled = true;
       }
