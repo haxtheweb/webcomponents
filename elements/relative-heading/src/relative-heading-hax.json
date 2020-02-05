@@ -22,20 +22,61 @@
     "quick": [],
     "configure": [
       {
-        "property": "parentHeading",
-        "description": "",
-        "inputMethod": "array",
-        "required": false,
-        "icon": "icons:android"
+        "property": "parent",
+        "description": "Parent Heading's Resource ID",
+        "inputMethod": "textfield",
+        "required": false
       },
       {
-        "property": "tag",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
+        "property": "disableLink",
+        "description": "Disables link button feature.",
+        "inputMethod": "boolean",
+        "required": false
+      },
+      {
+        "property": "linkAlignRight",
+        "description": "Aligns copy link button to far right of heading.",
+        "inputMethod": "boolean",
+        "required": false
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "defaultLevel",
+        "description": "Heading level if parent is not found.",
+        "inputMethod": "number",
+        "required": false
+      },
+      {
+        "property": "copyMessage",
+        "description": "Overrides default text for copy link's toast message.",
+        "inputMethod": "textfield",
+        "required": false
+      },
+      {
+        "property": "linkLabel",
+        "description": "Overrides default label copy link button.",
+        "inputMethod": "textfield",
+        "required": false
+      },
+      {
+        "property": "linkIcon",
+        "description": "Overrides default icon copy link button.",
+        "inputMethod": "iconpicker",
+        "required": false
+      },
+      {
+        "property": "closeLabel",
+        "description": "Overrides default label for copy link's toast's close button.",
+        "inputMethod": "textfield",
+        "required": false
+      },
+      {
+        "property": "closeIcon",
+        "description": "Overrides default icon for copy link's toast's close button.",
+        "inputMethod": "iconpicker",
+        "required": false
+      }
+    ]
   }
 }
