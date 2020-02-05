@@ -28,24 +28,31 @@ class RelativeHeading extends RelativeHeadingLite {
   align-items: var(--relative-heading-align,center);
   justify-content: flex-start;
 }
+
 :host([hidden]) {
   display: none;
 }
+
 ::slotted(*) {
   flex: 0 0 auto;
 }
+
 :host([link-align-right]){
   justify-content: space-between;
 }
+
 :host([link-align-right]) ::slotted(*) {
   flex: 1 1 auto;
 }
+
 :host > paper-icon-button:not(:defined) {
   opacity: 0;
 }
+
 :host > paper-icon-button {
   flex: 0 0 auto;
 }
+
 paper-icon-button {
   color: var(--relative-heading-button-color);
   background: var(--relative-heading-button-bg);
@@ -56,6 +63,7 @@ paper-icon-button {
   opacity: var(--relative-heading-button-opacity, 0.5);
   transition: var(--relative-heading-button-transition, all 0.5s);
 }
+
 paper-icon-button:focus-within,
 paper-icon-button:focus,
 paper-icon-button:hover {
@@ -198,7 +206,7 @@ ${this.button}`;
    */
   "linkAlignRight": {
     "type": Boolean,
-    "attribute":"link-align-right",
+    "attribute": "link-align-right",
     "reflect": true
   },
   /**
@@ -232,15 +240,15 @@ ${this.button}`;
     super();
     this.linkAlignRight = false;
     this.disableLink = false;
-    this.linkIcon = 'link';
-    this.linkLabel = "Get link"
+    this.linkIcon = "link";
+    this.linkLabel = "Get link";
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
   }
 
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
-    if(!this.disableLink) this.manager.useCopyLink();
+    if (!this.disableLink) this.manager.useCopyLink();
   }
 
   /**
@@ -249,26 +257,30 @@ ${this.button}`;
    * @returns {boolean}
    */
   get anchored() {
-    return window.AnchorBehaviors && window.AnchorBehaviors.getTarget 
-      ? window.AnchorBehaviors.getTarget(this) : false;
+    return window.AnchorBehaviors && window.AnchorBehaviors.getTarget
+      ? window.AnchorBehaviors.getTarget(this)
+      : false;
   }
 
-  get button(){
+  get button() {
     console.log(this.disableLink);
-    return this.disableLink ? html`` : html`
-      <paper-icon-button  
-        controls="relative-heading-toast"
-        .aria-describedby="${this.id}"
-        .icon="${this.linkIcon}"
-        .title="${this.linkLabel}"
-        ?hidden="${this.disableLink}"
-        ?disabled="${this.disableLink}"
-        @click="${this._handleCopyClick}">
-      </paper-icon-button>
-    `;
+    return this.disableLink
+      ? html``
+      : html`
+          <paper-icon-button
+            controls="relative-heading-toast"
+            .aria-describedby="${this.id}"
+            .icon="${this.linkIcon}"
+            .title="${this.linkLabel}"
+            ?hidden="${this.disableLink}"
+            ?disabled="${this.disableLink}"
+            @click="${this._handleCopyClick}"
+          >
+          </paper-icon-button>
+        `;
   }
-  _handleCopyClick(){
-    if(!this.disableLink && this.manager && this.manager.copyLink)
+  _handleCopyClick() {
+    if (!this.disableLink && this.manager && this.manager.copyLink)
       this.manager.copyLink(this);
   }
 }

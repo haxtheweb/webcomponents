@@ -12,10 +12,9 @@ import "./relative-heading-state-manager.js";
  * @customElement relative-heading-lite
  */
 class RelativeHeadingLite extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       css`
         :host {
           display: block;
@@ -31,12 +30,12 @@ class RelativeHeadingLite extends LitElement {
     return this.template;
   }
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     return {
       ...super.properties,
-  
+
       /**
-       * The default heading level (1-6), 
+       * The default heading level (1-6),
        * eg., 1 for <h1>, if there  is no parent.
        */
       defaultLevel: {
@@ -79,8 +78,10 @@ class RelativeHeadingLite extends LitElement {
     return "relative-heading-lite";
   }
 
-  get template(){
-    return html`<slot></slot>`;
+  get template() {
+    return html`
+      <slot></slot>
+    `;
   }
 
   /**
@@ -90,17 +91,21 @@ class RelativeHeadingLite extends LitElement {
     super();
     this.parent = null;
     this.checkId();
-    this.__level = this.querySelector('h1,h2,h3,h4,h5,h6') ? parseInt(this.querySelector('h1,h2,h3,h4,h5,h6').tagName.replace(/\D/,'')) : 1;
+    this.__level = this.querySelector("h1,h2,h3,h4,h5,h6")
+      ? parseInt(
+          this.querySelector("h1,h2,h3,h4,h5,h6").tagName.replace(/\D/, "")
+        )
+      : 1;
     this.defaultLevel = 1;
   }
 
   /**
    * life cycle, element is added to the DOM
    */
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     this.manager.addHeading(this);
-    this.observer.observe(this,{childList: true});
+    this.observer.observe(this, { childList: true });
   }
 
   /**
@@ -108,7 +113,7 @@ class RelativeHeadingLite extends LitElement {
    * @readonly
    * @returns {object} MutationObserver to unwrap contents
    */
-  get observer(){
+  get observer() {
     let unwrap = () => this.updateContents();
     return new MutationObserver(unwrap);
   }
@@ -118,14 +123,14 @@ class RelativeHeadingLite extends LitElement {
    * @readonly
    * @returns {object} window.RelativeHeadingStateManager instance
    */
-  get manager(){
-    return window.RelativeHeadingStateManager.requestAvailability()
+  get manager() {
+    return window.RelativeHeadingStateManager.requestAvailability();
   }
 
   /**
    * ensures that id is not blank
    */
-  checkId(){
+  checkId() {
     this.id = this.id || `heading-${this._generateUUID()}`;
   }
 
@@ -134,24 +139,24 @@ class RelativeHeadingLite extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(
-        propName === "defaultLevel"){
-        if(
-          !this.defaultLevel 
-          || this.defaultLevel < 1 
-          || this.defaultLevel > 6
-        ) this.defaultLevel = Math.min(0,Math.max(this.defaultLevel,6));
-        this.manager.updateDefaultLevel(this,oldValue);
+      if (propName === "defaultLevel") {
+        if (
+          !this.defaultLevel ||
+          this.defaultLevel < 1 ||
+          this.defaultLevel > 6
+        )
+          this.defaultLevel = Math.min(0, Math.max(this.defaultLevel, 6));
+        this.manager.updateDefaultLevel(this, oldValue);
       }
-      if(propName === "id"){
-        if(!this.id) this.checkId();
-        this.manager.updateId(this,oldValue);
+      if (propName === "id") {
+        if (!this.id) this.checkId();
+        this.manager.updateId(this, oldValue);
       }
-      if(propName === "parent") this.manager.updateParent(this,oldValue);
-      if(propName === "__level") {
+      if (propName === "parent") this.manager.updateParent(this, oldValue);
+      if (propName === "__level") {
         this.observer.disconnect();
         this.updateContents();
-        this.observer.observe(this,{childList: true});
+        this.observer.observe(this, { childList: true });
       }
     });
   }
@@ -160,19 +165,20 @@ class RelativeHeadingLite extends LitElement {
    * sets the heading level
    * @param {number} level of heading
    */
-  _setLevel(level){
-    if(this.__level !== level) this.__level = level;
+  _setLevel(level) {
+    if (this.__level !== level) this.__level = level;
   }
-
 
   /**
    * unwraps tags on slotted content
    */
-  updateContents(){
-    if(
-      !this.querySelector(`h${this.__level}`) || this.children > 0
-    ) {
-      this.innerHTML = `<h${this.__level}>${this.children && this.children[0] ? this.children[0].innerHTML : this.textContent}</h${this.__level}>`
+  updateContents() {
+    if (!this.querySelector(`h${this.__level}`) || this.children > 0) {
+      this.innerHTML = `<h${this.__level}>${
+        this.children && this.children[0]
+          ? this.children[0].innerHTML
+          : this.textContent
+      }</h${this.__level}>`;
     }
   }
 

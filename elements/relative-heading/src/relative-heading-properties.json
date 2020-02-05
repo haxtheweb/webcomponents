@@ -29,7 +29,7 @@
    */
   "linkAlignRight": {
     "type": "Boolean",
-    "attribute":"link-align-right",
+    "attribute": "link-align-right",
     "reflect": true
   },
   /**
