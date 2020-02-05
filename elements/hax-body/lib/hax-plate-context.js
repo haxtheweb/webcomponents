@@ -113,6 +113,16 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       direction="right"
       id="left"
     ></hax-context-item>
+    <hax-context-item
+      light
+      large
+      class="paddle"
+      icon="icons:remove"
+      label="Remove column"
+      event-name="hax-plate-remove-left"
+      direction="right"
+      id="leftremove"
+    ></hax-context-item>
     <hax-context-item-menu
       mini
       id="leftadd"
@@ -154,6 +164,16 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       event-name="hax-plate-create-right"
       direction="left"
     ></hax-context-item>
+    <hax-context-item
+      light
+      large
+      class="paddle"
+      icon="icons:remove"
+      label="Remove column"
+      event-name="hax-plate-remove-right"
+      direction="left"
+      id="rightremove"
+    ></hax-context-item>
   `;
   }
   /**
@@ -177,21 +197,57 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     setTimeout(() => {
       let activeRec = window.HaxStore.instance.activeNode.getBoundingClientRect();
       let rect = activeRec;
+      let active = window.HaxStore.instance.activeNode;
       let right = this.shadowRoot.querySelector("#right");
       let left = this.shadowRoot.querySelector("#left");
+      let rightremove = this.shadowRoot.querySelector("#rightremove");
+      let leftremove = this.shadowRoot.querySelector("#leftremove");
       let leftadd = this.shadowRoot.querySelector("#leftadd");
       if (window.HaxStore.instance.activeContainerNode) {
-        rect = window.HaxStore.instance.activeContainerNode.getBoundingClientRect();
+        active = window.HaxStore.instance.activeContainerNode;
+        rect = active.getBoundingClientRect();
       }
+
       right.style.top = Math.round(rect.y - 1) + "px";
       right.style.left = Math.round(rect.left + rect.width + 2) + "px";
+      rightremove.style.top = Math.round(rect.y - 1 + ((rect.height/2) + 2)) + "px";
+      rightremove.style.left = Math.round(rect.left + rect.width + 2) + "px";
+
       left.style.top = Math.round(rect.y - 1) + "px";
       left.style.left = Math.round(rect.left - 22) + "px";
-      right.height = Math.round(rect.height + 2) + "px";
+
+      leftremove.style.top = Math.round(rect.y- 1 + ((rect.height/2) + 2)) + "px";
+      leftremove.style.left = Math.round(rect.left - 22) + "px";
+
+      right.height = Math.round((rect.height/2) + 2) + "px";
+      rightremove.height = right.height;
+
       left.height = right.height;
-      this.style.height = right.height;
+      leftremove.height = right.height;
+
+      this.style.height = Math.round(rect.height + 2) + "px";
+
       leftadd.style.top = Math.round(activeRec.y + activeRec.height + 1) + "px";
       leftadd.style.left = Math.round(activeRec.left - 22) + "px";
+      // support for enabling or disabling
+      right.disabled = false;
+      left.disabled = false;
+      rightremove.disabled = false;
+      leftremove.disabled = false;
+      if (active && active.tagName == 'GRID-PLATE') {
+        if (active.layout == '1') {
+          rightremove.disabled = true;
+          leftremove.disabled = true;
+        }
+        else if (active.layout == '1-1-1-1-1-1') {
+          right.disabled = true;
+          left.disabled = true;
+        }
+      }
+      else {
+        rightremove.disabled = true;
+        leftremove.disabled = true;
+      }
     }, 100);
   }
   render() {

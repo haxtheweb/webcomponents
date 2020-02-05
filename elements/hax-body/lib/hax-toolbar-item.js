@@ -17,6 +17,10 @@ class HaxToolbarItem extends LitElement {
           height: unset;
           width: unset;
         }
+        :host([disabled]) {
+          pointer-events: none;
+          opacity: .5;
+        }
         :host([menu]) {
           width: 100%;
           position: relative;
@@ -63,9 +67,9 @@ class HaxToolbarItem extends LitElement {
             --hax-color-accent1
           );
         }
-        paper-button:active,
-        paper-button:hover,
-        paper-button:focus {
+        :host(:not([disabled])) paper-button:active,
+        :host(:not([disabled])) paper-button:hover,
+        :host(:not([disabled])) paper-button:focus {
           color: var(--hax-color-text-active);
           outline: 1px solid var(--hax-color-accent1);
           z-index: 2;
@@ -73,11 +77,11 @@ class HaxToolbarItem extends LitElement {
         :host([default]) paper-button {
           background: black;
         }
-        :host([dark]) paper-button {
+        :host([dark]:not([disabled])) paper-button {
           background-color: var(--hax-color-text);
           color: var(--hax-color-bg-accent);
         }
-        :host([dark]) paper-button:hover {
+        :host([dark]:not([disabled])) paper-button:hover {
           background-color: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
@@ -112,9 +116,9 @@ class HaxToolbarItem extends LitElement {
           padding: 0px;
           border: 0px;
         }
-        :host([mini]) paper-button:active,
-        :host([mini]) paper-button:hover,
-        :host([mini]) paper-button:focus {
+        :host([mini]:not([disabled])) paper-button:active,
+        :host([mini]:not([disabled])) paper-button:hover,
+        :host([mini]:not([disabled])) paper-button:focus {
           outline: unset;
           border: 1px solid var(--hax-color-accent1);
         }
@@ -123,7 +127,7 @@ class HaxToolbarItem extends LitElement {
           width: 100%;
           height: 36px;
         }
-        :host([menu]) paper-button:hover {
+        :host([menu]:not([disabled])) paper-button:hover {
           background-color: #d3d3d3;
           color: #000000;
         }

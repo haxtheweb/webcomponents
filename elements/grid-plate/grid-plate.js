@@ -142,9 +142,9 @@ class GridPlateLayoutOptions {
 }
 /**
  * `grid-plate`
- * @customElement grid-plate
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
+ * @customElement grid-plate
  */
 class GridPlate extends LitElement {
   /**
@@ -159,16 +159,16 @@ class GridPlate extends LitElement {
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
           --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-default-theme-grey-3
           );
           --grid-plate-active-border-color: #000000;
           --grid-plate-target-background-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-default-theme-green-3
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
           --grid-plate-arrow-color: #000000;
-          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-2);
+          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-3);
         }
         :host .row {
           width: 100%;
