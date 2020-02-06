@@ -55,10 +55,10 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-body-editable-border-color: #bbbbbb;
-          --hax-body-active-border-color: #000000;
+          --hax-body-editable-outline: 2px dashed #bbbbbb;
+          --hax-body-active-outline: 2px dashed #000000;
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-grey-3
+            --simple-colors-default-theme-green-3
           );
           --hax-body-possible-target-background-color: var(
             --simple-colors-default-theme-grey-2
@@ -237,23 +237,23 @@ class HaxBody extends SimpleColors {
         }
         /* drag and drop */
         :host([edit-mode]) #bodycontainer ::slotted(*.mover):before {
-          outline: 2px dashed var(--hax-body-editable-border-color);
+          outline: var(--hax-body-editable-outline);
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
           width: 100%;
           display: block;
           position: relative;
-          margin: -20px 0 0 0;
+          margin: -36px 0 0 0;
           z-index: 2;
-          height: 20px;
+          height: 36px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
-          outline: 2px dashed var(--hax-body-active-border-color);
+          outline: var(--hax-body-active-outline);
           background-color: #eeeeee;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
-          outline: dashed 2px var(--hax-body-active-border-color);
+          outline: var(--hax-body-active-outline);
         }
         .hax-context-menu:not(:defined) {
           display: none;
@@ -1378,35 +1378,97 @@ class HaxBody extends SimpleColors {
     return true;
   }
   /**
-   * Inject a grid plate where something currently lives
+   * Inject / modify a grid plate where something currently lives
    */
-  haxInjectGridplate(node, side) {
+  haxInjectGridplate(node, side, add = true) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
-      switch (node.layout) {
-        case "1":
-          node.layout = "1-1";
-          changed = true;
-          break;
-        case "1-1":
-          node.layout = "1-1-1";
-          changed = true;
-          break;
-        case "1-1-1":
-          node.layout = "1-1-1-1";
-          changed = true;
-          break;
+      if (add) {
+        switch (node.layout) {
+          case "1":
+            node.layout = "1-1";
+            changed = true;
+            break;
+          case "1-1":
+            node.layout = "1-1-1";
+            changed = true;
+            break;
+          case "1-1-1":
+            node.layout = "1-1-1-1";
+            changed = true;
+            break;
+          case "1-1-1-1":
+            node.layout = "1-1-1-1-1";
+            changed = true;
+            break;
+          case "1-1-1-1-1":
+            node.layout = "1-1-1-1-1-1";
+            changed = true;
+            break;
+        }
+      } else {
+        switch (node.layout) {
+          // @todo need to kill the grid plate if going below 0
+          case "1":
+            //node.layout = "1-1";
+            //changed = true;
+            break;
+          case "1-1":
+            node.layout = "1";
+            changed = true;
+            break;
+          case "1-1-1":
+            node.layout = "1-1";
+            changed = true;
+            break;
+          case "1-1-1-1":
+            node.layout = "1-1-1";
+            changed = true;
+            break;
+          case "1-1-1-1-1":
+            node.layout = "1-1-1-1";
+            changed = true;
+            break;
+          case "1-1-1-1-1-1":
+            node.layout = "1-1-1-1-1";
+            changed = true;
+            break;
+        }
       }
       // if left, nudge everything over 1, right simple
-      if (changed && side == "left") {
-        node.childNodes.forEach(el => {
-          if (el.tagName) {
-            let s =
-              parseInt(el.getAttribute("slot").replace("col-", ""), 10) + 1;
-            el.setAttribute("slot", `col-${s}`);
-          }
-        });
+      if (changed) {
+        let platecontextmenu = this.shadowRoot.querySelector(
+          "#platecontextmenu"
+        );
+        let right = platecontextmenu.shadowRoot.querySelector("#right");
+        let left = platecontextmenu.shadowRoot.querySelector("#left");
+        let rightremove = platecontextmenu.shadowRoot.querySelector(
+          "#rightremove"
+        );
+        let leftremove = platecontextmenu.shadowRoot.querySelector(
+          "#leftremove"
+        );
+        right.disabled = false;
+        left.disabled = false;
+        rightremove.disabled = false;
+        leftremove.disabled = false;
+        if (node.layout == "1") {
+          rightremove.disabled = true;
+          leftremove.disabled = true;
+        } else if (node.layout == "1-1-1-1-1-1") {
+          right.disabled = true;
+          left.disabled = true;
+        }
+        if (side == "left") {
+          node.childNodes.forEach(el => {
+            if (el.tagName) {
+              let s =
+                parseInt(el.getAttribute("slot").replace("col-", ""), 10) + 1;
+              el.setAttribute("slot", `col-${s}`);
+            }
+          });
+        }
       }
     } else {
       let grid = document.createElement("grid-plate");
@@ -1691,6 +1753,12 @@ class HaxBody extends SimpleColors {
       case "hax-plate-create-right":
         this.haxInjectGridplate(this.activeContainerNode, "right");
         break;
+      case "hax-plate-remove-left":
+        this.haxInjectGridplate(this.activeContainerNode, "left", false);
+        break;
+      case "hax-plate-remove-right":
+        this.haxInjectGridplate(this.activeContainerNode, "right", false);
+        break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
         if (this.activeNode === this.activeContainerNode) {
@@ -1845,7 +1913,6 @@ class HaxBody extends SimpleColors {
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
         haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
-
         window.HaxStore.write("activeHaxElement", haxElement, this);
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;

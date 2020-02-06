@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Replicate any DOM node passed in and turn it into a web component",
   "repository": {
     "type": "git",

@@ -1,0 +1,29 @@
+{
+  "delay": {
+    "type": Number
+  },
+  "cursorDuration": {
+    "type": Number,
+    "attribute": "cursor-duration"
+  },
+  "text": {
+    "type": String
+  },
+  "speed": {
+    "type": Number
+  },
+  "eraseSpeed": {
+    "type": Number,
+    "attribute": "erase-speed"
+  },
+  "typing": {
+    "type": Boolean,
+    "reflect": true
+  },
+  "_length": {
+    "type": Number
+  },
+  "_oldText": {
+    "type": String
+  }
+}

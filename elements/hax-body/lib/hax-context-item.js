@@ -210,24 +210,28 @@ class HaxContextItem extends LitElement {
    * been selected if clicking a button to try and apply something to.
    */
   _storeSelection(e) {
-    window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+    if (!this.disabled) {
+      window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+    }
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-context-item-selected", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          target: this,
-          eventName: this.eventName,
-          value: this.value
-        }
-      })
-    );
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent("hax-context-item-selected", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            target: this,
+            eventName: this.eventName,
+            value: this.value
+          }
+        })
+      );
+    }
   }
 }
 

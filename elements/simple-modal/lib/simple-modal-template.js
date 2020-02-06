@@ -126,7 +126,13 @@ class SimpleModalTemplate extends LitElement {
       "--simple-modal-buttons-color",
       "--simple-modal-buttons-background",
       "--simple-modal-button-color",
-      "--simple-modal-button-background"
+      "--simple-modal-button-background",
+      "--simple-modal-titlebar-button-border",
+      "--simple-modal-titlebar-button-padding",
+      "--simple-modal-titlebar-button-outline",
+      "--simple-modal-titlebar-button-outline-offset",
+      "--simple-modal-titlebar-icon-width",
+      "--simple-modal-titlebar-icon-height"
     ].forEach(prop => {
       styles[prop] = tplStyles.getPropertyValue(prop);
     });

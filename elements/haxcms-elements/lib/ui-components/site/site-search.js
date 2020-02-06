@@ -88,11 +88,13 @@ class SiteSearch extends LitElement {
     super();
     this.search = "";
     this.__results = [];
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/lunr-search/lunr-search.js");
-    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    setTimeout(() => {
+      import("@polymer/paper-input/paper-input.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@lrnwebcomponents/lunr-search/lunr-search.js");
+      import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
+    }, 0);
   }
   // render function
   render() {
