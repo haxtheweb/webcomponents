@@ -237,10 +237,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       rightremove.disabled = false;
       leftremove.disabled = false;
       if (active && active.tagName == "GRID-PLATE") {
-        if (active.layout == "1") {
-          rightremove.disabled = true;
-          leftremove.disabled = true;
-        } else if (active.layout == "1-1-1-1-1-1") {
+        if (active.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }

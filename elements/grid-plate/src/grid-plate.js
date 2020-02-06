@@ -196,19 +196,17 @@ class GridPlate extends LitElement {
         }
         :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
           display: block;
-          outline: 2px solid red;
-          width: 20%;
+          outline: 2px dashed #FFCCCC;
           min-width: 100px;
-          padding: 15px 0;
-          min-height: 50px !important;
-          margin-top: var(--grid-plate-item-margin);
+          min-height: 36px !important;
+          margin-top: 2px;
         }
         :host([edit-mode])
           .column[style="min-height: unset;"]:not(:empty):before {
-          content: attr(data-label) " hidden";
+          content: "Grid " attr(data-label) " hidden by this layout.";
           margin: var(--grid-plate-item-margin);
           color: red;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: bold;
           padding: 4px;
         }
@@ -391,7 +389,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col1"
-          data-label="Column 1"
+          data-label="column 1"
           .style="${this._getColumnWidth(0, this.columnWidths)}"
         >
           <slot name="col-1"></slot>
@@ -399,7 +397,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col2"
-          data-label="Column 2"
+          data-label="column 2"
           .style="${this._getColumnWidth(1, this.columnWidths)}"
         >
           <slot name="col-2"></slot>
@@ -407,7 +405,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col3"
-          data-label="Column 3"
+          data-label="column 3"
           .style="${this._getColumnWidth(2, this.columnWidths)}"
         >
           <slot name="col-3"></slot>
@@ -415,7 +413,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col4"
-          data-label="Column 4"
+          data-label="column 4"
           .style="${this._getColumnWidth(3, this.columnWidths)}"
         >
           <slot name="col-4"></slot>
@@ -423,7 +421,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col5"
-          data-label="Column 5"
+          data-label="column 5"
           .style="${this._getColumnWidth(4, this.columnWidths)}"
         >
           <slot name="col-5"></slot>
@@ -431,7 +429,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col6"
-          data-label="Column 6"
+          data-label="column 6"
           .style="${this._getColumnWidth(5, this.columnWidths)}"
         >
           <slot name="col-6"></slot>

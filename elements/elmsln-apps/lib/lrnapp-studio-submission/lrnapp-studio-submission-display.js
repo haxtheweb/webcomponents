@@ -161,11 +161,17 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                         </image-inspector>
                       </template>
                       <template is="dom-if" if="[[_isGif(image.url)]]">
+                        <lrnsys-button
+                          alt="Download all images"
+                          icon="icons:file-download"
+                          href="[[submission.attributes.download_files]]"
+                          target="_blank"
+                        ></lrnsys-button>
                         <iron-image
                           style="width:500px; height:500px; background-color: lightgray;"
                           sizing="contain"
                           class="contain"
-                          src="[[image.url]]"
+                          src$="[[image.url]]"
                           preload=""
                           fade=""
                         ></iron-image>

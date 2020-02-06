@@ -1380,7 +1380,7 @@ class HaxBody extends SimpleColors {
   /**
    * Inject / modify a grid plate where something currently lives
    */
-  haxInjectGridplate(node, side, add = true) {
+  haxGridPlateOps(node, side, add = true) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -1411,9 +1411,22 @@ class HaxBody extends SimpleColors {
         switch (node.layout) {
           // @todo need to kill the grid plate if going below 0
           case "1":
-            //node.layout = "1-1";
-            //changed = true;
-            break;
+            var prevEl = node;
+            // implies we are removing the grid plate
+            node.childNodes.forEach(el => {
+              // verify its a tag
+              if (el.tagName) {
+                // remove slot name
+                prevEl.parentNode.insertBefore(el, prevEl);
+                el.removeAttribute("slot");
+                prevEl = el;
+              }
+            });
+            // @todo a hack, needs to empty THEN do this
+            setTimeout(() => {
+              node.remove();              
+            }, 0);
+          break;
           case "1-1":
             node.layout = "1";
             changed = true;
@@ -1453,10 +1466,7 @@ class HaxBody extends SimpleColors {
         left.disabled = false;
         rightremove.disabled = false;
         leftremove.disabled = false;
-        if (node.layout == "1") {
-          rightremove.disabled = true;
-          leftremove.disabled = true;
-        } else if (node.layout == "1-1-1-1-1-1") {
+        if (node.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }
@@ -1748,16 +1758,16 @@ class HaxBody extends SimpleColors {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-left":
-        this.haxInjectGridplate(this.activeContainerNode, "left");
+        this.haxGridPlateOps(this.activeContainerNode, "left");
         break;
       case "hax-plate-create-right":
-        this.haxInjectGridplate(this.activeContainerNode, "right");
+        this.haxGridPlateOps(this.activeContainerNode, "right");
         break;
       case "hax-plate-remove-left":
-        this.haxInjectGridplate(this.activeContainerNode, "left", false);
+        this.haxGridPlateOps(this.activeContainerNode, "left", false);
         break;
       case "hax-plate-remove-right":
-        this.haxInjectGridplate(this.activeContainerNode, "right", false);
+        this.haxGridPlateOps(this.activeContainerNode, "right", false);
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":
