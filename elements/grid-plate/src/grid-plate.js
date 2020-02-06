@@ -196,7 +196,7 @@ class GridPlate extends LitElement {
         }
         :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
           display: block;
-          outline: 2px dashed #FFCCCC;
+          outline: 2px dashed #ffcccc;
           min-width: 100px;
           min-height: 36px !important;
           margin-top: 2px;

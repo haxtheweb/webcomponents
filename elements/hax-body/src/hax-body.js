@@ -1424,9 +1424,9 @@ class HaxBody extends SimpleColors {
             });
             // @todo a hack, needs to empty THEN do this
             setTimeout(() => {
-              node.remove();              
+              node.remove();
             }, 0);
-          break;
+            break;
           case "1-1":
             node.layout = "1";
             changed = true;
