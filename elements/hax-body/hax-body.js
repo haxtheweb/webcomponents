@@ -1411,15 +1411,13 @@ class HaxBody extends SimpleColors {
         switch (node.layout) {
           // @todo need to kill the grid plate if going below 0
           case "1":
-            var prevEl = node;
             // implies we are removing the grid plate
-            node.childNodes.forEach(el => {
+            node.childNodes.forEach((el) => {
               // verify its a tag
               if (el.tagName) {
                 // remove slot name
-                prevEl.parentNode.insertBefore(el, prevEl);
                 el.removeAttribute("slot");
-                prevEl = el;
+                node.parentNode.insertBefore(el, node.nextSibling);                  
               }
             });
             // @todo a hack, needs to empty THEN do this

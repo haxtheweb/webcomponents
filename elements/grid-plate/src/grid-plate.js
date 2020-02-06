@@ -191,24 +191,24 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column {
           outline: 2px dashed var(--grid-plate-editable-border-color);
         }
-        :host .column[style="min-height: unset;"] {
+        :host .column:empty[style="min-height: unset;"] {
           display: none;
+          outline: none;
         }
         :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
           display: block;
-          outline: 2px dashed #ffcccc;
-          min-width: 100px;
-          min-height: 36px !important;
-          margin-top: 2px;
+          opacity: .4;
+        }
+        :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty):hover {
+          opacity: 1;
         }
         :host([edit-mode])
           .column[style="min-height: unset;"]:not(:empty):before {
-          content: "Grid " attr(data-label) " hidden by this layout.";
           margin: var(--grid-plate-item-margin);
           color: red;
           font-size: 14px;
           font-weight: bold;
-          padding: 4px;
+          padding: 0px;
         }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);

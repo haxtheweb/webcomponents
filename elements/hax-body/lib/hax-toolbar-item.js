@@ -58,7 +58,7 @@ class HaxToolbarItem extends LitElement {
           padding: 0;
           border-radius: 0;
           font-size: 12px;
-          transition: 0.3s all;
+          transition: 0.2s all, 0 height;
           height: 36px;
           width: 36px;
           min-width: unset;
