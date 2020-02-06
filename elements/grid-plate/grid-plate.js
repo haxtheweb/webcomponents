@@ -197,9 +197,10 @@ class GridPlate extends LitElement {
         }
         :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
           display: block;
-          opacity: .4;
+          opacity: 0.4;
         }
-        :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty):hover {
+        :host([edit-mode])
+          .column[style="min-height: unset;"]:not(:empty):hover {
           opacity: 1;
         }
         :host([edit-mode])

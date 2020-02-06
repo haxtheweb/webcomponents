@@ -1412,12 +1412,12 @@ class HaxBody extends SimpleColors {
           // @todo need to kill the grid plate if going below 0
           case "1":
             // implies we are removing the grid plate
-            node.childNodes.forEach((el) => {
+            node.childNodes.forEach(el => {
               // verify its a tag
               if (el.tagName) {
                 // remove slot name
                 el.removeAttribute("slot");
-                node.parentNode.insertBefore(el, node.nextSibling);                  
+                node.parentNode.insertBefore(el, node.nextSibling);
               }
             });
             // @todo a hack, needs to empty THEN do this
