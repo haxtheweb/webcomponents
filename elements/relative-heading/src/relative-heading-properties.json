@@ -1,35 +1,47 @@
 {
   /**
-   * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
+   * overrides state manager's default icon for copy link's toast's close button
    */
-  "defaultLevel": {
-    "type": Number,
-    "attribute": "default-level"
+  "closeIcon": {
+    "type": "String"
   },
   /**
-   * The relative-heading's UUID.
+   * overrides state manager's default label for copy link's toast's close button
    */
-  "id": {
-    "type": String
+  "closeLabel": {
+    "type": "String"
   },
   /**
-   * The parent relative-heading's UUID.
+   * overrides state manager's default message for copy link's toast
    */
-  "parentId": {
-    "type": String,
-    "attribute": "parent-id"
+  "copyMessage": {
+    "type": "String"
   },
   /**
-   * The heading text.
+   * The relative-heading resource's UUID.
    */
-  "text": {
-    "type": String
+  "disableLink": {
+    "type": "Boolean",
+    "attribute": "disable-link"
   },
   /**
-   * The heading level (1-6), eg., 1 for <h1>
+   * label for copy link's button
    */
-  "level": {
-    "type": Number,
+  "linkAlignRight": {
+    "type": "Boolean",
+    "attribute": "link-align-right",
     "reflect": true
+  },
+  /**
+   * icon for copy link's button
+   */
+  "linkIcon": {
+    "type": "String"
+  },
+  /**
+   * label for copy link's button
+   */
+  "linkLabel": {
+    "type": "String"
   }
 }

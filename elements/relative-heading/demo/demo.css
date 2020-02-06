@@ -1,0 +1,34 @@
+relative-heading h1:before,
+relative-heading h2:before,
+relative-heading h3:before,
+relative-heading h4:before,
+relative-heading h5:before,
+relative-heading h6:before {
+  display: inline-flex;
+  opacity: 0.3;
+  padding-right: 0.5em;
+}  
+
+relative-heading h1:before {
+  content: '<h1/>';
+}  
+
+relative-heading h2:before {
+  content: '<h2/>';
+}  
+
+relative-heading h3:before {
+  content: '<h3/>';
+}  
+
+relative-heading h4:before {
+  content: ' <h4/>';
+}  
+
+relative-heading h5:before {
+  content: '<h5/>';
+}  
+
+relative-heading h6:before {
+  content: '<h6/>';
+}  

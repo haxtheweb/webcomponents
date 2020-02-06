@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>Basic relative-heading demo</h1>
+      <h1>Basic relative-heading demo with right-aligned links</h1>
       <demo-snippet>
         <p>
           <label>Set sapien's <tt>parent</tt> to...
@@ -42,61 +42,35 @@
         <p><button id="changer3">Change praesent's innerHTML</button></p>
         <p><button id="remover">Remove lorem</button></p>
         <template>
-          <relative-heading id="lorem">
+          <relative-heading id="lorem" link-align-right>
             <h1>Lorem ipsum dolor</h1>
           </relative-heading>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
-          <relative-heading id="praesent" parent="lorem">
+          <relative-heading id="praesent" parent="lorem" link-align-right>
             <h2>Praesent ultrices</h2>
           </relative-heading>
           <p>Mauris aliquam lorem justo. Praesent ultrices lorem nec est iaculis viverra dignissim eu neque. Nullam vitae nisl diam.</p>
 
-          <relative-heading id="suspendisse" parent="praesent">
+          <relative-heading id="suspendisse" parent="praesent" link-align-right>
             <h3>Suspendisse</h3>
           </relative-heading>
           <p>Suspendisse potenti. Nulla venenatis porta felis id feugiat. Vivamus vehicula molestie sapien hendrerit ultricies.</p> 
 
-          <relative-heading id="sapien" parent="suspendisse">
+          <relative-heading id="sapien" parent="suspendisse" link-align-right>
             <h4>Sapien sit amet</h4>
           </relative-heading>
           <p>Quisque volutpat eu sapien sit amet interdum. Proin venenatis tellus eu nisi congue aliquet. </p>
           
-          <relative-heading id="sollicitudin" parent="sapien">
+          <relative-heading id="sollicitudin" parent="sapien" link-align-right>
             <h5>Sollicitudin</h5>
           </relative-heading>          
           <p>Nullam at velit sollicitudin, porta mi quis, lacinia velit. Praesent quis mauris sem.</p> 
           
-          <relative-heading id="volutpat" parent="sollicitudin">
+          <relative-heading id="volutpat" parent="sollicitudin" link-align-right>
             <h6>In et volutpat</h6>
           </relative-heading>          
           <p>In et volutpat nisi. Suspendisse vel nibh eu magna posuere sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.</p> 
-        </template>
-
-        <h2>relative-headings with right-aligned links</h2>
-        <template>
-          <relative-heading id="lorem2" link-align-right>
-            <h1>Lorem ipsum dolor</h1>
-          </relative-heading>
-          <relative-heading id="praesent2" parent="lorem2" link-align-right>
-            <h2>Praesent ultrices</h2>
-          </relative-heading>
-          <relative-heading id="suspendisse2" parent="praesent2" link-align-right>
-            <h3>Suspendisse</h3>
-          </relative-heading>        
-        </template>
-        
-        <h2>relative-headings with disabled links</h2>
-        <template>
-          <relative-heading id="lorem3" disable-link>
-            <h1>Lorem ipsum dolor</h1>
-          </relative-heading>
-          <relative-heading id="praesent3" parent="lorem3" disable-link>
-            <h2>Praesent ultrices</h2>
-          </relative-heading>
-          <relative-heading id="suspendisse3" parent="praesent3" disable-link>
-            <h3>Suspendisse</h3>
-          </relative-heading>        
         </template>
       </demo-snippet>
     </div>
