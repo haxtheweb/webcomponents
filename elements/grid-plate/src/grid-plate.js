@@ -189,7 +189,7 @@ class GridPlate extends LitElement {
             0.2s outline linear;
         }
         :host([edit-mode]) .column {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host .column:empty[style="min-height: unset;"] {
           display: none;
@@ -223,16 +223,16 @@ class GridPlate extends LitElement {
           display: block;
         }
         :host([edit-mode]) .column ::slotted(.grid-plate-active-item) {
-          outline: 2px dashed var(--grid-plate-active-border-color);
+          outline: 2px solid var(--grid-plate-active-border-color);
           background-color: var(--grid-plate-selected-background-color);
         }
         :host([edit-mode]) .column ::slotted(*:focus),
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(*.mover):before {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -243,14 +243,14 @@ class GridPlate extends LitElement {
           height: 30px;
         }
         :host([edit-mode]) .column ::slotted(img.mover) {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
         }
         :host([edit-mode]) .column.mover {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
-          outline: 2px dashed var(--hax-body-active-border-color);
+          outline: 2px solid var(--hax-body-active-border-color);
           background-color: #eeeeee;
         }
         :host([edit-mode]) .column.mover {
@@ -262,13 +262,13 @@ class GridPlate extends LitElement {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: dashed 2px var(--grid-plate-active-border-color);
+          outline: solid 2px var(--grid-plate-active-border-color);
         }
         :host([edit-mode]) .column.hovered {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: dashed 2px var(--grid-plate-active-border-color);
+          outline: solid 2px var(--grid-plate-active-border-color);
           z-index: 2;
         }
         paper-icon-button {

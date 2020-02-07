@@ -55,8 +55,8 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-body-editable-outline: 2px dashed #bbbbbb;
-          --hax-body-active-outline: 2px dashed #000000;
+          --hax-body-editable-outline: 2px solid #bbbbbb;
+          --hax-body-active-outline: 2px solid #000000;
           --hax-body-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -155,20 +155,20 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable]:hover) {
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]:hover) {
           cursor: text !important;
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
           cursor: text !important;
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
@@ -178,7 +178,7 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]) {
-          outline: 2px dashed rgba(145, 151, 162, 0.25);
+          outline: 2px solid rgba(145, 151, 162, 0.25);
         }
         :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
           height: 2px;
@@ -243,9 +243,9 @@ class HaxBody extends SimpleColors {
           width: 100%;
           display: block;
           position: relative;
-          margin: -36px 0 0 0;
+          margin: -30px 0 0 0;
           z-index: 2;
-          height: 36px;
+          height: 30px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
           outline: var(--hax-body-active-outline);
@@ -1380,7 +1380,7 @@ class HaxBody extends SimpleColors {
   /**
    * Inject / modify a grid plate where something currently lives
    */
-  haxGridPlateOps(node, side, add = true) {
+  async haxGridPlateOps(node, side, add = true) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -1412,15 +1412,15 @@ class HaxBody extends SimpleColors {
           // @todo need to kill the grid plate if going below 0
           case "1":
             // implies we are removing the grid plate
-            node.childNodes.forEach(el => {
+            await node.childNodes.forEach((el) => {
               // verify its a tag
               if (el.tagName) {
                 // remove slot name
-                el.removeAttribute("slot");
-                node.parentNode.insertBefore(el, node.nextSibling);
+                let cloneEl = el.cloneNode(true);
+                cloneEl.removeAttribute("slot");
+                node.parentNode.insertBefore(cloneEl, node);
               }
             });
-            // @todo a hack, needs to empty THEN do this
             setTimeout(() => {
               node.remove();
             }, 0);
