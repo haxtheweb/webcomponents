@@ -12,12 +12,7 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-fields`
  * @customElement simple-fields
- * `Uses eco-json-form and HAX wiring to display a series of fields`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
+ * Uses eco-json-form and HAX wiring to display a series of fields
  * @polymer
  * @demo ./demo/index.html
  */

@@ -30,22 +30,29 @@
 }
 
 paper-icon-button {
-  color: var(--relative-heading-button-color);
+  color: var(--relative-heading-button-color, #666);
   background: var(--relative-heading-button-bg);
   border: var(--relative-heading-button-border);
   outline: var(--relative-heading-button-outline);
   margin: var(--relative-heading-button-margin,0 0 0 8px);
   padding: var(--relative-heading-button-padding, 8px);
-  opacity: var(--relative-heading-button-opacity, 0.5);
+  opacity: var(--relative-heading-button-opacity, 0);
   transition: var(--relative-heading-button-transition, all 0.5s);
+}
+
+:host([link-align-right]) paper-icon-button,
+:host(:not([link-align-right]):focus) paper-icon-button,
+:host(:not([link-align-right]):focus-within) paper-icon-button,
+:host(:not([link-align-right]):hover) paper-icon-button {
+  opacity: var(--relative-heading-button-active-opacity, 1);
 }
 
 paper-icon-button:focus-within,
 paper-icon-button:focus,
 paper-icon-button:hover {
-  color: var(--relative-heading-button-focus-color);
+  color: var(--relative-heading-button-focus-color, #000);
   background: var(--relative-heading-button-focus-bg);
   border: var(--relative-heading-button-focus-border);
   outline: var(--relative-heading-button-focus-outline);
-  opacity: var(--relative-heading-button-focus-opacity,1);
+  opacity: var(--relative-heading-button-focus-opacity, 1);
 }

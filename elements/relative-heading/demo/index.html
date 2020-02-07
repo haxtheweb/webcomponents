@@ -13,34 +13,48 @@
       import '../relative-heading.js';
     </script>
     <script src="./demo.js"></script>
-    <!--link href="./demo.css" rel="stylesheet" type="text/css"-->
     <style is="custom-style" include="demo-pages-shared-styles">
+      fieldset > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      relative-heading:not(:defined) {
+        display: block;
+      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>Basic relative-heading demo</h1>
       <demo-snippet>
-        <p>
-          <label>Set sapien's <tt>parent</tt> to...
-            <select id="changer">
-              <option value="lorem">lorem</option>
-              <option value="praesent">Praesent ultrices</option>
-              <option value="suspendisse" selected>Suspendisse</option>
-            </select>
-          </label>
-        </p>
-        <p>
-          <label>Set volutpat's <tt>parent</tt> to...
-            <select id="changer2">
-              <option value="lorem">lorem</option>
-              <option value="suspendisse">suspendisse</option>
-              <option value="sollicitudin" selected>sollicitudin</option>
-            </select>
-          </label>
-        </p>
-        <p><button id="changer3">Change praesent's innerHTML</button></p>
-        <p><button id="remover">Remove lorem</button></p>
+        <!-- these controls are just to demo relative headings-->
+        <fieldset>
+          <legend>Change the DOM:</legend>
+          <div>
+            <p>
+              <label>Set sapien's <tt>parent</tt> to...
+                <select id="changer">
+                  <option value="lorem">lorem</option>
+                  <option value="praesent">Praesent ultrices</option>
+                  <option value="suspendisse" selected>Suspendisse</option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>Set volutpat's <tt>parent</tt> to...
+                <select id="changer2">
+                  <option value="lorem">lorem</option>
+                  <option value="suspendisse">suspendisse</option>
+                  <option value="sollicitudin" selected>sollicitudin</option>
+                </select>
+              </label>
+            </p>
+            <p><button id="changer3">Change praesent's innerHTML</button></p>
+            <p><button id="remover">Remove lorem</button></p>
+          </div>
+        </fieldset>
         <template>
           <relative-heading id="lorem">
             <h1>Lorem ipsum dolor</h1>
@@ -71,32 +85,6 @@
             <h6>In et volutpat</h6>
           </relative-heading>          
           <p>In et volutpat nisi. Suspendisse vel nibh eu magna posuere sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.</p> 
-        </template>
-
-        <h2>relative-headings with right-aligned links</h2>
-        <template>
-          <relative-heading id="lorem2" link-align-right>
-            <h1>Lorem ipsum dolor</h1>
-          </relative-heading>
-          <relative-heading id="praesent2" parent="lorem2" link-align-right>
-            <h2>Praesent ultrices</h2>
-          </relative-heading>
-          <relative-heading id="suspendisse2" parent="praesent2" link-align-right>
-            <h3>Suspendisse</h3>
-          </relative-heading>        
-        </template>
-        
-        <h2>relative-headings with disabled links</h2>
-        <template>
-          <relative-heading id="lorem3" disable-link>
-            <h1>Lorem ipsum dolor</h1>
-          </relative-heading>
-          <relative-heading id="praesent3" parent="lorem3" disable-link>
-            <h2>Praesent ultrices</h2>
-          </relative-heading>
-          <relative-heading id="suspendisse3" parent="praesent3" disable-link>
-            <h3>Suspendisse</h3>
-          </relative-heading>        
         </template>
       </demo-snippet>
     </div>
