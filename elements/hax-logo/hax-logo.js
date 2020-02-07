@@ -10,7 +10,6 @@
  * @customElement hax-logo
  */
 class HaxLogo extends HTMLElement {
-  
   // render function
   get html() {
     return `
@@ -106,56 +105,55 @@ class HaxLogo extends HTMLElement {
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Hax logo",
-    "description": "logo element for hax, obviously as a hax capable element.",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Logo"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
-    "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "attribute": "size",
-        "description": "Size of the HAX logo to place",
-        "inputMethod": "select",
-        "options": {
-          "mini": "Mini",
-          "small": "Small",
-          "normal": "Normal",
-          "large": "Large"
-        },
-        "required": false
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Hax logo",
+        description:
+          "logo element for hax, obviously as a hax capable element.",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Logo"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
       },
-      {
-        "attribute": "toupper",
-        "description": "Whether to transform logo to upper case",
-        "inputMethod": "boolean",
-        "required": false
+      settings: {
+        quick: [],
+        configure: [
+          {
+            attribute: "size",
+            description: "Size of the HAX logo to place",
+            inputMethod: "select",
+            options: {
+              mini: "Mini",
+              small: "Small",
+              normal: "Normal",
+              large: "Large"
+            },
+            required: false
+          },
+          {
+            attribute: "toupper",
+            description: "Whether to transform logo to upper case",
+            inputMethod: "boolean",
+            required: false
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {...super.properties}
-;
+    return { ...super.properties };
   }
 
   /**

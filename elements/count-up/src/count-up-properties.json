@@ -70,6 +70,6 @@
     "attribute": "visible-limit"
   },
   "elementVisible": {
-    "type": Boolean,
+    "type": Boolean
   }
 }

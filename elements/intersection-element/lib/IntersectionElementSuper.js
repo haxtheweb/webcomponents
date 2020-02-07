@@ -34,7 +34,8 @@ const IntersectionElementSuper = function(SuperClass) {
 
     disconnectedCallback() {
       this.intersectionObserver.disconnect();
-      if (super.disconnectedCallback) {}
+      if (super.disconnectedCallback) {
+      }
       super.disconnectedCallback();
     }
     /**
@@ -48,7 +49,7 @@ const IntersectionElementSuper = function(SuperClass) {
         }
       }
     }
-  }
-}
+  };
+};
 
 export { IntersectionElementSuper };
