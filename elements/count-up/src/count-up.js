@@ -61,7 +61,7 @@ class CountUpElement extends IntersectionElementSuper(LitElement) {
    */
   updated(propertiesChanged) {
     propertiesChanged.forEach((oldValue, propName) => {
-      if (propName == "elementVisible" && this[propName]) {
+      if (propName == 'elementVisible' && this[propName]) {
         this._countUp.start();
       }
     });
