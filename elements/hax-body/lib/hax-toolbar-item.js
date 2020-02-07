@@ -108,11 +108,11 @@ class HaxToolbarItem extends LitElement {
         }
         :host([light]) paper-button {
           background-color: #aaaaaa;
-          color: #FFFFFF;
+          color: #ffffff;
         }
         :host([action]) paper-button {
           background-color: var(--hax-contextual-action-color);
-          color: #FFFFFF;
+          color: #ffffff;
         }
         :host([large]) paper-button {
           border-radius: 0;

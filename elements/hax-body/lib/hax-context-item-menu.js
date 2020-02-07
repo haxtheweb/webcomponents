@@ -90,7 +90,7 @@ class HaxContextItemMenu extends LitElement {
         reflect: true
       },
       action: {
-        type: Boolean,
+        type: Boolean
       },
       /**
        * Internal flag to allow blocking the event firing if machine selects tag.

@@ -56,9 +56,11 @@ class HaxBody extends SimpleColors {
           min-width: 32px;
           outline: none;
           --hax-contextual-action-color: #3b97e3;
-          --hax-body-editable-outline:1px solid #e37e3b;          
-          --hax-body-active-outline-hover:1px solid var(--hax-contextual-action-color);          
-          --hax-body-active-outline:3px solid var(--hax-contextual-action-color);          
+          --hax-body-editable-outline: 1px solid #e37e3b;
+          --hax-body-active-outline-hover: 1px solid
+            var(--hax-contextual-action-color);
+          --hax-body-active-outline: 3px solid
+            var(--hax-contextual-action-color);
           --hax-body-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -157,7 +159,7 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable]:hover) {
-            outline: var(--hax-body-active-outline-hover);
+          outline: var(--hax-body-active-outline-hover);
           caret-color: #000000;
         }
         :host([edit-mode])
@@ -599,7 +601,11 @@ class HaxBody extends SimpleColors {
           this._positionContextMenu(
             this.shadowRoot.querySelector("#platecontextmenu"),
             this.activeContainerNode,
-            rect.width - this.shadowRoot.querySelector("#platecontextmenu").getBoundingClientRect().width + 2,
+            rect.width -
+              this.shadowRoot
+                .querySelector("#platecontextmenu")
+                .getBoundingClientRect().width +
+              2,
             -36
           );
           if (this.elementInViewport(el)) {
@@ -1324,7 +1330,11 @@ class HaxBody extends SimpleColors {
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        rect.width - this.shadowRoot.querySelector("#platecontextmenu").getBoundingClientRect().width + 2,
+        rect.width -
+          this.shadowRoot
+            .querySelector("#platecontextmenu")
+            .getBoundingClientRect().width +
+          2,
         -36
       );
       // special case for node not matching container yet it being editable
