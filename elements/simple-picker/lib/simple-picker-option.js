@@ -7,7 +7,6 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `simple-picker-option`
- * @customElement simple-picker-option
  * a simple picker for options, icons, etc.
  * 
 ### Styling
@@ -22,9 +21,8 @@ Custom property | Description | Default
 `--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
 `--simple-picker-option-size` | size of each simple picker option | 24px
  *
-
- * @polymer
  * @see ../simple-picker.js
+ * @customElement simple-picker-option
  */
 class SimplePickerOption extends LitElement {
   //styles
