@@ -16,15 +16,14 @@ Custom property | Description | Default
  */
 class SimpleFieldsSchema extends LitElement {
   static get styles() {
-    return [
-      css``
-    ];
+    return [css``];
   }
   render() {
     return html`
       <div id="schema-fields" aria-live="polite">
         <slot></slot>
-      </div>`;
+      </div>
+    `;
   }
   constructor() {
     super();
@@ -134,14 +133,18 @@ class SimpleFieldsSchema extends LitElement {
    * @readonly
    * @returns {array} form properties
    */
-  get formProperties(){
-    console.log('formProperties',this.schema,this.schema ? this._getProperties(this.schema) : []);
+  get formProperties() {
+    console.log(
+      "formProperties",
+      this.schema,
+      this.schema ? this._getProperties(this.schema) : []
+    );
     return this.schema ? this._getProperties(this.schema) : [];
   }
 
-  _getFormElement(property,parent = this){
-    let el  = document.createElement(property.component.name),
-      props  = {
+  _getFormElement(property, parent = this) {
+    let el = document.createElement(property.component.name),
+      props = {
         label: property.label,
         schema: property.schema,
         schemaProperty: property,
@@ -151,13 +154,16 @@ class SimpleFieldsSchema extends LitElement {
       attr = {
         hidden: property.schema.hidden
       };
-    Object.keys(props).forEach(key=>el[key] = props[key]);
-    Object.keys(attr).forEach(key=> {
-      if(props[key]) el.setAttribute(key,props[key]);
+    Object.keys(props).forEach(key => (el[key] = props[key]));
+    Object.keys(attr).forEach(key => {
+      if (props[key]) el.setAttribute(key, props[key]);
     });
     parent.append(el);
     /* gets nested fields for a fieldset */
-    if(property.schema && property.schema.properties) property.schema.properties.forEach(child=>this._getFormElement(child,el));
+    if (property.schema && property.schema.properties)
+      property.schema.properties.forEach(child =>
+        this._getFormElement(child, el)
+      );
   }
 
   /**
@@ -165,7 +171,7 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} target parent of nested properties
    * @returns {array} form properties
    */
-  _getProperties(target = this.schema){
+  _getProperties(target = this.schema) {
     let root = this;
     return Object.keys(target.properties || []).map(key => {
       let schema = target.properties[key],
@@ -183,27 +189,38 @@ class SimpleFieldsSchema extends LitElement {
         property.component.slot = "";
       }
       /* match the schema type to the correct data type */
-      Object.keys(root.dataTypes).forEach(dataType=>{
+      Object.keys(root.dataTypes).forEach(dataType => {
         if (
-          (Array.isArray(schema.type) && schema.type.indexOf(dataType) !== -1) 
-          || schema.type === dataType
-        ){
-          property.component.name = property.component.name || root.dataTypes[dataType].component;
-          if (typeof schema.value === typeof undefined) schema.value = root.dataTypes[dataType].defaultValue;
+          (Array.isArray(schema.type) &&
+            schema.type.indexOf(dataType) !== -1) ||
+          schema.type === dataType
+        ) {
+          property.component.name =
+            property.component.name || root.dataTypes[dataType].component;
+          if (typeof schema.value === typeof undefined)
+            schema.value = root.dataTypes[dataType].defaultValue;
           property.value = schema.value;
 
           /* handle fieldsets by getting nested properties */
-          if(root.dataTypes[dataType].isFieldset){
-            if(!schema.items || !schema.items.properties) schema.items = { properties: schema.properties ? this._deepClone(schema.properties) : {} };
-            if(schema.items && schema.items.properties) {
-              Object.keys(schema.items.properties).forEach(key=>schema.items.properties[key].value = schema.value[key]);
+          if (root.dataTypes[dataType].isFieldset) {
+            if (!schema.items || !schema.items.properties)
+              schema.items = {
+                properties: schema.properties
+                  ? this._deepClone(schema.properties)
+                  : {}
+              };
+            if (schema.items && schema.items.properties) {
+              Object.keys(schema.items.properties).forEach(
+                key => (schema.items.properties[key].value = schema.value[key])
+              );
               property.schema.properties = this._getProperties(schema.items);
             }
           }
           return;
         }
       });
-      if(!property.component.name) console.error("Unknown property type %s", schema.type);
+      if (!property.component.name)
+        console.error("Unknown property type %s", schema.type);
       return property;
     });
   }
@@ -215,7 +232,7 @@ class SimpleFieldsSchema extends LitElement {
     //observer: "schema _schemaChanged notify"
     // value wizard notify
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "schema") this._schemaChanged(this.schema, oldValue);
+      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
     });
   }
   /**
@@ -247,13 +264,13 @@ class SimpleFieldsSchema extends LitElement {
   _schemaChanged(newValue, oldValue) {
     if (newValue && newValue !== oldValue) {
       this._clearForm();
-      this.formProperties.forEach(property=>this._getFormElement(property));
+      this.formProperties.forEach(property => this._getFormElement(property));
       //this.formProperties;
       //this._buildForm();
       //this._setValue();
       //fire schemaChanged
     }
-    console.log('this._schemaChanged',this.formProperties);
+    console.log("this._schemaChanged", this.formProperties);
   }
   disconnectedCallback() {
     this._clearForm();

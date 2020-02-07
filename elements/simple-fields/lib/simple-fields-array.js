@@ -24,9 +24,7 @@ class SimpleFieldsArray extends LitElement {
     }, 0);
   }
   static get styles() {
-    return [
-      css``
-    ];
+    return [css``];
   }
   render() {
     return html`
@@ -40,46 +38,52 @@ class SimpleFieldsArray extends LitElement {
           class="vertical flex layout"
           global-options="${this.globalOptions}"
         >
-          ${this.schema.value.map(item,index=>html`
-            <a11y-collapse
-              accordion
-              id="item-${index}"
-              .icon="${this.globalOptions.icon}"
-              .tooltip="${this.globalOptions.tooltip}"
-            >
-              <p slot="heading">
-                ${this._getHeading(this.__headings,this.schema.label,index)}
-              </p>
-              <div slot="content">
-                <div>
-                  <div
-                    id="value-${index}"
-                    class="item-fields"
-                    .data-index="${index}">
-                    <slot></slot>
+          ${this.schema.value.map(
+            item,
+            index => html`
+              <a11y-collapse
+                accordion
+                id="item-${index}"
+                .icon="${this.globalOptions.icon}"
+                .tooltip="${this.globalOptions.tooltip}"
+              >
+                <p slot="heading">
+                  ${this._getHeading(this.__headings, this.schema.label, index)}
+                </p>
+                <div slot="content">
+                  <div>
+                    <div
+                      id="value-${index}"
+                      class="item-fields"
+                      .data-index="${index}"
+                    >
+                      <slot></slot>
+                    </div>
+                    <paper-icon-button
+                      id="remove-${index}"
+                      icon="icons:delete"
+                      aria-label="Remove this item"
+                      aria-describedby="item-${index}"
+                      class="remove-array-item array-item-button"
+                      controls="item-${index}"
+                      on-tap="_onRemoveItem"
+                      role="button"
+                    >
+                    </paper-icon-button>
+                    <simple-tooltip for="remove-${index}">
+                      Remove this item
+                    </simple-tooltip>
                   </div>
-                  <paper-icon-button
-                    id="remove-${index}"
-                    icon="icons:delete"
-                    aria-label="Remove this item"
-                    aria-describedby="item-${index}"
-                    class="remove-array-item array-item-button"
-                    controls="item-${index}"
-                    on-tap="_onRemoveItem"
-                    role="button">
-                  </paper-icon-button>
-                  <simple-tooltip for="remove-${index}">
-                    Remove this item
-                  </simple-tooltip>
                 </div>
-              </div>
-            </a11y-collapse>
-          `)}
+              </a11y-collapse>
+            `
+          )}
         </a11y-collapse-group>
         <paper-button
           class="add-array-item array-item-button"
           on-click="_onAddItem"
-          role="button">
+          role="button"
+        >
           Add an item
           <iron-icon icon="add-circle"></iron-icon>
         </paper-button>

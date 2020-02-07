@@ -12,9 +12,7 @@ class SimpleFieldsFieldset extends LitElement {
     return "simple-fields-fieldset";
   }
   static get styles() {
-    return [
-      css``
-    ];
+    return [css``];
   }
   render() {
     return html`
