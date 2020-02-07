@@ -1,13 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
-`simple-fields-array` takes in a JSON schema of type array and builds a form,
-exposing a `value` property that represents an array described by the schema.
-
-@group simple-fields
-@customeElement simple-fields-array
-* @demo demo/index.html
-*/
+ * `simple-fields-array` takes in a JSON schema of type array and builds a form,
+ * exposing a `value` property that represents an array described by the schema.
+ * @group simple-fields
+ * @demo demo/index.html
+ * @customeElement simple-fields-array
+ */
 class SimpleFieldsArray extends LitElement {
   static get tag() {
     return "simple-fields-array";
