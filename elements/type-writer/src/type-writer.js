@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { IntersectionElementSuper } from "@lrnwebcomponents/intersection-element/lib/IntersectionElementSuper.js";
 /**
  * `type-writer`
  * `typewritter effect`
@@ -11,7 +12,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  * @customElement type-writer
  */
-class TypeWriter extends LitElement {
+class TypeWriter extends IntersectionElementSuper(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -33,8 +34,8 @@ class TypeWriter extends LitElement {
     this.typing = false;
   }
 
-  _observeText(text, delay) {
-    if (text && delay !== undefined) {
+  _observeText(text, delay, elementVisible) {
+    if (text && delay !== undefined && elementVisible) {
       if (this.shadowRoot.querySelector("#text").textContent) {
         this._oldText = this.shadowRoot.querySelector("#text").textContent;
         if (this.typing && this._cancel) {
@@ -93,8 +94,8 @@ class TypeWriter extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["text", "delay"].includes(propName)) {
-        this._observeText(this.text, this.delay);
+      if (["text", "delay", "elementVisible"].includes(propName)) {
+        this._observeText(this.text, this.delay, this.elementVisible);
       }
     });
   }

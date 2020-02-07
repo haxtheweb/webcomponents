@@ -12,6 +12,9 @@
   "speed": {
     "type": Number
   },
+  "elementVisible": {
+    "type": Boolean
+  },
   "eraseSpeed": {
     "type": Number,
     "attribute": "erase-speed"
