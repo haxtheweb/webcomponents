@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>HaxLogo: hax-logo Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '../hax-logo.js';
+      import '../lib/hax-the-web-site.js';
+      import '@lrnwebcomponents/type-writer/type-writer.js';
+      import '@lrnwebcomponents/retro-card/retro-card.js';
+      import '@lrnwebcomponents/grid-plate/grid-plate.js';
+    </script>
+  </head>
+  <body>
+    <hax-logo size="small">
+      <type-writer slot="post" text='&nbsp;future="you"' speed="300"></type-writer>
+    </hax-logo>
+    <grid-plate layout="1-1-1">
+      <retro-card
+        dark
+        slot="col-1"
+        title="h-a-x"
+        subtitle="Future proof editor"
+        tags="wysiwyg, webcomponent, cms-agnostic"
+        accent-color="blue"
+        url="https://haxtheweb.org"
+        media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+      >
+      </retro-card>
+      <retro-card
+        dark
+        slot="col-2"
+        title="HAXcms"
+        subtitle="Organic static site"
+        tags="v1.0.0, CMS, .git"
+        accent-color="grey"
+        url="https://hax.camp"
+        media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+      >
+      </retro-card>
+      <retro-card
+      dark
+      slot="col-3"
+      title="HAX.camp"
+      subtitle="Unconference user meetup"
+      tags="hax, webcomponents, community"
+      accent-color="purple"
+      url="https://hax.camp"
+      media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+    >
+    </retro-card>
+    <retro-card
+      slot="col-1"
+      title="HAXiam"
+      subtitle="Empower your institution"
+      tags="SaaS, haxcms, enterprise"
+      accent-color="red"
+      url="https://hax.camp"
+      media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+    >
+    </retro-card>
+    <retro-card
+      slot="col-2"
+      title="ELMS:LN"
+      subtitle="Innovative NGDLE"
+      tags="ngdle, education, innovation"
+      accent-color="light-green"
+      url="https://hax.camp"
+      media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+    >
+    </retro-card>
+    <retro-card
+    slot="col-3"
+    title="OERSchema"
+    subtitle="Discover open education"
+    tags="schema, oer, metadata"
+    accent-color="orange"
+    url="https://oerschema.org"
+    media-source="https://btopro.com/files/IMG_20190716_102855.jpg"
+  >
+  </retro-card>
+    </grid-plate>
+  </body>
+</html>
