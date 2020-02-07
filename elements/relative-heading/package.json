@@ -41,7 +41,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "2.2.1"
+    "lit-element": "2.2.1",
+    "@lrnwebcomponents/anchor-behaviors": "^2.4.1",
+    "@polymer/iron-icons": "3.1.0",
+    "@polymer/paper-toast": "3.1.0",
+    "@polymer/paper-icon-button": "3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",

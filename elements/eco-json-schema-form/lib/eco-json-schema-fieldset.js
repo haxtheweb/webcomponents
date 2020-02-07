@@ -32,7 +32,7 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
           font-family: var(--eco-json-form-font-family);
           margin-bottom: 15px;
         }
-        :host ([hidden]) {
+        :host([hidden]) {
           display: none;
         }
         :host fieldset {

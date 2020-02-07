@@ -12,111 +12,109 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-fields`
  * @customElement simple-fields
- * `Uses eco-json-form and HAX wiring to display a series of fields`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
+ * Uses eco-json-form and HAX wiring to display a series of fields
  * @polymer
  * @demo ./demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-          background-color: #ffffff;
-          overflow: visible;
-        }
+<style>
+:host {
+  display: block;
+  background-color: #ffffff;
+  overflow: visible;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        eco-json-schema-object {
-          width: 50%;
-        }
-        eco-json-schema-object {
-          color: var(--hax-text-color);
-          --eco-json-form-color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
-        eco-json-schema-object .hax-code-editor {
-          padding: 0;
-        }
-      </style>
-      <style include="simple-colors-shared-styles-polymer"></style>
-      <eco-json-schema-object
-        id="schemaobject"
-        autofocus$="[[autofocus]]"
-        hide-line-numbers$="[[hideLineNumbers]]"
-        on-form-changed="_formFieldsChanged"
-        schema="[[__validatedSchema]]"
-        value="{{value}}"
-      ></eco-json-schema-object>
-    `;
+eco-json-schema-object {
+  width: 50%;
+}
+eco-json-schema-object {
+  color: var(--hax-text-color);
+  --eco-json-form-color: var(--hax-text-color);
+  --eco-json-schema-object-form : {
+    -ms-flex: unset;
+    -webkit-flex: unset;
+    flex: unset;
+    -webkit-flex-basis: unset;
+    flex-basis: unset;
+  }
+}
+eco-json-schema-object .hax-code-editor {
+  padding: 0;
+}
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
+<eco-json-schema-object
+  id="schemaobject"
+  autofocus$="[[autofocus]]"
+  hide-line-numbers$="[[hideLineNumbers]]"
+  on-form-changed="_formFieldsChanged"
+  schema="[[__validatedSchema]]"
+  value="{{value}}"
+></eco-json-schema-object>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Fields to convert toJSON Schema.
-       */
-      fields: {
-        type: Array,
-        value: [],
-        observer: "_formFieldsChanged"
-      },
-      /**
-       * Returned value from the form input.
-       */
-      value: {
-        type: Object,
-        notify: true,
-        value: {},
-        observer: "_valueChanged"
-      },
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      __validatedSchema: {
-        type: Array,
-        notify: true,
-        value: {
-          properties: {}
-        }
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * automatically set focus on the first field if that field has autofocus
+   */
+  "autofocus": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * hide code-editor line numbers
+   */
+  "hideLineNumbers": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Fields to convert toJSON Schema.
+   */
+  "fields": {
+    "type": Array,
+    "value": [],
+    "observer": "_formFieldsChanged"
+  },
+  /**
+   * Returned value from the form input.
+   */
+  "value": {
+    "type": Object,
+    "notify": true,
+    "value": {},
+    "observer": "_valueChanged"
+  },
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "__validatedSchema": {
+    "type": Array,
+    "notify": true,
+    "value": {
+      "properties": {}
+    }
+  }
+}
+;
   }
 
   /**

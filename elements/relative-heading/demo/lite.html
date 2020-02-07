@@ -15,62 +15,57 @@
     <script src="./demo.js"></script>
     <link href="./demo.css" rel="stylesheet" type="text/css">
     <style is="custom-style" include="demo-pages-shared-styles">
+      fieldset > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      relative-heading-lite h1:after,
+      relative-heading-lite h2:after,
+      relative-heading-lite h3:after,
+      relative-heading-lite h4:after,
+      relative-heading-lite h5:after,
+      relative-heading-lite h6:after {
+        display: inline-flex;
+        opacity: 0.3;
+        padding-left: 0.5em;
+      }  
+      relative-heading:not(:defined) {
+        display: block;
+      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic relative-heading-lite demo</h3>
       <demo-snippet>
-        <style>
-          relative-heading-lite h1:after,
-          relative-heading-lite h2:after,
-          relative-heading-lite h3:after,
-          relative-heading-lite h4:after,
-          relative-heading-lite h5:after,
-          relative-heading-lite h6:after {
-            display: inline-flex;
-            opacity: 0.3;
-            padding-left: 0.5em;
-          }  
-          relative-heading-lite h1:after {
-            content: '<h1/>';
-          }  
-          relative-heading-lite h2:after {
-            content: '<h2/>';
-          }  
-          relative-heading-lite h3:after {
-            content: '<h3/>';
-          }  
-          relative-heading-lite h4:after {
-            content: ' <h4/>';
-          }  
-          relative-heading-lite h5:after {
-            content: '<h5/>';
-          }  
-          relative-heading-lite h6:after {
-            content: '<h6/>';
-          }  
-        </style>
-        <p>
-          <label>Set sapien's <tt>parent</tt> to...
-            <select id="changer">
-              <option value="lorem">lorem</option>
-              <option value="praesent">praesent</option>
-              <option value="suspendisse" selected>suspendisse</option>
-            </select>
-          </label>
-        </p>
-        <p>
-          <label>Set volutpat's <tt>parent</tt> to...
-            <select id="changer2">
-              <option value="lorem">lorem</option>
-              <option value="sapien">sapien</option>
-              <option value="sollicitudin" selected>sollicitudin</option>
-            </select>
-          </label>
-        </p>
-        <p><button id="changer3">Change praesent's innerHTML</button></p>
-        <p><button id="remover">Remove lorem</button></p>
+        <!-- these controls are just to demo relative headings-->
+        <fieldset>
+          <legend>Change the DOM:</legend>
+          <div>
+            <p>
+              <label>Set sapien's <tt>parent</tt> to...
+                <select id="changer">
+                  <option value="lorem">lorem</option>
+                  <option value="praesent">Praesent ultrices</option>
+                  <option value="suspendisse" selected>Suspendisse</option>
+                </select>
+              </label>
+            </p>
+            <p>
+              <label>Set volutpat's <tt>parent</tt> to...
+                <select id="changer2">
+                  <option value="lorem">lorem</option>
+                  <option value="suspendisse">suspendisse</option>
+                  <option value="sollicitudin" selected>sollicitudin</option>
+                </select>
+              </label>
+            </p>
+            <p><button id="changer3">Change praesent's innerHTML</button></p>
+            <p><button id="remover">Remove lorem</button></p>
+          </div>
+        </fieldset>
         <template>
           <relative-heading-lite id="lorem">
             <h1>Lorem ipsum dolor</h1>
@@ -101,6 +96,26 @@
             <h6>In et volutpat</h6>
           </relative-heading-lite>          
           <p>In et volutpat nisi. Suspendisse vel nibh eu magna posuere sollicitudin. Praesent ac ex varius, facilisis urna et, cursus tellus.</p> 
+          <style>
+            relative-heading-lite h1:after {
+              content: '<h1/>';
+            }  
+            relative-heading-lite h2:after {
+              content: '<h2/>';
+            }  
+            relative-heading-lite h3:after {
+              content: '<h3/>';
+            }  
+            relative-heading-lite h4:after {
+              content: ' <h4/>';
+            }  
+            relative-heading-lite h5:after {
+              content: '<h5/>';
+            }  
+            relative-heading-lite h6:after {
+              content: '<h6/>';
+            }  
+          </style>
         </template>
       </demo-snippet>
     </div>
