@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { boolean } from "@storybook/addon-knobs";
+import { SimpleFieldsFieldset } from "./simple-fields-fieldset";
 
 /**
 `simple-fields-array` takes in a JSON schema of type array and builds a form,
@@ -38,67 +40,18 @@ class SimpleFieldsArray extends LitElement {
           class="vertical flex layout"
           global-options="${this.globalOptions}"
         >
-          ${this.schema.value.map(
-            item,
-            index => html`
-              <a11y-collapse
-                accordion
-                id="item-${index}"
-                .icon="${this.globalOptions.icon}"
-                .tooltip="${this.globalOptions.tooltip}"
-              >
-                <p slot="heading">
-                  ${this._getHeading(this.__headings, this.schema.label, index)}
-                </p>
-                <div slot="content">
-                  <div>
-                    <div
-                      id="value-${index}"
-                      class="item-fields"
-                      .data-index="${index}"
-                    >
-                      <slot></slot>
-                    </div>
-                    <paper-icon-button
-                      id="remove-${index}"
-                      icon="icons:delete"
-                      aria-label="Remove this item"
-                      aria-describedby="item-${index}"
-                      class="remove-array-item array-item-button"
-                      controls="item-${index}"
-                      on-tap="_onRemoveItem"
-                      role="button"
-                    >
-                    </paper-icon-button>
-                    <simple-tooltip for="remove-${index}">
-                      Remove this item
-                    </simple-tooltip>
-                  </div>
-                </div>
-              </a11y-collapse>
-            `
-          )}
+          <slot></slot>
         </a11y-collapse-group>
-        <paper-button
-          class="add-array-item array-item-button"
-          on-click="_onAddItem"
-          role="button"
-        >
+        <paper-button 
+          id="add-button"
+          @click="${e => this.addItem(this)}">
           Add an item
           <iron-icon icon="add-circle"></iron-icon>
         </paper-button>
       </fieldset>
     `;
   }
-  _toArray(obj) {
-    if (obj == null) {
-      return [];
-    }
-    return Object.keys(obj).map(function(key) {
-      return obj[key];
-    });
-  }
-
+  
   static get properties() {
     return {
       globalOptions: {
@@ -108,10 +61,6 @@ class SimpleFieldsArray extends LitElement {
           tooltip: "configure item"
         },
         notify: true
-      },
-      propertyName: {
-        type: String,
-        value: null
       },
       schema: {
         type: Object,
@@ -123,8 +72,79 @@ class SimpleFieldsArray extends LitElement {
         type: Array,
         value: [],
         notify: true
+      },
+      sortField: {
+        type: String
       }
     };
+  }
+
+  /**
+   * returns mutation observer
+   * @readonly
+   * @returns {object} MutationObserver to unwrap contents
+   */
+  get observer() {
+    let wrap = () => this.wrapField();
+    return new MutationObserver(wrap);
+  }
+
+  wrapField(){
+    let fields = this.querySelectorAll('> *:not(a11y-collapse)');
+    if(sortField) fields = fields.sort(a,b=>a[sortField]-b[sortField]);
+    fields.forEach(field,index=>{
+      let collapse = document.createElement('a11y-collapse'),
+        p = document.createElement('p'),
+        content = document.createElement('div'),
+        outer = document.createElement('div'),
+        inner = document.createElement('div'),
+        button = document.createElement('paper-icon-button');
+        tooltip = document.createElement('simple-tooltip')
+      collapse.setAttribute('id',`item-${index}`);
+      collapse.accordion = true;
+      collapse.icon(this.globalOptions.icon);
+      collapse.tooltip(this.globalOptions.tooltip);
+      this.append(collapse);
+      collapse.append(p);
+      collapse.append(content);
+      p.slot = "heading";
+      p.innerHTML = this._getHeading(this.__headings, this.schema.label, index);
+      collapse.append(p);
+      content.slot = "content";
+      content.append(outer);
+      outer.append(inner);
+      inner.append(field);
+      button.setAttribute('id',`remove-${index}`);
+      button.icon = "icons:delete"
+      button.setAttribute('aria-label',"Remove this item");
+      button.setAttribute('aria-describedby',`item-${index}`);
+      button.setAttribute('controls',`item-${index}`);
+      button.onclick = e => this.removeItem(field);
+      outer.append(button);
+      tooltip.for = `remove-${index}`;
+      tooltip.innerHTML = "Remove this item";
+      outer.append(tooltip);
+    });
+  }
+  addItem(array){
+    this.dispatchEvent(
+      new CustomEvent("add-item", {
+        bubbles: false,
+        cancelable: true,
+        composed: true,
+        detail: array
+      }
+    ));
+  }
+  removeItem(field){
+    this.dispatchEvent(
+      new CustomEvent("remove-item", {
+        bubbles: false,
+        cancelable: true,
+        composed: true,
+        detail: field
+      }
+    ));
   }
   ready() {
     super.ready();
