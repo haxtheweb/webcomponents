@@ -103,16 +103,6 @@ class HaxToolbar extends LitElement {
   }
   render() {
     return html`
-      <hax-context-item
-        ?hidden="${this.inline}"
-        mini
-        light
-        icon="close"
-        label="Hide menu"
-        event-name="close-menu"
-        class="close-cap"
-        direction="left"
-      ></hax-context-item>
       <div class="wrapper">
         <hax-context-item-menu
           ?hidden="${!this.haxProperties.canPosition}"
@@ -161,18 +151,6 @@ class HaxToolbar extends LitElement {
           Resize
         </simple-tooltip>
         <slot name="primary"></slot>
-        <hax-context-item
-          ?hidden="${this.hideTransform}"
-          icon="hax:bricks"
-          label="Change type"
-          event-name="hax-plate-convert"
-        ></hax-context-item>
-        <hax-context-item
-          ?hidden="${this.inline}"
-          icon="delete"
-          label="Remove"
-          event-name="hax-plate-delete"
-        ></hax-context-item>
         <hax-context-item-menu
           ?hidden="${this.hideMode}"
           icon="more-vert"
@@ -183,12 +161,6 @@ class HaxToolbar extends LitElement {
         >
           <paper-item value="" hidden></paper-item>
           <slot name="more"></slot>
-          <hax-context-item-textop
-            menu
-            icon="icons:content-copy"
-            event-name="hax-plate-duplicate"
-            >Duplicate</hax-context-item-textop
-          >
         </hax-context-item-menu>
       </div>
     `;

@@ -55,8 +55,10 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-body-editable-outline: 2px solid #bbbbbb;
-          --hax-body-active-outline: 2px solid #000000;
+          --hax-contextual-action-color: #3b97e3;
+          --hax-body-editable-outline:1px solid #e37e3b;          
+          --hax-body-active-outline-hover:1px solid var(--hax-contextual-action-color);          
+          --hax-body-active-outline:3px solid var(--hax-contextual-action-color);          
           --hax-body-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -155,20 +157,20 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable]:hover) {
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+            outline: var(--hax-body-active-outline-hover);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]:hover) {
           cursor: text !important;
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+          outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
           cursor: text !important;
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+          outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
@@ -178,7 +180,7 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]) {
-          outline: 2px solid rgba(145, 151, 162, 0.25);
+          outline: var(--hax-body-active-outline) !important;
         }
         :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
           height: 2px;
@@ -593,11 +595,12 @@ class HaxBody extends SimpleColors {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
+          let rect = this.activeContainerNode.getBoundingClientRect();
           this._positionContextMenu(
             this.shadowRoot.querySelector("#platecontextmenu"),
             this.activeContainerNode,
-            -59,
-            0
+            rect.width - this.shadowRoot.querySelector("#platecontextmenu").getBoundingClientRect().width + 2,
+            -36
           );
           if (this.elementInViewport(el)) {
             el.classList.remove(
@@ -1305,23 +1308,24 @@ class HaxBody extends SimpleColors {
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
           container,
-          -58,
-          -40
+          -2,
+          -41
         );
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
           container,
-          -58,
-          -40
+          -2,
+          -41
         );
       }
+      let rect = container.getBoundingClientRect();
       this._positionContextMenu(
         this.shadowRoot.querySelector("#platecontextmenu"),
         container,
-        -59,
-        0
+        rect.width - this.shadowRoot.querySelector("#platecontextmenu").getBoundingClientRect().width + 2,
+        -36
       );
       // special case for node not matching container yet it being editable
       if (
@@ -1453,20 +1457,13 @@ class HaxBody extends SimpleColors {
           "#platecontextmenu"
         );
         let right = platecontextmenu.shadowRoot.querySelector("#right");
-        let left = platecontextmenu.shadowRoot.querySelector("#left");
         let rightremove = platecontextmenu.shadowRoot.querySelector(
           "#rightremove"
         );
-        let leftremove = platecontextmenu.shadowRoot.querySelector(
-          "#leftremove"
-        );
         right.disabled = false;
-        left.disabled = false;
         rightremove.disabled = false;
-        leftremove.disabled = false;
         if (node.layout == "1-1-1-1-1-1") {
           right.disabled = true;
-          left.disabled = true;
         }
         if (side == "left") {
           node.childNodes.forEach(el => {
@@ -1884,7 +1881,7 @@ class HaxBody extends SimpleColors {
           haxInputMixer,
           this.activeContainerNode,
           -1,
-          -38
+          -41
         );
         let style =
           this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||

@@ -21,6 +21,7 @@ class HaxContextItem extends LitElement {
   constructor() {
     super();
     this.light = false;
+    this.action = false;
     this.large = false;
     this.disabled = false;
     this.mini = false;
@@ -62,6 +63,7 @@ class HaxContextItem extends LitElement {
       <hax-toolbar-item
         ?disabled="${this.disabled}"
         ?light="${this.light}"
+        ?action="${this.action}"
         ?mini="${this.mini}"
         ?large="${this.large}"
         id="button"
@@ -90,6 +92,9 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
+        type: Boolean
+      },
+      action: {
         type: Boolean
       },
       height: {

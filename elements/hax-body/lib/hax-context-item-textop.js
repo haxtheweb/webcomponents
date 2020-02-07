@@ -41,6 +41,7 @@ class HaxContextItemTextop extends LitElement {
   constructor() {
     super();
     this.label = "";
+    this.action = false;
     this.light = false;
     this.mini = false;
     this.menu = false;
@@ -62,13 +63,14 @@ class HaxContextItemTextop extends LitElement {
       <hax-toolbar-item
         id="button"
         icon="${this.icon}"
-        .hidden="${!this.icon}"
+        ?hidden="${!this.icon}"
         tooltip-direction="${this.direction}"
         tooltip="${this.label}"
         @mousedown="${this._fireEvent}"
-        .mini="${this.mini}"
-        .menu="${this.menu}"
-        .light="${this.light}"
+        ?mini="${this.mini}"
+        ?action="${this.action}"
+        ?menu="${this.menu}"
+        ?light="${this.light}"
       >
         <slot></slot>
       </hax-toolbar-item>

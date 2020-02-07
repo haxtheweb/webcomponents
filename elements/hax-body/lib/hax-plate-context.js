@@ -47,29 +47,35 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       padding:0;
     }
     .area {
+      display: flex;
       visibility: visible;
+      opacity: .8;
+    }
+    .area {
+      opacity: 1;
     }
     .paddle {
-      position:fixed;
       width: unset;
       height: unset;
       visibility: visible;
-      opacity: .6;
+      opacity: .9;
     }
     .paddle:hover {
       opacity: 1;
     }
     paper-item {
+      background-color: var(--hax-contextual-action-color);
+      color: white;
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
-      height: 20px;
+      height: 24px;
       padding: 0 4px;
-      min-height: 20px;
+      min-height: 24px;
       font-size: 10px;
     }
     paper-item:hover {
-      background-color: #d3d3d3;
       cursor: pointer;
+      color: black;
     }
     iron-icon {
       padding: 0 2px;
@@ -77,9 +83,10 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       height: 16px;
     }
     </style>
-    <div class="area">
+    <div class="area" id="area">
       <hax-context-item
-        light
+        large
+        action
         icon="hardware:keyboard-arrow-up"
         label="Move up"
         event-name="hax-plate-up"
@@ -87,48 +94,72 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       ></hax-context-item>
       <hax-context-item
         id="drag"
-        light
+        large
+        action
         icon="editor:drag-handle"
         label="Drag"
         draggable="true"
         direction="left"
       ></hax-context-item>
       <hax-context-item
-        light
+        large
+        action
         icon="hardware:keyboard-arrow-down"
         label="Move down"
         event-name="hax-plate-down"
         direction="left"
       ></hax-context-item>
-    </div>
-    <hax-context-item
-      light
+      <hax-context-item
+      action
       large
+      id="right"
       class="paddle"
       icon="icons:add"
       label="Add column"
-      event-name="hax-plate-create-left"
-      direction="right"
-      id="left"
+      event-name="hax-plate-create-right"
+      direction="left"
     ></hax-context-item>
     <hax-context-item
-      light
+      action
       large
       class="paddle"
       icon="icons:remove"
       label="Remove column"
-      event-name="hax-plate-remove-left"
-      direction="right"
-      id="leftremove"
+      event-name="hax-plate-remove-right"
+      direction="left"
+      id="rightremove"
     ></hax-context-item>
-    <hax-context-item-menu
-      mini
-      id="leftadd"
+    <hax-context-item
+    action
+    large
+    icon="hax:bricks"
+    label="Change type"
+    event-name="hax-plate-convert"
+  ></hax-context-item>
+  <hax-context-item
+    action
+    large
+    icon="delete"
+    label="Remove"
+    event-name="hax-plate-delete"
+  ></hax-context-item>
+  <hax-context-item
+      action
+      large
+      label="Duplicate"
+      icon="icons:content-copy"
+      event-name="hax-plate-duplicate"
+      ></hax-context-item>
+    
+      <hax-context-item-menu
+      action
+      large
+      id="rightadd"
       class="paddle"
       icon="hax:add-brick"
       label="Insert new.."
       event-name="hax-plate-add-element"
-      direction="right"
+      direction="left"
       selected-value="0"
       reset-on-select
     >
@@ -152,26 +183,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         <iron-icon icon="hax:add-brick"></iron-icon>Other element
       </paper-item>
     </hax-context-item-menu>
-    <hax-context-item
-      light
-      large
-      id="right"
-      class="paddle"
-      icon="icons:add"
-      label="Add column"
-      event-name="hax-plate-create-right"
-      direction="left"
-    ></hax-context-item>
-    <hax-context-item
-      light
-      large
-      class="paddle"
-      icon="icons:remove"
-      label="Remove column"
-      event-name="hax-plate-remove-right"
-      direction="left"
-      id="rightremove"
-    ></hax-context-item>
+      </div>
   `;
   }
   /**
@@ -193,55 +205,21 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   }
   __updatePlatePosition() {
     setTimeout(() => {
-      let activeRec = window.HaxStore.instance.activeNode.getBoundingClientRect();
-      let rect = activeRec;
       let active = window.HaxStore.instance.activeNode;
       let right = this.shadowRoot.querySelector("#right");
-      let left = this.shadowRoot.querySelector("#left");
       let rightremove = this.shadowRoot.querySelector("#rightremove");
-      let leftremove = this.shadowRoot.querySelector("#leftremove");
-      let leftadd = this.shadowRoot.querySelector("#leftadd");
       if (window.HaxStore.instance.activeContainerNode) {
         active = window.HaxStore.instance.activeContainerNode;
-        rect = active.getBoundingClientRect();
       }
-
-      right.style.top = Math.round(rect.y - 1) + "px";
-      right.style.left = Math.round(rect.left + rect.width + 2) + "px";
-      rightremove.style.top =
-        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
-      rightremove.style.left = Math.round(rect.left + rect.width + 2) + "px";
-
-      left.style.top = Math.round(rect.y - 1) + "px";
-      left.style.left = Math.round(rect.left - 22) + "px";
-
-      leftremove.style.top =
-        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
-      leftremove.style.left = Math.round(rect.left - 22) + "px";
-
-      right.height = Math.round(rect.height / 2 + 2) + "px";
-      rightremove.height = right.height;
-
-      left.height = right.height;
-      leftremove.height = right.height;
-
-      this.style.height = Math.round(rect.height + 2) + "px";
-
-      leftadd.style.top = Math.round(activeRec.y + activeRec.height + 1) + "px";
-      leftadd.style.left = Math.round(activeRec.left - 22) + "px";
       // support for enabling or disabling
       right.disabled = false;
-      left.disabled = false;
       rightremove.disabled = false;
-      leftremove.disabled = false;
       if (active && active.tagName == "GRID-PLATE") {
         if (active.layout == "1-1-1-1-1-1") {
           right.disabled = true;
-          left.disabled = true;
         }
       } else {
         rightremove.disabled = true;
-        leftremove.disabled = true;
       }
     }, 100);
   }
