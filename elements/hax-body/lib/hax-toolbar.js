@@ -99,7 +99,7 @@ class HaxToolbar extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-      <slot name="prefix"></slot>
+        <slot name="prefix"></slot>
         <hax-context-item-menu
           action
           ?hidden="${!this.haxProperties.canPosition}"

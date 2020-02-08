@@ -59,14 +59,14 @@ class HaxCeContext extends LitElement {
         hide-more
         @size-changed="${this.ceSizeChanged}"
       >
-      <hax-context-item
-        action
-        slot="prefix"
-        icon="hax:bricks"
-        label="Change type"
-        ?hidden="${this.hideTransform}"
-        event-name="hax-plate-convert"
-      ></hax-context-item>
+        <hax-context-item
+          action
+          slot="prefix"
+          icon="hax:bricks"
+          label="Change type"
+          ?hidden="${this.hideTransform}"
+          event-name="hax-plate-convert"
+        ></hax-context-item>
         <slot slot="primary"></slot>
         <hax-context-item
           action
@@ -94,7 +94,7 @@ class HaxCeContext extends LitElement {
     return {
       hideTransform: {
         type: Boolean,
-        attribute: 'hide-transform',
+        attribute: "hide-transform"
       },
       /**
        * ce size.
@@ -178,9 +178,9 @@ class HaxCeContext extends LitElement {
       if (
         window.HaxStore.instance.isTextElement(
           window.HaxStore.instance.activeNode
-        )
-        || window.HaxStore.instance.activeNode.tagName == "HR"
-        || window.HaxStore.instance.activeNode.tagName == "GRID-PLATE"
+        ) ||
+        window.HaxStore.instance.activeNode.tagName == "HR" ||
+        window.HaxStore.instance.activeNode.tagName == "GRID-PLATE"
       ) {
         this.hideTransform = true;
       } else {
