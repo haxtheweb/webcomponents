@@ -50,7 +50,6 @@ class HaxToolbar extends LitElement {
         #moremenu hax-context-item:hover,
         :host #moremenu ::slotted(paper-item:hover),
         paper-item:hover {
-          background-color: var(--hax-color-menu-heading-bg);
           cursor: pointer;
         }
         paper-slider {
@@ -100,6 +99,7 @@ class HaxToolbar extends LitElement {
   render() {
     return html`
       <div class="wrapper">
+      <slot name="prefix"></slot>
         <hax-context-item-menu
           action
           ?hidden="${!this.haxProperties.canPosition}"

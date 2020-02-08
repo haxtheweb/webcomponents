@@ -20,14 +20,8 @@ class HaxContextItemMenu extends LitElement {
       css`
         :host {
           display: inline-flex;
-          height: 36px;
+          height: var(--hax-context-item-menu-height, 36px);
           box-sizing: border-box;
-        }
-        :host hax-toolbar-menu ::slotted(*):hover {
-          background-color: var(--hax-color-bg-accent);
-        }
-        :host hax-toolbar-menu ::slotted(*) {
-          height: 36px;
         }
         :host(mini) {
           height: unset;

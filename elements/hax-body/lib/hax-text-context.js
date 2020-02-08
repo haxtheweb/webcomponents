@@ -18,6 +18,8 @@ class HaxTextContext extends LitElement {
           display: none;
         }
         paper-item {
+          color: white;
+          background-color: var(--hax-contextual-action-color);
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
           height: 36px;
@@ -25,8 +27,8 @@ class HaxTextContext extends LitElement {
           min-height: 36px;
         }
         paper-item:hover {
-          background-color: #d3d3d3;
           cursor: pointer;
+          color: black;
         }
         iron-icon {
           padding: 8px;

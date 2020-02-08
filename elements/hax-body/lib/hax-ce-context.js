@@ -59,6 +59,14 @@ class HaxCeContext extends LitElement {
         hide-more
         @size-changed="${this.ceSizeChanged}"
       >
+      <hax-context-item
+        action
+        slot="prefix"
+        icon="hax:bricks"
+        label="Change type"
+        ?hidden="${this.hideTransform}"
+        event-name="hax-plate-convert"
+      ></hax-context-item>
         <slot slot="primary"></slot>
         <hax-context-item
           action
@@ -84,6 +92,10 @@ class HaxCeContext extends LitElement {
   }
   static get properties() {
     return {
+      hideTransform: {
+        type: Boolean,
+        attribute: 'hide-transform',
+      },
       /**
        * ce size.
        */
@@ -163,6 +175,17 @@ class HaxCeContext extends LitElement {
       typeof oldValue !== typeof undefined &&
       typeof newValue.settings !== typeof undefined
     ) {
+      if (
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        )
+        || window.HaxStore.instance.activeNode.tagName == "HR"
+        || window.HaxStore.instance.activeNode.tagName == "GRID-PLATE"
+      ) {
+        this.hideTransform = true;
+      } else {
+        this.hideTransform = false;
+      }
       // clear current slot for the tag
       while (this.firstChild !== null) {
         this.removeChild(this.firstChild);
@@ -208,7 +231,6 @@ class HaxCeContext extends LitElement {
         }
       }
       var item;
-      // @todo kick stuff into the local dom as options
       for (var i = 0; i < settings.length; i++) {
         let setting = settings[i];
         // create a new context item for the quick

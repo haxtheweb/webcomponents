@@ -127,7 +127,6 @@ class HaxToolbarItem extends LitElement {
           height: 36px;
         }
         :host([menu]:not([disabled])) paper-button:hover {
-          background-color: #d3d3d3;
           color: #000000;
         }
         .flip-icon {

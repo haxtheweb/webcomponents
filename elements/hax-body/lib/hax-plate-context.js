@@ -46,6 +46,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       margin:0;
       padding:0;
     }
+    hax-context-item-menu {
+      --hax-context-item-menu-height: 28px;
+    }
     .area {
       display: flex;
       visibility: visible;
@@ -65,14 +68,15 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     paper-item {
       background-color: var(--hax-contextual-action-color);
-      color: white;
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
       height: 24px;
       padding: 0 4px;
       min-height: 24px;
       font-size: 10px;
+      color: white;
     }
+    #drag hax-context-item:hover,
     paper-item:hover {
       cursor: pointer;
       color: black;
@@ -126,21 +130,22 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         direction="left"
         selected-value="0"
         reset-on-select>
-        <paper-item value="0" hidden></paper-item>
       <hax-context-item
         action
+        mini
         icon="hardware:keyboard-arrow-up"
         label="Move up"
         event-name="hax-plate-up"
         direction="left"
-      ></hax-context-item>
+        ></hax-context-item>
       <hax-context-item
         action
+        mini
         icon="hardware:keyboard-arrow-down"
         label="Move down"
         event-name="hax-plate-down"
         direction="left"
-      ></hax-context-item>
+        ></hax-context-item>
     </hax-context-item-menu>
       <hax-context-item
       mini
@@ -162,13 +167,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       direction="left"
       id="rightremove"
     ></hax-context-item>
-    <hax-context-item
-    mini
-    action
-    icon="hax:bricks"
-    label="Change type"
-    event-name="hax-plate-convert"
-  ></hax-context-item>
   <hax-context-item
     mini
     action
