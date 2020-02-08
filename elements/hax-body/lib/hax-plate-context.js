@@ -267,7 +267,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
           "moving",
           "grid-plate-active-item"
         );
-        children[i].removeEventListener('click', this._clickPlace);
+        children[i].removeEventListener("click", this._clickPlace);
       }
     }
   }
@@ -298,7 +298,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         for (var i in children) {
           if (children[i].classList && target !== children[i]) {
             children[i].classList.add("mover");
-            children[i].addEventListener('click', this._clickPlace);
+            children[i].addEventListener("click", this._clickPlace);
           }
         }
       }

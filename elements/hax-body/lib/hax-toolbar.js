@@ -101,7 +101,7 @@ class HaxToolbar extends LitElement {
     return html`
       <div class="wrapper">
         <hax-context-item-menu
-        action
+          action
           ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
@@ -109,14 +109,14 @@ class HaxToolbar extends LitElement {
           label="Alignment"
         >
           <hax-context-item
-          action
+            action
             menu
             icon="editor:format-align-left"
             event-name="hax-align-left"
             >Left</hax-context-item
           >
           <hax-context-item
-          action
+            action
             menu
             icon="editor:format-align-center"
             event-name="hax-align-center"
@@ -151,7 +151,7 @@ class HaxToolbar extends LitElement {
         </simple-tooltip>
         <slot name="primary"></slot>
         <hax-context-item-menu
-        action
+          action
           ?hidden="${this.hideMore}"
           icon="more-vert"
           label="More operations"

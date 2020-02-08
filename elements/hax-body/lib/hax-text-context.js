@@ -157,7 +157,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
-        action
+          action
           slot="primary"
           icon="editor:format-indent-decrease"
           label="Outdent"
@@ -165,7 +165,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
-        action
+          action
           slot="primary"
           icon="editor:format-indent-increase"
           label="Indent"
@@ -173,14 +173,14 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
-        action
+          action
           slot="primary"
           icon="editor:format-clear"
           label="Remove format"
           event-name="text-remove-format"
         ></hax-context-item-textop>
         <hax-context-item
-        action
+          action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -188,7 +188,7 @@ class HaxTextContext extends LitElement {
           .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
-        action
+          action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -196,7 +196,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
         <hax-context-item-textop
-        action
+          action
           menu
           slot="more"
           icon="mdextra:subscript"
@@ -204,7 +204,7 @@ class HaxTextContext extends LitElement {
           >Subscript</hax-context-item-textop
         >
         <hax-context-item-textop
-        action
+          action
           menu
           slot="more"
           icon="mdextra:superscript"
@@ -212,7 +212,7 @@ class HaxTextContext extends LitElement {
           >Superscript</hax-context-item-textop
         >
         <hax-context-item-textop
-        action
+          action
           menu
           slot="more"
           icon="editor:format-underlined"
@@ -220,7 +220,7 @@ class HaxTextContext extends LitElement {
           >Underline</hax-context-item-textop
         >
         <hax-context-item-textop
-        action
+          action
           menu
           slot="more"
           icon="editor:format-strikethrough"
