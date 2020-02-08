@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 /**
- * `IntersectionElementSuper`
+ * `IntersectionObserverMixin`
  * `Wiring to provide basic IntersectionObserver support to any web component`
  */
-const IntersectionElementSuper = function(SuperClass) {
+const IntersectionObserverMixin = function(SuperClass) {
   // SuperClass so we can write any web component library / base class
   return class extends SuperClass {
     /**
@@ -79,4 +79,4 @@ const IntersectionElementSuper = function(SuperClass) {
   };
 };
 
-export { IntersectionElementSuper };
+export { IntersectionObserverMixin };

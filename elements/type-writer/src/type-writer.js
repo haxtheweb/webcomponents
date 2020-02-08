@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { IntersectionElementSuper } from "@lrnwebcomponents/intersection-element/lib/IntersectionElementSuper.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `type-writer`
  * `typewritter effect`
@@ -12,7 +12,7 @@ import { IntersectionElementSuper } from "@lrnwebcomponents/intersection-element
  * @demo demo/index.html
  * @customElement type-writer
  */
-class TypeWriter extends IntersectionElementSuper(LitElement) {
+class TypeWriter extends IntersectionObserverMixin(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
