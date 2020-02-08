@@ -24,7 +24,7 @@ class HaxToolbarMenu extends LitElement {
           padding: 0;
           text-transform: none;
           display: flex;
-          min-width: 24px;
+          min-width: unset;
         }
         paper-menu-button .label {
           font-size: 12px;

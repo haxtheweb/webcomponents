@@ -129,6 +129,9 @@ class HaxContextItemTextop extends LitElement {
         type: String,
         reflect: true
       },
+      action: {
+        type: Boolean,
+      },
       /**
        * Name of the event to bubble up as being tapped.
        * This can be used to tell other elements what was

@@ -606,7 +606,7 @@ class HaxBody extends SimpleColors {
                 .querySelector("#platecontextmenu")
                 .getBoundingClientRect().width +
               2,
-            -36
+            -28
           );
           if (this.elementInViewport(el)) {
             el.classList.remove(
@@ -1315,7 +1315,7 @@ class HaxBody extends SimpleColors {
           this.shadowRoot.querySelector("#cecontextmenu"),
           container,
           -2,
-          -41
+          -38
         );
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
@@ -1323,7 +1323,7 @@ class HaxBody extends SimpleColors {
           this.shadowRoot.querySelector("#textcontextmenu"),
           container,
           -2,
-          -41
+          -38
         );
       }
       let rect = container.getBoundingClientRect();
@@ -1335,7 +1335,7 @@ class HaxBody extends SimpleColors {
             .querySelector("#platecontextmenu")
             .getBoundingClientRect().width +
           2,
-        -36
+        -28
       );
       // special case for node not matching container yet it being editable
       if (
@@ -1891,7 +1891,7 @@ class HaxBody extends SimpleColors {
           haxInputMixer,
           this.activeContainerNode,
           -1,
-          -41
+          -38
         );
         let style =
           this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||

@@ -73,6 +73,7 @@ class HaxTextContext extends LitElement {
     return html`
       <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
+          action
           slot="primary"
           .selected-value="${this.selectedValue}"
           @selected-value-changed="${this.selectedValueChanged}"
@@ -112,30 +113,35 @@ class HaxTextContext extends LitElement {
           </paper-item>
         </hax-context-item-menu>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="editor:format-bold"
           label="Bold"
           event-name="text-bold"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="editor:format-italic"
           label="Italic"
           event-name="text-italic"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="editor:insert-link"
           label="Link"
           event-name="text-link"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="mdextra:unlink"
           label="Remove link"
           event-name="text-unlink"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="editor:format-list-bulleted"
           event-name="text-tag-ul"
@@ -143,6 +149,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           slot="primary"
           icon="editor:format-list-numbered"
           label="Numbered list"
@@ -150,6 +157,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+        action
           slot="primary"
           icon="editor:format-indent-decrease"
           label="Outdent"
@@ -157,6 +165,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+        action
           slot="primary"
           icon="editor:format-indent-increase"
           label="Indent"
@@ -164,12 +173,14 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+        action
           slot="primary"
           icon="editor:format-clear"
           label="Remove format"
           event-name="text-remove-format"
         ></hax-context-item-textop>
         <hax-context-item
+        action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -177,6 +188,7 @@ class HaxTextContext extends LitElement {
           .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
+        action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -184,6 +196,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+        action
           menu
           slot="more"
           icon="mdextra:subscript"
@@ -191,6 +204,7 @@ class HaxTextContext extends LitElement {
           >Subscript</hax-context-item-textop
         >
         <hax-context-item-textop
+        action
           menu
           slot="more"
           icon="mdextra:superscript"
@@ -198,6 +212,7 @@ class HaxTextContext extends LitElement {
           >Superscript</hax-context-item-textop
         >
         <hax-context-item-textop
+        action
           menu
           slot="more"
           icon="editor:format-underlined"
@@ -205,6 +220,7 @@ class HaxTextContext extends LitElement {
           >Underline</hax-context-item-textop
         >
         <hax-context-item-textop
+        action
           menu
           slot="more"
           icon="editor:format-strikethrough"

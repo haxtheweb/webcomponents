@@ -95,14 +95,9 @@ class HaxToolbarItem extends LitElement {
           padding: 0;
           margin: 0;
         }
-        :host([mini]) iron-icon {
-          width: 16px;
-          height: 16px;
-        }
         :host([mini]) paper-button {
-          border-radius: 50%;
-          width: 18px;
-          height: 18px;
+          width: 28px;
+          height: 28px;
           padding: 1px;
           border: 1px solid var(--hax-color-border-outline);
         }

@@ -56,10 +56,12 @@ class HaxCeContext extends LitElement {
       <hax-toolbar
         id="toolbar"
         size="${this.ceSize}"
+        hide-more
         @size-changed="${this.ceSizeChanged}"
       >
         <slot slot="primary"></slot>
         <hax-context-item
+          action
           slot="primary"
           icon="icons:settings"
           label="Settings"
@@ -67,6 +69,7 @@ class HaxCeContext extends LitElement {
           .hidden="${!this.__hasSettingsForm}"
         ></hax-context-item>
         <hax-context-item
+          action
           slot="primary"
           icon="icons:view-quilt"
           label="${this.__parentName}"
@@ -214,6 +217,7 @@ class HaxCeContext extends LitElement {
         item.label = setting.title;
         item.options = setting.options;
         item.icon = setting.icon;
+        item.action = true;
         item.inputMethod = setting.inputMethod;
         item.required = setting.required;
         item.options = setting.options;

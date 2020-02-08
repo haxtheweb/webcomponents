@@ -84,85 +84,18 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     </style>
     <div class="area" id="area">
-      <hax-context-item
-        large
-        action
-        icon="hardware:keyboard-arrow-up"
-        label="Move up"
-        event-name="hax-plate-up"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-        id="drag"
-        large
-        action
-        icon="editor:drag-handle"
-        label="Drag"
-        draggable="true"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-        large
-        action
-        icon="hardware:keyboard-arrow-down"
-        label="Move down"
-        event-name="hax-plate-down"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-      action
-      large
-      id="right"
-      class="paddle"
-      icon="icons:add"
-      label="Add column"
-      event-name="hax-plate-create-right"
-      direction="left"
-    ></hax-context-item>
-    <hax-context-item
-      action
-      large
-      class="paddle"
-      icon="icons:remove"
-      label="Remove column"
-      event-name="hax-plate-remove-right"
-      direction="left"
-      id="rightremove"
-    ></hax-context-item>
-    <hax-context-item
+    <hax-context-item-menu
     action
-    large
-    icon="hax:bricks"
-    label="Change type"
-    event-name="hax-plate-convert"
-  ></hax-context-item>
-  <hax-context-item
-    action
-    large
-    icon="delete"
-    label="Remove"
-    event-name="hax-plate-delete"
-  ></hax-context-item>
-  <hax-context-item
-      action
-      large
-      label="Duplicate"
-      icon="icons:content-copy"
-      event-name="hax-plate-duplicate"
-      ></hax-context-item>
-    
-      <hax-context-item-menu
-      action
-      large
-      id="rightadd"
-      class="paddle"
-      icon="hax:add-brick"
-      label="Insert new.."
-      event-name="hax-plate-add-element"
-      direction="left"
-      selected-value="0"
-      reset-on-select
-    >
+    mini
+    id="rightadd"
+    class="paddle"
+    icon="hax:add-brick"
+    label="Insert new.."
+    event-name="hax-plate-add-element"
+    direction="left"
+    selected-value="0"
+    reset-on-select
+  >
     <paper-item value="" hidden></paper-item>
       <paper-item value='{"tag":"p","content":"", "properties": {}}'>
         <iron-icon icon="hax:paragraph"></iron-icon>Paragraph
@@ -183,7 +116,74 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         <iron-icon icon="hax:add-brick"></iron-icon>Other element
       </paper-item>
     </hax-context-item-menu>
-      </div>
+      <hax-context-item-menu
+        mini
+        id="drag"
+        action
+        icon="editor:drag-handle"
+        label="Drag"
+        draggable="true"
+        direction="left"
+        selected-value="0"
+        reset-on-select>
+        <paper-item value="0" hidden></paper-item>
+      <hax-context-item
+        action
+        icon="hardware:keyboard-arrow-up"
+        label="Move up"
+        event-name="hax-plate-up"
+        direction="left"
+      ></hax-context-item>
+      <hax-context-item
+        action
+        icon="hardware:keyboard-arrow-down"
+        label="Move down"
+        event-name="hax-plate-down"
+        direction="left"
+      ></hax-context-item>
+    </hax-context-item-menu>
+      <hax-context-item
+      mini
+      action
+      id="right"
+      class="paddle"
+      icon="icons:add"
+      label="Add column"
+      event-name="hax-plate-create-right"
+      direction="left"
+    ></hax-context-item>
+    <hax-context-item
+      mini
+      action
+      class="paddle"
+      icon="icons:remove"
+      label="Remove column"
+      event-name="hax-plate-remove-right"
+      direction="left"
+      id="rightremove"
+    ></hax-context-item>
+    <hax-context-item
+    mini
+    action
+    icon="hax:bricks"
+    label="Change type"
+    event-name="hax-plate-convert"
+  ></hax-context-item>
+  <hax-context-item
+    mini
+    action
+    label="Duplicate"
+    icon="icons:content-copy"
+    event-name="hax-plate-duplicate"
+    ></hax-context-item>
+  <hax-context-item
+    mini
+    action
+    icon="delete"
+    label="Remove"
+    event-name="hax-plate-delete"
+  ></hax-context-item>
+  </div>
   `;
   }
   /**
@@ -238,25 +238,25 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragstart", this._dragstart);
+        .addEventListener("dragstart", this._moveStart);
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragend", this.dragEnd);
+        .addEventListener("dragend", this._moveEnd);
     }, 0);
   }
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragstart", this._dragstart);
+      .removeEventListener("dragstart", this._moveStart);
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragend", this.dragEnd);
+      .removeEventListener("dragend", this._moveEnd);
     super.disconnectedCallback();
   }
   /**
    * When we end dragging ensure we remove the mover class.
    */
-  dragEnd(e) {
+  _moveEnd(e) {
     let children = window.HaxStore.instance.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -267,21 +267,24 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
           "moving",
           "grid-plate-active-item"
         );
+        children[i].removeEventListener('click', this._clickPlace);
       }
     }
   }
   /**
    * Drag start so we know what target to set
    */
-  _dragstart(e) {
+  _moveStart(e) {
     let target = window.HaxStore.instance.activeNode;
     if (window.HaxStore.instance.activeContainerNode) {
       target = window.HaxStore.instance.activeContainerNode;
     }
     window.HaxStore.instance.__dragTarget = target;
     target.classList.add("moving");
-    e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setDragImage(target, 0, 0);
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "move";
+      e.dataTransfer.setDragImage(target, 0, 0);
+    }
     e.stopPropagation();
     e.stopImmediatePropagation();
     setTimeout(() => {
@@ -295,6 +298,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         for (var i in children) {
           if (children[i].classList && target !== children[i]) {
             children[i].classList.add("mover");
+            children[i].addEventListener('click', this._clickPlace);
           }
         }
       }

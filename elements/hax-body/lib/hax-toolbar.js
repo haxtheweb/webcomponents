@@ -20,10 +20,6 @@ class HaxToolbar extends LitElement {
         }
         .wrapper {
           display: flex;
-          border: 1px solid var(--hax-color-border-outline, black);
-          border-bottom: none;
-          color: #222222;
-          background-color: #ffffff;
           height: 38px;
           align-items: center;
         }
@@ -58,16 +54,16 @@ class HaxToolbar extends LitElement {
           cursor: pointer;
         }
         paper-slider {
-          background-color: var(--hax-color-bg-accent);
+          background-color: var(--hax-contextual-action-color);
           color: #ffffff;
           font-weight: bold;
           height: 36px;
           min-width: 100px;
-          --paper-slider-font-color: white;
-          --paper-slider-active-color: var(--hax-color-accent1);
-          --paper-slider-knob-color: var(--hax-color-accent1);
-          --paper-slider-pin-start-color: var(--hax-color-accent1);
-          --paper-slider-pin-color: var(--hax-color-accent1);
+          --paper-slider-font-color: black;
+          --paper-slider-active-color: #ffffff;
+          --paper-slider-knob-color: #ffffff;
+          --paper-slider-pin-start-color: #ffffff;
+          --paper-slider-pin-color: #ffffff;
         }
         .convert-button {
           border-top: 1px solid var(--hax-color-bg-accent);
@@ -105,6 +101,7 @@ class HaxToolbar extends LitElement {
     return html`
       <div class="wrapper">
         <hax-context-item-menu
+        action
           ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
@@ -112,12 +109,14 @@ class HaxToolbar extends LitElement {
           label="Alignment"
         >
           <hax-context-item
+          action
             menu
             icon="editor:format-align-left"
             event-name="hax-align-left"
             >Left</hax-context-item
           >
           <hax-context-item
+          action
             menu
             icon="editor:format-align-center"
             event-name="hax-align-center"
@@ -152,7 +151,8 @@ class HaxToolbar extends LitElement {
         </simple-tooltip>
         <slot name="primary"></slot>
         <hax-context-item-menu
-          ?hidden="${this.hideMode}"
+        action
+          ?hidden="${this.hideMore}"
           icon="more-vert"
           label="More operations"
           id="moremenu"
