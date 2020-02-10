@@ -157,8 +157,10 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     return temp;
   }
 
-  get audioOnly(){
-    let videos = this.sourceData.filter(item=>item.type.indexOf('audio') === -1);
+  get audioOnly() {
+    let videos = this.sourceData.filter(
+      item => item.type.indexOf("audio") === -1
+    );
     return videos.length > 1;
   }
 
