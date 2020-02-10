@@ -28,7 +28,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   }
   constructor() {
     super();
-    this.audioOnly = false;
     this.dark = false;
     this.darkTranscript = false;
     this.disableInteractive = false;
@@ -158,6 +157,11 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     return temp;
   }
 
+  get audioOnly(){
+    let videos = this.sourceData.filter(item=>item.type.indexOf('audio') === -1);
+    return videos.length > 1;
+  }
+
   get standAlone() {
     return (
       this.trackData === undefined ||
@@ -256,7 +260,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             source !== null &&
             source.toLowerCase().indexOf("." + item) > -1
           ) {
-            if (text === "audio") this.audioOnly = true;
             type = text + "/" + item;
           }
         });

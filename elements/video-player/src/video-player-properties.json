@@ -1,11 +1,5 @@
 {
   /**
-   * Is media an audio file only?
-   */
-  "audioOnly": {
-    "type": "Boolean"
-  },
-  /**
    * Optional accent color for controls,
    * using these colors:
    * `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,
@@ -88,7 +82,9 @@
    * Simple caption for video
    */
   "mediaTitle": {
-    "type": "String"
+    "type": "String",
+    "attribute": "media-title",
+    "reflect": true
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
