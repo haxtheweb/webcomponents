@@ -43,7 +43,9 @@ class AbsolutePositionBehavior extends LitElement {
       if (propName === "for") this.updatePosition();
       if (propName === "offset") this.updatePosition();
       if (propName === "position") this.updatePosition();
+      if (propName === "positionAlign") this.updatePosition();
       if (propName === "target") this.updatePosition();
+      if (propName === "hidden") this.updatePosition();
     });
   }
 

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement } from "lit-element/lit-element.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
 window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};
@@ -22,11 +21,9 @@ window.AbsolutePositionStateManager.requestAvailability = () => {
 };
 /**
  * `absolute-position-state-manager`
- * @customElement absolute-position-state-manager
  * manages state of multiple absolute-positioned elements on a page
  *
-
- * @polymer
+ * @customElement absolute-position-state-manager
  */
 class AbsolutePositionStateManager extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -92,6 +89,8 @@ class AbsolutePositionStateManager extends LitElement {
       window.addEventListener("resize", this._handleResize);
     }
     this.elements.push(el);
+    el.style.top = 0;
+    el.style.left = 0;
     this.positionElement(el);
   }
 
@@ -154,11 +153,7 @@ class AbsolutePositionStateManager extends LitElement {
    */
   findTarget(el) {
     let selector = "#" + el.for,
-      docQuery =
-        document.querySelectorAll(selector).length === 1
-          ? document.querySelector(selector)
-          : null,
-      target = el.target || docQuery,
+      target = el.target,
       ancestor = el;
 
     while (
@@ -193,69 +188,88 @@ class AbsolutePositionStateManager extends LitElement {
     this.elements.forEach(element => this.positionElement(element));
   }
 
+  _getParentNode(node) {
+    let parent = node.parentNode;
+    if (
+      parent !== undefined &&
+      parent !== null &&
+      parent.nodeType === Node.DOCUMENT_FRAGMENT_NODE
+    ) {
+      parent = parent.host;
+    }
+    return parent;
+  }
+
   /**
    * Gets an updated position based on target.
    * @param {object} element using absolute-position behavior
    * @return {void}
    */
   positionElement(el) {
-    let target = this.findTarget(el);
-    if (!target || !el.offsetParent) return;
-    let offset = el.offset,
-      parentRect = el.offsetParent.getBoundingClientRect(),
-      targetRect = target.getBoundingClientRect(),
-      elRect = el.getBoundingClientRect(),
-      vertical = position => {
-        //place element before vertically?
-        return position !== "left" && position !== "right";
-      },
-      before = position => {
-        //place element before target?
-        return position === "left" || position === "top";
-      },
+    let target = this.findTarget(el),
+      parent = el.offsetParent;
+    if (!target || !parent) return;
+    let offset = parseFloat(el.offset),
+      w = document.body.getBoundingClientRect(),
+      p = parent.getBoundingClientRect(),
+      t = target.getBoundingClientRect(),
+      e = el.getBoundingClientRect(),
+      //place element before vertically?
+      vertical = (pos = el.position) => pos !== "left" && pos !== "right",
+      //place element before target?
+      before = (pos = el.position) => pos === "left" || pos === "top",
       /**
-       * ;
-       *
+       * aligns horizontally if position is vertical
+       * or aligns vertically if position is horizontal
        */
-      fitToBounds = () => {
+      setAlign = (v = vertical(el.position)) => {
         //fits element within parent's boundaries
-        let pos1 = vertical(el.position) ? "left" : "top",
-          pos2 = vertical(el.position) ? "right" : "bottom",
-          getRect = rect => {
-            return vertical(el.position) ? rect.width : rect.height;
-          },
-          coord =
-            targetRect[pos1] - getRect(elRect) / 2 + getRect(targetRect) / 2,
-          min = parentRect[pos1],
-          max = parentRect[pos2] - getRect(elRect);
+        let pxToNum = px => parseFloat(px.replace("px", "")),
+          min = v
+            ? pxToNum(el.style.left) - e.left
+            : pxToNum(el.style.top) - e.top,
+          startAt = v ? "left" : "top",
+          distance = rect => (v ? rect.width : rect.height),
+          max = min + distance(w) - distance(e),
+          align = min;
+        if (el.positionAlign === "end") {
+          align += t[startAt] - distance(e) + distance(t);
+        } else if (el.positionAlign === "start") {
+          align += t[startAt];
+        } else {
+          align += t[startAt] - distance(e) / 2 + distance(t) / 2;
+        }
         return el.fitToVisibleBounds
-          ? Math.max(min, Math.min(max, coord)) + "px"
-          : coord + "px"; //if element size > parent, align where parent begins
+          ? Math.max(min, Math.min(max, align)) + "px"
+          : align + "px"; //if element size > parent, align where parent begins
       },
-      getCoord = () => {
-        //adds or subtracts offset from target based on position
-        return el.position === "top"
-          ? targetRect.top - elRect.height - offset + "px"
-          : el.position === "left"
-          ? targetRect.left - elRect.width - offset + "px"
-          : targetRect[el.position] + offset + "px";
+      getCoord = (pos = el.position) => {
+        let pxToNum = px => parseFloat(px.replace("px", "")),
+          adjust = vertical(pos)
+            ? pxToNum(el.style.top) - e.top
+            : pxToNum(el.style.left) - e.left;
+        return pos === "top"
+          ? t.top + adjust - e.height - offset + "px"
+          : pos === "left"
+          ? t.left + adjust - e.width - offset + "px"
+          : t[pos] + adjust + offset + "px";
       },
-      isFit = position => {
+      isFit = (pos = el.position) => {
         //determines if room for element between parent and target
-        let size = vertical(position)
-          ? elRect.height + offset
-          : elRect.width + offset;
-        return before(position)
-          ? targetRect[position] - parentRect[position] > size
-          : parentRect[position] - targetRect[position] > size; //if no room, return original position
-      };
-    let flip = el.fitToVisibleBounds !== false && !isFit(el.position),
+        let distance = rect =>
+          vertical(pos) ? e.height + offset : e.width + offset;
+        return before(pos)
+          ? t[pos] - w[pos] > distance
+          : w[pos] - t[pos] > distance; //if no room, return original position
+      },
+      flip = el.fitToVisibleBounds !== false && !isFit(el.position),
       flipData = {
         top: ["bottom", "left", "right"],
         left: ["right", "top", "bottom"],
         bottom: ["top", "right", "left"],
         right: ["left", "bottom", "top"]
       };
+    el.style.position = "absolute";
     /*
      * fits element according to specified postion,
      * or finds an alternative position that fits
@@ -267,14 +281,13 @@ class AbsolutePositionStateManager extends LitElement {
     } else if (flip && isFit(flipData[el.position][2])) {
       el.position = flipData[el.position][2];
     } else {
-      el.style.position = "absolute";
-      el.style.top = vertical(el.position) ? getCoord() : fitToBounds();
-      el.style.left = vertical(el.position) ? fitToBounds() : getCoord();
+      el.style.top = vertical(el.position) ? getCoord() : setAlign();
+      el.style.left = vertical(el.position) ? setAlign() : getCoord();
       //provide positions for element and target (in case furthor positioning adjustments are needed)
       el.__positions = {
-        self: elRect,
-        parent: parentRect,
-        target: targetRect
+        self: e,
+        parent: p,
+        target: t
       };
     }
   }
