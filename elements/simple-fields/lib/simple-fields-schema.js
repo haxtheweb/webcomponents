@@ -52,6 +52,11 @@ class SimpleFieldsSchema extends LitElement {
         component: "paper-input",
         defaultValue: ""
       },
+      items: {
+        component: "simple-fields-array-item",
+        defaultValue: {},
+        isFieldset: true
+      },
       markup: {
         component: "simple-fields-markup",
         defaultValue: ""
@@ -77,8 +82,10 @@ class SimpleFieldsSchema extends LitElement {
     this.language = "en";
     this.resources = {};
     this.value = {};
-    import("./lib/simple-fields-fieldset.js");
-    import("./lib/simple-fields-array.js");
+    setTimeout(() => {
+      import("./simple-fields-fieldset.js");
+      import("./simple-fields-array.js");
+    }, 0);
   }
 
   static get tag() {
@@ -154,10 +161,11 @@ class SimpleFieldsSchema extends LitElement {
       attr = {
         hidden: property.schema.hidden
       };
-    Object.keys(props).forEach(key => (el[key] = props[key]));
-    Object.keys(attr).forEach(key => {
-      if (props[key]) el.setAttribute(key, props[key]);
-    });
+    el.label = property.label;
+    el.schema = property.schema;
+    el.language = this.language;
+    el.resources = this.resources;
+    if (property.schema.hidden) el.setAttribute("hidden", true);
     parent.append(el);
     /* gets nested fields for a fieldset */
     if (property.schema && property.schema.properties)
@@ -182,12 +190,11 @@ class SimpleFieldsSchema extends LitElement {
           description: schema.description,
           component: schema.component || {}
         };
-      if (!property.component.valueProperty) {
-        property.component.valueProperty = "value";
-      }
-      if (!property.component.slot) {
-        property.component.slot = "";
-      }
+
+      property.component.valueProperty =
+        property.component.valueProperty || "value";
+      property.component.slot = property.component.slot || "";
+
       /* match the schema type to the correct data type */
       Object.keys(root.dataTypes).forEach(dataType => {
         if (
@@ -195,6 +202,7 @@ class SimpleFieldsSchema extends LitElement {
             schema.type.indexOf(dataType) !== -1) ||
           schema.type === dataType
         ) {
+          property.component.dataType = dataType;
           property.component.name =
             property.component.name || root.dataTypes[dataType].component;
           if (typeof schema.value === typeof undefined)

@@ -31,9 +31,6 @@ class SimpleFieldsFieldset extends LitElement {
   }
   static get properties() {
     return {
-      propertyName: {
-        type: String
-      },
       schema: {
         type: Object
       }
@@ -42,7 +39,6 @@ class SimpleFieldsFieldset extends LitElement {
   constructor() {
     super();
     this.schema = {};
-    this._schemaChanged();
   }
 }
 window.customElements.define(SimpleFieldsFieldset.tag, SimpleFieldsFieldset);
