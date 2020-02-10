@@ -3,21 +3,17 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { CountUp } from "countup.js";
 
 /**
  * `count-up`
- * @customElement count-up
  * `count up js wrapper with minimal styling`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @lit-element
+ * @litElement
  * @demo demo/index.html
+ * @customElement count-up
  */
-class CountUpElement extends LitElement {
+class CountUpElement extends IntersectionObserverMixin(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -38,32 +34,6 @@ class CountUpElement extends LitElement {
     this.decimal = ".";
     this.prefixtext = " ";
     this.suffixtext = " ";
-    this.thresholds = [0.0, 0.25, 0.5, 0.75, 1.0];
-    this.rootMargin = "0px";
-    this.visibleLimit = 0.5;
-  }
-  /**
-   * HTMLElement
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    // setup the intersection observer
-    this.observer = new IntersectionObserver(
-      this.handleIntersectionCallback.bind(this),
-      {
-        root: document.rootElement,
-        rootMargin: this.rootMargin,
-        threshold: this.thresholds
-      }
-    );
-    this.observer.observe(this);
-  }
-  /**
-   * HTMLElement
-   */
-  disconnectedCallback() {
-    this.observer.disconnect();
-    super.disconnectedCallback();
   }
   /**
    * LitElement ready
@@ -85,16 +55,16 @@ class CountUpElement extends LitElement {
       options
     );
   }
-  handleIntersectionCallback(entries) {
-    if (this._countUp) {
-      for (let entry of entries) {
-        this.ratio = Number(entry.intersectionRatio).toFixed(2);
-        if (this.ratio >= this.visibleLimit) {
-          // now we care
-          this._countUp.start();
-        }
+  /**
+   * When our interection element claims we are visible then
+   * we can start counting
+   */
+  updated(propertiesChanged) {
+    propertiesChanged.forEach((oldValue, propName) => {
+      if (propName == "elementVisible" && this[propName]) {
+        this._countUp.start();
       }
-    }
+    });
   }
 }
 customElements.define(CountUpElement.tag, CountUpElement);

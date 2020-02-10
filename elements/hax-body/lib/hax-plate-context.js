@@ -48,7 +48,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     .area {
       visibility: visible;
-      transition: 0.2s height linear;
     }
     .paddle {
       position:fixed;
@@ -56,7 +55,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       height: unset;
       visibility: visible;
       opacity: .6;
-      transition: 0.2s height linear;
     }
     .paddle:hover {
       opacity: 1;
@@ -191,7 +189,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         // when activeNode changes make sure we reposition
         this.__updatePlatePosition();
       }
-    }, 0);
+    }, 10);
   }
   __updatePlatePosition() {
     setTimeout(() => {
@@ -237,10 +235,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       rightremove.disabled = false;
       leftremove.disabled = false;
       if (active && active.tagName == "GRID-PLATE") {
-        if (active.layout == "1") {
-          rightremove.disabled = true;
-          leftremove.disabled = true;
-        } else if (active.layout == "1-1-1-1-1-1") {
+        if (active.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }

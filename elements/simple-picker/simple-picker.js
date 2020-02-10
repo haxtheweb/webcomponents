@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `simple-picker`
- * @customElement simple-picker
  * a simple picker for options, icons, etc.
  *
 ### Styling
@@ -48,9 +47,9 @@ Custom property | Description | Default
 `--simple-picker-options-border-color` | Border color of listbox. | --simple-picker-border-color
 `--simple-picker-options-background-color` | Background color for listbox. | #fff
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
-*
-
+ *
  * @demo ./demo/index.html
+ * @customElement simple-picker
  */
 class SimplePicker extends LitElement {
   //styles function

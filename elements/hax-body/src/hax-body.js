@@ -55,8 +55,8 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-body-editable-outline: 2px dashed #bbbbbb;
-          --hax-body-active-outline: 2px dashed #000000;
+          --hax-body-editable-outline: 2px solid #bbbbbb;
+          --hax-body-active-outline: 2px solid #000000;
           --hax-body-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -155,20 +155,20 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable]:hover) {
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]:hover) {
           cursor: text !important;
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
           cursor: text !important;
-          outline: 2px dashed rgba(145, 151, 162, 0.5);
+          outline: 2px solid rgba(145, 151, 162, 0.5);
         }
         :host([edit-mode])
           #bodycontainer
@@ -178,7 +178,7 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]) {
-          outline: 2px dashed rgba(145, 151, 162, 0.25);
+          outline: 2px solid rgba(145, 151, 162, 0.25);
         }
         :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
           height: 2px;
@@ -243,9 +243,9 @@ class HaxBody extends SimpleColors {
           width: 100%;
           display: block;
           position: relative;
-          margin: -36px 0 0 0;
+          margin: -30px 0 0 0;
           z-index: 2;
-          height: 36px;
+          height: 30px;
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
           outline: var(--hax-body-active-outline);
@@ -1380,7 +1380,7 @@ class HaxBody extends SimpleColors {
   /**
    * Inject / modify a grid plate where something currently lives
    */
-  haxInjectGridplate(node, side, add = true) {
+  async haxGridPlateOps(node, side, add = true) {
     // allow splitting the grid plate that is already there
     let changed = false;
     if (node.tagName === "GRID-PLATE") {
@@ -1411,8 +1411,19 @@ class HaxBody extends SimpleColors {
         switch (node.layout) {
           // @todo need to kill the grid plate if going below 0
           case "1":
-            //node.layout = "1-1";
-            //changed = true;
+            // implies we are removing the grid plate
+            await node.childNodes.forEach(el => {
+              // verify its a tag
+              if (el.tagName) {
+                // remove slot name
+                let cloneEl = el.cloneNode(true);
+                cloneEl.removeAttribute("slot");
+                node.parentNode.insertBefore(cloneEl, node);
+              }
+            });
+            setTimeout(() => {
+              node.remove();
+            }, 0);
             break;
           case "1-1":
             node.layout = "1";
@@ -1453,10 +1464,7 @@ class HaxBody extends SimpleColors {
         left.disabled = false;
         rightremove.disabled = false;
         leftremove.disabled = false;
-        if (node.layout == "1") {
-          rightremove.disabled = true;
-          leftremove.disabled = true;
-        } else if (node.layout == "1-1-1-1-1-1") {
+        if (node.layout == "1-1-1-1-1-1") {
           right.disabled = true;
           left.disabled = true;
         }
@@ -1748,16 +1756,16 @@ class HaxBody extends SimpleColors {
       // grid plate based operations
       // allow for transforming this haxElement into another one
       case "hax-plate-create-left":
-        this.haxInjectGridplate(this.activeContainerNode, "left");
+        this.haxGridPlateOps(this.activeContainerNode, "left");
         break;
       case "hax-plate-create-right":
-        this.haxInjectGridplate(this.activeContainerNode, "right");
+        this.haxGridPlateOps(this.activeContainerNode, "right");
         break;
       case "hax-plate-remove-left":
-        this.haxInjectGridplate(this.activeContainerNode, "left", false);
+        this.haxGridPlateOps(this.activeContainerNode, "left", false);
         break;
       case "hax-plate-remove-right":
-        this.haxInjectGridplate(this.activeContainerNode, "right", false);
+        this.haxGridPlateOps(this.activeContainerNode, "right", false);
         break;
       // duplicate the active item or container
       case "hax-plate-duplicate":

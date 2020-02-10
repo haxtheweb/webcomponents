@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `simple-fields-schema`
- * @customElement simple-fields-schema
  * 
 ### Styling
 
@@ -13,6 +12,7 @@ Custom property | Description | Default
 `--simple-fields-schema-margin` | margin around the simple-fields-schema | 15px 0
  *
  * @demo ./demo/index.html
+ * @customElement simple-fields-schema
  */
 class SimpleFieldsSchema extends LitElement {
   static get styles() {

@@ -189,28 +189,27 @@ class GridPlate extends LitElement {
             0.2s outline linear;
         }
         :host([edit-mode]) .column {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
-        :host .column[style="min-height: unset;"] {
+        :host .column:empty[style="min-height: unset;"] {
           display: none;
+          outline: none;
         }
         :host([edit-mode]) .column[style="min-height: unset;"]:not(:empty) {
           display: block;
-          outline: 2px solid red;
-          width: 20%;
-          min-width: 100px;
-          padding: 15px 0;
-          min-height: 50px !important;
-          margin-top: var(--grid-plate-item-margin);
+          opacity: 0.4;
+        }
+        :host([edit-mode])
+          .column[style="min-height: unset;"]:not(:empty):hover {
+          opacity: 1;
         }
         :host([edit-mode])
           .column[style="min-height: unset;"]:not(:empty):before {
-          content: attr(data-label) " hidden";
           margin: var(--grid-plate-item-margin);
           color: red;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: bold;
-          padding: 4px;
+          padding: 0px;
         }
         :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
@@ -224,16 +223,16 @@ class GridPlate extends LitElement {
           display: block;
         }
         :host([edit-mode]) .column ::slotted(.grid-plate-active-item) {
-          outline: 2px dashed var(--grid-plate-active-border-color);
+          outline: 2px solid var(--grid-plate-active-border-color);
           background-color: var(--grid-plate-selected-background-color);
         }
         :host([edit-mode]) .column ::slotted(*:focus),
         :host([edit-mode]) .column ::slotted(*:hover),
         :host([edit-mode]) .column ::slotted(*:active) {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) .column ::slotted(*.mover):before {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
           content: " ";
           width: 100%;
@@ -244,14 +243,14 @@ class GridPlate extends LitElement {
           height: 30px;
         }
         :host([edit-mode]) .column ::slotted(img.mover) {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
         }
         :host([edit-mode]) .column.mover {
-          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline: 2px solid var(--grid-plate-editable-border-color);
         }
         :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
-          outline: 2px dashed var(--hax-body-active-border-color);
+          outline: 2px solid var(--hax-body-active-border-color);
           background-color: #eeeeee;
         }
         :host([edit-mode]) .column.mover {
@@ -263,13 +262,13 @@ class GridPlate extends LitElement {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: dashed 2px var(--grid-plate-active-border-color);
+          outline: solid 2px var(--grid-plate-active-border-color);
         }
         :host([edit-mode]) .column.hovered {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
-          outline: dashed 2px var(--grid-plate-active-border-color);
+          outline: solid 2px var(--grid-plate-active-border-color);
           z-index: 2;
         }
         paper-icon-button {
@@ -391,7 +390,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col1"
-          data-label="Column 1"
+          data-label="column 1"
           .style="${this._getColumnWidth(0, this.columnWidths)}"
         >
           <slot name="col-1"></slot>
@@ -399,7 +398,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col2"
-          data-label="Column 2"
+          data-label="column 2"
           .style="${this._getColumnWidth(1, this.columnWidths)}"
         >
           <slot name="col-2"></slot>
@@ -407,7 +406,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col3"
-          data-label="Column 3"
+          data-label="column 3"
           .style="${this._getColumnWidth(2, this.columnWidths)}"
         >
           <slot name="col-3"></slot>
@@ -415,7 +414,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col4"
-          data-label="Column 4"
+          data-label="column 4"
           .style="${this._getColumnWidth(3, this.columnWidths)}"
         >
           <slot name="col-4"></slot>
@@ -423,7 +422,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col5"
-          data-label="Column 5"
+          data-label="column 5"
           .style="${this._getColumnWidth(4, this.columnWidths)}"
         >
           <slot name="col-5"></slot>
@@ -431,7 +430,7 @@ class GridPlate extends LitElement {
         <div
           class="column"
           id="col6"
-          data-label="Column 6"
+          data-label="column 6"
           .style="${this._getColumnWidth(5, this.columnWidths)}"
         >
           <slot name="col-6"></slot>

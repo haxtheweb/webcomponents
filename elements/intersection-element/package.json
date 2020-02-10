@@ -1,14 +1,14 @@
 {
-  "name": "@lrnwebcomponents/utils",
+  "name": "@lrnwebcomponents/intersection-element",
   "version": "2.4.1",
-  "description": "Helper functions to clean up web component data handling.",
+  "description": "VanillaJS Intersection element / capabilities to mix into other elements",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "type": "module",
-  "main": "utils.js",
-  "module": "utils.js",
+  "main": "lib/IntersectionElementSuper.js",
+  "module": "lib/IntersectionElementSuper.js",
   "author": {
     "name": "btopro"
   },

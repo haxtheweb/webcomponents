@@ -68,5 +68,8 @@
     "type": Number,
     "reflect": true,
     "attribute": "visible-limit"
+  },
+  "elementVisible": {
+    "type": Boolean
   }
 }

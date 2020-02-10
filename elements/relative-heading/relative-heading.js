@@ -61,6 +61,7 @@ class RelativeHeading extends RelativeHeadingLite {
           opacity: var(--relative-heading-button-opacity, 0);
           transition: var(--relative-heading-button-transition, all 0.5s);
         }
+
         :host([link-align-right]) paper-icon-button,
         :host(:not([link-align-right]):focus) paper-icon-button,
         :host(:not([link-align-right]):focus-within) paper-icon-button,
