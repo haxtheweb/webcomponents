@@ -93,6 +93,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object
       },
       /**
+       * Hax tray
+       */
+      haxTray: {
+        type: Object
+      },
+      /**
        * Hax app picker element.
        */
       haxAppPicker: {
@@ -613,7 +619,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "haxManager",
           "haxStaxPicker",
           "haxBloxPicker",
-          "haxAppPicker"
+          "haxAppPicker",
+          "haxTray"
         ].includes(propName)
       ) {
         // allow this to verify if everything is here or not
@@ -627,7 +634,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.haxManager,
           this.haxStaxPicker,
           this.haxBloxPicker,
-          this.haxAppPicker
+          this.haxAppPicker,
+          this.haxTray
         );
       }
     });
@@ -723,7 +731,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     haxManager,
     haxStaxPicker,
     haxBloxPicker,
-    haxAppPicker
+    haxAppPicker,
+    haxTray
   ) {
     if (
       !this.__ready &&
@@ -736,7 +745,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxManager &&
       haxStaxPicker &&
       haxBloxPicker &&
-      haxAppPicker
+      haxAppPicker &&
+      haxTray
     ) {
       // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
@@ -2525,7 +2535,7 @@ window.HaxStore.encapScript = html => {
 window.HaxStore.toast = (
   message,
   duration = 4000,
-  classStyle = "",
+  classStyle = "capsule",
   closeText = null,
   eventCallback = null
 ) => {

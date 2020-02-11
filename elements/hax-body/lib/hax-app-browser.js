@@ -45,7 +45,10 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         }
         .toolbar-inner {
           display: inline-flex;
-          padding: 0 16px;
+          padding: 10px 0;
+        }
+        .item-wrapper {
+          text-align: center;
         }
       `
     ];
@@ -64,29 +67,18 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     this.hasActive = false;
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-item/paper-item.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
   }
   render() {
     return html`
-      <h3 class="title"><iron-icon icon="search"></iron-icon> ${this.title}</h3>
       <div class="toolbar-inner">
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="details.title"
-          @change="${this.filtertypeChange}"
-        >
-          <paper-item value="details.title">Title</paper-item>
-        </dropdown-select>
         <paper-input
           label="Filter"
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
           value=""
-          always-float-label=""
         ></paper-input>
       </div>
       <grafitto-filter
@@ -97,6 +89,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         where="details.title"
         ><template></template
       ></grafitto-filter>
+      <div class="item-wrapper">
       ${this.filtered.map(
         app => html`
           <hax-app-browser-item
@@ -114,6 +107,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
           ></hax-app-browser-item>
         `
       )}
+      </div>
       <hax-app-search
         id="haxappsearch"
         .hidden="${!this.searching}"
@@ -173,11 +167,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
   }
-  filtertypeChange(e) {
-    this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filter").where = e.detail.value;
-    this.shadowRoot.querySelector("#filter").like = "";
-  }
   firstUpdated(changedProperties) {
     this.resetBrowser();
   }
@@ -231,7 +220,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     this.appList = [...window.HaxStore.instance.appList];
     this.filtered = this.appList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";
     this.shadowRoot.querySelector("#filter").filter();
     this.shadowRoot.querySelector("#filter").where = "details.title";

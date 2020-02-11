@@ -127,6 +127,7 @@ class HAX extends HTMLElement {
     panel.hidePanelOps = this.hidePanelOps;
     document.body.appendChild(panel);
     document.body.appendChild(document.createElement("hax-manager"));
+    document.body.appendChild(document.createElement("hax-tray"));
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-stax-picker"));
     document.body.appendChild(document.createElement("hax-blox-picker"));

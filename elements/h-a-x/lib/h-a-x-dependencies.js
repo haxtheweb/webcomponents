@@ -1,6 +1,7 @@
 // groups the dynamic import to help get same gains but older browsers not suffer
 import "@lrnwebcomponents/hax-body/hax-body.js";
 import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "@lrnwebcomponents/hax-body/lib/hax-tray.js";
 import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app.js";
 import "@lrnwebcomponents/hax-body/lib/hax-manager.js";

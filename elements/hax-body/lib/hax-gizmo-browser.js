@@ -41,7 +41,10 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         }
         .toolbar-inner {
           display: inline-flex;
-          padding: 10px;
+          padding: 10px 0;
+        }
+        .item-wrapper {
+          text-align: center;
         }
       `
     ];
@@ -51,34 +54,20 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
-    this.title = "Create page element";
     this.__gizmoList = [];
     this.filtered = [];
     import("@polymer/paper-input/paper-input.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser-item.js");
   }
   render() {
     return html`
-      <h3 class="title">
-        <iron-icon icon="hax:add-brick"></iron-icon> ${this.title}
-      </h3>
       <div class="toolbar-inner">
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="title"
-          @change="${this.filtertypeChange}"
-        >
-          <paper-item value="title">Title</paper-item>
-        </dropdown-select>
         <paper-input
           label="Filter"
           id="inputfilter"
           aria-controls="filter"
           @value-changed="${this.inputfilterChanged}"
           value=""
-          always-float-label=""
         ></paper-input>
       </div>
       <grafitto-filter
@@ -90,22 +79,20 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         @filtered-changed="${this.filteredChanged}"
         ><template></template
       ></grafitto-filter>
+      <div class="item-wrapper">
       ${this.filtered.map(
         gizmo => html`
-          <hax-gizmo-browser-item
-            .index="${gizmo.index}"
-            .title="${gizmo.title}"
-            tag-to-insert="${gizmo.tag}"
-            .icon="${gizmo.icon}"
+          <hax-tray-button
+            index="${gizmo.index}"
+            label="${gizmo.title}"
+            event-name="insert-tag"
+            event-data="${gizmo.tag}"
+            icon="${gizmo.icon}"
             color="${gizmo.color}"
-            .author="${gizmo.author}"
-            .teaser="${gizmo.teaser}"
-            .description="${gizmo.description}"
-            .examples="${gizmo.examples}"
-            .status="${gizmo.status}"
-          ></hax-gizmo-browser-item>
+          ></hax-tray-button>
         `
       )}
+      </div>
     `;
   }
   static get tag() {
@@ -132,11 +119,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
-  }
-  filtertypeChange(e) {
-    this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filter").where = e.detail.value;
-    this.shadowRoot.querySelector("#filter").like = "";
   }
   firstUpdated(changedProperties) {
     this.resetBrowser();
@@ -168,7 +150,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.__gizmoList = window.HaxStore.instance.gizmoList;
     this.filtered = this.__gizmoList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filtertype").value = "title";
     this.shadowRoot.querySelector("#filter").value = "";
     this.shadowRoot.querySelector("#filter").filter();
     this.shadowRoot.querySelector("#filter").where = "title";

@@ -55,6 +55,7 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
+          margin-right: 30%;
           --hax-contextual-action-color: #3b97e3;
           --hax-body-editable-outline: 1px solid #e37e3b;
           --hax-body-active-outline-hover: 1px solid
@@ -466,7 +467,10 @@ class HaxBody extends SimpleColors {
    */
   _openDrawerChanged(newValue, oldValue) {
     if (!newValue) {
-      this.positionContextMenus();
+      this.hideContextMenus();
+      setTimeout(() => {
+        this.positionContextMenus();
+      }, 100);
     } else {
       this.hideContextMenus();
     }
@@ -1326,17 +1330,19 @@ class HaxBody extends SimpleColors {
           -38
         );
       }
-      let rect = container.getBoundingClientRect();
-      this._positionContextMenu(
-        this.shadowRoot.querySelector("#platecontextmenu"),
-        container,
-        rect.width -
-          this.shadowRoot
-            .querySelector("#platecontextmenu")
-            .getBoundingClientRect().width +
-          2,
-        -28
-      );
+      if (container) {
+        let rect = container.getBoundingClientRect();
+        this._positionContextMenu(
+          this.shadowRoot.querySelector("#platecontextmenu"),
+          container,
+          rect.width -
+            this.shadowRoot
+              .querySelector("#platecontextmenu")
+              .getBoundingClientRect().width +
+            2,
+          -28
+        );
+      }
       // special case for node not matching container yet it being editable
       if (
         container &&
@@ -1702,7 +1708,9 @@ class HaxBody extends SimpleColors {
           detail.value;
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
@@ -1710,7 +1718,9 @@ class HaxBody extends SimpleColors {
           "ul";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
@@ -1718,7 +1728,9 @@ class HaxBody extends SimpleColors {
           "ol";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "hax-plate-add-element":
         // support for the Other call, otherwise its a specific element + props

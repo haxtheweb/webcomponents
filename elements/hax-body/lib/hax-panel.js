@@ -151,7 +151,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-active-hover-name": "_activeNameChange",
-      "hax-panel-operation": "_processItemEvent"
     };
     this.canUndo = true;
     this.canRedo = true;
@@ -219,17 +218,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
           }
         </style>
       </custom-style>
-      <div ?hidden="${this.hidePanelOps}">
-        <hax-panel-item
-          dark
-          large
-          .data-opened="${this.editMode}"
-          @click="${this._clickEditButton}"
-          icon="create"
-          id="button"
-          label="${this.__tipText}"
-        ></hax-panel-item>
-      </div>
       <app-drawer
         id="drawer"
         ?opened="${this.editMode}"
@@ -238,44 +226,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
         persistent
         transition-duration="300"
       >
-        <hax-panel-item
-          ?hidden="${this.hidePanelOps}"
-          @click="${this._clickSaveButton}"
-          icon="save"
-          id="haxsavebutton"
-          label="${this.__tipText}"
-          event-name="save"
-          voice-command="save content"
-        ></hax-panel-item>
-        <hax-panel-item
-          ?hidden="${this.hidePanelOps}"
-          icon="cancel"
-          id="haxcancelbutton"
-          label="Cancel"
-          event-name="cancel"
-          voice-command="cancel"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="icons:file-upload"
-          label="Upload media"
-          event-name="hax-manager-open"
-          value="0"
-          voice-command="(upload)(add) media"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="search"
-          label="Search for media"
-          event-name="hax-manager-open"
-          value="1"
-          voice-command="(search)(find) media"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:add-brick"
-          label="Create page element"
-          event-name="hax-manager-open"
-          voice-command="create (page) (element)(widget)"
-          value="2"
-        ></hax-panel-item>
         <hax-panel-item
           icon="icons:view-column"
           label="Insert layout"
@@ -288,45 +238,7 @@ class HaxPanel extends winEventsElement(SimpleColors) {
           event-name="hax-stax-picker-open"
           voice-command="insert (page) template"
         ></hax-panel-item>
-        <hax-panel-item
-          icon="hax:paragraph"
-          label="Insert paragraph"
-          event-name="text"
-          voice-command="insert (text)(paragraph)"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          ?hidden="${this.hideExportButton}"
-          event-name="open-export-dialog"
-          icon="code"
-          label="View page source"
-          voice-command="view (page) source"
-        ></hax-panel-item>
         <slot></slot>
-        <hax-panel-item
-          icon="icons:undo"
-          ?disabled="${!this.canUndo}"
-          label="Undo previous action"
-          event-name="undo"
-          voice-command="undo"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          icon="icons:redo"
-          ?disabled="${!this.canRedo}"
-          label="Redo previous action"
-          event-name="redo"
-          voice-command="redo"
-          class="hide-small"
-        ></hax-panel-item>
-        <hax-panel-item
-          right
-          ?hidden="${this.hidePreferencesButton}"
-          event-name="open-preferences-dialog"
-          icon="settings"
-          label="Editor preferences"
-          voice-command="open (editor) preferences"
-        ></hax-panel-item>
         <div class="editing-mode-active">${this.editModeName}</div>
       </app-drawer>
       <div class="active-op-name">${this.activeOperationName}</div>
@@ -441,9 +353,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "editMode") {
-        this._editModeChanged(this[propName], oldValue);
-      }
       if (propName == "globalPreferences") {
         this._globalPreferencesChanged(this[propName], oldValue);
       }
@@ -484,9 +393,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      case "open-panel":
-        this._clickButton();
-        break;
       case "cancel":
         this.toggle();
         this.dispatchEvent(
@@ -524,60 +430,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
           this
         );
         break;
-      case "divider":
-        detail.tag = "hr";
-        detail.content = "";
-        detail.properties = {
-          style: "width:100%;"
-        };
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
-      case "header":
-        detail.tag = "h2";
-        detail.content = "Header";
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
-      case "placeholder":
-        detail.tag = "place-holder";
-        detail.content = "";
-        detail.properties = {
-          style: "width:50%;"
-        };
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
-      case "blockquote":
-        detail.tag = "blockquote";
-        detail.content = "";
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
       case "hax-manager-open":
         window.HaxStore.write("activeHaxElement", {}, this);
         window.HaxStore.instance.haxManager.resetManager(
@@ -612,66 +464,6 @@ class HaxPanel extends winEventsElement(SimpleColors) {
       default:
         // we sit on this, something else will have to handle it
         break;
-    }
-  }
-
-  /**
-   * _editModeChanged
-   */
-  _editModeChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue) {
-      this.__tipText = "Save content";
-      this.shadowRoot.querySelector("#button").icon = "save";
-    } else {
-      this.__tipText = "Edit content";
-      this.shadowRoot.querySelector("#button").icon = "create";
-    }
-  }
-
-  /**
-   * Toggle the drawer when the button is clicked.
-   */
-  _clickEditButton(e) {
-    this.toggle();
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {}
-      })
-    );
-  }
-
-  /**
-   * Toggle the drawer when the button is clicked.
-   */
-  _clickSaveButton(e) {
-    this.toggle();
-    this.dispatchEvent(
-      new CustomEvent("hax-save", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: e.detail
-      })
-    );
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {}
-      })
-    );
-  }
-
-  /**
-   * Toggle the panel.
-   */
-  toggle(e) {
-    window.HaxStore.write("editMode", !this.editMode, this);
-    this.shadowRoot.querySelector("#drawer").opened = this.editMode;
-    if (!this.shadowRoot.querySelector("#drawer").opened) {
-      window.HaxStore.write("openDrawer", false, this);
     }
   }
 }

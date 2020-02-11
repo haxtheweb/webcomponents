@@ -458,7 +458,7 @@ class HaxTextContext extends LitElement {
         break;
       case "text-link":
         var href = "";
-        if (typeof selection.focusNode.parentNode.href !== typeof undefined) {
+        if (selection && selection.focusNode && selection.focusNode.parentNode && typeof selection.focusNode.parentNode.href !== typeof undefined) {
           href = selection.focusNode.parentNode.href;
         }
         // @todo put in a dialog instead of this
