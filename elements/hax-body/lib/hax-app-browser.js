@@ -90,23 +90,23 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         ><template></template
       ></grafitto-filter>
       <div class="item-wrapper">
-      ${this.filtered.map(
-        app => html`
-          <hax-app-browser-item
-            index="${app.index}"
-            title="${app.details.title}"
-            icon="${app.details.icon}"
-            image="${app.details.tag}"
-            color="${app.details.color}"
-            meta="${app.details.meta}"
-            groups="${app.details.groups}"
-            handles="${app.details.handles}"
-            description="${app.details.description}"
-            rating="${app.details.rating}"
-            tags="${app.details.tags}"
-          ></hax-app-browser-item>
-        `
-      )}
+        ${this.filtered.map(
+          app => html`
+            <hax-app-browser-item
+              index="${app.index}"
+              title="${app.details.title}"
+              icon="${app.details.icon}"
+              image="${app.details.tag}"
+              color="${app.details.color}"
+              meta="${app.details.meta}"
+              groups="${app.details.groups}"
+              handles="${app.details.handles}"
+              description="${app.details.description}"
+              rating="${app.details.rating}"
+              tags="${app.details.tags}"
+            ></hax-app-browser-item>
+          `
+        )}
       </div>
       <hax-app-search
         id="haxappsearch"

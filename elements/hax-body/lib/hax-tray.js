@@ -11,7 +11,7 @@ class HaxTray extends winEventsElement(LitElement) {
    * Convention we use
    */
   static get tag() {
-    return 'hax-tray';
+    return "hax-tray";
   }
   /**
    * HTMLElement
@@ -20,7 +20,7 @@ class HaxTray extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-active-hover-name": "_activeNameChange",
+      "hax-active-hover-name": "_activeNameChange"
     };
     this.activeOperationName = "";
     this.canUndo = true;
@@ -44,7 +44,7 @@ class HaxTray extends winEventsElement(LitElement) {
       import("./hax-stax-browser.js");
     }, 0);
   }
-    /**
+  /**
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
@@ -53,7 +53,10 @@ class HaxTray extends winEventsElement(LitElement) {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (e.detail.property === "globalPreferences" || e.detail.property === "activeNode") {
+      if (
+        e.detail.property === "globalPreferences" ||
+        e.detail.property === "activeNode"
+      ) {
         this[e.detail.property] = {};
       }
       this[e.detail.property] = e.detail.value;
@@ -68,7 +71,7 @@ class HaxTray extends winEventsElement(LitElement) {
         :host {
           display: block;
         }
-        
+
         :host .wrapper {
           color: var(--hax-color-text, black);
           z-index: 1000000;
@@ -79,7 +82,8 @@ class HaxTray extends winEventsElement(LitElement) {
           font-size: 20px;
           width: 30vw;
           border-left: 2px solid var(--hax-color-text, black);
-          transition: .2s right linear, .2s opacity linear, .2s visibility linear;
+          transition: 0.2s right linear, 0.2s opacity linear,
+            0.2s visibility linear;
           opacity: 0;
           visibility: hidden;
           right: -60vw;
@@ -93,7 +97,7 @@ class HaxTray extends winEventsElement(LitElement) {
         a11y-collapse-group,
         hax-app-browser,
         hax-gizmo-browser {
-          transition: .3s all linear;
+          transition: 0.3s all linear;
           opacity: 1;
           visibility: visible;
         }
@@ -189,125 +193,135 @@ class HaxTray extends winEventsElement(LitElement) {
    */
   render() {
     return html`
-     ${this.hidePanelOps ? `` : html`
-     <hax-tray-button
-        .data-opened="${this.editMode}"
-        @click="${this._clickEditButton}"
-        icon="create"
-        id="button"
-        accent-color="black"
-        label="${this.__tipText}"
-      ></hax-tray-button>
-      `}
-    <div class="wrapper">
-      <div class="quick-buttons">
-        <div class="ops">
-          <hax-tray-button
-            mini
-            ?hidden="${this.hidePanelOps}"
-            @click="${this._clickSaveButton}"
-            icon="save"
-            id="haxsavebutton"
-            label="${this.__tipText}"
-            accent-color="green"
-            event-name="save"
-            voice-command="save content"
-          ></hax-tray-button>
-          <hax-tray-button
-            mini
-            ?hidden="${this.hidePanelOps}"
-            icon="cancel"
-            id="haxcancelbutton"
-            label="Cancel"
-            event-name="cancel"
-            accent-color="red"
-            voice-command="cancel"
-          ></hax-tray-button>
-          <div class="active-op-name">${this.activeOperationName}</div>
+      ${this.hidePanelOps
+        ? ``
+        : html`
+            <hax-tray-button
+              .data-opened="${this.editMode}"
+              @click="${this._clickEditButton}"
+              icon="create"
+              id="button"
+              accent-color="black"
+              label="${this.__tipText}"
+            ></hax-tray-button>
+          `}
+      <div class="wrapper">
+        <div class="quick-buttons">
+          <div class="ops">
+            <hax-tray-button
+              mini
+              ?hidden="${this.hidePanelOps}"
+              @click="${this._clickSaveButton}"
+              icon="save"
+              id="haxsavebutton"
+              label="${this.__tipText}"
+              accent-color="green"
+              event-name="save"
+              voice-command="save content"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              ?hidden="${this.hidePanelOps}"
+              icon="cancel"
+              id="haxcancelbutton"
+              label="Cancel"
+              event-name="cancel"
+              accent-color="red"
+              voice-command="cancel"
+            ></hax-tray-button>
+            <div class="active-op-name">${this.activeOperationName}</div>
+          </div>
+          <div class="quick">
+            <hax-tray-button
+              mini
+              icon="hax:paragraph"
+              label="Insert paragraph"
+              event-name="insert-tag"
+              event-data="p"
+              voice-command="insert (text)(paragraph)"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              icon="hax:hr"
+              label="Insert horizontal line"
+              event-name="divider"
+              voice-command="insert horizontal line"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              ?hidden="${this.hideExportButton}"
+              event-name="open-export-dialog"
+              icon="code"
+              label="View page source"
+              voice-command="view (page) source"
+            ></hax-tray-button>
+            <slot></slot>
+            <hax-tray-button
+              mini
+              icon="icons:undo"
+              ?disabled="${!this.canUndo}"
+              label="Undo previous action"
+              event-name="undo"
+              voice-command="undo"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              icon="icons:redo"
+              ?disabled="${!this.canRedo}"
+              label="Redo previous action"
+              event-name="redo"
+              voice-command="redo"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              ?hidden="${this.hidePreferencesButton}"
+              event-name="open-preferences-dialog"
+              icon="settings"
+              label="Editor preferences"
+              voice-command="open (editor) preferences"
+            ></hax-tray-button>
+          </div>
         </div>
-        <div class="quick">
-        <hax-tray-button
-          mini
-          icon="hax:paragraph"
-          label="Insert paragraph"
-          event-name="insert-tag"
-          event-data="p"
-          voice-command="insert (text)(paragraph)"
-          class="hide-small"
-        ></hax-tray-button>
-        <hax-tray-button
-          mini
-          icon="hax:hr"
-          label="Insert horizontal line"
-          event-name="divider"
-          voice-command="insert horizontal line"
-          class="hide-small"
-        ></hax-tray-button>
-        <hax-tray-button
-          mini
-          ?hidden="${this.hideExportButton}"
-          event-name="open-export-dialog"
-          icon="code"
-          label="View page source"
-          voice-command="view (page) source"
-        ></hax-tray-button>
-        <slot></slot>
-        <hax-tray-button
-          mini
-          icon="icons:undo"
-          ?disabled="${!this.canUndo}"
-          label="Undo previous action"
-          event-name="undo"
-          voice-command="undo"
-          class="hide-small"
-        ></hax-tray-button>
-        <hax-tray-button
-          mini
-          icon="icons:redo"
-          ?disabled="${!this.canRedo}"
-          label="Redo previous action"
-          event-name="redo"
-          voice-command="redo"
-          class="hide-small"
-        ></hax-tray-button>
-        <hax-tray-button
-          mini
-          ?hidden="${this.hidePreferencesButton}"
-          event-name="open-preferences-dialog"
-          icon="settings"
-          label="Editor preferences"
-          voice-command="open (editor) preferences"
-        ></hax-tray-button>
-        </div>
+        <a11y-collapse-group>
+          <a11y-collapse accordion ?disabled="${!this.hasSettings}">
+            <p slot="heading">
+              <iron-icon icon="icons:settings"></iron-icon> ${this
+                .activeTagName}
+              Settings
+            </p>
+            <div slot="content"></div>
+          </a11y-collapse>
+          <a11y-collapse accordion>
+            <p slot="heading">
+              <iron-icon icon="icons:add"></iron-icon> Add Content
+            </p>
+            <div slot="content">
+              <hax-tray-upload></hax-tray-upload>
+              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
+            </div>
+          </a11y-collapse>
+          <a11y-collapse accordion>
+            <p slot="heading">
+              <iron-icon icon="icons:search"></iron-icon> Search
+            </p>
+            <div slot="content">
+              <hax-app-browser id="appbrowser">
+                <slot></slot>
+              </hax-app-browser>
+            </div>
+          </a11y-collapse>
+          <a11y-collapse accordion>
+            <p slot="heading">
+              <iron-icon icon="hax:templates"></iron-icon>Templates
+            </p>
+            <div slot="content"></div>
+          </a11y-collapse>
+        </a11y-collapse-group>
       </div>
-      <a11y-collapse-group>
-        <a11y-collapse accordion ?disabled="${!this.hasSettings}">
-          <p slot="heading"><iron-icon icon="icons:settings"></iron-icon> ${this.activeTagName} Settings</p>
-          <div slot="content"></div>
-        </a11y-collapse>
-        <a11y-collapse accordion>
-          <p slot="heading"><iron-icon icon="icons:add"></iron-icon> Add Content</p>
-          <div slot="content">
-            <hax-tray-upload></hax-tray-upload>
-            <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
-          </div>
-        </a11y-collapse>
-        <a11y-collapse accordion>
-          <p slot="heading"><iron-icon icon="icons:search"></iron-icon> Search</p>
-          <div slot="content">
-            <hax-app-browser id="appbrowser">
-              <slot></slot>
-            </hax-app-browser>
-          </div>
-        </a11y-collapse>
-        <a11y-collapse accordion>
-          <p slot="heading"><iron-icon icon="hax:templates"></iron-icon>Templates</p>
-          <div slot="content">
-          
-          </div>
-        </a11y-collapse>
-      </a11y-collapse-group>
-    </div>
     `;
   }
   /**
@@ -319,7 +333,7 @@ class HaxTray extends winEventsElement(LitElement) {
     switch (detail.eventName) {
       case "insert-tag":
         let gizmo = {
-          tag: detail.value,
+          tag: detail.value
         };
         // most likely empty values but just to be safe
         let element = window.HaxStore.haxElementPrototype(gizmo);
@@ -331,7 +345,7 @@ class HaxTray extends winEventsElement(LitElement) {
             detail: element
           })
         );
-      break;
+        break;
       case "open-preferences-dialog":
         window.HaxStore.write(
           "openDrawer",
@@ -378,17 +392,17 @@ class HaxTray extends winEventsElement(LitElement) {
       case "redo":
         document.execCommand("redo");
         break;
-        case "cancel":
-          window.HaxStore.write("editMode", false, this);
-          this.dispatchEvent(
-            new CustomEvent("hax-cancel", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: detail
-            })
-          );
-          break;
+      case "cancel":
+        window.HaxStore.write("editMode", false, this);
+        this.dispatchEvent(
+          new CustomEvent("hax-cancel", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: detail
+          })
+        );
+        break;
       default:
         // we sit on this, something else will have to handle it
         break;
@@ -398,9 +412,10 @@ class HaxTray extends winEventsElement(LitElement) {
    * LitElement / popular convention
    */
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       __tipText: {
-        type: String,
+        type: String
       },
       /**
        * Alignment of the initial edit button
@@ -416,12 +431,12 @@ class HaxTray extends winEventsElement(LitElement) {
       activeOperationName: {
         type: String
       },
-       /**
+      /**
        * Light variant for save button
        */
       light: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       /**
        * If we can currently undo based on stack position
@@ -431,7 +446,7 @@ class HaxTray extends winEventsElement(LitElement) {
         attribute: "can-undo"
       },
       hasSettings: {
-        type: Boolean,
+        type: Boolean
       },
       /**
        * If we can currently redo based on stack position
@@ -474,13 +489,13 @@ class HaxTray extends winEventsElement(LitElement) {
        * Global active node so we know if we need to disable contextual settings
        */
       activeNode: {
-        type: Object,
+        type: Object
       },
       /**
        * Tag name / what to display based on active element
        */
       activeTagName: {
-        type: String,
+        type: String
       },
       /**
        * State of the panel
@@ -505,7 +520,7 @@ class HaxTray extends winEventsElement(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "hax-developer-mode"
-      },
+      }
     };
   }
   /**
@@ -534,7 +549,7 @@ class HaxTray extends winEventsElement(LitElement) {
        */
       setTimeout(() => {
         this.shadowRoot.querySelector("#appbrowser").resetBrowser();
-        this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();          
+        this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
       }, 2000);
     }
   }
@@ -551,12 +566,10 @@ class HaxTray extends winEventsElement(LitElement) {
           this.hasSettings = true;
           if (this.activeNode.getAttribute("data-hax-ray") != null) {
             this.activeTagName = this.activeNode.getAttribute("data-hax-ray");
-          }
-          else {
+          } else {
             this.activeTagName = this.activeNode.tagName;
           }
-        }
-        else {
+        } else {
           this.hasSettings = false;
         }
       }

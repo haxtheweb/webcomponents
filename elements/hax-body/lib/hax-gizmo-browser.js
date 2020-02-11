@@ -80,18 +80,18 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         ><template></template
       ></grafitto-filter>
       <div class="item-wrapper">
-      ${this.filtered.map(
-        gizmo => html`
-          <hax-tray-button
-            index="${gizmo.index}"
-            label="${gizmo.title}"
-            event-name="insert-tag"
-            event-data="${gizmo.tag}"
-            icon="${gizmo.icon}"
-            color="${gizmo.color}"
-          ></hax-tray-button>
-        `
-      )}
+        ${this.filtered.map(
+          gizmo => html`
+            <hax-tray-button
+              index="${gizmo.index}"
+              label="${gizmo.title}"
+              event-name="insert-tag"
+              event-data="${gizmo.tag}"
+              icon="${gizmo.icon}"
+              color="${gizmo.color}"
+            ></hax-tray-button>
+          `
+        )}
       </div>
     `;
   }

@@ -150,7 +150,7 @@ class HaxPanel extends winEventsElement(SimpleColors) {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-active-hover-name": "_activeNameChange",
+      "hax-active-hover-name": "_activeNameChange"
     };
     this.canUndo = true;
     this.canRedo = true;

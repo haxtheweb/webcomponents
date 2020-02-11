@@ -1,4 +1,3 @@
-
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 
@@ -8,44 +7,46 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/polymer/lib/elements/custom-style.js";
 class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
-    return [css`
-    vaadin-upload {
-      --primary-color: var(--hax-color-accent1);
-      --primary-font-color: #ffffff;
-      --dark-primary-color: #ffffff;
-      --light-primary-color: var(--hax-color-accent1);
-      --error-color: darkred;
-      color: #ffffff;
-      display: block;
-      padding: 16px !important;
-    }
-    vaadin-upload[dragover] {
-      border-color: #396;
-    }
-    vaadin-upload-file {
-      --disabled-text-color: #222222;
-    }
-    .add-area-content-wrapper {
-      padding: 0 16px;
-    }
-    .add-url-area,
-    .add-upload-area {
-      margin: 16px 0;
-    }
-    .url-description {
-      font-size: 18px;
-      color: #000000;
-      line-height: 22px;
-      font-family: sans-serif;
-      letter-spacing: 1px;
-    }
-    `];
+    return [
+      css`
+        vaadin-upload {
+          --primary-color: var(--hax-color-accent1);
+          --primary-font-color: #ffffff;
+          --dark-primary-color: #ffffff;
+          --light-primary-color: var(--hax-color-accent1);
+          --error-color: darkred;
+          color: #ffffff;
+          display: block;
+          padding: 16px !important;
+        }
+        vaadin-upload[dragover] {
+          border-color: #396;
+        }
+        vaadin-upload-file {
+          --disabled-text-color: #222222;
+        }
+        .add-area-content-wrapper {
+          padding: 0 16px;
+        }
+        .add-url-area,
+        .add-upload-area {
+          margin: 16px 0;
+        }
+        .url-description {
+          font-size: 18px;
+          color: #000000;
+          line-height: 22px;
+          font-family: sans-serif;
+          letter-spacing: 1px;
+        }
+      `
+    ];
   }
   /**
    * Convention we use
    */
   static get tag() {
-    return 'hax-tray-upload';
+    return "hax-tray-upload";
   }
   static get properties() {
     return {
@@ -56,7 +57,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       canSupportUploads: {
         type: Boolean,
         attribute: "can-support-uploads"
-      },
+      }
     };
   }
   /**
@@ -79,8 +80,8 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
    * LitElement render
    */
   render() {
-  return html`
-    <custom-style>
+    return html`
+      <custom-style>
         <style>
           @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
           #dialog {
@@ -127,34 +128,35 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           }
         </style>
       </custom-style>
-    <div class="add-area-content-wrapper">
-      <div class="add-url-area">
-        <paper-input
-          id="url"
-          label="URL"
-          type="url"
-          auto-validate=""
-        ></paper-input>
-        <div class="url-description">
-          Add an existing resource / link
+      <div class="add-area-content-wrapper">
+        <div class="add-url-area">
+          <paper-input
+            id="url"
+            label="URL"
+            type="url"
+            auto-validate=""
+          ></paper-input>
+          <div class="url-description">
+            Add an existing resource / link
+          </div>
         </div>
+        <div class="add-upload-area">
+          <vaadin-upload
+            @upload-before="${this._fileAboutToUpload}"
+            @upload-response="${this._fileUploadResponse}"
+            form-data-name="file-upload"
+            id="fileupload"
+            ?hidden="${!this.canSupportUploads}"
+          ></vaadin-upload>
+        </div>
+        <paper-button
+          @click="${this.newAssetConfigure}"
+          id="newassetconfigure"
+          raised=""
+          >Configure item</paper-button
+        >
       </div>
-      <div class="add-upload-area">
-        <vaadin-upload
-          @upload-before="${this._fileAboutToUpload}"
-          @upload-response="${this._fileUploadResponse}"
-          form-data-name="file-upload"
-          id="fileupload"
-          ?hidden="${!this.canSupportUploads}"
-        ></vaadin-upload>
-      </div>
-      <paper-button
-        @click="${this.newAssetConfigure}"
-        id="newassetconfigure"
-        raised=""
-        >Configure item</paper-button
-      >
-    </div>`;
+    `;
   }
   /**
    * Configure asset after upload or URL passed in.
@@ -187,7 +189,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       );
     }
   }
-    /**
+  /**
    * A file event was detected from a drag and drop in the interface, most likely
    * from a place-holder tag
    */
@@ -213,7 +215,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       this[e.detail.property] = e.detail.value;
     }
   }
-    /**
+  /**
    * Respond to successful file upload, now inject url into url field and
    * do a gizmo guess from there!
    */
@@ -264,7 +266,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     // present in one way effectively Box / Google doc viewer.
     this.newAssetConfigure();
   }
-    /**
+  /**
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {

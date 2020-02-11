@@ -27,10 +27,11 @@ class HAXTrayButton extends SimpleColors {
     this.eventName = null;
   }
   static get properties() {
-    return {...super.properties,
+    return {
+      ...super.properties,
       mini: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       /**
        * Index position in the original list of imports
@@ -63,92 +64,93 @@ class HAXTrayButton extends SimpleColors {
        */
       color: {
         type: String
-      },
+      }
     };
   }
   static get styles() {
-    return [...super.styles,
-    css`
-      :host {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--simple-colors-default-theme-accent-7, #000);
-      }
-      iron-icon {
-        width: 30px;
-        height: 30px;
-        color: var(--simple-colors-default-theme-grey-1, #fff);
-      }
-      .item-label {
-        margin-top: 8px;
-        color: var(--simple-colors-default-theme-grey-1, #fff);
-        width: 70px;
-        font-size: 11px;
-        line-height: 11px;
-        height: 11px;
-        text-align: center;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        word-break: break-all;
-      }
-      .flip-icon {
-        transform: rotateY(180deg);
-      }
-      .inner {
-        display: block;
-        max-width: 90px;
-      }
-      paper-button {
-        color: var(--hax-color-text);
-        text-transform: none;
-        background-color: var(--hax-color-bg-accent);
-        min-width: unset;
-        cursor: pointer;
-        display: flex;
-        padding: 4px;
-        margin: 0px;
-        color: #ffffff;
-        border-radius: 0;
-        transition: box-shadow 0.3s;
-      }
-      paper-button iron-icon {
-        height: 32px;
-        width: 32px;
-        color: var(--simple-colors-default-theme-grey-1);
-        display: inline-block;
-      }
-      :host([mini]) {
-        height: 30px;
-        width: 30px;
-      }
-      :host([mini]) paper-button {
-        height: 30px;
-        width: 30px;
-      }
-      :host([mini]) paper-button iron-icon {
-        height: 18px;
-        width: 18px;
-      }
-      .item-title {
-        margin-top: 8px;
-        color: var(--hax-color-text);
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 12px;
-        line-height: 12px;
-        height: 12px;
-        text-align: center;
-      }
-      .button-inner {
-        display: flex;
-      }
-      .flip-icon {
-        transform: rotateY(180deg);
-      }
-      simple-tooltip {
+    return [
+      ...super.styles,
+      css`
+        :host {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          background-color: var(--simple-colors-default-theme-accent-7, #000);
+        }
+        iron-icon {
+          width: 30px;
+          height: 30px;
+          color: var(--simple-colors-default-theme-grey-1, #fff);
+        }
+        .item-label {
+          margin-top: 8px;
+          color: var(--simple-colors-default-theme-grey-1, #fff);
+          width: 70px;
+          font-size: 11px;
+          line-height: 11px;
+          height: 11px;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          word-break: break-all;
+        }
+        .flip-icon {
+          transform: rotateY(180deg);
+        }
+        .inner {
+          display: block;
+          max-width: 90px;
+        }
+        paper-button {
+          color: var(--hax-color-text);
+          text-transform: none;
+          background-color: var(--hax-color-bg-accent);
+          min-width: unset;
+          cursor: pointer;
+          display: flex;
+          padding: 4px;
+          margin: 0px;
+          color: #ffffff;
+          border-radius: 0;
+          transition: box-shadow 0.3s;
+        }
+        paper-button iron-icon {
+          height: 32px;
+          width: 32px;
+          color: var(--simple-colors-default-theme-grey-1);
+          display: inline-block;
+        }
+        :host([mini]) {
+          height: 30px;
+          width: 30px;
+        }
+        :host([mini]) paper-button {
+          height: 30px;
+          width: 30px;
+        }
+        :host([mini]) paper-button iron-icon {
+          height: 18px;
+          width: 18px;
+        }
+        .item-title {
+          margin-top: 8px;
+          color: var(--hax-color-text);
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 12px;
+          line-height: 12px;
+          height: 12px;
+          text-align: center;
+        }
+        .button-inner {
+          display: flex;
+        }
+        .flip-icon {
+          transform: rotateY(180deg);
+        }
+        simple-tooltip {
           font-size: 16px;
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
@@ -159,7 +161,8 @@ class HAXTrayButton extends SimpleColors {
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-    `];
+      `
+    ];
   }
 
   render() {
@@ -173,9 +176,17 @@ class HAXTrayButton extends SimpleColors {
         <div class="button-inner">
           <iron-icon icon="${this.icon}" ?hidden="${!this.icon}"></iron-icon>
         </div>
-        ${this.mini ? html``: html`<div class="item-label">${this.label}</div>`}
+        ${this.mini
+          ? html``
+          : html`
+              <div class="item-label">${this.label}</div>
+            `}
       </paper-button>
-      ${this.mini ? html`<simple-tooltip>${this.label}</simple-tooltip>` : ``}
+      ${this.mini
+        ? html`
+            <simple-tooltip>${this.label}</simple-tooltip>
+          `
+        : ``}
     `;
   }
   /**
