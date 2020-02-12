@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import("./lib/a11y-media-state-manager.js");
+import("./lib/a11y-media-button.js");
+import("./lib/a11y-media-transcript-cue.js");
+import("./lib/a11y-media-youtube.js");
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
@@ -41,6 +45,12 @@ Custom property | Description | Default
 `--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
 `--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
 `--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+
+#### Controls
+Custom property | Description | Default 
+----------------|-------------|----------
+`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
+`--a11y-media-controls-font-family` | font-family of controls | `--paper-font-subhead_-_font-family`
 
 #### Buttons
 Custom property | Description | Default
@@ -129,6 +139,32 @@ class A11yMediaPlayer extends SimpleColors {
             --simple-colors-default-theme-grey-5,
             #bbbbbb
           );
+          --paper-listbox-background-color: var(
+            --a11y-media-settings-menu-bg-color
+          );
+          --paper-listbox-color: var(--a11y-media-settings-menu-color);
+          --paper-listbox-padding: 0;
+          --paper-item-selected-color: var(
+            --a11y-media-settings-menu-hover-color
+          );
+          --paper-item-focused-color: var(
+            --a11y-media-settings-menu-hover-color
+          );
+          --paper-menu-button-background-color: var(
+            --a11y-media-settings-menu-bg-color
+          );
+          --paper-menu-button-color: var(--a11y-media-settings-menu-color);
+          --paper-menu-button-dropdown-background: var(
+            --a11y-media-settings-menu-bg-color
+          );
+          --paper-menu-button-dropdown-background-color: var(
+            --a11y-media-settings-menu-bg-color
+          );
+          --paper-menu-button-dropdown-color: var(
+            --a11y-media-settings-menu-color
+          );
+          --paper-menu-button-dropdown-margin-top: 0 !important;
+          --paper-menu-button-dropdown-margin-bottom: 0 !important;
           border: 1px solid
             var(
               --a11y-media-border-color,
@@ -264,6 +300,9 @@ class A11yMediaPlayer extends SimpleColors {
             #111111
           );
         }
+        :host *::-webkit-scrollbar {
+          width: var(--a11y-media-scrollbar-width, 5px);
+        }
         :host([hidden]),
         *[hidden] {
           display: none !important;
@@ -271,7 +310,7 @@ class A11yMediaPlayer extends SimpleColors {
         :host([height]) {
           height: calc(var(--a11y-media-player-height) - 2px);
           max-height: calc(var(--a11y-media-player-height) - 2px);
-          overflow: hidden;
+          overflow: unset;
         }
         :host[height] #transcript-section {
           display: none;
@@ -404,32 +443,6 @@ class A11yMediaPlayer extends SimpleColors {
           color: var(--a11y-media-color);
           background-color: var(--a11y-media-bg-color);
           --primary-text-color: var(--a11y-media-settings-menu-color);
-          --paper-menu-button-dropdown-background: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-listbox-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-listbox-color: var(--a11y-media-settings-menu-color);
-          --paper-listbox-padding: 0;
-          --paper-menu-button-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-menu-button-color: var(--a11y-media-settings-menu-color);
-          --paper-menu-button-dropdown-background-color: var(
-            --a11y-media-settings-menu-bg-color
-          );
-          --paper-menu-button-dropdown-color: var(
-            --a11y-media-settings-menu-color
-          );
-          --paper-menu-button-dropdown-margin-top: 0 !important;
-          --paper-menu-button-dropdown-margin-bottom: 0 !important;
-          --paper-item-selected-color: var(
-            --a11y-media-settings-menu-hover-color
-          );
-          --paper-item-focused-color: var(
-            --a11y-media-settings-menu-hover-color
-          );
         }
         #controls-left {
           position: absolute;
@@ -441,53 +454,66 @@ class A11yMediaPlayer extends SimpleColors {
           right: 0;
           top: 0;
         }
-        paper-menu-button,
-        dropdown-select {
-          padding: 0;
+        absolute-position-behavior {
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          color: var(--a11y-media-settings-menu-color);
+          border: 1px solid
+            var(
+              --a11y-media-border-color,
+              var(--simple-colors-default-theme-grey-3)
+            );
+          max-height: 200px;
+          overflow-y: scroll;
+          overflow-x: hidden;
         }
-        paper-icon-button {
+        absolute-position-behavior::-webkit-scrollbar-track {
+          background-color: var(--a11y-media-settings-menu-bg-color);
+        }
+        absolute-position-behavior::-webkit-scrollbar-thumb {
+          background-color: var(--a11y-media-settings-menu-color);
+        }
+        absolute-position-behavior .setting {
+          min-height: 42px;
+          padding: 2px 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        absolute-position-behavior dropdown-select {
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
           background-color: var(--a11y-media-settings-menu-bg-color);
           color: var(--a11y-media-settings-menu-color);
         }
-        paper-icon-button:active,
-        paper-icon-button:focus,
-        paper-icon-button:hover {
-          background-color: var(--a11y-media-settings-menu-bg-color);
-          color: var(--a11y-media-settings-menu-color);
+        .setting-text {
+          margin-right: 1em;
+          font-family: var(
+            --a11y-media-controls-font-family,
+            var(--paper-font-subhead_-_font-family)
+          );
         }
-        paper-item {
-          min-height: 40;
+        .setting-control {
+          max-width: 110px;
         }
-        .play-status,
-        paper-icon-button {
-          border: none;
-          position: relative;
+        .setting-slider {
+          flex: 0 0 110px;
+          margin-left: -15px;
+          margin-right: -15px;
         }
         .play-status {
+          border: none;
+          position: relative;
           font-size: 85%;
+          font-family: var(
+            --a11y-media-controls-font-family,
+            var(--paper-font-subhead_-_font-family)
+          );
         }
         .play-status.control-bar {
           padding: 8px 13px 8px;
         }
         :host([hide-play-status]) .play-status {
           display: none;
-        }
-        .setting {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-        }
-        .setting-text {
-          min-width: 125px;
-        }
-        .setting-control {
-          max-width: 100px;
-        }
-        .setting-slider {
-          width: 130px;
-          margin-left: -15px;
-          margin-right: -15px;
         }
         #volume-and-mute {
           display: inline-block;
@@ -605,6 +631,12 @@ class A11yMediaPlayer extends SimpleColors {
           background-color: var(--a11y-media-transcript-cue-bg-color);
           border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
+        #transcript::-webkit-scrollbar-track {
+          background-color: var(--a11y-media-transcript-cue-bg-color);
+        }
+        #transcript::-webkit-scrollbar-thumb {
+          background-color: var(--a11y-media-transcript-cue-color);
+        }
         .transcript-from-track {
           display: table;
           width: calc(100% - 30px);
@@ -623,8 +655,7 @@ class A11yMediaPlayer extends SimpleColors {
           width: 0;
           overflow: hidden;
         }
-        paper-menu-button:not(:defined) paper-listbox,
-        paper-listbox:not(:defined),
+        absolute-position-behavior:not(:defined),
         simple-tooltip:not(:defined),
         paper-toast:not(:defined) {
           display: none;
@@ -995,195 +1026,166 @@ class A11yMediaPlayer extends SimpleColors {
                 "fullscreen",
                 "label"
               )}"
-              step="1"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
               @click="${e => this.toggleFullscreen()}"
             >
             </a11y-media-button>
-            <paper-menu-button
-              id="settings"
+            <a11y-media-button
+              id="settings-button"
               class="hide-sticky"
-              allow-outside-scroll
-              horizontal-align="right"
-              ignore-select
-              vertical-align="bottom"
-              @change="${this._handleSettingsChanged}"
-            >
-              <paper-icon-button
-                id="settings-button"
-                action="settings"
-                alt="${this._getLocal(this.localization, "settings", "label")}"
-                icon="${this._getLocal(this.localization, "settings", "icon")}"
-                slot="dropdown-trigger"
-              >
-              </paper-icon-button>
-              <simple-tooltip for="settings-button">
-                ${this._getLocal(this.localization, "settings", "label")}
-              </simple-tooltip>
-
-              <paper-listbox id="settingslist" slot="dropdown-content">
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div class="setting-text">
-                      ${this._getLocal(this.localization, "captions", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <dropdown-select
-                        id="cc_tracks"
-                        no-label-float
-                        value="${this.captionsTrackKey}"
-                        ?hidden="${!this.hasCaptions}"
-                        ?disabled="${!this.hasCaptions}"
-                        @value-changed="${e =>
-                          this.selectCaptionByKey(e.detail.value)}}"
-                      >
-                        <paper-item value="-1"
-                          >${this._getLocal(
-                            this.localization,
-                            "captions",
-                            "off"
-                          )}</paper-item
-                        >
-                        ${!this.loadedTracks
-                          ? ``
-                          : Object.keys(this.loadedTracks.textTracks).map(
-                              key => {
-                                return html`
-                                  <paper-item value="${key}">
-                                    ${this.loadedTracks.textTracks[key].label ||
-                                      this.loadedTracks.textTracks.language}
-                                  </paper-item>
-                                `;
-                              }
-                            )}
-                      </dropdown-select>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div class="setting-text">
-                      ${this._getLocal(
-                        this.localization,
-                        "transcript",
-                        "label"
-                      )}
-                    </div>
-                    <div class="setting-control">
-                      <dropdown-select
-                        id="transcript_tracks"
-                        no-label-float
-                        value="${this.transcriptTrackKey}"
-                        ?hidden="${!this.hasCaptions}"
-                        ?disabled="${!this.hasCaptions}"
-                        @value-changed="${e =>
-                          this.selectTranscriptByKey(e.detail.value)}"
-                      >
-                        <paper-item value="-1"
-                          >${this._getLocal(
-                            this.localization,
-                            "transcript",
-                            "off"
-                          )}</paper-item
-                        >
-                        ${!this.loadedTracks
-                          ? ``
-                          : Object.keys(this.loadedTracks.textTracks).map(
-                              key => {
-                                return html`
-                                  <paper-item value="${key}">
-                                    ${this.loadedTracks.textTracks[key].label ||
-                                      this.loadedTracks.textTracks.language}
-                                  </paper-item>
-                                `;
-                              }
-                            )}
-                      </dropdown-select>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div id="print-label" class="setting-text">
-                      ${this._getLocal(this.localization, "print", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <a11y-media-button
-                        aria-labelledby="print-label"
-                        icon="${this._getLocal(
-                          this.localization,
-                          "print",
-                          "icon"
-                        )}"
-                        ?disabled="${this.noPrinting}"
-                        ?hidden="${this.noPrinting}"
-                        @click="${this.print}"
-                      >
-                      </a11y-media-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item ?hidden="${!this.hasCaptions}">
-                  <div class="setting">
-                    <div id="download-label" class="setting-text">
-                      ${this._getLocal(this.localization, "download", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <a11y-media-button
-                        aria-labelledby="download-label"
-                        icon="${this._getLocal(
-                          this.localization,
-                          "download",
-                          "icon"
-                        )}"
-                        ?disabled="${this.noPrinting}"
-                        ?hidden="${this.noPrinting}"
-                        @click="${this.download}"
-                      >
-                      </a11y-media-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item>
-                  <div class="setting">
-                    <div id="loop-label" class="setting-text">
-                      ${this._getLocal(this.localization, "loop", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <paper-toggle-button
-                        id="loop"
-                        aria-labelledby="loop-label"
-                        @change="${e => this.toggleLoop()}"
-                        ?checked="${this.loop}"
-                      ></paper-toggle-button>
-                    </div>
-                  </div>
-                </paper-item>
-                <paper-item>
-                  <div class="setting">
-                    <div id="speed-label" class="setting-text">
-                      ${this._getLocal(this.localization, "speed", "label")}
-                    </div>
-                    <div class="setting-control">
-                      <paper-slider
-                        id="speed"
-                        aria-labelledby="speed-label"
-                        class="setting-slider"
-                        min="0.5"
-                        max="2.5"
-                        pin
-                        step="0.25"
-                        tabindex="-1"
-                        .value="${this.playbackRate}"
-                        @change="${this._handleSpeedChanged}"
-                      ></paper-slider>
-                    </div>
-                  </div>
-                </paper-item>
-              </paper-listbox>
-            </paper-menu-button>
+              controls="settings"
+              icon="${this._getLocal(this.localization, "settings", "icon")}"
+              label="${this._getLocal(this.localization, "settings", "label")}"
+              @click="${e => this.toggleSettings()}"
+            ></a11y-media-button>
           </div>
+          <absolute-position-behavior
+            id="settings"
+            auto
+            fit-to-visible-bounds
+            for="settings-button"
+            offset="10"
+            position-align="end"
+            position="top"
+            ?hidden="${!this.__settingsOpen}"
+          >
+            <div class="setting" ?hidden="${!this.hasCaptions}">
+              <div class="setting-text">
+                ${this._getLocal(this.localization, "captions", "label")}
+              </div>
+              <dropdown-select
+                id="cc_tracks"
+                class="setting-control"
+                no-label-float
+                value="${this.captionsTrackKey}"
+                ?hidden="${!this.hasCaptions}"
+                ?disabled="${!this.hasCaptions}"
+                @value-changed="${e =>
+                  this.selectCaptionByKey(e.detail.value)}}"
+              >
+                <paper-item
+                  value="-1"
+                  aria-selected="${this.captionsTrackKey === -1}"
+                  >${this._getLocal(
+                    this.localization,
+                    "captions",
+                    "off"
+                  )}</paper-item
+                >
+                ${!this.loadedTracks
+                  ? ``
+                  : Object.keys(this.loadedTracks.textTracks).map(key => {
+                      return html`
+                        <paper-item
+                          value="${key}"
+                          aria-selected="${this.captionsTrackKey === key}"
+                        >
+                          ${this.loadedTracks.textTracks[key].label ||
+                            this.loadedTracks.textTracks.language}
+                        </paper-item>
+                      `;
+                    })}
+              </dropdown-select>
+            </div>
+            <div class="setting" ?hidden="${!this.hasCaptions}">
+              <div class="setting-text">
+                ${this._getLocal(this.localization, "transcript", "label")}
+              </div>
+              <dropdown-select
+                id="transcript_tracks"
+                class="setting-control"
+                no-label-float
+                placeholder=""
+                .value="${this.transcriptTrackKey}"
+                ?hidden="${!this.hasCaptions}"
+                ?disabled="${!this.hasCaptions}"
+                @value-changed="${e =>
+                  this.selectTranscriptByKey(e.detail.value)}"
+              >
+                <paper-item
+                  value="-1"
+                  aria-selected="${this.transcriptTrackKey === -1}"
+                  >${this._getLocal(
+                    this.localization,
+                    "transcript",
+                    "off"
+                  )}</paper-item
+                >
+                ${!this.loadedTracks
+                  ? ``
+                  : Object.keys(this.loadedTracks.textTracks).map(key => {
+                      return html`
+                        <paper-item
+                          value="${key}"
+                          aria-selected="${this.transcriptTrackKey === key}"
+                        >
+                          ${this.loadedTracks.textTracks[key].label ||
+                            this.loadedTracks.textTracks.language}
+                        </paper-item>
+                      `;
+                    })}
+              </dropdown-select>
+            </div>
+            <div class="setting" ?hidden="${!this.hasCaptions}">
+              <div id="print-label" class="setting-text">
+                ${this._getLocal(this.localization, "print", "label")}
+              </div>
+              <a11y-media-button
+                aria-labelledby="print-label"
+                class="setting-control"
+                icon="${this._getLocal(this.localization, "print", "icon")}"
+                ?disabled="${this.noPrinting}"
+                ?hidden="${this.noPrinting}"
+                @click="${this.print}"
+              >
+              </a11y-media-button>
+            </div>
+            <div class="setting" ?hidden="${!this.hasCaptions}">
+              <div id="download-label" class="setting-text">
+                ${this._getLocal(this.localization, "download", "label")}
+              </div>
+              <a11y-media-button
+                aria-labelledby="download-label"
+                class="setting-control"
+                icon="${this._getLocal(this.localization, "download", "icon")}"
+                ?disabled="${this.noPrinting}"
+                ?hidden="${this.noPrinting}"
+                @click="${this.download}"
+              >
+              </a11y-media-button>
+            </div>
+            <div class="setting">
+              <div id="loop-label" class="setting-text">
+                ${this._getLocal(this.localization, "loop", "label")}
+              </div>
+              <paper-toggle-button
+                id="loop"
+                class="setting-control"
+                aria-labelledby="loop-label"
+                @change="${e => this.toggleLoop()}"
+                ?checked="${this.loop}"
+              >
+              </paper-toggle-button>
+            </div>
+            <div class="setting">
+              <div id="speed-label" class="setting-text">
+                ${this._getLocal(this.localization, "speed", "label")}
+              </div>
+              <paper-slider
+                id="speed"
+                aria-labelledby="speed-label"
+                class="setting-slider setting-control"
+                min="0.5"
+                max="2.5"
+                pin
+                step="0.25"
+                .value="${this.playbackRate}"
+                @change="${this._handleSpeedChanged}"
+              >
+              </paper-slider>
+            </div>
+          </absolute-position-behavior>
         </div>
         <div
           aria-hidden="true"
@@ -1719,6 +1721,12 @@ class A11yMediaPlayer extends SimpleColors {
         type: Number
       },
       /**
+       * Is settings menu toggle open?
+       */
+      __settingsOpen: {
+        type: Boolean
+      },
+      /**
        * Has screenfull loaded?
        */
       __screenfullLoaded: {
@@ -1792,6 +1800,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.__loadedTracks = null;
     this.__playing = false;
     this.__screenfullLoaded = false;
+    this.__settingsOpen = false;
     this.__transcriptOption = -1;
     this.querySelectorAll("video,audio").forEach(html5 => {
       html5.addEventListener("loadedmetadata", e => {
@@ -1799,23 +1808,16 @@ class A11yMediaPlayer extends SimpleColors {
       });
     });
     import("@lrnwebcomponents/simple-search/simple-search.js");
-    import("./lib/a11y-media-state-manager.js");
-    import("./lib/a11y-media-button.js");
-    import("./lib/a11y-media-transcript-cue.js");
-    import("./lib/a11y-media-youtube.js");
     import("@polymer/paper-slider/paper-slider.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
     import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-menu-button/paper-menu-button.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
@@ -2466,8 +2468,6 @@ class A11yMediaPlayer extends SimpleColors {
 
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
-      if (propName === "__loadedTracks")
-        this._addSourcesAndTracks(this.loadedTracks);
       if (change(["cc", "captionsTrack"])) this._captionsChanged();
 
       /* updates layout */
@@ -2565,19 +2565,6 @@ class A11yMediaPlayer extends SimpleColors {
         detail: this
       })
     );
-  }
-
-  /**
-   * determine which button was clicked and act accordingly
-   */
-  _handleSettingsChanged(e) {
-    if (
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("#settings") &&
-      this.shadowRoot.querySelector("#settings").close &&
-      !e.path[0].opened
-    )
-      this.shadowRoot.querySelector("#settings").close();
   }
 
   /**
@@ -2925,6 +2912,7 @@ class A11yMediaPlayer extends SimpleColors {
     });
     /* provides a seek function for primary media */
     primary.seek = time => (primary.currentTime = time);
+    this._addSourcesAndTracks(primary, primary);
     return primary;
   }
 
@@ -3106,6 +3094,22 @@ class A11yMediaPlayer extends SimpleColors {
       })
     );
   }
+  toggleSettings(mode) {
+    mode = mode === undefined ? !this.__settingsOpen : mode;
+    this.__settingsOpen = mode;
+    /**
+     * Fires when video's settings menu is toggled
+     * @event settings-toggled
+     */
+    this.dispatchEvent(
+      new CustomEvent("settings-toggled", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
 
   /**
    * toggles sticky attribute
@@ -3115,7 +3119,7 @@ class A11yMediaPlayer extends SimpleColors {
     mode = mode === undefined ? !this.sticky : mode;
     this.sticky = mode;
     /**
-     * Fires when video video's sticky behavior is toggled
+     * Fires when video's sticky behavior is toggled
      * @event player-sticky
      */
     this.dispatchEvent(
@@ -3156,25 +3160,24 @@ class A11yMediaPlayer extends SimpleColors {
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    Object.keys(this.loadedTracks.textTracks).forEach(track =>
-      this._onAddTrack(track)
+    Object.keys(media.textTracks).forEach(track =>
+      this._onAddTrack(media.textTracks[track])
     );
-    this.loadedTracks.textTracks.onremovetrack = e =>
-      this._onRemoveTrack(e.track);
-    this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
+    media.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
+    media.textTracks.onaddtrack = e => this._onAddTrack(e.track);
 
-    let d = this.loadedTracks.querySelector("track[default]")
-        ? this.loadedTracks.querySelector("track[default]")
-        : this.loadedTracks.querySelector("track"),
+    let d = media.querySelector("track[default]")
+        ? media.querySelector("track[default]")
+        : media.querySelector("track"),
       defaultTrack =
-        Object.keys(this.loadedTracks.textTracks).find(key => {
+        Object.keys(media.textTracks).find(key => {
           return (
-            d.label === this.loadedTracks.textTracks[key].label &&
-            d.kind === this.loadedTracks.textTracks[key].kind &&
-            d.srclang === this.loadedTracks.textTracks[key].scrlang
+            d.label === media.textTracks[key].label &&
+            d.kind === media.textTracks[key].kind &&
+            d.srclang === media.textTracks[key].scrlang
           );
         }) || 0;
-    this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
+    this.captionsTrack = media.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
     this._handleTimeUpdate();
   }
@@ -3316,11 +3319,12 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _onAddTrack(track) {
     if (this.captionsTrack === null) this.captionsTrack = track;
-    track.mode = "hidden";
+    if (track) track.mode = "hidden";
     let loadCueData = setInterval(() => {
       if (track.cues && track.cues.length > 0) {
         clearInterval(loadCueData);
         let cues = Object.keys(track.cues).map(key => track.cues[key]);
+        this._onRemoveTrack(track); //prevents duplicate tracks
         this.__cues = this.cues.concat(cues).sort((a, b) => {
           let start = a.startTime - b.startTime,
             end = a.endTime - b.endTime;
@@ -3331,21 +3335,15 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * determine which button was clicked and act accordingly
-   * @param {event} e controls change event
-   */
-  _onControlsChanged(e) {
-    if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
-      this.shadowRoot.querySelector("#settings").close();
-  }
-
-  /**
    * removes a track's cues from cues array
    * @param {object} textTrack
    */
   _onRemoveTrack(track) {
-    this.loadedTracks.textTracks.filter(textTrack => textTrack !== track);
-    this.__cues = this.cues.filter(cue => cue.track !== track);
+    if (this.loadedTracks && this.loadedTracks.textTracks)
+      Object.keys(this.loadedTracks.textTracks).filter(
+        textTrack => this.loadedTracks.textTracks[textTrack] !== track
+      );
+    this.__cues = this.cues ? this.cues.filter(cue => cue.track !== track) : [];
   }
 
   /**
