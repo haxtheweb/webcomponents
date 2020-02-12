@@ -123,14 +123,11 @@ class HAX extends HTMLElement {
     // store needs to come before anyone else, use it's availability request mechanism
     window.HaxStore.requestAvailability();
     // now everyone else
-    let panel = document.createElement("hax-panel");
-    panel.hidePanelOps = this.hidePanelOps;
-    document.body.appendChild(panel);
+    let tray = document.createElement("hax-tray");
+    tray.hidePanelOps = this.hidePanelOps;
+    document.body.appendChild(tray);
     document.body.appendChild(document.createElement("hax-manager"));
-    document.body.appendChild(document.createElement("hax-tray"));
     document.body.appendChild(document.createElement("hax-app-picker"));
-    document.body.appendChild(document.createElement("hax-stax-picker"));
-    document.body.appendChild(document.createElement("hax-blox-picker"));
     document.body.appendChild(document.createElement("hax-preferences-dialog"));
     document.body.appendChild(document.createElement("hax-export-dialog"));
     document.body.appendChild(document.createElement("hax-autoloader"));

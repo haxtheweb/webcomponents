@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 
 /**
  * `hax-tray`
@@ -22,6 +23,14 @@ class HaxTray extends winEventsElement(LitElement) {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-active-hover-name": "_activeNameChange"
     };
+    this.formKey = "configure";
+    this.activeValue = {
+      settings: {
+        configure: {},
+        advanced: {},
+      }
+    };
+    this.activeSchema = {};
     this.activeOperationName = "";
     this.canUndo = true;
     this.canRedo = true;
@@ -31,6 +40,7 @@ class HaxTray extends winEventsElement(LitElement) {
     this.activeItem = null;
     setTimeout(() => {
       import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       import("./hax-tray-button.js");
       import("./hax-tray-upload.js");
       this.addEventListener(
@@ -113,15 +123,21 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
-          overflow: auto;
           --a11y-collapse-padding-top: 4px;
           --a11y-collapse-padding-right: 8px;
           --a11y-collapse-padding-bottom: 4px;
           --a11y-collapse-padding-left: 8px;
         }
-        a11y-collapse[expanded] {
+        a11y-collapse.settings-form {
+          --a11y-collapse-padding-top: 0px;
+          --a11y-collapse-padding-right: 0px;
+          --a11y-collapse-padding-bottom: 0px;
+          --a11y-collapse-padding-left: 0px;
+        }
+        a11y-collapse[expanded] div[slot="content"] {
           min-height: 300px;
           max-height: 70vh;
+          overflow: auto;
         }
         iron-icon {
           margin-right: 8px;
@@ -287,13 +303,15 @@ class HaxTray extends winEventsElement(LitElement) {
           </div>
         </div>
         <a11y-collapse-group>
-          <a11y-collapse accordion ?disabled="${!this.hasSettings}">
+          <a11y-collapse class="settings-form" accordion ?disabled="${!this.hasSettings}">
             <p slot="heading">
               <iron-icon icon="icons:settings"></iron-icon> ${this
                 .activeTagName}
               Settings
             </p>
-            <div slot="content"></div>
+            <div slot="content">
+              <simple-fields id="settingsform" @value-changed="${this.__valueChangedEvent}"></simple-fields>
+            </div>
           </a11y-collapse>
           <a11y-collapse accordion>
             <p slot="heading">
@@ -314,15 +332,22 @@ class HaxTray extends winEventsElement(LitElement) {
               </hax-app-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse accordion @click="${this._refreshLists}">
             <p slot="heading">
               <iron-icon icon="hax:templates"></iron-icon>Templates
             </p>
-            <div slot="content"></div>
+            <div slot="content">
+            <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
+            <hax-stax-browser id="staxbrowser"></hax-stax-browser>
+            </div>
           </a11y-collapse>
         </a11y-collapse-group>
       </div>
     `;
+  }
+  _refreshLists(e) {
+    this.shadowRoot.querySelector('#bloxbrowser').bloxList = [...window.HaxStore.instance.bloxList];
+    this.shadowRoot.querySelector('#staxbrowser').staxList = [...window.HaxStore.instance.staxList];
   }
   /**
    * Process event for simple content inserts.
@@ -375,17 +400,6 @@ class HaxTray extends winEventsElement(LitElement) {
           })
         );
         break;
-      case "hax-manager-open":
-        window.HaxStore.write("activeHaxElement", {}, this);
-        window.HaxStore.instance.haxManager.resetManager(
-          parseInt(detail.value)
-        );
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        break;
       case "undo":
         document.execCommand("undo");
         break;
@@ -416,6 +430,18 @@ class HaxTray extends winEventsElement(LitElement) {
       ...super.properties,
       __tipText: {
         type: String
+      },
+      /**
+       * Form values for active node
+       */
+      activeValue: {
+        type: Object,
+      },
+      /**
+       * Form schema for active node
+       */
+      activeSchema: {
+        type: Object,
       },
       /**
        * Alignment of the initial edit button
@@ -572,11 +598,348 @@ class HaxTray extends winEventsElement(LitElement) {
         } else {
           this.hasSettings = false;
         }
+        // process fields
+        this.activeHaxElement = window.HaxStore.nodeToHaxElement(this.activeNode, null);
+        this.shadowRoot.querySelector('#settingsform').fields = {};
+        this.shadowRoot.querySelector('#settingsform').value = {};
+        this._setupForm();
       }
       if (propName == "globalPreferences") {
         this._globalPreferencesChanged(this[propName], oldValue);
       }
     });
+  }
+  /**
+   * When the preview node is updated, pull schema associated with it
+   */
+  _setupForm() {
+    let activeNode = this.activeNode;
+    // see if we can get schema off of this.
+    if (
+      activeNode.tagName &&
+      window.HaxStore.instance.elementList[
+        activeNode.tagName.toLowerCase()
+      ]
+    ) {
+      let props =
+        window.HaxStore.instance.elementList[activeNode.tagName.toLowerCase()];
+      let schema = {};
+      if (typeof activeNode.getHaxJSONSchemaType === "function") {
+        schema = window.HaxStore.instance.getHaxJSONSchema(
+          this.formKey,
+          props,
+          activeNode
+        );
+      } else {
+        schema = window.HaxStore.instance.getHaxJSONSchema(
+          this.formKey,
+          props
+        );
+      }
+      // generate a human name for this
+      if (typeof props.gizmo.title === typeof undefined) {
+        this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
+      } else {
+        this.humanName = props.gizmo.title;
+      }
+      // first, allow element properties to dictate defaults
+      for (var property in this.activeHaxElement.properties) {
+        if (this.activeHaxElement.properties.hasOwnProperty(property)) {
+          if (typeof schema.properties[property] !== typeof undefined) {
+            schema.properties[
+              property
+            ].value = this.activeHaxElement.properties[property];
+            // support custom element input
+            if (
+              typeof schema.properties[property].component !==
+                typeof undefined &&
+              schema.properties[property].component.properties
+            ) {
+              schema.properties[
+                property
+              ].component.properties.value = this.activeHaxElement.properties[
+                property
+              ];
+            }
+          }
+          // ensure this isn't read only
+          if (
+            this.activeHaxElement.properties[property] != null &&
+            !this.activeHaxElement.properties[property].readOnly
+          ) {
+            // make sure slot is NEVER set in the preview
+            // or it'll not show up and we'll get inconsistency with it
+            // when in the context of being inserted into hax-body's shadow
+            // slot is also a special attribute
+            if (property === "slot") {
+              // temp prop we use
+              property = "data-hax-slot";
+              // move it over
+              this.activeHaxElement.properties[
+                property
+              ] = this.activeHaxElement.properties["slot"];
+              // delete the slot
+              delete this.activeHaxElement.properties["slot"];
+              if (this.activeHaxElement.properties[property] != null) {
+                activeNode.setAttribute(
+                  "data-hax-slot",
+                  this.activeHaxElement.properties[property]
+                );
+              }
+            }
+            // prefix is a special attribute and must be handled this way
+            else if (property === "prefix") {
+              activeNode.setAttribute(
+                "prefix",
+                this.activeHaxElement.properties[property]
+              );
+            }
+            // set is a Polymer convention but help w/ data binding there a lot
+            else if (typeof activeNode.set === "function") {
+              // just to be safe
+              try {
+                activeNode.set(
+                  property,
+                  this.activeHaxElement.properties[property]
+                );
+              } catch (e) {
+                console.warn(e);
+              }
+            }
+            // vanilla / anything else we should just be able to set the prop
+            else if (activeNode[property]) {
+              try {
+                activeNode[property] = this.activeHaxElement.properties[
+                  property
+                ];
+              } catch (e) {
+                console.warn(e);
+              }
+            } else {
+              // @todo may need to bind differently for vanilla elements
+              try {
+                activeNode.setAttribute(
+                  property,
+                  this.activeHaxElement.properties[property]
+                );
+              } catch (e) {
+                console.warn(e);
+              }
+            }
+          }
+          this.activeValue.settings.configure[`configure-${property}`] = this.activeHaxElement.properties[property];
+        }
+      }
+      // then, let the node itself dictate defaults if things are not set
+      for (var property in activeNode) {
+        if (
+          activeNode.hasOwnProperty(property) &&
+          typeof schema.properties[property] !== typeof undefined &&
+          typeof activeNode[property].value !== typeof undefined &&
+          activeNode[property].value !== null
+        ) {
+          this.activeValue.settings.configure[`configure-${property}`] = activeNode.properties[property].value;
+        }
+      }
+      // need to specifically walk through slots if there is anything
+      // that says it has to come from a slot
+      for (var prop in props.settings[this.formKey]) {
+        if (
+          typeof props.settings[this.formKey][prop].slot !== typeof undefined
+        ) {
+          const newValueChildren = FlattenedNodesObserver.getFlattenedNodes(
+            activeNode
+          );
+          // walk through the slots looking for the value of it
+          for (var i in newValueChildren) {
+            // test for element nodes to be safe
+            if (
+              typeof newValueChildren[i] !== typeof undefined &&
+              newValueChildren[i].nodeType === 1 &&
+              newValueChildren[i].slot ===
+                props.settings[this.formKey][prop].slot
+            ) {
+              if (typeof newValueChildren[i].innerHTML !== typeof undefined) {
+                this.activeValue.settings.configure[`configure-${props.settings[this.formKey][prop].slot}`] =
+                  newValueChildren[i].innerHTML;
+              }
+            }
+          }
+        }
+      }
+      // tabs / deep objects require us to preview the value w/ the path correctly
+      props.settings.configure.forEach((val, key) => {
+        props.settings.configure[key].property = `configure-${props.settings.configure[key].property}`;
+      });
+      props.settings.advanced.forEach((val, key) => {
+        props.settings.advanced[key].property = `advanced-${props.settings.advanced[key].property}`;
+      });
+      // generate a tab based UI
+      this.activeSchema = [
+        {
+          property: "settings",
+          inputMethod: "tabs",
+          properties: [
+            {
+              property: "configure",
+              title: "Configure",
+              description: "Customize this element to your needs",
+              properties: props.settings.configure
+            },
+            {
+              property: "advanced",
+              title: "Advanced",
+              description: "Less common settings",
+              properties: props.settings.advanced
+            }
+          ]
+        }
+      ];
+      console.log(this.activeSchema);
+      console.log(this.activeValue);
+      this.shadowRoot.querySelector('#settingsform').fields = [...this.activeSchema];
+      this.shadowRoot.querySelector('#settingsform').value = {...this.activeValue};            
+    }    
+  }
+  _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
+    return Object.keys(obj).map(function(key) {
+      return obj[key];
+    });
+  }
+  /**
+   * Form key changed, rebuild schema for the form
+   * but don't update the element. Critical difference.
+   */
+  _formKeyChanged(newValue) {
+    // ensure this doesn't run the 1st pass
+      var schema = {};
+      // see if we can get schema off of this.
+      if (
+        typeof this.previewNode !== typeof undefined &&
+        typeof this.previewNode.tagName !== typeof undefined &&
+        typeof window.HaxStore.instance.elementList[
+          this.previewNode.tagName.toLowerCase()
+        ] !== typeof undefined
+      ) {
+        let props =
+          window.HaxStore.instance.elementList[
+            this.previewNode.tagName.toLowerCase()
+          ];
+        if (typeof this.previewNode.getHaxJSONSchemaType === "function") {
+          schema = window.HaxStore.instance.getHaxJSONSchema(
+            newValue,
+            props,
+            this.previewNode
+          );
+        } else {
+          schema = window.HaxStore.instance.getHaxJSONSchema(newValue, props);
+        }
+        for (var property in this.activeHaxElement.properties) {
+          if (this.activeHaxElement.properties.hasOwnProperty(property)) {
+            if (typeof schema.properties[property] !== typeof undefined) {
+              schema.properties[
+                property
+              ].value = this.activeHaxElement.properties[property];
+              // support custom element input
+              if (
+                typeof schema.properties[property].component !==
+                  typeof undefined &&
+                schema.properties[property].component.properties
+              ) {
+                schema.properties[
+                  property
+                ].component.properties.value = this.activeHaxElement.properties[
+                  property
+                ];
+              }
+              // attempt to set the property in the preview node
+              if (
+                property != "prefix" &&
+                this.activeHaxElement.properties[property] != null &&
+                !this.activeHaxElement.properties[property].readOnly
+              ) {
+                if (typeof this.previewNode.set === "function") {
+                  // attempt to set it, should be no problem but never know
+                  try {
+                    this.previewNode.set(
+                      property,
+                      this.activeHaxElement.properties[property]
+                    );
+                  } catch (e) {
+                    console.warn(`${property} is busted some how`);
+                    console.warn(e);
+                  }
+                } else if (this.previewNode[property]) {
+                  this.previewNode[property] = this.activeHaxElement.properties[
+                    property
+                  ];
+                } else {
+                  // set attribute, this doesn't have the Polymer convention
+                  // this is Vanilla, Lit, etc
+                  // set is powerful though for objects and arrays so they will reflect instantly
+                  this.previewNode.setAttribute(
+                    property,
+                    this.activeHaxElement.properties[property]
+                  );
+                }
+              } else if (property === "prefix") {
+                this.previewNode.setAttribute(
+                  "prefix",
+                  this.activeHaxElement.properties[property]
+                );
+              } else {
+                console.warn(`${property} is busted some how`);
+              }
+            }
+            this.activeValue.settings.configure[`configure-${property}`] = this.activeHaxElement.properties[property];
+          }
+        }
+        var slotsApplied = false;
+        for (var prop in props.settings[newValue]) {
+          let previewNode = this.previewNode;
+          if (
+            typeof props.settings[this.formKey][prop].slot !==
+              typeof undefined &&
+            !slotsApplied
+          ) {
+            slotsApplied = true;
+
+            // walk through the slots looking for the value of it
+            const previewNodeChildren = FlattenedNodesObserver.getFlattenedNodes(
+              previewNode
+            );
+            for (var i in previewNodeChildren) {
+              // test for element nodes to be safe
+              if (
+                typeof previewNodeChildren[i] !== typeof undefined &&
+                previewNodeChildren[i].nodeType === 1 &&
+                previewNodeChildren[i].slot ===
+                  props.settings[this.formKey][prop].slot
+              ) {
+                if (
+                  typeof previewNodeChildren[i].innerHTML !== typeof undefined
+                ) {
+                  schema.properties[
+                    props.settings[this.formKey][prop].slot
+                  ].value = previewNodeChildren[i].innerHTML;
+                  this.activeValue.settings.configure[`configure-${props.settings[this.formKey][prop].slot}`] =
+                    previewNodeChildren[i].innerHTML;
+                }
+              }
+            }
+          }
+        }
+      }
+      this.activeSchema = { ...schema };
+  }
+  /**
+   * Notice change in values from below
+   */
+  __valueChangedEvent(e) {
+    //this.activeValue = { ...e.detail.value };
   }
   /**
    * Global preference changed.

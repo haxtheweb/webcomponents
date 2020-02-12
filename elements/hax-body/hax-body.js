@@ -848,9 +848,7 @@ class HaxBody extends SimpleColors {
   elementInViewport(el) {
     let top =
       el.offsetTop -
-      32 -
-      window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer")
-        .offsetHeight;
+      32;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;
@@ -2342,7 +2340,7 @@ class HaxBody extends SimpleColors {
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        (typeof target !== typeof undefined &&
+        (target &&
           target !== null &&
           typeof local !== typeof undefined &&
           target !== local &&

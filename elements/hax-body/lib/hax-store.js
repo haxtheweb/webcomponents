@@ -161,12 +161,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object
       },
       /**
-       * Hax panel element.
-       */
-      haxPanel: {
-        type: Object
-      },
-      /**
        * Hax export dialog element.
        */
       haxExport: {
@@ -612,13 +606,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         [
           "haxAutoloader",
           "activeHaxBody",
-          "haxPanel",
           "haxToast",
           "haxExport",
           "haxPreferences",
           "haxManager",
-          "haxStaxPicker",
-          "haxBloxPicker",
           "haxAppPicker",
           "haxTray"
         ].includes(propName)
@@ -627,13 +618,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this._storePiecesAllHere(
           this.haxAutoloader,
           this.activeHaxBody,
-          this.haxPanel,
           this.haxToast,
           this.haxExport,
           this.haxPreferences,
           this.haxManager,
-          this.haxStaxPicker,
-          this.haxBloxPicker,
           this.haxAppPicker,
           this.haxTray
         );
@@ -724,13 +712,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
   _storePiecesAllHere(
     haxAutoloader,
     activeHaxBody,
-    haxPanel,
     haxToast,
     haxExport,
     haxPreferences,
     haxManager,
-    haxStaxPicker,
-    haxBloxPicker,
     haxAppPicker,
     haxTray
   ) {
@@ -738,13 +723,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       !this.__ready &&
       activeHaxBody &&
       haxAutoloader &&
-      haxPanel &&
       haxToast &&
       haxExport &&
       haxPreferences &&
       haxManager &&
-      haxStaxPicker &&
-      haxBloxPicker &&
       haxAppPicker &&
       haxTray
     ) {
@@ -1391,8 +1373,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     let drawers = [
       "haxManager",
       "haxAppPicker",
-      "haxBloxPicker",
-      "haxStaxPicker",
       "haxPreferences",
       "haxExport"
     ];
