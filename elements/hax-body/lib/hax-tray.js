@@ -328,8 +328,8 @@ class HaxTray extends winEventsElement(LitElement) {
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion @click="${this._gizmoBrowserRefresh}">
-            <p slot="heading">
+          <a11y-collapse accordion>
+            <p slot="heading" @click="${this._gizmoBrowserRefresh}">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </p>
             <div slot="content">
@@ -337,8 +337,8 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion @click="${this._appBrowserRefresh}">
-            <p slot="heading">
+          <a11y-collapse accordion>
+            <p slot="heading" @click="${this._appBrowserRefresh}">
               <iron-icon icon="icons:search"></iron-icon> Search
             </p>
             <div slot="content">
@@ -347,8 +347,8 @@ class HaxTray extends winEventsElement(LitElement) {
               </hax-app-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion @click="${this._refreshLists}">
-            <p slot="heading">
+          <a11y-collapse accordion>
+            <p slot="heading" @click="${this._refreshLists}">
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
             </p>
             <div slot="content">
