@@ -68,22 +68,6 @@ class HaxCeContext extends LitElement {
           event-name="hax-plate-convert"
         ></hax-context-item>
         <slot slot="primary"></slot>
-        <hax-context-item
-          action
-          slot="primary"
-          icon="icons:settings"
-          label="Settings"
-          event-name="hax-manager-configure"
-          .hidden="${!this.__hasSettingsForm}"
-        ></hax-context-item>
-        <hax-context-item
-          action
-          slot="primary"
-          icon="icons:view-quilt"
-          label="${this.__parentName}"
-          event-name="hax-manager-configure-container"
-          .hidden="${!this.__hasParentSettingsForm}"
-        ></hax-context-item>
       </hax-toolbar>
     `;
   }

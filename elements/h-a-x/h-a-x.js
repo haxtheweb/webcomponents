@@ -16,6 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -116,16 +117,18 @@ ol {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      appStore: {
-        name: "appStore",
-        type: String,
-        value: ""
-      }
-    };
+  
+  ...super.properties,
+  
+  "appStore": {
+    "name": "appStore",
+    "type": String,
+    "value": ""
+  }
+}
+;
   }
 
   /**
@@ -236,7 +239,6 @@ ol {
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
     document.body.appendChild(tray);
-    document.body.appendChild(document.createElement("hax-manager"));
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-preferences-dialog"));
     document.body.appendChild(document.createElement("hax-export-dialog"));

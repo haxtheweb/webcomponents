@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-
 /**
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */

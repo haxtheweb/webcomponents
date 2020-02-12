@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import {
   winEventsElement,
   getRange,
@@ -8,12 +7,6 @@ import {
   stripMSWord
 } from "@lrnwebcomponents/utils/utils.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "./hax-app.js";
-import "./hax-stax.js";
-import "./hax-blox.js";
 /**
  * @customElement hax-store
  */
@@ -114,12 +107,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
        * Hax stax picker element.
        */
       haxBloxPicker: {
-        type: Object
-      },
-      /**
-       * Hax manager element.
-       */
-      haxManager: {
         type: Object
       },
       /**
@@ -402,7 +389,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     ) {
       // support having the request or remote loading
       // depending on the integration type
-      if (typeof newValue.apps === typeof undefined) {
+      if (typeof newValue.apps === typeof undefined && this.shadowRoot && this.shadowRoot.querySelector("#appstore") && this.shadowRoot.querySelector("#appstore").generateRequest) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
       } else {
         // directly injected json object into the DOM
@@ -609,7 +596,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           "haxToast",
           "haxExport",
           "haxPreferences",
-          "haxManager",
           "haxAppPicker",
           "haxTray"
         ].includes(propName)
@@ -621,7 +607,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.haxToast,
           this.haxExport,
           this.haxPreferences,
-          this.haxManager,
           this.haxAppPicker,
           this.haxTray
         );
@@ -639,9 +624,16 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
+    import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
+      if (this.shadowRoot.querySelector("#appstore")) {
+        this.shadowRoot.querySelector("#appstore").generateRequest();
+      }
+    });
     // import voice command stuff in the background
     // @todo only activate if the setting to use it is in place
-    import("@lrnwebcomponents/hal-9000/hal-9000.js");
+    import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
+      this.__hal = this.shadowRoot.querySelector("#hal");
+    });
     // set this global flag so we know it's safe to start trusting data
     // that is written to global preferences / storage bin
     setTimeout(() => {
@@ -654,7 +646,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         );
       }
     }, 100);
-    this.__hal = this.shadowRoot.querySelector("#hal");
+    
     // see if a global was used to prevent this check
     // this is useful when in trusted environments where the statement
     // has been consented to in the application this is utilized in
@@ -715,7 +707,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     haxToast,
     haxExport,
     haxPreferences,
-    haxManager,
     haxAppPicker,
     haxTray
   ) {
@@ -726,7 +717,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       haxToast &&
       haxExport &&
       haxPreferences &&
-      haxManager &&
       haxAppPicker &&
       haxTray
     ) {
@@ -811,8 +801,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (
       window.HaxStore.instance.isTextElement(
         window.HaxStore.instance.activeNode
-      ) &&
-      !window.HaxStore.instance.haxManager.opened
+      )
     ) {
       let pasteContent = "";
       // intercept paste event
@@ -992,6 +981,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       url: "",
       params: {}
     };
+    this.activeContainerNode = null;
+    this.activeNode = null;
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.sessionObject = {};
@@ -1013,16 +1004,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // test for sandboxed env
     let test = document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
-    // polymer specific thing
-    setPassiveTouchGestures(true);
-    // helps promose polyfill for this to be 1 execution chain as opposed to multiple
-    import("@lrnwebcomponents/hax-body/lib/hax-store-dynamic.js");
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
-    this.haxToast = window.SimpleToast.requestAvailability();
+    import("./hax-app.js");
+    import("./hax-stax.js");
+    import("./hax-blox.js");
+    import("@polymer/polymer/lib/utils/settings.js")
+    .then(esModule => {
+      esModule.setPassiveTouchGestures(true);
+    });
+    import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
+      this.haxToast = window.SimpleToast.requestAvailability();
+    });
+    import("@lrnwebcomponents/code-sample/code-sample.js").then(esModule => {
+      this.setHaxProperties(esModule.CodeSample.haxProperties, esModule.CodeSample.tag);
+    });;
+
+    import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   }
 
@@ -1348,7 +1349,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(hr, "hr");
-    this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
   }
   /**
    * A standard event for registering the different pieces of HAX that check in
@@ -1370,42 +1370,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
-    let drawers = ["haxManager", "haxAppPicker", "haxPreferences", "haxExport"];
+    let drawers = ["haxAppPicker", "haxPreferences", "haxExport"];
     for (var i in drawers) {
       if (active === this[drawers[i]]) {
         active.open();
-        if (drawers[i] === "haxManager") {
-          setTimeout(() => {
-            if (
-              active.querySelector("#activepage .iron-selected paper-input") !=
-              null
-            ) {
-              active
-                .querySelector("#activepage .iron-selected paper-input")
-                .focus();
-            }
-            var evt = document.createEvent("UIEvents");
-            evt.initUIEvent("resize", true, false, window, 0);
-            window.dispatchEvent(evt);
-          }, 325);
-        } else {
-          setTimeout(() => {
-            if (
-              active.querySelector(
+        setTimeout(() => {
+          if (
+            active.querySelector(
+              "paper-checkbox,paper-input,textarea,paper-button"
+            ) != null
+          ) {
+            active
+              .querySelector(
                 "paper-checkbox,paper-input,textarea,paper-button"
-              ) != null
-            ) {
-              active
-                .querySelector(
-                  "paper-checkbox,paper-input,textarea,paper-button"
-                )
-                .focus();
-            }
-            var evt = document.createEvent("UIEvents");
-            evt.initUIEvent("resize", true, false, window, 0);
-            window.dispatchEvent(evt);
-          }, 325);
-        }
+              )
+              .focus();
+          }
+          var evt = document.createEvent("UIEvents");
+          evt.initUIEvent("resize", true, false, window, 0);
+          window.dispatchEvent(evt);
+        }, 325);
       } else {
         this[drawers[i]].close();
       }

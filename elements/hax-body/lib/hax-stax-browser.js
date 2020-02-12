@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js";
 /**
  * `hax-stax-browser`
  * @customElement hax-stax-browser
@@ -14,10 +13,6 @@ class HaxStaxBrowser extends LitElement {
         :host {
           display: block;
         }
-        hax-stax-browser-item {
-          margin: 10px;
-          transition: 0.3s all linear;
-        }
       `
     ];
   }
@@ -27,24 +22,21 @@ class HaxStaxBrowser extends LitElement {
   }
   render() {
     return html`
+    <div class="stax-container">
       ${this.staxList.map(
         stax => html`
-          <div class="stax-container">
-            <hax-stax-browser-item
-              .index="${stax.index}"
-              .title="${stax.details.title}"
-              .tag="${stax.details.tag}"
-              .image="${stax.details.image}"
-              .author="${stax.details.author}"
-              .teaser="${stax.details.teaser}"
-              .description="${stax.details.description}"
-              .examples="${stax.details.examples}"
-              .status="${stax.details.status}"
-              .stax="${stax.stax}"
-            ></hax-stax-browser-item>
-          </div>
+          <hax-tray-button
+            wide
+            index="${stax.index}"
+            label="${stax.details.title}"
+            .stax="${stax.stax}"
+            icon="hax:templates"
+            color="green"
+            event-name="insert-stax"
+          ></hax-tray-button>
         `
       )}
+    </div>
     `;
   }
   static get tag() {

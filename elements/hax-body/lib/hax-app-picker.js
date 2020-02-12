@@ -23,11 +23,6 @@ class HaxAppPicker extends LitElement {
         paper-dialog:not(:defined) {
           display: none;
         }
-        hax-app-picker-item {
-          -webkit-transition: 0.3s all linear;
-          transition: 0.3s all linear;
-          display: inline-flex;
-        }
         #closedialog {
           float: right;
           top: 15px;
@@ -42,14 +37,6 @@ class HaxAppPicker extends LitElement {
           height: 40px;
           min-width: unset;
         }
-        .repeat-item {
-          display: inline-flex;
-        }
-        .scroll-wrap {
-          display: flex;
-          justify-content: space-evenly;
-          flex-wrap: wrap;
-        }
         #dialog {
           min-width: 400px;
           min-height: 200px;
@@ -62,17 +49,18 @@ class HaxAppPicker extends LitElement {
           background-color: #ffffff;
           overflow: scroll;
         }
-        #buttonlist {
+        .button-list {
           display: block;
           text-align: left;
           margin: 0px;
           max-width: 50vw;
-          min-height: 100px;
           overflow-x: hidden;
           overflow-y: auto;
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
         }
-        #title,
-        .element-button > div {
+        #title {
           color: var(--hax-color-menu-heading-color, black);
         }
         #title {
@@ -82,13 +70,6 @@ class HaxAppPicker extends LitElement {
           width: calc(100% - 32px);
           background-color: var(--hax-color-menu-heading-bg, #eeeeee);
           color: var(--hax-color-menu-heading-color, black);
-        }
-        .element-button {
-          display: inline-block;
-          text-align: center;
-          width: 96px;
-          margin: 5px 0px;
-          padding: 0;
         }
       `
     ];
@@ -101,9 +82,7 @@ class HaxAppPicker extends LitElement {
     this.pickerType = "gizmo";
     this.opened = false;
     import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-dialog/paper-dialog.js");
     setTimeout(() => {
       this.addEventListener("iron-overlay-canceled", this.close.bind(this));
@@ -114,24 +93,20 @@ class HaxAppPicker extends LitElement {
     return html`
       <paper-dialog id="dialog" ?opened="${this.opened}">
         <h3 id="title">${this.title}</h3>
-        <div id="buttonlist">
-          <div class="scroll-wrap">
-            ${this.selectionList.map(
-              (element, index) => html`
-                <div class="repeat-item">
-                  <hax-app-picker-item
-                    id="picker-item-${index}"
-                    class="element-button"
-                    @click="${this._selected}"
-                    data-selected="${index}"
-                    label="${element.title}"
-                    icon="${element.icon}"
-                    color="${element.color}"
-                  ></hax-app-picker-item>
-                </div>
-              `
-            )}
-          </div>
+        <div class="button-list">
+          ${this.selectionList.map(
+            (element, index) => html`
+            <hax-tray-button
+              id="picker-item-${index}"
+              @click="${this._selected}"
+              data-selected="${index}"
+              label="${element.title}"
+              icon="${element.icon}"
+              color="${element.color}"
+            >
+            </hax-tray-button>
+            `
+          )}
         </div>
         <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
@@ -283,16 +258,6 @@ class HaxAppPicker extends LitElement {
       // haxElement is a unique case
       if (this.pickerType == "gizmo") {
         window.HaxStore.write("activeHaxElement", this._elements[key], this);
-        if (this._elements[key].__type === "__convert") {
-          window.HaxStore.instance.haxManager.editExistingNode = true;
-        }
-        // ensure this is open even though it should be
-        window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
       } else if (this.pickerType == "delete") {
         if (this._elements[key]["title"] === "Yes") {
           if (

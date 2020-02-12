@@ -16,11 +16,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         :host {
           display: block;
         }
-        hax-gizmo-browser-item {
-          margin: 5px;
-          transition: 0.2s all linear;
-          display: inline-flex;
-        }
         #ironlist {
           min-height: 50vh;
           margin: 0;
@@ -57,7 +52,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.__gizmoList = [];
     this.filtered = [];
     import("@polymer/paper-input/paper-input.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser-item.js");
   }
   render() {
     return html`

@@ -1199,7 +1199,6 @@ class HaxBody extends SimpleColors {
       content = content.replace(re, "");
       // now all tags we have defined as valid
       let tags = window.HaxStore.instance.validTagList;
-      tags.push("hax-preview");
       for (var i in tags) {
         string = "style-scope " + tags[i];
         re = new RegExp(string, "g");
@@ -1425,8 +1424,7 @@ class HaxBody extends SimpleColors {
         }
       } else {
         switch (node.layout) {
-          // @todo need to kill the grid plate if going below 0
-          case "1":
+          case "1-1":
             // implies we are removing the grid plate
             await node.childNodes.forEach(el => {
               // verify its a tag
@@ -1440,11 +1438,8 @@ class HaxBody extends SimpleColors {
             setTimeout(() => {
               node.remove();
             }, 0);
-            break;
-          case "1-1":
-            node.layout = "1";
             changed = true;
-            break;
+          break;
           case "1-1-1":
             node.layout = "1-1";
             changed = true;
@@ -1831,17 +1826,6 @@ class HaxBody extends SimpleColors {
       case "hax-plate-up":
         this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
         break;
-      case "hax-manager-open":
-        window.HaxStore.write("activeHaxElement", {}, this);
-        window.HaxStore.instance.haxManager.resetManager(
-          parseInt(detail.value)
-        );
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        break;
       case "hax-plate-down":
         this.haxMoveGridPlate(
           "down",
@@ -1925,66 +1909,6 @@ class HaxBody extends SimpleColors {
           this.activeNode.style.width = detail.value + "%";
         }
         break;
-      // settings button selected from hax-ce-context bar
-      // which means we should skip to the settings page after
-      // we set the thing selected as the active element to work
-      // on in the manager
-      case "hax-manager-configure":
-        // make sure input mixer is closed
-        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
-        // reset the manager
-        window.HaxStore.instance.haxManager.resetManager();
-        // write activeElement updated so it'll go into the preview
-        haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
-        window.HaxStore.write("activeHaxElement", haxElement, this);
-        // clean up the manager before opening
-        window.HaxStore.instance.haxManager.editExistingNode = true;
-        window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        // accessibility enhancement to keyboard focus configure button
-        setTimeout(() => {
-          window.HaxStore.instance.haxManager.shadowRoot
-            .querySelector("#preview")
-            .shadowRoot.querySelector("#configurebutton")
-            .focus();
-        }, 100);
-        break;
-      // container / layout settings button has been activated
-      case "hax-manager-configure-container":
-        window.HaxStore.write(
-          "activeNode",
-          window.HaxStore.instance.activeContainerNode,
-          this
-        );
-        // make sure input mixer is closed
-        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
-        // reset the manager
-        window.HaxStore.instance.haxManager.resetManager();
-        // write activeElement updated so it'll go into the preview
-        haxElement = window.HaxStore.nodeToHaxElement(
-          window.HaxStore.instance.activeNode
-        );
-        window.HaxStore.write("activeHaxElement", haxElement, this);
-        // clean up the manager before opening
-        window.HaxStore.instance.haxManager.editExistingNode = true;
-        window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        // accessibility enhancement to keyboard focus configure button
-        setTimeout(() => {
-          window.HaxStore.instance.haxManager.shadowRoot
-            .querySelector("#preview")
-            .shadowRoot.querySelector("#configurebutton")
-            .focus();
-        }, 100);
-        break;
     }
   }
   /**
@@ -2048,7 +1972,7 @@ class HaxBody extends SimpleColors {
         // keep looking til we are juuuust below the container
         // @todo this is where we force a selection on highest level
         // of the document
-        while (containerNode.parentNode.tagName != "HAX-BODY") {
+        while (containerNode.parentNode.tagName && containerNode.parentNode.tagName != "HAX-BODY") {
           // make sure active is set after closest legit element
           if (
             activeNode === null &&

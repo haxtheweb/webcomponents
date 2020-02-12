@@ -83,8 +83,6 @@ class HaxToolbar extends LitElement {
     import("@polymer/paper-slider/paper-slider.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
@@ -263,7 +261,7 @@ class HaxToolbar extends LitElement {
    */
   _haxPropertiesChanged(newValue, oldValue) {
     // value doesn't matter, just look at what's active
-    if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
+    if (window.HaxStore.instance.activeNode) {
       if (
         window.HaxStore.instance.isTextElement(
           window.HaxStore.instance.activeNode

@@ -1,7 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -36,13 +34,23 @@ class HaxTray extends winEventsElement(LitElement) {
     this.canRedo = true;
     this.elementAlign = "right";
     this.__setup = false;
-    // @todo tie into mobx store
-    this.activeItem = null;
     setTimeout(() => {
       import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
-      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       import("./hax-tray-button.js");
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/iron-icons/device-icons.js");
+      import("@polymer/iron-icons/hardware-icons.js");
+      import("@polymer/iron-icons/communication-icons.js");
+      import("@polymer/iron-icons/social-icons.js");
+      import("@polymer/iron-icons/av-icons.js");
+      import("@polymer/iron-icons/maps-icons.js");
+      import("@polymer/iron-icons/places-icons.js");
+      import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
+      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("./hax-tray-upload.js");
+      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
@@ -103,14 +111,16 @@ class HaxTray extends winEventsElement(LitElement) {
           visibility: visible;
           right: 0;
         }
+        hax-tray-button,
         a11y-collapse,
         a11y-collapse-group,
         hax-app-browser,
         hax-gizmo-browser {
-          transition: 0.3s all linear;
+          transition: 0.2s all linear;
           opacity: 1;
           visibility: visible;
         }
+        hax-tray-button:not(:defined),
         a11y-collapse:not(:defined),
         a11y-collapse-group:not(:defined),
         hax-app-browser:not(:defined),
@@ -123,16 +133,15 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
-          --a11y-collapse-padding-top: 4px;
-          --a11y-collapse-padding-right: 8px;
-          --a11y-collapse-padding-bottom: 4px;
-          --a11y-collapse-padding-left: 8px;
-        }
-        a11y-collapse.settings-form {
+          cursor: pointer;
           --a11y-collapse-padding-top: 0px;
           --a11y-collapse-padding-right: 0px;
           --a11y-collapse-padding-bottom: 0px;
           --a11y-collapse-padding-left: 0px;
+        }
+        a11y-collapse.settings-form div[slot="content"] {
+          padding: 0;
+          margin: 0;
         }
         a11y-collapse[expanded] div[slot="content"] {
           min-height: 300px;
@@ -157,7 +166,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         p[slot="heading"] {
           margin: 8px 0;
-          padding: 0;
+          padding: 4px 8px;
         }
         :host([element-align="right"]) #button {
           right: 0;
@@ -171,7 +180,6 @@ class HaxTray extends winEventsElement(LitElement) {
           top: 0;
           visibility: visible;
           z-index: 10000;
-          transition: all 0.3s ease;
           margin: 0;
         }
         :host([edit-mode]) #button {
@@ -320,7 +328,7 @@ class HaxTray extends winEventsElement(LitElement) {
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse accordion @click="${this._gizmoBrowserRefresh}">
             <p slot="heading">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </p>
@@ -329,7 +337,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse accordion @click="${this._appBrowserRefresh}">
             <p slot="heading">
               <iron-icon icon="icons:search"></iron-icon> Search
             </p>
@@ -341,7 +349,7 @@ class HaxTray extends winEventsElement(LitElement) {
           </a11y-collapse>
           <a11y-collapse accordion @click="${this._refreshLists}">
             <p slot="heading">
-              <iron-icon icon="hax:templates"></iron-icon>Templates
+              <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
             </p>
             <div slot="content">
               <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
@@ -351,6 +359,15 @@ class HaxTray extends winEventsElement(LitElement) {
         </a11y-collapse-group>
       </div>
     `;
+  }
+  /**
+   * Handlers to refresh contents on click
+   */
+  _gizmoBrowserRefresh(e) {
+    this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
+  }
+  _appBrowserRefresh(e) {
+    this.shadowRoot.querySelector("#appbrowser").resetBrowser();
   }
   _refreshLists(e) {
     this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
@@ -367,6 +384,53 @@ class HaxTray extends winEventsElement(LitElement) {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
+      case "search-selected":
+        this.dispatchEvent(
+          new CustomEvent("hax-search-source-updated", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: detail.index
+          })
+        );
+      break;
+      case "insert-stax":
+        this.dispatchEvent(
+          new CustomEvent("hax-insert-content-array", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e.path[0].stax
+          })
+        );
+      break;
+      case "insert-blox":
+        let content = "";
+        for (var i = 0; i < e.path[0].blox.length; i++) {
+          let node = window.HaxStore.haxElementToNode(
+            e.path[0].blox[i].tag,
+            e.path[0].blox[i].content,
+            e.path[0].blox[i].properties
+          );
+          content += window.HaxStore.nodeToContent(node);
+        }
+        // generate a hax element
+        let blox = {
+          tag: "grid-plate",
+          properties: {
+            layout: e.path[0].layout
+          },
+          content: content
+        };
+        this.dispatchEvent(
+          new CustomEvent("hax-insert-content", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: blox
+          })
+        );
+      break;
       case "insert-tag":
         let gizmo = {
           tag: detail.value
@@ -581,13 +645,6 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         })
       );
-      /**
-       * @todo HACK. actually fix this when refactoring these elements
-       */
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#appbrowser").resetBrowser();
-        this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
-      }, 2000);
     }
   }
   /**
@@ -759,9 +816,7 @@ class HaxTray extends winEventsElement(LitElement) {
         if (
           typeof props.settings[this.formKey][prop].slot !== typeof undefined
         ) {
-          const newValueChildren = FlattenedNodesObserver.getFlattenedNodes(
-            activeNode
-          );
+          const newValueChildren = activeNode.childNodes;
           // walk through the slots looking for the value of it
           for (var i in newValueChildren) {
             // test for element nodes to be safe
@@ -812,8 +867,6 @@ class HaxTray extends winEventsElement(LitElement) {
           ]
         }
       ];
-      console.log(this.activeSchema);
-      console.log(this.activeValue);
       this.shadowRoot.querySelector("#settingsform").fields = [
         ...this.activeSchema
       ];
@@ -822,6 +875,9 @@ class HaxTray extends winEventsElement(LitElement) {
       };
     }
   }
+  /**
+   * Convert an object to an array
+   */
   _toArray(obj) {
     if (obj == null) {
       return [];
@@ -829,134 +885,6 @@ class HaxTray extends winEventsElement(LitElement) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
-  }
-  /**
-   * Form key changed, rebuild schema for the form
-   * but don't update the element. Critical difference.
-   */
-  _formKeyChanged(newValue) {
-    // ensure this doesn't run the 1st pass
-    var schema = {};
-    // see if we can get schema off of this.
-    if (
-      typeof this.previewNode !== typeof undefined &&
-      typeof this.previewNode.tagName !== typeof undefined &&
-      typeof window.HaxStore.instance.elementList[
-        this.previewNode.tagName.toLowerCase()
-      ] !== typeof undefined
-    ) {
-      let props =
-        window.HaxStore.instance.elementList[
-          this.previewNode.tagName.toLowerCase()
-        ];
-      if (typeof this.previewNode.getHaxJSONSchemaType === "function") {
-        schema = window.HaxStore.instance.getHaxJSONSchema(
-          newValue,
-          props,
-          this.previewNode
-        );
-      } else {
-        schema = window.HaxStore.instance.getHaxJSONSchema(newValue, props);
-      }
-      for (var property in this.activeHaxElement.properties) {
-        if (this.activeHaxElement.properties.hasOwnProperty(property)) {
-          if (typeof schema.properties[property] !== typeof undefined) {
-            schema.properties[
-              property
-            ].value = this.activeHaxElement.properties[property];
-            // support custom element input
-            if (
-              typeof schema.properties[property].component !==
-                typeof undefined &&
-              schema.properties[property].component.properties
-            ) {
-              schema.properties[
-                property
-              ].component.properties.value = this.activeHaxElement.properties[
-                property
-              ];
-            }
-            // attempt to set the property in the preview node
-            if (
-              property != "prefix" &&
-              this.activeHaxElement.properties[property] != null &&
-              !this.activeHaxElement.properties[property].readOnly
-            ) {
-              if (typeof this.previewNode.set === "function") {
-                // attempt to set it, should be no problem but never know
-                try {
-                  this.previewNode.set(
-                    property,
-                    this.activeHaxElement.properties[property]
-                  );
-                } catch (e) {
-                  console.warn(`${property} is busted some how`);
-                  console.warn(e);
-                }
-              } else if (this.previewNode[property]) {
-                this.previewNode[property] = this.activeHaxElement.properties[
-                  property
-                ];
-              } else {
-                // set attribute, this doesn't have the Polymer convention
-                // this is Vanilla, Lit, etc
-                // set is powerful though for objects and arrays so they will reflect instantly
-                this.previewNode.setAttribute(
-                  property,
-                  this.activeHaxElement.properties[property]
-                );
-              }
-            } else if (property === "prefix") {
-              this.previewNode.setAttribute(
-                "prefix",
-                this.activeHaxElement.properties[property]
-              );
-            } else {
-              console.warn(`${property} is busted some how`);
-            }
-          }
-          this.activeValue.settings.configure[
-            `configure-${property}`
-          ] = this.activeHaxElement.properties[property];
-        }
-      }
-      var slotsApplied = false;
-      for (var prop in props.settings[newValue]) {
-        let previewNode = this.previewNode;
-        if (
-          typeof props.settings[this.formKey][prop].slot !== typeof undefined &&
-          !slotsApplied
-        ) {
-          slotsApplied = true;
-
-          // walk through the slots looking for the value of it
-          const previewNodeChildren = FlattenedNodesObserver.getFlattenedNodes(
-            previewNode
-          );
-          for (var i in previewNodeChildren) {
-            // test for element nodes to be safe
-            if (
-              typeof previewNodeChildren[i] !== typeof undefined &&
-              previewNodeChildren[i].nodeType === 1 &&
-              previewNodeChildren[i].slot ===
-                props.settings[this.formKey][prop].slot
-            ) {
-              if (
-                typeof previewNodeChildren[i].innerHTML !== typeof undefined
-              ) {
-                schema.properties[
-                  props.settings[this.formKey][prop].slot
-                ].value = previewNodeChildren[i].innerHTML;
-                this.activeValue.settings.configure[
-                  `configure-${props.settings[this.formKey][prop].slot}`
-                ] = previewNodeChildren[i].innerHTML;
-              }
-            }
-          }
-        }
-      }
-    }
-    this.activeSchema = { ...schema };
   }
   /**
    * Notice change in values from below

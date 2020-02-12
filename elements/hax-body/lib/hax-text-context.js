@@ -53,9 +53,7 @@ class HaxTextContext extends LitElement {
   constructor() {
     super();
     import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
@@ -340,6 +338,7 @@ class HaxTextContext extends LitElement {
   _haxContextOperation(e) {
     let detail = e.detail;
     let selection = window.HaxStore.getSelection();
+    let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "close-menu":
@@ -395,18 +394,15 @@ class HaxTextContext extends LitElement {
       // wow these are way too easy
       case "text-bold":
         document.execCommand("bold");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-italic":
         document.execCommand("italic");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-underline":
         document.execCommand("underline");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -417,8 +413,7 @@ class HaxTextContext extends LitElement {
         break;
       case "text-subscript":
         document.execCommand("subscript");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -429,8 +424,7 @@ class HaxTextContext extends LitElement {
         break;
       case "text-superscript":
         document.execCommand("superscript");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -441,13 +435,11 @@ class HaxTextContext extends LitElement {
         break;
       case "text-remove-format":
         document.execCommand("removeFormat");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-strikethrough":
         document.execCommand("strikeThrough");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -488,14 +480,12 @@ class HaxTextContext extends LitElement {
               e.stopImmediatePropagation();
             });
           }
-          e.preventDefault();
-          e.stopPropagation();
+          prevent = true;
         }
         break;
       case "text-unlink":
         document.execCommand("unlink");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       /**
        * Our bad actors when it comes to polyfill'ed shadowDOM.
@@ -503,14 +493,16 @@ class HaxTextContext extends LitElement {
        */
       case "text-indent":
         document.execCommand("indent");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-outdent":
         document.execCommand("outdent");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
+    }
+    if (prevent) {
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 

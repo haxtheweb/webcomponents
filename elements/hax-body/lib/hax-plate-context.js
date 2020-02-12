@@ -23,9 +23,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/hardware-icons.js");
     }, 0);
   }
   static get tag() {

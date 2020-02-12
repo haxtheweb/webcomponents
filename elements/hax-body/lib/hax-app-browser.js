@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import "./hax-tray-button";
+import "@polymer/paper-input/paper-input.js";
 
 /**
  * `hax-app-browser`
@@ -20,12 +22,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         }
         :host *[hidden] {
           display: none;
-        }
-        hax-app-browser-item {
-          margin: 8px;
-          -webkit-transition: 0.3s all linear;
-          transition: 0.3s all linear;
-          display: inline-flex;
         }
         .title {
           position: relative;
@@ -56,8 +52,8 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-app-selected": "_appSelected",
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-search-source-updated": "_searchSelected",
     };
     this.title = "Search for media";
     this.searching = false;
@@ -65,9 +61,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     this.appList = [];
     this.filtered = [];
     this.hasActive = false;
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
   }
   render() {
@@ -92,19 +85,14 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       <div class="item-wrapper">
         ${this.filtered.map(
           app => html`
-            <hax-app-browser-item
+            <hax-tray-button
               index="${app.index}"
-              title="${app.details.title}"
+              label="${app.details.title}"
               icon="${app.details.icon}"
-              image="${app.details.tag}"
               color="${app.details.color}"
-              meta="${app.details.meta}"
-              groups="${app.details.groups}"
-              handles="${app.details.handles}"
-              description="${app.details.description}"
-              rating="${app.details.rating}"
-              tags="${app.details.tags}"
-            ></hax-app-browser-item>
+              event-name="search-selected"
+              event-data="${app.index}"
+            ></hax-tray-button>
           `
         )}
       </div>
@@ -180,7 +168,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   /**
    * App has been selected.
    */
-  _appSelected(e) {
+  _searchSelected(e) {
     // item bubbled up
     if (typeof e.detail !== typeof undefined) {
       this.__activeApp = e.detail;
@@ -194,7 +182,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
    */
   _activeAppChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined && newValue != null) {
-      window.HaxStore.instance.haxManager.searching = true;
       this.hasActive = true;
     } else {
       this.hasActive = false;

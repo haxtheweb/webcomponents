@@ -123,6 +123,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
+    import("@lrnwebcomponents/simple-picker/lib/simple-picker-option.js");
   }
   /**
    * LitElement life cycle - render callback

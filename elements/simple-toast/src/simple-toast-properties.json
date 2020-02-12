@@ -3,7 +3,6 @@
    * Opened state of the toast, use event to change
    */
   "opened": {
-    "name": "opened",
     "type": Boolean,
     "reflect": true
   },
@@ -11,14 +10,12 @@
    * Plain text based message to display
    */
   "text": {
-    "name": "text",
     "type": String
   },
   /**
    * Class name, fit-bottom being a useful one
    */
   "classStyle": {
-    "name": "classStyle",
     "type": String,
     "attribute": "class-style"
   },
@@ -26,7 +23,6 @@
    * Text for the close button
    */
   "closeText": {
-    "name": "closeText",
     "type": String,
     "attribute": "close-text"
   },
@@ -34,14 +30,12 @@
    * How long the toast message should be displayed
    */
   "duration": {
-    "name": "duration",
     "type": Number
   },
   /**
    * Event callback when hide is called
    */
   "eventCallback": {
-    "name": "eventCallback",
     "type": String,
     "attribute": "event-callback"
   },
@@ -49,7 +43,6 @@
    * If there should be a close button shown
    */
   "closeButton": {
-    "name": "closeButton",
     "type": Boolean,
     "reflect": true,
     "attribute": "close-button"

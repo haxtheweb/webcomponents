@@ -1,15 +1,5 @@
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/iron-icons/places-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
@@ -23,8 +13,10 @@ class HAXTrayButton extends SimpleColors {
   constructor() {
     super();
     this.mini = false;
+    this.wide = false;
     this.eventData = null;
     this.eventName = null;
+    this.icon = null;
   }
   static get properties() {
     return {
@@ -32,6 +24,10 @@ class HAXTrayButton extends SimpleColors {
       mini: {
         type: Boolean,
         reflect: true
+      },
+      wide: {
+        type: Boolean,
+        reflect: true,
       },
       /**
        * Index position in the original list of imports
@@ -94,12 +90,19 @@ class HAXTrayButton extends SimpleColors {
           overflow: hidden;
           word-break: break-all;
         }
+        :host([wide]) {
+          display:block;
+          width: 100%;
+        }
+        :host([wide]) .item-label {
+          width: unset;
+        }
+        :host([wide]) paper-button {
+          align-items: center;
+            justify-content: space-evenly;
+        }
         .flip-icon {
           transform: rotateY(180deg);
-        }
-        .inner {
-          display: block;
-          max-width: 90px;
         }
         paper-button {
           color: var(--hax-color-text);
@@ -147,9 +150,6 @@ class HAXTrayButton extends SimpleColors {
         .button-inner {
           display: flex;
         }
-        .flip-icon {
-          transform: rotateY(180deg);
-        }
         simple-tooltip {
           font-size: 16px;
           --simple-tooltip-background: #000000;
@@ -173,9 +173,11 @@ class HAXTrayButton extends SimpleColors {
         @click="${this._fireEvent}"
         .data-voicecommand="select ${this.title}"
       >
+      ${this.icon ? html`
         <div class="button-inner">
-          <iron-icon icon="${this.icon}" ?hidden="${!this.icon}"></iron-icon>
+          <iron-icon icon="${this.icon}"></iron-icon>
         </div>
+      ` : html``}
         ${this.mini
           ? html``
           : html`
