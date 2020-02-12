@@ -846,9 +846,7 @@ class HaxBody extends SimpleColors {
    * Check if part of the passed element is int he viewport
    */
   elementInViewport(el) {
-    let top =
-      el.offsetTop -
-      32;
+    let top = el.offsetTop - 32;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;

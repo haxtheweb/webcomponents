@@ -1370,12 +1370,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
-    let drawers = [
-      "haxManager",
-      "haxAppPicker",
-      "haxPreferences",
-      "haxExport"
-    ];
+    let drawers = ["haxManager", "haxAppPicker", "haxPreferences", "haxExport"];
     for (var i in drawers) {
       if (active === this[drawers[i]]) {
         active.open();
