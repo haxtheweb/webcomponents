@@ -44,7 +44,7 @@ class SimpleToast extends LitElement {
   firstUpdated() {
     setTimeout(() => {
       import("@polymer/paper-toast/paper-toast.js");
-      import("@polymer/paper-button/paper-button.js");        
+      import("@polymer/paper-button/paper-button.js");
     }, 0);
   }
   connectedCallback() {

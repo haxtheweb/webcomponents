@@ -96,15 +96,15 @@ class HaxAppPicker extends LitElement {
         <div class="button-list">
           ${this.selectionList.map(
             (element, index) => html`
-            <hax-tray-button
-              id="picker-item-${index}"
-              @click="${this._selected}"
-              data-selected="${index}"
-              label="${element.title}"
-              icon="${element.icon}"
-              color="${element.color}"
-            >
-            </hax-tray-button>
+              <hax-tray-button
+                id="picker-item-${index}"
+                @click="${this._selected}"
+                data-selected="${index}"
+                label="${element.title}"
+                icon="${element.icon}"
+                color="${element.color}"
+              >
+              </hax-tray-button>
             `
           )}
         </div>

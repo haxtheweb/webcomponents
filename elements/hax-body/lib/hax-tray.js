@@ -393,7 +393,7 @@ class HaxTray extends winEventsElement(LitElement) {
             detail: detail.index
           })
         );
-      break;
+        break;
       case "insert-stax":
         this.dispatchEvent(
           new CustomEvent("hax-insert-content-array", {
@@ -403,7 +403,7 @@ class HaxTray extends winEventsElement(LitElement) {
             detail: e.path[0].stax
           })
         );
-      break;
+        break;
       case "insert-blox":
         let content = "";
         for (var i = 0; i < e.path[0].blox.length; i++) {
@@ -430,7 +430,7 @@ class HaxTray extends winEventsElement(LitElement) {
             detail: blox
           })
         );
-      break;
+        break;
       case "insert-tag":
         let gizmo = {
           tag: detail.value

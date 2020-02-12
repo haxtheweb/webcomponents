@@ -22,21 +22,22 @@ class HaxBloxBrowser extends LitElement {
   }
   render() {
     return html`
-    <div class="blox-container">
-      ${this.bloxList.map(
-        blox => html`
-        <hax-tray-button
-          wide
-          index="${blox.index}"
-          layout="${blox.details.layout}"
-          label="${blox.details.title}"
-          icon="${blox.details.icon}"
-          event-name="insert-blox"
-          color="orange"
-          .blox="${blox.blox}"
-        ></hax-tray-button>`
-      )}
-    </div>
+      <div class="blox-container">
+        ${this.bloxList.map(
+          blox => html`
+            <hax-tray-button
+              wide
+              index="${blox.index}"
+              layout="${blox.details.layout}"
+              label="${blox.details.title}"
+              icon="${blox.details.icon}"
+              event-name="insert-blox"
+              color="orange"
+              .blox="${blox.blox}"
+            ></hax-tray-button>
+          `
+        )}
+      </div>
     `;
   }
 

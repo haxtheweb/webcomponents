@@ -854,7 +854,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       ) {
         // open score report in a modal now
         this.shadowRoot.querySelector("#dialog").toggle();
-        this.shadowRoot.querySelector("#scoreboard").title = "Your final score for the game";
+        this.shadowRoot.querySelector("#scoreboard").title =
+          "Your final score for the game";
         this.scoreBoardToggle({});
         const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,

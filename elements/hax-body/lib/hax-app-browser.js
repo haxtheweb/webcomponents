@@ -53,7 +53,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-search-source-updated": "_searchSelected",
+      "hax-search-source-updated": "_searchSelected"
     };
     this.title = "Search for media";
     this.searching = false;

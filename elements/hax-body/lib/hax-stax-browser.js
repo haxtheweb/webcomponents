@@ -22,21 +22,21 @@ class HaxStaxBrowser extends LitElement {
   }
   render() {
     return html`
-    <div class="stax-container">
-      ${this.staxList.map(
-        stax => html`
-          <hax-tray-button
-            wide
-            index="${stax.index}"
-            label="${stax.details.title}"
-            .stax="${stax.stax}"
-            icon="hax:templates"
-            color="green"
-            event-name="insert-stax"
-          ></hax-tray-button>
-        `
-      )}
-    </div>
+      <div class="stax-container">
+        ${this.staxList.map(
+          stax => html`
+            <hax-tray-button
+              wide
+              index="${stax.index}"
+              label="${stax.details.title}"
+              .stax="${stax.stax}"
+              icon="hax:templates"
+              color="green"
+              event-name="insert-stax"
+            ></hax-tray-button>
+          `
+        )}
+      </div>
     `;
   }
   static get tag() {

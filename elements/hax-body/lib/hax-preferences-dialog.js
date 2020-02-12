@@ -59,7 +59,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         eco-json-schema-object {
           color: white;
           --paper-checkbox-size: 16px;
-            --paper-checkbox-checked-ink-color: var(--hax-color-accent1);
+          --paper-checkbox-checked-ink-color: var(--hax-color-accent1);
         }
         .pref-container {
           text-align: left;

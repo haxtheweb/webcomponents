@@ -27,7 +27,7 @@ class HAXTrayButton extends SimpleColors {
       },
       wide: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       /**
        * Index position in the original list of imports
@@ -91,7 +91,7 @@ class HAXTrayButton extends SimpleColors {
           word-break: break-all;
         }
         :host([wide]) {
-          display:block;
+          display: block;
           width: 100%;
         }
         :host([wide]) .item-label {
@@ -99,7 +99,7 @@ class HAXTrayButton extends SimpleColors {
         }
         :host([wide]) paper-button {
           align-items: center;
-            justify-content: space-evenly;
+          justify-content: space-evenly;
         }
         .flip-icon {
           transform: rotateY(180deg);
@@ -173,11 +173,13 @@ class HAXTrayButton extends SimpleColors {
         @click="${this._fireEvent}"
         .data-voicecommand="select ${this.title}"
       >
-      ${this.icon ? html`
-        <div class="button-inner">
-          <iron-icon icon="${this.icon}"></iron-icon>
-        </div>
-      ` : html``}
+        ${this.icon
+          ? html`
+              <div class="button-inner">
+                <iron-icon icon="${this.icon}"></iron-icon>
+              </div>
+            `
+          : html``}
         ${this.mini
           ? html``
           : html`

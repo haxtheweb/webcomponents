@@ -1439,7 +1439,7 @@ class HaxBody extends SimpleColors {
               node.remove();
             }, 0);
             changed = true;
-          break;
+            break;
           case "1-1-1":
             node.layout = "1-1";
             changed = true;
@@ -1972,7 +1972,10 @@ class HaxBody extends SimpleColors {
         // keep looking til we are juuuust below the container
         // @todo this is where we force a selection on highest level
         // of the document
-        while (containerNode.parentNode.tagName && containerNode.parentNode.tagName != "HAX-BODY") {
+        while (
+          containerNode.parentNode.tagName &&
+          containerNode.parentNode.tagName != "HAX-BODY"
+        ) {
           // make sure active is set after closest legit element
           if (
             activeNode === null &&

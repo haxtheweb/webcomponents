@@ -389,7 +389,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     ) {
       // support having the request or remote loading
       // depending on the integration type
-      if (typeof newValue.apps === typeof undefined && this.shadowRoot && this.shadowRoot.querySelector("#appstore") && this.shadowRoot.querySelector("#appstore").generateRequest) {
+      if (
+        typeof newValue.apps === typeof undefined &&
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#appstore") &&
+        this.shadowRoot.querySelector("#appstore").generateRequest
+      ) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
       } else {
         // directly injected json object into the DOM
@@ -624,14 +629,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    * ready life cycle
    */
   firstUpdated(changedProperties) {
-    import("@polymer/iron-ajax/iron-ajax.js").then((esModule) => {
+    import("@polymer/iron-ajax/iron-ajax.js").then(esModule => {
       if (this.shadowRoot.querySelector("#appstore")) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
       }
     });
     // import voice command stuff in the background
     // @todo only activate if the setting to use it is in place
-    import("@lrnwebcomponents/hal-9000/hal-9000.js").then((esModule) => {
+    import("@lrnwebcomponents/hal-9000/hal-9000.js").then(esModule => {
       this.__hal = this.shadowRoot.querySelector("#hal");
     });
     // set this global flag so we know it's safe to start trusting data
@@ -646,7 +651,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         );
       }
     }, 100);
-    
+
     // see if a global was used to prevent this check
     // this is useful when in trusted environments where the statement
     // has been consented to in the application this is utilized in
@@ -1012,16 +1017,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     import("./hax-app.js");
     import("./hax-stax.js");
     import("./hax-blox.js");
-    import("@polymer/polymer/lib/utils/settings.js")
-    .then(esModule => {
+    import("@polymer/polymer/lib/utils/settings.js").then(esModule => {
       esModule.setPassiveTouchGestures(true);
     });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       this.haxToast = window.SimpleToast.requestAvailability();
     });
     import("@lrnwebcomponents/code-sample/code-sample.js").then(esModule => {
-      this.setHaxProperties(esModule.CodeSample.haxProperties, esModule.CodeSample.tag);
-    });;
+      this.setHaxProperties(
+        esModule.CodeSample.haxProperties,
+        esModule.CodeSample.tag
+      );
+    });
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
@@ -1381,9 +1388,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             ) != null
           ) {
             active
-              .querySelector(
-                "paper-checkbox,paper-input,textarea,paper-button"
-              )
+              .querySelector("paper-checkbox,paper-input,textarea,paper-button")
               .focus();
           }
           var evt = document.createEvent("UIEvents");
