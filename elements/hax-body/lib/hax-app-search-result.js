@@ -149,7 +149,14 @@ class HaxAppSearchResult extends LitElement {
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
         if (typeof haxElements[0].tag !== typeof undefined) {
-          window.HaxStore.write("activeHaxElement", haxElements[0], this);
+          this.dispatchEvent(
+            new CustomEvent("hax-insert-content", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: haxElements[0]
+            })
+          );
         }
       } else {
         // hand off to hax-app-picker to deal with the rest of this

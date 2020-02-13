@@ -22,9 +22,7 @@ class HaxTextContext extends LitElement {
           background-color: var(--hax-contextual-action-color);
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
-          height: 36px;
           padding: 0 8px;
-          min-height: 36px;
         }
         paper-item:hover {
           cursor: pointer;
@@ -74,6 +72,7 @@ class HaxTextContext extends LitElement {
       <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
           action
+          mini
           slot="primary"
           .selected-value="${this.selectedValue}"
           @selected-value-changed="${this.selectedValueChanged}"
@@ -113,6 +112,7 @@ class HaxTextContext extends LitElement {
           </paper-item>
         </hax-context-item-menu>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-bold"
@@ -120,6 +120,7 @@ class HaxTextContext extends LitElement {
           event-name="text-bold"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-italic"
@@ -127,6 +128,7 @@ class HaxTextContext extends LitElement {
           event-name="text-italic"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:insert-link"
@@ -134,6 +136,7 @@ class HaxTextContext extends LitElement {
           event-name="text-link"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="mdextra:unlink"
@@ -141,6 +144,7 @@ class HaxTextContext extends LitElement {
           event-name="text-unlink"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-list-bulleted"
@@ -149,6 +153,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-list-numbered"
@@ -157,6 +162,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-indent-decrease"
@@ -165,6 +171,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-indent-increase"
@@ -173,6 +180,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="editor:format-clear"
@@ -180,6 +188,7 @@ class HaxTextContext extends LitElement {
           event-name="text-remove-format"
         ></hax-context-item-textop>
         <hax-context-item
+          mini
           action
           slot="primary"
           icon="hax:add-brick"
@@ -188,6 +197,7 @@ class HaxTextContext extends LitElement {
           .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
+          mini
           action
           slot="primary"
           icon="hax:add-brick"

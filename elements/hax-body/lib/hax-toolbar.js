@@ -12,7 +12,6 @@ class HaxToolbar extends LitElement {
           visibility: visible;
           transition: 0.3s all ease;
           box-sizing: border-box;
-          height: 36px;
           pointer-events: all;
         }
         :host *[hidden] {
@@ -20,7 +19,6 @@ class HaxToolbar extends LitElement {
         }
         .wrapper {
           display: flex;
-          height: 38px;
           align-items: center;
         }
         :host .wrapper ::slotted(*) {
@@ -56,8 +54,8 @@ class HaxToolbar extends LitElement {
           background-color: var(--hax-contextual-action-color);
           color: #ffffff;
           font-weight: bold;
-          height: 36px;
           min-width: 100px;
+          height: 28px;
           --paper-slider-font-color: black;
           --paper-slider-active-color: #ffffff;
           --paper-slider-knob-color: #ffffff;
@@ -99,6 +97,7 @@ class HaxToolbar extends LitElement {
       <div class="wrapper">
         <slot name="prefix"></slot>
         <hax-context-item-menu
+          mini
           action
           ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
@@ -149,6 +148,7 @@ class HaxToolbar extends LitElement {
         </simple-tooltip>
         <slot name="primary"></slot>
         <hax-context-item-menu
+          mini
           action
           ?hidden="${this.hideMore}"
           icon="more-vert"

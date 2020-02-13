@@ -21,11 +21,9 @@ class HaxCeContext extends LitElement {
         }
         :host {
           display: block;
-          height: 36px;
         }
         hax-context-item {
           margin: 0;
-          height: 36px;
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
@@ -60,6 +58,7 @@ class HaxCeContext extends LitElement {
         @size-changed="${this.ceSizeChanged}"
       >
         <hax-context-item
+          mini
           action
           slot="prefix"
           icon="hax:bricks"
@@ -224,6 +223,7 @@ class HaxCeContext extends LitElement {
         item.options = setting.options;
         item.icon = setting.icon;
         item.action = true;
+        item.mini = true;
         item.inputMethod = setting.inputMethod;
         item.required = setting.required;
         item.options = setting.options;

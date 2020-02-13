@@ -18,6 +18,7 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
+      "hax-app-picker-selection": "_haxAppPickerSelection",
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-active-hover-name": "_activeNameChange"
     };
@@ -61,6 +62,9 @@ class HaxTray extends winEventsElement(LitElement) {
       import("./hax-blox-browser.js");
       import("./hax-stax-browser.js");
     }, 0);
+  }
+  _haxAppPickerSelection(e) {
+    console.log(e);
   }
   /**
    * Store updated, sync.
@@ -133,11 +137,20 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
-          cursor: pointer;
+          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-1);
           --a11y-collapse-padding-top: 0px;
           --a11y-collapse-padding-right: 0px;
           --a11y-collapse-padding-bottom: 0px;
           --a11y-collapse-padding-left: 0px;
+        }
+        a11y-collapse div[slot="heading"] {
+          cursor: pointer;
+        }
+        a11y-collapse:hover {
+          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-2);
+        }
+        a11y-collapse[expanded] {
+          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-3);
         }
         a11y-collapse.settings-form div[slot="content"] {
           padding: 0;
@@ -164,9 +177,9 @@ class HaxTray extends winEventsElement(LitElement) {
           display: flex;
           justify-content: flex-end;
         }
-        p[slot="heading"] {
-          margin: 8px 0;
-          padding: 4px 8px;
+        div[slot="heading"] {
+          margin: 0;
+          padding: 12px 8px;
         }
         :host([element-align="right"]) #button {
           right: 0;
@@ -256,6 +269,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <div class="active-op-name">${this.activeOperationName}</div>
           </div>
           <div class="quick">
+            <slot name="tray-buttons-pre"></slot>
             <hax-tray-button
               mini
               icon="hax:paragraph"
@@ -267,9 +281,31 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
+              icon="hax:h2"
+              label="Insert header"
+              event-name="insert-tag"
+              event-data="h2"
+              event-content="Header"
+              voice-command="insert header"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              icon="image:image"
+              label="Insert image"
+              event-name="insert-tag"
+              event-properties='{"src":"https://haxtheweb.org/assets/banner.jpg"}'
+              event-data="img"
+              voice-command="insert image"
+              class="hide-small"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
               icon="hax:hr"
               label="Insert horizontal line"
-              event-name="divider"
+              event-name="insert-tag"
+              event-data="hr"
+              event-properties='{"style":"width:75%;"}'
               voice-command="insert horizontal line"
               class="hide-small"
             ></hax-tray-button>
@@ -281,7 +317,6 @@ class HaxTray extends winEventsElement(LitElement) {
               label="View page source"
               voice-command="view (page) source"
             ></hax-tray-button>
-            <slot></slot>
             <hax-tray-button
               mini
               icon="icons:undo"
@@ -311,16 +346,17 @@ class HaxTray extends winEventsElement(LitElement) {
           </div>
         </div>
         <a11y-collapse-group>
+          <slot name="tray-collapse-pre"></slot>
           <a11y-collapse
             class="settings-form"
             accordion
             ?disabled="${!this.hasSettings}"
           >
-            <p slot="heading">
+            <div slot="heading">
               <iron-icon icon="icons:settings"></iron-icon> ${this
                 .activeTagName}
               Settings
-            </p>
+            </div>
             <div slot="content">
               <simple-fields
                 id="settingsform"
@@ -329,33 +365,32 @@ class HaxTray extends winEventsElement(LitElement) {
             </div>
           </a11y-collapse>
           <a11y-collapse accordion>
-            <p slot="heading" @click="${this._gizmoBrowserRefresh}">
+            <div slot="heading" @click="${this._gizmoBrowserRefresh}">
               <iron-icon icon="icons:add"></iron-icon> Add Content
-            </p>
+            </div>
             <div slot="content">
               <hax-tray-upload></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
           <a11y-collapse accordion>
-            <p slot="heading" @click="${this._appBrowserRefresh}">
+            <div slot="heading" @click="${this._appBrowserRefresh}">
               <iron-icon icon="icons:search"></iron-icon> Search
-            </p>
+            </div>
             <div slot="content">
-              <hax-app-browser id="appbrowser">
-                <slot></slot>
-              </hax-app-browser>
+              <hax-app-browser id="appbrowser"></hax-app-browser>
             </div>
           </a11y-collapse>
           <a11y-collapse accordion>
-            <p slot="heading" @click="${this._refreshLists}">
+            <div slot="heading" @click="${this._refreshLists}">
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
-            </p>
+            </div>
             <div slot="content">
               <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
               <hax-stax-browser id="staxbrowser"></hax-stax-browser>
             </div>
           </a11y-collapse>
+          <slot name="tray-collapse-post"></slot>
         </a11y-collapse-group>
       </div>
     `;
@@ -435,8 +470,16 @@ class HaxTray extends winEventsElement(LitElement) {
         let gizmo = {
           tag: detail.value
         };
+        let properties = JSON.parse(e.path[0].getAttribute('event-properties'));
+        let innerContent = e.path[0].getAttribute('event-content');
+        if (properties == null) {
+          properties = {};
+        }
+        if (innerContent == null) {
+          innerContent = '';
+        }
         // most likely empty values but just to be safe
-        let element = window.HaxStore.haxElementPrototype(gizmo);
+        let element = window.HaxStore.haxElementPrototype(gizmo, properties, innerContent);
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,
@@ -460,21 +503,6 @@ class HaxTray extends winEventsElement(LitElement) {
           this
         );
         break;
-      case "divider":
-        detail.tag = "hr";
-        detail.content = "";
-        detail.properties = {
-          style: "width:100%;"
-        };
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
       case "undo":
         document.execCommand("undo");
         break;
@@ -491,9 +519,6 @@ class HaxTray extends winEventsElement(LitElement) {
             detail: detail
           })
         );
-        break;
-      default:
-        // we sit on this, something else will have to handle it
         break;
     }
   }

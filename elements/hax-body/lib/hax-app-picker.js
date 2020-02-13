@@ -257,7 +257,14 @@ class HaxAppPicker extends LitElement {
     if (typeof this._elements[key] !== typeof undefined) {
       // haxElement is a unique case
       if (this.pickerType == "gizmo") {
-        window.HaxStore.write("activeHaxElement", this._elements[key], this);
+        this.dispatchEvent(
+          new CustomEvent("hax-insert-content", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this._elements[key]
+          })
+        );
       } else if (this.pickerType == "delete") {
         if (this._elements[key]["title"] === "Yes") {
           if (

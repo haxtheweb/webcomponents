@@ -19,8 +19,6 @@ class HaxContextItemTextop extends LitElement {
         :host {
           display: inline-flex;
           box-sizing: border-box;
-          height: 36px;
-          width: 36px;
         }
         :host([menu]) {
           display: flex;

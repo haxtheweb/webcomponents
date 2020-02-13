@@ -76,6 +76,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     this.media = [];
     this.resultMap = {};
     import("@polymer/paper-input/paper-input.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");

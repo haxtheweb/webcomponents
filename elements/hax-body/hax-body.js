@@ -1313,16 +1313,16 @@ class HaxBody extends SimpleColors {
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
           container,
-          -2,
-          -38
+          -3,
+          -30
         );
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
           container,
-          -2,
-          -38
+          -3,
+          -30
         );
       }
       if (container) {

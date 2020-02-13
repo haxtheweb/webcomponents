@@ -160,12 +160,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object
       },
       /**
-       * Active HAX Element if we have one we are working on.
-       */
-      activeHaxElement: {
-        type: Object
-      },
-      /**
        * Active Node.
        */
       activeNode: {
