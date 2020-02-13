@@ -18,7 +18,6 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-app-picker-selection": "_haxAppPickerSelection",
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-active-hover-name": "_activeNameChange"
     };
@@ -62,9 +61,6 @@ class HaxTray extends winEventsElement(LitElement) {
       import("./hax-blox-browser.js");
       import("./hax-stax-browser.js");
     }, 0);
-  }
-  _haxAppPickerSelection(e) {
-    console.log(e);
   }
   /**
    * Store updated, sync.
@@ -137,7 +133,9 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
-          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-1);
+          --a11y-collapse-heading-background-color: var(
+            --simple-colors-default-theme-grey-1
+          );
           --a11y-collapse-padding-top: 0px;
           --a11y-collapse-padding-right: 0px;
           --a11y-collapse-padding-bottom: 0px;
@@ -147,10 +145,14 @@ class HaxTray extends winEventsElement(LitElement) {
           cursor: pointer;
         }
         a11y-collapse:hover {
-          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-2);
+          --a11y-collapse-heading-background-color: var(
+            --simple-colors-default-theme-grey-2
+          );
         }
         a11y-collapse[expanded] {
-          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-3);
+          --a11y-collapse-heading-background-color: var(
+            --simple-colors-default-theme-grey-3
+          );
         }
         a11y-collapse.settings-form div[slot="content"] {
           padding: 0;
@@ -470,16 +472,20 @@ class HaxTray extends winEventsElement(LitElement) {
         let gizmo = {
           tag: detail.value
         };
-        let properties = JSON.parse(e.path[0].getAttribute('event-properties'));
-        let innerContent = e.path[0].getAttribute('event-content');
+        let properties = JSON.parse(e.path[0].getAttribute("event-properties"));
+        let innerContent = e.path[0].getAttribute("event-content");
         if (properties == null) {
           properties = {};
         }
         if (innerContent == null) {
-          innerContent = '';
+          innerContent = "";
         }
         // most likely empty values but just to be safe
-        let element = window.HaxStore.haxElementPrototype(gizmo, properties, innerContent);
+        let element = window.HaxStore.haxElementPrototype(
+          gizmo,
+          properties,
+          innerContent
+        );
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,

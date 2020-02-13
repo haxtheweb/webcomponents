@@ -233,25 +233,25 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragstart", this._moveStart);
+        .addEventListener("dragstart", this._dragStart);
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragend", this._moveEnd);
+        .addEventListener("dragend", this._dragEnd);
     }, 0);
   }
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragstart", this._moveStart);
+      .removeEventListener("dragstart", this._dragStart);
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragend", this._moveEnd);
+      .removeEventListener("dragend", this._dragEnd);
     super.disconnectedCallback();
   }
   /**
    * When we end dragging ensure we remove the mover class.
    */
-  _moveEnd(e) {
+  _dragEnd(e) {
     let children = window.HaxStore.instance.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -269,7 +269,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   /**
    * Drag start so we know what target to set
    */
-  _moveStart(e) {
+  _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
     if (window.HaxStore.instance.activeContainerNode) {
       target = window.HaxStore.instance.activeContainerNode;
