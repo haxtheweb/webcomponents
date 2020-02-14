@@ -896,9 +896,30 @@ class HaxTray extends winEventsElement(LitElement) {
               setAhead = true;
             }
             // try and set the pop directly if it is a prop already set
-            else if (this.activeNode.hasOwnProperty(prop)) {
+            // check on prototype, then in properties object if it has one
+            // then by seeing if we have an array / object
+            else if (
+              this.activeNode.hasOwnProperty(prop) ||
+              (this.activeNode.properties && this.activeNode.properties.hasOwnProperty(prop)) ||
+              (
+                settings[key][prop] != null &&
+                settings[key][prop].constructor === Array
+              ) ||
+              (
+                settings[key][prop] != null &&
+                settings[key][prop].constructor === Object
+              )              
+            ) {
               try {
-                this.activeNode[prop] = settings[key][prop];
+                if (settings[key][prop].constructor === Array) {
+                  this.activeNode[prop] = [...settings[key][prop]];
+                }
+                else if (settings[key][prop].constructor === Object) {
+                  this.activeNode[prop] = {...settings[key][prop]};
+                }
+                else {
+                  this.activeNode[prop] = settings[key][prop];
+                }
                 setAhead = true;
               } catch (e) {
                 console.warn(e);
@@ -965,6 +986,7 @@ class HaxTray extends winEventsElement(LitElement) {
             // this will get reached often but tough to know if we had a slot
             if (!setAhead) {
               try {
+                // silly but this is the spec way to do a boolean
                 if (settings[key][prop] === true) {
                   this.activeNode.setAttribute(
                     camelCaseToDash(prop),
@@ -980,7 +1002,7 @@ class HaxTray extends winEventsElement(LitElement) {
                 }
               } catch (e) {
                 console.warn(e);
-                console.log(prop, settings[key][prop]);
+                console.warn(prop, settings[key][prop]);
               }
             }
           } else {
