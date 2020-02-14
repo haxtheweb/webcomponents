@@ -23,25 +23,12 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         :host *[hidden] {
           display: none;
         }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-          color: var(--hax-color-menu-heading-color);
-        }
         grafitto-filter {
           color: black;
         }
         .toolbar-inner {
           display: inline-flex;
-          padding: 10px 0;
+          padding: 0 16px;
         }
         .item-wrapper {
           text-align: center;
@@ -55,7 +42,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-search-source-updated": "_searchSelected"
     };
-    this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
     this.appList = [];
@@ -112,12 +98,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
        * Search term
        */
       search: {
-        type: String
-      },
-      /**
-       * Title of the browser, for translation.
-       */
-      title: {
         type: String
       },
       /**

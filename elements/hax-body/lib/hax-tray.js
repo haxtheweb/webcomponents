@@ -1,5 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement, varGet } from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement, camelCaseToDash, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -28,14 +30,14 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
-    this.activeSchema = {};
+    this.expanded = true;
+    this.activeSchema = [];
     this.activeOperationName = "";
     this.canUndo = true;
     this.canRedo = true;
     this.elementAlign = "right";
     this.__setup = false;
     setTimeout(() => {
-      import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
       import("./hax-tray-button.js");
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/iron-icons/iron-icons.js");
@@ -92,7 +94,7 @@ class HaxTray extends winEventsElement(LitElement) {
 
         :host .wrapper {
           color: var(--hax-color-text, black);
-          z-index: 1000000;
+          z-index: 1000;
           position: fixed;
           top: 0;
           bottom: 0;
@@ -104,11 +106,14 @@ class HaxTray extends winEventsElement(LitElement) {
             0.2s visibility linear;
           opacity: 0;
           visibility: hidden;
-          right: -60vw;
+          right: -30vw;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
+          right: calc(-30vw + 120px);
+        }
+        :host([edit-mode][expanded]) .wrapper {
           right: 0;
         }
         hax-tray-button,
@@ -154,7 +159,7 @@ class HaxTray extends winEventsElement(LitElement) {
             --simple-colors-default-theme-grey-3
           );
         }
-        a11y-collapse.settings-form div[slot="content"] {
+        #settingscollapse div[slot="content"] {
           padding: 0;
           margin: 0;
         }
@@ -194,7 +199,7 @@ class HaxTray extends winEventsElement(LitElement) {
           position: fixed;
           top: 0;
           visibility: visible;
-          z-index: 10000;
+          z-index: 1000;
           margin: 0;
         }
         :host([edit-mode]) #button {
@@ -267,6 +272,12 @@ class HaxTray extends winEventsElement(LitElement) {
               event-name="cancel"
               accent-color="red"
               voice-command="cancel"
+            ></hax-tray-button>
+            <hax-tray-button
+              mini
+              event-name="toggle-tray-size"
+              icon="${this.traySizeIcon}"
+              label="${this.traySizeText}"
             ></hax-tray-button>
             <div class="active-op-name">${this.activeOperationName}</div>
           </div>
@@ -347,12 +358,11 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
           </div>
         </div>
-        <a11y-collapse-group>
+        <a11y-collapse-group radio accordion>
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse
-            class="settings-form"
-            accordion
-            ?disabled="${!this.hasSettings}"
+            id="settingscollapse"
+            ?disabled="${!this.activeTagName}"
           >
             <div slot="heading">
               <iron-icon icon="icons:settings"></iron-icon> ${this
@@ -366,7 +376,7 @@ class HaxTray extends winEventsElement(LitElement) {
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse>
             <div slot="heading" @click="${this._gizmoBrowserRefresh}">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -375,7 +385,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse>
             <div slot="heading" @click="${this._appBrowserRefresh}">
               <iron-icon icon="icons:search"></iron-icon> Search
             </div>
@@ -383,7 +393,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-app-browser id="appbrowser"></hax-app-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse accordion>
+          <a11y-collapse>
             <div slot="heading" @click="${this._refreshLists}">
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
             </div>
@@ -502,6 +512,9 @@ class HaxTray extends winEventsElement(LitElement) {
           this
         );
         break;
+      case "toggle-tray-size":
+          this.expanded = !this.expanded;
+        break;
       case "open-export-dialog":
         window.HaxStore.write(
           "openDrawer",
@@ -535,7 +548,17 @@ class HaxTray extends winEventsElement(LitElement) {
     return {
       ...super.properties,
       __tipText: {
-        type: String
+        type: String,
+      },
+      expanded: {
+        type: Boolean,
+        reflect: true,
+      },
+      traySizeIcon: {
+        type: String,
+      },
+      traySizeText: {
+        type: String,
       },
       /**
        * Form values for active node
@@ -576,9 +599,6 @@ class HaxTray extends winEventsElement(LitElement) {
       canUndo: {
         type: Boolean,
         attribute: "can-undo"
-      },
-      hasSettings: {
-        type: Boolean
       },
       /**
        * If we can currently redo based on stack position
@@ -686,24 +706,32 @@ class HaxTray extends winEventsElement(LitElement) {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
       }
+      if (propName == "expanded") {
+        if (this[propName]) {
+          this.traySizeIcon = "hax:hax:arrow-expand-right";
+          this.traySizeText = "Collapse";
+        }
+        else {
+          this.traySizeIcon = "hax:hax:arrow-expand-left";
+          this.traySizeText = "Expand";
+        }
+      }
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
-          this.hasSettings = true;
           if (this.activeNode.getAttribute("data-hax-ray") != null) {
             this.activeTagName = this.activeNode.getAttribute("data-hax-ray");
           } else {
             this.activeTagName = this.activeNode.tagName;
           }
-        } else {
-          this.hasSettings = false;
+          if (!this.shadowRoot.querySelector('#settingscollapse').expanded) {
+            this.shadowRoot.querySelector('#settingscollapse div[slot="heading"]').click();
+          }
         }
         // process fields
         this.activeHaxElement = window.HaxStore.nodeToHaxElement(
           this.activeNode,
           null
         );
-        this.shadowRoot.querySelector("#settingsform").fields = {};
-        this.shadowRoot.querySelector("#settingsform").value = {};
         this._setupForm();
       }
       if (propName == "globalPreferences") {
@@ -716,6 +744,14 @@ class HaxTray extends winEventsElement(LitElement) {
    */
   _setupForm() {
     let activeNode = this.activeNode;
+    this.activeValue = {
+      settings: {
+        configure: {},
+        advanced: {}
+      }
+    };
+    this.shadowRoot.querySelector("#settingsform").fields = {};
+    this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
       activeNode.tagName &&
@@ -778,14 +814,20 @@ class HaxTray extends winEventsElement(LitElement) {
       }
       // tabs / deep objects require us to preview the value w/ the path correctly
       props.settings.configure.forEach((val, key) => {
-        props.settings.configure[key].property = `${
-          props.settings.configure[key].property
-        }`;
+        if (props.settings.configure[key].attribute) {
+          props.settings.configure[key].property = props.settings.configure[key].attribute;
+        }
+        if (props.settings.configure[key].slot) {
+          props.settings.configure[key].property = props.settings.configure[key].slot;
+        }
       });
       props.settings.advanced.forEach((val, key) => {
-        props.settings.advanced[key].property = `${
-          props.settings.advanced[key].property
-        }`;
+        if (props.settings.advanced[key].attribute) {
+          props.settings.advanced[key].property = props.settings.advanced[key].attribute;
+        }
+        if (props.settings.advanced[key].slot) {
+          props.settings.advanced[key].property = props.settings.advanced[key].slot;
+        }
       });
       // generate a tab based UI
       this.activeSchema = [
@@ -808,6 +850,7 @@ class HaxTray extends winEventsElement(LitElement) {
           ]
         }
       ];
+      this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
         ...this.activeSchema
       ];
@@ -831,48 +874,85 @@ class HaxTray extends winEventsElement(LitElement) {
    * Notice change in values from below
    */
   __valueChangedEvent(e) {
-    console.log(e.detail.value);
     if (e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
+      var setAhead;
       for (let key in settings) {
         for (let prop in settings[key]) {
+          setAhead = false;
           if (settings[key][prop] != null && !settings[key][prop].readOnly) {
-            // make sure slot is NEVER set in the preview
-            // or it'll not show up and we'll get inconsistency with it
-            // when in the context of being inserted into hax-body's shadow
-            // slot is also a special attribute
-            if (prop === "slot") {
-              // temp prop we use
-              prop = "data-hax-slot";
-              // move it over
-              settings[key][prop] = settings[key]["slot"];
-              // delete the slot
-              delete settings[key]["slot"];
-              if (settings[key][prop] != null) {
-                this.activeNode.setAttribute(
-                  "data-hax-slot",
-                  settings[key][prop]
-                );
-              }
-            }
             // prefix is a special attribute and must be handled this way
-            else if (prop === "prefix") {
+            if (prop === "prefix") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
+              setAhead = true;
             }
-            // vanilla / anything else we should just be able to set the prop
-            else if (this.activeNode[prop]) {
+            // try and set the pop directly if it is a prop already set
+            else if (this.activeNode.hasOwnProperty(prop)) {
               try {
                 this.activeNode[prop] = settings[key][prop];
+                setAhead = true;
               } catch (e) {
                 console.warn(e);
-              }
-            } else {
-              try {
-                this.activeNode.setAttribute(prop, settings[key][prop]);
-              } catch (e) {
-                console.warn(e);
+                setAhead = false;
               }
             }
+            else {
+              // need to specifically walk through slots if there is anything
+              // that says it has to come from a slot
+              for (var propTmp in this.__activePropSchema.settings[key]) {
+                if (
+                  this.__activePropSchema.settings[key][propTmp].slot == prop
+                ) {
+                  let slotTag = "span";
+                  if (this.__activePropSchema.settings[key][propTmp].slotWrapper) {
+                    slotTag = this.__activePropSchema.settings[key][propTmp].slotWrapper;
+                  } else if (this.activeNode.tagName.toLowerCase() === "code-editor") {
+                    slotTag = "template";
+                  }
+                  var tmpel = document.createElement(slotTag);
+                  if (this.__activePropSchema.settings[key][propTmp].slotAttributes) {
+                    for (var attr in this.__activePropSchema.settings[key][propTmp].slotAttributes) {
+                      tmpel.setAttribute(attr, this.__activePropSchema.settings[key][propTmp].slotAttributes[attr]);
+                    }
+                  }
+                  // support unnamed slots
+                  if (this.__activePropSchema.settings[key][propTmp].slot !== "") {
+                    tmpel.slot = this.__activePropSchema.settings[key][propTmp].slot;
+                  }
+                  tmpel.innerHTML = settings[key][prop];
+                  const cloneIt = tmpel.cloneNode(true);
+                  setAhead = true;
+                  // inject the slotted content but use text nodes if this is a text element
+                  if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+                    this.activeNode.innerHTML = tmpel.innerHTML;
+                  } else {
+                    // wipe just the slot in question
+                    wipeSlot(this.activeNode, this.__activePropSchema.settings[key][propTmp].slot);
+                    this.activeNode.appendChild(cloneIt);
+                  }
+                }
+              }
+            }
+            // this will get reached often but tough to know if we had a slot
+            if (!setAhead) {
+              try {
+                if (settings[key][prop] === true) {
+                  this.activeNode.setAttribute(camelCaseToDash(prop), camelCaseToDash(prop));
+                }
+                else if (settings[key][prop] === false) {
+                  this.activeNode.removeAttribute(camelCaseToDash(prop));
+                }
+                else {
+                  this.activeNode.setAttribute(camelCaseToDash(prop), settings[key][prop]);
+                }
+              } catch (e) {
+                console.warn(e);
+                console.log(prop, settings[key][prop]);
+              }
+            }
+          }
+          else {
+            this.activeNode.removeAttribute(camelCaseToDash(prop));
           }
         }
       }

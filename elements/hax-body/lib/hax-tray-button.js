@@ -17,6 +17,11 @@ class HAXTrayButton extends SimpleColors {
     this.eventData = null;
     this.eventName = null;
     this.icon = null;
+    this.hoverAccentColor = "green";
+    this.addEventListener("focusin", this._focusIn.bind(this));
+    this.addEventListener("focusout", this._focusOut.bind(this));
+    this.addEventListener("mouseover", this._focusIn.bind(this));
+    this.addEventListener("mouseout", this._focusOut.bind(this));
   }
   static get properties() {
     return {
@@ -71,7 +76,7 @@ class HAXTrayButton extends SimpleColors {
           display: inline-flex;
           flex-direction: column;
           align-items: center;
-          background-color: var(--simple-colors-default-theme-accent-7, #000);
+          background-color: var(--simple-colors-default-theme-accent-8, #000);
         }
         iron-icon {
           width: 30px;
@@ -164,7 +169,6 @@ class HAXTrayButton extends SimpleColors {
       `
     ];
   }
-
   render() {
     return html`
       <paper-button
@@ -192,6 +196,12 @@ class HAXTrayButton extends SimpleColors {
           `
         : ``}
     `;
+  }
+  _focusIn(e) {
+    this.accentColor = (this.hoverAccentColor === "grey" ? "green" : this.hoverAccentColor);
+  }
+  _focusOut(e) {
+    this.accentColor = null;
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
@@ -228,7 +238,7 @@ class HAXTrayButton extends SimpleColors {
       (!this.accentColor || this.accentColor === "grey") &&
       this.colors[color]
     ) {
-      this.accentColor = color;
+      this.hoverAccentColor = color;
     }
   }
 }

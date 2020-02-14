@@ -1092,7 +1092,12 @@ class HaxBody extends SimpleColors {
         }
         this.activeContainerNode.insertBefore(newNode, this.activeNode);
       } else {
-        this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
+        if (this.activeContainerNode.nextElementSibling) {
+          this.activeContainerNode.nextElementSibling.parentNode.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
+        }
+        else {
+          this.activeContainerNode.parentNode.insertBefore(newNode, this.activeContainerNode);
+        }
       }
     } else {
       // send this into the root, which should filter it back down into the slot
@@ -2043,7 +2048,6 @@ class HaxBody extends SimpleColors {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
-      this.setAttribute("tabindex", "-1");
       if (newValue) {
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
@@ -2240,6 +2244,20 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
+    this.activeNode = e.path[0];
+    window.HaxStore.write("activeNode", e.path[0], this);
+    if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
+      this.activeContainerNode = e.path[0].parentNode;
+      window.HaxStore.write(
+        "activeContainerNode",
+        e.path[0].parentNode,
+        this
+      );
+    }
+    else {
+      this.activeContainerNode = e.path[0].parentNode;
+      window.HaxStore.write("activeContainerNode", e.path[0], this);
+    }
     clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
       setTimeout(() => {
@@ -2287,7 +2305,7 @@ class HaxBody extends SimpleColors {
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
         this.activeNode = target;
-        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
+        if (this.activeNode && this.activeNode.parentNode && this.activeNode.parentNode.tagName === "GRID-PLATE") {
           this.activeContainerNode = this.activeNode.parentNode;
         }
         window.HaxStore.write("activeNode", this.activeNode, this);
@@ -2298,7 +2316,7 @@ class HaxBody extends SimpleColors {
         );
         setTimeout(() => {
           this.positionContextMenus();
-        }, 10);
+        }, 100);
       }
     }
   }
@@ -2642,35 +2660,37 @@ class HaxBody extends SimpleColors {
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    try {
-      let range = window.HaxStore.getRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (
-        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-        ["UL", "OL", "LI"].includes(tagTest)
-      ) {
-        if (this.polyfillSafe) {
-          document.execCommand("indent");
-          this.__tabTrap = true;
+    if (window.HaxStore.getRange().cloneRange) {
+      try {
+        let range = window.HaxStore.getRange().cloneRange();
+        var tagTest = range.commonAncestorContainer.tagName;
+        if (typeof tagTest === typeof undefined) {
+          tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
-      } else {
-        while (!focus) {
-          // do nothing
-          if (node.nextSibling == null) {
-            focus = true;
-          } else if (node.nextSibling.focus === "function") {
-            node.nextSibling.focus();
-            focus = true;
-          } else {
-            node = node.nextSibling;
+        if (
+          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+          ["UL", "OL", "LI"].includes(tagTest)
+        ) {
+          if (this.polyfillSafe) {
+            document.execCommand("indent");
+            this.__tabTrap = true;
+          }
+        } else {
+          while (!focus) {
+            // do nothing
+            if (node.nextSibling == null) {
+              focus = true;
+            } else if (node.nextSibling.focus === "function") {
+              node.nextSibling.focus();
+              focus = true;
+            } else {
+              node = node.nextSibling;
+            }
           }
         }
+      } catch (e) {
+        console.warn(e);
       }
-    } catch (e) {
-      console.warn(e);
     }
   }
   /**
@@ -2680,35 +2700,37 @@ class HaxBody extends SimpleColors {
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    try {
-      let range = window.HaxStore.getRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (
-        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-        ["UL", "OL", "LI"].includes(tagTest)
-      ) {
-        if (this.polyfillSafe) {
-          document.execCommand("outdent");
-          this.__tabTrap = true;
+    if (window.HaxStore.getRange().cloneRange) {
+      try {
+        let range = window.HaxStore.getRange().cloneRange();
+        var tagTest = range.commonAncestorContainer.tagName;
+        if (typeof tagTest === typeof undefined) {
+          tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
-      } else {
-        if (node != null) {
-          // step back ignoring hax- prefixed elements
-          while (node != null && !this._validElementTest(node)) {
-            node = node.previousSibling;
+        if (
+          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+          ["UL", "OL", "LI"].includes(tagTest)
+        ) {
+          if (this.polyfillSafe) {
+            document.execCommand("outdent");
+            this.__tabTrap = true;
+          }
+        } else {
+          if (node != null) {
+            // step back ignoring hax- prefixed elements
+            while (node != null && !this._validElementTest(node)) {
+              node = node.previousSibling;
+            }
+          }
+          if (node != null) {
+            setTimeout(() => {
+              node.focus();
+            }, 50);
           }
         }
-        if (node != null) {
-          setTimeout(() => {
-            node.focus();
-          }, 50);
-        }
+      } catch (e) {
+        console.warn(e);
       }
-    } catch (e) {
-      console.warn(e);
     }
   }
 }

@@ -4,7 +4,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `a11y-collapse`
- * @customElement a11y-collapse
  * an accessible expand collapse
  * 
 ### Styling
@@ -30,6 +29,7 @@ Custom property | Description | Default
 
  * @demo ./demo/index.html demo
  * @demo ./demo/group.html collapse groups
+ * @customElement a11y-collapse
  */
 class A11yCollapse extends LitElement {
   static get styles() {

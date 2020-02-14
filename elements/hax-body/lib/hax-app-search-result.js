@@ -92,7 +92,12 @@ class HaxAppSearchResult extends LitElement {
 
   render() {
     return html`
-      <paper-button @click="${this._itemSelected}" class="button">
+      <paper-button
+      draggable="true"
+      @click="${this._itemSelected}"
+      @dragstart="${this._dragStart}"
+      @dragend="${this._dragEnd}"
+      class="button">
         <iron-image
           alt=""
           class="image"
@@ -129,6 +134,61 @@ class HaxAppSearchResult extends LitElement {
         type: String
       }
     };
+  }
+  /**
+   * Drag start so we know what target to set
+   */
+  _dragStart(e) {
+    // create the tag
+    let target = this.cloneNode(true);
+    window.HaxStore.instance.__dragTarget = target;
+    if (e.dataTransfer) {
+      this.crt = target;
+      this.crt.style.position = "absolute";
+      this.crt.style.top = "-1000px";
+      this.crt.style.right = "-1000px";
+      this.crt.style.transform = "scale(0.25)";
+      this.crt.style.opacity = ".8";
+      e.dataTransfer.dropEffect = "move";
+      document.body.appendChild(this.crt);
+      e.dataTransfer.setDragImage(this.crt, 0, 0);
+    }
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    // show where things can be dropped only during the drag
+    if (
+      !window.HaxStore.instance.activeHaxBody.openDrawer &&
+      window.HaxStore.instance.editMode
+    ) {
+      let children = window.HaxStore.instance.activeHaxBody.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (children[i].classList && target !== children[i]) {
+          children[i].classList.add("mover");
+        }
+      }
+    }
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  _dragEnd(e) {
+    this.crt.remove();
+    let children = window.HaxStore.instance.activeHaxBody.children;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove(
+          "mover",
+          "hovered",
+          "moving",
+          "grid-plate-active-item"
+        );
+      }
+    }
+    setTimeout(() => {
+      this._itemSelected(e);      
+    }, 100);
   }
 
   /**

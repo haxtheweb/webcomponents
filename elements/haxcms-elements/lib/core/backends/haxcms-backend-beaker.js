@@ -126,19 +126,19 @@ class HAXCMSBackendBeaker extends LitElement {
       reader.onload = event => {
         let fileLocation =
           "files/" +
-          window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+          window.HaxStore.instance.haxTray.shadowRoot.querySelector(
             "#fileupload"
           ).files[0].name;
         this.shadowRoot
           .querySelector("#beaker")
           .write(fileLocation, event.target.result);
-        window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+        window.HaxStore.instance.haxTray.shadowRoot.querySelector(
           "#url"
         ).value = fileLocation;
-        window.HaxStore.instance.haxManager.newAssetConfigure();
+        window.HaxStore.instance.haxTray.shadowRoot.querySelector('hax-tray-upload').newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+        window.HaxStore.instance.haxTray.shadowRoot.querySelector(
           "#fileupload"
         ).files[0]
       );

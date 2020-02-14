@@ -49,7 +49,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           border: 1px solid #222222;
         }
         hax-app-search-inputs {
-          min-height: 150px;
+          min-height: 80px;
           padding: 0 16px;
         }
         hax-app-pagination {

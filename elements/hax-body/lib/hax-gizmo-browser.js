@@ -16,27 +16,9 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         :host {
           display: block;
         }
-        #ironlist {
-          min-height: 50vh;
-          margin: 0;
-          padding: 16px;
-        }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-        }
         .toolbar-inner {
           display: inline-flex;
-          padding: 10px 0;
+          padding: 0 16px;
         }
         .item-wrapper {
           text-align: center;
@@ -98,12 +80,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   }
   static get properties() {
     return {
-      /**
-       * Title of the browser, for translation.
-       */
-      title: {
-        type: String
-      },
       filtered: {
         type: Array
       },

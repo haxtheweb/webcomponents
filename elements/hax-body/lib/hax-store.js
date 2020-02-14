@@ -1323,15 +1323,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       },
       settings: {
         quick: [],
-        configure: [
-          {
-            slot: "",
-            title: "Content",
-            description: "Internal content",
-            inputMethod: "code-editor",
-            icon: "icons:code"
-          }
-        ],
+        configure: [],
         advanced: []
       }
     };
