@@ -120,6 +120,19 @@ class HaxTray extends winEventsElement(LitElement) {
         :host([edit-mode][expanded]) .wrapper {
           right: 0;
         }
+        /** default is right so lets support left too */
+        :host([element-align="left"]) .wrapper {
+          right: unset;
+          left: -30vw;
+        }
+        :host([edit-mode][element-align="left"]) .wrapper {
+          right: unset;
+          left: calc(-30vw + 120px);
+        }
+        :host([edit-mode][element-align="left"][expanded]) .wrapper {
+          right: unset;
+          left: 0;
+        }
         hax-tray-button,
         a11y-collapse,
         a11y-collapse-group,
@@ -212,12 +225,6 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         #button:hover {
           opacity: 1;
-        }
-        :host([align="right"]) #button {
-          right: 0;
-          left: unset;
-          border-top-right-radius: 0;
-          border-top-left-radius: unset;
         }
         .active-op-name {
           display: inline-flex;

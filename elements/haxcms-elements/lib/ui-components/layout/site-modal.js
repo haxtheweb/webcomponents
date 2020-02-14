@@ -110,10 +110,15 @@ class SiteModal extends LitElement {
     this.shadowRoot
       .querySelector("#smt")
       .associateEvents(this.shadowRoot.querySelector("#btn"));
-    const nodes = this.childNodes;
-    for (var i in nodes) {
-      this.shadowRoot.querySelector("#content").appendChild(nodes[i]);
-    }
+    setTimeout(() => {
+      if (this.childNodes && this.shadowRoot.querySelector("#content")) {
+        for (var i in this.childNodes) {
+          if (typeof this.childNodes[i] === 'object') {
+            this.shadowRoot.querySelector("#content").appendChild(this.childNodes[i]);
+          }
+        }
+      }
+    }, 0);
   }
 }
 window.customElements.define(SiteModal.tag, SiteModal);

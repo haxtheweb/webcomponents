@@ -232,10 +232,10 @@ class CmsHax extends LitElement {
       if (allowedTags) {
         window.HaxStore.instance.validTagList = allowedTags;
       }
-      window.HaxStore.instance.haxPanel.hideExportButton = hideExportButton;
-      window.HaxStore.instance.haxPanel.hidePanelOps = hidePanelOps;
-      window.HaxStore.instance.haxPanel.hidePreferencesButton = hidePreferencesButton;
-      window.HaxStore.instance.haxPanel.align = align;
+      window.HaxStore.instance.haxTray.hideExportButton = hideExportButton;
+      window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
+      window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
+      window.HaxStore.instance.haxTray.elementAlign = align;
       if (openDefault) {
         window.HaxStore.write("editMode", openDefault, this);
       }

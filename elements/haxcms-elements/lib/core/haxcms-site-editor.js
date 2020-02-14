@@ -963,8 +963,8 @@ class HAXCMSSiteEditor extends LitElement {
   _storeReadyToGo(event) {
     if (event.detail) {
       window.HaxStore.instance.connectionRewrites.appendJwt = "jwt";
-      window.HaxStore.instance.haxPanel.align = "left";
-      window.HaxStore.instance.haxPanel.hidePanelOps = true;
+      window.HaxStore.instance.haxTray.elementAlign = "left";
+      window.HaxStore.instance.haxTray.hidePanelOps = true;
     }
   }
   /**
