@@ -900,24 +900,19 @@ class HaxTray extends winEventsElement(LitElement) {
             // then by seeing if we have an array / object
             else if (
               this.activeNode.hasOwnProperty(prop) ||
-              (this.activeNode.properties && this.activeNode.properties.hasOwnProperty(prop)) ||
-              (
-                settings[key][prop] != null &&
-                settings[key][prop].constructor === Array
-              ) ||
-              (
-                settings[key][prop] != null &&
-                settings[key][prop].constructor === Object
-              )              
+              (this.activeNode.properties &&
+                this.activeNode.properties.hasOwnProperty(prop)) ||
+              (settings[key][prop] != null &&
+                settings[key][prop].constructor === Array) ||
+              (settings[key][prop] != null &&
+                settings[key][prop].constructor === Object)
             ) {
               try {
                 if (settings[key][prop].constructor === Array) {
                   this.activeNode[prop] = [...settings[key][prop]];
-                }
-                else if (settings[key][prop].constructor === Object) {
-                  this.activeNode[prop] = {...settings[key][prop]};
-                }
-                else {
+                } else if (settings[key][prop].constructor === Object) {
+                  this.activeNode[prop] = { ...settings[key][prop] };
+                } else {
                   this.activeNode[prop] = settings[key][prop];
                 }
                 setAhead = true;
