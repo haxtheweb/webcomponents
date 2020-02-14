@@ -198,7 +198,8 @@ class HAXTrayButton extends SimpleColors {
     `;
   }
   _focusIn(e) {
-    this.accentColor = (this.hoverAccentColor === "grey" ? "green" : this.hoverAccentColor);
+    this.accentColor =
+      this.hoverAccentColor === "grey" ? "green" : this.hoverAccentColor;
   }
   _focusOut(e) {
     this.accentColor = null;

@@ -1093,10 +1093,15 @@ class HaxBody extends SimpleColors {
         this.activeContainerNode.insertBefore(newNode, this.activeNode);
       } else {
         if (this.activeContainerNode.nextElementSibling) {
-          this.activeContainerNode.nextElementSibling.parentNode.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
-        }
-        else {
-          this.activeContainerNode.parentNode.insertBefore(newNode, this.activeContainerNode);
+          this.activeContainerNode.nextElementSibling.parentNode.insertBefore(
+            newNode,
+            this.activeContainerNode.nextElementSibling
+          );
+        } else {
+          this.activeContainerNode.parentNode.insertBefore(
+            newNode,
+            this.activeContainerNode
+          );
         }
       }
     } else {
@@ -2248,13 +2253,8 @@ class HaxBody extends SimpleColors {
     window.HaxStore.write("activeNode", e.path[0], this);
     if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
       this.activeContainerNode = e.path[0].parentNode;
-      window.HaxStore.write(
-        "activeContainerNode",
-        e.path[0].parentNode,
-        this
-      );
-    }
-    else {
+      window.HaxStore.write("activeContainerNode", e.path[0].parentNode, this);
+    } else {
       this.activeContainerNode = e.path[0].parentNode;
       window.HaxStore.write("activeContainerNode", e.path[0], this);
     }
@@ -2305,7 +2305,11 @@ class HaxBody extends SimpleColors {
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
         this.activeNode = target;
-        if (this.activeNode && this.activeNode.parentNode && this.activeNode.parentNode.tagName === "GRID-PLATE") {
+        if (
+          this.activeNode &&
+          this.activeNode.parentNode &&
+          this.activeNode.parentNode.tagName === "GRID-PLATE"
+        ) {
           this.activeContainerNode = this.activeNode.parentNode;
         }
         window.HaxStore.write("activeNode", this.activeNode, this);

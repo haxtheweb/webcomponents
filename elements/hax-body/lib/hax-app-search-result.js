@@ -93,11 +93,12 @@ class HaxAppSearchResult extends LitElement {
   render() {
     return html`
       <paper-button
-      draggable="true"
-      @click="${this._itemSelected}"
-      @dragstart="${this._dragStart}"
-      @dragend="${this._dragEnd}"
-      class="button">
+        draggable="true"
+        @click="${this._itemSelected}"
+        @dragstart="${this._dragStart}"
+        @dragend="${this._dragEnd}"
+        class="button"
+      >
         <iron-image
           alt=""
           class="image"
@@ -187,7 +188,7 @@ class HaxAppSearchResult extends LitElement {
       }
     }
     setTimeout(() => {
-      this._itemSelected(e);      
+      this._itemSelected(e);
     }, 100);
   }
 

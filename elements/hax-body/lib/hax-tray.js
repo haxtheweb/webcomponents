@@ -1,5 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement, camelCaseToDash, wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+import {
+  winEventsElement,
+  camelCaseToDash,
+  wipeSlot
+} from "@lrnwebcomponents/utils/utils.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
@@ -513,7 +517,7 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         break;
       case "toggle-tray-size":
-          this.expanded = !this.expanded;
+        this.expanded = !this.expanded;
         break;
       case "open-export-dialog":
         window.HaxStore.write(
@@ -548,17 +552,17 @@ class HaxTray extends winEventsElement(LitElement) {
     return {
       ...super.properties,
       __tipText: {
-        type: String,
+        type: String
       },
       expanded: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       traySizeIcon: {
-        type: String,
+        type: String
       },
       traySizeText: {
-        type: String,
+        type: String
       },
       /**
        * Form values for active node
@@ -710,8 +714,7 @@ class HaxTray extends winEventsElement(LitElement) {
         if (this[propName]) {
           this.traySizeIcon = "hax:hax:arrow-expand-right";
           this.traySizeText = "Collapse";
-        }
-        else {
+        } else {
           this.traySizeIcon = "hax:hax:arrow-expand-left";
           this.traySizeText = "Expand";
         }
@@ -723,8 +726,10 @@ class HaxTray extends winEventsElement(LitElement) {
           } else {
             this.activeTagName = this.activeNode.tagName;
           }
-          if (!this.shadowRoot.querySelector('#settingscollapse').expanded) {
-            this.shadowRoot.querySelector('#settingscollapse div[slot="heading"]').click();
+          if (!this.shadowRoot.querySelector("#settingscollapse").expanded) {
+            this.shadowRoot
+              .querySelector('#settingscollapse div[slot="heading"]')
+              .click();
           }
         }
         // process fields
@@ -815,18 +820,22 @@ class HaxTray extends winEventsElement(LitElement) {
       // tabs / deep objects require us to preview the value w/ the path correctly
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
-          props.settings.configure[key].property = props.settings.configure[key].attribute;
+          props.settings.configure[key].property =
+            props.settings.configure[key].attribute;
         }
         if (props.settings.configure[key].slot) {
-          props.settings.configure[key].property = props.settings.configure[key].slot;
+          props.settings.configure[key].property =
+            props.settings.configure[key].slot;
         }
       });
       props.settings.advanced.forEach((val, key) => {
         if (props.settings.advanced[key].attribute) {
-          props.settings.advanced[key].property = props.settings.advanced[key].attribute;
+          props.settings.advanced[key].property =
+            props.settings.advanced[key].attribute;
         }
         if (props.settings.advanced[key].slot) {
-          props.settings.advanced[key].property = props.settings.advanced[key].slot;
+          props.settings.advanced[key].property =
+            props.settings.advanced[key].slot;
         }
       });
       // generate a tab based UI
@@ -895,8 +904,7 @@ class HaxTray extends winEventsElement(LitElement) {
                 console.warn(e);
                 setAhead = false;
               }
-            }
-            else {
+            } else {
               // need to specifically walk through slots if there is anything
               // that says it has to come from a slot
               for (var propTmp in this.__activePropSchema.settings[key]) {
@@ -904,20 +912,38 @@ class HaxTray extends winEventsElement(LitElement) {
                   this.__activePropSchema.settings[key][propTmp].slot == prop
                 ) {
                   let slotTag = "span";
-                  if (this.__activePropSchema.settings[key][propTmp].slotWrapper) {
-                    slotTag = this.__activePropSchema.settings[key][propTmp].slotWrapper;
-                  } else if (this.activeNode.tagName.toLowerCase() === "code-editor") {
+                  if (
+                    this.__activePropSchema.settings[key][propTmp].slotWrapper
+                  ) {
+                    slotTag = this.__activePropSchema.settings[key][propTmp]
+                      .slotWrapper;
+                  } else if (
+                    this.activeNode.tagName.toLowerCase() === "code-editor"
+                  ) {
                     slotTag = "template";
                   }
                   var tmpel = document.createElement(slotTag);
-                  if (this.__activePropSchema.settings[key][propTmp].slotAttributes) {
-                    for (var attr in this.__activePropSchema.settings[key][propTmp].slotAttributes) {
-                      tmpel.setAttribute(attr, this.__activePropSchema.settings[key][propTmp].slotAttributes[attr]);
+                  if (
+                    this.__activePropSchema.settings[key][propTmp]
+                      .slotAttributes
+                  ) {
+                    for (var attr in this.__activePropSchema.settings[key][
+                      propTmp
+                    ].slotAttributes) {
+                      tmpel.setAttribute(
+                        attr,
+                        this.__activePropSchema.settings[key][propTmp]
+                          .slotAttributes[attr]
+                      );
                     }
                   }
                   // support unnamed slots
-                  if (this.__activePropSchema.settings[key][propTmp].slot !== "") {
-                    tmpel.slot = this.__activePropSchema.settings[key][propTmp].slot;
+                  if (
+                    this.__activePropSchema.settings[key][propTmp].slot !== ""
+                  ) {
+                    tmpel.slot = this.__activePropSchema.settings[key][
+                      propTmp
+                    ].slot;
                   }
                   tmpel.innerHTML = settings[key][prop];
                   const cloneIt = tmpel.cloneNode(true);
@@ -927,7 +953,10 @@ class HaxTray extends winEventsElement(LitElement) {
                     this.activeNode.innerHTML = tmpel.innerHTML;
                   } else {
                     // wipe just the slot in question
-                    wipeSlot(this.activeNode, this.__activePropSchema.settings[key][propTmp].slot);
+                    wipeSlot(
+                      this.activeNode,
+                      this.__activePropSchema.settings[key][propTmp].slot
+                    );
                     this.activeNode.appendChild(cloneIt);
                   }
                 }
@@ -937,21 +966,24 @@ class HaxTray extends winEventsElement(LitElement) {
             if (!setAhead) {
               try {
                 if (settings[key][prop] === true) {
-                  this.activeNode.setAttribute(camelCaseToDash(prop), camelCaseToDash(prop));
-                }
-                else if (settings[key][prop] === false) {
+                  this.activeNode.setAttribute(
+                    camelCaseToDash(prop),
+                    camelCaseToDash(prop)
+                  );
+                } else if (settings[key][prop] === false) {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
-                }
-                else {
-                  this.activeNode.setAttribute(camelCaseToDash(prop), settings[key][prop]);
+                } else {
+                  this.activeNode.setAttribute(
+                    camelCaseToDash(prop),
+                    settings[key][prop]
+                  );
                 }
               } catch (e) {
                 console.warn(e);
                 console.log(prop, settings[key][prop]);
               }
             }
-          }
-          else {
+          } else {
             this.activeNode.removeAttribute(camelCaseToDash(prop));
           }
         }

@@ -135,12 +135,13 @@ class HAXCMSBackendBeaker extends LitElement {
         window.HaxStore.instance.haxTray.shadowRoot.querySelector(
           "#url"
         ).value = fileLocation;
-        window.HaxStore.instance.haxTray.shadowRoot.querySelector('hax-tray-upload').newAssetConfigure();
+        window.HaxStore.instance.haxTray.shadowRoot
+          .querySelector("hax-tray-upload")
+          .newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        window.HaxStore.instance.haxTray.shadowRoot.querySelector(
-          "#fileupload"
-        ).files[0]
+        window.HaxStore.instance.haxTray.shadowRoot.querySelector("#fileupload")
+          .files[0]
       );
     }
   }

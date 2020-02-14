@@ -74,7 +74,8 @@ class RetroCard extends SimpleColors {
       window.HaxStore &&
       window.HaxStore.ready &&
       window.HaxStore.instance &&
-      window.HaxStore.instance.editMode) {
+      window.HaxStore.instance.editMode
+    ) {
       // do not do default
       e.preventDefault();
       e.stopPropagation();

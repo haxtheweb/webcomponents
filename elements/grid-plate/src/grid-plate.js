@@ -1267,7 +1267,7 @@ class GridPlate extends LitElement {
         this.appendChild(el);
       });
     } catch (error) {
-      console.warn(error);      
+      console.warn(error);
     }
   }
   /**
