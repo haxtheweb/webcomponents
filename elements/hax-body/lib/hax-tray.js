@@ -741,26 +741,38 @@ class HaxTray extends winEventsElement(LitElement) {
       }
       // first, allow element properties to dictate defaults
       for (var property in this.activeHaxElement.properties) {
-        props.settings.configure.forEach((el) => {
+        props.settings.configure.forEach(el => {
           if (el.property === property) {
-            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
           if (el.attribute === property) {
-            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
           if (el.slot === property) {
-            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.configure[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
         });
-        props.settings.advanced.forEach((el) => {
+        props.settings.advanced.forEach(el => {
           if (el.property === property) {
-            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
           if (el.attribute === property) {
-            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
           if (el.slot === property) {
-            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+            this.activeValue.settings.advanced[
+              property
+            ] = this.activeHaxElement.properties[property];
           }
         });
       }
@@ -824,10 +836,7 @@ class HaxTray extends winEventsElement(LitElement) {
       let settings = e.detail.value.settings;
       for (let key in settings) {
         for (let prop in settings[key]) {
-          if (
-            settings[key][prop] != null &&
-            !settings[key][prop].readOnly
-          ) {
+          if (settings[key][prop] != null && !settings[key][prop].readOnly) {
             // make sure slot is NEVER set in the preview
             // or it'll not show up and we'll get inconsistency with it
             // when in the context of being inserted into hax-body's shadow
@@ -848,10 +857,7 @@ class HaxTray extends winEventsElement(LitElement) {
             }
             // prefix is a special attribute and must be handled this way
             else if (prop === "prefix") {
-              this.activeNode.setAttribute(
-                "prefix",
-                settings[key][prop]
-              );
+              this.activeNode.setAttribute("prefix", settings[key][prop]);
             }
             // vanilla / anything else we should just be able to set the prop
             else if (this.activeNode[prop]) {
@@ -862,10 +868,7 @@ class HaxTray extends winEventsElement(LitElement) {
               }
             } else {
               try {
-                this.activeNode.setAttribute(
-                  prop,
-                  settings[key][prop]
-                );
+                this.activeNode.setAttribute(prop, settings[key][prop]);
               } catch (e) {
                 console.warn(e);
               }
