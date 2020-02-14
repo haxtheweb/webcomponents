@@ -86,6 +86,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
               event-data="${gizmo.tag}"
               icon="${gizmo.icon}"
               color="${gizmo.color}"
+              drag-color="${gizmo.color}"
             ></hax-tray-button>
           `
         )}
@@ -124,6 +125,8 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       this.crt.style.top = "-1000px";
       this.crt.style.right = "-1000px";
       this.crt.style.transform = "scale(0.25)";
+      this.crt.style.opacity = ".8";
+      this.crt.style.backgroundColor = e.target.getAttribute('drag-color');
       e.dataTransfer.dropEffect = "move";
       document.body.appendChild(this.crt);
       e.dataTransfer.setDragImage(this.crt, 0, 0);

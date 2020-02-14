@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement, varGet } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-tray`
  * `The tray / dashboard area which allows for customization of all major settings`
@@ -741,139 +741,37 @@ class HaxTray extends winEventsElement(LitElement) {
       }
       // first, allow element properties to dictate defaults
       for (var property in this.activeHaxElement.properties) {
-        if (this.activeHaxElement.properties.hasOwnProperty(property)) {
-          if (typeof schema.properties[property] !== typeof undefined) {
-            schema.properties[
-              property
-            ].value = this.activeHaxElement.properties[property];
-            // support custom element input
-            if (
-              typeof schema.properties[property].component !==
-                typeof undefined &&
-              schema.properties[property].component.properties
-            ) {
-              schema.properties[
-                property
-              ].component.properties.value = this.activeHaxElement.properties[
-                property
-              ];
-            }
+        props.settings.configure.forEach((el) => {
+          if (el.property === property) {
+            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
           }
-          // ensure this isn't read only
-          if (
-            this.activeHaxElement.properties[property] != null &&
-            !this.activeHaxElement.properties[property].readOnly
-          ) {
-            // make sure slot is NEVER set in the preview
-            // or it'll not show up and we'll get inconsistency with it
-            // when in the context of being inserted into hax-body's shadow
-            // slot is also a special attribute
-            if (property === "slot") {
-              // temp prop we use
-              property = "data-hax-slot";
-              // move it over
-              this.activeHaxElement.properties[
-                property
-              ] = this.activeHaxElement.properties["slot"];
-              // delete the slot
-              delete this.activeHaxElement.properties["slot"];
-              if (this.activeHaxElement.properties[property] != null) {
-                activeNode.setAttribute(
-                  "data-hax-slot",
-                  this.activeHaxElement.properties[property]
-                );
-              }
-            }
-            // prefix is a special attribute and must be handled this way
-            else if (property === "prefix") {
-              activeNode.setAttribute(
-                "prefix",
-                this.activeHaxElement.properties[property]
-              );
-            }
-            // set is a Polymer convention but help w/ data binding there a lot
-            else if (typeof activeNode.set === "function") {
-              // just to be safe
-              try {
-                activeNode.set(
-                  property,
-                  this.activeHaxElement.properties[property]
-                );
-              } catch (e) {
-                console.warn(e);
-              }
-            }
-            // vanilla / anything else we should just be able to set the prop
-            else if (activeNode[property]) {
-              try {
-                activeNode[property] = this.activeHaxElement.properties[
-                  property
-                ];
-              } catch (e) {
-                console.warn(e);
-              }
-            } else {
-              // @todo may need to bind differently for vanilla elements
-              try {
-                activeNode.setAttribute(
-                  property,
-                  this.activeHaxElement.properties[property]
-                );
-              } catch (e) {
-                console.warn(e);
-              }
-            }
+          if (el.attribute === property) {
+            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
           }
-          this.activeValue.settings.configure[
-            `configure-${property}`
-          ] = this.activeHaxElement.properties[property];
-        }
-      }
-      // then, let the node itself dictate defaults if things are not set
-      for (var property in activeNode) {
-        if (
-          activeNode.hasOwnProperty(property) &&
-          typeof schema.properties[property] !== typeof undefined &&
-          typeof activeNode[property].value !== typeof undefined &&
-          activeNode[property].value !== null
-        ) {
-          this.activeValue.settings.configure[`configure-${property}`] =
-            activeNode.properties[property].value;
-        }
-      }
-      // need to specifically walk through slots if there is anything
-      // that says it has to come from a slot
-      for (var prop in props.settings[this.formKey]) {
-        if (
-          typeof props.settings[this.formKey][prop].slot !== typeof undefined
-        ) {
-          const newValueChildren = activeNode.childNodes;
-          // walk through the slots looking for the value of it
-          for (var i in newValueChildren) {
-            // test for element nodes to be safe
-            if (
-              typeof newValueChildren[i] !== typeof undefined &&
-              newValueChildren[i].nodeType === 1 &&
-              newValueChildren[i].slot ===
-                props.settings[this.formKey][prop].slot
-            ) {
-              if (typeof newValueChildren[i].innerHTML !== typeof undefined) {
-                this.activeValue.settings.configure[
-                  `configure-${props.settings[this.formKey][prop].slot}`
-                ] = newValueChildren[i].innerHTML;
-              }
-            }
+          if (el.slot === property) {
+            this.activeValue.settings.configure[property] = this.activeHaxElement.properties[property];
           }
-        }
+        });
+        props.settings.advanced.forEach((el) => {
+          if (el.property === property) {
+            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+          }
+          if (el.attribute === property) {
+            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+          }
+          if (el.slot === property) {
+            this.activeValue.settings.advanced[property] = this.activeHaxElement.properties[property];
+          }
+        });
       }
       // tabs / deep objects require us to preview the value w/ the path correctly
       props.settings.configure.forEach((val, key) => {
-        props.settings.configure[key].property = `configure-${
+        props.settings.configure[key].property = `${
           props.settings.configure[key].property
         }`;
       });
       props.settings.advanced.forEach((val, key) => {
-        props.settings.advanced[key].property = `advanced-${
+        props.settings.advanced[key].property = `${
           props.settings.advanced[key].property
         }`;
       });
@@ -921,7 +819,61 @@ class HaxTray extends winEventsElement(LitElement) {
    * Notice change in values from below
    */
   __valueChangedEvent(e) {
-    //this.activeValue = { ...e.detail.value };
+    console.log(e.detail.value);
+    if (e.detail.value && e.detail.value.settings) {
+      let settings = e.detail.value.settings;
+      for (let key in settings) {
+        for (let prop in settings[key]) {
+          if (
+            settings[key][prop] != null &&
+            !settings[key][prop].readOnly
+          ) {
+            // make sure slot is NEVER set in the preview
+            // or it'll not show up and we'll get inconsistency with it
+            // when in the context of being inserted into hax-body's shadow
+            // slot is also a special attribute
+            if (prop === "slot") {
+              // temp prop we use
+              prop = "data-hax-slot";
+              // move it over
+              settings[key][prop] = settings[key]["slot"];
+              // delete the slot
+              delete settings[key]["slot"];
+              if (settings[key][prop] != null) {
+                this.activeNode.setAttribute(
+                  "data-hax-slot",
+                  settings[key][prop]
+                );
+              }
+            }
+            // prefix is a special attribute and must be handled this way
+            else if (prop === "prefix") {
+              this.activeNode.setAttribute(
+                "prefix",
+                settings[key][prop]
+              );
+            }
+            // vanilla / anything else we should just be able to set the prop
+            else if (this.activeNode[prop]) {
+              try {
+                this.activeNode[prop] = settings[key][prop];
+              } catch (e) {
+                console.warn(e);
+              }
+            } else {
+              try {
+                this.activeNode.setAttribute(
+                  prop,
+                  settings[key][prop]
+                );
+              } catch (e) {
+                console.warn(e);
+              }
+            }
+          }
+        }
+      }
+    }
   }
   /**
    * Global preference changed.
