@@ -111,11 +111,13 @@ class HaxTray extends winEventsElement(LitElement) {
           opacity: 0;
           visibility: hidden;
           right: -30vw;
+          pointer-events: none;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
           right: calc(-30vw + 120px);
+          pointer-events: all;
         }
         :host([edit-mode][expanded]) .wrapper {
           right: 0;
@@ -561,6 +563,9 @@ class HaxTray extends winEventsElement(LitElement) {
       __tipText: {
         type: String
       },
+      offsetMargin: {
+        type: String,
+      },
       expanded: {
         type: Boolean,
         reflect: true
@@ -716,6 +721,9 @@ class HaxTray extends winEventsElement(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
+      }
+      if (propName == "offsetMargin") {
+        this.shadowRoot.querySelector('.wrapper').style.margin = this.offsetMargin;
       }
       if (propName == "expanded") {
         if (this[propName]) {

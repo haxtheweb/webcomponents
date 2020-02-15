@@ -85,6 +85,9 @@ class HAX extends HTMLElement {
         window.HaxStore.instance.appStore = {
           ...JSON.parse(this.getAttribute("app-store"))
         };
+        window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
+        window.HaxStore.instance.haxTray.offsetMargin = this.offsetMargin;
+        window.HaxStore.instance.haxTray.elementAlign = this.elementAlign;
       }, 0);
     }
   }
@@ -143,7 +146,27 @@ class HAX extends HTMLElement {
     }
   }
   static get observedAttributes() {
-    return ["app-store", "hide-panel-ops"];
+    return ["element-align", "offset-margin","app-store", "hide-panel-ops"];
+  }
+  get elementAlign() {
+    return this.getAttribute("element-align");
+  }
+  set elementAlign(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("element-align", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.elementAlign = newValue;
+    }
+  }
+  get offsetMargin() {
+    return this.getAttribute("offset-margin");
+  }
+  set offsetMargin(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("offset-margin", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.offsetMargin = newValue;
+    }
   }
   get hidePanelOps() {
     return this.getAttribute("hide-panel-ops");

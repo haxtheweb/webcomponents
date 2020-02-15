@@ -16,6 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -116,16 +117,18 @@ ol {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      appStore: {
-        name: "appStore",
-        type: String,
-        value: ""
-      }
-    };
+  
+  ...super.properties,
+  
+  "appStore": {
+    "name": "appStore",
+    "type": String,
+    "value": ""
+  }
+}
+;
   }
 
   /**
@@ -195,6 +198,9 @@ ol {
         window.HaxStore.instance.appStore = {
           ...JSON.parse(this.getAttribute("app-store"))
         };
+        window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
+        window.HaxStore.instance.haxTray.offsetMargin = this.offsetMargin;
+        window.HaxStore.instance.haxTray.elementAlign = this.elementAlign;
       }, 0);
     }
   }
@@ -253,7 +259,27 @@ ol {
     }
   }
   static get observedAttributes() {
-    return ["app-store", "hide-panel-ops"];
+    return ["element-align", "offset-margin","app-store", "hide-panel-ops"];
+  }
+  get elementAlign() {
+    return this.getAttribute("element-align");
+  }
+  set elementAlign(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("element-align", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.elementAlign = newValue;
+    }
+  }
+  get offsetMargin() {
+    return this.getAttribute("offset-margin");
+  }
+  set offsetMargin(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("offset-margin", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.offsetMargin = newValue;
+    }
   }
   get hidePanelOps() {
     return this.getAttribute("hide-panel-ops");

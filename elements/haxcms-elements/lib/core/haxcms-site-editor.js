@@ -202,7 +202,7 @@ class HAXCMSSiteEditor extends LitElement {
         @response="${this._handleUserDataResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
-      <h-a-x id="hax" hide-panel-ops></h-a-x>
+      <h-a-x id="hax" element-align="left" hide-panel-ops offset-margin="0 0 0 48px"></h-a-x>
     `;
   }
 
@@ -963,8 +963,6 @@ class HAXCMSSiteEditor extends LitElement {
   _storeReadyToGo(event) {
     if (event.detail) {
       window.HaxStore.instance.connectionRewrites.appendJwt = "jwt";
-      window.HaxStore.instance.haxTray.elementAlign = "left";
-      window.HaxStore.instance.haxTray.hidePanelOps = true;
     }
   }
   /**
