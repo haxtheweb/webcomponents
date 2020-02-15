@@ -202,7 +202,12 @@ class HAXCMSSiteEditor extends LitElement {
         @response="${this._handleUserDataResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
-      <h-a-x id="hax" element-align="left" hide-panel-ops offset-margin="0 0 0 48px"></h-a-x>
+      <h-a-x
+        id="hax"
+        element-align="left"
+        hide-panel-ops
+        offset-margin="0 0 0 48px"
+      ></h-a-x>
     `;
   }
 

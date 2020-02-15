@@ -146,7 +146,7 @@ class HAX extends HTMLElement {
     }
   }
   static get observedAttributes() {
-    return ["element-align", "offset-margin","app-store", "hide-panel-ops"];
+    return ["element-align", "offset-margin", "app-store", "hide-panel-ops"];
   }
   get elementAlign() {
     return this.getAttribute("element-align");

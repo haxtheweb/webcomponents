@@ -564,7 +564,7 @@ class HaxTray extends winEventsElement(LitElement) {
         type: String
       },
       offsetMargin: {
-        type: String,
+        type: String
       },
       expanded: {
         type: Boolean,
@@ -723,7 +723,9 @@ class HaxTray extends winEventsElement(LitElement) {
         this._editModeChanged(this[propName], oldValue);
       }
       if (propName == "offsetMargin") {
-        this.shadowRoot.querySelector('.wrapper').style.margin = this.offsetMargin;
+        this.shadowRoot.querySelector(
+          ".wrapper"
+        ).style.margin = this.offsetMargin;
       }
       if (propName == "expanded") {
         if (this[propName]) {
