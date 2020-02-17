@@ -32,7 +32,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         }
         #closedialog {
           float: right;
-          top: 124px;
+          top: 68px;
           right: 0;
           position: absolute;
           padding: 8px;
@@ -105,6 +105,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           app-drawer {
             --app-drawer-content-container: {
               background-color: #ffffff;
+              padding: 64px 0;
             }
           }
           eco-json-schema-object {

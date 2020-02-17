@@ -16,6 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -116,16 +117,18 @@ ol {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      appStore: {
-        name: "appStore",
-        type: String,
-        value: ""
-      }
-    };
+  
+  ...super.properties,
+  
+  "appStore": {
+    "name": "appStore",
+    "type": String,
+    "value": ""
+  }
+}
+;
   }
 
   /**
@@ -140,9 +143,9 @@ ol {
    */
   constructor(delayRender = false) {
     super();
-
     // set tag for later use
     this.tag = HAX.tag;
+    this.elementAlign = "right";
     // map our imported properties json to real props on the element
     // @notice static getter of properties is built via tooling
     // to edit modify src/HAX-properties.json
@@ -195,6 +198,9 @@ ol {
         window.HaxStore.instance.appStore = {
           ...JSON.parse(this.getAttribute("app-store"))
         };
+        if (this.hidePanelOps === 'hide-panel-ops') {
+          this.hidePanelOps = true;
+        }
         window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
         window.HaxStore.instance.haxTray.offsetMargin = this.offsetMargin;
         window.HaxStore.instance.haxTray.elementAlign = this.elementAlign;
@@ -238,6 +244,7 @@ ol {
     // now everyone else
     let tray = document.createElement("hax-tray");
     tray.hidePanelOps = this.hidePanelOps;
+    tray.elementAlign = this.elementAlign;
     document.body.appendChild(tray);
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-preferences-dialog"));
@@ -272,8 +279,8 @@ ol {
     return this.getAttribute("offset-margin");
   }
   set offsetMargin(newValue) {
+    this.setAttribute("offset-margin", newValue);
     if (this.__rendered) {
-      this.setAttribute("offset-margin", newValue);
       // bind to the hax store global on change
       window.HaxStore.instance.haxTray.offsetMargin = newValue;
     }
@@ -284,14 +291,18 @@ ol {
   set hidePanelOps(newValue) {
     if (newValue) {
       this.setAttribute("hide-panel-ops", "hide-panel-ops");
+      if (this.__rendered) {
+        // bind to the hax store global on change
+        window.HaxStore.instance.haxTray.hidePanelOps = newValue;
+      }
     }
   }
   get appStore() {
     return this.getAttribute("app-store");
   }
   set appStore(newValue) {
+    this.setAttribute("app-store", newValue);
     if (this.__rendered) {
-      this.setAttribute("app-store", newValue);
       // bind to the hax store global on change
       window.HaxStore.instance.appStore = {
         ...JSON.parse(this.getAttribute("app-store"))

@@ -1,14 +1,14 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
-`img-pan-zoom` Image pan zoom element
-Images are preloaded by `img-loader` and a spinner is shown until loaded
-Deep Zoom Images are supported
-### Credits
-<a href="https://openseadragon.github.io">openSeadragon</a>
-* @demo demo/index.html
-* @customElement img-pan-zoom
-*/
+ * `img-pan-zoom` Image pan zoom element
+ * Images are preloaded by `img-loader` and a spinner is shown until loaded
+ * Deep Zoom Images are supported
+ * ### Credits
+ * <a href="https://openseadragon.github.io">openSeadragon</a>
+ * @demo demo/index.html
+ * @customElement img-pan-zoom
+ */
 class ImgPanZoom extends LitElement {
   /**
    * LitElement constructable styles enhancement
@@ -41,6 +41,9 @@ class ImgPanZoom extends LitElement {
           height: 70px;
           width: 70px;
         }
+        hexagon-loader[hidden] {
+          display: none;
+        }
         hexagon-loader[loading] {
           opacity: 1;
         }
@@ -52,12 +55,11 @@ class ImgPanZoom extends LitElement {
       <!-- Only preload regular images -->
       ${!this.dzi
         ? html`
-            <hexagon-loader
-              ?hidden="${this.hideSpinner}"
-              ?loading=${this.loading}
+          ${((this.hideSpinner || this.loaded)) ? `` : html`<hexagon-loader
+              ?loading=${(this.loading || !this.loaded)}
               item-count="4"
               size="small"
-            ></hexagon-loader>
+            ></hexagon-loader>`}
             <img-loader
               loaded="${this.loaded}"
               @loaded-changed="${this.loadedChangedEvent}"
@@ -336,6 +338,9 @@ class ImgPanZoom extends LitElement {
   }
   loadedChangedEvent(e) {
     this.loaded = e.detail.value;
+    if (this.loaded) {
+      this.loading = false;
+    }
   }
   loadingChangedEvent(e) {
     this.loading = e.detail.value;

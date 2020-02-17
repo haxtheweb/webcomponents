@@ -29,6 +29,7 @@ body, html, :root {
   --hax-panel-item-ink: var(--haxcms-color, white);
   --hax-panel-item-bg: #000000;
   --hax-panel-item-text: #EEEEEE;
+  --hax-tray-width: 300px;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
   --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
   --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);

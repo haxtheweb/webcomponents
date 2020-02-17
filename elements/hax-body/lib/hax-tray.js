@@ -95,7 +95,6 @@ class HaxTray extends winEventsElement(LitElement) {
         :host {
           display: block;
         }
-
         :host .wrapper {
           color: var(--hax-color-text, black);
           z-index: 1000;
@@ -104,19 +103,20 @@ class HaxTray extends winEventsElement(LitElement) {
           bottom: 0;
           background-color: white;
           font-size: 20px;
-          width: 30vw;
+          width: var(---hax-tray-width, 300px);
+          overflow: hidden;
           border-left: 2px solid var(--hax-color-text, black);
           transition: 0.2s right linear, 0.2s opacity linear,
             0.2s visibility linear;
           opacity: 0;
           visibility: hidden;
-          right: -30vw;
+          right: calc(-1 * var(---hax-tray-width, 300px));
           pointer-events: none;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
-          right: calc(-30vw + 120px);
+          right: calc(-1 * var(---hax-tray-width, 300px) + 120px);
           pointer-events: all;
         }
         :host([edit-mode][expanded]) .wrapper {
@@ -125,11 +125,11 @@ class HaxTray extends winEventsElement(LitElement) {
         /** default is right so lets support left too */
         :host([element-align="left"]) .wrapper {
           right: unset;
-          left: -30vw;
+          left: calc(-1 * var(---hax-tray-width, 300px));
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           right: unset;
-          left: calc(-30vw + 120px);
+          left: calc(-1 * var(---hax-tray-width, 300px) + 120px);
         }
         :host([edit-mode][element-align="left"][expanded]) .wrapper {
           right: unset;
@@ -157,6 +157,7 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
+          width: calc(var(---hax-tray-width, 300px) - 2px);
           --a11y-collapse-heading-background-color: var(
             --simple-colors-default-theme-grey-1
           );
@@ -191,6 +192,7 @@ class HaxTray extends winEventsElement(LitElement) {
           margin-right: 8px;
         }
         .quick-buttons {
+          width: var(---hax-tray-width, 300px);
           display: flex;
           background-color: black;
           justify-content: space-between;
@@ -231,7 +233,8 @@ class HaxTray extends winEventsElement(LitElement) {
         .active-op-name {
           display: inline-flex;
           vertical-align: text-bottom;
-          padding: 8px;
+          padding: 4px 2px;
+          max-width: 60px;
           font-size: 11px;
           overflow: hidden;
           text-align: center;
@@ -265,9 +268,9 @@ class HaxTray extends winEventsElement(LitElement) {
       <div class="wrapper">
         <div class="quick-buttons">
           <div class="ops">
+            ${this.hidePanelOps ? `` : html`
             <hax-tray-button
               mini
-              ?hidden="${this.hidePanelOps}"
               @click="${this._clickSaveButton}"
               icon="save"
               id="haxsavebutton"
@@ -278,7 +281,6 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
-              ?hidden="${this.hidePanelOps}"
               icon="cancel"
               id="haxcancelbutton"
               label="Cancel"
@@ -292,6 +294,7 @@ class HaxTray extends winEventsElement(LitElement) {
               icon="${this.traySizeIcon}"
               label="${this.traySizeText}"
             ></hax-tray-button>
+            `}
             <div class="active-op-name">${this.activeOperationName}</div>
           </div>
           <div class="quick">

@@ -205,8 +205,8 @@ class HAXCMSSiteEditor extends LitElement {
       <h-a-x
         id="hax"
         element-align="left"
-        hide-panel-ops
         offset-margin="0 0 0 48px"
+        hide-panel-ops="hide-panel-ops"
       ></h-a-x>
     `;
   }

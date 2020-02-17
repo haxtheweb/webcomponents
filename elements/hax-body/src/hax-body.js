@@ -55,7 +55,6 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          margin-right: 30%;
           --hax-contextual-action-color: #3b97e3;
           --hax-body-editable-outline: 1px solid #e37e3b;
           --hax-body-active-outline-hover: 1px solid
