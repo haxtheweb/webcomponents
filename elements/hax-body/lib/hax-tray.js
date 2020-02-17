@@ -268,33 +268,35 @@ class HaxTray extends winEventsElement(LitElement) {
       <div class="wrapper">
         <div class="quick-buttons">
           <div class="ops">
-            ${this.hidePanelOps ? `` : html`
-            <hax-tray-button
-              mini
-              @click="${this._clickSaveButton}"
-              icon="save"
-              id="haxsavebutton"
-              label="${this.__tipText}"
-              accent-color="green"
-              event-name="save"
-              voice-command="save content"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
-              icon="cancel"
-              id="haxcancelbutton"
-              label="Cancel"
-              event-name="cancel"
-              accent-color="red"
-              voice-command="cancel"
-            ></hax-tray-button>
-            <hax-tray-button
-              mini
-              event-name="toggle-tray-size"
-              icon="${this.traySizeIcon}"
-              label="${this.traySizeText}"
-            ></hax-tray-button>
-            `}
+            ${this.hidePanelOps
+              ? ``
+              : html`
+                  <hax-tray-button
+                    mini
+                    @click="${this._clickSaveButton}"
+                    icon="save"
+                    id="haxsavebutton"
+                    label="${this.__tipText}"
+                    accent-color="green"
+                    event-name="save"
+                    voice-command="save content"
+                  ></hax-tray-button>
+                  <hax-tray-button
+                    mini
+                    icon="cancel"
+                    id="haxcancelbutton"
+                    label="Cancel"
+                    event-name="cancel"
+                    accent-color="red"
+                    voice-command="cancel"
+                  ></hax-tray-button>
+                  <hax-tray-button
+                    mini
+                    event-name="toggle-tray-size"
+                    icon="${this.traySizeIcon}"
+                    label="${this.traySizeText}"
+                  ></hax-tray-button>
+                `}
             <div class="active-op-name">${this.activeOperationName}</div>
           </div>
           <div class="quick">

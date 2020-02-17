@@ -85,7 +85,7 @@ class HAX extends HTMLElement {
         window.HaxStore.instance.appStore = {
           ...JSON.parse(this.getAttribute("app-store"))
         };
-        if (this.hidePanelOps === 'hide-panel-ops') {
+        if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
         window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
