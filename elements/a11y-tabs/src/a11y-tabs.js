@@ -208,13 +208,12 @@ class A11yTabs extends LitElement {
   _setVertical() {
     if (this.forceHorizontal) {
       this.vertical = false;
-    }
-    else {
+    } else {
       this.vertical =
-      this.layoutBreakpoint === -1 ||
-      this.iconBreakpoint > this.layoutBreakpoint
-        ? this.responsiveSize === "xs"
-        : this.responsiveSize.indexOf("s") > -1;
+        this.layoutBreakpoint === -1 ||
+        this.iconBreakpoint > this.layoutBreakpoint
+          ? this.responsiveSize === "xs"
+          : this.responsiveSize.indexOf("s") > -1;
     }
   }
   /**

@@ -1050,8 +1050,7 @@ class HaxTray extends winEventsElement(LitElement) {
       this.__marginBody = document.body.style.marginRight;
       if (this.elementAlign == "left") {
         document.body.style.marginLeft = "300px";
-      }
-      else {
+      } else {
         document.body.style.marginRight = "300px";
       }
     } else {
@@ -1059,8 +1058,7 @@ class HaxTray extends winEventsElement(LitElement) {
       this.shadowRoot.querySelector("#button").icon = "create";
       if (this.elementAlign == "left") {
         document.body.style.marginLeft = this.__marginBody;
-      }
-      else {
+      } else {
         document.body.style.marginRight = this.__marginBody;
       }
     }

@@ -53,14 +53,14 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     return html`
       <custom-style>
         <style>
-        paper-input {
-          --paper-input-container-label: {
-            font-size: 11px;
-          };
-          --paper-input-container: {
-            padding: 2px;
-          };
-        }
+          paper-input {
+            --paper-input-container-label: {
+              font-size: 11px;
+            }
+            --paper-input-container: {
+              padding: 2px;
+            }
+          }
         </style>
       </custom-style>
       <div class="toolbar-inner">

@@ -74,8 +74,7 @@ class HAX extends HTMLElement {
           if (typeof appStore === "object") {
             window.HaxStore.instance.appStore = appStore;
           }
-        }
-        catch(e) {
+        } catch (e) {
           console.log(e);
         }
         if (this.hidePanelOps === "hide-panel-ops") {

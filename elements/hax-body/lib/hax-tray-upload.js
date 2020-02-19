@@ -90,10 +90,10 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           paper-input {
             --paper-input-container-label: {
               font-size: 11px;
-            };
+            }
             --paper-input-container: {
               padding: 0;
-            };
+            }
           }
           vaadin-upload {
             --vaadin-upload-button-add-wrapper: {
