@@ -11,92 +11,93 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @customElement r-coder
  */
 class RCoder extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-#editor {
-  height: var(--r-coder-editor-height, 300px);
-  width: var(--r-coder-editor-width, 100%);
-}
+        #editor {
+          height: var(--r-coder-editor-height, 300px);
+          width: var(--r-coder-editor-width, 100%);
+        }
 
-#button {
-  margin: var(--r-code-button-margin, 10px 0);
-}
+        #button {
+          margin: var(--r-code-button-margin, 10px 0);
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-
-<code-editor id="editor" language="r"></code-editor>
-<paper-button id="button" ?disabled="${!this.__connected}" @click="${this.process}" raised>Process</paper-button>
-<div id="output"></div>`;
+      <code-editor id="editor" language="r"></code-editor>
+      <paper-button
+        id="button"
+        ?disabled="${!this.__connected}"
+        @click="${this.process}"
+        raised
+        >Process</paper-button
+      >
+      <div id="output"></div>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "R coder",
-    "description": "R coder interface for the r-service backend.",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Coder"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "R coder",
+        description: "R coder interface for the r-service backend.",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Coder"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "heymp",
+          owner: "PSU"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "endpoint",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "meta": {
-      "author": "heymp",
-      "owner": "PSU"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "endpoint",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "endpoint": {
-    "type": String
-  },
-  "__connected": {
-    "type": Boolean
-  }
-}
-;
+      ...super.properties,
+
+      endpoint: {
+        type: String
+      },
+      __connected: {
+        type: Boolean
+      }
+    };
   }
 
   /**

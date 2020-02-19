@@ -504,11 +504,13 @@ export class Form {
     pitchWrapper.appendChild(pitchSlider);
     this.renderArea.appendChild(pitchWrapper);
     // trigger an event on our target instance that says we are ready
-    this.target.dispatchEvent(new CustomEvent('vmsg-ready', {
-      detail: {
-        value: true
-      }
-    }));
+    this.target.dispatchEvent(
+      new CustomEvent("vmsg-ready", {
+        detail: {
+          value: true
+        }
+      })
+    );
   }
 
   drawError(err) {
