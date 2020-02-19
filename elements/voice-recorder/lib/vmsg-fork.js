@@ -383,7 +383,6 @@ export class Form {
     this.resolve = resolve;
     this.reject = reject;
     this.target = target;
-    this.backdrop = null;
     this.renderArea = null;
     this.recordBtn = null;
     this.stopBtn = null;
@@ -431,7 +430,7 @@ export class Form {
     const recordRow = document.createElement("div");
     recordRow.className = "vmsg-record-row";
     this.renderArea.appendChild(recordRow);
-
+    // @todo make this point to the parent button somehow that invoked this for events
     const recordBtn = (this.recordBtn = document.createElement("button"));
     recordBtn.className = "vmsg-button vmsg-record-button";
     recordBtn.textContent = "●";
@@ -504,6 +503,12 @@ export class Form {
     };
     pitchWrapper.appendChild(pitchSlider);
     this.renderArea.appendChild(pitchWrapper);
+    // trigger an event on our target instance that says we are ready
+    this.target.dispatchEvent(new CustomEvent('vmsg-ready', {
+      detail: {
+        value: true
+      }
+    }));
   }
 
   drawError(err) {
@@ -525,7 +530,6 @@ export class Form {
     if (this.audio) this.audio.pause();
     if (this.tid) clearTimeout(this.tid);
     this.recorder.close();
-    this.backdrop.remove();
     if (blob) {
       this.resolve(blob);
     } else {
