@@ -18,7 +18,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         }
         .toolbar-inner {
           display: inline-flex;
-          padding: 0 16px;
+          padding: 0;
         }
         .item-wrapper {
           text-align: center;
@@ -37,6 +37,18 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   }
   render() {
     return html`
+      <custom-style>
+        <style>
+        paper-input {
+          --paper-input-container-label: {
+            font-size: 11px;
+          };
+          --paper-input-container: {
+            padding: 2px;
+          };
+        }
+        </style>
+      </custom-style>
       <div class="toolbar-inner">
         <paper-input
           label="Filter"

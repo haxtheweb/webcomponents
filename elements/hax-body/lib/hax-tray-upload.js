@@ -25,14 +25,13 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           --disabled-text-color: #222222;
         }
         .add-area-content-wrapper {
-          padding: 0 16px;
+          padding: 0 4px;
         }
         .add-url-area,
         .add-upload-area {
-          margin: 16px 0;
+          margin: 0;
         }
         .url-description {
-          font-size: 18px;
           color: #000000;
           line-height: 22px;
           font-family: sans-serif;
@@ -87,6 +86,14 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             --app-drawer-content-container: {
               background-color: #ffffff;
             }
+          }
+          paper-input {
+            --paper-input-container-label: {
+              font-size: 11px;
+            };
+            --paper-input-container: {
+              padding: 0;
+            };
           }
           vaadin-upload {
             --vaadin-upload-button-add-wrapper: {

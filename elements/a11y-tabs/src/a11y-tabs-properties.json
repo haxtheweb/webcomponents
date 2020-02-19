@@ -79,5 +79,9 @@
    */
   "__observer": {
     "type": "Object"
+  },
+  "forceHorizontal": {
+    "type": Boolean,
+    "attribute": "force-horizontal"
   }
 }

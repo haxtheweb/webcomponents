@@ -16,6 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -116,16 +117,13 @@ ol {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
 
-      appStore: {
-        name: "appStore",
-        type: String,
-        value: ""
-      }
-    };
+...super.properties
+
+}
+;
   }
 
   /**
@@ -142,21 +140,6 @@ ol {
     super();
     // set tag for later use
     this.tag = HAX.tag;
-    this.elementAlign = "right";
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HAX-properties.json
-    let obj = HAX.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
@@ -192,9 +175,17 @@ ol {
   storeReady(e) {
     if (e.detail) {
       setTimeout(() => {
-        window.HaxStore.instance.appStore = {
-          ...JSON.parse(this.getAttribute("app-store"))
-        };
+        try {
+          let appStore = {
+            ...JSON.parse(this.getAttribute("app-store"))
+          };
+          if (typeof appStore === "object") {
+            window.HaxStore.instance.appStore = appStore;
+          }
+        }
+        catch(e) {
+          console.log(e);
+        }
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
@@ -298,6 +289,7 @@ ol {
     return this.getAttribute("app-store");
   }
   set appStore(newValue) {
+    console.log(newValue);
     this.setAttribute("app-store", newValue);
     if (this.__rendered) {
       // bind to the hax store global on change

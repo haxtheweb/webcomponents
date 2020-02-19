@@ -79,17 +79,16 @@ class HAXTrayButton extends SimpleColors {
           background-color: var(--simple-colors-default-theme-accent-8, #000);
         }
         iron-icon {
-          width: 30px;
-          height: 30px;
+          width: 20px;
+          height: 20px;
           color: var(--simple-colors-default-theme-grey-1, #fff);
         }
         .item-label {
-          margin-top: 8px;
+          margin-top: 4px;
           color: var(--simple-colors-default-theme-grey-1, #fff);
           width: 70px;
-          font-size: 11px;
-          line-height: 11px;
-          height: 11px;
+          font-size: 10px;
+          line-height: 10px;
           text-align: center;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -104,7 +103,7 @@ class HAXTrayButton extends SimpleColors {
         }
         :host([wide]) paper-button {
           align-items: center;
-          justify-content: space-evenly;
+          justify-content: space-around;
         }
         .flip-icon {
           transform: rotateY(180deg);
@@ -115,6 +114,7 @@ class HAXTrayButton extends SimpleColors {
           background-color: var(--hax-color-bg-accent);
           min-width: unset;
           cursor: pointer;
+          height: 28px;
           display: flex;
           padding: 4px;
           margin: 0px;
@@ -123,8 +123,8 @@ class HAXTrayButton extends SimpleColors {
           transition: box-shadow 0.3s;
         }
         paper-button iron-icon {
-          height: 32px;
-          width: 32px;
+          height: 20px;
+          width: 20px;
           color: var(--simple-colors-default-theme-grey-1);
           display: inline-block;
         }

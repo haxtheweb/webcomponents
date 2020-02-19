@@ -157,6 +157,8 @@ class HaxTray extends winEventsElement(LitElement) {
           margin: 0;
         }
         a11y-collapse {
+          font-size: 11px;
+          --a11y-tabs-content-padding: 0;
           width: calc(var(---hax-tray-width, 300px) - 2px);
           --a11y-collapse-heading-background-color: var(
             --simple-colors-default-theme-grey-1
@@ -1045,9 +1047,22 @@ class HaxTray extends winEventsElement(LitElement) {
     if (typeof newValue !== typeof undefined && newValue) {
       this.__tipText = "Save content";
       this.shadowRoot.querySelector("#button").icon = "save";
+      this.__marginBody = document.body.style.marginRight;
+      if (this.elementAlign == "left") {
+        document.body.style.marginLeft = "300px";
+      }
+      else {
+        document.body.style.marginRight = "300px";
+      }
     } else {
       this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
+      if (this.elementAlign == "left") {
+        document.body.style.marginLeft = this.__marginBody;
+      }
+      else {
+        document.body.style.marginRight = this.__marginBody;
+      }
     }
   }
 

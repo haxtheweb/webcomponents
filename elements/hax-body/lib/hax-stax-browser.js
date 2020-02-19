@@ -13,6 +13,10 @@ class HaxStaxBrowser extends LitElement {
         :host {
           display: block;
         }
+        .stax-container {
+          text-align: center;
+          margin: 0px 16px;
+        }
       `
     ];
   }

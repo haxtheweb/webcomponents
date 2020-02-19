@@ -13,6 +13,10 @@ class HaxBloxBrowser extends LitElement {
         :host {
           display: block;
         }
+        .blox-container {
+          text-align: center;
+          margin: 0px 16px;
+        }
       `
     ];
   }

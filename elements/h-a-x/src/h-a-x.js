@@ -32,21 +32,6 @@ class HAX extends HTMLElement {
     super();
     // set tag for later use
     this.tag = HAX.tag;
-    this.elementAlign = "right";
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HAX-properties.json
-    let obj = HAX.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
@@ -82,9 +67,17 @@ class HAX extends HTMLElement {
   storeReady(e) {
     if (e.detail) {
       setTimeout(() => {
-        window.HaxStore.instance.appStore = {
-          ...JSON.parse(this.getAttribute("app-store"))
-        };
+        try {
+          let appStore = {
+            ...JSON.parse(this.getAttribute("app-store"))
+          };
+          if (typeof appStore === "object") {
+            window.HaxStore.instance.appStore = appStore;
+          }
+        }
+        catch(e) {
+          console.log(e);
+        }
         if (this.hidePanelOps === "hide-panel-ops") {
           this.hidePanelOps = true;
         }
@@ -188,6 +181,7 @@ class HAX extends HTMLElement {
     return this.getAttribute("app-store");
   }
   set appStore(newValue) {
+    console.log(newValue);
     this.setAttribute("app-store", newValue);
     if (this.__rendered) {
       // bind to the hax store global on change
