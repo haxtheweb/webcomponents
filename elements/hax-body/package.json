@@ -105,7 +105,8 @@
     "lit-element": "2.2.1",
     "paper-collapse-item": "^4.0.4",
     "undoer": "^0.1.1",
-    "web-animations-js": "^2.3.1"
+    "web-animations-js": "^2.3.1",
+    "@material/mwc-button": "^0.13.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/a11y-gif-player": "^2.4.1",

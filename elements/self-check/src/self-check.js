@@ -3,7 +3,6 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `self-check`
- * @customElement self-check
  * 
 ### Styling
 
@@ -25,6 +24,7 @@ Custom property | Description | Default
  * @extends SimpleColors
  * @extends SchemaBehaviors
  * @demo ./demo/index.html
+ * @customElement self-check
  * 
  */
 class SelfCheck extends SchemaBehaviors(SimpleColors) {

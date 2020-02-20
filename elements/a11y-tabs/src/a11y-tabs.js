@@ -45,6 +45,7 @@ class A11yTabs extends LitElement {
     this.iconBreakpoint = 400;
     this.id = null;
     this.layoutBreakpoint = 600;
+    this.forceHorizontal = false;
     this.responsiveSize = "xs";
     this.vertical = false;
     this.__hasIcons = false;
@@ -205,11 +206,15 @@ class A11yTabs extends LitElement {
    * @param {string} size the responsive size
    */
   _setVertical() {
-    this.vertical =
-      this.layoutBreakpoint === -1 ||
-      this.iconBreakpoint > this.layoutBreakpoint
-        ? this.responsiveSize === "xs"
-        : this.responsiveSize.indexOf("s") > -1;
+    if (this.forceHorizontal) {
+      this.vertical = false;
+    } else {
+      this.vertical =
+        this.layoutBreakpoint === -1 ||
+        this.iconBreakpoint > this.layoutBreakpoint
+          ? this.responsiveSize === "xs"
+          : this.responsiveSize.indexOf("s") > -1;
+    }
   }
   /**
    * determines if tabs should show icons only

@@ -16,32 +16,12 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         :host {
           display: block;
         }
-        hax-gizmo-browser-item {
-          margin: 5px;
-          transition: 0.2s all linear;
-          display: inline-flex;
-        }
-        #ironlist {
-          min-height: 50vh;
-          margin: 0;
-          padding: 16px;
-        }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-        }
         .toolbar-inner {
           display: inline-flex;
-          padding: 10px;
+          padding: 0;
+        }
+        .item-wrapper {
+          text-align: center;
         }
       `
     ];
@@ -51,34 +31,31 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
-    this.title = "Create page element";
     this.__gizmoList = [];
     this.filtered = [];
     import("@polymer/paper-input/paper-input.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser-item.js");
   }
   render() {
     return html`
-      <h3 class="title">
-        <iron-icon icon="hax:add-brick"></iron-icon> ${this.title}
-      </h3>
+      <custom-style>
+        <style>
+          paper-input {
+            --paper-input-container-label: {
+              font-size: 11px;
+            }
+            --paper-input-container: {
+              padding: 2px;
+            }
+          }
+        </style>
+      </custom-style>
       <div class="toolbar-inner">
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="title"
-          @change="${this.filtertypeChange}"
-        >
-          <paper-item value="title">Title</paper-item>
-        </dropdown-select>
         <paper-input
           label="Filter"
           id="inputfilter"
           aria-controls="filter"
           @value-changed="${this.inputfilterChanged}"
           value=""
-          always-float-label=""
         ></paper-input>
       </div>
       <grafitto-filter
@@ -90,22 +67,24 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         @filtered-changed="${this.filteredChanged}"
         ><template></template
       ></grafitto-filter>
-      ${this.filtered.map(
-        gizmo => html`
-          <hax-gizmo-browser-item
-            .index="${gizmo.index}"
-            .title="${gizmo.title}"
-            tag-to-insert="${gizmo.tag}"
-            .icon="${gizmo.icon}"
-            color="${gizmo.color}"
-            .author="${gizmo.author}"
-            .teaser="${gizmo.teaser}"
-            .description="${gizmo.description}"
-            .examples="${gizmo.examples}"
-            .status="${gizmo.status}"
-          ></hax-gizmo-browser-item>
-        `
-      )}
+      <div class="item-wrapper">
+        ${this.filtered.map(
+          gizmo => html`
+            <hax-tray-button
+              draggable="true"
+              @dragstart="${this._dragStart}"
+              @dragend="${this._dragEnd}"
+              index="${gizmo.index}"
+              label="${gizmo.title}"
+              event-name="insert-tag"
+              event-data="${gizmo.tag}"
+              icon="${gizmo.icon}"
+              color="${gizmo.color}"
+              drag-color="${gizmo.color}"
+            ></hax-tray-button>
+          `
+        )}
+      </div>
     `;
   }
   static get tag() {
@@ -113,12 +92,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
   }
   static get properties() {
     return {
-      /**
-       * Title of the browser, for translation.
-       */
-      title: {
-        type: String
-      },
       filtered: {
         type: Array
       },
@@ -127,16 +100,64 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       }
     };
   }
+  /**
+   * Drag start so we know what target to set
+   */
+  _dragStart(e) {
+    // create the tag
+    let target = document.createElement(e.target.eventData);
+    window.HaxStore.instance.__dragTarget = target;
+    if (e.dataTransfer) {
+      this.crt = target.cloneNode(true);
+      this.crt.style.position = "absolute";
+      this.crt.style.top = "-1000px";
+      this.crt.style.right = "-1000px";
+      this.crt.style.transform = "scale(0.25)";
+      this.crt.style.opacity = ".8";
+      this.crt.style.backgroundColor = e.target.getAttribute("drag-color");
+      e.dataTransfer.dropEffect = "move";
+      document.body.appendChild(this.crt);
+      e.dataTransfer.setDragImage(this.crt, 0, 0);
+    }
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    // show where things can be dropped only during the drag
+    if (
+      !window.HaxStore.instance.activeHaxBody.openDrawer &&
+      window.HaxStore.instance.editMode
+    ) {
+      let children = window.HaxStore.instance.activeHaxBody.children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (children[i].classList && target !== children[i]) {
+          children[i].classList.add("mover");
+        }
+      }
+    }
+  }
+  /**
+   * When we end dragging ensure we remove the mover class.
+   */
+  _dragEnd(e) {
+    this.crt.remove();
+    let children = window.HaxStore.instance.activeHaxBody.children;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove(
+          "mover",
+          "hovered",
+          "moving",
+          "grid-plate-active-item"
+        );
+      }
+    }
+  }
   filteredChanged(e) {
     this.filtered = [...e.detail.value];
   }
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
-  }
-  filtertypeChange(e) {
-    this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filter").where = e.detail.value;
-    this.shadowRoot.querySelector("#filter").like = "";
   }
   firstUpdated(changedProperties) {
     this.resetBrowser();
@@ -168,7 +189,6 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.__gizmoList = window.HaxStore.instance.gizmoList;
     this.filtered = this.__gizmoList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filtertype").value = "title";
     this.shadowRoot.querySelector("#filter").value = "";
     this.shadowRoot.querySelector("#filter").filter();
     this.shadowRoot.querySelector("#filter").where = "title";

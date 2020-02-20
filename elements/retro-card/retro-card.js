@@ -153,7 +153,12 @@ class RetroCard extends SimpleColors {
   // render function
   render() {
     return html`
-      <a tabindex="-1" class="link ${this.color}" href="${this.url}">
+      <a
+        tabindex="-1"
+        class="link ${this.color}"
+        href="${this.url}"
+        @click="${this._clickCard}"
+      >
         <img class="img" loading="lazy" src="${this.__source}" alt="" />
         <span class="title">${this.title}</span>
         <span class="name">${this.subtitle}</span>
@@ -361,6 +366,23 @@ class RetroCard extends SimpleColors {
     // optional support for hoverSource being the default source
     if (!this.hoverSource) {
       this.hoverSource = this.mediaSource;
+    }
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickCard(e) {
+    if (
+      this.url &&
+      window.HaxStore &&
+      window.HaxStore.ready &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.editMode
+    ) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     }
   }
   /**

@@ -19,7 +19,6 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `haxcms-legacy-player`
@@ -91,7 +90,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           font-family: libre baskerville;

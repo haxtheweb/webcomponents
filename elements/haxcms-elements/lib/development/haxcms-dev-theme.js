@@ -6,7 +6,6 @@ import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@polymer/iron-list/iron-list.js";
 /**
  * `haxcms-dev-theme`
@@ -44,7 +43,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles-polymer">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           /* theme color which is dictated by the manifest */

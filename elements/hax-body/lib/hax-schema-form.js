@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `hax-schema-form`
  * @customElement hax-schema-form
@@ -16,7 +15,6 @@ class HaxSchemaForm extends PolymerElement {
     import("@polymer/paper-tabs/paper-tabs.js");
     import("@polymer/paper-tabs/paper-tab.js");
     import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
@@ -29,7 +27,7 @@ class HaxSchemaForm extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles-polymer">
+      <style>
         :host {
           display: block;
           background-color: #ffffff;

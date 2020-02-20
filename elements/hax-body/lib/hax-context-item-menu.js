@@ -20,14 +20,7 @@ class HaxContextItemMenu extends LitElement {
       css`
         :host {
           display: inline-flex;
-          height: 36px;
           box-sizing: border-box;
-        }
-        :host hax-toolbar-menu ::slotted(*):hover {
-          background-color: var(--hax-color-bg-accent);
-        }
-        :host hax-toolbar-menu ::slotted(*) {
-          height: 36px;
         }
         :host(mini) {
           height: unset;
@@ -41,6 +34,7 @@ class HaxContextItemMenu extends LitElement {
     this._blockEvent = false;
     this.resetOnSelect = false;
     this.selectedValue = 0;
+    this.action = false;
     this.direction = "top";
     this.icon = "editor:text-fields";
     this.label = "editor:text-fields";
@@ -50,6 +44,7 @@ class HaxContextItemMenu extends LitElement {
       <hax-toolbar-menu
         id="menu"
         ?mini="${this.mini}"
+        ?action="${this.action}"
         .icon="${this.icon}"
         .tooltip="${this.label}"
         .tooltip-direction="${this.direction}"
@@ -86,6 +81,9 @@ class HaxContextItemMenu extends LitElement {
       mini: {
         type: Boolean,
         reflect: true
+      },
+      action: {
+        type: Boolean
       },
       /**
        * Internal flag to allow blocking the event firing if machine selects tag.

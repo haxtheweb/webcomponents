@@ -23,9 +23,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
-      import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/iron-icons/hardware-icons.js");
     }, 0);
   }
   static get tag() {
@@ -46,30 +43,40 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       margin:0;
       padding:0;
     }
+    hax-context-item-menu {
+      --hax-context-item-menu-height: 28px;
+    }
     .area {
+      display: flex;
       visibility: visible;
+      opacity: .8;
+    }
+    .area {
+      opacity: 1;
     }
     .paddle {
-      position:fixed;
       width: unset;
       height: unset;
       visibility: visible;
-      opacity: .6;
+      opacity: .9;
     }
     .paddle:hover {
       opacity: 1;
     }
     paper-item {
+      background-color: var(--hax-contextual-action-color);
       -webkit-justify-content: flex-start;
       justify-content: flex-start;
-      height: 20px;
+      height: 24px;
       padding: 0 4px;
-      min-height: 20px;
+      min-height: 24px;
       font-size: 10px;
+      color: white;
     }
+    #drag hax-context-item:hover,
     paper-item:hover {
-      background-color: #d3d3d3;
       cursor: pointer;
+      color: black;
     }
     iron-icon {
       padding: 0 2px;
@@ -77,61 +84,19 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       height: 16px;
     }
     </style>
-    <div class="area">
-      <hax-context-item
-        light
-        icon="hardware:keyboard-arrow-up"
-        label="Move up"
-        event-name="hax-plate-up"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-        id="drag"
-        light
-        icon="editor:drag-handle"
-        label="Drag"
-        draggable="true"
-        direction="left"
-      ></hax-context-item>
-      <hax-context-item
-        light
-        icon="hardware:keyboard-arrow-down"
-        label="Move down"
-        event-name="hax-plate-down"
-        direction="left"
-      ></hax-context-item>
-    </div>
-    <hax-context-item
-      light
-      large
-      class="paddle"
-      icon="icons:add"
-      label="Add column"
-      event-name="hax-plate-create-left"
-      direction="right"
-      id="left"
-    ></hax-context-item>
-    <hax-context-item
-      light
-      large
-      class="paddle"
-      icon="icons:remove"
-      label="Remove column"
-      event-name="hax-plate-remove-left"
-      direction="right"
-      id="leftremove"
-    ></hax-context-item>
+    <div class="area" id="area">
     <hax-context-item-menu
-      mini
-      id="leftadd"
-      class="paddle"
-      icon="hax:add-brick"
-      label="Insert new.."
-      event-name="hax-plate-add-element"
-      direction="right"
-      selected-value="0"
-      reset-on-select
-    >
+    action
+    mini
+    id="rightadd"
+    class="paddle"
+    icon="hax:add-brick"
+    label="Insert new.."
+    event-name="hax-plate-add-element"
+    direction="left"
+    selected-value="0"
+    reset-on-select
+  >
     <paper-item value="" hidden></paper-item>
       <paper-item value='{"tag":"p","content":"", "properties": {}}'>
         <iron-icon icon="hax:paragraph"></iron-icon>Paragraph
@@ -152,9 +117,36 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         <iron-icon icon="hax:add-brick"></iron-icon>Other element
       </paper-item>
     </hax-context-item-menu>
-    <hax-context-item
-      light
-      large
+      <hax-context-item-menu
+        mini
+        id="drag"
+        action
+        icon="editor:drag-handle"
+        label="Drag"
+        draggable="true"
+        direction="left"
+        selected-value="0"
+        reset-on-select>
+      <hax-context-item
+        action
+        mini
+        icon="hardware:keyboard-arrow-up"
+        label="Move up"
+        event-name="hax-plate-up"
+        direction="left"
+        ></hax-context-item>
+      <hax-context-item
+        action
+        mini
+        icon="hardware:keyboard-arrow-down"
+        label="Move down"
+        event-name="hax-plate-down"
+        direction="left"
+        ></hax-context-item>
+    </hax-context-item-menu>
+      <hax-context-item
+      mini
+      action
       id="right"
       class="paddle"
       icon="icons:add"
@@ -163,8 +155,8 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       direction="left"
     ></hax-context-item>
     <hax-context-item
-      light
-      large
+      mini
+      action
       class="paddle"
       icon="icons:remove"
       label="Remove column"
@@ -172,6 +164,21 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       direction="left"
       id="rightremove"
     ></hax-context-item>
+  <hax-context-item
+    mini
+    action
+    label="Duplicate"
+    icon="icons:content-copy"
+    event-name="hax-plate-duplicate"
+    ></hax-context-item>
+  <hax-context-item
+    mini
+    action
+    icon="delete"
+    label="Remove"
+    event-name="hax-plate-delete"
+  ></hax-context-item>
+  </div>
   `;
   }
   /**
@@ -193,55 +200,21 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   }
   __updatePlatePosition() {
     setTimeout(() => {
-      let activeRec = window.HaxStore.instance.activeNode.getBoundingClientRect();
-      let rect = activeRec;
       let active = window.HaxStore.instance.activeNode;
       let right = this.shadowRoot.querySelector("#right");
-      let left = this.shadowRoot.querySelector("#left");
       let rightremove = this.shadowRoot.querySelector("#rightremove");
-      let leftremove = this.shadowRoot.querySelector("#leftremove");
-      let leftadd = this.shadowRoot.querySelector("#leftadd");
       if (window.HaxStore.instance.activeContainerNode) {
         active = window.HaxStore.instance.activeContainerNode;
-        rect = active.getBoundingClientRect();
       }
-
-      right.style.top = Math.round(rect.y - 1) + "px";
-      right.style.left = Math.round(rect.left + rect.width + 2) + "px";
-      rightremove.style.top =
-        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
-      rightremove.style.left = Math.round(rect.left + rect.width + 2) + "px";
-
-      left.style.top = Math.round(rect.y - 1) + "px";
-      left.style.left = Math.round(rect.left - 22) + "px";
-
-      leftremove.style.top =
-        Math.round(rect.y - 1 + (rect.height / 2 + 2)) + "px";
-      leftremove.style.left = Math.round(rect.left - 22) + "px";
-
-      right.height = Math.round(rect.height / 2 + 2) + "px";
-      rightremove.height = right.height;
-
-      left.height = right.height;
-      leftremove.height = right.height;
-
-      this.style.height = Math.round(rect.height + 2) + "px";
-
-      leftadd.style.top = Math.round(activeRec.y + activeRec.height + 1) + "px";
-      leftadd.style.left = Math.round(activeRec.left - 22) + "px";
       // support for enabling or disabling
       right.disabled = false;
-      left.disabled = false;
       rightremove.disabled = false;
-      leftremove.disabled = false;
       if (active && active.tagName == "GRID-PLATE") {
         if (active.layout == "1-1-1-1-1-1") {
           right.disabled = true;
-          left.disabled = true;
         }
       } else {
         rightremove.disabled = true;
-        leftremove.disabled = true;
       }
     }, 100);
   }
@@ -260,25 +233,25 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     setTimeout(() => {
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragstart", this._dragstart);
+        .addEventListener("dragstart", this._dragStart);
       this.shadowRoot
         .querySelector("#drag")
-        .addEventListener("dragend", this.dragEnd);
+        .addEventListener("dragend", this._dragEnd);
     }, 0);
   }
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragstart", this._dragstart);
+      .removeEventListener("dragstart", this._dragStart);
     this.shadowRoot
       .querySelector("#drag")
-      .removeEventListener("dragend", this.dragEnd);
+      .removeEventListener("dragend", this._dragEnd);
     super.disconnectedCallback();
   }
   /**
    * When we end dragging ensure we remove the mover class.
    */
-  dragEnd(e) {
+  _dragEnd(e) {
     let children = window.HaxStore.instance.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -289,21 +262,24 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
           "moving",
           "grid-plate-active-item"
         );
+        children[i].removeEventListener("click", this._clickPlace);
       }
     }
   }
   /**
    * Drag start so we know what target to set
    */
-  _dragstart(e) {
+  _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
     if (window.HaxStore.instance.activeContainerNode) {
       target = window.HaxStore.instance.activeContainerNode;
     }
     window.HaxStore.instance.__dragTarget = target;
     target.classList.add("moving");
-    e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setDragImage(target, 0, 0);
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "move";
+      e.dataTransfer.setDragImage(target, 0, 0);
+    }
     e.stopPropagation();
     e.stopImmediatePropagation();
     setTimeout(() => {
@@ -317,6 +293,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         for (var i in children) {
           if (children[i].classList && target !== children[i]) {
             children[i].classList.add("mover");
+            children[i].addEventListener("click", this._clickPlace);
           }
         }
       }

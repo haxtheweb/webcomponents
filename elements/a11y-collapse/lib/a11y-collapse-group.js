@@ -2,7 +2,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { A11yCollapse } from "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
- * @customElement a11y-collapse-group
  * a group of `a11y-collapse` elements
  * 
 ### Styling
@@ -14,10 +13,10 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
-
  * @extends A11yCollapse
  * @see ../a11y-collapse.js
  * @demo ./demo/group.html collapse groups
+ * @customElement a11y-collapse-group
  */
 class A11yCollapseGroup extends A11yCollapse {
   static get styles() {
@@ -60,12 +59,18 @@ class A11yCollapseGroup extends A11yCollapse {
     this.__items = [];
     this.addEventListener("a11y-collapse-attached", function(e) {
       this._attachItem(e.detail);
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     });
     this.addEventListener("a11y-collapse-detached", function(e) {
       this._detachItem(e.detail);
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     });
     this.addEventListener("a11y-collapse-click", function(e) {
       this.radioToggle(e.detail);
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     });
   }
   static get tag() {

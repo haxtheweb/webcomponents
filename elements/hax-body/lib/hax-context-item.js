@@ -1,14 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item`
  * @customElement hax-context-item
@@ -21,6 +12,7 @@ class HaxContextItem extends LitElement {
   constructor() {
     super();
     this.light = false;
+    this.action = false;
     this.large = false;
     this.disabled = false;
     this.mini = false;
@@ -41,13 +33,6 @@ class HaxContextItem extends LitElement {
       css`
         :host {
           display: inline-flex;
-          height: 36px;
-          width: 36px;
-        }
-        :host([large]),
-        :host([mini]) {
-          height: unset;
-          width: unset;
         }
         :host([menu]) {
           display: flex;
@@ -62,6 +47,7 @@ class HaxContextItem extends LitElement {
       <hax-toolbar-item
         ?disabled="${this.disabled}"
         ?light="${this.light}"
+        ?action="${this.action}"
         ?mini="${this.mini}"
         ?large="${this.large}"
         id="button"
@@ -90,6 +76,9 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
+        type: Boolean
+      },
+      action: {
         type: Boolean
       },
       height: {
