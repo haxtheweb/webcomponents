@@ -15,8 +15,8 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
     "@lrnwebcomponents/simple-colors": "^2.4.4",
-    "@storybook/addon-knobs": "^4.1.13",
-    "@storybook/polymer": "^4.1.13"
+    "@storybook/addon-knobs": "^5.3.13",
+    "@storybook/polymer": "^5.3.13"
   },
   "private": false,
   "publishConfig": {

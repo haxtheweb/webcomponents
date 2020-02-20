@@ -44,16 +44,16 @@
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.2.1",
-    "concurrently": "4.1.0",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "2.4.1",
+    "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-build": "3.1.1",
+    "polymer-build": "3.1.4",
     "polymer-cli": "1.9.4",
     "wct-browser-legacy": "1.0.2",
-    "web-animations-js": "2.3.1"
+    "web-animations-js": "2.3.2"
   },
   "private": false,
   "publishConfig": {
