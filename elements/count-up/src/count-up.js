@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { IntersectionElementSuper } from "@lrnwebcomponents/intersection-element/lib/IntersectionElementSuper.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 import { CountUp } from "countup.js";
 
 /**
@@ -13,7 +13,7 @@ import { CountUp } from "countup.js";
  * @demo demo/index.html
  * @customElement count-up
  */
-class CountUpElement extends IntersectionElementSuper(LitElement) {
+class CountUpElement extends IntersectionObserverMixin(LitElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**

@@ -353,6 +353,12 @@
     "type": "Number"
   },
   /**
+   * Is settings menu toggle open?
+   */
+  "__settingsOpen": {
+    "type": "Boolean"
+  },
+  /**
    * Has screenfull loaded?
    */
   "__screenfullLoaded": {

@@ -54,7 +54,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
               lang="${this.lang || "en"}"
               ?linkable="${this.linkable}"
               preload="${this.preload || "metadata"}"
-              .media-title="${this.mediaTitle || undefined}"
+              media-title="${this.mediaTitle || ""}"
               .sources="${this.sourceData}"
               ?stand-alone="${this.standAlone}"
               sticky-corner="${this.stickyCorner || "top-right"}"
@@ -409,12 +409,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
       ...super.properties,
 
       /**
-       * Is media an audio file only?
-       */
-      audioOnly: {
-        type: Boolean
-      },
-      /**
        * Optional accent color for controls,
        * using these colors:
        * `red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,
@@ -497,7 +491,9 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
        * Simple caption for video
        */
       mediaTitle: {
-        type: String
+        type: String,
+        attribute: "media-title",
+        reflect: true
       },
       /**
        * What to preload for a11y-media-player: auto, metadata (default), or none.
@@ -566,7 +562,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   }
   constructor() {
     super();
-    this.audioOnly = false;
     this.dark = false;
     this.darkTranscript = false;
     this.disableInteractive = false;
@@ -696,6 +691,13 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     return temp;
   }
 
+  get audioOnly() {
+    let videos = this.sourceData.filter(
+      item => item.type.indexOf("audio") === -1
+    );
+    return videos.length > 1;
+  }
+
   get standAlone() {
     return (
       this.trackData === undefined ||
@@ -794,7 +796,6 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             source !== null &&
             source.toLowerCase().indexOf("." + item) > -1
           ) {
-            if (text === "audio") this.audioOnly = true;
             type = text + "/" + item;
           }
         });

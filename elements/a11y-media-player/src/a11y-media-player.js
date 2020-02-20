@@ -6,6 +6,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import("./lib/a11y-media-state-manager.js");
+import("./lib/a11y-media-button.js");
+import("./lib/a11y-media-transcript-cue.js");
+import("./lib/a11y-media-youtube.js");
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
@@ -41,6 +45,12 @@ Custom property | Description | Default
 `--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`
 `--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`
 `--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`
+
+#### Controls
+Custom property | Description | Default 
+----------------|-------------|----------
+`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`
+`--a11y-media-controls-font-family` | font-family of controls | `--paper-font-subhead_-_font-family`
 
 #### Buttons
 Custom property | Description | Default
@@ -149,6 +159,7 @@ class A11yMediaPlayer extends SimpleColors {
     this.__loadedTracks = null;
     this.__playing = false;
     this.__screenfullLoaded = false;
+    this.__settingsOpen = false;
     this.__transcriptOption = -1;
     this.querySelectorAll("video,audio").forEach(html5 => {
       html5.addEventListener("loadedmetadata", e => {
@@ -156,23 +167,16 @@ class A11yMediaPlayer extends SimpleColors {
       });
     });
     import("@lrnwebcomponents/simple-search/simple-search.js");
-    import("./lib/a11y-media-state-manager.js");
-    import("./lib/a11y-media-button.js");
-    import("./lib/a11y-media-transcript-cue.js");
-    import("./lib/a11y-media-youtube.js");
     import("@polymer/paper-slider/paper-slider.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
     import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/paper-menu-button/paper-menu-button.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
@@ -823,8 +827,6 @@ class A11yMediaPlayer extends SimpleColors {
 
       /* updates captions */
       if (propName === "__captionsOption") this._captionsOptionChanged();
-      if (propName === "__loadedTracks")
-        this._addSourcesAndTracks(this.loadedTracks);
       if (change(["cc", "captionsTrack"])) this._captionsChanged();
 
       /* updates layout */
@@ -922,19 +924,6 @@ class A11yMediaPlayer extends SimpleColors {
         detail: this
       })
     );
-  }
-
-  /**
-   * determine which button was clicked and act accordingly
-   */
-  _handleSettingsChanged(e) {
-    if (
-      this.shadowRoot &&
-      this.shadowRoot.querySelector("#settings") &&
-      this.shadowRoot.querySelector("#settings").close &&
-      !e.path[0].opened
-    )
-      this.shadowRoot.querySelector("#settings").close();
   }
 
   /**
@@ -1282,6 +1271,7 @@ class A11yMediaPlayer extends SimpleColors {
     });
     /* provides a seek function for primary media */
     primary.seek = time => (primary.currentTime = time);
+    this._addSourcesAndTracks(primary, primary);
     return primary;
   }
 
@@ -1463,6 +1453,22 @@ class A11yMediaPlayer extends SimpleColors {
       })
     );
   }
+  toggleSettings(mode) {
+    mode = mode === undefined ? !this.__settingsOpen : mode;
+    this.__settingsOpen = mode;
+    /**
+     * Fires when video's settings menu is toggled
+     * @event settings-toggled
+     */
+    this.dispatchEvent(
+      new CustomEvent("settings-toggled", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
 
   /**
    * toggles sticky attribute
@@ -1472,7 +1478,7 @@ class A11yMediaPlayer extends SimpleColors {
     mode = mode === undefined ? !this.sticky : mode;
     this.sticky = mode;
     /**
-     * Fires when video video's sticky behavior is toggled
+     * Fires when video's sticky behavior is toggled
      * @event player-sticky
      */
     this.dispatchEvent(
@@ -1513,25 +1519,24 @@ class A11yMediaPlayer extends SimpleColors {
   _addSourcesAndTracks(media) {
     media.style.width = "100%";
     media.style.maxWidth = "100%";
-    Object.keys(this.loadedTracks.textTracks).forEach(track =>
-      this._onAddTrack(track)
+    Object.keys(media.textTracks).forEach(track =>
+      this._onAddTrack(media.textTracks[track])
     );
-    this.loadedTracks.textTracks.onremovetrack = e =>
-      this._onRemoveTrack(e.track);
-    this.loadedTracks.textTracks.onaddtrack = e => this._onAddTrack(e.track);
+    media.textTracks.onremovetrack = e => this._onRemoveTrack(e.track);
+    media.textTracks.onaddtrack = e => this._onAddTrack(e.track);
 
-    let d = this.loadedTracks.querySelector("track[default]")
-        ? this.loadedTracks.querySelector("track[default]")
-        : this.loadedTracks.querySelector("track"),
+    let d = media.querySelector("track[default]")
+        ? media.querySelector("track[default]")
+        : media.querySelector("track"),
       defaultTrack =
-        Object.keys(this.loadedTracks.textTracks).find(key => {
+        Object.keys(media.textTracks).find(key => {
           return (
-            d.label === this.loadedTracks.textTracks[key].label &&
-            d.kind === this.loadedTracks.textTracks[key].kind &&
-            d.srclang === this.loadedTracks.textTracks[key].scrlang
+            d.label === media.textTracks[key].label &&
+            d.kind === media.textTracks[key].kind &&
+            d.srclang === media.textTracks[key].scrlang
           );
         }) || 0;
-    this.captionsTrack = this.loadedTracks.textTracks[defaultTrack];
+    this.captionsTrack = media.textTracks[defaultTrack];
     this.transcriptTrack = this.captionsTrack;
     this._handleTimeUpdate();
   }
@@ -1673,11 +1678,12 @@ class A11yMediaPlayer extends SimpleColors {
    */
   _onAddTrack(track) {
     if (this.captionsTrack === null) this.captionsTrack = track;
-    track.mode = "hidden";
+    if (track) track.mode = "hidden";
     let loadCueData = setInterval(() => {
       if (track.cues && track.cues.length > 0) {
         clearInterval(loadCueData);
         let cues = Object.keys(track.cues).map(key => track.cues[key]);
+        this._onRemoveTrack(track); //prevents duplicate tracks
         this.__cues = this.cues.concat(cues).sort((a, b) => {
           let start = a.startTime - b.startTime,
             end = a.endTime - b.endTime;
@@ -1688,21 +1694,15 @@ class A11yMediaPlayer extends SimpleColors {
   }
 
   /**
-   * determine which button was clicked and act accordingly
-   * @param {event} e controls change event
-   */
-  _onControlsChanged(e) {
-    if (this.shadowRoot && this.shadowRoot.querySelector("#settings"))
-      this.shadowRoot.querySelector("#settings").close();
-  }
-
-  /**
    * removes a track's cues from cues array
    * @param {object} textTrack
    */
   _onRemoveTrack(track) {
-    this.loadedTracks.textTracks.filter(textTrack => textTrack !== track);
-    this.__cues = this.cues.filter(cue => cue.track !== track);
+    if (this.loadedTracks && this.loadedTracks.textTracks)
+      Object.keys(this.loadedTracks.textTracks).filter(
+        textTrack => this.loadedTracks.textTracks[textTrack] !== track
+      );
+    this.__cues = this.cues ? this.cues.filter(cue => cue.track !== track) : [];
   }
 
   /**

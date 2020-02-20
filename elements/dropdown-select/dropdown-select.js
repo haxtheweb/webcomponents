@@ -1,9 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `dropdown-select`
- * @customElement dropdown-select
  * an easy to use, works as expected dropdown menu.
  *
+ * @customElement dropdown-select
  * @demo demo/index.html
  */
 class DropdownSelect extends LitElement {
@@ -28,12 +28,12 @@ class DropdownSelect extends LitElement {
     return html`
       <paper-dropdown-menu
         id="menu"
-        error-message="${this.errorMessage}"
-        horizontal-align="${this.horizontalAlign}"
-        label="${this.label}"
-        placeholder="${this.placeholder}"
-        vertical-align="${this.verticalAlign}"
-        vertical-offset="${this.verticalOffset}"
+        .error-message="${this.errorMessage}"
+        .horizontal-align="${this.horizontalAlign}"
+        .label="${this.label}"
+        .placeholder="${this.placeholder}"
+        .vertical-align="${this.verticalAlign}"
+        .vertical-offset="${this.verticalOffset}"
         ?allow-outside-scroll="${this.allowOutsideScroll}"
         ?always-float-label="${this.alwaysFloatLabel}"
         ?dynamic-align="${this.dynamicAlign}"

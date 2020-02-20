@@ -145,163 +145,137 @@
         class="hide-full-xs"
         icon="${this._getLocal(this.localization,'fullscreen','icon')}"
         label="${this._getLocal(this.localization,'fullscreen','label')}"
-        step="1"
         ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
         ?toggle="${this.fullscreen}"
         @click="${e => this.toggleFullscreen()}"
       >
       </a11y-media-button>
-      <paper-menu-button
-        id="settings"
+      <a11y-media-button
+        id="settings-button"
         class="hide-sticky"
-        allow-outside-scroll
-        horizontal-align="right"
-        ignore-select
-        vertical-align="bottom"
-        @change="${this._handleSettingsChanged}"
-      >
-        <paper-icon-button
-          id="settings-button"
-          action="settings"
-          alt="${this._getLocal(this.localization,'settings','label')}"
-          icon="${this._getLocal(this.localization,'settings','icon')}"
-          slot="dropdown-trigger"
-        >
-        </paper-icon-button>
-        <simple-tooltip for="settings-button">
-          ${this._getLocal(this.localization,'settings','label')}
-        </simple-tooltip>
-
-        <paper-listbox id="settingslist" slot="dropdown-content">
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div class="setting-text">
-                ${this._getLocal(this.localization,'captions','label')}
-              </div>
-              <div class="setting-control">
-                <dropdown-select
-                  id="cc_tracks"
-                  no-label-float
-                  value="${this.captionsTrackKey}"
-                  ?hidden="${!this.hasCaptions}"
-                  ?disabled="${!this.hasCaptions}"
-                  @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
-                >
-                  <paper-item value="-1"
-                    >${this._getLocal(this.localization,'captions','off')}</paper-item
-                  >
-                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-                    return html`
-                      <paper-item value="${key}">
-                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-                      </paper-item>
-                    `;
-                  })}
-                </dropdown-select>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div class="setting-text">
-                ${this._getLocal(this.localization,'transcript','label')}
-              </div>
-              <div class="setting-control">
-                <dropdown-select
-                  id="transcript_tracks"
-                  no-label-float
-                  value="${this.transcriptTrackKey}"
-                  ?hidden="${!this.hasCaptions}"
-                  ?disabled="${!this.hasCaptions}"
-                  @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
-                >
-                  <paper-item value="-1"
-                    >${this._getLocal(this.localization,'transcript','off')}</paper-item
-                  >
-                  ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-                    return html`
-                      <paper-item value="${key}">
-                        ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-                      </paper-item>
-                    `;
-                  })}
-                </dropdown-select>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div id="print-label" class="setting-text">
-                ${this._getLocal(this.localization,'print','label')}
-              </div>
-              <div class="setting-control">
-              <a11y-media-button
-                aria-labelledby="print-label"
-                icon="${this._getLocal(this.localization,'print','icon')}"
-                ?disabled="${this.noPrinting}"
-                ?hidden="${this.noPrinting}"
-                @click="${this.print}"
-              >
-              </a11y-media-button>
-            </div>
-          </div>
-          </paper-item>
-          <paper-item  ?hidden="${!this.hasCaptions}">
-            <div class="setting">
-              <div id="download-label" class="setting-text">
-                ${this._getLocal(this.localization,'download','label')}
-              </div>
-              <div class="setting-control">
-                <a11y-media-button
-                  aria-labelledby="download-label"
-                  icon="${this._getLocal(this.localization,'download','icon')}"
-                  ?disabled="${this.noPrinting}"
-                  ?hidden="${this.noPrinting}"
-                  @click="${this.download}"
-                >
-                </a11y-media-button>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item>
-            <div class="setting">
-              <div id="loop-label" class="setting-text">
-                ${this._getLocal(this.localization,'loop','label')}
-              </div>
-              <div class="setting-control">
-                <paper-toggle-button
-                  id="loop"
-                  aria-labelledby="loop-label"
-                  @change="${e => this.toggleLoop()}"
-                  ?checked="${this.loop}"
-                ></paper-toggle-button>
-              </div>
-            </div>
-          </paper-item>
-          <paper-item>
-            <div class="setting">
-              <div id="speed-label" class="setting-text">
-                ${this._getLocal(this.localization,'speed','label')}
-              </div>
-              <div class="setting-control">
-                <paper-slider
-                  id="speed"
-                  aria-labelledby="speed-label"
-                  class="setting-slider"
-                  min="0.5"
-                  max="2.5"
-                  pin
-                  step="0.25"
-                  tabindex="-1"
-                  .value="${this.playbackRate}"
-                  @change="${this._handleSpeedChanged}"
-                ></paper-slider>
-              </div>
-            </div>
-          </paper-item>
-        </paper-listbox>
-      </paper-menu-button>
+        controls="settings"
+        icon="${this._getLocal(this.localization,'settings','icon')}"
+        label="${this._getLocal(this.localization,'settings','label')}"
+        @click="${e => this.toggleSettings()}"
+      ></a11y-media-button>
     </div>
+    <absolute-position-behavior 
+      id="settings" 
+      auto
+      fit-to-visible-bounds
+      for="settings-button"
+      offset="10"
+      position-align="end"
+      position="top"
+      ?hidden="${!this.__settingsOpen}">
+      <div class="setting" ?hidden="${!this.hasCaptions}">                      
+        <div class="setting-text">
+          ${this._getLocal(this.localization,'captions','label')}
+        </div>
+        <dropdown-select
+          id="cc_tracks"
+          class="setting-control"
+          no-label-float
+          value="${this.captionsTrackKey}"
+          ?hidden="${!this.hasCaptions}"
+          ?disabled="${!this.hasCaptions}"
+          @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+        >
+          <paper-item value="-1" aria-selected="${this.captionsTrackKey === -1}"
+            >${this._getLocal(this.localization,'captions','off')}</paper-item
+          >
+          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+            return html`
+              <paper-item value="${key}" aria-selected="${this.captionsTrackKey === key}">
+                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+              </paper-item>
+            `;
+          })}
+        </dropdown-select>
+      </div>
+      <div class="setting" ?hidden="${!this.hasCaptions}">                      
+        <div class="setting-text">
+          ${this._getLocal(this.localization,'transcript','label')}
+        </div>
+        <dropdown-select
+          id="transcript_tracks"
+          class="setting-control"
+          no-label-float
+          placeholder=""
+          .value="${this.transcriptTrackKey}"
+          ?hidden="${!this.hasCaptions}"
+          ?disabled="${!this.hasCaptions}"
+          @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+        >
+          <paper-item value="-1" aria-selected="${this.transcriptTrackKey === -1}"
+            >${this._getLocal(this.localization,'transcript','off')}</paper-item
+          >
+          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
+            return html`
+              <paper-item value="${key}" aria-selected="${this.transcriptTrackKey === key}">
+                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
+              </paper-item>
+            `;
+          })}
+        </dropdown-select>
+      </div>
+      <div class="setting" ?hidden="${!this.hasCaptions}">                      
+        <div id="print-label" class="setting-text">
+          ${this._getLocal(this.localization,'print','label')}
+        </div>
+        <a11y-media-button
+          aria-labelledby="print-label"
+          class="setting-control"
+          icon="${this._getLocal(this.localization,'print','icon')}"
+          ?disabled="${this.noPrinting}"
+          ?hidden="${this.noPrinting}"
+          @click="${this.print}"
+        >
+        </a11y-media-button>
+      </div>
+      <div class="setting" ?hidden="${!this.hasCaptions}">        
+        <div id="download-label" class="setting-text">
+          ${this._getLocal(this.localization,'download','label')}
+        </div>
+        <a11y-media-button
+          aria-labelledby="download-label"
+          class="setting-control"
+          icon="${this._getLocal(this.localization,'download','icon')}"
+          ?disabled="${this.noPrinting}"
+          ?hidden="${this.noPrinting}"
+          @click="${this.download}"
+        >
+        </a11y-media-button>
+      </div>
+      <div class="setting">                      
+        <div id="loop-label" class="setting-text">
+          ${this._getLocal(this.localization,'loop','label')}
+        </div>
+        <paper-toggle-button
+          id="loop"
+          class="setting-control"
+          aria-labelledby="loop-label"
+          @change="${e => this.toggleLoop()}"
+          ?checked="${this.loop}">
+        </paper-toggle-button>
+      </div>
+      <div class="setting">                      
+        <div id="speed-label" class="setting-text">
+          ${this._getLocal(this.localization,'speed','label')}
+        </div>
+        <paper-slider
+          id="speed"
+          aria-labelledby="speed-label"
+          class="setting-slider setting-control"
+          min="0.5"
+          max="2.5"
+          pin
+          step="0.25"
+          .value="${this.playbackRate}"
+          @change="${this._handleSpeedChanged}">
+        </paper-slider>
+      </div>
+    </absolute-position-behavior>
   </div>
   <div aria-hidden="true"
     class="screen-only media-caption"
