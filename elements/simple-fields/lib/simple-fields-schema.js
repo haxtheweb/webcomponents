@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "./simple-fields-array.js";
 /**
  * `simple-fields-schema`
  * 
@@ -11,7 +12,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--simple-fields-schema-margin` | margin around the simple-fields-schema | 15px 0
  *
- * @demo ./demo/index.html
+ * @demo ./demo/schema.html
  * @customElement simple-fields-schema
  */
 class SimpleFieldsSchema extends LitElement {
@@ -31,50 +32,50 @@ class SimpleFieldsSchema extends LitElement {
     this.codeTheme = "vs-light-2";
     this.dataTypes = {
       array: {
-        component: "simple-fields-array",
+        element: "simple-fields-array",
         defaultValue: [],
-        isFieldset: true
+        isArray: true,
+        previewSlot: "preview",
+        sortSlot: "sort"
       },
       boolean: {
-        component: "simple-fields-boolean",
+        element: "simple-fields-boolean",
         defaultValue: false
       },
       fieldset: {
-        component: "simple-fields-fieldset",
+        element: "simple-fields-fieldset",
         defaultValue: {},
         isFieldset: true
       },
       file: {
-        component: "simple-fields-file",
+        element: "simple-fields-file",
         defaultValue: {}
       },
       integer: {
-        component: "paper-input",
-        defaultValue: ""
-      },
-      items: {
-        component: "simple-fields-array-item",
-        defaultValue: {},
-        isFieldset: true
+        element: "paper-input",
+        defaultValue: "",
+        type: "number",
+        step: 1
       },
       markup: {
-        component: "simple-fields-markup",
+        element: "simple-fields-markup",
         defaultValue: ""
       },
       number: {
-        component: "paper-input",
+        element: "paper-input",
+        type: "number",
         defaultValue: ""
       },
       object: {
-        component: "simple-fields-fieldset",
+        element: "simple-fields-fieldset",
         defaultValue: {},
         isFieldset: true
       },
       string: {
-        component: "paper-input"
+        element: "paper-input"
       },
       tabs: {
-        component: "a11y-tabs",
+        element: "a11y-tabs",
         defaultValue: {},
         isFieldset: true
       }
@@ -84,7 +85,11 @@ class SimpleFieldsSchema extends LitElement {
     this.value = {};
     setTimeout(() => {
       import("./simple-fields-fieldset.js");
-      import("./simple-fields-array.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/paper-input/paper-input.js");
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
 
@@ -135,43 +140,77 @@ class SimpleFieldsSchema extends LitElement {
       }
     };
   }
-  /**
-   * returns form properties
-   * @readonly
-   * @returns {array} form properties
-   */
-  get formProperties() {
-    console.log(
-      "formProperties",
-      this.schema,
-      this.schema ? this._getProperties(this.schema) : []
-    );
-    return this.schema ? this._getProperties(this.schema) : [];
-  }
 
-  _getFormElement(property, parent = this) {
-    let el = document.createElement(property.component.name),
-      props = {
-        label: property.label,
-        schema: property.schema,
-        schemaProperty: property,
-        language: this.language,
-        resources: this.resources
-      },
-      attr = {
-        hidden: property.schema.hidden
-      };
-    el.label = property.label;
-    el.schema = property.schema;
-    el.language = this.language;
+  /**
+   * adds form element to page
+   *
+   * @param {object} config properties object for the element
+   * @param {object} [parent=this] parent where element will be appended
+   * @param {number} index if in array, element's index
+   * @param {string} string name of slot
+   * @returns {object} form element
+   */
+  _buildFormElement(
+    config, 
+    parent = this, 
+    index = -1, 
+    slot
+  ) {
+    let el = document.createElement(config.component.type.element),
+    elname = index > -1 ? config.name.replace('..',`.${index}.`) : config.name,
+    elval = this._getValue(elname);
+    el.label = config.label  || config.title;
+    el.schema = config.schema;
     el.resources = this.resources;
-    if (property.schema.hidden) el.setAttribute("hidden", true);
+    el.setAttribute('language',this.language);
+    el.setAttribute('name',elname);
+    Object.keys(config.component.type).forEach(key=>{
+      if(key !== "element" || "valueProperty") el.setAttribute(key,config.component.type[key]);
+    });
+    if(config.schema.hidden) el.setAttribute('hidden',true);
+    if(slot) el.slot = slot;
     parent.append(el);
-    /* gets nested fields for a fieldset */
-    if (property.schema && property.schema.properties)
-      property.schema.properties.forEach(child =>
-        this._getFormElement(child, el)
-      );
+    console.log('_buildFormElement',el,config,parent,index,slot);
+    if(config.component.type.isArray && index < 0) {
+      let keys = Object.keys(config.schema.properties),
+      sortSlot = config.component.type.sortSlot, 
+      sortKeys = keys.filter(key=>config.schema.properties[key].sortField === true);
+      keys.forEach(key=>{
+        if(config.schema.properties[key].sortField === true) sortKeys = config.name
+      })
+      el.addEventListener('add',e=>this._setValue(`${elname}.${elval.length}`,{}));
+      el.addEventListener('remove',e=>{if(confirm("Remove item?")) e.detail.remove()});
+      if(sortKeys.length > 0) elval = elval.sort((a,b)=>{
+        console.log(a,b,sortKeys[0],elval,config.schema.properties[sortKeys[0]]);
+        return a-b
+      });
+      /* gets array items */
+      if(elval) elval.forEach((item,i)=>{
+        /* gets array item config */
+        let id = `item-${i}`, 
+          child = el.buildItem(id),
+          previewSlot = config.component.type.previewSlot,
+          previewKeys = keys.filter(key=>config.schema.properties[key].previewField === true);
+        if(previewKeys.length < 1) previewKeys.push(keys[0]);
+        /* adds fields to array items */
+        keys.forEach(key => this._buildFormElement(
+          config.schema.properties[key],
+          child,
+          i, 
+          key === sortKeys[0] 
+            ? sortSlot
+            : previewKeys.includes(key) 
+              ? previewSlot 
+              : undefined
+        ))
+      });
+    } else if (config.schema && config.schema.properties){
+      /* gets nested fields for a fieldset */
+      Object.keys(config.schema.properties).forEach(key =>this._buildFormElement(config.schema.properties[key],el));
+    } else {
+      el[config.component.valueProperty] = elval;
+      el.onchange = (e) => this._setValue(elname,el[config.component.valueProperty]);
+    }
   }
 
   /**
@@ -179,38 +218,38 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} target parent of nested properties
    * @returns {array} form properties
    */
-  _getProperties(target = this.schema) {
+  _getProperties(target = this.schema,prefix) {
+    //console.log('_getProperties',target);
     let root = this;
     return Object.keys(target.properties || []).map(key => {
       let schema = target.properties[key],
         property = {
-          name: key,
+          name: prefix ? `${prefix}.${key}` : key,
           schema: schema,
-          label: schema.title || key,
+          component: schema.component || {},
           description: schema.description,
-          component: schema.component || {}
+          label: schema.title || key,
+          previewField: schema.previewField,
+          sortField: schema.sortField
         };
-
       property.component.valueProperty =
         property.component.valueProperty || "value";
       property.component.slot = property.component.slot || "";
 
       /* match the schema type to the correct data type */
-      Object.keys(root.dataTypes).forEach(dataType => {
+      Object.keys(root.dataTypes).forEach(key => {
         if (
           (Array.isArray(schema.type) &&
-            schema.type.indexOf(dataType) !== -1) ||
-          schema.type === dataType
+          schema.type.indexOf(key) !== -1) ||
+          schema.type === key
         ) {
-          property.component.dataType = dataType;
-          property.component.name =
-            property.component.name || root.dataTypes[dataType].component;
-          if (typeof schema.value === typeof undefined)
-            schema.value = root.dataTypes[dataType].defaultValue;
-          property.value = schema.value;
+          property.component.type = this._deepClone(root.dataTypes[key]);
+          property.component.type.element =
+           property.component.name || property.component.type.element;
+           property.component.type.type = schema.format;
 
           /* handle fieldsets by getting nested properties */
-          if (root.dataTypes[dataType].isFieldset) {
+          if (property.component.type.isFieldset || property.component.type.isArray) {
             if (!schema.items || !schema.items.properties)
               schema.items = {
                 properties: schema.properties
@@ -218,44 +257,82 @@ class SimpleFieldsSchema extends LitElement {
                   : {}
               };
             if (schema.items && schema.items.properties) {
-              Object.keys(schema.items.properties).forEach(
-                key => (schema.items.properties[key].value = schema.value[key])
+              //console.log('schema.items',schema.items);
+              property.schema.properties = this._getProperties(
+                schema.items,
+                property.component.type.isArray 
+                  ? `${property.name}.` 
+                  : property.name
               );
-              property.schema.properties = this._getProperties(schema.items);
             }
           }
-          return;
         }
       });
-      if (!property.component.name)
+      if (!property.component.type || !property.component.type.element)
         console.error("Unknown property type %s", schema.type);
       return property;
     });
   }
+
+  /**
+   * sets value of a property
+   * 
+   * @param {string} propName property to set
+   * @param {*} propVal value of the property
+   */
+  _setValue(propName,propVal){
+    //console.log('_setValue',propName,propVal);
+    let oldValue = this._deepClone(this.value), 
+      newValue = this.value,  
+      props = propName.split('.'),
+      l = props.length;
+    for(var i = 0; i < l-1; i++) {
+      let pointer = props[i];
+      if(!newValue[pointer]) newValue[pointer] = {}
+      newValue = newValue[pointer];
+    }
+
+    newValue[props[l-1]] = propVal;
+    this._valueChanged(this.value, oldValue);
+  }
+
+  /**
+   * gets value of a property
+   * 
+   * @param {string} propName property to set
+   * @returns {*}
+   */
+  _getValue(propName){
+    let path = propName.split('.'), pointer = this.value;
+    path.forEach(prop=>{
+      if(pointer && pointer[prop]) { 
+        pointer = pointer[prop]; 
+      } else {
+        pointer = undefined;
+        return;
+      }
+    });
+    return pointer;
+  }
+
   /**
    * Updates a11y-collapse item when properties change
    */
   updated(changedProperties) {
-    //observer: "error _errorChanged"
-    //observer: "schema _schemaChanged notify"
-    // value wizard notify
     changedProperties.forEach((oldValue, propName) => {
+      //console.log('changedProperties',propName,oldValue,this[propName]);
       if (propName === "schema") this._schemaChanged(this.schema, oldValue);
+      if (propName === "value") this._valueChanged(this.value, oldValue);
     });
   }
+
   /**
-   * clears a form or a fieldset container within a form
-   * @param {object} el the element to remove
-   * @param {*} parent the container where the field element exists
+   * clears the form
    */
-  _clearForm(container = this) {
-    /*if (typeof this.$ !== typeof undefined) {
-      var formEl = container;
-      while (formEl.firstChild) {
-        this._removePropertyEl(formEl.firstChild, container);
-      }
-    }*/
+  _clearForm() {
+    this.querySelectorAll('*').forEach(child=>child.remove());
   }
+
   /**
    * clones an object and all its subproperties
    * @param {object} o the object to clone
@@ -265,20 +342,57 @@ class SimpleFieldsSchema extends LitElement {
     return JSON.parse(JSON.stringify(o));
   }
   /**
-   * updates the form when the schema changes
+   * clears and rebuilds the form
+   */
+  _rebuildForm(){
+    //console.log("_rebuildForm",this.value,this.schema);
+    this._clearForm();
+    if(this.schema) {
+      let formProperties = this._getProperties(this.schema);
+      formProperties.forEach(property => this._buildFormElement(property));
+    }
+  }
+  /**
+   * updates the form  and fires event when the value changes
    * @param {object} newValue the new value for the schema
    * @param {object} oldValue the old value for the schema
+   * @event value-changed
+   */
+  _valueChanged(newValue, oldValue) {
+    //console.log("this._valueChanged",this.value,oldValue);
+    if (newValue && newValue !== oldValue) {
+      this._rebuildForm();
+
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+  }
+  /**
+   * updates the form and fires event when the schema changes
+   * @param {object} newValue the new value for the schema
+   * @param {object} oldValue the old value for the schema
+   * @event schema-changed
    */
   _schemaChanged(newValue, oldValue) {
+    //console.log("this._schemaChanged",this.schema,oldValue);
     if (newValue && newValue !== oldValue) {
-      this._clearForm();
-      this.formProperties.forEach(property => this._getFormElement(property));
-      //this.formProperties;
-      //this._buildForm();
-      //this._setValue();
-      //fire schemaChanged
+      this._rebuildForm();
+
+      this.dispatchEvent(
+        new CustomEvent("schema-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
-    console.log("this._schemaChanged", this.formProperties);
   }
   disconnectedCallback() {
     this._clearForm();

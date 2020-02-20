@@ -4,7 +4,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `a11y-collapse`
- * @customElement a11y-collapse
  * an accessible expand collapse
  * 
 ### Styling
@@ -27,7 +26,7 @@ Custom property | Description | Default
 `--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset
 `--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset
  *
-
+ * @customElement a11y-collapse
  * @demo ./demo/index.html demo
  * @demo ./demo/group.html collapse groups
  */
@@ -228,19 +227,6 @@ class A11yCollapse extends LitElement {
     this.labelExpanded = null;
     this.tooltip = "toggle expand/collapse";
     this.tooltipExpanded = null;
-    /**
-     * Fires when constructed, so that parent radio group can listen for it.
-     *
-     * @event a11y-collapse-attached
-     */
-    this.dispatchEvent(
-      new CustomEvent("a11y-collapse-attached", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
   }
   static get haxProperties() {
     return {
@@ -337,6 +323,24 @@ class A11yCollapse extends LitElement {
         advanced: []
       }
     };
+  }
+  connectedCallback(){
+    super.connectedCallback();
+    setTimeout(() => {
+      /**
+       * Fires when constructed, so that parent radio group can listen for it.
+       *
+       * @event a11y-collapse-attached
+       */
+      this.dispatchEvent(
+        new CustomEvent("a11y-collapse-attached", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }, 0);
   }
 
   /**

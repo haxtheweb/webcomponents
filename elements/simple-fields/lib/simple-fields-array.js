@@ -1,7 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { boolean } from "@storybook/addon-knobs";
-import { SimpleFieldsFieldset } from "./simple-fields-fieldset";
-
+import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "./simple-fields-array-item.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
@@ -9,70 +11,196 @@ import { SimpleFieldsFieldset } from "./simple-fields-fieldset";
  * @demo demo/index.html
  * @customeElement simple-fields-array
  */
-class SimpleFieldsArray extends LitElement {
+class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {
     return "simple-fields-array";
   }
-  constructor() {
-    super();
-    this.globalOptions = {
-      icon: "settings",
-      tooltip: "configure item"
-    };
-    this.items = [];
-    setTimeout(() => {
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/paper-icon-button/paper-icon-button.js");
-      import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
-    }, 0);
-  }
   static get styles() {
-    return [css``];
+    return [
+      ...super.styles,
+      css`
+        fieldset {
+          padding: 0 20px;
+        }
+        #item-fields {
+          clear: both;
+          margin: 10px 0;
+          z-index: 3;
+        }
+        paper-button {
+          z-index: 1;
+          margin: 0;
+          float: right;
+          text-transform: unset;
+        }
+      `
+    ];
   }
-  render() {
-    return html`
-      <fieldset>
-        <legend id="legend" class="flex" ?hidden="${!this.schema.title}">
-          ${this.schema.title}
-        </legend>
-        <div ?hidden="${!this.schema.description}">
-          ${this.schema.description}
-        </div>
-        <a11y-collapse-group
-          id="form"
-          icon="settings"
-          class="vertical flex layout"
-          .global-options="${this.globalOptions}"
-        >
-          <slot></slot>
-        </a11y-collapse-group>
-        <paper-button id="add-button" @click="${e => this.addItem(this)}">
-          Add an item
-          <iron-icon icon="add-circle"></iron-icon>
-        </paper-button>
-      </fieldset>
-    `;
-  }
-
   static get properties() {
     return {
-      globalOptions: {
-        type: Object
+      ...super.properties,
+      count: {
+        type: Number
       },
-      schema: {
-        type: Object
+      label: {
+        type: String
+      },
+      description: {
+        type: String
+      },
+      /*
+       * icon when expanded
+       */
+      expanded: {
+        type: Boolean
       }
     };
   }
-  addItem(array) {
+  get fields(){
+    return html`
+      <paper-button
+        id="expand"
+        controls="item-fields"
+        @click="${e => this.toggle()}">
+        ${this.expanded ? 'Collapse All' : 'Expand All'}
+        <iron-icon aria-hidden="true" icon="${this.expanded ? 'expand-less' : 'expand-more'}"></iron-icon>
+      </paper-button>
+      <div id="item-fields" aria-live="polite">
+        <slot></slot>
+        <paper-button
+          id="add"
+          controls="item-fields"
+          @click="${e=>this._handleAdd()}">
+          Add Item 
+          <iron-icon aria-hidden="true" icon="add"></iron-icon>
+        </paper-button>
+      </div>`;
+  }
+  constructor() {
+    super();
+    this.count = 0;
+    this.expanded = false;
+    this.disableAdd = false;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "expanded") 
+        this.querySelectorAll('simple-fields-array-item').forEach(item => item.setAttribute('aria-expanded',this.expanded));
+    });
+  }
+  buildItem(id){
+    let item = document.createElement('simple-fields-array-item');
+    item.id = id;
+    item.setAttribute('aria-expanded',this.expanded);
+    item.innerHTML = `
+      <slot name="sort"></slot>
+      <slot name="preview"></slot>
+      <slot></slot>`;
+    this.appendChild(item);
+    item.addEventListener('remove',e=>this._handleRemove(e));
+    return item;
+  }
+
+  /**
+   * Fires add event
+     * @event add
+   */
+  _handleAdd(){
     this.dispatchEvent(
-      new CustomEvent("add-item", {
-        bubbles: false,
+      new CustomEvent("add", {
+        bubbles: true,
         cancelable: true,
         composed: true,
-        detail: array
+        detail: this
       })
     );
+  }
+
+  /**
+   * Fires add event
+     * @event add
+   */
+  _handleRemove(e){
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    this.dispatchEvent(
+      new CustomEvent("remove", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e.detail
+      })
+    );
+  }
+  /**
+   * Collapses the content
+   */
+  collapse() {
+    this.toggle(false);
+  }
+
+  /**
+   * Expands the content
+   */
+  expand() {
+    this.toggle(true);
+  }
+
+  /**
+   * Toggles based on mode
+   * @param {boolean} open whether to toggle open
+   */
+  toggle(open = !this.expanded) {
+    this.expanded = open;
+    this._handleToggle();
+  }
+
+  /**
+   * Fires toggling events
+   */
+  _handleToggle() {
+    /**
+     * Fires when toggled.
+     *
+     * @event toggle
+     */
+    this.dispatchEvent(
+      new CustomEvent("toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    if (this.expanded) {
+      /**
+       * Fires when expanded.
+       *
+       * @event expand
+       */
+      this.dispatchEvent(
+        new CustomEvent("expand", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    } else {
+      /**
+       * Fires when collapsed.
+       *
+       * @event collapse
+       */
+      this.dispatchEvent(
+        new CustomEvent("collapse", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
   }
 }
 window.customElements.define(SimpleFieldsArray.tag, SimpleFieldsArray);
