@@ -6,6 +6,11 @@
   display: none;
 }
 
+paper-button:not(:defined),
+paper-toast:not(:defined) {
+  display: none;
+}
+
 paper-toast {
   width: var(--simple-toast-width, inherit);
   height: var(--simple-toast-height, inherit);

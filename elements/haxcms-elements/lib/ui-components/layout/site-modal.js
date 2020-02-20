@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 /**
@@ -111,10 +110,17 @@ class SiteModal extends LitElement {
     this.shadowRoot
       .querySelector("#smt")
       .associateEvents(this.shadowRoot.querySelector("#btn"));
-    const nodes = FlattenedNodesObserver.getFlattenedNodes(this);
-    for (var i in nodes) {
-      this.shadowRoot.querySelector("#content").appendChild(nodes[i]);
-    }
+    setTimeout(() => {
+      if (this.childNodes && this.shadowRoot.querySelector("#content")) {
+        for (var i in this.childNodes) {
+          if (typeof this.childNodes[i] === "object") {
+            this.shadowRoot
+              .querySelector("#content")
+              .appendChild(this.childNodes[i]);
+          }
+        }
+      }
+    }, 0);
   }
 }
 window.customElements.define(SiteModal.tag, SiteModal);

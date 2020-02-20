@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 class HaxToolbarItem extends LitElement {
@@ -95,20 +94,19 @@ class HaxToolbarItem extends LitElement {
           padding: 0;
           margin: 0;
         }
-        :host([mini]) iron-icon {
-          width: 16px;
-          height: 16px;
-        }
         :host([mini]) paper-button {
-          border-radius: 50%;
-          width: 18px;
-          height: 18px;
+          width: 28px;
+          height: 28px;
           padding: 1px;
-          border: 1px solid var(--hax-color-border-outline);
+          border: none;
         }
-        :host([large][light]) paper-button {
+        :host([light]) paper-button {
           background-color: #aaaaaa;
-          color: #eeeeee;
+          color: #ffffff;
+        }
+        :host([action]) paper-button {
+          background-color: var(--hax-contextual-action-color);
+          color: #ffffff;
         }
         :host([large]) paper-button {
           border-radius: 0;
@@ -128,7 +126,6 @@ class HaxToolbarItem extends LitElement {
           height: 36px;
         }
         :host([menu]:not([disabled])) paper-button:hover {
-          background-color: #d3d3d3;
           color: #000000;
         }
         .flip-icon {

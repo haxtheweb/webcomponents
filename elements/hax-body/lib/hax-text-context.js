@@ -18,15 +18,15 @@ class HaxTextContext extends LitElement {
           display: none;
         }
         paper-item {
+          color: white;
+          background-color: var(--hax-contextual-action-color);
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
-          height: 36px;
           padding: 0 8px;
-          min-height: 36px;
         }
         paper-item:hover {
-          background-color: #d3d3d3;
           cursor: pointer;
+          color: black;
         }
         iron-icon {
           padding: 8px;
@@ -51,9 +51,7 @@ class HaxTextContext extends LitElement {
   constructor() {
     super();
     import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
@@ -73,6 +71,8 @@ class HaxTextContext extends LitElement {
     return html`
       <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
+          action
+          mini
           slot="primary"
           .selected-value="${this.selectedValue}"
           @selected-value-changed="${this.selectedValueChanged}"
@@ -112,30 +112,40 @@ class HaxTextContext extends LitElement {
           </paper-item>
         </hax-context-item-menu>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-bold"
           label="Bold"
           event-name="text-bold"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-italic"
           label="Italic"
           event-name="text-italic"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:insert-link"
           label="Link"
           event-name="text-link"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="mdextra:unlink"
           label="Remove link"
           event-name="text-unlink"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-list-bulleted"
           event-name="text-tag-ul"
@@ -143,6 +153,8 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-list-numbered"
           label="Numbered list"
@@ -150,6 +162,8 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showLists}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-indent-decrease"
           label="Outdent"
@@ -157,6 +171,8 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-indent-increase"
           label="Indent"
@@ -164,12 +180,16 @@ class HaxTextContext extends LitElement {
           .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="editor:format-clear"
           label="Remove format"
           event-name="text-remove-format"
         ></hax-context-item-textop>
         <hax-context-item
+          mini
+          action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -177,6 +197,8 @@ class HaxTextContext extends LitElement {
           .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
+          mini
+          action
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
@@ -184,6 +206,7 @@ class HaxTextContext extends LitElement {
           .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
         <hax-context-item-textop
+          action
           menu
           slot="more"
           icon="mdextra:subscript"
@@ -191,6 +214,7 @@ class HaxTextContext extends LitElement {
           >Subscript</hax-context-item-textop
         >
         <hax-context-item-textop
+          action
           menu
           slot="more"
           icon="mdextra:superscript"
@@ -198,6 +222,7 @@ class HaxTextContext extends LitElement {
           >Superscript</hax-context-item-textop
         >
         <hax-context-item-textop
+          action
           menu
           slot="more"
           icon="editor:format-underlined"
@@ -205,6 +230,7 @@ class HaxTextContext extends LitElement {
           >Underline</hax-context-item-textop
         >
         <hax-context-item-textop
+          action
           menu
           slot="more"
           icon="editor:format-strikethrough"
@@ -322,6 +348,7 @@ class HaxTextContext extends LitElement {
   _haxContextOperation(e) {
     let detail = e.detail;
     let selection = window.HaxStore.getSelection();
+    let prevent = false;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "close-menu":
@@ -377,18 +404,15 @@ class HaxTextContext extends LitElement {
       // wow these are way too easy
       case "text-bold":
         document.execCommand("bold");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-italic":
         document.execCommand("italic");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-underline":
         document.execCommand("underline");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -399,8 +423,7 @@ class HaxTextContext extends LitElement {
         break;
       case "text-subscript":
         document.execCommand("subscript");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -411,8 +434,7 @@ class HaxTextContext extends LitElement {
         break;
       case "text-superscript":
         document.execCommand("superscript");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -423,13 +445,11 @@ class HaxTextContext extends LitElement {
         break;
       case "text-remove-format":
         document.execCommand("removeFormat");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-strikethrough":
         document.execCommand("strikeThrough");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -440,7 +460,12 @@ class HaxTextContext extends LitElement {
         break;
       case "text-link":
         var href = "";
-        if (typeof selection.focusNode.parentNode.href !== typeof undefined) {
+        if (
+          selection &&
+          selection.focusNode &&
+          selection.focusNode.parentNode &&
+          typeof selection.focusNode.parentNode.href !== typeof undefined
+        ) {
           href = selection.focusNode.parentNode.href;
         }
         // @todo put in a dialog instead of this
@@ -465,14 +490,12 @@ class HaxTextContext extends LitElement {
               e.stopImmediatePropagation();
             });
           }
-          e.preventDefault();
-          e.stopPropagation();
+          prevent = true;
         }
         break;
       case "text-unlink":
         document.execCommand("unlink");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       /**
        * Our bad actors when it comes to polyfill'ed shadowDOM.
@@ -480,14 +503,16 @@ class HaxTextContext extends LitElement {
        */
       case "text-indent":
         document.execCommand("indent");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
       case "text-outdent":
         document.execCommand("outdent");
-        e.preventDefault();
-        e.stopPropagation();
+        prevent = true;
         break;
+    }
+    if (prevent) {
+      e.preventDefault();
+      e.stopPropagation();
     }
   }
 

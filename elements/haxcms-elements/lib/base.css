@@ -3,7 +3,7 @@ body, html, :root {
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
-  --paper-toast-background-color:var(--haxcms-system-bg, black);
+  --paper-toast-background-color: var(--haxcms-system-bg, black);
   --simple-modal-titlebar-color: #FFFFFF;
   --simple-modal-titlebar-background: var(--haxcms-system-bg);
   --simple-modal-header-color: #FFFFFF;
@@ -11,6 +11,7 @@ body, html, :root {
   --simple-modal-button-color: #FFFFFF;
   --simple-modal-button-background: #37474f;
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
+
   /** HAX specific settings **/
   --hax-color-bg: #37474f;
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
@@ -24,15 +25,17 @@ body, html, :root {
   --hax-ink-color: var(--haxcms-system-bg, black);
   --hax-panel-padding: 8px 0 8px 80px;
   --hax-panel-item-active: #FFFFFF;
-  --hax-panel-item-active-border-color:#444444;
+  --hax-panel-item-active-border-color: #444444;
   --hax-panel-item-border-color: #444444;
   --hax-panel-item-ink: var(--haxcms-color, white);
   --hax-panel-item-bg: #000000;
   --hax-panel-item-text: #EEEEEE;
+  --hax-tray-width: 300px;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
   --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
   --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
   --hax-export-dialog-import-button-bg: var(--haxcms-system-danger-color);
+
   /** Internals of the hax-body tag that can help with spacing normalization **/
   --hax-base-styles-h1-font-size: 2.5em;
   --hax-base-styles-h1-line-height: 2.5em;
@@ -58,6 +61,7 @@ body, html, :root {
   --hax-base-styles-list-last-child-padding-bottom: 1em;
   --hax-base-styles-list-padding-left: 20px;
   --hax-base-styles-list-margin-left: 20px;
+
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
   --simple-toast-z-index: 10000000;
@@ -67,6 +71,7 @@ body, html, :root {
   --simple-toast-bg: var(--haxcms-system-bg, black);
   --simple-toast-margin: 0 0 0 49px;
   --simple-toast-border: 1px solid black;
+
   /** hax forms **/
   --primary-color: var(--haxcms-color, --haxcms-system-bg);
   --paper-input-container-focus-color: var(--haxcms-color, --haxcms-system-bg);
@@ -75,13 +80,14 @@ body, html, :root {
   --lumo-primary-text-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-focus-color: var(--haxcms-color, --haxcms-system-bg);
+
   /** placeholder **/
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
 }
 
 @media screen and (max-width: 600px) {
   body, html, :root {
-      --hax-panel-padding: 8px 0 8px 50px;
+    --hax-panel-padding: 8px 0 8px 50px;
   }
 }
 
@@ -98,42 +104,52 @@ h1 {
   font-size: var(--hax-base-styles-h1-font-size, 2.5em);
   line-height: var(--hax-base-styles-h1-line-height, 2.5em);
 }
+
 h2 {
   font-size: var(--hax-base-styles-h2-font-size, 2em);
 }
+
 h3 {
   font-size: var(--hax-base-styles-h3-font-size, 1.75em);
 }
+
 h4 {
   font-size: var(--hax-base-styles-h4-font-size, 1.5em);
 }
+
 h5 {
   font-size: var(--hax-base-styles-h5-font-size, 1.25em);  
 }
+
 h6 {
   font-size: var(--hax-base-styles-h6-font-size, 1.25em);
 }
+
 p {
   min-height: var(--hax-base-styles-p-min-height, 43px);
   font-size: var(--hax-base-styles-p-font-size, 24px);
   line-height: var(--hax-base-styles-p-line-height, 1.8);
   letter-spacing: var(--hax-base-styles-p-letter-spacing, .5px);
 }
+
 a,
 a:-webkit-any-link {
   color: var(--hax-base-styles-a-color, #2196f3);
   font-size: var(--hax-base-styles-a-font-size, 24px);
   font-weight: var(--hax-base-styles-a-font-weight, normal);
 }
+
 a:visited {
   color: var(--hax-base-styles-a-color-visited, #2196f3);
 }
+
 a:active,
 a:focus,
 a:hover {
   color: var(--hax-base-styles-a-color-active, #2196f3);
   font-weight: var(--hax-base-styles-a-font-weight-active, normal);
 }
+
 ol,
 ul
 ol li,
@@ -143,10 +159,12 @@ ul li {
   font-size: var(--hax-base-styles-list-font-size, 24px);
   max-width: var(--hax-base-styles-list-max-width, 28em);
 }
+
 ol li:last-child,
 ul li:last-child {
   padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom, 1em);
 }
+
 ul,
 ol {
   padding-left: var(--hax-base-styles-list-padding-left, 20px);

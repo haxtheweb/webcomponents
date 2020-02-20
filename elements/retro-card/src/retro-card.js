@@ -66,6 +66,23 @@ class RetroCard extends SimpleColors {
     }
   }
   /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickCard(e) {
+    if (
+      this.url &&
+      window.HaxStore &&
+      window.HaxStore.ready &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.editMode
+    ) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
+  }
+  /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {

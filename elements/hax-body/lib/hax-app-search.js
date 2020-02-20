@@ -3,17 +3,12 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `hax-app-search`
- * @customElement hax-app-search
- * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
+ * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that we can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
  * @microcopy - the mental model for this element
  * - hax-source - a backend that can supply items for selection by the user
- * - hax-manager - controlling the UI for selection of something
  * - hax-body - the text are ultimately we are trying to insert this item into
+ * @customElement hax-app-search
  */
 class HaxAppSearch extends winEventsElement(SimpleColors) {
   /**
@@ -29,17 +24,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         paper-button.item-wrapper {
           margin: 0;
           padding: 0;
-        }
-        paper-card {
-          padding: 0;
-          margin: 8px;
-          width: 240px;
-          font-size: 12px;
-        }
-        @media screen and (min-width: 800px) {
-          paper-card {
-            font-size: 14px;
-          }
         }
         hexagon-loader {
           display: none;
@@ -65,7 +49,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
           border: 1px solid #222222;
         }
         hax-app-search-inputs {
-          min-height: 150px;
+          min-height: 80px;
           padding: 0 16px;
         }
         hax-app-pagination {
@@ -92,8 +76,7 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
     this.media = [];
     this.resultMap = {};
     import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-styles/paper-styles.js");
+    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
@@ -103,15 +86,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-card {
-            --paper-card-header: {
-              max-height: 160px;
-            }
-          }
-        </style>
-      </custom-style>
       <iron-ajax
         id="request"
         handle-as="json"

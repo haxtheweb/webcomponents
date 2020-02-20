@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
  * `hax-iconset`
@@ -19,6 +19,22 @@ import { html } from "@polymer/polymer/lib/utils/html-tag.js";
 
 const template = html`
   <iron-iconset-svg size="24" name="hax">
+    <!-- arrow-expand-left -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-expand-left">
+          <path d="M20,22H22V2H20V11H5.83L11.33,5.5L9.92,4.08L2,12L9.92,19.92L11.33,18.5L5.83,13H20V22Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow-expand-right -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-expand-right">
+          <path d="M4,2H2V22H4V13H18.17L12.67,18.5L14.08,19.92L22,12L14.08,4.08L12.67,5.5L18.17,11H4V2Z" />
+        </g>
+      </defs>
+    </svg>
     <!-- placeholder -->
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <defs>

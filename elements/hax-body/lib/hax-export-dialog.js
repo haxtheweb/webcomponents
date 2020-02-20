@@ -355,7 +355,6 @@ class HaxExportDialog extends winEventsElement(
    */
   open() {
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");

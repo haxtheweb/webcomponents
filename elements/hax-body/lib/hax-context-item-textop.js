@@ -1,15 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-textop`
  * @customElement hax-context-item-textop
@@ -28,8 +19,6 @@ class HaxContextItemTextop extends LitElement {
         :host {
           display: inline-flex;
           box-sizing: border-box;
-          height: 36px;
-          width: 36px;
         }
         :host([menu]) {
           display: flex;
@@ -41,6 +30,7 @@ class HaxContextItemTextop extends LitElement {
   constructor() {
     super();
     this.label = "";
+    this.action = false;
     this.light = false;
     this.mini = false;
     this.menu = false;
@@ -62,13 +52,14 @@ class HaxContextItemTextop extends LitElement {
       <hax-toolbar-item
         id="button"
         icon="${this.icon}"
-        .hidden="${!this.icon}"
+        ?hidden="${!this.icon}"
         tooltip-direction="${this.direction}"
         tooltip="${this.label}"
         @mousedown="${this._fireEvent}"
-        .mini="${this.mini}"
-        .menu="${this.menu}"
-        .light="${this.light}"
+        ?mini="${this.mini}"
+        ?action="${this.action}"
+        ?menu="${this.menu}"
+        ?light="${this.light}"
       >
         <slot></slot>
       </hax-toolbar-item>
@@ -126,6 +117,9 @@ class HaxContextItemTextop extends LitElement {
       label: {
         type: String,
         reflect: true
+      },
+      action: {
+        type: Boolean
       },
       /**
        * Name of the event to bubble up as being tapped.

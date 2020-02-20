@@ -1,12 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
@@ -20,15 +13,12 @@ class HaxToolbarMenu extends LitElement {
           box-sizing: border-box;
         }
         paper-menu-button {
-          color: rgba(0, 0, 0, 0.66);
           margin: 0;
           padding: 0;
           text-transform: none;
-          background-color: #ffffff;
           display: flex;
-          min-width: 24px;
+          min-width: unset;
         }
-
         paper-menu-button .label {
           font-size: 12px;
           margin-top: 4px;
@@ -58,6 +48,7 @@ class HaxToolbarMenu extends LitElement {
         <hax-toolbar-item
           id="button"
           ?mini="${this.mini}"
+          ?action="${this.action}"
           slot="dropdown-trigger"
           icon="${this.icon}"
           .hidden="${!this.icon}"
@@ -84,6 +75,7 @@ class HaxToolbarMenu extends LitElement {
   constructor() {
     super();
     this.corner = "";
+    this.action = false;
     this.resetOnSelect = false;
     this.tooltip = "";
     this.tooltipDirection = "";
@@ -104,6 +96,9 @@ class HaxToolbarMenu extends LitElement {
       mini: {
         type: Boolean,
         reflect: true
+      },
+      action: {
+        type: Boolean
       },
       icon: {
         type: String

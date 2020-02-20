@@ -29,6 +29,7 @@ Custom property | Description | Default
  * @customElement a11y-collapse
  * @demo ./demo/index.html demo
  * @demo ./demo/group.html collapse groups
+ * @customElement a11y-collapse
  */
 class A11yCollapse extends LitElement {
   static get styles() {

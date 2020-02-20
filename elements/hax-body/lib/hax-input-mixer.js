@@ -1,5 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+/**
  * `hax-input-mixer`
  * @customElement hax-input-mixer
  * A context menu that provides common custom-element based authoring options. While
@@ -46,6 +50,10 @@ class HaxInputMixer extends LitElement {
           height: 40px;
           font-size: 14px;
           margin-bottom: 6px;
+          --paper-input-container-color: var(--hax-color-text);
+          --paper-input-container-focus-color: var(--hax-color-text);
+          --paper-input-container-invalid-color: var(--hax-color-text);
+          --paper-input-container-input-color: var(--hax-color-text);
         }
         .input-method {
           color: var(--hax-color-text);
@@ -76,7 +84,6 @@ class HaxInputMixer extends LitElement {
     import("@polymer/paper-input/paper-textarea.js");
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
   }
@@ -97,10 +104,6 @@ class HaxInputMixer extends LitElement {
             --paper-input-container-underline: {
               margin: 0;
             }
-            --paper-input-container-color: var(--hax-color-text);
-            --paper-input-container-focus-color: var(--hax-color-text);
-            --paper-input-container-invalid-color: var(--hax-color-text);
-            --paper-input-container-input-color: var(--hax-color-text);
             --paper-input-container-shared-input-style: {
               color: var(--hax-color-text);
               background: transparent;

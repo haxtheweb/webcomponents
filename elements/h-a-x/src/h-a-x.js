@@ -30,23 +30,8 @@ class HAX extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
-
     // set tag for later use
     this.tag = HAX.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HAX-properties.json
-    let obj = HAX.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
@@ -82,9 +67,22 @@ class HAX extends HTMLElement {
   storeReady(e) {
     if (e.detail) {
       setTimeout(() => {
-        window.HaxStore.instance.appStore = {
-          ...JSON.parse(this.getAttribute("app-store"))
-        };
+        try {
+          let appStore = {
+            ...JSON.parse(this.getAttribute("app-store"))
+          };
+          if (typeof appStore === "object") {
+            window.HaxStore.instance.appStore = appStore;
+          }
+        } catch (e) {
+          console.log(e);
+        }
+        if (this.hidePanelOps === "hide-panel-ops") {
+          this.hidePanelOps = true;
+        }
+        window.HaxStore.instance.haxTray.hidePanelOps = this.hidePanelOps;
+        window.HaxStore.instance.haxTray.offsetMargin = this.offsetMargin;
+        window.HaxStore.instance.haxTray.elementAlign = this.elementAlign;
       }, 0);
     }
   }
@@ -123,13 +121,11 @@ class HAX extends HTMLElement {
     // store needs to come before anyone else, use it's availability request mechanism
     window.HaxStore.requestAvailability();
     // now everyone else
-    let panel = document.createElement("hax-panel");
-    panel.hidePanelOps = this.hidePanelOps;
-    document.body.appendChild(panel);
-    document.body.appendChild(document.createElement("hax-manager"));
+    let tray = document.createElement("hax-tray");
+    tray.hidePanelOps = this.hidePanelOps;
+    tray.elementAlign = this.elementAlign;
+    document.body.appendChild(tray);
     document.body.appendChild(document.createElement("hax-app-picker"));
-    document.body.appendChild(document.createElement("hax-stax-picker"));
-    document.body.appendChild(document.createElement("hax-blox-picker"));
     document.body.appendChild(document.createElement("hax-preferences-dialog"));
     document.body.appendChild(document.createElement("hax-export-dialog"));
     document.body.appendChild(document.createElement("hax-autoloader"));
@@ -146,7 +142,27 @@ class HAX extends HTMLElement {
     }
   }
   static get observedAttributes() {
-    return ["app-store", "hide-panel-ops"];
+    return ["element-align", "offset-margin", "app-store", "hide-panel-ops"];
+  }
+  get elementAlign() {
+    return this.getAttribute("element-align");
+  }
+  set elementAlign(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("element-align", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.elementAlign = newValue;
+    }
+  }
+  get offsetMargin() {
+    return this.getAttribute("offset-margin");
+  }
+  set offsetMargin(newValue) {
+    this.setAttribute("offset-margin", newValue);
+    if (this.__rendered) {
+      // bind to the hax store global on change
+      window.HaxStore.instance.haxTray.offsetMargin = newValue;
+    }
   }
   get hidePanelOps() {
     return this.getAttribute("hide-panel-ops");
@@ -154,14 +170,19 @@ class HAX extends HTMLElement {
   set hidePanelOps(newValue) {
     if (newValue) {
       this.setAttribute("hide-panel-ops", "hide-panel-ops");
+      if (this.__rendered) {
+        // bind to the hax store global on change
+        window.HaxStore.instance.haxTray.hidePanelOps = newValue;
+      }
     }
   }
   get appStore() {
     return this.getAttribute("app-store");
   }
   set appStore(newValue) {
+    console.log(newValue);
+    this.setAttribute("app-store", newValue);
     if (this.__rendered) {
-      this.setAttribute("app-store", newValue);
       // bind to the hax store global on change
       window.HaxStore.instance.appStore = {
         ...JSON.parse(this.getAttribute("app-store"))

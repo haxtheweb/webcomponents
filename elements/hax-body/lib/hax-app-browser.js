@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
+import "./hax-tray-button";
+import "@polymer/paper-input/paper-input.js";
 
 /**
  * `hax-app-browser`
@@ -21,31 +23,15 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         :host *[hidden] {
           display: none;
         }
-        hax-app-browser-item {
-          margin: 8px;
-          -webkit-transition: 0.3s all linear;
-          transition: 0.3s all linear;
-          display: inline-flex;
-        }
-        .title {
-          position: relative;
-          padding: 16px;
-          outline: 0;
-          font-weight: 600;
-          text-align: left;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
-          font-size: 18px;
-          line-height: 18px;
-          font-family: "Noto Serif", serif;
-          color: var(--hax-color-menu-heading-color);
-        }
         grafitto-filter {
           color: black;
         }
         .toolbar-inner {
           display: inline-flex;
-          padding: 0 16px;
+          padding: 0;
+        }
+        .item-wrapper {
+          text-align: center;
         }
       `
     ];
@@ -53,40 +39,37 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-app-selected": "_appSelected",
-      "hax-store-property-updated": "_haxStorePropertyUpdated"
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-search-source-updated": "_searchSelected"
     };
-    this.title = "Search for media";
     this.searching = false;
     this.activeApp = null;
     this.appList = [];
     this.filtered = [];
     this.hasActive = false;
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");
   }
   render() {
     return html`
-      <h3 class="title"><iron-icon icon="search"></iron-icon> ${this.title}</h3>
+      <custom-style>
+        <style>
+          paper-input {
+            --paper-input-container-label: {
+              font-size: 11px;
+            }
+            --paper-input-container: {
+              padding: 2px;
+            }
+          }
+        </style>
+      </custom-style>
       <div class="toolbar-inner">
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="details.title"
-          @change="${this.filtertypeChange}"
-        >
-          <paper-item value="details.title">Title</paper-item>
-        </dropdown-select>
         <paper-input
           label="Filter"
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
           value=""
-          always-float-label=""
         ></paper-input>
       </div>
       <grafitto-filter
@@ -97,23 +80,20 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
         where="details.title"
         ><template></template
       ></grafitto-filter>
-      ${this.filtered.map(
-        app => html`
-          <hax-app-browser-item
-            index="${app.index}"
-            title="${app.details.title}"
-            icon="${app.details.icon}"
-            image="${app.details.tag}"
-            color="${app.details.color}"
-            meta="${app.details.meta}"
-            groups="${app.details.groups}"
-            handles="${app.details.handles}"
-            description="${app.details.description}"
-            rating="${app.details.rating}"
-            tags="${app.details.tags}"
-          ></hax-app-browser-item>
-        `
-      )}
+      <div class="item-wrapper">
+        ${this.filtered.map(
+          app => html`
+            <hax-tray-button
+              index="${app.index}"
+              label="${app.details.title}"
+              icon="${app.details.icon}"
+              color="${app.details.color}"
+              event-name="search-selected"
+              event-data="${app.index}"
+            ></hax-tray-button>
+          `
+        )}
+      </div>
       <hax-app-search
         id="haxappsearch"
         .hidden="${!this.searching}"
@@ -130,12 +110,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
        * Search term
        */
       search: {
-        type: String
-      },
-      /**
-       * Title of the browser, for translation.
-       */
-      title: {
         type: String
       },
       /**
@@ -173,11 +147,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   inputfilterChanged(e) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
   }
-  filtertypeChange(e) {
-    this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filter").where = e.detail.value;
-    this.shadowRoot.querySelector("#filter").like = "";
-  }
   firstUpdated(changedProperties) {
     this.resetBrowser();
   }
@@ -191,7 +160,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   /**
    * App has been selected.
    */
-  _appSelected(e) {
+  _searchSelected(e) {
     // item bubbled up
     if (typeof e.detail !== typeof undefined) {
       this.__activeApp = e.detail;
@@ -205,7 +174,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
    */
   _activeAppChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined && newValue != null) {
-      window.HaxStore.instance.haxManager.searching = true;
       this.hasActive = true;
     } else {
       this.hasActive = false;
@@ -231,7 +199,6 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
     this.appList = [...window.HaxStore.instance.appList];
     this.filtered = this.appList;
     this.shadowRoot.querySelector("#inputfilter").value = "";
-    this.shadowRoot.querySelector("#filtertype").value = "details.title";
     this.shadowRoot.querySelector("#filter").value = "";
     this.shadowRoot.querySelector("#filter").filter();
     this.shadowRoot.querySelector("#filter").where = "details.title";

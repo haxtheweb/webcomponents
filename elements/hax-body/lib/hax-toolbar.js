@@ -12,7 +12,6 @@ class HaxToolbar extends LitElement {
           visibility: visible;
           transition: 0.3s all ease;
           box-sizing: border-box;
-          height: 36px;
           pointer-events: all;
         }
         :host *[hidden] {
@@ -20,11 +19,6 @@ class HaxToolbar extends LitElement {
         }
         .wrapper {
           display: flex;
-          border: 1px solid var(--hax-color-border-outline, black);
-          border-bottom: none;
-          color: #222222;
-          background-color: #ffffff;
-          height: 38px;
           align-items: center;
         }
         :host .wrapper ::slotted(*) {
@@ -54,20 +48,19 @@ class HaxToolbar extends LitElement {
         #moremenu hax-context-item:hover,
         :host #moremenu ::slotted(paper-item:hover),
         paper-item:hover {
-          background-color: var(--hax-color-menu-heading-bg);
           cursor: pointer;
         }
         paper-slider {
-          background-color: var(--hax-color-bg-accent);
+          background-color: var(--hax-contextual-action-color);
           color: #ffffff;
           font-weight: bold;
-          height: 36px;
           min-width: 100px;
-          --paper-slider-font-color: white;
-          --paper-slider-active-color: var(--hax-color-accent1);
-          --paper-slider-knob-color: var(--hax-color-accent1);
-          --paper-slider-pin-start-color: var(--hax-color-accent1);
-          --paper-slider-pin-color: var(--hax-color-accent1);
+          height: 28px;
+          --paper-slider-font-color: black;
+          --paper-slider-active-color: #ffffff;
+          --paper-slider-knob-color: #ffffff;
+          --paper-slider-pin-start-color: #ffffff;
+          --paper-slider-pin-color: #ffffff;
         }
         .convert-button {
           border-top: 1px solid var(--hax-color-bg-accent);
@@ -88,8 +81,6 @@ class HaxToolbar extends LitElement {
     import("@polymer/paper-slider/paper-slider.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
@@ -103,18 +94,11 @@ class HaxToolbar extends LitElement {
   }
   render() {
     return html`
-      <hax-context-item
-        ?hidden="${this.inline}"
-        mini
-        light
-        icon="close"
-        label="Hide menu"
-        event-name="close-menu"
-        class="close-cap"
-        direction="left"
-      ></hax-context-item>
       <div class="wrapper">
+        <slot name="prefix"></slot>
         <hax-context-item-menu
+          mini
+          action
           ?hidden="${!this.haxProperties.canPosition}"
           @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
@@ -122,12 +106,14 @@ class HaxToolbar extends LitElement {
           label="Alignment"
         >
           <hax-context-item
+            action
             menu
             icon="editor:format-align-left"
             event-name="hax-align-left"
             >Left</hax-context-item
           >
           <hax-context-item
+            action
             menu
             icon="editor:format-align-center"
             event-name="hax-align-center"
@@ -161,20 +147,10 @@ class HaxToolbar extends LitElement {
           Resize
         </simple-tooltip>
         <slot name="primary"></slot>
-        <hax-context-item
-          ?hidden="${this.hideTransform}"
-          icon="hax:bricks"
-          label="Change type"
-          event-name="hax-plate-convert"
-        ></hax-context-item>
-        <hax-context-item
-          ?hidden="${this.inline}"
-          icon="delete"
-          label="Remove"
-          event-name="hax-plate-delete"
-        ></hax-context-item>
         <hax-context-item-menu
-          ?hidden="${this.hideMode}"
+          mini
+          action
+          ?hidden="${this.hideMore}"
           icon="more-vert"
           label="More operations"
           id="moremenu"
@@ -183,12 +159,6 @@ class HaxToolbar extends LitElement {
         >
           <paper-item value="" hidden></paper-item>
           <slot name="more"></slot>
-          <hax-context-item-textop
-            menu
-            icon="icons:content-copy"
-            event-name="hax-plate-duplicate"
-            >Duplicate</hax-context-item-textop
-          >
         </hax-context-item-menu>
       </div>
     `;
@@ -291,7 +261,7 @@ class HaxToolbar extends LitElement {
    */
   _haxPropertiesChanged(newValue, oldValue) {
     // value doesn't matter, just look at what's active
-    if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
+    if (window.HaxStore.instance.activeNode) {
       if (
         window.HaxStore.instance.isTextElement(
           window.HaxStore.instance.activeNode

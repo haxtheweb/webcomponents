@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js";
 /**
  * `hax-blox-browser`
  * @customElement hax-blox-browser
@@ -14,10 +13,9 @@ class HaxBloxBrowser extends LitElement {
         :host {
           display: block;
         }
-        hax-blox-browser-item {
-          margin: 10px;
-          -webkit-transition: 0.3s all linear;
-          transition: 0.3s all linear;
+        .blox-container {
+          text-align: center;
+          margin: 0px 16px;
         }
       `
     ];
@@ -28,25 +26,22 @@ class HaxBloxBrowser extends LitElement {
   }
   render() {
     return html`
-      ${this.bloxList.map(
-        blox => html`
-          <div class="blox-container">
-            <hax-blox-browser-item
-              .index="${blox.index}"
-              .layout="${blox.details.layout}"
-              .title="${blox.details.title}"
-              .tag="${blox.details.tag}"
-              .icon="${blox.details.icon}"
-              .author="${blox.details.author}"
-              .teaser="${blox.details.teaser}"
-              .description="${blox.details.description}"
-              .examples="${blox.details.examples}"
-              .status="${blox.details.status}"
+      <div class="blox-container">
+        ${this.bloxList.map(
+          blox => html`
+            <hax-tray-button
+              wide
+              index="${blox.index}"
+              layout="${blox.details.layout}"
+              label="${blox.details.title}"
+              icon="${blox.details.icon}"
+              event-name="insert-blox"
+              color="orange"
               .blox="${blox.blox}"
-            ></hax-blox-browser-item>
-          </div>
-        `
-      )}
+            ></hax-tray-button>
+          `
+        )}
+      </div>
     `;
   }
 

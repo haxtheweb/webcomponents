@@ -59,6 +59,7 @@ class VoiceRecorder extends LitElement {
     setTimeout(() => {
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/iron-icons/av-icons.js");
+      this.addEventListener("vmsg-ready", this.vmsgReady.bind(this));
     }, 0);
   }
   recordState(e) {
@@ -82,6 +83,9 @@ class VoiceRecorder extends LitElement {
       }
     });
   }
+  vmsgReady(e) {
+    console.log(e.detail.value);
+  }
   /**
    * Toggle the LAME bridge
    */
@@ -92,7 +96,7 @@ class VoiceRecorder extends LitElement {
         {
           wasmURL:
             this.pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../../vmsg/vmsg.wasm"
+            "../../node_modules/vmsg/vmsg.wasm"
         },
         this
       ).then(blob => {

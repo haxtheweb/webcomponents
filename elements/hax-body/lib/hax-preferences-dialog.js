@@ -27,12 +27,12 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           display: none;
         }
         #dialog {
-          z-index: 1000;
+          z-index: 100000;
           margin-top: 56px;
         }
         #closedialog {
           float: right;
-          top: 124px;
+          top: 68px;
           right: 0;
           position: absolute;
           padding: 8px;
@@ -58,10 +58,15 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         }
         eco-json-schema-object {
           color: white;
+          --paper-checkbox-size: 16px;
+          --paper-checkbox-checked-ink-color: var(--hax-color-accent1);
         }
         .pref-container {
           text-align: left;
           padding: 16px;
+        }
+        app-drawer {
+          --app-drawer-width: 320px;
         }
       `
     ];
@@ -73,7 +78,6 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
     };
     this.title = "Editor preferences";
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
@@ -101,8 +105,8 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           app-drawer {
             --app-drawer-content-container: {
               background-color: #ffffff;
+              padding: 64px 0;
             }
-            --app-drawer-width: 320px;
           }
           eco-json-schema-object {
             --eco-json-schema-object-form : {
@@ -112,8 +116,6 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
               -webkit-flex-basis: unset;
               flex-basis: unset;
             }
-            --paper-checkbox-size: 16px;
-            --paper-checkbox-checked-ink-color: var(--hax-color-accent1);
             --paper-checkbox-label: {
               font-size: 16px;
               line-height: 16px;

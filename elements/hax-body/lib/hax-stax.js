@@ -2,9 +2,6 @@ import { HAXApp } from "./hax-app.js";
 /**
  `hax-stax`
 Register a stax with HAX store.
-
-* @demo demo/index.html
-
 @microcopy - the mental model for this element
  - stax - a stack of haxElement definitions that are named. Similar to a template in WYSIWYGs.
  - data - this is the stax data model which expresses itself to hax

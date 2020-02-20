@@ -55,8 +55,12 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-body-editable-outline: 2px solid #bbbbbb;
-          --hax-body-active-outline: 2px solid #000000;
+          --hax-contextual-action-color: #3b97e3;
+          --hax-body-editable-outline: 1px solid #e37e3b;
+          --hax-body-active-outline-hover: 1px solid
+            var(--hax-contextual-action-color);
+          --hax-body-active-outline: 3px solid
+            var(--hax-contextual-action-color);
           --hax-body-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -155,20 +159,20 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable]:hover) {
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+          outline: var(--hax-body-active-outline-hover);
           caret-color: #000000;
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]:hover) {
           cursor: text !important;
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+          outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not(grid-plate)[data-editable] .hax-active:hover) {
           cursor: text !important;
-          outline: 2px solid rgba(145, 151, 162, 0.5);
+          outline: var(--hax-body-active-outline-hover);
         }
         :host([edit-mode])
           #bodycontainer
@@ -178,7 +182,7 @@ class HaxBody extends SimpleColors {
         :host([edit-mode])
           #bodycontainer
           ::slotted(*.hax-active[data-editable]) {
-          outline: 2px solid rgba(145, 151, 162, 0.25);
+          outline: var(--hax-body-active-outline) !important;
         }
         :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
           height: 2px;
@@ -462,7 +466,10 @@ class HaxBody extends SimpleColors {
    */
   _openDrawerChanged(newValue, oldValue) {
     if (!newValue) {
-      this.positionContextMenus();
+      this.hideContextMenus();
+      setTimeout(() => {
+        this.positionContextMenus();
+      }, 100);
     } else {
       this.hideContextMenus();
     }
@@ -593,11 +600,16 @@ class HaxBody extends SimpleColors {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
+          let rect = this.activeContainerNode.getBoundingClientRect();
           this._positionContextMenu(
             this.shadowRoot.querySelector("#platecontextmenu"),
             this.activeContainerNode,
-            -59,
-            0
+            rect.width -
+              this.shadowRoot
+                .querySelector("#platecontextmenu")
+                .getBoundingClientRect().width +
+              2,
+            -28
           );
           if (this.elementInViewport(el)) {
             el.classList.remove(
@@ -833,11 +845,7 @@ class HaxBody extends SimpleColors {
    * Check if part of the passed element is int he viewport
    */
   elementInViewport(el) {
-    let top =
-      el.offsetTop -
-      32 -
-      window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer")
-        .offsetHeight;
+    let top = el.offsetTop - 32;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;
@@ -1083,7 +1091,17 @@ class HaxBody extends SimpleColors {
         }
         this.activeContainerNode.insertBefore(newNode, this.activeNode);
       } else {
-        this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
+        if (this.activeContainerNode.nextElementSibling) {
+          this.activeContainerNode.nextElementSibling.parentNode.insertBefore(
+            newNode,
+            this.activeContainerNode.nextElementSibling
+          );
+        } else {
+          this.activeContainerNode.parentNode.insertBefore(
+            newNode,
+            this.activeContainerNode
+          );
+        }
       }
     } else {
       // send this into the root, which should filter it back down into the slot
@@ -1190,7 +1208,6 @@ class HaxBody extends SimpleColors {
       content = content.replace(re, "");
       // now all tags we have defined as valid
       let tags = window.HaxStore.instance.validTagList;
-      tags.push("hax-preview");
       for (var i in tags) {
         string = "style-scope " + tags[i];
         re = new RegExp(string, "g");
@@ -1305,24 +1322,31 @@ class HaxBody extends SimpleColors {
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
           container,
-          -58,
-          -40
+          -3,
+          -30
         );
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
           container,
-          -58,
-          -40
+          -3,
+          -30
         );
       }
-      this._positionContextMenu(
-        this.shadowRoot.querySelector("#platecontextmenu"),
-        container,
-        -59,
-        0
-      );
+      if (container) {
+        let rect = container.getBoundingClientRect();
+        this._positionContextMenu(
+          this.shadowRoot.querySelector("#platecontextmenu"),
+          container,
+          rect.width -
+            this.shadowRoot
+              .querySelector("#platecontextmenu")
+              .getBoundingClientRect().width +
+            2,
+          -28
+        );
+      }
       // special case for node not matching container yet it being editable
       if (
         container &&
@@ -1409,8 +1433,7 @@ class HaxBody extends SimpleColors {
         }
       } else {
         switch (node.layout) {
-          // @todo need to kill the grid plate if going below 0
-          case "1":
+          case "1-1":
             // implies we are removing the grid plate
             await node.childNodes.forEach(el => {
               // verify its a tag
@@ -1424,9 +1447,6 @@ class HaxBody extends SimpleColors {
             setTimeout(() => {
               node.remove();
             }, 0);
-            break;
-          case "1-1":
-            node.layout = "1";
             changed = true;
             break;
           case "1-1-1":
@@ -1453,20 +1473,13 @@ class HaxBody extends SimpleColors {
           "#platecontextmenu"
         );
         let right = platecontextmenu.shadowRoot.querySelector("#right");
-        let left = platecontextmenu.shadowRoot.querySelector("#left");
         let rightremove = platecontextmenu.shadowRoot.querySelector(
           "#rightremove"
         );
-        let leftremove = platecontextmenu.shadowRoot.querySelector(
-          "#leftremove"
-        );
         right.disabled = false;
-        left.disabled = false;
         rightremove.disabled = false;
-        leftremove.disabled = false;
         if (node.layout == "1-1-1-1-1-1") {
           right.disabled = true;
-          left.disabled = true;
         }
         if (side == "left") {
           node.childNodes.forEach(el => {
@@ -1695,7 +1708,9 @@ class HaxBody extends SimpleColors {
           detail.value;
         this.activeNode = this.haxChangeTagName(this.activeNode, detail.value);
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "text-tag-ul":
         // trigger the default selected value in context menu to match
@@ -1703,7 +1718,9 @@ class HaxBody extends SimpleColors {
           "ul";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ul");
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "text-tag-ol":
         // trigger the default selected value in context menu to match
@@ -1711,7 +1728,9 @@ class HaxBody extends SimpleColors {
           "ol";
         this.activeNode = this.haxChangeTagName(this.activeNode, "ol");
         window.HaxStore.write("activeNode", this.activeNode, this);
-        this.positionContextMenus();
+        setTimeout(() => {
+          this.positionContextMenus();
+        }, 100);
         break;
       case "hax-plate-add-element":
         // support for the Other call, otherwise its a specific element + props
@@ -1816,17 +1835,6 @@ class HaxBody extends SimpleColors {
       case "hax-plate-up":
         this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
         break;
-      case "hax-manager-open":
-        window.HaxStore.write("activeHaxElement", {}, this);
-        window.HaxStore.instance.haxManager.resetManager(
-          parseInt(detail.value)
-        );
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        break;
       case "hax-plate-down":
         this.haxMoveGridPlate(
           "down",
@@ -1910,66 +1918,6 @@ class HaxBody extends SimpleColors {
           this.activeNode.style.width = detail.value + "%";
         }
         break;
-      // settings button selected from hax-ce-context bar
-      // which means we should skip to the settings page after
-      // we set the thing selected as the active element to work
-      // on in the manager
-      case "hax-manager-configure":
-        // make sure input mixer is closed
-        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
-        // reset the manager
-        window.HaxStore.instance.haxManager.resetManager();
-        // write activeElement updated so it'll go into the preview
-        haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
-        window.HaxStore.write("activeHaxElement", haxElement, this);
-        // clean up the manager before opening
-        window.HaxStore.instance.haxManager.editExistingNode = true;
-        window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        // accessibility enhancement to keyboard focus configure button
-        setTimeout(() => {
-          window.HaxStore.instance.haxManager.shadowRoot
-            .querySelector("#preview")
-            .shadowRoot.querySelector("#configurebutton")
-            .focus();
-        }, 100);
-        break;
-      // container / layout settings button has been activated
-      case "hax-manager-configure-container":
-        window.HaxStore.write(
-          "activeNode",
-          window.HaxStore.instance.activeContainerNode,
-          this
-        );
-        // make sure input mixer is closed
-        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
-        // reset the manager
-        window.HaxStore.instance.haxManager.resetManager();
-        // write activeElement updated so it'll go into the preview
-        haxElement = window.HaxStore.nodeToHaxElement(
-          window.HaxStore.instance.activeNode
-        );
-        window.HaxStore.write("activeHaxElement", haxElement, this);
-        // clean up the manager before opening
-        window.HaxStore.instance.haxManager.editExistingNode = true;
-        window.HaxStore.instance.haxManager.selectStep("configure");
-        window.HaxStore.write(
-          "openDrawer",
-          window.HaxStore.instance.haxManager,
-          this
-        );
-        // accessibility enhancement to keyboard focus configure button
-        setTimeout(() => {
-          window.HaxStore.instance.haxManager.shadowRoot
-            .querySelector("#preview")
-            .shadowRoot.querySelector("#configurebutton")
-            .focus();
-        }, 100);
-        break;
     }
   }
   /**
@@ -2033,7 +1981,10 @@ class HaxBody extends SimpleColors {
         // keep looking til we are juuuust below the container
         // @todo this is where we force a selection on highest level
         // of the document
-        while (containerNode.parentNode.tagName != "HAX-BODY") {
+        while (
+          containerNode.parentNode.tagName &&
+          containerNode.parentNode.tagName != "HAX-BODY"
+        ) {
           // make sure active is set after closest legit element
           if (
             activeNode === null &&
@@ -2101,7 +2052,6 @@ class HaxBody extends SimpleColors {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
-      this.setAttribute("tabindex", "-1");
       if (newValue) {
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
@@ -2298,6 +2248,15 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
+    this.activeNode = e.path[0];
+    window.HaxStore.write("activeNode", e.path[0], this);
+    if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
+      this.activeContainerNode = e.path[0].parentNode;
+      window.HaxStore.write("activeContainerNode", e.path[0].parentNode, this);
+    } else {
+      this.activeContainerNode = e.path[0].parentNode;
+      window.HaxStore.write("activeContainerNode", e.path[0], this);
+    }
     clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
       setTimeout(() => {
@@ -2323,7 +2282,7 @@ class HaxBody extends SimpleColors {
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        (typeof target !== typeof undefined &&
+        (target &&
           target !== null &&
           typeof local !== typeof undefined &&
           target !== local &&
@@ -2345,7 +2304,11 @@ class HaxBody extends SimpleColors {
       // position arrows / set focus in case the DOM got updated above
       if (target && typeof target.focus === "function") {
         this.activeNode = target;
-        if (this.activeNode.parentNode.tagName === "GRID-PLATE") {
+        if (
+          this.activeNode &&
+          this.activeNode.parentNode &&
+          this.activeNode.parentNode.tagName === "GRID-PLATE"
+        ) {
           this.activeContainerNode = this.activeNode.parentNode;
         }
         window.HaxStore.write("activeNode", this.activeNode, this);
@@ -2356,7 +2319,7 @@ class HaxBody extends SimpleColors {
         );
         setTimeout(() => {
           this.positionContextMenus();
-        }, 10);
+        }, 100);
       }
     }
   }
@@ -2700,35 +2663,37 @@ class HaxBody extends SimpleColors {
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    try {
-      let range = window.HaxStore.getRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (
-        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-        ["UL", "OL", "LI"].includes(tagTest)
-      ) {
-        if (this.polyfillSafe) {
-          document.execCommand("indent");
-          this.__tabTrap = true;
+    if (window.HaxStore.getRange().cloneRange) {
+      try {
+        let range = window.HaxStore.getRange().cloneRange();
+        var tagTest = range.commonAncestorContainer.tagName;
+        if (typeof tagTest === typeof undefined) {
+          tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
-      } else {
-        while (!focus) {
-          // do nothing
-          if (node.nextSibling == null) {
-            focus = true;
-          } else if (node.nextSibling.focus === "function") {
-            node.nextSibling.focus();
-            focus = true;
-          } else {
-            node = node.nextSibling;
+        if (
+          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+          ["UL", "OL", "LI"].includes(tagTest)
+        ) {
+          if (this.polyfillSafe) {
+            document.execCommand("indent");
+            this.__tabTrap = true;
+          }
+        } else {
+          while (!focus) {
+            // do nothing
+            if (node.nextSibling == null) {
+              focus = true;
+            } else if (node.nextSibling.focus === "function") {
+              node.nextSibling.focus();
+              focus = true;
+            } else {
+              node = node.nextSibling;
+            }
           }
         }
+      } catch (e) {
+        console.warn(e);
       }
-    } catch (e) {
-      console.warn(e);
     }
   }
   /**
@@ -2738,35 +2703,37 @@ class HaxBody extends SimpleColors {
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
-    try {
-      let range = window.HaxStore.getRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (
-        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-        ["UL", "OL", "LI"].includes(tagTest)
-      ) {
-        if (this.polyfillSafe) {
-          document.execCommand("outdent");
-          this.__tabTrap = true;
+    if (window.HaxStore.getRange().cloneRange) {
+      try {
+        let range = window.HaxStore.getRange().cloneRange();
+        var tagTest = range.commonAncestorContainer.tagName;
+        if (typeof tagTest === typeof undefined) {
+          tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
-      } else {
-        if (node != null) {
-          // step back ignoring hax- prefixed elements
-          while (node != null && !this._validElementTest(node)) {
-            node = node.previousSibling;
+        if (
+          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+          ["UL", "OL", "LI"].includes(tagTest)
+        ) {
+          if (this.polyfillSafe) {
+            document.execCommand("outdent");
+            this.__tabTrap = true;
+          }
+        } else {
+          if (node != null) {
+            // step back ignoring hax- prefixed elements
+            while (node != null && !this._validElementTest(node)) {
+              node = node.previousSibling;
+            }
+          }
+          if (node != null) {
+            setTimeout(() => {
+              node.focus();
+            }, 50);
           }
         }
-        if (node != null) {
-          setTimeout(() => {
-            node.focus();
-          }, 50);
-        }
+      } catch (e) {
+        console.warn(e);
       }
-    } catch (e) {
-      console.warn(e);
     }
   }
 }

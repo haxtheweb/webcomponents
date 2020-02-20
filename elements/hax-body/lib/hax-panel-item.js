@@ -140,10 +140,6 @@ class HAXPanelItem extends LitElement {
           background-color: #000000 !important;
           color: var(--hax-color-bg-accent);
         }
-        :host([large]) paper-button {
-          height: 40px;
-          width: 40px;
-        }
         :host([dark]) paper-button:hover iron-icon,
         :host([dark]) paper-button:focus iron-icon {
           color: #ffffff !important;
