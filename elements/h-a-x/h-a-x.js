@@ -16,7 +16,6 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
-  
   // render function
   get html() {
     return `
@@ -117,9 +116,8 @@ ol {
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
-    return {...super.properties}
-;
+  static get properties() {
+    return { ...super.properties };
   }
 
   /**

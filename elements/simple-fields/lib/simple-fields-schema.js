@@ -173,7 +173,10 @@ class SimpleFieldsSchema extends LitElement {
         this._setValue(`${elname}.${elval.length}`, {})
       );
       el.addEventListener("remove", e => {
-        console.log(e);
+        let temp = this._deepClone(elval);
+        temp.splice(parseInt(e.detail.id.replace(/item-/,'')),1);
+        console.log(temp,parseInt(e.detail.id.replace(/item-/,'')));
+        this._setValue(`${elname}`, temp);
       });
       if(config.sortBy) elval = elval.sort((a,b)=>{
         let i = 0, ai = 0, bi = 0;
