@@ -155,7 +155,9 @@ class SimpleFieldsSchema extends LitElement {
       elname =
         index > -1 ? config.name.replace("..", `.${index}.`) : config.name,
       elval = this._getValue(elname),
-      keys = config.schema.properties ? Object.keys(config.schema.properties) : [];
+      keys = config.schema.properties
+        ? Object.keys(config.schema.properties)
+        : [];
     el.label = config.label || config.title;
     el.schema = config.schema;
     el.resources = this.resources;
@@ -174,19 +176,22 @@ class SimpleFieldsSchema extends LitElement {
       );
       el.addEventListener("remove", e => {
         let temp = this._deepClone(elval);
-        temp.splice(parseInt(e.detail.id.replace(/item-/,'')),1);
-        console.log(temp,parseInt(e.detail.id.replace(/item-/,'')));
+        temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
+        console.log(temp, parseInt(e.detail.id.replace(/item-/, "")));
         this._setValue(`${elname}`, temp);
       });
-      if(config.sortBy) elval = elval.sort((a,b)=>{
-        let i = 0, ai = 0, bi = 0;
-        while(i < config.sortBy.length && ai === bi){
-          ai = a[config.sortBy[i]];
-          bi = b[config.sortBy[i]];
-          i++;
-        }
-        return ai === bi ? 0 : ai < bi ? -1 : 1;
-      }); 
+      if (config.sortBy)
+        elval = elval.sort((a, b) => {
+          let i = 0,
+            ai = 0,
+            bi = 0;
+          while (i < config.sortBy.length && ai === bi) {
+            ai = a[config.sortBy[i]];
+            bi = b[config.sortBy[i]];
+            i++;
+          }
+          return ai === bi ? 0 : ai < bi ? -1 : 1;
+        });
       /* gets array items */
       if (elval)
         elval.forEach((item, i) => {
@@ -201,17 +206,19 @@ class SimpleFieldsSchema extends LitElement {
           if (previewKeys.length < 1) previewKeys.push(keys[0]);
           /* adds fields to array items */
           keys.forEach(key => {
-            let childname = config.schema.properties[key].name.replace(`${elname}..`,'');
+            let childname = config.schema.properties[key].name.replace(
+              `${elname}..`,
+              ""
+            );
             this._buildFormElement(
               config.schema.properties[key],
               child,
               i,
-              sortSlot 
-                && config.sortBy[0] === childname 
-                  ? sortSlot 
-                    : previewKeys.includes(key)
-                      ? previewSlot
-                      : undefined
+              sortSlot && config.sortBy[0] === childname
+                ? sortSlot
+                : previewKeys.includes(key)
+                ? previewSlot
+                : undefined
             );
           });
         });
@@ -376,7 +383,7 @@ class SimpleFieldsSchema extends LitElement {
    * @event value-changed
    */
   _valueChanged(newValue, oldValue) {
-    console.log("this._valueChanged",this.value,oldValue);
+    console.log("this._valueChanged", this.value, oldValue);
     if (newValue && newValue !== oldValue) {
       this._rebuildForm();
 
