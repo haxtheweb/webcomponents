@@ -94,13 +94,13 @@
                       phoneNumbers: {
                         title: "Phone numbers",
                         type: "array",
+                        sortBy: ["order","type"],
                         items: {
                           type: "object",
                           properties: {
                             order: {
                               title: "Sort Order",
-                              type: "integer",
-                              sortField: true
+                              type: "integer"
                             },
                             type: {
                               title: "Type",

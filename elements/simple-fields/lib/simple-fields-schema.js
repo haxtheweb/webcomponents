@@ -154,7 +154,8 @@ class SimpleFieldsSchema extends LitElement {
     let el = document.createElement(config.component.type.element),
       elname =
         index > -1 ? config.name.replace("..", `.${index}.`) : config.name,
-      elval = this._getValue(elname);
+      elval = this._getValue(elname),
+      keys = config.schema.properties ? Object.keys(config.schema.properties) : [];
     el.label = config.label || config.title;
     el.schema = config.schema;
     el.resources = this.resources;
@@ -167,58 +168,49 @@ class SimpleFieldsSchema extends LitElement {
     if (config.schema.hidden) el.setAttribute("hidden", true);
     if (slot) el.slot = slot;
     parent.append(el);
-    console.log("_buildFormElement", el, config, parent, index, slot);
     if (config.component.type.isArray && index < 0) {
-      let keys = Object.keys(config.schema.properties),
-        sortSlot = config.component.type.sortSlot,
-        sortKeys = keys.filter(
-          key => config.schema.properties[key].sortField === true
-        );
-      keys.forEach(key => {
-        if (config.schema.properties[key].sortField === true)
-          sortKeys = config.name;
-      });
       el.addEventListener("add", e =>
         this._setValue(`${elname}.${elval.length}`, {})
       );
       el.addEventListener("remove", e => {
-        if (confirm("Remove item?")) e.detail.remove();
+        console.log(e);
       });
-      if (sortKeys.length > 0)
-        elval = elval.sort((a, b) => {
-          console.log(
-            a,
-            b,
-            sortKeys[0],
-            elval,
-            config.schema.properties[sortKeys[0]]
-          );
-          return a - b;
-        });
+      if(config.sortBy) elval = elval.sort((a,b)=>{
+        let i = 0, ai = 0, bi = 0;
+        while(i < config.sortBy.length && ai === bi){
+          ai = a[config.sortBy[i]];
+          bi = b[config.sortBy[i]];
+          i++;
+        }
+        return ai === bi ? 0 : ai < bi ? -1 : 1;
+      }); 
       /* gets array items */
       if (elval)
         elval.forEach((item, i) => {
           /* gets array item config */
           let id = `item-${i}`,
             child = el.buildItem(id),
+            sortSlot = config.component.type.sortSlot,
             previewSlot = config.component.type.previewSlot,
             previewKeys = keys.filter(
               key => config.schema.properties[key].previewField === true
             );
           if (previewKeys.length < 1) previewKeys.push(keys[0]);
           /* adds fields to array items */
-          keys.forEach(key =>
+          keys.forEach(key => {
+            let childname = config.schema.properties[key].name.replace(`${elname}..`,'');
             this._buildFormElement(
               config.schema.properties[key],
               child,
               i,
-              key === sortKeys[0]
-                ? sortSlot
-                : previewKeys.includes(key)
-                ? previewSlot
-                : undefined
-            )
-          );
+              sortSlot 
+                && config.sortBy[0] === childname 
+                  ? sortSlot 
+                    : previewKeys.includes(key)
+                      ? previewSlot
+                      : undefined
+            );
+          });
         });
     } else if (config.schema && config.schema.properties) {
       /* gets nested fields for a fieldset */
@@ -249,7 +241,7 @@ class SimpleFieldsSchema extends LitElement {
           description: schema.description,
           label: schema.title || key,
           previewField: schema.previewField,
-          sortField: schema.sortField
+          sortBy: schema.sortBy
         };
       property.component.valueProperty =
         property.component.valueProperty || "value";
@@ -381,7 +373,7 @@ class SimpleFieldsSchema extends LitElement {
    * @event value-changed
    */
   _valueChanged(newValue, oldValue) {
-    //console.log("this._valueChanged",this.value,oldValue);
+    console.log("this._valueChanged",this.value,oldValue);
     if (newValue && newValue !== oldValue) {
       this._rebuildForm();
 
