@@ -150,66 +150,85 @@ class SimpleFieldsSchema extends LitElement {
    * @param {string} string name of slot
    * @returns {object} form element
    */
-  _buildFormElement(
-    config, 
-    parent = this, 
-    index = -1, 
-    slot
-  ) {
+  _buildFormElement(config, parent = this, index = -1, slot) {
     let el = document.createElement(config.component.type.element),
-    elname = index > -1 ? config.name.replace('..',`.${index}.`) : config.name,
-    elval = this._getValue(elname);
-    el.label = config.label  || config.title;
+      elname =
+        index > -1 ? config.name.replace("..", `.${index}.`) : config.name,
+      elval = this._getValue(elname);
+    el.label = config.label || config.title;
     el.schema = config.schema;
     el.resources = this.resources;
-    el.setAttribute('language',this.language);
-    el.setAttribute('name',elname);
-    Object.keys(config.component.type).forEach(key=>{
-      if(key !== "element" || "valueProperty") el.setAttribute(key,config.component.type[key]);
+    el.setAttribute("language", this.language);
+    el.setAttribute("name", elname);
+    Object.keys(config.component.type).forEach(key => {
+      if (key !== "element" || "valueProperty")
+        el.setAttribute(key, config.component.type[key]);
     });
-    if(config.schema.hidden) el.setAttribute('hidden',true);
-    if(slot) el.slot = slot;
+    if (config.schema.hidden) el.setAttribute("hidden", true);
+    if (slot) el.slot = slot;
     parent.append(el);
-    console.log('_buildFormElement',el,config,parent,index,slot);
-    if(config.component.type.isArray && index < 0) {
+    console.log("_buildFormElement", el, config, parent, index, slot);
+    if (config.component.type.isArray && index < 0) {
       let keys = Object.keys(config.schema.properties),
-      sortSlot = config.component.type.sortSlot, 
-      sortKeys = keys.filter(key=>config.schema.properties[key].sortField === true);
-      keys.forEach(key=>{
-        if(config.schema.properties[key].sortField === true) sortKeys = config.name
-      })
-      el.addEventListener('add',e=>this._setValue(`${elname}.${elval.length}`,{}));
-      el.addEventListener('remove',e=>{if(confirm("Remove item?")) e.detail.remove()});
-      if(sortKeys.length > 0) elval = elval.sort((a,b)=>{
-        console.log(a,b,sortKeys[0],elval,config.schema.properties[sortKeys[0]]);
-        return a-b
+        sortSlot = config.component.type.sortSlot,
+        sortKeys = keys.filter(
+          key => config.schema.properties[key].sortField === true
+        );
+      keys.forEach(key => {
+        if (config.schema.properties[key].sortField === true)
+          sortKeys = config.name;
       });
+      el.addEventListener("add", e =>
+        this._setValue(`${elname}.${elval.length}`, {})
+      );
+      el.addEventListener("remove", e => {
+        if (confirm("Remove item?")) e.detail.remove();
+      });
+      if (sortKeys.length > 0)
+        elval = elval.sort((a, b) => {
+          console.log(
+            a,
+            b,
+            sortKeys[0],
+            elval,
+            config.schema.properties[sortKeys[0]]
+          );
+          return a - b;
+        });
       /* gets array items */
-      if(elval) elval.forEach((item,i)=>{
-        /* gets array item config */
-        let id = `item-${i}`, 
-          child = el.buildItem(id),
-          previewSlot = config.component.type.previewSlot,
-          previewKeys = keys.filter(key=>config.schema.properties[key].previewField === true);
-        if(previewKeys.length < 1) previewKeys.push(keys[0]);
-        /* adds fields to array items */
-        keys.forEach(key => this._buildFormElement(
-          config.schema.properties[key],
-          child,
-          i, 
-          key === sortKeys[0] 
-            ? sortSlot
-            : previewKeys.includes(key) 
-              ? previewSlot 
-              : undefined
-        ))
-      });
-    } else if (config.schema && config.schema.properties){
+      if (elval)
+        elval.forEach((item, i) => {
+          /* gets array item config */
+          let id = `item-${i}`,
+            child = el.buildItem(id),
+            previewSlot = config.component.type.previewSlot,
+            previewKeys = keys.filter(
+              key => config.schema.properties[key].previewField === true
+            );
+          if (previewKeys.length < 1) previewKeys.push(keys[0]);
+          /* adds fields to array items */
+          keys.forEach(key =>
+            this._buildFormElement(
+              config.schema.properties[key],
+              child,
+              i,
+              key === sortKeys[0]
+                ? sortSlot
+                : previewKeys.includes(key)
+                ? previewSlot
+                : undefined
+            )
+          );
+        });
+    } else if (config.schema && config.schema.properties) {
       /* gets nested fields for a fieldset */
-      Object.keys(config.schema.properties).forEach(key =>this._buildFormElement(config.schema.properties[key],el));
+      Object.keys(config.schema.properties).forEach(key =>
+        this._buildFormElement(config.schema.properties[key], el)
+      );
     } else {
       el[config.component.valueProperty] = elval;
-      el.onchange = (e) => this._setValue(elname,el[config.component.valueProperty]);
+      el.onchange = e =>
+        this._setValue(elname, el[config.component.valueProperty]);
     }
   }
 
@@ -218,7 +237,7 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} target parent of nested properties
    * @returns {array} form properties
    */
-  _getProperties(target = this.schema,prefix) {
+  _getProperties(target = this.schema, prefix) {
     //console.log('_getProperties',target);
     let root = this;
     return Object.keys(target.properties || []).map(key => {
@@ -239,17 +258,19 @@ class SimpleFieldsSchema extends LitElement {
       /* match the schema type to the correct data type */
       Object.keys(root.dataTypes).forEach(key => {
         if (
-          (Array.isArray(schema.type) &&
-          schema.type.indexOf(key) !== -1) ||
+          (Array.isArray(schema.type) && schema.type.indexOf(key) !== -1) ||
           schema.type === key
         ) {
           property.component.type = this._deepClone(root.dataTypes[key]);
           property.component.type.element =
-           property.component.name || property.component.type.element;
-           property.component.type.type = schema.format;
+            property.component.name || property.component.type.element;
+          property.component.type.type = schema.format;
 
           /* handle fieldsets by getting nested properties */
-          if (property.component.type.isFieldset || property.component.type.isArray) {
+          if (
+            property.component.type.isFieldset ||
+            property.component.type.isArray
+          ) {
             if (!schema.items || !schema.items.properties)
               schema.items = {
                 properties: schema.properties
@@ -260,8 +281,8 @@ class SimpleFieldsSchema extends LitElement {
               //console.log('schema.items',schema.items);
               property.schema.properties = this._getProperties(
                 schema.items,
-                property.component.type.isArray 
-                  ? `${property.name}.` 
+                property.component.type.isArray
+                  ? `${property.name}.`
                   : property.name
               );
             }
@@ -276,37 +297,38 @@ class SimpleFieldsSchema extends LitElement {
 
   /**
    * sets value of a property
-   * 
+   *
    * @param {string} propName property to set
    * @param {*} propVal value of the property
    */
-  _setValue(propName,propVal){
+  _setValue(propName, propVal) {
     //console.log('_setValue',propName,propVal);
-    let oldValue = this._deepClone(this.value), 
-      newValue = this.value,  
-      props = propName.split('.'),
+    let oldValue = this._deepClone(this.value),
+      newValue = this.value,
+      props = propName.split("."),
       l = props.length;
-    for(var i = 0; i < l-1; i++) {
+    for (var i = 0; i < l - 1; i++) {
       let pointer = props[i];
-      if(!newValue[pointer]) newValue[pointer] = {}
+      if (!newValue[pointer]) newValue[pointer] = {};
       newValue = newValue[pointer];
     }
 
-    newValue[props[l-1]] = propVal;
+    newValue[props[l - 1]] = propVal;
     this._valueChanged(this.value, oldValue);
   }
 
   /**
    * gets value of a property
-   * 
+   *
    * @param {string} propName property to set
    * @returns {*}
    */
-  _getValue(propName){
-    let path = propName.split('.'), pointer = this.value;
-    path.forEach(prop=>{
-      if(pointer && pointer[prop]) { 
-        pointer = pointer[prop]; 
+  _getValue(propName) {
+    let path = propName.split("."),
+      pointer = this.value;
+    path.forEach(prop => {
+      if (pointer && pointer[prop]) {
+        pointer = pointer[prop];
       } else {
         pointer = undefined;
         return;
@@ -330,7 +352,7 @@ class SimpleFieldsSchema extends LitElement {
    * clears the form
    */
   _clearForm() {
-    this.querySelectorAll('*').forEach(child=>child.remove());
+    this.querySelectorAll("*").forEach(child => child.remove());
   }
 
   /**
@@ -344,10 +366,10 @@ class SimpleFieldsSchema extends LitElement {
   /**
    * clears and rebuilds the form
    */
-  _rebuildForm(){
+  _rebuildForm() {
     //console.log("_rebuildForm",this.value,this.schema);
     this._clearForm();
-    if(this.schema) {
+    if (this.schema) {
       let formProperties = this._getProperties(this.schema);
       formProperties.forEach(property => this._buildFormElement(property));
     }

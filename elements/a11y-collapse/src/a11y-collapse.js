@@ -324,7 +324,7 @@ class A11yCollapse extends LitElement {
       }
     };
   }
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
       /**

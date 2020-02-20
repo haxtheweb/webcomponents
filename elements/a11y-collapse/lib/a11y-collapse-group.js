@@ -114,7 +114,7 @@ class A11yCollapseGroup extends LitElement {
     return null;
   }
 
-  get items(){
+  get items() {
     return this.__items;
   }
 

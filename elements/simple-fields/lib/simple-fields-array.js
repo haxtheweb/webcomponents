@@ -56,25 +56,31 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       }
     };
   }
-  get fields(){
+  get fields() {
     return html`
       <paper-button
         id="expand"
         controls="item-fields"
-        @click="${e => this.toggle()}">
-        ${this.expanded ? 'Collapse All' : 'Expand All'}
-        <iron-icon aria-hidden="true" icon="${this.expanded ? 'expand-less' : 'expand-more'}"></iron-icon>
+        @click="${e => this.toggle()}"
+      >
+        ${this.expanded ? "Collapse All" : "Expand All"}
+        <iron-icon
+          aria-hidden="true"
+          icon="${this.expanded ? "expand-less" : "expand-more"}"
+        ></iron-icon>
       </paper-button>
       <div id="item-fields" aria-live="polite">
         <slot></slot>
         <paper-button
           id="add"
           controls="item-fields"
-          @click="${e=>this._handleAdd()}">
-          Add Item 
+          @click="${e => this._handleAdd()}"
+        >
+          Add Item
           <iron-icon aria-hidden="true" icon="add"></iron-icon>
         </paper-button>
-      </div>`;
+      </div>
+    `;
   }
   constructor() {
     super();
@@ -82,30 +88,32 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
     this.expanded = false;
     this.disableAdd = false;
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "expanded") 
-        this.querySelectorAll('simple-fields-array-item').forEach(item => item.setAttribute('aria-expanded',this.expanded));
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "expanded")
+        this.querySelectorAll("simple-fields-array-item").forEach(item =>
+          item.setAttribute("aria-expanded", this.expanded)
+        );
     });
   }
-  buildItem(id){
-    let item = document.createElement('simple-fields-array-item');
+  buildItem(id) {
+    let item = document.createElement("simple-fields-array-item");
     item.id = id;
-    item.setAttribute('aria-expanded',this.expanded);
+    item.setAttribute("aria-expanded", this.expanded);
     item.innerHTML = `
       <slot name="sort"></slot>
       <slot name="preview"></slot>
       <slot></slot>`;
     this.appendChild(item);
-    item.addEventListener('remove',e=>this._handleRemove(e));
+    item.addEventListener("remove", e => this._handleRemove(e));
     return item;
   }
 
   /**
    * Fires add event
-     * @event add
+   * @event add
    */
-  _handleAdd(){
+  _handleAdd() {
     this.dispatchEvent(
       new CustomEvent("add", {
         bubbles: true,
@@ -118,9 +126,9 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
 
   /**
    * Fires add event
-     * @event add
+   * @event add
    */
-  _handleRemove(e){
+  _handleRemove(e) {
     e.stopPropagation();
     e.stopImmediatePropagation();
     this.dispatchEvent(

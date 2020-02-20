@@ -55,12 +55,12 @@ class SimpleFieldsArrayItem extends LitElement {
         }
         #drag-handle,
         ::slotted([slot="sort"]),
-        ::slotted([slot="preview"]) { 
-          flex: 0 1 auto; 
-          margin: 0 15px; 
+        ::slotted([slot="preview"]) {
+          flex: 0 1 auto;
+          margin: 0 15px;
         }
-        ::slotted([slot="preview"]) { 
-          flex: 1 0 auto; 
+        ::slotted([slot="preview"]) {
+          flex: 1 0 auto;
         }
         #heading,
         .heading-inner {
@@ -87,12 +87,12 @@ class SimpleFieldsArrayItem extends LitElement {
         :host(:focus-within) #content-inner,
         :host([aria-expanded="true"]) #content-inner {
           overflow: unset;
-          margin: 0 15px; 
+          margin: 0 15px;
         }
         #content-inner > * {
           flex: 1 1 auto;
         }
-        #remove { 
+        #remove {
           flex: 0 0 auto;
           color: #cc0000;
           margin-right: -15px;
@@ -115,7 +115,7 @@ class SimpleFieldsArrayItem extends LitElement {
             icon="delete"
             label="Remove this item"
             ?disabled="${this.disabled}"
-            @click="${e=>this._handleRemove()}"
+            @click="${e => this._handleRemove()}"
           >
           </paper-icon-button>
           <simple-tooltip for="remove">Remove this item</simple-tooltip>
@@ -144,7 +144,7 @@ class SimpleFieldsArrayItem extends LitElement {
     super();
     this.disabled = false;
   }
-  connectedCallback(){
+  connectedCallback() {
     super.connectedCallback();
     setTimeout(() => {
       /**
@@ -165,9 +165,9 @@ class SimpleFieldsArrayItem extends LitElement {
 
   /**
    * Fires add event
-     * @event add
+   * @event add
    */
-  _handleRemove(){
+  _handleRemove() {
     this.dispatchEvent(
       new CustomEvent("remove", {
         bubbles: true,

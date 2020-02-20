@@ -23,29 +23,30 @@ class SimpleFieldsFieldset extends LitElement {
   render() {
     return html`
       <fieldset>
-        ${this.legend}
-        ${this.description}
-        ${this.fields} 
+        ${this.legend} ${this.description} ${this.fields}
       </fieldset>
     `;
   }
-  get legend(){
+  get legend() {
     return html`
       <legend id="legend" ?hidden="${!this.schema.title}">
         ${this.schema.title}
-      </legend>`;
+      </legend>
+    `;
   }
-  get description(){
+  get description() {
     return html`
       <div ?hidden="${!this.schema.description}">
         ${this.schema.description}
-      </div>`;
+      </div>
+    `;
   }
-  get fields(){
+  get fields() {
     return html`
       <div id="item-fields">
         <slot></slot>
-      </div>`;
+      </div>
+    `;
   }
   static get properties() {
     return {
