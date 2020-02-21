@@ -5,13 +5,14 @@
   this.layoutBreakpoint, 
   this.responsiveSize
 )}">
-  ${this.__items.map(tab => html`
+  ${this.tabs.map((tab,i) => html`
     <li>
       <paper-button 
         id="${tab.id}-button" 
         controls="${tab.id}" 
-        @click="${(e) => this._handleTab(`${tab.id}`)}"
-        ?disabled="${tab.id === this.activeTab}" 
+        class="${tab.id === this.activeTab ? 'active': ''}"
+        @click="${(e) => this._handleTab(tab)}"
+        ?disabled="${tab.id === this.activeTab || tab.disabled}" 
         .flag="${tab.flag}">
         <iron-icon 
           class="flag-icon" 
