@@ -70,9 +70,10 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
-    this.ghLink = "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
-    window.location.pathname +
-    "&title=[hax] Bug%20report%20from%20preference%20panel";
+    this.ghLink =
+      "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
+      window.location.pathname +
+      "&title=[hax] Bug%20report%20from%20preference%20panel";
     this.title = "Editor preferences";
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
@@ -80,26 +81,26 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         property: "haxRayMode",
         title: "X-Ray vision",
         description: "Visualizes the HTML tag powering the area of the page",
-        inputMethod: "boolean",
+        inputMethod: "boolean"
       },
       {
         property: "haxDeveloperMode",
         title: "Developer mode",
         description: "Turns on advanced developer functions",
-        inputMethod: "boolean",
+        inputMethod: "boolean"
       },
       {
         property: "haxVoiceCommands",
         title: "Voice commands",
         description: "Experimental: Voice based control system",
-        inputMethod: "boolean",
+        inputMethod: "boolean"
       }
     ];
     setTimeout(() => {
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/paper-button/paper-button.js");
       import("@lrnwebcomponents/simple-fields/simple-fields.js");
-      import("@polymer/paper-dialog/paper-dialog.js");        
+      import("@polymer/paper-dialog/paper-dialog.js");
     }, 0);
   }
   updated(changedProperties) {
@@ -136,10 +137,13 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
-        <a href="${this.ghLink}"
-        rel="noopener"
-        id="reportghissue"
-        target="_blank">Report an issue with HAX</a>
+        <a
+          href="${this.ghLink}"
+          rel="noopener"
+          id="reportghissue"
+          target="_blank"
+          >Report an issue with HAX</a
+        >
       </paper-dialog>
     `;
   }
@@ -161,7 +165,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
        * github link
        */
       ghLink: {
-        type: String,
+        type: String
       },
       /**
        * Title when open.

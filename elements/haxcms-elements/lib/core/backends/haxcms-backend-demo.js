@@ -54,7 +54,7 @@ class HAXCMSBackendDemo extends LitElement {
    */
   constructor() {
     super();
-    this.jwt = 'demo';
+    this.jwt = "demo";
     // this makes it easier to debug things and directly modify the store for
     // development purposes
     window.HAXcmsStore = store;

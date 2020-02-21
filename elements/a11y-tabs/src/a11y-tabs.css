@@ -18,6 +18,7 @@
   overflow: var(--a11y-tabs-overflow);
   font-size: 16px;
 }
+
 :host([vertical]) {
   border: 1px solid var(--a11y-tabs-border-color);
   border-radius: var(--a11y-tabs-vertical-border-radius, var(--a11y-tabs-border-radius));
@@ -25,9 +26,11 @@
   justify-content: space-between;
   align-items: stretch;
 }
+
 :host([hidden]) {
   display: none;
 }
+
 :host #tabs {
   align-items: stretch;
   flex-wrap: var(--ally-tabs-wrap, unset);
@@ -36,6 +39,7 @@
   list-style: none;
   padding: 0;
 }
+
 :host([vertical]) #tabs {
   background-color: var(--a11y-tabs-border-color);
   justify-content: var(--a11y-tabs-vertical-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
@@ -44,28 +48,34 @@
   flex: 0 1 auto;
   flex-direction: column;
 }
+
 :host(:not([vertical])) #tabs {
   justify-content: var(--a11y-tabs-horizontal-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
 }
+
 :host #tabs .flag-type {
   position: absolute;
   left: -99999px;
   height: 0; 
   overflow: hidden;
 }
+
 :host #content {
   padding: var(--a11y-tabs-content-padding);
   background-color: var(--a11y-tabs-background);
   border: 1px solid var(--a11y-tabs-border-color);
 }
+
 :host([vertical]) #content {
   flex: 1 0 auto;
   border: none;
 }
+
 :host(:not([vertical])) #content {
   border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius));
   margin-top: -1px;
 }
+
 :host #tabs paper-button {
   margin: 0;
   text-transform: unset;
@@ -74,6 +84,7 @@
   border: 1px solid var(--a11y-tabs-border-color);
   padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
 }
+
 :host([vertical]) #tabs paper-button {
   border-top: none;
   border-left: none;
@@ -83,45 +94,54 @@
   align-items: center;
   padding: var(--a11y-tabs-vertical-button-padding, var(--a11y-tabs-button-padding));
 }
+
 :host(:not([vertical])) #tabs paper-button {
   width: 100%;
   border-bottom: none;
-  border-radius: 
-    var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-    var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-    0 
-    0; 
+  border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
+  var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
+  0 
+  0; 
   padding: var(--a11y-tabs-horizontal-button-padding, var(--a11y-tabs-button-padding));
 }
+
 :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
   border-left: none;
 }
+
 :host  #tabs paper-button:active,
 :host #tabs paper-button:focus,
 :host #tabs paper-button:hover {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-faded-background);
 }
+
 :host #tabs paper-button[disabled] {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-background);
 }
+
 :host([vertical]) #tabs paper-button[disabled] {
   border-right-color: var(--a11y-tabs-background);
 }
+
 :host(:not([vertical])) #tabs paper-button[disabled] {
   border-bottom: 1px solid var(--a11y-tabs-background);
 }
+
 :host #tabs span.label,
 :host #tabs .flag-icon {
   margin-right: 8px;
 }
+
 :host #tabs.icons-only paper-button {
   justify-content: center;
 }
+
 :host #tabs.icons-only span.label {
-  display:none;
+  display: none;
 }
+
 :host #tabs:not(.icons-only) simple-tooltip {
-  display:none;
+  display: none;
 }

@@ -878,15 +878,9 @@ class HaxTray extends winEventsElement(LitElement) {
           title: "Width",
           description: "Scale and resize content",
           inputMethod: "slider",
-          min: (props.canScale.min
-            ? props.canScale.min
-            : 12.5),
-          max: (props.canScale.max
-            ? props.canScale.max
-            : 100),
-          step: (props.canScale.step
-            ? props.canScale.step
-            : 12.5),
+          min: props.canScale.min ? props.canScale.min : 12.5,
+          max: props.canScale.max ? props.canScale.max : 100,
+          step: props.canScale.step ? props.canScale.step : 12.5
         });
       }
       console.log(props.settings);
@@ -901,66 +895,51 @@ class HaxTray extends winEventsElement(LitElement) {
       ];
       // see if we have any layout settings or disable
       if (props.settings.layout.length > 0) {
-        this.activeSchema[0].properties.push(        
-          {
-            property: "layout",
-            title: "Layout",
-            description: "Position the element relative to other items",
-            properties: props.settings.layout
-          }
-        );
-      }
-      else {
-        this.activeSchema[0].properties.push(        
-          {
-            property: "layout",
-            title: "Layout",
-            description: "Position the element relative to other items",
-            disabled: true 
-          }
-        );
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          properties: props.settings.layout
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          disabled: true
+        });
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
-        this.activeSchema[0].properties.push(
-          {
-            property: "configure",
-            title: "Configure",
-            description: "Configure the element",
-            properties: props.settings.configure
-          }
-        );
-      }
-      else {
-        this.activeSchema[0].properties.push(        
-          {
-            property: "configure",
-            title: "Configure",
-            description: "Configure the element",
-            disabled: true 
-          }
-        );
+        this.activeSchema[0].properties.push({
+          property: "configure",
+          title: "Configure",
+          description: "Configure the element",
+          properties: props.settings.configure
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "configure",
+          title: "Configure",
+          description: "Configure the element",
+          disabled: true
+        });
       }
       // see if we have any configure settings or disable
       if (props.settings.advanced.length > 0) {
-        this.activeSchema[0].properties.push(
-          {
-            property: "advanced",
-            title: "Advanced",
-            description: "Advanced element settings",
-            properties: props.settings.advanced
-          }
-        );
-      }
-      else {
-        this.activeSchema[0].properties.push(        
-          {
-            property: "advanced",
-            title: "Advanced",
-            description: "Advanced element settings",
-            disabled: true
-          }
-        );
+        this.activeSchema[0].properties.push({
+          property: "advanced",
+          title: "Advanced",
+          description: "Advanced element settings",
+          properties: props.settings.advanced
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "advanced",
+          title: "Advanced",
+          description: "Advanced element settings",
+          disabled: true
+        });
       }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
