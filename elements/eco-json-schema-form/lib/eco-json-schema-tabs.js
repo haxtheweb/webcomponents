@@ -29,7 +29,6 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-bg);
             font-family: var(--eco-json-form-font-family);
-            margin-bottom: 15px;
           }
           :host ([hidden]) {
             display: none;
@@ -43,7 +42,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             --a11y-tabs-faded-background: var(--eco-json-form-faded-bg);
             --a11y-tabs-justify-tabs: flex-start;
             --ally-tabs-wrap: unset;
-            --a11y-tabs-content-padding: 8px 16px 16px;
+            --a11y-tabs-content-padding: 4px 8px;
             --a11y-tabs-button-padding: 8px;
             --a11y-tabs-vertical-button-padding: unset;
             --a11y-tabs-horizontal-border-radius: unset;

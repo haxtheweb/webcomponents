@@ -82,11 +82,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       <custom-style>
         <style>
           @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
-          #dialog {
-            --app-drawer-content-container: {
-              background-color: #ffffff;
-            }
-          }
           paper-input {
             --paper-input-container-label: {
               font-size: 11px;

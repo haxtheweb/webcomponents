@@ -96,63 +96,13 @@ class HaxToolbar extends LitElement {
     return html`
       <div class="wrapper">
         <slot name="prefix"></slot>
-        <hax-context-item-menu
-          mini
-          action
-          ?hidden="${!this.haxProperties.canPosition}"
-          @selected-value-changed="${this.justifyValueChanged}"
-          id="justify"
-          icon="${this.justifyIcon}"
-          label="Alignment"
-        >
-          <hax-context-item
-            action
-            menu
-            icon="editor:format-align-left"
-            event-name="hax-align-left"
-            >Left</hax-context-item
-          >
-          <hax-context-item
-            action
-            menu
-            icon="editor:format-align-center"
-            event-name="hax-align-center"
-            >Center</hax-context-item
-          >
-        </hax-context-item-menu>
-        <paper-slider
-          ?hidden="${!this.haxProperties.canScale}"
-          id="slider"
-          pin
-          min="${this.haxProperties.canScale && this.haxProperties.canScale.min
-            ? this.haxProperties.canScale.min
-            : 12.5}"
-          step="${this.haxProperties.canScale &&
-          this.haxProperties.canScale.step
-            ? this.haxProperties.canScale.step
-            : 12.5}"
-          max="${this.haxProperties.canScale && this.haxProperties.canScale.max
-            ? this.haxProperties.canScale.max
-            : 100}"
-          value="${this.size}"
-          @immediate-value-changed="${this.sizeChanged}"
-          @value-changed="${this.sizeChanged}"
-        ></paper-slider>
-        <simple-tooltip
-          ?hidden="${this.inline}"
-          for="slider"
-          position="top"
-          offset="10"
-        >
-          Resize
-        </simple-tooltip>
         <slot name="primary"></slot>
         <hax-context-item-menu
           mini
           action
           ?hidden="${this.hideMore}"
           icon="more-vert"
-          label="More operations"
+          label="More options"
           id="moremenu"
           event-name="hax-plate-op"
           reset-on-select

@@ -27,11 +27,11 @@ class HaxTray extends winEventsElement(LitElement) {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-active-hover-name": "_activeNameChange"
     };
-    this.formKey = "configure";
     this.activeValue = {
       settings: {
-        configure: {},
-        advanced: {}
+        layout: [],
+        configure: [],
+        advanced: []
       }
     };
     this.expanded = true;
@@ -151,6 +151,9 @@ class HaxTray extends winEventsElement(LitElement) {
         hax-gizmo-browser:not(:defined) {
           opacity: 0;
           visibility: hidden;
+        }
+        *[hidden] {
+          display: none;
         }
         a11y-collapse-group {
           font-size: 14px;
@@ -324,6 +327,7 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
+              hidden
               icon="image:image"
               label="Insert image"
               event-name="insert-tag"
@@ -353,6 +357,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:undo"
+              hidden
               ?disabled="${!this.canUndo}"
               label="Undo previous action"
               event-name="undo"
@@ -362,6 +367,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:redo"
+              hidden
               ?disabled="${!this.canRedo}"
               label="Redo previous action"
               event-name="redo"
@@ -763,9 +769,6 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         this._setupForm();
       }
-      if (propName == "globalPreferences") {
-        this._globalPreferencesChanged(this[propName], oldValue);
-      }
     });
   }
   /**
@@ -775,8 +778,9 @@ class HaxTray extends winEventsElement(LitElement) {
     let activeNode = this.activeNode;
     this.activeValue = {
       settings: {
-        configure: {},
-        advanced: {}
+        layout: [],
+        configure: [],
+        advanced: []
       }
     };
     this.shadowRoot.querySelector("#settingsform").fields = {};
@@ -788,16 +792,6 @@ class HaxTray extends winEventsElement(LitElement) {
     ) {
       let props =
         window.HaxStore.instance.elementList[activeNode.tagName.toLowerCase()];
-      let schema = {};
-      if (typeof activeNode.getHaxJSONSchemaType === "function") {
-        schema = window.HaxStore.instance.getHaxJSONSchema(
-          this.formKey,
-          props,
-          activeNode
-        );
-      } else {
-        schema = window.HaxStore.instance.getHaxJSONSchema(this.formKey, props);
-      }
       // generate a human name for this
       if (typeof props.gizmo.title === typeof undefined) {
         this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
@@ -862,27 +856,112 @@ class HaxTray extends winEventsElement(LitElement) {
             props.settings.advanced[key].slot;
         }
       });
-      // generate a tab based UI
+      props.settings.layout = [];
+      // test if this element can be aligned
+      if (props.canPosition) {
+        props.settings.layout.push({
+          property: "__position",
+          title: "Alignment",
+          description: "Align content relative to other content",
+          inputMethod: "select",
+          options: {
+            "hax-align-left": "Left",
+            "hax-align-center": "Center",
+            "hax-align-right": "Right"
+          }
+        });
+      }
+      // test if this element can be scaled
+      if (props.canScale) {
+        props.settings.layout.push({
+          property: "__scale",
+          title: "Width",
+          description: "Scale and resize content",
+          inputMethod: "slider",
+          min: (props.canScale.min
+            ? props.canScale.min
+            : 12.5),
+          max: (props.canScale.max
+            ? props.canScale.max
+            : 100),
+          step: (props.canScale.step
+            ? props.canScale.step
+            : 12.5),
+        });
+      }
+      console.log(props.settings);
+
+      // establish tabs container
       this.activeSchema = [
         {
           property: "settings",
           inputMethod: "tabs",
-          properties: [
-            {
-              property: "configure",
-              title: "Configure",
-              description: "Customize this element to your needs",
-              properties: props.settings.configure
-            },
-            {
-              property: "advanced",
-              title: "Advanced",
-              description: "Less common settings",
-              properties: props.settings.advanced
-            }
-          ]
+          properties: []
         }
       ];
+      // see if we have any layout settings or disable
+      if (props.settings.layout.length > 0) {
+        this.activeSchema[0].properties.push(        
+          {
+            property: "layout",
+            title: "Layout",
+            description: "Position the element relative to other items",
+            properties: props.settings.layout
+          }
+        );
+      }
+      else {
+        this.activeSchema[0].properties.push(        
+          {
+            property: "layout",
+            title: "Layout",
+            description: "Position the element relative to other items",
+            disabled: true 
+          }
+        );
+      }
+      // see if we have any configure settings or disable
+      if (props.settings.configure.length > 0) {
+        this.activeSchema[0].properties.push(
+          {
+            property: "configure",
+            title: "Configure",
+            description: "Configure the element",
+            properties: props.settings.configure
+          }
+        );
+      }
+      else {
+        this.activeSchema[0].properties.push(        
+          {
+            property: "configure",
+            title: "Configure",
+            description: "Configure the element",
+            disabled: true 
+          }
+        );
+      }
+      // see if we have any configure settings or disable
+      if (props.settings.advanced.length > 0) {
+        this.activeSchema[0].properties.push(
+          {
+            property: "advanced",
+            title: "Advanced",
+            description: "Advanced element settings",
+            properties: props.settings.advanced
+          }
+        );
+      }
+      else {
+        this.activeSchema[0].properties.push(        
+          {
+            property: "advanced",
+            title: "Advanced",
+            description: "Advanced element settings",
+            disabled: true
+          }
+        );
+      }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
         ...this.activeSchema
@@ -1029,14 +1108,6 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         }
       }
-    }
-  }
-  /**
-   * Global preference changed.
-   */
-  _globalPreferencesChanged(newValue) {
-    if (newValue && typeof newValue.haxShowExportButton !== typeof undefined) {
-      this.hideExportButton = !newValue.haxShowExportButton;
     }
   }
 

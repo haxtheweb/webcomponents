@@ -135,7 +135,7 @@ class GridPlateLayoutOptions {
     this.options = {};
     let layoutFlip = Object.keys(this.layouts);
     // loop through all the supplied layouts to get the HAX layout options & descriptions
-    for (let i = 0; i < layoutFlip.length; i++) {
+    for (let i = 1; i < layoutFlip.length; i++) {
       this.options[layoutFlip[i]] = this.layouts[layoutFlip[i]].columnLayout;
     }
   }

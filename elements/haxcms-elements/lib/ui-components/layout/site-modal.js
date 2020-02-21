@@ -52,9 +52,6 @@ class SiteModal extends LitElement {
     return html`
       <custom-style>
         <style>
-          simple-tooltip {
-            @apply --site-modal-tooltip;
-          }
           simple-modal-template {
             @apply --site-modal-modal;
           }

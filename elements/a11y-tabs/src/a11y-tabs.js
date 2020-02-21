@@ -10,7 +10,6 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
  * `a11y-tabs`
- * @customElement a11y-tabs
  * an accessible and responsive tabbed interface
  * 
 ### Styling
@@ -22,9 +21,8 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
  *
-
- * @polymer
  * @demo ./demo/index.html
+ * @customElement a11y-tabs
  */
 class A11yTabs extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

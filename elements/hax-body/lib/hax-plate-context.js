@@ -85,43 +85,11 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     }
     </style>
     <div class="area" id="area">
-    <hax-context-item-menu
-    action
-    mini
-    id="rightadd"
-    class="paddle"
-    icon="hax:add-brick"
-    label="Insert new.."
-    event-name="hax-plate-add-element"
-    direction="left"
-    selected-value="0"
-    reset-on-select
-  >
-    <paper-item value="" hidden></paper-item>
-      <paper-item value='{"tag":"p","content":"", "properties": {}}'>
-        <iron-icon icon="hax:paragraph"></iron-icon>Paragraph
-      </paper-item>
-      <paper-item value='{"tag":"h2","content":"Heading", "properties": {}}'>
-        <iron-icon icon="hax:h2"></iron-icon>Heading
-      </paper-item>
-      <paper-item value='{"tag":"ul","content":"<li>List</li>", "properties": {}}'>
-        <iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted list
-      </paper-item>
-      <paper-item value='{"tag":"hr","content":"", "properties": {}}'>
-        <iron-icon icon="hax:hr"></iron-icon>Horizontal line
-      </paper-item>
-      <paper-item value='{"tag":"place-holder","content":"", "properties": {"type": "image", "text": "Image"}}'>
-        <iron-icon icon="hax:placeholder"></iron-icon>Image placeholder
-      </paper-item>
-      <paper-item value='other'>
-        <iron-icon icon="hax:add-brick"></iron-icon>Other element
-      </paper-item>
-    </hax-context-item-menu>
       <hax-context-item-menu
         mini
         id="drag"
         action
-        icon="editor:drag-handle"
+        icon="hax:arrow-all"
         label="Drag"
         draggable="true"
         direction="left"
@@ -149,7 +117,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       action
       id="right"
       class="paddle"
-      icon="icons:add"
+      icon="hax:table-column-remove"
       label="Add column"
       event-name="hax-plate-create-right"
       direction="left"
@@ -158,7 +126,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       mini
       action
       class="paddle"
-      icon="icons:remove"
+      icon="hax:table-column-plus-after"
       label="Remove column"
       event-name="hax-plate-remove-right"
       direction="left"
