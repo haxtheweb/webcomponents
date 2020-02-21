@@ -988,8 +988,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
       "hax-context-item-selected": "_haxContextOperation",
-      "onbeforeunload": "_onBeforeUnload",
-      "paste": "_onPaste",
+      onbeforeunload: "_onBeforeUnload",
+      paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
       "hax-register-blox": "_haxStoreRegisterBlox",
@@ -2423,7 +2423,12 @@ window.HaxStore.guessGizmoType = guess => {
 /**
  * Try and guess the Gizmo based on what we were just handed
  */
-window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false, preferExclusive = false) => {
+window.HaxStore.guessGizmo = (
+  guess,
+  values,
+  skipPropMatch = false,
+  preferExclusive = false
+) => {
   var matches = [];
   if (typeof guess !== typeof undefined) {
     var store = window.HaxStore.instance;
@@ -2454,9 +2459,10 @@ window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false, preferExclus
               // omg... we just found a match on a property from who knows where!
               if (match || skipPropMatch) {
                 if (preferExclusive && gizmo.handles[i].type_exclusive) {
-                  return [window.HaxStore.haxElementPrototype(gizmo, props, "")];
-                }
-                else {
+                  return [
+                    window.HaxStore.haxElementPrototype(gizmo, props, "")
+                  ];
+                } else {
                   matches.push(
                     window.HaxStore.haxElementPrototype(gizmo, props, "")
                   );

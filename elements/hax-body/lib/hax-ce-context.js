@@ -47,7 +47,7 @@ class HaxCeContext extends LitElement {
     this.haxProperties = {};
     setTimeout(() => {
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");        
+      import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
     }, 0);
   }
   render() {
@@ -79,7 +79,7 @@ class HaxCeContext extends LitElement {
        * Selected value to match ce direction currently.
        */
       haxProperties: {
-        type: Object,
+        type: Object
       },
       __hasSettingsForm: {
         type: Boolean

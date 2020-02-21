@@ -55,7 +55,7 @@ class HaxToolbarMenu extends LitElement {
           .class="${this.iconClass}"
           tooltip="${this.tooltip}"
         >
-        <iron-icon icon="icons:expand-more"></iron-icon>
+          <iron-icon icon="icons:expand-more"></iron-icon>
         </hax-toolbar-item>
         <paper-listbox
           id="listbox"

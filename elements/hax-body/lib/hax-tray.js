@@ -845,19 +845,26 @@ class HaxTray extends winEventsElement(LitElement) {
       }
       // then we need to work on the layout piece
       if (activeNode.style.width != "") {
-        this.activeValue.settings.layout.__scale = activeNode.style.width.replace("%", "");
-      }
-      else {
+        this.activeValue.settings.layout.__scale = activeNode.style.width.replace(
+          "%",
+          ""
+        );
+      } else {
         this.activeValue.settings.layout.__scale = 100;
       }
-      if (activeNode.style.display == "block" && activeNode.style.margin == "0px auto" && activeNode.style.float == "right") {
+      if (
+        activeNode.style.display == "block" &&
+        activeNode.style.margin == "0px auto" &&
+        activeNode.style.float == "right"
+      ) {
         this.activeValue.settings.layout.__position = "hax-align-right";
-      }
-      else if (activeNode.style.display == "block" && activeNode.style.margin == "0px auto") {
+      } else if (
+        activeNode.style.display == "block" &&
+        activeNode.style.margin == "0px auto"
+      ) {
         this.activeValue.settings.layout.__position = "hax-align-center";
-      }
-      else {
-        this.activeValue.settings.layout.__position = "hax-align-left";        
+      } else {
+        this.activeValue.settings.layout.__position = "hax-align-left";
       }
       this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
       this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
@@ -995,9 +1002,9 @@ class HaxTray extends winEventsElement(LitElement) {
     if (e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
       let settingsKeys = {
-        advanced : "advanced",
-        configure : "configure",
-        layout : "layout",
+        advanced: "advanced",
+        configure: "configure",
+        layout: "layout"
       };
       var setAhead;
       for (let key in settingsKeys) {
@@ -1012,14 +1019,16 @@ class HaxTray extends winEventsElement(LitElement) {
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__position") {
               setAhead = true;
-              this.dispatchEvent(new CustomEvent("hax-context-item-selected", {
-                bubbles: true,
-                composed: true,
-                detail: {
-                  eventName: settings[key][prop],
-                  value: settings[key][prop]
-                }
-              }));
+              this.dispatchEvent(
+                new CustomEvent("hax-context-item-selected", {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                    eventName: settings[key][prop],
+                    value: settings[key][prop]
+                  }
+                })
+              );
             }
             // this is a special internal held "property" for layout stuff
             else if (key === "layout" && prop === "__scale") {
@@ -1129,8 +1138,7 @@ class HaxTray extends winEventsElement(LitElement) {
                   );
                 } else if (settings[key][prop] === false) {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
-                }
-                else {
+                } else {
                   this.activeNode.setAttribute(
                     camelCaseToDash(prop),
                     settings[key][prop]

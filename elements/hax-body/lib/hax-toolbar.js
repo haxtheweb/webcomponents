@@ -120,7 +120,7 @@ class HaxToolbar extends LitElement {
        * Selected value to match ce direction currently.
        */
       haxProperties: {
-        type: Object,
+        type: Object
       },
       /**
        * Hide the more menu.
@@ -135,7 +135,7 @@ class HaxToolbar extends LitElement {
       inline: {
         type: Boolean,
         reflect: true
-      },
+      }
     };
   }
   updated(changedProperties) {

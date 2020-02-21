@@ -81,21 +81,21 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         title: "X-Ray vision",
         description: "Visualizes the HTML tag powering the area of the page",
         inputMethod: "boolean",
-        value: false,
+        value: false
       },
       {
         property: "haxDeveloperMode",
         title: "Developer mode",
         description: "Turns on advanced developer functions",
         inputMethod: "boolean",
-        value: false,
+        value: false
       },
       {
         property: "haxVoiceCommands",
         title: "Voice commands",
         description: "Experimental: Voice based control system",
         inputMethod: "boolean",
-        value: false,
+        value: false
       }
     ];
     setTimeout(() => {

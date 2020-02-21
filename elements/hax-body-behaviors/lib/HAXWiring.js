@@ -31,7 +31,7 @@
  * type_exclusive is a flag that can be used to force selections to default to this
  * when there are multiple options. This isn't always desired but HAX will determine
  * if it makes more sense to just use the default (for example when pulling in from a remote address).
- * 
+ *
  * This is an example of th gizmo object that is expressed in the lrn-table tag:
  * 'gizmo': {
  *    'title': 'CSV Table',
