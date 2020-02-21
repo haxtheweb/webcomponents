@@ -51,9 +51,8 @@ class A11yTab extends LitElement {
       <span class="sr-only">Tab ${this.xOfY}</span>
       <slot></slot>
       <span class="sr-only">
-        End of tab ${this.xOfY}. 
-        Back to <a href="#${this.id}">tabs</a>.
-        </span>
+        End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
+      </span>
     `;
   }
   // properties available to the custom element for data binding
@@ -133,8 +132,8 @@ class A11yTab extends LitElement {
     this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
   }
 
-  get xOfY(){
-    return `${this.order} of ${this.total}`
+  get xOfY() {
+    return `${this.order} of ${this.total}`;
   }
 
   disconnectedCallback() {
@@ -146,8 +145,10 @@ class A11yTab extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (["id","order"].includes(propName) && !this.id) this.id = `tab-${this.order}`;
-      if (["label","order"].includes(propName) && !this.label) this.label = `Tab ${this.order}`;
+      if (["id", "order"].includes(propName) && !this.id)
+        this.id = `tab-${this.order}`;
+      if (["label", "order"].includes(propName) && !this.label)
+        this.label = `Tab ${this.order}`;
       if (propName === "flag") this._tabChanged();
       if (propName === "flagIcon") this._tabChanged();
       if (propName === "icon") this._tabChanged();

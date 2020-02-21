@@ -59,9 +59,11 @@ class A11yTabs extends LitElement {
     });
     this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
-  get tabs(){
+  get tabs() {
     console.log(this.__tabs);
-    return this.__tabs ? Object.keys(this.__tabs).map(index=>this.__tabs[index]) : [];
+    return this.__tabs
+      ? Object.keys(this.__tabs).map(index => this.__tabs[index])
+      : [];
   }
 
   /**
@@ -117,9 +119,9 @@ class A11yTabs extends LitElement {
     this.__hasIcons = true;
     if (!this.id) this.id = this._generateUUID();
     if (this.__tabs && this.__tabs.length > 0)
-      this.__tabs.forEach((tab,index) => {
+      this.__tabs.forEach((tab, index) => {
         if (!tab.icon) this.__hasIcons = false;
-        tab.order = index+1;
+        tab.order = index + 1;
         tab.total = this.__tabs.length;
       });
     this.selectTab(this.activeTab);
@@ -157,7 +159,7 @@ class A11yTabs extends LitElement {
    * @param {event} e the tab tap event
    */
   _handleTab(tab) {
-    if(!tab.disabled) this.activeTab = tab.id;
+    if (!tab.disabled) this.activeTab = tab.id;
   }
   /**
    * ensures that there is always an id for this tabbed interface so that we can link back to the top of it
