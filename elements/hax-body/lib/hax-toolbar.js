@@ -50,18 +50,6 @@ class HaxToolbar extends LitElement {
         paper-item:hover {
           cursor: pointer;
         }
-        paper-slider {
-          background-color: var(--hax-contextual-action-color);
-          color: #ffffff;
-          font-weight: bold;
-          min-width: 100px;
-          height: 28px;
-          --paper-slider-font-color: black;
-          --paper-slider-active-color: #ffffff;
-          --paper-slider-knob-color: #ffffff;
-          --paper-slider-pin-start-color: #ffffff;
-          --paper-slider-pin-color: #ffffff;
-        }
         .convert-button {
           border-top: 1px solid var(--hax-color-bg-accent);
         }
@@ -74,18 +62,13 @@ class HaxToolbar extends LitElement {
     this.selected = false;
     this.haxProperties = {};
     this.hideMore = false;
-    this.size = 100;
-    this.justifyIcon = "editor:format-align-left";
     this.inline = false;
-    this.justifyValue = "";
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     setTimeout(() => {
+      import("@polymer/paper-item/paper-item.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
@@ -101,7 +84,7 @@ class HaxToolbar extends LitElement {
           mini
           action
           ?hidden="${this.hideMore}"
-          icon="more-vert"
+          icon="icons:more-horiz"
           label="More options"
           id="moremenu"
           event-name="hax-plate-op"
@@ -112,12 +95,6 @@ class HaxToolbar extends LitElement {
         </hax-context-item-menu>
       </div>
     `;
-  }
-  sizeChanged(e) {
-    this.size = e.detail.value;
-  }
-  justifyValueChanged(e) {
-    this.justifyValue = e.detail;
   }
   static get tag() {
     return "hax-toolbar";
@@ -144,7 +121,6 @@ class HaxToolbar extends LitElement {
        */
       haxProperties: {
         type: Object,
-        attribute: "hax-properties"
       },
       /**
        * Hide the more menu.
@@ -154,54 +130,18 @@ class HaxToolbar extends LitElement {
         attribute: "hide-more"
       },
       /**
-       * size of the slider if it exists.
-       */
-      size: {
-        type: Number
-      },
-      /**
-       * Justify icon to reflect state.
-       */
-      justifyIcon: {
-        type: String,
-        attribute: "justify-icon"
-      },
-      /**
        * This is an inline context menu
        */
       inline: {
         type: Boolean,
         reflect: true
       },
-      /**
-       * Selected value to match ce direction currently.
-       */
-      justifyValue: {
-        type: String,
-        attribute: "justify-value"
-      }
     };
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "haxProperties") {
         this._haxPropertiesChanged(this[propName], oldValue);
-      }
-      if (propName == "size") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("size-changed", {
-            detail: this[propName]
-          })
-        );
-      }
-      if (propName == "justifyValue") {
-        // notify
-        this.dispatchEvent(
-          new CustomEvent("justify-value-changed", {
-            detail: this[propName]
-          })
-        );
       }
     });
   }
@@ -222,25 +162,6 @@ class HaxToolbar extends LitElement {
       } else {
         this.hideTransform = false;
       }
-      if (window.HaxStore.instance.activeNode.style.width != "") {
-        this.size = window.HaxStore.instance.activeNode.style.width.replace(
-          "%",
-          ""
-        );
-      } else {
-        this.size = 100;
-      }
-
-      if (
-        window.HaxStore.instance.activeNode.style.margin == "0px auto" &&
-        window.HaxStore.instance.activeNode.style.display == "block"
-      ) {
-        this.justifyValue = "hax-align-center";
-        this.justifyIcon = "editor:format-align-center";
-      } else {
-        this.justifyValue = "hax-align-left";
-        this.justifyIcon = "editor:format-align-left";
-      }
     }
   }
 
@@ -251,10 +172,6 @@ class HaxToolbar extends LitElement {
     let detail = e.detail;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      case "hax-align-left":
-      case "hax-align-center":
-        this.justifyIcon = detail.target.icon;
-        break;
       case "close-menu":
         setTimeout(() => {
           this.shadowRoot

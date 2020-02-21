@@ -92,7 +92,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         icon="hax:arrow-all"
         label="Drag"
         draggable="true"
-        direction="left"
         selected-value="0"
         reset-on-select>
       <hax-context-item
@@ -120,7 +119,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       icon="hax:table-column-remove"
       label="Add column"
       event-name="hax-plate-create-right"
-      direction="left"
     ></hax-context-item>
     <hax-context-item
       mini
@@ -129,7 +127,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       icon="hax:table-column-plus-after"
       label="Remove column"
       event-name="hax-plate-remove-right"
-      direction="left"
       id="rightremove"
     ></hax-context-item>
   <hax-context-item

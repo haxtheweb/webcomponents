@@ -27,8 +27,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           margin-top: 56px;
         }
         #closedialog {
-          float: right;
-          top: 68px;
+          top: 6px;
           right: 0;
           position: absolute;
           padding: 8px;
@@ -81,19 +80,22 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         property: "haxRayMode",
         title: "X-Ray vision",
         description: "Visualizes the HTML tag powering the area of the page",
-        inputMethod: "boolean"
+        inputMethod: "boolean",
+        value: false,
       },
       {
         property: "haxDeveloperMode",
         title: "Developer mode",
         description: "Turns on advanced developer functions",
-        inputMethod: "boolean"
+        inputMethod: "boolean",
+        value: false,
       },
       {
         property: "haxVoiceCommands",
         title: "Voice commands",
         description: "Experimental: Voice based control system",
-        inputMethod: "boolean"
+        inputMethod: "boolean",
+        value: false,
       }
     ];
     setTimeout(() => {
@@ -128,15 +130,15 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
         <h3 class="title">
           <iron-icon icon="icons:settings"></iron-icon> ${this.title}
         </h3>
-        <div style="height: 100%; overflow: auto;" class="pref-container">
-          <simple-fields
-            .schema="${this.schema}"
-            @value-changed="${this.valueChanged}"
-          ></simple-fields>
-        </div>
         <paper-button id="closedialog" @click="${this.closeEvent}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
+        <div style="height: 100%; overflow: auto;" class="pref-container">
+          <simple-fields
+            id="settingsform"
+            @value-changed="${this.valueChanged}"
+          ></simple-fields>
+        </div>
         <a
           href="${this.ghLink}"
           rel="noopener"
@@ -192,6 +194,8 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
   }
 
   firstUpdated(changedProperties) {
+    this.shadowRoot.querySelector("#settingsform").fields = { ...this.schema };
+    this.shadowRoot.querySelector("#settingsform").value = {};
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -224,7 +228,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
    * Notice preferences have changed.
    */
   _preferencesChanged(newValue) {
-    if (this.schema && this.schema.properties && window.HaxStore.ready) {
+    if (this.schema && window.HaxStore.ready) {
       window.HaxStore.write("globalPreferences", newValue, this);
     }
   }

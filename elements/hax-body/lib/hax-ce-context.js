@@ -44,19 +44,15 @@ class HaxCeContext extends LitElement {
   }
   constructor() {
     super();
-    this.ceSize = 100;
     this.haxProperties = {};
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+    setTimeout(() => {
+      import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");        
+    }, 0);
   }
   render() {
     return html`
-      <hax-toolbar
-        id="toolbar"
-        size="${this.ceSize}"
-        hide-more
-        @size-changed="${this.ceSizeChanged}"
-      >
+      <hax-toolbar id="toolbar" hide-more>
         <hax-context-item
           mini
           action
@@ -80,18 +76,10 @@ class HaxCeContext extends LitElement {
         attribute: "hide-transform"
       },
       /**
-       * ce size.
-       */
-      ceSize: {
-        type: Number,
-        attribute: "ce-size"
-      },
-      /**
        * Selected value to match ce direction currently.
        */
       haxProperties: {
         type: Object,
-        attribute: "hax-properties"
       },
       __hasSettingsForm: {
         type: Boolean
@@ -112,13 +100,7 @@ class HaxCeContext extends LitElement {
         ];
         this._haxPropertiesChanged(this[propName], oldValue);
       }
-      if (propName == "ceSize") {
-        this._ceSizeChanged(this[propName], oldValue);
-      }
     });
-  }
-  ceSizeChanged(e) {
-    this.ceSize = e.detail;
   }
   /**
    * Set haxProperties.
@@ -126,28 +108,6 @@ class HaxCeContext extends LitElement {
   setHaxProperties(props) {
     // be aggressive w/ reset
     this.haxProperties = props;
-  }
-
-  /**
-   * ce size changed.
-   */
-  _ceSizeChanged(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      typeof oldValue !== typeof undefined
-    ) {
-      this.dispatchEvent(
-        new CustomEvent("hax-context-item-selected", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            eventName: "hax-size-change",
-            value: newValue
-          }
-        })
-      );
-    }
   }
 
   /**

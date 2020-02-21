@@ -83,9 +83,6 @@ class HaxBody extends SimpleColors {
         #textcontextmenu.hax-context-menu {
           z-index: 1001;
         }
-        #haxinputmixer {
-          z-index: 10000000;
-        }
         .hax-context-visible.hax-active-hover {
           visibility: visible;
           opacity: 1;
@@ -283,16 +280,11 @@ class HaxBody extends SimpleColors {
       import("./lib/hax-text-context.js");
       import("./lib/hax-ce-context.js");
       import("./lib/hax-plate-context.js");
-      import("./lib/hax-input-mixer.js");
       import("@lrnwebcomponents/grid-plate/grid-plate.js");
       this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
-      );
-      this.addEventListener(
-        "hax-input-mixer-update",
-        this._haxInputMixerOperation.bind(this)
       );
       this.addEventListener(
         "place-holder-replace",
@@ -332,10 +324,6 @@ class HaxBody extends SimpleColors {
         id="platecontextmenu"
         class="hax-context-menu ignore-activation"
       ></hax-plate-context>
-      <hax-input-mixer
-        id="haxinputmixer"
-        class="hax-context-menu ignore-activation"
-      ></hax-input-mixer>
     `;
   }
   /**
@@ -1292,7 +1280,6 @@ class HaxBody extends SimpleColors {
     this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
     // secondary menus and clean up areas
     this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
-    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
     // force context menu state to closed
     this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
@@ -1698,7 +1685,6 @@ class HaxBody extends SimpleColors {
    */
   _haxContextOperation(e) {
     let detail = e.detail;
-    var haxElement;
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       // text based operations for primatives
@@ -1855,94 +1841,7 @@ class HaxBody extends SimpleColors {
         window.HaxStore.write("activeNode", null, this);
         window.HaxStore.write("activeContainerNode", null, this);
         break;
-      case "hax-edit-property":
-        let haxInputMixer = this.shadowRoot.querySelector("#haxinputmixer");
-        haxInputMixer.label = detail.target.label;
-        haxInputMixer.options = detail.target.options;
-        haxInputMixer.icon = detail.target.icon;
-        haxInputMixer.description = detail.target.description;
-        haxInputMixer.required = detail.target.required;
-        haxInputMixer.validation = detail.target.validation;
-        haxInputMixer.validationType = detail.target.validationType;
-        haxInputMixer.inputMethod = detail.target.inputMethod;
-        haxInputMixer.value = "";
-        // see if response should bind to the slot or property
-        if (
-          typeof detail.target.propertyToBind !== typeof undefined &&
-          detail.target.propertyToBind != null &&
-          detail.target.propertyToBind != false
-        ) {
-          haxInputMixer.propertyToBind = detail.target.propertyToBind;
-          if (
-            typeof this.activeNode[detail.target.propertyToBind] !==
-            typeof undefined
-          ) {
-            haxInputMixer.value = this.activeNode[detail.target.propertyToBind];
-          }
-          // try to get an attribute bind
-          else {
-            haxInputMixer.value = this.activeNode.getAttribute(
-              detail.target.propertyToBind
-            );
-          }
-          // @todo need to be able to support slot binding
-        }
-        // make input mixer show up
-        this._positionContextMenu(
-          haxInputMixer,
-          this.activeContainerNode,
-          -1,
-          -38
-        );
-        let style =
-          this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||
-          window.getComputedStyle(
-            this.shadowRoot.querySelector("#cecontextmenu")
-          );
-        // force input mixes to match width of the ce context menu currently
-        haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
-        break;
-      // directional / proportion operations
-      case "hax-align-left":
-        this.activeNode.style.float = null;
-        this.activeNode.style.margin = null;
-        this.activeNode.style.display = null;
-        break;
-      case "hax-align-center":
-        this.activeNode.style.float = null;
-        this.activeNode.style.margin = "0 auto";
-        this.activeNode.style.display = "block";
-        break;
-      case "hax-size-change":
-        if (this.activeNode) {
-          this.activeNode.style.width = detail.value + "%";
-        }
-        break;
     }
-  }
-  /**
-   * Respond to an input mixer call.
-   */
-  _haxInputMixerOperation(e) {
-    // this is a big deal how simple this part is in the end
-    let mixer = e.detail.inputMixer;
-    // if we have a property to bind, set that value from the
-    // widget that was dictated by the element itself
-    if (mixer.propertyToBind != null) {
-      this.activeNode[mixer.propertyToBind] = mixer.value;
-    }
-    // if we're told instead to do a slot bind, make a span tag
-    // with height same as parent and then mix in the innerHTML
-    else if (mixer.slotToBind != null) {
-      item = document.createElement("span");
-      item.style.height = "inherit";
-      item.innerHTML = mixer.value;
-      //item.attribute.slot = mixer.slotToBind;
-      item.slot = mixer.slotToBind;
-      this.activeNode.appendChild(item);
-    }
-    // hide mixer
-    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
   }
   /**
    * Item has gained focus, change active element to match
@@ -2574,31 +2473,11 @@ class HaxBody extends SimpleColors {
         this.removeAttribute("contenteditable");
       }
       this.shadowRoot.querySelector("#textcontextmenu").realSelectedValue = tag;
-      if (newValue.style.textAlign == "left") {
-        this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
-          "editor:format-align-left";
-        this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
-          "text-align-left";
-      } else if (newValue.style.float == "left") {
-        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
-          "editor:format-align-left";
-        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
-          "hax-align-left";
-      } else if (newValue.style.margin == "0 auto") {
-        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
-          "editor:format-align-center";
-        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
-          "hax-align-center";
-      }
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
-      this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
-        "editor:format-align-left";
-      this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
-        "text-align-left";
     }
   }
   /**

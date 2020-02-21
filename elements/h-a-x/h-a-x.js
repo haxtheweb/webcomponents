@@ -16,6 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-store.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -93,21 +94,22 @@ ol,
 ul
 ol li,
 ul li {
-  padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
-  line-height: var(--hax-base-styles-list-line-height, 40px);
+  line-height: var(--hax-base-styles-list-line-height, 1.8);
   font-size: var(--hax-base-styles-list-font-size, 24px);
   max-width: var(--hax-base-styles-list-max-width, 28em);
 }
 
-ol li:last-child,
-ul li:last-child {
-  padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom, 1em);
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  padding-bottom: unset;
 }
 
 ul,
 ol {
-  padding-left: var(--hax-base-styles-list-padding-left, 20px);
-  padding-left: var(--hax-base-styles-list-margin-left, 20px);
+  padding-left: var(--hax-base-styles-list-padding-left, 1em);
+  margin-left: var(--hax-base-styles-list-margin-left, 1em);
 }
         </style>
 <hax-body>
@@ -116,8 +118,9 @@ ol {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
+    static get properties() {
+    return {...super.properties}
+;
   }
 
   /**

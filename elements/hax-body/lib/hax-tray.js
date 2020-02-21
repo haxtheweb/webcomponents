@@ -29,9 +29,12 @@ class HaxTray extends winEventsElement(LitElement) {
     };
     this.activeValue = {
       settings: {
-        layout: [],
-        configure: [],
-        advanced: []
+        layout: {
+          __position: "hax-align-left",
+          __scale: 100
+        },
+        configure: {},
+        advanced: {}
       }
     };
     this.expanded = true;
@@ -53,6 +56,7 @@ class HaxTray extends winEventsElement(LitElement) {
       import("@polymer/iron-icons/av-icons.js");
       import("@polymer/iron-icons/maps-icons.js");
       import("@polymer/iron-icons/places-icons.js");
+      import("@polymer/paper-slider/paper-slider.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("./hax-tray-upload.js");
@@ -173,6 +177,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         a11y-collapse div[slot="heading"] {
           cursor: pointer;
+          font-size: 16px;
         }
         a11y-collapse:hover {
           --a11y-collapse-heading-background-color: var(
@@ -212,7 +217,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         div[slot="heading"] {
           margin: 0;
-          padding: 12px 8px;
+          padding: 10px;
         }
         :host([element-align="right"]) #button {
           right: 0;
@@ -778,9 +783,12 @@ class HaxTray extends winEventsElement(LitElement) {
     let activeNode = this.activeNode;
     this.activeValue = {
       settings: {
-        layout: [],
-        configure: [],
-        advanced: []
+        layout: {
+          __position: "hax-align-left",
+          __scale: 100
+        },
+        configure: {},
+        advanced: {}
       }
     };
     this.shadowRoot.querySelector("#settingsform").fields = {};
@@ -835,6 +843,24 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         });
       }
+      // then we need to work on the layout piece
+      if (activeNode.style.width != "") {
+        this.activeValue.settings.layout.__scale = activeNode.style.width.replace("%", "");
+      }
+      else {
+        this.activeValue.settings.layout.__scale = 100;
+      }
+      if (activeNode.style.display == "block" && activeNode.style.margin == "0px auto" && activeNode.style.float == "right") {
+        this.activeValue.settings.layout.__position = "hax-align-right";
+      }
+      else if (activeNode.style.display == "block" && activeNode.style.margin == "0px auto") {
+        this.activeValue.settings.layout.__position = "hax-align-center";
+      }
+      else {
+        this.activeValue.settings.layout.__position = "hax-align-left";        
+      }
+      this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
+      this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
@@ -864,6 +890,7 @@ class HaxTray extends winEventsElement(LitElement) {
           title: "Alignment",
           description: "Align content relative to other content",
           inputMethod: "select",
+          value: this.activeValue.settings.layout.__position,
           options: {
             "hax-align-left": "Left",
             "hax-align-center": "Center",
@@ -878,12 +905,12 @@ class HaxTray extends winEventsElement(LitElement) {
           title: "Width",
           description: "Scale and resize content",
           inputMethod: "slider",
+          value: this.activeValue.settings.layout.__scale,
           min: props.canScale.min ? props.canScale.min : 12.5,
           max: props.canScale.max ? props.canScale.max : 100,
           step: props.canScale.step ? props.canScale.step : 12.5
         });
       }
-      console.log(props.settings);
 
       // establish tabs container
       this.activeSchema = [
@@ -967,8 +994,13 @@ class HaxTray extends winEventsElement(LitElement) {
   __valueChangedEvent(e) {
     if (e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
+      let settingsKeys = {
+        advanced : "advanced",
+        configure : "configure",
+        layout : "layout",
+      };
       var setAhead;
-      for (let key in settings) {
+      for (let key in settingsKeys) {
         for (let prop in settings[key]) {
           setAhead = false;
           if (settings[key][prop] != null && !settings[key][prop].readOnly) {
@@ -976,6 +1008,32 @@ class HaxTray extends winEventsElement(LitElement) {
             if (prop === "prefix") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
               setAhead = true;
+            }
+            // this is a special internal held "property" for layout stuff
+            else if (key === "layout" && prop === "__position") {
+              setAhead = true;
+              this.dispatchEvent(new CustomEvent("hax-context-item-selected", {
+                bubbles: true,
+                composed: true,
+                detail: {
+                  eventName: settings[key][prop],
+                  value: settings[key][prop]
+                }
+              }));
+            }
+            // this is a special internal held "property" for layout stuff
+            else if (key === "layout" && prop === "__scale") {
+              setAhead = true;
+              this.dispatchEvent(
+                new CustomEvent("hax-context-item-selected", {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                    eventName: "hax-size-change",
+                    value: settings[key][prop]
+                  }
+                })
+              );
             }
             // try and set the pop directly if it is a prop already set
             // check on prototype, then in properties object if it has one
@@ -1071,7 +1129,8 @@ class HaxTray extends winEventsElement(LitElement) {
                   );
                 } else if (settings[key][prop] === false) {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
-                } else {
+                }
+                else {
                   this.activeNode.setAttribute(
                     camelCaseToDash(prop),
                     settings[key][prop]

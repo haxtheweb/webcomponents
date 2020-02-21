@@ -557,6 +557,33 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
+  _haxContextOperation(e) {
+    let detail = e.detail;
+    if (this.activeNode) {
+      // support a simple insert event to bubble up or everything else
+      switch (detail.eventName) {
+        // directional / proportion operations
+        case "hax-align-left":
+          this.activeNode.style.float = null;
+          this.activeNode.style.margin = null;
+          this.activeNode.style.display = null;
+          break;
+        case "hax-align-center":
+          this.activeNode.style.float = null;
+          this.activeNode.style.margin = "0 auto";
+          this.activeNode.style.display = "block";
+          break;
+        case "hax-align-right":
+          this.activeNode.style.float = "right";
+          this.activeNode.style.margin = "0 auto";
+          this.activeNode.style.display = "block";
+          break;
+        case "hax-size-change":
+          this.activeNode.style.width = detail.value + "%";
+          break;
+      }
+    }
+  }
   /**
    * This only send if they consented to storage of data locally
    */
@@ -945,6 +972,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "archive",
       "markdown",
       "html",
+      "wikipedia",
       "content",
       "text",
       "inline",
@@ -959,8 +987,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.__winEvents = {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
-      onbeforeunload: "_onBeforeUnload",
-      paste: "_onPaste",
+      "hax-context-item-selected": "_haxContextOperation",
+      "onbeforeunload": "_onBeforeUnload",
+      "paste": "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
       "hax-register-stax": "_haxStoreRegisterStax",
       "hax-register-blox": "_haxStoreRegisterBlox",
@@ -1148,6 +1177,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           },
           {
             type: "image",
+            type_exclusive: true,
             source: "src",
             height: "height",
             width: "width"
@@ -2393,7 +2423,7 @@ window.HaxStore.guessGizmoType = guess => {
 /**
  * Try and guess the Gizmo based on what we were just handed
  */
-window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
+window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false, preferExclusive = false) => {
   var matches = [];
   if (typeof guess !== typeof undefined) {
     var store = window.HaxStore.instance;
@@ -2423,9 +2453,14 @@ window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
               }
               // omg... we just found a match on a property from who knows where!
               if (match || skipPropMatch) {
-                matches.push(
-                  window.HaxStore.haxElementPrototype(gizmo, props, "")
-                );
+                if (preferExclusive && gizmo.handles[i].type_exclusive) {
+                  return [window.HaxStore.haxElementPrototype(gizmo, props, "")];
+                }
+                else {
+                  matches.push(
+                    window.HaxStore.haxElementPrototype(gizmo, props, "")
+                  );
+                }
               }
             }
           }

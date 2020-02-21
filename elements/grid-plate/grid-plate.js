@@ -158,17 +158,16 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-3
-          );
-          --grid-plate-active-border-color: #000000;
+          --grid-plate-editable-border-color: #3b97e3;
+          --grid-plate-active-border-color: #3b97e3;
           --grid-plate-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
-          --grid-plate-arrow-color: #000000;
-          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-3);
+          --grid-plate-arrow-color: #ffffff;
+          --grid-plate-arrow-color-hover: #000000;
+          --grid-plate-arrow-bg: #3b97e3;
         }
         :host .row {
           width: 100%;
@@ -291,8 +290,7 @@ class GridPlate extends LitElement {
         paper-icon-button:hover {
           opacity: 1;
           visibility: visible;
-          background-color: var(--grid-plate-arrow-color);
-          color: var(--grid-plate-arrow-bg);
+          color: var(--grid-plate-arrow-color-hover);
         }
         #drag {
           cursor: move;
@@ -330,7 +328,7 @@ class GridPlate extends LitElement {
     this.responsiveSize = "xs";
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
+    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     setTimeout(() => {
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("dragenter", this.dragEnterGrid.bind(this));
@@ -345,7 +343,7 @@ class GridPlate extends LitElement {
       <div class="button-holding-pen">
         <paper-icon-button
           class="direction"
-          icon="editor:drag-handle"
+          icon="hax:arrow-all"
           title="Drag"
           draggable="true"
           id="drag"
