@@ -68,7 +68,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Boolean
       },
       activeGizmo: {
-        type: Object,
+        type: Object
       },
       voiceRespondsTo: {
         type: String,

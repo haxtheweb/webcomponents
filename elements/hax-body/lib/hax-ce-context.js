@@ -43,7 +43,7 @@ class HaxCeContext extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
     this.haxProperties = {};
     setTimeout(() => {
@@ -65,7 +65,7 @@ class HaxCeContext extends winEventsElement(LitElement) {
         e.detail.property === "activeContainerNode"
       ) {
         setTimeout(() => {
-          this._computeValues();          
+          this._computeValues();
         }, 0);
       }
     }
@@ -93,13 +93,13 @@ class HaxCeContext extends winEventsElement(LitElement) {
   static get properties() {
     return {
       disableTransform: {
-        type: Boolean,
+        type: Boolean
       },
       activeIcon: {
-        type: String,
+        type: String
       },
       activeName: {
-        type: String,
+        type: String
       }
     };
   }
@@ -109,15 +109,15 @@ class HaxCeContext extends winEventsElement(LitElement) {
   _computeValues() {
     let instance = window.HaxStore.instance;
     if (!instance.isTextElement(instance.activeNode)) {
-      if (
-        instance.activeNode.tagName == "GRID-PLATE"
-      ) {
+      if (instance.activeNode.tagName == "GRID-PLATE") {
         this.disableTransform = true;
         this.activeName = "Grid";
         this.activeIcon = "hax:3/3/3/3";
       } else {
         // detect if this can be transformed into anything else
-        this.disableTransform = !instance.activeHaxBody.canTansformNode(instance.activeNode);
+        this.disableTransform = !instance.activeHaxBody.canTansformNode(
+          instance.activeNode
+        );
         if (instance.activeGizmo) {
           this.activeName = instance.activeGizmo.title;
           this.activeIcon = instance.activeGizmo.icon;

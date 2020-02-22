@@ -63,7 +63,11 @@ class HaxContextItem extends LitElement {
         ?default="${this.default}"
         ?menu="${this.menu}"
       >
-      ${this.more ? html`<iron-icon icon="icons:expand-more"></iron-icon>` : ``}
+        ${this.more
+          ? html`
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            `
+          : ``}
         <slot></slot>
       </hax-toolbar-item>
     `;

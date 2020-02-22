@@ -1,7 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import {
-  winEventsElement
-} from "@lrnwebcomponents/utils/utils.js";
+import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-text-context`
  * @customElement hax-text-context
@@ -40,7 +38,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
         }
         hax-context-item-textop,
         hax-context-item {
-          transition: all .2s linear;
+          transition: all 0.2s linear;
           visibility: visible;
           opacity: 1;
         }
@@ -65,7 +63,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
     import("@polymer/paper-item/paper-item.js");
     import("@polymer/iron-icon/iron-icon.js");
@@ -99,9 +97,10 @@ class HaxTextContext extends winEventsElement(LitElement) {
   render() {
     return html`
       <hax-toolbar
-      .selected="${this.selection}"
-      ?hide-more="${!this.hasSelectedText}"
-      id="toolbar">
+        .selected="${this.selection}"
+        ?hide-more="${!this.hasSelectedText}"
+        id="toolbar"
+      >
         <hax-context-item-menu
           action
           mini
@@ -304,7 +303,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
        * Text hax-store has detected is selected currently.
        */
       haxSelectedText: {
-        type: String,
+        type: String
       },
       /**
        * Selected value to match format of the tag currently.
@@ -365,7 +364,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
       }
       // calculate boolean status of having text
       if (propName == "haxSelectedText") {
-        this.hasSelectedText = (this[propName].length > 0);
+        this.hasSelectedText = this[propName].length > 0;
       }
       if (propName == "selectedValue") {
         this.realSelectedValue = this.shadowRoot

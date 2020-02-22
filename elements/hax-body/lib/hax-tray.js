@@ -24,7 +24,7 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
     this.activeValue = {
       settings: {
@@ -410,7 +410,9 @@ class HaxTray extends winEventsElement(LitElement) {
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
             <div slot="content">
-              <hax-tray-upload ?can-support-uploads=${this.canSupportUploads}></hax-tray-upload>
+              <hax-tray-upload
+                ?can-support-uploads=${this.canSupportUploads}
+              ></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
@@ -936,7 +938,6 @@ class HaxTray extends winEventsElement(LitElement) {
           properties: props.settings.layout
         });
       } else {
-
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {

@@ -226,7 +226,7 @@ class HaxBody extends SimpleColors {
           right: unset;
           top: unset;
           background-color: #3b97e3;
-          color: #FFFFFF;
+          color: #ffffff;
           bottom: unset;
           width: auto;
           padding: 6px;
@@ -274,7 +274,7 @@ class HaxBody extends SimpleColors {
     // xray goggles for tags visualized in context, developer thing
     this.haxRayMode = false;
     this.activeNode = null;
-    this.haxSelectedText = '';
+    this.haxSelectedText = "";
     this.activeContainerNode = null;
     setTimeout(() => {
       import("./lib/hax-text-context.js");
@@ -339,7 +339,7 @@ class HaxBody extends SimpleColors {
        * Text hax-store has detected is selected currently.
        */
       haxSelectedText: {
-        type: String,
+        type: String
       },
       /**
        * State of if we are editing or not.
@@ -875,7 +875,7 @@ class HaxBody extends SimpleColors {
     }
   }
   canTansformNode(node = null) {
-    return (this.replaceElementWorkflow(node, true).length > 0 ? true : false);
+    return this.replaceElementWorkflow(node, true).length > 0 ? true : false;
   }
   /**
    * Whole workflow of replacing something in place contextually.
@@ -1092,8 +1092,7 @@ class HaxBody extends SimpleColors {
         }
         if (this.activeNode.parentNode == this.activeContainerNode) {
           this.activeContainerNode.insertBefore(newNode, this.activeNode);
-        }
-        else {
+        } else {
           this.activeContainerNode.appendChild(newNode);
         }
       } else {
