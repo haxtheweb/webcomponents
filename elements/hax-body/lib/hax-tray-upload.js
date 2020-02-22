@@ -64,6 +64,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
+      "hax-app-picker-selection": "_haxAppPickerSelection",
       "hax-store-property-updated": "_haxStorePropertyUpdated",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
@@ -312,6 +313,48 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     } else {
       this.__allowUpload = false;
     }
+  }
+    /**
+   * Event for an app being selected from a picker
+   * This happens when multiple upload targets support the given type
+   */
+  _haxAppPickerSelection(e) {
+    // details for where to upload the file
+    let connection = e.detail.connection;
+    this.__appUsed = e.detail;
+    this.shadowRoot.querySelector("#fileupload").method =
+      connection.operations.add.method;
+    let requestEndPoint = connection.protocol + "://" + connection.url;
+    // ensure we build a url correctly
+    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+      requestEndPoint += "/";
+    }
+    // support local end point modification
+    if (typeof connection.operations.add.endPoint !== typeof undefined) {
+      requestEndPoint += connection.operations.add.endPoint;
+    }
+    // implementation specific tweaks to talk to things like HAXcms and other CMSs
+    // that have per load token based authentication
+    if (
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
+    ) {
+      requestEndPoint +=
+        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    }
+    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+      requestEndPoint +=
+        "&" +
+        window.HaxStore.instance.connectionRewrites.appendJwt +
+        "=" +
+        localStorage.getItem(
+          window.HaxStore.instance.connectionRewrites.appendJwt
+        );
+    }
+    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
+    // invoke file uploading...
+    this.__allowUpload = true;
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
 }
 
