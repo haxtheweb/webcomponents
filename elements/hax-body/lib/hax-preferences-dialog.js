@@ -73,7 +73,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
       "https://github.com/elmsln/issues/issues/new?body=URL%20base:%20" +
       window.location.pathname +
       "&title=[hax] Bug%20report%20from%20preference%20panel";
-    this.title = "Editor preferences";
+    this.title = "Advanced settings";
     // JSON schema object needs delayed to ensure page repaints the form
     this.schema = [
       {

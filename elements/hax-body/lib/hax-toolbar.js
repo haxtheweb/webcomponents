@@ -58,9 +58,7 @@ class HaxToolbar extends LitElement {
   }
   constructor() {
     super();
-    this.hideTransform = false;
     this.selected = false;
-    this.haxProperties = {};
     this.hideMore = false;
     this.inline = false;
     setTimeout(() => {
@@ -103,24 +101,11 @@ class HaxToolbar extends LitElement {
   static get properties() {
     return {
       /**
-       * Hide the transform button as its not supported
-       */
-      hideTransform: {
-        type: Boolean,
-        attribute: "hide-transform"
-      },
-      /**
        * See what's selected
        */
       selected: {
         type: Boolean,
         reflect: true
-      },
-      /**
-       * Selected value to match ce direction currently.
-       */
-      haxProperties: {
-        type: Object
       },
       /**
        * Hide the more menu.
@@ -137,32 +122,6 @@ class HaxToolbar extends LitElement {
         reflect: true
       }
     };
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName == "haxProperties") {
-        this._haxPropertiesChanged(this[propName], oldValue);
-      }
-    });
-  }
-  /**
-   * If hax properties changes, let's see what the initial state
-   * of the buttons should be.
-   */
-  _haxPropertiesChanged(newValue, oldValue) {
-    // value doesn't matter, just look at what's active
-    if (window.HaxStore.instance.activeNode) {
-      if (
-        window.HaxStore.instance.isTextElement(
-          window.HaxStore.instance.activeNode
-        ) ||
-        window.HaxStore.instance.activeNode.tagName == "HR"
-      ) {
-        this.hideTransform = true;
-      } else {
-        this.hideTransform = false;
-      }
-    }
   }
 
   /**

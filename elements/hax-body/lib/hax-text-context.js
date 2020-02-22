@@ -1,4 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import {
+  winEventsElement
+} from "@lrnwebcomponents/utils/utils.js";
 /**
  * `hax-text-context`
  * @customElement hax-text-context
@@ -6,7 +9,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends LitElement {
+class HaxTextContext extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
@@ -35,6 +38,17 @@ class HaxTextContext extends LitElement {
           padding: 8px;
           font-size: 12px;
         }
+        hax-context-item-textop,
+        hax-context-item {
+          transition: all .2s linear;
+          visibility: visible;
+          opacity: 1;
+        }
+        hax-context-item-textop[hidden],
+        hax-context-item[hidden] {
+          visibility: hidden;
+          opacity: 0;
+        }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
           top: 64px;
@@ -50,6 +64,9 @@ class HaxTextContext extends LitElement {
   }
   constructor() {
     super();
+    this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
+    };
     import("@polymer/paper-item/paper-item.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
@@ -67,9 +84,24 @@ class HaxTextContext extends LitElement {
     this.formatIcon = "hax:format-textblock";
     this.isSafari = this._isSafari();
   }
+  /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (
+      e.detail &&
+      typeof e.detail.value !== typeof undefined &&
+      e.detail.property
+    ) {
+      this[e.detail.property] = e.detail.value;
+    }
+  }
   render() {
     return html`
-      <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
+      <hax-toolbar
+      .selected="${this.selection}"
+      ?hide-more="${!this.hasSelectedText}"
+      id="toolbar">
         <hax-context-item-menu
           action
           mini
@@ -115,38 +147,6 @@ class HaxTextContext extends LitElement {
           mini
           action
           slot="primary"
-          icon="editor:format-bold"
-          label="Bold"
-          event-name="text-bold"
-        ></hax-context-item-textop>
-        <hax-context-item-textop
-          mini
-          action
-          slot="primary"
-          icon="editor:format-italic"
-          label="Italic"
-          event-name="text-italic"
-        ></hax-context-item-textop>
-        <hax-context-item-textop
-          mini
-          action
-          slot="primary"
-          icon="editor:insert-link"
-          label="Link"
-          event-name="text-link"
-        ></hax-context-item-textop>
-        <hax-context-item-textop
-          mini
-          action
-          slot="primary"
-          icon="mdextra:unlink"
-          label="Remove link"
-          event-name="text-unlink"
-        ></hax-context-item-textop>
-        <hax-context-item-textop
-          mini
-          action
-          slot="primary"
           icon="editor:format-list-bulleted"
           event-name="text-tag-ul"
           label="Bulleted list"
@@ -183,9 +183,46 @@ class HaxTextContext extends LitElement {
           mini
           action
           slot="primary"
+          icon="editor:format-bold"
+          label="Bold"
+          event-name="text-bold"
+          ?hidden="${!this.hasSelectedText}"
+        ></hax-context-item-textop>
+        <hax-context-item-textop
+          mini
+          action
+          slot="primary"
+          icon="editor:format-italic"
+          label="Italic"
+          event-name="text-italic"
+          ?hidden="${!this.hasSelectedText}"
+        ></hax-context-item-textop>
+        <hax-context-item-textop
+          mini
+          action
+          slot="primary"
+          icon="editor:insert-link"
+          label="Link"
+          event-name="text-link"
+          ?hidden="${!this.hasSelectedText}"
+        ></hax-context-item-textop>
+        <hax-context-item-textop
+          mini
+          action
+          slot="primary"
+          icon="mdextra:unlink"
+          label="Remove link"
+          event-name="text-unlink"
+          ?hidden="${!this.hasSelectedText}"
+        ></hax-context-item-textop>
+        <hax-context-item-textop
+          mini
+          action
+          slot="primary"
           icon="editor:format-clear"
           label="Remove format"
           event-name="text-remove-format"
+          ?hidden="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item
           mini
@@ -194,7 +231,7 @@ class HaxTextContext extends LitElement {
           icon="hax:add-brick"
           label="Add element to selection"
           event-name="insert-inline-gizmo"
-          .hidden="${this.isSafari}"
+          ?hidden="${this.isSafari || !this.hasSelectedText}"
         ></hax-context-item>
         <hax-context-item-textop
           mini
@@ -203,7 +240,7 @@ class HaxTextContext extends LitElement {
           icon="hax:add-brick"
           label="Add element to selection"
           event-name="insert-inline-gizmo"
-          .hidden="${!this.isSafari}"
+          ?hidden="${!this.isSafari || !this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           action
@@ -256,6 +293,18 @@ class HaxTextContext extends LitElement {
       },
       realSelectedValue: {
         type: String
+      },
+      /**
+       * calculated boolean off of if there is currently text
+       */
+      hasSelectedText: {
+        type: Boolean
+      },
+      /**
+       * Text hax-store has detected is selected currently.
+       */
+      haxSelectedText: {
+        type: String,
       },
       /**
        * Selected value to match format of the tag currently.
@@ -313,6 +362,10 @@ class HaxTextContext extends LitElement {
             this.selectedValue = i;
           }
         }
+      }
+      // calculate boolean status of having text
+      if (propName == "haxSelectedText") {
+        this.hasSelectedText = (this[propName].length > 0);
       }
       if (propName == "selectedValue") {
         this.realSelectedValue = this.shadowRoot

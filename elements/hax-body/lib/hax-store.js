@@ -67,6 +67,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       voiceDebug: {
         type: Boolean
       },
+      activeGizmo: {
+        type: Object,
+      },
       voiceRespondsTo: {
         type: String,
         attribute: "voice-responses-to"
@@ -611,6 +614,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
       }
+      if (propName == "activeNode") {
+        this.activeGizmo = this._calculateActiveGizmo(this[propName]);
+      }
       // composite obervation
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
         loadAppStoreData = true;
@@ -644,6 +650,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.__appStoreData,
         this.haxAutoloader
       );
+    }
+  }
+  _calculateActiveGizmo(activeNode) {
+    for (var gizmoposition in this.gizmoList) {
+      var gizmo = this.gizmoList[gizmoposition];
+      if (gizmo.tag === activeNode.tagName.toLowerCase()) {
+        return gizmo;
+      }
     }
   }
   /**
@@ -1505,7 +1519,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
-          this.activeContainerNode.appendChild(node);
+          this.activeHaxBody.haxInsert(
+            details.tag,
+            details.content,
+            properties
+          );
           this.activeHaxBody.shadowRoot.querySelector(
             "#textcontextmenu"
           ).highlightOps = false;

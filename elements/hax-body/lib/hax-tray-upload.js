@@ -48,10 +48,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   }
   static get properties() {
     return {
-      /**
-       * If this can support uploads or not based on presense of a backend
-       * this property is synced down from the store
-       */
       canSupportUploads: {
         type: Boolean,
         attribute: "can-support-uploads"
@@ -65,7 +61,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection",
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
     this.canSupportUploads = false;
@@ -213,18 +208,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     this.shadowRoot.querySelector("#fileupload")._onDrop(e.detail);
   }
   /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
-  }
-  /**
    * Respond to successful file upload, now inject url into url field and
    * do a gizmo guess from there!
    */
@@ -314,7 +297,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       this.__allowUpload = false;
     }
   }
-    /**
+  /**
    * Event for an app being selected from a picker
    * This happens when multiple upload targets support the given type
    */
@@ -355,6 +338,16 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     // invoke file uploading...
     this.__allowUpload = true;
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
+  }
+  /**
+   * Helper to take a multi-dimensional object and convert
+   * it's reference into the real value. This allows for variable input defined
+   * in a string to actually hit the deeper part of an object structure.
+   */
+  _resolveObjectPath(path, obj) {
+    return path.split(".").reduce(function(prev, curr) {
+      return prev ? prev[curr] : null;
+    }, obj || self);
   }
 }
 

@@ -25,7 +25,6 @@ class HaxTray extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-active-hover-name": "_activeNameChange"
     };
     this.activeValue = {
       settings: {
@@ -37,9 +36,9 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
+    this.canSupportUploads = false;
     this.expanded = true;
     this.activeSchema = [];
-    this.activeOperationName = "";
     this.canUndo = true;
     this.canRedo = true;
     this.elementAlign = "right";
@@ -307,7 +306,6 @@ class HaxTray extends winEventsElement(LitElement) {
                     label="${this.traySizeText}"
                   ></hax-tray-button>
                 `}
-            <div class="active-op-name">${this.activeOperationName}</div>
           </div>
           <div class="quick">
             <slot name="tray-buttons-pre"></slot>
@@ -384,7 +382,7 @@ class HaxTray extends winEventsElement(LitElement) {
               ?hidden="${this.hidePreferencesButton}"
               event-name="open-preferences-dialog"
               icon="settings"
-              label="Editor preferences"
+              label="Advanced settings"
               voice-command="open (editor) preferences"
             ></hax-tray-button>
           </div>
@@ -412,7 +410,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
             <div slot="content">
-              <hax-tray-upload></hax-tray-upload>
+              <hax-tray-upload ?can-support-uploads=${this.canSupportUploads}></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
@@ -581,6 +579,14 @@ class HaxTray extends winEventsElement(LitElement) {
       __tipText: {
         type: String
       },
+      /**
+       * If this can support uploads or not based on presense of a backend
+       * this property is synced down from the store
+       */
+      canSupportUploads: {
+        type: Boolean,
+        attribute: "can-support-uploads"
+      },
       offsetMargin: {
         type: String
       },
@@ -613,12 +619,6 @@ class HaxTray extends winEventsElement(LitElement) {
         type: String,
         reflect: true,
         attribute: "element-align"
-      },
-      /**
-       * active item name, useful to show users what they are working with
-       */
-      activeOperationName: {
-        type: String
       },
       /**
        * Light variant for save button
@@ -936,12 +936,7 @@ class HaxTray extends winEventsElement(LitElement) {
           properties: props.settings.layout
         });
       } else {
-        this.activeSchema[0].properties.push({
-          property: "layout",
-          title: "Layout",
-          description: "Position the element relative to other items",
-          disabled: true
-        });
+
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
@@ -1180,14 +1175,6 @@ class HaxTray extends winEventsElement(LitElement) {
       }
     }
   }
-
-  /**
-   * active operation name changed
-   */
-  _activeNameChange(e) {
-    this.activeOperationName = e.detail;
-  }
-
   /**
    * Edit clicked, activate
    */
