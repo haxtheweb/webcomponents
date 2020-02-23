@@ -391,11 +391,11 @@ class HaxTray extends winEventsElement(LitElement) {
         </div>
         <a11y-collapse-group radio accordion>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse
-            id="settingscollapse"
-          >
+          <a11y-collapse id="settingscollapse">
             <div slot="heading">
-              <iron-icon icon="icons:settings"></iron-icon> ${this.activeTagName} Settings
+              <iron-icon icon="icons:settings"></iron-icon> ${this
+                .activeTagName}
+              Settings
             </div>
             <div slot="content">
               <simple-fields
@@ -765,12 +765,11 @@ class HaxTray extends winEventsElement(LitElement) {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
           this.activeTagIcon = this.activeGizmo.icon;
-        }
-        else {
+        } else {
           if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
             this.shadowRoot
-            .querySelector('#addcollapse div[slot="heading"]')
-            .click();
+              .querySelector('#addcollapse div[slot="heading"]')
+              .click();
           }
         }
       }
@@ -781,12 +780,11 @@ class HaxTray extends winEventsElement(LitElement) {
               .querySelector('#settingscollapse div[slot="heading"]')
               .click();
           }
-        }
-        else {
+        } else {
           if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
             this.shadowRoot
-            .querySelector('#addcollapse div[slot="heading"]')
-            .click();
+              .querySelector('#addcollapse div[slot="heading"]')
+              .click();
           }
         }
         // process fields

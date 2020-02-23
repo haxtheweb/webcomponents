@@ -125,10 +125,9 @@ class HaxCeContext extends winEventsElement(LitElement) {
           }
         }
       }
-    }
-    else {
-      this.activeTagName = '';
-      this.activeTagIcon = '';
+    } else {
+      this.activeTagName = "";
+      this.activeTagIcon = "";
     }
   }
 }
