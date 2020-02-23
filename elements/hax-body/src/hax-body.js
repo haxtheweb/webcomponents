@@ -1119,7 +1119,7 @@ class HaxBody extends SimpleColors {
       setTimeout(() => {
         this.breakUpdateLock();
       }, 50);
-    }    
+    }
     return true;
   }
 

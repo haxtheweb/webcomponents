@@ -1556,7 +1556,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // spread for accurate data usage locally, then write store globally
       this.gizmoList = [...gizmoList];
-      window.HaxStore.write("gizmoList", gizmoList, this);          
+      window.HaxStore.write("gizmoList", gizmoList, this);
     }
   }
   /**
