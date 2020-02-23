@@ -1119,7 +1119,7 @@ class HaxBody extends SimpleColors {
       setTimeout(() => {
         this.breakUpdateLock();
       }, 50);
-    }
+    }    
     return true;
   }
 
@@ -1437,15 +1437,21 @@ class HaxBody extends SimpleColors {
         switch (node.layout) {
           case "1-1":
             // implies we are removing the grid plate
+            let cloneEl;
             await node.childNodes.forEach(el => {
               // verify its a tag
               if (el.tagName) {
                 // remove slot name
-                let cloneEl = el.cloneNode(true);
+                cloneEl = el.cloneNode(true);
                 cloneEl.removeAttribute("slot");
                 node.parentNode.insertBefore(cloneEl, node);
               }
             });
+            // whatever was moved out last use as active now
+            this.activeNode = cloneEl;
+            this.activeContainerNode = cloneEl;
+            window.HaxStore.write("activeNode", cloneEl, this);
+            window.HaxStore.write("activeContainerNode", cloneEl, this);
             setTimeout(() => {
               node.remove();
             }, 0);
@@ -1775,14 +1781,8 @@ class HaxBody extends SimpleColors {
         break;
       // grid plate based operations
       // allow for transforming this haxElement into another one
-      case "hax-plate-create-left":
-        this.haxGridPlateOps(this.activeContainerNode, "left");
-        break;
       case "hax-plate-create-right":
         this.haxGridPlateOps(this.activeContainerNode, "right");
-        break;
-      case "hax-plate-remove-left":
-        this.haxGridPlateOps(this.activeContainerNode, "left", false);
         break;
       case "hax-plate-remove-right":
         this.haxGridPlateOps(this.activeContainerNode, "right", false);
