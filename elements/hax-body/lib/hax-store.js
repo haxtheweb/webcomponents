@@ -616,6 +616,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       if (propName == "activeNode") {
         this.activeGizmo = this._calculateActiveGizmo(this[propName]);
+        window.HaxStore.write("activeGizmo", this.activeGizmo, this);
       }
       // composite obervation
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
@@ -653,6 +654,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     }
   }
   _calculateActiveGizmo(activeNode) {
+    if (activeNode == null) {
+      return null;
+    }
     for (var gizmoposition in this.gizmoList) {
       var gizmo = this.gizmoList[gizmoposition];
       if (gizmo.tag === activeNode.tagName.toLowerCase()) {
@@ -1010,7 +1014,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
-      "grid-plate-add-item": "haxInsertAnything",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand"
@@ -1558,32 +1561,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.gizmoList = [...gizmoList];
       window.HaxStore.write("gizmoList", gizmoList, this);
     }
-  }
-  /**
-   * Present all elements to potentially insert
-   */
-  haxInsertAnything(e) {
-    let props = {};
-    if (e && e.detail && e.detail.properties) {
-      props = e.detail.properties;
-    }
-    let haxElements = [];
-    for (var i in window.HaxStore.instance.gizmoList) {
-      haxElements.push(
-        window.HaxStore.haxElementPrototype(
-          window.HaxStore.instance.gizmoList[i],
-          props,
-          ""
-        )
-      );
-    }
-    // hand off to hax-app-picker to deal with the rest of this
-    window.HaxStore.instance.haxAppPicker.presentOptions(
-      haxElements,
-      "element",
-      "Add an element",
-      "gizmo"
-    );
   }
   /**
    * Optional send array, to improve performance and event bubbling better

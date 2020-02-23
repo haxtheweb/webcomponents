@@ -78,8 +78,8 @@ class HaxCeContext extends winEventsElement(LitElement) {
           action
           more
           slot="prefix"
-          icon="${this.activeIcon}"
-          label="${this.activeName}, click to change"
+          icon="${this.activeTagIcon}"
+          label="${this.activeTagName}, click to change"
           ?disabled="${this.disableTransform}"
           event-name="hax-transform-node"
         ></hax-context-item>
@@ -95,10 +95,10 @@ class HaxCeContext extends winEventsElement(LitElement) {
       disableTransform: {
         type: Boolean
       },
-      activeIcon: {
+      activeTagIcon: {
         type: String
       },
-      activeName: {
+      activeTagName: {
         type: String
       }
     };
@@ -108,21 +108,27 @@ class HaxCeContext extends winEventsElement(LitElement) {
    */
   _computeValues() {
     let instance = window.HaxStore.instance;
-    if (!instance.isTextElement(instance.activeNode)) {
-      if (instance.activeNode.tagName == "GRID-PLATE") {
-        this.disableTransform = true;
-        this.activeName = "Grid";
-        this.activeIcon = "hax:3/3/3/3";
-      } else {
-        // detect if this can be transformed into anything else
-        this.disableTransform = !instance.activeHaxBody.canTansformNode(
-          instance.activeNode
-        );
-        if (instance.activeGizmo) {
-          this.activeName = instance.activeGizmo.title;
-          this.activeIcon = instance.activeGizmo.icon;
+    if (instance.activeNode != null) {
+      if (!instance.isTextElement(instance.activeNode)) {
+        if (instance.activeNode.tagName == "GRID-PLATE") {
+          this.disableTransform = true;
+          this.activeTagName = "Grid";
+          this.activeTagIcon = "hax:3/3/3/3";
+        } else {
+          // detect if this can be transformed into anything else
+          this.disableTransform = !instance.activeHaxBody.canTansformNode(
+            instance.activeNode
+          );
+          if (instance.activeGizmo) {
+            this.activeTagName = instance.activeGizmo.title;
+            this.activeTagIcon = instance.activeGizmo.icon;
+          }
         }
       }
+    }
+    else {
+      this.activeTagName = '';
+      this.activeTagIcon = '';
     }
   }
 }

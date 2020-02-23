@@ -1609,47 +1609,17 @@ class HaxBody extends SimpleColors {
   haxDeleteNode(node, parent = this) {
     // move the context menu before deleting!!!!
     this.hideContextMenus();
-    // shift active to a viable replacement
-    if (
-      this.activeContainerNode != null &&
-      this.activeContainerNode.previousElementSibling !== null
-    ) {
-      this.activeContainerNode.previousElementSibling.focus();
-      // cursor at the END of the element assuming not empty
-      if (
-        this.activeContainerNode != null &&
-        window.HaxStore.instance.isTextElement(this.activeContainerNode) &&
-        this.activeContainerNode.textContent !== ""
-      ) {
-        try {
-          var range = document.createRange();
-          var sel = window.HaxStore.getSelection();
-          range.setStart(this.activeContainerNode, 1);
-          range.collapse(true);
-          sel.removeAllRanges();
-          sel.addRange(range);
-          this.activeContainerNode.focus();
-        } catch (e) {
-          console.warn(e);
-        }
-      }
-    } else if (
-      this.activeContainerNode != null &&
-      this.activeContainerNode.nextElementSibling !== null
-    ) {
-      this.activeContainerNode.nextElementSibling.focus();
-    } else {
+    setTimeout(() => {
       this.activeNode = null;
       this.activeContainerNode = null;
       window.HaxStore.write("activeNode", null, this);
       window.HaxStore.write("activeContainerNode", null, this);
-    }
-    // @todo figure out why this is complaining
-    try {
-      return parent.removeChild(node);
-    } catch (e) {
-      console.warn(e);
-    }
+      try {
+        return node.remove();
+      } catch (e) {
+        console.warn(e);
+      }
+    }, 0);
   }
   /**
    * Bulk import HTML with option to clear what is currently

@@ -651,12 +651,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   preProcessHaxInsertContent(detail) {
     // ensure we dont accidently have the answer displayed!
-    detail.properties.answers = detail.properties.answers.map(function(val) {
-      if (val.userGuess) {
-        delete val.userGuess;
-      }
-      return val;
-    });
+    if (detail.properties.answers) {
+      detail.properties.answers = detail.properties.answers.map(function(val) {
+        if (val.userGuess) {
+          delete val.userGuess;
+        }
+        return val;
+      });
+    }
     return detail;
   }
   firstUpdated(changedProperties) {

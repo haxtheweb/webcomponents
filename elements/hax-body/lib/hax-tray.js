@@ -58,6 +58,7 @@ class HaxTray extends winEventsElement(LitElement) {
       import("@polymer/paper-slider/paper-slider.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
+      import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
       import("./hax-tray-upload.js");
       import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
@@ -82,6 +83,7 @@ class HaxTray extends winEventsElement(LitElement) {
     ) {
       if (
         e.detail.property === "globalPreferences" ||
+        e.detail.property === "activeGizmo" ||
         e.detail.property === "activeNode"
       ) {
         this[e.detail.property] = {};
@@ -391,12 +393,9 @@ class HaxTray extends winEventsElement(LitElement) {
           <slot name="tray-collapse-pre"></slot>
           <a11y-collapse
             id="settingscollapse"
-            ?disabled="${!this.activeTagName}"
           >
             <div slot="heading">
-              <iron-icon icon="icons:settings"></iron-icon> ${this
-                .activeTagName}
-              Settings
+              <iron-icon icon="icons:settings"></iron-icon> ${this.activeTagName} Settings
             </div>
             <div slot="content">
               <simple-fields
@@ -405,7 +404,7 @@ class HaxTray extends winEventsElement(LitElement) {
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse>
+          <a11y-collapse id="addcollapse">
             <div slot="heading" @click="${this._gizmoBrowserRefresh}">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -682,8 +681,14 @@ class HaxTray extends winEventsElement(LitElement) {
       /**
        * Tag name / what to display based on active element
        */
+      activeTagIcon: {
+        type: String
+      },
       activeTagName: {
         type: String
+      },
+      activeGizmo: {
+        type: Object
       },
       /**
        * State of the panel
@@ -756,17 +761,32 @@ class HaxTray extends winEventsElement(LitElement) {
           this.traySizeText = "Expand";
         }
       }
+      if (propName == "activeGizmo") {
+        if (this.activeGizmo) {
+          this.activeTagName = this.activeGizmo.title;
+          this.activeTagIcon = this.activeGizmo.icon;
+        }
+        else {
+          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
+            this.shadowRoot
+            .querySelector('#addcollapse div[slot="heading"]')
+            .click();
+          }
+        }
+      }
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
-          if (this.activeNode.getAttribute("data-hax-ray") != null) {
-            this.activeTagName = this.activeNode.getAttribute("data-hax-ray");
-          } else {
-            this.activeTagName = this.activeNode.tagName;
-          }
           if (!this.shadowRoot.querySelector("#settingscollapse").expanded) {
             this.shadowRoot
               .querySelector('#settingscollapse div[slot="heading"]')
               .click();
+          }
+        }
+        else {
+          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
+            this.shadowRoot
+            .querySelector('#addcollapse div[slot="heading"]')
+            .click();
           }
         }
         // process fields
