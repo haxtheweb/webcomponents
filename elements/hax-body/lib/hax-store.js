@@ -1548,19 +1548,23 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       // shift the last used thing to the front of the array
       // that way the list is actually sorted based on usage
-      let gizmoList = this.gizmoList;
-      for (var gizmoposition in gizmoList) {
-        let gizmo = gizmoList[gizmoposition];
-        // find the tag and then move this position to the front of the array
-        if (gizmo.tag === details.tag) {
-          let tmp = gizmoList[gizmoposition];
-          delete gizmoList[gizmoposition];
-          this.gizmoList.unshift(tmp);
+      // delay though in the event other things depend on the array
+      // as it currently exists
+      setTimeout(() => {
+        let gizmoList = this.gizmoList;
+        for (var gizmoposition in gizmoList) {
+          let gizmo = gizmoList[gizmoposition];
+          // find the tag and then move this position to the front of the array
+          if (gizmo.tag === details.tag) {
+            let tmp = gizmoList[gizmoposition];
+            delete gizmoList[gizmoposition];
+            this.gizmoList.unshift(tmp);
+          }
         }
-      }
-      // spread for accurate data usage locally, then write store globally
-      this.gizmoList = [...gizmoList];
-      window.HaxStore.write("gizmoList", gizmoList, this);
+        // spread for accurate data usage locally, then write store globally
+        this.gizmoList = [...gizmoList];
+        window.HaxStore.write("gizmoList", gizmoList, this);
+      }, 10);
     }
   }
   /**

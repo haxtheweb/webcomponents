@@ -2095,7 +2095,11 @@ class HaxBody extends SimpleColors {
     // create the hax-ray x ray googles thing
     let haxRay = node.tagName.replace("-", " ").toLowerCase();
     let i = window.HaxStore.instance.gizmoList.findIndex(
-      j => j.tag === node.tagName.toLowerCase()
+      j => {
+        if (j) {
+          return j.tag === node.tagName.toLowerCase()
+        }
+      }
     );
     if (i !== -1) {
       haxRay = window.HaxStore.instance.gizmoList[i].title;
@@ -2189,7 +2193,7 @@ class HaxBody extends SimpleColors {
       // as well as compatibility with things that are legit in a draggable state
       try {
         // see if we are dropping a file
-        if (e.dataTransfer.items[0].kind === "file") {
+        if (e.dataTransfer && e.dataTransfer.items && e.dataTransfer.length > 0 && e.dataTransfer.items[0].kind === "file") {
           e.preventDefault();
           e.stopPropagation();
           // inject a placeholder P tag which we will then immediately replace
