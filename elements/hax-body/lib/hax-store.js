@@ -443,6 +443,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           // see if anything coming across claims to be a backend for adding items
           // and then enable the upload button
           if (apps[i].connection.operations.add) {
+            this.canSupportUploads = true;
             window.HaxStore.write("canSupportUploads", true, this);
           }
           window.HaxStore.instance.appendChild(app);

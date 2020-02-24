@@ -60,6 +60,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
+      "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
@@ -69,6 +70,17 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       import("@polymer/paper-input/paper-input.js");
       import("@vaadin/vaadin-upload/vaadin-upload.js");
     }, 0);
+  }
+  /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (
+      e.detail &&
+      e.detail.property === "canSupportUploads"
+    ) {
+      this[e.detail.property] = e.detail.value;
+    }
   }
   /**
    * LitElement render

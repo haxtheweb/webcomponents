@@ -7,7 +7,7 @@ import {
   generateResourceID
 } from "@lrnwebcomponents/utils/utils.js";
 // variables required as part of the gravity drag and scroll
-var timer = null;
+var gravityScrollTimer = null;
 const maxStep = 25;
 const edgeSize = 100;
 
@@ -293,11 +293,24 @@ class HaxBody extends SimpleColors {
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
       this.addEventListener("mouseover", this._mouseOver.bind(this));
+      this.addEventListener("dragenter", this.dragEnterBody.bind(this));
       this.addEventListener("drop", this.dropEvent.bind(this));
     }, 0);
   }
   static get tag() {
     return "hax-body";
+  }
+  /**
+   * Activation allowed from outside this grid as far as drop areas
+   */
+  dragEnterBody(e) {
+    const children = this.childNodes;
+    // walk the children and apply the draggable state needed
+    for (var i in children) {
+      if (children[i].classList && children[i] !== this.activeItem) {
+        children[i].classList.add("mover");
+      }
+    }
   }
   _mouseOver(e) {
     if (!this.openDrawer && this.editMode && !this.__tabTrap) {
@@ -1289,6 +1302,7 @@ class HaxBody extends SimpleColors {
    */
   hideContextMenus() {
     // clear the timeouts for anything that could cause these to reapear
+    clearTimeout(gravityScrollTimer);
     clearTimeout(this.__keyPress);
     clearTimeout(this.__contextVisibleLock);
     clearTimeout(this.__positionContextTimer);
@@ -2132,20 +2146,22 @@ class HaxBody extends SimpleColors {
    * Drop an item onto another
    */
   dropEvent(e) {
-    this.activeNode = e.path[0];
-    window.HaxStore.write("activeNode", e.path[0], this);
-    if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
-      this.activeContainerNode = e.path[0].parentNode;
-      window.HaxStore.write("activeContainerNode", e.path[0].parentNode, this);
-    } else {
-      this.activeContainerNode = e.path[0].parentNode;
-      window.HaxStore.write("activeContainerNode", e.path[0], this);
-    }
-    clearTimeout(timer);
     if (!this.openDrawer && this.editMode) {
+      // establish an activeNode /container based on drop poisition
+      this.activeNode = e.path[0];
+      window.HaxStore.write("activeNode", e.path[0], this);
+      if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
+        this.activeContainerNode = e.path[0].parentNode;
+        window.HaxStore.write("activeContainerNode", e.path[0].parentNode, this);
+      } else {
+        this.activeContainerNode = e.path[0].parentNode;
+        window.HaxStore.write("activeContainerNode", e.path[0], this);
+      }
+      // esnure we clear the gravity scrolling drag effect
+      clearTimeout(gravityScrollTimer);
+        // walk the children and remove the draggable state needed
       setTimeout(() => {
         let children = this.children;
-        // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
             children[i].classList.remove(
@@ -2161,49 +2177,75 @@ class HaxBody extends SimpleColors {
           }
         }
       }, 0);
-      var target = window.HaxStore.instance.__dragTarget;
-      var local = e.target;
-      // if we have a slot on what we dropped into then we need to mirror that item
-      // and place ourselves below it in the DOM
-      if (
-        (target &&
-          target !== null &&
-          typeof local !== typeof undefined &&
-          target !== local &&
-          target !== local.parentNode &&
-          target.parentNode === this) ||
-        local.parentNode === this
-      ) {
-        // incase this came from a grid plate, drop the slot so it works
-        target.removeAttribute("slot");
-        try {
-          local.parentNode.insertBefore(target, local);
-        } catch (e) {
-          console.warn(e);
+      // this helps ensure that what gets drag and dropped is a file
+      // this prevents issues with selecting and dragging text (which triggers drag/drop)
+      // as well as compatibility with things that are legit in a draggable state
+      try {
+        // see if we are dropping a file
+        if (e.dataTransfer.items[0].kind === "file") {
+          e.preventDefault();
+          e.stopPropagation();
+          e.placeHolderElement = this;
+          // fire this specialized event up so things like HAX can intercept
+          this.dispatchEvent(
+            new CustomEvent("place-holder-file-drop", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: e
+            })
+          );
         }
-        // ensure that if we caught this event we process it
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      // position arrows / set focus in case the DOM got updated above
-      if (target && typeof target.focus === "function") {
-        this.activeNode = target;
-        if (
-          this.activeNode &&
-          this.activeNode.parentNode &&
-          this.activeNode.parentNode.tagName === "GRID-PLATE"
-        ) {
-          this.activeContainerNode = this.activeNode.parentNode;
+        else {
+          // set taget based on drag target
+          var target = window.HaxStore.instance.__dragTarget;
+          var local = e.target;
+          // if we have a slot on what we dropped into then we need to mirror that item
+          // and place ourselves below it in the DOM
+          if (
+            (target &&
+              target.removeAttribute &&
+              target !== null &&
+              typeof local !== typeof undefined &&
+              target !== local &&
+              target !== local.parentNode &&
+              target.parentNode === this) ||
+            local.parentNode === this
+          ) {
+            // incase this came from a grid plate, drop the slot so it works
+            target.removeAttribute("slot");
+            try {
+              local.parentNode.insertBefore(target, local);
+            } catch (e) {
+              console.warn(e);
+            }
+            // ensure that if we caught this event we process it
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          // position arrows / set focus in case the DOM got updated above
+          if (target && typeof target.focus === "function") {
+            this.activeNode = target;
+            if (
+              this.activeNode &&
+              this.activeNode.parentNode &&
+              this.activeNode.parentNode.tagName === "GRID-PLATE"
+            ) {
+              this.activeContainerNode = this.activeNode.parentNode;
+            }
+            window.HaxStore.write("activeNode", this.activeNode, this);
+            window.HaxStore.write(
+              "activeContainerNode",
+              this.activeContainerNode,
+              this
+            );
+            setTimeout(() => {
+              this.positionContextMenus();
+            }, 100);
+          }
         }
-        window.HaxStore.write("activeNode", this.activeNode, this);
-        window.HaxStore.write(
-          "activeContainerNode",
-          this.activeContainerNode,
-          this
-        );
-        setTimeout(() => {
-          this.positionContextMenus();
-        }, 100);
+      } catch (e) {
+        console.warn(e);
       }
     }
   }
@@ -2211,7 +2253,7 @@ class HaxBody extends SimpleColors {
    * Enter an element, meaning we've over it while dragging
    */
   dragEnter(e) {
-    if (!this.openDrawer && this.editMode && e.target && e.target.classList) {
+    if (!this.openDrawer && this.editMode && e.target) {
       e.preventDefault();
       e.target.classList.add("hovered");
       // perform check for edge of screen
@@ -2257,7 +2299,7 @@ class HaxBody extends SimpleColors {
     // If the mouse is not in the viewport edge, there's no need to calculate
     // anything else.
     if (!(isInLeftEdge || isInRightEdge || isInTopEdge || isInBottomEdge)) {
-      clearTimeout(timer);
+      clearTimeout(gravityScrollTimer);
       return;
     }
 
@@ -2302,10 +2344,10 @@ class HaxBody extends SimpleColors {
     // check. But, the point of this demo is really about the math logic, not so
     // much about the interval logic.
     (function checkForWindowScroll() {
-      clearTimeout(timer);
+      clearTimeout(gravityScrollTimer);
 
       if (adjustWindowScroll()) {
-        timer = setTimeout(checkForWindowScroll, 30);
+        gravityScrollTimer = setTimeout(checkForWindowScroll, 30);
       }
     })();
     // Adjust the window scroll based on the user's mouse position. Returns True
