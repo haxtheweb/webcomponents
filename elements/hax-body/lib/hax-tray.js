@@ -861,36 +861,36 @@ class HaxTray extends winEventsElement(LitElement) {
       let tmp = document.createElement("div");
       tmp.innerHTML = this.activeHaxElement.content;
       // step through each key
-      tmp.childNodes.forEach((el) => {
+      tmp.childNodes.forEach(el => {
         // ensure we have a dom node and it isnt empty
         if (el.nodeType === 1 && el.innerHTML !== typeof undefined) {
           // walk props looking for a match
           props.settings.configure.forEach(prop => {
             // if we have a slot to match in the property AND it matches the attr
-            if (prop.slot === el.getAttribute('slot')) {
-              this.activeValue.settings.configure[
-                prop.slot
-              ] = el.innerHTML;
+            if (prop.slot === el.getAttribute("slot")) {
+              this.activeValue.settings.configure[prop.slot] = el.innerHTML;
             }
             // no slot and it didnt match so it has no slot
-            else if (prop.slot == '' && (el.getAttribute('slot') == null || el.getAttribute('slot') == "null")) {
-              this.activeValue.settings.configure[
-                prop.slot
-              ] = el.innerHTML;
+            else if (
+              prop.slot == "" &&
+              (el.getAttribute("slot") == null ||
+                el.getAttribute("slot") == "null")
+            ) {
+              this.activeValue.settings.configure[prop.slot] = el.innerHTML;
             }
           });
           // now advanced
           props.settings.advanced.forEach(prop => {
-            if (prop.slot === el.getAttribute('slot')) {
-              this.activeValue.settings.advanced[
-                prop.slot
-              ] = el.innerHTML;
+            if (prop.slot === el.getAttribute("slot")) {
+              this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
             }
             // no slot and it didnt match so it has no slot
-            else if (prop.slot == '' && (el.getAttribute('slot') == null || el.getAttribute('slot') == "null")) {
-              this.activeValue.settings.advanced[
-                prop.slot
-              ] = el.innerHTML;
+            else if (
+              prop.slot == "" &&
+              (el.getAttribute("slot") == null ||
+                el.getAttribute("slot") == "null")
+            ) {
+              this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
             }
           });
         }
@@ -1058,7 +1058,7 @@ class HaxTray extends winEventsElement(LitElement) {
           setAhead = false;
           if (settings[key][prop] != null && !settings[key][prop].readOnly) {
             // prefix is a special attribute and must be handled this way
-            if (prop === "prefix" && settings[key][prop] != '') {
+            if (prop === "prefix" && settings[key][prop] != "") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
               setAhead = true;
             }
@@ -1182,7 +1182,10 @@ class HaxTray extends winEventsElement(LitElement) {
                     camelCaseToDash(prop),
                     camelCaseToDash(prop)
                   );
-                } else if (settings[key][prop] === false || settings[key][prop] === '') {
+                } else if (
+                  settings[key][prop] === false ||
+                  settings[key][prop] === ""
+                ) {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
                 } else {
                   this.activeNode.setAttribute(

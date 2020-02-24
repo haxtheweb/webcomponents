@@ -104,8 +104,8 @@ class CodeSample extends LitElement {
 
     let template = this._getCodeTemplate();
     if (!template) {
-      template = document.createElement('template');
-      template.setAttribute('preserve-content', 'preserve-content');
+      template = document.createElement("template");
+      template.setAttribute("preserve-content", "preserve-content");
       this.appendChild(template);
     }
     this._highlight(template.innerHTML);
