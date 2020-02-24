@@ -2150,16 +2150,23 @@ class HaxBody extends SimpleColors {
       // establish an activeNode /container based on drop poisition
       this.activeNode = e.path[0];
       window.HaxStore.write("activeNode", e.path[0], this);
-      if (e.path[0].parentNode && e.path[0].parentNode.tagName === "GRID-PLATE") {
+      if (
+        e.path[0].parentNode &&
+        e.path[0].parentNode.tagName === "GRID-PLATE"
+      ) {
         this.activeContainerNode = e.path[0].parentNode;
-        window.HaxStore.write("activeContainerNode", e.path[0].parentNode, this);
+        window.HaxStore.write(
+          "activeContainerNode",
+          e.path[0].parentNode,
+          this
+        );
       } else {
         this.activeContainerNode = e.path[0].parentNode;
         window.HaxStore.write("activeContainerNode", e.path[0], this);
       }
       // esnure we clear the gravity scrolling drag effect
       clearTimeout(gravityScrollTimer);
-        // walk the children and remove the draggable state needed
+      // walk the children and remove the draggable state needed
       setTimeout(() => {
         let children = this.children;
         for (var i in children) {
@@ -2195,8 +2202,7 @@ class HaxBody extends SimpleColors {
               detail: e
             })
           );
-        }
-        else {
+        } else {
           // set taget based on drag target
           var target = window.HaxStore.instance.__dragTarget;
           var local = e.target;

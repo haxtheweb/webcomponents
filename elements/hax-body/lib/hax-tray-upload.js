@@ -75,10 +75,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
    * Store updated, sync.
    */
   _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      e.detail.property === "canSupportUploads"
-    ) {
+    if (e.detail && e.detail.property === "canSupportUploads") {
       this[e.detail.property] = e.detail.value;
     }
   }
