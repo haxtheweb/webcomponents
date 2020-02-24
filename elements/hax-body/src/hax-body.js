@@ -2194,11 +2194,12 @@ class HaxBody extends SimpleColors {
         if (
           e.dataTransfer &&
           e.dataTransfer.items &&
-          e.dataTransfer.length > 0 &&
+          e.dataTransfer.items.length > 0 &&
           e.dataTransfer.items[0].kind === "file"
         ) {
           e.preventDefault();
           e.stopPropagation();
+          e.stopImmediatePropagation();
           // inject a placeholder P tag which we will then immediately replace
           let tmp = document.createElement("p");
           this.activeNode.parentNode.insertBefore(tmp, this.activeNode);
