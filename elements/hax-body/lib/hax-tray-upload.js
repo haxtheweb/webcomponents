@@ -173,7 +173,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     };
     // we have no clue what this is.. let's try and guess..
     let type = window.HaxStore.guessGizmoType(values);
-    let haxElements = window.HaxStore.guessGizmo(type, values);
+    let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {

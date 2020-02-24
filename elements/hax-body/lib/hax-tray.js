@@ -36,7 +36,6 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
-    this.canSupportUploads = false;
     this.expanded = true;
     this.activeSchema = [];
     this.canUndo = true;
@@ -410,7 +409,6 @@ class HaxTray extends winEventsElement(LitElement) {
             </div>
             <div slot="content">
               <hax-tray-upload
-                ?can-support-uploads=${this.canSupportUploads}
               ></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
@@ -579,14 +577,6 @@ class HaxTray extends winEventsElement(LitElement) {
       ...super.properties,
       __tipText: {
         type: String
-      },
-      /**
-       * If this can support uploads or not based on presense of a backend
-       * this property is synced down from the store
-       */
-      canSupportUploads: {
-        type: Boolean,
-        attribute: "can-support-uploads"
       },
       offsetMargin: {
         type: String

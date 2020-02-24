@@ -2192,7 +2192,11 @@ class HaxBody extends SimpleColors {
         if (e.dataTransfer.items[0].kind === "file") {
           e.preventDefault();
           e.stopPropagation();
-          e.placeHolderElement = this;
+          // inject a placeholder P tag which we will then immediately replace
+          let tmp = document.createElement('p');
+          this.activeNode.parentNode.insertBefore(tmp, this.activeNode);
+          // this placeholder will be immediately replaced
+          e.placeHolderElement = tmp;
           // fire this specialized event up so things like HAX can intercept
           this.dispatchEvent(
             new CustomEvent("place-holder-file-drop", {
