@@ -2193,7 +2193,7 @@ class HaxBody extends SimpleColors {
           e.preventDefault();
           e.stopPropagation();
           // inject a placeholder P tag which we will then immediately replace
-          let tmp = document.createElement('p');
+          let tmp = document.createElement("p");
           this.activeNode.parentNode.insertBefore(tmp, this.activeNode);
           // this placeholder will be immediately replaced
           e.placeHolderElement = tmp;

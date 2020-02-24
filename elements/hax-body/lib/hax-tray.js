@@ -408,8 +408,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
             <div slot="content">
-              <hax-tray-upload
-              ></hax-tray-upload>
+              <hax-tray-upload></hax-tray-upload>
               <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
             </div>
           </a11y-collapse>
