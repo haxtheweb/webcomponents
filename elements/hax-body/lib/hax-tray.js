@@ -120,7 +120,7 @@ class HaxTray extends winEventsElement(LitElement) {
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
-          right: calc(-1 * var(---hax-tray-width, 300px) + 120px);
+          right: calc(-1 * var(---hax-tray-width, 300px) + 94px);
           pointer-events: all;
         }
         :host([edit-mode][expanded]) .wrapper {
@@ -133,7 +133,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           right: unset;
-          left: calc(-1 * var(---hax-tray-width, 300px) + 120px);
+          left: calc(-1 * var(---hax-tray-width, 300px) + 94px);
         }
         :host([edit-mode][element-align="left"][expanded]) .wrapper {
           right: unset;
@@ -174,6 +174,9 @@ class HaxTray extends winEventsElement(LitElement) {
           --a11y-collapse-padding-right: 0px;
           --a11y-collapse-padding-bottom: 0px;
           --a11y-collapse-padding-left: 0px;
+        }
+        a11y-collapse:not([expanded]) div[slot="content"] {
+          display: none;
         }
         a11y-collapse div[slot="heading"] {
           cursor: pointer;
@@ -852,6 +855,46 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         });
       }
+      // now we need to parse through for slotted items
+      // build a fake tree, then walk the configuration / advanced settings
+      // looking for slot types
+      let tmp = document.createElement("div");
+      tmp.innerHTML = this.activeHaxElement.content;
+      // step through each key
+      tmp.childNodes.forEach((el) => {
+        // ensure we have a dom node and it isnt empty
+        if (el.nodeType === 1 && el.innerHTML !== typeof undefined) {
+          // walk props looking for a match
+          props.settings.configure.forEach(prop => {
+            // if we have a slot to match in the property AND it matches the attr
+            if (prop.slot === el.getAttribute('slot')) {
+              this.activeValue.settings.configure[
+                prop.slot
+              ] = el.innerHTML;
+            }
+            // no slot and it didnt match so it has no slot
+            else if (prop.slot == '' && (el.getAttribute('slot') == null || el.getAttribute('slot') == "null")) {
+              this.activeValue.settings.configure[
+                prop.slot
+              ] = el.innerHTML;
+            }
+          });
+          // now advanced
+          props.settings.advanced.forEach(prop => {
+            if (prop.slot === el.getAttribute('slot')) {
+              this.activeValue.settings.advanced[
+                prop.slot
+              ] = el.innerHTML;
+            }
+            // no slot and it didnt match so it has no slot
+            else if (prop.slot == '' && (el.getAttribute('slot') == null || el.getAttribute('slot') == "null")) {
+              this.activeValue.settings.advanced[
+                prop.slot
+              ] = el.innerHTML;
+            }
+          });
+        }
+      });
       // then we need to work on the layout piece
       if (activeNode.style.width != "") {
         this.activeValue.settings.layout.__scale = activeNode.style.width.replace(
@@ -1015,7 +1058,7 @@ class HaxTray extends winEventsElement(LitElement) {
           setAhead = false;
           if (settings[key][prop] != null && !settings[key][prop].readOnly) {
             // prefix is a special attribute and must be handled this way
-            if (prop === "prefix") {
+            if (prop === "prefix" && settings[key][prop] != '') {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
               setAhead = true;
             }
@@ -1139,7 +1182,7 @@ class HaxTray extends winEventsElement(LitElement) {
                     camelCaseToDash(prop),
                     camelCaseToDash(prop)
                   );
-                } else if (settings[key][prop] === false) {
+                } else if (settings[key][prop] === false || settings[key][prop] === '') {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
                 } else {
                   this.activeNode.setAttribute(

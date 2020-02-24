@@ -1064,12 +1064,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       this.haxToast = window.SimpleToast.requestAvailability();
     });
-    import("@lrnwebcomponents/code-sample/code-sample.js").then(esModule => {
-      this.setHaxProperties(
-        esModule.CodeSample.haxProperties,
-        esModule.CodeSample.tag
-      );
-    });
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
@@ -1376,6 +1370,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(p, "p");
+    let h = {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      settings: {
+        quick: [],
+        configure: [],
+        advanced: []
+      }
+    };
+    for (var i=1; i < 6; i++) {
+      this.setHaxProperties(h, "h" + i);
+    }
     let hr = {
       canScale: {
         min: 25,

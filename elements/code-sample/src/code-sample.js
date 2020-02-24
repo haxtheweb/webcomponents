@@ -102,7 +102,12 @@ class CodeSample extends LitElement {
   _updateContent() {
     if (this._code) this._code.parentNode.removeChild(this._code);
 
-    const template = this._getCodeTemplate();
+    let template = this._getCodeTemplate();
+    if (!template) {
+      template = document.createElement('template');
+      template.setAttribute('preserve-content', 'preserve-content');
+      this.appendChild(template);
+    }
     this._highlight(template.innerHTML);
   }
   _getCodeTemplate() {

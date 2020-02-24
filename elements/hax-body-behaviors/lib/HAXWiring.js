@@ -380,7 +380,7 @@ export class HAXWiring {
           // we need to support slot in the UI but actually shift it around under the hood
           // this is so that shadow roots don't get mad when previewing
           props.settings.advanced.push({
-            attribute: "data-hax-slot",
+            attribute: "slot",
             title: "slot",
             description: "DOM slot area",
             inputMethod: "textfield"
