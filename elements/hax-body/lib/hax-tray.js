@@ -37,6 +37,7 @@ class HaxTray extends winEventsElement(LitElement) {
       }
     };
     this.expanded = true;
+    this.activeTab = 'item-0';
     this.activeSchema = [];
     this.canUndo = true;
     this.canRedo = true;
@@ -64,7 +65,6 @@ class HaxTray extends winEventsElement(LitElement) {
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
       );
-      // @todo stage collapse and remove these as we can
       import("./hax-gizmo-browser.js");
       import("./hax-app-browser.js");
       import("./hax-blox-browser.js");
@@ -402,6 +402,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <div slot="content">
               <simple-fields
                 id="settingsform"
+                @click="${this.__simpleFieldsClick}"
                 @value-changed="${this.__valueChangedEvent}"
               ></simple-fields>
             </div>
@@ -436,6 +437,15 @@ class HaxTray extends winEventsElement(LitElement) {
         </a11y-collapse-group>
       </div>
     `;
+  }
+  __simpleFieldsClick(e) {
+    try {
+      this.activeTab = this.shadowRoot.querySelector('#settingsform').shadowRoot.querySelector('eco-json-schema-tabs').shadowRoot.querySelector('a11y-tabs').activeTab;
+    }
+    catch(e) {
+      // in case it missed somehow like w/ an incredibly slow repaints
+      this.activeTab = 'item-0';
+    }
   }
   /**
    * Handlers to refresh contents on click
@@ -988,6 +998,12 @@ class HaxTray extends winEventsElement(LitElement) {
           properties: props.settings.layout
         });
       } else {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          disabled: true
+        });
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
@@ -1028,6 +1044,19 @@ class HaxTray extends winEventsElement(LitElement) {
       this.shadowRoot.querySelector("#settingsform").value = {
         ...this.activeValue
       };
+      // allow form to rebuild, then switch it to the correct input
+      if (this.shadowRoot && this.shadowRoot.querySelector('#settingsform').shadowRoot) {
+        setTimeout(() => {
+          // wrap in a try just to be safe
+          try {
+            // @todo review if they have any items in them and then disable appropriately
+            this.shadowRoot.querySelector('#settingsform').shadowRoot.querySelector('eco-json-schema-tabs').shadowRoot.querySelector('a11y-tabs').activeTab = this.activeTab;
+          }
+          catch(e) {
+
+          }
+        }, 10);
+      }
     }
   }
   /**
