@@ -1244,11 +1244,13 @@ class GridPlate extends LitElement {
    */
   __sortChildren() {
     try {
-      // select all children w/ a slot attribute and convert to an Array
-      let children = Array.prototype.slice.call(
-        this.querySelectorAll("[slot]"),
-        0
-      );
+      // select all direct children w/ a slot attribute and convert to an Array
+      let children = Array.prototype.reduce.call(this.children, function(acc, e) {
+        if (e.slot) {
+          acc.push(e);
+        }
+        return acc;
+      }, []);
       // sort the children by slot id being low to high
       children = children.sort(function(a, b) {
         if (
@@ -1262,7 +1264,10 @@ class GridPlate extends LitElement {
       // loop through and append these back into the grid plate.
       // which will put them in the right order
       children.forEach(el => {
-        this.appendChild(el);
+        // sanity check that we only move things that are a direct child
+        if (el.parentNode === this) {
+          this.appendChild(el);
+        }
       });
     } catch (error) {
       console.warn(error);

@@ -1055,9 +1055,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
+    // imports app, blox, stax definitions
     import("./hax-app.js");
-    import("./hax-stax.js");
-    import("./hax-blox.js");
     import("@polymer/polymer/lib/utils/settings.js").then(esModule => {
       esModule.setPassiveTouchGestures(true);
     });
