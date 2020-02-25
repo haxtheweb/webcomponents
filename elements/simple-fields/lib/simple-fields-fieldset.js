@@ -11,21 +11,41 @@ class SimpleFieldsFieldset extends LitElement {
     return "simple-fields-fieldset";
   }
   static get styles() {
-    return [css``];
+    return [
+      css`
+        fieldset {
+          padding: 20px;
+          margin: 20px;
+        }
+      `
+    ];
   }
   render() {
     return html`
       <fieldset>
-        <legend id="legend" ?hidden="${!this.schema.title}">
-          ${this.schema.title}
-        </legend>
-        <div ?hidden="${!this.schema.description}">
-          ${this.schema.description}
-        </div>
-        <div class="item-fields">
-          <slot></slot>
-        </div>
+        ${this.legend} ${this.description} ${this.fields}
       </fieldset>
+    `;
+  }
+  get legend() {
+    return html`
+      <legend id="legend" ?hidden="${!this.schema.title}">
+        ${this.schema.title}
+      </legend>
+    `;
+  }
+  get description() {
+    return html`
+      <div ?hidden="${!this.schema.description}">
+        ${this.schema.description}
+      </div>
+    `;
+  }
+  get fields() {
+    return html`
+      <div id="item-fields">
+        <slot></slot>
+      </div>
     `;
   }
   static get properties() {

@@ -13,12 +13,13 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
+ * @customElement a11y-collapse-group
  * @extends A11yCollapse
  * @see ../a11y-collapse.js
  * @demo ./demo/group.html collapse groups
  * @customElement a11y-collapse-group
  */
-class A11yCollapseGroup extends A11yCollapse {
+class A11yCollapseGroup extends LitElement {
   static get styles() {
     return [
       css`
@@ -57,17 +58,23 @@ class A11yCollapseGroup extends A11yCollapse {
     this.globalOptions = {};
     this.radio = false;
     this.__items = [];
-    this.addEventListener("a11y-collapse-attached", function(e) {
+    this.addEventListener("a11y-collapse-attached", e => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       this._attachItem(e.detail);
       e.stopPropagation();
       e.stopImmediatePropagation();
     });
-    this.addEventListener("a11y-collapse-detached", function(e) {
+    this.addEventListener("a11y-collapse-detached", e => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       this._detachItem(e.detail);
       e.stopPropagation();
       e.stopImmediatePropagation();
     });
-    this.addEventListener("a11y-collapse-click", function(e) {
+    this.addEventListener("a11y-collapse-click", e => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       this.radioToggle(e.detail);
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -90,6 +97,13 @@ class A11yCollapseGroup extends A11yCollapse {
         reflect: true
       },
       /**
+       * is disabled?
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
        * is every a11y-collapse item radio button?
        */
       radio: {
@@ -105,6 +119,10 @@ class A11yCollapseGroup extends A11yCollapse {
   }
   static get haxProperties() {
     return null;
+  }
+
+  get items() {
+    return this.__items;
   }
 
   /**
@@ -175,13 +193,16 @@ class A11yCollapseGroup extends A11yCollapse {
   }
 
   disconnectedCallback() {
-    this.removeEventListener("a11y-collapse-click", function(e) {
+    this.removeEventListener("a11y-collapse-click", e => {
+      e.stopPropagation();
       this.radioToggle(e.detail);
     });
-    this.removeEventListener("a11y-collapse-attached", function(e) {
+    this.removeEventListener("a11y-collapse-attached", e => {
+      e.stopPropagation();
       this.push("__items", e.detail);
     });
-    this.removeEventListener("a11y-collapse-detached", function(e) {
+    this.removeEventListener("a11y-collapse-detached", e => {
+      e.stopPropagation();
       this._detachItem(e.detail);
     });
     super.disconnectedCallback();

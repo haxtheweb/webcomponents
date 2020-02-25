@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `a11y-tab`
- * @customElement a11y-tab
  * a single tab within `a11y-tabs`
  * 
 ### Styling
@@ -19,7 +18,7 @@ Custom property | Description | Default
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
-
+ * @customElement a11y-tab
  * @demo ./demo/index.html
  * @see ../a11y-tabs.js
  */
@@ -32,6 +31,9 @@ class A11yTab extends LitElement {
           height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
           overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
         }
+        /*:host([disabled]) {
+          display:none;
+        }*/
         :host([hidden]) {
           display: none;
         }
@@ -46,12 +48,11 @@ class A11yTab extends LitElement {
   }
   render() {
     return html`
-      <span class="sr-only">Tab ${this.__xOfY}</span>
+      <span class="sr-only">Tab ${this.xOfY}</span>
       <slot></slot>
-      <span class="sr-only"
-        >End of tab ${this.__xOfY}. Back to
-        <a href="${this.__toTop}">tabs</a>.</span
-      >
+      <span class="sr-only">
+        End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
+      </span>
     `;
   }
   // properties available to the custom element for data binding
@@ -70,6 +71,14 @@ class A11yTab extends LitElement {
       flagIcon: {
         type: String,
         attribute: "flag-icon"
+      },
+      /**
+       * whether the tabbed interface is disabled
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true,
+        attribute: "disabled"
       },
       /**
        * whether the tab is hidden
@@ -97,16 +106,16 @@ class A11yTab extends LitElement {
         type: String
       },
       /**
-       * the anchor back to the top of the tab list (`a11y-tabs` id)
+       * order of the tab
        */
-      __toTop: {
-        type: String
+      order: {
+        type: Number
       },
       /**
-       * tab x of y text, eg. `2 of 3`
+       * total number of tabs
        */
-      __xOfY: {
-        type: String
+      total: {
+        type: Number
       }
     };
   }
@@ -118,9 +127,13 @@ class A11yTab extends LitElement {
     this.icon = null;
     this.id = null;
     this.label = null;
-    this.__xOfY = null;
-    this.__toTop = null;
+    this.order = 1;
+    this.total = 1;
     this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
+  }
+
+  get xOfY() {
+    return `${this.order} of ${this.total}`;
   }
 
   disconnectedCallback() {
@@ -132,6 +145,10 @@ class A11yTab extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (["id", "order"].includes(propName) && !this.id)
+        this.id = `tab-${this.order}`;
+      if (["label", "order"].includes(propName) && !this.label)
+        this.label = `Tab ${this.order}`;
       if (propName === "flag") this._tabChanged();
       if (propName === "flagIcon") this._tabChanged();
       if (propName === "icon") this._tabChanged();

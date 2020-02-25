@@ -78,12 +78,12 @@
                       establishedDate: {
                         title: "Established Date",
                         type: "string",
-                        format: "date-time"
+                        format: "date"
                       },
                       closedDate: {
                         title: "Closed Date",
                         type: ["string", "null"],
-                        format: "date-time"
+                        format: "date"
                       }
                     }
                   },
@@ -94,16 +94,22 @@
                       phoneNumbers: {
                         title: "Phone numbers",
                         type: "array",
+                        sortBy: ["order","type"],
                         items: {
                           type: "object",
                           properties: {
+                            order: {
+                              title: "Sort Order",
+                              type: "integer"
+                            },
                             type: {
                               title: "Type",
                               type: "string"
                             },
                             phoneNumber: {
                               title: "Phone Number",
-                              type: "string"
+                              type: "string",
+                              previewField: true
                             }
                           }
                         }
@@ -117,7 +123,8 @@
                           properties: {
                             title: {
                               title: "Title",
-                              type: "string"
+                              type: "string",
+                              previewField: true
                             },
                             salary: {
                               title: "Salary",
@@ -128,125 +135,41 @@
                             }
                           }
                         }
-                      },
-                      geo: {
-                        title: "Geo coordinates",
-                        type: "array",
-                        description:
-                          "The geo coordinates of this location, first item being the longitude, second the latitude",
-                        items: {
-                          type: "number"
-                        }
-                      },
-                      services: {
-                        title: "Services",
-                        type: "array",
-                        description: "Services this business offers (ex. walk-in)",
-                        items: {
-                          type: "string"
-                        }
-                      }
-                    }
-                  },
-                  object: {
-                    title: "Basic object page",
-                    type: "object",
-                    properties: {
-                      hoursOfOperation: {
-                        title: "Hours of operation",
-                        type: "object",
-                        description:
-                          "Hours of operation are denoted using day of the week as the key and hour as the value. Hour should be in 24 hours format.",
-                        properties: {
-                          Sun: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Mon: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Tue: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Wed: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Thu: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Fri: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          },
-                          Sat: {
-                            type: "array",
-                            items: {
-                              type: "array",
-                              minItems: 2,
-                              maxItems: 2,
-                              items: {
-                                type: "string"
-                              }
-                            }
-                          }
-                        }
                       }
                     }
                   }
                 }
               };
+            schema.value = {
+              "basic-input": {
+                "name":"NikkiMK"
+              },
+              "arrays": {
+                "phoneNumbers": [
+                  {
+                    "order": "1",
+                    "type": "cell",
+                    "phoneNumber": "1-555-555-5555"
+                  },
+                  {
+                    "order": "2",
+                    "type": "home",
+                    "phoneNumber": "1-555-867-5309"
+                  },
+                  {
+                    "order": "3",
+                    "type": "work",
+                    "phoneNumber": "1-800-888-8888"
+                  }
+                ]
+              }
+            };
             schema.schema = data;
-            console.log('loaded',schema,data,schema.schema);
           };
         </script>
         <template>
-          <simple-fields-schema id="schema"></simple-fields-schema>
+          <form id="form"><simple-fields-schema id="schema"></simple-fields-schema></form>
+          <button onclick="console.log(document.getElementById('form'),document.getElementById('form').value)">Try me</button>
         </template>
       </demo-snippet>
     </div>

@@ -178,10 +178,14 @@ class A11yTabs extends LitElement {
           color: var(--a11y-tabs-focus-color);
           background-color: var(--a11y-tabs-faded-background);
         }
-
-        :host #tabs paper-button[disabled] {
+        :host #tabs paper-button.active[disabled] {
           color: var(--a11y-tabs-focus-color);
           background-color: var(--a11y-tabs-background);
+          opacity: 1;
+        }
+        :host #tabs paper-button:not(.active)[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
         }
 
         :host([vertical]) #tabs paper-button[disabled] {
@@ -224,14 +228,15 @@ class A11yTabs extends LitElement {
           this.responsiveSize
         )}"
       >
-        ${this.__items.map(
-          tab => html`
+        ${this.tabs.map(
+          (tab, i) => html`
             <li>
               <paper-button
                 id="${tab.id}-button"
                 controls="${tab.id}"
-                @click="${e => this._handleTab(`${tab.id}`)}"
-                ?disabled="${tab.id === this.activeTab}"
+                class="${tab.id === this.activeTab ? "active" : ""}"
+                @click="${e => this._handleTab(tab)}"
+                ?disabled="${tab.id === this.activeTab || tab.disabled}"
                 .flag="${tab.flag}"
               >
                 <iron-icon
@@ -381,7 +386,7 @@ class A11yTabs extends LitElement {
     this.responsiveSize = "xs";
     this.vertical = false;
     this.__hasIcons = false;
-    this.__items = [];
+    this.__tabs = [];
     this.updateItems();
     this.__observer = new MutationObserver(callback);
     this._breakpointChanged();
@@ -393,6 +398,13 @@ class A11yTabs extends LitElement {
     });
     this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
+  get tabs() {
+    console.log(this.__tabs);
+    return this.__tabs
+      ? Object.keys(this.__tabs).map(index => this.__tabs[index])
+      : [];
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -442,23 +454,14 @@ class A11yTabs extends LitElement {
    * updates the list of items based on slotted a11y-tab elements
    */
   updateItems(e) {
-    this.__items = [];
-    let tabs = this.querySelectorAll("a11y-tab"),
-      ctr = 1;
+    this.__tabs = this.querySelectorAll("a11y-tab");
     this.__hasIcons = true;
     if (!this.id) this.id = this._generateUUID();
-    if (tabs && tabs.length > 0)
-      tabs.forEach(tab => {
-        this.__items.push({
-          id: tab.id || `tab-${ctr}`,
-          flag: tab.flag,
-          flagIcon: tab.flagIcon,
-          icon: tab.icon,
-          label: tab.label || `Tab ${ctr}`
-        });
+    if (this.__tabs && this.__tabs.length > 0)
+      this.__tabs.forEach((tab, index) => {
         if (!tab.icon) this.__hasIcons = false;
-        tab.__xOfY = `${ctr} of ${tabs.length}`;
-        tab.__toTop = this.id;
+        tab.order = index + 1;
+        tab.total = this.__tabs.length;
       });
     this.selectTab(this.activeTab);
   }
@@ -494,8 +497,8 @@ class A11yTabs extends LitElement {
    * handles a tab being tapped and sets the new active tab
    * @param {event} e the tab tap event
    */
-  _handleTab(id) {
-    this.activeTab = id;
+  _handleTab(tab) {
+    if (!tab.disabled) this.activeTab = tab.id;
   }
   /**
    * ensures that there is always an id for this tabbed interface so that we can link back to the top of it

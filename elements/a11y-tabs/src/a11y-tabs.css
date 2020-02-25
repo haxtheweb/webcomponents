@@ -122,11 +122,16 @@
   background-color: var(--a11y-tabs-faded-background);
 }
 
-:host #tabs paper-button[disabled] {
+:host #tabs paper-button.active[disabled] {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-background);
+  opacity: 1;
 }
 
+:host #tabs paper-button:not(.active)[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 :host([vertical]) #tabs paper-button[disabled] {
   border-right-color: var(--a11y-tabs-background);
 }
