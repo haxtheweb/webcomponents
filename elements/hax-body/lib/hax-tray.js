@@ -37,7 +37,7 @@ class HaxTray extends winEventsElement(LitElement) {
       }
     };
     this.expanded = true;
-    this.activeTab = 'item-0';
+    this.activeTab = "item-0";
     this.activeSchema = [];
     this.canUndo = true;
     this.canRedo = true;
@@ -440,11 +440,13 @@ class HaxTray extends winEventsElement(LitElement) {
   }
   __simpleFieldsClick(e) {
     try {
-      this.activeTab = this.shadowRoot.querySelector('#settingsform').shadowRoot.querySelector('eco-json-schema-tabs').shadowRoot.querySelector('a11y-tabs').activeTab;
-    }
-    catch(e) {
+      this.activeTab = this.shadowRoot
+        .querySelector("#settingsform")
+        .shadowRoot.querySelector("eco-json-schema-tabs")
+        .shadowRoot.querySelector("a11y-tabs").activeTab;
+    } catch (e) {
       // in case it missed somehow like w/ an incredibly slow repaints
-      this.activeTab = 'item-0';
+      this.activeTab = "item-0";
     }
   }
   /**
@@ -1045,16 +1047,19 @@ class HaxTray extends winEventsElement(LitElement) {
         ...this.activeValue
       };
       // allow form to rebuild, then switch it to the correct input
-      if (this.shadowRoot && this.shadowRoot.querySelector('#settingsform').shadowRoot) {
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#settingsform").shadowRoot
+      ) {
         setTimeout(() => {
           // wrap in a try just to be safe
           try {
             // @todo review if they have any items in them and then disable appropriately
-            this.shadowRoot.querySelector('#settingsform').shadowRoot.querySelector('eco-json-schema-tabs').shadowRoot.querySelector('a11y-tabs').activeTab = this.activeTab;
-          }
-          catch(e) {
-
-          }
+            this.shadowRoot
+              .querySelector("#settingsform")
+              .shadowRoot.querySelector("eco-json-schema-tabs")
+              .shadowRoot.querySelector("a11y-tabs").activeTab = this.activeTab;
+          } catch (e) {}
         }, 10);
       }
     }
