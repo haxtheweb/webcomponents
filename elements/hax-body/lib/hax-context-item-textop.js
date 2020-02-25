@@ -31,6 +31,7 @@ class HaxContextItemTextop extends LitElement {
     super();
     this.label = "";
     this.action = false;
+    this.disabled = false;
     this.light = false;
     this.mini = false;
     this.menu = false;
@@ -51,6 +52,7 @@ class HaxContextItemTextop extends LitElement {
       ></iron-a11y-keys>
       <hax-toolbar-item
         id="button"
+        ?disabled="${this.disabled}"
         icon="${this.icon}"
         ?hidden="${!this.icon}"
         tooltip-direction="${this.direction}"
@@ -76,6 +78,13 @@ class HaxContextItemTextop extends LitElement {
       light: {
         type: Boolean,
         value: false
+      },
+      /**
+       * disabled state
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
       },
       /**
        * an optional value to send along in the press. Allows for
@@ -179,18 +188,20 @@ class HaxContextItemTextop extends LitElement {
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent(e) {
-    this.dispatchEvent(
-      new CustomEvent("hax-context-item-selected", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: {
-          target: this,
-          eventName: this.eventName,
-          value: this.value
-        }
-      })
-    );
+    if (!this.disabled) {
+      this.dispatchEvent(
+        new CustomEvent("hax-context-item-selected", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            target: this,
+            eventName: this.eventName,
+            value: this.value
+          }
+        })
+      );
+    }
   }
 }
 window.customElements.define(HaxContextItemTextop.tag, HaxContextItemTextop);

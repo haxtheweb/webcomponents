@@ -43,7 +43,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         : this.isA11yMedia
         ? html`
             <a11y-media-player
-              .accent-color="${this.accentColor || undefined}"
+              accent-color="${this.accentColor}"
               ?audio-only="${this.audioOnly}"
               ?dark="${this.dark}"
               ?dark-transcript="${this.darkTranscript}"
@@ -157,6 +157,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
         handles: [
           {
             type: "video",
+            type_exclusive: true,
             source: "source",
             title: "caption",
             caption: "caption",

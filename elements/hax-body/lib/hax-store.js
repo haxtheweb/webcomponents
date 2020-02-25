@@ -67,6 +67,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       voiceDebug: {
         type: Boolean
       },
+      activeGizmo: {
+        type: Object
+      },
       voiceRespondsTo: {
         type: String,
         attribute: "voice-responses-to"
@@ -440,6 +443,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           // see if anything coming across claims to be a backend for adding items
           // and then enable the upload button
           if (apps[i].connection.operations.add) {
+            this.canSupportUploads = true;
             window.HaxStore.write("canSupportUploads", true, this);
           }
           window.HaxStore.instance.appendChild(app);
@@ -557,6 +561,33 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
+  _haxContextOperation(e) {
+    let detail = e.detail;
+    if (this.activeNode) {
+      // support a simple insert event to bubble up or everything else
+      switch (detail.eventName) {
+        // directional / proportion operations
+        case "hax-align-left":
+          this.activeNode.style.float = null;
+          this.activeNode.style.margin = null;
+          this.activeNode.style.display = null;
+          break;
+        case "hax-align-center":
+          this.activeNode.style.float = null;
+          this.activeNode.style.margin = "0 auto";
+          this.activeNode.style.display = "block";
+          break;
+        case "hax-align-right":
+          this.activeNode.style.float = "right";
+          this.activeNode.style.margin = "0 auto";
+          this.activeNode.style.display = "block";
+          break;
+        case "hax-size-change":
+          this.activeNode.style.width = detail.value + "%";
+          break;
+      }
+    }
+  }
   /**
    * This only send if they consented to storage of data locally
    */
@@ -583,6 +614,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
       if (propName == "editMode") {
         this._editModeChanged(this[propName], oldValue);
+      }
+      if (propName == "activeNode") {
+        this.activeGizmo = this._calculateActiveGizmo(this[propName]);
+        window.HaxStore.write("activeGizmo", this.activeGizmo, this);
       }
       // composite obervation
       if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
@@ -617,6 +652,17 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this.__appStoreData,
         this.haxAutoloader
       );
+    }
+  }
+  _calculateActiveGizmo(activeNode) {
+    if (activeNode == null) {
+      return null;
+    }
+    for (var gizmoposition in this.gizmoList) {
+      var gizmo = this.gizmoList[gizmoposition];
+      if (gizmo.tag === activeNode.tagName.toLowerCase()) {
+        return gizmo;
+      }
     }
   }
   /**
@@ -945,6 +991,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "archive",
       "markdown",
       "html",
+      "wikipedia",
       "content",
       "text",
       "inline",
@@ -959,6 +1006,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.__winEvents = {
       "hax-register-properties": "_haxStoreRegisterProperties",
       "hax-consent-tap": "_haxConsentTap",
+      "hax-context-item-selected": "_haxContextOperation",
       onbeforeunload: "_onBeforeUnload",
       paste: "_onPaste",
       "hax-register-app": "_haxStoreRegisterApp",
@@ -967,7 +1015,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "hax-store-write": "_writeHaxStore",
       "hax-register-core-piece": "_haxStorePieceRegistrationManager",
       "hax-register-body": "_haxStoreRegisterBody",
-      "grid-plate-add-item": "haxInsertAnything",
       "hax-insert-content": "_haxStoreInsertContent",
       "hax-insert-content-array": "_haxStoreInsertMultiple",
       "hax-add-voice-command": "_addVoiceCommand"
@@ -1008,20 +1055,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
+    // imports app, blox, stax definitions
     import("./hax-app.js");
-    import("./hax-stax.js");
-    import("./hax-blox.js");
     import("@polymer/polymer/lib/utils/settings.js").then(esModule => {
       esModule.setPassiveTouchGestures(true);
     });
     import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
       this.haxToast = window.SimpleToast.requestAvailability();
-    });
-    import("@lrnwebcomponents/code-sample/code-sample.js").then(esModule => {
-      this.setHaxProperties(
-        esModule.CodeSample.haxProperties,
-        esModule.CodeSample.tag
-      );
     });
 
     import("@lrnwebcomponents/media-behaviors/media-behaviors.js");
@@ -1148,6 +1188,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           },
           {
             type: "image",
+            type_exclusive: true,
             source: "src",
             height: "height",
             width: "width"
@@ -1328,6 +1369,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(p, "p");
+    let h = {
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
+      settings: {
+        quick: [],
+        configure: [],
+        advanced: []
+      }
+    };
+    for (var i = 1; i < 6; i++) {
+      this.setHaxProperties(h, "h" + i);
+    }
     let hr = {
       canScale: {
         min: 25,
@@ -1475,7 +1529,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
-          this.activeContainerNode.appendChild(node);
+          this.activeHaxBody.haxInsert(
+            details.tag,
+            details.content,
+            properties
+          );
           this.activeHaxBody.shadowRoot.querySelector(
             "#textcontextmenu"
           ).highlightOps = false;
@@ -1494,33 +1552,26 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       } else {
         this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
+      // shift the last used thing to the front of the array
+      // that way the list is actually sorted based on usage
+      // delay though in the event other things depend on the array
+      // as it currently exists
+      setTimeout(() => {
+        let gizmoList = this.gizmoList;
+        for (var gizmoposition in gizmoList) {
+          let gizmo = gizmoList[gizmoposition];
+          // find the tag and then move this position to the front of the array
+          if (gizmo.tag === details.tag) {
+            let tmp = gizmoList[gizmoposition];
+            delete gizmoList[gizmoposition];
+            this.gizmoList.unshift(tmp);
+          }
+        }
+        // spread for accurate data usage locally, then write store globally
+        this.gizmoList = [...gizmoList];
+        window.HaxStore.write("gizmoList", gizmoList, this);
+      }, 10);
     }
-  }
-  /**
-   * Present all elements to potentially insert
-   */
-  haxInsertAnything(e) {
-    let props = {};
-    if (e && e.detail && e.detail.properties) {
-      props = e.detail.properties;
-    }
-    let haxElements = [];
-    for (var i in window.HaxStore.instance.gizmoList) {
-      haxElements.push(
-        window.HaxStore.haxElementPrototype(
-          window.HaxStore.instance.gizmoList[i],
-          props,
-          ""
-        )
-      );
-    }
-    // hand off to hax-app-picker to deal with the rest of this
-    window.HaxStore.instance.haxAppPicker.presentOptions(
-      haxElements,
-      "element",
-      "Add an element",
-      "gizmo"
-    );
   }
   /**
    * Optional send array, to improve performance and event bubbling better
@@ -2393,7 +2444,12 @@ window.HaxStore.guessGizmoType = guess => {
 /**
  * Try and guess the Gizmo based on what we were just handed
  */
-window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
+window.HaxStore.guessGizmo = (
+  guess,
+  values,
+  skipPropMatch = false,
+  preferExclusive = false
+) => {
   var matches = [];
   if (typeof guess !== typeof undefined) {
     var store = window.HaxStore.instance;
@@ -2423,9 +2479,15 @@ window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
               }
               // omg... we just found a match on a property from who knows where!
               if (match || skipPropMatch) {
-                matches.push(
-                  window.HaxStore.haxElementPrototype(gizmo, props, "")
-                );
+                if (preferExclusive && gizmo.handles[i].type_exclusive) {
+                  return [
+                    window.HaxStore.haxElementPrototype(gizmo, props, "")
+                  ];
+                } else {
+                  matches.push(
+                    window.HaxStore.haxElementPrototype(gizmo, props, "")
+                  );
+                }
               }
             }
           }

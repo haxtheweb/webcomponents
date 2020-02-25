@@ -205,7 +205,7 @@ class HaxAppSearchResult extends LitElement {
     ) {
       gizmoType = window.HaxStore.guessGizmoType(map.source);
     }
-    let haxElements = window.HaxStore.guessGizmo(gizmoType, map);
+    let haxElements = window.HaxStore.guessGizmo(gizmoType, map, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {

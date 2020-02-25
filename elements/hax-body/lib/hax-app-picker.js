@@ -257,6 +257,7 @@ class HaxAppPicker extends LitElement {
     if (typeof this._elements[key] !== typeof undefined) {
       // haxElement is a unique case
       if (this.pickerType == "gizmo") {
+        this._elements[key].replace = true;
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {
             bubbles: true,

@@ -17,8 +17,12 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
           display: block;
         }
         .toolbar-inner {
-          display: inline-flex;
           padding: 0;
+          position: sticky;
+          background-color: white;
+          width: 100%;
+          top: 0;
+          z-index: 1;
         }
         .item-wrapper {
           text-align: center;

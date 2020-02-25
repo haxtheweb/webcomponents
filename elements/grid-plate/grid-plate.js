@@ -135,7 +135,7 @@ class GridPlateLayoutOptions {
     this.options = {};
     let layoutFlip = Object.keys(this.layouts);
     // loop through all the supplied layouts to get the HAX layout options & descriptions
-    for (let i = 0; i < layoutFlip.length; i++) {
+    for (let i = 1; i < layoutFlip.length; i++) {
       this.options[layoutFlip[i]] = this.layouts[layoutFlip[i]].columnLayout;
     }
   }
@@ -158,17 +158,16 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-3
-          );
-          --grid-plate-active-border-color: #000000;
+          --grid-plate-editable-border-color: #3b97e3;
+          --grid-plate-active-border-color: #3b97e3;
           --grid-plate-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
-          --grid-plate-arrow-color: #000000;
-          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-3);
+          --grid-plate-arrow-color: #ffffff;
+          --grid-plate-arrow-color-hover: #000000;
+          --grid-plate-arrow-bg: #3b97e3;
         }
         :host .row {
           width: 100%;
@@ -282,7 +281,7 @@ class GridPlate extends LitElement {
           color: var(--grid-plate-arrow-color);
           opacity: 1;
           background-color: var(--grid-plate-arrow-bg);
-          border-radius: 50%;
+          border-radius: none;
           box-sizing: content-box !important;
           z-index: 2;
           min-width: unset;
@@ -291,8 +290,7 @@ class GridPlate extends LitElement {
         paper-icon-button:hover {
           opacity: 1;
           visibility: visible;
-          background-color: var(--grid-plate-arrow-color);
-          color: var(--grid-plate-arrow-bg);
+          color: var(--grid-plate-arrow-color-hover);
         }
         #drag {
           cursor: move;
@@ -311,6 +309,9 @@ class GridPlate extends LitElement {
         .button-holding-pen {
           position: relative;
         }
+        .button-holding-pen[hidden] {
+          display: none;
+        }
       `
     ];
   }
@@ -318,6 +319,7 @@ class GridPlate extends LitElement {
     super();
     this.droppable = false;
     this.ignoreHax = false;
+    this.hideOps = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
@@ -328,10 +330,10 @@ class GridPlate extends LitElement {
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@polymer/iron-icons/hardware-icons.js");
+      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("dragenter", this.dragEnterGrid.bind(this));
     }, 0);
@@ -342,10 +344,10 @@ class GridPlate extends LitElement {
    */
   render() {
     return html`
-      <div class="button-holding-pen">
+      <div class="button-holding-pen" ?hidden="${this.hideOps}">
         <paper-icon-button
           class="direction"
-          icon="editor:drag-handle"
+          icon="hax:arrow-all"
           title="Drag"
           draggable="true"
           id="drag"
@@ -582,7 +584,6 @@ class GridPlate extends LitElement {
       if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
         let col = this.shadowRoot.querySelector("#col" + j);
         col.addEventListener("drop", this.dropEvent.bind(this));
-        col.addEventListener("dblclick", this.dblclick.bind(this));
         col.addEventListener("dragenter", this.dragEnter.bind(this));
         col.addEventListener("dragleave", this.dragLeave.bind(this));
         col.addEventListener("dragover", function(e) {
@@ -680,6 +681,7 @@ class GridPlate extends LitElement {
           "options",
           "droppable",
           "ignorehax",
+          "hideops",
           "disableresponsive",
           "activeitem"
         ]
@@ -688,10 +690,23 @@ class GridPlate extends LitElement {
   }
   static get properties() {
     return {
+      /**
+       * Flag to allow hiding button based operations
+       */
+      hideOps: {
+        type: Boolean
+      },
+      /**
+       * allows other systems to trigger editMode in grid plate via property for D&D
+       */
       droppable: {
         type: Boolean,
         reflect: true
       },
+      /**
+       * Flag for when using grid-plate in a system WITH hax yet not wanting to
+       * be activated (like a HAXcms / other CMS theme layer)
+       */
       ignoreHax: {
         type: Boolean,
         attribute: "ignore-hax"
@@ -1222,34 +1237,20 @@ class GridPlate extends LitElement {
     }
   }
   /**
-   * On double check, fire an event for HAX to insert a paragraph.
-   * If they aren't using HAX then it won't do anything
-   */
-  dblclick(e) {
-    if (this.editMode && e.target.id) {
-      let detail = {};
-      detail.properties = {
-        slot: e.target.id.replace("col", "col-")
-      };
-      this.dispatchEvent(
-        new CustomEvent("grid-plate-add-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: detail
-        })
-      );
-    }
-  }
-  /**
    * Sort children based on slot name
    */
   __sortChildren() {
     try {
-      // select all children w/ a slot attribute and convert to an Array
-      let children = Array.prototype.slice.call(
-        this.querySelectorAll("[slot]"),
-        0
+      // select all direct children w/ a slot attribute and convert to an Array
+      let children = Array.prototype.reduce.call(
+        this.children,
+        function(acc, e) {
+          if (e.slot) {
+            acc.push(e);
+          }
+          return acc;
+        },
+        []
       );
       // sort the children by slot id being low to high
       children = children.sort(function(a, b) {
@@ -1264,7 +1265,10 @@ class GridPlate extends LitElement {
       // loop through and append these back into the grid plate.
       // which will put them in the right order
       children.forEach(el => {
-        this.appendChild(el);
+        // sanity check that we only move things that are a direct child
+        if (el.parentNode === this) {
+          this.appendChild(el);
+        }
       });
     } catch (error) {
       console.warn(error);
@@ -1468,6 +1472,8 @@ class GridPlate extends LitElement {
       if (e.detail.property === "editMode" && this.ignoreHax) {
         // do nothing, we were told to ignore hax
       } else {
+        // if HAX modified our edit state then hide operations
+        this.hideOps = true;
         this[e.detail.property] = e.detail.value;
       }
     }

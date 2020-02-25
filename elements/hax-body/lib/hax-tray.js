@@ -24,19 +24,21 @@ class HaxTray extends winEventsElement(LitElement) {
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
-      "hax-active-hover-name": "_activeNameChange"
+      "hax-store-property-updated": "_haxStorePropertyUpdated"
     };
-    this.formKey = "configure";
     this.activeValue = {
       settings: {
+        layout: {
+          __position: "hax-align-left",
+          __scale: 100
+        },
         configure: {},
         advanced: {}
       }
     };
     this.expanded = true;
+    this.activeTab = "item-0";
     this.activeSchema = [];
-    this.activeOperationName = "";
     this.canUndo = true;
     this.canRedo = true;
     this.elementAlign = "right";
@@ -53,15 +55,16 @@ class HaxTray extends winEventsElement(LitElement) {
       import("@polymer/iron-icons/av-icons.js");
       import("@polymer/iron-icons/maps-icons.js");
       import("@polymer/iron-icons/places-icons.js");
+      import("@polymer/paper-slider/paper-slider.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
+      import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
       import("./hax-tray-upload.js");
       import("@lrnwebcomponents/simple-fields/simple-fields.js");
       this.addEventListener(
         "hax-tray-button-click",
         this._processTrayEvent.bind(this)
       );
-      // @todo stage collapse and remove these as we can
       import("./hax-gizmo-browser.js");
       import("./hax-app-browser.js");
       import("./hax-blox-browser.js");
@@ -79,6 +82,7 @@ class HaxTray extends winEventsElement(LitElement) {
     ) {
       if (
         e.detail.property === "globalPreferences" ||
+        e.detail.property === "activeGizmo" ||
         e.detail.property === "activeNode"
       ) {
         this[e.detail.property] = {};
@@ -116,7 +120,7 @@ class HaxTray extends winEventsElement(LitElement) {
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
-          right: calc(-1 * var(---hax-tray-width, 300px) + 120px);
+          right: calc(-1 * var(---hax-tray-width, 300px) + 94px);
           pointer-events: all;
         }
         :host([edit-mode][expanded]) .wrapper {
@@ -129,7 +133,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         :host([edit-mode][element-align="left"]) .wrapper {
           right: unset;
-          left: calc(-1 * var(---hax-tray-width, 300px) + 120px);
+          left: calc(-1 * var(---hax-tray-width, 300px) + 94px);
         }
         :host([edit-mode][element-align="left"][expanded]) .wrapper {
           right: unset;
@@ -152,6 +156,9 @@ class HaxTray extends winEventsElement(LitElement) {
           opacity: 0;
           visibility: hidden;
         }
+        *[hidden] {
+          display: none;
+        }
         a11y-collapse-group {
           font-size: 14px;
           margin: 0;
@@ -168,8 +175,12 @@ class HaxTray extends winEventsElement(LitElement) {
           --a11y-collapse-padding-bottom: 0px;
           --a11y-collapse-padding-left: 0px;
         }
+        a11y-collapse:not([expanded]) div[slot="content"] {
+          display: none;
+        }
         a11y-collapse div[slot="heading"] {
           cursor: pointer;
+          font-size: 16px;
         }
         a11y-collapse:hover {
           --a11y-collapse-heading-background-color: var(
@@ -209,7 +220,7 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         div[slot="heading"] {
           margin: 0;
-          padding: 12px 8px;
+          padding: 10px;
         }
         :host([element-align="right"]) #button {
           right: 0;
@@ -299,7 +310,6 @@ class HaxTray extends winEventsElement(LitElement) {
                     label="${this.traySizeText}"
                   ></hax-tray-button>
                 `}
-            <div class="active-op-name">${this.activeOperationName}</div>
           </div>
           <div class="quick">
             <slot name="tray-buttons-pre"></slot>
@@ -324,6 +334,7 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
             <hax-tray-button
               mini
+              hidden
               icon="image:image"
               label="Insert image"
               event-name="insert-tag"
@@ -353,6 +364,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:undo"
+              hidden
               ?disabled="${!this.canUndo}"
               label="Undo previous action"
               event-name="undo"
@@ -362,6 +374,7 @@ class HaxTray extends winEventsElement(LitElement) {
             <hax-tray-button
               mini
               icon="icons:redo"
+              hidden
               ?disabled="${!this.canRedo}"
               label="Redo previous action"
               event-name="redo"
@@ -373,17 +386,14 @@ class HaxTray extends winEventsElement(LitElement) {
               ?hidden="${this.hidePreferencesButton}"
               event-name="open-preferences-dialog"
               icon="settings"
-              label="Editor preferences"
+              label="Advanced settings"
               voice-command="open (editor) preferences"
             ></hax-tray-button>
           </div>
         </div>
         <a11y-collapse-group radio accordion>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse
-            id="settingscollapse"
-            ?disabled="${!this.activeTagName}"
-          >
+          <a11y-collapse id="settingscollapse">
             <div slot="heading">
               <iron-icon icon="icons:settings"></iron-icon> ${this
                 .activeTagName}
@@ -392,11 +402,12 @@ class HaxTray extends winEventsElement(LitElement) {
             <div slot="content">
               <simple-fields
                 id="settingsform"
+                @click="${this.__simpleFieldsClick}"
                 @value-changed="${this.__valueChangedEvent}"
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse>
+          <a11y-collapse id="addcollapse">
             <div slot="heading" @click="${this._gizmoBrowserRefresh}">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -426,6 +437,17 @@ class HaxTray extends winEventsElement(LitElement) {
         </a11y-collapse-group>
       </div>
     `;
+  }
+  __simpleFieldsClick(e) {
+    try {
+      this.activeTab = this.shadowRoot
+        .querySelector("#settingsform")
+        .shadowRoot.querySelector("eco-json-schema-tabs")
+        .shadowRoot.querySelector("a11y-tabs").activeTab;
+    } catch (e) {
+      // in case it missed somehow like w/ an incredibly slow repaints
+      this.activeTab = "item-0";
+    }
   }
   /**
    * Handlers to refresh contents on click
@@ -604,12 +626,6 @@ class HaxTray extends winEventsElement(LitElement) {
         attribute: "element-align"
       },
       /**
-       * active item name, useful to show users what they are working with
-       */
-      activeOperationName: {
-        type: String
-      },
-      /**
        * Light variant for save button
        */
       light: {
@@ -669,8 +685,14 @@ class HaxTray extends winEventsElement(LitElement) {
       /**
        * Tag name / what to display based on active element
        */
+      activeTagIcon: {
+        type: String
+      },
       activeTagName: {
         type: String
+      },
+      activeGizmo: {
+        type: Object
       },
       /**
        * State of the panel
@@ -743,16 +765,29 @@ class HaxTray extends winEventsElement(LitElement) {
           this.traySizeText = "Expand";
         }
       }
+      if (propName == "activeGizmo") {
+        if (this.activeGizmo) {
+          this.activeTagName = this.activeGizmo.title;
+          this.activeTagIcon = this.activeGizmo.icon;
+        } else {
+          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
+            this.shadowRoot
+              .querySelector('#addcollapse div[slot="heading"]')
+              .click();
+          }
+        }
+      }
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
-          if (this.activeNode.getAttribute("data-hax-ray") != null) {
-            this.activeTagName = this.activeNode.getAttribute("data-hax-ray");
-          } else {
-            this.activeTagName = this.activeNode.tagName;
-          }
           if (!this.shadowRoot.querySelector("#settingscollapse").expanded) {
             this.shadowRoot
               .querySelector('#settingscollapse div[slot="heading"]')
+              .click();
+          }
+        } else {
+          if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
+            this.shadowRoot
+              .querySelector('#addcollapse div[slot="heading"]')
               .click();
           }
         }
@@ -763,9 +798,6 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         this._setupForm();
       }
-      if (propName == "globalPreferences") {
-        this._globalPreferencesChanged(this[propName], oldValue);
-      }
     });
   }
   /**
@@ -775,6 +807,10 @@ class HaxTray extends winEventsElement(LitElement) {
     let activeNode = this.activeNode;
     this.activeValue = {
       settings: {
+        layout: {
+          __position: "hax-align-left",
+          __scale: 100
+        },
         configure: {},
         advanced: {}
       }
@@ -788,16 +824,6 @@ class HaxTray extends winEventsElement(LitElement) {
     ) {
       let props =
         window.HaxStore.instance.elementList[activeNode.tagName.toLowerCase()];
-      let schema = {};
-      if (typeof activeNode.getHaxJSONSchemaType === "function") {
-        schema = window.HaxStore.instance.getHaxJSONSchema(
-          this.formKey,
-          props,
-          activeNode
-        );
-      } else {
-        schema = window.HaxStore.instance.getHaxJSONSchema(this.formKey, props);
-      }
       // generate a human name for this
       if (typeof props.gizmo.title === typeof undefined) {
         this.humanName = activeNode.tagName.replace("-", " ").toLowerCase();
@@ -841,6 +867,71 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         });
       }
+      // now we need to parse through for slotted items
+      // build a fake tree, then walk the configuration / advanced settings
+      // looking for slot types
+      let tmp = document.createElement("div");
+      tmp.innerHTML = this.activeHaxElement.content;
+      // step through each key
+      tmp.childNodes.forEach(el => {
+        // ensure we have a dom node and it isnt empty
+        if (el.nodeType === 1 && el.innerHTML !== typeof undefined) {
+          // walk props looking for a match
+          props.settings.configure.forEach(prop => {
+            // if we have a slot to match in the property AND it matches the attr
+            if (prop.slot === el.getAttribute("slot")) {
+              this.activeValue.settings.configure[prop.slot] = el.innerHTML;
+            }
+            // no slot and it didnt match so it has no slot
+            else if (
+              prop.slot == "" &&
+              (el.getAttribute("slot") == null ||
+                el.getAttribute("slot") == "null")
+            ) {
+              this.activeValue.settings.configure[prop.slot] = el.innerHTML;
+            }
+          });
+          // now advanced
+          props.settings.advanced.forEach(prop => {
+            if (prop.slot === el.getAttribute("slot")) {
+              this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
+            }
+            // no slot and it didnt match so it has no slot
+            else if (
+              prop.slot == "" &&
+              (el.getAttribute("slot") == null ||
+                el.getAttribute("slot") == "null")
+            ) {
+              this.activeValue.settings.advanced[prop.slot] = el.innerHTML;
+            }
+          });
+        }
+      });
+      // then we need to work on the layout piece
+      if (activeNode.style.width != "") {
+        this.activeValue.settings.layout.__scale = activeNode.style.width.replace(
+          "%",
+          ""
+        );
+      } else {
+        this.activeValue.settings.layout.__scale = 100;
+      }
+      if (
+        activeNode.style.display == "block" &&
+        activeNode.style.margin == "0px auto" &&
+        activeNode.style.float == "right"
+      ) {
+        this.activeValue.settings.layout.__position = "hax-align-right";
+      } else if (
+        activeNode.style.display == "block" &&
+        activeNode.style.margin == "0px auto"
+      ) {
+        this.activeValue.settings.layout.__position = "hax-align-center";
+      } else {
+        this.activeValue.settings.layout.__position = "hax-align-left";
+      }
+      this.activeHaxElement.properties.__scale = this.activeValue.settings.layout.__scale;
+      this.activeHaxElement.properties.__position = this.activeValue.settings.layout.__position;
       // tabs / deep objects require us to preview the value w/ the path correctly
       props.settings.configure.forEach((val, key) => {
         if (props.settings.configure[key].attribute) {
@@ -862,27 +953,92 @@ class HaxTray extends winEventsElement(LitElement) {
             props.settings.advanced[key].slot;
         }
       });
-      // generate a tab based UI
+      props.settings.layout = [];
+      // test if this element can be aligned
+      if (props.canPosition) {
+        props.settings.layout.push({
+          property: "__position",
+          title: "Alignment",
+          description: "Align content relative to other content",
+          inputMethod: "select",
+          value: this.activeValue.settings.layout.__position,
+          options: {
+            "hax-align-left": "Left",
+            "hax-align-center": "Center",
+            "hax-align-right": "Right"
+          }
+        });
+      }
+      // test if this element can be scaled
+      if (props.canScale) {
+        props.settings.layout.push({
+          property: "__scale",
+          title: "Width",
+          description: "Scale and resize content",
+          inputMethod: "slider",
+          value: this.activeValue.settings.layout.__scale,
+          min: props.canScale.min ? props.canScale.min : 12.5,
+          max: props.canScale.max ? props.canScale.max : 100,
+          step: props.canScale.step ? props.canScale.step : 12.5
+        });
+      }
+
+      // establish tabs container
       this.activeSchema = [
         {
           property: "settings",
           inputMethod: "tabs",
-          properties: [
-            {
-              property: "configure",
-              title: "Configure",
-              description: "Customize this element to your needs",
-              properties: props.settings.configure
-            },
-            {
-              property: "advanced",
-              title: "Advanced",
-              description: "Less common settings",
-              properties: props.settings.advanced
-            }
-          ]
+          properties: []
         }
       ];
+      // see if we have any layout settings or disable
+      if (props.settings.layout.length > 0) {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          properties: props.settings.layout
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "layout",
+          title: "Layout",
+          description: "Position the element relative to other items",
+          disabled: true
+        });
+      }
+      // see if we have any configure settings or disable
+      if (props.settings.configure.length > 0) {
+        this.activeSchema[0].properties.push({
+          property: "configure",
+          title: "Configure",
+          description: "Configure the element",
+          properties: props.settings.configure
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "configure",
+          title: "Configure",
+          description: "Configure the element",
+          disabled: true
+        });
+      }
+      // see if we have any configure settings or disable
+      if (props.settings.advanced.length > 0) {
+        this.activeSchema[0].properties.push({
+          property: "advanced",
+          title: "Advanced",
+          description: "Advanced element settings",
+          properties: props.settings.advanced
+        });
+      } else {
+        this.activeSchema[0].properties.push({
+          property: "advanced",
+          title: "Advanced",
+          description: "Advanced element settings",
+          disabled: true
+        });
+      }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
         ...this.activeSchema
@@ -890,6 +1046,22 @@ class HaxTray extends winEventsElement(LitElement) {
       this.shadowRoot.querySelector("#settingsform").value = {
         ...this.activeValue
       };
+      // allow form to rebuild, then switch it to the correct input
+      if (
+        this.shadowRoot &&
+        this.shadowRoot.querySelector("#settingsform").shadowRoot
+      ) {
+        setTimeout(() => {
+          // wrap in a try just to be safe
+          try {
+            // @todo review if they have any items in them and then disable appropriately
+            this.shadowRoot
+              .querySelector("#settingsform")
+              .shadowRoot.querySelector("eco-json-schema-tabs")
+              .shadowRoot.querySelector("a11y-tabs").activeTab = this.activeTab;
+          } catch (e) {}
+        }, 10);
+      }
     }
   }
   /**
@@ -909,15 +1081,48 @@ class HaxTray extends winEventsElement(LitElement) {
   __valueChangedEvent(e) {
     if (e.detail.value && e.detail.value.settings) {
       let settings = e.detail.value.settings;
+      let settingsKeys = {
+        advanced: "advanced",
+        configure: "configure",
+        layout: "layout"
+      };
       var setAhead;
-      for (let key in settings) {
+      for (let key in settingsKeys) {
         for (let prop in settings[key]) {
           setAhead = false;
           if (settings[key][prop] != null && !settings[key][prop].readOnly) {
             // prefix is a special attribute and must be handled this way
-            if (prop === "prefix") {
+            if (prop === "prefix" && settings[key][prop] != "") {
               this.activeNode.setAttribute("prefix", settings[key][prop]);
               setAhead = true;
+            }
+            // this is a special internal held "property" for layout stuff
+            else if (key === "layout" && prop === "__position") {
+              setAhead = true;
+              this.dispatchEvent(
+                new CustomEvent("hax-context-item-selected", {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                    eventName: settings[key][prop],
+                    value: settings[key][prop]
+                  }
+                })
+              );
+            }
+            // this is a special internal held "property" for layout stuff
+            else if (key === "layout" && prop === "__scale") {
+              setAhead = true;
+              this.dispatchEvent(
+                new CustomEvent("hax-context-item-selected", {
+                  bubbles: true,
+                  composed: true,
+                  detail: {
+                    eventName: "hax-size-change",
+                    value: settings[key][prop]
+                  }
+                })
+              );
             }
             // try and set the pop directly if it is a prop already set
             // check on prototype, then in properties object if it has one
@@ -1011,7 +1216,10 @@ class HaxTray extends winEventsElement(LitElement) {
                     camelCaseToDash(prop),
                     camelCaseToDash(prop)
                   );
-                } else if (settings[key][prop] === false) {
+                } else if (
+                  settings[key][prop] === false ||
+                  settings[key][prop] === ""
+                ) {
                   this.activeNode.removeAttribute(camelCaseToDash(prop));
                 } else {
                   this.activeNode.setAttribute(
@@ -1029,14 +1237,6 @@ class HaxTray extends winEventsElement(LitElement) {
           }
         }
       }
-    }
-  }
-  /**
-   * Global preference changed.
-   */
-  _globalPreferencesChanged(newValue) {
-    if (newValue && typeof newValue.haxShowExportButton !== typeof undefined) {
-      this.hideExportButton = !newValue.haxShowExportButton;
     }
   }
 
@@ -1063,14 +1263,6 @@ class HaxTray extends winEventsElement(LitElement) {
       }
     }
   }
-
-  /**
-   * active operation name changed
-   */
-  _activeNameChange(e) {
-    this.activeOperationName = e.detail;
-  }
-
   /**
    * Edit clicked, activate
    */

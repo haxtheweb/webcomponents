@@ -27,8 +27,9 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
           color: black;
         }
         .toolbar-inner {
-          display: inline-flex;
+          display: block;
           padding: 0;
+          width: 100%;
         }
         .item-wrapper {
           text-align: center;

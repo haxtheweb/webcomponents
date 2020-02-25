@@ -28,6 +28,10 @@
  * So now you're probably saying 'What's a gizmo???'. Well, gizmo is what we call widgets or custom-elements when an end user of HAX places them in the page. It's our playful way of explaining what's happening to an end user as well as ensuring when developers talk to each other then don't use words that have duplicate meanings. It's also just a fun word.
  * A gizmo helps describe the element to the HAX Gizmo manager so that a user can select the element they want to place in the page. Think of your custom-element as an app in an app store. Well, how would you describe your 'app' or Gizmo to a store of apps (in our case the Gizmo manager).
  *
+ * type_exclusive is a flag that can be used to force selections to default to this
+ * when there are multiple options. This isn't always desired but HAX will determine
+ * if it makes more sense to just use the default (for example when pulling in from a remote address).
+ *
  * This is an example of th gizmo object that is expressed in the lrn-table tag:
  * 'gizmo': {
  *    'title': 'CSV Table',
@@ -39,6 +43,7 @@
  *     'handles': [
  *       {
  *         'type': 'data',
+ *         'type_exclusive': false,
  *         'url': 'csvFile'
  *       }
  *     ],
@@ -375,7 +380,7 @@ export class HAXWiring {
           // we need to support slot in the UI but actually shift it around under the hood
           // this is so that shadow roots don't get mad when previewing
           props.settings.advanced.push({
-            attribute: "data-hax-slot",
+            attribute: "slot",
             title: "slot",
             description: "DOM slot area",
             inputMethod: "textfield"
@@ -818,6 +823,7 @@ export class HAXWiring {
                   valueProperty: "immediateValue",
                   properties: {
                     pin: true,
+                    value: settings[value].value,
                     required: settings[value].required,
                     disabled: settings[value].disabled,
                     min: settings[value].min,
@@ -988,6 +994,7 @@ export class HAXWiring {
                   valueProperty: "immediateValue",
                   properties: {
                     pin: true,
+                    value: settings[value].value,
                     required: settings[value].required,
                     disabled: settings[value].disabled,
                     min: settings[value].min,
@@ -1129,6 +1136,7 @@ export class HAXWiring {
           handles: [
             {
               type: "data",
+              type_exclusive: false,
               url: "src"
             }
           ],

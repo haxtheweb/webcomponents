@@ -866,7 +866,7 @@
             "data": {},
             "resultMap": {
               "image": "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
-              "defaultGizmoType": "content",
+              "defaultGizmoType": "wikipedia",
               "items": "query.search",
               "preview": {
                 "title": "title",
@@ -1452,6 +1452,7 @@
     }
   ],
   "autoloader": {
+    "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",

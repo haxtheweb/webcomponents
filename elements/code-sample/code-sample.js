@@ -128,13 +128,16 @@ class CodeSample extends LitElement {
             inputMethod: "code-editor"
           },
           {
-            attribute: "copy-clipboard-button",
+            property: "copyClipboardButton",
             title: "Copy to clipboard button",
             description: "button in top right that says copy to clipboard",
             inputMethod: "boolean"
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["theme"]
       }
     };
   }
@@ -241,7 +244,12 @@ class CodeSample extends LitElement {
   _updateContent() {
     if (this._code) this._code.parentNode.removeChild(this._code);
 
-    const template = this._getCodeTemplate();
+    let template = this._getCodeTemplate();
+    if (!template) {
+      template = document.createElement("template");
+      template.setAttribute("preserve-content", "preserve-content");
+      this.appendChild(template);
+    }
     this._highlight(template.innerHTML);
   }
   _getCodeTemplate() {
