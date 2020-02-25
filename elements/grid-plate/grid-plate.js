@@ -330,10 +330,7 @@ class GridPlate extends LitElement {
     this.columns = 6;
     this.disableResponsive = false;
     this.editMode = false;
-    if (
-      window.HaxStore &&
-      window.HaxStore.instance
-    ) {
+    if (window.HaxStore && window.HaxStore.instance) {
       this.editMode = window.HaxStore.instance.editMode;
     }
     this.layout = "1-1";
@@ -1313,7 +1310,9 @@ class GridPlate extends LitElement {
         target = window.HaxStore.instance.__dragTarget;
       }
       setTimeout(() => {
-        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
+        let children = this.querySelectorAll(
+          ".mover, .hovered, .moving, .grid-plate-active-item"
+        );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
@@ -1447,7 +1446,9 @@ class GridPlate extends LitElement {
   dragEnd(e) {
     if (this.editMode) {
       setTimeout(() => {
-        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
+        let children = this.querySelectorAll(
+          ".mover, .hovered, .moving, .grid-plate-active-item"
+        );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
@@ -1460,7 +1461,7 @@ class GridPlate extends LitElement {
               .querySelector("#col" + j)
               .classList.remove("mover", "hovered", "moving");
           }
-        }          
+        }
       }, 100);
     }
   }

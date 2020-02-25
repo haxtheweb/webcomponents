@@ -1317,10 +1317,7 @@ class HaxBody extends SimpleColors {
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus(
-    node = this.activeNode,
-    container = this.activeNode
-  ) {
+  positionContextMenus(node = this.activeNode, container = this.activeNode) {
     if (node) {
       let tag = node.tagName.toLowerCase();
       if (window.HaxStore.instance._isSandboxed && tag === "webview") {
@@ -2170,7 +2167,9 @@ class HaxBody extends SimpleColors {
       clearTimeout(gravityScrollTimer);
       // walk the children and remove the draggable state needed
       setTimeout(() => {
-        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
+        let children = this.querySelectorAll(
+          ".mover, .hovered, .moving, .grid-plate-active-item"
+        );
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
             children[i].classList.remove(
@@ -2183,8 +2182,12 @@ class HaxBody extends SimpleColors {
             if (children[i].tagName === "GRID-PLATE") {
               children[i].dropEvent(e);
               for (var j = 1; j <= children[i].columns; j++) {
-                if (children[i].shadowRoot.querySelector("#col" + j) !== undefined) {
-                  children[i].shadowRoot.querySelector("#col" + j).classList.remove("mover");
+                if (
+                  children[i].shadowRoot.querySelector("#col" + j) !== undefined
+                ) {
+                  children[i].shadowRoot
+                    .querySelector("#col" + j)
+                    .classList.remove("mover");
                 }
               }
             }

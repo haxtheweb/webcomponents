@@ -176,7 +176,9 @@ class HaxAppSearchResult extends LitElement {
   _dragEnd(e) {
     this.crt.remove();
     setTimeout(() => {
-      let children = window.HaxStore.instance.activeHaxBody.querySelectorAll('.mover,.hovered,.moving,.grid-plate-active-item');
+      let children = window.HaxStore.instance.activeHaxBody.querySelectorAll(
+        ".mover,.hovered,.moving,.grid-plate-active-item"
+      );
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
@@ -190,7 +192,7 @@ class HaxAppSearchResult extends LitElement {
       }
       setTimeout(() => {
         this._itemSelected(e);
-      }, 100);      
+      }, 100);
     }, 0);
   }
 

@@ -24,8 +24,7 @@
     }
   },
   "settings": {
-    "quick": [
-    ],
+    "quick": [],
     "configure": [
       {
         "property": "title",

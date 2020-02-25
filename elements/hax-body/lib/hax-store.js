@@ -1402,16 +1402,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       "figure"
     ];
     prims.forEach(tag => {
-      this.setHaxProperties({
-        canScale: false,
-        canPosition: false,
-        canEditSource: true,
-        settings: {
-          quick: [],
-          configure: [],
-          advanced: []
-        }
-      }, tag);
+      this.setHaxProperties(
+        {
+          canScale: false,
+          canPosition: false,
+          canEditSource: true,
+          settings: {
+            quick: [],
+            configure: [],
+            advanced: []
+          }
+        },
+        tag
+      );
     });
     let hr = {
       canScale: {
@@ -2440,10 +2443,7 @@ window.HaxStore.guessGizmoType = guess => {
       return "csv";
     } else if (source.indexOf(".md") != -1) {
       return "markdown";
-    } else if (
-      source.indexOf(".html") != -1 ||
-      source.indexOf(".htm") != -1
-    ) {
+    } else if (source.indexOf(".html") != -1 || source.indexOf(".htm") != -1) {
       return "html";
     } else if (
       source.indexOf(".txt") != -1 ||
@@ -2462,9 +2462,7 @@ window.HaxStore.guessGizmoType = guess => {
       return "archive";
     }
     // if it's external we can't assume what it actually is
-    else if (
-      window.MediaBehaviors.Video.getVideoType(source) != "external"
-    ) {
+    else if (window.MediaBehaviors.Video.getVideoType(source) != "external") {
       return "video";
     } else {
       // we don't know how to handle this so let's just

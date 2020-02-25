@@ -33,7 +33,7 @@ class HAXTrayButton extends SimpleColors {
       },
       colorMeaning: {
         type: Boolean,
-        attribute: 'color-meaning',
+        attribute: "color-meaning"
       },
       wide: {
         type: Boolean,
@@ -210,8 +210,7 @@ class HAXTrayButton extends SimpleColors {
   _focusOut(e) {
     if (!this.colorMeaning) {
       this.accentColor = null;
-    }
-    else {
+    } else {
       this.accentColor = this.color;
     }
   }

@@ -210,7 +210,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
        * The shape of the image (round).
        */
       round: {
-        type: Boolean,
+        type: Boolean
       },
       /**
        * Applies card styling.
@@ -492,7 +492,7 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       },
       round: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       modalTitle: {
         type: String,
