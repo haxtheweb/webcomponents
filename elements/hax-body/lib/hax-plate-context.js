@@ -236,9 +236,6 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    */
   _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
-    if (window.HaxStore.instance.activeContainerNode) {
-      target = window.HaxStore.instance.activeContainerNode;
-    }
     window.HaxStore.instance.__dragTarget = target;
     target.classList.add("moving");
     if (e.dataTransfer) {

@@ -39,7 +39,7 @@ class HaxAppPicker extends LitElement {
         }
         #dialog {
           min-width: 400px;
-          min-height: 200px;
+          min-height: 108px;
           max-height: 60vh;
           max-width: 50vw;
           overflow: hidden;
@@ -47,7 +47,6 @@ class HaxAppPicker extends LitElement {
           z-index: 1000000;
           border: 2px solid var(--hax-color-border-outline);
           background-color: #ffffff;
-          overflow: scroll;
         }
         .button-list {
           display: block;
@@ -103,6 +102,7 @@ class HaxAppPicker extends LitElement {
                 label="${element.title}"
                 icon="${element.icon}"
                 color="${element.color}"
+                ?color-meaning="${this.selectionList.length === 2}"
               >
               </hax-tray-button>
             `

@@ -187,6 +187,9 @@ class GridPlate extends LitElement {
           transition: 0.2s color linear, 0.2s background-color linear,
             0.2s outline linear;
         }
+        :host([edit-mode]) {
+          min-height: 150px;
+        }
         :host([edit-mode]) .column {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
@@ -327,6 +330,12 @@ class GridPlate extends LitElement {
     this.columns = 6;
     this.disableResponsive = false;
     this.editMode = false;
+    if (
+      window.HaxStore &&
+      window.HaxStore.instance
+    ) {
+      this.editMode = window.HaxStore.instance.editMode;
+    }
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
@@ -624,6 +633,18 @@ class GridPlate extends LitElement {
       canScale: true,
       canPosition: true,
       canEditSource: false,
+      gizmo: {
+        title: "Grid layout",
+        description: "Simple card in a cool retro design",
+        icon: "hax:3/3/3/3",
+        color: "grey",
+        groups: ["Layout"],
+        handles: [],
+        meta: {
+          author: "ELMS:LN",
+          owner: "The Pennsylvania State University"
+        }
+      },
       settings: {
         quick: [],
         configure: [
@@ -1292,7 +1313,7 @@ class GridPlate extends LitElement {
         target = window.HaxStore.instance.__dragTarget;
       }
       setTimeout(() => {
-        let children = this.children;
+        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
@@ -1318,7 +1339,7 @@ class GridPlate extends LitElement {
         }
         // sort the children by slot to ensure they are in the correct semantic order
         this.__sortChildren();
-      }, 0);
+      }, 100);
       // edge case, something caused this to drag and it tried to do
       // itself into itself
       if (target === this) {
@@ -1338,7 +1359,7 @@ class GridPlate extends LitElement {
         target !== local
       ) {
         target.setAttribute("slot", local.getAttribute("slot"));
-        this.insertBefore(target, local);
+        local.parentNode.insertBefore(target, local);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1425,20 +1446,22 @@ class GridPlate extends LitElement {
    */
   dragEnd(e) {
     if (this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered", "moving");
+      setTimeout(() => {
+        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].classList !== typeof undefined) {
+            children[i].classList.remove("mover", "hovered", "moving");
+          }
         }
-      }
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot
-            .querySelector("#col" + j)
-            .classList.remove("mover", "hovered", "moving");
-        }
-      }
+        for (var j = 1; j <= this.columns; j++) {
+          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+            this.shadowRoot
+              .querySelector("#col" + j)
+              .classList.remove("mover", "hovered", "moving");
+          }
+        }          
+      }, 100);
     }
   }
 

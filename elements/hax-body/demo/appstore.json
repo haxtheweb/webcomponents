@@ -1453,6 +1453,7 @@
   ],
   "autoloader": {
     "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+    "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
@@ -1487,7 +1488,6 @@
     "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "wave-player": "@lrnwebcomponents/wave-player/wave-player.js"
+    "q-r": "@lrnwebcomponents/q-r/q-r.js"
   }
 }

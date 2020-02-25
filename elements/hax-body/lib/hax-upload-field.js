@@ -234,7 +234,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
       e.stopPropagation();
       // look for a match as to what gizmo types it supports
       let values = {
-        source: e.detail.file.name.toLowerCase(),
+        source: e.detail.file.name,
         type: e.detail.file.type
       };
       // we have no clue what this is.. let's try and guess..

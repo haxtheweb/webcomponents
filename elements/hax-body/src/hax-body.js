@@ -81,7 +81,7 @@ class HaxBody extends SimpleColors {
           transition: 0.2s opacity ease-in-out, 0.2s visibility ease-in-out;
         }
         #textcontextmenu.hax-context-menu {
-          z-index: 1001;
+          z-index: 1000;
         }
         .hax-context-visible.hax-active-hover {
           visibility: visible;
@@ -1319,7 +1319,7 @@ class HaxBody extends SimpleColors {
    */
   positionContextMenus(
     node = this.activeNode,
-    container = this.activeContainerNode
+    container = this.activeNode
   ) {
     if (node) {
       let tag = node.tagName.toLowerCase();
@@ -2170,7 +2170,7 @@ class HaxBody extends SimpleColors {
       clearTimeout(gravityScrollTimer);
       // walk the children and remove the draggable state needed
       setTimeout(() => {
-        let children = this.children;
+        let children = this.querySelectorAll('.mover, .hovered, .moving, .grid-plate-active-item');
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
             children[i].classList.remove(
@@ -2182,10 +2182,15 @@ class HaxBody extends SimpleColors {
             // special support for grid plates as they manage internal drag/drop
             if (children[i].tagName === "GRID-PLATE") {
               children[i].dropEvent(e);
+              for (var j = 1; j <= children[i].columns; j++) {
+                if (children[i].shadowRoot.querySelector("#col" + j) !== undefined) {
+                  children[i].shadowRoot.querySelector("#col" + j).classList.remove("mover");
+                }
+              }
             }
           }
         }
-      }, 0);
+      }, 100);
       // this helps ensure that what gets drag and dropped is a file
       // this prevents issues with selecting and dragging text (which triggers drag/drop)
       // as well as compatibility with things that are legit in a draggable state

@@ -60,7 +60,6 @@ class A11yTabs extends LitElement {
     this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
   get tabs() {
-    console.log(this.__tabs);
     return this.__tabs
       ? Object.keys(this.__tabs).map(index => this.__tabs[index])
       : [];

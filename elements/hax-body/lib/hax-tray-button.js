@@ -17,7 +17,8 @@ class HAXTrayButton extends SimpleColors {
     this.eventData = null;
     this.eventName = null;
     this.icon = null;
-    this.hoverAccentColor = "green";
+    this.colorMeaning = false;
+    this.hoverAccentColor = "blue";
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("focusout", this._focusOut.bind(this));
     this.addEventListener("mouseover", this._focusIn.bind(this));
@@ -29,6 +30,10 @@ class HAXTrayButton extends SimpleColors {
       mini: {
         type: Boolean,
         reflect: true
+      },
+      colorMeaning: {
+        type: Boolean,
+        attribute: 'color-meaning',
       },
       wide: {
         type: Boolean,
@@ -200,10 +205,15 @@ class HAXTrayButton extends SimpleColors {
   }
   _focusIn(e) {
     this.accentColor =
-      this.hoverAccentColor === "grey" ? "green" : this.hoverAccentColor;
+      this.hoverAccentColor === "grey" ? "blue" : this.hoverAccentColor;
   }
   _focusOut(e) {
-    this.accentColor = null;
+    if (!this.colorMeaning) {
+      this.accentColor = null;
+    }
+    else {
+      this.accentColor = this.color;
+    }
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
@@ -232,6 +242,9 @@ class HAXTrayButton extends SimpleColors {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "color") {
         this._getAccentColor(this[propName], oldValue);
+      }
+      if (propName == "colorMeaning" && this.colorMeaning) {
+        this.accentColor = this.color;
       }
     });
   }

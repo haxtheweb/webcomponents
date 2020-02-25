@@ -1369,19 +1369,50 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(p, "p");
-    let h = {
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
-      }
-    };
-    for (var i = 1; i < 6; i++) {
-      this.setHaxProperties(h, "h" + i);
-    }
+    let prims = [
+      "caption",
+      "blockquote",
+      "code",
+      "figure",
+      "video",
+      "audio",
+      "section",
+      "ol",
+      "ul",
+      "li",
+      "a",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "strike",
+      "u",
+      "b",
+      "sub",
+      "sup",
+      "span",
+      "i",
+      "bold",
+      "em",
+      "strong",
+      "blockquote",
+      "code",
+      "figure"
+    ];
+    prims.forEach(tag => {
+      this.setHaxProperties({
+        canScale: false,
+        canPosition: false,
+        canEditSource: true,
+        settings: {
+          quick: [],
+          configure: [],
+          advanced: []
+        }
+      }, tag);
+    });
     let hr = {
       canScale: {
         min: 25,
@@ -2391,47 +2422,48 @@ window.HaxStore.write = (prop, value, obj) => {
  */
 window.HaxStore.guessGizmoType = guess => {
   if (typeof guess.source !== typeof undefined) {
-    if (guess.source.indexOf(".mp3") != -1) {
+    const source = guess.source.toLowerCase();
+    if (source.indexOf(".mp3") != -1) {
       return "audio";
     } else if (
-      guess.source.indexOf(".png") != -1 ||
-      guess.source.indexOf(".jpg") != -1 ||
-      guess.source.indexOf(".jpeg") != -1 ||
-      guess.source.indexOf(".gif") != -1
+      source.indexOf(".png") != -1 ||
+      source.indexOf(".jpg") != -1 ||
+      source.indexOf(".jpeg") != -1 ||
+      source.indexOf(".gif") != -1
     ) {
       return "image";
-    } else if (guess.source.indexOf(".pdf") != -1) {
+    } else if (source.indexOf(".pdf") != -1) {
       return "pdf";
-    } else if (guess.source.indexOf(".svg") != -1) {
+    } else if (source.indexOf(".svg") != -1) {
       return "svg";
-    } else if (guess.source.indexOf(".csv") != -1) {
+    } else if (source.indexOf(".csv") != -1) {
       return "csv";
-    } else if (guess.source.indexOf(".md") != -1) {
+    } else if (source.indexOf(".md") != -1) {
       return "markdown";
     } else if (
-      guess.source.indexOf(".html") != -1 ||
-      guess.source.indexOf(".htm") != -1
+      source.indexOf(".html") != -1 ||
+      source.indexOf(".htm") != -1
     ) {
       return "html";
     } else if (
-      guess.source.indexOf(".txt") != -1 ||
-      guess.source.indexOf(".doc") != -1 ||
-      guess.source.indexOf(".docx") != -1 ||
-      guess.source.indexOf(".xls") != -1 ||
-      guess.source.indexOf(".xlsx") != -1 ||
-      guess.source.indexOf(".ppt") != -1
+      source.indexOf(".txt") != -1 ||
+      source.indexOf(".doc") != -1 ||
+      source.indexOf(".docx") != -1 ||
+      source.indexOf(".xls") != -1 ||
+      source.indexOf(".xlsx") != -1 ||
+      source.indexOf(".ppt") != -1
     ) {
       return "document";
     } else if (
-      guess.source.indexOf(".zip") != -1 ||
-      guess.source.indexOf(".tar.gz") != -1 ||
-      guess.source.indexOf(".tar") != -1
+      source.indexOf(".zip") != -1 ||
+      source.indexOf(".tar.gz") != -1 ||
+      source.indexOf(".tar") != -1
     ) {
       return "archive";
     }
     // if it's external we can't assume what it actually is
     else if (
-      window.MediaBehaviors.Video.getVideoType(guess.source) != "external"
+      window.MediaBehaviors.Video.getVideoType(source) != "external"
     ) {
       return "video";
     } else {

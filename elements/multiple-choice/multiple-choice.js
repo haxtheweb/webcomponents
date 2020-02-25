@@ -176,7 +176,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
-      ${this.title
+      ${!this.hideTitle
         ? html`
             <h3><span property="oer:name">${this.title}</span></h3>
           `

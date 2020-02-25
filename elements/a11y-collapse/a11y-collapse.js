@@ -77,6 +77,7 @@ class A11yCollapse extends LitElement {
         }
         #text {
           flex-grow: 1;
+          overflow: hidden;
         }
         #expand {
           transition: transform 0.5s;
@@ -222,11 +223,11 @@ class A11yCollapse extends LitElement {
     this.accordion = false;
     this.disabled = false;
     this.expanded = false;
-    this.icon = "expand-more";
+    this.icon = "icons:expand-more";
     this.iconExpanded = null;
-    this.label = "expand/collapse";
+    this.label = "expand / collapse";
     this.labelExpanded = null;
-    this.tooltip = "toggle expand/collapse";
+    this.tooltip = "toggle expand / collapse";
     this.tooltipExpanded = null;
   }
   static get haxProperties() {
@@ -267,7 +268,7 @@ class A11yCollapse extends LitElement {
             slot: "content",
             title: "Content",
             description: "The content for the collapse.",
-            inputMethod: "textfield"
+            inputMethod: "code-editor"
           },
           {
             property: "accordion",
@@ -285,14 +286,16 @@ class A11yCollapse extends LitElement {
             property: "icon",
             title: "Icon",
             description: "The icon for the toggle expand/collapse button.",
-            inputMethod: "textfield"
+            inputMethod: "iconpicker",
+            options: []
           },
           {
             property: "iconExpanded",
             title: "Icon (when expanded)",
             description:
               "Optional: The icon for the toggle expand/collapse button when expanded",
-            inputMethod: "textfield"
+            inputMethod: "iconpicker",
+            options: []
           },
           {
             property: "label",

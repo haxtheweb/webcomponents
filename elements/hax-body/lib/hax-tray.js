@@ -42,6 +42,8 @@ class HaxTray extends winEventsElement(LitElement) {
     this.canUndo = true;
     this.canRedo = true;
     this.elementAlign = "right";
+    this.activeTagName = "";
+    this.activeTagIcon = "icons:settings";
     this.__setup = false;
     setTimeout(() => {
       import("./hax-tray-button.js");
@@ -108,7 +110,6 @@ class HaxTray extends winEventsElement(LitElement) {
           background-color: white;
           font-size: 20px;
           width: var(---hax-tray-width, 300px);
-          overflow: hidden;
           border-left: 2px solid var(--hax-color-text, black);
           transition: 0.2s right linear, 0.2s opacity linear,
             0.2s visibility linear;
@@ -274,7 +275,7 @@ class HaxTray extends winEventsElement(LitElement) {
               @click="${this._clickEditButton}"
               icon="create"
               id="button"
-              accent-color="black"
+              color="black"
               label="${this.__tipText}"
             ></hax-tray-button>
           `}
@@ -290,9 +291,10 @@ class HaxTray extends winEventsElement(LitElement) {
                     icon="save"
                     id="haxsavebutton"
                     label="${this.__tipText}"
-                    accent-color="green"
+                    color="green"
                     event-name="save"
                     voice-command="save content"
+                    color-meaning
                   ></hax-tray-button>
                   <hax-tray-button
                     mini
@@ -300,8 +302,9 @@ class HaxTray extends winEventsElement(LitElement) {
                     id="haxcancelbutton"
                     label="Cancel"
                     event-name="cancel"
-                    accent-color="red"
+                    color="red"
                     voice-command="cancel"
+                    color-meaning
                   ></hax-tray-button>
                   <hax-tray-button
                     mini
@@ -391,11 +394,20 @@ class HaxTray extends winEventsElement(LitElement) {
             ></hax-tray-button>
           </div>
         </div>
-        <a11y-collapse-group radio accordion>
+        <a11y-collapse-group radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="settingscollapse">
+          <a11y-collapse id="addcollapse" accordion>
+            <div slot="heading" @click="${this._gizmoBrowserRefresh}">
+              <iron-icon icon="icons:add"></iron-icon> Add Content
+            </div>
+            <div slot="content">
+              <hax-tray-upload></hax-tray-upload>
+              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
+            </div>
+          </a11y-collapse>
+          <a11y-collapse id="settingscollapse" accordion>
             <div slot="heading">
-              <iron-icon icon="icons:settings"></iron-icon> ${this
+              <iron-icon icon="${this.activeTagIcon}"></iron-icon> ${this
                 .activeTagName}
               Settings
             </div>
@@ -407,16 +419,7 @@ class HaxTray extends winEventsElement(LitElement) {
               ></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse id="addcollapse">
-            <div slot="heading" @click="${this._gizmoBrowserRefresh}">
-              <iron-icon icon="icons:add"></iron-icon> Add Content
-            </div>
-            <div slot="content">
-              <hax-tray-upload></hax-tray-upload>
-              <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>
-            </div>
-          </a11y-collapse>
-          <a11y-collapse>
+          <a11y-collapse accordion>
             <div slot="heading" @click="${this._appBrowserRefresh}">
               <iron-icon icon="icons:search"></iron-icon> Search
             </div>
@@ -424,7 +427,7 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-app-browser id="appbrowser"></hax-app-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse>
+          <a11y-collapse accordion>
             <div slot="heading" @click="${this._refreshLists}">
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
             </div>
@@ -770,6 +773,8 @@ class HaxTray extends winEventsElement(LitElement) {
           this.activeTagName = this.activeGizmo.title;
           this.activeTagIcon = this.activeGizmo.icon;
         } else {
+          this.activeTagName = "";
+          this.activeTagIcon = "icons:settings";
           if (!this.shadowRoot.querySelector("#addcollapse").expanded) {
             this.shadowRoot
               .querySelector('#addcollapse div[slot="heading"]')
@@ -991,6 +996,8 @@ class HaxTray extends winEventsElement(LitElement) {
           properties: []
         }
       ];
+      // array of things to forcibly disable
+      let disable = [];
       // see if we have any layout settings or disable
       if (props.settings.layout.length > 0) {
         this.activeSchema[0].properties.push({
@@ -1006,6 +1013,7 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Position the element relative to other items",
           disabled: true
         });
+        disable.push('item-0');
       }
       // see if we have any configure settings or disable
       if (props.settings.configure.length > 0) {
@@ -1022,6 +1030,7 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Configure the element",
           disabled: true
         });
+        disable.push('item-1');
       }
       // see if we have any configure settings or disable
       if (props.settings.advanced.length > 0) {
@@ -1038,6 +1047,7 @@ class HaxTray extends winEventsElement(LitElement) {
           description: "Advanced element settings",
           disabled: true
         });
+        disable.push('item-2');
       }
       this.__activePropSchema = props;
       this.shadowRoot.querySelector("#settingsform").fields = [
@@ -1054,11 +1064,42 @@ class HaxTray extends winEventsElement(LitElement) {
         setTimeout(() => {
           // wrap in a try just to be safe
           try {
-            // @todo review if they have any items in them and then disable appropriately
+            // @todo in the future this will have to match nikki's rewrite of the fields stuff
+            disable.forEach(id => {
+              this.shadowRoot
+              .querySelector("#settingsform")
+              .shadowRoot.querySelector("eco-json-schema-tabs")
+              .shadowRoot.querySelector("#" + id).disabled = true;
+            });
+            // check for active tab being disabled
+            if (this.shadowRoot
+              .querySelector("#settingsform")
+              .shadowRoot.querySelector("eco-json-schema-tabs")
+              .shadowRoot.querySelector("#" + this.activeTab).disabled) {
+                // support active tab being disabled and having to move down
+                // to a new active tab
+              switch (this.activeTab) {
+                case 'item-0':
+                  this.activeTab = 'item-1';
+                  if (this.shadowRoot
+                    .querySelector("#settingsform")
+                    .shadowRoot.querySelector("eco-json-schema-tabs")
+                    .shadowRoot.querySelector("#" + this.activeTab).disabled) {
+                      this.activeTab = 'item-2';
+                  }
+                break;
+                case 'item-1':
+                  // advanced is ALWAYS alive because it has the class
+                  // and other HTML attributes in it
+                  this.activeTab = 'item-2';
+                break;
+              }
+            }
             this.shadowRoot
               .querySelector("#settingsform")
               .shadowRoot.querySelector("eco-json-schema-tabs")
               .shadowRoot.querySelector("a11y-tabs").activeTab = this.activeTab;
+
           } catch (e) {}
         }, 10);
       }

@@ -71,6 +71,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           <a11y-tab
             id$="item-[[index]]"
             icon$="[[item.icon]]"
+            disabled$="[[item.disabled]]"
             label$="[[item.label]]"
           >
             <div hidden$="[[!item.description]]">[[item.description]]</div>
