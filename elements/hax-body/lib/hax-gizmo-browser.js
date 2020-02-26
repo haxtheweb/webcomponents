@@ -164,7 +164,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     this.shadowRoot.querySelector("#filter").like = e.target.value;
   }
   firstUpdated(changedProperties) {
-    this.resetBrowser();      
+    this.resetBrowser();
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

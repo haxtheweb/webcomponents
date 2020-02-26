@@ -457,7 +457,7 @@ class HaxTray extends winEventsElement(LitElement) {
    */
   _gizmoBrowserRefresh(e) {
     setTimeout(() => {
-      this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();      
+      this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
     }, 0);
   }
   _appBrowserRefresh(e) {

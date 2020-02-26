@@ -1179,7 +1179,12 @@ class HaxBody extends SimpleColors {
         children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
         // remove some of the protected classes though they shouldn't leak through
-        children[i].classList.remove('hax-mover', 'hax-moving', 'hax-hovered', 'grid-plate-active-item');
+        children[i].classList.remove(
+          "hax-mover",
+          "hax-moving",
+          "hax-hovered",
+          "grid-plate-active-item"
+        );
         children[i].contentEditable = false;
         content += window.HaxStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {

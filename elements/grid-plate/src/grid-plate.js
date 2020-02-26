@@ -1316,7 +1316,11 @@ class GridPlate extends LitElement {
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("hax-mover", "hax-hovered", "hax-moving");
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
           }
         }
         for (var j = 1; j <= this.columns; j++) {
@@ -1332,7 +1336,11 @@ class GridPlate extends LitElement {
           // walk the children and apply the draggable state needed
           for (var i in childrenHAX) {
             if (childrenHAX[i].classList) {
-              childrenHAX[i].classList.remove("hax-mover", "hax-hovered", "hax-moving");
+              childrenHAX[i].classList.remove(
+                "hax-mover",
+                "hax-hovered",
+                "hax-moving"
+              );
             }
           }
         }
@@ -1452,7 +1460,11 @@ class GridPlate extends LitElement {
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("hax-mover", "hax-hovered", "hax-moving");
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
           }
         }
         for (var j = 1; j <= this.columns; j++) {

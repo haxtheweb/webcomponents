@@ -1372,111 +1372,111 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     };
     this.setHaxProperties(p, "p");
     let prims = {
-      "caption": {
+      caption: {
         title: "Caption",
         icon: "av:call-to-action"
       },
-      "video": {
+      video: {
         title: "Video",
         icon: "av:play-circle-filled"
       },
-      "audio": {
+      audio: {
         title: "Audio",
         icon: "image:music-note"
       },
-      "section": {
+      section: {
         title: "Section",
         icon: "image:crop-landscape"
       },
-      "ol": {
+      ol: {
         title: "Numbered list",
         icon: "editor:format-list-numbered"
       },
-      "ul": {
+      ul: {
         title: "Bulleted list",
         icon: "editor:format-list-bulleted"
       },
-      "li": {
+      li: {
         title: "List item",
         icon: "editor:format-list-bulleted"
       },
-      "h1": {
+      h1: {
         title: "Heading",
         icon: "hax:h1"
       },
-      "h2": {
+      h2: {
         title: "Heading",
         icon: "hax:h2"
       },
-      "h3": {
+      h3: {
         title: "Heading",
         icon: "hax:h3"
       },
-      "h4": {
+      h4: {
         title: "Heading",
         icon: "hax:h4"
       },
-      "h5": {
+      h5: {
         title: "Heading",
         icon: "hax:h5"
       },
-      "h6": {
+      h6: {
         title: "Heading",
         icon: "hax:h6"
       },
-      "strike": {
+      strike: {
         title: "Cross out",
         icon: "editor:format-strikethrough"
       },
-      "u": {
+      u: {
         title: "Underline",
         icon: "editor:format-underlined"
       },
-      "sub": {
+      sub: {
         title: "Subscript",
         icon: "mdextra:subscript"
       },
-      "sup": {
+      sup: {
         title: "Superscript",
         icon: "mdextra:superscript"
       },
-      "div": {
+      div: {
         title: "DIV",
         icon: "image:crop-landscape"
       },
-      "span": {
+      span: {
         title: "SPAN",
         icon: "editor:short-text"
       },
-      "i": {
+      i: {
         title: "Italic",
         icon: "editor:format-italic"
       },
-      "em": {
+      em: {
         title: "Emphasis",
         icon: "editor:format-italic"
       },
-      "strong": {
+      strong: {
         title: "Bold",
         icon: "editor:format-bold"
       },
-      "b": {
+      b: {
         title: "Bold",
         icon: "editor:format-bold"
       },
-      "blockquote": {
+      blockquote: {
         title: "Block quote",
         icon: "editor:format-quote"
       },
-      "code": {
+      code: {
         title: "Code",
         icon: "icons:code"
       },
-      "figure": {
+      figure: {
         title: "Figure",
         icon: "icons:label-outline"
       },
-      "embed": {
+      embed: {
         title: "Embedded object",
         icon: "icons:fullscreen"
       }
@@ -1491,7 +1491,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             title: prims[tag].title,
             icon: prims[tag].icon,
             meta: {
-              hidden: true,
+              hidden: true
             }
           },
           settings: {
