@@ -144,7 +144,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       previewBy: {
         type: Array,
         reflect: true,
-        attribute: 'preview-by'
+        attribute: "preview-by"
       },
       /**
        * fields to sort by
@@ -152,7 +152,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       sortBy: {
         type: Array,
         reflect: true,
-        attribute: 'sort-by'
+        attribute: "sort-by"
       }
     };
   }
@@ -181,9 +181,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       );
     }, 0);
   }
-  get slots(){
+  get slots() {
     let slots = {};
-    this.previewBy.forEach(field =>slots[field] = "preview");
+    this.previewBy.forEach(field => (slots[field] = "preview"));
     slots[this.sortBy[0]] = this.previewBy.length > 0 ? "sort" : "preview";
     return slots;
   }

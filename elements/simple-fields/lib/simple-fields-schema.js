@@ -35,11 +35,11 @@ class SimpleFieldsSchema extends LitElement {
         element: "paper-input",
         attributes: {
           type: "text"
-        }, 
+        },
         properties: {
           label: "label",
           minLength: "minlength",
-          maxLength: "maxlength",
+          maxLength: "maxlength"
         }
       },
       type: {
@@ -53,14 +53,14 @@ class SimpleFieldsSchema extends LitElement {
                 description: "description",
                 previewBy: "previewBy",
                 sortBy: "sortBy"
-              },
+              }
             },
             sort: {
               element: "paper-input",
               attributes: {
                 step: 1,
                 type: "number"
-              }, 
+              },
               properties: {
                 label: "label",
                 minimum: "min",
@@ -72,14 +72,14 @@ class SimpleFieldsSchema extends LitElement {
               label: "label",
               description: "description"
             }
-          },
+          }
         },
         boolean: {
           defaultSettings: {
             element: "simple-fields-boolean",
             attributes: {
               value: false
-            }, 
+            },
             properties: {
               label: "label"
             }
@@ -96,7 +96,7 @@ class SimpleFieldsSchema extends LitElement {
             attributes: {
               step: 1,
               type: "number"
-            }, 
+            },
             properties: {
               label: "label",
               minimum: "min",
@@ -116,7 +116,7 @@ class SimpleFieldsSchema extends LitElement {
             type: "number",
             attributes: {
               type: "number"
-            }, 
+            },
             properties: {
               label: "label",
               minimum: "min",
@@ -152,7 +152,7 @@ class SimpleFieldsSchema extends LitElement {
                 element: "paper-input",
                 attributes: {
                   type: "datetime-local"
-                }, 
+                },
                 properties: {
                   label: "label"
                 }
@@ -163,7 +163,7 @@ class SimpleFieldsSchema extends LitElement {
                 element: "paper-input",
                 attributes: {
                   type: "time"
-                }, 
+                },
                 properties: {
                   label: "label"
                 }
@@ -174,7 +174,7 @@ class SimpleFieldsSchema extends LitElement {
                 element: "paper-input",
                 attributes: {
                   type: "date"
-                }, 
+                },
                 properties: {
                   label: "label"
                 }
@@ -185,7 +185,7 @@ class SimpleFieldsSchema extends LitElement {
                 element: "paper-input",
                 attributes: {
                   type: "email"
-                }, 
+                },
                 properties: {
                   label: "label"
                 }
@@ -196,13 +196,13 @@ class SimpleFieldsSchema extends LitElement {
                 element: "paper-input",
                 attributes: {
                   type: "url"
-                }, 
+                },
                 properties: {
                   label: "label"
                 }
               }
             }
-          },
+          }
         }
       }
     };
@@ -289,107 +289,137 @@ class SimpleFieldsSchema extends LitElement {
   }
 
   buildHtmlFromJsonSchema(
-    schema = this.schema, 
-    target = this, 
-    prefix = '',
+    schema = this.schema,
+    target = this,
+    prefix = "",
     child
-  ){
-    let root = this, 
+  ) {
+    let root = this,
       schemaProps = schema.properties,
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
     schemaKeys.forEach(key => {
-      let data = child ? child : this._searchConversion(schemaProps[key],this.jsonSchemaToHtml);
-      if(data && data.element) {
-        let label = schemaProps[key].label || schemaProps[key].title || schemaProps[key].description || key, 
-          desc = schemaProps[key].label || schemaProps[key].title ? schemaProps[key].description : undefined,
-        element = document.createElement(data.element),
-        value = this._getValue(`${prefix}${key}`),
-        valueProperty = data.valueProperty || "value";
+      let data = child
+        ? child
+        : this._searchConversion(schemaProps[key], this.jsonSchemaToHtml);
+      if (data && data.element) {
+        let label =
+            schemaProps[key].label ||
+            schemaProps[key].title ||
+            schemaProps[key].description ||
+            key,
+          desc =
+            schemaProps[key].label || schemaProps[key].title
+              ? schemaProps[key].description
+              : undefined,
+          element = document.createElement(data.element),
+          value = this._getValue(`${prefix}${key}`),
+          valueProperty = data.valueProperty || "value";
         element.name = `${prefix}${key}`;
-        element[valueProperty] = value; 
-        console.log(element.name,data.element,schema,schemaProps[key],data);
+        element[valueProperty] = value;
+        console.log(element.name, data.element, schema, schemaProps[key], data);
         element.resources = this.resources;
         element.setAttribute("language", this.language);
         schemaProps[key].label = label;
         schemaProps[key].description = desc;
         //handle data type attributes
-        Object.keys(data.attributes || {}).forEach(attr=>{
-          if(data.attributes[attr]) {
-            element.setAttribute(attr,data.attributes[attr])
+        Object.keys(data.attributes || {}).forEach(attr => {
+          if (data.attributes[attr]) {
+            element.setAttribute(attr, data.attributes[attr]);
           }
         });
         //handle data type properties
-        Object.keys(data.properties || {}).forEach(prop=>{
-          if(data.properties[prop] && schemaProps[key][prop]) {
+        Object.keys(data.properties || {}).forEach(prop => {
+          if (data.properties[prop] && schemaProps[key][prop]) {
             element[data.properties[prop]] = schemaProps[key][prop];
           }
         });
         //handle required fields
-        if(required && required.includes(key)) element.setAttribute("required",true);
+        if (required && required.includes(key))
+          element.setAttribute("required", true);
         //place the field in the correct slot of its parent
-        if(target.slots && target.slots[key]) element.slot = target.slots[key];
+        if (target.slots && target.slots[key]) element.slot = target.slots[key];
         //handles arrays
-        if(schemaProps[key].items){
-          console.log('schemaProps[key].items',schemaProps[key].items,schemaProps[key].properties);
-          if(value) value.forEach((item,i)=>{
-            let subschema = schemaProps[key];
-            subschema.properties = {};
-            subschema.properties[i] = schemaProps[key].items;
-            subschema.properties[i].label = `${i+1}`;
-            console.log('schemaProps[key].items',schemaProps[key].items,schemaProps[key].properties,subschema.properties[i]);
-            this.buildHtmlFromJsonSchema(
-              subschema, 
-              element, 
-              `${element.name}.`,
-              data.child
-            );
-            element.addEventListener("add", e =>
-              this._setValue(`${element.name}.${value.length}`, {})
-            );
-            element.addEventListener("remove", e => {
-              let temp = this._deepClone(value);
-              temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
-              this._setValue(`${element.name}`, temp);
+        if (schemaProps[key].items) {
+          console.log(
+            "schemaProps[key].items",
+            schemaProps[key].items,
+            schemaProps[key].properties
+          );
+          if (value)
+            value.forEach((item, i) => {
+              let subschema = schemaProps[key];
+              subschema.properties = {};
+              subschema.properties[i] = schemaProps[key].items;
+              subschema.properties[i].label = `${i + 1}`;
+              console.log(
+                "schemaProps[key].items",
+                schemaProps[key].items,
+                schemaProps[key].properties,
+                subschema.properties[i]
+              );
+              this.buildHtmlFromJsonSchema(
+                subschema,
+                element,
+                `${element.name}.`,
+                data.child
+              );
+              element.addEventListener("add", e =>
+                this._setValue(`${element.name}.${value.length}`, {})
+              );
+              element.addEventListener("remove", e => {
+                let temp = this._deepClone(value);
+                temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
+                this._setValue(`${element.name}`, temp);
+              });
             });
-          });
         }
         //handles objects
-        else if(schemaProps[key].properties){
-          this.buildHtmlFromJsonSchema(schemaProps[key], element, `${element.name}.`);
+        else if (schemaProps[key].properties) {
+          this.buildHtmlFromJsonSchema(
+            schemaProps[key],
+            element,
+            `${element.name}.`
+          );
         } else {
-          if(value && !element.getAttribute(valueProperty)) element.setAttribute(valueProperty,value);
+          if (value && !element.getAttribute(valueProperty))
+            element.setAttribute(valueProperty, value);
         }
         //handles label
-        if(label && (!data.properties || !data.properties.label)) {
-          let labelEl = document.createElement('label');
+        if (label && (!data.properties || !data.properties.label)) {
+          let labelEl = document.createElement("label");
           labelEl.innerHTML = label;
-          labelEl.setAttribute('for',element.name);
+          labelEl.setAttribute("for", element.name);
           target.appendChild(labelEl);
         }
         target.appendChild(element);
-        element.addEventListener(`${valueProperty}-changed`, e =>this._handleChange(element,valueProperty));
+        element.addEventListener(`${valueProperty}-changed`, e =>
+          this._handleChange(element, valueProperty)
+        );
       }
     });
   }
-  _handleChange(element,valueProperty){
+  _handleChange(element, valueProperty) {
     //console.log('_handleChange',this.value,this._getValue(element.name),element[valueProperty],element.value)
     //this._fireValueChanged();
   }
 
-  _searchConversion(property,conversion,settings){
+  _searchConversion(property, conversion, settings) {
     let propKeys = Object.keys(property || {}),
-      convKeys = Object.keys(conversion || {}).filter(key=>propKeys.includes(key));
-    if(conversion.defaultSettings) settings = conversion.defaultSettings;
-    convKeys.forEach(key=>{
-      let val = property[key], 
+      convKeys = Object.keys(conversion || {}).filter(key =>
+        propKeys.includes(key)
+      );
+    if (conversion.defaultSettings) settings = conversion.defaultSettings;
+    convKeys.forEach(key => {
+      let val = property[key],
         convData = conversion ? conversion[key] : undefined,
-        convVal = !convData 
-          ? undefined 
-          : Array.isArray(val) 
-            ? convData[val[0]] 
-            : convData[val];
-      if(convVal) settings = this._searchConversion(property,convVal,settings);
+        convVal = !convData
+          ? undefined
+          : Array.isArray(val)
+          ? convData[val[0]]
+          : convData[val];
+      if (convVal)
+        settings = this._searchConversion(property, convVal, settings);
     });
     return settings;
   }
@@ -636,13 +666,17 @@ class SimpleFieldsSchema extends LitElement {
    * fires when the value changes
    * @event value-changed
    */
-  _fireValueChanged(){
-    console.log("value-changed",this.value,new CustomEvent("value-changed", {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-      detail: this
-    }));
+  _fireValueChanged() {
+    console.log(
+      "value-changed",
+      this.value,
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
@@ -651,7 +685,6 @@ class SimpleFieldsSchema extends LitElement {
         detail: this
       })
     );
-
   }
   /**
    * updates the form  and fires event when the value changes
@@ -659,7 +692,6 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} oldValue the old value for the schema
    */
   _valueChanged(newValue, oldValue) {
-    
     /*console.log('before sort',vals);
             sort = data.child && data.child.slots ? data.child.slots.sort : undefined
     if(sort && subschema.sortBy && vals) {

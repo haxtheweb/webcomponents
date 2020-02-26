@@ -57,7 +57,7 @@ class SimpleFieldsFieldset extends LitElement {
       name: {
         type: String,
         reflect: true,
-        attribute: 'name'
+        attribute: "name"
       },
       description: {
         type: String
