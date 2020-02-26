@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -31,7 +32,7 @@ Custom property | Description | Default
  * @demo ./demo/index.html demo
  * @demo ./demo/group.html collapse groups
  */
-class SimpleFieldsArrayItem extends LitElement {
+class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   static get styles() {
     return [
       css`
@@ -136,6 +137,22 @@ class SimpleFieldsArrayItem extends LitElement {
       disabled: {
         type: Boolean,
         reflect: true
+      },
+      /**
+       * fields to preview by
+       */
+      previewBy: {
+        type: Array,
+        reflect: true,
+        attribute: 'preview-by'
+      },
+      /**
+       * fields to sort by
+       */
+      sortBy: {
+        type: Array,
+        reflect: true,
+        attribute: 'sort-by'
       }
     };
   }
@@ -143,6 +160,8 @@ class SimpleFieldsArrayItem extends LitElement {
   constructor() {
     super();
     this.disabled = false;
+    this.previewBy = [];
+    this.sortBy = [];
   }
   connectedCallback() {
     super.connectedCallback();
@@ -161,6 +180,12 @@ class SimpleFieldsArrayItem extends LitElement {
         })
       );
     }, 0);
+  }
+  get slots(){
+    let slots = {};
+    this.previewBy.forEach(field =>slots[field] = "preview");
+    slots[this.sortBy[0]] = this.previewBy.length > 0 ? "sort" : "preview";
+    return slots;
   }
 
   /**

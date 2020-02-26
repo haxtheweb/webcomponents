@@ -81,7 +81,7 @@
     "type": "Object"
   },
   "forceHorizontal": {
-    "type": Boolean,
+    "type": "Boolean",
     "attribute": "force-horizontal"
   }
 }

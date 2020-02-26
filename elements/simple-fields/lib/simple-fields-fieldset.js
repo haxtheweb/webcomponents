@@ -23,21 +23,21 @@ class SimpleFieldsFieldset extends LitElement {
   render() {
     return html`
       <fieldset>
-        ${this.legend} ${this.description} ${this.fields}
+        ${this.legend} ${this.desc} ${this.fields}
       </fieldset>
     `;
   }
   get legend() {
     return html`
-      <legend id="legend" ?hidden="${!this.schema.title}">
-        ${this.schema.title}
+      <legend id="legend" ?hidden="${!this.label}">
+        ${this.label}
       </legend>
     `;
   }
-  get description() {
+  get desc() {
     return html`
-      <div ?hidden="${!this.schema.description}">
-        ${this.schema.description}
+      <div ?hidden="${!this.description}">
+        ${this.description}
       </div>
     `;
   }
@@ -50,14 +50,22 @@ class SimpleFieldsFieldset extends LitElement {
   }
   static get properties() {
     return {
-      schema: {
-        type: Object
+      label: {
+        type: String,
+        reflect: true
+      },
+      name: {
+        type: String,
+        reflect: true,
+        attribute: 'name'
+      },
+      description: {
+        type: String
       }
     };
   }
   constructor() {
     super();
-    this.schema = {};
   }
 }
 window.customElements.define(SimpleFieldsFieldset.tag, SimpleFieldsFieldset);

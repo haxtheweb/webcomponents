@@ -30,54 +30,180 @@ class SimpleFieldsSchema extends LitElement {
     super();
     this.autofocus = false;
     this.codeTheme = "vs-light-2";
-    this.dataTypes = {
-      array: {
-        element: "simple-fields-array",
-        defaultValue: [],
-        isArray: true,
-        previewSlot: "preview",
-        sortSlot: "sort"
-      },
-      boolean: {
-        element: "simple-fields-boolean",
-        defaultValue: false
-      },
-      fieldset: {
-        element: "simple-fields-fieldset",
-        defaultValue: {},
-        isFieldset: true
-      },
-      file: {
-        element: "simple-fields-file",
-        defaultValue: {}
-      },
-      integer: {
+    this.jsonSchemaToHtml = {
+      defaultSettings: {
         element: "paper-input",
-        defaultValue: "",
-        type: "number",
-        step: 1
+        attributes: {
+          type: "text"
+        }, 
+        properties: {
+          label: "label",
+          minLength: "minlength",
+          maxLength: "maxlength",
+        }
       },
-      markup: {
-        element: "simple-fields-markup",
-        defaultValue: ""
-      },
-      number: {
-        element: "paper-input",
-        type: "number",
-        defaultValue: ""
-      },
-      object: {
-        element: "simple-fields-fieldset",
-        defaultValue: {},
-        isFieldset: true
-      },
-      string: {
-        element: "paper-input"
-      },
-      tabs: {
-        element: "a11y-tabs",
-        defaultValue: {},
-        isFieldset: true
+      type: {
+        array: {
+          defaultSettings: {
+            element: "simple-fields-array",
+            child: {
+              element: "simple-fields-array-item",
+              properties: {
+                label: "label",
+                description: "description",
+                previewBy: "previewBy",
+                sortBy: "sortBy"
+              },
+            },
+            sort: {
+              element: "paper-input",
+              attributes: {
+                step: 1,
+                type: "number"
+              }, 
+              properties: {
+                label: "label",
+                minimum: "min",
+                maximum: "max",
+                multipleOf: "step"
+              }
+            },
+            properties: {
+              label: "label",
+              description: "description"
+            }
+          },
+        },
+        boolean: {
+          defaultSettings: {
+            element: "simple-fields-boolean",
+            attributes: {
+              value: false
+            }, 
+            properties: {
+              label: "label"
+            }
+          }
+        },
+        file: {
+          defaultSettings: {
+            element: "simple-fields-file"
+          }
+        },
+        integer: {
+          defaultSettings: {
+            element: "paper-input",
+            attributes: {
+              step: 1,
+              type: "number"
+            }, 
+            properties: {
+              label: "label",
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        markup: {
+          defaultSettings: {
+            element: "simple-fields-markup"
+          }
+        },
+        number: {
+          defaultSettings: {
+            element: "paper-input",
+            type: "number",
+            attributes: {
+              type: "number"
+            }, 
+            properties: {
+              label: "label",
+              minimum: "min",
+              maximum: "max",
+              multipleOf: "step"
+            }
+          }
+        },
+        object: {
+          defaultSettings: {
+            element: "simple-fields-fieldset",
+            properties: {
+              label: "label",
+              description: "description"
+            }
+          },
+          format: {
+            tabs: {
+              defaultSettings: {
+                element: "a11y-tabs",
+                properties: {
+                  label: "label",
+                  description: "description"
+                }
+              }
+            }
+          }
+        },
+        string: {
+          format: {
+            "date-time": {
+              defaultSettings: {
+                element: "paper-input",
+                attributes: {
+                  type: "datetime-local"
+                }, 
+                properties: {
+                  label: "label"
+                }
+              }
+            },
+            time: {
+              defaultSettings: {
+                element: "paper-input",
+                attributes: {
+                  type: "time"
+                }, 
+                properties: {
+                  label: "label"
+                }
+              }
+            },
+            date: {
+              defaultSettings: {
+                element: "paper-input",
+                attributes: {
+                  type: "date"
+                }, 
+                properties: {
+                  label: "label"
+                }
+              }
+            },
+            email: {
+              defaultSettings: {
+                element: "paper-input",
+                attributes: {
+                  type: "email"
+                }, 
+                properties: {
+                  label: "label"
+                }
+              }
+            },
+            uri: {
+              defaultSettings: {
+                element: "paper-input",
+                attributes: {
+                  type: "url"
+                }, 
+                properties: {
+                  label: "label"
+                }
+              }
+            }
+          },
+        }
       }
     };
     this.language = "en";
@@ -112,7 +238,28 @@ class SimpleFieldsSchema extends LitElement {
       codeTheme: {
         type: String
       },
-      dataTypes: {
+      /** 
+       *  conversion from JSON Schema to HTML ```
+      type: {                  //convert based on te type attribute
+        string: {              //if type is string  
+          format: {            //check the format attribute
+            "date-time": {     //if format is date-time
+              element:         //HTML form element to create
+              attributes:      //HTML attribute settings
+              properties:      //Schema properties to map to attributes
+              slots:           //HTML slot settings
+            }
+          },
+          defaultSettings: {  //if there was no format match
+            element:         //HTML form element to create
+            attributes:      //HTML attribute settings
+            properties:      //Schema properties to map to attributes
+            slots:           //HTML slot settings
+          }
+        }
+      }```
+      */
+      jsonSchemaToHtml: {
         type: Object
       },
       error: {
@@ -141,6 +288,112 @@ class SimpleFieldsSchema extends LitElement {
     };
   }
 
+  buildHtmlFromJsonSchema(
+    schema = this.schema, 
+    target = this, 
+    prefix = '',
+    child
+  ){
+    let root = this, 
+      schemaProps = schema.properties,
+      required = schema.required,
+      schemaKeys = Object.keys(schemaProps || {});
+    schemaKeys.forEach(key => {
+      let data = child ? child : this._searchConversion(schemaProps[key],this.jsonSchemaToHtml);
+      if(data && data.element) {
+        let label = schemaProps[key].label || schemaProps[key].title || schemaProps[key].description || key, 
+          desc = schemaProps[key].label || schemaProps[key].title ? schemaProps[key].description : undefined,
+        element = document.createElement(data.element),
+        value = this._getValue(`${prefix}${key}`),
+        valueProperty = data.valueProperty || "value";
+        element.name = `${prefix}${key}`;
+        element[valueProperty] = value; 
+        console.log(element.name,data.element,schema,schemaProps[key],data);
+        element.resources = this.resources;
+        element.setAttribute("language", this.language);
+        schemaProps[key].label = label;
+        schemaProps[key].description = desc;
+        //handle data type attributes
+        Object.keys(data.attributes || {}).forEach(attr=>{
+          if(data.attributes[attr]) {
+            element.setAttribute(attr,data.attributes[attr])
+          }
+        });
+        //handle data type properties
+        Object.keys(data.properties || {}).forEach(prop=>{
+          if(data.properties[prop] && schemaProps[key][prop]) {
+            element[data.properties[prop]] = schemaProps[key][prop];
+          }
+        });
+        //handle required fields
+        if(required && required.includes(key)) element.setAttribute("required",true);
+        //place the field in the correct slot of its parent
+        if(target.slots && target.slots[key]) element.slot = target.slots[key];
+        //handles arrays
+        if(schemaProps[key].items){
+          console.log('schemaProps[key].items',schemaProps[key].items,schemaProps[key].properties);
+          if(value) value.forEach((item,i)=>{
+            let subschema = schemaProps[key];
+            subschema.properties = {};
+            subschema.properties[i] = schemaProps[key].items;
+            subschema.properties[i].label = `${i+1}`;
+            console.log('schemaProps[key].items',schemaProps[key].items,schemaProps[key].properties,subschema.properties[i]);
+            this.buildHtmlFromJsonSchema(
+              subschema, 
+              element, 
+              `${element.name}.`,
+              data.child
+            );
+            element.addEventListener("add", e =>
+              this._setValue(`${element.name}.${value.length}`, {})
+            );
+            element.addEventListener("remove", e => {
+              let temp = this._deepClone(value);
+              temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
+              this._setValue(`${element.name}`, temp);
+            });
+          });
+        }
+        //handles objects
+        else if(schemaProps[key].properties){
+          this.buildHtmlFromJsonSchema(schemaProps[key], element, `${element.name}.`);
+        } else {
+          if(value && !element.getAttribute(valueProperty)) element.setAttribute(valueProperty,value);
+        }
+        //handles label
+        if(label && (!data.properties || !data.properties.label)) {
+          let labelEl = document.createElement('label');
+          labelEl.innerHTML = label;
+          labelEl.setAttribute('for',element.name);
+          target.appendChild(labelEl);
+        }
+        target.appendChild(element);
+        element.addEventListener(`${valueProperty}-changed`, e =>this._handleChange(element,valueProperty));
+      }
+    });
+  }
+  _handleChange(element,valueProperty){
+    //console.log('_handleChange',this.value,this._getValue(element.name),element[valueProperty],element.value)
+    //this._fireValueChanged();
+  }
+
+  _searchConversion(property,conversion,settings){
+    let propKeys = Object.keys(property || {}),
+      convKeys = Object.keys(conversion || {}).filter(key=>propKeys.includes(key));
+    if(conversion.defaultSettings) settings = conversion.defaultSettings;
+    convKeys.forEach(key=>{
+      let val = property[key], 
+        convData = conversion ? conversion[key] : undefined,
+        convVal = !convData 
+          ? undefined 
+          : Array.isArray(val) 
+            ? convData[val[0]] 
+            : convData[val];
+      if(convVal) settings = this._searchConversion(property,convVal,settings);
+    });
+    return settings;
+  }
+
   /**
    * adds form element to page
    *
@@ -149,7 +402,7 @@ class SimpleFieldsSchema extends LitElement {
    * @param {number} index if in array, element's index
    * @param {string} string name of slot
    * @returns {object} form element
-   */
+   * /
   _buildFormElement(config, parent = this, index = -1, slot) {
     let el = document.createElement(config.component.type.element),
       elname =
@@ -192,10 +445,10 @@ class SimpleFieldsSchema extends LitElement {
           }
           return ai === bi ? 0 : ai < bi ? -1 : 1;
         });
-      /* gets array items */
+      /* gets array items * /
       if (elval)
         elval.forEach((item, i) => {
-          /* gets array item config */
+          /* gets array item config * /
           let id = `item-${i}`,
             child = el.buildItem(id),
             sortSlot = config.component.type.sortSlot,
@@ -204,7 +457,7 @@ class SimpleFieldsSchema extends LitElement {
               key => config.schema.properties[key].previewField === true
             );
           if (previewKeys.length < 1) previewKeys.push(keys[0]);
-          /* adds fields to array items */
+          /* adds fields to array items * /
           keys.forEach(key => {
             let childname = config.schema.properties[key].name.replace(
               `${elname}..`,
@@ -223,7 +476,7 @@ class SimpleFieldsSchema extends LitElement {
           });
         });
     } else if (config.schema && config.schema.properties) {
-      /* gets nested fields for a fieldset */
+      /* gets nested fields for a fieldset   /
       Object.keys(config.schema.properties).forEach(key =>
         this._buildFormElement(config.schema.properties[key], el)
       );
@@ -238,7 +491,7 @@ class SimpleFieldsSchema extends LitElement {
    * returns an array of properties for a given schema object
    * @param {object} target parent of nested properties
    * @returns {array} form properties
-   */
+   * /
   _getProperties(target = this.schema, prefix) {
     //console.log('_getProperties',target);
     let root = this;
@@ -257,7 +510,7 @@ class SimpleFieldsSchema extends LitElement {
         property.component.valueProperty || "value";
       property.component.slot = property.component.slot || "";
 
-      /* match the schema type to the correct data type */
+      /* match the schema type to the correct data type * /
       Object.keys(root.dataTypes).forEach(key => {
         if (
           (Array.isArray(schema.type) && schema.type.indexOf(key) !== -1) ||
@@ -268,7 +521,7 @@ class SimpleFieldsSchema extends LitElement {
             property.component.name || property.component.type.element;
           property.component.type.type = schema.format;
 
-          /* handle fieldsets by getting nested properties */
+          /* handle fieldsets by getting nested properties * /
           if (
             property.component.type.isFieldset ||
             property.component.type.isArray
@@ -329,6 +582,7 @@ class SimpleFieldsSchema extends LitElement {
     let path = propName.split("."),
       pointer = this.value;
     path.forEach(prop => {
+      //console.log('gv',path,pointer,prop,pointer[prop]);
       if (pointer && pointer[prop]) {
         pointer = pointer[prop];
       } else {
@@ -372,30 +626,62 @@ class SimpleFieldsSchema extends LitElement {
     //console.log("_rebuildForm",this.value,this.schema);
     this._clearForm();
     if (this.schema) {
-      let formProperties = this._getProperties(this.schema);
-      formProperties.forEach(property => this._buildFormElement(property));
+      this.buildHtmlFromJsonSchema();
+      //let formProperties = this._getProperties(this.schema);
+      //formProperties.forEach(property => this._buildFormElement(property));
     }
+  }
+
+  /**
+   * fires when the value changes
+   * @event value-changed
+   */
+  _fireValueChanged(){
+    console.log("value-changed",this.value,new CustomEvent("value-changed", {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      detail: this
+    }));
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+
   }
   /**
    * updates the form  and fires event when the value changes
    * @param {object} newValue the new value for the schema
    * @param {object} oldValue the old value for the schema
-   * @event value-changed
    */
   _valueChanged(newValue, oldValue) {
-    console.log("this._valueChanged", this.value, oldValue);
-    if (newValue && newValue !== oldValue) {
-      this._rebuildForm();
-
-      this.dispatchEvent(
-        new CustomEvent("value-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: this
-        })
-      );
+    
+    /*console.log('before sort',vals);
+            sort = data.child && data.child.slots ? data.child.slots.sort : undefined
+    if(sort && subschema.sortBy && vals) {
+      vals = vals.sort((a, b) => {
+        let i = 0,
+          ai = 0,
+          bi = 0;
+        while (i < subschema.sortBy.length && ai === bi) {
+          ai = a[subschema.sortBy[i]];
+          bi = b[subschema.sortBy[i]];
+          i++;
+        }
+        return ai === bi ? 0 : ai < bi ? -1 : 1;
+      });
     }
+    console.log('after sort',vals);
+    Object.keys(data.child.slots || {}).forEach(key=>{
+      let slot = data.child.slots[key];
+      console.log('----->',element.name,schema,data,schema[key],subschema[key]);
+    });
+    */
+    if (newValue && newValue !== oldValue) this._rebuildForm();
   }
   /**
    * updates the form and fires event when the schema changes

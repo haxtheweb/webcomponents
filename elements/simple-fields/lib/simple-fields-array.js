@@ -42,12 +42,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       count: {
         type: Number
       },
-      label: {
-        type: String
-      },
-      description: {
-        type: String
-      },
       /*
        * icon when expanded
        */
