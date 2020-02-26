@@ -114,7 +114,6 @@ class A11yMediaStateManager extends LitElement {
       this.activePlayer !== null
     ) {
       this.activePlayer.toggleSticky(false);
-      this.__parent.style.height = "unset";
     }
     parent.style.height = parent.offsetHeight + "px";
     this.setActivePlayer(player);

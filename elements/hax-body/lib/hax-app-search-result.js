@@ -165,7 +165,7 @@ class HaxAppSearchResult extends LitElement {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("mover");
+          children[i].classList.add("hax-mover");
         }
       }
     }
@@ -177,15 +177,15 @@ class HaxAppSearchResult extends LitElement {
     this.crt.remove();
     setTimeout(() => {
       let children = window.HaxStore.instance.activeHaxBody.querySelectorAll(
-        ".mover,.hovered,.moving,.grid-plate-active-item"
+        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
       );
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
           children[i].classList.remove(
-            "mover",
-            "hovered",
-            "moving",
+            "hax-mover",
+            "hax-hovered",
+            "hax-moving",
             "grid-plate-active-item"
           );
         }

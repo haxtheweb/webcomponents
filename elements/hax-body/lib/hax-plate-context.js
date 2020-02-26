@@ -222,9 +222,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     for (var i in children) {
       if (typeof children[i].classList !== typeof undefined) {
         children[i].classList.remove(
-          "mover",
-          "hovered",
-          "moving",
+          "hax-mover",
+          "hax-hovered",
+          "hax-moving",
           "grid-plate-active-item"
         );
         children[i].removeEventListener("click", this._clickPlace);
@@ -237,7 +237,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
     window.HaxStore.instance.__dragTarget = target;
-    target.classList.add("moving");
+    target.classList.add("hax-moving");
     if (e.dataTransfer) {
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(target, 0, 0);
@@ -254,7 +254,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (children[i].classList && target !== children[i]) {
-            children[i].classList.add("mover");
+            children[i].classList.add("hax-mover");
             children[i].addEventListener("click", this._clickPlace);
           }
         }

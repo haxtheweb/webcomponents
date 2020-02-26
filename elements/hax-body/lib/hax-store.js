@@ -1269,7 +1269,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         groups: ["Link"],
         handles: [],
         meta: {
-          author: "W3C"
+          author: "W3C",
+          hidden: true
         }
       },
       settings: {
@@ -1349,7 +1350,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       gizmo: {
         title: "Paragraph",
         description: "A basic text area",
-        icon: "editor:short-text",
+        icon: "hax:paragraph",
         color: "grey",
         groups: ["Text"],
         handles: [
@@ -1359,7 +1360,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           }
         ],
         meta: {
-          author: "W3C"
+          author: "W3C",
+          hidden: true
         }
       },
       settings: {
@@ -1369,44 +1371,129 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(p, "p");
-    let prims = [
-      "caption",
-      "blockquote",
-      "code",
-      "figure",
-      "video",
-      "audio",
-      "section",
-      "ol",
-      "ul",
-      "li",
-      "a",
-      "h1",
-      "h2",
-      "h3",
-      "h4",
-      "h5",
-      "h6",
-      "strike",
-      "u",
-      "b",
-      "sub",
-      "sup",
-      "span",
-      "i",
-      "bold",
-      "em",
-      "strong",
-      "blockquote",
-      "code",
-      "figure"
-    ];
-    prims.forEach(tag => {
+    let prims = {
+      "caption": {
+        title: "Caption",
+        icon: "av:call-to-action"
+      },
+      "video": {
+        title: "Video",
+        icon: "av:play-circle-filled"
+      },
+      "audio": {
+        title: "Audio",
+        icon: "image:music-note"
+      },
+      "section": {
+        title: "Section",
+        icon: "image:crop-landscape"
+      },
+      "ol": {
+        title: "Numbered list",
+        icon: "editor:format-list-numbered"
+      },
+      "ul": {
+        title: "Bulleted list",
+        icon: "editor:format-list-bulleted"
+      },
+      "li": {
+        title: "List item",
+        icon: "editor:format-list-bulleted"
+      },
+      "h1": {
+        title: "Heading",
+        icon: "hax:h1"
+      },
+      "h2": {
+        title: "Heading",
+        icon: "hax:h2"
+      },
+      "h3": {
+        title: "Heading",
+        icon: "hax:h3"
+      },
+      "h4": {
+        title: "Heading",
+        icon: "hax:h4"
+      },
+      "h5": {
+        title: "Heading",
+        icon: "hax:h5"
+      },
+      "h6": {
+        title: "Heading",
+        icon: "hax:h6"
+      },
+      "strike": {
+        title: "Cross out",
+        icon: "editor:format-strikethrough"
+      },
+      "u": {
+        title: "Underline",
+        icon: "editor:format-underlined"
+      },
+      "sub": {
+        title: "Subscript",
+        icon: "mdextra:subscript"
+      },
+      "sup": {
+        title: "Superscript",
+        icon: "mdextra:superscript"
+      },
+      "div": {
+        title: "DIV",
+        icon: "image:crop-landscape"
+      },
+      "span": {
+        title: "SPAN",
+        icon: "editor:short-text"
+      },
+      "i": {
+        title: "Italic",
+        icon: "editor:format-italic"
+      },
+      "em": {
+        title: "Emphasis",
+        icon: "editor:format-italic"
+      },
+      "strong": {
+        title: "Bold",
+        icon: "editor:format-bold"
+      },
+      "b": {
+        title: "Bold",
+        icon: "editor:format-bold"
+      },
+      "blockquote": {
+        title: "Block quote",
+        icon: "editor:format-quote"
+      },
+      "code": {
+        title: "Code",
+        icon: "icons:code"
+      },
+      "figure": {
+        title: "Figure",
+        icon: "icons:label-outline"
+      },
+      "embed": {
+        title: "Embedded object",
+        icon: "icons:fullscreen"
+      }
+    };
+    for (var tag in prims) {
       this.setHaxProperties(
         {
           canScale: false,
           canPosition: false,
           canEditSource: true,
+          gizmo: {
+            title: prims[tag].title,
+            icon: prims[tag].icon,
+            meta: {
+              hidden: true,
+            }
+          },
           settings: {
             quick: [],
             configure: [],
@@ -1415,11 +1502,18 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         },
         tag
       );
-    });
+    }
     let hr = {
       canScale: {
         min: 25,
         step: 25
+      },
+      gizmo: {
+        title: "Horizontal line",
+        icon: "hax:hr",
+        meta: {
+          hidden: true
+        }
       },
       canPosition: false,
       canEditSource: false,

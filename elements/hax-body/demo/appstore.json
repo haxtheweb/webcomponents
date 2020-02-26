@@ -1465,7 +1465,6 @@
     "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-    "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",

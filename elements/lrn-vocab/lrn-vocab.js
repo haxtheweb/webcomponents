@@ -121,7 +121,8 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
           }
         ],
         meta: {
-          author: "ELMS:LN"
+          author: "ELMS:LN",
+          inlineOnly: true
         }
       },
       settings: {

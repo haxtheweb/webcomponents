@@ -236,7 +236,7 @@ class HaxBody extends SimpleColors {
           float: right;
         }
         /* drag and drop */
-        :host([edit-mode]) #bodycontainer ::slotted(*.mover):before {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-mover):before {
           outline: var(--hax-body-editable-outline);
           background-color: var(--hax-body-possible-target-background-color);
           content: " ";
@@ -247,11 +247,11 @@ class HaxBody extends SimpleColors {
           z-index: 2;
           height: 30px;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
           outline: var(--hax-body-active-outline);
           background-color: #eeeeee;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.hovered):before {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered):before {
           background-color: var(--hax-body-target-background-color) !important;
           outline: var(--hax-body-active-outline);
         }
@@ -308,7 +308,7 @@ class HaxBody extends SimpleColors {
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("mover");
+        children[i].classList.add("hax-mover");
       }
     }
   }
@@ -1178,6 +1178,8 @@ class HaxBody extends SimpleColors {
       if (this._validElementTest(children[i])) {
         children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
+        // remove some of the protected classes though they shouldn't leak through
+        children[i].classList.remove('hax-mover', 'hax-moving', 'hax-hovered', 'grid-plate-active-item');
         children[i].contentEditable = false;
         content += window.HaxStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
@@ -1455,6 +1457,8 @@ class HaxBody extends SimpleColors {
                 // remove slot name
                 cloneEl = el.cloneNode(true);
                 cloneEl.removeAttribute("slot");
+                cloneEl.classList.remove("hax-mover");
+                cloneEl.classList.remove("hax-moving");
                 node.parentNode.insertBefore(cloneEl, node);
               }
             });
@@ -2146,6 +2150,8 @@ class HaxBody extends SimpleColors {
    */
   dropEvent(e) {
     if (!this.openDrawer && this.editMode) {
+      // trick the tray into forcing active to be Configure
+      window.HaxStore.instance.haxTray.activeTab = "item-1";
       // establish an activeNode /container based on drop poisition
       this.activeNode = e.path[0];
       window.HaxStore.write("activeNode", e.path[0], this);
@@ -2168,14 +2174,14 @@ class HaxBody extends SimpleColors {
       // walk the children and remove the draggable state needed
       setTimeout(() => {
         let children = this.querySelectorAll(
-          ".mover, .hovered, .moving, .grid-plate-active-item"
+          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
         );
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
             children[i].classList.remove(
-              "mover",
-              "hovered",
-              "moving",
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving",
               "grid-plate-active-item"
             );
             // special support for grid plates as they manage internal drag/drop
@@ -2187,7 +2193,7 @@ class HaxBody extends SimpleColors {
                 ) {
                   children[i].shadowRoot
                     .querySelector("#col" + j)
-                    .classList.remove("mover");
+                    .classList.remove("hax-mover");
                 }
               }
             }
@@ -2281,7 +2287,7 @@ class HaxBody extends SimpleColors {
   dragEnter(e) {
     if (!this.openDrawer && this.editMode && e.target) {
       e.preventDefault();
-      e.target.classList.add("hovered");
+      e.target.classList.add("hax-hovered");
       // perform check for edge of screen
       this.handleMousemove(e);
     }
@@ -2448,7 +2454,7 @@ class HaxBody extends SimpleColors {
    */
   dragLeave(e) {
     if (!this.openDrawer && this.editMode) {
-      e.target.classList.remove("hovered");
+      e.target.classList.remove("hax-hovered");
     }
   }
   /**

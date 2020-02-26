@@ -159,7 +159,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           @click="${this.newAssetConfigure}"
           id="newassetconfigure"
           raised=""
-          >Configure item</paper-button
+          >Configure</paper-button
         >
       </div>
     `;
