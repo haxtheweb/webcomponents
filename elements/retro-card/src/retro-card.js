@@ -70,7 +70,6 @@ class RetroCard extends SimpleColors {
    */
   _clickCard(e) {
     if (
-      this.url &&
       window.HaxStore &&
       window.HaxStore.ready &&
       window.HaxStore.instance &&

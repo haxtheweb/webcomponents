@@ -21,8 +21,8 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
  *
- * @customElement a11y-tabs
  * @demo ./demo/index.html
+ * @customElement a11y-tabs
  */
 class A11yTabs extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -60,7 +60,6 @@ class A11yTabs extends LitElement {
     this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
   get tabs() {
-    console.log(this.__tabs);
     return this.__tabs
       ? Object.keys(this.__tabs).map(index => this.__tabs[index])
       : [];

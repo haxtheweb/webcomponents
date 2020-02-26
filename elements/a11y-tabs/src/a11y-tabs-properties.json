@@ -3,21 +3,21 @@
    * the id of the active tab
    */
   "activeTab": {
-    "type": "String",
+    "type": String,
     "attribute": "active-tab"
   },
   /**
    * whether the tabbed interface is disabled
    */
   "disabled": {
-    "type": "Boolean",
+    "type": Boolean,
     "reflect": true
   },
   /**
    * whether the tabbed interface is hidden
    */
   "hidden": {
-    "type": "Boolean",
+    "type": Boolean,
     "reflect": true
   },
   /**
@@ -26,14 +26,14 @@
    * - use `-1` to always show text with icons
    */
   "iconBreakpoint": {
-    "type": "Number",
+    "type": Number,
     "attribute": "icon-breakpoint"
   },
   /**
    * unique identifier/anchor for the tabbed interface
    */
   "id": {
-    "type": "String",
+    "type": String,
     "reflect": true
   },
   /**
@@ -42,7 +42,7 @@
    * - use `-1` for vertical-only
    */
   "layoutBreakpoint": {
-    "type": "Number",
+    "type": Number,
     "attribute": "layout-breakpoint"
   },
   /**
@@ -51,7 +51,7 @@
    * and `xs` is the larger breakpoint
    */
   "responsiveSize": {
-    "type": "String",
+    "type": String,
     "reflect": true,
     "attribute": "responsive-size"
   },
@@ -59,26 +59,26 @@
    * whether the tabbed interface is in vertical layout mode
    */
   "vertical": {
-    "type": "Boolean",
+    "type": Boolean,
     "reflect": true
   },
   /**
    * whether the tabbed interface has icons for each tab
    */
   "__hasIcons": {
-    "type": "Boolean"
+    "type": Boolean
   },
   /**
    * an array of tab data based on slotted `a11y-tab` elements
    */
   "__items": {
-    "type": "Array"
+    "type": Array
   },
   /**
    * a mutation observer to monitor slotted `a11y-tab` elements
    */
   "__observer": {
-    "type": "Object"
+    "type": Object
   },
   "forceHorizontal": {
     "type": "Boolean",

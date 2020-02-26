@@ -866,7 +866,7 @@
             "data": {},
             "resultMap": {
               "image": "https://en.wikipedia.org/static/images/project-logos/enwiki.png",
-              "defaultGizmoType": "content",
+              "defaultGizmoType": "wikipedia",
               "items": "query.search",
               "preview": {
                 "title": "title",
@@ -1452,6 +1452,8 @@
     }
   ],
   "autoloader": {
+    "code-sample": "@lrnwebcomponents/code-sample/code-sample.js",
+    "a11y-collapse": "@lrnwebcomponents/a11y-collapse/a11y-collapse.js",
     "retro-card": "@lrnwebcomponents/retro-card/retro-card.js",
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
     "parallax-image": "@lrnwebcomponents/parallax-image/parallax-image.js",
@@ -1463,7 +1465,6 @@
     "magazine-cover": "@lrnwebcomponents/magazine-cover/magazine-cover.js",
     "video-player": "@lrnwebcomponents/video-player/video-player.js",
     "image-compare-slider": "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-    "simple-concept-network": "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
     "license-element": "@lrnwebcomponents/license-element/license-element.js",
     "self-check": "@lrnwebcomponents/self-check/self-check.js",
     "multiple-choice": "@lrnwebcomponents/multiple-choice/multiple-choice.js",
@@ -1486,7 +1487,6 @@
     "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-    "q-r": "@lrnwebcomponents/q-r/q-r.js",
-    "wave-player": "@lrnwebcomponents/wave-player/wave-player.js"
+    "q-r": "@lrnwebcomponents/q-r/q-r.js"
   }
 }

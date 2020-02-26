@@ -21,8 +21,8 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
  *
- * @customElement a11y-tabs
  * @demo ./demo/index.html
+ * @customElement a11y-tabs
  */
 class A11yTabs extends LitElement {
   //styles function
@@ -45,9 +45,12 @@ class A11yTabs extends LitElement {
           --a11y-tabs-horizontal-border-radius: unset;
           --a11y-tabs-vertical-border-radius: unset;
           --a11y-tabs-horizontal-button-padding: 2px 5px;
+          --a11y-tabs-width: 100%;
           height: var(--a11y-tabs-height);
           overflow: var(--a11y-tabs-overflow);
+          font-size: 16px;
         }
+
         :host([vertical]) {
           border: 1px solid var(--a11y-tabs-border-color);
           border-radius: var(
@@ -58,9 +61,11 @@ class A11yTabs extends LitElement {
           justify-content: space-between;
           align-items: stretch;
         }
+
         :host([hidden]) {
           display: none;
         }
+
         :host #tabs {
           align-items: stretch;
           flex-wrap: var(--ally-tabs-wrap, unset);
@@ -69,6 +74,7 @@ class A11yTabs extends LitElement {
           list-style: none;
           padding: 0;
         }
+
         :host([vertical]) #tabs {
           background-color: var(--a11y-tabs-border-color);
           justify-content: var(
@@ -83,27 +89,37 @@ class A11yTabs extends LitElement {
           flex: 0 1 auto;
           flex-direction: column;
         }
+
         :host(:not([vertical])) #tabs {
+          position: fixed;
+          scroll-margin-top: 16px;
+          z-index: 1;
+          width: var(--a11y-tabs-width);
+          background-color: var(--a11y-tabs-background);
           justify-content: var(
             --a11y-tabs-horizontal-justify-tabs,
             var(--a11y-tabs-justify-tabs, flex-start)
           );
         }
+
         :host #tabs .flag-type {
           position: absolute;
           left: -99999px;
           height: 0;
           overflow: hidden;
         }
+
         :host #content {
           padding: var(--a11y-tabs-content-padding);
           background-color: var(--a11y-tabs-background);
           border: 1px solid var(--a11y-tabs-border-color);
         }
+
         :host([vertical]) #content {
           flex: 1 0 auto;
           border: none;
         }
+
         :host(:not([vertical])) #content {
           border-radius: var(
             --a11y-tabs-horizontal-border-radius,
@@ -111,6 +127,7 @@ class A11yTabs extends LitElement {
           );
           margin-top: -1px;
         }
+
         :host #tabs paper-button {
           margin: 0;
           text-transform: unset;
@@ -119,6 +136,7 @@ class A11yTabs extends LitElement {
           border: 1px solid var(--a11y-tabs-border-color);
           padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
         }
+
         :host([vertical]) #tabs paper-button {
           border-top: none;
           border-left: none;
@@ -131,6 +149,7 @@ class A11yTabs extends LitElement {
             var(--a11y-tabs-button-padding)
           );
         }
+
         :host(:not([vertical])) #tabs paper-button {
           width: 100%;
           border-bottom: none;
@@ -148,20 +167,24 @@ class A11yTabs extends LitElement {
             var(--a11y-tabs-button-padding)
           );
         }
+
         :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
           border-left: none;
         }
+
         :host #tabs paper-button:active,
         :host #tabs paper-button:focus,
         :host #tabs paper-button:hover {
           color: var(--a11y-tabs-focus-color);
           background-color: var(--a11y-tabs-faded-background);
         }
+
         :host #tabs paper-button.active[disabled] {
           color: var(--a11y-tabs-focus-color);
           background-color: var(--a11y-tabs-background);
           opacity: 1;
         }
+
         :host #tabs paper-button:not(.active)[disabled] {
           opacity: 0.5;
           cursor: not-allowed;
@@ -169,19 +192,24 @@ class A11yTabs extends LitElement {
         :host([vertical]) #tabs paper-button[disabled] {
           border-right-color: var(--a11y-tabs-background);
         }
+
         :host(:not([vertical])) #tabs paper-button[disabled] {
           border-bottom: 1px solid var(--a11y-tabs-background);
         }
+
         :host #tabs span.label,
         :host #tabs .flag-icon {
           margin-right: 8px;
         }
+
         :host #tabs.icons-only paper-button {
           justify-content: center;
         }
+
         :host #tabs.icons-only span.label {
           display: none;
         }
+
         :host #tabs:not(.icons-only) simple-tooltip {
           display: none;
         }
@@ -372,7 +400,6 @@ class A11yTabs extends LitElement {
     this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
   get tabs() {
-    console.log(this.__tabs);
     return this.__tabs
       ? Object.keys(this.__tabs).map(index => this.__tabs[index])
       : [];

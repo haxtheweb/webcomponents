@@ -204,27 +204,19 @@ class RetroCard extends SimpleColors {
         }
       },
       settings: {
-        quick: [
-          {
-            property: "mediaSource",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url"
-          }
-        ],
+        quick: [],
         configure: [
           {
             property: "title",
-            description: "",
+            title: "Title",
+            description: "Main title of card",
             inputMethod: "textfield",
             required: false,
             icon: "icons:android"
           },
           {
             property: "url",
-            description: "",
+            description: "Link to go to when clicking the card",
             inputMethod: "textfield",
             required: false,
             icon: "icons:android",
@@ -232,20 +224,23 @@ class RetroCard extends SimpleColors {
           },
           {
             property: "subtitle",
-            description: "",
+            title: "Sub-title",
+            description: "Sub heading",
             inputMethod: "textfield",
             required: false,
             icon: "icons:android"
           },
           {
             property: "tags",
-            description: "",
+            title: "Tags",
+            description: "Comma separated tags",
             inputMethod: "textfield",
             required: false,
             icon: "icons:android"
           },
           {
             property: "mediaSource",
+            title: "Media source",
             description: "Primary media source",
             inputMethod: "haxupload",
             required: true,
@@ -272,7 +267,7 @@ class RetroCard extends SimpleColors {
           {
             property: "dark",
             title: "Dark",
-            description: "Flips the color mode to be dark mode",
+            description: "Sets base color to be dark mode",
             inputMethod: "boolean",
             required: false
           }
@@ -373,7 +368,6 @@ class RetroCard extends SimpleColors {
    */
   _clickCard(e) {
     if (
-      this.url &&
       window.HaxStore &&
       window.HaxStore.ready &&
       window.HaxStore.instance &&

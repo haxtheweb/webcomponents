@@ -15,6 +15,7 @@ class HaxContextItem extends LitElement {
     this.action = false;
     this.large = false;
     this.disabled = false;
+    this.more = false;
     this.mini = false;
     this.menu = false;
     this.direction = "top";
@@ -62,6 +63,11 @@ class HaxContextItem extends LitElement {
         ?default="${this.default}"
         ?menu="${this.menu}"
       >
+        ${this.more
+          ? html`
+              <iron-icon icon="icons:expand-more"></iron-icon>
+            `
+          : ``}
         <slot></slot>
       </hax-toolbar-item>
     `;
@@ -76,6 +82,13 @@ class HaxContextItem extends LitElement {
        * Light theme for toolbar item.
        */
       light: {
+        type: Boolean
+      },
+      /**
+       * more implies there's an action after pressing the button
+       * so it'll put a visual indicator as such
+       */
+      more: {
         type: Boolean
       },
       action: {

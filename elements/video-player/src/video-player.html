@@ -3,7 +3,7 @@ ${!this.sourceData || this.sourceData.length < 1
   : this.isA11yMedia 
     ? html`
       <a11y-media-player
-        .accent-color="${this.accentColor || undefined}"
+        accent-color="${this.accentColor}"
         ?audio-only="${this.audioOnly}"
         ?dark="${this.dark}"
         ?dark-transcript="${this.darkTranscript}"

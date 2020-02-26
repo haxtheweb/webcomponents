@@ -48,10 +48,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   }
   static get properties() {
     return {
-      /**
-       * If this can support uploads or not based on presense of a backend
-       * this property is synced down from the store
-       */
       canSupportUploads: {
         type: Boolean,
         attribute: "can-support-uploads"
@@ -65,6 +61,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     super();
     this.__winEvents = {
       "hax-store-property-updated": "_haxStorePropertyUpdated",
+      "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
     this.canSupportUploads = false;
@@ -75,6 +72,14 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     }, 0);
   }
   /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (e.detail && e.detail.property === "canSupportUploads") {
+      this[e.detail.property] = e.detail.value;
+    }
+  }
+  /**
    * LitElement render
    */
   render() {
@@ -82,11 +87,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       <custom-style>
         <style>
           @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
-          #dialog {
-            --app-drawer-content-container: {
-              background-color: #ffffff;
-            }
-          }
           paper-input {
             --paper-input-container-label: {
               font-size: 11px;
@@ -159,7 +159,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           @click="${this.newAssetConfigure}"
           id="newassetconfigure"
           raised=""
-          >Configure item</paper-button
+          >Configure</paper-button
         >
       </div>
     `;
@@ -173,7 +173,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     };
     // we have no clue what this is.. let's try and guess..
     let type = window.HaxStore.guessGizmoType(values);
-    let haxElements = window.HaxStore.guessGizmo(type, values);
+    let haxElements = window.HaxStore.guessGizmo(type, values, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
@@ -215,18 +215,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     // ! it to simulate the drop event using the same event structure that
     // ! would have happened if they had used this element in the first place
     this.shadowRoot.querySelector("#fileupload")._onDrop(e.detail);
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (
-      e.detail &&
-      typeof e.detail.value !== typeof undefined &&
-      e.detail.property
-    ) {
-      this[e.detail.property] = e.detail.value;
-    }
   }
   /**
    * Respond to successful file upload, now inject url into url field and
@@ -317,6 +305,58 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     } else {
       this.__allowUpload = false;
     }
+  }
+  /**
+   * Event for an app being selected from a picker
+   * This happens when multiple upload targets support the given type
+   */
+  _haxAppPickerSelection(e) {
+    // details for where to upload the file
+    let connection = e.detail.connection;
+    this.__appUsed = e.detail;
+    this.shadowRoot.querySelector("#fileupload").method =
+      connection.operations.add.method;
+    let requestEndPoint = connection.protocol + "://" + connection.url;
+    // ensure we build a url correctly
+    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+      requestEndPoint += "/";
+    }
+    // support local end point modification
+    if (typeof connection.operations.add.endPoint !== typeof undefined) {
+      requestEndPoint += connection.operations.add.endPoint;
+    }
+    // implementation specific tweaks to talk to things like HAXcms and other CMSs
+    // that have per load token based authentication
+    if (
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
+    ) {
+      requestEndPoint +=
+        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    }
+    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+      requestEndPoint +=
+        "&" +
+        window.HaxStore.instance.connectionRewrites.appendJwt +
+        "=" +
+        localStorage.getItem(
+          window.HaxStore.instance.connectionRewrites.appendJwt
+        );
+    }
+    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
+    // invoke file uploading...
+    this.__allowUpload = true;
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
+  }
+  /**
+   * Helper to take a multi-dimensional object and convert
+   * it's reference into the real value. This allows for variable input defined
+   * in a string to actually hit the deeper part of an object structure.
+   */
+  _resolveObjectPath(path, obj) {
+    return path.split(".").reduce(function(prev, curr) {
+      return prev ? prev[curr] : null;
+    }, obj || self);
   }
 }
 

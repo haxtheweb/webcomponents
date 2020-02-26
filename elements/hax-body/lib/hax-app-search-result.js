@@ -165,7 +165,7 @@ class HaxAppSearchResult extends LitElement {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("mover");
+          children[i].classList.add("hax-mover");
         }
       }
     }
@@ -175,21 +175,25 @@ class HaxAppSearchResult extends LitElement {
    */
   _dragEnd(e) {
     this.crt.remove();
-    let children = window.HaxStore.instance.activeHaxBody.children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove(
-          "mover",
-          "hovered",
-          "moving",
-          "grid-plate-active-item"
-        );
-      }
-    }
     setTimeout(() => {
-      this._itemSelected(e);
-    }, 100);
+      let children = window.HaxStore.instance.activeHaxBody.querySelectorAll(
+        ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+      );
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove(
+            "hax-mover",
+            "hax-hovered",
+            "hax-moving",
+            "grid-plate-active-item"
+          );
+        }
+      }
+      setTimeout(() => {
+        this._itemSelected(e);
+      }, 100);
+    }, 0);
   }
 
   /**
@@ -205,7 +209,7 @@ class HaxAppSearchResult extends LitElement {
     ) {
       gizmoType = window.HaxStore.guessGizmoType(map.source);
     }
-    let haxElements = window.HaxStore.guessGizmo(gizmoType, map);
+    let haxElements = window.HaxStore.guessGizmo(gizmoType, map, false, true);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {

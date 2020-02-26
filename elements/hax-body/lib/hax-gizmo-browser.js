@@ -17,8 +17,12 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
           display: block;
         }
         .toolbar-inner {
-          display: inline-flex;
           padding: 0;
+          position: sticky;
+          background-color: white;
+          width: 100%;
+          top: 0;
+          z-index: 1;
         }
         .item-wrapper {
           text-align: center;
@@ -130,7 +134,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (children[i].classList && target !== children[i]) {
-          children[i].classList.add("mover");
+          children[i].classList.add("hax-mover");
         }
       }
     }
@@ -145,9 +149,9 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     for (var i in children) {
       if (typeof children[i].classList !== typeof undefined) {
         children[i].classList.remove(
-          "mover",
-          "hovered",
-          "moving",
+          "hax-mover",
+          "hax-hovered",
+          "hax-moving",
           "grid-plate-active-item"
         );
       }
@@ -166,6 +170,9 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "activeApp") {
         this._activeAppChanged(this[propName], oldValue);
+      }
+      if (propName == "filtered") {
+        this.requestUpdate();
       }
     });
   }
@@ -186,8 +193,14 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
    * Reset this browser.
    */
   resetBrowser() {
-    this.__gizmoList = window.HaxStore.instance.gizmoList;
-    this.filtered = this.__gizmoList;
+    this.__gizmoList = window.HaxStore.instance.gizmoList.filter((gizmo, i) => {
+      // remove inline and hidden references
+      if (gizmo.meta && (gizmo.meta.inlineOnly || gizmo.meta.hidden)) {
+        return false;
+      }
+      return true;
+    });
+    this.filtered = [...this.__gizmoList];
     this.shadowRoot.querySelector("#inputfilter").value = "";
     this.shadowRoot.querySelector("#filter").value = "";
     this.shadowRoot.querySelector("#filter").filter();

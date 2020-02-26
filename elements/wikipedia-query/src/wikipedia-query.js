@@ -146,6 +146,11 @@ class WikipediaQuery extends LitElement {
           {
             type: "content",
             title: "search"
+          },
+          {
+            type: "wikipedia",
+            type_exclusive: true,
+            title: "search"
           }
         ],
         meta: {

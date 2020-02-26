@@ -217,7 +217,10 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
   _searchValuesChanged(e) {
     let requestParams = this.requestParams;
     for (let property in e.detail) {
-      requestParams[property] = e.detail[property];
+      // dont send empty params in the request
+      if (e.detail[property] != "") {
+        requestParams[property] = e.detail[property];
+      }
     }
     this.requestParams = { ...this.requestParams };
   }

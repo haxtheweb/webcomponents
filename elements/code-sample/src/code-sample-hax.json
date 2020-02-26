@@ -26,12 +26,15 @@
         "inputMethod": "code-editor"
       },
       {
-        "attribute": "copy-clipboard-button",
+        "property": "copyClipboardButton",
         "title": "Copy to clipboard button",
         "description": "button in top right that says copy to clipboard",
         "inputMethod": "boolean"
       }
     ],
     "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["theme"]
   }
 }

@@ -674,6 +674,7 @@ window.HAXme = function(context = null) {
     window.__haxCMSContextDemo = true;
   }
   // apply context
+  document.body.querySelector("haxcms-editor-builder").__appliedContext = false;
   document.body.querySelector("haxcms-editor-builder").applyContext(context);
 };
 export { HAXCMSSiteBuilder };

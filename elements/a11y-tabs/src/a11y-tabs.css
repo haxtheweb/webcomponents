@@ -14,8 +14,10 @@
   --a11y-tabs-horizontal-border-radius: unset;
   --a11y-tabs-vertical-border-radius: unset;
   --a11y-tabs-horizontal-button-padding: 2px 5px;
+  --a11y-tabs-width: 100%;
   height: var(--a11y-tabs-height);
   overflow: var(--a11y-tabs-overflow);
+  font-size: 16px;
 }
 
 :host([vertical]) {
@@ -49,6 +51,11 @@
 }
 
 :host(:not([vertical])) #tabs {
+  position: fixed;
+  scroll-margin-top: 16px;
+  z-index: 1;
+  width: var(--a11y-tabs-width);
+  background-color: var(--a11y-tabs-background);
   justify-content: var(--a11y-tabs-horizontal-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
 }
 
@@ -125,7 +132,6 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 :host([vertical]) #tabs paper-button[disabled] {
   border-right-color: var(--a11y-tabs-background);
 }

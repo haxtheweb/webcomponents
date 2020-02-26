@@ -80,10 +80,14 @@ class A11yMediaStateManager extends LitElement {
    */
   checkConcurrentPlayers() {
     let active = this.activePlayer;
-    this.players.forEach(player=>{
+    this.players.forEach(player => {
       if (player !== active) {
         player.toggleFullscreen(false);
-        if ((!player.allowConcurrent && !active.allowConcurrent) || active.fullscreen) player.pause();
+        if (
+          (!player.allowConcurrent && !active.allowConcurrent) ||
+          active.fullscreen
+        )
+          player.pause();
       }
     });
   }
@@ -114,7 +118,6 @@ class A11yMediaStateManager extends LitElement {
       this.activePlayer !== null
     ) {
       this.activePlayer.toggleSticky(false);
-      this.__parent.style.height = "unset";
     }
     parent.style.height = parent.offsetHeight + "px";
     this.setActivePlayer(player);

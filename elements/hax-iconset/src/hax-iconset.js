@@ -27,6 +27,30 @@ const template = html`
         </g>
       </defs>
     </svg>
+    <!-- table-column-plus-after -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="table-column-plus-after">
+          <path d="M4,2H11A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H4A2,2 0 0,1 2,20V4A2,2 0 0,1 4,2M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M17.59,12L15,9.41L16.41,8L19,10.59L21.59,8L23,9.41L20.41,12L23,14.59L21.59,16L19,13.41L16.41,16L15,14.59L17.59,12Z" />
+      </g>
+      </defs>
+    </svg>
+    <!-- table-column-remove -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="table-column-remove">
+          <path d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow-all -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-all">
+          <path d="M13,11H18L16.5,9.5L17.92,8.08L21.84,12L17.92,15.92L16.5,14.5L18,13H13V18L14.5,16.5L15.92,17.92L12,21.84L8.08,17.92L9.5,16.5L11,18V13H6L7.5,14.5L6.08,15.92L2.16,12L6.08,8.08L7.5,9.5L6,11H11V6L9.5,7.5L8.08,6.08L12,2.16L15.92,6.08L14.5,7.5L13,6V11Z" />
+        </g>
+      </defs>
+    </svg>
     <!-- arrow-expand-right -->
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <defs>

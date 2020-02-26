@@ -135,7 +135,7 @@ class GridPlateLayoutOptions {
     this.options = {};
     let layoutFlip = Object.keys(this.layouts);
     // loop through all the supplied layouts to get the HAX layout options & descriptions
-    for (let i = 0; i < layoutFlip.length; i++) {
+    for (let i = 1; i < layoutFlip.length; i++) {
       this.options[layoutFlip[i]] = this.layouts[layoutFlip[i]].columnLayout;
     }
   }
@@ -158,17 +158,16 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-grey-3
-          );
-          --grid-plate-active-border-color: #000000;
+          --grid-plate-editable-border-color: #3b97e3;
+          --grid-plate-active-border-color: #3b97e3;
           --grid-plate-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
           --grid-plate-possible-target-background-color: transparent;
           --grid-plate-selected-background-color: #ffffff;
-          --grid-plate-arrow-color: #000000;
-          --grid-plate-arrow-bg: var(--simple-colors-default-theme-grey-3);
+          --grid-plate-arrow-color: #ffffff;
+          --grid-plate-arrow-color-hover: #000000;
+          --grid-plate-arrow-bg: #3b97e3;
         }
         :host .row {
           width: 100%;
@@ -187,6 +186,9 @@ class GridPlate extends LitElement {
           min-height: 150px;
           transition: 0.2s color linear, 0.2s background-color linear,
             0.2s outline linear;
+        }
+        :host([edit-mode]) {
+          min-height: 150px;
         }
         :host([edit-mode]) .column {
           outline: 2px solid var(--grid-plate-editable-border-color);
@@ -231,7 +233,7 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:active) {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) .column ::slotted(*.mover):before {
+        :host([edit-mode]) .column ::slotted(*.hax-mover):before {
           outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
           content: " ";
@@ -242,29 +244,29 @@ class GridPlate extends LitElement {
           z-index: 2;
           height: 30px;
         }
-        :host([edit-mode]) .column ::slotted(img.mover) {
+        :host([edit-mode]) .column ::slotted(img.hax-mover) {
           outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
         }
-        :host([edit-mode]) .column.mover {
+        :host([edit-mode]) .column.hax-mover {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
           outline: 2px solid var(--hax-body-active-border-color);
           background-color: #eeeeee;
         }
-        :host([edit-mode]) .column.mover {
+        :host([edit-mode]) .column.hax-mover {
           content: "Double click to create a paragraph here";
           background-color: var(--grid-plate-possible-target-background-color);
         }
-        :host([edit-mode]) .column ::slotted(img.hovered),
-        :host([edit-mode]) .column ::slotted(*.hovered):before {
+        :host([edit-mode]) .column ::slotted(img.hax-hovered),
+        :host([edit-mode]) .column ::slotted(*.hax-hovered):before {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
           outline: solid 2px var(--grid-plate-active-border-color);
         }
-        :host([edit-mode]) .column.hovered {
+        :host([edit-mode]) .column.hax-hovered {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
@@ -282,7 +284,7 @@ class GridPlate extends LitElement {
           color: var(--grid-plate-arrow-color);
           opacity: 1;
           background-color: var(--grid-plate-arrow-bg);
-          border-radius: 50%;
+          border-radius: none;
           box-sizing: content-box !important;
           z-index: 2;
           min-width: unset;
@@ -291,8 +293,7 @@ class GridPlate extends LitElement {
         paper-icon-button:hover {
           opacity: 1;
           visibility: visible;
-          background-color: var(--grid-plate-arrow-color);
-          color: var(--grid-plate-arrow-bg);
+          color: var(--grid-plate-arrow-color-hover);
         }
         #drag {
           cursor: move;
@@ -311,6 +312,9 @@ class GridPlate extends LitElement {
         .button-holding-pen {
           position: relative;
         }
+        .button-holding-pen[hidden] {
+          display: none;
+        }
       `
     ];
   }
@@ -318,6 +322,7 @@ class GridPlate extends LitElement {
     super();
     this.droppable = false;
     this.ignoreHax = false;
+    this.hideOps = false;
     this.breakpointSm = 900;
     this.breakpointMd = 1200;
     this.breakpointLg = 1500;
@@ -325,13 +330,16 @@ class GridPlate extends LitElement {
     this.columns = 6;
     this.disableResponsive = false;
     this.editMode = false;
+    if (window.HaxStore && window.HaxStore.instance) {
+      this.editMode = window.HaxStore.instance.editMode;
+    }
     this.layout = "1-1";
     this.layouts = new GridPlateLayoutOptions().layouts;
     this.responsiveSize = "xs";
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
     setTimeout(() => {
+      import("@polymer/paper-icon-button/paper-icon-button.js");
+      import("@polymer/iron-icons/hardware-icons.js");
+      import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("dragenter", this.dragEnterGrid.bind(this));
     }, 0);
@@ -342,10 +350,10 @@ class GridPlate extends LitElement {
    */
   render() {
     return html`
-      <div class="button-holding-pen">
+      <div class="button-holding-pen" ?hidden="${this.hideOps}">
         <paper-icon-button
           class="direction"
-          icon="editor:drag-handle"
+          icon="hax:arrow-all"
           title="Drag"
           draggable="true"
           id="drag"
@@ -582,7 +590,6 @@ class GridPlate extends LitElement {
       if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
         let col = this.shadowRoot.querySelector("#col" + j);
         col.addEventListener("drop", this.dropEvent.bind(this));
-        col.addEventListener("dblclick", this.dblclick.bind(this));
         col.addEventListener("dragenter", this.dragEnter.bind(this));
         col.addEventListener("dragleave", this.dragLeave.bind(this));
         col.addEventListener("dragover", function(e) {
@@ -623,6 +630,18 @@ class GridPlate extends LitElement {
       canScale: true,
       canPosition: true,
       canEditSource: false,
+      gizmo: {
+        title: "Grid layout",
+        description: "Simple card in a cool retro design",
+        icon: "hax:3/3/3/3",
+        color: "grey",
+        groups: ["Layout"],
+        handles: [],
+        meta: {
+          author: "ELMS:LN",
+          owner: "The Pennsylvania State University"
+        }
+      },
       settings: {
         quick: [],
         configure: [
@@ -680,6 +699,7 @@ class GridPlate extends LitElement {
           "options",
           "droppable",
           "ignorehax",
+          "hideops",
           "disableresponsive",
           "activeitem"
         ]
@@ -688,10 +708,23 @@ class GridPlate extends LitElement {
   }
   static get properties() {
     return {
+      /**
+       * Flag to allow hiding button based operations
+       */
+      hideOps: {
+        type: Boolean
+      },
+      /**
+       * allows other systems to trigger editMode in grid plate via property for D&D
+       */
       droppable: {
         type: Boolean,
         reflect: true
       },
+      /**
+       * Flag for when using grid-plate in a system WITH hax yet not wanting to
+       * be activated (like a HAXcms / other CMS theme layer)
+       */
       ignoreHax: {
         type: Boolean,
         attribute: "ignore-hax"
@@ -1195,12 +1228,12 @@ class GridPlate extends LitElement {
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("mover");
+        children[i].classList.add("hax-mover");
       }
     }
     for (var j = 1; j <= this.columns; j++) {
       if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+        this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
       }
     }
   }
@@ -1210,7 +1243,7 @@ class GridPlate extends LitElement {
   dragEnter(e) {
     if (this.editMode) {
       e.preventDefault();
-      e.target.classList.add("hovered");
+      e.target.classList.add("hax-hovered");
     }
   }
   /**
@@ -1218,27 +1251,7 @@ class GridPlate extends LitElement {
    */
   dragLeave(e) {
     if (this.editMode) {
-      e.target.classList.remove("hovered");
-    }
-  }
-  /**
-   * On double check, fire an event for HAX to insert a paragraph.
-   * If they aren't using HAX then it won't do anything
-   */
-  dblclick(e) {
-    if (this.editMode && e.target.id) {
-      let detail = {};
-      detail.properties = {
-        slot: e.target.id.replace("col", "col-")
-      };
-      this.dispatchEvent(
-        new CustomEvent("grid-plate-add-item", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: detail
-        })
-      );
+      e.target.classList.remove("hax-hovered");
     }
   }
   /**
@@ -1246,10 +1259,16 @@ class GridPlate extends LitElement {
    */
   __sortChildren() {
     try {
-      // select all children w/ a slot attribute and convert to an Array
-      let children = Array.prototype.slice.call(
-        this.querySelectorAll("[slot]"),
-        0
+      // select all direct children w/ a slot attribute and convert to an Array
+      let children = Array.prototype.reduce.call(
+        this.children,
+        function(acc, e) {
+          if (e.slot) {
+            acc.push(e);
+          }
+          return acc;
+        },
+        []
       );
       // sort the children by slot id being low to high
       children = children.sort(function(a, b) {
@@ -1264,7 +1283,10 @@ class GridPlate extends LitElement {
       // loop through and append these back into the grid plate.
       // which will put them in the right order
       children.forEach(el => {
-        this.appendChild(el);
+        // sanity check that we only move things that are a direct child
+        if (el.parentNode === this) {
+          this.appendChild(el);
+        }
       });
     } catch (error) {
       console.warn(error);
@@ -1288,18 +1310,24 @@ class GridPlate extends LitElement {
         target = window.HaxStore.instance.__dragTarget;
       }
       setTimeout(() => {
-        let children = this.children;
+        let children = this.querySelectorAll(
+          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+        );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("mover", "hovered", "moving");
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
           }
         }
         for (var j = 1; j <= this.columns; j++) {
           if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
             this.shadowRoot
               .querySelector("#col" + j)
-              .classList.remove("mover", "hovered", "moving");
+              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
           }
         }
         // support hax and dropping back inside grid plate
@@ -1308,13 +1336,17 @@ class GridPlate extends LitElement {
           // walk the children and apply the draggable state needed
           for (var i in childrenHAX) {
             if (childrenHAX[i].classList) {
-              childrenHAX[i].classList.remove("mover", "hovered", "moving");
+              childrenHAX[i].classList.remove(
+                "hax-mover",
+                "hax-hovered",
+                "hax-moving"
+              );
             }
           }
         }
         // sort the children by slot to ensure they are in the correct semantic order
         this.__sortChildren();
-      }, 0);
+      }, 100);
       // edge case, something caused this to drag and it tried to do
       // itself into itself
       if (target === this) {
@@ -1334,7 +1366,7 @@ class GridPlate extends LitElement {
         target !== local
       ) {
         target.setAttribute("slot", local.getAttribute("slot"));
-        this.insertBefore(target, local);
+        local.parentNode.insertBefore(target, local);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1389,14 +1421,14 @@ class GridPlate extends LitElement {
         // walk the children and apply the draggable state needed
         for (var i in childrenHAX) {
           if (childrenHAX[i].classList) {
-            childrenHAX[i].classList.add("mover");
+            childrenHAX[i].classList.add("hax-mover");
           }
         }
         window.HaxStore.instance.__dragTarget = this.activeItem;
       } else {
         this.__dragTarget = this.activeItem;
       }
-      this.activeItem.classList.add("moving");
+      this.activeItem.classList.add("hax-moving");
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(this.activeItem, 0, 0);
       e.stopPropagation();
@@ -1405,12 +1437,12 @@ class GridPlate extends LitElement {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (children[i].classList && children[i] !== this.activeItem) {
-          children[i].classList.add("mover");
+          children[i].classList.add("hax-mover");
         }
       }
       for (var j = 1; j <= this.columns; j++) {
         if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+          this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
         }
       }
     }
@@ -1421,20 +1453,28 @@ class GridPlate extends LitElement {
    */
   dragEnd(e) {
     if (this.editMode) {
-      let children = this.children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        if (typeof children[i].classList !== typeof undefined) {
-          children[i].classList.remove("mover", "hovered", "moving");
+      setTimeout(() => {
+        let children = this.querySelectorAll(
+          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
+        );
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].classList !== typeof undefined) {
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
+          }
         }
-      }
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot
-            .querySelector("#col" + j)
-            .classList.remove("mover", "hovered", "moving");
+        for (var j = 1; j <= this.columns; j++) {
+          if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+            this.shadowRoot
+              .querySelector("#col" + j)
+              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
+          }
         }
-      }
+      }, 100);
     }
   }
 
@@ -1468,6 +1508,8 @@ class GridPlate extends LitElement {
       if (e.detail.property === "editMode" && this.ignoreHax) {
         // do nothing, we were told to ignore hax
       } else {
+        // if HAX modified our edit state then hide operations
+        this.hideOps = true;
         this[e.detail.property] = e.detail.value;
       }
     }

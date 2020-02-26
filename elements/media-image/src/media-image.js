@@ -35,10 +35,6 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           padding: 20px;
         }
 
-        :host([round]) media-image-image {
-          border-radius: 50%;
-        }
-
         @media screen and (min-width: 450px) {
           :host([size="small"]) {
             max-width: 50%;
@@ -142,6 +138,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
           `
         : ``}
       <media-image-image
+        ?round="${this.round}"
         resource="${this.schemaResourceID}-image"
         source="${this.source}"
         modal-title="${this.modalTitle}"
@@ -213,8 +210,7 @@ class MediaImage extends SchemaBehaviors(LitElement) {
        * The shape of the image (round).
        */
       round: {
-        type: Boolean,
-        reflect: true
+        type: Boolean
       },
       /**
        * Applies card styling.
@@ -446,11 +442,15 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
           width: 100%;
           --iron-image-width: 100%;
         }
+        :host([round]) iron-image {
+          border-radius: 50%;
+        }
       `
     ];
   }
   constructor() {
     super();
+    this.round = false;
     this.modalContent = document.createElement("image-inspector");
     this.modalContent.noLeft = true;
     this.modalTitle = "";
@@ -489,6 +489,10 @@ class MediaImageImage extends SimpleModalHandler(LitElement) {
       },
       alt: {
         type: String
+      },
+      round: {
+        type: Boolean,
+        reflect: true
       },
       modalTitle: {
         type: String,

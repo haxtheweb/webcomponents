@@ -71,7 +71,7 @@
     "@polymer/polymer": "^3.3.1",
     "@vaadin/router": "^1.5.2",
     "mobx": "^5.15.0",
-    "web-social-share": "^6.2.0"
+    "web-social-share": "6.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
