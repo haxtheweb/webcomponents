@@ -18,7 +18,7 @@ class HAXTrayButton extends SimpleColors {
     this.eventName = null;
     this.icon = null;
     this.colorMeaning = false;
-    this.hoverAccentColor = "blue";
+    this.hoverAccentColor = "cyan";
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("focusout", this._focusOut.bind(this));
     this.addEventListener("mouseover", this._focusIn.bind(this));
@@ -205,7 +205,7 @@ class HAXTrayButton extends SimpleColors {
   }
   _focusIn(e) {
     this.accentColor =
-      this.hoverAccentColor === "grey" ? "blue" : this.hoverAccentColor;
+      this.hoverAccentColor === "grey" ? "cyan" : this.hoverAccentColor;
   }
   _focusOut(e) {
     if (!this.colorMeaning) {

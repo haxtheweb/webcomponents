@@ -23,18 +23,23 @@ class HaxTextContext extends winEventsElement(LitElement) {
           background-color: var(--hax-contextual-action-color);
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
-          padding: 0 8px;
+          font-size: 11px;
+          line-height: 24px;
+          margin: 0;
+          padding: 0 4px;
+          min-height: 24px;
         }
         paper-item:hover {
           cursor: pointer;
           color: black;
         }
         iron-icon {
-          padding: 8px;
+          width: 20px;
+          height: 20px;
+          padding: 4px;
         }
         paper-item strong {
-          padding: 8px;
-          font-size: 12px;
+          padding: 4px;
         }
         hax-context-item-textop,
         hax-context-item {
@@ -133,7 +138,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
             ><iron-icon icon="hax:h4"></iron-icon>Subheading
           </paper-item>
           <paper-item value="h5"
-            ><iron-icon icon="hax:h5"></iron-icon>Deeper subheading
+            ><iron-icon icon="hax:h5"></iron-icon>Deep subheading
           </paper-item>
           <paper-item value="blockquote"
             ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote

@@ -12,6 +12,9 @@ class HaxToolbarMenu extends LitElement {
           display: block;
           box-sizing: border-box;
         }
+        iron-icon {
+          width: 10px;
+        }
         paper-menu-button {
           margin: 0;
           padding: 0;

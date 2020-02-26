@@ -55,7 +55,7 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-contextual-action-color: #3b97e3;
+          --hax-contextual-action-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
           --hax-body-editable-outline: 1px solid #e37e3b;
           --hax-body-active-outline-hover: 1px solid
             var(--hax-contextual-action-color);
@@ -225,7 +225,7 @@ class HaxBody extends SimpleColors {
           left: unset;
           right: unset;
           top: unset;
-          background-color: #3b97e3;
+          background-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
           color: #ffffff;
           bottom: unset;
           width: auto;
@@ -645,108 +645,111 @@ class HaxBody extends SimpleColors {
       this.editMode &&
       this.getAttribute("contenteditable")
     ) {
-      switch (e.key) {
-        case "Tab":
-          if (
-            window.HaxStore.instance.isTextElement(this.activeContainerNode)
-          ) {
-            if (e.detail.keyboardEvent) {
-              e.detail.keyboardEvent.preventDefault();
-              e.detail.keyboardEvent.stopPropagation();
-              e.detail.keyboardEvent.stopImmediatePropagation();
-            }
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            if (e.shiftKey) {
-              this._tabBackKeyPressed();
-            } else {
-              this._tabKeyPressed();
-            }
-          }
-          break;
-        case "Enter":
-          this.setAttribute("contenteditable", true);
-        case "Backspace":
-        case "Delete":
-        case "ArrowUp":
-        case "ArrowDown":
-        case "ArrowLeft":
-        case "ArrowRight":
-          clearTimeout(this.__keyPress);
-          this.__keyPress = setTimeout(() => {
-            const tmp = window.HaxStore.getSelection();
-            window.HaxStore._tmpSelection = tmp;
-            window.HaxStore.write("haxSelectedText", tmp.toString(), this);
-            const rng = window.HaxStore.getRange();
+      let sel = window.HaxStore.getSelection();
+      if (sel.anchorNode != null) {
+        switch (e.key) {
+          case "Tab":
             if (
-              rng.commonAncestorContainer &&
-              this.activeNode !== rng.commonAncestorContainer &&
-              typeof rng.commonAncestorContainer.focus === "function"
+              window.HaxStore.instance.isTextElement(this.activeNode)
             ) {
-              if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
-                if (
-                  window.HaxStore.instance.isTextElement(
-                    rng.commonAncestorContainer
-                  )
-                ) {
-                  this.setAttribute("contenteditable", true);
-                } else {
-                  this.removeAttribute("contenteditable");
-                }
-                rng.commonAncestorContainer.focus();
-                this.__focusLogic(rng.commonAncestorContainer);
+              if (e.detail.keyboardEvent) {
+                e.detail.keyboardEvent.preventDefault();
+                e.detail.keyboardEvent.stopPropagation();
+                e.detail.keyboardEvent.stopImmediatePropagation();
+              }
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              if (e.shiftKey) {
+                this._tabBackKeyPressed();
+              } else {
+                this._tabKeyPressed();
               }
             }
-            // need to check on the parent too if this was a text node
-            else if (
-              rng.commonAncestorContainer &&
-              rng.commonAncestorContainer.parentNode &&
-              this.activeNode !== rng.commonAncestorContainer.parentNode &&
-              typeof rng.commonAncestorContainer.parentNode.focus === "function"
-            ) {
+            break;
+          case "Enter":
+            this.setAttribute("contenteditable", true);
+          case "Backspace":
+          case "Delete":
+          case "ArrowUp":
+          case "ArrowDown":
+          case "ArrowLeft":
+          case "ArrowRight":
+            clearTimeout(this.__keyPress);
+            this.__keyPress = setTimeout(() => {
+              const tmp = window.HaxStore.getSelection();
+              window.HaxStore._tmpSelection = tmp;
+              window.HaxStore.write("haxSelectedText", tmp.toString(), this);
+              const rng = window.HaxStore.getRange();
               if (
-                rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
+                rng.commonAncestorContainer &&
+                this.activeNode !== rng.commonAncestorContainer &&
+                typeof rng.commonAncestorContainer.focus === "function"
+              ) {
+                if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                  if (
+                    window.HaxStore.instance.isTextElement(
+                      rng.commonAncestorContainer
+                    )
+                  ) {
+                    this.setAttribute("contenteditable", true);
+                  } else {
+                    this.removeAttribute("contenteditable");
+                  }
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer);
+                }
+              }
+              // need to check on the parent too if this was a text node
+              else if (
+                rng.commonAncestorContainer &&
+                rng.commonAncestorContainer.parentNode &&
+                this.activeNode !== rng.commonAncestorContainer.parentNode &&
+                typeof rng.commonAncestorContainer.parentNode.focus === "function"
               ) {
                 if (
-                  window.HaxStore.instance.isTextElement(
-                    rng.commonAncestorContainer.parentNode
-                  )
+                  rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
                 ) {
-                  this.setAttribute("contenteditable", true);
+                  if (
+                    window.HaxStore.instance.isTextElement(
+                      rng.commonAncestorContainer.parentNode
+                    )
+                  ) {
+                    this.setAttribute("contenteditable", true);
+                  } else {
+                    this.removeAttribute("contenteditable");
+                  }
+                  rng.commonAncestorContainer.parentNode.focus();
+                  this.__focusLogic(rng.commonAncestorContainer.parentNode);
                 } else {
-                  this.removeAttribute("contenteditable");
+                  this.activeNode = rng.commonAncestorContainer;
+                  this.activeContainerNode = this.activeNode;
+                  window.HaxStore.write(
+                    "activeNode",
+                    rng.commonAncestorContainer,
+                    this
+                  );
+                  window.HaxStore.write(
+                    "activeContainerNode",
+                    rng.commonAncestorContainer,
+                    this
+                  );
+                  setTimeout(() => {
+                    this.positionContextMenus();
+                  }, 0);
                 }
-                rng.commonAncestorContainer.parentNode.focus();
-                this.__focusLogic(rng.commonAncestorContainer.parentNode);
               } else {
-                this.activeNode = rng.commonAncestorContainer;
-                this.activeContainerNode = this.activeNode;
-                window.HaxStore.write(
-                  "activeNode",
-                  rng.commonAncestorContainer,
-                  this
-                );
-                window.HaxStore.write(
-                  "activeContainerNode",
-                  rng.commonAncestorContainer,
-                  this
-                );
-                setTimeout(() => {
-                  this.positionContextMenus();
-                }, 0);
               }
-            } else {
-            }
-          }, 50);
-          break;
-      }
-      if (
-        this.shadowRoot
-          .querySelector("#platecontextmenu")
-          .classList.contains("hax-active-hover")
-      ) {
-        this.__dropActiveHover();
+            }, 50);
+            break;
+        }
+        if (
+          this.shadowRoot
+            .querySelector("#platecontextmenu")
+            .classList.contains("hax-active-hover")
+        ) {
+          this.__dropActiveHover();
+        }
       }
     }
   }

@@ -158,8 +158,8 @@ class GridPlate extends LitElement {
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: #3b97e3;
-          --grid-plate-active-border-color: #3b97e3;
+          --grid-plate-editable-border-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+          --grid-plate-active-border-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
           --grid-plate-target-background-color: var(
             --simple-colors-default-theme-green-3
           );
@@ -167,7 +167,7 @@ class GridPlate extends LitElement {
           --grid-plate-selected-background-color: #ffffff;
           --grid-plate-arrow-color: #ffffff;
           --grid-plate-arrow-color-hover: #000000;
-          --grid-plate-arrow-bg: #3b97e3;
+          --grid-plate-arrow-bg: var(--simple-colors-default-theme-cyan-7, #3b97e3);
         }
         :host .row {
           width: 100%;
@@ -233,7 +233,7 @@ class GridPlate extends LitElement {
         :host([edit-mode]) .column ::slotted(*:active) {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) .column ::slotted(*.mover):before {
+        :host([edit-mode]) .column ::slotted(*.hax-mover):before {
           outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
           content: " ";
@@ -244,29 +244,29 @@ class GridPlate extends LitElement {
           z-index: 2;
           height: 30px;
         }
-        :host([edit-mode]) .column ::slotted(img.mover) {
+        :host([edit-mode]) .column ::slotted(img.hax-mover) {
           outline: 2px solid var(--grid-plate-editable-border-color);
           background-color: var(--grid-plate-possible-target-background-color);
         }
-        :host([edit-mode]) .column.mover {
+        :host([edit-mode]) .column.hax-mover {
           outline: 2px solid var(--grid-plate-editable-border-color);
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*.moving) {
+        :host([edit-mode]) #bodycontainer ::slotted(*.hax-moving) {
           outline: 2px solid var(--hax-body-active-border-color);
           background-color: #eeeeee;
         }
-        :host([edit-mode]) .column.mover {
+        :host([edit-mode]) .column.hax-mover {
           content: "Double click to create a paragraph here";
           background-color: var(--grid-plate-possible-target-background-color);
         }
-        :host([edit-mode]) .column ::slotted(img.hovered),
-        :host([edit-mode]) .column ::slotted(*.hovered):before {
+        :host([edit-mode]) .column ::slotted(img.hax-hovered),
+        :host([edit-mode]) .column ::slotted(*.hax-hovered):before {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
           outline: solid 2px var(--grid-plate-active-border-color);
         }
-        :host([edit-mode]) .column.hovered {
+        :host([edit-mode]) .column.hax-hovered {
           background-color: var(
             --grid-plate-target-background-color
           ) !important;
@@ -1228,12 +1228,12 @@ class GridPlate extends LitElement {
     // walk the children and apply the draggable state needed
     for (var i in children) {
       if (children[i].classList && children[i] !== this.activeItem) {
-        children[i].classList.add("mover");
+        children[i].classList.add("hax-mover");
       }
     }
     for (var j = 1; j <= this.columns; j++) {
       if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+        this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
       }
     }
   }
@@ -1243,7 +1243,7 @@ class GridPlate extends LitElement {
   dragEnter(e) {
     if (this.editMode) {
       e.preventDefault();
-      e.target.classList.add("hovered");
+      e.target.classList.add("hax-hovered");
     }
   }
   /**
@@ -1251,7 +1251,7 @@ class GridPlate extends LitElement {
    */
   dragLeave(e) {
     if (this.editMode) {
-      e.target.classList.remove("hovered");
+      e.target.classList.remove("hax-hovered");
     }
   }
   /**
@@ -1311,19 +1311,23 @@ class GridPlate extends LitElement {
       }
       setTimeout(() => {
         let children = this.querySelectorAll(
-          ".mover, .hovered, .moving, .grid-plate-active-item"
+          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
         );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("mover", "hovered", "moving");
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
           }
         }
         for (var j = 1; j <= this.columns; j++) {
           if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
             this.shadowRoot
               .querySelector("#col" + j)
-              .classList.remove("mover", "hovered", "moving");
+              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
           }
         }
         // support hax and dropping back inside grid plate
@@ -1332,7 +1336,11 @@ class GridPlate extends LitElement {
           // walk the children and apply the draggable state needed
           for (var i in childrenHAX) {
             if (childrenHAX[i].classList) {
-              childrenHAX[i].classList.remove("mover", "hovered", "moving");
+              childrenHAX[i].classList.remove(
+                "hax-mover",
+                "hax-hovered",
+                "hax-moving"
+              );
             }
           }
         }
@@ -1413,14 +1421,14 @@ class GridPlate extends LitElement {
         // walk the children and apply the draggable state needed
         for (var i in childrenHAX) {
           if (childrenHAX[i].classList) {
-            childrenHAX[i].classList.add("mover");
+            childrenHAX[i].classList.add("hax-mover");
           }
         }
         window.HaxStore.instance.__dragTarget = this.activeItem;
       } else {
         this.__dragTarget = this.activeItem;
       }
-      this.activeItem.classList.add("moving");
+      this.activeItem.classList.add("hax-moving");
       e.dataTransfer.dropEffect = "move";
       e.dataTransfer.setDragImage(this.activeItem, 0, 0);
       e.stopPropagation();
@@ -1429,12 +1437,12 @@ class GridPlate extends LitElement {
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (children[i].classList && children[i] !== this.activeItem) {
-          children[i].classList.add("mover");
+          children[i].classList.add("hax-mover");
         }
       }
       for (var j = 1; j <= this.columns; j++) {
         if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+          this.shadowRoot.querySelector("#col" + j).classList.add("hax-mover");
         }
       }
     }
@@ -1447,19 +1455,23 @@ class GridPlate extends LitElement {
     if (this.editMode) {
       setTimeout(() => {
         let children = this.querySelectorAll(
-          ".mover, .hovered, .moving, .grid-plate-active-item"
+          ".hax-mover, .hax-hovered, .hax-moving, .grid-plate-active-item"
         );
         // walk the children and apply the draggable state needed
         for (var i in children) {
           if (typeof children[i].classList !== typeof undefined) {
-            children[i].classList.remove("mover", "hovered", "moving");
+            children[i].classList.remove(
+              "hax-mover",
+              "hax-hovered",
+              "hax-moving"
+            );
           }
         }
         for (var j = 1; j <= this.columns; j++) {
           if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
             this.shadowRoot
               .querySelector("#col" + j)
-              .classList.remove("mover", "hovered", "moving");
+              .classList.remove("hax-mover", "hax-hovered", "hax-moving");
           }
         }
       }, 100);

@@ -73,7 +73,7 @@ body, html, :root {
   --simple-toast-border: 1px solid black;
 
   /** hax forms **/
-  --primary-color: var(--haxcms-color, --haxcms-system-bg);
+  --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
   --paper-input-container-focus-color: var(--haxcms-color, --haxcms-system-bg);
   --eco-json-form-add-color: var(--haxcms-color, --haxcms-system-bg);
   --eco-json-form-faded-color: var(--haxcms-color, --haxcms-system-bg);
