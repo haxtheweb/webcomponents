@@ -55,7 +55,10 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-contextual-action-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+          --hax-contextual-action-color: var(
+            --simple-colors-default-theme-cyan-7,
+            #3b97e3
+          );
           --hax-body-editable-outline: 1px solid #e37e3b;
           --hax-body-active-outline-hover: 1px solid
             var(--hax-contextual-action-color);
@@ -649,9 +652,7 @@ class HaxBody extends SimpleColors {
       if (sel.anchorNode != null) {
         switch (e.key) {
           case "Tab":
-            if (
-              window.HaxStore.instance.isTextElement(this.activeNode)
-            ) {
+            if (window.HaxStore.instance.isTextElement(this.activeNode)) {
               if (e.detail.keyboardEvent) {
                 e.detail.keyboardEvent.preventDefault();
                 e.detail.keyboardEvent.stopPropagation();
@@ -705,7 +706,8 @@ class HaxBody extends SimpleColors {
                 rng.commonAncestorContainer &&
                 rng.commonAncestorContainer.parentNode &&
                 this.activeNode !== rng.commonAncestorContainer.parentNode &&
-                typeof rng.commonAncestorContainer.parentNode.focus === "function"
+                typeof rng.commonAncestorContainer.parentNode.focus ===
+                  "function"
               ) {
                 if (
                   rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"

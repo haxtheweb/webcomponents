@@ -35,7 +35,7 @@ class HaxAppSearchResult extends LitElement {
         paper-button:hover,
         paper-button:focus,
         paper-button:active {
-          background-color: #EEEEEE;
+          background-color: #eeeeee;
           outline: 2px solid var(--hax-color-bg-accent);
         }
         .detail-wrapper {
@@ -87,7 +87,7 @@ class HaxAppSearchResult extends LitElement {
           sizing="cover"
         ></iron-image>
         <div class="detail-wrapper">
-          <div class="title">${this.title.substr(0,40)}</div>
+          <div class="title">${this.title.substr(0, 40)}</div>
         </div>
       </paper-button>
     `;

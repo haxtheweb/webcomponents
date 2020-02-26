@@ -217,7 +217,12 @@ class HaxAppPicker extends LitElement {
       case "gizmo":
         for (var i in elements) {
           elements[i].__type = type;
-          if (!elements[i].gizmo.meta || (elements[i].gizmo.meta && !elements[i].gizmo.meta.inlineOnly &&  !elements[i].gizmo.meta.hidden)) {
+          if (
+            !elements[i].gizmo.meta ||
+            (elements[i].gizmo.meta &&
+              !elements[i].gizmo.meta.inlineOnly &&
+              !elements[i].gizmo.meta.hidden)
+          ) {
             tmp.push({
               icon: elements[i].gizmo.icon,
               title: elements[i].gizmo.title,
