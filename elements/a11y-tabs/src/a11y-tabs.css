@@ -132,6 +132,7 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 :host([vertical]) #tabs paper-button[disabled] {
   border-right-color: var(--a11y-tabs-background);
 }
