@@ -138,7 +138,8 @@ class HaxTray extends winEventsElement(LitElement) {
           --hax-tray-button-rotate: rotate(-180deg);
         }
         /** default is right so lets support left too */
-        :host([edit-mode][element-align="left"][collapsed]) a11y-collapse-group {
+        :host([edit-mode][element-align="left"][collapsed])
+          a11y-collapse-group {
           right: unset;
           left: -100vw;
         }
@@ -297,7 +298,6 @@ class HaxTray extends winEventsElement(LitElement) {
           :host([edit-mode]) .hide-small {
             display: none;
           }
-
         }
       `
     ];
@@ -807,15 +807,23 @@ class HaxTray extends winEventsElement(LitElement) {
           this.traySizeIcon = "hax:hax:arrow-expand-left";
           this.traySizeText = "Expand";
           // accessibility to disable entering panels that are not visible
-          this.shadowRoot.querySelector('a11y-collapse-group').setAttribute("aria-disabled", "true");
-          this.shadowRoot.querySelector('a11y-collapse-group').setAttribute("tabindex", "-1");
+          this.shadowRoot
+            .querySelector("a11y-collapse-group")
+            .setAttribute("aria-disabled", "true");
+          this.shadowRoot
+            .querySelector("a11y-collapse-group")
+            .setAttribute("tabindex", "-1");
           this._editModeChanged(this.editMode);
         } else {
           this.traySizeIcon = "hax:hax:arrow-expand-right";
           this.traySizeText = "Collapse";
           // a11y clean up to match state
-          this.shadowRoot.querySelector('a11y-collapse-group').removeAttribute("aria-disabled");
-          this.shadowRoot.querySelector('a11y-collapse-group').removeAttribute("tabindex");
+          this.shadowRoot
+            .querySelector("a11y-collapse-group")
+            .removeAttribute("aria-disabled");
+          this.shadowRoot
+            .querySelector("a11y-collapse-group")
+            .removeAttribute("tabindex");
         }
       }
       if (propName == "activeGizmo") {
@@ -1340,7 +1348,7 @@ class HaxTray extends winEventsElement(LitElement) {
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && newValue) {
       this.__tipText = "Save content";
-      this.shadowRoot.querySelector("#button").icon = "save";     
+      this.shadowRoot.querySelector("#button").icon = "save";
     } else {
       this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
