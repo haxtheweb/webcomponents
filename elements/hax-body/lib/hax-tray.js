@@ -36,7 +36,7 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
-    this.expanded = true;
+    this.collapsed = false;
     this.activeTab = "item-0";
     this.activeSchema = [];
     this.canUndo = true;
@@ -100,52 +100,59 @@ class HaxTray extends winEventsElement(LitElement) {
       css`
         :host {
           display: block;
-        }
-        :host .wrapper {
-          color: var(--hax-color-text, black);
           z-index: 1000;
+          position: absolute;
+          transition: 0.2s all ease-in-out;
+        }
+        .wrapper {
+          color: var(--hax-color-text, black);
           position: fixed;
           top: 0;
-          bottom: 0;
-          background-color: white;
+          background-color: transparent;
           font-size: 20px;
           width: var(---hax-tray-width, 300px);
-          border-left: 2px solid var(--hax-color-text, black);
-          transition: 0.2s right linear, 0.2s opacity linear,
-            0.2s visibility linear;
+          transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
-          right: calc(-1 * var(---hax-tray-width, 300px));
+          right: 0;
           pointer-events: none;
         }
         :host([edit-mode]) .wrapper {
           opacity: 1;
           visibility: visible;
-          right: calc(-1 * var(---hax-tray-width, 300px) + 94px);
+          right: 0;
           pointer-events: all;
         }
-        :host([edit-mode][expanded]) .wrapper {
-          right: 0;
-        }
-        /** default is right so lets support left too */
-        :host([element-align="left"]) .wrapper {
-          right: unset;
-          left: calc(-1 * var(---hax-tray-width, 300px));
+        :host([edit-mode][collapsed]) a11y-collapse-group {
+          right: -100vw;
         }
         :host([edit-mode][element-align="left"]) .wrapper {
-          right: unset;
-          left: calc(-1 * var(---hax-tray-width, 300px) + 94px);
-        }
-        :host([edit-mode][element-align="left"][expanded]) .wrapper {
-          right: unset;
           left: 0;
+          right: unset;
+        }
+        :host([edit-mode][element-align="left"]) a11y-collapse-group {
+          left: 0;
+          right: unset;
+        }
+        :host([edit-mode][element-align="left"]) #toggle-tray-size {
+          --hax-tray-button-rotate: rotate(-180deg);
+        }
+        /** default is right so lets support left too */
+        :host([edit-mode][element-align="left"][collapsed]) a11y-collapse-group {
+          right: unset;
+          left: -100vw;
+        }
+        :host([edit-mode][element-align="left"]) .ops,
+        :host([edit-mode][element-align="left"]) .quick,
+        :host([edit-mode][element-align="left"]) .quick-buttons {
+          flex-direction: row-reverse;
         }
         hax-tray-button,
         a11y-collapse,
         a11y-collapse-group,
         hax-app-browser,
         hax-gizmo-browser {
-          transition: 0.2s all linear;
+          transition: 0.2s all ease-in-out;
           opacity: 1;
           visibility: visible;
         }
@@ -161,10 +168,16 @@ class HaxTray extends winEventsElement(LitElement) {
           display: none;
         }
         a11y-collapse-group {
+          position: absolute;
+          top: 32px;
+          right: 0;
           font-size: 14px;
           margin: 0;
+          background-color: white;
+          transition: 0.2s all ease-in-out;
         }
         a11y-collapse {
+          background-color: white;
           font-size: 11px;
           --a11y-tabs-content-padding: 0;
           width: calc(var(---hax-tray-width, 300px) - 2px);
@@ -254,10 +267,37 @@ class HaxTray extends winEventsElement(LitElement) {
           text-align: center;
           color: white;
         }
+        /** This is mobile layout for controls */
+        @media screen and (max-width: 800px) {
+          .ops,
+          .quick,
+          .quick-buttons {
+            flex-direction: row-reverse;
+          }
+          .wrapper {
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 !important;
+          }
+          .quick-buttons {
+            position: relative;
+            z-index: 1;
+          }
+          #toggle-tray-size {
+            --hax-tray-button-rotate: rotate(-90deg) !important;
+          }
+          :host([edit-mode][collapsed]) a11y-collapse-group {
+            top: -200vh;
+            left: unset !important;
+            right: unset !important;
+          }
+        }
         @media screen and (max-width: 600px) {
           :host([edit-mode]) .hide-small {
             display: none;
           }
+
         }
       `
     ];
@@ -308,6 +348,7 @@ class HaxTray extends winEventsElement(LitElement) {
                   ></hax-tray-button>
                   <hax-tray-button
                     mini
+                    id="toggle-tray-size"
                     event-name="toggle-tray-size"
                     icon="${this.traySizeIcon}"
                     label="${this.traySizeText}"
@@ -560,7 +601,7 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         break;
       case "toggle-tray-size":
-        this.expanded = !this.expanded;
+        this.collapsed = !this.collapsed;
         break;
       case "open-export-dialog":
         window.HaxStore.write(
@@ -600,7 +641,7 @@ class HaxTray extends winEventsElement(LitElement) {
       offsetMargin: {
         type: String
       },
-      expanded: {
+      collapsed: {
         type: Boolean,
         reflect: true
       },
@@ -761,13 +802,20 @@ class HaxTray extends winEventsElement(LitElement) {
           ".wrapper"
         ).style.margin = this.offsetMargin;
       }
-      if (propName == "expanded") {
+      if (propName == "collapsed") {
         if (this[propName]) {
-          this.traySizeIcon = "hax:hax:arrow-expand-right";
-          this.traySizeText = "Collapse";
-        } else {
           this.traySizeIcon = "hax:hax:arrow-expand-left";
           this.traySizeText = "Expand";
+          // accessibility to disable entering panels that are not visible
+          this.shadowRoot.querySelector('a11y-collapse-group').setAttribute("aria-disabled", "true");
+          this.shadowRoot.querySelector('a11y-collapse-group').setAttribute("tabindex", "-1");
+          this._editModeChanged(this.editMode);
+        } else {
+          this.traySizeIcon = "hax:hax:arrow-expand-right";
+          this.traySizeText = "Collapse";
+          // a11y clean up to match state
+          this.shadowRoot.querySelector('a11y-collapse-group').removeAttribute("aria-disabled");
+          this.shadowRoot.querySelector('a11y-collapse-group').removeAttribute("tabindex");
         }
       }
       if (propName == "activeGizmo") {
@@ -1292,21 +1340,10 @@ class HaxTray extends winEventsElement(LitElement) {
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && newValue) {
       this.__tipText = "Save content";
-      this.shadowRoot.querySelector("#button").icon = "save";
-      this.__marginBody = document.body.style.marginRight;
-      if (this.elementAlign == "left") {
-        document.body.style.marginLeft = "300px";
-      } else {
-        document.body.style.marginRight = "300px";
-      }
+      this.shadowRoot.querySelector("#button").icon = "save";     
     } else {
       this.__tipText = "Edit content";
       this.shadowRoot.querySelector("#button").icon = "create";
-      if (this.elementAlign == "left") {
-        document.body.style.marginLeft = this.__marginBody;
-      } else {
-        document.body.style.marginRight = this.__marginBody;
-      }
     }
   }
   /**

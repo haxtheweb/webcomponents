@@ -88,6 +88,7 @@ class HAXTrayButton extends SimpleColors {
           width: 20px;
           height: 20px;
           color: var(--simple-colors-default-theme-grey-1, #fff);
+          transform: var(--hax-tray-button-rotate);
         }
         .item-label {
           margin-top: 4px;
