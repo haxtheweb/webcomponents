@@ -498,11 +498,15 @@ class HaxTray extends winEventsElement(LitElement) {
    */
   _gizmoBrowserRefresh(e) {
     setTimeout(() => {
-      this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
+      if (this.shadowRoot.querySelector("#gizmobrowser")) {
+        this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
+      }
     }, 0);
   }
   _appBrowserRefresh(e) {
-    this.shadowRoot.querySelector("#appbrowser").resetBrowser();
+    if (this.shadowRoot.querySelector("#appbrowser")) {
+      this.shadowRoot.querySelector("#appbrowser").resetBrowser();
+    }
   }
   _refreshLists(e) {
     this.shadowRoot.querySelector("#bloxbrowser").bloxList = [
