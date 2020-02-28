@@ -347,13 +347,13 @@ class HaxTray extends winEventsElement(LitElement) {
                     color-meaning
                   ></hax-tray-button>
                 `}
-                <hax-tray-button
-                    mini
-                    id="toggle-tray-size"
-                    event-name="toggle-tray-size"
-                    icon="${this.traySizeIcon}"
-                    label="${this.traySizeText}"
-                  ></hax-tray-button>
+            <hax-tray-button
+              mini
+              id="toggle-tray-size"
+              event-name="toggle-tray-size"
+              icon="${this.traySizeIcon}"
+              label="${this.traySizeText}"
+            ></hax-tray-button>
           </div>
           <div class="quick">
             <slot name="tray-buttons-pre"></slot>

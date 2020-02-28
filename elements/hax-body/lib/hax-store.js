@@ -572,7 +572,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeNode.style.margin = null;
           this.activeNode.style.display = null;
           setTimeout(() => {
-            this.activeHaxBody.positionContextMenus();            
+            this.activeHaxBody.positionContextMenus();
           }, 0);
           break;
         case "hax-align-center":
@@ -580,7 +580,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
           setTimeout(() => {
-            this.activeHaxBody.positionContextMenus();            
+            this.activeHaxBody.positionContextMenus();
           }, 0);
           break;
         case "hax-align-right":
@@ -588,13 +588,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
           setTimeout(() => {
-            this.activeHaxBody.positionContextMenus();            
+            this.activeHaxBody.positionContextMenus();
           }, 0);
           break;
         case "hax-size-change":
           this.activeNode.style.width = detail.value + "%";
           setTimeout(() => {
-            this.activeHaxBody.positionContextMenus();            
+            this.activeHaxBody.positionContextMenus();
           }, 0);
           break;
       }
@@ -2614,11 +2614,9 @@ window.HaxStore.guessGizmo = (
                     if (
                       guess === "inline" ||
                       !gizmo.meta ||
-                      (
-                        gizmo.meta &&
+                      (gizmo.meta &&
                         !gizmo.meta.inlineOnly &&
-                        !gizmo.meta.hidden
-                      )
+                        !gizmo.meta.hidden)
                     ) {
                       match = true;
                       props[gizmo.handles[i][property]] = values[property];
