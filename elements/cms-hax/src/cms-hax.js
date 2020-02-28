@@ -288,12 +288,13 @@ class CmsHax extends LitElement {
     this.bodyValue = "";
     this.hideMessage = false;
     this.__imported = false;
-    window.SimpleToast.requestAvailability();
     import("@lrnwebcomponents/cms-hax/lib/cms-token.js");
     import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
     import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
     import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js");
+    import("@lrnwebcomponents/simple-toast/simple-toast.js").then(() => {
+      window.SimpleToast.requestAvailability();
+    });
   }
   _makeAppStore(val) {
     this.__appStore = this.decodeHTMLEntities(val);
