@@ -159,11 +159,11 @@ class GridPlate extends LitElement {
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
           --grid-plate-editable-border-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-blue-7,
             #3b97e3
           );
           --grid-plate-active-border-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-blue-7,
             #3b97e3
           );
           --grid-plate-target-background-color: var(
@@ -174,7 +174,7 @@ class GridPlate extends LitElement {
           --grid-plate-arrow-color: #ffffff;
           --grid-plate-arrow-color-hover: #000000;
           --grid-plate-arrow-bg: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-grey-blue-7,
             #3b97e3
           );
         }

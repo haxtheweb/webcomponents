@@ -56,7 +56,7 @@ class HaxBody extends SimpleColors {
           min-width: 32px;
           outline: none;
           --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-7,
+            --simple-colors-default-theme-blue-grey-7,
             #3b97e3
           );
           --hax-body-editable-outline: 1px solid #e37e3b;
@@ -228,7 +228,7 @@ class HaxBody extends SimpleColors {
           left: unset;
           right: unset;
           top: unset;
-          background-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
+          background-color: var(--simple-colors-default-theme-blue-grey-7, #3b97e3);
           color: #ffffff;
           bottom: unset;
           width: auto;
@@ -615,32 +615,20 @@ class HaxBody extends SimpleColors {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          if (this.elementInViewport(el)) {
+          if (this.elementMidViewport()) {
+            el.classList.add("hax-context-pin-top");
+            this.shadowRoot
+              .querySelector("#platecontextmenu")
+              .classList.add("hax-context-pin-top");
+          } else {
             el.classList.remove("hax-context-pin-top");
             this.shadowRoot
               .querySelector("#platecontextmenu")
               .classList.remove("hax-context-pin-top");
-          } else {
-            if (this.__OffBottom) {
-              el.classList.add("hax-context-pin-top");
-              this.shadowRoot
-                .querySelector("#platecontextmenu")
-                .classList.add("hax-context-pin-top");
-            }
           }
-          let rect = this.activeNode.getBoundingClientRect();
-          this._positionContextMenu(
-            this.shadowRoot.querySelector("#platecontextmenu"),
-            this.activeNode,
-            rect.width -
-              this.shadowRoot
-                .querySelector("#platecontextmenu")
-                .getBoundingClientRect().width +
-              2,
-            -28
-          );
+          this.positionContextMenus();
         }
-      }, 10);
+      }, 50);
     }
   }
   _onKeyDown(e) {
@@ -849,24 +837,13 @@ class HaxBody extends SimpleColors {
       .classList.remove("hax-active-hover");
   }
   /**
-   * Check if part of the passed element is int he viewport
+   * Only true if we are scrolling and part way through an element
    */
-  elementInViewport(el) {
-    let top = el.offsetTop;
-    let left = el.offsetLeft;
-    let width = el.offsetWidth;
-    let height = el.offsetHeight;
-    while (el.offsetParent) {
-      el = el.offsetParent;
-      top += el.offsetTop;
-      left += el.offsetLeft;
-    }
-    this.__OffBottom = top < window.pageYOffset + window.innerHeight;
+  elementMidViewport() {
+    const y = this.activeNode.getBoundingClientRect().y;
     return (
-      top < window.pageYOffset + window.innerHeight &&
-      left < window.pageXOffset + window.innerWidth &&
-      top + height > window.pageYOffset &&
-      left + width > window.pageXOffset
+      y < 0 &&
+      y > (-1 * this.activeNode.offsetHeight + 140)
     );
   }
   /**

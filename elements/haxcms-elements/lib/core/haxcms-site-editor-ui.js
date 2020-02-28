@@ -28,6 +28,7 @@ class HAXCMSSiteEditorUI extends LitElement {
         }
         :host([edit-mode]) {
           z-index: 9999;
+          bottom: unset;
         }
         :host([dashboard-opened]) {
           left: 50vw;
@@ -36,9 +37,16 @@ class HAXCMSSiteEditorUI extends LitElement {
           :host([dashboard-opened]) {
             left: 90vw;
           }
-          :host([edit-mode]) {
-            display: none;
-          }
+          :host([edit-mode]) paper-fab,
+          :host([edit-mode]) paper-icon-button,
+          :host([edit-mode]) paper-avatar {
+          width: 24px;
+          height: 24px;
+          padding: 1px;
+          margin: 0;
+          --iron-icon-width: 20px;
+          --iron-icon-height: 20px;
+        }
         }
         /**
          * Dashboard open trumps all contextual settings

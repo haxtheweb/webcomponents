@@ -1128,7 +1128,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Basic iframe",
         description: "A basic iframe",
         icon: "icons:fullscreen",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Content"],
         handles: [
           {
@@ -1191,7 +1191,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Image",
         description: "A basic img tag",
         icon: "image:image",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Image", "Media"],
         handles: [
           {
@@ -1277,7 +1277,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Basic link",
         description: "A basic a tag",
         icon: "icons:link",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Link"],
         handles: [],
         meta: {
@@ -1363,7 +1363,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Paragraph",
         description: "A basic text area",
         icon: "hax:paragraph",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Text"],
         handles: [
           {

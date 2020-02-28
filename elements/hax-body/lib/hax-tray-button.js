@@ -82,17 +82,17 @@ class HAXTrayButton extends SimpleColors {
           flex-direction: column;
           align-items: center;
           margin: 1px 0;
-          background-color: var(--simple-colors-default-theme-accent-8, #000);
+          background-color: var(--simple-colors-default-theme-blue-grey-8, #000);
         }
         iron-icon {
           width: 20px;
           height: 20px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(--simple-colors-default-theme-blue-grey-1, #fff);
           transform: var(--hax-tray-button-rotate);
         }
         .item-label {
           margin-top: 4px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(--simple-colors-default-theme-blue-grey-1, #fff);
           width: 60px;
           font-size: 10px;
           line-height: 10px;
@@ -132,7 +132,7 @@ class HAXTrayButton extends SimpleColors {
         paper-button iron-icon {
           height: 20px;
           width: 20px;
-          color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-blue-grey-1);
           display: inline-block;
         }
         :host([mini]) {
@@ -206,7 +206,7 @@ class HAXTrayButton extends SimpleColors {
   }
   _focusIn(e) {
     this.accentColor =
-      this.hoverAccentColor === "grey" ? "cyan" : this.hoverAccentColor;
+      this.hoverAccentColor === "blue-grey" ? "cyan" : this.hoverAccentColor;
   }
   _focusOut(e) {
     if (!this.colorMeaning) {
@@ -250,7 +250,7 @@ class HAXTrayButton extends SimpleColors {
   }
   _getAccentColor(color) {
     if (
-      (!this.accentColor || this.accentColor === "grey") &&
+      (!this.accentColor || this.accentColor === "blue-grey") &&
       this.colors[color]
     ) {
       this.hoverAccentColor = color;

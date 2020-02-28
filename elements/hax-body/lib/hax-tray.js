@@ -199,12 +199,12 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         a11y-collapse:hover {
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-default-theme-blue-grey-1
           );
         }
         a11y-collapse[expanded] {
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-3
+            --simple-colors-default-theme-blue-grey-2
           );
         }
         #settingscollapse div[slot="content"] {

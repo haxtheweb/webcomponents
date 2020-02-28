@@ -18,6 +18,16 @@ class HaxTextContext extends winEventsElement(LitElement) {
         :host [hidden] {
           display: none;
         }
+        .selected-buttons {
+          transition: 0.1s all ease-in-out;
+          width: 0;
+        }
+        :host([has-selected-text]) .selected-buttons {
+          width: 100%;
+        }
+        #toolbar {
+          overflow: hidden;
+        }
         paper-item {
           color: white;
           background-color: var(--hax-contextual-action-color);
@@ -184,8 +194,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-bold"
           label="Bold"
+          class="selected-buttons"
           event-name="text-bold"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -193,8 +204,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-italic"
           label="Italic"
+          class="selected-buttons"
           event-name="text-italic"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -202,8 +214,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:insert-link"
           label="Link"
+          class="selected-buttons"
           event-name="text-link"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -211,8 +224,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="mdextra:unlink"
           label="Remove link"
+          class="selected-buttons"
           event-name="text-unlink"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -220,8 +234,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-clear"
           label="Remove format"
+          class="selected-buttons"
           event-name="text-remove-format"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item
           mini
@@ -229,6 +244,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
+          class="selected-buttons"
           event-name="insert-inline-gizmo"
           ?hidden="${this.isSafari || !this.hasSelectedText}"
         ></hax-context-item>
@@ -238,6 +254,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
+          class="selected-buttons"
           event-name="insert-inline-gizmo"
           ?hidden="${!this.isSafari || !this.hasSelectedText}"
         ></hax-context-item-textop>
@@ -297,7 +314,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
        * calculated boolean off of if there is currently text
        */
       hasSelectedText: {
-        type: Boolean
+        type: Boolean,
+        attribute: 'has-selected-text',
+        reflect: true,
       },
       /**
        * Text hax-store has detected is selected currently.
