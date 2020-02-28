@@ -83,6 +83,12 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       width: 16px;
       height: 16px;
     }
+    :host(.hax-context-pin-top) .area {
+      position: fixed;
+      top: 40px;
+      margin-left: -30px;
+      flex-direction: column;
+    }
     </style>
     <div class="area" id="area">
       <hax-context-item-menu
@@ -217,6 +223,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
+    window.HaxStore.instance._lockContextPosition = false;
     let children = window.HaxStore.instance.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -237,6 +244,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
     window.HaxStore.instance.__dragTarget = target;
+    window.HaxStore.instance._lockContextPosition = true;
     target.classList.add("hax-moving");
     if (e.dataTransfer) {
       e.dataTransfer.dropEffect = "move";

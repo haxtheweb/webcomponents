@@ -81,7 +81,7 @@ class HaxBody extends SimpleColors {
           float: left;
           display: block;
           pointer-events: none;
-          transition: 0.2s opacity ease-in-out, 0.2s visibility ease-in-out;
+          transition: 0.2s all ease-in-out;
         }
         #textcontextmenu.hax-context-menu {
           z-index: 1000;
@@ -594,7 +594,7 @@ class HaxBody extends SimpleColors {
   /**
    * Keep the context menu visible if needed
    */
-  _keepContextVisible(e) {
+  _keepContextVisible(e = null) {
     if (!this.openDrawer && this.editMode) {
       clearTimeout(this.__contextVisibleLock);
       this.__contextVisibleLock = setTimeout(() => {
@@ -615,10 +615,23 @@ class HaxBody extends SimpleColors {
         }
         // if we see it, ensure we don't have the pin
         if (el) {
-          let rect = this.activeContainerNode.getBoundingClientRect();
+          if (this.elementInViewport(el)) {
+            el.classList.remove(
+              "hax-context-pin-top"
+            );
+            this.shadowRoot.querySelector("#platecontextmenu").classList.remove(
+              "hax-context-pin-top"
+            );
+          } else {
+            if (this.__OffBottom) {
+              el.classList.add("hax-context-pin-top");
+              this.shadowRoot.querySelector("#platecontextmenu").classList.add("hax-context-pin-top");
+            }
+          }
+          let rect = this.activeNode.getBoundingClientRect();
           this._positionContextMenu(
             this.shadowRoot.querySelector("#platecontextmenu"),
-            this.activeContainerNode,
+            this.activeNode,
             rect.width -
               this.shadowRoot
                 .querySelector("#platecontextmenu")
@@ -626,20 +639,8 @@ class HaxBody extends SimpleColors {
               2,
             -28
           );
-          if (this.elementInViewport(el)) {
-            el.classList.remove(
-              "hax-context-pin-bottom",
-              "hax-context-pin-top"
-            );
-          } else {
-            if (this.__OffBottom) {
-              el.classList.add("hax-context-pin-top");
-            } else {
-              el.classList.add("hax-context-pin-bottom");
-            }
-          }
         }
-      }, 50);
+      }, 10);
     }
   }
   _onKeyDown(e) {
@@ -851,7 +852,7 @@ class HaxBody extends SimpleColors {
    * Check if part of the passed element is int he viewport
    */
   elementInViewport(el) {
-    let top = el.offsetTop - 32;
+    let top = el.offsetTop;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;
@@ -1142,6 +1143,8 @@ class HaxBody extends SimpleColors {
   }
 
   breakUpdateLock() {
+    this.activeContainerNode = this.__updateLockFocus;
+    this.activeNode = this.__updateLockFocus;
     window.HaxStore.write("activeContainerNode", this.__updateLockFocus, this);
     window.HaxStore.write("activeNode", this.__updateLockFocus, this);
     // attempt to focus on the new node, may not always work
@@ -1155,6 +1158,9 @@ class HaxBody extends SimpleColors {
         inline: "center"
       });
     }
+    setTimeout(() => {
+      this.positionContextMenus();            
+    }, 100);
   }
   /**
    * Return the current hax content area as text that could be
@@ -1330,7 +1336,10 @@ class HaxBody extends SimpleColors {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node = this.activeNode, container = this.activeNode) {
-    if (node) {
+    // sanity chekc and ensure we are not told to lock position of all menus
+    if (node && !window.HaxStore.instance._lockContextPosition) {
+      // menu width starts out w/ the plate context which is a set size
+      let menuWidth = 140;
       let tag = node.tagName.toLowerCase();
       if (window.HaxStore.instance._isSandboxed && tag === "webview") {
         tag = "iframe";
@@ -1348,30 +1357,45 @@ class HaxBody extends SimpleColors {
         this._positionContextMenu(
           this.shadowRoot.querySelector("#cecontextmenu"),
           container,
-          -3,
+          -1,
           -30
         );
+        menuWidth += 28;
       } else {
         this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
         this._positionContextMenu(
           this.shadowRoot.querySelector("#textcontextmenu"),
           container,
-          -3,
+          -1,
           -30
         );
+        // text menu can expand based on selection
+        let textRect = this.shadowRoot.querySelector("#textcontextmenu").getBoundingClientRect();
+        menuWidth += textRect.width;
       }
-      if (container) {
-        let rect = container.getBoundingClientRect();
-        this._positionContextMenu(
-          this.shadowRoot.querySelector("#platecontextmenu"),
-          container,
-          rect.width -
-            this.shadowRoot
-              .querySelector("#platecontextmenu")
-              .getBoundingClientRect().width +
-            2,
-          -28
-        );
+      if (container) {        
+        let activeRect = container.getBoundingClientRect();
+        // need to account for the item being small than the menu
+        if (Math.round(menuWidth) >= Math.round(activeRect.width)) {
+          this._positionContextMenu(
+            this.shadowRoot.querySelector("#platecontextmenu"),
+            container,
+            -1,
+            -58
+          );
+        }
+        else{
+          this._positionContextMenu(
+            this.shadowRoot.querySelector("#platecontextmenu"),
+            container,
+            activeRect.width -
+              this.shadowRoot
+                .querySelector("#platecontextmenu")
+                .getBoundingClientRect().width +
+              2,
+            -28
+          );
+        }
       }
       // special case for node not matching container yet it being editable
       if (
@@ -1417,7 +1441,7 @@ class HaxBody extends SimpleColors {
         break;
     }
     setTimeout(() => {
-      this.positionContextMenus(node, container);
+      this.positionContextMenus(node, node);
       if (typeof container.scrollIntoViewIfNeeded === "function") {
         container.scrollIntoViewIfNeeded(true);
       } else {
@@ -1945,7 +1969,9 @@ class HaxBody extends SimpleColors {
         ) {
           this.activeNode = activeNode;
           window.HaxStore.write("activeNode", activeNode, this);
-          this.positionContextMenus(activeNode, containerNode);
+          setTimeout(() => {
+            this.positionContextMenus(activeNode, activeNode);            
+          }, 0);
           stopProp = true;
         }
       }
@@ -2160,6 +2186,7 @@ class HaxBody extends SimpleColors {
    */
   dropEvent(e) {
     if (!this.openDrawer && this.editMode) {
+      window.HaxStore.instance._lockContextPosition = false;
       // trick the tray into forcing active to be Configure
       window.HaxStore.instance.haxTray.activeTab = "item-1";
       // establish an activeNode /container based on drop poisition
@@ -2528,6 +2555,21 @@ class HaxBody extends SimpleColors {
       ) {
         newValue.setAttribute("contenteditable", true);
         this.setAttribute("contenteditable", true);
+        this.shadowRoot.querySelector("#textcontextmenu").classList.remove(
+          "hax-context-visible",
+          "hax-active-hover",
+          "hax-context-pin-top",
+        );
+        this.shadowRoot.querySelector("#cecontextmenu").classList.remove(
+          "hax-context-visible",
+          "hax-active-hover",
+          "hax-context-pin-top",
+        );
+        this.shadowRoot.querySelector("#platecontextmenu").classList.remove(
+          "hax-context-visible",
+          "hax-active-hover",
+          "hax-context-pin-top",
+        );
         // position the operations / in context element
         // this seems odd but its in case a ton of elements are inserted
         // all at once to keep from things jumping around
@@ -2535,6 +2577,7 @@ class HaxBody extends SimpleColors {
         this.__positionContextTimer = setTimeout(() => {
           if (newValue === this.activeNode) {
             this.positionContextMenus(newValue);
+            this._keepContextVisible();
           }
         }, 10);
       } else {
@@ -2599,7 +2642,6 @@ class HaxBody extends SimpleColors {
       "hax-context-visible",
       "hax-active-hover",
       "hax-context-pin-top",
-      "hax-context-pin-bottom"
     );
     menu.style.left = "-100px";
   }

@@ -17,7 +17,7 @@
   --a11y-tabs-width: auto;
   height: var(--a11y-tabs-height);
   overflow: var(--a11y-tabs-overflow);
-  font-size: 16px;
+  font-size: var(--a11y-tabs-font-size, 12px);
 }
 
 :host([vertical]) {

@@ -54,13 +54,8 @@ class HaxTextContext extends winEventsElement(LitElement) {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 64px;
-          opacity: 0.95;
-        }
-        :host(.hax-context-pin-bottom) hax-toolbar {
-          position: fixed;
-          bottom: 0;
-          opacity: 0.95;
+          top: 40px;
+          flex-direction: column;
         }
       `
     ];

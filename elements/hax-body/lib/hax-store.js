@@ -571,19 +571,31 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeNode.style.float = null;
           this.activeNode.style.margin = null;
           this.activeNode.style.display = null;
+          setTimeout(() => {
+            this.activeHaxBody.positionContextMenus();            
+          }, 0);
           break;
         case "hax-align-center":
           this.activeNode.style.float = null;
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
+          setTimeout(() => {
+            this.activeHaxBody.positionContextMenus();            
+          }, 0);
           break;
         case "hax-align-right":
           this.activeNode.style.float = "right";
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
+          setTimeout(() => {
+            this.activeHaxBody.positionContextMenus();            
+          }, 0);
           break;
         case "hax-size-change":
           this.activeNode.style.width = detail.value + "%";
+          setTimeout(() => {
+            this.activeHaxBody.positionContextMenus();            
+          }, 0);
           break;
       }
     }
@@ -2582,10 +2594,11 @@ window.HaxStore.guessGizmo = (
       // now we can look through them
       // look for a match
       for (var gizmoposition in store.gizmoList) {
-        var gizmo = store.gizmoList[gizmoposition];
-        var props = {};
+        let gizmo = store.gizmoList[gizmoposition];
+        let props = {};
         // reset match per gizmo
-        var match = false;
+        let match = false;
+        // ensure this gizmo can handle things
         if (gizmo.handles) {
           for (var i = 0; i < gizmo.handles.length; i++) {
             // WHAT!??!?!?!?!
@@ -2596,8 +2609,20 @@ window.HaxStore.guessGizmo = (
                   // check the values that came across to see if there's a match
                   // of any kind, we only need one but can then bind to multiple
                   if (typeof values[property] !== typeof undefined) {
-                    match = true;
-                    props[gizmo.handles[i][property]] = values[property];
+                    // but ensure there's either no meta data OR
+                    // the meta data needs to NOT say anythinig about hiding
+                    if (
+                      guess === "inline" ||
+                      !gizmo.meta ||
+                      (
+                        gizmo.meta &&
+                        !gizmo.meta.inlineOnly &&
+                        !gizmo.meta.hidden
+                      )
+                    ) {
+                      match = true;
+                      props[gizmo.handles[i][property]] = values[property];
+                    }
                   }
                 }
               }

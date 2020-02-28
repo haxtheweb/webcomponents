@@ -32,9 +32,12 @@ class HAXCMSSiteEditorUI extends LitElement {
         :host([dashboard-opened]) {
           left: 50vw;
         }
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 800px) {
           :host([dashboard-opened]) {
             left: 90vw;
+          }
+          :host([edit-mode]) {
+            display: none;
           }
         }
         /**
