@@ -78,7 +78,10 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
           display: flex;
         }
         site-top-menu {
-          --site-top-menu-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
+          --site-top-menu-bg: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #37474f
+          );
           --site-top-menu-link-color: #ffffff;
           --site-top-menu-indicator-color: var(--haxcms-color, #ffffff);
           --site-top-menu-link-active-color: yellow;
@@ -94,7 +97,10 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
         }
         site-children-block {
           --site-children-block-button-active: {
-            background-color: var(--simple-colors-default-theme-blue-grey-7, #37474f);
+            background-color: var(
+              --simple-colors-default-theme-blue-grey-7,
+              #37474f
+            );
             color: #ffffff;
           }
         }

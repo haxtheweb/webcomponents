@@ -228,7 +228,10 @@ class HaxBody extends SimpleColors {
           left: unset;
           right: unset;
           top: unset;
-          background-color: var(--simple-colors-default-theme-blue-grey-7, #3b97e3);
+          background-color: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #3b97e3
+          );
           color: #ffffff;
           bottom: unset;
           width: auto;
@@ -841,10 +844,7 @@ class HaxBody extends SimpleColors {
    */
   elementMidViewport() {
     const y = this.activeNode.getBoundingClientRect().y;
-    return (
-      y < 0 &&
-      y > (-1 * this.activeNode.offsetHeight + 140)
-    );
+    return y < 0 && y > -1 * this.activeNode.offsetHeight + 140;
   }
   /**
    * Replace place holder after an event has called for it in the element itself

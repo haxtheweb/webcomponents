@@ -40,13 +40,13 @@ class HAXCMSSiteEditorUI extends LitElement {
           :host([edit-mode]) paper-fab,
           :host([edit-mode]) paper-icon-button,
           :host([edit-mode]) paper-avatar {
-          width: 24px;
-          height: 24px;
-          padding: 1px;
-          margin: 0;
-          --iron-icon-width: 20px;
-          --iron-icon-height: 20px;
-        }
+            width: 24px;
+            height: 24px;
+            padding: 1px;
+            margin: 0;
+            --iron-icon-width: 20px;
+            --iron-icon-height: 20px;
+          }
         }
         /**
          * Dashboard open trumps all contextual settings

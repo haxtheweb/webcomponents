@@ -315,8 +315,8 @@ class HaxTextContext extends winEventsElement(LitElement) {
        */
       hasSelectedText: {
         type: Boolean,
-        attribute: 'has-selected-text',
-        reflect: true,
+        attribute: "has-selected-text",
+        reflect: true
       },
       /**
        * Text hax-store has detected is selected currently.

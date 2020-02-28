@@ -82,7 +82,10 @@ class HAXTrayButton extends SimpleColors {
           flex-direction: column;
           align-items: center;
           margin: 1px 0;
-          background-color: var(--simple-colors-default-theme-blue-grey-8, #000);
+          background-color: var(
+            --simple-colors-default-theme-blue-grey-8,
+            #000
+          );
         }
         iron-icon {
           width: 20px;
