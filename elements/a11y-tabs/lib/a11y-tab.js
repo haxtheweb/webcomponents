@@ -109,7 +109,7 @@ class A11yTab extends LitElement {
       id: {
         type: String,
         reflect: true,
-        attribute: 'id'
+        attribute: "id"
       },
       /**
        * label for the tab
@@ -145,7 +145,7 @@ class A11yTab extends LitElement {
    * @returns {object} MutationObserver to unwrap contents
    */
   get observer() {
-    let lc = e=>this._labelChanged();
+    let lc = e => this._labelChanged();
     return new MutationObserver(lc);
   }
   /**
@@ -204,15 +204,15 @@ class A11yTab extends LitElement {
   /**
    * handles any change in the label
    */
-  _labelChanged(){
-    if(!this.label || this.label.trim() === '')
-      this.label = this.querySelector('*[slot="label"]') 
-      ? this.querySelector('*[slot="label"]').innerHTML 
-      : `Tab ${this.order}`;
+  _labelChanged() {
+    if (!this.label || this.label.trim() === "")
+      this.label = this.querySelector('*[slot="label"]')
+        ? this.querySelector('*[slot="label"]').innerHTML
+        : `Tab ${this.order}`;
   }
   /**
    * handles any change in the tab attributes
-     * @event a11y-tab-changed
+   * @event a11y-tab-changed
    */
   _fireTabChanged() {
     this.dispatchEvent(

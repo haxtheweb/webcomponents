@@ -86,9 +86,9 @@ class A11yTabs extends LitElement {
   /**
    * mutation objserver for tabs
    * @readonly
-   * @returns {object} 
+   * @returns {object}
    */
-  get observer(){
+  get observer() {
     let callback = () => this.updateTabs();
     return new MutationObserver(callback);
   }
@@ -96,12 +96,10 @@ class A11yTabs extends LitElement {
   /**
    * array of tabs
    * @readonly
-   * @returns {object} 
+   * @returns {object}
    */
   get tabs() {
-    return this.__tabs
-      ? Object.keys(this.__tabs).map(i => this.__tabs[i])
-      : [];
+    return this.__tabs ? Object.keys(this.__tabs).map(i => this.__tabs[i]) : [];
   }
   /**
    * determines if tabs should show icons only
@@ -111,18 +109,19 @@ class A11yTabs extends LitElement {
   get iconClass() {
     let horizontal = !this.vertical && this.responsiveSize.indexOf("s") > -1,
       vertical = this.vertical && this.responsiveSize === "xs",
-      breakpoints = (this.iconBreakpoint > this.layoutBreakpoint && this.responsiveSize === "sm");
-    return this.hasIcons &&
-      (horizontal || vertical || breakpoints)
+      breakpoints =
+        this.iconBreakpoint > this.layoutBreakpoint &&
+        this.responsiveSize === "sm";
+    return this.hasIcons && (horizontal || vertical || breakpoints)
       ? "icons-only"
       : "label-and-icons";
   }
   /**
    * determines if all tabs have icons
    * @readonly
-   * @returns {boolean} 
+   * @returns {boolean}
    */
-  get hasIcons(){
+  get hasIcons() {
     let hasIcons = true;
     if (!this.id) this.id = this._generateUUID();
     if (this.__tabs && this.__tabs.length > 0)
@@ -152,8 +151,7 @@ class A11yTabs extends LitElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    if (this.observer && this.observer.disconnect)
-      this.observer.disconnect();
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
     this.removeEventListener("a11y-tab-changed", e => this.updateTabs());
     this._unsetBreakpoints();
     super.disconnectedCallback();
