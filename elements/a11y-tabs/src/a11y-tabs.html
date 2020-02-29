@@ -1,10 +1,5 @@
 
-<ul id="tabs" .class="${this._showIcons(
-  this.__hasIcons, 
-  this.iconBreakpoint, 
-  this.layoutBreakpoint, 
-  this.responsiveSize
-)}">
+<ul id="tabs" .class="${this.iconClass}">
   ${this.tabs.map((tab,i) => html`
     <li>
       <paper-button 

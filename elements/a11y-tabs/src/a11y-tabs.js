@@ -17,11 +17,48 @@ import "./lib/a11y-tab.js";
 `<a11y-tabs>` provides the following custom properties
 for styling:
 
+#### General
 Custom property | Description | Default
 ----------------|-------------|----------
+`--a11y-tabs-border-color` | border | #ddd
+`--a11y-tabs-color` | text color | #222
+`--a11y-tabs-focus-color` | text color when focused | #000
+`--a11y-tabs-margin` |  | 16px 0
+`--a11y-tabs-width` | total width | 100%
+`--a11y-tabs-height` | total height | unset
+`--a11y-tabs-overflow` | default overflow | auto
+`--a11y-tabs-overflow-x` | overflow of x-axis | `--a11y-tabs-overflow`
+`--a11y-tabs-overflow-y` | overflow of y-axis | `--a11y-tabs-overflow`
+`--a11y-tabs-border-radius` | default border radius | 2px
+`--a11y-tabs-horizontal-border-radius` | border-radius when horizontal | `--a11y-tabs-border-radius`
+`--a11y-tabs-vertical-border-radius` | border-radius when veritcal | `--a11y-tabs-border-radius`
+
+#### Tab Section
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-tabs-background` | background for active tab and tab content | white
+`--a11y-tabs-faded-background` | background inactive tabs | #eee
+`--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset
+`--a11y-tabs-vertical-background` | background for tabs container when vertical | `--a11y-tabs-border-color`
+`--a11y-tabs-horizontal-sticky-background` | background for tabs container when sticky and horizontal | `--a11y-tabs-background`
+`--a11y-tabs-justify-tabs` | tab justification | flex-start
+`--a11y-tabs-vertical-justify-tabs` | tab justification when vertical | `--a11y-tabs-justify-tabs`
+`--a11y-tabs-horizontal-justify-tabs` | tab justification when horizontal | `--a11y-tabs-justify-tabs`
+`--a11y-tabs-wrap` | tab wrapping | unset
 `--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
+`--a11y-tabs-button-padding` | padding for tabs | 8px
+`--a11y-tabs-vertical-button-padding` | padding for tabs when vertical | `--a11y-tabs-button-padding`
+`--a11y-tabs-horizontal-button-padding` | padding for tabs when horizontal | `--a11y-tabs-button-padding`
+
+#### Content Section
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-tabs-content-padding` | padding for content of tab | 16px
+`--a11y-tabs-content-background` | background color for content of tab | `--a11y-tabs-background`
  *
  * @demo ./demo/index.html
+ * @demo ./demo/vertical.html Always Vertical
+ * @demo ./demo/horizontal.html Always Horizontal
  * @customElement a11y-tabs
  */
 class A11yTabs extends LitElement {
@@ -36,33 +73,65 @@ class A11yTabs extends LitElement {
   }
   constructor() {
     super();
-    let callback = (mutationsList, observer) => this.updateItems();
-    this.activeTab = null;
     this.disabled = false;
     this.hidden = false;
     this.iconBreakpoint = 400;
-    this.id = null;
     this.layoutBreakpoint = 600;
     this.forceHorizontal = false;
     this.responsiveSize = "xs";
     this.vertical = false;
-    this.__hasIcons = false;
     this.__tabs = [];
-    this.updateItems();
-    this.__observer = new MutationObserver(callback);
-    this._breakpointChanged();
     window.ResponsiveUtility.requestAvailability();
-    this.__observer.observe(this, {
-      attributes: false,
-      childList: true,
-      subtree: false
-    });
-    this.addEventListener("a11y-tab-changed", e => this.updateItems());
   }
+  /**
+   * mutation objserver for tabs
+   * @readonly
+   * @returns {object} 
+   */
+  get observer(){
+    let callback = () => this.updateTabs();
+    return new MutationObserver(callback);
+  }
+
+  /**
+   * array of tabs
+   * @readonly
+   * @returns {object} 
+   */
   get tabs() {
     return this.__tabs
-      ? Object.keys(this.__tabs).map(index => this.__tabs[index])
+      ? Object.keys(this.__tabs).map(i => this.__tabs[i])
       : [];
+  }
+  /**
+   * determines if tabs should show icons only
+   * @readonly
+   * @returns {boolean}
+   */
+  get iconClass() {
+    let horizontal = !this.vertical && this.responsiveSize.indexOf("s") > -1,
+      vertical = this.vertical && this.responsiveSize === "xs",
+      breakpoints = (this.iconBreakpoint > this.layoutBreakpoint && this.responsiveSize === "sm");
+    return this.hasIcons &&
+      (horizontal || vertical || breakpoints)
+      ? "icons-only"
+      : "label-and-icons";
+  }
+  /**
+   * determines if all tabs have icons
+   * @readonly
+   * @returns {boolean} 
+   */
+  get hasIcons(){
+    let hasIcons = true;
+    if (!this.id) this.id = this._generateUUID();
+    if (this.__tabs && this.__tabs.length > 0)
+      this.__tabs.forEach((tab, index) => {
+        if (!tab.icon) hasIcons = false;
+        tab.order = index + 1;
+        tab.total = this.__tabs.length;
+      });
+    return hasIcons;
   }
 
   /**
@@ -70,18 +139,29 @@ class A11yTabs extends LitElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.updateTabs();
+    this._breakpointChanged();
+    this.observer.observe(this, {
+      attributes: false,
+      childList: true,
+      subtree: false
+    });
+    this.addEventListener("a11y-tab-changed", e => this.updateTabs());
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    if (this.__observer && this.__observer.disconnect)
-      this.__observer.disconnect();
-    this.removeEventListener("a11y-tab-changed", e => this.updateItems());
+    if (this.observer && this.observer.disconnect)
+      this.observer.disconnect();
+    this.removeEventListener("a11y-tab-changed", e => this.updateTabs());
     this._unsetBreakpoints();
     super.disconnectedCallback();
   }
 
+  /**
+   * handle updates
+   */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id") this._idChanged(this.id, oldValue);
@@ -113,16 +193,8 @@ class A11yTabs extends LitElement {
   /**
    * updates the list of items based on slotted a11y-tab elements
    */
-  updateItems(e) {
+  updateTabs(e) {
     this.__tabs = this.querySelectorAll("a11y-tab");
-    this.__hasIcons = true;
-    if (!this.id) this.id = this._generateUUID();
-    if (this.__tabs && this.__tabs.length > 0)
-      this.__tabs.forEach((tab, index) => {
-        if (!tab.icon) this.__hasIcons = false;
-        tab.order = index + 1;
-        tab.total = this.__tabs.length;
-      });
     this.selectTab(this.activeTab);
   }
   /**
@@ -201,30 +273,11 @@ class A11yTabs extends LitElement {
    * @param {string} size the responsive size
    */
   _setVertical() {
-    if (this.forceHorizontal) {
-      this.vertical = false;
-    } else {
-      this.vertical =
-        this.layoutBreakpoint === -1 ||
-        this.iconBreakpoint > this.layoutBreakpoint
-          ? this.responsiveSize === "xs"
-          : this.responsiveSize.indexOf("s") > -1;
-    }
-  }
-  /**
-   * determines if tabs should show icons only
-   * @param {boolean} hasIcons does every tab have an icon?
-   * @param {number} icon breakpoint for icon-only view
-   * @param {number} layout breakpoint for vertical layout
-   * @param {string} size the responsive size
-   * @returns {boolean} if tabs should be in a vertical layout
-   */
-  _showIcons(hasIcons, icon, layout, size) {
-    return hasIcons &&
-      icon !== -1 &&
-      (size === "xs" || (icon > layout && size === "sm"))
-      ? "icons-only"
-      : "";
+    this.vertical =
+      this.layoutBreakpoint === -1 ||
+      (this.iconBreakpoint > this.layoutBreakpoint
+        ? this.responsiveSize === "xs"
+        : this.responsiveSize.indexOf("s") > -1);
   }
   /**
    * Fires when element is rno longer needs specific breakpoints tracked.

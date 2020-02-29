@@ -1,28 +1,43 @@
 :host {
   display: block;
-  --a11y-tabs-border-radius: 2px;
-  --a11y-tabs-justify-tabs: flex-start;
-  --ally-tabs-wrap: unset;
+  --a11y-tabs-width: 100%;
   --a11y-tabs-background: white;
   --a11y-tabs-border-color: #ddd;
   --a11y-tabs-color: #222;
   --a11y-tabs-focus-color: #000;
   --a11y-tabs-faded-background: #eee;
+  --a11y-tabs-border-radius: 2px;
+  --a11y-tabs-horizontal-border-radius:  var(--a11y-tabs-border-radius);
+  --a11y-tabs-vertical-border-radius:  var(--a11y-tabs-border-radius);
+  --a11y-tabs-content-background: var(--a11y-tabs-background);
   --a11y-tabs-content-padding: 16px;
-  --a11y-tabs-button-padding: 0.7em 0.57em;
-  --a11y-tabs-vertical-button-padding: unset;
-  --a11y-tabs-horizontal-border-radius: unset;
-  --a11y-tabs-vertical-border-radius: unset;
-  --a11y-tabs-horizontal-button-padding: 2px 5px;
-  --a11y-tabs-width: 100%;
-  height: var(--a11y-tabs-height);
-  overflow: var(--a11y-tabs-overflow);
-  font-size: 16px;
+  --a11y-tabs-justify-tabs: flex-start;
+  --a11y-tabs-horizontal-justify-tabs: var(--a11y-tabs-justify-tabs, flex-start);
+  --a11y-tabs-vertical-justify-tabs: var(--a11y-tabs-justify-tabs, flex-start);
+  --a11y-tabs-wrap: unset;
+  --a11y-tabs-vertical-wrap: var(--a11y-tabs-wrap, unset);
+  --a11y-tabs-horizontal-background: unset;
+  --a11y-tabs-horizontal-sticky-background: var(--a11y-tabs-background);
+  --a11y-tabs-vertical-background: var(--a11y-tabs-border-color, #ddd);
+  --a11y-tabs-button-padding: 8px;
+  --a11y-tabs-horizontal-button-padding: var(--a11y-tabs-button-padding);
+  --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding);
+  height: var(--a11y-tabs-height, unset);
+  margin: var(--a11y-tabs-margin, 16px 0);
+  overflow: var(--a11y-tabs-overflow, auto);
+  overflow-x: var(--a11y-tabs-overflow-x,var(--a11y-tabs-overflow));
+  overflow-y: var(--a11y-tabs-overflow-y,var(--a11y-tabs-overflow));
+  max-width: 100%;
+}
+
+:host([sticky]) {
+  position: relative;
+  overflow-y: visible;
 }
 
 :host([vertical]) {
   border: 1px solid var(--a11y-tabs-border-color);
-  border-radius: var(--a11y-tabs-vertical-border-radius, var(--a11y-tabs-border-radius));
+  border-radius: var(--a11y-tabs-vertical-border-radius);
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -34,29 +49,52 @@
 
 :host #tabs {
   align-items: stretch;
-  flex-wrap: var(--ally-tabs-wrap, unset);
+  flex-wrap: var(--a11y-tabs-wrap, unset);
   margin: 0;
   display: flex;
   list-style: none;
   padding: 0;
+  overflow: auto;
 }
 
 :host([vertical]) #tabs {
-  background-color: var(--a11y-tabs-border-color);
-  justify-content: var(--a11y-tabs-vertical-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
-  flex-wrap: var(--ally-tabs-vertical-wrap, var(--ally-tabs-wrap, unset));
   border-left: none;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--a11y-tabs-vertical-background);
+  justify-content: var(--a11y-tabs-vertical-justify-tabs);
+  flex-wrap: var(--a11y-tabs-vertical-wrap);
 }
 
 :host(:not([vertical])) #tabs {
-  position: fixed;
-  scroll-margin-top: 16px;
   z-index: 1;
-  width: var(--a11y-tabs-width);
-  background-color: var(--a11y-tabs-background);
-  justify-content: var(--a11y-tabs-horizontal-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: var(--a11y-tabs-horizontal-background);
+  justify-content: var(--a11y-tabs-horizontal-justify-tabs);
+}
+
+:host([sticky]) #tabs {
+  position: sticky;
+}
+
+:host([sticky][vertical]) #tabs {
+  left: 0;
+}
+
+:host([sticky]:not([vertical])) #tabs {
+  top: 0;
+  background-color: var(--a11y-tabs-horizontal-sticky-background);
+}
+
+:host #tabs li {
+  display: flex;
+  align-items: stretch;
+}
+
+:host([vertical]) #tabs li {
+  flex-direction: column;
 }
 
 :host #tabs .flag-type {
@@ -68,17 +106,18 @@
 
 :host #content {
   padding: var(--a11y-tabs-content-padding);
-  background-color: var(--a11y-tabs-background);
+  background-color: var(--a11y-tabs-content-background);
   border: 1px solid var(--a11y-tabs-border-color);
+  flex: 1 1 calc(100% - 2 * var(--a11y-tabs-content-padding));
+  overflow: auto;
 }
 
 :host([vertical]) #content {
-  flex: 1 0 auto;
   border: none;
 }
 
 :host(:not([vertical])) #content {
-  border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius));
+  border-radius: var(--a11y-tabs-horizontal-border-radius);
   margin-top: -1px;
 }
 
@@ -88,7 +127,7 @@
   color: var(--a11y-tabs-color);
   background-color: var(--a11y-tabs-faded-background);
   border: 1px solid var(--a11y-tabs-border-color);
-  padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
+  padding: var(--a11y-tabs-button-padding);
 }
 
 :host([vertical]) #tabs paper-button {
@@ -98,17 +137,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--a11y-tabs-vertical-button-padding, var(--a11y-tabs-button-padding));
+  padding: var(--a11y-tabs-vertical-button-padding);
 }
 
 :host(:not([vertical])) #tabs paper-button {
-  width: 100%;
   border-bottom: none;
-  border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-  var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-  0 
-  0; 
-  padding: var(--a11y-tabs-horizontal-button-padding, var(--a11y-tabs-button-padding));
+  border-radius: var(--a11y-tabs-horizontal-border-radius) var(--a11y-tabs-horizontal-border-radius) 0 0; 
+  padding: var(--a11y-tabs-horizontal-button-padding);
 }
 
 :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
@@ -132,6 +167,7 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
 :host([vertical]) #tabs paper-button[disabled] {
   border-right-color: var(--a11y-tabs-background);
 }
