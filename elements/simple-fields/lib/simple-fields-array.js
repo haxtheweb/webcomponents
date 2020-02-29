@@ -20,18 +20,38 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       ...super.styles,
       css`
         fieldset {
-          padding: 0 20px;
+          padding: 0 10px;
         }
         #item-fields {
           clear: both;
           margin: 10px 0;
           z-index: 3;
         }
+        #top {
+          display: flex;
+          align-items:flex-end;
+          justify-content: space-between;
+        }
+        #description{
+          padding: 8px 0;
+          min-height: 24px;
+        }
+        #add {
+          float: right;
+        }
         paper-button {
+          padding: 8px;
           z-index: 1;
           margin: 0;
-          float: right;
           text-transform: unset;
+        }
+        .expanded {
+          transform: rotate(-180deg);
+          transition: transform 0.5s ease;
+        }
+        .collapsed {
+          transform: rotate(0deg);
+          transition: transform 0.5s ease;
         }
       `
     ];
@@ -50,19 +70,30 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       }
     };
   }
+  render() {
+    return html`
+      <fieldset>
+        ${this.legend}${this.fields}
+      </fieldset>
+    `;
+  }
   get fields() {
     return html`
-      <paper-button
-        id="expand"
-        controls="item-fields"
-        @click="${e => this.toggle()}"
-      >
-        ${this.expanded ? "Collapse All" : "Expand All"}
-        <iron-icon
-          aria-hidden="true"
-          icon="${this.expanded ? "expand-less" : "expand-more"}"
-        ></iron-icon>
-      </paper-button>
+      <div id="top">
+        ${this.desc} 
+        <paper-button
+          id="expand"
+          controls="item-fields"
+          @click="${e => this.toggle()}"
+        >
+          ${this.expanded ? "Collapse All" : "Expand All"}
+          <iron-icon
+            class="${this.expanded ? "expanded" : "collapsed"}"
+            aria-hidden="true"
+            icon="expand-more"
+          ></iron-icon>
+        </paper-button>
+      </div>
       <div id="item-fields" aria-live="polite">
         <slot></slot>
         <paper-button
@@ -93,7 +124,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   buildItem(id) {
     let item = document.createElement("simple-fields-array-item");
     item.id = id;
-    item.setAttribute("aria-expanded", this.expanded);
+    item.expanded = this.expanded;
     item.innerHTML = `
       <slot name="sort"></slot>
       <slot name="preview"></slot>

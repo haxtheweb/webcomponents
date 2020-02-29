@@ -1,16 +1,56 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./simple-fields-array.js";
+import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
+import "./simple-fields-fieldset.js";
 /**
  * `simple-fields-schema`
  * 
 ### Styling
-
-`<simple-fields-schema>` provides the following custom properties
+`<simple-fields-schema>` provides following custom properties
 for styling:
 
 Custom property | Description | Default
-----------------|-------------|----------
-`--simple-fields-schema-margin` | margin around the simple-fields-schema | 15px 0
+----------------|-------------|--------
+`--simple-fields-schema-margin` | margin around simple-fields-schema | 15px 0
+
+### Configuring schemaConverstion Property
+```
+type: {                         //For properties in "this.schema", define elements based on a property's "type"
+  object: {                     //Defines element used when property's "type" is an "object"
+    format: {                   //Optional: define elements for "object" properties by "format"
+      "tabs": {                 //Defines element used for object properties when "format" is "tabs"
+        element: "a11y-tabs"    //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
+        label: "label"          //Optional: element that contains label, i.e. "label"
+        description: ""         //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
+        child: {                //Optional: child elements to be appended
+          element: "a11y-tab"   //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
+          attributes: {         //Optional: sets child element's attributes based on this.schemaConverstion
+            disabled: true      //Example: sets disabled to true  
+          } 
+          properties: {          //Optional: sets child element's attributes based on this.schema properties
+            icon: "iconName"     //Example: sets child element's icon property to this.schema property's iconName 
+          }, 
+          slots: {               //Optional: inserts schema properties in child element's slots
+            label: "label",      //Example: places schema property's label into child element's label slot
+            "": "description"    //Example: places schema property's description into child element's unnamed slot
+          } 
+        },
+        attributes: {},
+        properties: {},
+        slots: {}
+      }
+    },
+    defaultSettings: {   //Default element used for object properties
+      element: ""
+      label: ""
+      description: ""     
+      attributes: {}       
+      properties: {}       
+      slots: {}           
+    }
+  }
+}
+``` 
  *
  * @demo ./demo/schema.html
  * @customElement simple-fields-schema
@@ -26,11 +66,12 @@ class SimpleFieldsSchema extends LitElement {
       </div>
     `;
   }
+
   constructor() {
     super();
     this.autofocus = false;
     this.codeTheme = "vs-light-2";
-    this.jsonSchemaToHtml = {
+    this.schemaConverstion = {
       defaultSettings: {
         element: "paper-input",
         attributes: {
@@ -51,8 +92,7 @@ class SimpleFieldsSchema extends LitElement {
               properties: {
                 label: "label",
                 description: "description",
-                previewBy: "previewBy",
-                sortBy: "sortBy"
+                previewBy: "previewBy"
               }
             },
             sort: {
@@ -78,6 +118,7 @@ class SimpleFieldsSchema extends LitElement {
           defaultSettings: {
             element: "simple-fields-boolean",
             attributes: {
+              autofocus: true,
               value: false
             },
             properties: {
@@ -94,6 +135,7 @@ class SimpleFieldsSchema extends LitElement {
           defaultSettings: {
             element: "paper-input",
             attributes: {
+              autofocus: true,
               step: 1,
               type: "number"
             },
@@ -115,6 +157,7 @@ class SimpleFieldsSchema extends LitElement {
             element: "paper-input",
             type: "number",
             attributes: {
+              autofocus: true,
               type: "number"
             },
             properties: {
@@ -137,9 +180,19 @@ class SimpleFieldsSchema extends LitElement {
             tabs: {
               defaultSettings: {
                 element: "a11y-tabs",
-                properties: {
-                  label: "label",
-                  description: "description"
+                label: 'label',
+                description: 'p',
+                slots: {
+                  "label": "description"
+                },
+                child: {
+                  element: "a11y-tab",
+                  properties: {
+                    label: "label"
+                  },
+                  slots: {
+                    "": "description"
+                  }
                 }
               }
             }
@@ -151,6 +204,7 @@ class SimpleFieldsSchema extends LitElement {
               defaultSettings: {
                 element: "paper-input",
                 attributes: {
+                  autofocus: true,
                   type: "datetime-local"
                 },
                 properties: {
@@ -162,6 +216,7 @@ class SimpleFieldsSchema extends LitElement {
               defaultSettings: {
                 element: "paper-input",
                 attributes: {
+                  autofocus: true,
                   type: "time"
                 },
                 properties: {
@@ -173,6 +228,7 @@ class SimpleFieldsSchema extends LitElement {
               defaultSettings: {
                 element: "paper-input",
                 attributes: {
+                  autofocus: true,
                   type: "date"
                 },
                 properties: {
@@ -184,6 +240,7 @@ class SimpleFieldsSchema extends LitElement {
               defaultSettings: {
                 element: "paper-input",
                 attributes: {
+                  autofocus: true,
                   type: "email"
                 },
                 properties: {
@@ -195,6 +252,7 @@ class SimpleFieldsSchema extends LitElement {
               defaultSettings: {
                 element: "paper-input",
                 attributes: {
+                  autofocus: true,
                   type: "url"
                 },
                 properties: {
@@ -210,12 +268,12 @@ class SimpleFieldsSchema extends LitElement {
     this.resources = {};
     this.value = {};
     setTimeout(() => {
-      import("./simple-fields-fieldset.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/paper-input/paper-input.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
+      import("./simple-fields-info.js");
     }, 0);
   }
 
@@ -226,40 +284,11 @@ class SimpleFieldsSchema extends LitElement {
   static get properties() {
     return {
       ...super.properties,
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean
-      },
-      /**
-       * the name of the code-editor theme
-       */
-      codeTheme: {
-        type: String
-      },
       /** 
-       *  conversion from JSON Schema to HTML ```
-      type: {                  //convert based on te type attribute
-        string: {              //if type is string  
-          format: {            //check the format attribute
-            "date-time": {     //if format is date-time
-              element:         //HTML form element to create
-              attributes:      //HTML attribute settings
-              properties:      //Schema properties to map to attributes
-              slots:           //HTML slot settings
-            }
-          },
-          defaultSettings: {  //if there was no format match
-            element:         //HTML form element to create
-            attributes:      //HTML attribute settings
-            properties:      //Schema properties to map to attributes
-            slots:           //HTML slot settings
-          }
-        }
-      }```
+       * Conversion from JSON Schema to HTML form elements.
+       * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
       */
-      jsonSchemaToHtml: {
+      schemaConverstion: {
         type: Object
       },
       error: {
@@ -281,11 +310,16 @@ class SimpleFieldsSchema extends LitElement {
       },
       value: {
         type: Object
-      },
-      wizard: {
-        type: Boolean
       }
     };
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      //console.log('changedProperties',propName,oldValue,this[propName]);
+      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
+      if (propName === "value") this._valueChanged(this.value, oldValue);
+    });
   }
 
   buildHtmlFromJsonSchema(
@@ -294,116 +328,171 @@ class SimpleFieldsSchema extends LitElement {
     prefix = "",
     child
   ) {
-    let root = this,
-      schemaProps = schema.properties,
+    let schemaProps = schema.properties,
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
     schemaKeys.forEach(key => {
-      let data = child
-        ? child
-        : this._searchConversion(schemaProps[key], this.jsonSchemaToHtml);
+      let schemaProp = schemaProps[key], 
+        data = child
+          ? child
+          : this._searchConversion(schemaProp, this.schemaConverstion);
       if (data && data.element) {
         let label =
-            schemaProps[key].label ||
-            schemaProps[key].title ||
-            schemaProps[key].description ||
+            schemaProp.label ||
+            schemaProp.title ||
+            schemaProp.description ||
             key,
           desc =
-            schemaProps[key].label || schemaProps[key].title
-              ? schemaProps[key].description
+            schemaProp.label || schemaProp.title
+              ? schemaProp.description
               : undefined,
           element = document.createElement(data.element),
           value = this._getValue(`${prefix}${key}`),
-          valueProperty = data.valueProperty || "value";
+          valueProperty = data.valueProperty || "value",
+          labelEl, descEl;
+
         element.name = `${prefix}${key}`;
         element[valueProperty] = value;
-        console.log(element.name, data.element, schema, schemaProps[key], data);
         element.resources = this.resources;
         element.setAttribute("language", this.language);
-        schemaProps[key].label = label;
-        schemaProps[key].description = desc;
+        schemaProp.label = label;
+        schemaProp.description = desc;
+
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
           if (data.attributes[attr]) {
             element.setAttribute(attr, data.attributes[attr]);
           }
         });
-        //handle data type properties
+
+        //handle schema properties
         Object.keys(data.properties || {}).forEach(prop => {
-          if (data.properties[prop] && schemaProps[key][prop]) {
-            element[data.properties[prop]] = schemaProps[key][prop];
+          if (data.properties[prop] && schemaProp[prop]) {
+            element[data.properties[prop]] = schemaProp[prop];
           }
         });
+
+        //handle data type slots
+        Object.keys(data.slots || {}).forEach(slot => {
+          if (data.slots[slot] && schemaProp[data.slots[slot]]) {
+            data.slots[slot].split(/[\s,]/).forEach(field=>{
+              let span = document.createElement('span');
+              span.slot = slot;
+              span.innerHTML = schemaProp[field];
+              element.appendChild(span);
+            });
+          }
+        });
+
+        //place field in correct slot of its parent
+        if (target.slots && target.slots[key]) element.slot = target.slots[key];
+
         //handle required fields
         if (required && required.includes(key))
           element.setAttribute("required", true);
-        //place the field in the correct slot of its parent
-        if (target.slots && target.slots[key]) element.slot = target.slots[key];
+
+        //handles label if not already added as an attribute, property, or slot
+        if (label  && data.label) {
+          labelEl = document.createElement(data.label.element || 'label');
+          labelEl.id = `${element.name}-label`;
+          labelEl.innerHTML = label;
+          labelEl.setAttribute("for", element.name);
+          target.setAttribute("aria-labeledby", labelEl.id);
+        }
+        //handles description if not already added as an attribute, property, or slot
+        if (desc && data.description) {
+          descEl = document.createElement(data.description.element || 'p');
+          descEl.id = `${element.name}-desc`;
+          descEl.classList.add = 'description';
+          descEl.innerHTML = desc;
+          target.setAttribute("aria-describedby", descEl.id);
+        }
+        
         //handles arrays
-        if (schemaProps[key].items) {
-          console.log(
-            "schemaProps[key].items",
-            schemaProps[key].items,
-            schemaProps[key].properties
-          );
-          if (value)
+        if (schemaProp.items) {
+          schemaProp.counter = value ? value.length - 1 : 0;
+          if (value){
             value.forEach((item, i) => {
-              let subschema = schemaProps[key];
-              subschema.properties = {};
-              subschema.properties[i] = schemaProps[key].items;
-              subschema.properties[i].label = `${i + 1}`;
-              console.log(
-                "schemaProps[key].items",
-                schemaProps[key].items,
-                schemaProps[key].properties,
-                subschema.properties[i]
-              );
-              this.buildHtmlFromJsonSchema(
-                subschema,
-                element,
-                `${element.name}.`,
-                data.child
-              );
-              element.addEventListener("add", e =>
-                this._setValue(`${element.name}.${value.length}`, {})
-              );
-              element.addEventListener("remove", e => {
-                let temp = this._deepClone(value);
-                temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
-                this._setValue(`${element.name}`, temp);
-              });
+              this._buildArrayItemFromSubschema(i,schemaProp,element,data.child);
             });
+          }
+          element.addEventListener("add", e => {
+            schemaProp.counter++;
+            this._setValue(`${element.name}.${value.length}`, {});
+            this._buildArrayItemFromSubschema(
+              schemaProp.counter,
+              schemaProp,
+              element,
+              data.child
+            );
+          }
+          );
+          element.addEventListener("remove", e => {
+            let temp = this._deepClone(value);
+            temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
+            this._setValue(`${element.name}`, temp);
+            e.detail.remove();
+          });
         }
         //handles objects
-        else if (schemaProps[key].properties) {
+        else if (schemaProp.properties) {
           this.buildHtmlFromJsonSchema(
-            schemaProps[key],
+            schemaProp,
             element,
-            `${element.name}.`
+            `${element.name}.`,
+            data.child
           );
         } else {
           if (value && !element.getAttribute(valueProperty))
             element.setAttribute(valueProperty, value);
         }
-        //handles label
-        if (label && (!data.properties || !data.properties.label)) {
-          let labelEl = document.createElement("label");
-          labelEl.innerHTML = label;
-          labelEl.setAttribute("for", element.name);
-          target.appendChild(labelEl);
-        }
         target.appendChild(element);
+
         element.addEventListener(`${valueProperty}-changed`, e =>
           this._handleChange(element, valueProperty)
         );
       }
     });
   }
+  /**
+   * uses array part of schema to add array item's fields
+   *
+   * @param {integer} i index of array item
+   * @param {object} subschema array part of schema
+   * @param {object} element array element
+   * @param {object} item array item element
+   */
+  _buildArrayItemFromSubschema(i,subschema,element,item){
+    subschema.properties = {};
+    subschema.properties[i] = subschema.items;
+    subschema.properties[i].label = `${i + 1}`;
+    this.buildHtmlFromJsonSchema(
+      subschema,
+      element,
+      `${element.name}.`,
+      item
+    );
+  }
+  /**
+   * handles changes to fields
+   *
+   * @param {object} element element that changed
+   * @param {object} valueProperty
+   */
   _handleChange(element, valueProperty) {
-    //console.log('_handleChange',this.value,this._getValue(element.name),element[valueProperty],element.value)
-    //this._fireValueChanged();
+    this._setValue(element.name,element[valueProperty]);
+    console.log(element.name, element, element[valueProperty]);
+    this._fireValueChanged();
   }
 
+  /**
+   * matches schema property to schemaConverstion settings
+   *
+   * @param {object} property a property in the schema
+   * @param {object} conversion a section of schemaConverstion to search
+   * @param {object} settings closest current match
+   * @returns {object}
+   */
   _searchConversion(property, conversion, settings) {
     let propKeys = Object.keys(property || {}),
       convKeys = Object.keys(conversion || {}).filter(key =>
@@ -425,166 +514,10 @@ class SimpleFieldsSchema extends LitElement {
   }
 
   /**
-   * adds form element to page
-   *
-   * @param {object} config properties object for the element
-   * @param {object} [parent=this] parent where element will be appended
-   * @param {number} index if in array, element's index
-   * @param {string} string name of slot
-   * @returns {object} form element
-   * /
-  _buildFormElement(config, parent = this, index = -1, slot) {
-    let el = document.createElement(config.component.type.element),
-      elname =
-        index > -1 ? config.name.replace("..", `.${index}.`) : config.name,
-      elval = this._getValue(elname),
-      keys = config.schema.properties
-        ? Object.keys(config.schema.properties)
-        : [];
-    el.label = config.label || config.title;
-    el.schema = config.schema;
-    el.resources = this.resources;
-    el.setAttribute("language", this.language);
-    el.setAttribute("name", elname);
-    Object.keys(config.component.type).forEach(key => {
-      if (key !== "element" || "valueProperty")
-        el.setAttribute(key, config.component.type[key]);
-    });
-    if (config.schema.hidden) el.setAttribute("hidden", true);
-    if (slot) el.slot = slot;
-    parent.append(el);
-    if (config.component.type.isArray && index < 0) {
-      el.addEventListener("add", e =>
-        this._setValue(`${elname}.${elval.length}`, {})
-      );
-      el.addEventListener("remove", e => {
-        let temp = this._deepClone(elval);
-        temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
-        console.log(temp, parseInt(e.detail.id.replace(/item-/, "")));
-        this._setValue(`${elname}`, temp);
-      });
-      if (config.sortBy)
-        elval = elval.sort((a, b) => {
-          let i = 0,
-            ai = 0,
-            bi = 0;
-          while (i < config.sortBy.length && ai === bi) {
-            ai = a[config.sortBy[i]];
-            bi = b[config.sortBy[i]];
-            i++;
-          }
-          return ai === bi ? 0 : ai < bi ? -1 : 1;
-        });
-      /* gets array items * /
-      if (elval)
-        elval.forEach((item, i) => {
-          /* gets array item config * /
-          let id = `item-${i}`,
-            child = el.buildItem(id),
-            sortSlot = config.component.type.sortSlot,
-            previewSlot = config.component.type.previewSlot,
-            previewKeys = keys.filter(
-              key => config.schema.properties[key].previewField === true
-            );
-          if (previewKeys.length < 1) previewKeys.push(keys[0]);
-          /* adds fields to array items * /
-          keys.forEach(key => {
-            let childname = config.schema.properties[key].name.replace(
-              `${elname}..`,
-              ""
-            );
-            this._buildFormElement(
-              config.schema.properties[key],
-              child,
-              i,
-              sortSlot && config.sortBy[0] === childname
-                ? sortSlot
-                : previewKeys.includes(key)
-                ? previewSlot
-                : undefined
-            );
-          });
-        });
-    } else if (config.schema && config.schema.properties) {
-      /* gets nested fields for a fieldset   /
-      Object.keys(config.schema.properties).forEach(key =>
-        this._buildFormElement(config.schema.properties[key], el)
-      );
-    } else {
-      el[config.component.valueProperty] = elval;
-      el.onchange = e =>
-        this._setValue(elname, el[config.component.valueProperty]);
-    }
-  }
-
-  /**
-   * returns an array of properties for a given schema object
-   * @param {object} target parent of nested properties
-   * @returns {array} form properties
-   * /
-  _getProperties(target = this.schema, prefix) {
-    //console.log('_getProperties',target);
-    let root = this;
-    return Object.keys(target.properties || []).map(key => {
-      let schema = target.properties[key],
-        property = {
-          name: prefix ? `${prefix}.${key}` : key,
-          schema: schema,
-          component: schema.component || {},
-          description: schema.description,
-          label: schema.title || key,
-          previewField: schema.previewField,
-          sortBy: schema.sortBy
-        };
-      property.component.valueProperty =
-        property.component.valueProperty || "value";
-      property.component.slot = property.component.slot || "";
-
-      /* match the schema type to the correct data type * /
-      Object.keys(root.dataTypes).forEach(key => {
-        if (
-          (Array.isArray(schema.type) && schema.type.indexOf(key) !== -1) ||
-          schema.type === key
-        ) {
-          property.component.type = this._deepClone(root.dataTypes[key]);
-          property.component.type.element =
-            property.component.name || property.component.type.element;
-          property.component.type.type = schema.format;
-
-          /* handle fieldsets by getting nested properties * /
-          if (
-            property.component.type.isFieldset ||
-            property.component.type.isArray
-          ) {
-            if (!schema.items || !schema.items.properties)
-              schema.items = {
-                properties: schema.properties
-                  ? this._deepClone(schema.properties)
-                  : {}
-              };
-            if (schema.items && schema.items.properties) {
-              //console.log('schema.items',schema.items);
-              property.schema.properties = this._getProperties(
-                schema.items,
-                property.component.type.isArray
-                  ? `${property.name}.`
-                  : property.name
-              );
-            }
-          }
-        }
-      });
-      if (!property.component.type || !property.component.type.element)
-        console.error("Unknown property type %s", schema.type);
-      return property;
-    });
-  }
-
-  /**
    * sets value of a property
    *
    * @param {string} propName property to set
-   * @param {*} propVal value of the property
+   * @param {*} propVal value of property
    */
   _setValue(propName, propVal) {
     //console.log('_setValue',propName,propVal);
@@ -624,18 +557,7 @@ class SimpleFieldsSchema extends LitElement {
   }
 
   /**
-   * Updates a11y-collapse item when properties change
-   */
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      //console.log('changedProperties',propName,oldValue,this[propName]);
-      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
-      if (propName === "value") this._valueChanged(this.value, oldValue);
-    });
-  }
-
-  /**
-   * clears the form
+   * clears form
    */
   _clearForm() {
     this.querySelectorAll("*").forEach(child => child.remove());
@@ -643,27 +565,24 @@ class SimpleFieldsSchema extends LitElement {
 
   /**
    * clones an object and all its subproperties
-   * @param {object} o the object to clone
-   * @returns {object} the cloned object
+   * @param {object} o object to clone
+   * @returns {object} cloned object
    */
   _deepClone(o) {
     return JSON.parse(JSON.stringify(o));
   }
   /**
-   * clears and rebuilds the form
+   * clears and rebuilds form
    */
   _rebuildForm() {
-    //console.log("_rebuildForm",this.value,this.schema);
     this._clearForm();
     if (this.schema) {
       this.buildHtmlFromJsonSchema();
-      //let formProperties = this._getProperties(this.schema);
-      //formProperties.forEach(property => this._buildFormElement(property));
     }
   }
 
   /**
-   * fires when the value changes
+   * fires when value changes
    * @event value-changed
    */
   _fireValueChanged() {
@@ -687,9 +606,9 @@ class SimpleFieldsSchema extends LitElement {
     );
   }
   /**
-   * updates the form  and fires event when the value changes
-   * @param {object} newValue the new value for the schema
-   * @param {object} oldValue the old value for the schema
+   * updates form  and fires event when value changes
+   * @param {object} newValue new value for schema
+   * @param {object} oldValue old value for schema
    */
   _valueChanged(newValue, oldValue) {
     /*console.log('before sort',vals);
@@ -713,12 +632,12 @@ class SimpleFieldsSchema extends LitElement {
       console.log('----->',element.name,schema,data,schema[key],subschema[key]);
     });
     */
-    if (newValue && newValue !== oldValue) this._rebuildForm();
+    if (newValue && newValue !== oldValue) this._fireValueChanged();
   }
   /**
-   * updates the form and fires event when the schema changes
-   * @param {object} newValue the new value for the schema
-   * @param {object} oldValue the old value for the schema
+   * updates form and fires event when schema changes
+   * @param {object} newValue new value for schema
+   * @param {object} oldValue old value for schema
    * @event schema-changed
    */
   _schemaChanged(newValue, oldValue) {

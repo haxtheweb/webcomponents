@@ -14,8 +14,9 @@ class SimpleFieldsFieldset extends LitElement {
     return [
       css`
         fieldset {
-          padding: 20px;
-          margin: 20px;
+          padding: 10px;
+          margin: 10px 10px 20px;
+          border: 1px solid #ccc;
         }
       `
     ];
@@ -36,7 +37,7 @@ class SimpleFieldsFieldset extends LitElement {
   }
   get desc() {
     return html`
-      <div ?hidden="${!this.description}">
+      <div id="description" ?hidden="${!this.description}">
         ${this.description}
       </div>
     `;
@@ -63,9 +64,6 @@ class SimpleFieldsFieldset extends LitElement {
         type: String
       }
     };
-  }
-  constructor() {
-    super();
   }
 }
 window.customElements.define(SimpleFieldsFieldset.tag, SimpleFieldsFieldset);

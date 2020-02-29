@@ -38,30 +38,32 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       css`
         :host {
           display: block;
-          transition: all 0.5s;
           border-radius: 3px;
+          border: none;
+          transform: rotate(0deg);
+          transition: border 0.5s ease;
         }
         :host([disabled]) {
           opacity: 0.5;
         }
         :host([aria-expanded="true"]) {
           border: 1px solid #ddd;
+          transition: border 0.5s ease;
         }
         :host(:focus-within) {
           border: 1px solid #444;
+          transition: border 0.5s ease;
           z-index: 2;
         }
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;
         }
-        #drag-handle,
-        ::slotted([slot="sort"]),
-        ::slotted([slot="preview"]) {
+        #drag-handle {
           flex: 0 1 auto;
-          margin: 0 15px;
         }
-        ::slotted([slot="preview"]) {
+        #preview {
           flex: 1 0 auto;
+          margin: 0;
         }
         #heading,
         .heading-inner {
@@ -70,25 +72,28 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           align-items: center;
         }
         #content {
-          max-height: 0;
           overflow: hidden;
-          transition: all 0.5s ease-in-out;
+          max-height: 0;
+        }
+        :host([sortable]) {
+          padding: 0 0 0 40px;
         }
         :host #content-inner {
-          overflow: hidden;
           display: flex;
           align-items: flex-end;
           justify-content: space-between;
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.75s ease 0.1s;
         }
         :host(:focus-within) #content,
         :host([aria-expanded="true"]) #content {
-          max-height: unset;
-          overflow: hidden;
+          max-height: 20000vh;
+          transition: max-height 0.75s ease 0.1s;
         }
         :host(:focus-within) #content-inner,
         :host([aria-expanded="true"]) #content-inner {
-          overflow: unset;
-          margin: 0 15px;
+          max-height: 20000vh;
         }
         #content-inner > * {
           flex: 1 1 auto;
@@ -96,7 +101,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         #remove {
           flex: 0 0 auto;
           color: #cc0000;
-          margin-right: -15px;
+        }
+        #expand {
+          padding: 8px;
+          transform: rotate(0deg);
+          transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        :host(:focus-within)  #expand,
+        :host([aria-expanded="true"]) #expand {
+          transform: rotate(-180deg);
+          transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
       `
     ];
@@ -104,8 +118,22 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   render() {
     return html`
       <div id="heading">
-        <slot name="sort"></slot>
-        <slot name="preview"></slot>
+        <paper-icon-button
+          id="drag-handle"
+          controls="${this.id}"
+          icon="open-with"
+          label="Reorder this item"
+          ?hidden="${!this.sortable}"
+          ?disabled="${this.disabled}"
+        >
+        </paper-icon-button>
+        <div id="preview"><slot name="preview"></slot></div>
+        <iron-icon
+          id="expand"
+          aria-hidden="true"
+          icon="expand-more"
+          @click="${this.toggle}"
+        ></iron-icon>
       </div>
       <div id="content">
         <div id="content-inner">
@@ -134,9 +162,24 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       /**
        * is disabled?
        */
+      expanded: {
+        type: Boolean
+      },
+      /**
+       * is disabled?
+       */
       disabled: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "disabled"
+      },
+      /**
+       * is disabled?
+       */
+      sortable: {
+        type: Boolean,
+        reflect: true,
+        attribute: "sortable"
       },
       /**
        * fields to preview by
@@ -148,20 +191,21 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       },
       /**
        * fields to sort by
-       */
+       * /
       sortBy: {
         type: Array,
         reflect: true,
         attribute: "sort-by"
-      }
+      }*/
     };
   }
 
   constructor() {
     super();
     this.disabled = false;
+    this.sortable = false;
     this.previewBy = [];
-    this.sortBy = [];
+    //this.sortBy = [];
   }
   connectedCallback() {
     super.connectedCallback();
@@ -184,7 +228,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   get slots() {
     let slots = {};
     this.previewBy.forEach(field => (slots[field] = "preview"));
-    slots[this.sortBy[0]] = this.previewBy.length > 0 ? "sort" : "preview";
     return slots;
   }
 
