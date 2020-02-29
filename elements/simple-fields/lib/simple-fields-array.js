@@ -29,10 +29,10 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         }
         #top {
           display: flex;
-          align-items:flex-end;
+          align-items: flex-end;
           justify-content: space-between;
         }
-        #description{
+        #description {
           padding: 8px 0;
           min-height: 24px;
         }
@@ -80,7 +80,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   get fields() {
     return html`
       <div id="top">
-        ${this.desc} 
+        ${this.desc}
         <paper-button
           id="expand"
           controls="item-fields"

@@ -180,10 +180,10 @@ class SimpleFieldsSchema extends LitElement {
             tabs: {
               defaultSettings: {
                 element: "a11y-tabs",
-                label: 'label',
-                description: 'p',
+                label: "label",
+                description: "p",
                 slots: {
-                  "label": "description"
+                  label: "description"
                 },
                 child: {
                   element: "a11y-tab",
@@ -284,10 +284,10 @@ class SimpleFieldsSchema extends LitElement {
   static get properties() {
     return {
       ...super.properties,
-      /** 
+      /**
        * Conversion from JSON Schema to HTML form elements.
        * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
-      */
+       */
       schemaConverstion: {
         type: Object
       },
@@ -332,7 +332,7 @@ class SimpleFieldsSchema extends LitElement {
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
     schemaKeys.forEach(key => {
-      let schemaProp = schemaProps[key], 
+      let schemaProp = schemaProps[key],
         data = child
           ? child
           : this._searchConversion(schemaProp, this.schemaConverstion);
@@ -349,7 +349,8 @@ class SimpleFieldsSchema extends LitElement {
           element = document.createElement(data.element),
           value = this._getValue(`${prefix}${key}`),
           valueProperty = data.valueProperty || "value",
-          labelEl, descEl;
+          labelEl,
+          descEl;
 
         element.name = `${prefix}${key}`;
         element[valueProperty] = value;
@@ -375,8 +376,8 @@ class SimpleFieldsSchema extends LitElement {
         //handle data type slots
         Object.keys(data.slots || {}).forEach(slot => {
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
-            data.slots[slot].split(/[\s,]/).forEach(field=>{
-              let span = document.createElement('span');
+            data.slots[slot].split(/[\s,]/).forEach(field => {
+              let span = document.createElement("span");
               span.slot = slot;
               span.innerHTML = schemaProp[field];
               element.appendChild(span);
@@ -392,8 +393,8 @@ class SimpleFieldsSchema extends LitElement {
           element.setAttribute("required", true);
 
         //handles label if not already added as an attribute, property, or slot
-        if (label  && data.label) {
-          labelEl = document.createElement(data.label.element || 'label');
+        if (label && data.label) {
+          labelEl = document.createElement(data.label.element || "label");
           labelEl.id = `${element.name}-label`;
           labelEl.innerHTML = label;
           labelEl.setAttribute("for", element.name);
@@ -401,19 +402,24 @@ class SimpleFieldsSchema extends LitElement {
         }
         //handles description if not already added as an attribute, property, or slot
         if (desc && data.description) {
-          descEl = document.createElement(data.description.element || 'p');
+          descEl = document.createElement(data.description.element || "p");
           descEl.id = `${element.name}-desc`;
-          descEl.classList.add = 'description';
+          descEl.classList.add = "description";
           descEl.innerHTML = desc;
           target.setAttribute("aria-describedby", descEl.id);
         }
-        
+
         //handles arrays
         if (schemaProp.items) {
           schemaProp.counter = value ? value.length - 1 : 0;
-          if (value){
+          if (value) {
             value.forEach((item, i) => {
-              this._buildArrayItemFromSubschema(i,schemaProp,element,data.child);
+              this._buildArrayItemFromSubschema(
+                i,
+                schemaProp,
+                element,
+                data.child
+              );
             });
           }
           element.addEventListener("add", e => {
@@ -425,8 +431,7 @@ class SimpleFieldsSchema extends LitElement {
               element,
               data.child
             );
-          }
-          );
+          });
           element.addEventListener("remove", e => {
             let temp = this._deepClone(value);
             temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
@@ -462,16 +467,11 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} element array element
    * @param {object} item array item element
    */
-  _buildArrayItemFromSubschema(i,subschema,element,item){
+  _buildArrayItemFromSubschema(i, subschema, element, item) {
     subschema.properties = {};
     subschema.properties[i] = subschema.items;
     subschema.properties[i].label = `${i + 1}`;
-    this.buildHtmlFromJsonSchema(
-      subschema,
-      element,
-      `${element.name}.`,
-      item
-    );
+    this.buildHtmlFromJsonSchema(subschema, element, `${element.name}.`, item);
   }
   /**
    * handles changes to fields
@@ -480,7 +480,7 @@ class SimpleFieldsSchema extends LitElement {
    * @param {object} valueProperty
    */
   _handleChange(element, valueProperty) {
-    this._setValue(element.name,element[valueProperty]);
+    this._setValue(element.name, element[valueProperty]);
     console.log(element.name, element, element[valueProperty]);
     this._fireValueChanged();
   }

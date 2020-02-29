@@ -107,7 +107,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transform: rotate(0deg);
           transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
-        :host(:focus-within)  #expand,
+        :host(:focus-within) #expand,
         :host([aria-expanded="true"]) #expand {
           transform: rotate(-180deg);
           transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -188,7 +188,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         type: Array,
         reflect: true,
         attribute: "preview-by"
-      },
+      }
       /**
        * fields to sort by
        * /
