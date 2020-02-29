@@ -25,6 +25,8 @@ Custom property | Description | Default
 `--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold
 `--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset
 `--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset
+`--a11y-collapse-overflow-y` | override default overflow behavior | hidden
+`--a11y-collapse-max-height` | override maximum height of collapse section | 200000000000vh, so that aanimation effect works
  *
  * @customElement a11y-collapse
  * @demo ./demo/index.html demo
@@ -39,7 +41,7 @@ class A11yCollapse extends LitElement {
           display: block;
           margin: var(--a11y-collapse-margin, 15px 0);
           border: var(--a11y-collapse-border, 1px solid);
-          transition: all 0.5s;
+          transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         :host(:not(:first-of-type)) {
           border-top: var(
@@ -80,15 +82,15 @@ class A11yCollapse extends LitElement {
           overflow: hidden;
         }
         #expand {
-          transition: transform 0.5s;
+          transform: rotate(0deg);
+          transition: transform 0.75s ease;
           padding: (--a11y-collapse-icon-padding, unset);
         }
-        #expand[rotated] {
+        #expand.rotated {
           transform: rotate(-90deg);
+          transition: transform 0.75s ease;
         }
         #content {
-          max-height: 0;
-          overflow: hidden;
           padding: 0
             var(
               --a11y-collapse-padding-right,
@@ -100,14 +102,15 @@ class A11yCollapse extends LitElement {
               var(--a11y-collapse-horizontal-padding, 16px)
             );
           border-top: 0px solid rgba(255, 255, 255, 0);
-          transition: all 0.5s ease-in-out;
+          max-height: 0;
+          transition: all 0.75s ease;
+          overflow-y: hidden;
         }
         :host #content-inner {
-          overflow: hidden;
+          max-height: 0;
+          overflow-y: var(--a11y-collapse-overflow-y, hidden);
         }
         :host([expanded]) #content {
-          max-height: unset;
-          overflow: hidden;
           padding: var(
               --a11y-collapse-padding-top,
               var(--a11y-collapse-vertical-padding, 16px)
@@ -125,9 +128,11 @@ class A11yCollapse extends LitElement {
               var(--a11y-collapse-horizontal-padding, 16px)
             );
           border-top: var(--a11y-collapse-border, 1px solid);
+          max-height: 200000000000vh;
         }
         :host([expanded]) #content-inner {
-          overflow: unset;
+          max-height: var(--a11y-collapse-max-height, 200000000000vh);
+          transition: max-height 0.75s ease;
         }
       `
     ];
@@ -224,11 +229,8 @@ class A11yCollapse extends LitElement {
     this.disabled = false;
     this.expanded = false;
     this.icon = "icons:expand-more";
-    this.iconExpanded = null;
     this.label = "expand / collapse";
-    this.labelExpanded = null;
     this.tooltip = "toggle expand / collapse";
-    this.tooltipExpanded = null;
   }
   static get haxProperties() {
     return {
@@ -462,7 +464,7 @@ class A11yCollapse extends LitElement {
    * @returns {string} property based on expanded state
    */
   _getExpanded(defaultProp, expandedProp, expanded) {
-    return expanded && expandedProp !== null ? expandedProp : defaultProp;
+    return expanded && expandedProp ? expandedProp : defaultProp;
   }
   /**
    * renders collapse item where only entire heading is clickable button
@@ -486,7 +488,7 @@ class A11yCollapse extends LitElement {
         <div id="text"><slot name="heading"></slot></div>
         <iron-icon
           id="expand"
-          ?rotated="${!this.expanded && this.iconExpanded === null}"
+          class="${!this.expanded && !this.iconExpanded ? "rotated": ""}"
           .icon="${this._getExpanded(
             this.icon,
             this.iconExpanded,
@@ -515,9 +517,9 @@ class A11yCollapse extends LitElement {
         <div id="text"><slot name="heading"></slot></div>
         <paper-icon-button
           id="expand"
+          class="${!this.expanded && !this.iconExpanded ? "rotated": ""}"
           @click="${this._onClick}"
           ?disabled="${this.disabled}"
-          ?rotated="${!this.expanded && this.iconExpanded === null}"
           .label="${this._getExpanded(
             this.label,
             this.labelExpanded,
