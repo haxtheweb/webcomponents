@@ -488,7 +488,7 @@ class A11yCollapse extends LitElement {
         <div id="text"><slot name="heading"></slot></div>
         <iron-icon
           id="expand"
-          class="${!this.expanded && !this.iconExpanded ? "rotated": ""}"
+          class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           .icon="${this._getExpanded(
             this.icon,
             this.iconExpanded,
@@ -517,7 +517,7 @@ class A11yCollapse extends LitElement {
         <div id="text"><slot name="heading"></slot></div>
         <paper-icon-button
           id="expand"
-          class="${!this.expanded && !this.iconExpanded ? "rotated": ""}"
+          class="${!this.expanded && !this.iconExpanded ? "rotated" : ""}"
           @click="${this._onClick}"
           ?disabled="${this.disabled}"
           .label="${this._getExpanded(
