@@ -75,14 +75,6 @@ class CmsHax extends LitElement {
         attribute: "open-default"
       },
       /**
-       * Hide the export button, showing it is good for developers
-       * or those doing QA testing of new elements.
-       */
-      hideExportButton: {
-        type: Boolean,
-        attribute: "hide-export-button"
-      },
-      /**
        * Hide the panel operations (save and cancel),
        */
       hidePanelOps: {
@@ -222,7 +214,6 @@ class CmsHax extends LitElement {
   _noticeTagChanges(
     openDefault,
     allowedTags,
-    hideExportButton,
     hidePanelOps,
     hidePreferencesButton,
     align
@@ -232,7 +223,6 @@ class CmsHax extends LitElement {
       if (allowedTags) {
         window.HaxStore.instance.validTagList = allowedTags;
       }
-      window.HaxStore.instance.haxTray.hideExportButton = hideExportButton;
       window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
       window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
       window.HaxStore.instance.haxTray.elementAlign = align;
@@ -258,7 +248,6 @@ class CmsHax extends LitElement {
       this._noticeTagChanges(
         this.openDefault,
         this.allowedTags,
-        this.hideExportButton,
         this.hidePanelOps,
         this.hidePreferencesButton,
         this.align
@@ -279,7 +268,6 @@ class CmsHax extends LitElement {
     window.addEventListener("hax-save", this._saveFired.bind(this));
     this.__lock = false;
     this.openDefault = false;
-    this.hideExportButton = true;
     this.hidePanelOps = false;
     this.hidePreferencesButton = false;
     this.align = "right";
@@ -314,7 +302,6 @@ class CmsHax extends LitElement {
         [
           "openDefault",
           "allowedTags",
-          "hideExportButton",
           "hidePanelOps",
           "hidePreferencesButton",
           "align"
@@ -323,7 +310,6 @@ class CmsHax extends LitElement {
         this._noticeTagChanges(
           this.openDefault,
           this.allowedTags,
-          this.hideExportButton,
           this.hidePanelOps,
           this.hidePreferencesButton,
           this.align

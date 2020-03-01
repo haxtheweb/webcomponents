@@ -64,13 +64,13 @@ body, html, :root {
 
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
+  /** simple-toast **/
   --simple-toast-z-index: 10000000;
-  --simple-toast-right: 0;
-  --simple-toast-left: 0;
   --simple-toast-color: white;
-  --simple-toast-bg: var(--haxcms-system-bg, black);
-  --simple-toast-margin: 0 0 0 49px;
+  --simple-toast-bg: var(--simple-colors-default-theme-blue-grey-7, #3b97e3);
   --simple-toast-border: 1px solid black;
+  --simple-toast-font-size: 14px;
+  --simple-toast-margin: 16px 16px 16px 60px;
 
   /** hax forms **/
   --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);

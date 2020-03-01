@@ -10,16 +10,24 @@ class HaxToolbar extends LitElement {
           display: flex;
           justify-content: flex-start;
           visibility: visible;
-          transition: 0.3s all ease;
+          transition: 0.2s all ease-in-out;
           box-sizing: border-box;
           pointer-events: all;
+          background-color: white;
         }
+        
         :host *[hidden] {
           display: none;
         }
         .wrapper {
           display: flex;
           align-items: center;
+          transition: 0.2s all ease-in-out;
+          visibility: visible;
+          opacity: .8;
+        }
+        .wrapper:hover {
+          opacity: 1;
         }
         :host .wrapper ::slotted(*) {
           pointer-events: all;

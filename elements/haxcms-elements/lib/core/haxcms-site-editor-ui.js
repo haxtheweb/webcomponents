@@ -28,7 +28,6 @@ class HAXCMSSiteEditorUI extends LitElement {
         }
         :host([edit-mode]) {
           z-index: 9999;
-          bottom: unset;
         }
         :host([dashboard-opened]) {
           left: 50vw;
@@ -36,6 +35,9 @@ class HAXCMSSiteEditorUI extends LitElement {
         @media screen and (max-width: 800px) {
           :host([dashboard-opened]) {
             left: 90vw;
+          }
+          :host([edit-mode]) {
+            bottom: unset;
           }
           :host([edit-mode]) paper-fab,
           :host([edit-mode]) paper-icon-button,

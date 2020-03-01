@@ -41,23 +41,6 @@ class HaxExportDialog extends winEventsElement(
           text-align: left;
           padding: 16px;
         }
-        .buttons paper-button:focus,
-        .buttons paper-button:hover {
-          outline: 1px solid var(--hax-color-border-outline);
-        }
-        .buttons paper-button {
-          text-transform: none;
-          margin: 0;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
-          color: var(--hax-color-menu-heading-color, black);
-          display: inline-flex;
-          border-radius: 0px;
-          border-style: solid;
-          border-width: 1px;
-          min-width: unset;
-          font-size: 12px;
-          font-weight: bold;
-        }
         #closedialog {
           float: right;
           top: 5px;
@@ -88,13 +71,6 @@ class HaxExportDialog extends winEventsElement(
           min-height: 60vh;
           background-color: #ffffff;
           color: black;
-        }
-        #import {
-          background-color: var(
-            --hax-export-dialog-import-button-bg,
-            --hax-color-menu-heading-bg
-          );
-          color: var(--hax-color-menu-heading-color, black);
         }
         #loading {
           position: absolute;
@@ -128,24 +104,32 @@ class HaxExportDialog extends winEventsElement(
             <code-editor id="textarea" title="" theme="vs"></code-editor>
           </div>
           <div id="buttons" class="buttons">
-            <paper-button id="import" raised @click="${this.importContent}"
-              >Update body area</paper-button
+            <hax-tray-button
+            label="Update source"
+            color="red"
+            ?color-meaning="${true}"
+            icon="icons:code"
+            @click="${this.importContent}"
             >
-            <paper-button id="copy" @click="${this.selectBody}"
-              >Copy to clipboard</paper-button
+            </hax-tray-button>
+            <hax-tray-button
+              @click="${this.selectBody}"
+              icon="icons:content-copy"
+              label="Copy source"
             >
-            <paper-button id="downloadfull" @click="${this.downloadfull}"
-              >Download full file</paper-button
+            </hax-tray-button>
+            <hax-tray-button
+              label="Download"
+              icon="icons:file-download"
+              @click="${this.download}"
             >
-            <paper-button id="download" @click="${this.download}"
-              >Download body area</paper-button
-            >
-            <paper-button
-              id="elementexport"
+            </hax-tray-button>
+            <hax-tray-button
               @click="${this.htmlToHaxElements}"
-              ?hidden="${!this.globalPreferences.haxDeveloperMode}"
-              >Copy as HAX schema to clipboard</paper-button
+              label="HAXSchema"
+              icon="hax:code-json"
             >
+            </hax-tray-button>
           </div>
         </div>
         <paper-button id="closedialog" @click="${this.closeEvent}">

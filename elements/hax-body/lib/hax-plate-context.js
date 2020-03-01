@@ -34,6 +34,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     :host {
       display: block;
       margin-top: -2px;
+      background-color:white;
     }
     hax-context-item {
       display: block;
@@ -50,17 +51,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       display: flex;
       visibility: visible;
       opacity: .8;
+      transition: .2s all ease-in-out;
     }
-    .area {
-      opacity: 1;
-    }
-    .paddle {
-      width: unset;
-      height: unset;
-      visibility: visible;
-      opacity: .9;
-    }
-    .paddle:hover {
+    .area:hover {
       opacity: 1;
     }
     paper-item {

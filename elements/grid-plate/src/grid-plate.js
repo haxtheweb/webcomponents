@@ -538,11 +538,6 @@ class GridPlate extends LitElement {
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    // listen for HAX insert events if it exists
-    window.addEventListener(
-      "hax-insert-content",
-      this.haxInsertContent.bind(this)
-    );
     // dom loaded, resize to be safe
     window.addEventListener("load", this.resize.bind(this));
     // if we resize, listen and react
@@ -622,11 +617,6 @@ class GridPlate extends LitElement {
     window.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
-    );
-    // listen for HAX insert events if it exists
-    window.removeEventListener(
-      "hax-insert-content",
-      this.haxInsertContent.bind(this)
     );
     window.removeEventListener("load", this.resize.bind(this));
     window.removeEventListener("resize", this.resizeListener.bind(this));
@@ -1484,21 +1474,6 @@ class GridPlate extends LitElement {
           }
         }
       }, 100);
-    }
-  }
-
-  /**
-   * Insert event noticed by HAX
-   */
-  haxInsertContent(e) {
-    // see if WE are the thing that's active when insert was fired
-    if (
-      this === window.HaxStore.instance.activeContainerNode &&
-      this.activeItem &&
-      typeof this.activeItem.focus === "function"
-    ) {
-      this.positionArrows(this.activeItem);
-      this.activeItem.focus();
     }
   }
 

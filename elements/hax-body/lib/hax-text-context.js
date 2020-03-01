@@ -435,7 +435,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
           window.HaxStore._tmpSelection &&
           window.HaxStore.instance.editMode
         ) {
-          var localRange = false;
           try {
             if (
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
@@ -443,16 +442,16 @@ class HaxTextContext extends winEventsElement(LitElement) {
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
                 .parentNode.tagName === "HAX-BODY"
             ) {
+              window.HaxStore.instance.activePlaceHolder = window.HaxStore._tmpRange;
               window.HaxStore.write(
                 "activePlaceHolder",
                 window.HaxStore._tmpRange,
                 this
               );
-              localRange = window.HaxStore._tmpRange;
             }
           } catch (err) {}
         }
-        if (localRange || window.HaxStore.instance.activePlaceHolder != null) {
+        if (window.HaxStore.instance.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {
