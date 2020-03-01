@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "show a random item from a list of items",
   "repository": {
     "type": "git",
