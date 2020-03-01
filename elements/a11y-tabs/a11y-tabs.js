@@ -25,318 +25,347 @@ Custom property | Description | Default
  * @customElement a11y-tabs
  */
 class A11yTabs extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: block;
-  --a11y-tabs-border-radius: 2px;
-  --a11y-tabs-justify-tabs: flex-start;
-  --ally-tabs-wrap: unset;
-  --a11y-tabs-background: white;
-  --a11y-tabs-border-color: #ddd;
-  --a11y-tabs-color: #222;
-  --a11y-tabs-focus-color: #000;
-  --a11y-tabs-faded-background: #eee;
-  --a11y-tabs-content-padding: 16px;
-  --a11y-tabs-button-padding: 0.7em 0.57em;
-  --a11y-tabs-vertical-button-padding: unset;
-  --a11y-tabs-horizontal-border-radius: unset;
-  --a11y-tabs-vertical-border-radius: unset;
-  --a11y-tabs-horizontal-button-padding: 2px 5px;
-  --a11y-tabs-width: auto;
-  height: var(--a11y-tabs-height);
-  overflow: var(--a11y-tabs-overflow);
-  font-size: var(--a11y-tabs-font-size, 12px);
-}
+        :host {
+          display: block;
+          --a11y-tabs-border-radius: 2px;
+          --a11y-tabs-justify-tabs: flex-start;
+          --ally-tabs-wrap: unset;
+          --a11y-tabs-background: white;
+          --a11y-tabs-border-color: #ddd;
+          --a11y-tabs-color: #222;
+          --a11y-tabs-focus-color: #000;
+          --a11y-tabs-faded-background: #eee;
+          --a11y-tabs-content-padding: 16px;
+          --a11y-tabs-button-padding: 0.7em 0.57em;
+          --a11y-tabs-vertical-button-padding: unset;
+          --a11y-tabs-horizontal-border-radius: unset;
+          --a11y-tabs-vertical-border-radius: unset;
+          --a11y-tabs-horizontal-button-padding: 2px 5px;
+          --a11y-tabs-width: auto;
+          height: var(--a11y-tabs-height);
+          overflow: var(--a11y-tabs-overflow);
+          font-size: var(--a11y-tabs-font-size, 12px);
+        }
 
-:host([vertical]) {
-  border: 1px solid var(--a11y-tabs-border-color);
-  border-radius: var(--a11y-tabs-vertical-border-radius, var(--a11y-tabs-border-radius));
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-}
+        :host([vertical]) {
+          border: 1px solid var(--a11y-tabs-border-color);
+          border-radius: var(
+            --a11y-tabs-vertical-border-radius,
+            var(--a11y-tabs-border-radius)
+          );
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-:host #tabs {
-  align-items: stretch;
-  flex-wrap: var(--ally-tabs-wrap, unset);
-  margin: 0;
-  display: flex;
-  list-style: none;
-  padding: 0;
-}
+        :host #tabs {
+          align-items: stretch;
+          flex-wrap: var(--ally-tabs-wrap, unset);
+          margin: 0;
+          display: flex;
+          list-style: none;
+          padding: 0;
+        }
 
-:host([vertical]) #tabs {
-  background-color: var(--a11y-tabs-border-color);
-  justify-content: var(--a11y-tabs-vertical-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
-  flex-wrap: var(--ally-tabs-vertical-wrap, var(--ally-tabs-wrap, unset));
-  border-left: none;
-  flex: 0 1 auto;
-  flex-direction: column;
-}
+        :host([vertical]) #tabs {
+          background-color: var(--a11y-tabs-border-color);
+          justify-content: var(
+            --a11y-tabs-vertical-justify-tabs,
+            var(--a11y-tabs-justify-tabs, flex-start)
+          );
+          flex-wrap: var(
+            --ally-tabs-vertical-wrap,
+            var(--ally-tabs-wrap, unset)
+          );
+          border-left: none;
+          flex: 0 1 auto;
+          flex-direction: column;
+        }
 
-:host(:not([vertical])) #tabs {
-  position: fixed;
-  scroll-margin-top: 16px;
-  z-index: 1;
-  width: var(--a11y-tabs-width);
-  background-color: var(--a11y-tabs-background);
-  justify-content: var(--a11y-tabs-horizontal-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
-}
+        :host(:not([vertical])) #tabs {
+          position: fixed;
+          scroll-margin-top: 16px;
+          z-index: 1;
+          width: var(--a11y-tabs-width);
+          background-color: var(--a11y-tabs-background);
+          justify-content: var(
+            --a11y-tabs-horizontal-justify-tabs,
+            var(--a11y-tabs-justify-tabs, flex-start)
+          );
+        }
 
-:host #tabs .flag-type {
-  position: absolute;
-  left: -99999px;
-  height: 0; 
-  overflow: hidden;
-}
+        :host #tabs .flag-type {
+          position: absolute;
+          left: -99999px;
+          height: 0;
+          overflow: hidden;
+        }
 
-:host #content {
-  padding: var(--a11y-tabs-content-padding);
-  background-color: var(--a11y-tabs-background);
-  border: 1px solid var(--a11y-tabs-border-color);
-}
+        :host #content {
+          padding: var(--a11y-tabs-content-padding);
+          background-color: var(--a11y-tabs-background);
+          border: 1px solid var(--a11y-tabs-border-color);
+        }
 
-:host([vertical]) #content {
-  flex: 1 0 auto;
-  border: none;
-}
+        :host([vertical]) #content {
+          flex: 1 0 auto;
+          border: none;
+        }
 
-:host(:not([vertical])) #content {
-  border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius));
-  margin-top: -1px;
-}
+        :host(:not([vertical])) #content {
+          border-radius: var(
+            --a11y-tabs-horizontal-border-radius,
+            var(--a11y-tabs-border-radius)
+          );
+          margin-top: -1px;
+        }
 
-:host #tabs paper-button {
-  margin: 0;
-  text-transform: unset;
-  color: var(--a11y-tabs-color);
-  background-color: var(--a11y-tabs-faded-background);
-  border: 1px solid var(--a11y-tabs-border-color);
-  padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
-}
+        :host #tabs paper-button {
+          margin: 0;
+          text-transform: unset;
+          color: var(--a11y-tabs-color);
+          background-color: var(--a11y-tabs-faded-background);
+          border: 1px solid var(--a11y-tabs-border-color);
+          padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
+        }
 
-:host([vertical]) #tabs paper-button {
-  border-top: none;
-  border-left: none;
-  border-radius: 0; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--a11y-tabs-vertical-button-padding, var(--a11y-tabs-button-padding));
-}
+        :host([vertical]) #tabs paper-button {
+          border-top: none;
+          border-left: none;
+          border-radius: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(
+            --a11y-tabs-vertical-button-padding,
+            var(--a11y-tabs-button-padding)
+          );
+        }
 
-:host(:not([vertical])) #tabs paper-button {
-  width: 100%;
-  border-bottom: none;
-  border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-  var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius))
-  0 
-  0; 
-  padding: var(--a11y-tabs-horizontal-button-padding, var(--a11y-tabs-button-padding));
-}
+        :host(:not([vertical])) #tabs paper-button {
+          width: 100%;
+          border-bottom: none;
+          border-radius: var(
+              --a11y-tabs-horizontal-border-radius,
+              var(--a11y-tabs-border-radius)
+            )
+            var(
+              --a11y-tabs-horizontal-border-radius,
+              var(--a11y-tabs-border-radius)
+            )
+            0 0;
+          padding: var(
+            --a11y-tabs-horizontal-button-padding,
+            var(--a11y-tabs-button-padding)
+          );
+        }
 
-:host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
-  border-left: none;
-}
+        :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+          border-left: none;
+        }
 
-:host  #tabs paper-button:active,
-:host #tabs paper-button:focus,
-:host #tabs paper-button:hover {
-  color: var(--a11y-tabs-focus-color);
-  background-color: var(--a11y-tabs-faded-background);
-}
+        :host #tabs paper-button:active,
+        :host #tabs paper-button:focus,
+        :host #tabs paper-button:hover {
+          color: var(--a11y-tabs-focus-color);
+          background-color: var(--a11y-tabs-faded-background);
+        }
 
-:host #tabs paper-button.active[disabled] {
-  color: var(--a11y-tabs-focus-color);
-  background-color: var(--a11y-tabs-background);
-  opacity: 1;
-}
+        :host #tabs paper-button.active[disabled] {
+          color: var(--a11y-tabs-focus-color);
+          background-color: var(--a11y-tabs-background);
+          opacity: 1;
+        }
 
-:host #tabs paper-button:not(.active)[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+        :host #tabs paper-button:not(.active)[disabled] {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
 
-:host([vertical]) #tabs paper-button[disabled] {
-  border-right-color: var(--a11y-tabs-background);
-}
+        :host([vertical]) #tabs paper-button[disabled] {
+          border-right-color: var(--a11y-tabs-background);
+        }
 
-:host(:not([vertical])) #tabs paper-button[disabled] {
-  border-bottom: 1px solid var(--a11y-tabs-background);
-}
+        :host(:not([vertical])) #tabs paper-button[disabled] {
+          border-bottom: 1px solid var(--a11y-tabs-background);
+        }
 
-:host #tabs span.label,
-:host #tabs .flag-icon {
-  margin-right: 8px;
-}
+        :host #tabs span.label,
+        :host #tabs .flag-icon {
+          margin-right: 8px;
+        }
 
-:host #tabs.icons-only paper-button {
-  justify-content: center;
-}
+        :host #tabs.icons-only paper-button {
+          justify-content: center;
+        }
 
-:host #tabs.icons-only span.label {
-  display: none;
-}
+        :host #tabs.icons-only span.label {
+          display: none;
+        }
 
-:host #tabs:not(.icons-only) simple-tooltip {
-  display: none;
-}
+        :host #tabs:not(.icons-only) simple-tooltip {
+          display: none;
+        }
       `
     ];
   }
 
-// render function
+  // render function
   render() {
     return html`
-
-<ul id="tabs" .class="${this._showIcons(
-  this.__hasIcons, 
-  this.iconBreakpoint, 
-  this.layoutBreakpoint, 
-  this.responsiveSize
-)}">
-  ${this.tabs.map((tab,i) => html`
-    <li>
-      <paper-button 
-        id="${tab.id}-button" 
-        controls="${tab.id}" 
-        class="${tab.id === this.activeTab ? 'active': ''}"
-        @click="${(e) => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab || tab.disabled}" 
-        .flag="${tab.flag}">
-        <iron-icon 
-          class="flag-icon" 
-          ?hidden="${!tab.flagIcon}" 
-          .icon="${tab.flagIcon}">
-        </iron-icon>
-        <span class="label">${tab.label}</span> 
-        <span 
-          class="flag-type" 
-          ?hidden="${!tab.flag}">
-          ${tab.flag}
-        </span>
-        <iron-icon 
-          class="icon" 
-          ?hidden="${!tab.icon}" 
-          .icon="${tab.icon}">
-        </iron-icon>
-      </paper-button>
-      <simple-tooltip for="${tab.id}-button">${tab.label}</simple-tooltip>
-    </li>
-  `)}
-</ul>
-<div id="content">
-  <slot></slot>
-</div>`;
+      <ul
+        id="tabs"
+        .class="${this._showIcons(
+          this.__hasIcons,
+          this.iconBreakpoint,
+          this.layoutBreakpoint,
+          this.responsiveSize
+        )}"
+      >
+        ${this.tabs.map(
+          (tab, i) => html`
+            <li>
+              <paper-button
+                id="${tab.id}-button"
+                controls="${tab.id}"
+                class="${tab.id === this.activeTab ? "active" : ""}"
+                @click="${e => this._handleTab(tab)}"
+                ?disabled="${tab.id === this.activeTab || tab.disabled}"
+                .flag="${tab.flag}"
+              >
+                <iron-icon
+                  class="flag-icon"
+                  ?hidden="${!tab.flagIcon}"
+                  .icon="${tab.flagIcon}"
+                >
+                </iron-icon>
+                <span class="label">${tab.label}</span>
+                <span class="flag-type" ?hidden="${!tab.flag}">
+                  ${tab.flag}
+                </span>
+                <iron-icon
+                  class="icon"
+                  ?hidden="${!tab.icon}"
+                  .icon="${tab.icon}"
+                >
+                </iron-icon>
+              </paper-button>
+              <simple-tooltip for="${tab.id}-button"
+                >${tab.label}</simple-tooltip
+              >
+            </li>
+          `
+        )}
+      </ul>
+      <div id="content">
+        <slot></slot>
+      </div>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {}
-;
+    return {};
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * the id of the active tab
-   */
-  "activeTab": {
-    "type": String,
-    "attribute": "active-tab"
-  },
-  /**
-   * whether the tabbed interface is disabled
-   */
-  "disabled": {
-    "type": Boolean,
-    "reflect": true
-  },
-  /**
-   * whether the tabbed interface is hidden
-   */
-  "hidden": {
-    "type": Boolean,
-    "reflect": true
-  },
-  /**
-   * the minimum breakpoint for showing tab text with icons, or
-   * - use `0` to always show icons only
-   * - use `-1` to always show text with icons
-   */
-  "iconBreakpoint": {
-    "type": Number,
-    "attribute": "icon-breakpoint"
-  },
-  /**
-   * unique identifier/anchor for the tabbed interface
-   */
-  "id": {
-    "type": String,
-    "reflect": true
-  },
-  /**
-   * the minimum breakpoint for horizontal layout of tabs, or
-   * - use `0` for horizontal-only
-   * - use `-1` for vertical-only
-   */
-  "layoutBreakpoint": {
-    "type": Number,
-    "attribute": "layout-breakpoint"
-  },
-  /**
-   * the size of the tabs,
-   * where `xs` is the smaller breakpoint
-   * and `xs` is the larger breakpoint
-   */
-  "responsiveSize": {
-    "type": String,
-    "reflect": true,
-    "attribute": "responsive-size"
-  },
-  /**
-   * whether the tabbed interface is in vertical layout mode
-   */
-  "vertical": {
-    "type": Boolean,
-    "reflect": true
-  },
-  /**
-   * whether the tabbed interface has icons for each tab
-   */
-  "__hasIcons": {
-    "type": Boolean
-  },
-  /**
-   * an array of tab data based on slotted `a11y-tab` elements
-   */
-  "__items": {
-    "type": Array
-  },
-  /**
-   * a mutation observer to monitor slotted `a11y-tab` elements
-   */
-  "__observer": {
-    "type": Object
-  },
-  "forceHorizontal": {
-    "type": Boolean,
-    "attribute": "force-horizontal"
-  }
-}
-;
+      ...super.properties,
+
+      /**
+       * the id of the active tab
+       */
+      activeTab: {
+        type: String,
+        attribute: "active-tab"
+      },
+      /**
+       * whether the tabbed interface is disabled
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * whether the tabbed interface is hidden
+       */
+      hidden: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * the minimum breakpoint for showing tab text with icons, or
+       * - use `0` to always show icons only
+       * - use `-1` to always show text with icons
+       */
+      iconBreakpoint: {
+        type: Number,
+        attribute: "icon-breakpoint"
+      },
+      /**
+       * unique identifier/anchor for the tabbed interface
+       */
+      id: {
+        type: String,
+        reflect: true
+      },
+      /**
+       * the minimum breakpoint for horizontal layout of tabs, or
+       * - use `0` for horizontal-only
+       * - use `-1` for vertical-only
+       */
+      layoutBreakpoint: {
+        type: Number,
+        attribute: "layout-breakpoint"
+      },
+      /**
+       * the size of the tabs,
+       * where `xs` is the smaller breakpoint
+       * and `xs` is the larger breakpoint
+       */
+      responsiveSize: {
+        type: String,
+        reflect: true,
+        attribute: "responsive-size"
+      },
+      /**
+       * whether the tabbed interface is in vertical layout mode
+       */
+      vertical: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * whether the tabbed interface has icons for each tab
+       */
+      __hasIcons: {
+        type: Boolean
+      },
+      /**
+       * an array of tab data based on slotted `a11y-tab` elements
+       */
+      __items: {
+        type: Array
+      },
+      /**
+       * a mutation observer to monitor slotted `a11y-tab` elements
+       */
+      __observer: {
+        type: Object
+      },
+      forceHorizontal: {
+        type: Boolean,
+        attribute: "force-horizontal"
+      }
+    };
   }
 
   /**

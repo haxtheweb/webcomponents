@@ -9,33 +9,30 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @customElement agency-theme
  */
 class AgencyTheme extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-
-<slot></slot>`;
+      <slot></slot>
+    `;
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
-    return {...super.properties}
-;
+  static get properties() {
+    return { ...super.properties };
   }
 
   /**
