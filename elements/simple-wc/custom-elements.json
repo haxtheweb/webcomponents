@@ -2,16 +2,20 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "name"
+      "name": "name",
+      "path": "./simple-wc.es6.js"
     },
     {
-      "name": "name"
+      "name": "name",
+      "path": "./simple-wc.js"
     },
     {
-      "name": "tag"
+      "name": "tag",
+      "path": "./simple-wc.umd.js"
     },
     {
-      "name": "name"
+      "name": "name",
+      "path": "./src/simple-wc.js"
     }
   ]
 }

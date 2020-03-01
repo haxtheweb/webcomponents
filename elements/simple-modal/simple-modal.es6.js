@@ -64,7 +64,7 @@ paper-dialog-scrollable:not(:defined) {
   max-width: var(--simple-modal-max-width, unset);
   min-height: var(--simple-modal-min-height, unset);
   max-height: var(--simple-modal-max-height, unset);
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 #titlebar {
@@ -75,7 +75,7 @@ paper-dialog-scrollable:not(:defined) {
   justify-content: space-between;
   color: var(--simple-modal-titlebar-color,#444);
   background-color: var(--simple-modal-titlebar-background,#ddd);
-  border-radius: 3px 3px 0 0;
+  border-radius: 0;
   height: 64px;
   line-height: 64px;
 }
@@ -97,21 +97,23 @@ h2 {
 
 #close {
   top: 0;
-  padding: 10px 0;
+  border: var(--simple-modal-titlebar-button-border, none);
+  padding: var(--simple-modal-titlebar-button-padding, 10px 0);
   min-width: unset;
   text-transform: none;
   color: var(--simple-modal-titlebar-color,#444);
   background-color: transparent;
 }
 
-#close:focus, 
-#close:hover {
+#close:focus {
   opacity: 0.7;
+  outline: var(--simple-modal-titlebar-button-outline, 2px dotted grey);
+  outline-offset: var(--simple-modal-titlebar-button-outline-offset, 2px);
 }
 
 #close iron-icon {
-  width: 16px;
-  height: 16px;
+  width: var(--simple-modal-titlebar-icon-width, 16px);
+  height: var(--simple-modal-titlebar-icon-height, 16px);
   color: var(--simple-modal-titlebar-color,#444);
 }
 
@@ -122,12 +124,14 @@ h2 {
   color: var(--simple-modal-content-container-color, #222);
   background-color: var(--simple-modal-content-container-background, #fff);
 }
+
 .buttons {
   padding: 0;
   margin: 0;
   color: var(--simple-modal-buttons-color, unset);
   background-color: var(--simple-modal-buttons-background, unset);
 }
+
 .buttons ::slotted(*) {
   padding: 0;
   margin: 0;
@@ -432,11 +436,11 @@ h2 {
         element.setAttribute("slot", slots[i]);
         this.appendChild(element);
       }
-    }   
+    }
     // minor delay to help the above happen prior to opening
     setTimeout(() => {
       this.opened = true;
-      this.shadowRoot.querySelector('#close').focus(); 
+      this.shadowRoot.querySelector("#close").focus();
       this._resizeContent();
     }, 100);
   }

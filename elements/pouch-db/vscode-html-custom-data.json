@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n\nEvents:\n\n  * `show-data` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "onshow-data",
@@ -13,7 +13,7 @@
     },
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n\nEvents:\n\n  * `show-data` - \n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` - \n\nAttributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "title",
@@ -42,7 +42,7 @@
     },
     {
       "name": "pouch-db",
-      "description": "`pouch-db`\n\nEvents:\n\n  * `show-data` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `show-data` - \n\nProperties:\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "onshow-data",

@@ -2,33 +2,129 @@
   "version": 1,
   "tags": [
     {
-      "name": "relative-heading",
-      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nProperties:\n\n  * `defaultLevel` {`number`} - \n\n  * `parentId` - \n\n  * `text` {`string`} - ",
-      "attributes": []
+      "name": "relative-heading-state-manager",
+      "description": "`relative-heading-state-manager`\n` A utility that determines headings relative to their parents.`\n\nAttributes:\n\n  * `close-icon` {`string`} - icon for copy link's toast's close button\n\n  * `close-label` {`string`} - label for copy link's toast's close button\n\n  * `copy-message` {`string`} - message for copy link's toast\n\n  * `headings` - Stores an array of all the players on the page.\n\n  * `copy-heading` - active heading for copying link\n\n  * `uses-copy-link` {`boolean`} - indicates is toast is already imported for copy link feature\n\nProperties:\n\n  * `copyUrl` {`string`} - gets URL to be copied\n\n  * `closeIcon` {`string`} - icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - message for copy link's toast\n\n  * `headings` - Stores an array of all the players on the page.\n\n  * `copyHeading` - active heading for copying link\n\n  * `usesCopyLink` {`boolean`} - indicates is toast is already imported for copy link feature",
+      "attributes": [
+        {
+          "name": "close-icon",
+          "description": "`close-icon` {`string`} - icon for copy link's toast's close button\n\nProperty: closeIcon\n\nDefault: close"
+        },
+        {
+          "name": "close-label",
+          "description": "`close-label` {`string`} - label for copy link's toast's close button\n\nProperty: closeLabel\n\nDefault: Close"
+        },
+        {
+          "name": "copy-message",
+          "description": "`copy-message` {`string`} - message for copy link's toast\n\nProperty: copyMessage\n\nDefault: Copied to Clipboard"
+        },
+        {
+          "name": "headings",
+          "description": "`headings` - Stores an array of all the players on the page.\n\nProperty: headings\n\nDefault: "
+        },
+        {
+          "name": "copy-heading",
+          "description": "`copy-heading` - active heading for copying link\n\nProperty: copyHeading\n\nDefault: [object Object]"
+        },
+        {
+          "name": "uses-copy-link",
+          "description": "`uses-copy-link` {`boolean`} - indicates is toast is already imported for copy link feature\n\nProperty: usesCopyLink\n\nDefault: false",
+          "valueSet": "v"
+        }
+      ]
     },
     {
-      "name": "relative-heading",
-      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\n  * `default-level` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\n  * `parent-id` {`string`} - The parent relative-heading's UUID.\n\n  * `text` {`string`} - The heading text.\n\nProperties:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\n  * `defaultLevel` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\n  * `parentId` {`string`} - The parent relative-heading's UUID.\n\n  * `text` {`string`} - The heading text.",
+      "name": "relative-heading-lite",
+      "description": "`relative-heading-lite`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `level` {`number`} - The parent relative-heading's UUID.\n\n  * `default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperties:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `template` {`TemplateResult`} - \n\n  * `observer` - returns mutation observer\n\n  * `manager` - returns state manager\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `__level` {`number`} - The parent relative-heading's UUID.\n\n  * `defaultLevel` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
       "attributes": [
         {
           "name": "id",
           "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
         },
         {
+          "name": "parent",
+          "description": "`parent` {`string`} - The parent relative-heading's UUID.\n\nProperty: parent\n\nDefault: null"
+        },
+        {
           "name": "level",
-          "description": "`level` {`number`} - The heading level (1-6), eg., 1 for <h1>\n\nProperty: level"
+          "description": "`level` {`number`} - The parent relative-heading's UUID.\n\nProperty: __level"
         },
         {
           "name": "default-level",
-          "description": "`default-level` {`number`} - The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+          "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+        }
+      ]
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `level` {`number`} - The parent relative-heading's UUID.\n\n  * `default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperties:\n\n  * `anchored` {`boolean`} - gets whether heading is currently anchored\n\n  * `button` {`TemplateResult`} - \n\n  * `linkAlignRight` {`boolean`} - \n\n  * `disableLink` {`boolean`} - \n\n  * `linkIcon` {`string`} - \n\n  * `linkLabel` {`string`} - \n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `template` {`TemplateResult`} - \n\n  * `observer` - returns mutation observer\n\n  * `manager` - returns state manager\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `__level` {`number`} - The parent relative-heading's UUID.\n\n  * `defaultLevel` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
         },
         {
-          "name": "parent-id",
-          "description": "`parent-id` {`string`} - The parent relative-heading's UUID.\n\nProperty: parentId\n\nDefault: null"
+          "name": "parent",
+          "description": "`parent` {`string`} - The parent relative-heading's UUID.\n\nProperty: parent\n\nDefault: null"
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - The heading text.\n\nProperty: text\n\nDefault: "
+          "name": "level",
+          "description": "`level` {`number`} - The parent relative-heading's UUID.\n\nProperty: __level"
+        },
+        {
+          "name": "default-level",
+          "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+        }
+      ]
+    },
+    {
+      "name": "relative-heading",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `link-align-right` {`boolean`} - label for copy link's button\n\n  * `disable-link` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `level` {`number`} - The parent relative-heading's UUID.\n\n  * `default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperties:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `anchored` {`boolean`} - gets whether heading is currently anchored\n\n  * `button` {`TemplateResult`} - \n\n  * `linkAlignRight` {`boolean`} - label for copy link's button\n\n  * `disableLink` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `template` {`TemplateResult`} - \n\n  * `observer` - returns mutation observer\n\n  * `manager` - returns state manager\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `__level` {`number`} - The parent relative-heading's UUID.\n\n  * `defaultLevel` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+      "attributes": [
+        {
+          "name": "closeIcon",
+          "description": "`closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\nProperty: closeIcon"
+        },
+        {
+          "name": "closeLabel",
+          "description": "`closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\nProperty: closeLabel"
+        },
+        {
+          "name": "copyMessage",
+          "description": "`copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\nProperty: copyMessage"
+        },
+        {
+          "name": "link-align-right",
+          "description": "`link-align-right` {`boolean`} - label for copy link's button\n\nProperty: linkAlignRight\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "disable-link",
+          "description": "`disable-link` {`boolean`} - The relative-heading resource's UUID.\n\nProperty: disableLink\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "linkIcon",
+          "description": "`linkIcon` {`string`} - icon for copy link's button\n\nProperty: linkIcon\n\nDefault: link"
+        },
+        {
+          "name": "linkLabel",
+          "description": "`linkLabel` {`string`} - label for copy link's button\n\nProperty: linkLabel\n\nDefault: Get link"
+        },
+        {
+          "name": "id",
+          "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
+        },
+        {
+          "name": "parent",
+          "description": "`parent` {`string`} - The parent relative-heading's UUID.\n\nProperty: parent\n\nDefault: null"
+        },
+        {
+          "name": "level",
+          "description": "`level` {`number`} - The parent relative-heading's UUID.\n\nProperty: __level"
+        },
+        {
+          "name": "default-level",
+          "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
         }
       ]
     },
@@ -37,13 +133,8 @@
       "attributes": []
     },
     {
-      "name": "relative-heading-state-manager",
-      "description": "`relative-heading-state-manager`\n\n",
-      "attributes": []
-    },
-    {
       "name": "relative-heading",
-      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nProperties:\n\n  * `defaultLevel` {`number`} - \n\n  * `parentId` - \n\n  * `text` {`string`} - ",
+      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nProperties:\n\n  * `anchored` {`boolean`} - gets whether heading is currently anchored\n\n  * `button` {`TemplateResult`} - \n\n  * `linkAlignRight` {`boolean`} - \n\n  * `disableLink` {`boolean`} - \n\n  * `linkIcon` {`string`} - \n\n  * `linkLabel` {`string`} - ",
       "attributes": []
     }
   ],

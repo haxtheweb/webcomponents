@@ -3,12 +3,12 @@
   "tags": [
     {
       "name": "simple-toast",
-      "description": "`simple-toast`\n\n",
+      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\n",
       "attributes": []
     },
     {
       "name": "simple-toast",
-      "description": "`simple-toast`\n\nAttributes:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `close-text` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `close-button` {`boolean`} - If there should be a close button shown\n\nProperties:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `closeText` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `closeButton` {`boolean`} - If there should be a close button shown",
+      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\nAttributes:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `close-text` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `close-button` {`boolean`} - If there should be a close button shown\n\nProperties:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `closeText` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `closeButton` {`boolean`} - If there should be a close button shown",
       "attributes": [
         {
           "name": "opened",
@@ -48,7 +48,7 @@
     },
     {
       "name": "simple-toast",
-      "description": "`simple-toast`\n\n",
+      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\n",
       "attributes": []
     }
   ],

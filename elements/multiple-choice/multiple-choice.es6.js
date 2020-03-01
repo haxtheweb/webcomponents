@@ -130,7 +130,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.answers = [];
     this.displayedAnswers = [];
     this.correctText = "Great job!";
+    this.correctIcon = "icons:thumb-up";
     this.incorrectText = "Better luck next time!";
+    this.incorrectIcon = "icons:thumb-down";
     this.quizName = "default";
   }
   updated(changedProperties) {
@@ -174,7 +176,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   render() {
     return html`
       <meta property="oer:assessing" content="${this.relatedResource}" />
-      ${this.title
+      ${!this.hideTitle
         ? html`
             <h3><span property="oer:name">${this.title}</span></h3>
           `
@@ -341,6 +343,20 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         attribute: "incorrect-text"
       },
       /**
+       * Correct answer text to display
+       */
+      correctIcon: {
+        type: String,
+        attribute: "correct-icon"
+      },
+      /**
+       * Incorrect answer text to display
+       */
+      incorrectIcon: {
+        type: String,
+        attribute: "incorrect-icon"
+      },
+      /**
        * Name of the quiz - hardcoded for now from HTML
        */
       quizName: {
@@ -423,11 +439,11 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     // see if they got this correct based on their answers
     if (gotRight) {
       this.__toastColor = "green";
-      this.__toastIcon = "thumb-up";
+      this.__toastIcon = this.correctIcon;
       this.__toastText = this.correctText;
     } else {
       this.__toastColor = "red";
-      this.__toastIcon = "thumb-down";
+      this.__toastIcon = this.incorrectIcon;
       this.__toastText = this.incorrectText;
     }
     this.shadowRoot.querySelector("#toast").show();
@@ -564,10 +580,44 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
             inputMethod: "textfield"
           },
           {
+            property: "correctIcon",
+            title: "Correct icon",
+            description: "Icon to display when correct answer happens",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:trending-flat",
+              "icons:launch",
+              "icons:pan-tool",
+              "icons:link",
+              "icons:check",
+              "icons:favorite",
+              "icons:thumb-up",
+              "icons:thumb-down",
+              "icons:send"
+            ]
+          },
+          {
             property: "incorrectText",
             title: "Incorrect feedback",
             description: "Feedback when they get it wrong",
             inputMethod: "textfield"
+          },
+          {
+            property: "incorrectIcon",
+            title: "Incorrect icon",
+            description: "Icon to display when wrong answer happens",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:trending-flat",
+              "icons:launch",
+              "icons:pan-tool",
+              "icons:link",
+              "icons:check",
+              "icons:favorite",
+              "icons:thumb-up",
+              "icons:thumb-down",
+              "icons:send"
+            ]
           },
           {
             property: "quizName",
@@ -601,12 +651,14 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   preProcessHaxInsertContent(detail) {
     // ensure we dont accidently have the answer displayed!
-    detail.properties.answers = detail.properties.answers.map(function(val) {
-      if (val.userGuess) {
-        delete val.userGuess;
-      }
-      return val;
-    });
+    if (detail.properties.answers) {
+      detail.properties.answers = detail.properties.answers.map(function(val) {
+        if (val.userGuess) {
+          delete val.userGuess;
+        }
+        return val;
+      });
+    }
     return detail;
   }
   firstUpdated(changedProperties) {

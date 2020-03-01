@@ -70,7 +70,7 @@
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
       "attributes": [
         {
           "name": "source",
@@ -79,6 +79,11 @@
         {
           "name": "alt",
           "description": "`alt` {`string`} - \n\nProperty: alt"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "modal-title",
@@ -165,7 +170,7 @@
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
       "attributes": [
         {
           "name": "source",
@@ -174,6 +179,11 @@
         {
           "name": "alt",
           "description": "`alt` {`string`} - \n\nProperty: alt"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "modal-title",
@@ -264,7 +274,7 @@
     },
     {
       "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
+      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalContent` - \n\n  * `modalTitle` {`string`} - ",
       "attributes": [
         {
           "name": "source",
@@ -273,6 +283,11 @@
         {
           "name": "alt",
           "description": "`alt` {`string`} - \n\nProperty: alt"
+        },
+        {
+          "name": "round",
+          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
+          "valueSet": "v"
         },
         {
           "name": "modal-title",

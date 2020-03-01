@@ -20,6 +20,8 @@ class AbsolutePositionBehavior extends LitElement {
       css`
 :host {
   display: inline-block;
+  z-index: 99999999;
+  position: absolute;
 }
 
 :host([hidden]) {
@@ -46,7 +48,8 @@ class AbsolutePositionBehavior extends LitElement {
    * Otherwise setPosition and unsetPosition must be called manually.
    */
   "auto": {
-    "type": Boolean
+    "type": Boolean,
+    "attribute": "auto"
   },
   /**
    * If true, no parts of the tooltip will ever be shown offscreen.
@@ -56,12 +59,20 @@ class AbsolutePositionBehavior extends LitElement {
     "attribute": "fit-to-visible-bounds"
   },
   /**
+   * If true, no parts of the tooltip will ever be shown offscreen.
+   */
+  "hidden": {
+    "type": Boolean,
+    "attribute": "hidden"
+  },
+  /**
    * The id of the element that the tooltip is anchored to. This element
    * must be a sibling of the tooltip. If this property is not set,
    * then the tooltip will be centered to the parent node containing it.
    */
   "for": {
     "type": String,
+    "attribute": "for",
     "reflect": true
   },
   /**
@@ -69,13 +80,23 @@ class AbsolutePositionBehavior extends LitElement {
    * anchored to.
    */
   "offset": {
-    "type": Number
+    "type": Number,
+    "attribute": "offset"
   },
   /**
    * Positions the tooltip to the top, right, bottom, left of its content.
    */
   "position": {
     "type": String,
+    "attribute": "position",
+    "reflect": true
+  },
+  /**
+   * Aligns at the start, or end fo target. Default is centered.
+   */
+  "positionAlign": {
+    "type": String,
+    "attribute": "position-align",
     "reflect": true
   },
   /**
@@ -123,7 +144,9 @@ class AbsolutePositionBehavior extends LitElement {
       if (propName === "for") this.updatePosition();
       if (propName === "offset") this.updatePosition();
       if (propName === "position") this.updatePosition();
+      if (propName === "positionAlign") this.updatePosition();
       if (propName === "target") this.updatePosition();
+      if (propName === "hidden") this.updatePosition();
     });
   }
 

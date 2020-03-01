@@ -40,64 +40,73 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   render() {
     return html`
 
-${this.isA11yMedia ? html`
-  <a11y-media-player
-    .accent-color="${this.accentColor || undefined}"
-    ?audio-only="${this.audioOnly}"
-    ?dark="${this.dark}"
-    ?dark-transcript="${this.darkTranscript}"
-    ?disable-interactive="${this.disableInteractive}"
-    ?hide-timestamps="${this.hideTimestamps}"
-    ?hide-transcript="${this.hideTiranscript}"
-    id="${this.playerId}"
-    lang="${this.lang || 'en'}"
-    ?linkable="${this.linkable}"
-    preload="${this.preload || 'metadata'}"
-    .media-title="${this.mediaTitle || undefined}"
-    .sources="${this.sourceData}"
-    ?stand-alone="${this.standAlone}"
-    sticky-corner="${this.stickyCorner || 'top-right'}"
-    .thumbnail-src="${this.thumbnailSrc}"
-    .tracks="${this.trackData}"
-    .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
-    .width="${this.width}"
-    .height="${this.height}"
-    youtube-id="${this.youtubeId}"
-    >
-    ${this.audioOnly 
-      ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
-      : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
-    }  
-  </a11y-media-player>` : html`
-  <div class="responsive-video-container" .lang="${this.lang || undefined}">
-    ${this.sandboxed ? html``: html`
-      <webview
-        resource="${this.schemaResourceID}-video"
-        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
-        .width="${this.width || undefined }"
-        .height="${this.height || undefined }"
-        frameborder="0">
-      </webview>`}
-    ${!(!this.sandboxed && this.iframed) ? html``: html`
-      <iframe
-        resource="${this.schemaResourceID}-video"
-        .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
-        width="${this.width}"
-        height="${this.height}"
-        frameborder="0"
-        webkitallowfullscreen=""
-        mozallowfullscreen=""
-        allowfullscreen=""
-      ></iframe>
-    `}
-  </div>
-  <div id="videocaption" class="video-caption">
-    <p>
-      ${this.mediaTitle}
-      <span class="media-type print-only">(embedded media)</span>
-    </p>
-    <slot name="caption"></slot>
-  </div>`}`;
+${!this.sourceData || this.sourceData.length < 1 
+  ? html`` 
+  : this.isA11yMedia 
+    ? html`
+      <a11y-media-player
+        accent-color="${this.accentColor}"
+        ?audio-only="${this.audioOnly}"
+        ?dark="${this.dark}"
+        ?dark-transcript="${this.darkTranscript}"
+        ?disable-interactive="${this.disableInteractive}"
+        ?hide-timestamps="${this.hideTimestamps}"
+        ?hide-transcript="${this.hideTiranscript}"
+        id="${this.playerId}"
+        lang="${this.lang || 'en'}"
+        ?linkable="${this.linkable}"
+        preload="${this.preload || 'metadata'}"
+        media-title="${this.mediaTitle || ''}"
+        .sources="${this.sourceData}"
+        ?stand-alone="${this.standAlone}"
+        sticky-corner="${this.stickyCorner || 'top-right'}"
+        .thumbnail-src="${this.thumbnailSrc}"
+        .tracks="${this.trackData}"
+        .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
+        .width="${this.width}"
+        .height="${this.height}"
+        >
+        ${this.youtubeId 
+          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
+          : html``
+        }
+        ${this.audioOnly 
+          ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
+          : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
+        }  
+      </a11y-media-player>` 
+    : html`
+      <div class="responsive-video-container" .lang="${this.lang || undefined}">
+        ${this.sandboxed ? html``: html`
+          <webview
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            .width="${this.width || undefined }"
+            .height="${this.height || undefined }"
+            frameborder="0">
+          </webview>`}
+        ${!(!this.sandboxed && this.iframed) ? html``: html`
+          <iframe
+            resource="${this.schemaResourceID}-video"
+            .src="${this.sourceData && this.sourceData[0] && this.sourceData[0].src || undefined }"
+            width="${this.width}"
+            height="${this.height}"
+            frameborder="0"
+            webkitallowfullscreen=""
+            mozallowfullscreen=""
+            allowfullscreen=""
+          ></iframe>
+        `}
+      </div>
+      <div id="videocaption" class="video-caption">
+        <p>
+          ${this.mediaTitle}
+          <span class="media-type print-only">(embedded media)</span>
+        </p>
+        <slot name="caption"></slot>
+        <slot hidden></slot>
+      </div>`
+}`;
   }
 
   // haxProperty definition
@@ -118,6 +127,7 @@ ${this.isA11yMedia ? html`
     "handles": [
       {
         "type": "video",
+        "type_exclusive": true,
         "source": "source",
         "title": "caption",
         "caption": "caption",
@@ -150,10 +160,8 @@ ${this.isA11yMedia ? html`
       {
         "property": "source",
         "title": "Source",
-        "description": "The URL for this video.",
+        "description": "The URL for this media.",
         "inputMethod": "haxupload",
-        "icon": "link",
-        "required": true,
         "noCamera": true,
         "noVoiceRecord": true,
         "validationType": "url"
@@ -162,9 +170,9 @@ ${this.isA11yMedia ? html`
         "property": "track",
         "title": "Closed captions",
         "description": "The URL for the captions file.",
-        "inputMethod": "textfield",
-        "icon": "link",
-        "required": true,
+        "inputMethod": "haxupload",
+        "noCamera": true,
+        "noVoiceRecord": true,
         "validationType": "url"
       },
       {
@@ -172,8 +180,6 @@ ${this.isA11yMedia ? html`
         "title": "Thumbnail image",
         "description": "Optional. The URL for a thumbnail/poster image.",
         "inputMethod": "haxupload",
-        "icon": "link",
-        "required": true,
         "noVoiceRecord": true,
         "validationType": "url"
       },
@@ -182,26 +188,33 @@ ${this.isA11yMedia ? html`
         "title": "Title",
         "description": "Simple title for under video",
         "inputMethod": "textfield",
-        "icon": "av:video-label",
-        "required": false,
         "validationType": "text"
       },
       {
         "property": "accentColor",
         "title": "Accent color",
         "description": "Select the accent color for the player.",
-        "inputMethod": "colorpicker",
-        "icon": "editor:format-color-fill"
+        "inputMethod": "colorpicker"
       },
       {
         "attribute": "dark",
         "title": "Dark theme",
         "description": "Enable dark theme for the player.",
-        "inputMethod": "boolean",
-        "icon": "invert-colors"
+        "inputMethod": "boolean"
       }
     ],
     "advanced": [
+      {
+        "property": "crossorigin",
+        "title": "Crossorigin",
+        "description": "Indicates whether to use CORS.",
+        "inputMethod": "select",
+        "options": {
+          "": "",
+          "anonymous": "anonymous",
+          "use-credentials": "use-credentials"
+        }
+      },
       {
         "property": "darkTranscript",
         "title": "Dark theme for transcript",
@@ -209,10 +222,36 @@ ${this.isA11yMedia ? html`
         "inputMethod": "boolean"
       },
       {
+        "property": "disableInteractive",
+        "title": "Disable Interactive",
+        "description": "Disable interactive mode that makes transcript clickable.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "inputMethod": "textfield",
+        "required": false,
+        "validationType": "text"
+      },
+      {
         "property": "hideTimestamps",
         "title": "Hide timestamps",
         "description": "Hide the time stamps on the transcript.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Hide Transcript",
+        "description": "Hide transcript by default.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "lang",
+        "title": "Language",
+        "description": "Language of the media.",
+        "inputMethod": "textfield",
+        "validationType": "text"
       },
       {
         "property": "linkable",
@@ -253,8 +292,12 @@ ${this.isA11yMedia ? html`
           {
             "property": "src",
             "title": "Source",
-            "description": "The URL for this video.",
-            "inputMethod": "textfield"
+            "description": "The URL for this source.",
+            "inputMethod": "haxupload",
+            "required": true,
+            "noCamera": true,
+            "noVoiceRecord": true,
+            "validationType": "url"
           },
           {
             "property": "type",
@@ -288,12 +331,7 @@ ${this.isA11yMedia ? html`
             "description": "Kind of track",
             "inputMethod": "select",
             "options": {
-              "subtitles": "subtitles" /*,
-              Future Features
-              'description': 'description',
-              'thumbnails': 'thumbnails',
-              'interactive': 'interactive',
-              'annotation': 'annotation'*/
+              "subtitles": "subtitles"
             }
           },
           {
@@ -305,8 +343,12 @@ ${this.isA11yMedia ? html`
           {
             "property": "src",
             "title": "Source",
-            "description": "Source of the track",
-            "inputMethod": "textfield"
+            "description": "The source for the captions file.",
+            "inputMethod": "haxupload",
+            "required": false,
+            "noCamera": true,
+            "noVoiceRecord": true,
+            "validationType": "url"
           },
           {
             "property": "srclang",
@@ -315,6 +357,13 @@ ${this.isA11yMedia ? html`
             "inputMethod": "textfield"
           }
         ]
+      },
+      {
+        "property": "width",
+        "title": "width",
+        "inputMethod": "textfield",
+        "required": false,
+        "validationType": "text"
       }
     ]
   }
@@ -328,12 +377,6 @@ ${this.isA11yMedia ? html`
   
   ...super.properties,
   
-  /**
-   * Is media an audio file only?
-   */
-  "audioOnly": {
-    "type": Boolean
-  },
   /**
    * Optional accent color for controls,
    * using these colors:
@@ -394,7 +437,7 @@ ${this.isA11yMedia ? html`
     "type": Boolean
   },
   /**
-   * Hide transcript by default
+   * Unique id
    */
   "id": {
     "type": String,
@@ -417,14 +460,9 @@ ${this.isA11yMedia ? html`
    * Simple caption for video
    */
   "mediaTitle": {
-    "type": String
-  },
-  /**
-   * ID for a11y-media-player.
-   * If none specified it will be modified from schema-resource-id.
-   */
-  "playerId": {
-    "type": String
+    "type": String,
+    "attribute": "media-title",
+    "reflect": true
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
@@ -494,7 +532,6 @@ ${this.isA11yMedia ? html`
   }
   constructor() {
     super();
-    this.audioOnly = false;
     this.dark = false;
     this.darkTranscript = false;
     this.disableInteractive = false;
@@ -607,16 +644,28 @@ ${this.isA11yMedia ? html`
    */
   get sourceData() {
     let temp =
-      typeof this.sources === "string"
-        ? JSON.parse(this.sources)
-        : this.sources.slice();
+        typeof this.sources === "string"
+          ? JSON.parse(this.sources)
+          : this.sources.slice(),
+      slotted = this.querySelectorAll("video source, audio source, iframe");
     if (this.source) temp.unshift({ src: this.source });
+    slotted.forEach(slot => {
+      this.sources.unshift({ src: slot.src });
+      slot.remove();
+    });
     if (temp && temp.length > 0)
       temp.forEach(item => {
         item.type = item.type || this._computeMediaType(item.src);
         item.src = this._computeSRC(item.src, item.type);
       });
     return temp;
+  }
+
+  get audioOnly() {
+    let videos = this.sourceData.filter(
+      item => item.type.indexOf("audio") === -1
+    );
+    return videos.length > 1;
   }
 
   get standAlone() {
@@ -651,9 +700,19 @@ ${this.isA11yMedia ? html`
    */
   get trackData() {
     let temp =
-      typeof this.tracks === "string"
-        ? JSON.parse(this.tracks).slice()
-        : this.tracks.slice();
+        typeof this.tracks === "string"
+          ? JSON.parse(this.tracks).slice()
+          : this.tracks.slice(),
+      slotted = this.querySelectorAll("video track, audio track");
+    slotted.forEach(slot => {
+      let track = { src: slot.src };
+      if (slot.lang) track.lang = slot.lang;
+      if (slot.srclang) track.srclang = slot.srclang;
+      if (slot.label) track.label = slot.label;
+      if (slot.kind) track.kind = slot.kind;
+      this.tracks.unshift(track);
+      slot.remove();
+    });
     if (this.track !== undefined && this.track !== null && this.track !== "")
       temp.push({
         src: this.track,
@@ -707,7 +766,6 @@ ${this.isA11yMedia ? html`
             source !== null &&
             source.toLowerCase().indexOf("." + item) > -1
           ) {
-            if (text === "audio") this.audioOnly = true;
             type = text + "/" + item;
           }
         });

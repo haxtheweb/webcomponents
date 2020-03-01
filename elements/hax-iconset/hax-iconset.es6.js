@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
  * `hax-iconset`
@@ -19,6 +19,54 @@ import { html } from "@polymer/polymer/lib/utils/html-tag.js";
 
 const template = html`
   <iron-iconset-svg size="24" name="hax">
+    <!-- code-json -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="code-json">
+          <path d="M5,3H7V5H5V10A2,2 0 0,1 3,12A2,2 0 0,1 5,14V19H7V21H5C3.93,20.73 3,20.1 3,19V15A2,2 0 0,0 1,13H0V11H1A2,2 0 0,0 3,9V5A2,2 0 0,1 5,3M19,3A2,2 0 0,1 21,5V9A2,2 0 0,0 23,11H24V13H23A2,2 0 0,0 21,15V19A2,2 0 0,1 19,21H17V19H19V14A2,2 0 0,1 21,12A2,2 0 0,1 19,10V5H17V3H19M12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15M8,15A1,1 0 0,1 9,16A1,1 0 0,1 8,17A1,1 0 0,1 7,16A1,1 0 0,1 8,15M16,15A1,1 0 0,1 17,16A1,1 0 0,1 16,17A1,1 0 0,1 15,16A1,1 0 0,1 16,15Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow-expand-left -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-expand-left">
+          <path d="M20,22H22V2H20V11H5.83L11.33,5.5L9.92,4.08L2,12L9.92,19.92L11.33,18.5L5.83,13H20V22Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- table-column-plus-after -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="table-column-plus-after">
+          <path d="M4,2H11A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H4A2,2 0 0,1 2,20V4A2,2 0 0,1 4,2M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M17.59,12L15,9.41L16.41,8L19,10.59L21.59,8L23,9.41L20.41,12L23,14.59L21.59,16L19,13.41L16.41,16L15,14.59L17.59,12Z" />
+      </g>
+      </defs>
+    </svg>
+    <!-- table-column-remove -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="table-column-remove">
+          <path d="M11,2A2,2 0 0,1 13,4V20A2,2 0 0,1 11,22H2V2H11M4,10V14H11V10H4M4,16V20H11V16H4M4,4V8H11V4H4M15,11H18V8H20V11H23V13H20V16H18V13H15V11Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow-all -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-all">
+          <path d="M13,11H18L16.5,9.5L17.92,8.08L21.84,12L17.92,15.92L16.5,14.5L18,13H13V18L14.5,16.5L15.92,17.92L12,21.84L8.08,17.92L9.5,16.5L11,18V13H6L7.5,14.5L6.08,15.92L2.16,12L6.08,8.08L7.5,9.5L6,11H11V6L9.5,7.5L8.08,6.08L12,2.16L15.92,6.08L14.5,7.5L13,6V11Z" />
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow-expand-right -->
+    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+      <defs>
+        <g id="arrow-expand-right">
+          <path d="M4,2H2V22H4V13H18.17L12.67,18.5L14.08,19.92L22,12L14.08,4.08L12.67,5.5L18.17,11H4V2Z" />
+        </g>
+      </defs>
+    </svg>
     <!-- placeholder -->
     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
       <defs>

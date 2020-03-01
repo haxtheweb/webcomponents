@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
       "attributes": [
         {
           "name": "title",
@@ -29,7 +29,7 @@
     },
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
       "attributes": [
         {
           "name": "title",
@@ -59,7 +59,7 @@
     },
     {
       "name": "hero-banner",
-      "description": "`hero-banner`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
+      "description": "`hero-banner`\n`That thing no one wants to make over and over again yet always does...`\n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button\n\nProperties:\n\n  * `title` {`string`} - Title\n\n  * `image` {`string`} - Image\n\n  * `details` {`string`} - Details / teaser text\n\n  * `buttonText` {`string`} - button label\n\n  * `buttonLink` {`string`} - url for the button",
       "attributes": [
         {
           "name": "title",
