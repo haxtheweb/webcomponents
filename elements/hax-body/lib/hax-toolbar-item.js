@@ -70,7 +70,8 @@ class HaxToolbarItem extends LitElement {
         :host(:not([disabled])) paper-button:hover,
         :host(:not([disabled])) paper-button:focus {
           color: var(--hax-color-text-active);
-          outline: 1px solid var(--hax-color-accent1,--simple-colors-default-theme-light-blue-7);
+          outline: 1px solid
+            var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7);
           z-index: 2;
         }
         :host([default]) paper-button {
@@ -118,7 +119,8 @@ class HaxToolbarItem extends LitElement {
         :host([mini]:not([disabled])) paper-button:hover,
         :host([mini]:not([disabled])) paper-button:focus {
           outline: unset;
-          border: 1px solid var(--hax-color-accent1,--simple-colors-default-theme-light-blue-7);
+          border: 1px solid
+            var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7);
         }
         :host([menu]) paper-button {
           padding: 0 8px;

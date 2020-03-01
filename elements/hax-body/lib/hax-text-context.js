@@ -442,7 +442,8 @@ class HaxTextContext extends winEventsElement(LitElement) {
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
                 .parentNode.tagName === "HAX-BODY"
             ) {
-              window.HaxStore.instance.activePlaceHolder = window.HaxStore._tmpRange;
+              window.HaxStore.instance.activePlaceHolder =
+                window.HaxStore._tmpRange;
               window.HaxStore.write(
                 "activePlaceHolder",
                 window.HaxStore._tmpRange,

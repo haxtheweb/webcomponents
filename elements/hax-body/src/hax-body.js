@@ -81,7 +81,8 @@ class HaxBody extends SimpleColors {
           float: left;
           display: block;
           pointer-events: none;
-          transition: 0.2s top ease-in-out,0.2s left ease-in-out,0.2s visibility ease-in-out,0.2s opacity ease-in-out;
+          transition: 0.2s top ease-in-out, 0.2s left ease-in-out,
+            0.2s visibility ease-in-out, 0.2s opacity ease-in-out;
         }
         #textcontextmenu.hax-context-menu {
           z-index: 1000;
@@ -1051,10 +1052,7 @@ class HaxBody extends SimpleColors {
         window.HaxStore.instance.activePlaceHolder.style.margin;
       newNode.style.display =
         window.HaxStore.instance.activePlaceHolder.style.display;
-      this.haxReplaceNode(
-        window.HaxStore.instance.activePlaceHolder,
-        newNode
-      );
+      this.haxReplaceNode(window.HaxStore.instance.activePlaceHolder, newNode);
       window.HaxStore.instance.activePlaceHolder = null;
     }
     // insert at active insert point if we have one
@@ -1073,7 +1071,10 @@ class HaxBody extends SimpleColors {
           this.activeContainerNode.appendChild(newNode);
         }
       } else {
-        if (this.activeContainerNode && this.activeContainerNode.nextElementSibling) {
+        if (
+          this.activeContainerNode &&
+          this.activeContainerNode.nextElementSibling
+        ) {
           this.activeContainerNode.nextElementSibling.parentNode.insertBefore(
             newNode,
             this.activeContainerNode.nextElementSibling
@@ -1083,14 +1084,9 @@ class HaxBody extends SimpleColors {
             newNode,
             this.activeContainerNode
           );
-        }
-        else if (this.activeNode.parentNode) {
-          this.activeNode.parentNode.insertBefore(
-            newNode,
-            this.activeNode
-          );
-        }
-        else {
+        } else if (this.activeNode.parentNode) {
+          this.activeNode.parentNode.insertBefore(newNode, this.activeNode);
+        } else {
           // something odd happened let's just make sure we insert this safely
           this.appendChild(newNode);
         }
@@ -1292,9 +1288,13 @@ class HaxBody extends SimpleColors {
     // sanity chekc and ensure we are not told to lock position of all menus
     clearTimeout(this.__positionContextTimer);
     this.__positionContextTimer = setTimeout(() => {
-      if (node && !window.HaxStore.instance._lockContextPosition && this.__ready) {
+      if (
+        node &&
+        !window.HaxStore.instance._lockContextPosition &&
+        this.__ready
+      ) {
         // menu width starts out w/ the plate context which is a set size
-        let menuWidth = 140;  
+        let menuWidth = 140;
         let tag = node.tagName.toLowerCase();
         if (window.HaxStore.instance._isSandboxed && tag === "webview") {
           tag = "iframe";
@@ -1317,7 +1317,9 @@ class HaxBody extends SimpleColors {
           );
           menuWidth += 28;
         } else {
-          this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
+          this._hideContextMenu(
+            this.shadowRoot.querySelector("#cecontextmenu")
+          );
           this._positionContextMenu(
             this.shadowRoot.querySelector("#textcontextmenu"),
             container,

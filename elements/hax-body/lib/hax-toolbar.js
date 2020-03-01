@@ -15,7 +15,7 @@ class HaxToolbar extends LitElement {
           pointer-events: all;
           background-color: white;
         }
-        
+
         :host *[hidden] {
           display: none;
         }
@@ -24,7 +24,7 @@ class HaxToolbar extends LitElement {
           align-items: center;
           transition: 0.2s all ease-in-out;
           visibility: visible;
-          opacity: .8;
+          opacity: 0.8;
         }
         .wrapper:hover {
           opacity: 1;

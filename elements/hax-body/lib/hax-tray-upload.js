@@ -9,10 +9,16 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     return [
       css`
         vaadin-upload {
-          --lumo-primary-color: var(--hax-color-accent1,--simple-colors-default-theme-light-blue-7);
+          --lumo-primary-color: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
           --lumo-primary-font-color: black;
           --lumo-dark-primary-color: black;
-          --lumo-light-primary-color: var(--hax-color-accent1,--simple-colors-default-theme-light-blue-7);
+          --lumo-light-primary-color: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
           --lumo-error-color: darkred;
           color: #ffffff;
           display: block;
@@ -80,7 +86,10 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           vaadin-upload {
             --vaadin-upload-button-add-wrapper: {
               border: 2px solid #ffffff;
-              background-color: var(--hax-color-accent1,--simple-colors-default-theme-light-blue-7);
+              background-color: var(
+                --hax-color-accent1,
+                --simple-colors-default-theme-light-blue-7
+              );
               color: #ffffff;
               display: block;
             }

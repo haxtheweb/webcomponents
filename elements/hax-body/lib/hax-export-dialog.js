@@ -105,11 +105,11 @@ class HaxExportDialog extends winEventsElement(
           </div>
           <div id="buttons" class="buttons">
             <hax-tray-button
-            label="Update source"
-            color="red"
-            ?color-meaning="${true}"
-            icon="icons:code"
-            @click="${this.importContent}"
+              label="Update source"
+              color="red"
+              ?color-meaning="${true}"
+              icon="icons:code"
+              @click="${this.importContent}"
             >
             </hax-tray-button>
             <hax-tray-button

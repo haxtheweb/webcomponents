@@ -64,6 +64,7 @@ body, html, :root {
 
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
+
   /** simple-toast **/
   --simple-toast-z-index: 10000000;
   --simple-toast-color: white;

@@ -214,12 +214,14 @@ class HaxTray extends winEventsElement(LitElement) {
           );
         }
         a11y-collapse[disabled] {
-          --a11y-collapse-heading-background-color: var(--simple-colors-default-theme-grey-5);
-          cursor:not-allowed;
+          --a11y-collapse-heading-background-color: var(
+            --simple-colors-default-theme-grey-5
+          );
+          cursor: not-allowed;
         }
         a11y-collapse[disabled] div[slot="heading"] {
-          cursor:not-allowed !important;
-          opacity: .6;
+          cursor: not-allowed !important;
+          opacity: 0.6;
         }
         #settingscollapse div[slot="content"] {
           padding: 0;
@@ -300,7 +302,7 @@ class HaxTray extends winEventsElement(LitElement) {
             z-index: 1;
           }
           #toggle-element-align {
-            display:none;
+            display: none;
           }
           #toggle-tray-size {
             --hax-tray-button-rotate: rotate(-90deg) !important;
@@ -463,7 +465,11 @@ class HaxTray extends winEventsElement(LitElement) {
         </div>
         <a11y-collapse-group radio>
           <slot name="tray-collapse-pre"></slot>
-          <a11y-collapse id="addcollapse" accordion @expand="${this._gizmoBrowserRefresh}">
+          <a11y-collapse
+            id="addcollapse"
+            accordion
+            @expand="${this._gizmoBrowserRefresh}"
+          >
             <div slot="heading">
               <iron-icon icon="icons:add"></iron-icon> Add Content
             </div>
@@ -481,7 +487,11 @@ class HaxTray extends winEventsElement(LitElement) {
               <simple-fields id="settingsform"></simple-fields>
             </div>
           </a11y-collapse>
-          <a11y-collapse id="searchapps" accordion @expand="${this._appBrowserRefresh}">
+          <a11y-collapse
+            id="searchapps"
+            accordion
+            @expand="${this._appBrowserRefresh}"
+          >
             <div slot="heading">
               <iron-icon icon="icons:search"></iron-icon> Search
             </div>
@@ -489,7 +499,11 @@ class HaxTray extends winEventsElement(LitElement) {
               <hax-app-browser id="appbrowser"></hax-app-browser>
             </div>
           </a11y-collapse>
-          <a11y-collapse id="templateslayouts" accordion @expand="${this._refreshLists}">
+          <a11y-collapse
+            id="templateslayouts"
+            accordion
+            @expand="${this._refreshLists}"
+          >
             <div slot="heading">
               <iron-icon icon="hax:templates"></iron-icon>Templates & Layouts
             </div>
@@ -626,7 +640,7 @@ class HaxTray extends winEventsElement(LitElement) {
         );
         break;
       case "toggle-element-align":
-        this.elementAlign = (this.elementAlign === "right" ? "left" : "right");
+        this.elementAlign = this.elementAlign === "right" ? "left" : "right";
         break;
       case "toggle-tray-size":
         this.collapsed = !this.collapsed;
@@ -667,7 +681,7 @@ class HaxTray extends winEventsElement(LitElement) {
         type: String
       },
       menuAlignName: {
-        type: String,
+        type: String
       },
       offsetMargin: {
         type: String
@@ -778,7 +792,7 @@ class HaxTray extends winEventsElement(LitElement) {
         type: Boolean,
         reflect: true,
         attribute: "edit-mode"
-      },
+      }
     };
   }
   /**
@@ -790,8 +804,12 @@ class HaxTray extends winEventsElement(LitElement) {
     }
     if (!this.__setup) {
       this.__setup = true;
-      this.shadowRoot.querySelector('#settingsform').addEventListener('click',this.__simpleFieldsClick.bind(this));
-      this.shadowRoot.querySelector('#settingsform').addEventListener('value-changed',this.__valueChangedEvent.bind(this));
+      this.shadowRoot
+        .querySelector("#settingsform")
+        .addEventListener("click", this.__simpleFieldsClick.bind(this));
+      this.shadowRoot
+        .querySelector("#settingsform")
+        .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
       // fire an event that this is a core piece of the system
       this.dispatchEvent(
         new CustomEvent("hax-register-core-piece", {
@@ -810,8 +828,11 @@ class HaxTray extends winEventsElement(LitElement) {
           composed: true,
           cancelable: false,
           detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) add content (menu)",
-            context: this.shadowRoot.querySelector('#addcollapse div[slot="heading"]'),
+            command:
+              ":name: (collapse)(open)(expand)(toggle) add content (menu)",
+            context: this.shadowRoot.querySelector(
+              '#addcollapse div[slot="heading"]'
+            ),
             callback: "click"
           }
         })
@@ -822,8 +843,11 @@ class HaxTray extends winEventsElement(LitElement) {
           composed: true,
           cancelable: false,
           detail: {
-            command: ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
-            context: this.shadowRoot.querySelector('#settingscollapse div[slot="heading"]'),
+            command:
+              ":name: (collapse)(open)(expand)(toggle) element settings (menu)",
+            context: this.shadowRoot.querySelector(
+              '#settingscollapse div[slot="heading"]'
+            ),
             callback: "click"
           }
         })
@@ -835,7 +859,9 @@ class HaxTray extends winEventsElement(LitElement) {
           cancelable: false,
           detail: {
             command: ":name: (collapse)(open)(expand)(toggle) search (menu)",
-            context: this.shadowRoot.querySelector('#searchapps div[slot="heading"]'),
+            context: this.shadowRoot.querySelector(
+              '#searchapps div[slot="heading"]'
+            ),
             callback: "click"
           }
         })
@@ -847,7 +873,9 @@ class HaxTray extends winEventsElement(LitElement) {
           cancelable: false,
           detail: {
             command: ":name: (collapse)(open)(expand)(toggle) templates (menu)",
-            context: this.shadowRoot.querySelector('#templateslayouts div[slot="heading"]'),
+            context: this.shadowRoot.querySelector(
+              '#templateslayouts div[slot="heading"]'
+            ),
             callback: "click"
           }
         })
@@ -892,12 +920,11 @@ class HaxTray extends winEventsElement(LitElement) {
             .removeAttribute("tabindex");
         }
       }
-      // 
+      //
       if (propName == "elementAlign") {
         if (this[propName] == "left") {
           this.menuAlignName = "Right align menu";
-        }
-        else {
+        } else {
           this.menuAlignName = "Left align menu";
         }
       }
@@ -940,7 +967,6 @@ class HaxTray extends winEventsElement(LitElement) {
               .querySelector('#addcollapse div[slot="heading"]')
               .click();
           }
-
         }
       }
     });

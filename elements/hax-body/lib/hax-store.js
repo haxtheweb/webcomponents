@@ -806,61 +806,61 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     };
     this.voiceCommands[`scroll to bottom ${this.voiceRespondsTo}`] = () => {
       window.scrollTo(0, document.body.scrollHeight);
-
     };
     this.voiceCommands[`scroll to top ${this.voiceRespondsTo}`] = () => {
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     };
     /**
      * Support for focusing active content and typing in it
      */
-    this.voiceCommands[`${this.voiceRespondsTo} (show)(focus) active (element)(content)`] = () => {
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (show)(focus) active (element)(content)`
+    ] = () => {
       try {
         this._positionCursorInNode(this.activeNode);
-      }
-      catch(e) {
-
-      }
+      } catch (e) {}
     };
-    this.voiceCommands[`${this.voiceRespondsTo} (focus) previous (element)(content)`] = () => {
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (focus) previous (element)(content)`
+    ] = () => {
       if (this.activeNode.previousElementSibling) {
         this.activeNode = this.activeNode.previousElementSibling;
         window.HaxStore.write("activeNode", this.activeNode, this);
         this.activeContainerNode = this.activeNode;
         window.HaxStore.write("activeContainerNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
-      }
-      else {
+      } else {
         this.speak("You are at the top of the document");
       }
     };
-    this.voiceCommands[`${this.voiceRespondsTo} (focus) next (element)(content)`] = () => {
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (focus) next (element)(content)`
+    ] = () => {
       if (this.activeNode.nextElementSibling) {
         this.activeNode = this.activeNode.nextElementSibling;
         window.HaxStore.write("activeNode", this.activeNode, this);
         this.activeContainerNode = this.activeNode;
         window.HaxStore.write("activeContainerNode", this.activeNode, this);
         this._positionCursorInNode(this.activeNode);
-      }
-      else {
+      } else {
         this.speak("You are at the bottom of the document");
       }
     };
-    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = (e) => {
+    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = e => {
       if (window.HaxStore.instance.isTextElement(this.activeNode)) {
         try {
           let range = this._positionCursorInNode(this.activeNode);
           let text = document.createTextNode(e);
           range.deleteContents();
           range.insertNode(text);
-        }
-        catch(e) {
+        } catch (e) {
           this.speak("That didn't work");
           console.warn(e);
         }
-      }
-      else {
-        this.speak("I'm sorry but I can only type in text areas. Try saying Insert Paragraph and try again.");
+      } else {
+        this.speak(
+          "I'm sorry but I can only type in text areas. Try saying Insert Paragraph and try again."
+        );
       }
     };
     // trolling
@@ -868,9 +868,11 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       this.speak("Yeah what do you want");
     };
     // trolling
-    this.voiceCommands[`${this.voiceRespondsTo} now your name is *splat`] = (text) => {
+    this.voiceCommands[
+      `${this.voiceRespondsTo} now your name is *splat`
+    ] = text => {
       const past = this.voiceRespondsTo;
-      this.speak(`I used to be named ${past} but you can call me ${text} now.`)
+      this.speak(`I used to be named ${past} but you can call me ${text} now.`);
       this.voiceRespondsTo = `(${text})`;
       // @todo this needs to now update the previous commands somehow to match
       // the new activation name
@@ -1647,7 +1649,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             ) != null
           ) {
             active
-              .querySelector("paper-checkbox,paper-input,textarea,paper-button,hax-tray-button")
+              .querySelector(
+                "paper-checkbox,paper-input,textarea,paper-button,hax-tray-button"
+              )
               .focus();
           }
           var evt = document.createEvent("UIEvents");
@@ -1704,16 +1708,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           properties
         );
         if (this.activePlaceHolder) {
-          this.activeHaxBody.haxReplaceNode(
-            this.activePlaceHolder,
-            node
-          );
+          this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
           this.activePlaceHolder = null;
         } else {
-          this.activeHaxBody.haxReplaceNode(
-            this.activeNode,
-            node
-          );
+          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
         typeof details.__type !== typeof undefined &&
@@ -1764,7 +1762,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           );
         }
       } else {
-        this.activeHaxBody.haxInsert(details.tag, details.content, properties, false);
+        this.activeHaxBody.haxInsert(
+          details.tag,
+          details.content,
+          properties,
+          false
+        );
       }
       // shift the last used thing to the front of the array
       // that way the list is actually sorted based on usage

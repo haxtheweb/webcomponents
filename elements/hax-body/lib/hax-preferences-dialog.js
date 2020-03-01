@@ -93,7 +93,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
     ];
     this.schemaValues = {
       haxRayMode: false,
-      haxVoiceCommands: false,
+      haxVoiceCommands: false
     };
     setTimeout(() => {
       import("@polymer/iron-icon/iron-icon.js");
@@ -131,9 +131,7 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
         <div style="height: 100%; overflow: auto;" class="pref-container">
-          <simple-fields
-            id="settingsform"
-          ></simple-fields>
+          <simple-fields id="settingsform"></simple-fields>
         </div>
         <a
           href="${this.ghLink}"
@@ -190,11 +188,13 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
   }
 
   firstUpdated(changedProperties) {
-    this.shadowRoot.querySelector("#settingsform").fields = [
-      ...this.schema
-    ];
-    this.shadowRoot.querySelector("#settingsform").value = {...this.schemaValues};
-    this.shadowRoot.querySelector('#settingsform').addEventListener('value-changed',this.__valueChangedEvent.bind(this));
+    this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
+    this.shadowRoot.querySelector("#settingsform").value = {
+      ...this.schemaValues
+    };
+    this.shadowRoot
+      .querySelector("#settingsform")
+      .addEventListener("value-changed", this.__valueChangedEvent.bind(this));
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -242,11 +242,10 @@ class HaxPreferencesDialog extends winEventsElement(SimpleColors) {
    */
   open() {
     this.opened = true;
-    this.shadowRoot.querySelector("#settingsform").fields = [
-      ...this.schema
-    ];
-    this.shadowRoot.querySelector("#settingsform").value = {...this.schemaValues};
-
+    this.shadowRoot.querySelector("#settingsform").fields = [...this.schema];
+    this.shadowRoot.querySelector("#settingsform").value = {
+      ...this.schemaValues
+    };
   }
   /**
    * close the dialog
