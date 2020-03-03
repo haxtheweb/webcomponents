@@ -45,12 +45,12 @@ class A11yTab extends LitElement {
           height: 0;
           overflow: hidden;
         }
-        ::slotted(*[slot="label"]) {
-          display: none;
-        }
-        ::slotted(*:not([slot="label"])) {
+        #content-inner {
           max-width: 100%;
           overflow: auto;
+        }
+        ::slotted(*[slot="label"]) {
+          display: none;
         }
       `
     ];
@@ -59,7 +59,7 @@ class A11yTab extends LitElement {
     return html`
       <span class="sr-only">Tab ${this.xOfY}</span>
       <slot name="label"></slot>
-      <slot></slot>
+      <div id="content-inner"><slot></slot></div>
       <span class="sr-only">
         End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
       </span>
