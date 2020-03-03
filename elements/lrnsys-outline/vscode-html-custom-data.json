@@ -69,7 +69,7 @@
     },
     {
       "name": "lrnsys-outline-item",
-      "description": "`lrnsys-outline-item`\nA LRN element\n\nEvents:\n\n  * `attached-item` - \n\n  * `focus-item` - \n\n  * `delete-item` - \n\n  * `indent-item` - \n\n  * `add-item` - \n\n  * `move-item` - \n\n  * `change-item` - \n\nAttributes:\n\n  * `indent-level` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `indentLevel` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "`lrnsys-outline-item`\nA LRN element\n\nEvents:\n\n  * `attached-item` - \n\n  * `focus-item` - \n\n  * `delete-item` - \n\n  * `indent-item` - \n\n  * `add-item` - \n\n  * `move-item` - \n\n  * `blur-item` - \n\n  * `change-item` - \n\nAttributes:\n\n  * `indent-level` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focus-state` {`boolean`} - Tracks if focus state is applied\n\nProperties:\n\n  * `indentLevel` {`number`} - \n\n  * `index` {`number`} - \n\n  * `parent` {`string`} - \n\n  * `title` {`string`} - \n\n  * `focusState` {`boolean`} - Tracks if focus state is applied\n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
       "attributes": [
         {
           "name": "indent-level",
@@ -115,6 +115,10 @@
         {
           "name": "onmove-item",
           "description": "`move-item` - "
+        },
+        {
+          "name": "onblur-item",
+          "description": "`blur-item` - "
         },
         {
           "name": "onchange-item",

@@ -255,9 +255,11 @@ class A11yMediaPlayer extends SimpleColors {
             #000000
           );
         }
+
         :host([dark]) {
           border: 1px solid var(--simple-colors-default-theme-grey-1, #000000);
         }
+
         :host([dark-transcript]) {
           --a11y-media-transcript-bg-color: var(
             --simple-colors-dark-theme-grey-1,
@@ -285,7 +287,7 @@ class A11yMediaPlayer extends SimpleColors {
           );
           --a11y-media-transcript-match-bg-color: var(
             --simple-colors-dark-theme-accent-10,
-            #ddddddx
+            #dddddd
           );
           --a11y-media-transcript-match-border-color: var(
             --simple-colors-dark-theme-accent-12,
@@ -300,39 +302,49 @@ class A11yMediaPlayer extends SimpleColors {
             #111111
           );
         }
+
         :host *::-webkit-scrollbar {
           width: var(--a11y-media-scrollbar-width, 5px);
         }
+
         :host([hidden]),
         *[hidden] {
           display: none !important;
         }
+
         :host([height]) {
           height: calc(var(--a11y-media-player-height) - 2px);
           max-height: calc(var(--a11y-media-player-height) - 2px);
           overflow: unset;
         }
+
         :host[height] #transcript-section {
           display: none;
         }
+
         :host([height]) #player-section {
           max-height: var(--a11y-media-player-height);
         }
+
         :host([height]) #player-and-controls {
           max-height: calc(100% - 32px - 44px);
         }
+
         :host([height]) #player {
           height: calc(100% - 32px - 44px);
           padding-top: unset;
         }
+
         :host,
         #player-section {
           color: var(--a11y-media-hover-color);
           background-color: var(--a11y-media-bg-color);
         }
+
         :host > * {
           transition: all 0.5s;
         }
+
         :host,
         #player-section,
         #player,
@@ -343,9 +355,11 @@ class A11yMediaPlayer extends SimpleColors {
           align-items: stretch;
           align-content: stretch;
         }
+
         #captionlink:link {
           text-decoration: none;
         }
+
         #player-and-controls,
         #player,
         #player > *,
@@ -358,9 +372,11 @@ class A11yMediaPlayer extends SimpleColors {
         #transcript-and-controls {
           width: 100%;
         }
+
         #transcript-and-controls > * {
           width: calc(100% - 1px);
         }
+
         :host > *,
         #player-and-controls,
         #player,
@@ -368,56 +384,68 @@ class A11yMediaPlayer extends SimpleColors {
         #cc-text {
           flex: 1 1 auto;
         }
+
         #controls,
         #searchbar {
           flex: 0 0 44px;
         }
+
         #player-and-controls {
           margin: 0 auto;
           display: flex;
         }
+
         #player {
           height: 400px;
           position: relative;
           background-size: cover;
           background-position: center;
         }
+
         #player > * {
           position: absolute;
           top: 0;
           left: 0;
           height: 100%;
         }
+
         #playbutton,
         #slider,
         #controls {
           z-index: 2;
         }
+
         #html5 {
           min-width: 100px;
           display: flex;
           align-items: center;
         }
+
         :host([audio-only]) #playbutton {
           opacity: 0;
         }
+
         #slider {
           flex: 0 0 32px;
           height: 32px;
           background-color: var(--a11y-media-bg-color);
         }
+
         a11y-media-youtube {
           opacity: 1;
           transition: opacity 0.5s;
         }
+
         a11y-media-youtube.hidden {
           opacity: 0;
         }
+
         #cc-custom:not([hidden]) {
           font-size: 20px;
           transition: font-size 0.25s;
           display: flex;
         }
+
         #cc-text {
           align-self: flex-end;
           font-family: sans-serif;
@@ -428,11 +456,13 @@ class A11yMediaPlayer extends SimpleColors {
           background-color: rgba(0, 0, 0, 0.8);
           transition: all 0.5s;
         }
+
         #player-and-controls[audio-no-thumb] #cc-text {
           align-self: center;
           color: var(--a11y-media-color);
           background-color: transparent;
         }
+
         #controls {
           display: block;
           width: 100%;
@@ -444,16 +474,19 @@ class A11yMediaPlayer extends SimpleColors {
           background-color: var(--a11y-media-bg-color);
           --primary-text-color: var(--a11y-media-settings-menu-color);
         }
+
         #controls-left {
           position: absolute;
           left: 0;
           min-width: 200px;
         }
+
         #controls-right {
           position: absolute;
           right: 0;
           top: 0;
         }
+
         absolute-position-behavior {
           background-color: var(--a11y-media-settings-menu-bg-color);
           color: var(--a11y-media-settings-menu-color);
@@ -466,12 +499,15 @@ class A11yMediaPlayer extends SimpleColors {
           overflow-y: scroll;
           overflow-x: hidden;
         }
+
         absolute-position-behavior::-webkit-scrollbar-track {
           background-color: var(--a11y-media-settings-menu-bg-color);
         }
+
         absolute-position-behavior::-webkit-scrollbar-thumb {
           background-color: var(--a11y-media-settings-menu-color);
         }
+
         absolute-position-behavior .setting {
           min-height: 42px;
           padding: 2px 10px;
@@ -479,12 +515,14 @@ class A11yMediaPlayer extends SimpleColors {
           justify-content: space-between;
           align-items: center;
         }
+
         absolute-position-behavior dropdown-select {
           margin-top: 0 !important;
           margin-bottom: 0 !important;
           background-color: var(--a11y-media-settings-menu-bg-color);
           color: var(--a11y-media-settings-menu-color);
         }
+
         .setting-text {
           margin-right: 1em;
           font-family: var(
@@ -492,14 +530,17 @@ class A11yMediaPlayer extends SimpleColors {
             var(--paper-font-subhead_-_font-family)
           );
         }
+
         .setting-control {
           max-width: 110px;
         }
+
         .setting-slider {
           flex: 0 0 110px;
           margin-left: -15px;
           margin-right: -15px;
         }
+
         .play-status {
           border: none;
           position: relative;
@@ -509,16 +550,20 @@ class A11yMediaPlayer extends SimpleColors {
             var(--paper-font-subhead_-_font-family)
           );
         }
+
         .play-status.control-bar {
           padding: 8px 13px 8px;
         }
+
         :host([hide-play-status]) .play-status {
           display: none;
         }
+
         #volume-and-mute {
           display: inline-block;
           position: relative;
         }
+
         #volume {
           position: absolute;
           left: 30px;
@@ -542,6 +587,7 @@ class A11yMediaPlayer extends SimpleColors {
           overflow: visible;
           width: 100px;
         }
+
         :host([responsive-size="xs"]) #volume:active,
         :host([responsive-size="xs"]) #volume:focus,
         :host([responsive-size="xs"]) #volume:hover,
@@ -558,19 +604,23 @@ class A11yMediaPlayer extends SimpleColors {
         :host([width]) #volume-and-mute:hover #volume {
           top: 0px;
         }
+
         #print-thumbnail {
           width: 100%;
           margin: 0;
           display: block;
           border-top: 1px solid #aaaaaa;
         }
+
         .media-caption:not(:empty) {
           width: calc(100% - 30px);
           padding: 5px 15px;
         }
+
         .media-type {
           font-style: italic;
         }
+
         #searchbar {
           display: flex;
           align-items: stretch;
@@ -607,23 +657,29 @@ class A11yMediaPlayer extends SimpleColors {
           --paper-input-container-input-color: var(--a11y-media-color);
           --simple-search-padding: 0 15px;
         }
+
         #searching {
           flex-grow: 2;
         }
+
         #autoscroll {
           padding-right: 8px;
         }
+
         #scrolling,
         #printing {
           display: flex;
           align-items: center;
         }
+
         #transcript-section {
           padding: 0 1px 0 0;
         }
+
         #transcript-and-controls {
           flex: 1 0 194px;
         }
+
         #transcript {
           flex: 1 0 150px;
           overflow-y: scroll;
@@ -631,12 +687,15 @@ class A11yMediaPlayer extends SimpleColors {
           background-color: var(--a11y-media-transcript-cue-bg-color);
           border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
+
         #transcript::-webkit-scrollbar-track {
           background-color: var(--a11y-media-transcript-cue-bg-color);
         }
+
         #transcript::-webkit-scrollbar-thumb {
           background-color: var(--a11y-media-transcript-cue-color);
         }
+
         .transcript-from-track {
           display: table;
           width: calc(100% - 30px);
@@ -644,9 +703,11 @@ class A11yMediaPlayer extends SimpleColors {
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
         }
+
         .transcript-from-track[hideTimestamps] {
           display: block;
         }
+
         .sr-only {
           position: absolute;
           left: -9999px;
@@ -655,11 +716,13 @@ class A11yMediaPlayer extends SimpleColors {
           width: 0;
           overflow: hidden;
         }
+
         absolute-position-behavior:not(:defined),
         simple-tooltip:not(:defined),
         paper-toast:not(:defined) {
           display: none;
         }
+
         ::slotted(iframe) {
           display: none;
         }
@@ -668,14 +731,17 @@ class A11yMediaPlayer extends SimpleColors {
             flex-flow: row;
             padding: 0;
           }
+
           :host([full-flex]) #player-section {
             max-width: 50%;
             flex: 1 0 auto;
           }
+
           :host([full-flex]) #transcript-section {
             min-width: 50%;
             flex: 0 1 auto;
           }
+
           :host([full-flex]) #transcript {
             position: absolute;
             top: 44px;
@@ -684,9 +750,11 @@ class A11yMediaPlayer extends SimpleColors {
             bottom: 0;
             overflow-y: scroll;
           }
+
           #transcript-and-controls {
             position: relative;
           }
+
           :host([sticky-mode]) #player-section {
             position: fixed;
             top: 5px;
@@ -698,6 +766,7 @@ class A11yMediaPlayer extends SimpleColors {
             box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
             border-radius: 3.2px;
           }
+
           :host([fullscreen]) #player-section {
             width: 100%;
             height: 100vh;
@@ -709,13 +778,16 @@ class A11yMediaPlayer extends SimpleColors {
             z-index: 100000;
             transition: all 0.5s;
           }
+
           :host([dark][sticky-mode]) #player-section {
             border: 1px solid var(--a11y-media-bg-color);
           }
+
           :host([sticky][sticky-corner="top-left"]) #player-section {
             right: unset;
             left: 5px;
           }
+
           :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]):not([responsive-size="sm"]))
             #player-and-controls.totop {
             position: absolute;
@@ -724,23 +796,28 @@ class A11yMediaPlayer extends SimpleColors {
             width: 200px !important;
             z-index: 9999;
           }
+
           :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {
             top: unset;
             right: unset;
             bottom: 5px;
           }
+
           :host([sticky][sticky-corner="bottom-right"]) #player-and-controls {
             top: unset;
             bottom: 5px;
           }
+
           :host([sticky-mode]) .screen-only.media-caption,
           :host([responsive-size="xs"]) .screen-only.media-caption {
             display: none;
           }
+
           :host([sticky-mode]) #player-and-controls[audio-no-thumb] {
             max-height: 0px;
             overflow: hidden;
           }
+
           :host([sticky-mode]) .hide-sticky,
           :host([sticky-mode]) .hide-full-xs,
           :host([sticky-mode]) .hide-full-sm,
@@ -760,35 +837,42 @@ class A11yMediaPlayer extends SimpleColors {
           :host([responsive-size="xl"]) #cc-custom {
             font-size: 16px;
           }
+
           :host([responsive-size="lg"]) #cc-custom,
           :host([flex-layout][responsive-size="xl"]) #cc-custom {
             font-size: 14px;
           }
+
           :host([responsive-size="md"]) #cc-custom,
           :host([flex-layout][responsive-size="lg"]) #cc-custom {
             font-size: 12px;
           }
+
           :host([responsive-size="xs"]) #cc-custom,
           :host([width]) #cc-custom,
           :host([flex-layout][responsive-size="md"]) #cc-custom,
           :host([flex-layout][responsive-size="sm"]) #cc-custom {
             font-size: 10px;
           }
+
           :host([sticky-mode]) #cc-custom,
           :host([flex-layout][width]) #cc-custom,
           :host([flex-layout][responsive-size="xs"]) #cc-custom {
             display: none;
           }
+
           .media-caption {
             color: var(--a11y-media-bg-color);
             background-color: var(--a11y-media-accent-color);
           }
+
           #audio-only {
             text-align: center;
             font-style: italic;
             width: 100%;
             line-height: 160%;
           }
+
           #print-thumbnail,
           .print-only {
             width: 0;
@@ -802,17 +886,20 @@ class A11yMediaPlayer extends SimpleColors {
             outline: 1px solid #aaaaaa;
             background-color: #ffffff;
           }
+
           .screen-only,
           #searchbar,
           #print-thumbnail:not([src]),
           :host(:not([thumbnail-src])) #player {
             display: none;
           }
+
           .media-caption {
             background-color: #cccccc;
             color: #000000;
             font-size: 120%;
           }
+
           #transcript {
             padding: 0 15px 5px;
             color: #000;

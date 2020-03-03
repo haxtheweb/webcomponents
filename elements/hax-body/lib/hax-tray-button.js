@@ -18,7 +18,10 @@ class HAXTrayButton extends SimpleColors {
     this.eventName = null;
     this.icon = null;
     this.colorMeaning = false;
-    this.hoverAccentColor = "blue";
+    this._defaultHoverColor = "cyan";
+    this._defaultColor = "blue-grey";
+    this.accentColor = this._defaultColor;
+    this.hoverAccentColor = this._defaultColor;
     this.addEventListener("focusin", this._focusIn.bind(this));
     this.addEventListener("focusout", this._focusOut.bind(this));
     this.addEventListener("mouseover", this._focusIn.bind(this));
@@ -27,6 +30,13 @@ class HAXTrayButton extends SimpleColors {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Voice command to append for things that support data-voicecommand.
+       */
+      voiceCommand: {
+        type: String,
+        attribute: "voice-command"
+      },
       mini: {
         type: Boolean,
         reflect: true
@@ -87,11 +97,12 @@ class HAXTrayButton extends SimpleColors {
         iron-icon {
           width: 20px;
           height: 20px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(--simple-colors-default-theme-accent-1, #eeeeee);
+          transform: var(--hax-tray-button-rotate);
         }
         .item-label {
           margin-top: 4px;
-          color: var(--simple-colors-default-theme-grey-1, #fff);
+          color: var(--simple-colors-default-theme-accent-1, #eeeeee);
           width: 60px;
           font-size: 10px;
           line-height: 10px;
@@ -131,7 +142,7 @@ class HAXTrayButton extends SimpleColors {
         paper-button iron-icon {
           height: 20px;
           width: 20px;
-          color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-accent-1);
           display: inline-block;
         }
         :host([mini]) {
@@ -177,12 +188,7 @@ class HAXTrayButton extends SimpleColors {
   }
   render() {
     return html`
-      <paper-button
-        title="${this.label}"
-        raised
-        @click="${this._fireEvent}"
-        .data-voicecommand="select ${this.title}"
-      >
+      <paper-button title="${this.label}" raised @click="${this._fireEvent}">
         ${this.icon
           ? html`
               <div class="button-inner">
@@ -205,14 +211,20 @@ class HAXTrayButton extends SimpleColors {
   }
   _focusIn(e) {
     this.accentColor =
-      this.hoverAccentColor === "grey" ? "blue" : this.hoverAccentColor;
+      this.hoverAccentColor === this._defaultColor
+        ? this._defaultHoverColor
+        : this.hoverAccentColor;
   }
   _focusOut(e) {
     if (!this.colorMeaning) {
-      this.accentColor = null;
+      this.accentColor = this._defaultColor;
     } else {
       this.accentColor = this.color;
     }
+  }
+  _voiceEvent(e) {
+    this._fireEvent(e);
+    this.click();
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
@@ -239,21 +251,32 @@ class HAXTrayButton extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName == "voiceCommand") {
+        this.dispatchEvent(
+          new CustomEvent("hax-add-voice-command", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: {
+              command: ":name: " + this[propName],
+              context: this,
+              callback: "_voiceEvent"
+            }
+          })
+        );
+      }
       if (propName == "color") {
-        this._getAccentColor(this[propName], oldValue);
+        if (
+          (!this.accentColor || this.color !== this._defaultColor) &&
+          this.colors[this.color]
+        ) {
+          this.hoverAccentColor = this.color;
+        }
       }
       if (propName == "colorMeaning" && this.colorMeaning) {
         this.accentColor = this.color;
       }
     });
-  }
-  _getAccentColor(color) {
-    if (
-      (!this.accentColor || this.accentColor === "grey") &&
-      this.colors[color]
-    ) {
-      this.hoverAccentColor = color;
-    }
   }
 }
 customElements.define(HAXTrayButton.tag, HAXTrayButton);

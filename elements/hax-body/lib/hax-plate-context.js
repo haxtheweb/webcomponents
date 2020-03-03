@@ -34,6 +34,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
     :host {
       display: block;
       margin-top: -2px;
+      background-color:white;
     }
     hax-context-item {
       display: block;
@@ -50,17 +51,9 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       display: flex;
       visibility: visible;
       opacity: .8;
+      transition: .2s all ease-in-out;
     }
-    .area {
-      opacity: 1;
-    }
-    .paddle {
-      width: unset;
-      height: unset;
-      visibility: visible;
-      opacity: .9;
-    }
-    .paddle:hover {
+    .area:hover {
       opacity: 1;
     }
     paper-item {
@@ -82,6 +75,12 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
       padding: 0 2px;
       width: 16px;
       height: 16px;
+    }
+    :host(.hax-context-pin-top) .area {
+      position: fixed;
+      top: 40px;
+      margin-left: -30px;
+      flex-direction: column;
     }
     </style>
     <div class="area" id="area">
@@ -217,6 +216,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
    * When we end dragging ensure we remove the mover class.
    */
   _dragEnd(e) {
+    window.HaxStore.instance._lockContextPosition = false;
     let children = window.HaxStore.instance.activeHaxBody.children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
@@ -237,6 +237,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
   _dragStart(e) {
     let target = window.HaxStore.instance.activeNode;
     window.HaxStore.instance.__dragTarget = target;
+    window.HaxStore.instance._lockContextPosition = true;
     target.classList.add("hax-moving");
     if (e.dataTransfer) {
       e.dataTransfer.dropEffect = "move";

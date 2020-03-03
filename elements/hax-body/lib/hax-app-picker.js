@@ -217,21 +217,21 @@ class HaxAppPicker extends LitElement {
       case "gizmo":
         for (var i in elements) {
           elements[i].__type = type;
-          tmp[i] = {
+          tmp.push({
             icon: elements[i].gizmo.icon,
             title: elements[i].gizmo.title,
             color: elements[i].gizmo.color
-          };
+          });
         }
         break;
       // app selector
       case "app":
         for (var i in elements) {
-          tmp[i] = {
+          tmp.push({
             icon: elements[i].details.icon,
             title: elements[i].details.title,
             color: elements[i].details.color
-          };
+          });
         }
         break;
       // we don't know what to do with this

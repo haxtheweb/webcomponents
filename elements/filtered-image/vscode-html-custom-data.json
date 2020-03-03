@@ -3,12 +3,12 @@
   "tags": [
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
       "attributes": []
     },
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nAttributes:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - \n\nProperties:\n\n  * `__id` {`string`} - \n\n  * `__matrix` {`any[]`} - \n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
       "attributes": [
         {
           "name": "__id",
@@ -88,7 +88,7 @@
     },
     {
       "name": "filtered-image",
-      "description": "`filtered-image`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
+      "description": "`filtered-image`\n`An image using an SVG filter. Can be used to make background images have more contrast with text.`\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `color` {`string`} - \n\n  * `strength` {`number`} - \n\n  * `contrast` {`number`} - ",
       "attributes": []
     }
   ],

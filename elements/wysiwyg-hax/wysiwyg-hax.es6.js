@@ -38,7 +38,6 @@ class WysiwygHax extends LitElement {
         app-store-connection="${this.appStoreConnection}"
         ?open-default="${this.openDefault}"
         ?sync-body="${this.syncBody}"
-        ?hide-export-button="${this.hideExportButton}"
         ?hide-panel-ops="${this.hidePanelOps}"
         ?hide-preferences-button="${this.hidePreferencesButton}"
         align="${this.align}"
@@ -58,7 +57,6 @@ class WysiwygHax extends LitElement {
       this.__importContent = children.innerHTML;
     }
     this.openDefault = false;
-    this.hideExportButton = false;
     this.align = "right";
     this.fieldId = "textarea-input-field";
     this.fieldName = "data[content]";
@@ -90,10 +88,6 @@ class WysiwygHax extends LitElement {
       redirectLocation: {
         type: String,
         attribute: "redirect-location"
-      },
-      hideExportButton: {
-        type: Boolean,
-        attribute: "hide-export-button"
       },
       /**
        * Hide the panel operations (save and cancel),

@@ -20,15 +20,9 @@ window.SimpleToast.requestAvailability = () => {
 
 /**
  * `simple-toast`
- * @customElement simple-toast
  * `A singular toast / message for conistency`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement simple-toast
  */
 class SimpleToast extends LitElement {
   
@@ -42,6 +36,11 @@ class SimpleToast extends LitElement {
 }
 
 :host([hidden]) {
+  display: none;
+}
+
+paper-button:not(:defined),
+paper-toast:not(:defined) {
   display: none;
 }
 
@@ -83,7 +82,6 @@ paper-toast {
    * Opened state of the toast, use event to change
    */
   "opened": {
-    "name": "opened",
     "type": Boolean,
     "reflect": true
   },
@@ -91,14 +89,12 @@ paper-toast {
    * Plain text based message to display
    */
   "text": {
-    "name": "text",
     "type": String
   },
   /**
    * Class name, fit-bottom being a useful one
    */
   "classStyle": {
-    "name": "classStyle",
     "type": String,
     "attribute": "class-style"
   },
@@ -106,7 +102,6 @@ paper-toast {
    * Text for the close button
    */
   "closeText": {
-    "name": "closeText",
     "type": String,
     "attribute": "close-text"
   },
@@ -114,14 +109,12 @@ paper-toast {
    * How long the toast message should be displayed
    */
   "duration": {
-    "name": "duration",
     "type": Number
   },
   /**
    * Event callback when hide is called
    */
   "eventCallback": {
-    "name": "eventCallback",
     "type": String,
     "attribute": "event-callback"
   },
@@ -129,7 +122,6 @@ paper-toast {
    * If there should be a close button shown
    */
   "closeButton": {
-    "name": "closeButton",
     "type": Boolean,
     "reflect": true,
     "attribute": "close-button"
@@ -151,6 +143,15 @@ paper-toast {
   constructor() {
     super();
     this.setDefaultToast();
+  }
+  firstUpdated() {
+    setTimeout(() => {
+      import("@polymer/paper-toast/paper-toast.js");
+      import("@polymer/paper-button/paper-button.js");
+    }, 0);
+  }
+  connectedCallback() {
+    super.connectedCallback();
     window.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -159,8 +160,6 @@ paper-toast {
       "simple-toast-show",
       this.showSimpleToast.bind(this)
     );
-    import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   /**
    * life cycle, element is removed from the DOM
@@ -174,7 +173,7 @@ paper-toast {
       "simple-toast-show",
       this.showSimpleToast.bind(this)
     );
-    super.connectedCallback();
+    super.disconnectedCallback();
   }
   /**
    * Hide callback

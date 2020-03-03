@@ -19,6 +19,7 @@ class GitCorner extends LitElement {
         :host {
           display: block;
         }
+
         :host([corner]) svg {
           z-index: var(--github-corner-z-index, 1);
           position: absolute;
@@ -26,25 +27,31 @@ class GitCorner extends LitElement {
           border: 0;
           right: 0;
         }
+
         :host([circle]) svg {
           border-radius: 100px;
           transform: rotate(-45deg);
         }
+
         :host([size="micro"]) {
           --github-corner-size: 28px;
         }
+
         :host([size="small"]) {
           --github-corner-size: 50px;
         }
+
         :host([size="large"]) {
           --github-corner-size: 100px;
         }
+
         svg {
           fill: var(--github-corner-background, #24292e);
           color: var(--github-corner-color, #ffffff);
           width: var(--github-corner-size, 80px);
           height: var(--github-corner-size, 80px);
         }
+
         a {
           display: table;
           outline-color: var(--github-corner-background, #24292e);
@@ -61,10 +68,12 @@ class GitCorner extends LitElement {
           100% {
             transform: rotate(0);
           }
+
           20%,
           60% {
             transform: rotate(-25deg);
           }
+
           40%,
           80% {
             transform: rotate(10deg);
@@ -74,6 +83,7 @@ class GitCorner extends LitElement {
           .github-corner:hover .octo-arm {
             animation: none;
           }
+
           .github-corner .octo-arm {
             animation: octocat-wave 560ms ease-in-out;
           }

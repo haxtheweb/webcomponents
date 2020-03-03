@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
           "name": "image-url",
@@ -25,7 +25,7 @@
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
           "name": "image-url",
@@ -51,7 +51,7 @@
     },
     {
       "name": "meme-maker",
-      "description": "`meme-maker`\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX\n\nAttributes:\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\nProperties:\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag",
       "attributes": [
         {
           "name": "image-url",

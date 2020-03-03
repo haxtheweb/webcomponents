@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.4",
+  "version": "2.5.0",
   "description": "Basic loading spinner based on the ELMS:LN icon",
   "repository": {
     "type": "git",
@@ -36,14 +36,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.4.1",
-    "@lrnwebcomponents/simple-colors": "^2.4.4",
+    "@lrnwebcomponents/lrn-icons": "^2.5.0",
+    "@lrnwebcomponents/simple-colors": "^2.5.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.4.4",
+    "@lrnwebcomponents/storybook-utilities": "^2.5.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",

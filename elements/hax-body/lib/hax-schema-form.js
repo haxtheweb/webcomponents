@@ -63,7 +63,10 @@ class HaxSchemaForm extends PolymerElement {
           border-bottom: 1px solid var(--hax-color-border-outline);
           display: block;
           justify-content: space-evenly;
-          --paper-tabs-selection-bar-color: var(--hax-color-accent1);
+          --paper-tabs-selection-bar-color: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
           --paper-tabs: {
             background: transparent;
           }
@@ -72,7 +75,10 @@ class HaxSchemaForm extends PolymerElement {
         #modetabs paper-tab {
           display: inline-flex;
           height: 100%;
-          --paper-tab-ink: var(--hax-color-accent1);
+          --paper-tab-ink: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
           --paper-tab: {
             font-size: 16px;
           }

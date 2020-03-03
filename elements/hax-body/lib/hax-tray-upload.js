@@ -9,17 +9,23 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     return [
       css`
         vaadin-upload {
-          --primary-color: var(--hax-color-accent1);
-          --primary-font-color: #ffffff;
-          --dark-primary-color: #ffffff;
-          --light-primary-color: var(--hax-color-accent1);
-          --error-color: darkred;
+          --lumo-primary-color: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
+          --lumo-primary-font-color: black;
+          --lumo-dark-primary-color: black;
+          --lumo-light-primary-color: var(
+            --hax-color-accent1,
+            --simple-colors-default-theme-light-blue-7
+          );
+          --lumo-error-color: darkred;
           color: #ffffff;
           display: block;
           padding: 16px !important;
         }
         vaadin-upload[dragover] {
-          border-color: #396;
+          border-color: var(--simple-colors-default-theme-green-3);
         }
         vaadin-upload-file {
           --disabled-text-color: #222222;
@@ -46,38 +52,20 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   static get tag() {
     return "hax-tray-upload";
   }
-  static get properties() {
-    return {
-      canSupportUploads: {
-        type: Boolean,
-        attribute: "can-support-uploads"
-      }
-    };
-  }
   /**
    * HTMLElement
    */
   constructor() {
     super();
     this.__winEvents = {
-      "hax-store-property-updated": "_haxStorePropertyUpdated",
       "hax-app-picker-selection": "_haxAppPickerSelection",
       "place-holder-file-drop": "_placeHolderFileDrop"
     };
-    this.canSupportUploads = false;
     setTimeout(() => {
       import("@polymer/paper-button/paper-button.js");
       import("@polymer/paper-input/paper-input.js");
       import("@vaadin/vaadin-upload/vaadin-upload.js");
     }, 0);
-  }
-  /**
-   * Store updated, sync.
-   */
-  _haxStorePropertyUpdated(e) {
-    if (e.detail && e.detail.property === "canSupportUploads") {
-      this[e.detail.property] = e.detail.value;
-    }
   }
   /**
    * LitElement render
@@ -98,7 +86,10 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           vaadin-upload {
             --vaadin-upload-button-add-wrapper: {
               border: 2px solid #ffffff;
-              background-color: var(--hax-color-accent1);
+              background-color: var(
+                --hax-color-accent1,
+                --simple-colors-default-theme-light-blue-7
+              );
               color: #ffffff;
               display: block;
             }
@@ -152,7 +143,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             @upload-response="${this._fileUploadResponse}"
             form-data-name="file-upload"
             id="fileupload"
-            ?hidden="${!this.canSupportUploads}"
           ></vaadin-upload>
         </div>
         <paper-button

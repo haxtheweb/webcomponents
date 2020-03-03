@@ -25,17 +25,8 @@ class HaxCeContext extends winEventsElement(LitElement) {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 64px;
-          opacity: 0.9;
-        }
-        :host(.hax-context-pin-bottom) hax-toolbar {
-          position: fixed;
-          bottom: 0;
-          opacity: 0.9;
-        }
-        :host(.hax-context-pin-top) hax-toolbar:hover,
-        :host(.hax-context-pin-bottom) hax-toolbar:hover {
-          opacity: 1;
+          top: 40px;
+          flex-direction: column;
         }
       `
     ];

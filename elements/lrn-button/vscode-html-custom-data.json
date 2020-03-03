@@ -13,7 +13,7 @@
     },
     {
       "name": "lrn-button",
-      "description": "Events:\n\n  * `focus-changed` - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
+      "description": "Events:\n\n  * `focus-changed` - \n\nAttributes:\n\n  * `href` {`string`} - \n\n  * `show-href` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hover-class` {`string`} - \n\n  * `icon-class` {`string`} - \n\n  * `inner-class` {`string`} - \n\n  * `color` {`string`} - \n\n  * `text-color` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focus-state` {`boolean`} - \n\nProperties:\n\n  * `href` {`string`} - \n\n  * `showHref` {`string`} - \n\n  * `raised` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `target` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `hoverClass` {`string`} - \n\n  * `iconClass` {`string`} - \n\n  * `innerClass` {`string`} - \n\n  * `color` {`string`} - \n\n  * `textColor` {`string`} - \n\n  * `prefetch` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `focusState` {`boolean`} - \n\n  * `templateUrl` {`string`} - \n\n  * `propertiesUrl` {`string`} - \n\n  * `HAXPropertiesUrl` {`string`} - \n\n  * `styleUrl` {`string`} - ",
       "attributes": [
         {
           "name": "href",
@@ -21,7 +21,7 @@
         },
         {
           "name": "show-href",
-          "description": "`show-href` {`string`} - \n\nProperty: showHref"
+          "description": "`show-href` {`string`} - \n\nProperty: showHref\n\nDefault: false"
         },
         {
           "name": "raised",
@@ -38,7 +38,7 @@
         },
         {
           "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: false"
         },
         {
           "name": "hover-class",
@@ -70,12 +70,12 @@
         },
         {
           "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
+          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
           "valueSet": "v"
         },
         {
           "name": "focus-state",
-          "description": "`focus-state` {`boolean`} - \n\nProperty: focusState",
+          "description": "`focus-state` {`boolean`} - \n\nProperty: focusState\n\nDefault: false",
           "valueSet": "v"
         },
         {

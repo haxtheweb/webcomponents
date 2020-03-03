@@ -7,23 +7,17 @@ import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `filtered-image`
- * @customElement filtered-image
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
  * @demo demo/filters.html Filters
+ * @customElement filtered-image
  */
 class FilteredImage extends SimpleColors {
   
   //styles function
   static get styles() {
     return  [
-      
+      ...super.styles,
       css`
 :host {
   display: block;

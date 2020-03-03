@@ -2,30 +2,67 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
-
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `type-writer`
  * `typewritter effect`
- *
- * @microcopy - language worth noting:
- *  -
+ * based off of https://github.com/PolymerEl/type-writer
  *
  * @demo demo/index.html
  * @customElement type-writer
  */
-class TypeWriter extends LitElement {
+class TypeWriter extends IntersectionObserverMixin(LitElement) {
   
   //styles function
   static get styles() {
     return  [
       css`
 :host {
-  display: block;
+  display: inline-block;
+  margin: 0px 0.1em;
 }
 
-:host([hidden]) {
+@keyframes flickerAnimation {
+  0%   { opacity: 1; }
+
+  50%  { opacity: 0; }
+
+  100% { opacity: 1; }
+}
+@-o-keyframes flickerAnimation {
+  0%   { opacity: 1; }
+
+  50%  { opacity: 0; }
+
+  100% { opacity: 1; }
+}
+@-moz-keyframes flickerAnimation {
+  0%   { opacity: 1; }
+
+  50%  { opacity: 0; }
+
+  100% { opacity: 1; }
+}
+@-webkit-keyframes flickerAnimation {
+  0%   { opacity: 1; }
+
+  50%  { opacity: 0; }
+
+  100% { opacity: 1; }
+}
+  
+#cursor {
   display: none;
+  opacity: 0;
+}
+
+:host([typing]) #cursor {
+  display: inline;
+  -webkit-animation: flickerAnimation 1s infinite;
+  -moz-animation: flickerAnimation 1s infinite;
+  -o-animation: flickerAnimation 1s infinite;
+  animation: flickerAnimation 1s infinite;
 }
       `
     ];
@@ -35,15 +72,7 @@ class TypeWriter extends LitElement {
   render() {
     return html`
 
-<slot></slot>
-<div>${this.delay}</div>
-<div>${this.cursorDuration}</div>
-<div>${this.text}</div>
-<div>${this.speed}</div>
-<div>${this.eraseSpeed}</div>
-<div>${this.typing}</div>
-<div>${this._length}</div>
-<div>${this._oldText}</div>`;
+<span id="text"></span><span id="cursor">|</span>`;
   }
 
   // haxProperty definition
@@ -57,9 +86,7 @@ class TypeWriter extends LitElement {
     "description": "typewritter effect",
     "icon": "icons:android",
     "color": "green",
-    "groups": [
-      "Writer"
-    ],
+    "groups": ["Writer"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"
@@ -102,37 +129,17 @@ class TypeWriter extends LitElement {
         "icon": "icons:android"
       },
       {
-        "property": "eraseSpeed",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      },
-      {
         "property": "typing",
         "description": "",
         "inputMethod": "boolean",
-        "required": false,
-        "icon": "icons:android"
-      },
-      {
-        "property": "_length",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      },
-      {
-        "property": "_oldText",
-        "description": "",
-        "inputMethod": "textfield",
         "required": false,
         "icon": "icons:android"
       }
     ],
     "advanced": []
   }
-};
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -140,62 +147,37 @@ class TypeWriter extends LitElement {
   ...super.properties,
   
   "delay": {
-    "name": "delay",
-    "type": Number,
-    "value": "0",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": Number
   },
   "cursorDuration": {
-    "name": "cursorDuration",
     "type": Number,
-    "value": "0",
-    "reflectToAttribute": false,
-    "observer": false
+    "attribute": "cursor-duration"
   },
   "text": {
-    "name": "text",
-    "type": String,
-    "value": "",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": String
   },
   "speed": {
-    "name": "speed",
-    "type": Number,
-    "value": "150",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": Number
+  },
+  "elementVisible": {
+    "type": Boolean
   },
   "eraseSpeed": {
-    "name": "eraseSpeed",
     "type": Number,
-    "value": "150",
-    "reflectToAttribute": false,
-    "observer": false
+    "attribute": "erase-speed"
   },
   "typing": {
-    "name": "typing",
     "type": Boolean,
-    "value": "false",
-    "reflectToAttribute": true,
-    "observer": false
+    "reflect": true
   },
   "_length": {
-    "name": "_length",
-    "type": Number,
-    "value": "0",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": Number
   },
   "_oldText": {
-    "name": "_oldText",
-    "type": String,
-    "value": "",
-    "reflectToAttribute": false,
-    "observer": false
+    "type": String
   }
-};
+}
+;
   }
 
   /**
@@ -210,44 +192,78 @@ class TypeWriter extends LitElement {
    */
   constructor() {
     super();
-    
+    this.delay = 100;
+    this.cursorDuration = 0;
+    this.speed = 150;
+    this.eraseSpeed = 80;
+    this.typing = false;
   }
-  /**
-   * LitElement ready
-   */
-  firstUpdated(changedProperties) {
-    
+
+  _observeText(text, delay, elementVisible) {
+    if (text && delay !== undefined && elementVisible) {
+      if (this.shadowRoot.querySelector("#text").textContent) {
+        this._oldText = this.shadowRoot.querySelector("#text").textContent;
+        if (this.typing && this._cancel) {
+          clearTimeout(this._cancel);
+          this._cancel = null;
+        }
+        return this.erase();
+      }
+      this._length = 0;
+      setTimeout(() => {
+        this.type();
+      }, this.delay);
+    }
+  }
+
+  type() {
+    this.typing = true;
+    this.shadowRoot.querySelector("#text").textContent = this.text.substr(
+      0,
+      this._length++
+    );
+    if (this._length < this.text.length + 1) {
+      this._cancel = setTimeout(() => {
+        this.type();
+      }, this.speed + ((Math.random() - 0.5) * this.speed) / 2);
+      return;
+    }
+    setTimeout(() => {
+      this.typing = false;
+      this.dispatchEvent(
+        new CustomEvent("type-writer-end", {
+          detail: this.text,
+          bubbles: true,
+          composed: true
+        })
+      );
+    }, this.cursorDuration);
+  }
+
+  erase() {
+    this.typing = true;
+    this.shadowRoot.querySelector("#text").textContent = this._oldText.substr(
+      0,
+      this._length--
+    );
+    if (this._length >= 0) {
+      this._cancel = setTimeout(() => {
+        this.erase();
+      }, this.eraseSpeed || this.speed);
+      return;
+    }
+    this.type();
   }
   /**
    * LitElement life cycle - property changed
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      /* notify example
-      // notify
-      if (propName == 'format') {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            }
-          })
-        );
+      if (["text", "delay", "elementVisible"].includes(propName)) {
+        this._observeText(this.text, this.delay, this.elementVisible);
       }
-      */
-      /* observer example
-      if (propName == 'activeNode') {
-        this._activeNodeChanged(this[propName], oldValue);
-      }
-      */
-      /* computed example
-      if (['id', 'selected'].includes(propName)) {
-        this.__selectedChanged(this.selected, this.id);
-      }
-      */
     });
   }
-  
 }
 customElements.define(TypeWriter.tag, TypeWriter);
 export { TypeWriter };

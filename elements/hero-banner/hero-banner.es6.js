@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
@@ -7,9 +7,9 @@ import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `hero-banner`
- * @customElement hero-banner
  * `That thing no one wants to make over and over again yet always does...`
  * @demo demo/index.html
+ * @customElement hero-banner
  */
 class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
@@ -287,7 +287,7 @@ class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "aaccentColor",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",

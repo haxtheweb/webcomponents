@@ -190,7 +190,7 @@ class HAXPanelItem extends LitElement {
             detail: {
               command: ":name: " + this[propName],
               context: this,
-              callback: "_fireEvent"
+              callback: "click"
             }
           })
         );

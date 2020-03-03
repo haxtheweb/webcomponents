@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/utils",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Helper functions to clean up web component data handling.",
   "repository": {
     "type": "git",

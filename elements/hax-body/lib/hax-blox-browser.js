@@ -32,7 +32,7 @@ class HaxBloxBrowser extends LitElement {
             <hax-tray-button
               wide
               index="${blox.index}"
-              layout="${blox.details.layout}"
+              .layout="${blox.details.layout}"
               label="${blox.details.title}"
               icon="${blox.details.icon}"
               event-name="insert-blox"

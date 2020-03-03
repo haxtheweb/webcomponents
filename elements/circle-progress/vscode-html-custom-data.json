@@ -19,7 +19,7 @@
         },
         {
           "name": "angle",
-          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle"
+          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle\n\nDefault: -90"
         },
         {
           "name": "_cx",
@@ -65,7 +65,7 @@
         },
         {
           "name": "angle",
-          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle"
+          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle\n\nDefault: -90"
         },
         {
           "name": "_cx",
@@ -115,7 +115,7 @@
         },
         {
           "name": "angle",
-          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle"
+          "description": "`angle` {`number`} - Starting angle of the progress.\n\nProperty: angle\n\nDefault: -90"
         },
         {
           "name": "_cx",

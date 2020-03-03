@@ -3,6 +3,7 @@
   "tags": [
     {
       "name": "retro-card",
+      "path": "./retro-card.es6.js",
       "description": "`retro-card`\n`Simple card in a cool retro design`",
       "properties": [
         {
@@ -14,6 +15,7 @@
     },
     {
       "name": "retro-card",
+      "path": "./retro-card.js",
       "description": "`retro-card`\n`Simple card in a cool retro design`",
       "attributes": [
         {
@@ -86,10 +88,12 @@
       ]
     },
     {
-      "name": "tag"
+      "name": "tag",
+      "path": "./retro-card.umd.js"
     },
     {
       "name": "retro-card",
+      "path": "./src/retro-card.js",
       "description": "`retro-card`\n`Simple card in a cool retro design`",
       "properties": [
         {

@@ -19,7 +19,7 @@ class RetroCard extends SimpleColors {
   //styles function
   static get styles() {
     return  [
-      
+      ...super.styles,
       css`
 :host {
   display: block;
@@ -141,7 +141,7 @@ a {
   render() {
     return html`
 
-<a tabindex="-1" class="link ${this.color}" href="${this.url}">
+<a tabindex="-1" class="link ${this.color}" href="${this.url}" @click="${this._clickCard}">
     <img class="img" loading="lazy" src="${this.__source}" alt="">
     <span class="title">${this.title}</span>
     <span class="name">${this.subtitle}</span>
@@ -181,27 +181,19 @@ a {
     }
   },
   "settings": {
-    "quick": [
-      {
-        "property": "mediaSource",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": true,
-        "icon": "icons:link",
-        "validationType": "url"
-      }
-    ],
+    "quick": [],
     "configure": [
       {
         "property": "title",
-        "description": "",
+        "title": "Title",
+        "description": "Main title of card",
         "inputMethod": "textfield",
         "required": false,
         "icon": "icons:android"
       },
       {
         "property": "url",
-        "description": "",
+        "description": "Link to go to when clicking the card",
         "inputMethod": "textfield",
         "required": false,
         "icon": "icons:android",
@@ -209,20 +201,23 @@ a {
       },
       {
         "property": "subtitle",
-        "description": "",
+        "title": "Sub-title",
+        "description": "Sub heading",
         "inputMethod": "textfield",
         "required": false,
         "icon": "icons:android"
       },
       {
         "property": "tags",
-        "description": "",
+        "title": "Tags",
+        "description": "Comma separated tags",
         "inputMethod": "textfield",
         "required": false,
         "icon": "icons:android"
       },
       {
         "property": "mediaSource",
+        "title": "Media source",
         "description": "Primary media source",
         "inputMethod": "haxupload",
         "required": true,
@@ -249,7 +244,7 @@ a {
       {
         "property": "dark",
         "title": "Dark",
-        "description": "Flips the color mode to be dark mode",
+        "description": "Sets base color to be dark mode",
         "inputMethod": "boolean",
         "required": false
       }
@@ -346,6 +341,22 @@ a {
     // optional support for hoverSource being the default source
     if (!this.hoverSource) {
       this.hoverSource = this.mediaSource;
+    }
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickCard(e) {
+    if (
+      window.HaxStore &&
+      window.HaxStore.ready &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.editMode
+    ) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     }
   }
   /**

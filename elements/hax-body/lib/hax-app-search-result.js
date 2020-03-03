@@ -16,55 +16,48 @@ class HaxAppSearchResult extends LitElement {
       css`
         :host {
           display: inline-flex;
-          width: 45%;
+          width: 49%;
+          height: 220px;
           background-color: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }
         paper-button.button {
           margin: 0;
           padding: 7px;
-          height: 168px;
+          display: block;
           border-radius: 0;
+          border: none;
           width: 100%;
-          border: 1px solid var(--hax-color-border-outline);
-          justify-content: flex-start;
+          outline: 2px solid black;
           background-image: none;
           text-align: unset;
-          display: flex;
         }
         paper-button:hover,
         paper-button:focus,
         paper-button:active {
-          outline: 2px solid var(--hax-color-bg-accent1);
+          background-color: #eeeeee;
+          outline: 2px solid var(--hax-color-bg-accent);
         }
         .detail-wrapper {
           padding: 0 8px;
-          display: inline-block;
-          height: 100%;
-          width: calc(80% - 16px);
           overflow: hidden;
           font-family: "Noto Serif", serif;
         }
         .title {
-          font-size: 16px;
+          font-size: 14px;
+          overflow: hidden;
           font-weight: bold;
           text-transform: none;
           padding-bottom: 4px;
-        }
-        .details {
-          height: 100px;
-          overflow: hidden;
-          font-size: 12px;
-          line-height: 16px;
-          padding: 0;
-          margin: 0;
-          text-transform: none;
+          text-align: center;
         }
         .image {
-          display: inline-flex;
           height: 152px;
-          width: 20%;
-          background-color: lightgray;
+          width: 100%;
+          background-color: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #37474f
+          );
         }
         @media screen and (max-width: 1000px) {
           :host {
@@ -72,18 +65,6 @@ class HaxAppSearchResult extends LitElement {
           }
           .title {
             font-size: 12px;
-          }
-          .image {
-            min-width: 160px;
-            width: 160px;
-          }
-          .details {
-            font-size: 10px;
-          }
-        }
-        @media screen and (max-width: 600px) {
-          .details {
-            font-size: 8px;
           }
         }
       `
@@ -98,6 +79,7 @@ class HaxAppSearchResult extends LitElement {
         @dragstart="${this._dragStart}"
         @dragend="${this._dragEnd}"
         class="button"
+        title="${this.details}"
       >
         <iron-image
           alt=""
@@ -108,8 +90,7 @@ class HaxAppSearchResult extends LitElement {
           sizing="cover"
         ></iron-image>
         <div class="detail-wrapper">
-          <div class="title">${this.title}</div>
-          <div class="details">${this.details}</div>
+          <div class="title">${this.title.substr(0, 40)}</div>
         </div>
       </paper-button>
     `;

@@ -61,7 +61,10 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
           display: none;
         }
         site-top-menu {
-          --site-top-menu-bg: #37474f;
+          --site-top-menu-bg: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #37474f
+          );
           --site-top-menu-link-color: #ffffff;
           --site-top-menu-indicator-color: #ffffff;
           --site-top-menu-link-active-color: var(
@@ -74,7 +77,10 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
             color: #ffffff;
           }
           --site-children-block-button-active: {
-            background-color: #37474f;
+            background-color: var(
+              --simple-colors-default-theme-blue-grey-7,
+              #37474f
+            );
             color: var(--haxcms-basic-theme-accent-color);
           }
         }
@@ -85,7 +91,10 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         .left-col {
           min-height: 250px;
           border: 2px solid black;
-          background-color: #37474f;
+          background-color: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #37474f
+          );
           color: white;
           padding: 16px;
           transition: 0.2s opacity linear;
@@ -140,7 +149,10 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSPolymerElementTheme) {
         }
         site-footer {
           padding: 32px 64px;
-          background-color: #37474f;
+          background-color: var(
+            --simple-colors-default-theme-blue-grey-7,
+            #37474f
+          );
         }
         site-modal {
           --site-modal-icon-color: white;

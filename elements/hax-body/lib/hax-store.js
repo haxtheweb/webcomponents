@@ -187,12 +187,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Boolean
       },
       /**
-       * Boolean for if this instance has backends that support uploading
-       */
-      canSupportUploads: {
-        type: Boolean
-      },
-      /**
        * skip the exit trap to prevent losing data
        */
       skipExitTrap: {
@@ -440,12 +434,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         for (var i = 0; i < apps.length; i++) {
           let app = document.createElement("hax-app");
           app.data = apps[i];
-          // see if anything coming across claims to be a backend for adding items
-          // and then enable the upload button
-          if (apps[i].connection.operations.add) {
-            this.canSupportUploads = true;
-            window.HaxStore.write("canSupportUploads", true, this);
-          }
           window.HaxStore.instance.appendChild(app);
         }
       }
@@ -561,9 +549,14 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     }
   }
+  /**
+   * A handful of context operations need to bubble up to the top
+   * because we don't know where they originate from
+   */
   _haxContextOperation(e) {
     let detail = e.detail;
     if (this.activeNode) {
+      let changed = false;
       // support a simple insert event to bubble up or everything else
       switch (detail.eventName) {
         // directional / proportion operations
@@ -571,20 +564,29 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeNode.style.float = null;
           this.activeNode.style.margin = null;
           this.activeNode.style.display = null;
+          changed = true;
           break;
         case "hax-align-center":
           this.activeNode.style.float = null;
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
+          changed = true;
           break;
         case "hax-align-right":
           this.activeNode.style.float = "right";
           this.activeNode.style.margin = "0 auto";
           this.activeNode.style.display = "block";
+          changed = true;
           break;
         case "hax-size-change":
           this.activeNode.style.width = detail.value + "%";
+          changed = true;
           break;
+      }
+      if (changed) {
+        setTimeout(() => {
+          this.activeHaxBody.positionContextMenus();
+        }, 0);
       }
     }
   }
@@ -802,13 +804,92 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         behavior: "smooth"
       });
     };
+    this.voiceCommands[`scroll to bottom ${this.voiceRespondsTo}`] = () => {
+      window.scrollTo(0, document.body.scrollHeight);
+    };
+    this.voiceCommands[`scroll to top ${this.voiceRespondsTo}`] = () => {
+      window.scrollTo(0, 0);
+    };
+    /**
+     * Support for focusing active content and typing in it
+     */
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (show)(focus) active (element)(content)`
+    ] = () => {
+      try {
+        this._positionCursorInNode(this.activeNode);
+      } catch (e) {}
+    };
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (focus) previous (element)(content)`
+    ] = () => {
+      if (this.activeNode.previousElementSibling) {
+        this.activeNode = this.activeNode.previousElementSibling;
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.activeContainerNode = this.activeNode;
+        window.HaxStore.write("activeContainerNode", this.activeNode, this);
+        this._positionCursorInNode(this.activeNode);
+      } else {
+        this.speak("You are at the top of the document");
+      }
+    };
+    this.voiceCommands[
+      `${this.voiceRespondsTo} (focus) next (element)(content)`
+    ] = () => {
+      if (this.activeNode.nextElementSibling) {
+        this.activeNode = this.activeNode.nextElementSibling;
+        window.HaxStore.write("activeNode", this.activeNode, this);
+        this.activeContainerNode = this.activeNode;
+        window.HaxStore.write("activeContainerNode", this.activeNode, this);
+        this._positionCursorInNode(this.activeNode);
+      } else {
+        this.speak("You are at the bottom of the document");
+      }
+    };
+    this.voiceCommands[`${this.voiceRespondsTo} type *mycontent`] = e => {
+      if (window.HaxStore.instance.isTextElement(this.activeNode)) {
+        try {
+          let range = this._positionCursorInNode(this.activeNode);
+          let text = document.createTextNode(e);
+          range.deleteContents();
+          range.insertNode(text);
+        } catch (e) {
+          this.speak("That didn't work");
+          console.warn(e);
+        }
+      } else {
+        this.speak(
+          "I'm sorry but I can only type in text areas. Try saying Insert Paragraph and try again."
+        );
+      }
+    };
     // trolling
     this.voiceCommands[`hey ${this.voiceRespondsTo}`] = () => {
-      this.__hal.speak("Yeah what do you want");
+      this.speak("Yeah what do you want");
+    };
+    // trolling
+    this.voiceCommands[
+      `${this.voiceRespondsTo} now your name is *splat`
+    ] = text => {
+      const past = this.voiceRespondsTo;
+      this.speak(`I used to be named ${past} but you can call me ${text} now.`);
+      this.voiceRespondsTo = `(${text})`;
+      // @todo this needs to now update the previous commands somehow to match
+      // the new activation name
     };
     this.voiceCommands[`${this.voiceRespondsTo} close`] = () => {
       window.HaxStore.write("openDrawer", false, this);
     };
+  }
+  /**
+   * Speak wrapper on hal to present as text too
+   */
+  speak(text) {
+    if (this.__hal && this.__hal.speak) {
+      this.__hal.speak(text);
+    }
+    // always show for accessibility
+    window.HaxStore.toast(`${this.voiceRespondsTo}: ${text}`);
   }
   /**
    * allow uniform method of adding voice commands
@@ -825,6 +906,19 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
    */
   _addVoiceCommand(e) {
     this.addVoiceCommand(e.detail.command, e.detail.context, e.detail.callback);
+  }
+  /**
+   * Position cursor at the start of the position of the requested node
+   */
+  _positionCursorInNode(node, position = 0) {
+    this.activeHaxBody.positionContextMenus();
+    var range = document.createRange();
+    var sel = window.HaxStore.getSelection();
+    range.setStart(node, position);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+    return range;
   }
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -1033,7 +1127,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.activePlaceHolder = null;
     this.sessionObject = {};
     this.editMode = false;
-    this.canSupportUploads = false;
     this.skipExitTrap = false;
     this.gizmoList = [];
     this.elementList = {};
@@ -1044,7 +1137,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.activeApp = {};
     this.connectionRewrites = {};
     // change this in order to debug voice commands
-    this.voiceDebug = false;
+    this.voiceDebug = true;
     this.validTagList = this.__validTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env
@@ -1116,7 +1209,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Basic iframe",
         description: "A basic iframe",
         icon: "icons:fullscreen",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Content"],
         handles: [
           {
@@ -1179,7 +1272,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Image",
         description: "A basic img tag",
         icon: "image:image",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Image", "Media"],
         handles: [
           {
@@ -1265,7 +1358,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Basic link",
         description: "A basic a tag",
         icon: "icons:link",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Link"],
         handles: [],
         meta: {
@@ -1351,7 +1444,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         title: "Paragraph",
         description: "A basic text area",
         icon: "hax:paragraph",
-        color: "grey",
+        color: "blue-grey",
         groups: ["Text"],
         handles: [
           {
@@ -1552,11 +1645,13 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         setTimeout(() => {
           if (
             active.querySelector(
-              "paper-checkbox,paper-input,textarea,paper-button"
+              "paper-checkbox,paper-input,textarea,paper-button,hax-tray-button"
             ) != null
           ) {
             active
-              .querySelector("paper-checkbox,paper-input,textarea,paper-button")
+              .querySelector(
+                "paper-checkbox,paper-input,textarea,paper-button,hax-tray-button"
+              )
               .focus();
           }
           var evt = document.createEvent("UIEvents");
@@ -1613,18 +1708,10 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           properties
         );
         if (this.activePlaceHolder) {
-          this.activeHaxBody.haxReplaceNode(
-            this.activePlaceHolder,
-            node,
-            this.activePlaceHolder.parentNode
-          );
+          this.activeHaxBody.haxReplaceNode(this.activePlaceHolder, node);
           this.activePlaceHolder = null;
         } else {
-          this.activeHaxBody.haxReplaceNode(
-            this.activeNode,
-            node,
-            this.activeNode.parentNode
-          );
+          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
         typeof details.__type !== typeof undefined &&
@@ -1660,25 +1747,27 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties
+            properties,
+            false
           );
           this.activeHaxBody.shadowRoot.querySelector(
             "#textcontextmenu"
           ).highlightOps = false;
-          this.activeHaxBody.__updateLockFocus = node;
-          // wait so that the DOM can have the node to then attach to
-          setTimeout(() => {
-            this.activeHaxBody.breakUpdateLock();
-          }, 50);
         } else {
           this.activeHaxBody.haxInsert(
             details.tag,
             details.content,
-            properties
+            properties,
+            false
           );
         }
       } else {
-        this.activeHaxBody.haxInsert(details.tag, details.content, properties);
+        this.activeHaxBody.haxInsert(
+          details.tag,
+          details.content,
+          properties,
+          false
+        );
       }
       // shift the last used thing to the front of the array
       // that way the list is actually sorted based on usage
@@ -1720,9 +1809,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           false
         );
       }
-      setTimeout(() => {
-        this.activeHaxBody.breakUpdateLock();
-      }, 300);
     }
   }
 
@@ -1774,9 +1860,6 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         this[e.detail.property] = null;
       } else if (typeof e.detail.value === "object") {
         this[e.detail.property] = {};
-      }
-      if (this.globalPreferences && this.globalPreferences.haxDeveloperMode) {
-        console.warn(e.detail.property);
       }
       this[e.detail.property] = e.detail.value;
       this.dispatchEvent(
@@ -2154,11 +2237,6 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
  * This DOES NOT acccept a HAXElement which is similar
  */
 window.HaxStore.nodeToContent = node => {
-  if (
-    window.HaxStore.instance.activeHaxBody.globalPreferences.haxDeveloperMode
-  ) {
-    console.warn(node);
-  }
   // ensure we have access to all the member functions of the custom element
   let prototype = Object.getPrototypeOf(node);
   // support for deep API call
@@ -2394,11 +2472,6 @@ window.HaxStore.nodeToContent = node => {
   else {
     content += "</" + tag + ">" + "\n";
   }
-  if (
-    window.HaxStore.instance.activeHaxBody.globalPreferences.haxDeveloperMode
-  ) {
-    console.warn(content);
-  }
   // spacing niceness for output readability
   content = content.replace(/&nbsp;/gm, " ");
   // target and remove hax specific things from output if they slipped through
@@ -2582,10 +2655,11 @@ window.HaxStore.guessGizmo = (
       // now we can look through them
       // look for a match
       for (var gizmoposition in store.gizmoList) {
-        var gizmo = store.gizmoList[gizmoposition];
-        var props = {};
+        let gizmo = store.gizmoList[gizmoposition];
+        let props = {};
         // reset match per gizmo
-        var match = false;
+        let match = false;
+        // ensure this gizmo can handle things
         if (gizmo.handles) {
           for (var i = 0; i < gizmo.handles.length; i++) {
             // WHAT!??!?!?!?!
@@ -2596,8 +2670,18 @@ window.HaxStore.guessGizmo = (
                   // check the values that came across to see if there's a match
                   // of any kind, we only need one but can then bind to multiple
                   if (typeof values[property] !== typeof undefined) {
-                    match = true;
-                    props[gizmo.handles[i][property]] = values[property];
+                    // but ensure there's either no meta data OR
+                    // the meta data needs to NOT say anythinig about hiding
+                    if (
+                      guess === "inline" ||
+                      !gizmo.meta ||
+                      (gizmo.meta &&
+                        !gizmo.meta.inlineOnly &&
+                        !gizmo.meta.hidden)
+                    ) {
+                      match = true;
+                      props[gizmo.handles[i][property]] = values[property];
+                    }
                   }
                 }
               }

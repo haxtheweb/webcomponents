@@ -104,19 +104,6 @@ class EditableOutline extends LitElement {
       i++;
     }
   }
-  /**
-   * delete active
-   */
-  _delete(e) {
-    let node = this.getSelectionNode();
-    if (node && node.tagName === "LI") {
-      const parent = node.parentNode;
-      node.remove();
-      if (parent.children.length === 0) {
-        parent.remove();
-      }
-    }
-  }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
     this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
@@ -224,9 +211,6 @@ class EditableOutline extends LitElement {
         break;
       case "duplicate":
         this._duplicate();
-        break;
-      case "delete":
-        this._delete();
         break;
     }
   }

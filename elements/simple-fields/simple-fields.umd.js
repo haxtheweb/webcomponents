@@ -11,15 +11,10 @@ import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-fields`
- * @customElement simple-fields
- * `Uses eco-json-form and HAX wiring to display a series of fields`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
+ * Uses eco-json-form and HAX wiring to display a series of fields
  * @polymer
  * @demo ./demo/index.html
+ * @customElement simple-fields
  */
 class SimpleFields extends MutableData(PolymerElement) {
   

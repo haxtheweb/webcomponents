@@ -18,23 +18,38 @@ class HaxTextContext extends winEventsElement(LitElement) {
         :host [hidden] {
           display: none;
         }
+        .selected-buttons {
+          transition: 0.1s all ease-in-out;
+          width: 0;
+        }
+        :host([has-selected-text]) .selected-buttons {
+          width: 100%;
+        }
+        #toolbar {
+          overflow: hidden;
+        }
         paper-item {
           color: white;
           background-color: var(--hax-contextual-action-color);
           -webkit-justify-content: flex-start;
           justify-content: flex-start;
-          padding: 0 8px;
+          font-size: 11px;
+          line-height: 24px;
+          margin: 0;
+          padding: 0 4px;
+          min-height: 24px;
         }
         paper-item:hover {
           cursor: pointer;
           color: black;
         }
         iron-icon {
-          padding: 8px;
+          width: 20px;
+          height: 20px;
+          padding: 4px;
         }
         paper-item strong {
-          padding: 8px;
-          font-size: 12px;
+          padding: 4px;
         }
         hax-context-item-textop,
         hax-context-item {
@@ -49,13 +64,8 @@ class HaxTextContext extends winEventsElement(LitElement) {
         }
         :host(.hax-context-pin-top) hax-toolbar {
           position: fixed;
-          top: 64px;
-          opacity: 0.95;
-        }
-        :host(.hax-context-pin-bottom) hax-toolbar {
-          position: fixed;
-          bottom: 0;
-          opacity: 0.95;
+          top: 40px;
+          flex-direction: column;
         }
       `
     ];
@@ -133,7 +143,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
             ><iron-icon icon="hax:h4"></iron-icon>Subheading
           </paper-item>
           <paper-item value="h5"
-            ><iron-icon icon="hax:h5"></iron-icon>Deeper subheading
+            ><iron-icon icon="hax:h5"></iron-icon>Deep subheading
           </paper-item>
           <paper-item value="blockquote"
             ><iron-icon icon="editor:format-quote"></iron-icon>Blockquote
@@ -184,8 +194,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-bold"
           label="Bold"
+          class="selected-buttons"
           event-name="text-bold"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -193,8 +204,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-italic"
           label="Italic"
+          class="selected-buttons"
           event-name="text-italic"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -202,8 +214,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:insert-link"
           label="Link"
+          class="selected-buttons"
           event-name="text-link"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -211,8 +224,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="mdextra:unlink"
           label="Remove link"
+          class="selected-buttons"
           event-name="text-unlink"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           mini
@@ -220,8 +234,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="editor:format-clear"
           label="Remove format"
+          class="selected-buttons"
           event-name="text-remove-format"
-          ?hidden="${!this.hasSelectedText}"
+          ?disabled="${!this.hasSelectedText}"
         ></hax-context-item-textop>
         <hax-context-item
           mini
@@ -229,6 +244,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
+          class="selected-buttons"
           event-name="insert-inline-gizmo"
           ?hidden="${this.isSafari || !this.hasSelectedText}"
         ></hax-context-item>
@@ -238,6 +254,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           slot="primary"
           icon="hax:add-brick"
           label="Add element to selection"
+          class="selected-buttons"
           event-name="insert-inline-gizmo"
           ?hidden="${!this.isSafari || !this.hasSelectedText}"
         ></hax-context-item-textop>
@@ -297,7 +314,9 @@ class HaxTextContext extends winEventsElement(LitElement) {
        * calculated boolean off of if there is currently text
        */
       hasSelectedText: {
-        type: Boolean
+        type: Boolean,
+        attribute: "has-selected-text",
+        reflect: true
       },
       /**
        * Text hax-store has detected is selected currently.
@@ -416,7 +435,6 @@ class HaxTextContext extends winEventsElement(LitElement) {
           window.HaxStore._tmpSelection &&
           window.HaxStore.instance.editMode
         ) {
-          var localRange = false;
           try {
             if (
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
@@ -424,16 +442,17 @@ class HaxTextContext extends winEventsElement(LitElement) {
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
                 .parentNode.tagName === "HAX-BODY"
             ) {
+              window.HaxStore.instance.activePlaceHolder =
+                window.HaxStore._tmpRange;
               window.HaxStore.write(
                 "activePlaceHolder",
                 window.HaxStore._tmpRange,
                 this
               );
-              localRange = window.HaxStore._tmpRange;
             }
           } catch (err) {}
         }
-        if (localRange || window.HaxStore.instance.activePlaceHolder != null) {
+        if (window.HaxStore.instance.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {

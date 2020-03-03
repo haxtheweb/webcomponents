@@ -14,11 +14,11 @@ import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";
 /**
  * `game-show-quiz`
- * @customElement game-show-quiz
  * `Simple game show with questions and answers`
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - game show - a display board in the style of Jeopardy
+ * @demo demo/index.html
+ * @customElement game-show-quiz
  */
 class GameShowQuiz extends MutableData(PolymerElement) {
   static get tag() {
@@ -854,6 +854,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       ) {
         // open score report in a modal now
         this.shadowRoot.querySelector("#dialog").toggle();
+        this.shadowRoot.querySelector("#scoreboard").title =
+          "Your final score for the game";
         this.scoreBoardToggle({});
         const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,

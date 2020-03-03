@@ -101,7 +101,7 @@
         },
         {
           "name": "_selected",
-          "description": "`_selected` {`number`} - Currently selected step\n\nProperty: _selected"
+          "description": "`_selected` {`number`} - Currently selected step\n\nProperty: _selected\n\nDefault: -1"
         },
         {
           "name": "onselected-values-changed",

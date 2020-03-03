@@ -22,7 +22,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       css`
         :host {
           display: block;
-          padding: 16px;
           font-family: unset;
         }
         :host([hidden]) {

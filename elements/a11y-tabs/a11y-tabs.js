@@ -79,36 +79,15 @@ class A11yTabs extends LitElement {
           --a11y-tabs-vertical-border-radius: var(--a11y-tabs-border-radius);
           --a11y-tabs-content-background: var(--a11y-tabs-background);
           --a11y-tabs-content-padding: 16px;
-          --a11y-tabs-justify-tabs: flex-start;
-          --a11y-tabs-horizontal-justify-tabs: var(
-            --a11y-tabs-justify-tabs,
-            flex-start
-          );
-          --a11y-tabs-vertical-justify-tabs: var(
-            --a11y-tabs-justify-tabs,
-            flex-start
-          );
-          --a11y-tabs-wrap: unset;
-          --a11y-tabs-vertical-wrap: var(--a11y-tabs-wrap, unset);
-          --a11y-tabs-horizontal-background: unset;
-          --a11y-tabs-horizontal-sticky-background: var(--a11y-tabs-background);
-          --a11y-tabs-vertical-background: var(--a11y-tabs-border-color, #ddd);
-          --a11y-tabs-button-padding: 8px;
-          --a11y-tabs-horizontal-button-padding: var(
-            --a11y-tabs-button-padding
-          );
-          --a11y-tabs-vertical-button-padding: var(--a11y-tabs-button-padding);
-          height: var(--a11y-tabs-height, unset);
-          margin: var(--a11y-tabs-margin, 16px 0);
-          overflow: var(--a11y-tabs-overflow, auto);
-          overflow-x: var(--a11y-tabs-overflow-x, var(--a11y-tabs-overflow));
-          overflow-y: var(--a11y-tabs-overflow-y, var(--a11y-tabs-overflow));
-          max-width: 100%;
-        }
-
-        :host([sticky]) {
-          position: relative;
-          overflow-y: visible;
+          --a11y-tabs-button-padding: 0.7em 0.57em;
+          --a11y-tabs-vertical-button-padding: unset;
+          --a11y-tabs-horizontal-border-radius: unset;
+          --a11y-tabs-vertical-border-radius: unset;
+          --a11y-tabs-horizontal-button-padding: 2px 5px;
+          --a11y-tabs-width: auto;
+          height: var(--a11y-tabs-height);
+          overflow: var(--a11y-tabs-overflow);
+          font-size: var(--a11y-tabs-font-size, 12px);
         }
 
         :host([vertical]) {

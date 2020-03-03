@@ -21,10 +21,6 @@ class HaxAppSearch extends winEventsElement(SimpleColors) {
         :host {
           display: block;
         }
-        paper-button.item-wrapper {
-          margin: 0;
-          padding: 0;
-        }
         hexagon-loader {
           display: none;
           justify-content: center;

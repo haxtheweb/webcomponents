@@ -1,5 +1,5 @@
 body, html, :root {
-  --haxcms-system-bg: #37474f;
+  --haxcms-system-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
   --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
@@ -9,11 +9,11 @@ body, html, :root {
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
-  --simple-modal-button-background: #37474f;
+  --simple-modal-button-background: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
 
   /** HAX specific settings **/
-  --hax-color-bg: #37474f;
+  --hax-color-bg: var(--simple-colors-default-theme-blue-grey-7, #37474f);
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
   --hax-color-menu-heading-bg: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
   --hax-color-accent-text: #FFFFFF;
@@ -64,16 +64,17 @@ body, html, :root {
 
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
+
+  /** simple-toast **/
   --simple-toast-z-index: 10000000;
-  --simple-toast-right: 0;
-  --simple-toast-left: 0;
   --simple-toast-color: white;
-  --simple-toast-bg: var(--haxcms-system-bg, black);
-  --simple-toast-margin: 0 0 0 49px;
+  --simple-toast-bg: var(--simple-colors-default-theme-blue-grey-7, #3b97e3);
   --simple-toast-border: 1px solid black;
+  --simple-toast-font-size: 14px;
+  --simple-toast-margin: 16px 16px 16px 60px;
 
   /** hax forms **/
-  --primary-color: var(--haxcms-color, --haxcms-system-bg);
+  --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
   --paper-input-container-focus-color: var(--haxcms-color, --haxcms-system-bg);
   --eco-json-form-add-color: var(--haxcms-color, --haxcms-system-bg);
   --eco-json-form-faded-color: var(--haxcms-color, --haxcms-system-bg);

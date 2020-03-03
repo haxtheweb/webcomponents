@@ -3,88 +3,173 @@
   "tags": [
     {
       "name": "type-writer",
-      "description": "`type-writer`\n`typewritter effect`"
-    },
-    {
-      "name": "type-writer",
-      "description": "`type-writer`\n`typewritter effect`",
-      "attributes": [
+      "path": "./type-writer.es6.js",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "properties": [
         {
           "name": "delay",
           "type": "number",
-          "default": "\"0\""
+          "default": "100"
         },
         {
           "name": "cursorDuration",
           "type": "number",
-          "default": "\"0\""
-        },
-        {
-          "name": "text",
-          "type": "string",
-          "default": "\"\""
+          "default": "0"
         },
         {
           "name": "speed",
           "type": "number",
-          "default": "\"150\""
+          "default": "150"
         },
         {
           "name": "eraseSpeed",
           "type": "number",
-          "default": "\"150\""
+          "default": "80"
         },
         {
           "name": "typing",
           "type": "boolean",
-          "default": "\"false\""
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "type-writer-end"
+        }
+      ]
+    },
+    {
+      "name": "type-writer",
+      "path": "./type-writer.js",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "attributes": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "elementVisible",
+          "type": "boolean"
+        },
+        {
+          "name": "delay",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "cursor-duration",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "default": "150"
+        },
+        {
+          "name": "erase-speed",
+          "type": "number",
+          "default": "80"
+        },
+        {
+          "name": "typing",
+          "type": "boolean",
+          "default": "false"
         }
       ],
       "properties": [
         {
+          "name": "text",
+          "attribute": "text",
+          "type": "string"
+        },
+        {
+          "name": "elementVisible",
+          "attribute": "elementVisible",
+          "type": "boolean"
+        },
+        {
           "name": "delay",
           "attribute": "delay",
           "type": "number",
-          "default": "\"0\""
+          "default": "100"
         },
         {
           "name": "cursorDuration",
-          "attribute": "cursorDuration",
+          "attribute": "cursor-duration",
           "type": "number",
-          "default": "\"0\""
-        },
-        {
-          "name": "text",
-          "attribute": "text",
-          "type": "string",
-          "default": "\"\""
+          "default": "0"
         },
         {
           "name": "speed",
           "attribute": "speed",
           "type": "number",
-          "default": "\"150\""
+          "default": "150"
         },
         {
           "name": "eraseSpeed",
-          "attribute": "eraseSpeed",
+          "attribute": "erase-speed",
           "type": "number",
-          "default": "\"150\""
+          "default": "80"
         },
         {
           "name": "typing",
           "attribute": "typing",
           "type": "boolean",
-          "default": "\"false\""
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "type-writer-end"
         }
       ]
     },
     {
-      "name": "tag"
+      "name": "tag",
+      "path": "./type-writer.umd.js",
+      "events": [
+        {
+          "name": "type-writer-end"
+        }
+      ]
     },
     {
       "name": "type-writer",
-      "description": "`type-writer`\n`typewritter effect`"
+      "path": "./src/type-writer.js",
+      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+      "properties": [
+        {
+          "name": "delay",
+          "type": "number",
+          "default": "100"
+        },
+        {
+          "name": "cursorDuration",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "speed",
+          "type": "number",
+          "default": "150"
+        },
+        {
+          "name": "eraseSpeed",
+          "type": "number",
+          "default": "80"
+        },
+        {
+          "name": "typing",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "events": [
+        {
+          "name": "type-writer-end"
+        }
+      ]
     }
   ]
 }

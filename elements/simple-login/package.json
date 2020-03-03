@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "a simple login form",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
-    "@lrnwebcomponents/simple-tooltip": "^2.4.1",
+    "@lrnwebcomponents/simple-tooltip": "^2.5.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",

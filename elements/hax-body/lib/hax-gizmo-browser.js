@@ -75,6 +75,7 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
         ${this.filtered.map(
           gizmo => html`
             <hax-tray-button
+              voice-command="insert ${gizmo.title}"
               draggable="true"
               @dragstart="${this._dragStart}"
               @dragend="${this._dragEnd}"

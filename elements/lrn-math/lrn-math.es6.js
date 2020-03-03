@@ -211,7 +211,8 @@ class LrnMath extends HTMLElement {
           }
         ],
         meta: {
-          author: "ELMS:LN"
+          author: "ELMS:LN",
+          inlineOnly: true
         }
       },
       settings: {
