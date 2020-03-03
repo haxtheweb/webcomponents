@@ -68,12 +68,18 @@ class SimpleFieldsField extends LitElement {
     super();
     this.data = {};
     this.invalid = false;
+    this.errorMessage = '';
     this.fieldId = '';
   }
 
   updated(changedProperties) {
-    changedProperties.fieldIdEach((oldValue, propName) => {
-      if (propName === "invalid") {
+    changedProperties.forEach((oldValue, propName) => {
+      if(propName === "field") {
+        this.innerHTML = '';
+        if(this.field) this.appendChild(this.field);
+        this.fieldId = this.field.id;
+      }
+      if (["field","invalid"].includes(propName)) {
         if(this.data.invalidProperty) this.field[this.data.invalidProperty] = this.invalid;
       } else {
         this.field.setAttribute('aria-invalid',this.invalid);
@@ -93,43 +99,39 @@ class SimpleFieldsField extends LitElement {
     return `${this.fieldId}-error`;
   }
   get descriptionSibling(){
-    console.log('descriptionSibling',this.description,this.data.descriptionProperty,this.data.descriptionSlot);
     let type = this._getSibling(
       this.description,
       this.data.descriptionProperty,
       this.data.descriptionSlot
     );
     if(type === 'slot') this._getDescriptionSlot(this.data.descriptionSlot);
-    return type === 'prop' ? this._getDescriptionSlot() : ``;
+    return type === '' ? this._getDescriptionSlot() : ``;
   }
   get errorId(){
     return `${this.fieldId}-error`;
   }
   get errorSibling(){
-    console.log('errorSibling',this.errorMessage,this.data.errorProperty,this.data.errorSlot);
     let type = this._getSibling(
-      this.errorMessage || false,
-      this.data.errorProperty || false,
-      this.data.errorSlot || false
+      this.errorMessage,
+      this.data.errorProperty,
+      this.data.errorSlot
     );
     if(type === 'slot') this._getErrorSlot(this.data.errorSlot);
-    return type === 'prop' ? this._getErrorSlot() : ``;
+    return type === '' ? this._getErrorSlot() : ``;
   }
   get labelId(){
     return `${this.fieldId}-label`;
   }
   get labelSibling(){
-    console.log('labelSibling',this.label,this.data.labelProperty,this.data.labelSlot);
     let type = this._getSibling(
       this.label,
       this.data.labelProperty,
       this.data.labelSlot
     );
     if(type === 'slot') this._getLabelSlot(this.data.labelSlot);
-    return type === 'prop' ? this._getLabelSlot() : ``;
+    return type === '' ? this._getLabelSlot() : ``;
   }
   _getDescriptionSlot(slot = ""){
-    console.log('_getDescriptionSlot',this,this.description );
     return this.description ? html`
       <div 
         id="${this.descriptionId}"
@@ -140,7 +142,6 @@ class SimpleFieldsField extends LitElement {
     `: ``;
   }
   _getErrorSlot(slot = ""){
-    console.log('_getErrorSlot',this,this.errorMessage );
     return this.errorMessage ? html`
       <div 
         id="${this.errorId}" 
@@ -151,7 +152,6 @@ class SimpleFieldsField extends LitElement {
     `: ``;
   }
   _getLabelSlot(slot = ""){
-    console.log('_getLabelSlot',this,this.label);
     return this.label ? html`
       <label 
         id="${this.labelId}" 
@@ -162,21 +162,14 @@ class SimpleFieldsField extends LitElement {
     `: ``;
   }
   _getSibling(value,prop,slot,callback = () => {}){
-    console.log('_getSibling',this,this.field,this.data,value,prop,slot, typeof callback);
     if(prop){
-      console.log('prop',prop,this.field);
       this.field[prop] = value;
       return 'prop';
     } else if(slot){
-      console.log('slot',slot,this.field);
       if(this.field.querySelector(`[slot="${slot}"]`)) this.field.querySelector(`[slot="${slot}"]`).remove();
       return 'slot';
-      //this.field.appendChild(callback(slot));
-      return ``;
     } else {
-      console.log('callback',this.field,this.data,callback);
       return '';
-      return callback();
     }
 
   }

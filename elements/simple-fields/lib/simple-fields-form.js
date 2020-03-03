@@ -1,12 +1,12 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
+import { SimpleFieldsSchema } from "@lrnwebcomponents/simple-fields/lib/simple-fields-schema.js";
 /**
  * `simple-fields-form`
  * `binding and submission capabilities on top of simple-fields`
  * @demo ./demo/form.html
  * @customElement simple-fields-form
  */
-class SimpleFieldsForm extends LitElement {
+class SimpleFieldsForm extends SimpleFieldsSchema {
   static get styles() {
     return [
       css`
@@ -22,7 +22,7 @@ class SimpleFieldsForm extends LitElement {
   // render function
   render() {
     return html`
-      <form><simple-fields id="fields" autofocus></simple-fields></form>
+      <form><simple-fields-schema id="fields" autofocus></simple-fields-schema></form>
     `;
   }
   /**
@@ -44,13 +44,13 @@ class SimpleFieldsForm extends LitElement {
         }
       }
       // we have response data from an end point this should create the form
-      if (propName === "loadResponse") {
-        this.shadowRoot.querySelector(
-          "#fields"
-        ).fields = this.loadResponse.data.fields;
+      if (propName === "loadResponse" && this.loadResponse.data) {
         this.shadowRoot.querySelector(
           "#fields"
         ).value = this.loadResponse.data.value;
+        this.shadowRoot.querySelector(
+          "#fields"
+        ).schema = this.loadResponse.data.schema;
         /**
          * fires event for things to react to about the response
          * @event response
@@ -60,7 +60,7 @@ class SimpleFieldsForm extends LitElement {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: this.loadResponse.data
+            detail: this.loadResponse
           })
         );
       }
@@ -142,6 +142,7 @@ class SimpleFieldsForm extends LitElement {
    */
   static get properties() {
     return {
+      ...super.properties,
       autoload: {
         type: Boolean,
         reflect: true
