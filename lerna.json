@@ -1,8 +1,14 @@
 {
   "lerna": "3.4.0",
-  "packages": ["elements/*", "themes/*"],
-  "version": "2.5.0",
+  "packages": [
+    "elements/*",
+    "themes/*"
+  ],
+  "version": "2.5.1",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "workspaces": ["elements/*", "themes/*"]
+  "workspaces": [
+    "elements/*",
+    "themes/*"
+  ]
 }
