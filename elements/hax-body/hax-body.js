@@ -1400,13 +1400,13 @@ class HaxBody extends SimpleColors {
         break;
     }
     setTimeout(() => {
-      if (typeof container.scrollIntoViewIfNeeded === "function") {
-        container.scrollIntoViewIfNeeded(true);
+      if (typeof node.scrollIntoViewIfNeeded === "function") {
+        node.scrollIntoViewIfNeeded(true);
       } else {
-        container.scrollIntoView({ behavior: "smooth", inline: "center" });
+        node.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
       this.positionContextMenus(node, node);
-    }, 0);
+    }, 10);
     return true;
   }
   /**

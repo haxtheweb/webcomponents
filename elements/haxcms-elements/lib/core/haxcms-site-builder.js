@@ -198,7 +198,6 @@ class HAXCMSSiteBuilder extends LitElement {
        */
       outlineLocation: {
         type: String,
-        reflect: true,
         attribute: "outline-location"
       },
       /**
