@@ -117,7 +117,6 @@
               properties: {
                 settings: {
                   title: "Settings",
-                  description: "Configure the following.",
                   type: "object",
                   format: "tabs",
                   properties: {
@@ -128,7 +127,8 @@
                       properties: {
                         branch: {
                           title: "Branch",
-                          type: "string"
+                          type: "string",
+                          description: "This is a description."
                         },
                         name: {
                           title: "Name",
@@ -238,10 +238,19 @@
             };
             schema.schema = data;
           };
+          let schemaError = {
+            "settings.basic-input.name": "That's not your real name.",
+            "settings.basic-input.email": "Cannot be blank.",
+            "arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
+          };
+          setErrors = () => {
+            document.getElementById('schema').error = schemaError;
+          }
         </script>
         <template>
           <form id="form"><simple-fields-schema id="schema"></simple-fields-schema></form>
           <button onclick="console.log(document.getElementById('form'),document.getElementById('form').value)">Try me</button>
+          <button onclick="setErrors()">Make errors</button>
         </template>
       </demo-snippet>
     </div>
