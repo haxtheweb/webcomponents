@@ -498,7 +498,8 @@ class A11yTabs extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id") this._idChanged(this.id, oldValue);
-      if (propName === "activeTab") this._activeTabChanged(this.activeTab,oldValue);
+      if (propName === "activeTab")
+        this._activeTabChanged(this.activeTab, oldValue);
       if (propName === "iconBreakpoint") this._breakpointChanged();
       if (propName === "layoutBreakpoint") this._breakpointChanged();
       if (propName === "responsiveSize") this._setVertical();
@@ -510,11 +511,8 @@ class A11yTabs extends LitElement {
    */
   selectTab(id) {
     let tabs = this.querySelectorAll("a11y-tab"),
-      filtered = Object.keys(tabs || []).filter(tab=> tabs[tab].id === id),
-      selected =
-        filtered[0] && tabs[filtered[0]]
-          ? tabs[filtered[0]]
-          : tabs[0];
+      filtered = Object.keys(tabs || []).filter(tab => tabs[tab].id === id),
+      selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : tabs[0];
     if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
@@ -535,9 +533,8 @@ class A11yTabs extends LitElement {
    * Observer activeTab for changes
    * @param {string} newValue the new active tab's id
    */
-  _activeTabChanged(newValue,oldValue) {
-    if(newValue !== oldValue)
-      this.selectTab(newValue);
+  _activeTabChanged(newValue, oldValue) {
+    if (newValue !== oldValue) this.selectTab(newValue);
   }
   /**
    * handles any breakpoint changes
