@@ -293,7 +293,7 @@ class WavePlayer extends SchemaBehaviors(LitElement) {
       import("@polymer/iron-icons/av-icons.js");
     }, 0);
     const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
+    const location = `${basePath}lib/wavesurferjs/dist/wavesurfer.js`;
     window.addEventListener(
       "es-bridge-wavesurfer-loaded",
       this._wavesurferLoaded.bind(this)

@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/gitgraph.js/src/gitgraph.js";
+import "./lib/gitgraphjs/src/gitgraph.js";
 /**
  * `lrn-gitgraph`
  * @customElement lrn-gitgraph
