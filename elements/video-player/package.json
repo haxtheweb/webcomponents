@@ -47,7 +47,9 @@
     "@lrnwebcomponents/media-behaviors": "^2.5.0",
     "@lrnwebcomponents/schema-behaviors": "^2.5.0",
     "@lrnwebcomponents/simple-colors": "^2.5.0",
-    "lit-element": "2.2.1"
+    "lit-element": "2.2.1",
+    "@lrnwebcomponents/utils": "^2.5.0",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^2.5.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
