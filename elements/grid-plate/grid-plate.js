@@ -1373,7 +1373,11 @@ class GridPlate extends LitElement {
       }
       // special case for dropping on an empty column or between items
       // which could involve a miss on the column
-      else if (target && local.tagName === "DIV" && local.classList.contains("column")) {
+      else if (
+        target &&
+        local.tagName === "DIV" &&
+        local.classList.contains("column")
+      ) {
         var col = local.id.replace("col", "");
         target.setAttribute("slot", "col-" + col);
         this.appendChild(target);
