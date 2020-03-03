@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
- * @customElement simple-popover
  * a popover alertdialog that is positioned next to a target element
  *
 ### Styling
@@ -23,145 +22,145 @@ Custom property | Description | Default
 `--simple-popover-border-color` | popover border-color | #bbb
 `--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
  *
-
+ * @customElement simple-popover
  * @demo ./demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      ...super.styles,
       css`
-        :host([hidden]) {
-          display: none;
-        }
-        :host > div {
-          display: flex;
-          flex-direction: column-reverse;
-          justify-content: stretch;
-          z-index: 1;
-        }
-        :host([position="left"]) > div {
-          justify-content: flex-start;
-          flex-direction: row;
-        }
-        :host([position="right"]) > div {
-          justify-content: flex-end;
-          flex-direction: row-reverse;
-        }
-        :host([position="top"]) > div {
-          flex-direction: column;
-        }
-        :host > div > * {
-          width: 100%;
-        }
-        :host([position="left"]) > div > *,
-        :host([position="right"]) > div > * {
-          width: unset;
-        }
-        #content {
-          margin: 0;
-          padding: var(--simple-popover-padding, 10px);
-          color: var(--simple-popover-color, #222);
-          background-color: var(--simple-popover-background-color, white);
-          border: 1px solid var(--simple-popover-border-color, #bbb);
-          min-height: 20px;
-          border-radius: var(--simple-popover-border-radius, 3px);
-          box-shadow: var(
-            --simple-popover-box-shadow,
-            rgba(60, 64, 67, 0.3) 0px 4px 8px 3px
-          );
-        }
-        #pointer-outer {
-          margin: -1px;
-        }
-        #pointer {
-          width: 20px;
-          height: 20px;
-          position: relative;
-          overflow: hidden;
-          flex: 0 0 20px;
-        }
-        #pointer:after {
-          content: "";
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background-color: var(--simple-popover-background-color, white);
-          border: 1px solid var(--simple-popover-border-color, #bbb);
-          transform: rotate(45deg);
-          top: 15px;
-          left: 5px;
-        }
-        :host([position="top"]) #pointer:after {
-          top: -5px;
-          left: 5px;
-        }
-        :host([position="right"]) #pointer:after {
-          top: 5px;
-          left: 15px;
-        }
-        :host([position="left"]) #pointer:after {
-          top: 5px;
-          left: -5px;
-        }
+:host([hidden]) {
+  display: none;
+}
+:host > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: stretch;
+  z-index: 1;
+}
+:host([position="left"]) > div {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+:host([position="right"]) > div {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+:host([position="top"]) > div {
+  flex-direction: column;
+}
+:host > div > * {
+  width: 100%;
+}
+:host([position="left"]) > div > *, 
+:host([position="right"]) > div > * {
+  width: unset;
+}
+#content {
+  margin: 0;
+  padding: var(--simple-popover-padding, 10px);
+  color: var(--simple-popover-color,#222);
+  background-color: var(--simple-popover-background-color, white);
+  border: 1px solid var(--simple-popover-border-color, #bbb);
+  min-height: 20px;
+  border-radius: var(--simple-popover-border-radius, 3px);
+  box-shadow: var(--simple-popover-box-shadow, rgba(60, 64, 67, 0.3) 0px 4px 8px 3px);
+}
+#pointer-outer {
+  margin: -1px;
+}
+#pointer {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 20px;
+}
+#pointer:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--simple-popover-background-color, white);
+  border: 1px solid var(--simple-popover-border-color, #bbb);
+  transform: rotate(45deg); 
+  top: 15px;
+  left: 5px;
+}
+:host([position="top"]) #pointer:after {
+  top: -5px;
+  left: 5px;
+} 
+:host([position="right"]) #pointer:after {
+  top: 5px;
+  left: 15px;
+} 
+:host([position="left"]) #pointer:after {
+  top: 5px;
+  left: -5px;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div>
-        <div id="content" role="alertdialog">
-          <slot></slot>
-        </div>
-        <div id="pointer-outer">
-          <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
-        </div>
-      </div>
-    `;
+
+<div>
+  <div id="content" role="alertdialog">
+    <slot></slot>
+  </div>
+  <div id="pointer-outer">
+    <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
+  </div>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Simple popover",
-        description:
-          "A popover alertdialog that is positioned next to a target element",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Popover"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Simple popover",
+    "description": "A popover alertdialog that is positioned next to a target element",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Popover"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
-    return { ...super.properties };
+    static get properties() {
+    return {...super.properties}
+;
   }
   constructor() {
     super();
