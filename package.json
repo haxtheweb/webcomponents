@@ -37,6 +37,7 @@
         "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
     },
     "devDependencies": {
+        "gulp-minify-html-literals": "1.1.7",
         "@emotion/core": "0.13.1",
         "@emotion/styled": "0.10.6",
         "@open-wc/storybook": "0.2.8",
