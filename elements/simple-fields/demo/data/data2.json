@@ -5,7 +5,7 @@
       "title": "Store",
       "type": "object",
       "format": "tabs",
-      "required": [ "name", "email" ],
+      "required": ["name", "email"],
       "properties": {
         "settings": {
           "title": "Settings",
@@ -49,14 +49,12 @@
                 "postalCode": {
                   "title": "Postal/Zip Code",
                   "type": "string",
-                  "pattern":
-                    "[a-zA-Z][0-9][a-zA-Z]\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?"
+                  "pattern": "[a-zA-Z][0-9][a-zA-Z]\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?"
                 },
                 "email": {
                   "title": "Email",
                   "type": "string",
-                  "pattern":
-                    "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
+                  "pattern": "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
                 },
                 "website": {
                   "title": "Website",
@@ -76,54 +74,54 @@
               }
             },
             "arrays": {
-            "title": "Basic arrays page",
-            "description": "Demonstrates arrays",
-            "type": "object",
-            "properties": {
-              "phoneNumbers": {
-                "title": "Phone numbers",
-                "description": "List phone numbers and type of number.",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "previewBy": ["phoneNumber"],
-                  "properties": {
-                    "type": {
-                      "title": "Type",
-                      "type": "string"
-                    },
-                    "phoneNumber": {
-                      "title": "Phone Number",
-                      "type": "string"
+              "title": "Basic arrays page",
+              "description": "Demonstrates arrays",
+              "type": "object",
+              "properties": {
+                "phoneNumbers": {
+                  "title": "Phone numbers",
+                  "description": "List phone numbers and type of number.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "previewBy": ["phoneNumber"],
+                    "properties": {
+                      "type": {
+                        "title": "Type",
+                        "type": "string"
+                      },
+                      "phoneNumber": {
+                        "title": "Phone Number",
+                        "type": "string"
+                      }
                     }
                   }
-                }
-              },
-              "positions": {
-                "type": "array",
-                "title": "Positions",
-                "description": "List positions and salary.",
-                "items": {
-                  "type": "object",
+                },
+                "positions": {
+                  "type": "array",
                   "title": "Positions",
-                  "previewBy": ["title"],
-                  "properties": {
-                    "title": {
-                      "title": "Title",
-                      "type": "string"
-                    },
-                    "salary": {
-                      "title": "Salary",
-                      "type": "number",
-                      "multipleOf": 1000,
-                      "minimum": 20000,
-                      "maximum": 50000
+                  "description": "List positions and salary.",
+                  "items": {
+                    "type": "object",
+                    "title": "Positions",
+                    "previewBy": ["title"],
+                    "properties": {
+                      "title": {
+                        "title": "Title",
+                        "type": "string"
+                      },
+                      "salary": {
+                        "title": "Salary",
+                        "type": "number",
+                        "multipleOf": 1000,
+                        "minimum": 20000,
+                        "maximum": 50000
+                      }
                     }
                   }
                 }
               }
             }
-          }
           }
         }
       }
@@ -131,7 +129,7 @@
     "value": {
       "settings": {
         "basic-input": {
-          "name":"NikkiMK"
+          "name": "NikkiMK"
         },
         "arrays": {
           "phoneNumbers": [

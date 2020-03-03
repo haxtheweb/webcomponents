@@ -22,7 +22,9 @@ class SimpleFieldsForm extends SimpleFieldsSchema {
   // render function
   render() {
     return html`
-      <form><simple-fields-schema id="fields" autofocus></simple-fields-schema></form>
+      <form>
+        <simple-fields-schema id="fields" autofocus></simple-fields-schema>
+      </form>
     `;
   }
   /**

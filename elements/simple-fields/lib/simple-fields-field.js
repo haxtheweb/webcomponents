@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
- *`simple-fields-field` 
+ *`simple-fields-field`
  * provides label, description, error massage, and aria-invalid functionality if needed
- * 
+ *
  * @group simple-fields
  * @demo demo/index.html
  * @customElement simple-fields-field
@@ -21,7 +21,7 @@ class SimpleFieldsField extends LitElement {
         :host([invalid]) .error-message {
           color: #990000;
         }
-        :host([invalid]) label:after{
+        :host([invalid]) label:after {
           content: "*";
         }
         :host(:not([invalid])) .error-message {
@@ -34,8 +34,7 @@ class SimpleFieldsField extends LitElement {
     return html`
       ${this.labelSibling}
       <slot class="${this.describedBy}"></slot>
-      ${this.errorSibling}
-      ${this.descriptionSibling}
+      ${this.errorSibling} ${this.descriptionSibling}
     `;
   }
   static get properties() {
@@ -64,114 +63,114 @@ class SimpleFieldsField extends LitElement {
       }
     };
   }
-  constructor(){
+  constructor() {
     super();
     this.data = {};
     this.invalid = false;
-    this.errorMessage = '';
-    this.fieldId = '';
+    this.errorMessage = "";
+    this.fieldId = "";
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "field") {
-        this.innerHTML = '';
-        if(this.field) this.appendChild(this.field);
+      if (propName === "field") {
+        this.innerHTML = "";
+        if (this.field) this.appendChild(this.field);
         this.fieldId = this.field.id;
       }
-      if (["field","invalid"].includes(propName)) {
-        if(this.data.invalidProperty) this.field[this.data.invalidProperty] = this.invalid;
+      if (["field", "invalid"].includes(propName)) {
+        if (this.data.invalidProperty)
+          this.field[this.data.invalidProperty] = this.invalid;
       } else {
-        this.field.setAttribute('aria-invalid',this.invalid);
+        this.field.setAttribute("aria-invalid", this.invalid);
       }
     });
   }
 
-  get describedBy(){
+  get describedBy() {
     let describedBy = [];
     //if(this.label && this.fieldId && this.data.labelSlot) describedBy.push(this.labelId);
-    if(this.description && this.fieldId && this.data.descriptionSlot) describedBy.push(this.descriptionId);
-    if(this.error && this.fieldId && this.data.errorSlot) describedBy.push(this.errorId);
-    this.field.setAttribute('aria-describedBy',describedBy.join(' '));
-    return describedBy.join(' ');
+    if (this.description && this.fieldId && this.data.descriptionSlot)
+      describedBy.push(this.descriptionId);
+    if (this.error && this.fieldId && this.data.errorSlot)
+      describedBy.push(this.errorId);
+    this.field.setAttribute("aria-describedBy", describedBy.join(" "));
+    return describedBy.join(" ");
   }
-  get descriptionId(){
+  get descriptionId() {
     return `${this.fieldId}-error`;
   }
-  get descriptionSibling(){
+  get descriptionSibling() {
     let type = this._getSibling(
       this.description,
       this.data.descriptionProperty,
       this.data.descriptionSlot
     );
-    if(type === 'slot') this._getDescriptionSlot(this.data.descriptionSlot);
-    return type === '' ? this._getDescriptionSlot() : ``;
+    if (type === "slot") this._getDescriptionSlot(this.data.descriptionSlot);
+    return type === "" ? this._getDescriptionSlot() : ``;
   }
-  get errorId(){
+  get errorId() {
     return `${this.fieldId}-error`;
   }
-  get errorSibling(){
+  get errorSibling() {
     let type = this._getSibling(
       this.errorMessage,
       this.data.errorProperty,
       this.data.errorSlot
     );
-    if(type === 'slot') this._getErrorSlot(this.data.errorSlot);
-    return type === '' ? this._getErrorSlot() : ``;
+    if (type === "slot") this._getErrorSlot(this.data.errorSlot);
+    return type === "" ? this._getErrorSlot() : ``;
   }
-  get labelId(){
+  get labelId() {
     return `${this.fieldId}-label`;
   }
-  get labelSibling(){
+  get labelSibling() {
     let type = this._getSibling(
       this.label,
       this.data.labelProperty,
       this.data.labelSlot
     );
-    if(type === 'slot') this._getLabelSlot(this.data.labelSlot);
-    return type === '' ? this._getLabelSlot() : ``;
+    if (type === "slot") this._getLabelSlot(this.data.labelSlot);
+    return type === "" ? this._getLabelSlot() : ``;
   }
-  _getDescriptionSlot(slot = ""){
-    return this.description ? html`
-      <div 
-        id="${this.descriptionId}"
-        slot="${slot}" 
-        class="description">
-        ${this.description}
-      </div>
-    `: ``;
+  _getDescriptionSlot(slot = "") {
+    return this.description
+      ? html`
+          <div id="${this.descriptionId}" slot="${slot}" class="description">
+            ${this.description}
+          </div>
+        `
+      : ``;
   }
-  _getErrorSlot(slot = ""){
-    return this.errorMessage ? html`
-      <div 
-        id="${this.errorId}" 
-        slot="${slot}" 
-        class="error-message">
-        ${this.errorMessage}
-      </div>
-    `: ``;
+  _getErrorSlot(slot = "") {
+    return this.errorMessage
+      ? html`
+          <div id="${this.errorId}" slot="${slot}" class="error-message">
+            ${this.errorMessage}
+          </div>
+        `
+      : ``;
   }
-  _getLabelSlot(slot = ""){
-    return this.label ? html`
-      <label 
-        id="${this.labelId}" 
-        for="${this.fieldId}" 
-        slot="${slot}">
-        ${this.label}
-      </label>
-    `: ``;
+  _getLabelSlot(slot = "") {
+    return this.label
+      ? html`
+          <label id="${this.labelId}" for="${this.fieldId}" slot="${slot}">
+            ${this.label}
+          </label>
+        `
+      : ``;
   }
-  _getSibling(value,prop,slot,callback = () => {}){
-    if(prop){
+  _getSibling(value, prop, slot, callback = () => {}) {
+    if (prop) {
       this.field[prop] = value;
-      return 'prop';
-    } else if(slot){
-      if(this.field.querySelector(`[slot="${slot}"]`)) this.field.querySelector(`[slot="${slot}"]`).remove();
-      return 'slot';
+      return "prop";
+    } else if (slot) {
+      if (this.field.querySelector(`[slot="${slot}"]`))
+        this.field.querySelector(`[slot="${slot}"]`).remove();
+      return "slot";
     } else {
-      return '';
+      return "";
     }
-
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);

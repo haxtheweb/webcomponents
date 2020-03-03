@@ -382,19 +382,19 @@ class SimpleFieldsSchema extends LitElement {
     return {
       ...super.properties,
       disableAutofocus: {
-        type: Boolean,
+        type: Boolean
       },
-      /* 
-       * Error messages by field name, 
+      /*
+       * Error messages by field name,
        * eg. `{ contactinfo.email: "A valid email is required." }`
-      */
+       */
       error: {
         type: Object
       },
       label: {
         type: String
       },
-      /* 
+      /*
        * Language of the fields.
        */
       language: {
@@ -405,7 +405,7 @@ class SimpleFieldsSchema extends LitElement {
       resources: {
         type: Object
       },
-      /* 
+      /*
        * Fields schema.
        * _See [Fields Schema Format](fields-schema-format) above._
        */
@@ -421,7 +421,7 @@ class SimpleFieldsSchema extends LitElement {
       },
       value: {
         type: Object
-      }, 
+      },
       __fields: {
         type: Object
       }
@@ -435,7 +435,7 @@ class SimpleFieldsSchema extends LitElement {
       if (propName === "error") this._errorChanged();
     });
   }
-  get fields(){
+  get fields() {
     return this.__fields;
   }
 
@@ -454,15 +454,16 @@ class SimpleFieldsSchema extends LitElement {
           ? child
           : this._searchConversion(schemaProp, this.schemaConverstion);
       if (data && data.element) {
-        let id = `${prefix}${key}`, 
+        let id = `${prefix}${key}`,
           element = document.createElement(data.element),
-          wrapper = schemaProp.properties 
-            || schemaProp.items 
-            ? element 
-            : document.createElement('simple-fields-field'),
+          wrapper =
+            schemaProp.properties || schemaProp.items
+              ? element
+              : document.createElement("simple-fields-field"),
           value = this._getValue(`${prefix}${key}`),
-          valueProperty = data.valueProperty || schemaProp.valueProperty || "value";
-        
+          valueProperty =
+            data.valueProperty || schemaProp.valueProperty || "value";
+
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -470,14 +471,12 @@ class SimpleFieldsSchema extends LitElement {
         if (required && required.includes(key))
           element.setAttribute("required", true);
 
-        wrapper.label = schemaProp.label ||
-          schemaProp.title ||
-          schemaProp.description ||
-          key;
-        wrapper.description = schemaProp.description 
-          && (schemaProp.label || schemaProp.title)
-          ? schemaProp.description
-          : undefined;
+        wrapper.label =
+          schemaProp.label || schemaProp.title || schemaProp.description || key;
+        wrapper.description =
+          schemaProp.description && (schemaProp.label || schemaProp.title)
+            ? schemaProp.description
+            : undefined;
 
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
@@ -509,7 +508,7 @@ class SimpleFieldsSchema extends LitElement {
 
         //handles arrays
         if (schemaProp.items) {
-          this._addArrayItems(value,data.child,schemaProp,element);
+          this._addArrayItems(value, data.child, schemaProp, element);
         }
         //handles objects
         else if (schemaProp.properties) {
@@ -522,7 +521,7 @@ class SimpleFieldsSchema extends LitElement {
         } else {
           wrapper.data = data;
           wrapper.field = element;
-          if (value){
+          if (value) {
             element.setAttribute(valueProperty, value);
 
             element.addEventListener(`${valueProperty}-changed`, e =>
@@ -537,16 +536,11 @@ class SimpleFieldsSchema extends LitElement {
     });
   }
 
-  _addArrayItems(value,child,schemaProp,element){
+  _addArrayItems(value, child, schemaProp, element) {
     schemaProp.counter = value ? value.length - 1 : 0;
     if (value) {
       value.forEach((item, i) => {
-        this._buildArrayItemFromSubschema(
-          i,
-          schemaProp,
-          element,
-          child
-        );
+        this._buildArrayItemFromSubschema(i, schemaProp, element, child);
       });
     }
     element.addEventListener("add", e => {
@@ -674,8 +668,9 @@ class SimpleFieldsSchema extends LitElement {
    */
   _errorChanged() {
     this.__fields.forEach(field => {
-      let id = field.fieldId, err = id && this.error && this.error[id], 
-      errMsg = err ? this.error[id] : '';
+      let id = field.fieldId,
+        err = id && this.error && this.error[id],
+        errMsg = err ? this.error[id] : "";
       field.invalid = err ? true : false;
       field.errorMessage = errMsg;
     });
@@ -696,12 +691,11 @@ class SimpleFieldsSchema extends LitElement {
     this._clearForm();
     if (this.schema) {
       this.buildHtmlFromJsonSchema();
-      let firstField = this.__fields 
-        && this.__fields[0] 
-        && this.__fields[0].field 
-        ? this.__fields[0].field 
-        : false;
-      if(firstField) firstField.autofocus = !this.disableAutofocus;
+      let firstField =
+        this.__fields && this.__fields[0] && this.__fields[0].field
+          ? this.__fields[0].field
+          : false;
+      if (firstField) firstField.autofocus = !this.disableAutofocus;
     }
   }
 
