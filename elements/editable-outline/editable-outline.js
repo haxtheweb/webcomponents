@@ -13,226 +13,176 @@ import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
  * @customElement editable-outline
  */
 class EditableOutline extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-          font-family: "Noto Serif", serif;
-        }
+:host {
+  display: block;
+  font-family: 'Noto Serif', serif;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        .button-wrapper {
-          line-height: 36px;
-          position: -webkit-sticky;
-          position: sticky;
-          top: 0px;
-          background-color: white;
-          display: block;
-          justify-content: space-evenly;
-        }
-        @media (max-width: 1000px) {
-          button span {
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            left: -9999px;
-          }
-        }
-        button {
-          height: 32px;
-          font-size: 10px;
-          margin: 0;
-          padding: 0 8px;
-        }
+.button-wrapper {
+  line-height: 36px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  display: block;
+  justify-content: space-evenly;
+}
+@media (max-width: 1000px) {
+  button span {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+  }
+}
+button {
+  height: 32px;
+  font-size: 10px;
+  margin: 0;
+  padding: 0 8px;
+}
 
-        button span {
-          padding-left: 4px;
-          pointer-events: none;
-        }
+button span {
+  padding-left: 4px;
+  pointer-events: none;
+}
 
-        #outline {
-          margin: 0;
-        }
-        ul {
-          font-size: 16px;
-          line-height: 32px;
-          padding-left: 32px;
-          visibility: visible;
-          opacity: 1;
-          overflow: hidden;
-          height: auto;
-          transition: 0.2s ease-in-out all;
-        }
-        li {
-          font-size: 16px;
-          line-height: 32px;
-          padding: 4px;
-          transition: 0.2s linear all;
-        }
-        ul:hover {
-          outline: 1px solid #eeeeee;
-        }
-        li.collapsed-title {
-          background-color: #dddddd;
-        }
-        li.collapsed-title:after {
-          content: "    ( Double-click to expand )";
-        }
-        li:after {
-          transition: 0.4s ease-in-out all;
-          opacity: 0;
-          font-size: 11px;
-          visibility: hidden;
-        }
-        li.collapsed-title:hover:after {
-          font-style: italic;
-          opacity: 1;
-          visibility: visible;
-        }
-        ul.collapsed-content {
-          visibility: hidden;
-          opacity: 0;
-          height: 0;
-        }
-        li:focus,
-        li:active,
-        li:hover {
-          background-color: #eeeeee;
-          outline: 1px solid #cccccc;
-        }
+#outline {
+  margin: 0;
+}
+ul {
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 32px;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+  height: auto;
+  transition: .2s ease-in-out all;
+}
+li {
+  font-size: 16px;
+  line-height: 32px;
+  padding: 4px;
+  transition: .2s linear all;
+}
+ul:hover {
+  outline: 1px solid #EEEEEE;
+}
+li.collapsed-title {
+  background-color: #dddddd;
+}
+li.collapsed-title:after {
+  content:"    ( Double-click to expand )";
+}
+li:after {
+  transition: .4s ease-in-out all;
+  opacity: 0;
+  font-size: 11px;
+  visibility: hidden;
+}
+li.collapsed-title:hover:after {
+  font-style: italic;
+  opacity: 1;
+  visibility: visible;
+}
+ul.collapsed-content {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+li:focus,
+li:active,
+li:hover {
+  background-color: #EEEEEE;
+  outline: 1px solid #CCCCCC;
+}
 
-        iron-icon {
-          pointer-events: none;
-        }
+iron-icon {
+  pointer-events: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <iron-a11y-keys
-        keys="enter"
-        @keys-pressed="${this._enterPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="up"
-        @keys-pressed="${this._upPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <iron-a11y-keys
-        keys="down"
-        @keys-pressed="${this._downPressed}"
-        stop-keyboard-event-propagation
-      ></iron-a11y-keys>
-      <div class="button-wrapper">
-        <button @click="${this.buttonEvents}" id="add" title="Add a new node">
-          <iron-icon icon="icons:add"></iron-icon><span>Add</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="collapse"
-          title="Toggle active node collapsed status"
-        >
-          <iron-icon icon="icons:swap-vert"></iron-icon
-          ><span>Toggle active</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="collapseall"
-          title="Collapse all nodes"
-        >
-          <iron-icon icon="icons:swap-vert"></iron-icon
-          ><span>Collapse all</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="expandall"
-          title="Expand all nodes"
-        >
-          <iron-icon icon="icons:swap-vert"></iron-icon><span>Expand all</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="down"
-          title="Move active node down"
-        >
-          <iron-icon icon="icons:arrow-downward"></iron-icon
-          ><span>Move down</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="up"
-          title="Move active node up"
-        >
-          <iron-icon icon="icons:arrow-upward"></iron-icon><span>Move up</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="outdent"
-          title="Outdent active node"
-        >
-          <iron-icon icon="editor:format-indent-decrease"></iron-icon
-          ><span>Outdent</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="indent"
-          title="Indent active node"
-        >
-          <iron-icon icon="editor:format-indent-increase"></iron-icon
-          ><span>Indent</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="duplicate"
-          title="Duplicate active node tree"
-        >
-          <iron-icon icon="icons:content-copy"></iron-icon
-          ><span>Duplicate</span>
-        </button>
-        <button
-          @click="${this.buttonEvents}"
-          id="delete"
-          title="Delete active node"
-        >
-          <iron-icon icon="icons:delete"></iron-icon><span>Delete</span>
-        </button>
-      </div>
-      <ul id="outline"></ul>
-    `;
+
+<iron-a11y-keys keys="enter" @keys-pressed="${this._enterPressed}"
+  stop-keyboard-event-propagation></iron-a11y-keys>
+<iron-a11y-keys keys="up" @keys-pressed="${this._upPressed}"
+  stop-keyboard-event-propagation></iron-a11y-keys>
+<iron-a11y-keys keys="down" @keys-pressed="${this._downPressed}"
+  stop-keyboard-event-propagation></iron-a11y-keys>
+<div class="button-wrapper">
+<button @click="${this.buttonEvents}" id="add" title="Add a new node">
+  <iron-icon icon="icons:add"></iron-icon><span>Add</span>
+</button>
+<button @click="${this.buttonEvents}" id="collapse" title="Toggle active node collapsed status">
+  <iron-icon icon="icons:swap-vert"></iron-icon><span>Toggle active</span>
+</button>
+<button @click="${this.buttonEvents}" id="collapseall" title="Collapse all nodes">
+  <iron-icon icon="icons:swap-vert"></iron-icon><span>Collapse all</span>
+</button>
+<button @click="${this.buttonEvents}" id="expandall" title="Expand all nodes">
+  <iron-icon icon="icons:swap-vert"></iron-icon><span>Expand all</span>
+</button>
+<button @click="${this.buttonEvents}" id="down" title="Move active node down">
+  <iron-icon icon="icons:arrow-downward"></iron-icon><span>Move down</span>
+</button>
+<button @click="${this.buttonEvents}" id="up" title="Move active node up">
+  <iron-icon icon="icons:arrow-upward"></iron-icon><span>Move up</span>
+</button>
+<button @click="${this.buttonEvents}" id="outdent" title="Outdent active node">
+  <iron-icon icon="editor:format-indent-decrease"></iron-icon><span>Outdent</span>
+</button>
+<button @click="${this.buttonEvents}" id="indent" title="Indent active node">
+  <iron-icon icon="editor:format-indent-increase"></iron-icon><span>Indent</span>
+</button>
+<button @click="${this.buttonEvents}" id="duplicate" title="Duplicate active node tree">
+  <iron-icon icon="icons:content-copy"></iron-icon><span>Duplicate</span>
+</button>
+</div>
+<ul id="outline"></ul>`;
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * A items list of JSON Outline Schema Items
-       */
-      items: {
-        type: Array
-      },
-      /**
-       * Edit mode
-       */
-      editMode: {
-        type: Boolean,
-        attribute: "edit-mode"
-      },
-      /**
-       * Outline node for keyboard key binding
-       */
-      __outlineNode: {
-        type: Object
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * A items list of JSON Outline Schema Items
+   */
+  "items": {
+    "type": Array
+  },
+  /**
+   * Edit mode
+   */
+  "editMode": {
+    "type": Boolean,
+    "attribute": "edit-mode"
+  },
+  /**
+   * Outline node for keyboard key binding
+   */
+  "__outlineNode": {
+    "type": Object
+  }
+}
+;
   }
   constructor() {
     super();
@@ -322,19 +272,6 @@ class EditableOutline extends LitElement {
         notFound = false;
       }
       i++;
-    }
-  }
-  /**
-   * delete active
-   */
-  _delete(e) {
-    let node = this.getSelectionNode();
-    if (node && node.tagName === "LI") {
-      const parent = node.parentNode;
-      node.remove();
-      if (parent.children.length === 0) {
-        parent.remove();
-      }
     }
   }
   firstUpdated() {
@@ -444,9 +381,6 @@ class EditableOutline extends LitElement {
         break;
       case "duplicate":
         this._duplicate();
-        break;
-      case "delete":
-        this._delete();
         break;
     }
   }
