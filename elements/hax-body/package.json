@@ -36,6 +36,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/lrn-icons": "^2.5.0",
+    "@lrnwebcomponents/utils": "^2.5.0",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^2.5.0",
+    "@lrnwebcomponents/simple-fields": "^2.5.0",
     "@lrnwebcomponents/app-datepicker": "^2.0.9",
     "@lrnwebcomponents/code-editor": "^2.5.0",
     "@lrnwebcomponents/code-sample": "^2.5.0",
@@ -63,7 +67,6 @@
     "@lrnwebcomponents/simple-picker": "^2.5.0",
     "@lrnwebcomponents/simple-toast": "^2.5.0",
     "@lrnwebcomponents/simple-tooltip": "^2.5.0",
-    "@material/mwc-button": "^0.13.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-a11y-keys": "^3.0.1",
