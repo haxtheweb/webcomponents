@@ -65,7 +65,8 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         type: Object
       },
       voiceDebug: {
-        type: Boolean
+        type: Boolean,
+        attribute: 'voice-debug'
       },
       activeGizmo: {
         type: Object
@@ -1137,7 +1138,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
     this.activeApp = {};
     this.connectionRewrites = {};
     // change this in order to debug voice commands
-    this.voiceDebug = true;
+    this.voiceDebug = false;
     this.validTagList = this.__validTags();
     this.validGizmoTypes = this.__validGizmoTypes();
     // test for sandboxed env
@@ -1464,6 +1465,35 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       }
     };
     this.setHaxProperties(p, "p");
+    let table = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Table",
+        description: "A table for displaying data",
+        icon: "image:grid-on",
+        color: "blue-grey",
+        groups: ["Text"],
+        meta: {
+          author: "W3C"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            slot: "",
+            title: "Body",
+            description: "Tags that make up the table",
+            inputMethod: "code-editor",
+            slotWrapper: ""
+          },
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(table, "table");
     let prims = {
       caption: {
         title: "Caption",
@@ -2152,7 +2182,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
   // special edge case for slot binding in primatives
   if (tag === "a") {
     props.innerText = slotContent;
-  } else if (tag === "p" || tag === "ol" || tag === "ul" || tag === "div") {
+  } else if (tag === "p" || tag === "table" || tag === "ol" || tag === "ul" || tag === "div") {
     props.innerHTML = slotContent;
   }
   let element = {
