@@ -66,7 +66,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
       },
       voiceDebug: {
         type: Boolean,
-        attribute: 'voice-debug'
+        attribute: "voice-debug"
       },
       activeGizmo: {
         type: Object
@@ -1488,7 +1488,7 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             description: "Tags that make up the table",
             inputMethod: "code-editor",
             slotWrapper: ""
-          },
+          }
         ],
         advanced: []
       }
@@ -2182,7 +2182,13 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
   // special edge case for slot binding in primatives
   if (tag === "a") {
     props.innerText = slotContent;
-  } else if (tag === "p" || tag === "table" || tag === "ol" || tag === "ul" || tag === "div") {
+  } else if (
+    tag === "p" ||
+    tag === "table" ||
+    tag === "ol" ||
+    tag === "ul" ||
+    tag === "div"
+  ) {
     props.innerHTML = slotContent;
   }
   let element = {
