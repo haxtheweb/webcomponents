@@ -267,7 +267,7 @@ class WysiwygHax extends LitElement {
     setTimeout(() => {
       if (this.saveButtonSelector) {
         this.saveButtonSelector.click();
-      }        
+      }
     }, 100);
   }
 }
