@@ -221,7 +221,6 @@ class WysiwygHax extends LitElement {
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    window.addEventListener("cms-hax-saved", this._contentSaved.bind(this));
   }
   /**
    * HTMLElement
@@ -232,7 +231,6 @@ class WysiwygHax extends LitElement {
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    window.removeEventListener("cms-hax-saved", this._contentSaved.bind(this));
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
       this.saveButtonSelector.removeEventListener(
         "click",
@@ -240,14 +238,6 @@ class WysiwygHax extends LitElement {
       );
     }
     super.disconnectedCallback();
-  }
-  /**
-   * Content was "saved" / updated in context. Now we can save
-   */
-  _contentSaved(e) {
-    if (this.saveButtonSelector) {
-      this.saveButtonSelector.click();
-    }
   }
   __saveClicked(e) {
     // will attempt to set this right before save goes out the door
@@ -274,9 +264,11 @@ class WysiwygHax extends LitElement {
    */
   _bodyContentUpdated(e) {
     this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
-    if (this.saveButtonSelector) {
-      this.saveButtonSelector.click();
-    }
+    setTimeout(() => {
+      if (this.saveButtonSelector) {
+        this.saveButtonSelector.click();
+      }        
+    }, 100);
   }
 }
 window.customElements.define(WysiwygHax.tag, WysiwygHax);
