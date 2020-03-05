@@ -72,7 +72,10 @@ class WysiwygHax extends LitElement {
         this._activeHaxBodyUpdated(this[propName]);
       }
       if (propName == "saveButtonSelector" && this[propName].tagName) {
-        this.saveButtonSelector.addEventListener('click', this.__saveClicked.bind(this));
+        this.saveButtonSelector.addEventListener(
+          "click",
+          this.__saveClicked.bind(this)
+        );
       }
     });
   }
@@ -108,7 +111,7 @@ class WysiwygHax extends LitElement {
        */
       elementAlign: {
         type: String,
-        attribute: 'element-align'
+        attribute: "element-align"
       },
       offsetMargin: {
         type: String,
@@ -231,7 +234,10 @@ class WysiwygHax extends LitElement {
     );
     window.removeEventListener("cms-hax-saved", this._contentSaved.bind(this));
     if (this.saveButtonSelector && this.saveButtonSelector.tagName) {
-      this.saveButtonSelector.removeEventListener('click', this.__saveClicked.bind(this));
+      this.saveButtonSelector.removeEventListener(
+        "click",
+        this.__saveClicked.bind(this)
+      );
     }
     super.disconnectedCallback();
   }

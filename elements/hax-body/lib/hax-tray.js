@@ -188,9 +188,9 @@ class HaxTray extends winEventsElement(LitElement) {
         :host([edit-mode][element-align="left"]) a11y-collapse-group,
         :host([edit-mode][element-align="right"]) a11y-collapse-group {
           position: absolute;
-          margin:0;
-          top:32;
-        } 
+          margin: 0;
+          top: 32;
+        }
         a11y-collapse-group {
           position: fixed;
           font-size: 14px;
@@ -914,7 +914,7 @@ class HaxTray extends winEventsElement(LitElement) {
         setTimeout(() => {
           this.shadowRoot.querySelector(
             ".wrapper"
-          ).style.margin = this.offsetMargin;            
+          ).style.margin = this.offsetMargin;
         }, 0);
       }
       // collaped menu state change

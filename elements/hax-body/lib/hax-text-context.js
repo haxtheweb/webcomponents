@@ -394,7 +394,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
       if (propName == "haxSelectedText") {
         this.hasSelectedText = this[propName].length > 0;
       }
-      if (propName == "selectedValue" && this.selectedValue != '') {
+      if (propName == "selectedValue" && this.selectedValue != "") {
         this.realSelectedValue = this.shadowRoot
           .querySelector("#formatsize")
           .children[this.selectedValue].getAttribute("value");

@@ -98,7 +98,7 @@ class CmsHax extends LitElement {
        */
       elementAlign: {
         type: String,
-        attribute: 'element-align'
+        attribute: "element-align"
       },
       /**
        * allowed Tags, usually as dictated by the input filtering
@@ -234,7 +234,7 @@ class CmsHax extends LitElement {
         window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
         window.HaxStore.instance.haxTray.offsetMargin = offsetMargin;
         window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
-        window.HaxStore.instance.haxTray.elementAlign = elementAlign;          
+        window.HaxStore.instance.haxTray.elementAlign = elementAlign;
       }, 0);
       if (openDefault) {
         window.HaxStore.write("editMode", openDefault, this);
@@ -426,12 +426,14 @@ class CmsHax extends LitElement {
       });
       window.dispatchEvent(evt);
       // custom event for things that want to know we just saved
-      this.dispatchEvent(new CustomEvent("cms-hax-saved", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      }));      
+      this.dispatchEvent(
+        new CustomEvent("cms-hax-saved", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
       // support auto redirecting on save if that's been requested
       // in the integration point
       if (this.redirectOnSave) {
