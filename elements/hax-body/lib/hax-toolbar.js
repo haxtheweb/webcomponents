@@ -72,7 +72,6 @@ class HaxToolbar extends LitElement {
     setTimeout(() => {
       import("@polymer/paper-item/paper-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
       import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
       this.addEventListener(

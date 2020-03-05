@@ -32,7 +32,6 @@ class HaxContextItemMenu extends LitElement {
   constructor() {
     super();
     this._blockEvent = false;
-    this.resetOnSelect = false;
     this.selectedValue = 0;
     this.action = false;
     this.direction = "top";
@@ -50,7 +49,6 @@ class HaxContextItemMenu extends LitElement {
         .tooltip-direction="${this.direction}"
         @selected-changed="${this.selectedValueChanged}"
         .selected="${this.selectedValue}"
-        ?reset-on-select="${this.resetOnSelect}"
       >
         <slot></slot>
       </hax-toolbar-menu>
@@ -90,13 +88,6 @@ class HaxContextItemMenu extends LitElement {
        */
       _blockEvent: {
         type: Boolean
-      },
-      /**
-       * Should we reset the selection after it is made
-       */
-      resetOnSelect: {
-        type: Boolean,
-        attribute: "reset-on-select"
       },
       /**
        * Value.

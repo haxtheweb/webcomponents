@@ -114,7 +114,6 @@ class HaxTray extends winEventsElement(LitElement) {
           transition: 0.2s all ease-in-out;
           opacity: 0;
           visibility: hidden;
-          right: 0;
           pointer-events: none;
         }
         :host([edit-mode]) .wrapper {
@@ -126,13 +125,17 @@ class HaxTray extends winEventsElement(LitElement) {
         :host([edit-mode][collapsed]) a11y-collapse-group {
           right: -100vw;
         }
+        :host([element-align="left"]) .wrapper {
+          left: -1000px;
+        }
+        :host([element-align="right"]) .wrapper {
+          right: -1000px;
+        }
         :host([edit-mode][element-align="left"]) .wrapper {
           left: 0;
-          right: unset;
         }
-        :host([edit-mode][element-align="left"]) a11y-collapse-group {
-          left: 0;
-          right: unset;
+        :host([edit-mode][element-align="right"]) .wrapper {
+          right: 0;
         }
         :host([edit-mode][element-align="left"]) #toggle-tray-size {
           --hax-tray-button-rotate: rotate(-180deg);
@@ -174,10 +177,22 @@ class HaxTray extends winEventsElement(LitElement) {
         *[hidden] {
           display: none;
         }
-        a11y-collapse-group {
-          position: absolute;
-          top: 32px;
+        :host([element-align="right"]) a11y-collapse-group {
+          margin: 0 -350px 0 0;
           right: 0;
+        }
+        :host([element-align="left"]) a11y-collapse-group {
+          margin: 0 0 0 -350px;
+          left: 0;
+        }
+        :host([edit-mode][element-align="left"]) a11y-collapse-group,
+        :host([edit-mode][element-align="right"]) a11y-collapse-group {
+          position: absolute;
+          margin:0;
+          top:32;
+        } 
+        a11y-collapse-group {
+          position: fixed;
           font-size: 14px;
           margin: 0;
           background-color: white;
@@ -803,6 +818,11 @@ class HaxTray extends winEventsElement(LitElement) {
       super.firstUpdated(changedProperties);
     }
     if (!this.__setup) {
+      setTimeout(() => {
+        this.shadowRoot.querySelector(
+          ".wrapper"
+        ).style.margin = this.offsetMargin;
+      }, 1000);
       this.__setup = true;
       this.shadowRoot
         .querySelector("#settingsform")
@@ -891,9 +911,11 @@ class HaxTray extends winEventsElement(LitElement) {
         this._editModeChanged(this[propName], oldValue);
       }
       if (propName == "offsetMargin") {
-        this.shadowRoot.querySelector(
-          ".wrapper"
-        ).style.margin = this.offsetMargin;
+        setTimeout(() => {
+          this.shadowRoot.querySelector(
+            ".wrapper"
+          ).style.margin = this.offsetMargin;            
+        }, 0);
       }
       // collaped menu state change
       if (propName == "collapsed") {

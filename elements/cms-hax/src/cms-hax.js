@@ -81,6 +81,11 @@ class CmsHax extends LitElement {
         type: Boolean,
         attribute: "hide-panel-ops"
       },
+      offsetMargin: {
+        type: String,
+        reflect: true,
+        attribute: "offset-margin"
+      },
       /**
        * Hide preferences button
        */
@@ -89,10 +94,11 @@ class CmsHax extends LitElement {
         attribute: "hide-preferences-button"
       },
       /**
-       * Direction to align the hax edit panel
+       * Direction to elementAlign the hax edit panel
        */
-      align: {
-        type: String
+      elementAlign: {
+        type: String,
+        attribute: 'element-align'
       },
       /**
        * allowed Tags, usually as dictated by the input filtering
@@ -215,17 +221,21 @@ class CmsHax extends LitElement {
     openDefault,
     allowedTags,
     hidePanelOps,
+    offsetMargin,
     hidePreferencesButton,
-    align
+    elementAlign
   ) {
     if (window.HaxStore.ready) {
       // double check because this can cause issues
       if (allowedTags) {
         window.HaxStore.instance.validTagList = allowedTags;
       }
-      window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
-      window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
-      window.HaxStore.instance.haxTray.elementAlign = align;
+      setTimeout(() => {
+        window.HaxStore.instance.haxTray.hidePanelOps = hidePanelOps;
+        window.HaxStore.instance.haxTray.offsetMargin = offsetMargin;
+        window.HaxStore.instance.haxTray.hidePreferencesButton = hidePreferencesButton;
+        window.HaxStore.instance.haxTray.elementAlign = elementAlign;          
+      }, 0);
       if (openDefault) {
         window.HaxStore.write("editMode", openDefault, this);
       }
@@ -249,8 +259,9 @@ class CmsHax extends LitElement {
         this.openDefault,
         this.allowedTags,
         this.hidePanelOps,
+        this.offsetMargin,
         this.hidePreferencesButton,
-        this.align
+        this.elementAlign
       );
       this.__applyMO();
     }, 0);
@@ -267,10 +278,11 @@ class CmsHax extends LitElement {
     window.addEventListener("hax-store-ready", this._storeReady.bind(this));
     window.addEventListener("hax-save", this._saveFired.bind(this));
     this.__lock = false;
+    this.endPoint = null;
     this.openDefault = false;
     this.hidePanelOps = false;
     this.hidePreferencesButton = false;
-    this.align = "right";
+    this.elementAlign = "right";
     this.method = "PUT";
     this.syncBody = false;
     this.bodyValue = "";
@@ -303,16 +315,18 @@ class CmsHax extends LitElement {
           "openDefault",
           "allowedTags",
           "hidePanelOps",
+          "offsetMargin",
           "hidePreferencesButton",
-          "align"
+          "elementAlign"
         ].includes(propName)
       ) {
         this._noticeTagChanges(
           this.openDefault,
           this.allowedTags,
           this.hidePanelOps,
+          this.offsetMargin,
           this.hidePreferencesButton,
-          this.align
+          this.elementAlign
         );
       }
     });
@@ -387,11 +401,13 @@ class CmsHax extends LitElement {
    */
   _saveFired(e) {
     // generate sanitized content
-    this.shadowRoot.querySelector(
-      "#pageupdateajax"
-    ).body = window.HaxStore.instance.activeHaxBody.haxToContent();
-    // send the request
-    this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
+    if (this.endPoint) {
+      this.shadowRoot.querySelector(
+        "#pageupdateajax"
+      ).body = window.HaxStore.instance.activeHaxBody.haxToContent();
+      // send the request
+      this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
+    }
   }
 
   /**
@@ -408,7 +424,14 @@ class CmsHax extends LitElement {
           duration: 3000
         }
       });
-      this.dispatchEvent(evt);
+      window.dispatchEvent(evt);
+      // custom event for things that want to know we just saved
+      this.dispatchEvent(new CustomEvent("cms-hax-saved", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      }));      
       // support auto redirecting on save if that's been requested
       // in the integration point
       if (this.redirectOnSave) {

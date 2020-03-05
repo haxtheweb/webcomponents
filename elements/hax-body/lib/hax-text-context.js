@@ -15,6 +15,14 @@ class HaxTextContext extends winEventsElement(LitElement) {
           display: block;
           pointer-events: none;
         }
+        hax-context-item-textop:not(:defined),
+        hax-context-item-menu:not(:defined),
+        hax-context-item:not(:defined),
+        hax-toolbar:not(:defined),
+        paper-item:not(:defined),
+        iron-icon:not(:defined) {
+          display: none;
+        }
         :host [hidden] {
           display: none;
         }
@@ -122,6 +130,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
           label="Text format"
           event-name="text-tag"
         >
+          <paper-item hidden value=""></paper-item>
           <paper-item value="p"
             ><iron-icon icon="hax:paragraph"></iron-icon>Paragraph</paper-item
           >
@@ -385,7 +394,7 @@ class HaxTextContext extends winEventsElement(LitElement) {
       if (propName == "haxSelectedText") {
         this.hasSelectedText = this[propName].length > 0;
       }
-      if (propName == "selectedValue") {
+      if (propName == "selectedValue" && this.selectedValue != '') {
         this.realSelectedValue = this.shadowRoot
           .querySelector("#formatsize")
           .children[this.selectedValue].getAttribute("value");

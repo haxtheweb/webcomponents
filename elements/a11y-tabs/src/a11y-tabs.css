@@ -51,7 +51,6 @@
 }
 
 :host(:not([vertical])) #tabs {
-  position: fixed;
   scroll-margin-top: 16px;
   z-index: 1;
   width: var(--a11y-tabs-width);
