@@ -16,7 +16,7 @@
       "hax": "src/type-writer-hax.json"
     }
   },
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "typewritter effect",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^2.5.0",
+    "@lrnwebcomponents/intersection-element": "^2.6.0",
     "lit-element": "2.2.1"
   },
   "devDependencies": {

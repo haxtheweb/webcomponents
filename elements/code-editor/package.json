@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Data binding wrapped on top of a popular code editor",
   "repository": {
     "type": "git",

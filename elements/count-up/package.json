@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/intersection-element": "^2.5.0",
+    "@lrnwebcomponents/intersection-element": "^2.6.0",
     "countup.js": "^2.0.4",
     "lit-element": "2.2.1"
   },

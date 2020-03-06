@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.5.0",
-    "@lrnwebcomponents/a11y-tabs": "^2.5.0",
-    "@lrnwebcomponents/hax-body": "^2.5.1",
+    "@lrnwebcomponents/a11y-tabs": "^2.6.0",
+    "@lrnwebcomponents/hax-body": "^2.6.0",
     "@lrnwebcomponents/simple-tooltip": "^2.5.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
