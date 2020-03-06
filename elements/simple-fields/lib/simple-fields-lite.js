@@ -271,7 +271,7 @@ class SimpleFieldsLite extends LitElement {
         }
       },
       format: {
-        radio:  {
+        radio: {
           defaultSettings: {
             element: "simple-fields-radio",
             errorProperty: "errorMessage",
@@ -286,7 +286,7 @@ class SimpleFieldsLite extends LitElement {
             }
           }
         },
-        select:  {
+        select: {
           defaultSettings: {
             element: "simple-fields-select",
             errorProperty: "errorMessage",

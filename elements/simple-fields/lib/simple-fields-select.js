@@ -25,7 +25,7 @@ class SimpleFieldsSelect extends LitElement {
           opacity: 0.5;
         }
         label,
-        .error-message, 
+        .error-message,
         .description {
           font-size: 11px;
           line-height: 22px;
@@ -56,7 +56,7 @@ class SimpleFieldsSelect extends LitElement {
         }
         .error-message {
           transition: color ease-in-out;
-        } 
+        }
         :host([invalid]) label,
         :host([invalid]) .error-message {
           color: #990000;
@@ -79,13 +79,16 @@ class SimpleFieldsSelect extends LitElement {
       ?hidden="${this.hidden}"
       @change="${this._onChange}"
       .value="${this.value}">
-        ${Object.keys(this.options || {}).map(option=> html`
-          <option 
-            .id="${this.id}.${option}" 
-            ?selected="${this.value === option}">
-            ${this.options[option]}
-          </option>
-        `)}
+        ${Object.keys(this.options || {}).map(
+          option => html`
+            <option
+              .id="${this.id}.${option}"
+              ?selected="${this.value === option}"
+            >
+              ${this.options[option]}
+            </option>
+          `
+        )}
       </select>
       <div id="description" ?hidden="${!this.description}">
         ${this.description}
@@ -144,19 +147,20 @@ class SimpleFieldsSelect extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "value" && this.value !== oldValue) this._fireValueChanged();
+      if (propName === "value" && this.value !== oldValue)
+        this._fireValueChanged();
     });
   }
 
   get describedBy() {
     let describedBy = [];
-    if (this.label) describedBy.push('label');
-    if (this.description) describedBy.push('description');
-    if (this.error && this.invalid)describedBy.push('error');
+    if (this.label) describedBy.push("label");
+    if (this.description) describedBy.push("description");
+    if (this.error && this.invalid) describedBy.push("error");
     return describedBy.join(" ");
   }
-  _onChange(e){
-    if(e && e.path && e.path[0]) {
+  _onChange(e) {
+    if (e && e.path && e.path[0]) {
       //this.value = e.path[0].selectedOptions.map(option=>option.value);
       this.value = e.path[0].selectedOptions[0].value;
     }

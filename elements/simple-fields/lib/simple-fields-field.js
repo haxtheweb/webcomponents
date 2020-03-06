@@ -28,14 +28,14 @@ class SimpleFieldsField extends LitElement {
         label {
           flex: 1 0 100%;
           transition: color ease-in-out;
-        } 
+        }
         .description {
           flex: 1 0 100%;
         }
         .error-message {
           flex: 1 0 100%;
           transition: color ease-in-out;
-        } 
+        }
         :host([field-type="input:checkbox"]) label {
           flex: 0 1 auto;
           line-height: 33px;
@@ -62,7 +62,7 @@ class SimpleFieldsField extends LitElement {
           display: none;
         }
         label,
-        .error-message, 
+        .error-message,
         .description {
           font-size: 11px;
           line-height: 22px;
@@ -85,10 +85,10 @@ class SimpleFieldsField extends LitElement {
           border-bottom: 2px solid blue;
           outline: none;
           transition: all ease-in-out;
-        } 
+        }
         :host(:focus-within) label {
           color: blue;
-        } 
+        }
       `
     ];
   }
@@ -140,10 +140,13 @@ class SimpleFieldsField extends LitElement {
         if (this.field) {
           this.appendChild(this.field);
           this.fieldId = this.field.id;
-          this.setAttribute('field-type',`${this.field.tagName.toLowerCase()}:${this.field.type}`);
+          this.setAttribute(
+            "field-type",
+            `${this.field.tagName.toLowerCase()}:${this.field.type}`
+          );
         } else {
           this.fieldId = undefined;
-          this.removeAttribute('field-type');
+          this.removeAttribute("field-type");
         }
       }
       if (["field", "invalid"].includes(propName)) {

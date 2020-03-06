@@ -172,7 +172,7 @@ class SimpleFields extends SimpleFieldsLite {
         }
       },
       format: {
-        radio:  {
+        radio: {
           defaultSettings: {
             element: "paper-input",
             attributes: {
@@ -192,7 +192,7 @@ class SimpleFields extends SimpleFieldsLite {
             }
           }
         },
-        select:  {
+        select: {
           defaultSettings: {
             element: "select",
             attributes: {

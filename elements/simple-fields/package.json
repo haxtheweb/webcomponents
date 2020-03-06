@@ -15,7 +15,7 @@
       "properties": "src/simple-fields-properties.json",
       "hax": "src/simple-fields-hax.json"
     },
-    "sharedStyles": ["...super.styles"]
+    "sharedStyles": []
   },
   "version": "2.5.1",
   "description": "Uses eco-json-form and HAX wiring to display a series of fields",

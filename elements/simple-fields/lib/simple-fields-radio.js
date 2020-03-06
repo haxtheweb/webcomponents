@@ -31,7 +31,7 @@ class SimpleFieldsRadio extends LitElement {
         }
         fieldset:focus-within legend {
           color: blue;
-        } 
+        }
         legend {
           padding-inline-start: unset;
           padding-inline-end: unset;
@@ -51,16 +51,16 @@ class SimpleFieldsRadio extends LitElement {
           line-height: 22px;
           margin: 0 8px;
         }
-        .option:first-of-type{
+        .option:first-of-type {
           margin: 0 8px 0 0;
         }
-        .option:last-of-type{
+        .option:last-of-type {
           margin: 0 0 0 8px;
         }
         .option:focus-within label {
           color: blue;
         }
-        .error-message, 
+        .error-message,
         .description,
         legend {
           font-size: 11px;
@@ -82,7 +82,7 @@ class SimpleFieldsRadio extends LitElement {
         }
         .error-message {
           transition: color ease-in-out;
-        } 
+        }
         :host([invalid]) label,
         :host([invalid]) .error-message {
           color: #990000;
@@ -95,33 +95,41 @@ class SimpleFieldsRadio extends LitElement {
   }
   render() {
     return html`
-    <fieldset>
-      <legend id="legend" ?hidden="${!this.label}">
-        ${this.label}
-      </legend>
-      <div id="options">
-        ${Object.keys(this.options || {}).map(option=> html`
-          <div class="option">
-            <label for="${this.id}.${option}">${this.options[option]}</label>
-            <input 
-              .id="${this.id}.${option}"
-              .aria-invalid="${this.invalid ? "true" : "false"}"
-              .checked="${this.value === option}"
-              @click="${e=> this.value = option}"
-              ?disabled="${this.disabled}"
-              ?hidden="${this.hidden}"
-              type="radio"
-              .value="${option}"/>
-          </div>
-        `)}
-      </div>
-      <div id="description" ?hidden="${!this.description}">
-        ${this.description}
-      </div>
-      <div id="error-message" ?hidden="${!this.errorMessage || !this.invalid}">
-        ${this.errorMessage}
-      </div>
-    </fieldset>
+      <fieldset>
+        <legend id="legend" ?hidden="${!this.label}">
+          ${this.label}
+        </legend>
+        <div id="options">
+          ${Object.keys(this.options || {}).map(
+            option => html`
+              <div class="option">
+                <label for="${this.id}.${option}"
+                  >${this.options[option]}</label
+                >
+                <input
+                  .id="${this.id}.${option}"
+                  .aria-invalid="${this.invalid ? "true" : "false"}"
+                  .checked="${this.value === option}"
+                  @click="${e => (this.value = option)}"
+                  ?disabled="${this.disabled}"
+                  ?hidden="${this.hidden}"
+                  type="radio"
+                  .value="${option}"
+                />
+              </div>
+            `
+          )}
+        </div>
+        <div id="description" ?hidden="${!this.description}">
+          ${this.description}
+        </div>
+        <div
+          id="error-message"
+          ?hidden="${!this.errorMessage || !this.invalid}"
+        >
+          ${this.errorMessage}
+        </div>
+      </fieldset>
     `;
   }
   static get properties() {
@@ -172,15 +180,16 @@ class SimpleFieldsRadio extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "value" && this.value !== oldValue) this._fireValueChanged();
+      if (propName === "value" && this.value !== oldValue)
+        this._fireValueChanged();
     });
   }
 
   get describedBy() {
     let describedBy = [];
-    if (this.label) describedBy.push('label');
-    if (this.description) describedBy.push('description');
-    if (this.error && this.invalid)describedBy.push('error');
+    if (this.label) describedBy.push("label");
+    if (this.description) describedBy.push("description");
+    if (this.error && this.invalid) describedBy.push("error");
     return describedBy.join(" ");
   }
   /**
