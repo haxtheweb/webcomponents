@@ -114,6 +114,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transform: rotate(-180deg);
           transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
+        paper-icon-button, simple-tooltip {
+          font-family: sans-serif;
+          font-size: 16px;
+          line-height: 22px;
+        }
       `
     ];
   }

@@ -52,45 +52,58 @@ type: {                         //For properties in "this.schema", define elemen
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
+  
   //styles function
   static get styles() {
-    return [...super.styles, css``];
+    return  [
+      ...super.styles,
+      css`
+:host {
+  display: block;
+}
+:host([hidden]) {
+  display: none;
+}
+      `
+    ];
   }
   // render function
   render() {
     return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+<div id="schema-fields" aria-live="polite">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Fields to convert toJSON Schema.
-       */
-      fields: {
-        type: Array
-      },
-      /**
-       * Conversion from inputMethods to JSON schema types and formats.
-       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-       */
-      fieldsConversion: {
-        type: Object
-      },
-      label: {
-        type: String
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Fields to convert toJSON Schema.
+   */
+  "fields": {
+    "type": Array
+  },
+  /**
+   * Conversion from inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+   */
+  "fieldsConversion": {
+    "type": Object
+  },
+  "label": {
+    "type": String
+  }
+}
+;
   }
 
   /**
@@ -208,6 +221,39 @@ class SimpleFields extends SimpleFieldsLite {
         properties: {
           minLength: "minlength",
           maxLength: "maxlength"
+        }
+      },
+      format: {
+        radio:  {
+          defaultSettings: {
+            element: "paper-input",
+            attributes: {
+              autofocus: true,
+              type: "radio"
+            },
+            properties: {
+              options: "options"
+            },
+            child: {
+              element: "simple-fields-array-item",
+              labelProperty: "label",
+              descriptionProperty: "description",
+              properties: {
+                previewBy: "previewBy"
+              }
+            }
+          }
+        },
+        select:  {
+          defaultSettings: {
+            element: "select",
+            attributes: {
+              autofocus: true
+            },
+            properties: {
+              options: "options"
+            }
+          }
         }
       },
       type: {

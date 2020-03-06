@@ -171,6 +171,39 @@ class SimpleFields extends SimpleFieldsLite {
           maxLength: "maxlength"
         }
       },
+      format: {
+        radio:  {
+          defaultSettings: {
+            element: "paper-input",
+            attributes: {
+              autofocus: true,
+              type: "radio"
+            },
+            properties: {
+              options: "options"
+            },
+            child: {
+              element: "simple-fields-array-item",
+              labelProperty: "label",
+              descriptionProperty: "description",
+              properties: {
+                previewBy: "previewBy"
+              }
+            }
+          }
+        },
+        select:  {
+          defaultSettings: {
+            element: "select",
+            attributes: {
+              autofocus: true
+            },
+            properties: {
+              options: "options"
+            }
+          }
+        }
+      },
       type: {
         array: {
           defaultSettings: {

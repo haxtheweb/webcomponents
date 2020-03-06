@@ -20,6 +20,17 @@ class SimpleFieldsFieldset extends LitElement {
           margin: 10px 10px 20px;
           border: 1px solid #ccc;
         }
+        legend,
+        #description {
+          font-family: sans-serif;
+          font-size: 11px;
+          line-height: 22px;
+        }
+        #legend {
+          font-size: 16px;
+          padding-inline-start: unset;
+          padding-inline-end: unset;
+        }
       `
     ];
   }

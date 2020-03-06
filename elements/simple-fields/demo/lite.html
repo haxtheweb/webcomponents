@@ -24,7 +24,10 @@
             schema.value = {
               "settings": {
               "basic-input": {
-                "name":"NikkiMK"
+                "name":"NikkiMK",
+                "besttime": "evening",
+                "contact": "email",
+                "closed": true
               },
               "arrays": {
                 "phoneNumbers": [
@@ -113,10 +116,35 @@
                           type: "string",
                           format: "uri"
                         },
+                        besttime: {
+                          title: "Best time to contact",
+                          type: "string",
+                          format: "radio",
+                          options: {
+                            day: "morning",
+                            evening: "evening"
+                          }
+                        },
+                        contact: {
+                          title: "Contact by",
+                          type: "string",
+                          format: "select",
+                          options: {
+                            "": "-- Select a contact --",
+                            email: "Email",
+                            mail: "Mail",
+                            phone: "Phone",
+                            website: "Website"
+                          }
+                        },
                         establishedDate: {
                           title: "Established Date",
                           type: "string",
                           format: "date"
+                        },
+                        closed: {
+                          title: "Closed",
+                          type: "boolean",
                         },
                         closedDate: {
                           title: "Closed Date",
@@ -140,7 +168,13 @@
                           properties: {
                             type: {
                               title: "Type",
-                              type: "string"
+                              type: "string",
+                              format: "radio",
+                              options: {
+                                home: "Home Phone",
+                                cell: "Mobile Phone",
+                                work: "Work Phone"
+                              }
                             },
                             phoneNumber: {
                               title: "Phone Number",

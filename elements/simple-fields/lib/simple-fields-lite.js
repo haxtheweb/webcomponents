@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./simple-fields-field.js";
 import "./simple-fields-fieldset.js";
+import "./simple-fields-select.js";
+import "./simple-fields-radio.js";
 import "./simple-fields-array.js";
 /**
  * `simple-fields-lite`
@@ -268,6 +270,41 @@ class SimpleFieldsLite extends LitElement {
           maxLength: "maxlength"
         }
       },
+      format: {
+        radio:  {
+          defaultSettings: {
+            element: "simple-fields-radio",
+            errorProperty: "errorMessage",
+            invalidProperty: "invalid",
+            labelProperty: "label",
+            descriptionProperty: "description",
+            attributes: {
+              type: "radio"
+            },
+            properties: {
+              options: "options"
+            }
+          }
+        },
+        select:  {
+          defaultSettings: {
+            element: "simple-fields-select",
+            errorProperty: "errorMessage",
+            invalidProperty: "invalid",
+            labelProperty: "label",
+            descriptionProperty: "description",
+            attributes: {
+              autofocus: true
+            },
+            child: {
+              element: "option"
+            },
+            properties: {
+              options: "options"
+            }
+          }
+        }
+      },
       type: {
         array: {
           defaultSettings: {
@@ -291,7 +328,6 @@ class SimpleFieldsLite extends LitElement {
             element: "input",
             valueProperty: "checked",
             attributes: {
-              autofocus: true,
               type: "checkbox",
               value: false
             }
@@ -301,7 +337,6 @@ class SimpleFieldsLite extends LitElement {
           defaultSettings: {
             element: "input",
             attributes: {
-              autofocus: true,
               type: "url"
             }
           }
@@ -514,7 +549,6 @@ class SimpleFieldsLite extends LitElement {
 
         //handles arrays
         if (schemaProp.type === "array") {
-          console.log("arrays", schemaProp.type, schemaProp, value, data.child);
           this._addArrayItems(value, data.child, schemaProp, element);
         }
         //handles objects
@@ -655,7 +689,7 @@ class SimpleFieldsLite extends LitElement {
    * @event value-changed
    */
   _fireValueChanged() {
-    /*console.log(
+    console.log(
       "value-changed",
       this.value,
       new CustomEvent("value-changed", {
@@ -664,7 +698,7 @@ class SimpleFieldsLite extends LitElement {
         composed: true,
         detail: this
       })
-    );*/
+    );
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

@@ -44,9 +44,12 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           float: right;
         }
         paper-button {
+          font-family: sans-serif;
+          font-size: 16px;
+          line-height: 22px;
           padding: 8px;
           z-index: 1;
-          margin: 0;
+          margin: 0 10px 0 0;
           text-transform: unset;
         }
         .expanded {

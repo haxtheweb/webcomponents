@@ -16,10 +16,37 @@ class SimpleFieldsField extends LitElement {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+          justify-content: space-between;
+          margin: 16px 0;
         }
         :host([hidden]) {
           display: none;
+        }
+        label {
+          flex: 1 0 100%;
+          transition: color ease-in-out;
+        } 
+        .description {
+          flex: 1 0 100%;
+        }
+        .error-message {
+          flex: 1 0 100%;
+          transition: color ease-in-out;
+        } 
+        :host([field-type="input:checkbox"]) label {
+          flex: 0 1 auto;
+          line-height: 33px;
+          font-size: 16px;
+        }
+        :host([field-type="input:checkbox"]) ::slotted(*) {
+          width: auto;
+          height: 33px;
+          flex: 1 1 auto;
+          margin: 0 0 0 8px;
+          max-width: calc(100% - 33px - 8px);
         }
         div {
           margin: 0;
@@ -34,6 +61,34 @@ class SimpleFieldsField extends LitElement {
         :host(:not([invalid])) .error-message {
           display: none;
         }
+        label,
+        .error-message, 
+        .description {
+          font-size: 11px;
+          line-height: 22px;
+          font-family: sans-serif;
+        }
+        ::slotted(*) {
+          width: 100%;
+          font-size: 16px;
+          line-height: 22px;
+          font-family: sans-serif;
+          border: none;
+        }
+        ::slotted(input),
+        ::slotted(textarea) {
+          border-bottom: 2px solid #999;
+          transition: all ease-in-out;
+        }
+        :host(:focus-within) ::slotted(input),
+        :host(:focus-within) ::slotted(textarea) {
+          border-bottom: 2px solid blue;
+          outline: none;
+          transition: all ease-in-out;
+        } 
+        :host(:focus-within) label {
+          color: blue;
+        } 
       `
     ];
   }
@@ -82,8 +137,14 @@ class SimpleFieldsField extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "field") {
         this.innerHTML = "";
-        if (this.field) this.appendChild(this.field);
-        this.fieldId = this.field.id;
+        if (this.field) {
+          this.appendChild(this.field);
+          this.fieldId = this.field.id;
+          this.setAttribute('field-type',`${this.field.tagName.toLowerCase()}:${this.field.type}`);
+        } else {
+          this.fieldId = undefined;
+          this.removeAttribute('field-type');
+        }
       }
       if (["field", "invalid"].includes(propName)) {
         if (this.data.invalidProperty && this.field)
@@ -101,8 +162,11 @@ class SimpleFieldsField extends LitElement {
       describedBy.push(this.descriptionId);
     if (this.error && this.fieldId && this.data.errorSlot)
       describedBy.push(this.errorId);
-    if (this.field)
+    if (this.field) {
       this.field.setAttribute("aria-describedBy", describedBy.join(" "));
+    } else {
+      this.field.removetAttribute("aria-describedBy");
+    }
     return describedBy.join(" ");
   }
   get descriptionId() {
