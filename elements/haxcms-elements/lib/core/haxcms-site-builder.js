@@ -96,7 +96,7 @@ class HAXCMSSiteBuilder extends LitElement {
    * Simple "two way" data binding from the element below via events
    */
   _updateManifest(e) {
-    this.manifest = e.detail.value;
+    this.manifest = {...e.detail.value};
   }
   _updateLoading(e) {
     this.loading = e.detail.value;

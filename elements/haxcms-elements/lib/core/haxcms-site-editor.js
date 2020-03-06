@@ -1111,7 +1111,18 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: false,
         detail: true
       })
-    );
+    );  
+    setTimeout(() => {
+      window.dispatchEvent(evt);
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );        
+    }, 100);
   }
 
   _handleManifestResponse(e) {
