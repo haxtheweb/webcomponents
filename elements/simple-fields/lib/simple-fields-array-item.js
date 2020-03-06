@@ -28,9 +28,10 @@ Custom property | Description | Default
 `--simple-fields-array-item-heading-color` | text color for simple-fields-array-item heading | unset
 `--simple-fields-array-item-heading-background-color` | background-color for simple-fields-array-item heading | unset
  *
+ * @group simple-fields
  * @customElement simple-fields-array-item
- * @demo ./demo/index.html demo
- * @demo ./demo/group.html collapse groups
+ * @demo ./demo/schema.html Schema
+ * @demo ./demo/form.html Form
  */
 class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   static get styles() {
@@ -41,6 +42,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           border-radius: 3px;
           border: none;
           transform: rotate(0deg);
+          padding: 10px;
           transition: border 0.5s ease;
         }
         :host([disabled]) {

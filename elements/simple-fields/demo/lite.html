@@ -10,7 +10,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../simple-fields.js';
+      import '../lib/simple-fields-lite.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -190,7 +190,7 @@
           }
         </script>
         <template>
-          <form id="form"><simple-fields id="schema"></simple-fields></form>
+          <form id="form"><simple-fields-lite id="schema"></simple-fields-lite></form>
           <button onclick="console.log(document.getElementById('schema'),document.getElementById('schema').value)">Try me</button>
           <button onclick="setErrors()">Make errors</button>
         </template>

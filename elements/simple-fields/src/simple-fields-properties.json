@@ -1,43 +1,18 @@
 {
   /**
-   * automatically set focus on the first field if that field has autofocus
-   */
-  "autofocus": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * hide code-editor line numbers
-   */
-  "hideLineNumbers": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
    * Fields to convert toJSON Schema.
    */
   "fields": {
-    "type": Array,
-    "value": [],
-    "observer": "_formFieldsChanged"
+    "type": "Array"
   },
   /**
-   * Returned value from the form input.
+   * Conversion from inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
    */
-  "value": {
-    "type": Object,
-    "notify": true,
-    "value": {},
-    "observer": "_valueChanged"
+  "fieldsConversion": {
+    "type": "Object"
   },
-  /**
-   * Fields to convert to JSON Schema.
-   */
-  "__validatedSchema": {
-    "type": Array,
-    "notify": true,
-    "value": {
-      "properties": {}
-    }
+  "label": {
+    "type": "String"
   }
 }

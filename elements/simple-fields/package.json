@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-fields",
   "wcfactory": {
     "className": "SimpleFields",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-fields",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
@@ -15,7 +15,7 @@
       "properties": "src/simple-fields-properties.json",
       "hax": "src/simple-fields-hax.json"
     },
-    "sharedStyles": []
+    "sharedStyles": ["...super.styles"]
   },
   "version": "2.5.1",
   "description": "Uses eco-json-form and HAX wiring to display a series of fields",
@@ -53,7 +53,6 @@
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-toggle-button": "^3.0.1",
-    "@polymer/polymer": "^3.3.1",
     "app-datepicker": "^3.0.0",
     "lit-element": "2.2.1"
   },

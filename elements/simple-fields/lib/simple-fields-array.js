@@ -7,9 +7,11 @@ import "./simple-fields-array-item.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
+ * 
  * @group simple-fields
- * @demo demo/index.html
- * @customeElement simple-fields-array
+ * @customElement simple-fields-array
+ * @demo ./demo/schema.html Schema
+ * @demo ./demo/form.html Form
  */
 class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {
@@ -30,10 +32,12 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         #top {
           display: flex;
           align-items: flex-end;
-          justify-content: space-between;
+          justify-content: flex-end;
         }
         #description {
+          flex: 1 1 auto;
           padding: 8px 0;
+          margin-right: 16px;
           min-height: 24px;
         }
         #add {

@@ -1,19 +1,24 @@
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import "./simple-fields-field.js";
 import "./simple-fields-fieldset.js";
 import "./simple-fields-array.js";
-import "./simple-fields-field.js";
 /**
- * `simple-fields-schema`
+ * `simple-fields-lite`
+ * Uses eco-json-form and HAX wiring to display a series of fields
  * 
 ### Styling
-`<simple-fields-schema>` provides following custom properties
+`<simple-fields-lite>` provides following custom properties
 for styling:
 
 Custom property | Description | Default
 ----------------|-------------|--------
-`--simple-fields-schema-margin` | margin around simple-fields-schema | 15px 0
+`--simple-fields-margin` | margin around simple-fields(-lite) | 15px 0
 
-### Fields Schema Format
+### JSON Schema Format
 This element accepts JSON schema with additional features noted in the example below:
 ```
 {
@@ -102,7 +107,7 @@ This element accepts JSON schema with additional features noted in the example b
                 type: "array",
                 items: {
                   type: "object",
-                  previewBy: ["phoneNumber"],                               //simple-fields array allows a preview field 
+                  previewBy: ["phoneNumber"],                               //simple-fields-array allows a preview field 
                                                                             //for progressive disclosure of array items
                   properties: {
                     type: {
@@ -124,7 +129,7 @@ This element accepts JSON schema with additional features noted in the example b
   }
 ```
 
-### Configuring schemaConverstion Property
+### Configuring fieldsConversion Property
 ```
 type: {                         //For properties in "this.schema", define elements based on a property's "type"
   object: {                     //Defines element used when property's "type" is an "object"
@@ -135,7 +140,7 @@ type: {                         //For properties in "this.schema", define elemen
         description: ""         //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
         child: {                //Optional: child elements to be appended
           element: "a11y-tab"   //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
-          attributes: {         //Optional: sets child element's attributes based on this.schemaConverstion
+          attributes: {         //Optional: sets child element's attributes based on this.schemaConversion
             disabled: true      //Example: sets disabled to true  
           } 
           properties: {          //Optional: sets child element's attributes based on this.schema properties
@@ -162,14 +167,26 @@ type: {                         //For properties in "this.schema", define elemen
   }
 }
 ``` 
- *
- * @demo ./demo/schema.html
- * @customElement simple-fields-schema
+
+ * @customElement simple-fields-lite
+ * @demo ./demo/lite.html Demo
  */
-class SimpleFieldsSchema extends LitElement {
+class SimpleFieldsLite extends LitElement {
+  
+  //styles function
   static get styles() {
-    return [css``];
+    return  [
+      css`
+        :host {
+          display: block;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+      `
+    ];
   }
+  // render function
   render() {
     return html`
       <div id="schema-fields" aria-live="polite">
@@ -178,19 +195,72 @@ class SimpleFieldsSchema extends LitElement {
     `;
   }
 
-  constructor() {
+  // properties available to the custom element for data binding
+    static get properties() {
+    return {
+      ...super.properties,
+      /*
+      * Disables autofocus on fields.
+      */
+      "disableAutofocus": {
+        "type": Boolean
+      },
+      /*
+      * Error messages by field name,
+      * eg. `{ contactinfo.email: "A valid email is required." }`
+      */
+      "error": {
+        "type": Object
+      },
+      /*
+      * Language of the fields.
+      */
+      "language": {
+        "type": String,
+        "attribute": "lang",
+        "reflect": true
+      },
+      "resources": {
+        "type": Object
+      },
+      /*
+      * Fields schema.
+      * _See [Fields Schema Format](fields-schema-format) above._
+      */
+      "schema": {
+        "type": Object
+      },
+      /**
+       * Conversion from JSON Schema to HTML form elements.
+       * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
+       */
+      "schemaConverstion": {
+        "type": Object
+      },
+      "value": {
+        "type": Object
+      },
+      "__fields": {
+        "type": Object
+      }
+    };
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "simple-fields-lite";
+  }
+  constructor(){
     super();
     this.disableAutofocus = false;
-    this.codeTheme = "vs-light-2";
-    this.__fields = [];
     this.language = "en";
     this.resources = {};
-    this.schemaConverstion = {
+    this.schemaConversion = {
       defaultSettings: {
-        element: "paper-input",
-        errorProperty: "errorMessage",
-        invalidProperty: "invalid",
-        labelProperty: "label",
+        element: "input",
         attributes: {
           type: "text"
         },
@@ -219,30 +289,27 @@ class SimpleFieldsSchema extends LitElement {
         },
         boolean: {
           defaultSettings: {
-            element: "paper-input",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
+            element: "input",
+            valueProperty: "checked",
             attributes: {
               autofocus: true,
+              type: "checkbox",
               value: false
-            },
-            attributes: {
-              type: "checkbox"
             }
           }
         },
         file: {
           defaultSettings: {
-            element: "simple-fields-file"
+            element: "input",
+            attributes: {
+              autofocus: true,
+              type: "url"
+            }
           }
         },
         integer: {
           defaultSettings: {
-            element: "paper-input",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
+            element: "input",
             attributes: {
               autofocus: true,
               step: 1,
@@ -257,16 +324,12 @@ class SimpleFieldsSchema extends LitElement {
         },
         markup: {
           defaultSettings: {
-            element: "simple-fields-markup"
+            element: "textarea"
           }
         },
         number: {
           defaultSettings: {
-            element: "paper-input",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
-            type: "number",
+            element: "input",
             attributes: {
               autofocus: true,
               type: "number"
@@ -283,29 +346,13 @@ class SimpleFieldsSchema extends LitElement {
             element: "simple-fields-fieldset",
             labelProperty: "label",
             descriptionProperty: "description"
-          },
-          format: {
-            tabs: {
-              defaultSettings: {
-                element: "a11y-tabs",
-                labelSlot: "label",
-                child: {
-                  element: "a11y-tab",
-                  labelProperty: "label",
-                  descriptionSlot: ""
-                }
-              }
-            }
           }
         },
         string: {
           format: {
             "date-time": {
               defaultSettings: {
-                element: "paper-input",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                element: "input",
                 attributes: {
                   autofocus: true,
                   type: "datetime-local"
@@ -314,10 +361,7 @@ class SimpleFieldsSchema extends LitElement {
             },
             time: {
               defaultSettings: {
-                element: "paper-input",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                element: "input",
                 attributes: {
                   autofocus: true,
                   type: "time"
@@ -326,10 +370,7 @@ class SimpleFieldsSchema extends LitElement {
             },
             date: {
               defaultSettings: {
-                element: "paper-input",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                element: "input",
                 attributes: {
                   autofocus: true,
                   type: "date"
@@ -338,10 +379,7 @@ class SimpleFieldsSchema extends LitElement {
             },
             email: {
               defaultSettings: {
-                element: "paper-input",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                element: "input",
                 attributes: {
                   autofocus: true,
                   type: "email"
@@ -350,10 +388,7 @@ class SimpleFieldsSchema extends LitElement {
             },
             uri: {
               defaultSettings: {
-                element: "paper-input",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                element: "input",
                 attributes: {
                   autofocus: true,
                   type: "url"
@@ -364,95 +399,70 @@ class SimpleFieldsSchema extends LitElement {
         }
       }
     };
+    this.__fields = [];
+    this.schema = {};
     this.value = {};
     setTimeout(() => {
-      import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icons/editor-icons.js");
-      import("@polymer/paper-input/paper-input.js");
       import("@polymer/paper-icon-button/paper-icon-button.js");
     }, 0);
   }
-
-  static get tag() {
-    return "simple-fields-schema";
+  disconnectedCallback() {
+    this._clearForm();
+    super.disconnectedCallback();
   }
 
-  static get properties() {
-    return {
-      ...super.properties,
-      disableAutofocus: {
-        type: Boolean
-      },
-      /*
-       * Error messages by field name,
-       * eg. `{ contactinfo.email: "A valid email is required." }`
-       */
-      error: {
-        type: Object
-      },
-      label: {
-        type: String
-      },
-      /*
-       * Language of the fields.
-       */
-      language: {
-        type: String,
-        attribute: "lang",
-        reflect: true
-      },
-      resources: {
-        type: Object
-      },
-      /*
-       * Fields schema.
-       * _See [Fields Schema Format](fields-schema-format) above._
-       */
-      schema: {
-        type: Object
-      },
-      /**
-       * Conversion from JSON Schema to HTML form elements.
-       * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
-       */
-      schemaConverstion: {
-        type: Object
-      },
-      value: {
-        type: Object
-      },
-      __fields: {
-        type: Object
-      }
-    };
-  }
-
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
-      if (propName === "value") this._valueChanged(this.value, oldValue);
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
       if (propName === "error") this._errorChanged();
-    });
-  }
-  get fields() {
-    return this.__fields;
+      if (propName === "schema") {
+        //console.log('schema changed',this.schema,oldValue);
+        this._schemaChanged(this.schema, oldValue);
+      }
+      if (propName === "value") this._valueChanged(this.value, oldValue);
+    });
+  }
+  /**
+   * updates the schema
+   */
+  updateSchema(){
+    this._formFieldsChanged();
   }
 
-  buildHtmlFromJsonSchema(
+  /**
+   * clears and rebuilds form
+   */
+  rebuildForm() {
+    this._clearForm();
+    this._addToForm();
+    let firstField =
+      this.__fields && this.__fields[0] && this.__fields[0].field
+        ? this.__fields[0].field
+        : false;
+    if (firstField) firstField.autofocus = !this.disableAutofocus;
+  }
+
+  /**
+   * converts schema properties to HTML elements and appends them
+   *
+   * @param {*} [schema=this.schema] schema or subschema containing properties
+   * @param {*} [target=this] parent where HTML elements will be appended
+   * @param {string} [prefix=""] prefix for nest fields
+   * @param {*} config schemaConversion configuration for property
+   */
+  _addToForm(
     schema = this.schema,
     target = this,
     prefix = "",
-    child
+    config
   ) {
     let schemaProps = schema.properties,
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
     schemaKeys.forEach(key => {
       let schemaProp = schemaProps[key],
-        data = child
-          ? child
-          : this._searchConversion(schemaProp, this.schemaConverstion);
+        data = config || this._convertSchema(schemaProp, this.schemaConversion);
       if (data && data.element) {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
@@ -506,13 +516,16 @@ class SimpleFieldsSchema extends LitElement {
 
         if (target.slots && target.slots[key]) wrapper.slot = target.slots[key];
 
+        target.appendChild(wrapper);
+
         //handles arrays
-        if (schemaProp.items) {
+        if (schemaProp.type === "array") {
+          console.log('arrays',schemaProp.type,schemaProp,value,data.child);
           this._addArrayItems(value, data.child, schemaProp, element);
         }
         //handles objects
         else if (schemaProp.properties) {
-          this.buildHtmlFromJsonSchema(
+          this._addToForm(
             schemaProp,
             element,
             `${element.id}.`,
@@ -530,71 +543,74 @@ class SimpleFieldsSchema extends LitElement {
           }
           this.__fields.push(wrapper);
         }
-
-        target.appendChild(wrapper);
       }
     });
   }
-
-  _addArrayItems(value, child, schemaProp, element) {
-    schemaProp.counter = value ? value.length - 1 : 0;
-    if (value) {
-      value.forEach((item, i) => {
-        this._buildArrayItemFromSubschema(i, schemaProp, element, child);
-      });
-    }
-    element.addEventListener("add", e => {
-      schemaProp.counter++;
-      this._setValue(`${element.name}.${value.length}`, {});
-      this._buildArrayItemFromSubschema(
-        schemaProp.counter,
-        schemaProp,
-        element,
-        child
-      );
+  /**
+   *
+   *
+   * @param {*} value
+   * @param {*} element
+   * @param {*} schema
+   * @param {*} parent
+   */
+  _addArrayItems(value, element, schema, parent) {
+    let counter = 0, 
+      propNames = Object.keys(schema.items.properties || {}), 
+      previewBy = schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined),
+      subschema = { properties: {} };
+    if (value) value.forEach((i) => {
+      subschema.properties[counter] = this._addArrayItem(counter, schema, previewBy);
+      counter++;
     });
-    element.addEventListener("remove", e => {
+    this._addToForm(subschema, parent, `${parent.id}.`, element);
+
+    parent.addEventListener("add", e => {
+      let newItem = { properties: {} };
+      newItem.properties[counter] = this._addArrayItem(counter, schema, previewBy);
+      counter++;
+      this._setValue(`${parent.name}.${value.length}`, {});
+      this._addToForm(newItem, parent, `${parent.id}.`, element);
+    });
+
+    parent.addEventListener("remove", e => {
       let temp = this._deepClone(value);
       temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
-      this._setValue(`${element.name}`, temp);
+      this._setValue(`${parent.name}`, temp);
       e.detail.remove();
     });
   }
 
   /**
-   * uses array part of schema to add array item's fields
-   *
+   * adds an array item given an array item value and array item schema
    * @param {integer} i index of array item
-   * @param {object} subschema array part of schema
-   * @param {object} element array element
+   * @param {object} schema array item's schema
+   * @param {object} parent array element
    * @param {object} item array item element
    */
-  _buildArrayItemFromSubschema(i, subschema, element, item) {
-    subschema.properties = {};
-    subschema.properties[i] = subschema.items;
-    subschema.properties[i].label = `${i + 1}`;
-    this.buildHtmlFromJsonSchema(subschema, element, `${element.id}.`, item);
+  _addArrayItem(counter, schema, previewBy) {
+    //console.log('_addArrayItem',i, schema, parent, item);
+    let item = this._deepClone(schema.items);
+    item.label = `${parseInt(counter) + 1}`;
+    item.previewBy = previewBy;
+    return item;
   }
   /**
-   * handles changes to fields
-   *
-   * @param {object} element element that changed
-   * @param {object} valueProperty
+   * clears form
    */
-  _handleChange(element, valueProperty) {
-    this._setValue(element.name, element[valueProperty]);
-    this._fireValueChanged();
+  _clearForm() {
+    this.querySelectorAll("*").forEach(child => child.remove());
+    this.__fields = [];
   }
 
   /**
-   * matches schema property to schemaConverstion settings
-   *
-   * @param {object} property a property in the schema
-   * @param {object} conversion a section of schemaConverstion to search
-   * @param {object} settings closest current match
+   * matches schema property to schemaConversion settings
+   * @param {object} property schema property
+   * @param {object} conversion section of schemaConversion to search
+   * @param {object} settings closest current match's defaultSettings object
    * @returns {object}
    */
-  _searchConversion(property, conversion, settings) {
+  _convertSchema(property, conversion, settings) {
     let propKeys = Object.keys(property || {}),
       convKeys = Object.keys(conversion || {}).filter(key =>
         propKeys.includes(key)
@@ -609,71 +625,9 @@ class SimpleFieldsSchema extends LitElement {
           ? convData[val[0]]
           : convData[val];
       if (convVal)
-        settings = this._searchConversion(property, convVal, settings);
+        settings = this._convertSchema(property, convVal, settings);
     });
     return settings;
-  }
-
-  /**
-   * sets value of a property
-   *
-   * @param {string} propName property to set
-   * @param {*} propVal value of property
-   */
-  _setValue(propName, propVal) {
-    let oldValue = this._deepClone(this.value),
-      newValue = this.value,
-      props = propName.split("."),
-      l = props.length;
-    for (var i = 0; i < l - 1; i++) {
-      let pointer = props[i];
-      if (!newValue[pointer]) newValue[pointer] = {};
-      newValue = newValue[pointer];
-    }
-
-    newValue[props[l - 1]] = propVal;
-    this._valueChanged(this.value, oldValue);
-  }
-
-  /**
-   * gets value of a property
-   *
-   * @param {string} propName property to set
-   * @returns {*}
-   */
-  _getValue(propName) {
-    let path = propName.split("."),
-      pointer = this.value;
-    path.forEach(prop => {
-      if (pointer && pointer[prop]) {
-        pointer = pointer[prop];
-      } else {
-        pointer = undefined;
-        return;
-      }
-    });
-    return pointer;
-  }
-
-  /**
-   * clears form
-   */
-  _clearForm() {
-    this.querySelectorAll("*").forEach(child => child.remove());
-    this.__fields = [];
-  }
-  /**
-   * handles errors
-   * @todo how do we want to handle errors for nested fields?
-   */
-  _errorChanged() {
-    this.__fields.forEach(field => {
-      let id = field.fieldId,
-        err = id && this.error && this.error[id],
-        errMsg = err ? this.error[id] : "";
-      field.invalid = err ? true : false;
-      field.errorMessage = errMsg;
-    });
   }
 
   /**
@@ -684,19 +638,18 @@ class SimpleFieldsSchema extends LitElement {
   _deepClone(o) {
     return JSON.parse(JSON.stringify(o));
   }
+
   /**
-   * clears and rebuilds form
+   * handles errors
    */
-  _rebuildForm() {
-    this._clearForm();
-    if (this.schema) {
-      this.buildHtmlFromJsonSchema();
-      let firstField =
-        this.__fields && this.__fields[0] && this.__fields[0].field
-          ? this.__fields[0].field
-          : false;
-      if (firstField) firstField.autofocus = !this.disableAutofocus;
-    }
+  _errorChanged() {
+    this.__fields.forEach(field => {
+      let id = field.fieldId,
+        err = id && this.error && this.error[id],
+        errMsg = err ? this.error[id] : "";
+      field.invalid = err ? true : false;
+      field.errorMessage = errMsg;
+    });
   }
 
   /**
@@ -723,14 +676,52 @@ class SimpleFieldsSchema extends LitElement {
       })
     );
   }
+
   /**
-   * updates form  and fires event when value changes
-   * @param {object} newValue new value for schema
-   * @param {object} oldValue old value for schema
+   * Fires when form changes to set focus on the first field if this has auto-focus
+   * @event fields-changed
    */
-  _valueChanged(newValue, oldValue) {
-    if (newValue && newValue !== oldValue) this._fireValueChanged();
+  _formFieldsChanged(e) {
+    //console.log("fields-changed",newValue, oldValue);
+    this.dispatchEvent(
+      new CustomEvent("fields-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
+
+  /**
+   * gets value of a property
+   * @param {string} propName property to set
+   * @returns {*}
+   */
+  _getValue(propName) {
+    let path = propName.split("."),
+      pointer = this.value;
+    path.forEach(prop => {
+      if (pointer && pointer[prop]) {
+        pointer = pointer[prop];
+      } else {
+        pointer = undefined;
+        return;
+      }
+    });
+    return pointer;
+  }
+
+  /**
+   * handles changes to fields
+   * @param {object} element element that changed
+   * @param {object} valueProperty
+   */
+  _handleChange(element, valueProperty) {
+    this._setValue(element.name, element[valueProperty]);
+    this._fireValueChanged();
+  }
+
   /**
    * updates form and fires event when schema changes
    * @param {object} newValue new value for schema
@@ -738,8 +729,9 @@ class SimpleFieldsSchema extends LitElement {
    * @event schema-changed
    */
   _schemaChanged(newValue, oldValue) {
+    //console.log('_schemaChanged',newValue, oldValue);
     if (newValue && newValue !== oldValue) {
-      this._rebuildForm();
+      this.rebuildForm();
 
       this.dispatchEvent(
         new CustomEvent("schema-changed", {
@@ -751,10 +743,35 @@ class SimpleFieldsSchema extends LitElement {
       );
     }
   }
-  disconnectedCallback() {
-    this._clearForm();
-    super.disconnectedCallback();
+
+  /**
+   * sets value of a property
+   * @param {string} propName property to set
+   * @param {*} propVal value of property
+   */
+  _setValue(propName, propVal) {
+    let oldValue = this._deepClone(this.value),
+      newValue = this.value,
+      props = propName.split("."),
+      l = props.length;
+    for (var i = 0; i < l - 1; i++) {
+      let pointer = props[i];
+      if (!newValue[pointer]) newValue[pointer] = {};
+      newValue = newValue[pointer];
+    }
+
+    newValue[props[l - 1]] = propVal;
+    this._valueChanged(this.value, oldValue);
+  }
+  
+  /**
+   * updates form  and fires event when value changes
+   * @param {object} newValue new value for schema
+   * @param {object} oldValue old value for schema
+   */
+  _valueChanged(newValue, oldValue) {
+    if (newValue && newValue !== oldValue) this._fireValueChanged();
   }
 }
-window.customElements.define(SimpleFieldsSchema.tag, SimpleFieldsSchema);
-export { SimpleFieldsSchema };
+window.customElements.define(SimpleFieldsLite.tag, SimpleFieldsLite);
+export { SimpleFieldsLite };

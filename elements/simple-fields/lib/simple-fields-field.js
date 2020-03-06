@@ -4,8 +4,9 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * provides label, description, error massage, and aria-invalid functionality if needed
  *
  * @group simple-fields
- * @demo demo/index.html
  * @customElement simple-fields-field
+ * @demo ./demo/schema.html Schema
+ * @demo ./demo/form.html Form
  */
 class SimpleFieldsField extends LitElement {
   static get tag() {
@@ -14,6 +15,10 @@ class SimpleFieldsField extends LitElement {
   static get styles() {
     return [
       css`
+        :host {
+          display: block;
+        }
+        :host([hidden]) { display:none; }
         div {
           margin: 0;
         }
@@ -79,10 +84,10 @@ class SimpleFieldsField extends LitElement {
         this.fieldId = this.field.id;
       }
       if (["field", "invalid"].includes(propName)) {
-        if (this.data.invalidProperty)
+        if (this.data.invalidProperty && this.field)
           this.field[this.data.invalidProperty] = this.invalid;
       } else {
-        this.field.setAttribute("aria-invalid", this.invalid);
+        if (this.field) this.field.setAttribute("aria-invalid", this.invalid);
       }
     });
   }
@@ -94,7 +99,7 @@ class SimpleFieldsField extends LitElement {
       describedBy.push(this.descriptionId);
     if (this.error && this.fieldId && this.data.errorSlot)
       describedBy.push(this.errorId);
-    this.field.setAttribute("aria-describedBy", describedBy.join(" "));
+    if(this.field) this.field.setAttribute("aria-describedBy", describedBy.join(" "));
     return describedBy.join(" ");
   }
   get descriptionId() {

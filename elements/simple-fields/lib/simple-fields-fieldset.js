@@ -2,9 +2,11 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  *`simple-fields-fieldset` takes in a JSON schema of type fieldset and builds a form,
  * exposing a `value` property that represents an array described by the schema.
+ * 
  * @group simple-fields
- * @demo demo/index.html
  * @customElement simple-fields-fieldset
+ * @demo ./demo/schema.html Schema
+ * @demo ./demo/form.html Form
  */
 class SimpleFieldsFieldset extends LitElement {
   static get tag() {

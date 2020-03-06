@@ -1,12 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsSchema } from "@lrnwebcomponents/simple-fields/lib/simple-fields-schema.js";
+import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form`
- * `binding and submission capabilities on top of simple-fields`
- * @demo ./demo/form.html
+ * binding and submission capabilities on top of simple-fields
+ * 
+ * @group simple-fields
  * @customElement simple-fields-form
+ * @demo ./demo/schema.html Schema
+ * @demo ./demo/form.html Form
  */
-class SimpleFieldsForm extends SimpleFieldsSchema {
+class SimpleFieldsForm extends SimpleFields {
   static get styles() {
     return [
       css`

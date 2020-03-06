@@ -1,9 +1,3 @@
-<style include="simple-colors-shared-styles-polymer"></style>
-<eco-json-schema-object
-  id="schemaobject"
-  autofocus$="[[autofocus]]"
-  hide-line-numbers$="[[hideLineNumbers]]"
-  on-form-changed="_formFieldsChanged"
-  schema="[[__validatedSchema]]"
-  value="{{value}}"
-></eco-json-schema-object>
+<div id="schema-fields" aria-live="polite">
+  <slot></slot>
+</div>
