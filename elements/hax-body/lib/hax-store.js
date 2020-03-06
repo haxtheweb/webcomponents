@@ -2277,8 +2277,7 @@ window.HaxStore.nodeToContent = node => {
   let prototype = Object.getPrototypeOf(node);
   // support for deep API call
   if (typeof prototype.preProcessHaxNodeToContent !== typeof undefined) {
-    let clone = node.cloneNode(true);
-    node = prototype.preProcessHaxNodeToContent(clone);
+    node = prototype.preProcessHaxNodeToContent(node);
   }
   let tag = node.tagName.toLowerCase();
   // support sandboxed environments which
@@ -2353,20 +2352,30 @@ window.HaxStore.nodeToContent = node => {
       // never allow read only things to recorded as they
       // are run-time creation 99% of the time
       // this is very polymer specific but it allows readOnly and computed props
+      // also __ is a popular convention for private values so let's skip them
       if (
         !tmpProps[j].readOnly &&
         !tmpProps[j].computed &&
         value !== tmpProps[j].value
+        && !nodeName.startsWith('__')
       ) {
         // encode objects and arrays because they are special
         if (
           value != null &&
-          (typeof value === typeof Object || value.constructor === Array)
+          (typeof value === 'object' || value.constructor === Array)
         ) {
-          propvals[nodeName] = JSON.stringify(value).replace(
-            new RegExp('"', "g"),
-            "&quot;"
-          );
+          if (value.constructor === Array && value != []) {
+            propvals[nodeName] = JSON.stringify(value).replace(
+              new RegExp('"', "g"),
+              "&quot;"
+            );
+          }
+          else if (typeof value === 'object' && value != {}) {
+            propvals[nodeName] = JSON.stringify(value).replace(
+              new RegExp('"', "g"),
+              "&quot;"
+            );
+          }
         }
         // only write things that aren't empty
         else if (value != null && value != "null") {

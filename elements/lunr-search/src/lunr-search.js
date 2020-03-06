@@ -56,7 +56,7 @@ class LunrSearch extends LitElement {
         );
       }
       // only request data when we actually have a data source
-      if (propName == 'dataSource' && this[propName]) {
+      if (propName == "dataSource" && this[propName]) {
         this.__auto = true;
       }
       if (["data", "search", "index", "minScore", "limit"].includes(propName)) {
@@ -107,8 +107,7 @@ class LunrSearch extends LitElement {
     if (e && e.detail && e.detail.response) {
       try {
         this.data = [...e.detail.response];
-      }
-      catch(e) {
+      } catch (e) {
         console.warn(e);
       }
     }

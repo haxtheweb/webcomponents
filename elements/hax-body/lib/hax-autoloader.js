@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import { HAXElement, HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { varGet } from "@lrnwebcomponents/utils/utils.js";
 
 /**
@@ -181,7 +181,60 @@ class HaxAutoloader extends HAXElement(LitElement) {
               } else if (CEClass.haxProperties) {
                 this.setHaxProperties(CEClass.haxProperties, name);
               } else {
-                console.warn(`${name} didn't have hax wiring in the end`);
+                console.warn(`${name} didn't have hax wiring so HAX guessed how to work with it as best it can. See https://haxtheweb.org/hax-schema for documentation on adding custom wiring for better UX.`);
+                try {
+                  let wiring = new HAXWiring();
+                  let props = wiring.prototypeHaxProperties();
+                  props.gizmo.title = name;
+                  props.gizmo.handles = [];
+                  props.settings.quick = [];
+                  props.settings.configure = [];
+                  props.settings.advanced = [];
+                  props = wiring.standardAdvancedProps(props);
+                  props.saveOptions = {};
+                  // try and make this have SOME fields, again, really guessing here
+                  let tmpProps;
+                  // relatively cross library
+                  if (customElements.get(name)) {
+                    tmpProps = customElements.get(name).properties;
+                  }
+                  if (tmpProps) {
+                    for (var propName in tmpProps) {
+                      if (tmpProps[propName].type && tmpProps[propName].type.name) {
+                        switch (tmpProps[propName].type.name) {
+                          case 'String':
+                            props.settings.configure.push({
+                              property: propName,
+                              title: propName,
+                              description: "",
+                              inputMethod: "textfield"
+                            });
+                          break;
+                          case 'Number':
+                            props.settings.configure.push({
+                              property: propName,
+                              title: propName,
+                              description: "",
+                              inputMethod: "number"
+                            });
+                          break;
+                          case 'Boolean':
+                            props.settings.configure.push({
+                              property: propName,
+                              title: propName,
+                              description: "",
+                              inputMethod: "boolean"
+                            });
+                          break;
+                        }
+                      }
+                    }
+                  }
+                  wiring.readyToFireHAXSchema(name, props, this);
+                }
+                catch(e) {
+                  console.warn('HAX failed to create wiring that worked');
+                }
               }
             }
           }
