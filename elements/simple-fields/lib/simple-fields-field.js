@@ -18,7 +18,9 @@ class SimpleFieldsField extends LitElement {
         :host {
           display: block;
         }
-        :host([hidden]) { display:none; }
+        :host([hidden]) {
+          display: none;
+        }
         div {
           margin: 0;
         }
@@ -99,7 +101,8 @@ class SimpleFieldsField extends LitElement {
       describedBy.push(this.descriptionId);
     if (this.error && this.fieldId && this.data.errorSlot)
       describedBy.push(this.errorId);
-    if(this.field) this.field.setAttribute("aria-describedBy", describedBy.join(" "));
+    if (this.field)
+      this.field.setAttribute("aria-describedBy", describedBy.join(" "));
     return describedBy.join(" ");
   }
   get descriptionId() {

@@ -172,10 +172,9 @@ type: {                         //For properties in "this.schema", define elemen
  * @demo ./demo/lite.html Demo
  */
 class SimpleFieldsLite extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
+    return [
       css`
         :host {
           display: block;
@@ -196,52 +195,52 @@ class SimpleFieldsLite extends LitElement {
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     return {
       ...super.properties,
       /*
-      * Disables autofocus on fields.
-      */
-      "disableAutofocus": {
-        "type": Boolean
+       * Disables autofocus on fields.
+       */
+      disableAutofocus: {
+        type: Boolean
       },
       /*
-      * Error messages by field name,
-      * eg. `{ contactinfo.email: "A valid email is required." }`
-      */
-      "error": {
-        "type": Object
+       * Error messages by field name,
+       * eg. `{ contactinfo.email: "A valid email is required." }`
+       */
+      error: {
+        type: Object
       },
       /*
-      * Language of the fields.
-      */
-      "language": {
-        "type": String,
-        "attribute": "lang",
-        "reflect": true
+       * Language of the fields.
+       */
+      language: {
+        type: String,
+        attribute: "lang",
+        reflect: true
       },
-      "resources": {
-        "type": Object
+      resources: {
+        type: Object
       },
       /*
-      * Fields schema.
-      * _See [Fields Schema Format](fields-schema-format) above._
-      */
-      "schema": {
-        "type": Object
+       * Fields schema.
+       * _See [Fields Schema Format](fields-schema-format) above._
+       */
+      schema: {
+        type: Object
       },
       /**
        * Conversion from JSON Schema to HTML form elements.
        * _See [Configuring schemaConverstion Property](configuring-the-schemaconverstion-property) above._
        */
-      "schemaConverstion": {
-        "type": Object
+      schemaConverstion: {
+        type: Object
       },
-      "value": {
-        "type": Object
+      value: {
+        type: Object
       },
-      "__fields": {
-        "type": Object
+      __fields: {
+        type: Object
       }
     };
   }
@@ -253,7 +252,7 @@ class SimpleFieldsLite extends LitElement {
   static get tag() {
     return "simple-fields-lite";
   }
-  constructor(){
+  constructor() {
     super();
     this.disableAutofocus = false;
     this.language = "en";
@@ -413,20 +412,20 @@ class SimpleFieldsLite extends LitElement {
     super.disconnectedCallback();
   }
 
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
       if (propName === "error") this._errorChanged();
       if (propName === "schema") {
         //console.log('schema changed',this.schema,oldValue);
         this._schemaChanged(this.schema, oldValue);
       }
       if (propName === "value") this._valueChanged(this.value, oldValue);
-    });
-  }
+    });
+  }
   /**
    * updates the schema
    */
-  updateSchema(){
+  updateSchema() {
     this._formFieldsChanged();
   }
 
@@ -451,12 +450,7 @@ class SimpleFieldsLite extends LitElement {
    * @param {string} [prefix=""] prefix for nest fields
    * @param {*} config schemaConversion configuration for property
    */
-  _addToForm(
-    schema = this.schema,
-    target = this,
-    prefix = "",
-    config
-  ) {
+  _addToForm(schema = this.schema, target = this, prefix = "", config) {
     let schemaProps = schema.properties,
       required = schema.required,
       schemaKeys = Object.keys(schemaProps || {});
@@ -520,17 +514,12 @@ class SimpleFieldsLite extends LitElement {
 
         //handles arrays
         if (schemaProp.type === "array") {
-          console.log('arrays',schemaProp.type,schemaProp,value,data.child);
+          console.log("arrays", schemaProp.type, schemaProp, value, data.child);
           this._addArrayItems(value, data.child, schemaProp, element);
         }
         //handles objects
         else if (schemaProp.properties) {
-          this._addToForm(
-            schemaProp,
-            element,
-            `${element.id}.`,
-            data.child
-          );
+          this._addToForm(schemaProp, element, `${element.id}.`, data.child);
         } else {
           wrapper.data = data;
           wrapper.field = element;
@@ -555,19 +544,29 @@ class SimpleFieldsLite extends LitElement {
    * @param {*} parent
    */
   _addArrayItems(value, element, schema, parent) {
-    let counter = 0, 
-      propNames = Object.keys(schema.items.properties || {}), 
-      previewBy = schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined),
+    let counter = 0,
+      propNames = Object.keys(schema.items.properties || {}),
+      previewBy =
+        schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined),
       subschema = { properties: {} };
-    if (value) value.forEach((i) => {
-      subschema.properties[counter] = this._addArrayItem(counter, schema, previewBy);
-      counter++;
-    });
+    if (value)
+      value.forEach(i => {
+        subschema.properties[counter] = this._addArrayItem(
+          counter,
+          schema,
+          previewBy
+        );
+        counter++;
+      });
     this._addToForm(subschema, parent, `${parent.id}.`, element);
 
     parent.addEventListener("add", e => {
       let newItem = { properties: {} };
-      newItem.properties[counter] = this._addArrayItem(counter, schema, previewBy);
+      newItem.properties[counter] = this._addArrayItem(
+        counter,
+        schema,
+        previewBy
+      );
       counter++;
       this._setValue(`${parent.name}.${value.length}`, {});
       this._addToForm(newItem, parent, `${parent.id}.`, element);
@@ -624,8 +623,7 @@ class SimpleFieldsLite extends LitElement {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
-      if (convVal)
-        settings = this._convertSchema(property, convVal, settings);
+      if (convVal) settings = this._convertSchema(property, convVal, settings);
     });
     return settings;
   }
@@ -763,7 +761,7 @@ class SimpleFieldsLite extends LitElement {
     newValue[props[l - 1]] = propVal;
     this._valueChanged(this.value, oldValue);
   }
-  
+
   /**
    * updates form  and fires event when value changes
    * @param {object} newValue new value for schema

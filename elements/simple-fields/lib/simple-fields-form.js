@@ -3,7 +3,7 @@ import { SimpleFields } from "../simple-fields.js";
 /**
  * `simple-fields-form`
  * binding and submission capabilities on top of simple-fields
- * 
+ *
  * @group simple-fields
  * @customElement simple-fields-form
  * @demo ./demo/schema.html Schema

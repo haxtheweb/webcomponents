@@ -7,7 +7,7 @@ import "./simple-fields-array-item.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
- * 
+ *
  * @group simple-fields
  * @customElement simple-fields-array
  * @demo ./demo/schema.html Schema

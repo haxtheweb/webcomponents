@@ -61,7 +61,7 @@ class SimpleFields extends SimpleFieldsLite {
   static get tag() {
     return "simple-fields";
   }
-  constructor(){
+  constructor() {
     super();
     this.fieldsConversion = {
       defaultSettings: {
@@ -83,7 +83,7 @@ class SimpleFields extends SimpleFieldsLite {
             type: "markup"
           }
         },
-        "markup": {
+        markup: {
           defaultSettings: {
             type: "markup"
           }
@@ -104,7 +104,7 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             type: "object"
           }
-        }, 
+        },
         flipboolean: {},
         haxupload: {
           defaultSettings: {
@@ -121,7 +121,7 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             type: "object"
           }
-        }, 
+        },
         select: {
           defaultSettings: {
             type: "string",
@@ -139,14 +139,15 @@ class SimpleFields extends SimpleFieldsLite {
             type: "object",
             format: "tabs"
           }
-        }, 
+        },
         textarea: {},
         textfield: {
           defaultSettings: {
             type: "string"
           },
           validationType: {
-            url: { //???
+            url: {
+              //???
               defaultSettings: {
                 type: "string",
                 format: "uri"
@@ -155,7 +156,7 @@ class SimpleFields extends SimpleFieldsLite {
           }
         }
       }
-    }
+    };
     this.schemaConversion = {
       defaultSettings: {
         element: "paper-input",
@@ -346,7 +347,7 @@ class SimpleFields extends SimpleFieldsLite {
    * @returns object
    * @memberof SimpleFieldsLite
    */
-  get convertedSchema(){
+  get convertedSchema() {
     let schema = {
       $schema: "http://json-schema.org/schema#",
       title: this.label,
@@ -357,12 +358,12 @@ class SimpleFields extends SimpleFieldsLite {
     return schema;
   }
 
-  updated(changedProperties) {
+  updated(changedProperties) {
     super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "fields") this.schema = this.convertedSchema;
-    });
-  }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "fields") this.schema = this.convertedSchema;
+    });
+  }
 
   /**
    * matches schema property to fieldsConversion settings
@@ -386,8 +387,7 @@ class SimpleFields extends SimpleFieldsLite {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
-      if (convVal)
-        settings = this._convertField(field, convVal, settings);
+      if (convVal) settings = this._convertField(field, convVal, settings);
     });
     return settings;
   }
@@ -398,27 +398,27 @@ class SimpleFields extends SimpleFieldsLite {
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
-  _fieldToSchema(field){
+  _fieldToSchema(field) {
     let schema = {};
-    Object.keys(field || {}).forEach(key=>{
-      if(!field.inputMethod && field.properties) field.inputMethod = "object";
+    Object.keys(field || {}).forEach(key => {
+      if (!field.inputMethod && field.properties) field.inputMethod = "object";
       let conversion = this._convertField(field);
-      if(conversion.type) schema.type = conversion.type;
-      if(conversion.format) schema.format = conversion.format;
-      if(key === "pattern") {
-        if(field.validation != ".*") schema.pattern =  field.validation;
-      } else if(key === "properties") {
-        if(conversion.type === "array" && Array.isArray(field.properties)){
+      if (conversion.type) schema.type = conversion.type;
+      if (conversion.format) schema.format = conversion.format;
+      if (key === "pattern") {
+        if (field.validation != ".*") schema.pattern = field.validation;
+      } else if (key === "properties") {
+        if (conversion.type === "array" && Array.isArray(field.properties)) {
           schema.items = {
             type: "object",
             properties: this._fieldsToSchema(field.properties)
           };
-        } else if(conversion.type === "array"){
+        } else if (conversion.type === "array") {
           schema.items = this._fieldToSchema(field.properties);
         } else {
           schema.properties = this._fieldsToSchema(field.properties);
         }
-      } else if(
+      } else if (
         ![
           "items",
           "inputMethod",
@@ -441,9 +441,11 @@ class SimpleFields extends SimpleFieldsLite {
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
-  _fieldsToSchema(fields){
+  _fieldsToSchema(fields) {
     let schema = {};
-    fields.forEach(field => schema[field.property] = this._fieldToSchema(field));
+    fields.forEach(
+      field => (schema[field.property] = this._fieldToSchema(field))
+    );
     return schema;
   }
 }
