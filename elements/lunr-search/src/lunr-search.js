@@ -18,8 +18,10 @@ class LunrSearch extends LitElement {
     super();
     this.method = "GET";
     this.noStopWords = false;
+    this.dataSource = null;
     this.fields = [];
     this.limit = 500;
+    this.__auto = false;
     this.minScore = 0;
     this.log = false;
     const basePath = this.pathFromUrl(import.meta.url);
@@ -52,6 +54,10 @@ class LunrSearch extends LitElement {
             }
           })
         );
+      }
+      // only request data when we actually have a data source
+      if (propName == 'dataSource' && this[propName]) {
+        this.__auto = true;
       }
       if (["data", "search", "index", "minScore", "limit"].includes(propName)) {
         this.results = this.searched(
@@ -97,7 +103,15 @@ class LunrSearch extends LitElement {
     return "lunr-search";
   }
   _dataResponse(e) {
-    this.data = [...e.detail.response];
+    // must get a real response
+    if (e && e.detail && e.detail.response) {
+      try {
+        this.data = [...e.detail.response];
+      }
+      catch(e) {
+        console.warn(e);
+      }
+    }
   }
   /**
     Filters your input data

@@ -177,7 +177,7 @@ class SiteSearch extends LitElement {
         this._searchChanged(this[propName], oldValue);
         this.shadowRoot.querySelector("#lunr").search = this[propName];
       }
-      if (propName == "dataSource") {
+      if (propName == "dataSource" && this[propName]) {
         this.shadowRoot.querySelector("#lunr").dataSource = this[propName];
       }
     });

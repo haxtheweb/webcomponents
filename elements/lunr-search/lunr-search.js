@@ -13,87 +13,96 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @customElement lunr-search
  */
 class LunrSearch extends LitElement {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
+      
       css`
-        :host {
-          display: block;
-        }
+:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <iron-ajax
-        auto
-        url="${this.dataSource}"
-        method="${this.method}"
-        handle-as="json"
-        @response="${this._dataResponse}"
-      ></iron-ajax>
-    `;
+
+<iron-ajax
+  ?auto="${this.__auto}"
+  url="${this.dataSource}"
+  method="${this.method}"
+  handle-as="json"
+  @response="${this._dataResponse}"
+></iron-ajax>`;
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      dataSource: {
-        type: String,
-        attribute: "data-source"
-      },
-      data: {
-        type: Array
-      },
-      method: {
-        type: String
-      },
-      search: {
-        type: String
-      },
-      results: {
-        type: Array
-      },
-      noStopWords: {
-        type: Boolean,
-        attribute: "no-stop-words"
-      },
-      fields: {
-        type: Array
-      },
-      indexNoStopWords: {
-        type: Object
-      },
-      index: {
-        type: Object
-      },
-      __lunrLoaded: {
-        type: Boolean
-      },
-      limit: {
-        type: Number
-      },
-      minScore: {
-        type: Number
-      },
-      log: {
-        type: Boolean
-      }
-    };
+  
+  ...super.properties,
+  
+  "dataSource": {
+    "type": String,
+    "attribute": "data-source"
+  },
+  "__auto": {
+    "type": Boolean
+  },
+  "data": {
+    "type": Array
+  },
+  "method": {
+    "type": String
+  },
+  "search": {
+    "type": String
+  },
+  "results": {
+    "type": Array
+  },
+  "noStopWords": {
+    "type": Boolean,
+    "attribute": "no-stop-words"
+  },
+  "fields": {
+    "type": Array
+  },
+  "indexNoStopWords": {
+    "type": Object
+  },
+  "index": {
+    "type": Object
+  },
+  "__lunrLoaded": {
+    "type": Boolean
+  },
+  "limit": {
+    "type": Number
+  },
+  "minScore": {
+    "type": Number
+  },
+  "log": {
+    "type": Boolean
+  }
+}
+;
   }
   constructor() {
     super();
     this.method = "GET";
     this.noStopWords = false;
+    this.dataSource = null;
     this.fields = [];
     this.limit = 500;
+    this.__auto = false;
     this.minScore = 0;
     this.log = false;
     const basePath = this.pathFromUrl(import.meta.url);
@@ -126,6 +135,10 @@ class LunrSearch extends LitElement {
             }
           })
         );
+      }
+      // only request data when we actually have a data source
+      if (propName == 'dataSource' && this[propName]) {
+        this.__auto = true;
       }
       if (["data", "search", "index", "minScore", "limit"].includes(propName)) {
         this.results = this.searched(
@@ -171,7 +184,15 @@ class LunrSearch extends LitElement {
     return "lunr-search";
   }
   _dataResponse(e) {
-    this.data = [...e.detail.response];
+    // must get a real response
+    if (e && e.detail && e.detail.response) {
+      try {
+        this.data = [...e.detail.response];
+      }
+      catch(e) {
+        console.warn(e);
+      }
+    }
   }
   /**
     Filters your input data
