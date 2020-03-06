@@ -14,13 +14,12 @@ import "./editable-table-styles.js";
 
 /**
  * `editable-table-display`
- * @customElement editable-table-display
  * ` An editor interface for editable-table`
  * @demo ./demo/editor.html
  *
  * @polymer
-
  * @appliesMixin displayBehaviors
+ * @customElement editable-table-display
  * @appliesMixin ResponsiveUtilityBehaviors
  */
 class EditableTableDisplay extends displayBehaviors(

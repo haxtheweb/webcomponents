@@ -9,13 +9,12 @@ import "./editable-table-iconset.js";
 
 /**
  * `editable-table-editor-sort`
- * @customElement editable-table-editor-sort
- * `A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).`
+ * A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).
  *
  * @demo ./demo/display.html
  *
  * @polymer
-
+ * @customElement editable-table-editor-sort
  */
 class EditableTableSort extends PolymerElement {
   static get template() {

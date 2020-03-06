@@ -4,11 +4,11 @@
  */
 /**
  * `editable-table-behaviors`
- * @customElement editable-table-behaviors
- * `A set of common behaviors for editable-table web components.`
+ * A set of common behaviors for editable-table web components.
  *
  * @polymer
  * @mixinFunction
+ * @customElement editable-table-behaviors
  */
 
 /**
