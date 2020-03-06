@@ -81,7 +81,6 @@ class HaxToolbarMenu extends LitElement {
     super();
     this.corner = "";
     this.action = false;
-    this.resetOnSelect = false;
     this.tooltip = "";
     this.tooltipDirection = "";
     this.selected = 0;
@@ -107,13 +106,6 @@ class HaxToolbarMenu extends LitElement {
       },
       icon: {
         type: String
-      },
-      /**
-       * Should we reset the selection after it is made
-       */
-      resetOnSelect: {
-        type: Boolean,
-        attribute: "reset-on-select"
       },
       tooltip: {
         type: String
@@ -148,15 +140,14 @@ class HaxToolbarMenu extends LitElement {
    */
   _menubuttonTap(e) {
     this.shadowRoot.querySelector("#listbox").style.display = "inherit";
-    if (this.resetOnSelect) {
-      this.selected = "";
-    }
+    this.selected = "";
   }
   /**
    * Ensure menu is hidden.
    */
   hideMenu() {
     this.shadowRoot.querySelector("#listbox").style.display = "none";
+    this.selected = "";
   }
 }
 window.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);

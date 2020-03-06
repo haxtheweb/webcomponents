@@ -93,6 +93,7 @@ class HaxPlateContext extends winEventsElement(HTMLElement) {
         draggable="true"
         selected-value="0"
         reset-on-select>
+      <paper-item hidden value=""></paper-item>
       <hax-context-item
         action
         mini

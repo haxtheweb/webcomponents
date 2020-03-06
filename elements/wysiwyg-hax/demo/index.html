@@ -14,6 +14,7 @@
 </head>
 
 <body>
+  <button class="button" type="submit"></button>
   <div class="vertical-section-container centered">
     <h3>Basic wysiwyg-hax demo</h3>
     <textarea id="content">
@@ -21,6 +22,9 @@
       </textarea>
   </div>
   <script async defer>
+    document.querySelector('button.button[type="submit"]').addEventListener('click', (e) => {
+      alert('would have saved');
+    });
     var haxThePress = document.createElement('wysiwyg-hax');
     var temp = document.createElement('template');
     // target the TinyMCE area
@@ -29,9 +33,11 @@
     haxThePress.fieldName = 'content';
     haxThePress.fieldId = 'content';
     haxThePress.openDefault = true;
-    haxThePress.align = 'left';
+    haxThePress.elementAlign = 'right';
+    haxThePress.offsetMargin = "45px 0px 0px 0px";
     haxThePress.syncBody = true;
     haxThePress.fieldClass = 'coolClassName';
+    haxThePress.saveButtonSelector = document.querySelector('button.button[type="submit"]');
     haxThePress.appStoreConnection = '{\"url\": \"sample-store.json\"}';
     // set the template tag to the content previously in the textarea
     temp.innerHTML = content.value;

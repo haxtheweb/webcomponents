@@ -1358,10 +1358,10 @@ class GridPlate extends LitElement {
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
-        typeof target !== typeof undefined &&
-        target !== null &&
+        target &&
         typeof local !== typeof undefined &&
         local.getAttribute("slot") != null &&
+        local.parentNode &&
         target !== local
       ) {
         target.setAttribute("slot", local.getAttribute("slot"));
@@ -1373,7 +1373,11 @@ class GridPlate extends LitElement {
       }
       // special case for dropping on an empty column or between items
       // which could involve a miss on the column
-      else if (local.tagName === "DIV" && local.classList.contains("column")) {
+      else if (
+        target &&
+        local.tagName === "DIV" &&
+        local.classList.contains("column")
+      ) {
         var col = local.id.replace("col", "");
         target.setAttribute("slot", "col-" + col);
         this.appendChild(target);

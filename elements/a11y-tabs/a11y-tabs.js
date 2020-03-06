@@ -142,6 +142,7 @@ class A11yTabs extends LitElement {
         }
 
         :host(:not([vertical])) #tabs {
+          /* scroll-margin-top: 16px; */
           z-index: 1;
           max-width: 100%;
           overflow-x: auto;

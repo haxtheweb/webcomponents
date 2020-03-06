@@ -37,7 +37,6 @@
         "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
     },
     "devDependencies": {
-        "gulp-minify-html-literals": "1.1.7",
         "@emotion/core": "0.13.1",
         "@emotion/styled": "0.10.6",
         "@open-wc/storybook": "0.2.8",
@@ -45,7 +44,6 @@
         "@open-wc/building-utils": "2.14.3",
         "@storybook/addon-knobs": "4.1.13",
         "@webcomponents/webcomponentsjs": "2.4.1",
-        "babel-plugin-template-html-minifier": "4.0.0",
         "babel-plugin-external-helpers": "6.22.0",
         "babel-plugin-transform-custom-element-classes": "0.1.0",
         "babel-plugin-transform-es2015-modules-umd": "6.24.1",
