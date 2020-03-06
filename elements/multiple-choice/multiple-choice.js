@@ -642,7 +642,12 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         ]
       },
       saveOptions: {
-        unsetAttributes: ["__utils", "displayed-answers", "displayedAnswers", "colors"]
+        unsetAttributes: [
+          "__utils",
+          "displayed-answers",
+          "displayedAnswers",
+          "colors"
+        ]
       }
     };
   }
@@ -653,7 +658,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     // ensure we dont accidently have the answer displayed!
     if (node.answers) {
       var answers = [];
-      for (var i=0; i < node.answers.length; i++ ) {
+      for (var i = 0; i < node.answers.length; i++) {
         let val = node.answers[i];
         // remove userGuess if its set in the DOM
         if (val.userGuess) {

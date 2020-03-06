@@ -405,7 +405,7 @@ export class HAXWiring {
           `${tag} missed our checks and has an issue in implementation with HAX`
         );
       }
-    }
+    };
     /**
      * Standard advanced properties we support for all forms
      */
@@ -465,7 +465,7 @@ export class HAXWiring {
         inputMethod: "textfield"
       });
       return props;
-    }
+    };
     /**
      * Validate settings object.
      */

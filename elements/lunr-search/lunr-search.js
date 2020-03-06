@@ -13,87 +13,83 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @customElement lunr-search
  */
 class LunrSearch extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: block;
-}
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
       `
     ];
   }
   // render function
   render() {
     return html`
-
-<iron-ajax
-  ?auto="${this.__auto}"
-  url="${this.dataSource}"
-  method="${this.method}"
-  handle-as="json"
-  @response="${this._dataResponse}"
-></iron-ajax>`;
+      <iron-ajax
+        ?auto="${this.__auto}"
+        url="${this.dataSource}"
+        method="${this.method}"
+        handle-as="json"
+        @response="${this._dataResponse}"
+      ></iron-ajax>
+    `;
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     return {
-  
-  ...super.properties,
-  
-  "dataSource": {
-    "type": String,
-    "attribute": "data-source"
-  },
-  "__auto": {
-    "type": Boolean
-  },
-  "data": {
-    "type": Array
-  },
-  "method": {
-    "type": String
-  },
-  "search": {
-    "type": String
-  },
-  "results": {
-    "type": Array
-  },
-  "noStopWords": {
-    "type": Boolean,
-    "attribute": "no-stop-words"
-  },
-  "fields": {
-    "type": Array
-  },
-  "indexNoStopWords": {
-    "type": Object
-  },
-  "index": {
-    "type": Object
-  },
-  "__lunrLoaded": {
-    "type": Boolean
-  },
-  "limit": {
-    "type": Number
-  },
-  "minScore": {
-    "type": Number
-  },
-  "log": {
-    "type": Boolean
-  }
-}
-;
+      ...super.properties,
+
+      dataSource: {
+        type: String,
+        attribute: "data-source"
+      },
+      __auto: {
+        type: Boolean
+      },
+      data: {
+        type: Array
+      },
+      method: {
+        type: String
+      },
+      search: {
+        type: String
+      },
+      results: {
+        type: Array
+      },
+      noStopWords: {
+        type: Boolean,
+        attribute: "no-stop-words"
+      },
+      fields: {
+        type: Array
+      },
+      indexNoStopWords: {
+        type: Object
+      },
+      index: {
+        type: Object
+      },
+      __lunrLoaded: {
+        type: Boolean
+      },
+      limit: {
+        type: Number
+      },
+      minScore: {
+        type: Number
+      },
+      log: {
+        type: Boolean
+      }
+    };
   }
   constructor() {
     super();

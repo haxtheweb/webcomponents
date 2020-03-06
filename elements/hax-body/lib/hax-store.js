@@ -2356,21 +2356,20 @@ window.HaxStore.nodeToContent = node => {
       if (
         !tmpProps[j].readOnly &&
         !tmpProps[j].computed &&
-        value !== tmpProps[j].value
-        && !nodeName.startsWith('__')
+        value !== tmpProps[j].value &&
+        !nodeName.startsWith("__")
       ) {
         // encode objects and arrays because they are special
         if (
           value != null &&
-          (typeof value === 'object' || value.constructor === Array)
+          (typeof value === "object" || value.constructor === Array)
         ) {
           if (value.constructor === Array && value != []) {
             propvals[nodeName] = JSON.stringify(value).replace(
               new RegExp('"', "g"),
               "&quot;"
             );
-          }
-          else if (typeof value === 'object' && value != {}) {
+          } else if (typeof value === "object" && value != {}) {
             propvals[nodeName] = JSON.stringify(value).replace(
               new RegExp('"', "g"),
               "&quot;"
