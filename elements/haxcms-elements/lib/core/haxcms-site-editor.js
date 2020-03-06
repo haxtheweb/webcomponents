@@ -1111,7 +1111,7 @@ class HAXCMSSiteEditor extends LitElement {
         cancelable: false,
         detail: true
       })
-    );  
+    );
     setTimeout(() => {
       window.dispatchEvent(evt);
       this.dispatchEvent(
@@ -1121,7 +1121,7 @@ class HAXCMSSiteEditor extends LitElement {
           cancelable: false,
           detail: true
         })
-      );        
+      );
     }, 100);
   }
 
