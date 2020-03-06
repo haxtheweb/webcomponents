@@ -20,6 +20,8 @@ for styling:
 #### General
 Custom property | Description | Default
 ----------------|-------------|----------
+`--a11y-tabs-font-family` | font-family | unset
+`--a11y-tabs-font-size` | font-size | unset
 `--a11y-tabs-border-color` | border | #ddd
 `--a11y-tabs-color` | text color | #222
 `--a11y-tabs-focus-color` | text color when focused | #000
@@ -36,6 +38,8 @@ Custom property | Description | Default
 #### Tab Section
 Custom property | Description | Default
 ----------------|-------------|----------
+`--a11y-tabs-tab-font-family` | font-family | `--a11y-tabs-font-family`
+`--a11y-tabs-tab-font-size` | font-size | `--a11y-tabs-font-size`
 `--a11y-tabs-background` | background for active tab and tab content | white
 `--a11y-tabs-faded-background` | background inactive tabs | #eee
 `--a11y-tabs-horizontal-background` | background for tabs container when horizontal | unset
