@@ -25,6 +25,7 @@ class LrnappOpenStudio extends PolymerElement {
         :host {
           display: block;
           align-content: center;
+          margin-top: 26px;
         }
         #loading {
           width: 100%;
@@ -36,9 +37,6 @@ class LrnappOpenStudio extends PolymerElement {
           height: 100vh;
           position: absolute;
           background-color: white;
-        }
-        iron-selector {
-          line-height: 1em;
         }
         iron-selector lrnsys-button {
           display: inline-flex;
@@ -53,11 +51,11 @@ class LrnappOpenStudio extends PolymerElement {
         lrndesign-gallerycard {
           padding: 0;
           margin: 1em;
-          height: 15em;
+          height: 16em;
           width: 14em;
         }
         app-toolbar {
-          height: 48px;
+          height: 64px;
         }
         .gallery-grid {
           margin: 0 auto;
@@ -71,10 +69,12 @@ class LrnappOpenStudio extends PolymerElement {
         .iron-list-container {
           display: flex;
           flex-direction: column;
-          min-height: 50vh;
+        }
+        lrnsys-button {
+          --lrnsys-button-height:  26px;
         }
         iron-list {
-          height: 100vh;
+          flex: 1 1 auto;
         }
       </style>
       <iron-ajax
