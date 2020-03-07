@@ -102,17 +102,17 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         }
         #remove {
           flex: 0 0 auto;
-          color: #cc0000;
+          color: var(--simple-fields-error-color, #ac0000);
         }
         #expand {
           padding: 8px;
           transform: rotate(0deg);
-          transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition: transform 0.5s ease-in-out;
         }
         :host(:focus-within) #expand,
         :host([aria-expanded="true"]) #expand {
           transform: rotate(-180deg);
-          transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+          transition: transform 0.5s ease-in-out;
         }
         paper-icon-button,
         simple-tooltip {

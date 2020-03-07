@@ -1,68 +1,30 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleFieldsField } from "./simple-fields-field.js";
 /**
  *`simple-fields-select`
  * provides label, description, error massage, and aria-invalid functionality if needed
  *
  * @group simple-fields
  * @customElement simple-fields-select
- * @demo ./demo/lite.html
+ * @demo ./demo/select.html
  */
-class SimpleFieldsSelect extends LitElement {
+class SimpleFieldsSelect extends SimpleFieldsField {
   static get tag() {
     return "simple-fields-select";
   }
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          width: 100%;
-          display: block;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-        :host([disabled]) {
-          opacity: 0.5;
-        }
-        label,
-        .error-message,
-        .description {
-          font-size: 11px;
-          line-height: 22px;
-          font-family: sans-serif;
-          transition: color ease-in-out;
-        }
-        :host(:focus-within) label {
-          color: blue;
-          transition: color ease-in-out;
-        }
         select {
-          font-size: 16px;
-          line-height: 22px;
-          font-family: sans-serif;
           width: 100%;
           border: none;
           background: transparent;
-          border-bottom: 2px solid #999;
           border-radius: 0;
           transition: color ease-in-out;
         }
         option {
           border-radius: 0;
-        }
-        :host(:focus-within) select {
-          border-bottom: 2px solid blue;
-          transition: color ease-in-out;
-        }
-        .error-message {
-          transition: color ease-in-out;
-        }
-        :host([invalid]) label,
-        :host([invalid]) .error-message {
-          color: #990000;
-        }
-        :host([invalid]) label:after {
-          content: "*";
         }
       `
     ];
@@ -74,104 +36,88 @@ class SimpleFieldsSelect extends LitElement {
     </label>
     <select 
       id="${this.id}.select" 
+      ?autofocus="${this.autofocus}"
+      .autocomplete="${this.autocomplete}"
       .aria-invalid="${this.invalid ? "true" : "false"}"
-      ?disabled="${this.disabled}"
-      ?hidden="${this.hidden}"
       @change="${this._onChange}"
+      ?disabled="${this.disabled}"
+      .form="${this.form}"
+      ?hidden="${this.hidden}"
+      ?required="${this.required}"
+      ?mutliple="${this.mutliple}"
+      size="${this.size}"
       .value="${this.value}">
         ${Object.keys(this.options || {}).map(
           option => html`
             <option
               .id="${this.id}.${option}"
-              ?selected="${this.value === option}"
+              ?selected="${this.multiple ? this.value.contains(option) : this.value === option}"
+              .value="${option}"
             >
               ${this.options[option]}
             </option>
           `
         )}
       </select>
-      <div id="description" ?hidden="${!this.description}">
-        ${this.description}
-      </div>
-      <div id="error-message" ?hidden="${!this.errorMessage || !this.invalid}">
-        ${this.errorMessage}
-      </div>
+      <div class="border-bottom blur"></div>
+      <div class="border-bottom focus"></div>
+      ${this.descriptionElement}
+      ${this.errorElement}  
     </fieldset>
     `;
   }
   static get properties() {
     return {
-      description: {
-        type: String
+      ...super.properties,
+      /** 
+       * Whether to allow multiple values 
+       */
+      multiple: {
+        type: Boolean
       },
-      disabled: {
-        type: Boolean,
-        reflect: true
-      },
-      hidden: {
-        type: Boolean,
-        reflect: true
-      },
-      id: {
-        type: String,
-        reflect: true
-      },
-      name: {
-        type: String,
-        reflect: true
-      },
-      errorMessage: {
-        type: String
-      },
-      invalid: {
-        type: Boolean,
-        reflect: true
-      },
-      label: {
-        type: String
-      },
+      /**
+       * options {value: "Text"} for select as object, 
+       * eg. {a: "Option A", b: "Option B", c: "Option C"}
+       */
       options: {
         type: Object
       },
-      value: {
-        reflect: true
+      /** 
+       * Size of the control
+       */
+      size: {
+        type: Number
       }
     };
   }
   constructor() {
     super();
+    this.multiple = false;
     this.options = {};
-    this.invalid = false;
-    this.errorMessage = "";
   }
-
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "value" && this.value !== oldValue)
-        this._fireValueChanged();
-    });
-  }
-
-  get describedBy() {
-    let describedBy = [];
-    if (this.label) describedBy.push("label");
-    if (this.description) describedBy.push("description");
-    if (this.error && this.invalid) describedBy.push("error");
-    return describedBy.join(" ");
-  }
+  /**
+   * handles change in select value
+   *
+   * @param {event} e change event
+   * @memberof SimpleFieldsSelect
+   */
   _onChange(e) {
     if (e && e.path && e.path[0]) {
-      //this.value = e.path[0].selectedOptions.map(option=>option.value);
-      this.value = e.path[0].selectedOptions[0].value;
+      this.value = this.multiple 
+        ? e.path[0].selectedOptions.map(option=>option.value) 
+        : e.path[0].selectedOptions[0].value;
     }
   }
   /**
    * fires when value changes
+   * @event change
    * @event value-changed
    */
   _fireValueChanged() {
+    super._fireValueChanged();
+    console.log('change');
     this.dispatchEvent(
-      new CustomEvent("value-changed", {
+      new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,

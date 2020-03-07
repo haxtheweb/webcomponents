@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  *`simple-fields-field`
- * provides label, description, error massage, and aria-invalid functionality if needed
+ * a primitive field type that other fields can inherit
  *
  * @group simple-fields
  * @customElement simple-fields-field
@@ -13,239 +13,345 @@ class SimpleFieldsField extends LitElement {
     return "simple-fields-field";
   }
   static get styles() {
-    return [
-      css`
-        :host {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: stretch;
-          justify-content: space-between;
-          margin: 16px 0;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-        label {
-          flex: 1 0 100%;
-          transition: color ease-in-out;
-        }
-        .description {
-          flex: 1 0 100%;
-        }
-        .error-message {
-          flex: 1 0 100%;
-          transition: color ease-in-out;
-        }
-        :host([field-type="input:checkbox"]) label {
-          flex: 0 1 auto;
-          line-height: 33px;
-          font-size: 16px;
-        }
-        :host([field-type="input:checkbox"]) ::slotted(*) {
-          width: auto;
-          height: 33px;
-          flex: 1 1 auto;
-          margin: 0 0 0 8px;
-          max-width: calc(100% - 33px - 8px);
-        }
-        div {
-          margin: 0;
-        }
-        :host([invalid]) label,
-        :host([invalid]) .error-message {
-          color: #990000;
-        }
-        :host([invalid]) label:after {
-          content: "*";
-        }
-        :host(:not([invalid])) .error-message {
-          display: none;
-        }
-        label,
-        .error-message,
-        .description {
-          font-size: 11px;
-          line-height: 22px;
-          font-family: sans-serif;
-        }
-        ::slotted(*) {
-          width: 100%;
-          font-size: 16px;
-          line-height: 22px;
-          font-family: sans-serif;
-          border: none;
-        }
-        ::slotted(input),
-        ::slotted(textarea) {
-          border-bottom: 2px solid #999;
-          transition: all ease-in-out;
-        }
-        :host(:focus-within) ::slotted(input),
-        :host(:focus-within) ::slotted(textarea) {
-          border-bottom: 2px solid blue;
-          outline: none;
-          transition: all ease-in-out;
-        }
-        :host(:focus-within) label {
-          color: blue;
-        }
-      `
-    ];
+    return [css`
+      :host {
+        display: block;
+        width: 100%;
+        font-size: var(--simple-fields-font-size, 16px);
+        font-family: var(--simple-fields-font-family, sans-serif);
+        line-height: var(--simple-fields-line-height, 22px);
+        margin: var(--simple-fields-margin, 16px) 0;
+      }
+      :host([hidden]) {
+        display: none;
+      }
+      :host([disabled]) {
+        opacity: var(--simple-fields-disabled-opacity, 0.7);
+        transition: opacity ease-in-out;
+      }
+      :host([type="color"]) .label-input,
+      :host([type="checkbox"]) .label-input,
+      :host([type="radio"]) .label-input {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
+      label {
+        flex: 1 0 100%;
+      }
+      :host([type="color"]) label,
+      :host([type="checkbox"]) label,
+      :host([type="radio"]) label {
+        font-size: var(--simple-fields-font-size, 16px);
+        font-family: var(--simple-fields-font-family, sans-serif);
+        line-height: var(--simple-fields-line-height, 22px);
+        flex: 0 1 auto;
+      }
+      label,
+      legend,
+      #error-message,
+      #description,
+      .error-message,
+      .description {
+        font-size: var(--simple-fields-detail-font-size, 12px);
+        font-family: var(--simple-fields-detail-font-family, sans-serif);
+        line-height: var(--simple-fields-detail-line-height, 22px);
+        transition: color ease-in-out;
+      }
+      input,
+      select,
+      textarea,
+      ::slotted(*) {
+        width: 100%;
+        font-size: var(--simple-fields-font-size, 16px);
+        font-family: var(--simple-fields-font-family, sans-serif);
+        line-height: var(--simple-fields-line-height, 22px);
+        border: none;
+      }
+      :host(:focus-within) label {
+        color: var(--simple-fields-accent-color, #003f7d);
+        transition: color ease-in-out;
+      }
+      :host([invalid]) label,
+      :host([invalid]) .error-message,
+      :host([invalid]) #error-message {
+        color: var(--simple-fields-error-color, #ac0000);
+        transition: color ease-in-out;
+      }
+      :host([invalid]) label:after {
+        content: "*";
+      }
+      input[type="color"],
+      input[type="checkbox"],
+      input[type="radio"]
+      ::slotted(input[type="color"]),
+      ::slotted(input[type="checkbox"]),
+      ::slotted(input[type="radio"]) {
+        width: var(--simple-fields-detail-line-height, 22px);
+        height: var(--simple-fields-detail-line-height, 22px);
+        flex: 0 0 auto;
+        margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+        max-width: calc(100% - var(--simple-fields-detail-line-height, 22px) - var(--simple-fields-margin-small, 8px));
+      }
+      .box-input:focus {
+        outline: none;
+      }
+      .border-bottom {
+        height: 0;
+        border-bottom: 2px solid;
+      }
+      .border-bottom.blur {
+        border-bottom-color: #999;
+        width: 100%;
+      }
+      .border-bottom.focus {
+        margin: -2px 0 0;
+        height: 0;
+        width: 0;
+        border-bottom-color: var(--simple-fields-accent-color, #003f7d);
+        transition: width 0.75s ease-in-out;
+      }
+      :host(:focus-within) .border-bottom.focus {
+        width: 100%;
+        transition: width 0.75s ease-in-out;
+      }
+    `];
   }
   render() {
     return html`
-      ${this.labelSibling}
-      <slot class="${this.describedBy}"></slot>
-      ${this.errorSibling} ${this.descriptionSibling}
+      ${this.labelElement}
+      ${this.borderBottom}
+      ${this.descriptionElement}
+      ${this.errorElement}   
     `;
   }
   static get properties() {
     return {
-      data: {
-        type: Object
+      /**
+       * Hint for form autofill feature 
+       */
+      autocomplete: {
+        type: String
       },
+      /**
+       * Automatically focus the form control when the page is loaded
+       */
+      autofocus: {
+        type: Boolean
+      },
+      /**
+       * Description of the field
+       */
       description: {
         type: String
       },
+      /**
+       * Whether the form control is disabled
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * Error message to display
+       */
       errorMessage: {
+        type: String,
+        attribute: 'error-message'
+      },
+      /**
+       * Whether the field is hidden
+       */
+      hidden: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * Associates the control with a form element
+       */
+      form: {
         type: String
       },
+      /**
+       * Field element
+       */
       field: {
         type: Object
       },
-      fieldId: {
-        type: String
+      /**
+       * Unique id
+       */
+      id: {
+        type: String,
+        reflect: true
       },
+      /**
+       * Whether field is invalid
+       */
       invalid: {
         type: Boolean,
         reflect: true
       },
+      /**
+       * Label for the field
+       */
       label: {
         type: String
+      },
+      /**
+       * Name of the input form control. Submitted with the form as part of a name/value pair.
+       */
+      name: {
+        type: String,
+        reflect: true
+      },
+      /**
+       * Whether field is required
+       */
+      required: {
+        type: Boolean
+      },
+      /**
+       * Current value of the form control. Submitted with the form as part of a name/value pair.
+       */
+      value: {
+        reflect: true
+      },
+      /** 
+       * Type of input form control
+       */
+      type: {
+        type: String,
+        reflect: true
       }
     };
   }
   constructor() {
     super();
-    this.data = {};
+    this.autocomplete = "off";
+    this.autofocus = false;
+    this.disabled = false;
+    this.hidden = false;
     this.invalid = false;
-    this.errorMessage = "";
-    this.fieldId = "";
+    this.field = this.shadowRoot.querySelector('input');
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "field") {
-        this.innerHTML = "";
-        if (this.field) {
-          this.appendChild(this.field);
-          this.fieldId = this.field.id;
-          this.setAttribute(
-            "field-type",
-            `${this.field.tagName.toLowerCase()}:${this.field.type}`
-          );
-        } else {
-          this.fieldId = undefined;
-          this.removeAttribute("field-type");
-        }
+      if(propName === "type") {
+        if(
+          !this.type 
+          || this.type === "reset" 
+          || this.type === "submit"
+          || this.type === "button"
+          || this.type === "image"
+        ) this.type = "text";
+        this.field = this.shadowRoot 
+          ? this.shadowRoot.querySelector('input,textarea') 
+          : undefined;
       }
-      if (["field", "invalid"].includes(propName)) {
-        if (this.data.invalidProperty && this.field)
-          this.field[this.data.invalidProperty] = this.invalid;
-      } else {
-        if (this.field) this.field.setAttribute("aria-invalid", this.invalid);
-      }
+      if (propName === "value" && this.value !== oldValue)
+        this._fireValueChanged();
     });
   }
+  /**
+   * gets a decorative border
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get borderBottom(){
+    return ["checkbox","color","file","radio","range"].includes(this.type) 
+    ? `` 
+    : html`
+      <div class="border-bottom blur"></div>
+      <div class="border-bottom focus"></div>
+    `;
+  }
 
+  /**
+   * gets aria-describedby
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
   get describedBy() {
     let describedBy = [];
-    //if(this.label && this.fieldId && this.data.labelSlot) describedBy.push(this.labelId);
-    if (this.description && this.fieldId && this.data.descriptionSlot)
-      describedBy.push(this.descriptionId);
-    if (this.error && this.fieldId && this.data.errorSlot)
-      describedBy.push(this.errorId);
-    if (this.field) {
-      this.field.setAttribute("aria-describedBy", describedBy.join(" "));
-    } else {
-      this.field.removetAttribute("aria-describedBy");
-    }
+    if (this.label) describedBy.push("label");
+    if (this.description) describedBy.push("description");
+    if (this.error && this.invalid) describedBy.push("error");
     return describedBy.join(" ");
   }
-  get descriptionId() {
-    return `${this.fieldId}-error`;
+
+  /**
+   * gets field's id
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get fieldId(){
+    return `${this.id || "field"}.input`;
   }
-  get descriptionSibling() {
-    let type = this._getSibling(
-      this.description,
-      this.data.descriptionProperty,
-      this.data.descriptionSlot
+
+  /**
+   * gets `<label>`
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get labelElement(){
+    return html`<label for="${this.fieldId}">${this.label}</label>`;
+  }
+
+  /**
+   * gets element with description
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get descriptionElement(){
+    return html`<div id="description" ?hidden="${!this.description}">${this.description}</div>`;
+  }
+
+  /**
+   * gets element with error message
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get errorElement(){
+    return html`<div id="error-message" ?hidden="${!this.errorMessage || !this.invalid}">${this.errorMessage}</div>`;
+  }
+  /**
+   * focuses on field
+   * @returns {Boolean}
+   * @memberof SimpleFieldsInput
+   */
+  focus(){
+    if(this.field) this.field.focus();
+  }
+  /**
+   * determines whether input satisfies its validation constraints 
+   * @returns {boolean}
+   * @memberof SimpleFieldsInput
+   */
+  reportValidity(){
+    return this.field && this.field.reportValidity();
+  }
+  /**
+   * fires when value changes
+   * @event value-changed
+   */
+  _fireValueChanged() {
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
     );
-    if (type === "slot") this._getDescriptionSlot(this.data.descriptionSlot);
-    return type === "" ? this._getDescriptionSlot() : ``;
-  }
-  get errorId() {
-    return `${this.fieldId}-error`;
-  }
-  get errorSibling() {
-    let type = this._getSibling(
-      this.errorMessage,
-      this.data.errorProperty,
-      this.data.errorSlot
-    );
-    if (type === "slot") this._getErrorSlot(this.data.errorSlot);
-    return type === "" ? this._getErrorSlot() : ``;
-  }
-  get labelId() {
-    return `${this.fieldId}-label`;
-  }
-  get labelSibling() {
-    let type = this._getSibling(
-      this.label,
-      this.data.labelProperty,
-      this.data.labelSlot
-    );
-    if (type === "slot") this._getLabelSlot(this.data.labelSlot);
-    return type === "" ? this._getLabelSlot() : ``;
-  }
-  _getDescriptionSlot(slot = "") {
-    return this.description
-      ? html`
-          <div id="${this.descriptionId}" slot="${slot}" class="description">
-            ${this.description}
-          </div>
-        `
-      : ``;
-  }
-  _getErrorSlot(slot = "") {
-    return this.errorMessage
-      ? html`
-          <div id="${this.errorId}" slot="${slot}" class="error-message">
-            ${this.errorMessage}
-          </div>
-        `
-      : ``;
-  }
-  _getLabelSlot(slot = "") {
-    return this.label
-      ? html`
-          <label id="${this.labelId}" for="${this.fieldId}" slot="${slot}">
-            ${this.label}
-          </label>
-        `
-      : ``;
-  }
-  _getSibling(value, prop, slot, callback = () => {}) {
-    if (prop) {
-      this.field[prop] = value;
-      return "prop";
-    } else if (slot) {
-      if (this.field.querySelector(`[slot="${slot}"]`))
-        this.field.querySelector(`[slot="${slot}"]`).remove();
-      return "slot";
-    } else {
-      return "";
-    }
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);

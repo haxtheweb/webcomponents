@@ -3,9 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "./simple-fields-field.js";
+import { SimpleFieldsField } from "./simple-fields-field.js";
+import "./simple-fields-wrapper.js";
 import "./simple-fields-fieldset.js";
 import "./simple-fields-select.js";
+import "./simple-fields-input.js";
 import "./simple-fields-radio.js";
 import "./simple-fields-array.js";
 /**
@@ -180,6 +182,10 @@ class SimpleFieldsLite extends LitElement {
       css`
         :host {
           display: block;
+          font-family: var(--simple-fields-font-family, sans-serif);
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-font-size, 16px);
+          font-size: var(--simple-fields-detail-font-size, 12px);
         }
         :host([hidden]) {
           display: none;
