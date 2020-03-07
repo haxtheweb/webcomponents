@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsField } from "./simple-fields-field.js"
+import { SimpleFieldsField } from "./simple-fields-field.js";
 /**
  *`simple-fields-wrapper`
  * provides label, description, error massage, and aria-invalid functionality if needed
@@ -49,7 +49,10 @@ class SimpleFieldsWrapper extends SimpleFieldsField {
           height: var(--simple-fields-detail-line-height, 22px);
           flex: 1 1 auto;
           margin: 0 0 0 var(--simple-fields-margin-small, 8px);
-          max-width: calc(100% - var(--simple-fields-detail-line-height, 22px) - var(--simple-fields-margin-small, 8px));
+          max-width: calc(
+            100% - var(--simple-fields-detail-line-height, 22px) -
+              var(--simple-fields-margin-small, 8px)
+          );
         }
         ::slotted(input),
         ::slotted(textarea) {

@@ -51,7 +51,9 @@ class SimpleFieldsSelect extends SimpleFieldsField {
           option => html`
             <option
               .id="${this.id}.${option}"
-              ?selected="${this.multiple ? this.value.contains(option) : this.value === option}"
+              ?selected="${this.multiple
+                ? this.value.contains(option)
+                : this.value === option}"
               .value="${option}"
             >
               ${this.options[option]}
@@ -69,20 +71,20 @@ class SimpleFieldsSelect extends SimpleFieldsField {
   static get properties() {
     return {
       ...super.properties,
-      /** 
-       * Whether to allow multiple values 
+      /**
+       * Whether to allow multiple values
        */
       multiple: {
         type: Boolean
       },
       /**
-       * options {value: "Text"} for select as object, 
+       * options {value: "Text"} for select as object,
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
       options: {
         type: Object
       },
-      /** 
+      /**
        * Size of the control
        */
       size: {
@@ -103,8 +105,8 @@ class SimpleFieldsSelect extends SimpleFieldsField {
    */
   _onChange(e) {
     if (e && e.path && e.path[0]) {
-      this.value = this.multiple 
-        ? e.path[0].selectedOptions.map(option=>option.value) 
+      this.value = this.multiple
+        ? e.path[0].selectedOptions.map(option => option.value)
         : e.path[0].selectedOptions[0].value;
     }
   }
@@ -115,7 +117,7 @@ class SimpleFieldsSelect extends SimpleFieldsField {
    */
   _fireValueChanged() {
     super._fireValueChanged();
-    console.log('change');
+    console.log("change");
     this.dispatchEvent(
       new CustomEvent("change", {
         bubbles: true,

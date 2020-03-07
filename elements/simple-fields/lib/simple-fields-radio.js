@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsField } from "./simple-fields-field.js"
+import { SimpleFieldsField } from "./simple-fields-field.js";
 /**
  *`simple-fields-radio`
  * provides label, description, error massage, and aria-invalid functionality if needed
@@ -69,8 +69,7 @@ class SimpleFieldsRadio extends SimpleFieldsField {
           ${Object.keys(this.options || {}).map(
             option => html`
               <div class="option">
-                <label for="${this.id}.${option}"
-                  class="radio-label"
+                <label for="${this.id}.${option}" class="radio-label"
                   >${this.options[option]}</label
                 >
                 <input
@@ -91,8 +90,7 @@ class SimpleFieldsRadio extends SimpleFieldsField {
             `
           )}
         </div>
-        ${this.descriptionElement}
-        ${this.errorElement}  
+        ${this.descriptionElement} ${this.errorElement}
       </fieldset>
     `;
   }
@@ -100,7 +98,7 @@ class SimpleFieldsRadio extends SimpleFieldsField {
     return {
       ...super.properties,
       /**
-       * options {value: "Text"} for select as object, 
+       * options {value: "Text"} for select as object,
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
       options: {
