@@ -823,7 +823,7 @@ class GridPlate extends LitElement {
        * name of selected layout
        */
       __columnWidths: {
-        type: String,
+        type: String
       }
     };
   }

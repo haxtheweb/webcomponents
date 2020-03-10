@@ -189,7 +189,7 @@ class WikipediaQuery extends LitElement {
       saveOptions: {
         wipeSlot: true,
         unsetAttributes: ["_title"]
-      },
+      }
     };
   }
   /**
