@@ -580,7 +580,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
           changed = true;
           break;
         case "hax-size-change":
-          this.activeNode.style.width = detail.value + "%";
+          if (detail.value == 100) {
+            this.activeNode.style.width = null;
+          }
+          else {
+            this.activeNode.style.width = detail.value + "%";
+          }
           changed = true;
           break;
       }

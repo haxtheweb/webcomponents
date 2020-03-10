@@ -187,8 +187,9 @@ class WikipediaQuery extends LitElement {
         ]
       },
       saveOptions: {
-        wipeSlot: true
-      }
+        wipeSlot: true,
+        unsetAttributes: ["_title"]
+      },
     };
   }
   /**
