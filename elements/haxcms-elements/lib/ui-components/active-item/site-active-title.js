@@ -35,6 +35,8 @@ class SiteActiveTitle extends LitElement {
           text-rendering: optimizelegibility;
           font-family: sans-serif;
           color: var(--site-active-title-color, #383f45);
+          margin: var(--site-active-title-margin);
+          padding: var(--site-active-title-padding);
         }
       `
     ];

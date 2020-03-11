@@ -27,7 +27,17 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
           --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
         }
-
+        site-modal:not(:defined),
+        site-rss-button:not(:defined),
+        iron-image:not(:defined),
+        iron-pages:not(:defined),
+        site-share-widget:not(:defined),
+        site-active-title:not(:defined),
+        site-git-corner:not(:defined),
+        social-share-link:not(:defined),
+        simple-blog-card:not(:defined) {
+          display: none;
+        }
         :host([hidden]) {
           display: none;
         }
@@ -50,7 +60,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         #slot {
           min-height: 50vh;
         }
-
+        site-active-title {
+          font-size: 36px;
+        }
         .wrapper {
           padding-bottom: 80px;
         }
@@ -61,7 +73,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           margin: 0 auto;
         }
         .contentcontainer-wrapper {
-          max-width: 740px;
+          max-width: 900px;
           margin: 0 auto;
           box-sizing: border-box;
           padding-left: 20px;
@@ -90,41 +102,43 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           padding-bottom: 16px;
           min-height: 300px;
         }
-        app-toolbar {
+        .header-wrapper {
           padding: 0 20px;
           height: 54px;
-          max-width: 1032px;
+          width:100%;
+          display: flex;
           margin: 0 auto;
+          z-index: 100;
+          color: #ffffff;
+          justify-content:center;
+          box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+          background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
+        }
+        .header-wrapper div {
+          display: inline-flex;
+        }
+        .header-image {
+          max-width:800px;
+          width:100%;
+        }
+        .header-image iron-image {
+          max-width: 800px;
         }
         .backbutton {
           height: 54px;
-          border-radius: 0;
-          min-width: unset;
+          cursor: pointer;
+          text-align: center;
+          line-height: 32px;
+          background-color: transparent;
+          border: none;
+          display: inline-flex;
+          color: white;
+          min-width: 100px;
           text-transform: unset;
-        }
-        app-header {
-          z-index: 100;
-          @apply --layout-fixed-top;
-          color: #ffffff;
-          box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-          background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --app-header-background-rear-layer: {
-            background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          }
+          margin: 0px 16px;
         }
         paper-icon-button {
           --paper-icon-button-ink-color: white;
-        }
-        site-active-title {
-          --site-active-title-heading: {
-            font-size: 42px;
-            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-            font-weight: 400;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 1.25;
-            letter-spacing: 0;
-          }
         }
 
         .social-float {
@@ -226,6 +240,13 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         }
 
         @media screen and (max-width: 800px) {
+          .header-image {
+            max-width:200px;
+            width:100%;
+          }
+          .header-image iron-image {
+            max-width: 200px;
+          }
           .simple-blog-card-wrapper simple-blog-card {
             margin: 0 10vw;
           }
@@ -236,6 +257,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           #home {
             padding-left: 8px;
             padding-right: 8px;
+            transition: .5s opacity ease-in-out;
           }
           .evenly {
             display: unset;
@@ -272,29 +294,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   }
   render() {
     return html`
-      <app-header reveals>
-        <app-toolbar>
-          <div>
-            <paper-button
-              class="backbutton"
-              @click="${this._goBack}"
-              title="Back to listing"
-            >
-              <iron-icon icon="${this.icon}"></iron-icon>
-              <span class="hide-small"
-                >${this.title} - ${this.activeTitle}</span
-              >
-            </paper-button>
-          </div>
-          <div main-title>
-            <iron-image
-              src="${this.image}"
-              preload
-              sizing="cover"
-              style="height:46px;width:100%;margin: 4px 0 2px 0;"
-            ></iron-image>
-          </div>
-          <div>
+      <div class="header-wrapper">
+      <div>
             <site-modal
               @site-modal-click="${this.siteModalClick}"
               icon="icons:search"
@@ -304,8 +305,27 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               <site-search></site-search>
             </site-modal>
           </div>
-        </app-toolbar>
-      </app-header>
+          <div>
+            <button
+              class="backbutton"
+              @click="${this._goBack}"
+              title="Back to blog post list"
+            >
+              <iron-icon icon="${this.icon}"></iron-icon>
+              <span class="hide-small"
+                >${this.title}</span
+              >
+            </button>
+          </div>
+          <div class="header-image">
+            <iron-image
+              src="${this.image}"
+              preload
+              sizing="cover"
+              style="height:46px;width:100%;margin: 4px 0 2px 0;"
+            ></iron-image>
+          </div>
+      </div>
       <div class="wrapper">
         <iron-pages .selected="${this.selectedPage}">
           <div id="home">
@@ -578,29 +598,9 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
     this.__extraPosts = [];
     this.__followUpPosts = [];
     this.selectedPage = 0;
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
     import("@polymer/iron-pages/iron-pages.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-image/iron-image.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
     import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
-    import("@polymer/app-layout/app-header/app-header.js");
-    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/social-share-link/social-share-link.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/communication-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/iron-icons/places-icons.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
     autorun(reaction => {
       let location = toJS(store.location);
       this._noticeLocationChange(location);
@@ -641,6 +641,33 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       }
       this.__disposer.push(reaction);
     });
+  }
+  /**
+   * LitElement shadowDom ready
+   */
+  firstUpdated() {
+    if (super.firstUpdated) {
+      super.firstUpdated();
+    }
+    setTimeout(() => {
+      import("@polymer/iron-image/iron-image.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import("@lrnwebcomponents/social-share-link/social-share-link.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");  
+      import("@polymer/iron-icon/iron-icon.js");
+      import("@polymer/iron-icons/iron-icons.js");
+      import("@polymer/iron-icons/editor-icons.js");
+      import("@polymer/iron-icons/device-icons.js");
+      import("@polymer/iron-icons/hardware-icons.js");
+      import("@polymer/iron-icons/communication-icons.js");
+      import("@polymer/iron-icons/social-icons.js");
+      import("@polymer/iron-icons/av-icons.js");
+      import("@polymer/iron-icons/maps-icons.js");
+      import("@polymer/iron-icons/places-icons.js");
+    }, 0);
   }
   updated(changedProperties) {
     if (super.updated) {
