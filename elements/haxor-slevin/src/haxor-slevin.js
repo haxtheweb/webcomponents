@@ -105,12 +105,12 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         .header-wrapper {
           padding: 0 20px;
           height: 54px;
-          width:100%;
+          width: 100%;
           display: flex;
           margin: 0 auto;
           z-index: 100;
           color: #ffffff;
-          justify-content:center;
+          justify-content: center;
           box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
           background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
         }
@@ -118,8 +118,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           display: inline-flex;
         }
         .header-image {
-          max-width:800px;
-          width:100%;
+          max-width: 800px;
+          width: 100%;
         }
         .header-image iron-image {
           max-width: 800px;
@@ -241,8 +241,8 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
 
         @media screen and (max-width: 800px) {
           .header-image {
-            max-width:200px;
-            width:100%;
+            max-width: 200px;
+            width: 100%;
           }
           .header-image iron-image {
             max-width: 200px;
@@ -257,7 +257,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           #home {
             padding-left: 8px;
             padding-right: 8px;
-            transition: .5s opacity ease-in-out;
+            transition: 0.5s opacity ease-in-out;
           }
           .evenly {
             display: unset;
@@ -295,36 +295,34 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
   render() {
     return html`
       <div class="header-wrapper">
-      <div>
-            <site-modal
-              @site-modal-click="${this.siteModalClick}"
-              icon="icons:search"
-              title="Search site"
-              button-label="Search"
-            >
-              <site-search></site-search>
-            </site-modal>
-          </div>
-          <div>
-            <button
-              class="backbutton"
-              @click="${this._goBack}"
-              title="Back to blog post list"
-            >
-              <iron-icon icon="${this.icon}"></iron-icon>
-              <span class="hide-small"
-                >${this.title}</span
-              >
-            </button>
-          </div>
-          <div class="header-image">
-            <iron-image
-              src="${this.image}"
-              preload
-              sizing="cover"
-              style="height:46px;width:100%;margin: 4px 0 2px 0;"
-            ></iron-image>
-          </div>
+        <div>
+          <site-modal
+            @site-modal-click="${this.siteModalClick}"
+            icon="icons:search"
+            title="Search site"
+            button-label="Search"
+          >
+            <site-search></site-search>
+          </site-modal>
+        </div>
+        <div>
+          <button
+            class="backbutton"
+            @click="${this._goBack}"
+            title="Back to blog post list"
+          >
+            <iron-icon icon="${this.icon}"></iron-icon>
+            <span class="hide-small">${this.title}</span>
+          </button>
+        </div>
+        <div class="header-image">
+          <iron-image
+            src="${this.image}"
+            preload
+            sizing="cover"
+            style="height:46px;width:100%;margin: 4px 0 2px 0;"
+          ></iron-image>
+        </div>
       </div>
       <div class="wrapper">
         <iron-pages .selected="${this.selectedPage}">
@@ -656,7 +654,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
       import("@lrnwebcomponents/social-share-link/social-share-link.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");  
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
       import("@polymer/iron-icon/iron-icon.js");
       import("@polymer/iron-icons/iron-icons.js");
       import("@polymer/iron-icons/editor-icons.js");

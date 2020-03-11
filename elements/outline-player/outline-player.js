@@ -148,7 +148,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           margin: 0;
           padding: 0 16px 16px 16px;
           flex: none;
-          transition: .5s opacity ease-in-out;
+          transition: 0.5s opacity ease-in-out;
         }
         #contentcontainer h-a-x {
           margin: 0;
@@ -163,7 +163,7 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         }
         site-print-button {
           display: inline-flex;
-          margin-right:20px;
+          margin-right: 20px;
         }
         site-active-title {
           --site-active-title-margin: 0px;
@@ -253,19 +253,19 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           .opened="${this.opened}"
           @opened-changed="${this._openedChanged}"
         >
-        <div id="menubuttoncontainer">
-        <site-print-button></site-print-button>
-          <site-menu-button
-            type="prev"
-            position="bottom"
-            raised
-          ></site-menu-button>
-          <site-menu-button
-            type="next"
-            position="bottom"
-            raised
-          ></site-menu-button>
-        </div>
+          <div id="menubuttoncontainer">
+            <site-print-button></site-print-button>
+            <site-menu-button
+              type="prev"
+              position="bottom"
+              raised
+            ></site-menu-button>
+            <site-menu-button
+              type="next"
+              position="bottom"
+              raised
+            ></site-menu-button>
+          </div>
           <site-menu></site-menu>
         </app-drawer>
         <div id="content">
