@@ -15,126 +15,133 @@ class SimpleFieldsInput extends SimpleFieldsField {
   }
   static get styles() {
     return [
-      ...super.styles, 
+      ...super.styles,
       css`
-      :host([type=color][value]) .label-input,
-      :host([type=range][value]) .label-input {
-        position: relative; 
-      }
-      input[type=range],
-      input[type=color] {
-        height: calc(var(--simple-fields-font-size, 16px) + var(--simple-fields-line-height, 22px)); 
-        padding: 0;
-        box-sizing: border-box;
-      }
-      input[type=color] {
-        min-width: calc(5em + 10px);
-      }
-      textarea {
-        margin: 0;
-        transition: height 0.5s ease-in-out;
-        box-sizing: border-box;
-        vertical-align: bottom;
-      }
-      :host([type=color]) output,
-      :host([type=range]) output { 
-        font-size: var(--simple-fields-detail-font-size, 12px);
-        font-family: var(--simple-fields-detail-font-family, sans-serif);
-        line-height: var(--simple-fields-font-size, 16px);
-        background-color: white;
-        text-align: center;
-        width: auto;
-        position: absolute;
-        display: inline-block; 
-      }
-      :host([type=range]) output { 
-        left: 0;
-        top: var(--simple-fields-line-height, 22px);
-      }
-      :host([type=color]) output { 
-        right: 5px;
-        bottom: -3px;
-        min-width: 4em;
-        border-radius: 3px;
-      }
-      
-      input[type=range] {
-  -webkit-appearance: none;
-  width: 100%;
-  margin: 10px 0;
-}
-input[type=range]:focus {
-  outline: none;
-}
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  background: rgba(153, 153, 153, 0.78);
-  border-radius: 5px;
-  border: 0px solid #cccccc;
-}
-input[type=range]::-webkit-slider-thumb {
-  height: 25px;
-  width: 24px;
-  border-radius: 20px;
-  background: #3f51b5;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -10px;
-}
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: rgba(153, 153, 153, 0.78);
-}
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  background: rgba(153, 153, 153, 0.78);
-  border-radius: 5px;
-  border: 0px solid #cccccc;
-}
-input[type=range]::-moz-range-thumb {
-  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-  border: 1.8px solid #3f51b5;
-  height: 25px;
-  width: 25px;
-  border-radius: 20px;
-  background: #3f51b5;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-input[type=range]::-ms-fill-lower {
-  background: rgba(153, 153, 153, 0.78);
-  border-radius: 10px;
-}
-input[type=range]::-ms-fill-upper {
-  background: rgba(153, 153, 153, 0.78);
-  border-radius: 10px;
-}
-input[type=range]::-ms-thumb {
-  height: 25px;
-  width: 24px;
-  border-radius: 20px;
-  background: #3f51b5;
-  cursor: pointer;
-  height: 5px;
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: rgba(153, 153, 153, 0.78);
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: rgba(153, 153, 153, 0.78);
-}
+        :host([type="hidden"]) { 
+          display: none; 
+        }
+        input[type="range"]{
+          height: calc(
+            var(--simple-fields-font-size, 16px) +
+              var(--simple-fields-line-height, 22px)
+          );
+          padding: 0;
+          box-sizing: border-box;
+        }
+        textarea {
+          margin: 0;
+          transition: height 0.5s ease-in-out;
+          box-sizing: border-box;
+          vertical-align: bottom;
+        }
 
-
+        input[type="range"] {
+          -webkit-appearance: none;
+          width: 100%;
+          margin: 10px 0;
+        }
+        input[type="range"]:focus {
+          outline: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: var(--simple-fields-border-color-light,#ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color,white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin-top: -2px;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]:focus::-webkit-slider-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-webkit-slider-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([disabled]) input[type="range"]::-webkit-slider-thumb {
+          background: var(--simple-fields-border-color, #999);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-moz-range-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: var(--simple-fields-border-color-light,#ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-moz-range-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color,white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]:focus::-moz-range-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-moz-range-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([disabled]) input[type="range"]::-moz-range-thumb {
+          background: var(--simple-fields-border-color, #999);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-ms-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
+        }
+        input[type="range"]::-ms-fill-lower {
+          background: var(--simple-fields-border-color-light,#ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-ms-fill-upper {
+          background: var(--simple-fields-border-color-light,#ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-ms-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color,white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+        }
+        input[type="range"]:focus::-ms-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+        }
+        :host([invalid]) input[type="range"]::-ms-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([disabled]) input[type="range"]::-ms-thumb {
+          background: var(--simple-fields-border-color, #999);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]:focus::-ms-fill-lower {
+          background: var(--simple-fields-border-color-light,#ccc);
+        }
+        input[type="range"]:focus::-ms-fill-upper {
+          background: var(--simple-fields-border-color-light,#ccc);
+        }
       `
     ];
   }
@@ -154,12 +161,14 @@ input[type=range]:focus::-ms-fill-upper {
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .name="${this.fieldId}"
-                .placeholder="${this.placeholder || ''}"
+                .placeholder="${this.placeholder || ""}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"
                 rows="1"
                 size="${this.size}"
-              >${this.value || ''}</textarea>
+              >
+${this.value || ""}</textarea
+              >
             `
           : html`
               <input
@@ -167,7 +176,6 @@ input[type=range]:focus::-ms-fill-upper {
                 aria-invalid="${this.invalid}"
                 ?autofocus="${this.autofocus}"
                 @change="${this._onChange}"
-                @input="${this._onOutputUpdate}"
                 class="${[
                   "checkbox",
                   "color",
@@ -181,17 +189,12 @@ input[type=range]:focus::-ms-fill-upper {
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .name="${this.fieldId}"
-                .placeholder="${this.placeholder || ''}"
+                .placeholder="${this.placeholder || ""}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"
                 .type="${this.type}"
               />
             `}
-            <output 
-              .for="${this.fieldId}" 
-              ?hidden="${!["color", "range"].includes(this.type)}"
-              .value="${typeof this.value === typeof undefined ? "" : this.value}">
-            </output>
         ${this.borderBottom}
       </div>
       ${this.descriptionElement} ${this.errorElement}
@@ -223,6 +226,9 @@ input[type=range]:focus::-ms-fill-upper {
        */
       dirname: {
         type: String
+      },
+      defaultValidation: {
+        type: Boolean
       },
       /**
        * Value of the id attribute of the `<datalist>` of autocomplete options
@@ -311,6 +317,11 @@ input[type=range]:focus::-ms-fill-upper {
     super();
     this.checked = false;
     this.multiple = false;
+    this.patternTypes = {
+      email: "^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",
+      tel: "^(\+?\d\D*)?(\(\d{3}\)|\d{3})\D?[0-9a-zA-Z]{3}\D?[0-9a-zA-Z]{4}(.*x.*\d{4})?$",
+      url: "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?"
+    }
     this.readonly = false;
     this.spellcheck = false;
     this.wrap = false;
@@ -342,7 +353,8 @@ input[type=range]:focus::-ms-fill-upper {
         attributes.forEach(prop => this.updateAttribute(prop));
         this._onTextareaupdate();
       }
-      if(["type","field","value"].includes(propName)) this._onTextareaupdate();
+      if (["type", "field", "value"].includes(propName))
+        this._onTextareaupdate();
       if (attributes.includes(propName)) this.updateAttribute(propName);
     });
     super.updated(changedProperties);
@@ -365,7 +377,6 @@ input[type=range]:focus::-ms-fill-upper {
       "range"
     ].includes(this.type);
   }
-
 
   /**
    * updates field attributes based on field type
@@ -500,21 +511,15 @@ input[type=range]:focus::-ms-fill-upper {
   _onChange(e) {
     if (e && e.path && e.path[0]) this.value = e.path[0].value;
     this._onTextareaupdate();
-    this._onOutputUpdate();
   }
-  _onOutputUpdate(){
-    let output = this.shadowRoot ? this.shadowRoot.querySelector('output') : false;
-    if(output && this.type === "range"){
-      let ttl = this.max - this.min, prog = this.value ? this.value - this.min : 0;
-      output.style.left = `calc(${prog*100/ttl}%)`;
-    }
-  }
-  _onTextareaupdate(){
-    let textarea = this.shadowRoot ? this.shadowRoot.querySelector('textarea') : false;
-    if(textarea) {
-      textarea.style.height = 'auto';
+  _onTextareaupdate() {
+    let textarea = this.shadowRoot
+      ? this.shadowRoot.querySelector("textarea")
+      : false;
+    if (textarea) {
+      textarea.style.height = "auto";
       textarea.style.height = `${textarea.scrollHeight}px`;
-      textarea.style.overflowY = 'hidden';
+      textarea.style.overflowY = "hidden";
     }
   }
 }

@@ -30,6 +30,7 @@ class SimpleFieldsField extends LitElement {
           opacity: var(--simple-fields-disabled-opacity, 0.7);
           transition: opacity ease-in-out;
         }
+        :host([type="color"]) .label-input,
         :host([type="checkbox"]) .label-input,
         :host([type="radio"]) .label-input {
           display: flex;
@@ -40,6 +41,7 @@ class SimpleFieldsField extends LitElement {
         label {
           flex: 1 0 100%;
         }
+        :host([type="color"]) label,
         :host([type="checkbox"]) label,
         :host([type="radio"]) label {
           font-size: var(--simple-fields-font-size, 16px);
@@ -81,8 +83,10 @@ class SimpleFieldsField extends LitElement {
         :host([invalid]) label:after {
           content: "*";
         }
+        input[type="color"],
         input[type="checkbox"],
         input[type="radio"],
+        ::slotted(input[type="color"]),
         ::slotted(input[type="checkbox"]),
         ::slotted(input[type="radio"]) {
           width: var(--simple-fields-detail-line-height, 22px);
@@ -94,6 +98,15 @@ class SimpleFieldsField extends LitElement {
               var(--simple-fields-margin-small, 8px)
           );
         }
+        input[type="color"],
+        ::slotted(input[type="color"]) {
+          box-sizing: border-box;
+          width: unset;
+          min-width: var(--simple-fields-detail-line-height, 22px);
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+          padding: 0;
+        }
         .box-input:focus {
           outline: none;
         }
@@ -101,7 +114,7 @@ class SimpleFieldsField extends LitElement {
           height: 0;
         }
         .border-bottom.blur {
-          border-bottom: 1px solid #999;
+          border-bottom: 1px solid var(--simple-fields-border-color,#999);
           width: 100%;
         }
         .border-bottom.focus {
