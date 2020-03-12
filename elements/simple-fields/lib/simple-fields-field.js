@@ -30,7 +30,6 @@ class SimpleFieldsField extends LitElement {
           opacity: var(--simple-fields-disabled-opacity, 0.7);
           transition: opacity ease-in-out;
         }
-        :host([type="color"]) .label-input,
         :host([type="checkbox"]) .label-input,
         :host([type="radio"]) .label-input {
           display: flex;
@@ -41,7 +40,6 @@ class SimpleFieldsField extends LitElement {
         label {
           flex: 1 0 100%;
         }
-        :host([type="color"]) label,
         :host([type="checkbox"]) label,
         :host([type="radio"]) label {
           font-size: var(--simple-fields-font-size, 16px);
@@ -58,7 +56,7 @@ class SimpleFieldsField extends LitElement {
           font-size: var(--simple-fields-detail-font-size, 12px);
           font-family: var(--simple-fields-detail-font-family, sans-serif);
           line-height: var(--simple-fields-detail-line-height, 22px);
-          transition: color ease-in-out;
+          transition: color 0.3s ease-in-out;
         }
         input,
         select,
@@ -71,21 +69,20 @@ class SimpleFieldsField extends LitElement {
           border: none;
         }
         :host(:focus-within) label {
-          color: var(--simple-fields-accent-color, #003f7d);
-          transition: color ease-in-out;
+          color: var(--simple-fields-accent-color, #3f51b5);
+          transition: color 0.3s ease-in-out;
         }
         :host([invalid]) label,
         :host([invalid]) .error-message,
         :host([invalid]) #error-message {
-          color: var(--simple-fields-error-color, #ac0000);
-          transition: color ease-in-out;
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: color 0.3s ease-in-out;
         }
         :host([invalid]) label:after {
           content: "*";
         }
-        input[type="color"],
         input[type="checkbox"],
-        input[type="radio"] ::slotted(input[type="color"]),
+        input[type="radio"],
         ::slotted(input[type="checkbox"]),
         ::slotted(input[type="radio"]) {
           width: var(--simple-fields-detail-line-height, 22px);
@@ -102,22 +99,20 @@ class SimpleFieldsField extends LitElement {
         }
         .border-bottom {
           height: 0;
-          border-bottom: 2px solid;
         }
         .border-bottom.blur {
-          border-bottom-color: #999;
+          border-bottom: 1px solid #999;
           width: 100%;
         }
         .border-bottom.focus {
-          margin: -2px 0 0;
-          height: 0;
+          margin: -1px auto 0;
           width: 0;
-          border-bottom-color: var(--simple-fields-accent-color, #003f7d);
-          transition: width 0.75s ease-in-out;
+          border-bottom: 2px solid var(--simple-fields-accent-color, #3f51b5);
+          transition: width 0.5s ease-in-out;
         }
         :host(:focus-within) .border-bottom.focus {
           width: 100%;
-          transition: width 0.75s ease-in-out;
+          transition: width 0.5s ease-in-out;
         }
       `
     ];

@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsField } from "./simple-fields-field.js";
-import "./simple-fields-wrapper.js";
+import "./simple-fields-field-wrapper.js";
 import "./simple-fields-fieldset.js";
 import "./simple-fields-select.js";
 import "./simple-fields-input.js";

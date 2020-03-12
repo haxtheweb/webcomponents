@@ -14,7 +14,129 @@ class SimpleFieldsInput extends SimpleFieldsField {
     return "simple-fields-input";
   }
   static get styles() {
-    return [...super.styles, css``];
+    return [
+      ...super.styles, 
+      css`
+      :host([type=color][value]) .label-input,
+      :host([type=range][value]) .label-input {
+        position: relative; 
+      }
+      input[type=range],
+      input[type=color] {
+        height: calc(var(--simple-fields-font-size, 16px) + var(--simple-fields-line-height, 22px)); 
+        padding: 0;
+        box-sizing: border-box;
+      }
+      input[type=color] {
+        min-width: calc(5em + 10px);
+      }
+      textarea {
+        margin: 0;
+        transition: height 0.5s ease-in-out;
+        box-sizing: border-box;
+        vertical-align: bottom;
+      }
+      :host([type=color]) output,
+      :host([type=range]) output { 
+        font-size: var(--simple-fields-detail-font-size, 12px);
+        font-family: var(--simple-fields-detail-font-family, sans-serif);
+        line-height: var(--simple-fields-font-size, 16px);
+        background-color: white;
+        text-align: center;
+        width: auto;
+        position: absolute;
+        display: inline-block; 
+      }
+      :host([type=range]) output { 
+        left: 0;
+        top: var(--simple-fields-line-height, 22px);
+      }
+      :host([type=color]) output { 
+        right: 5px;
+        bottom: -3px;
+        min-width: 4em;
+        border-radius: 3px;
+      }
+      
+      input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 10px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: rgba(153, 153, 153, 0.78);
+  border-radius: 5px;
+  border: 0px solid #cccccc;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 25px;
+  width: 24px;
+  border-radius: 20px;
+  background: #3f51b5;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgba(153, 153, 153, 0.78);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: rgba(153, 153, 153, 0.78);
+  border-radius: 5px;
+  border: 0px solid #cccccc;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 1.8px solid #3f51b5;
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
+  background: #3f51b5;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: rgba(153, 153, 153, 0.78);
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(153, 153, 153, 0.78);
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  height: 25px;
+  width: 24px;
+  border-radius: 20px;
+  background: #3f51b5;
+  cursor: pointer;
+  height: 5px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: rgba(153, 153, 153, 0.78);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: rgba(153, 153, 153, 0.78);
+}
+
+
+      `
+    ];
   }
   render() {
     return html`
@@ -28,16 +150,16 @@ class SimpleFieldsInput extends SimpleFieldsField {
                 ?autofocus="${this.autofocus}"
                 class="box-input"
                 @change="${this._onChange}"
+                @input="${this._onTextareaupdate}"
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .name="${this.fieldId}"
+                .placeholder="${this.placeholder || ''}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"
+                rows="1"
                 size="${this.size}"
-              >
-              ${this.value}
-            </textarea
-              >
+              >${this.value || ''}</textarea>
             `
           : html`
               <input
@@ -45,6 +167,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
                 aria-invalid="${this.invalid}"
                 ?autofocus="${this.autofocus}"
                 @change="${this._onChange}"
+                @input="${this._onOutputUpdate}"
                 class="${[
                   "checkbox",
                   "color",
@@ -58,11 +181,17 @@ class SimpleFieldsInput extends SimpleFieldsField {
                 ?disabled="${this.disabled}"
                 ?hidden="${this.hidden}"
                 .name="${this.fieldId}"
+                .placeholder="${this.placeholder || ''}"
                 ?readonly="${this.readonly}"
                 ?required="${this.required}"
                 .type="${this.type}"
               />
             `}
+            <output 
+              .for="${this.fieldId}" 
+              ?hidden="${!["color", "range"].includes(this.type)}"
+              .value="${typeof this.value === typeof undefined ? "" : this.value}">
+            </output>
         ${this.borderBottom}
       </div>
       ${this.descriptionElement} ${this.errorElement}
@@ -71,7 +200,6 @@ class SimpleFieldsInput extends SimpleFieldsField {
   static get properties() {
     return {
       ...super.properties,
-      /** TODO autocapitalize ,cols, rows, spellcheck, wrap, andd props */
       /**
        * Hint for expected file type in file upload controls
        */
@@ -156,6 +284,12 @@ class SimpleFieldsInput extends SimpleFieldsField {
       size: {
         type: Number
       },
+      /*
+       * Whether input subject to spell checking by browser/OS as "true", "default", or "false"
+       */
+      spellcheck: {
+        type: String
+      },
       /**
        * Incremental values that are valid
        */
@@ -167,6 +301,9 @@ class SimpleFieldsInput extends SimpleFieldsField {
        */
       type: {
         type: String
+      },
+      wrap: {
+        type: Boolean
       }
     };
   }
@@ -175,6 +312,8 @@ class SimpleFieldsInput extends SimpleFieldsField {
     this.checked = false;
     this.multiple = false;
     this.readonly = false;
+    this.spellcheck = false;
+    this.wrap = false;
     this.options = {};
     this.field = this.shadowRoot
       ? this.shadowRoot.querySelector("input,textarea")
@@ -201,8 +340,10 @@ class SimpleFieldsInput extends SimpleFieldsField {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "type" || propName === "field") {
         attributes.forEach(prop => this.updateAttribute(prop));
+        this._onTextareaupdate();
       }
-      if (attributes.contains(propName)) this.updateAttribute(propName);
+      if(["type","field","value"].includes(propName)) this._onTextareaupdate();
+      if (attributes.includes(propName)) this.updateAttribute(propName);
     });
     super.updated(changedProperties);
   }
@@ -224,6 +365,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
       "range"
     ].includes(this.type);
   }
+
 
   /**
    * updates field attributes based on field type
@@ -268,7 +410,8 @@ class SimpleFieldsInput extends SimpleFieldsField {
         "datetime-local",
         "number",
         "range"
-      ]
+      ],
+      spellcheck: ["textarea"]
     };
     if (
       this.field &&
@@ -356,6 +499,23 @@ class SimpleFieldsInput extends SimpleFieldsField {
    */
   _onChange(e) {
     if (e && e.path && e.path[0]) this.value = e.path[0].value;
+    this._onTextareaupdate();
+    this._onOutputUpdate();
+  }
+  _onOutputUpdate(){
+    let output = this.shadowRoot ? this.shadowRoot.querySelector('output') : false;
+    if(output && this.type === "range"){
+      let ttl = this.max - this.min, prog = this.value ? this.value - this.min : 0;
+      output.style.left = `calc(${prog*100/ttl}%)`;
+    }
+  }
+  _onTextareaupdate(){
+    let textarea = this.shadowRoot ? this.shadowRoot.querySelector('textarea') : false;
+    if(textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.overflowY = 'hidden';
+    }
   }
 }
 window.customElements.define(SimpleFieldsInput.tag, SimpleFieldsInput);
