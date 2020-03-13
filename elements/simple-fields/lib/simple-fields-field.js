@@ -68,7 +68,7 @@ class SimpleFieldsField extends LitElement {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: color 0.3s ease-in-out;
         }
-        :host([required]) label:after, 
+        :host([required]) label:after,
         :host([invalid]) label:after {
           content: "*";
         }
@@ -128,8 +128,7 @@ class SimpleFieldsField extends LitElement {
         ${this.labelElement}
         <slot></slot>
       </div>
-      ${this.borderBottom} ${this.descriptionElement}
-      ${this.errorElement}
+      ${this.borderBottom} ${this.descriptionElement} ${this.errorElement}
     `;
   }
   static get properties() {

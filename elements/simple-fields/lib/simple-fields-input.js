@@ -24,6 +24,43 @@ class SimpleFieldsInput extends SimpleFieldsField {
         :host([type="reset"]) {
           display: none;
         }
+        fieldset {
+          margin: 0;
+          padding: 0;
+          border: none;
+        }
+
+        :host([type="color"]) .label-input,
+        :host([type="checkbox"]) .label-input,
+        :host([type="radio"]) .label-input {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+          justify-content: flex-start;
+        }
+        fieldset:focus-within legend,
+        :host(:focus-within) .label-input label {
+          color: var(--simple-fields-accent-color, #3f51b5);
+          transition: color 0.3s ease-in-out;
+        }
+        :host([invalid]) .label-input label,
+        :host([invalid]) .error-message,
+        :host([invalid]) #error-message {
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: color 0.3s ease-in-out;
+        }
+        :host([required]) label:after,
+        :host([invalid]) label:after {
+          content: "*";
+        }
+        :host([type="color"]) label,
+        :host([type="checkbox"]) label,
+        :host([type="radio"]) label {
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          flex: 0 1 auto;
+        }
         input,
         select,
         textarea {
@@ -40,37 +77,6 @@ class SimpleFieldsInput extends SimpleFieldsField {
         textarea[readonly],
         textarea[disabled] {
           cursor: not-allowed;
-        }
-        :host(:focus-within) label {
-          color: var(--simple-fields-accent-color, #3f51b5);
-          transition: color 0.3s ease-in-out;
-        }
-        :host([invalid]) label,
-        :host([invalid]) .error-message,
-        :host([invalid]) #error-message {
-          color: var(--simple-fields-error-color, #dd2c00);
-          transition: color 0.3s ease-in-out;
-        }
-        :host([required]) label:after, 
-        :host([invalid]) label:after {
-          content: "*";
-        }
-
-        :host([type="color"]) .label-input,
-        :host([type="checkbox"]) .label-input,
-        :host([type="radio"]) .label-input {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: stretch;
-          justify-content: flex-start;
-        }
-        :host([type="color"]) label,
-        :host([type="checkbox"]) label,
-        :host([type="radio"]) label {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          flex: 0 1 auto;
         }
         input[type="color"],
         input[type="checkbox"],
@@ -118,6 +124,10 @@ class SimpleFieldsInput extends SimpleFieldsField {
           border-radius: 0;
           transition: color ease-in-out;
         }
+        select:focus,
+        select:focus-within {
+          outline: none;
+        }
         option {
           border-radius: 0;
         }
@@ -125,7 +135,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
         input[type="range"] {
           -webkit-appearance: none;
           width: 100%;
-          margin: 10px 0;
+          margin: 0;
         }
         input[type="range"]:focus {
           outline: none;
@@ -139,7 +149,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
           transition: all 0.5ms ease-in-out;
         }
         :host([invalid]) input[type="range"]::-webkit-slider-runnable-track {
-          background: var(--simple-fields-faded-error-color, #FF997F);
+          background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-webkit-slider-thumb {
@@ -185,7 +195,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
           cursor: not-allowed;
         }
         :host([invalid]) input[type="range"]::-moz-range-track {
-          background: var(--simple-fields-faded-error-color, #FF997F);
+          background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-moz-range-thumb {
@@ -226,7 +236,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
           cursor: not-allowed;
         }
         :host([invalid]) input[type="range"]::-ms-track {
-          background: var(--simple-fields-faded-error-color, #FF997F);
+          background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-ms-fill-lower {
@@ -269,6 +279,34 @@ class SimpleFieldsInput extends SimpleFieldsField {
         input[type="range"]:focus::-ms-fill-upper {
           background: var(--simple-fields-border-color-light, #ccc);
         }
+        legend {
+          padding-inline-start: unset;
+          padding-inline-end: unset;
+        }
+        #options {
+          display: var(--simple-fields-radio-option-display, flex);
+          flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
+        }
+        .option {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+          justify-content: space-between;
+          margin: 0 var(--simple-fields-margin-small, 8px);
+        }
+        .option:first-of-type {
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+        }
+        .option:last-of-type {
+          margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+        }
+        .option label {
+          flex: 0 1 auto;
+        }
+        .option:focus-within label {
+          color: var(--simple-fields-accent, #003f7d);
+          transition: color ease-in-out;
+        }
         .box-input:focus {
           outline: none;
         }
@@ -294,21 +332,27 @@ class SimpleFieldsInput extends SimpleFieldsField {
   }
   render() {
     return this.hasFieldSet
-      ? html`${this.fieldset}`
+      ? html`
+          ${this.fieldset}
+        `
       : html`
-        <div class="label-input">
-          ${this.labelElement}
-          ${this.type === "textarea"
-            ? html`${this.textarea}`
-            : this.type === 'select' 
-              ? html`${this.select}`
-              :html`${this.input}`
-          }
-          ${this.borderBottom}
-        </div>
-        ${this.descriptionElement}
-        ${this.errorElement}
-      `;
+          <div class="label-input">
+            ${this.labelElement}
+            ${this.type === "textarea"
+              ? html`
+                  ${this.textarea}
+                `
+              : this.type === "select"
+              ? html`
+                  ${this.selectBox}
+                `
+              : html`
+                  ${this.input}
+                `}
+            ${this.borderBottom}
+          </div>
+          ${this.descriptionElement} ${this.errorElement}
+        `;
   }
   static get properties() {
     return {
@@ -423,7 +467,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
         type: String
       },
       /*
-       * text wrapping for textarea, 
+       * text wrapping for textarea,
        * "hard": automatically inserts line breaks (CR+LF)
        * "soft": all line breaks as CR+LF pair
        * "off" : no wrapping / <textarea> becomes horizontally scrollable
@@ -475,15 +519,17 @@ class SimpleFieldsInput extends SimpleFieldsField {
     super.updated(changedProperties);
   }
 
-  get hasFieldSet(){
-    return Object.keys(this.options || {}).length > 0 
-      && (this.type === "radio" || this.type === "checkbox");
+  get hasFieldSet() {
+    return (
+      Object.keys(this.options || {}).length > 0 &&
+      (this.type === "radio" || this.type === "checkbox")
+    );
   }
 
   get fieldset() {
     return html`
       <fieldset>
-        <legend id="legend" ?hidden="${!this.label}">
+        <legend id="${this.fieldId}" ?hidden="${!this.label}">
           ${this.label}
         </legend>
         <div id="options">
@@ -497,6 +543,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
                   .id="${this.id}.${option}"
                   ?autofocus="${this.autofocus}"
                   autocomplete="${this.autocomplete}"
+                  aria-descrbedby="${this.describedBy}"
                   .aria-invalid="${this.invalid ? "true" : "false"}"
                   .checked="${this.value === option}"
                   @click="${this._onChange}"
@@ -515,20 +562,17 @@ class SimpleFieldsInput extends SimpleFieldsField {
     `;
   }
 
-  get input(){
+  get input() {
     return html`
       <input
         .id="${this.fieldId}"
+        aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.invalid}"
         ?autofocus="${this.autofocus}"
         @change="${this._onChange}"
-        class="${[
-          "checkbox",
-          "color",
-          "file",
-          "radio",
-          "range"
-        ].includes(this.type)
+        class="${["checkbox", "color", "file", "radio", "range"].includes(
+          this.type
+        )
           ? ""
           : "box-input"}"
         dirname="${this.dirname}"
@@ -539,7 +583,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         .type="${this.type}"
-      />        
+      />
     `;
   }
 
@@ -566,26 +610,27 @@ class SimpleFieldsInput extends SimpleFieldsField {
    * @readonly
    * @memberof SimpleFieldsInput
    */
-  get select(){
+  get selectBox() {
     return html`
-      <select 
-        id="${this.id}.select" 
+      <select
+        id="${this.fieldId}"
         ?autofocus="${this.autofocus}"
         .autocomplete="${this.autocomplete}"
+        aria-descrbedby="${this.describedBy}"
         .aria-invalid="${this.invalid ? "true" : "false"}"
         @change="${this._onChange}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
         ?required="${this.required}"
-        ?mutliple="${this.mutliple}"
-        size="${this.size}"
-        .value="${this.value}">
+        ?multiple="${this.multiple}"
+        size="${this.size || ""}"
+      >
         ${Object.keys(this.options || {}).map(
           option => html`
             <option
               .id="${this.id}.${option}"
               ?selected="${this.multiple
-                ? this.value.contains(option)
+                ? this.value && this.value.includes(option)
                 : this.value === option}"
               .value="${option}"
             >
@@ -602,7 +647,7 @@ class SimpleFieldsInput extends SimpleFieldsField {
    * @readonly
    * @memberof SimpleFieldsInput
    */
-  get textarea(){
+  get textarea() {
     return html`
       <textarea
         .id="${this.fieldId}"
@@ -621,7 +666,8 @@ class SimpleFieldsInput extends SimpleFieldsField {
         size="${this.size}"
       >
         ${this.value || ""}
-      </textarea>
+      </textarea
+      >
     `;
   }
 
@@ -756,24 +802,52 @@ class SimpleFieldsInput extends SimpleFieldsField {
    * @memberof SimpleFieldsSelect
    */
   _onChange(e) {
+    e.stopPropagation();
     if (e && e.path && e.path[0]) {
-      if(this.type == "select"){
+      if (this.type == "select") {
         this.value = this.multiple
-        ? e.path[0].selectedOptions.map(option => option.value)
-        : e.path[0].selectedOptions[0].value;
-      } else if(this.hasFieldSet && this.type === "radio"){
-        this.value =  e.path[0].value;
-      } else if(this.hasFieldSet && this.type === "checkbox"){
-        if(e.path[0].checked) { 
+          ? Object.keys(e.path[0].selectedOptions).map(option=>e.path[0].selectedOptions[option].value)
+          : e.path[0].selectedOptions[0].value;
+      } else if (this.hasFieldSet && this.type === "radio") {
+        this.value = e.path[0].value;
+      } else if (this.hasFieldSet && this.type === "checkbox") {
+        this.value = this.value || [];
+        if (e.path[0].checked) {
           this.value.push(e.path[0].value);
         } else {
-          this.value.filter(val => val !== e.path[0].value);
+          this.value = this.value.filter(val => val !== e.path[0].value);
         }
       } else {
-        this.value = e.path[0].value
+        this.value = e.path[0].value;
       }
     }
     this._onTextareaupdate();
+    this._fireValueChanged();
+  }
+
+  /**
+   * fires when value changes
+   * @event value-changed
+   */
+  _fireValueChanged() {
+    console.log(
+      "value-changed",
+      this.value,
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * makes textarea autogrow

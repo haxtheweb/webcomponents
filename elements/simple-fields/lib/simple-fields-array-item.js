@@ -117,10 +117,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           font-size: 16px;
           line-height: 22px;
         }
-        ::slotted([slot=preview]:first-of-type){
+        ::slotted([slot="preview"]:first-of-type) {
           margin-top: 0;
         }
-        ::slotted([slot=preview]:last-of-type){
+        ::slotted([slot="preview"]:last-of-type) {
           margin-bottom: 0;
         }
       `
@@ -224,8 +224,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     this.disabled = false;
     this.sortable = false;
     this.previewBy = [];
-    this.addEventListener('focusin',e=>this.setAttribute('aria-expanded',"true"));
-    this.addEventListener('focusout',e=>this.setAttribute('aria-expanded',"false"));
+    this.addEventListener("focusin", e =>
+      this.setAttribute("aria-expanded", "true")
+    );
+    this.addEventListener("focusout", e =>
+      this.setAttribute("aria-expanded", "false")
+    );
     //this.sortBy = [];
   }
   connectedCallback() {
@@ -254,11 +258,11 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
   /**
    * handles individual toggling
    */
-  toggle(){
-    if(this.getAttribute('aria-expanded') === "true"){
-      this.setAttribute('aria-expanded',"false");
+  toggle() {
+    if (this.getAttribute("aria-expanded") === "true") {
+      this.setAttribute("aria-expanded", "false");
     } else {
-      this.setAttribute('aria-expanded',"true");
+      this.setAttribute("aria-expanded", "true");
     }
   }
 

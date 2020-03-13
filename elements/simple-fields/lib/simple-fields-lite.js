@@ -498,9 +498,7 @@ class SimpleFieldsLite extends LitElement {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
-            schemaProp.properties 
-              || schemaProp.items 
-              || data.labelProperty
+            schemaProp.properties || schemaProp.items || data.labelProperty
               ? element
               : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`),

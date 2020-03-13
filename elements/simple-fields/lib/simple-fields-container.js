@@ -16,7 +16,8 @@ class SimpleFieldsContainer extends SimpleFieldsField {
   static get styles() {
     return [
       ...super.styles,
-      css`/*
+      css`
+        /*
         :host {
           display: flex;
           flex-wrap: wrap;
@@ -87,8 +88,7 @@ class SimpleFieldsContainer extends SimpleFieldsField {
         ${this.labelElement}
         <slot></slot>
       </div>
-      ${this.borderBottom} ${this.descriptionElement}
-      ${this.errorElement}
+      ${this.borderBottom} ${this.descriptionElement} ${this.errorElement}
     `;
   }
 
@@ -105,11 +105,11 @@ class SimpleFieldsContainer extends SimpleFieldsField {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      console.log('propName',propName);
+      console.log("propName", propName);
       if (propName === "field") {
-        console.log('field',this.field);
+        console.log("field", this.field);
         this.innerHTML = "";
-        this.id = `${this.fieldId || ''}-wrapper`;
+        this.id = `${this.fieldId || ""}-wrapper`;
         if (this.field) {
           this.appendChild(this.field);
           this.setAttribute(
@@ -118,11 +118,12 @@ class SimpleFieldsContainer extends SimpleFieldsField {
           );
           this.required = this.field.required;
         } else {
-          this.innerHTML = '';
+          this.innerHTML = "";
           this.required = false;
           this.removeAttribute("field-type");
         }
-        if (propName === "invalid") this.field.setAttribute('aria-invalid',this.invalid);
+        if (propName === "invalid")
+          this.field.setAttribute("aria-invalid", this.invalid);
       }
     });
   }
