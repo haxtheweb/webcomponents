@@ -557,7 +557,10 @@ class SimpleFieldsLite extends LitElement {
         else if (schemaProp.properties) {
           this._addToForm(schemaProp, element, `${element.id}.`, data.child);
         } else {
-          wrapper.field = element;
+          if(element !== wrapper) {
+            element.slot = "field";
+            wrapper.appendChild(element);
+          }
           if (value) {
             element.setAttribute(valueProperty, value);
 

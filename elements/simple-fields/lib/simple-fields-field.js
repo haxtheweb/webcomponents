@@ -1,367 +1,683 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleFieldsContainer } from "./simple-fields-container.js";
 /**
  *`simple-fields-field`
- * a primitive field type that other fields can inherit
+ * HTML inputs (excluding submit, reset, button, and image) 
+ * with label, description, error massage, 
+ * and aria-invalid functionality if needed.
  *
  * @group simple-fields
+ * @extends simple-fields-container
  * @customElement simple-fields-field
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
+ * @demo ./demo/field.html
  */
-class SimpleFieldsField extends LitElement {
+class SimpleFieldsField extends SimpleFieldsContainer {
   static get tag() {
     return "simple-fields-field";
   }
   static get styles() {
     return [
+      ...super.styles,
       css`
-        :host {
-          display: block;
-          width: 100%;
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          margin: var(--simple-fields-margin, 16px) 0;
-        }
-        :host([hidden]),
-        :host([type="hidden"]) {
-          display: none;
-        }
-        :host([disabled]) label,
-        :host([disabled]) legend,
-        :host([disabled]) #error-message,
-        :host([disabled]) #description,
-        :host([disabled]) .error-message,
-        :host([disabled]) .description {
-          opacity: var(--simple-fields-disabled-opacity, 0.7);
-          transition: opacity ease-in-out;
-        }
-        label,
-        legend,
-        #error-message,
-        #description,
-        .error-message,
-        .description {
-          font-size: var(--simple-fields-detail-font-size, 12px);
-          font-family: var(--simple-fields-detail-font-family, sans-serif);
-          line-height: var(--simple-fields-detail-line-height, 22px);
-          transition: color 0.3s ease-in-out;
-        }
-        ::slotted(*) {
-          width: 100%;
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
+        fieldset {
+          margin: 0;
+          padding: 0;
           border: none;
         }
-        ::slotted(*[readonly]),
-        ::slotted(*[disabled]) {
-          cursor: not-allowed;
+        option {
+          border-radius: 0;
         }
-        :host(:focus-within) label {
-          color: var(--simple-fields-accent-color, #3f51b5);
-          transition: color 0.3s ease-in-out;
+        legend {
+          padding-inline-start: unset;
+          padding-inline-end: unset;
         }
-        :host([invalid]) label,
-        :host([invalid]) .error-message,
-        :host([invalid]) #error-message {
-          color: var(--simple-fields-error-color, #dd2c00);
-          transition: color 0.3s ease-in-out;
+        #options {
+          display: var(--simple-fields-radio-option-display, flex);
+          flex-wrap: var(--simple-fields-radio-option-flex-wrap, wrap);
         }
-        :host([required]) label:after,
-        :host([invalid]) label:after {
-          content: "*";
-        }
-
-        :host([inline]) .label-input {
+        .option {
           display: flex;
           flex-wrap: wrap;
           align-items: stretch;
-          justify-content: flex-start;
+          justify-content: space-between;
+          margin: 0 var(--simple-fields-margin-small, 8px);
         }
-        :host([inline]) label {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          flex: 0 1 auto;
+        .option:first-of-type {
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
         }
-        input[inline] ::slotted(*) {
-          flex: 1 1 auto;
-        }
-        input[inline] ::slotted(input[type="radio"]),
-        input[inline] ::slotted(input[type="checkbox"]) {
-          width: var(--simple-fields-detail-line-height, 22px);
-          height: var(--simple-fields-detail-line-height, 22px);
-          flex: 0 0 auto;
+        .option:last-of-type {
           margin: 0 0 0 var(--simple-fields-margin-small, 8px);
-          max-width: calc(
-            100% - var(--simple-fields-detail-line-height, 22px) -
-              var(--simple-fields-margin-small, 8px)
-          );
+        }
+        .option:focus-within label {
+          color: var(--simple-fields-accent, #003f7d);
+          transition: color ease-in-out;
+        }
+        :host([type]) fieldset .border-bottom {
+          display: block;
         }
         .box-input:focus {
           outline: none;
         }
-        .border-bottom {
-          height: 0;
+        textarea {
+          margin: 0;
+          transition: height 0.5s ease-in-out;
+          box-sizing: border-box;
+          vertical-align: bottom;
         }
-        .border-bottom.blur {
-          border-bottom: 1px solid var(--simple-fields-border-color, #999);
+        select.field {
           width: 100%;
+          border: none;
+          background: transparent;
+          border-radius: 0;
+          transition: color ease-in-out;
         }
-        .border-bottom.focus {
-          margin: -1px auto 0;
-          width: 0;
-          border-bottom: 2px solid var(--simple-fields-accent-color, #3f51b5);
-          transition: width 0.5s ease-in-out;
+        select:focus,
+        select:focus-within {
+          outline: none;
         }
-        :host(:focus-within) .border-bottom.focus {
+        input[type="range"] {
           width: 100%;
-          transition: width 0.5s ease-in-out;
+          height: calc(
+            var(--simple-fields-font-size, 16px) +
+              var(--simple-fields-line-height, 22px)
+          );
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          -webkit-appearance: none;
+        }
+        input[type="range"]:focus {
+          outline: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: var(--simple-fields-border-color-light, #ccc);
+          border-radius: 8px;
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-webkit-slider-runnable-track {
+          background: var(--simple-fields-faded-error-color, #ff997f);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color, white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+          -webkit-appearance: none;
+          margin-top: -2px;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-webkit-slider-thumb,
+        input[type="range"][disabled]::-webkit-slider-thumb {
+          cursor: not-allowed;
+        }
+        input[type="range"]:focus::-webkit-slider-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-webkit-slider-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-webkit-slider-thumb,
+        input[type="range"][disabled]::-webkit-slider-thumb {
+          background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-moz-range-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: var(--simple-fields-border-color-light, #ccc);
+          border-radius: 8px;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-moz-range-track,
+        input[type="range"][disabled]::-moz-range-track {
+          cursor: not-allowed;
+        }
+        :host([invalid]) input[type="range"]::-moz-range-track {
+          background: var(--simple-fields-faded-error-color, #ff997f);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-moz-range-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color, white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]:focus::-moz-range-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-moz-range-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-moz-range-thumb,
+        input[type="range"][disabled]::-moz-range-thumb {
+          background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-ms-track {
+          width: 100%;
+          height: 16px;
+          cursor: pointer;
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-ms-track,
+        input[type="range"][disabled]::-ms-track {
+          cursor: not-allowed;
+        }
+        :host([invalid]) input[type="range"]::-ms-track {
+          background: var(--simple-fields-faded-error-color, #ff997f);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]::-ms-fill-lower {
+          background: var(--simple-fields-border-color-light, #ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-ms-fill-upper {
+          background: var(--simple-fields-border-color-light, #ccc);
+          border-radius: 8px;
+        }
+        input[type="range"]::-ms-thumb {
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          background: var(--simple-fields-background-color, white);
+          box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
+          cursor: pointer;
+        }
+        input[type="range"][readonly]::-ms-thumb,
+        input[type="range"][disabled]::-ms-thumb {
+          cursor: not-allowed;
+        }
+        input[type="range"]:focus::-ms-thumb {
+          background: var(--simple-fields-accent-color, #3f51b5);
+        }
+        :host([invalid]) input[type="range"]::-ms-thumb {
+          background: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][redonly]::-ms-thumb,
+        input[type="range"][disabled]::-ms-thumb {
+          background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"]:focus::-ms-fill-lower {
+          background: var(--simple-fields-border-color-light, #ccc);
+        }
+        input[type="range"]:focus::-ms-fill-upper {
+          background: var(--simple-fields-border-color-light, #ccc);
         }
       `
     ];
   }
   render() {
-    return html`
-      <div class="label-input">
-        ${this.labelElement}
-        <slot></slot>
-      </div>
-      ${this.borderBottom} ${this.descriptionElement} ${this.errorElement}
-    `;
+    return !this.hasFieldSet 
+    ? super.render()
+    : this.fieldsetTemplate;
   }
+
   static get properties() {
     return {
+      ...super.properties,
       /**
-       * Hint for form autofill feature
+       * Hint for expected file type in file upload controls
        */
-      autocomplete: {
+      accept: {
         type: String
       },
       /**
-       * Automatically focus the form control when the page is loaded
+       * Media capture input method in file upload controls
        */
-      autofocus: {
+      capture: {
+        type: String
+      },
+      /**
+       * Whether the command or control is checked
+       */
+      checked: {
         type: Boolean
       },
       /**
-       * Description of the field
+       * Name of form field to use for sending the element's directionality in form submission
        */
-      description: {
+      dirname: {
         type: String
       },
       /**
-       * Whether the form control is disabled
+       * Value of the id attribute of the `<datalist>` of autocomplete options
        */
-      disabled: {
-        type: Boolean,
-        reflect: true
+      list: {
+        type: String
       },
       /**
-       * Error message to display
+       * Maximum value for numeric field types
        */
-      errorMessage: {
-        type: String,
-        attribute: "error-message"
+      max: {
+        type: Number
       },
       /**
-       * Whether the field is hidden
+       * Maximum length (number of characters) of `value`
        */
-      hidden: {
-        type: Boolean,
-        reflect: true
+      maxlength: {
+        type: Number
       },
       /**
-       * Field element
+       * Minimum value for numeric field types
        */
-      field: {
+      min: {
+        type: Number
+      },
+      /**
+       * Minimum length (number of characters) of `value`
+       */
+      minlength: {
+        type: Number
+      },
+      /**
+       * Whether to allow multiple values
+       */
+      multiple: {
+        type: Boolean
+      },
+      /**
+       * options {value: "Text"} for select as object,
+       * eg. {a: "Option A", b: "Option B", c: "Option C"}
+       */
+      options: {
         type: Object
       },
       /**
-       * Unique id
+       * Pattern the value must match to be valid
        */
-      id: {
-        type: String,
-        reflect: true
-      },
-      /**
-       * Whether field and label should be inline
-       */
-      inline: {
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * Whether field is invalid
-       */
-      invalid: {
-        type: Boolean,
-        reflect: true
-      },
-      /**
-       * Label for the field
-       */
-      label: {
+      pattern: {
         type: String
       },
       /**
-       * Name of the input form control. Submitted with the form as part of a name/value pair.
+       * Content to be appear in the form control when the form control is empty
        */
-      name: {
-        type: String,
-        reflect: true
+      placeholder: {
+        type: String
       },
       /**
-       * Whether field is required
+       * Value is not editable
        */
-      required: {
+      readonly: {
         type: Boolean
       },
       /**
-       * Current value of the form control. Submitted with the form as part of a name/value pair.
+       * Size of the control
        */
-      value: {
-        reflect: true
+      size: {
+        type: Number
+      },
+      /*
+       * Whether input subject to spell checking by browser/OS as "true", "default", or "false"
+       */
+      spellcheck: {
+        type: String
+      },
+      /**
+       * Incremental values that are valid
+       */
+      step: {
+        type: Number
       },
       /**
        * Type of input form control
        */
       type: {
-        type: String,
-        reflect: true
+        type: String
+      },
+      /*
+       * text wrapping for textarea,
+       * "hard": automatically inserts line breaks (CR+LF)
+       * "soft": all line breaks as CR+LF pair
+       * "off" : no wrapping / <textarea> becomes horizontally scrollable
+       */
+      wrap: {
+        type: Boolean
       }
     };
   }
   constructor() {
     super();
-    this.autocomplete = "off";
-    this.autofocus = false;
-    this.disabled = false;
-    this.hidden = false;
-    this.invalid = false;
-    this.inline = false;
-    this.field = this.shadowRoot.querySelector("input");
+    this.checked = false;
+    this.multiple = false;
+    this.readonly = false;
+    this.spellcheck = false;
+    this.wrap = false;
+    this.options = {};
   }
 
   updated(changedProperties) {
+    let attributes = [
+      "accept",
+      "autocomplete",
+      "capture",
+      "checked",
+      "dirname",
+      "list",
+      "max",
+      "maxlength",
+      "min",
+      "minlength",
+      "muliple",
+      "pattern",
+      "size",
+      "step"
+    ];
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "type") {
-        if (
-          !this.type ||
-          this.type === "reset" ||
-          this.type === "submit" ||
-          this.type === "button" ||
-          this.type === "image"
-        )
-          this.type = "text";
-        this.field = this.shadowRoot
-          ? this.shadowRoot.querySelector("input,textarea")
-          : undefined;
-      }
+      if (propName === "type" && this.type !== oldValue) this._updateField();
+      if (["type", "field", "value"].includes(propName))
+        this._onTextareaupdate();
+      if (attributes.includes(propName)) this.updateAttribute(propName);
       if (propName === "value" && this.value !== oldValue)
         this._fireValueChanged();
     });
   }
-  /**
-   * gets a decorative border
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get borderBottom() {
-    return ["checkbox", "color", "file", "radio", "range"].includes(this.type)
-      ? ``
-      : html`
-          <div class="border-bottom blur"></div>
-          <div class="border-bottom focus"></div>
-        `;
+
+  get hasFieldSet() {
+    return (
+      Object.keys(this.options || {}).length > 0 &&
+      (this.type === "radio" || this.type === "checkbox")
+    );
   }
 
   /**
-   * gets aria-describedby
+   * gets field element tag in shadow DOM
    *
    * @readonly
-   * @memberof SimpleFieldsField
+   * @returns {string}
+   * @memberof SimpleFieldsContainer
    */
-  get describedBy() {
-    let describedBy = [];
-    if (this.label) describedBy.push("label");
-    if (this.description) describedBy.push("description");
-    if (this.error && this.invalid) describedBy.push("error");
-    return describedBy.join(" ");
+  get fieldElementTag(){
+    return this.type === "select" 
+      ? "select" 
+      : this.type === "textarea"
+        ? "textarea"
+        : this.hasFieldSet 
+          ? "fieldset" 
+          : "input";
   }
 
   /**
-   * gets field's id
+   * template label and field
    *
    * @readonly
-   * @memberof SimpleFieldsField
+   * @returns {object}
+   * @memberof SimpleFieldsContainer
    */
-  get fieldId() {
-    return `${this.id || "field"}.input`;
-  }
-
-  /**
-   * gets `<label>`
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get labelElement() {
+  get fieldMainTemplate() {
     return html`
-      <label for="${this.fieldId}">${this.label}</label>
+        <div class="${
+          this.inline 
+          || ["checkbox","color","radio"].includes(this.type || "text") 
+          ? 'field-main inline' 
+          :'field-main'}">
+          ${this.labelTemplate}
+          <div>
+            ${this.prefixTemplate}
+            ${this.fieldElementTag === "input" 
+              ? this.inputTemplate
+              : this.fieldElementTag === "select" 
+                ? this.selectTemplate
+                : this.fieldElementTag === "textarea"
+                  ? this.textareaTemplate
+                  : ``
+            }
+            ${this.suffixTemplate}
+          </div>
+        </div>`;
+  }
+
+  /**
+   * template for `fieldset` in shadow DOM
+   *
+   * @readonly
+   * @returns {object}
+   * @memberof SimpleFieldsField
+   */
+  get fieldsetTemplate() {
+    return html`
+      <fieldset>
+        <legend id="${this.fieldId}" class="label-main" ?hidden="${!this.label}">
+          ${this.label}
+        </legend>
+        <div id="options">
+          ${Object.keys(this.options || {}).map(
+            option => html`
+              <div class="option inline">
+                <label for="${this.id}.${option}" class="radio-label"
+                  >${this.options[option]}</label
+                >
+                <input
+                  .id="${this.id}.${option}"
+                  ?autofocus="${this.autofocus}"
+                  autocomplete="${this.autocomplete}"
+                  aria-descrbedby="${this.describedBy}"
+                  .aria-invalid="${this.invalid ? "true" : "false"}"
+                  .checked="${this.value === option}"
+                  class="field"
+                  @click="${this._onChange}"
+                  ?disabled="${this.disabled}"
+                  ?hidden="${this.hidden}"
+                  ?required="${this.required}"
+                  type="${this.type}"
+                  .value="${option}"
+                />
+              </div>
+            `
+          )}
+        </div>
+        ${this.fieldBottom}
+      </fieldset>
     `;
   }
 
   /**
-   * gets element with description
+   * template for `input` in shadow DOM
    *
    * @readonly
+   * @returns {object}
    * @memberof SimpleFieldsField
    */
-  get descriptionElement() {
+  get inputTemplate() {
     return html`
-      <div id="description" ?hidden="${!this.description}">
-        ${this.description}
-      </div>
+      <input
+        .id="${this.fieldId}"
+        aria-descrbedby="${this.describedBy}"
+        aria-invalid="${this.invalid}"
+        ?autofocus="${this.autofocus}"
+        @change="${this._onChange}"
+        class="field ${["checkbox", "color", "file", "radio", "range"].includes(
+          this.type
+        )
+          ? ""
+          : "box-input"}"
+        dirname="${this.dirname}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        .name="${this.fieldId}"
+        .placeholder="${this.placeholder || ""}"
+        ?readonly="${this.readonly}"
+        ?required="${this.required}"
+        .type="${this.type}"
+      />
+    `;
+  }
+  /**
+   * template for `select` in shadow DOM
+   *
+   * @readonly
+   * @returns {object}
+   * @memberof SimpleFieldsField
+   */
+  get selectTemplate() {
+    return html`
+    <select
+        id="${this.fieldId}"
+        ?autofocus="${this.autofocus}"
+        .autocomplete="${this.autocomplete}"
+        aria-descrbedby="${this.describedBy}"
+        .aria-invalid="${this.invalid ? "true" : "false"}"
+        @change="${this._onChange}"
+        class="field"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        ?required="${this.required}"
+        ?multiple="${this.multiple}"
+        size="${this.size || ""}"
+      >
+        ${Object.keys(this.options || {}).map(
+          option => html`
+            <option
+              .id="${this.id}.${option}"
+              ?selected="${this.multiple
+                ? this.value && this.value.includes(option)
+                : this.value === option}"
+              .value="${option}"
+            >
+              ${this.options[option]}
+            </option>
+          `
+        )}
+      </select>
+    `;
+  }
+  
+  /**
+   * overridden mutation observer 
+   *
+   * @readonly
+   * @memberof SimpleFieldsContainer
+   */
+  get slottedFieldObserver(){
+  }
+  /**
+   * template for `textarea` in shadow DOM
+   *
+   * @readonly
+   * @returns {object}
+   * @memberof SimpleFieldsField
+   */
+  get textareaTemplate() {
+    return html`
+      <textarea
+        .id="${this.fieldId}"
+        aria-invalid="${this.invalid}"
+        ?autofocus="${this.autofocus}"
+        class="field box-input"
+        @change="${this._onChange}"
+        @input="${this._onTextareaupdate}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        .name="${this.fieldId}"
+        .placeholder="${this.placeholder || ""}"
+        ?readonly="${this.readonly}"
+        ?required="${this.required}"
+        rows="1"
+        size="${this.size}"
+      >${this.value || ""}</textarea>
     `;
   }
 
   /**
-   * gets element with error message
+   * updates field attributes based on field type
    *
-   * @readonly
+   * @param {string} attribute
    * @memberof SimpleFieldsField
    */
-  get errorElement() {
-    return html`
-      <div id="error-message" ?hidden="${!this.errorMessage || !this.invalid}">
-        ${this.errorMessage}
-      </div>
-    `;
-  }
-  /**
-   * focuses on field
-   * @returns {Boolean}
-   * @memberof SimpleFieldsInput
-   */
-  focus() {
-    if (this.field) this.field.focus();
-  }
-  /**
-   * determines whether input satisfies its validation constraints
-   * @returns {boolean}
-   * @memberof SimpleFieldsInput
-   */
-  reportValidity() {
-    return this.field && this.field.reportValidity();
+  updateAttribute(attribute) {
+    let types = {
+      accept: ["file"],
+      capture: ["file"],
+      checked: ["radio", "checkbox"],
+      dirname: ["text", "search"],
+      max: [
+        "date",
+        "month",
+        "week",
+        "time",
+        "datetime-local",
+        "number",
+        "range"
+      ],
+      maxlength: ["password", "search", "tel", "text", "textrea", "url"],
+      min: [
+        "date",
+        "month",
+        "week",
+        "time",
+        "datetime-local",
+        "number",
+        "range"
+      ],
+      minlength: ["password", "search", "tel", "text", "textarea", "url"],
+      multiple: ["email", "file", "select"],
+      pattern: ["password", "text", "tel"],
+      size: ["password", "text", "tel", "text", "textarea"],
+      step: [
+        "date",
+        "month",
+        "week",
+        "time",
+        "datetime-local",
+        "number",
+        "range"
+      ],
+      spellcheck: ["textarea"]
+    };
+    if (
+      this.field &&
+      this.type &&
+      this[attribute] !== this.field.getAttribute(attribute)
+    ) {
+      if (
+        this[attribute] &&
+        (!types[attribute] || types[attribute].includes(this.type))
+      ) {
+        this.field.setAttribute(attribute, this[attribute]);
+      } else {
+        this.field.removeAttribute(attribute, this[attribute]);
+      }
+    }
   }
   /**
    * fires when value changes
    * @event value-changed
    */
   _fireValueChanged() {
+    console.log(
+      "value-changed",
+      this.value,
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
@@ -370,6 +686,63 @@ class SimpleFieldsField extends LitElement {
         detail: this
       })
     );
+  }
+  /**
+   * listens for focusout
+   * overridden for fields in shadow DOM
+   *
+   * @param {boolean} [init=true] whether to start observing or disconnect observer
+   * @memberof SimpleFieldsContainer
+   */
+  _observeAndListen(init=true){
+    if(init){
+      this.addEventListener('focusout',this._onFocusout);
+    } else {
+      this.removeEventListener('focusout',this._onFocusout);
+    }
+  }
+
+  /**
+   * handles change in select value
+   *
+   * @param {event} e change event
+   * @memberof SimpleFieldsSelect
+   */
+  _onChange(e) {
+    e.stopPropagation();
+    if (e && e.path && e.path[0]) {
+      if (this.type === "select") {
+        this.value = this.multiple
+          ? Object.keys(e.path[0].selectedOptions).map(
+              option => e.path[0].selectedOptions[option].value
+            )
+          : e.path[0].selectedOptions[0].value;
+      } else if (this.hasFieldSet && this.type === "radio") {
+        this.value = e.path[0].value;
+      } else if (this.hasFieldSet && this.type === "checkbox") {
+        this.value = this.value || [];
+        if (e.path[0].checked) {
+          this.value.push(e.path[0].value);
+        } else {
+          this.value = this.value.filter(val => val !== e.path[0].value);
+        }
+      } else {
+        this.value = e.path[0].value;
+      }
+    }
+    this._onTextareaupdate();
+    this._fireValueChanged();
+  }
+  /**
+   * updates field an type
+   *
+   * @memberof SimpleFieldsInput
+   */
+  _updateField(){
+    this.type = this._getValidType(this.type);
+    this.field = this.shadowRoot && this.shadowRoot.querySelector(this.fieldElementTag)
+      ? this.shadowRoot.querySelector(this.fieldElementTag)
+      : undefined;
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);
