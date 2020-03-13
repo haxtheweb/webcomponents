@@ -806,7 +806,9 @@ class SimpleFieldsInput extends SimpleFieldsField {
     if (e && e.path && e.path[0]) {
       if (this.type == "select") {
         this.value = this.multiple
-          ? Object.keys(e.path[0].selectedOptions).map(option=>e.path[0].selectedOptions[option].value)
+          ? Object.keys(e.path[0].selectedOptions).map(
+              option => e.path[0].selectedOptions[option].value
+            )
           : e.path[0].selectedOptions[0].value;
       } else if (this.hasFieldSet && this.type === "radio") {
         this.value = e.path[0].value;
