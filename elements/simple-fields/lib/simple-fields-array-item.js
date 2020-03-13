@@ -88,12 +88,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           max-height: 0;
           transition: max-height 0.75s ease 0.1s;
         }
-        :host(:focus-within) #content,
         :host([aria-expanded="true"]) #content {
           max-height: 20000vh;
           transition: max-height 0.75s ease 0.1s;
         }
-        :host(:focus-within) #content-inner,
         :host([aria-expanded="true"]) #content-inner {
           max-height: 20000vh;
         }
@@ -109,7 +107,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transform: rotate(0deg);
           transition: transform 0.5s ease-in-out;
         }
-        :host(:focus-within) #expand,
         :host([aria-expanded="true"]) #expand {
           transform: rotate(-180deg);
           transition: transform 0.5s ease-in-out;
@@ -119,6 +116,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           font-family: sans-serif;
           font-size: 16px;
           line-height: 22px;
+        }
+        ::slotted([slot=preview]:first-of-type){
+          margin-top: 0;
+        }
+        ::slotted([slot=preview]:last-of-type){
+          margin-bottom: 0;
         }
       `
     ];
@@ -136,12 +139,14 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         >
         </paper-icon-button>
         <div id="preview"><slot name="preview"></slot></div>
-        <iron-icon
+        <paper-icon-button
           id="expand"
-          aria-hidden="true"
+          controls="${this.id}"
           icon="expand-more"
+          label="Toggle expand"
           @click="${this.toggle}"
-        ></iron-icon>
+        >
+        </paper-icon-button>
       </div>
       <div id="content">
         <div id="content-inner">
@@ -190,6 +195,12 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         attribute: "sortable"
       },
       /**
+       * is disabled?
+       */
+      preview: {
+        type: Boolean
+      },
+      /**
        * fields to preview by
        */
       previewBy: {
@@ -213,6 +224,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     this.disabled = false;
     this.sortable = false;
     this.previewBy = [];
+    this.addEventListener('focusin',e=>this.setAttribute('aria-expanded',"true"));
+    this.addEventListener('focusout',e=>this.setAttribute('aria-expanded',"false"));
     //this.sortBy = [];
   }
   connectedCallback() {
@@ -237,6 +250,16 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     let slots = {};
     this.previewBy.forEach(field => (slots[field] = "preview"));
     return slots;
+  }
+  /**
+   * handles individual toggling
+   */
+  toggle(){
+    if(this.getAttribute('aria-expanded') === "true"){
+      this.setAttribute('aria-expanded',"false");
+    } else {
+      this.setAttribute('aria-expanded',"true");
+    }
   }
 
   /**

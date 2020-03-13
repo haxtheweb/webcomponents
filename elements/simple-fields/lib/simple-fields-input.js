@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsField } from "./simple-fields-field.js";
 /**
  *`simple-fields-input`
- * provides label, description, error massage, and aria-invalid functionality if needed
+ * HTML inputs (excluding submit, reset, button, and image) with label, description, error massage, and aria-invalid functionality if needed.
  *
  * @group simple-fields
  * @extends simple-fields-field
@@ -17,10 +17,87 @@ class SimpleFieldsInput extends SimpleFieldsField {
     return [
       ...super.styles,
       css`
-        :host([type="hidden"]) { 
-          display: none; 
+        :host([type="hidden"]),
+        :host([type="button"]),
+        :host([type="image"]),
+        :host([type="submit"]),
+        :host([type="reset"]) {
+          display: none;
         }
-        input[type="range"]{
+        input,
+        select,
+        textarea {
+          width: 100%;
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          border: none;
+        }
+        input[readonly],
+        input[disabled],
+        select[disabled],
+        select[disabled],
+        textarea[readonly],
+        textarea[disabled] {
+          cursor: not-allowed;
+        }
+        :host(:focus-within) label {
+          color: var(--simple-fields-accent-color, #3f51b5);
+          transition: color 0.3s ease-in-out;
+        }
+        :host([invalid]) label,
+        :host([invalid]) .error-message,
+        :host([invalid]) #error-message {
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: color 0.3s ease-in-out;
+        }
+        :host([required]) label:after, 
+        :host([invalid]) label:after {
+          content: "*";
+        }
+
+        :host([type="color"]) .label-input,
+        :host([type="checkbox"]) .label-input,
+        :host([type="radio"]) .label-input {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+          justify-content: flex-start;
+        }
+        :host([type="color"]) label,
+        :host([type="checkbox"]) label,
+        :host([type="radio"]) label {
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          flex: 0 1 auto;
+        }
+        input[type="color"],
+        input[type="checkbox"],
+        input[type="radio"] {
+          width: var(--simple-fields-detail-line-height, 22px);
+          height: var(--simple-fields-detail-line-height, 22px);
+          flex: 0 0 auto;
+          margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+          max-width: calc(
+            100% - var(--simple-fields-detail-line-height, 22px) -
+              var(--simple-fields-margin-small, 8px)
+          );
+        }
+        input[type="color"] {
+          box-sizing: border-box;
+          width: unset;
+          min-width: var(--simple-fields-detail-line-height, 22px);
+          transition: opacity 0.5s ease-in-out;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper {
+          padding: 0;
+        }
+        input[type="color"][disabled] {
+          opacity: 0.5;
+          transition: opacity 0.5s ease-in-out;
+        }
+        input[type="range"] {
           height: calc(
             var(--simple-fields-font-size, 16px) +
               var(--simple-fields-line-height, 22px)
@@ -33,6 +110,16 @@ class SimpleFieldsInput extends SimpleFieldsField {
           transition: height 0.5s ease-in-out;
           box-sizing: border-box;
           vertical-align: bottom;
+        }
+        select {
+          width: 100%;
+          border: none;
+          background: transparent;
+          border-radius: 0;
+          transition: color ease-in-out;
+        }
+        option {
+          border-radius: 0;
         }
 
         input[type="range"] {
@@ -47,19 +134,28 @@ class SimpleFieldsInput extends SimpleFieldsField {
           width: 100%;
           height: 16px;
           cursor: pointer;
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
           border-radius: 8px;
+          transition: all 0.5ms ease-in-out;
+        }
+        :host([invalid]) input[type="range"]::-webkit-slider-runnable-track {
+          background: var(--simple-fields-faded-error-color, #FF997F);
+          transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-webkit-slider-thumb {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color,white);
+          background: var(--simple-fields-background-color, white);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
           -webkit-appearance: none;
           margin-top: -2px;
           transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-webkit-slider-thumb,
+        input[type="range"][disabled]::-webkit-slider-thumb {
+          cursor: not-allowed;
         }
         input[type="range"]:focus::-webkit-slider-thumb {
           background: var(--simple-fields-accent-color, #3f51b5);
@@ -69,22 +165,34 @@ class SimpleFieldsInput extends SimpleFieldsField {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
-        :host([disabled]) input[type="range"]::-webkit-slider-thumb {
+        input[type="range"][readonly]::-webkit-slider-thumb,
+        input[type="range"][disabled]::-webkit-slider-thumb {
           background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-moz-range-track {
           width: 100%;
           height: 16px;
           cursor: pointer;
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
           border-radius: 8px;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-moz-range-track,
+        input[type="range"][disabled]::-moz-range-track {
+          cursor: not-allowed;
+        }
+        :host([invalid]) input[type="range"]::-moz-range-track {
+          background: var(--simple-fields-faded-error-color, #FF997F);
+          transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-moz-range-thumb {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color,white);
+          background: var(--simple-fields-background-color, white);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
           transition: all 0.5ms ease-in-out;
@@ -97,8 +205,11 @@ class SimpleFieldsInput extends SimpleFieldsField {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
-        :host([disabled]) input[type="range"]::-moz-range-thumb {
+        input[type="range"][readonly]::-moz-range-thumb,
+        input[type="range"][disabled]::-moz-range-thumb {
           background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-ms-track {
@@ -108,22 +219,35 @@ class SimpleFieldsInput extends SimpleFieldsField {
           background: transparent;
           border-color: transparent;
           color: transparent;
+          transition: all 0.5ms ease-in-out;
+        }
+        input[type="range"][readonly]::-ms-track,
+        input[type="range"][disabled]::-ms-track {
+          cursor: not-allowed;
+        }
+        :host([invalid]) input[type="range"]::-ms-track {
+          background: var(--simple-fields-faded-error-color, #FF997F);
+          transition: all 0.5ms ease-in-out;
         }
         input[type="range"]::-ms-fill-lower {
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
           border-radius: 8px;
         }
         input[type="range"]::-ms-fill-upper {
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
           border-radius: 8px;
         }
         input[type="range"]::-ms-thumb {
           height: 20px;
           width: 20px;
           border-radius: 50%;
-          background: var(--simple-fields-background-color,white);
+          background: var(--simple-fields-background-color, white);
           box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.6);
           cursor: pointer;
+        }
+        input[type="range"][readonly]::-ms-thumb,
+        input[type="range"][disabled]::-ms-thumb {
+          cursor: not-allowed;
         }
         input[type="range"]:focus::-ms-thumb {
           background: var(--simple-fields-accent-color, #3f51b5);
@@ -132,73 +256,59 @@ class SimpleFieldsInput extends SimpleFieldsField {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
-        :host([disabled]) input[type="range"]::-ms-thumb {
+        input[type="range"][redonly]::-ms-thumb,
+        input[type="range"][disabled]::-ms-thumb {
           background: var(--simple-fields-border-color, #999);
+          cursor: not-allowed;
+          box-shadow: none;
           transition: all 0.5ms ease-in-out;
         }
         input[type="range"]:focus::-ms-fill-lower {
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
         }
         input[type="range"]:focus::-ms-fill-upper {
-          background: var(--simple-fields-border-color-light,#ccc);
+          background: var(--simple-fields-border-color-light, #ccc);
+        }
+        .box-input:focus {
+          outline: none;
+        }
+        .border-bottom {
+          height: 0;
+        }
+        .border-bottom.blur {
+          border-bottom: 1px solid var(--simple-fields-border-color, #999);
+          width: 100%;
+        }
+        .border-bottom.focus {
+          margin: -1px auto 0;
+          width: 0;
+          border-bottom: 2px solid var(--simple-fields-accent-color, #3f51b5);
+          transition: width 0.5s ease-in-out;
+        }
+        :host(:focus-within) .border-bottom.focus {
+          width: 100%;
+          transition: width 0.5s ease-in-out;
         }
       `
     ];
   }
   render() {
-    return html`
-      <div class="label-input">
-        ${this.labelElement}
-        ${this.type === "textarea"
-          ? html`
-              <textarea
-                .id="${this.fieldId}"
-                aria-invalid="${this.invalid}"
-                ?autofocus="${this.autofocus}"
-                class="box-input"
-                @change="${this._onChange}"
-                @input="${this._onTextareaupdate}"
-                ?disabled="${this.disabled}"
-                ?hidden="${this.hidden}"
-                .name="${this.fieldId}"
-                .placeholder="${this.placeholder || ""}"
-                ?readonly="${this.readonly}"
-                ?required="${this.required}"
-                rows="1"
-                size="${this.size}"
-              >
-${this.value || ""}</textarea
-              >
-            `
-          : html`
-              <input
-                .id="${this.fieldId}"
-                aria-invalid="${this.invalid}"
-                ?autofocus="${this.autofocus}"
-                @change="${this._onChange}"
-                class="${[
-                  "checkbox",
-                  "color",
-                  "file",
-                  "radio",
-                  "range"
-                ].includes(this.type)
-                  ? ""
-                  : "box-input"}"
-                dirname="${this.dirname}"
-                ?disabled="${this.disabled}"
-                ?hidden="${this.hidden}"
-                .name="${this.fieldId}"
-                .placeholder="${this.placeholder || ""}"
-                ?readonly="${this.readonly}"
-                ?required="${this.required}"
-                .type="${this.type}"
-              />
-            `}
-        ${this.borderBottom}
-      </div>
-      ${this.descriptionElement} ${this.errorElement}
-    `;
+    return this.hasFieldSet
+      ? html`${this.fieldset}`
+      : html`
+        <div class="label-input">
+          ${this.labelElement}
+          ${this.type === "textarea"
+            ? html`${this.textarea}`
+            : this.type === 'select' 
+              ? html`${this.select}`
+              :html`${this.input}`
+          }
+          ${this.borderBottom}
+        </div>
+        ${this.descriptionElement}
+        ${this.errorElement}
+      `;
   }
   static get properties() {
     return {
@@ -226,9 +336,6 @@ ${this.value || ""}</textarea
        */
       dirname: {
         type: String
-      },
-      defaultValidation: {
-        type: Boolean
       },
       /**
        * Value of the id attribute of the `<datalist>` of autocomplete options
@@ -265,6 +372,13 @@ ${this.value || ""}</textarea
        */
       multiple: {
         type: Boolean
+      },
+      /**
+       * options {value: "Text"} for select as object,
+       * eg. {a: "Option A", b: "Option B", c: "Option C"}
+       */
+      options: {
+        type: Object
       },
       /**
        * Pattern the value must match to be valid
@@ -308,6 +422,12 @@ ${this.value || ""}</textarea
       type: {
         type: String
       },
+      /*
+       * text wrapping for textarea, 
+       * "hard": automatically inserts line breaks (CR+LF)
+       * "soft": all line breaks as CR+LF pair
+       * "off" : no wrapping / <textarea> becomes horizontally scrollable
+       */
       wrap: {
         type: Boolean
       }
@@ -317,11 +437,6 @@ ${this.value || ""}</textarea
     super();
     this.checked = false;
     this.multiple = false;
-    this.patternTypes = {
-      email: "^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$",
-      tel: "^(\+?\d\D*)?(\(\d{3}\)|\d{3})\D?[0-9a-zA-Z]{3}\D?[0-9a-zA-Z]{4}(.*x.*\d{4})?$",
-      url: "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?"
-    }
     this.readonly = false;
     this.spellcheck = false;
     this.wrap = false;
@@ -360,6 +475,74 @@ ${this.value || ""}</textarea
     super.updated(changedProperties);
   }
 
+  get hasFieldSet(){
+    return Object.keys(this.options || {}).length > 0 
+      && (this.type === "radio" || this.type === "checkbox");
+  }
+
+  get fieldset() {
+    return html`
+      <fieldset>
+        <legend id="legend" ?hidden="${!this.label}">
+          ${this.label}
+        </legend>
+        <div id="options">
+          ${Object.keys(this.options || {}).map(
+            option => html`
+              <div class="option">
+                <label for="${this.id}.${option}" class="radio-label"
+                  >${this.options[option]}</label
+                >
+                <input
+                  .id="${this.id}.${option}"
+                  ?autofocus="${this.autofocus}"
+                  autocomplete="${this.autocomplete}"
+                  .aria-invalid="${this.invalid ? "true" : "false"}"
+                  .checked="${this.value === option}"
+                  @click="${this._onChange}"
+                  ?disabled="${this.disabled}"
+                  ?hidden="${this.hidden}"
+                  ?required="${this.required}"
+                  type="${this.type}"
+                  .value="${option}"
+                />
+              </div>
+            `
+          )}
+        </div>
+        ${this.descriptionElement} ${this.errorElement}
+      </fieldset>
+    `;
+  }
+
+  get input(){
+    return html`
+      <input
+        .id="${this.fieldId}"
+        aria-invalid="${this.invalid}"
+        ?autofocus="${this.autofocus}"
+        @change="${this._onChange}"
+        class="${[
+          "checkbox",
+          "color",
+          "file",
+          "radio",
+          "range"
+        ].includes(this.type)
+          ? ""
+          : "box-input"}"
+        dirname="${this.dirname}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        .name="${this.fieldId}"
+        .placeholder="${this.placeholder || ""}"
+        ?readonly="${this.readonly}"
+        ?required="${this.required}"
+        .type="${this.type}"
+      />        
+    `;
+  }
+
   /**
    * determines if field is numeric
    *
@@ -376,6 +559,70 @@ ${this.value || ""}</textarea
       "number",
       "range"
     ].includes(this.type);
+  }
+  /**
+   * gets select element
+   *
+   * @readonly
+   * @memberof SimpleFieldsInput
+   */
+  get select(){
+    return html`
+      <select 
+        id="${this.id}.select" 
+        ?autofocus="${this.autofocus}"
+        .autocomplete="${this.autocomplete}"
+        .aria-invalid="${this.invalid ? "true" : "false"}"
+        @change="${this._onChange}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        ?required="${this.required}"
+        ?mutliple="${this.mutliple}"
+        size="${this.size}"
+        .value="${this.value}">
+        ${Object.keys(this.options || {}).map(
+          option => html`
+            <option
+              .id="${this.id}.${option}"
+              ?selected="${this.multiple
+                ? this.value.contains(option)
+                : this.value === option}"
+              .value="${option}"
+            >
+              ${this.options[option]}
+            </option>
+          `
+        )}
+      </select>
+    `;
+  }
+  /**
+   * gets textarea element
+   *
+   * @readonly
+   * @memberof SimpleFieldsInput
+   */
+  get textarea(){
+    return html`
+      <textarea
+        .id="${this.fieldId}"
+        aria-invalid="${this.invalid}"
+        ?autofocus="${this.autofocus}"
+        class="box-input"
+        @change="${this._onChange}"
+        @input="${this._onTextareaupdate}"
+        ?disabled="${this.disabled}"
+        ?hidden="${this.hidden}"
+        .name="${this.fieldId}"
+        .placeholder="${this.placeholder || ""}"
+        ?readonly="${this.readonly}"
+        ?required="${this.required}"
+        rows="1"
+        size="${this.size}"
+      >
+        ${this.value || ""}
+      </textarea>
+    `;
   }
 
   /**
@@ -410,7 +657,7 @@ ${this.value || ""}</textarea
         "range"
       ],
       minlength: ["password", "search", "tel", "text", "textarea", "url"],
-      multiple: ["email", "file"],
+      multiple: ["email", "file", "select"],
       pattern: ["password", "text", "tel"],
       size: ["password", "text", "tel", "text", "textarea"],
       step: [
@@ -509,9 +756,30 @@ ${this.value || ""}</textarea
    * @memberof SimpleFieldsSelect
    */
   _onChange(e) {
-    if (e && e.path && e.path[0]) this.value = e.path[0].value;
+    if (e && e.path && e.path[0]) {
+      if(this.type == "select"){
+        this.value = this.multiple
+        ? e.path[0].selectedOptions.map(option => option.value)
+        : e.path[0].selectedOptions[0].value;
+      } else if(this.hasFieldSet && this.type === "radio"){
+        this.value =  e.path[0].value;
+      } else if(this.hasFieldSet && this.type === "checkbox"){
+        if(e.path[0].checked) { 
+          this.value.push(e.path[0].value);
+        } else {
+          this.value.filter(val => val !== e.path[0].value);
+        }
+      } else {
+        this.value = e.path[0].value
+      }
+    }
     this._onTextareaupdate();
   }
+  /**
+   * makes textarea autogrow
+   *
+   * @memberof SimpleFieldsInput
+   */
   _onTextareaupdate() {
     let textarea = this.shadowRoot
       ? this.shadowRoot.querySelector("textarea")

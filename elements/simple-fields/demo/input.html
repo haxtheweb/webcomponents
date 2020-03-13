@@ -37,17 +37,34 @@
           <simple-fields-input 
             label="Color" 
             description="Choose any color."
-            placeholder="#ff00ff"
-            type="color">
+            type="color"
+            value="#ff00ff">
           </simple-fields-input>
           <simple-fields-input 
-            label="Color" 
+            disabled
+            label="Color (Disabled)" 
             description="Choose any color."
-            placeholder="#ff00ff"
+            type="color"
+            value="#ff00ff">
+          </simple-fields-input>
+          <simple-fields-input 
+            invalid
+            label="Color (Invalid)" 
+            description="Choose any color."
+            type="color"
+            value="#ff00ff">
+          </simple-fields-input>
+          <simple-fields-input 
+            label="Bio" 
+            description="Write your bio."
+            placeholder="Onnce upon a time..."
             type="textarea">
           </simple-fields-input>
+          </simple-fields-input>
           <simple-fields-input label="Multiple of 10" type="number" step="10"></simple-fields-input>
-          <simple-fields-input label="Range from -100 to 100" type="range" min="-100" step="20" max="100"></simple-fields-input>
+          <simple-fields-input label="Range" type="range" min="0" step="20" max="100" value="0"></simple-fields-input>
+          <simple-fields-input disabled label="Range(Disabled)" type="range" min="0" max="100" value="50"></simple-fields-input>
+          <simple-fields-input invalid label="Range (Invalid)" type="range" min="0" max="10" value="-1"></simple-fields-input>
           <simple-fields-input label="Password" type="password"></simple-fields-input>
           <simple-fields-input label="Email" type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></simple-fields-input>
           <simple-fields-input label="Date" type="date"></simple-fields-input>

@@ -41,7 +41,6 @@ class SimpleFieldsSelect extends SimpleFieldsField {
       .aria-invalid="${this.invalid ? "true" : "false"}"
       @change="${this._onChange}"
       ?disabled="${this.disabled}"
-      .form="${this.form}"
       ?hidden="${this.hidden}"
       ?required="${this.required}"
       ?mutliple="${this.mutliple}"

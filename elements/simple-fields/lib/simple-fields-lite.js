@@ -3,12 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleFieldsField } from "./simple-fields-field.js";
-import "./simple-fields-field-wrapper.js";
+import "./simple-fields-container.js";
 import "./simple-fields-fieldset.js";
-import "./simple-fields-select.js";
-import "./simple-fields-input.js";
-import "./simple-fields-radio.js";
 import "./simple-fields-array.js";
 /**
  * `simple-fields-lite`
@@ -502,9 +498,11 @@ class SimpleFieldsLite extends LitElement {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
-            schemaProp.properties || schemaProp.items
+            schemaProp.properties 
+              || schemaProp.items 
+              || data.labelProperty
               ? element
-              : document.createElement("simple-fields-field"),
+              : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`),
           valueProperty =
             data.valueProperty || schemaProp.valueProperty || "value";
@@ -516,9 +514,9 @@ class SimpleFieldsLite extends LitElement {
         if (required && required.includes(key))
           element.setAttribute("required", true);
 
-        wrapper.label =
+        wrapper[data.labelProperty || "label"] =
           schemaProp.label || schemaProp.title || schemaProp.description || key;
-        wrapper.description =
+        wrapper[data.descriptionProperty || "description"] =
           schemaProp.description && (schemaProp.label || schemaProp.title)
             ? schemaProp.description
             : undefined;
@@ -561,7 +559,6 @@ class SimpleFieldsLite extends LitElement {
         else if (schemaProp.properties) {
           this._addToForm(schemaProp, element, `${element.id}.`, data.child);
         } else {
-          wrapper.data = data;
           wrapper.field = element;
           if (value) {
             element.setAttribute(valueProperty, value);

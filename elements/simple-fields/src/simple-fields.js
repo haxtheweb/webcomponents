@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
+import "./simple-fields-input.js";
 /**
  * `simple-fields`
  * Uses eco-json-form and HAX wiring to display a series of fields
@@ -159,7 +160,7 @@ class SimpleFields extends SimpleFieldsLite {
     };
     this.schemaConversion = {
       defaultSettings: {
-        element: "paper-input",
+        element: "simple-fields-input",
         errorProperty: "errorMessage",
         invalidProperty: "invalid",
         labelProperty: "label",
@@ -174,7 +175,7 @@ class SimpleFields extends SimpleFieldsLite {
       format: {
         radio: {
           defaultSettings: {
-            element: "paper-input",
+            element: "simple-fields-input",
             attributes: {
               autofocus: true,
               type: "radio"
@@ -194,9 +195,10 @@ class SimpleFields extends SimpleFieldsLite {
         },
         select: {
           defaultSettings: {
-            element: "select",
+            element: "simple-fields-input",
             attributes: {
-              autofocus: true
+              autofocus: true,
+              type: "select"
             },
             properties: {
               options: "options"
@@ -224,25 +226,33 @@ class SimpleFields extends SimpleFieldsLite {
         },
         boolean: {
           defaultSettings: {
-            element: "paper-checkbox",
+            element: "simple-fields-input",
             errorProperty: "errorMessage",
             invalidProperty: "invalid",
             labelSlot: "",
             valueProperty: "checked",
             attributes: {
               autofocus: true,
+              type: "checkbox",
               value: false
             }
           }
         },
         file: {
           defaultSettings: {
-            element: "simple-fields-file"
+            element: "simple-fields-input",
+            attributes: {
+              autofocus: true,
+              type: "file"
+            },
+            properties: {
+              accepts: "accepts"
+            }
           }
         },
         integer: {
           defaultSettings: {
-            element: "paper-input",
+            element: "simple-fields-input",
             errorProperty: "errorMessage",
             invalidProperty: "invalid",
             labelProperty: "label",
@@ -260,12 +270,16 @@ class SimpleFields extends SimpleFieldsLite {
         },
         markup: {
           defaultSettings: {
-            element: "simple-fields-markup"
+            element: "simple-fields-input",
+            attributes: {
+              autofocus: true,
+              type: "textarea"
+            }
           }
         },
         number: {
           defaultSettings: {
-            element: "paper-input",
+            element: "simple-fields-input",
             errorProperty: "errorMessage",
             invalidProperty: "invalid",
             labelProperty: "label",
@@ -305,7 +319,7 @@ class SimpleFields extends SimpleFieldsLite {
           format: {
             "date-time": {
               defaultSettings: {
-                element: "paper-input",
+                element: "simple-fields-input",
                 errorProperty: "errorMessage",
                 invalidProperty: "invalid",
                 labelProperty: "label",
@@ -317,7 +331,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             time: {
               defaultSettings: {
-                element: "paper-input",
+                element: "simple-fields-input",
                 errorProperty: "errorMessage",
                 invalidProperty: "invalid",
                 labelProperty: "label",
@@ -329,7 +343,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             date: {
               defaultSettings: {
-                element: "paper-input",
+                element: "simple-fields-input",
                 errorProperty: "errorMessage",
                 invalidProperty: "invalid",
                 labelProperty: "label",
@@ -341,7 +355,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             email: {
               defaultSettings: {
-                element: "paper-input",
+                element: "simple-fields-input",
                 errorProperty: "errorMessage",
                 invalidProperty: "invalid",
                 labelProperty: "label",
@@ -353,7 +367,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             uri: {
               defaultSettings: {
-                element: "paper-input",
+                element: "simple-fields-input",
                 errorProperty: "errorMessage",
                 invalidProperty: "invalid",
                 labelProperty: "label",

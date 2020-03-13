@@ -23,31 +23,18 @@ class SimpleFieldsField extends LitElement {
           line-height: var(--simple-fields-line-height, 22px);
           margin: var(--simple-fields-margin, 16px) 0;
         }
-        :host([hidden]) {
+        :host([hidden]),
+        :host([type="hidden"]) {
           display: none;
         }
-        :host([disabled]) {
+        :host([disabled]) label,
+        :host([disabled]) legend,
+        :host([disabled]) #error-message,
+        :host([disabled]) #description,
+        :host([disabled]) .error-message,
+        :host([disabled]) .description {
           opacity: var(--simple-fields-disabled-opacity, 0.7);
           transition: opacity ease-in-out;
-        }
-        :host([type="color"]) .label-input,
-        :host([type="checkbox"]) .label-input,
-        :host([type="radio"]) .label-input {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: stretch;
-          justify-content: flex-start;
-        }
-        label {
-          flex: 1 0 100%;
-        }
-        :host([type="color"]) label,
-        :host([type="checkbox"]) label,
-        :host([type="radio"]) label {
-          font-size: var(--simple-fields-font-size, 16px);
-          font-family: var(--simple-fields-font-family, sans-serif);
-          line-height: var(--simple-fields-line-height, 22px);
-          flex: 0 1 auto;
         }
         label,
         legend,
@@ -60,15 +47,16 @@ class SimpleFieldsField extends LitElement {
           line-height: var(--simple-fields-detail-line-height, 22px);
           transition: color 0.3s ease-in-out;
         }
-        input,
-        select,
-        textarea,
         ::slotted(*) {
           width: 100%;
           font-size: var(--simple-fields-font-size, 16px);
           font-family: var(--simple-fields-font-family, sans-serif);
           line-height: var(--simple-fields-line-height, 22px);
           border: none;
+        }
+        ::slotted(*[readonly]),
+        ::slotted(*[disabled]) {
+          cursor: not-allowed;
         }
         :host(:focus-within) label {
           color: var(--simple-fields-accent-color, #3f51b5);
@@ -80,15 +68,28 @@ class SimpleFieldsField extends LitElement {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: color 0.3s ease-in-out;
         }
+        :host([required]) label:after, 
         :host([invalid]) label:after {
           content: "*";
         }
-        input[type="color"],
-        input[type="checkbox"],
-        input[type="radio"],
-        ::slotted(input[type="color"]),
-        ::slotted(input[type="checkbox"]),
-        ::slotted(input[type="radio"]) {
+
+        :host([inline]) .label-input {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: stretch;
+          justify-content: flex-start;
+        }
+        :host([inline]) label {
+          font-size: var(--simple-fields-font-size, 16px);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          flex: 0 1 auto;
+        }
+        input[inline] ::slotted(*) {
+          flex: 1 1 auto;
+        }
+        input[inline] ::slotted(input[type="radio"]),
+        input[inline] ::slotted(input[type="checkbox"]) {
           width: var(--simple-fields-detail-line-height, 22px);
           height: var(--simple-fields-detail-line-height, 22px);
           flex: 0 0 auto;
@@ -98,15 +99,6 @@ class SimpleFieldsField extends LitElement {
               var(--simple-fields-margin-small, 8px)
           );
         }
-        input[type="color"],
-        ::slotted(input[type="color"]) {
-          box-sizing: border-box;
-          width: unset;
-          min-width: var(--simple-fields-detail-line-height, 22px);
-        }
-        input[type="color"]::-webkit-color-swatch-wrapper {
-          padding: 0;
-        }
         .box-input:focus {
           outline: none;
         }
@@ -114,7 +106,7 @@ class SimpleFieldsField extends LitElement {
           height: 0;
         }
         .border-bottom.blur {
-          border-bottom: 1px solid var(--simple-fields-border-color,#999);
+          border-bottom: 1px solid var(--simple-fields-border-color, #999);
           width: 100%;
         }
         .border-bottom.focus {
@@ -132,7 +124,11 @@ class SimpleFieldsField extends LitElement {
   }
   render() {
     return html`
-      ${this.labelElement} ${this.borderBottom} ${this.descriptionElement}
+      <div class="label-input">
+        ${this.labelElement}
+        <slot></slot>
+      </div>
+      ${this.borderBottom} ${this.descriptionElement}
       ${this.errorElement}
     `;
   }
@@ -178,12 +174,6 @@ class SimpleFieldsField extends LitElement {
         reflect: true
       },
       /**
-       * Associates the control with a form element
-       */
-      form: {
-        type: String
-      },
-      /**
        * Field element
        */
       field: {
@@ -194,6 +184,13 @@ class SimpleFieldsField extends LitElement {
        */
       id: {
         type: String,
+        reflect: true
+      },
+      /**
+       * Whether field and label should be inline
+       */
+      inline: {
+        type: Boolean,
         reflect: true
       },
       /**
@@ -244,6 +241,7 @@ class SimpleFieldsField extends LitElement {
     this.disabled = false;
     this.hidden = false;
     this.invalid = false;
+    this.inline = false;
     this.field = this.shadowRoot.querySelector("input");
   }
 

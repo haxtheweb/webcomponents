@@ -7,7 +7,7 @@ import { SimpleFieldsField } from "./simple-fields-field.js";
  * @group simple-fields
  * @extends simple-fields-field
  * @customElement simple-fields-radio
- * @demo ./demo/lite.html
+ * @demo ./demo/radio.html
  */
 class SimpleFieldsRadio extends SimpleFieldsField {
   static get tag() {
@@ -81,7 +81,6 @@ class SimpleFieldsRadio extends SimpleFieldsField {
                   @click="${e => (this.value = option)}"
                   ?disabled="${this.disabled}"
                   ?hidden="${this.hidden}"
-                  .form="${this.form}"
                   ?required="${this.required}"
                   type="radio"
                   .value="${option}"

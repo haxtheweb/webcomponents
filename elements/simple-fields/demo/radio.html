@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleSchemaForm: simple-fields Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-fields-radio.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-fields demo</h3>
+      <demo-snippet>
+        <template>
+          <script>
+            let options = {
+              "": '---',
+              "#FF0000": "Red",
+              "#FFA500": "Orange",
+              "#FFFF00": "Yellow",
+              "#008000": "Green",
+              "#0000FF": "Blue",
+              "#800080": "Purple"
+            };
+            window.onload = ()=> {
+              console.log(document.querySelectorAll('simple-fields-radio'));
+              document.querySelectorAll('simple-fields-radio').forEach(
+                element => {
+                console.log(element,element.options,options);
+                  element.options = options
+                }
+              );
+            }
+          </script>
+          <simple-fields-radio id="colors" label="Color"></simple-fields-radio>
+          <!--simple-fields-radio id="colors2" label="Color" value="#FF0000"></simple-fields-radio>
+          <simple-fields-radio id="colors3" disabled label="Color (Disabled)"></simple-fields-radio>
+          <simple-fields-radio id="colors4" invalid label="Color (Invalid)"></simple-fields-radio-->
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
