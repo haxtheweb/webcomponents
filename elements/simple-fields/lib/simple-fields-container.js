@@ -296,13 +296,14 @@ class SimpleFieldsContainer extends LitElement {
   updated(changedProperties) {
     let errorChanged = false;
     changedProperties.forEach((oldValue, propName) => {
-      if(propName === "error" && this.error !== oldValue) errorChanged = true;
-      if(propName === "errorMessage" && this.errorMessage !== oldValue) errorChanged = true;
+      if (propName === "error" && this.error !== oldValue) errorChanged = true;
+      if (propName === "errorMessage" && this.errorMessage !== oldValue)
+        errorChanged = true;
       if (propName === "error" && this.field) {
         this.field.setAttribute("aria-invalid", this.error ? "true" : "false");
       }
     });
-    if(errorChanged) this._fireErrorChanged();
+    if (errorChanged) this._fireErrorChanged();
   }
 
   /**
@@ -435,7 +436,7 @@ class SimpleFieldsContainer extends LitElement {
     return html`
       <label for="${this.fieldId}" class="label-main">
         <slot name="label"></slot>
-        ${this.label}${this.error || this.required ? '*' : ''}
+        ${this.label}${this.error || this.required ? "*" : ""}
       </label>
     `;
   }
@@ -577,12 +578,14 @@ class SimpleFieldsContainer extends LitElement {
   validate() {
     let value = this.field.value,
       pattern = this.field.pattern,
-      requiredError = !value && this.required 
-        ? this.defaultRequiredMessage || this.defaultErrorMessage
-        : false,
-      patternError = pattern !== "" && value && !value.match(pattern) 
-        ? this.defaultErrorMessage 
-        : false;
+      requiredError =
+        !value && this.required
+          ? this.defaultRequiredMessage || this.defaultErrorMessage
+          : false,
+      patternError =
+        pattern !== "" && value && !value.match(pattern)
+          ? this.defaultErrorMessage
+          : false;
     this.errorMessage = requiredError || patternError;
     this.error = this.errorMessage !== false;
   }
@@ -625,7 +628,7 @@ class SimpleFieldsContainer extends LitElement {
   _observeAndListen(init = true) {
     if (init) {
       this.slottedFieldObserver.observe(this, {
-        attributeFilter: ["required","slot"],
+        attributeFilter: ["required", "slot"],
         childlist: true
       });
       this._updateField();
@@ -677,9 +680,10 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsInput
    */
   _updateField() {
-    this.field = this.querySelector && this.querySelector("[slot=field]")
-      ? this.querySelector("[slot=field]")
-      : undefined;
+    this.field =
+      this.querySelector && this.querySelector("[slot=field]")
+        ? this.querySelector("[slot=field]")
+        : undefined;
     this.id = `${this.fieldId || ""}-wrapper`;
     if (this.field) {
       let tag = this.field.tagName.toLowerCase(),

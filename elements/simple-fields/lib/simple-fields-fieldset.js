@@ -49,7 +49,7 @@ class SimpleFieldsFieldset extends LitElement {
   get legend() {
     return html`
       <legend id="legend" ?hidden="${!this.label}">
-        ${this.label}${this.error ? '*' : ''}
+        ${this.label}${this.error ? "*" : ""}
       </legend>
     `;
   }

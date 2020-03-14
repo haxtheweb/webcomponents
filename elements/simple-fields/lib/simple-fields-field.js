@@ -479,7 +479,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           class="label-main"
           ?hidden="${!this.label}"
         >
-          ${this.label}${this.error || this.required ? '*' : ''}
+          ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
         <div id="options">
           ${Object.keys(this.options || {}).map(
@@ -625,12 +625,14 @@ ${this.value || ""}</textarea
    * @memberof SimpleFieldsInput
    */
   validate() {
-    let requiredError = !this.value && this.required 
-        ? this.defaultRequiredMessage || this.defaultErrorMessage
-        : false,
-      patternError = this.pattern !== "" && this.value && !this.value.match(this.pattern) 
-        ? this.defaultErrorMessage 
-        : false;
+    let requiredError =
+        !this.value && this.required
+          ? this.defaultRequiredMessage || this.defaultErrorMessage
+          : false,
+      patternError =
+        this.pattern !== "" && this.value && !this.value.match(this.pattern)
+          ? this.defaultErrorMessage
+          : false;
     this.errorMessage = requiredError || patternError;
     this.error = this.errorMessage !== false;
   }

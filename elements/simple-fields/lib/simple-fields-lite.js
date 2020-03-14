@@ -429,7 +429,7 @@ class SimpleFieldsLite extends LitElement {
       if (propName === "value") this._valueChanged(this.value, oldValue);
     });
   }
-  get fields(){
+  get fields() {
     return this.__fields;
   }
   /**
@@ -475,10 +475,15 @@ class SimpleFieldsLite extends LitElement {
               ? element
               : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`);
-        data.valueProperty = data.valueProperty || schemaProp.valueProperty || "value";
-        data.errorProperty = data.errorProperty || schemaProp.errorProperty || "error";
-        data.errorMessageProperty = data.errorMessageProperty || schemaProp.errorMessageProperty || "errorMessage";
-        
+        data.valueProperty =
+          data.valueProperty || schemaProp.valueProperty || "value";
+        data.errorProperty =
+          data.errorProperty || schemaProp.errorProperty || "error";
+        data.errorMessageProperty =
+          data.errorMessageProperty ||
+          schemaProp.errorMessageProperty ||
+          "errorMessage";
+
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -494,9 +499,9 @@ class SimpleFieldsLite extends LitElement {
             : undefined;
 
         let valueProperty = data.valueProperty,
-          errorProperty = data.errorProperty || schemaProp.errorProperty || "error",
+          errorProperty =
+            data.errorProperty || schemaProp.errorProperty || "error",
           errorMessageProperty = data.errorMessageProperty;
-
 
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
@@ -549,15 +554,15 @@ class SimpleFieldsLite extends LitElement {
           }
           wrapper.addEventListener(`${errorProperty}-changed`, e => {
             let error = this._deepClone(this.error || {});
-            if(wrapper[errorProperty]){
+            if (wrapper[errorProperty]) {
               error[id] = wrapper[errorMessageProperty] || "";
-            } else if(error && error[id]) {
+            } else if (error && error[id]) {
               delete error[id];
             }
             this.error = error;
           });
         }
-        this.__fields.push({id: id, field: wrapper, data: data});
+        this.__fields.push({ id: id, field: wrapper, data: data });
       }
     });
   }
@@ -671,17 +676,18 @@ class SimpleFieldsLite extends LitElement {
       let data = field.data || {},
         el = field.field,
         id = field.id;
-      if(id && el && this.error){
+      if (id && el && this.error) {
         let message = this.error[field.id] || false,
           error = this.error[field.id] ? true : false;
-        if(!error) Object.keys(this.error || {}).forEach(key=>{
-          if (key.match(field.id)) {
-            error = true;
-            return;
-          }
-        });
-        field.field[data.errorMessageProperty || 'errorMessage'] = message;
-        field.field[data.errorProperty || 'error'] = error;
+        if (!error)
+          Object.keys(this.error || {}).forEach(key => {
+            if (key.match(field.id)) {
+              error = true;
+              return;
+            }
+          });
+        field.field[data.errorMessageProperty || "errorMessage"] = message;
+        field.field[data.errorProperty || "error"] = error;
       }
     });
   }
