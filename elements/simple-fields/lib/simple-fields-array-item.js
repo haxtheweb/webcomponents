@@ -52,6 +52,10 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           border: 1px solid #ddd;
           transition: border 0.5s ease;
         }
+        :host([error]) {
+          border: 1px solid var(--simple-fields-error-color, #dd2c00);
+          transition: border 0.5s ease;
+        }
         :host(:focus-within) {
           border: 1px solid #444;
           transition: border 0.5s ease;
@@ -249,6 +253,13 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         })
       );
     }, 0);
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      let expanded = this.getAttribute("aria-expanded");
+      if (propName === "error")
+        this.setAttribute("aria-expanded", this.error || expanded);
+    });
   }
   get slots() {
     let slots = {};

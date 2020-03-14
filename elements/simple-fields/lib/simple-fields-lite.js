@@ -223,6 +223,9 @@ class SimpleFieldsLite extends LitElement {
         attribute: "lang",
         reflect: true
       },
+      /*
+       * resource link
+       */
       resources: {
         type: Object
       },
@@ -240,9 +243,15 @@ class SimpleFieldsLite extends LitElement {
       schemaConverstion: {
         type: Object
       },
+      /*
+       * value of fields
+       */
       value: {
         type: Object
       },
+      /*
+       * array of fields and config data in schema
+       */
       __fields: {
         type: Object
       }
@@ -272,46 +281,10 @@ class SimpleFieldsLite extends LitElement {
           maxLength: "maxlength"
         }
       },
-      format: {
-        radio: {
-          defaultSettings: {
-            element: "simple-fields-radio",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
-            descriptionProperty: "description",
-            attributes: {
-              type: "radio"
-            },
-            properties: {
-              options: "options"
-            }
-          }
-        },
-        select: {
-          defaultSettings: {
-            element: "simple-fields-select",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
-            descriptionProperty: "description",
-            attributes: {
-              autofocus: true
-            },
-            child: {
-              element: "option"
-            },
-            properties: {
-              options: "options"
-            }
-          }
-        }
-      },
       type: {
         array: {
           defaultSettings: {
             element: "simple-fields-array",
-            errorProperty: "errorMessage",
             invalidProperty: "invalid",
             labelProperty: "label",
             descriptionProperty: "description",
@@ -451,13 +424,13 @@ class SimpleFieldsLite extends LitElement {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "error") this._errorChanged();
-      if (propName === "schema") {
-        //console.log('schema changed',this.schema,oldValue);
-        this._schemaChanged(this.schema, oldValue);
-      }
+      if (propName === "error" && this.error !== oldValue) this._errorChanged();
+      if (propName === "schema") this._schemaChanged(this.schema, oldValue);
       if (propName === "value") this._valueChanged(this.value, oldValue);
     });
+  }
+  get fields(){
+    return this.__fields;
   }
   /**
    * updates the schema
@@ -501,10 +474,11 @@ class SimpleFieldsLite extends LitElement {
             schemaProp.properties || schemaProp.items || data.labelProperty
               ? element
               : document.createElement("simple-fields-container"),
-          value = this._getValue(`${prefix}${key}`),
-          valueProperty =
-            data.valueProperty || schemaProp.valueProperty || "value";
-
+          value = this._getValue(`${prefix}${key}`);
+        data.valueProperty = data.valueProperty || schemaProp.valueProperty || "value";
+        data.errorProperty = data.errorProperty || schemaProp.errorProperty || "error";
+        data.errorMessageProperty = data.errorMessageProperty || schemaProp.errorMessageProperty || "errorMessage";
+        
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -518,6 +492,11 @@ class SimpleFieldsLite extends LitElement {
           schemaProp.description && (schemaProp.label || schemaProp.title)
             ? schemaProp.description
             : undefined;
+
+        let valueProperty = data.valueProperty,
+          errorProperty = data.errorProperty || schemaProp.errorProperty || "error",
+          errorMessageProperty = data.errorMessageProperty;
+
 
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
@@ -557,7 +536,7 @@ class SimpleFieldsLite extends LitElement {
         else if (schemaProp.properties) {
           this._addToForm(schemaProp, element, `${element.id}.`, data.child);
         } else {
-          if(element !== wrapper) {
+          if (element !== wrapper) {
             element.slot = "field";
             wrapper.appendChild(element);
           }
@@ -568,8 +547,17 @@ class SimpleFieldsLite extends LitElement {
               this._handleChange(element, valueProperty)
             );
           }
-          this.__fields.push(wrapper);
+          wrapper.addEventListener(`${errorProperty}-changed`, e => {
+            let error = this._deepClone(this.error || {});
+            if(wrapper[errorProperty]){
+              error[id] = wrapper[errorMessageProperty] || "";
+            } else if(error && error[id]) {
+              delete error[id];
+            }
+            this.error = error;
+          });
         }
+        this.__fields.push({id: id, field: wrapper, data: data});
       }
     });
   }
@@ -679,12 +667,22 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    this.__fields.forEach(field => {
-      let id = field.fieldId,
-        err = id && this.error && this.error[id],
-        errMsg = err ? this.error[id] : "";
-      field.invalid = err ? true : false;
-      field.errorMessage = errMsg;
+    this.fields.forEach(field => {
+      let data = field.data || {},
+        el = field.field,
+        id = field.id;
+      if(id && el && this.error){
+        let message = this.error[field.id] || false,
+          error = this.error[field.id] ? true : false;
+        if(!error) Object.keys(this.error || {}).forEach(key=>{
+          if (key.match(field.id)) {
+            error = true;
+            return;
+          }
+        });
+        field.field[data.errorMessageProperty || 'errorMessage'] = message;
+        field.field[data.errorProperty || 'error'] = error;
+      }
     });
   }
 

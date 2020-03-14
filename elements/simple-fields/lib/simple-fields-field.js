@@ -2,8 +2,8 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 /**
  *`simple-fields-field`
- * HTML inputs (excluding submit, reset, button, and image) 
- * with label, description, error massage, 
+ * HTML inputs (excluding submit, reset, button, and image)
+ * with label, description, error massage,
  * and aria-invalid functionality if needed.
  *
  * @group simple-fields
@@ -97,7 +97,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           border-radius: 8px;
           transition: all 0.5ms ease-in-out;
         }
-        :host([invalid]) input[type="range"]::-webkit-slider-runnable-track {
+        :host([error]) input[type="range"]::-webkit-slider-runnable-track {
           background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
@@ -120,7 +120,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background: var(--simple-fields-accent-color, #3f51b5);
           transition: all 0.5ms ease-in-out;
         }
-        :host([invalid]) input[type="range"]::-webkit-slider-thumb {
+        :host([error]) input[type="range"]::-webkit-slider-thumb {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
@@ -143,7 +143,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input[type="range"][disabled]::-moz-range-track {
           cursor: not-allowed;
         }
-        :host([invalid]) input[type="range"]::-moz-range-track {
+        :host([error]) input[type="range"]::-moz-range-track {
           background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
@@ -160,7 +160,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           background: var(--simple-fields-accent-color, #3f51b5);
           transition: all 0.5ms ease-in-out;
         }
-        :host([invalid]) input[type="range"]::-moz-range-thumb {
+        :host([error]) input[type="range"]::-moz-range-thumb {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
@@ -184,7 +184,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input[type="range"][disabled]::-ms-track {
           cursor: not-allowed;
         }
-        :host([invalid]) input[type="range"]::-ms-track {
+        :host([error]) input[type="range"]::-ms-track {
           background: var(--simple-fields-faded-error-color, #ff997f);
           transition: all 0.5ms ease-in-out;
         }
@@ -211,7 +211,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         input[type="range"]:focus::-ms-thumb {
           background: var(--simple-fields-accent-color, #3f51b5);
         }
-        :host([invalid]) input[type="range"]::-ms-thumb {
+        :host([error]) input[type="range"]::-ms-thumb {
           background: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.5ms ease-in-out;
         }
@@ -232,9 +232,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     ];
   }
   render() {
-    return !this.hasFieldSet 
-    ? super.render()
-    : this.fieldsetTemplate;
+    return !this.hasFieldSet ? super.render() : this.fieldsetTemplate;
   }
 
   static get properties() {
@@ -245,6 +243,18 @@ class SimpleFieldsField extends SimpleFieldsContainer {
        */
       accept: {
         type: String
+      },
+      /**
+       * Hint for form autofill feature
+       */
+      autocomplete: {
+        type: String
+      },
+      /**
+       * Automatically focus on field when the page is loaded
+       */
+      autofocus: {
+        type: Boolean
       },
       /**
        * Media capture input method in file upload controls
@@ -362,6 +372,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   }
   constructor() {
     super();
+    this.autocomplete = "off";
+    this.autofocus = false;
     this.checked = false;
     this.multiple = false;
     this.readonly = false;
@@ -391,7 +403,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       if (propName === "type" && this.type !== oldValue) this._updateField();
       if (["type", "field", "value"].includes(propName))
         this._onTextareaupdate();
-      if (attributes.includes(propName)) this.updateAttribute(propName);
+      if (attributes.includes(propName)) this._updateAttribute(propName);
       if (propName === "value" && this.value !== oldValue)
         this._fireValueChanged();
     });
@@ -411,14 +423,14 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @returns {string}
    * @memberof SimpleFieldsContainer
    */
-  get fieldElementTag(){
-    return this.type === "select" 
-      ? "select" 
+  get fieldElementTag() {
+    return this.type === "select"
+      ? "select"
       : this.type === "textarea"
-        ? "textarea"
-        : this.hasFieldSet 
-          ? "fieldset" 
-          : "input";
+      ? "textarea"
+      : this.hasFieldSet
+      ? "fieldset"
+      : "input";
   }
 
   /**
@@ -430,25 +442,26 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    */
   get fieldMainTemplate() {
     return html`
-        <div class="${
-          this.inline 
-          || ["checkbox","color","radio"].includes(this.type || "text") 
-          ? 'field-main inline' 
-          :'field-main'}">
-          ${this.labelTemplate}
-          <div>
-            ${this.prefixTemplate}
-            ${this.fieldElementTag === "input" 
-              ? this.inputTemplate
-              : this.fieldElementTag === "select" 
-                ? this.selectTemplate
-                : this.fieldElementTag === "textarea"
-                  ? this.textareaTemplate
-                  : ``
-            }
-            ${this.suffixTemplate}
-          </div>
-        </div>`;
+      <div
+        class="${this.inline ||
+        ["checkbox", "color", "radio"].includes(this.type || "text")
+          ? "field-main inline"
+          : "field-main"}"
+      >
+        ${this.labelTemplate}
+        <div>
+          ${this.prefixTemplate}
+          ${this.fieldElementTag === "input"
+            ? this.inputTemplate
+            : this.fieldElementTag === "select"
+            ? this.selectTemplate
+            : this.fieldElementTag === "textarea"
+            ? this.textareaTemplate
+            : ``}
+          ${this.suffixTemplate}
+        </div>
+      </div>
+    `;
   }
 
   /**
@@ -461,8 +474,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   get fieldsetTemplate() {
     return html`
       <fieldset>
-        <legend id="${this.fieldId}" class="label-main" ?hidden="${!this.label}">
-          ${this.label}
+        <legend
+          id="${this.fieldId}"
+          class="label-main"
+          ?hidden="${!this.label}"
+        >
+          ${this.label}${this.error || this.required ? '*' : ''}
         </legend>
         <div id="options">
           ${Object.keys(this.options || {}).map(
@@ -474,9 +491,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                 <input
                   .id="${this.id}.${option}"
                   ?autofocus="${this.autofocus}"
-                  autocomplete="${this.autocomplete}"
+                  .autocomplete="${this.autocomplete}"
                   aria-descrbedby="${this.describedBy}"
-                  .aria-invalid="${this.invalid ? "true" : "false"}"
+                  .aria-invalid="${this.error ? "true" : "false"}"
                   .checked="${this.value === option}"
                   class="field"
                   @click="${this._onChange}"
@@ -507,7 +524,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       <input
         .id="${this.fieldId}"
         aria-descrbedby="${this.describedBy}"
-        aria-invalid="${this.invalid}"
+        aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         @change="${this._onChange}"
         class="field ${["checkbox", "color", "file", "radio", "range"].includes(
@@ -535,12 +552,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    */
   get selectTemplate() {
     return html`
-    <select
+      <select
         id="${this.fieldId}"
         ?autofocus="${this.autofocus}"
         .autocomplete="${this.autocomplete}"
         aria-descrbedby="${this.describedBy}"
-        .aria-invalid="${this.invalid ? "true" : "false"}"
+        aria-invalid="${this.error ? "true" : "false"}"
         @change="${this._onChange}"
         class="field"
         ?disabled="${this.disabled}"
@@ -565,15 +582,14 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       </select>
     `;
   }
-  
+
   /**
-   * overridden mutation observer 
+   * overridden mutation observer
    *
    * @readonly
    * @memberof SimpleFieldsContainer
    */
-  get slottedFieldObserver(){
-  }
+  get slottedFieldObserver() {}
   /**
    * template for `textarea` in shadow DOM
    *
@@ -585,7 +601,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     return html`
       <textarea
         .id="${this.fieldId}"
-        aria-invalid="${this.invalid}"
+        aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         class="field box-input"
         @change="${this._onChange}"
@@ -598,8 +614,89 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?required="${this.required}"
         rows="1"
         size="${this.size}"
-      >${this.value || ""}</textarea>
+      >
+${this.value || ""}</textarea
+      >
     `;
+  }
+  /**
+   * checks validation constraints and returns error data (overridden for shadow DOM field)
+   * @returns {object}
+   * @memberof SimpleFieldsInput
+   */
+  validate() {
+    let requiredError = !this.value && this.required 
+        ? this.defaultRequiredMessage || this.defaultErrorMessage
+        : false,
+      patternError = this.pattern !== "" && this.value && !this.value.match(this.pattern) 
+        ? this.defaultErrorMessage 
+        : false;
+    this.errorMessage = requiredError || patternError;
+    this.error = this.errorMessage !== false;
+  }
+  /**
+   * fires when value changes
+   * @event value-changed
+   */
+  _fireValueChanged() {
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+  }
+  /**
+   * listens for focusout
+   * overridden for fields in shadow DOM
+   *
+   * @param {boolean} [init=true] whether to start observing or disconnect observer
+   * @memberof SimpleFieldsContainer
+   */
+  _observeAndListen(init = true) {
+    if (init) {
+      this.addEventListener("click", this.focus);
+      this.addEventListener("focusout", this._onFocusout);
+      this.addEventListener("focusin", this._onFocusin);
+    } else {
+      this.removeEventListener("click", this.focus);
+      this.removeEventListener("focusout", this._onFocusout);
+      this.removeEventListener("focusin", this._onFocusin);
+    }
+  }
+
+  /**
+   * handles change in select value
+   *
+   * @param {event} e change event
+   * @memberof SimpleFieldsSelect
+   */
+  _onChange(e) {
+    e.stopPropagation();
+    if (e && e.path && e.path[0]) {
+      if (this.type === "select") {
+        this.value = this.multiple
+          ? Object.keys(e.path[0].selectedOptions).map(
+              option => e.path[0].selectedOptions[option].value
+            )
+          : e.path[0].selectedOptions[0].value;
+      } else if (this.hasFieldSet && this.type === "radio") {
+        this.value = e.path[0].value;
+      } else if (this.hasFieldSet && this.type === "checkbox") {
+        this.value = this.value || [];
+        if (e.path[0].checked) {
+          this.value.push(e.path[0].value);
+        } else {
+          this.value = this.value.filter(val => val !== e.path[0].value);
+        }
+      } else {
+        this.value = e.path[0].value;
+      }
+    }
+    this._onTextareaupdate();
+    this._fireValueChanged();
   }
 
   /**
@@ -608,7 +705,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @param {string} attribute
    * @memberof SimpleFieldsField
    */
-  updateAttribute(attribute) {
+  _updateAttribute(attribute) {
     let types = {
       accept: ["file"],
       capture: ["file"],
@@ -664,85 +761,16 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     }
   }
   /**
-   * fires when value changes
-   * @event value-changed
-   */
-  _fireValueChanged() {
-    console.log(
-      "value-changed",
-      this.value,
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
-    this.dispatchEvent(
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
-  }
-  /**
-   * listens for focusout
-   * overridden for fields in shadow DOM
-   *
-   * @param {boolean} [init=true] whether to start observing or disconnect observer
-   * @memberof SimpleFieldsContainer
-   */
-  _observeAndListen(init=true){
-    if(init){
-      this.addEventListener('focusout',this._onFocusout);
-    } else {
-      this.removeEventListener('focusout',this._onFocusout);
-    }
-  }
-
-  /**
-   * handles change in select value
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onChange(e) {
-    e.stopPropagation();
-    if (e && e.path && e.path[0]) {
-      if (this.type === "select") {
-        this.value = this.multiple
-          ? Object.keys(e.path[0].selectedOptions).map(
-              option => e.path[0].selectedOptions[option].value
-            )
-          : e.path[0].selectedOptions[0].value;
-      } else if (this.hasFieldSet && this.type === "radio") {
-        this.value = e.path[0].value;
-      } else if (this.hasFieldSet && this.type === "checkbox") {
-        this.value = this.value || [];
-        if (e.path[0].checked) {
-          this.value.push(e.path[0].value);
-        } else {
-          this.value = this.value.filter(val => val !== e.path[0].value);
-        }
-      } else {
-        this.value = e.path[0].value;
-      }
-    }
-    this._onTextareaupdate();
-    this._fireValueChanged();
-  }
-  /**
    * updates field an type
    *
    * @memberof SimpleFieldsInput
    */
-  _updateField(){
+  _updateField() {
     this.type = this._getValidType(this.type);
-    this.field = this.shadowRoot && this.shadowRoot.querySelector(this.fieldElementTag)
-      ? this.shadowRoot.querySelector(this.fieldElementTag)
-      : undefined;
+    this.field =
+      this.shadowRoot && this.shadowRoot.querySelector(this.fieldElementTag)
+        ? this.shadowRoot.querySelector(this.fieldElementTag)
+        : undefined;
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);

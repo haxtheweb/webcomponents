@@ -213,20 +213,25 @@
               }
             };
             schema.schema = data;
+            let schemaError = {
+              "settings.basic-input.name": "That's not your real name.",
+              "settings.basic-input.email": "Cannot be blank.",
+              "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
+            };
+            setErrors = () => {
+              schema.error = schemaError;
+            }
+            submit =() => {
+              let valid = !schema.error || schema.error === {};
+              submit.disabled = !valid;
+              if(valid) console.log(schema.value);
+            }
           };
-          let schemaError = {
-            "settings.basic-input.name": "That's not your real name.",
-            "settings.basic-input.email": "Cannot be blank.",
-            "arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
-          };
-          setErrors = () => {
-            document.getElementById('schema').error = schemaError;
-          }
         </script>
         <template>
           <form id="form"><simple-fields-lite id="schema"></simple-fields-lite></form>
-          <button onclick="console.log(document.getElementById('schema'),document.getElementById('schema').value)">Try me</button>
-          <button onclick="setErrors()">Make errors</button>
+          <button onclick="setErrors()">Add fake errors</button>
+          <button id="submit" onclick="submit">Try me</button>
         </template>
       </demo-snippet>
     </div>

@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  *`simple-fields-container`
- * Progressive enhanced container HTML fields 
- * with label, description, error massage, 
+ * Progressive enhanced container HTML fields
+ * with label, description, error massage,
  * and aria-invalid functionality if needed.
  *
  * @group simple-fields
@@ -29,7 +29,7 @@ class SimpleFieldsContainer extends LitElement {
         :host([type="hidden"]) {
           display: none;
         }
-        :host([invalid]) {
+        :host([error]) {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: color 0.3s ease-in-out;
         }
@@ -48,22 +48,19 @@ class SimpleFieldsContainer extends LitElement {
           transition: color 0.3s ease-in-out;
         }
         .inline label {
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0 ;
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
           flex: 0 1 auto;
-        }
-        :host([required]) .label-main:after,
-        :host([invalid]) .label-main:after {
-          content: "*";
         }
         .inline label,
         .field-main > div,
-        ::slotted([slot=field]) {
+        .field,
+        ::slotted([slot="field"]) {
           font-size: var(--simple-fields-font-size, 16px);
           font-family: var(--simple-fields-font-family, sans-serif);
           line-height: var(--simple-fields-line-height, 22px);
         }
         .field,
-        ::slotted([slot=field]){
+        ::slotted([slot="field"]) {
           width: auto;
           border: none;
           color: var(--simple-fields-color, black);
@@ -71,20 +68,20 @@ class SimpleFieldsContainer extends LitElement {
           flex: 1 0 auto;
         }
         .field-main.inline .field,
-        .field-main.inline ::slotted([slot=field]) {
+        .field-main.inline ::slotted([slot="field"]) {
           min-width: var(--simple-fields-detail-line-height, 22px);
           height: var(--simple-fields-detail-line-height, 22px);
-          margin: 0 var(--simple-fields-margin-small, 8px) 0 0 ;
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
         }
         .field[disabled],
-        ::slotted([slot=field][readonly]) {
+        ::slotted([slot="field"][readonly]) {
           opacity: var(--simple-fields-disabled-opacity, 0.7);
           transition: opacity ease-in-out;
         }
         .field[readonly],
         .field[disabled],
-        ::slotted([slot=field][readonly]),
-        ::slotted([slot=field][disabled]) {
+        ::slotted([slot="field"][readonly]),
+        ::slotted([slot="field"][disabled]) {
           cursor: not-allowed;
         }
         .border-bottom {
@@ -116,24 +113,11 @@ class SimpleFieldsContainer extends LitElement {
   }
   render() {
     return html`
-      ${this.fieldMainTemplate}
-      ${this.fieldBottom}
+      ${this.fieldMainTemplate} ${this.fieldBottom}
     `;
   }
   static get properties() {
     return {
-      /**
-       * Hint for form autofill feature
-       */
-      autocomplete: {
-        type: String
-      },
-      /**
-       * Automatically focus on field when the page is loaded
-       */
-      autofocus: {
-        type: Boolean
-      },
       /**
        * Automatically validate field
        */
@@ -154,11 +138,29 @@ class SimpleFieldsContainer extends LitElement {
         reflect: true
       },
       /**
-       * Optional error message to display (or use slot="error-message")
+       * Optional validation error message to display
+       */
+      defaultErrorMessage: {
+        type: String
+      },
+      /**
+       * Optional required validation error message to display
+       */
+      defaultRequiredMessage: {
+        type: String
+      },
+      /**
+       * Whether field has errors
+       */
+      error: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * Validation error message to display
        */
       errorMessage: {
-        type: String,
-        attribute: "error-message"
+        type: String
       },
       /**
        * Whether the field is hidden
@@ -188,13 +190,6 @@ class SimpleFieldsContainer extends LitElement {
         reflect: true
       },
       /**
-       * Whether field is invalid
-       */
-      invalid: {
-        type: Boolean,
-        reflect: true
-      },
-      /**
        * Label for the field (or use slot="label")
        */
       label: {
@@ -217,7 +212,8 @@ class SimpleFieldsContainer extends LitElement {
        * Whether field is required
        */
       required: {
-        type: Boolean
+        type: Boolean,
+        reflect: true
       },
       /**
        * Optional suffix string (or use slot="suffix")
@@ -248,12 +244,10 @@ class SimpleFieldsContainer extends LitElement {
   }
   constructor() {
     super();
-    this.autocomplete = "off";
-    this.autofocus = false;
-    this.autofvalidate = false;
+    this.autovalidate = false;
     this.disabled = false;
     this.hidden = false;
-    this.invalid = false;
+    this.error = false;
     this.inline = false;
     this.validTypes = [
       "checkbox",
@@ -280,7 +274,7 @@ class SimpleFieldsContainer extends LitElement {
     this._observeAndListen();
   }
 
-  disconnectedCallback(){
+  disconnectedCallback() {
     this._observeAndListen(false);
     super.disconnectedCallback();
   }
@@ -289,7 +283,7 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  firstUpdated(){
+  firstUpdated() {
     this._updateField();
   }
   /**
@@ -300,10 +294,15 @@ class SimpleFieldsContainer extends LitElement {
    * @memberof SimpleFieldsContainer
    */
   updated(changedProperties) {
+    let errorChanged = false;
     changedProperties.forEach((oldValue, propName) => {
-        if (propName === "invalid" && this.field)
-          this.field.setAttribute("aria-invalid", this.invalid);
+      if(propName === "error" && this.error !== oldValue) errorChanged = true;
+      if(propName === "errorMessage" && this.errorMessage !== oldValue) errorChanged = true;
+      if (propName === "error" && this.field) {
+        this.field.setAttribute("aria-invalid", this.error ? "true" : "false");
+      }
     });
+    if(errorChanged) this._fireErrorChanged();
   }
 
   /**
@@ -331,8 +330,7 @@ class SimpleFieldsContainer extends LitElement {
    */
   get errorTemplate() {
     return html`
-      <div id="error-message" ?hidden="${!this.invalid}" role="alert">
-        <slot name="error-message"></slot>
+      <div id="error-message" ?hidden="${!this.error}" role="alert">
         ${this.errorMessage}
       </div>
     `;
@@ -346,17 +344,17 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get fieldBottom(){
+  get fieldBottom() {
     return html`
       <div class="border-bottom blur"></div>
       <div class="border-bottom focus"></div>
       <div id="field-bottom">
         <div id="error-desc">
-          ${this.descriptionTemplate}
-          ${this.errorTemplate}
+          ${this.descriptionTemplate} ${this.errorTemplate}
         </div>
         ${this.fieldMeta}
-      </div>`;
+      </div>
+    `;
   }
   /**
    * gets field element tag in shadow DOM
@@ -365,14 +363,14 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get fieldElementTag(){
-    return this.type === "select" 
-      ? "select" 
+  get fieldElementTag() {
+    return this.type === "select"
+      ? "select"
       : this.type === "textarea"
-        ? "textarea"
-        : this.hasFieldSet 
-          ? "fieldset" 
-          : "input";
+      ? "textarea"
+      : this.hasFieldSet
+      ? "fieldset"
+      : "input";
   }
 
   /**
@@ -395,11 +393,12 @@ class SimpleFieldsContainer extends LitElement {
    */
   get fieldMainTemplate() {
     return html`
-      <div class="${
-        this.inline 
-        || ["checkbox","color","radio"].includes(this.type || "text") 
-        ? 'field-main inline' 
-        :'field-main'}">
+      <div
+        class="${this.inline ||
+        ["checkbox", "color", "radio"].includes(this.type || "text")
+          ? "field-main inline"
+          : "field-main"}"
+      >
         ${this.labelTemplate}
         <div>
           ${this.prefixTemplate}
@@ -417,11 +416,12 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get fieldMeta(){
+  get fieldMeta() {
     return html`
       <div id="fieldmeta" aria-live="polite">
         <slot name="field-meta"></slot>
-      </div>`;
+      </div>
+    `;
   }
 
   /**
@@ -435,7 +435,7 @@ class SimpleFieldsContainer extends LitElement {
     return html`
       <label for="${this.fieldId}" class="label-main">
         <slot name="label"></slot>
-        ${this.label}
+        ${this.label}${this.error || this.required ? '*' : ''}
       </label>
     `;
   }
@@ -466,7 +466,7 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get prefixTemplate(){
+  get prefixTemplate() {
     return html`
       <slot name="prefix"></slot>
       ${this.prefix}
@@ -481,7 +481,7 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get slottedFieldObserver(){
+  get slottedFieldObserver() {
     return new MutationObserver(this._updateField);
   }
 
@@ -492,7 +492,7 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {object}
    * @memberof SimpleFieldsContainer
    */
-  get suffixTemplate(){
+  get suffixTemplate() {
     return html`
       <slot name="suffix"></slot>
       ${this.suffix}
@@ -570,20 +570,35 @@ class SimpleFieldsContainer extends LitElement {
   }
 
   /**
-   * checks validation constraints and returns error data
+   * checks validation constraints and returns error data (for slotted field)
    * @returns {object}
    * @memberof SimpleFieldsInput
    */
   validate() {
-    let requiredError = !this.value && this.required,
-      patternError = this.pattern && this.value && !this.value.match(this.pattern);
-    this.invalid = requiredError || patternError;
-    return this.invalid  
-      ? {
-        required: requiredError || undefined,
-        pattern: patternError ? this.pattern : undefined
-      }
-      : undefined;
+    let value = this.field.value,
+      pattern = this.field.pattern,
+      requiredError = !value && this.required 
+        ? this.defaultRequiredMessage || this.defaultErrorMessage
+        : false,
+      patternError = pattern !== "" && value && !value.match(pattern) 
+        ? this.defaultErrorMessage 
+        : false;
+    this.errorMessage = requiredError || patternError;
+    this.error = this.errorMessage !== false;
+  }
+  /**
+   * fires when error changes
+   * @event error-changed
+   */
+  _fireErrorChanged() {
+    this.dispatchEvent(
+      new CustomEvent("error-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * gets a valid version of a given type
@@ -592,10 +607,10 @@ class SimpleFieldsContainer extends LitElement {
    * @returns {string}
    * @memberof SimpleFieldsContainer
    */
-  _getValidType(type){
-    if (type==="datetime" && this.validTypes.includes(type)) {
+  _getValidType(type) {
+    if (type === "datetime" && this.validTypes.includes(type)) {
       return "datetime-local";
-    } else if(this.validTypes.includes(type)) {
+    } else if (this.validTypes.includes(type)) {
       return type;
     }
     return "text";
@@ -607,14 +622,21 @@ class SimpleFieldsContainer extends LitElement {
    * @param {boolean} [init=true] whether to start observing or disconnect observer
    * @memberof SimpleFieldsContainer
    */
-  _observeAndListen(init=true){
-    if(init){
-      this.slottedFieldObserver.observe(this,{attributeFilter: [ "slot" ], childlist: true});
+  _observeAndListen(init = true) {
+    if (init) {
+      this.slottedFieldObserver.observe(this, {
+        attributeFilter: ["required","slot"],
+        childlist: true
+      });
       this._updateField();
-      this.addEventListener('focusout',this._onFocusout);
+      this.addEventListener("click", this.focus);
+      this.addEventListener("focusout", this._onFocusout);
+      this.addEventListener("focusin", this._onFocusin);
     } else {
       this.slottedFieldObserver.disconnect();
-      this.removeEventListener('focusout',this._onFocusout);
+      this.removeEventListener("click", this.focus);
+      this.removeEventListener("focusout", this._onFocusout);
+      this.removeEventListener("focusin", this._onFocusin);
     }
   }
   /**
@@ -622,8 +644,16 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsContainer
    */
-  _onFocusout(){
-    if(this.autovalidate) this.validate();
+  _onFocusin() {
+    this.error = false;
+  }
+  /**
+   * handles focusout validation
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  _onFocusout() {
+    if (this.autovalidate) this.validate();
   }
   /**
    * makes textarea autogrow
@@ -646,16 +676,17 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @memberof SimpleFieldsInput
    */
- _updateField(){
-    this.field = this.querySelector("[slot=field]")
-        ? this.querySelector("[slot=field]") 
-        : undefined;
+  _updateField() {
+    this.field = this.querySelector && this.querySelector("[slot=field]")
+      ? this.querySelector("[slot=field]")
+      : undefined;
     this.id = `${this.fieldId || ""}-wrapper`;
     if (this.field) {
       let tag = this.field.tagName.toLowerCase(),
-        type = this.field.type || this.field.getAttribute('type') || "text";
+        type = this.field.type || this.field.getAttribute("type") || "text";
       this.type = this._getValidType(tag === "input" ? type : tag);
-      this.field.setAttribute('aria-describedby',"field-bottom");
+      this.required = this.field.required;
+      this.field.setAttribute("aria-describedby", "field-bottom");
     } else {
       this.required = false;
       this.type = undefined;

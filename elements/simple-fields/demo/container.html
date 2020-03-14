@@ -19,8 +19,8 @@
       <h1>simple-fields-container Demo</h1>
       <demo-snippet>
         <template>
-          <simple-fields-container label="Name" required>
-            <input slot="field" autocapitalize="words"/>
+          <simple-fields-container label="Name">
+            <input slot="field" autocapitalize="words" required/>
           </simple-fields-container>
           <simple-fields-container label="Password">
             <input slot="field" type="password"/>
@@ -45,8 +45,8 @@
       <h2>Inline Labeling</h2>
       <demo-snippet>
         <template>
-          <simple-fields-container inline label="Name" required>
-            <input slot="field" autocapitalize="words"/>
+          <simple-fields-container inline label="Name">
+            <input slot="field" autocapitalize="words" required/>
           </simple-fields-container>
           <simple-fields-container inline label="Password">
             <input slot="field" type="password"/>
@@ -94,10 +94,15 @@
         <template>
           <simple-fields-container 
             autovalidate
+            error-message="A name is required."
+            label="Name">
+            <input slot="field" required/>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
             error-message="You must agree to the terms."
-            label="I agree to the terms" 
-            required>
-            <input slot="field" type="checkbox"/>
+            label="I agree to the terms">
+            <input slot="field" type="checkbox" required/>
           </simple-fields-container>
           <simple-fields-container 
             autovalidate

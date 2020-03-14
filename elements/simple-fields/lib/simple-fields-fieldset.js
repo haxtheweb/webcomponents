@@ -19,6 +19,11 @@ class SimpleFieldsFieldset extends LitElement {
           padding: 10px;
           margin: 10px 10px 20px;
           border: 1px solid #ccc;
+          transition: all 0.3s ease-in-out;
+        }
+        :host([error]) legend {
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.3s ease-in-out;
         }
         legend,
         #description {
@@ -44,7 +49,7 @@ class SimpleFieldsFieldset extends LitElement {
   get legend() {
     return html`
       <legend id="legend" ?hidden="${!this.label}">
-        ${this.label}
+        ${this.label}${this.error ? '*' : ''}
       </legend>
     `;
   }
@@ -64,15 +69,31 @@ class SimpleFieldsFieldset extends LitElement {
   }
   static get properties() {
     return {
+      /**
+       * whether fieldset has fields with errors
+       */
+      error: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * fieldset legend
+       */
       label: {
         type: String,
         reflect: true
       },
+      /**
+       * unique name
+       */
       name: {
         type: String,
         reflect: true,
         attribute: "name"
       },
+      /**
+       * optional description
+       */
       description: {
         type: String
       }
