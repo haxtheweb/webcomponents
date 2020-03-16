@@ -129,26 +129,33 @@ This element accepts JSON schema with additional features noted in the example b
   }
 ```
 
-### Configuring fieldsConversion Property
+### Configuring fieldsConverstion Property
 ```
-type: {                         //For properties in "this.schema", define elements based on a property's "type"
-  object: {                     //Defines element used when property's "type" is an "object"
-    format: {                   //Optional: define elements for "object" properties by "format"
-      "tabs": {                 //Defines element used for object properties when "format" is "tabs"
-        element: "a11y-tabs"    //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
-        label: "label"          //Optional: element that contains label, i.e. "label"
-        description: ""         //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
-        child: {                //Optional: child elements to be appended
-          element: "a11y-tab"   //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
-          attributes: {         //Optional: sets child element's attributes based on this.schemaConversion
-            disabled: true      //Example: sets disabled to true  
+type: {                                 //For properties in "this.schema", define elements based on a property's "type"
+  object: {                             //Defines element used when property's "type" is an "object"
+    format: {                           //Optional: define elements for "object" properties by "format"
+      "tabs": {                         //Defines element used for object properties when "format" is "tabs"
+        element: "a11y-tabs"  
+        descriptionProperty: "description"    //Optional: element's property that sets its description, i.e. "description"
+        descriptionSlot: "description"        //Optional: element's slot that contains its description, i.e. "description"
+        errorProperty: "error"                //Optional: element's property that sets its error status, i.e. "error"
+        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, i.e. "errorMessage"
+        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, i.e. "errorMessage"          //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
+        labelProperty: "label"                //Optional: element's property that sets its label, i.e. "label"
+        labelSlot: "label"                    //Optional: element's slot that contains its label, i.e. "label"
+        valueProperty: "value"                //Optional: element's property that sets its value, i.e. "value"
+        description: ""                       //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
+        child: {                              //Optional: child elements to be appended
+          element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
+          attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
+            disabled: true                    //Example: sets disabled to true  
           } 
-          properties: {          //Optional: sets child element's attributes based on this.schema properties
-            icon: "iconName"     //Example: sets child element's icon property to this.schema property's iconName 
+          properties: {                       //Optional: sets child element's attributes based on this.schema properties
+            icon: "iconName"                  //Example: sets child element's icon property to this.schema property's iconName 
           }, 
-          slots: {               //Optional: inserts schema properties in child element's slots
-            label: "label",      //Example: places schema property's label into child element's label slot
-            "": "description"    //Example: places schema property's description into child element's unnamed slot
+          slots: {                            //Optional: inserts schema properties in child element's slots
+            label: "label",                   //Example: places schema property's label into child element's label slot
+            "": "description"                 //Example: places schema property's description into child element's unnamed slot
           } 
         },
         attributes: {},
@@ -156,7 +163,7 @@ type: {                         //For properties in "this.schema", define elemen
         slots: {}
       }
     },
-    defaultSettings: {   //Default element used for object properties
+    defaultSettings: {                        //Default element used for object properties
       element: ""
       label: ""
       description: ""     
@@ -286,11 +293,11 @@ class SimpleFieldsLite extends LitElement {
           defaultSettings: {
             element: "simple-fields-array",
             invalidProperty: "invalid",
-            labelProperty: "label",
+            noWrap: true,
             descriptionProperty: "description",
             child: {
               element: "simple-fields-array-item",
-              labelProperty: "label",
+              noWrap: true,
               descriptionProperty: "description",
               properties: {
                 previewBy: "previewBy"
@@ -353,7 +360,7 @@ class SimpleFieldsLite extends LitElement {
         object: {
           defaultSettings: {
             element: "simple-fields-fieldset",
-            labelProperty: "label",
+            noWrap: true,
             descriptionProperty: "description"
           }
         },
@@ -429,8 +436,23 @@ class SimpleFieldsLite extends LitElement {
       if (propName === "value") this._valueChanged(this.value, oldValue);
     });
   }
+  /**
+   * field data
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
   get fields() {
     return this.__fields;
+  }
+  /**
+   * whether there are no errors
+   *
+   * @readonly
+   * @memberof SimpleFieldsLite
+   */
+  get valid(){
+    return !this.error || Object.keys(this.error === {}).length === 0
   }
   /**
    * updates the schema
@@ -471,19 +493,23 @@ class SimpleFieldsLite extends LitElement {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
-            schemaProp.properties || schemaProp.items || data.labelProperty
+            schemaProp.properties || schemaProp.items || schemaProp.noWrap || data.noWrap
               ? element
               : document.createElement("simple-fields-container"),
-          value = this._getValue(`${prefix}${key}`);
-        data.valueProperty =
-          data.valueProperty || schemaProp.valueProperty || "value";
-        data.errorProperty =
-          data.errorProperty || schemaProp.errorProperty || "error";
-        data.errorMessageProperty =
-          data.errorMessageProperty ||
-          schemaProp.errorMessageProperty ||
-          "errorMessage";
-
+          value = this._getValue(`${prefix}${key}`),
+          label = schemaProp.label || schemaProp.title || schemaProp.description || key,
+          desc = schemaProp.description && (schemaProp.label || schemaProp.title)
+            ? schemaProp.description
+            : undefined;
+        data.labelSlot = this._getPropertyOrSlot("label",data,schemaProp,"labelSlot",false);
+        data.descriptionSlot = this._getPropertyOrSlot("description",data,schemaProp,"descriptionSlot",false);
+        data.errorMessageSlot = this._getPropertyOrSlot("errorMessage",data,schemaProp,"errorMessageSlot",false);
+        data.labelProperty = this._getPropertyOrSlot("label",data,schemaProp,"labelProperty");
+        data.descriptionProperty = this._getPropertyOrSlot("description",data,schemaProp,"descriptionProperty");
+        data.valueProperty = this._getPropertyOrSlot("value",data,schemaProp,"valueProperty");
+        data.errorProperty = this._getPropertyOrSlot("error",data,schemaProp,"errorProperty");
+        data.errorMessageProperty = this._getPropertyOrSlot("errorMessage",data,schemaProp,"errorMessageProperty");
+        
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -491,17 +517,8 @@ class SimpleFieldsLite extends LitElement {
         if (required && required.includes(key))
           element.setAttribute("required", true);
 
-        wrapper[data.labelProperty || "label"] =
-          schemaProp.label || schemaProp.title || schemaProp.description || key;
-        wrapper[data.descriptionProperty || "description"] =
-          schemaProp.description && (schemaProp.label || schemaProp.title)
-            ? schemaProp.description
-            : undefined;
-
-        let valueProperty = data.valueProperty,
-          errorProperty =
-            data.errorProperty || schemaProp.errorProperty || "error",
-          errorMessageProperty = data.errorMessageProperty;
+        this._setPropertyOrSlot(data.labelProperty,data.labelSlot,wrapper,label);
+        this._setPropertyOrSlot(data.descriptionProperty,data.descriptionSlot,wrapper,desc);
 
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
@@ -546,16 +563,16 @@ class SimpleFieldsLite extends LitElement {
             wrapper.appendChild(element);
           }
           if (value) {
-            element.setAttribute(valueProperty, value);
+            element.setAttribute(data.valueProperty, value);
 
-            element.addEventListener(`${valueProperty}-changed`, e =>
-              this._handleChange(element, valueProperty)
+            element.addEventListener(`${data.valueProperty}-changed`, e =>
+              this._handleChange(element, data.valueProperty)
             );
           }
-          wrapper.addEventListener(`${errorProperty}-changed`, e => {
+          wrapper.addEventListener(`${data.errorProperty}-changed`, e => {
             let error = this._deepClone(this.error || {});
-            if (wrapper[errorProperty]) {
-              error[id] = wrapper[errorMessageProperty] || "";
+            if (wrapper[data.errorProperty]) {
+              error[id] = wrapper[data.errorMessageProperty] || "";
             } else if (error && error[id]) {
               delete error[id];
             }
@@ -565,6 +582,40 @@ class SimpleFieldsLite extends LitElement {
         this.__fields.push({ id: id, field: wrapper, data: data });
       }
     });
+  }
+  /**
+   * checks schema and default configuration for a specific property or slot
+   *
+   * @param {string} defaultName default property name
+   * @param {object} data configuration data
+   * @param {object} schema schema data
+   * @param {string} propName property name from schema or config
+   * @param {string} [slotName] slot name from schema or config
+   * @returns string
+   * @memberof SimpleFieldsLite
+   */
+  _getPropertyOrSlot(defaultName,data,schema,propName,slotName){
+    return schema[propName] || data[propName] || !slotName ? defaultName : slotName;
+  }
+  /**
+   * sets field or field wrapper element's slot ot property to a value
+   *
+   * @param {string} propName property name
+   * @param {string} slotName slot name if any
+   * @param {object} target element to set
+   * @param {*} value
+   * @memberof SimpleFieldsLite
+   */
+  _setPropertyOrSlot(propName,slotName,target,value){
+    if(slotName){
+      let span = document.createElement('span');
+      span.slot = slotName;
+      if(value) span.innerHTML = value;
+      if(target) target.querySelectorAll(`[slot=${slotName}]`).forEach(el=> el.remove());
+      target.appendChild(span);
+    } else {
+      target[propName] = value;
+    }
   }
   /**
    *
@@ -672,6 +723,7 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
+    console.log('error-changed',this.error);
     this.fields.forEach(field => {
       let data = field.data || {},
         el = field.field,
@@ -686,8 +738,10 @@ class SimpleFieldsLite extends LitElement {
               return;
             }
           });
-        field.field[data.errorMessageProperty || "errorMessage"] = message;
-        field.field[data.errorProperty || "error"] = error;
+        this._setPropertyOrSlot(data.errorMessageProperty,data.errorMessageSlot,field.field,message);
+        field.field[data.errorProperty] = error;
+        field.field.setAttribute('aria-invalid',error);
+        console.log('field',field.field,data.errorMessageProperty,data.errorProperty,message,error);
       }
     });
   }

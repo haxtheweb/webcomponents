@@ -88,13 +88,24 @@ class A11yTabs extends LitElement {
     window.ResponsiveUtility.requestAvailability();
   }
   /**
-   * mutation objserver for tabs
+   * mutation observer for tabs
    * @readonly
    * @returns {object}
    */
   get observer() {
     let callback = () => this.updateTabs();
     return new MutationObserver(callback);
+  }
+
+  /**
+   * query selector for tabs
+   * override this for custom elements that extend a11y-tabs
+   *
+   * @readonly
+   * @memberof A11yTabs
+   */
+  get tabQuery(){
+    return "a11y-tab";
   }
 
   /**
@@ -105,6 +116,7 @@ class A11yTabs extends LitElement {
   get tabs() {
     return this.__tabs ? Object.keys(this.__tabs).map(i => this.__tabs[i]) : [];
   }
+
   /**
    * determines if tabs should show icons only
    * @readonly
@@ -179,7 +191,7 @@ class A11yTabs extends LitElement {
    * @param {string} id the active tab's id
    */
   selectTab(id) {
-    let tabs = this.querySelectorAll("a11y-tab"),
+    let tabs = this.querySelectorAll(this.tabQuery),
       filtered = Object.keys(tabs || []).filter(tab => tabs[tab].id === id),
       selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : tabs[0];
     if (selected && selected.id !== id) {
@@ -195,7 +207,7 @@ class A11yTabs extends LitElement {
    * updates the list of items based on slotted a11y-tab elements
    */
   updateTabs(e) {
-    this.__tabs = this.querySelectorAll("a11y-tab");
+    this.__tabs = this.querySelectorAll(this.tabQuery);
     this.selectTab(this.activeTab);
   }
   /**
@@ -279,6 +291,86 @@ class A11yTabs extends LitElement {
       (this.iconBreakpoint > this.layoutBreakpoint
         ? this.responsiveSize === "xs"
         : this.responsiveSize.indexOf("s") > -1);
+  }
+
+  /**
+   * makes tab button
+   *
+   * @param {object} tab a11y-tab
+   * @returns object
+   * @memberof A11yTabs
+   */
+  _tabButton(tab){
+    console.log(tab,tab.error);
+    return html`
+      <paper-button 
+        id="${tab.id}-button" 
+        controls="${tab.id}" 
+        class="${tab.id === this.activeTab ? 'active': ''}"
+        @click="${(e) => this._handleTab(tab)}"
+        ?disabled="${tab.id === this.activeTab || tab.disabled}" 
+        .flag="${tab.flag}">
+        ${this._tabIcon(tab,'flagIcon')}
+        ${this._tabLabel(tab)} 
+        ${this._tabFlag(tab)} 
+        ${this._tabIcon(tab,'icon')}
+      </paper-button>
+      ${this._tabTooltip(tab)}`;
+  }
+
+  /**
+   * makes tab flag
+   *
+   * @param {string} flag tab's flag
+   * @returns object
+   * @memberof A11yTabs
+   */
+  _tabFlag(tab){
+    return html`
+      <span class="flag-type" ?hidden="${!tab.flag}">
+        ${tab.flag}
+      </span>`;
+  }
+
+  /**
+   * makes tab icon
+   *
+   * @param {string} icon tab's icon
+   * @returns object
+   * @memberof A11yTabs
+   */
+  _tabIcon(tab,icon){
+    return html`
+      <iron-icon class="icon" 
+        ?hidden="${!tab[icon]}" 
+        .icon="${tab[icon]}"></iron-icon>`;
+  }
+
+
+  /**
+   * makes tab label
+   *
+   * @param {string} flag tab's flag
+   * @returns object
+   * @memberof A11yTabs
+   */
+  _tabLabel(tab){
+    return html`<span class="label">${tab.label}</span>`;
+  }
+
+  /**
+   * makes tab tooltip
+   *
+   * @param {string} id tab's unique id
+   * @param {label} label tab's label
+   * @returns object
+   * @memberof A11yTabs
+   */
+  _tabTooltip(tab){
+    return html`
+      <simple-tooltip for="${tab.id}-button">
+        ${tab.label}
+      </simple-tooltip>`;
   }
   /**
    * Fires when element is rno longer needs specific breakpoints tracked.

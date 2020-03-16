@@ -18,6 +18,7 @@
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
+        <style>#submission {width: 100%;}</style>
         <script>
           window.onload = () => {
             let schema = document.getElementById('schema');
@@ -47,7 +48,7 @@
                 "positions": [
                   {
                     "title": "cashier",
-                    "salary": "7.50"
+                    "salary": "20000"
                   }
                 ]
               }
@@ -215,23 +216,33 @@
             schema.schema = data;
             let schemaError = {
               "settings.basic-input.name": "That's not your real name.",
-              "settings.basic-input.email": "Cannot be blank.",
               "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
             };
             setErrors = () => {
               schema.error = schemaError;
+              document.getElementById('getvals').disabled = true;
             }
-            submit =() => {
-              let valid = !schema.error || schema.error === {};
-              submit.disabled = !valid;
-              if(valid) console.log(schema.value);
+            getValues =() => {
+              let val = schema.value;
+              console.log(`value`,val);
+              if(schema.valid) {
+                document.getElementById('submission').innerHTML = JSON.stringify(schema.value);
+                console.log('Value Submitted:',val);
+              };
+              document.getElementById('getvals').disabled = !schema.valid;
             }
           };
         </script>
         <template>
-          <form id="form"><simple-fields-lite id="schema"></simple-fields-lite></form>
-          <button onclick="setErrors()">Add fake errors</button>
-          <button id="submit" onclick="submit">Try me</button>
+          <form id="form">
+            <simple-fields-lite id="schema"></simple-fields-lite>
+            <p>
+              <input onclick="setErrors()" value="Add fake errors" type="button">
+              <input onclick="getValues()" value="Get Values" id="getvals" type="button">
+            </p>
+          </form>
+          <p><label for="submission">Values</label></p>
+          <textarea id="submission" rows="15"></textarea>
         </template>
       </demo-snippet>
     </div>

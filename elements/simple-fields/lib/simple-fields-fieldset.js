@@ -21,11 +21,11 @@ class SimpleFieldsFieldset extends LitElement {
           border: 1px solid #ccc;
           transition: all 0.3s ease-in-out;
         }
-        :host([error]) legend {
+        :host([error]) #label {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.3s ease-in-out;
         }
-        legend,
+        #label,
         #description {
           font-family: sans-serif;
           font-size: 11px;
@@ -48,7 +48,7 @@ class SimpleFieldsFieldset extends LitElement {
   }
   get legend() {
     return html`
-      <legend id="legend" ?hidden="${!this.label}">
+      <legend id="label" ?hidden="${!this.label}">
         ${this.label}${this.error ? "*" : ""}
       </legend>
     `;
@@ -70,9 +70,30 @@ class SimpleFieldsFieldset extends LitElement {
   static get properties() {
     return {
       /**
+       * whether the tabbed interface is disabled
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
        * whether fieldset has fields with errors
        */
       error: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * whether the tabbed interface is hidden
+       */
+      hidden: {
+        type: Boolean,
+        reflect: true
+      },
+      /**
+       * whether the tabbed interface is hidden
+       */
+      readonly: {
         type: Boolean,
         reflect: true
       },

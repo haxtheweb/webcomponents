@@ -4,31 +4,39 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
-import "./simple-fields-field.js";
+import "./lib/simple-fields-field.js";
+import "./lib/simple-fields-tabs.js";
 /**
  * `simple-fields`
  * Uses eco-json-form and HAX wiring to display a series of fields
  * 
 ### Configuring fieldsConverstion Property
 ```
-type: {                         //For properties in "this.schema", define elements based on a property's "type"
-  object: {                     //Defines element used when property's "type" is an "object"
-    format: {                   //Optional: define elements for "object" properties by "format"
-      "tabs": {                 //Defines element used for object properties when "format" is "tabs"
-        element: "a11y-tabs"    //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
-        label: "label"          //Optional: element that contains label, i.e. "label"
-        description: ""         //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
-        child: {                //Optional: child elements to be appended
-          element: "a11y-tab"   //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
-          attributes: {         //Optional: sets child element's attributes based on this.schemaConversion
-            disabled: true      //Example: sets disabled to true  
+type: {                                 //For properties in "this.schema", define elements based on a property's "type"
+  object: {                             //Defines element used when property's "type" is an "object"
+    format: {                           //Optional: define elements for "object" properties by "format"
+      "tabs": {                         //Defines element used for object properties when "format" is "tabs"
+        element: "a11y-tabs"  
+        descriptionProperty: "description"    //Optional: element's property that sets its description, i.e. "description"
+        descriptionSlot: "description"        //Optional: element's slot that contains its description, i.e. "description"
+        errorProperty: "error"                //Optional: element's property that sets its error status, i.e. "error"
+        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, i.e. "errorMessage"
+        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, i.e. "errorMessage"          //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
+        labelProperty: "label"                //Optional: element's property that sets its label, i.e. "label"
+        labelSlot: "label"                    //Optional: element's slot that contains its label, i.e. "label"
+        valueProperty: "value"                //Optional: element's property that sets its value, i.e. "value"
+        description: ""                       //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
+        child: {                              //Optional: child elements to be appended
+          element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
+          attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
+            disabled: true                    //Example: sets disabled to true  
           } 
-          properties: {          //Optional: sets child element's attributes based on this.schema properties
-            icon: "iconName"     //Example: sets child element's icon property to this.schema property's iconName 
+          properties: {                       //Optional: sets child element's attributes based on this.schema properties
+            icon: "iconName"                  //Example: sets child element's icon property to this.schema property's iconName 
           }, 
-          slots: {               //Optional: inserts schema properties in child element's slots
-            label: "label",      //Example: places schema property's label into child element's label slot
-            "": "description"    //Example: places schema property's description into child element's unnamed slot
+          slots: {                            //Optional: inserts schema properties in child element's slots
+            label: "label",                   //Example: places schema property's label into child element's label slot
+            "": "description"                 //Example: places schema property's description into child element's unnamed slot
           } 
         },
         attributes: {},
@@ -36,7 +44,7 @@ type: {                         //For properties in "this.schema", define elemen
         slots: {}
       }
     },
-    defaultSettings: {   //Default element used for object properties
+    defaultSettings: {                        //Default element used for object properties
       element: ""
       label: ""
       description: ""     
@@ -216,7 +224,7 @@ class SimpleFields extends SimpleFieldsLite {
         element: "simple-fields-field",
         errorProperty: "errorMessage",
         invalidProperty: "invalid",
-        labelProperty: "label",
+        noWrap: true,
         attributes: {
           type: "text"
         },
@@ -229,6 +237,7 @@ class SimpleFields extends SimpleFieldsLite {
         radio: {
           defaultSettings: {
             element: "simple-fields-field",
+            noWrap: true,
             attributes: {
               autofocus: true,
               type: "radio"
@@ -238,7 +247,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             child: {
               element: "simple-fields-array-item",
-              labelProperty: "label",
+              noWrap: true,
               descriptionProperty: "description",
               properties: {
                 previewBy: "previewBy"
@@ -249,6 +258,7 @@ class SimpleFields extends SimpleFieldsLite {
         select: {
           defaultSettings: {
             element: "simple-fields-field",
+            noWrap: true,
             attributes: {
               autofocus: true,
               type: "select"
@@ -263,13 +273,11 @@ class SimpleFields extends SimpleFieldsLite {
         array: {
           defaultSettings: {
             element: "simple-fields-array",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
+            noWrap: true,
             descriptionProperty: "description",
             child: {
               element: "simple-fields-array-item",
-              labelProperty: "label",
+              noWrap: true,
               descriptionProperty: "description",
               properties: {
                 previewBy: "previewBy"
@@ -280,9 +288,7 @@ class SimpleFields extends SimpleFieldsLite {
         boolean: {
           defaultSettings: {
             element: "simple-fields-field",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelSlot: "",
+            noWrap: true,
             valueProperty: "checked",
             attributes: {
               autofocus: true,
@@ -294,6 +300,7 @@ class SimpleFields extends SimpleFieldsLite {
         file: {
           defaultSettings: {
             element: "simple-fields-field",
+            noWrap: true,
             attributes: {
               autofocus: true,
               type: "file"
@@ -306,9 +313,7 @@ class SimpleFields extends SimpleFieldsLite {
         integer: {
           defaultSettings: {
             element: "simple-fields-field",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
+            noWrap: true,
             attributes: {
               autofocus: true,
               step: 1,
@@ -333,9 +338,7 @@ class SimpleFields extends SimpleFieldsLite {
         number: {
           defaultSettings: {
             element: "simple-fields-field",
-            errorProperty: "errorMessage",
-            invalidProperty: "invalid",
-            labelProperty: "label",
+            noWrap: true,
             type: "number",
             attributes: {
               autofocus: true,
@@ -351,17 +354,17 @@ class SimpleFields extends SimpleFieldsLite {
         object: {
           defaultSettings: {
             element: "simple-fields-fieldset",
-            labelProperty: "label",
-            descriptionProperty: "description"
+            noWrap: true,
           },
           format: {
             tabs: {
               defaultSettings: {
-                element: "a11y-tabs",
-                labelSlot: "label",
+                element: "simple-fields-tabs",
+                noWrap: true,
                 child: {
-                  element: "a11y-tab",
-                  labelProperty: "label",
+                  element: "simple-fields-tab",
+                  noWrap: true,
+                  labelSlot: "label",
                   descriptionSlot: ""
                 }
               }
@@ -373,9 +376,7 @@ class SimpleFields extends SimpleFieldsLite {
             "date-time": {
               defaultSettings: {
                 element: "simple-fields-field",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                noWrap: true,
                 attributes: {
                   autofocus: true,
                   type: "datetime-local"
@@ -385,9 +386,7 @@ class SimpleFields extends SimpleFieldsLite {
             time: {
               defaultSettings: {
                 element: "simple-fields-field",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                noWrap: true,
                 attributes: {
                   autofocus: true,
                   type: "time"
@@ -397,9 +396,7 @@ class SimpleFields extends SimpleFieldsLite {
             date: {
               defaultSettings: {
                 element: "simple-fields-field",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                noWrap: true,
                 attributes: {
                   autofocus: true,
                   type: "date"
@@ -409,9 +406,7 @@ class SimpleFields extends SimpleFieldsLite {
             email: {
               defaultSettings: {
                 element: "simple-fields-field",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                noWrap: true,
                 attributes: {
                   autofocus: true,
                   type: "email"
@@ -421,9 +416,7 @@ class SimpleFields extends SimpleFieldsLite {
             uri: {
               defaultSettings: {
                 element: "simple-fields-field",
-                errorProperty: "errorMessage",
-                invalidProperty: "invalid",
-                labelProperty: "label",
+                noWrap: true,
                 attributes: {
                   autofocus: true,
                   type: "url"
@@ -436,8 +429,6 @@ class SimpleFields extends SimpleFieldsLite {
     };
     setTimeout(() => {
       import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
-      import("@polymer/paper-input/paper-input.js");
-      import("@polymer/paper-checkbox/paper-checkbox.js");
     }, 0);
   }
   /**

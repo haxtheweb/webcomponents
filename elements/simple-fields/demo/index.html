@@ -433,9 +433,12 @@
                   { "name": "Rickon Stark", "dead": true  }
                 ]
               };
-              simple.fields = fields;
-              simple.value = fieldVal;
-              schema = simple.schema;
+              //simple.fields = fields;
+              //simple.value = fieldVal;
+              //schema = simple.schema;
+              simple.schema = schema;
+              simple.value = schemaVal;
+              console.log(simple);
             };
           </script>
         </template>
