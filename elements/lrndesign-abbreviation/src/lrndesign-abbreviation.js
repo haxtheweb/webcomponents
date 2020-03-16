@@ -15,42 +15,44 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
     setTimeout(() => {
-      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");      
+      import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }
   static get styles() {
-    return [css`
-      :host {
-        display: inline-block;
-      }
-      abbr {
-        transition: 0.6s all ease;
-        padding: 2px 4px;
-        font-style: italic;
-        background-color: var(--abbreviation-bg, #f9f9f9);
-        text-underline-position: under;
-        text-decoration: underline double;
-        cursor: help;
-        outline: var(--abbreviation-selection, #ffff33);
-      }
-      abbr:focus,
-      abbr:active,
-      abbr:hover {
-        text-decoration: none;
-        background-color: var(--abbreviation-selection, #ffff33);
-      }
-      abbr::-moz-selection,
-      abbr::selection {
-        text-decoration: none;
-        background-color: var(--abbreviation-selection, #ffff33);
-      }
-      simple-tooltip {
+    return [
+      css`
+        :host {
+          display: inline-block;
+        }
+        abbr {
+          transition: 0.6s all ease;
+          padding: 2px 4px;
+          font-style: italic;
+          background-color: var(--abbreviation-bg, #f9f9f9);
+          text-underline-position: under;
+          text-decoration: underline double;
+          cursor: help;
+          outline: var(--abbreviation-selection, #ffff33);
+        }
+        abbr:focus,
+        abbr:active,
+        abbr:hover {
+          text-decoration: none;
+          background-color: var(--abbreviation-selection, #ffff33);
+        }
+        abbr::-moz-selection,
+        abbr::selection {
+          text-decoration: none;
+          background-color: var(--abbreviation-selection, #ffff33);
+        }
+        simple-tooltip {
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
         }
-    `];
+      `
+    ];
   }
   /**
    * Render callback
@@ -75,13 +77,13 @@ class LrndesignAbbreviation extends SchemaBehaviors(LitElement) {
        * Abbreviation text.
        */
       abbr: {
-        type: String,
+        type: String
       },
       /**
        * The thing the abbreviation represents.
        */
       phrase: {
-        type: String,
+        type: String
       }
     };
   }

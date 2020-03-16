@@ -25,27 +25,32 @@ class SocialShareLink extends LitElement {
   constructor() {
     super();
     this.buttonStyle = false;
-    this.image = '';
-    this.message = '';
+    this.image = "";
+    this.message = "";
     this.mode = null;
     this.text = null;
-    this.type = "Twitter"
+    this.type = "Twitter";
     this.url = null;
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'type') {
+      if (propName == "type") {
         this.__icon = this._getIcon(this.type);
       }
-      if (['text', 'type'].includes(propName)) {
+      if (["text", "type"].includes(propName)) {
         this.__linkText = this._getLinkText(this.text, this.type);
       }
-      if (['image', 'message', 'type', 'url'].includes(propName)) {
-        this.__href = this._getHref(this.image, this.message, this.type, this.url);
+      if (["image", "message", "type", "url"].includes(propName)) {
+        this.__href = this._getHref(
+          this.image,
+          this.message,
+          this.type,
+          this.url
+        );
       }
-      if (propName == 'mode') {
-        this.__showIcon = (this.mode == 'icon-only' ? true : false);
+      if (propName == "mode") {
+        this.__showIcon = this.mode == "icon-only" ? true : false;
       }
     });
   }
@@ -68,8 +73,7 @@ class SocialShareLink extends LitElement {
             : false;
         break;
       case "LinkedIn":
-        link =
-          (url !== null ? "&url=" + url : "");
+        link = url !== null ? "&url=" + url : "";
         link =
           link !== null
             ? "https://www.linkedin.com/shareArticle?mini=true" + link
@@ -87,7 +91,8 @@ class SocialShareLink extends LitElement {
         break;
       case "Twitter":
         link = message !== null ? "text=" + message + " " + url : url;
-        link = link !== null ? "http://twitter.com/intent/tweet?" + link : false;
+        link =
+          link !== null ? "http://twitter.com/intent/tweet?" + link : false;
         break;
     }
     return encodeURI(link);
