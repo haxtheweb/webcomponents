@@ -82,15 +82,11 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
         simple-blog-card {
           padding: 8px;
           min-height: 100px;
-          min-width: 100px;
         }
         .simple-blog-card-wrapper {
-          margin: 0 auto;
-          width: 100%;
-        }
-        .evenly {
           display: flex;
           justify-content: space-evenly;
+          max-width: 900px;
         }
         simple-blog-card[size="micro"] {
           padding: 4px;
@@ -118,7 +114,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           display: inline-flex;
         }
         .header-image {
-          max-width: 800px;
+          max-width: 600px;
           width: 100%;
         }
         .header-image iron-image {
@@ -259,10 +255,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
             padding-right: 8px;
             transition: 0.5s opacity ease-in-out;
           }
-          .evenly {
-            display: unset;
-            justify-content: unset;
-          }
           simple-blog-card {
             padding: 0;
           }
@@ -332,7 +324,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
               limit="2"
               sort='{"created": "ASC"}'
             ></site-query>
-            <div class="simple-blog-card-wrapper evenly">
+            <div class="simple-blog-card-wrapper">
               ${this.__mainPosts.map(
                 post => html`
                   <simple-blog-card
@@ -384,7 +376,7 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
                       : ""}"
                     color="${this.color}"
                     .title="${post.title}"
-                    size="medium"
+                    size="small"
                     .link="${post.location}"
                     .image="${this._showImage(
                       post.metadata.fields &&
