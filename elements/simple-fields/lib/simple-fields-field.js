@@ -381,6 +381,15 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.spellcheck = false;
     this.wrap = false;
     this.options = {};
+    this.addEventListener("click", e =>
+      this.focus()
+    );
+  }
+  disconnectedCallback(){
+    this.removeEventListener("click", e =>
+      this.focus()
+    );
+    super.disconnectedCallback();
   }
 
   updated(changedProperties) {
@@ -388,7 +397,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       "accept",
       "autocomplete",
       "capture",
-      "checked",
       "counter",
       "dirname",
       "list",
@@ -405,6 +413,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         this.field.value = this.value;
         this._fireValueChanged();
       }
+      if (
+        ["type", "field", "multiple", "value"].includes(propName) 
+        && this.field && !this.multiple && ["checkbox","radio"].includes(this.type)
+      )
+        this.field.checked = this.value;
       if (propName === "type" && this.type !== oldValue) this._updateField();
       if (["type", "field", "value"].includes(propName))
         this._onTextareaupdate();
@@ -518,7 +531,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                   .autocomplete="${this.autocomplete}"
                   aria-descrbedby="${this.describedBy}"
                   .aria-invalid="${this.error ? "true" : "false"}"
-                  .checked="${this.value === option}"
+                  ?checked="${this.value === option}"
                   class="field"
                   @click="${this._onChange}"
                   ?disabled="${this.disabled}"
@@ -556,7 +569,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         )
           ? ""
           : "box-input"}"
-        dirname="${this.dirname}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
         @input="${this._onTextareaupdate}"
@@ -630,6 +642,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         class="field box-input"
         @change="${this._onChange}"
+        @keydown="${e=>e.stopPropagation()}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
         @input="${this._onTextareaupdate}"
@@ -701,7 +714,6 @@ ${this.value || ""}</textarea
    * @memberof SimpleFieldsSelect
    */
   _onChange(e) {
-    e.stopPropagation();
     if (e && e.path && e.path[0]) {
       if (this.type === "select") {
         this.value = this.multiple
@@ -718,6 +730,8 @@ ${this.value || ""}</textarea
         } else {
           this.value = this.value.filter(val => val !== e.path[0].value);
         }
+      } else if (this.type === "checkbox"|| this.type === "radio") {
+        this.value = e.path[0].checked;
       } else {
         this.value = e.path[0].value;
       }
@@ -726,9 +740,21 @@ ${this.value || ""}</textarea
     this._fireValueChanged();
   }
 
+  /**
+   * makes textarea autogrow
+   *
+   * @memberof SimpleFieldsInput
+   */
   _onTextareaupdate() {
     if (this.type === "text" || this.type === "textarea") this._updateCount();
-    super._onTextareaupdate();
+    let textarea = this.shadowRoot
+      ? this.shadowRoot.querySelector("textarea")
+      : false;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.overflowY = "hidden";
+    }
   }
 
   /**
@@ -801,8 +827,8 @@ ${this.value || ""}</textarea
   _updateCount() {
     let count = ``;
     if (
-      this.type === "textarea" ||
-      (this.type === "text" && this.counter && this.field)
+      (this.type === "textarea" || this.type === "text") 
+      && this.counter && this.field
     ) {
       let word = `[\\w\\-\\']+`,
         counter = new RegExp(word, "gim"),

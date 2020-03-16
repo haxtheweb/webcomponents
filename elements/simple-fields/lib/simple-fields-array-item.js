@@ -30,7 +30,6 @@ Custom property | Description | Default
  *
  * @group simple-fields
  * @customElement simple-fields-array-item
- * @extends simple-fields-fieldset
  * @demo ./demo/schema.html Schema
  * @demo ./demo/form.html Form
  */
@@ -113,7 +112,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           transition: transform 0.5s ease-in-out;
         }
         :host([aria-expanded="true"]) #expand {
-          transform: rotate(-180deg);
+          transform: rotate(-90deg);
           transition: transform 0.5s ease-in-out;
         }
         paper-icon-button,
@@ -229,12 +228,6 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     this.disabled = false;
     this.sortable = false;
     this.previewBy = [];
-    this.addEventListener("focusin", e =>
-      this.setAttribute("aria-expanded", "true")
-    );
-    this.addEventListener("focusout", e =>
-      this.setAttribute("aria-expanded", "false")
-    );
     //this.sortBy = [];
   }
   connectedCallback() {

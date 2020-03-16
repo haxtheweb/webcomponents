@@ -4,8 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
-import "./lib/simple-fields-field.js";
-import "./lib/simple-fields-tabs.js";
 /**
  * `simple-fields`
  * Uses eco-json-form and HAX wiring to display a series of fields
@@ -128,7 +126,17 @@ class SimpleFields extends SimpleFieldsLite {
     super();
     this.fieldsConversion = {
       defaultSettings: {
-        type: "string"
+        defaultSettings: {
+          type: "string"
+        },
+        validationType: {
+          url: {
+            defaultSettings: {
+              type: "string",
+              format: "uri"
+            }
+          }
+        }
       },
       inputMethod: {
         alt: {
@@ -156,8 +164,19 @@ class SimpleFields extends SimpleFieldsLite {
             type: "boolean"
           }
         },
-        colorpicker: {},
+        colorpicker: {
+          defaultSettings: {
+            type: "string",
+            format: "color"
+          }
+        },
         datepicker: {
+          defaultSettings: {
+            type: "string",
+            format: "date"
+          }
+        },
+        "date-time": {
           defaultSettings: {
             type: "string",
             format: "date-time"
@@ -171,7 +190,8 @@ class SimpleFields extends SimpleFieldsLite {
         flipboolean: {},
         haxupload: {
           defaultSettings: {
-            type: "uri"
+            type: "string",
+            format: "uri"
           }
         },
         iconpicker: {},
@@ -203,19 +223,10 @@ class SimpleFields extends SimpleFieldsLite {
             format: "tabs"
           }
         },
-        textarea: {},
-        textfield: {
+        textarea: {
           defaultSettings: {
-            type: "string"
-          },
-          validationType: {
-            url: {
-              //???
-              defaultSettings: {
-                type: "string",
-                format: "uri"
-              }
-            }
+            type: "string",
+            format: "textarea"
           }
         }
       }
@@ -290,7 +301,6 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             element: "simple-fields-field",
             noWrap: true,
-            valueProperty: "checked",
             attributes: {
               autofocus: true,
               type: "checkbox",
@@ -374,6 +384,16 @@ class SimpleFields extends SimpleFieldsLite {
         },
         string: {
           format: {
+            color: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "color"
+                }
+              }
+            },
             "date-time": {
               defaultSettings: {
                 element: "simple-fields-field",
@@ -420,7 +440,17 @@ class SimpleFields extends SimpleFieldsLite {
                 noWrap: true,
                 attributes: {
                   autofocus: true,
-                  type: "url"
+                  type: "file"
+                }
+              }
+            },
+            textarea: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "textarea"
                 }
               }
             }
@@ -429,7 +459,8 @@ class SimpleFields extends SimpleFieldsLite {
       }
     };
     setTimeout(() => {
-      import("@lrnwebcomponents/a11y-tabs/a11y-tabs.js");
+      import("./lib/simple-fields-field.js");
+      import("./lib/simple-fields-tabs.js");
     }, 0);
   }
   /**

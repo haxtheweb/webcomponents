@@ -567,6 +567,18 @@ class SimpleFieldsLite extends LitElement {
         element.setAttribute("language", this.language);
         if (required && required.includes(key))
           element.setAttribute("required", true);
+        if(schemaProp.disabled) {
+          element.disabled = true;
+          wrapper.disabled = true;
+        } 
+        if(schemaProp.hidden) {
+          element.hidden = true;
+          wrapper.hidden = true;
+        } 
+        if(schemaProp.readonly) {
+          element.hidden = true;
+          wrapper.hidden = true;
+        }
 
         this._setPropertyOrSlot(
           data.labelProperty,
@@ -623,13 +635,10 @@ class SimpleFieldsLite extends LitElement {
             element.slot = "field";
             wrapper.appendChild(element);
           }
-          if (value) {
-            element.setAttribute(data.valueProperty, value);
-
-            element.addEventListener(`${data.valueProperty}-changed`, e =>
-              this._handleChange(element, data.valueProperty)
-            );
-          }
+          element[data.valueProperty] = value;
+          element.addEventListener(`${data.valueProperty}-changed`, e =>
+            this._handleChange(element, data.valueProperty)
+          );
           wrapper.addEventListener(`${data.errorProperty}-changed`, e => {
             let error = this._deepClone(this.error || {});
             if (wrapper[data.errorProperty]) {
@@ -640,6 +649,7 @@ class SimpleFieldsLite extends LitElement {
             this.error = error;
           });
         }
+        //console.log({ id: id, field: wrapper, data: data });
         this.__fields.push({ id: id, field: wrapper, data: data });
       }
     });
@@ -789,7 +799,7 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    console.log("error-changed", this.error);
+    //console.log("error-changed", this.error);
     this.fields.forEach(field => {
       let data = field.data || {},
         el = field.field,
@@ -812,14 +822,6 @@ class SimpleFieldsLite extends LitElement {
         );
         field.field[data.errorProperty] = error;
         field.field.setAttribute("aria-invalid", error);
-        console.log(
-          "field",
-          field.field,
-          data.errorMessageProperty,
-          data.errorProperty,
-          message,
-          error
-        );
       }
     });
   }
@@ -890,6 +892,7 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} valueProperty
    */
   _handleChange(element, valueProperty) {
+    //console.log('_handleChange',element.name,element[valueProperty],element.value);
     this._setValue(element.name, element[valueProperty]);
     this._fireValueChanged();
   }

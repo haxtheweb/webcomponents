@@ -674,21 +674,6 @@ class SimpleFieldsContainer extends LitElement {
   _onFocusout() {
     if (this.autovalidate) this.validate();
   }
-  /**
-   * makes textarea autogrow
-   *
-   * @memberof SimpleFieldsInput
-   */
-  _onTextareaupdate() {
-    let textarea = this.shadowRoot
-      ? this.shadowRoot.querySelector("textarea")
-      : false;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
-      textarea.style.overflowY = "hidden";
-    }
-  }
 
   /**
    * updates field an type

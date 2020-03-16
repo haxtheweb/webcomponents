@@ -52,7 +52,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
           text-transform: unset;
         }
         .expanded {
-          transform: rotate(-180deg);
+          transform: rotate(-90deg);
           transition: transform 0.5s ease;
         }
         .collapsed {
