@@ -33,6 +33,9 @@ class SimpleFieldsContainer extends LitElement {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: color 0.3s ease-in-out;
         }
+        :host([disabled]) {
+          color: var(--simple-fields-disabled-color, #999);
+        }
         .field-main.inline,
         .field-main > div,
         #field-bottom {
@@ -42,6 +45,9 @@ class SimpleFieldsContainer extends LitElement {
         }
         * {
           flex: 1 1 auto;
+        }
+        #fieldmeta {
+          text-align: right;
         }
         :host(:focus-within) .label-main {
           color: var(--simple-fields-accent-color, #3f51b5);
@@ -74,14 +80,14 @@ class SimpleFieldsContainer extends LitElement {
           margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
         }
         .field[disabled],
-        ::slotted([slot="field"][readonly]) {
+        :host([readonly]) ::slotted([slot="field"]) {
           opacity: var(--simple-fields-disabled-opacity, 0.7);
           transition: opacity ease-in-out;
         }
         .field[readonly],
         .field[disabled],
-        ::slotted([slot="field"][readonly]),
-        ::slotted([slot="field"][disabled]) {
+        :host([readonly]) ::slotted([slot="field"]),
+        :host([disabled]) ::slotted([slot="field"]) {
           cursor: not-allowed;
         }
         .border-bottom {
@@ -93,6 +99,9 @@ class SimpleFieldsContainer extends LitElement {
         :host([type="radio"]) .border-bottom,
         :host([type="range"]) .border-bottom {
           display: none;
+        }
+        :host([disabled]) .border-bottom {
+          border-bottom: 1px dashed var(--simple-fields-border-color, #999);
         }
         .border-bottom.blur {
           border-bottom: 1px solid var(--simple-fields-border-color, #999);
@@ -207,6 +216,13 @@ class SimpleFieldsContainer extends LitElement {
        */
       prefix: {
         type: String
+      },
+      /**
+       * Value is not editable
+       */
+      readonly: {
+        type: Boolean,
+        reflect: true
       },
       /**
        * Whether field is required
@@ -628,7 +644,7 @@ class SimpleFieldsContainer extends LitElement {
   _observeAndListen(init = true) {
     if (init) {
       this.slottedFieldObserver.observe(this, {
-        attributeFilter: ["required", "slot"],
+        attributeFilter: ["disabled", "readonly", "required", "slot"],
         childlist: true
       });
       this._updateField();
@@ -690,8 +706,12 @@ class SimpleFieldsContainer extends LitElement {
         type = this.field.type || this.field.getAttribute("type") || "text";
       this.type = this._getValidType(tag === "input" ? type : tag);
       this.required = this.field.required;
+      this.disabled = this.field.disabled;
+      this.readonly = this.field.readonly;
       this.field.setAttribute("aria-describedby", "field-bottom");
     } else {
+      this.disabled = false;
+      this.readonly = false;
       this.required = false;
       this.type = undefined;
     }

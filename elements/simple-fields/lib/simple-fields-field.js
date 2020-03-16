@@ -269,6 +269,12 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: Boolean
       },
       /**
+       * a counter text and textareas: "character", "word" or unset for none
+       */
+      counter: {
+        type: String,
+      },
+      /**
        * Name of form field to use for sending the element's directionality in form submission
        */
       dirname: {
@@ -330,12 +336,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * Value is not editable
-       */
-      readonly: {
-        type: Boolean
-      },
-      /**
        * Size of the control
        */
       size: {
@@ -372,6 +372,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   }
   constructor() {
     super();
+    this.__count = '';
     this.autocomplete = "off";
     this.autofocus = false;
     this.checked = false;
@@ -388,10 +389,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       "autocomplete",
       "capture",
       "checked",
+      "counter",
       "dirname",
       "list",
       "max",
-      "maxlength",
       "min",
       "minlength",
       "muliple",
@@ -400,12 +401,21 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       "step"
     ];
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "type" && this.type !== oldValue) this._updateField();
-      if (["type", "field", "value"].includes(propName))
-        this._onTextareaupdate();
-      if (attributes.includes(propName)) this._updateAttribute(propName);
-      if (propName === "value" && this.value !== oldValue)
+      if (propName === "value" && this.value !== oldValue) {
+        this.field.value = this.value;
         this._fireValueChanged();
+      }
+      if (propName === "type" && this.type !== oldValue) this._updateField();
+      if (["type", "field", "value"].includes(propName)) this._onTextareaupdate();
+      if (attributes.includes(propName)) this._updateAttribute(propName);
+      if (propName === "counter" || propName === "maxlength") {
+        if (this.counter === "character")  {
+          this._updateAttribute("maxlength");
+        } else {
+          if(this.field) this.field.removeAttribute("maxlength");
+        }
+        this._updateCount();
+      }
     });
   }
 
@@ -462,6 +472,19 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         </div>
       </div>
     `;
+  }
+  /**
+   *
+   * gets field metadata
+   *
+   * @readonly
+   * @returns {object}
+   * @memberof SimpleFieldsContainer
+   */
+  get fieldMeta() {
+    return html`
+        <div id="fieldmeta" aria-live="polite"></div>
+      `;
   }
 
   /**
@@ -535,6 +558,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         dirname="${this.dirname}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
+        @input="${this._onTextareaupdate}"
         .name="${this.fieldId}"
         .placeholder="${this.placeholder || ""}"
         ?readonly="${this.readonly}"
@@ -605,17 +629,16 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         class="field box-input"
         @change="${this._onChange}"
-        @input="${this._onTextareaupdate}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
+        @input="${this._onTextareaupdate}"
         .name="${this.fieldId}"
         .placeholder="${this.placeholder || ""}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         rows="1"
         size="${this.size}"
-      >
-${this.value || ""}</textarea
+      >${this.value || ""}</textarea
       >
     `;
   }
@@ -701,6 +724,11 @@ ${this.value || ""}</textarea
     this._fireValueChanged();
   }
 
+  _onTextareaupdate(){
+    if(this.type==="text" || this.type==="textarea") this._updateCount();
+    super._onTextareaupdate();
+  }
+
   /**
    * updates field attributes based on field type
    *
@@ -761,6 +789,45 @@ ${this.value || ""}</textarea
         this.field.removeAttribute(attribute, this[attribute]);
       }
     }
+  }
+
+  /**
+   * updates counter and sets maximum word count
+   *
+   * @memberof SimpleFieldsField
+   */
+  _updateCount(){
+    let count = ``;
+    if(this.type === "textarea" || this.type === "text" && this.counter && this.field) {
+      let word = `[\\w\\-\\']+`,
+        counter = new RegExp(word,"gim"),
+        max = `{0,${this.maxlength || 1}}`,
+        maxword = `(${word}\\W*)${max}`, 
+        length = !this.value 
+          ? 0 
+          : this.counter === "character" 
+            ? this.field.value.length 
+            : this.field.value.match(counter) 
+              ? this.field.value.match(counter).length
+              : 0,
+        regex = this.counter === "character" 
+          ? new RegExp(`.${max}`,"g") 
+          : new RegExp(maxword,"g");
+      if(
+        this.value &&
+        this.maxlength &&
+        this.maxlength < length 
+        && this.field.value.match(regex)
+      ) {
+        this.field.value = this.field.value.match(regex)[0];
+      };
+      count = length;
+    } 
+    if(this.shadowRoot && this.shadowRoot.querySelector('#fieldmeta')) 
+      this.shadowRoot.querySelector('#fieldmeta').innerHTML = 
+        this.maxlength 
+        ? `${count}/${this.maxlength}`
+        : count;
   }
   /**
    * updates field an type

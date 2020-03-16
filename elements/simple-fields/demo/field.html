@@ -19,7 +19,8 @@
       <h1>simple-fields-field Demo</h1>
       <demo-snippet>
         <template>
-          <simple-fields-field type="text" label="Name" autocapitalize="words" required></simple-fields-field>
+          <simple-fields-field type="text" label="First Name" autocapitalize="words" required></simple-fields-field>
+          <simple-fields-field type="text" label="Last Name" autocapitalize="words" disabled></simple-fields-field>
           <simple-fields-field type="password" label="Password"></simple-fields-field>
           <simple-fields-field type="file" label="Profile Image"></simple-fields-field>
           <simple-fields-field type="textarea" label="Bio" description="Write your bio." placeholder="Once..."></simple-fields-field>
@@ -109,6 +110,13 @@
           <simple-fields-field label="Checkbox Options" description="Check all" type="checkbox"></simple-fields-field>
           <simple-fields-field label="Select Options" description="Select one" type="select"></simple-fields-field>
           <simple-fields-field label="Select Options" description="Select all" type="select" multiple></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Text Counters</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field counter="character" maxlength="10" type="text" label="Nickname" value="Rumplestiltskin"></simple-fields-field>
+          <simple-fields-field counter="word" maxlength="6" type="textarea" label="Bio" description="Six word bio." value="Once upon a time..."></simple-fields-field>
         </template>
       </demo-snippet>
     </div>

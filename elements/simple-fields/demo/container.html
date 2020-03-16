@@ -139,6 +139,17 @@
           </simple-fields-container>
         </template>
       </demo-snippet>
+      <h2>Field Metadata</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-container maxlength="10" type="text" label="Nickname">
+            <span slot="field-meta">maximum length: 10</span>
+          </simple-fields-container>
+          <simple-fields-container type="textarea" label="Short Bio">
+            <span slot="field-meta">25 words or less</span>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>
