@@ -451,8 +451,8 @@ class SimpleFieldsLite extends LitElement {
    * @readonly
    * @memberof SimpleFieldsLite
    */
-  get valid(){
-    return !this.error || Object.keys(this.error === {}).length === 0
+  get valid() {
+    return !this.error || Object.keys(this.error === {}).length === 0;
   }
   /**
    * updates the schema
@@ -493,23 +493,74 @@ class SimpleFieldsLite extends LitElement {
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
-            schemaProp.properties || schemaProp.items || schemaProp.noWrap || data.noWrap
+            schemaProp.properties ||
+            schemaProp.items ||
+            schemaProp.noWrap ||
+            data.noWrap
               ? element
               : document.createElement("simple-fields-container"),
           value = this._getValue(`${prefix}${key}`),
-          label = schemaProp.label || schemaProp.title || schemaProp.description || key,
-          desc = schemaProp.description && (schemaProp.label || schemaProp.title)
-            ? schemaProp.description
-            : undefined;
-        data.labelSlot = this._getPropertyOrSlot("label",data,schemaProp,"labelSlot",false);
-        data.descriptionSlot = this._getPropertyOrSlot("description",data,schemaProp,"descriptionSlot",false);
-        data.errorMessageSlot = this._getPropertyOrSlot("errorMessage",data,schemaProp,"errorMessageSlot",false);
-        data.labelProperty = this._getPropertyOrSlot("label",data,schemaProp,"labelProperty");
-        data.descriptionProperty = this._getPropertyOrSlot("description",data,schemaProp,"descriptionProperty");
-        data.valueProperty = this._getPropertyOrSlot("value",data,schemaProp,"valueProperty");
-        data.errorProperty = this._getPropertyOrSlot("error",data,schemaProp,"errorProperty");
-        data.errorMessageProperty = this._getPropertyOrSlot("errorMessage",data,schemaProp,"errorMessageProperty");
-        
+          label =
+            schemaProp.label ||
+            schemaProp.title ||
+            schemaProp.description ||
+            key,
+          desc =
+            schemaProp.description && (schemaProp.label || schemaProp.title)
+              ? schemaProp.description
+              : undefined;
+        data.labelSlot = this._getPropertyOrSlot(
+          "label",
+          data,
+          schemaProp,
+          "labelSlot",
+          false
+        );
+        data.descriptionSlot = this._getPropertyOrSlot(
+          "description",
+          data,
+          schemaProp,
+          "descriptionSlot",
+          false
+        );
+        data.errorMessageSlot = this._getPropertyOrSlot(
+          "errorMessage",
+          data,
+          schemaProp,
+          "errorMessageSlot",
+          false
+        );
+        data.labelProperty = this._getPropertyOrSlot(
+          "label",
+          data,
+          schemaProp,
+          "labelProperty"
+        );
+        data.descriptionProperty = this._getPropertyOrSlot(
+          "description",
+          data,
+          schemaProp,
+          "descriptionProperty"
+        );
+        data.valueProperty = this._getPropertyOrSlot(
+          "value",
+          data,
+          schemaProp,
+          "valueProperty"
+        );
+        data.errorProperty = this._getPropertyOrSlot(
+          "error",
+          data,
+          schemaProp,
+          "errorProperty"
+        );
+        data.errorMessageProperty = this._getPropertyOrSlot(
+          "errorMessage",
+          data,
+          schemaProp,
+          "errorMessageProperty"
+        );
+
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -517,8 +568,18 @@ class SimpleFieldsLite extends LitElement {
         if (required && required.includes(key))
           element.setAttribute("required", true);
 
-        this._setPropertyOrSlot(data.labelProperty,data.labelSlot,wrapper,label);
-        this._setPropertyOrSlot(data.descriptionProperty,data.descriptionSlot,wrapper,desc);
+        this._setPropertyOrSlot(
+          data.labelProperty,
+          data.labelSlot,
+          wrapper,
+          label
+        );
+        this._setPropertyOrSlot(
+          data.descriptionProperty,
+          data.descriptionSlot,
+          wrapper,
+          desc
+        );
 
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
@@ -594,8 +655,10 @@ class SimpleFieldsLite extends LitElement {
    * @returns string
    * @memberof SimpleFieldsLite
    */
-  _getPropertyOrSlot(defaultName,data,schema,propName,slotName){
-    return schema[propName] || data[propName] || !slotName ? defaultName : slotName;
+  _getPropertyOrSlot(defaultName, data, schema, propName, slotName) {
+    return schema[propName] || data[propName] || !slotName
+      ? defaultName
+      : slotName;
   }
   /**
    * sets field or field wrapper element's slot ot property to a value
@@ -606,12 +669,15 @@ class SimpleFieldsLite extends LitElement {
    * @param {*} value
    * @memberof SimpleFieldsLite
    */
-  _setPropertyOrSlot(propName,slotName,target,value){
-    if(slotName){
-      let span = document.createElement('span');
+  _setPropertyOrSlot(propName, slotName, target, value) {
+    if (slotName) {
+      let span = document.createElement("span");
       span.slot = slotName;
-      if(value) span.innerHTML = value;
-      if(target) target.querySelectorAll(`[slot=${slotName}]`).forEach(el=> el.remove());
+      if (value) span.innerHTML = value;
+      if (target)
+        target
+          .querySelectorAll(`[slot=${slotName}]`)
+          .forEach(el => el.remove());
       target.appendChild(span);
     } else {
       target[propName] = value;
@@ -723,7 +789,7 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    console.log('error-changed',this.error);
+    console.log("error-changed", this.error);
     this.fields.forEach(field => {
       let data = field.data || {},
         el = field.field,
@@ -738,10 +804,22 @@ class SimpleFieldsLite extends LitElement {
               return;
             }
           });
-        this._setPropertyOrSlot(data.errorMessageProperty,data.errorMessageSlot,field.field,message);
+        this._setPropertyOrSlot(
+          data.errorMessageProperty,
+          data.errorMessageSlot,
+          field.field,
+          message
+        );
         field.field[data.errorProperty] = error;
-        field.field.setAttribute('aria-invalid',error);
-        console.log('field',field.field,data.errorMessageProperty,data.errorProperty,message,error);
+        field.field.setAttribute("aria-invalid", error);
+        console.log(
+          "field",
+          field.field,
+          data.errorMessageProperty,
+          data.errorProperty,
+          message,
+          error
+        );
       }
     });
   }

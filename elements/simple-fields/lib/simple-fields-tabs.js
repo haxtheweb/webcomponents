@@ -9,14 +9,13 @@ import "./simple-fields-tab.js";
  * @group simple-fields
  * @customElement simple-fields-tabs
  * @extends a11y-tabs
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
+ * @extends simple-fields-fieldset
  */
 class SimpleFieldsTabs extends A11yTabs {
   static get tag() {
     return "simple-fields-tabs";
   }
-  static get styles(){
+  static get styles() {
     return [
       ...super.styles,
       ...SimpleFieldsFieldset.styles,
@@ -34,7 +33,7 @@ class SimpleFieldsTabs extends A11yTabs {
       ...SimpleFieldsFieldset.properties
     };
   }
-  
+
   /**
    * query selector for tabs
    * override this for custom elements that extend a11y-tabs
@@ -42,10 +41,9 @@ class SimpleFieldsTabs extends A11yTabs {
    * @readonly
    * @memberof A11yTabs
    */
-  get tabQuery(){
+  get tabQuery() {
     return "simple-fields-tab";
   }
-
 
   /**
    * makes tab label
@@ -54,8 +52,12 @@ class SimpleFieldsTabs extends A11yTabs {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabLabel(tab){
-    return html`<span class="label${tab.error ? ' error' : ''}">${tab.label}${tab.error ? '*' : ''}</span>`;
+  _tabLabel(tab) {
+    return html`
+      <span class="label${tab.error ? " error" : ""}"
+        >${tab.label}${tab.error ? "*" : ""}</span
+      >
+    `;
   }
 }
 window.customElements.define(SimpleFieldsTabs.tag, SimpleFieldsTabs);

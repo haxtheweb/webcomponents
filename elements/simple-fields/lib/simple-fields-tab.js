@@ -8,18 +8,14 @@ import { A11yTab } from "@lrnwebcomponents/a11y-tabs/lib/a11y-tab.js";
  * @group simple-fields
  * @customElement simple-fields-tab
  * @extends a11y-tab
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
+ * @extends simple-fields-fieldset
  */
 class SimpleFieldsTab extends A11yTab {
   static get tag() {
     return "simple-fields-tab";
   }
   static get styles() {
-    return [
-      ...super.styles,
-      ...SimpleFieldsFieldset.styles
-    ];
+    return [...super.styles, ...SimpleFieldsFieldset.styles];
   }
   static get properties() {
     return {

@@ -9,9 +9,8 @@ import "./simple-fields-array-item.js";
  * exposing a `value` property that represents an array described by the schema.
  *
  * @group simple-fields
+ * @extends simple-fields-fieldset
  * @customElement simple-fields-array
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
  */
 class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {

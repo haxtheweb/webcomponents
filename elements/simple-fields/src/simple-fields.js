@@ -56,6 +56,7 @@ type: {                                 //For properties in "this.schema", defin
 }
 ``` 
  * @customElement simple-fields
+ * @extends simple-fields-lite
  * @demo ./demo/index.html
  * @demo ./demo/schema.html Schema
  * @demo ./demo/form.html Form
@@ -301,7 +302,7 @@ class SimpleFields extends SimpleFieldsLite {
         object: {
           defaultSettings: {
             element: "simple-fields-fieldset",
-            noWrap: true,
+            noWrap: true
           },
           format: {
             tabs: {

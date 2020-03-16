@@ -404,7 +404,7 @@ class A11yTabs extends LitElement {
    * @readonly
    * @memberof A11yTabs
    */
-  get tabQuery(){
+  get tabQuery() {
     return "a11y-tab";
   }
 
@@ -600,22 +600,21 @@ class A11yTabs extends LitElement {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabButton(tab){
-    console.log(tab,tab.error);
+  _tabButton(tab) {
     return html`
-      <paper-button 
-        id="${tab.id}-button" 
-        controls="${tab.id}" 
-        class="${tab.id === this.activeTab ? 'active': ''}"
-        @click="${(e) => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab || tab.disabled}" 
-        .flag="${tab.flag}">
-        ${this._tabIcon(tab,'flagIcon')}
-        ${this._tabLabel(tab)} 
-        ${this._tabFlag(tab)} 
-        ${this._tabIcon(tab,'icon')}
+      <paper-button
+        id="${tab.id}-button"
+        controls="${tab.id}"
+        class="${tab.id === this.activeTab ? "active" : ""}"
+        @click="${e => this._handleTab(tab)}"
+        ?disabled="${tab.id === this.activeTab || tab.disabled}"
+        .flag="${tab.flag}"
+      >
+        ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
+        ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
       </paper-button>
-      ${this._tabTooltip(tab)}`;
+      ${this._tabTooltip(tab)}
+    `;
   }
 
   /**
@@ -625,11 +624,12 @@ class A11yTabs extends LitElement {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabFlag(tab){
+  _tabFlag(tab) {
     return html`
       <span class="flag-type" ?hidden="${!tab.flag}">
         ${tab.flag}
-      </span>`;
+      </span>
+    `;
   }
 
   /**
@@ -639,13 +639,15 @@ class A11yTabs extends LitElement {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabIcon(tab,icon){
+  _tabIcon(tab, icon) {
     return html`
-      <iron-icon class="icon" 
-        ?hidden="${!tab[icon]}" 
-        .icon="${tab[icon]}"></iron-icon>`;
+      <iron-icon
+        class="icon"
+        ?hidden="${!tab[icon]}"
+        .icon="${tab[icon]}"
+      ></iron-icon>
+    `;
   }
-
 
   /**
    * makes tab label
@@ -654,8 +656,10 @@ class A11yTabs extends LitElement {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabLabel(tab){
-    return html`<span class="label">${tab.label}</span>`;
+  _tabLabel(tab) {
+    return html`
+      <span class="label">${tab.label}</span>
+    `;
   }
 
   /**
@@ -666,11 +670,12 @@ class A11yTabs extends LitElement {
    * @returns object
    * @memberof A11yTabs
    */
-  _tabTooltip(tab){
+  _tabTooltip(tab) {
     return html`
       <simple-tooltip for="${tab.id}-button">
         ${tab.label}
-      </simple-tooltip>`;
+      </simple-tooltip>
+    `;
   }
   /**
    * Fires when element is rno longer needs specific breakpoints tracked.

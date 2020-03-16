@@ -30,6 +30,7 @@ Custom property | Description | Default
  *
  * @group simple-fields
  * @customElement simple-fields-array-item
+ * @extends simple-fields-fieldset
  * @demo ./demo/schema.html Schema
  * @demo ./demo/form.html Form
  */
