@@ -12,23 +12,19 @@
   margin: 5px;
   padding: var(--social-share-button-padding, 0px);
   border-radius: var(--social-share-button-border-radius, 0px);
-  @apply --social-share-link;
 }
 :host a:visited {
   color: var(--social-share-visited-link-color, inherit);
-  @apply --social-share-visited-link;
 }
 :host a:focus,
 :host a:hover {
   color: var(--social-share-link-hover-color, inherit);
-  @apply --social-share-link-hover;
 }
 :host([disabled]) a,
 :host([disabled]) a:focus,
 :host([disabled]) a:hover,
 :host([disabled]) a:visited {
   color: var(--social-share-disabled-link-color,#ddd);
-  @apply --social-share-disabled-link;
 }
 :host([button-style]) a {
   padding: var(--social-share-button-padding, 5px 10px);
@@ -37,17 +33,14 @@
   background-color: var(--social-share-button-bg, #0066ff);
   text-decoration: none;
   transition: all 0.5s;
-  @apply --social-share-button;
 }
 :host([button-style]) a:visited {
   color: var(--social-share-visited-button-color, white);
-  @apply --social-share-visited-button;
 }
 :host([button-style]) a:focus,
 :host([button-style]) a:hover {
   color: var(--social-share-button-hover-color, white);
   background-color: var(--social-share-button-hover-bg, #0044ee);
-  @apply --social-share-button-hover;
 }
 :host([button-style][disabled]) a,
 :host([button-style][disabled]) a:focus,
@@ -55,7 +48,6 @@
 :host([button-style][disabled]) a:visited {
   color: var(--social-share-disabled-button-color,#ddd);
   background-color: var(--social-share-disabled-button-bg, #666);
-  @apply --social-share-disabled-button;
 }
 :host iron-icon {
   margin-right: 5px;
