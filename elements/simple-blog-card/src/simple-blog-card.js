@@ -28,7 +28,7 @@ class SimpleBlogCard extends LitElement {
     this.shadow = 0;
     setTimeout(() => {
       this.addEventListener("mouseover", this.hoverState.bind(this));
-      this.addEventListener("mouseout", this.hoverStateOff.bind(this));  
+      this.addEventListener("mouseout", this.hoverStateOff.bind(this));
     }, 0);
   }
   update(changedProperties) {
