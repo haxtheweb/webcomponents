@@ -326,13 +326,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   /**
    * Ensure fields don't pass through to HAX if in that context
    */
-  preProcessHaxNodeToContent(clone) {
-    clone.editorValue = null;
-    clone.codePenData = null;
-    clone.value = null;
-    clone.removeAttribute("value");
-    clone.removeAttribute("code-pen-data");
-    return clone;
+  preProcessHaxNodeToContent(node) {
+    node.editorValue = null;
+    node.codePenData = null;
+    node.value = null;
+    node.removeAttribute("value");
+    node.removeAttribute("code-pen-data");
+    return node;
   }
   /**
    * attached life cycle

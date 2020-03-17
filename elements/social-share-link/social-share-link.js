@@ -2,27 +2,21 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 
 /**
  * `social-share-link`
- * @customElement social-share-link
  * `a link to share content on social`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement social-share-link
  */
-class SocialShareLink extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class SocialShareLink extends LitElement {
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline;
         }
@@ -37,23 +31,19 @@ class SocialShareLink extends PolymerElement {
           margin: 5px;
           padding: var(--social-share-button-padding, 0px);
           border-radius: var(--social-share-button-border-radius, 0px);
-          @apply --social-share-link;
         }
         :host a:visited {
           color: var(--social-share-visited-link-color, inherit);
-          @apply --social-share-visited-link;
         }
         :host a:focus,
         :host a:hover {
           color: var(--social-share-link-hover-color, inherit);
-          @apply --social-share-link-hover;
         }
         :host([disabled]) a,
         :host([disabled]) a:focus,
         :host([disabled]) a:hover,
         :host([disabled]) a:visited {
           color: var(--social-share-disabled-link-color, #ddd);
-          @apply --social-share-disabled-link;
         }
         :host([button-style]) a {
           padding: var(--social-share-button-padding, 5px 10px);
@@ -62,17 +52,14 @@ class SocialShareLink extends PolymerElement {
           background-color: var(--social-share-button-bg, #0066ff);
           text-decoration: none;
           transition: all 0.5s;
-          @apply --social-share-button;
         }
         :host([button-style]) a:visited {
           color: var(--social-share-visited-button-color, white);
-          @apply --social-share-visited-button;
         }
         :host([button-style]) a:focus,
         :host([button-style]) a:hover {
           color: var(--social-share-button-hover-color, white);
           background-color: var(--social-share-button-hover-bg, #0044ee);
-          @apply --social-share-button-hover;
         }
         :host([button-style][disabled]) a,
         :host([button-style][disabled]) a:focus,
@@ -80,7 +67,6 @@ class SocialShareLink extends PolymerElement {
         :host([button-style][disabled]) a:visited {
           color: var(--social-share-disabled-button-color, #ddd);
           background-color: var(--social-share-disabled-button-bg, #666);
-          @apply --social-share-disabled-button;
         }
         :host iron-icon {
           margin-right: 5px;
@@ -99,20 +85,25 @@ class SocialShareLink extends PolymerElement {
         :host a.icon-only iron-icon {
           margin-right: 0;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <a
-        href$="[[__href]]"
-        disabled$="[[!__href]]"
-        class$="[[mode]]"
+        href="${this.__href}"
+        ?disabled="${!this.__href}"
+        class="${this.mode}"
         rel="noopener noreferrer"
         target="_blank"
       >
         <iron-icon
           aria-hidden="true"
-          icon$="[[__icon]]"
-          hidden$="[[!__showIcon]]"
+          icon="${this.__icon}"
+          ?hidden="${!this.__showIcon}"
         ></iron-icon>
-        <span class="linktext">[[__linkText]]</span>
+        <span class="linktext">${this.__linkText}</span>
       </a>
     `;
   }
@@ -126,86 +117,70 @@ class SocialShareLink extends PolymerElement {
        * display link as a button
        */
       buttonStyle: {
-        name: "buttonStyle",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "button-style"
       },
       /**
        * optional image to attach to the share
        * (Pinterest only)
        */
       image: {
-        name: "image",
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * the message to attach to the social share
        * (not used in Facebook)
        */
       message: {
-        name: "message",
-        type: String,
-        value: ""
+        type: String
       },
       /**
        * optional display mode for the link,"text-only" or "icon-only";
        * default is to dislay both an icon and text
        */
       mode: {
-        name: "mode",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * the link text; if null, the text will be "Share on (type of social)"
        */
       text: {
-        name: "text",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * the type of social; currently supports
        * Facebook, LinkedIn, Pinterest, and Twitter (default)
        */
       type: {
-        name: "type",
-        type: String,
-        value: "Twitter"
+        type: String
       },
       /**
        * the url to share
        */
       url: {
-        name: "url",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * the href for the link
        */
       __href: {
-        name: "__href",
-        type: String,
-        computed: "_getHref(image,message,type,url)"
+        type: String
       },
       /**
        * the icon name for the link
        */
       __icon: {
-        name: "icon",
-        type: String,
-        computed: "_getIcon(type)"
+        type: String
       },
       /**
        * the link text specified, or the default link text
        */
       __linkText: {
-        name: "__linkText",
-        type: String,
-        computed: "_getLinkText(text,type)"
+        type: String
+      },
+      __showIcon: {
+        type: Boolean
       }
     };
   }
@@ -217,18 +192,38 @@ class SocialShareLink extends PolymerElement {
   static get tag() {
     return "social-share-link";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.buttonStyle = false;
+    this.image = "";
+    this.message = "";
+    this.mode = null;
+    this.text = null;
+    this.type = "Twitter";
+    this.url = null;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-  // Observer title for changes
 
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "type") {
+        this.__icon = this._getIcon(this.type);
+      }
+      if (["text", "type"].includes(propName)) {
+        this.__linkText = this._getLinkText(this.text, this.type);
+      }
+      if (["image", "message", "type", "url"].includes(propName)) {
+        this.__href = this._getHref(
+          this.image,
+          this.message,
+          this.type,
+          this.url
+        );
+      }
+      if (propName == "mode") {
+        this.__showIcon = this.mode == "icon-only" ? true : false;
+      }
+    });
+  }
   /**
    * returns the href
    *
@@ -248,9 +243,7 @@ class SocialShareLink extends PolymerElement {
             : false;
         break;
       case "LinkedIn":
-        link =
-          (url !== null ? "&url=" + url : "") +
-          (message !== null ? "&summary=" + message : "");
+        link = url !== null ? "&url=" + url : "";
         link =
           link !== null
             ? "https://www.linkedin.com/shareArticle?mini=true" + link
@@ -267,8 +260,9 @@ class SocialShareLink extends PolymerElement {
             : false;
         break;
       case "Twitter":
-        link = message !== null ? "status=" + message + " " + url : url;
-        link = link !== null ? "https://twitter.com/home?" + link : false;
+        link = message !== null ? "text=" + message + " " + url : url;
+        link =
+          link !== null ? "http://twitter.com/intent/tweet?" + link : false;
         break;
     }
     return encodeURI(link);

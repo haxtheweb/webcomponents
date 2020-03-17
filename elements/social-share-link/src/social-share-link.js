@@ -2,23 +2,17 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { html, css, LitElement } from "lit-element/lit-element.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 
 /**
  * `social-share-link`
- * @customElement social-share-link
  * `a link to share content on social`
- *
- * @microcopy - language worth noting:
- *  -
- *
-
- * @polymer
  * @demo demo/index.html
+ * @customElement social-share-link
  */
-class SocialShareLink extends PolymerElement {
+class SocialShareLink extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -28,18 +22,38 @@ class SocialShareLink extends PolymerElement {
   static get tag() {
     return "social-share-link";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
+    this.buttonStyle = false;
+    this.image = "";
+    this.message = "";
+    this.mode = null;
+    this.text = null;
+    this.type = "Twitter";
+    this.url = null;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-  // Observer title for changes
 
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "type") {
+        this.__icon = this._getIcon(this.type);
+      }
+      if (["text", "type"].includes(propName)) {
+        this.__linkText = this._getLinkText(this.text, this.type);
+      }
+      if (["image", "message", "type", "url"].includes(propName)) {
+        this.__href = this._getHref(
+          this.image,
+          this.message,
+          this.type,
+          this.url
+        );
+      }
+      if (propName == "mode") {
+        this.__showIcon = this.mode == "icon-only" ? true : false;
+      }
+    });
+  }
   /**
    * returns the href
    *
@@ -59,9 +73,7 @@ class SocialShareLink extends PolymerElement {
             : false;
         break;
       case "LinkedIn":
-        link =
-          (url !== null ? "&url=" + url : "") +
-          (message !== null ? "&summary=" + message : "");
+        link = url !== null ? "&url=" + url : "";
         link =
           link !== null
             ? "https://www.linkedin.com/shareArticle?mini=true" + link
@@ -78,8 +90,9 @@ class SocialShareLink extends PolymerElement {
             : false;
         break;
       case "Twitter":
-        link = message !== null ? "status=" + message + " " + url : url;
-        link = link !== null ? "https://twitter.com/home?" + link : false;
+        link = message !== null ? "text=" + message + " " + url : url;
+        link =
+          link !== null ? "http://twitter.com/intent/tweet?" + link : false;
         break;
     }
     return encodeURI(link);

@@ -253,5 +253,8 @@
         "validationType": "text"
       }
     ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "__stand-alone", "colors"]
   }
 }

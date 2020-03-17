@@ -46,7 +46,7 @@ body, html, :root {
   --hax-base-styles-h6-font-size: 1.25em;
   --hax-base-styles-p-line-height: 1.8;
   --hax-base-styles-p-min-height: 43px;
-  --hax-base-styles-p-font-size: 24px;
+  --hax-base-styles-p-font-size: 32px;
   --hax-base-styles-p-letter-spacing: 0.5px;
   --hax-base-styles-a-color: #2196f3;
   --hax-base-styles-a-font-size: 24px;
@@ -86,9 +86,10 @@ body, html, :root {
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   body, html, :root {
     --hax-panel-padding: 8px 0 8px 50px;
+    --hax-base-styles-p-font-size: 24px;
   }
 }
 

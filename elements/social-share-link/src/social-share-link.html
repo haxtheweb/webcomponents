@@ -1,5 +1,5 @@
-<a href$="[[__href]]" disabled$="[[!__href]]" class$="[[mode]]" rel="noopener noreferrer" target="_blank">
-  <iron-icon aria-hidden="true" icon$="[[__icon]]" hidden$="[[!__showIcon]]"></iron-icon>
-  <span class="linktext">[[__linkText]]</span>
+<a href="${this.__href}" ?disabled="${!this.__href}" class="${this.mode}" rel="noopener noreferrer" target="_blank">
+  <iron-icon aria-hidden="true" icon="${this.__icon}" ?hidden="${!this.__showIcon}"></iron-icon>
+  <span class="linktext">${this.__linkText}</span>
 </a>
 

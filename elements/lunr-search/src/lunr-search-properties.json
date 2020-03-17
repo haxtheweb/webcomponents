@@ -3,6 +3,9 @@
     "type": String,
     "attribute": "data-source"
   },
+  "__auto": {
+    "type": Boolean
+  },
   "data": {
     "type": Array
   },

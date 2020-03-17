@@ -19,7 +19,7 @@
       "...super.styles"
     ]
   },
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",

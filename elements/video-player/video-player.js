@@ -401,6 +401,9 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
             validationType: "text"
           }
         ]
+      },
+      saveOptions: {
+        unsetAttributes: ["__utils", "__stand-alone", "colors"]
       }
     };
   }

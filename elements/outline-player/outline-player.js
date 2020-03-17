@@ -119,36 +119,16 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           display: inline-block;
           word-break: break-word;
         }
-
-        paper-progress {
-          display: block;
-          width: 100%;
-          --paper-progress-active-color: rgba(255, 255, 255, 0.5);
-          --paper-progress-container-color: transparent;
-        }
-
-        app-toolbar {
-          border-bottom: none;
-          background-color: #ffffff;
-          box-shadow: 0 0 6px -3px var(--outline-player-dark);
-        }
-        app-drawer-layout[narrow] app-toolbar {
-          position: fixed !important;
-          left: 0;
-          right: 0;
-        }
         app-drawer-layout[narrow] #contentcontainer {
           padding-top: 64px;
         }
         #content {
-          justify-content: center;
-          padding: 8px 8px 8px 8px;
+          padding: 8px 8px 8px 64px;
         }
-
-        #content > * {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+        #menutoggle {
+          display: block;
+          float: left;
+          margin-right: 16px;
         }
 
         /* Required for HAX */
@@ -164,20 +144,30 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
         }
         #contentcontainer {
           max-width: 840px;
-          margin: 0 auto;
+          display: block;
+          margin: 0;
           padding: 0 16px 16px 16px;
-          flex: 1 1 auto;
-          order: 1;
-          display: flex;
-        }
-        #contentcontainer > * {
-          flex: 1 1 auto;
-          display: flex;
-          flex-direction: column;
-          width: 100%;
+          flex: none;
+          transition: 0.5s opacity ease-in-out;
         }
         #contentcontainer h-a-x {
           margin: 0;
+        }
+        #menubuttoncontainer {
+          display: flex;
+          justify-content: center;
+          padding: 8px 0 0 0;
+        }
+        site-menu-button {
+          display: inline-flex;
+        }
+        site-print-button {
+          display: inline-flex;
+          margin-right: 20px;
+        }
+        site-active-title {
+          --site-active-title-margin: 0px;
+          --site-active-title-padding: 0px;
         }
       `
     ];
@@ -196,11 +186,8 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     super();
     this.__disposer = [];
     this.closed = false;
-    import("@polymer/app-layout/app-header/app-header.js");
-    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
-    import("@polymer/app-layout/app-header-layout/app-header-layout.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
@@ -213,42 +200,12 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
     return html`
       <custom-style>
         <style>
-          site-title {
-            --site-title-heading: {
-              font-size: 24px;
-              color: black;
-              font-weight: normal;
-              line-height: 32px;
-              vertical-align: middle;
-              padding: 16px;
-              height: 32px;
-              margin: 0;
-              text-align: center;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              word-break: break-word;
-              border-bottom: 1px solid #eeeeee;
-              position: sticky;
-            }
-          }
-          app-header {
-            color: var(--outline-player-dark);
-            /* Enable outline to be placed anywhere in the dom */
-            /* This will override the app-header-layout forcing fixed mode */
-            /*position: absolute !important;
-        left: 0 !important;*/
-            --app-header-background-rear-layer: {
-              /* app-header-layout will force fixed */
-              background-color: var(--outline-player-light);
-            }
-          }
           app-drawer {
             box-shadow: 0 0 6px -3px var(--outline-player-dark);
             overflow: hidden;
             --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
             --app-drawer-content-container: {
               overflow: hidden;
-              background-color: var(--outline-player-light);
             }
           }
           site-menu {
@@ -296,40 +253,34 @@ class OutlinePlayer extends SimpleColorsSuper(HAXCMSLitElementTheme) {
           .opened="${this.opened}"
           @opened-changed="${this._openedChanged}"
         >
-          <site-title></site-title>
+          <div id="menubuttoncontainer">
+            <site-print-button></site-print-button>
+            <site-menu-button
+              type="prev"
+              position="bottom"
+              raised
+            ></site-menu-button>
+            <site-menu-button
+              type="next"
+              position="bottom"
+              raised
+            ></site-menu-button>
+          </div>
           <site-menu></site-menu>
         </app-drawer>
-        <app-header-layout>
-          <app-header slot="header" reveals>
-            <app-toolbar>
-              <paper-icon-button
-                icon="menu"
-                @click="${this._toggleMenu}"
-              ></paper-icon-button>
-              <div main-title>
-                <site-active-title></site-active-title>
-                <div><slot name="title"></slot></div>
-              </div>
-              <site-menu-button
-                type="prev"
-                position="bottom"
-                raised
-              ></site-menu-button>
-              <site-menu-button
-                type="next"
-                position="bottom"
-                raised
-              ></site-menu-button>
-              <site-print-button></site-print-button>
-            </app-toolbar>
-          </app-header>
-          <div id="content">
-            <site-git-corner></site-git-corner>
-            <div id="contentcontainer">
-              <div id="slot"><slot></slot></div>
-            </div>
+        <div id="content">
+          <site-git-corner></site-git-corner>
+          <paper-icon-button
+            icon="menu"
+            id="menutoggle"
+            @click="${this._toggleMenu}"
+          ></paper-icon-button>
+          <site-active-title></site-active-title>
+          <div><slot name="title"></slot></div>
+          <div id="contentcontainer">
+            <div id="slot"><slot></slot></div>
           </div>
-        </app-header-layout>
+        </div>
       </app-drawer-layout>
     `;
   }

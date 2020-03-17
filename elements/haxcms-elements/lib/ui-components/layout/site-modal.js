@@ -108,12 +108,12 @@ class SiteModal extends LitElement {
       .querySelector("#smt")
       .associateEvents(this.shadowRoot.querySelector("#btn"));
     setTimeout(() => {
-      if (this.childNodes && this.shadowRoot.querySelector("#content")) {
-        for (var i in this.childNodes) {
-          if (typeof this.childNodes[i] === "object") {
+      if (this.children && this.shadowRoot.querySelector("#content")) {
+        for (var i in this.children) {
+          if (typeof this.children[i] === "object") {
             this.shadowRoot
               .querySelector("#content")
-              .appendChild(this.childNodes[i]);
+              .appendChild(this.children[i]);
           }
         }
       }

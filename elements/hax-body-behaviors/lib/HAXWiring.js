@@ -331,60 +331,7 @@ export class HAXWiring {
               props.settings.advanced.splice(i, 1);
             }
           }
-          // allow classes to be modified this way
-          props.settings.advanced.push({
-            attribute: "class",
-            title: "Classes",
-            description: "CSS classes applied manually to the element",
-            inputMethod: "textfield"
-          });
-          // allow styles to be modified this way
-          props.settings.advanced.push({
-            attribute: "style",
-            title: "Styles",
-            description: "Custom CSS styles as applied to the element",
-            inputMethod: "textfield"
-          });
-          // allow schema definitions
-          props.settings.advanced.push({
-            attribute: "prefix",
-            title: "Schema: prefix",
-            description: "Schema prefixes",
-            inputMethod: "textfield"
-          });
-          props.settings.advanced.push({
-            attribute: "typeof",
-            title: "Schema: TypeOf",
-            description: "typeof definition for Schema usage",
-            inputMethod: "textfield"
-          });
-          props.settings.advanced.push({
-            attribute: "property",
-            title: "Schema: Property",
-            description: "typeof definition for Schema usage",
-            inputMethod: "textfield"
-          });
-          props.settings.advanced.push({
-            attribute: "resource",
-            title: "Schema: Resource ID",
-            description: "Schema resource identifier",
-            inputMethod: "textfield"
-          });
-          // allow the id to be modified
-          props.settings.advanced.push({
-            attribute: "id",
-            title: "ID",
-            description: "element ID, only set this if you know why",
-            inputMethod: "textfield"
-          });
-          // we need to support slot in the UI but actually shift it around under the hood
-          // this is so that shadow roots don't get mad when previewing
-          props.settings.advanced.push({
-            attribute: "slot",
-            title: "slot",
-            description: "DOM slot area",
-            inputMethod: "textfield"
-          });
+          props = this.standardAdvancedProps(props);
         }
         // support for advanced save options
         if (typeof props.saveOptions === typeof undefined) {
@@ -398,45 +345,7 @@ export class HAXWiring {
         // if there's no global HaxStore then this means it is a custom
         // implementation of the schema
         if (isReady) {
-          if (tag != "" && typeof window.HaxStore === typeof undefined) {
-            const evt = new CustomEvent("hax-register-properties", {
-              bubbles: true,
-              composed: true,
-              cancelable: true,
-              detail: {
-                tag: tag.toLowerCase(),
-                properties: props,
-                polymer: false
-              }
-            });
-            context.dispatchEvent(evt);
-          } else if (tag != "") {
-            const evt = new CustomEvent("hax-register-properties", {
-              bubbles: true,
-              composed: true,
-              cancelable: true,
-              detail: {
-                tag: tag.toLowerCase(),
-                properties: props
-              }
-            });
-            context.dispatchEvent(evt);
-          } else if (typeof this.tagName !== typeof undefined) {
-            const evt = new CustomEvent("hax-register-properties", {
-              bubbles: true,
-              composed: true,
-              cancelable: true,
-              detail: {
-                tag: this.tagName.toLowerCase(),
-                properties: props
-              }
-            });
-            context.dispatchEvent(evt);
-          } else {
-            console.warn(
-              `${tag} missed our checks and has an issue in implementation with HAX`
-            );
-          }
+          this.readyToFireHAXSchema(tag, props, context);
         }
         // only set these when tag hasn't been force fed
         if (tag === "") {
@@ -452,9 +361,110 @@ export class HAXWiring {
         // but would probably default to an iframe which is less then ideal
         // but at least wouldn't brick the AX.
         console.warn(
-          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
+          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. https://haxtheweb.org/hax-schema for details but we will try and guess the wiring"
         );
       }
+    };
+    this.readyToFireHAXSchema = (tag, props, context) => {
+      if (tag != "" && typeof window.HaxStore === typeof undefined) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            tag: tag.toLowerCase(),
+            properties: props,
+            polymer: false
+          }
+        });
+        context.dispatchEvent(evt);
+      } else if (tag != "") {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            tag: tag.toLowerCase(),
+            properties: props
+          }
+        });
+        context.dispatchEvent(evt);
+      } else if (typeof this.tagName !== typeof undefined) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            tag: this.tagName.toLowerCase(),
+            properties: props
+          }
+        });
+        context.dispatchEvent(evt);
+      } else {
+        console.warn(
+          `${tag} missed our checks and has an issue in implementation with HAX`
+        );
+      }
+    };
+    /**
+     * Standard advanced properties we support for all forms
+     */
+    this.standardAdvancedProps = props => {
+      // allow classes to be modified this way
+      props.settings.advanced.push({
+        attribute: "class",
+        title: "Classes",
+        description: "CSS classes applied manually to the element",
+        inputMethod: "textfield"
+      });
+      // allow styles to be modified this way
+      props.settings.advanced.push({
+        attribute: "style",
+        title: "Styles",
+        description: "Custom CSS styles as applied to the element",
+        inputMethod: "textfield"
+      });
+      // allow schema definitions
+      props.settings.advanced.push({
+        attribute: "prefix",
+        title: "Schema: prefix",
+        description: "Schema prefixes",
+        inputMethod: "textfield"
+      });
+      props.settings.advanced.push({
+        attribute: "typeof",
+        title: "Schema: TypeOf",
+        description: "typeof definition for Schema usage",
+        inputMethod: "textfield"
+      });
+      props.settings.advanced.push({
+        attribute: "property",
+        title: "Schema: Property",
+        description: "typeof definition for Schema usage",
+        inputMethod: "textfield"
+      });
+      props.settings.advanced.push({
+        attribute: "resource",
+        title: "Schema: Resource ID",
+        description: "Schema resource identifier",
+        inputMethod: "textfield"
+      });
+      // allow the id to be modified
+      props.settings.advanced.push({
+        attribute: "id",
+        title: "ID",
+        description: "element ID, only set this if you know why",
+        inputMethod: "textfield"
+      });
+      // we need to support slot in the UI but actually shift it around under the hood
+      // this is so that shadow roots don't get mad when previewing
+      props.settings.advanced.push({
+        attribute: "slot",
+        title: "slot",
+        description: "DOM slot area",
+        inputMethod: "textfield"
+      });
+      return props;
     };
     /**
      * Validate settings object.
@@ -1129,9 +1139,9 @@ export class HAXWiring {
         canEditSource: false,
         gizmo: {
           title: "Tag name",
-          description: "A description",
-          icon: "av:play-circle-filled",
-          color: "blue",
+          description: "",
+          icon: "icons:android",
+          color: "purple",
           groups: ["Content"],
           handles: [
             {
@@ -1141,7 +1151,7 @@ export class HAXWiring {
             }
           ],
           meta: {
-            author: ""
+            author: "auto"
           }
         },
         settings: {

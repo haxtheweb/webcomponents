@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "HAX but for mobile / desktop application development",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/h-a-x": "^2.5.1",
+    "@lrnwebcomponents/h-a-x": "^2.6.0",
     "@polymer/polymer": "^3.3.1"
   },
   "devDependencies": {

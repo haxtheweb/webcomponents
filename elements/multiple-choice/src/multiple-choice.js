@@ -642,9 +642,33 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
         ]
       },
       saveOptions: {
-        unsetAttributes: ["__utils", "displayed-answers", "displayedAnswers"]
+        unsetAttributes: [
+          "__utils",
+          "displayed-answers",
+          "displayedAnswers",
+          "colors"
+        ]
       }
     };
+  }
+  /**
+   * HAX preprocess Node to Content hook
+   */
+  preProcessHaxNodeToContent(node) {
+    // ensure we dont accidently have the answer displayed!
+    if (node.answers) {
+      var answers = [];
+      for (var i = 0; i < node.answers.length; i++) {
+        let val = node.answers[i];
+        // remove userGuess if its set in the DOM
+        if (val.userGuess) {
+          delete val.userGuess;
+        }
+        answers.push(val);
+      }
+      node.answers = [...answers];
+    }
+    return node;
   }
   /**
    * HAX preprocess insert content hook
