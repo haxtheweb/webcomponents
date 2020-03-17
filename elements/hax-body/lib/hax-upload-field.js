@@ -381,13 +381,13 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
     if (!navigator.mediaDevices || this.noVoiceRecord) {
       this.shadowRoot.querySelector("#voicerecorder").style.display = "none";
     } else {
-      /*options.push([
+      options.push([
         {
           alt: "Audio",
           icon: "hardware:keyboard-voice",
           value: "audio"
         }
-      ]);*/
+      ]);
     }
     return options;
   }
