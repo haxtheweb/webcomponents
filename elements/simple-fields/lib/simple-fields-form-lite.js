@@ -73,13 +73,12 @@ class SimpleFieldsFormLite extends SimpleFieldsLite {
    *
    * @memberof SimpleFieldsFormLite
    */
-  _applyLoadedData(){
+  _applyLoadedData() {
     let sf = this.shadowRoot.querySelector("#sf");
-    if(this.loadResponse.data.schema) {
+    if (this.loadResponse.data.schema) {
       sf.schema = this.loadResponse.data.schema;
     }
-    if(this.loadResponse.data.value)
-    sf.value = this.loadResponse.data.value;
+    if (this.loadResponse.data.value) sf.value = this.loadResponse.data.value;
   }
   /**
    * load data from the end point

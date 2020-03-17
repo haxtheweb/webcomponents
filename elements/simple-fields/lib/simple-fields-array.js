@@ -21,7 +21,8 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       ...super.styles,
       css`
         fieldset {
-          padding: 0 var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px);
+          padding: 0 var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin-small, 8px);
         }
         #item-fields {
           margin: var(--simple-fields-margin-small, 8px) 0;

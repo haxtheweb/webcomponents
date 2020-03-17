@@ -540,16 +540,33 @@ class SimpleFieldsLite extends LitElement {
             schemaProp.description && (schemaProp.label || schemaProp.title)
               ? schemaProp.description
               : undefined;
-        data.labelSlot = schema['labelSlot'] || data['labelSlot'];
-        data.descriptionSlot = schema['descriptionSlot'] || data['descriptionSlot'];
-        data.errorMessageSlot = schema['errorMessageSlot'] || data['errorMessageSlot'];
-        data.labelProperty = schema['labelProperty'] || data['labelProperty'] || "label";
-        data.descriptionProperty = schema['descriptionProperty'] || data['descriptionProperty'] || "description";
-        data.valueProperty = schema['valueProperty'] || data['valueProperty'] || "value";
-        data.valueChangedProperty = schema['valueChangedProperty'] || data['valueChangedProperty'] || `${data.valueProperty}-changed`;
-        data.errorProperty = schema['errorProperty'] || data['errorProperty'] || "error";
-        data.errorChangedProperty = schema['errorChangedProperty'] || data['errorChangedProperty'] || `${data.errorProperty}-changed`;
-        data.errorMessageProperty = schema['errorMessageProperty'] || data['errorMessageProperty'] || "errorMessage";
+        data.labelSlot = schema["labelSlot"] || data["labelSlot"];
+        data.descriptionSlot =
+          schema["descriptionSlot"] || data["descriptionSlot"];
+        data.errorMessageSlot =
+          schema["errorMessageSlot"] || data["errorMessageSlot"];
+        data.labelProperty =
+          schema["labelProperty"] || data["labelProperty"] || "label";
+        data.descriptionProperty =
+          schema["descriptionProperty"] ||
+          data["descriptionProperty"] ||
+          "description";
+        data.valueProperty =
+          schema["valueProperty"] || data["valueProperty"] || "value";
+        data.valueChangedProperty =
+          schema["valueChangedProperty"] ||
+          data["valueChangedProperty"] ||
+          `${data.valueProperty}-changed`;
+        data.errorProperty =
+          schema["errorProperty"] || data["errorProperty"] || "error";
+        data.errorChangedProperty =
+          schema["errorChangedProperty"] ||
+          data["errorChangedProperty"] ||
+          `${data.errorProperty}-changed`;
+        data.errorMessageProperty =
+          schema["errorMessageProperty"] ||
+          data["errorMessageProperty"] ||
+          "errorMessage";
 
         element.resources = this.resources;
         element.id = id;
@@ -625,8 +642,19 @@ class SimpleFieldsLite extends LitElement {
             element.slot = "field";
             wrapper.appendChild(element);
           }
-          if(typeof value !== typeof undefined || schemaProp.type === "boolean") element[data.valueProperty] = value;
-          console.log(id,schemaProp.type,value,schemaProp.type,element[data.valueProperty],data.valueProperty);
+          if (
+            typeof value !== typeof undefined ||
+            schemaProp.type === "boolean"
+          )
+            element[data.valueProperty] = value;
+          console.log(
+            id,
+            schemaProp.type,
+            value,
+            schemaProp.type,
+            element[data.valueProperty],
+            data.valueProperty
+          );
           element.addEventListener(data.valueChangedProperty, e =>
             this._handleChange(element, data.valueProperty)
           );

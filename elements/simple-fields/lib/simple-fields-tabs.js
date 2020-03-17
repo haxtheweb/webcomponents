@@ -29,7 +29,10 @@ class SimpleFieldsTabs extends A11yTabs {
           --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);
           --a11y-tabs-color: var(--simple-fields-color, black);
           --a11y-tabs-focus-color: var(--simple-fields-color, black);
-          --a11y-tabs-border-color: var(--simple-fields-border-color-light, #ccc);
+          --a11y-tabs-border-color: var(
+            --simple-fields-border-color-light,
+            #ccc
+          );
           --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;
           --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);
           --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);

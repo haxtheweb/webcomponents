@@ -53,16 +53,15 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    *
    * @memberof SimpleFieldsFormLite
    */
-  _applyLoadedData(){
+  _applyLoadedData() {
     let sf = this.shadowRoot.querySelector("#sf");
-    console.log(this.loadResponse.data.schema,this.loadResponse.data.fields)
-    if(this.loadResponse.data.schema) {
+    console.log(this.loadResponse.data.schema, this.loadResponse.data.fields);
+    if (this.loadResponse.data.schema) {
       sf.schema = this.loadResponse.data.schema;
-    } else if(this.loadResponse.data.fields) {
+    } else if (this.loadResponse.data.fields) {
       sf.fields = this.loadResponse.data.fields;
     }
-    if(this.loadResponse.data.value)
-    sf.value = this.loadResponse.data.value;
+    if (this.loadResponse.data.value) sf.value = this.loadResponse.data.value;
   }
   /**
    * Props down

@@ -14,8 +14,10 @@ class SimpleFieldsFieldset extends LitElement {
     return [
       css`
         fieldset {
-          padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px);
-          margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px);
+          padding: var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin, 16px);
+          margin: var(--simple-fields-margin-small, 8px) 0
+            var(--simple-fields-margin, 16px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
           border-radius: var(--simple-fields-border-radus, 2px);
           transition: all 0.3s ease-in-out;

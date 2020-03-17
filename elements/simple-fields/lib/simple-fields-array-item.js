@@ -49,7 +49,8 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           opacity: 0.5;
         }
         :host([aria-expanded="true"]) {
-          padding: var(--simple-fields-margin, 16px) var(--simple-fields-margin-small, 8px);
+          padding: var(--simple-fields-margin, 16px)
+            var(--simple-fields-margin-small, 8px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
           transition: all 0.5s ease;
         }
