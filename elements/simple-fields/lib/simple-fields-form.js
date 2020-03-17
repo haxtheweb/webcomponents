@@ -1,24 +1,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFields } from "../simple-fields.js";
+import { SimpleFieldsFormLite } from "./simple-fields-form-lite.js";
 /**
  * `simple-fields-form`
  * binding and submission capabilities on top of simple-fields
  *
  * @group simple-fields
  * @customElement simple-fields-form
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
+ * @demo ./demo/form.html
  */
-class SimpleFieldsForm extends SimpleFields {
-  static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-      `
-    ];
-  }
+class SimpleFieldsForm extends SimpleFieldsFormLite {
   static get tag() {
     return "simple-fields-form";
   }
@@ -26,20 +17,11 @@ class SimpleFieldsForm extends SimpleFields {
   render() {
     return html`
       <form>
-        <simple-fields-schema id="fields" autofocus></simple-fields-schema>
+        <slot name="before"></slot>
+        <simple-fields id="sf" autofocus></simple-fields>
+        <slot></slot>
       </form>
     `;
-  }
-  /**
-   * first update hook; also implies default settings
-   */
-  firstUpdated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      // request form when it changes
-      if (propName === "loadEndpoint" && this.autoload) {
-        this.loadData();
-      }
-    });
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -50,12 +32,7 @@ class SimpleFieldsForm extends SimpleFields {
       }
       // we have response data from an end point this should create the form
       if (propName === "loadResponse" && this.loadResponse.data) {
-        this.shadowRoot.querySelector(
-          "#fields"
-        ).value = this.loadResponse.data.value;
-        this.shadowRoot.querySelector(
-          "#fields"
-        ).schema = this.loadResponse.data.schema;
+        this._applyLoadedData();
         /**
          * fires event for things to react to about the response
          * @event response
@@ -72,75 +49,20 @@ class SimpleFieldsForm extends SimpleFields {
     });
   }
   /**
-   * load data from the end point
+   * applies loaded datda to simple-fields-lite
+   *
+   * @memberof SimpleFieldsFormLite
    */
-  loadData() {
-    this.loading = true;
-    this.fetchData(
-      this.loadEndpoint,
-      this.method,
-      this.headers,
-      this.body
-    ).then(data => {
-      this.loading = false;
-      this.loadResponse = data;
-      /**
-       * fires event when forma data is loaded
-       * @event simple-fields-form-data-loaded
-       */
-      this.dispatchEvent(
-        new CustomEvent("simple-fields-form-data-loaded", {
-          detail: {
-            value: data
-          }
-        })
-      );
-    });
-  }
-  async fetchData(path, method, headers, body) {
-    let response = {};
-    if (method == "GET") {
-      response = await fetch(path, {
-        method: method,
-        headers: headers
-      });
-    } else {
-      response = await fetch(path, {
-        method: method,
-        headers: headers,
-        //make sure to serialize your JSON body
-        body: JSON.stringify(body)
-      });
+  _applyLoadedData(){
+    let sf = this.shadowRoot.querySelector("#sf");
+    console.log(this.loadResponse.data.schema,this.loadResponse.data.fields)
+    if(this.loadResponse.data.schema) {
+      sf.schema = this.loadResponse.data.schema;
+    } else if(this.loadResponse.data.fields) {
+      sf.fields = this.loadResponse.data.fields;
     }
-
-    let data = await response.json();
-    return data;
-  }
-  constructor() {
-    super();
-    this.method = "POST";
-    this.loading = false;
-    this.autoload = false;
-    this.headers = {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    };
-    this.body = {};
-  }
-  /**
-   * Submit form values if we have an end point, otherwise return value
-   * of the fields as they currently exist.
-   */
-  submit() {
-    if (this.saveEndpoint) {
-      fetch(this.saveEndpoint, {
-        method: this.method,
-        headers: this.headers,
-        //make sure to serialize your JSON body
-        body: JSON.stringify(this.shadowRoot.querySelector("#fields").value)
-      });
-    }
-    return this.shadowRoot.querySelector("#fields").value;
+    if(this.loadResponse.data.value)
+    sf.value = this.loadResponse.data.value;
   }
   /**
    * Props down
@@ -148,34 +70,7 @@ class SimpleFieldsForm extends SimpleFields {
   static get properties() {
     return {
       ...super.properties,
-      autoload: {
-        type: Boolean,
-        reflect: true
-      },
-      loading: {
-        type: Boolean,
-        reflect: true
-      },
-      loadEndpoint: {
-        type: String,
-        attribute: "load-endpoint"
-      },
-      saveEndpoint: {
-        type: String,
-        attribute: "save-endpoint"
-      },
-      method: {
-        type: String
-      },
-      headers: {
-        type: Object
-      },
-      body: {
-        type: Object
-      },
-      loadResponse: {
-        type: Object
-      }
+      ...SimpleFields.properties
     };
   }
 }

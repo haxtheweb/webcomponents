@@ -3,49 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>simple-fields-form Demo</title>
+    <title>simple-fields-form-lite Demo</title>
     
     <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/simple-fields-form.js';
+      import '../lib/simple-fields-form-lite.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>Basic simple-fields-form demo</h1>
+      <h1>Basic simple-fields-form-lite demo</h1>
       <demo-snippet>
         <template>
-          <simple-fields-form id="formFields" load-endpoint="./data/fields.json" method="GET">
-            <button id="fields">Load data</button>
-            <button id="saveFields">Save / show values in console</button>
-          </simple-fields-form>
-          <script>
-            let formFields = document.getElementById('formFields'),
-              testform2 = document.getElementById('fields'),
-              saveFields = document.getElementById('saveFields');
-            
-            fields.addEventListener('click', (e) => {
-              // submit the form values to the end point
-              formFields.autoload = true;
-            });
-            saveFields.addEventListener('click', (e) => {
-              // submit the form values to the end point
-              console.log('submitting',formFields.submit());
-            });
-          </script>
-        </template>
-      </demo-snippet>
-      <h2>Using JSON schema with simple-fields-form demo</h2>
-      <demo-snippet>
-        <template>
-          <simple-fields-form id="formSchema" load-endpoint="./data/schema.json" method="GET">
+          <simple-fields-form-lite id="formSchema" load-endpoint="./data/schema.json" method="GET">
             <button id="schema">Load data</button>
             <button id="saveSchema">Save / show values in console</button>
-          </simple-fields-form>
+          </simple-fields-form-lite>
           <script>
             let schema = document.getElementById('schema'),
               formSchema = document.getElementById('formSchema'),

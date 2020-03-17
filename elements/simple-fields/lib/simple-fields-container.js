@@ -7,7 +7,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *
  * @group simple-fields
  * @customElement simple-fields-container
- * @demo ./demo/container.html Demo
+ * @demo ./demo/container.html
  */
 class SimpleFieldsContainer extends LitElement {
   static get tag() {

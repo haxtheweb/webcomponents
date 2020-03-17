@@ -21,11 +21,11 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       ...super.styles,
       css`
         fieldset {
-          padding: 0 10px;
+          padding: 0 var(--simple-fields-margin-small, 8px) var(--simple-fields-margin-small, 8px);
         }
         #item-fields {
+          margin: var(--simple-fields-margin-small, 8px) 0;
           clear: both;
-          margin: 10px 0;
           z-index: 3;
         }
         #top {
@@ -35,20 +35,20 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
         }
         #description {
           flex: 1 1 auto;
-          padding: 8px 0;
-          margin-right: 16px;
+          padding: var(--simple-fields-margin-small, 8px) 0;
+          margin-right: var(--simple-fields-margin, 16px);
           min-height: 24px;
         }
         #add {
           float: right;
         }
         paper-button {
-          font-family: sans-serif;
-          font-size: 16px;
-          line-height: 22px;
-          padding: 8px;
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
+          padding: var(--simple-fields-margin-small, 8px);
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
           z-index: 1;
-          margin: 0 10px 0 0;
           text-transform: unset;
         }
         .expanded {

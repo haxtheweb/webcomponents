@@ -24,6 +24,17 @@ class SimpleFieldsTabs extends A11yTabs {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: border 0.5s ease;
         }
+        :host {
+          --a11y-tabs-font-family: var(--simple-fields-font-family, sans-serif);
+          --a11y-tabs-font-size: var(--simple-fields-detail-font-size, 12px);
+          --a11y-tabs-color: var(--simple-fields-color, black);
+          --a11y-tabs-focus-color: var(--simple-fields-color, black);
+          --a11y-tabs-border-color: var(--simple-fields-border-color-light, #ccc);
+          --a11y-tabs-margin: var(--simple-fields-margin, 16px) 0;
+          --a11y-tabs-border-radius: var(--simple-fields-border-radius, 2px);
+          --a11y-tabs-button-padding: var(--simple-fields-margin-small, 8px);
+          --a11y-tabs-content-padding: var(--simple-fields-margin, 16px);
+        }
       `
     ];
   }

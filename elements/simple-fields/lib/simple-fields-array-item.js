@@ -38,26 +38,27 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     return [
       css`
         :host {
+          padding: 0 var(--simple-fields-margin-small, 8px);
+          border-radius: var(--simple-fields-border-radius, 2px);
           display: block;
-          border-radius: 3px;
           border: none;
           transform: rotate(0deg);
-          padding: 10px;
-          transition: border 0.5s ease;
+          transition: all 0.5s ease;
         }
         :host([disabled]) {
           opacity: 0.5;
         }
         :host([aria-expanded="true"]) {
-          border: 1px solid #ddd;
-          transition: border 0.5s ease;
+          padding: var(--simple-fields-margin, 16px) var(--simple-fields-margin-small, 8px);
+          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          transition: all 0.5s ease;
         }
         :host([error]) {
           border: 1px solid var(--simple-fields-error-color, #dd2c00);
           transition: border 0.5s ease;
         }
         :host(:focus-within) {
-          border: 1px solid #444;
+          border: 1px solid var(--simple-fields-border-color, #999);
           transition: border 0.5s ease;
           z-index: 2;
         }
@@ -81,9 +82,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           overflow: hidden;
           max-height: 0;
         }
-        :host([sortable]) {
-          padding: 0 0 0 40px;
-        }
+        /*:host([sortable]) {
+          padding: 0 0 0 calc(var(--simple-fields-margin-small, 8px) * 2 + var(--simple-fields-line-height, 22px));
+        }*/
         :host #content-inner {
           display: flex;
           align-items: flex-end;
@@ -107,7 +108,7 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
           color: var(--simple-fields-error-color, #ac0000);
         }
         #expand {
-          padding: 8px;
+          padding: var(--simple-fields-margin-small, 8px);
           transform: rotate(0deg);
           transition: transform 0.5s ease-in-out;
         }
@@ -117,9 +118,9 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
         }
         paper-icon-button,
         simple-tooltip {
-          font-family: sans-serif;
-          font-size: 16px;
-          line-height: 22px;
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
         }
         ::slotted([slot="preview"]:first-of-type) {
           margin-top: 0;

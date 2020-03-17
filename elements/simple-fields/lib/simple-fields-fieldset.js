@@ -5,8 +5,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *
  * @group simple-fields
  * @customElement simple-fields-fieldset
- * @demo ./demo/schema.html Schema
- * @demo ./demo/form.html Form
  */
 class SimpleFieldsFieldset extends LitElement {
   static get tag() {
@@ -16,25 +14,28 @@ class SimpleFieldsFieldset extends LitElement {
     return [
       css`
         fieldset {
-          padding: 10px;
-          margin: 10px 10px 20px;
-          border: 1px solid #ccc;
+          padding: var(--simple-fields-margin-small, 8px) var(--simple-fields-margin, 16px);
+          margin: var(--simple-fields-margin-small, 8px) 0 var(--simple-fields-margin, 16px);
+          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          border-radius: var(--simple-fields-border-radus, 2px);
           transition: all 0.3s ease-in-out;
+        }
+        :host(:last-of-type) {
+          margin-bottom: 0;
         }
         :host([error]) #label {
           color: var(--simple-fields-error-color, #dd2c00);
           transition: all 0.3s ease-in-out;
         }
-        #label,
-        #description {
-          font-family: sans-serif;
-          font-size: 11px;
-          line-height: 22px;
+        #label {
+          font-family: var(--simple-fields-font-family, sans-serif);
+          font-size: var(--simple-fields-font-size, 16px);
+          line-height: var(--simple-fields-line-height, 22px);
         }
-        #legend {
-          font-size: 16px;
-          padding-inline-start: unset;
-          padding-inline-end: unset;
+        #description {
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
         }
       `
     ];

@@ -381,14 +381,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.spellcheck = false;
     this.wrap = false;
     this.options = {};
-    this.addEventListener("click", e =>
-      this.focus()
-    );
+    this.addEventListener("click", e => this.focus());
   }
-  disconnectedCallback(){
-    this.removeEventListener("click", e =>
-      this.focus()
-    );
+  disconnectedCallback() {
+    this.removeEventListener("click", e => this.focus());
     super.disconnectedCallback();
   }
 
@@ -414,8 +410,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         this._fireValueChanged();
       }
       if (
-        ["type", "field", "multiple", "value"].includes(propName) 
-        && this.field && !this.multiple && ["checkbox","radio"].includes(this.type)
+        ["type", "field", "multiple", "value"].includes(propName) &&
+        this.field &&
+        !this.multiple &&
+        ["checkbox", "radio"].includes(this.type)
       )
         this.field.checked = this.value;
       if (propName === "type" && this.type !== oldValue) this._updateField();
@@ -642,7 +640,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         class="field box-input"
         @change="${this._onChange}"
-        @keydown="${e=>e.stopPropagation()}"
+        @keydown="${e => e.stopPropagation()}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
         @input="${this._onTextareaupdate}"
@@ -730,7 +728,7 @@ ${this.value || ""}</textarea
         } else {
           this.value = this.value.filter(val => val !== e.path[0].value);
         }
-      } else if (this.type === "checkbox"|| this.type === "radio") {
+      } else if (this.type === "checkbox" || this.type === "radio") {
         this.value = e.path[0].checked;
       } else {
         this.value = e.path[0].value;
@@ -827,8 +825,9 @@ ${this.value || ""}</textarea
   _updateCount() {
     let count = ``;
     if (
-      (this.type === "textarea" || this.type === "text") 
-      && this.counter && this.field
+      (this.type === "textarea" || this.type === "text") &&
+      this.counter &&
+      this.field
     ) {
       let word = `[\\w\\-\\']+`,
         counter = new RegExp(word, "gim"),
