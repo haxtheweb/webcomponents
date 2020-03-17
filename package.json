@@ -117,7 +117,7 @@
     },
     "lint-staged": {
         "*.{js,json}": "prettier --write",
-        "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged",
+        "*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged", "git add"],
         "*.css": "stylelint --fix",
         "*.scss": "stylelint --syntax=scss --fix"
     },
