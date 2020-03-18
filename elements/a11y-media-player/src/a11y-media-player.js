@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import("./lib/a11y-media-state-manager.js");
+import "./lib/a11y-media-state-manager.js";
 import("./lib/a11y-media-button.js");
 import("./lib/a11y-media-transcript-cue.js");
 import("./lib/a11y-media-youtube.js");
