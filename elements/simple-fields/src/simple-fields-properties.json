@@ -1,6 +1,6 @@
 {
   /**
-   * Fields to convert toJSON Schema.
+   * Fields to convert to JSON Schema.
    */
   "fields": {
     "type": "Array"
@@ -12,6 +12,9 @@
   "fieldsConversion": {
     "type": "Object"
   },
+  /**
+   * Schema label
+   */
   "label": {
     "type": "String"
   }

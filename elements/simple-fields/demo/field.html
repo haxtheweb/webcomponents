@@ -65,32 +65,6 @@
           </simple-fields-field>
         </template>
       </demo-snippet>
-      <h2>Validation</h2>
-      <demo-snippet>
-        <template>
-          <simple-fields-field 
-            autovalidate
-            error-message="A name is required."
-            label="Name" 
-            required >
-          </simple-fields-field>
-          <simple-fields-field 
-            autovalidate
-            error-message="You must agree to the terms."
-            label="I agree to the terms" 
-            required 
-            type="checkbox">
-          </simple-fields-field>
-          <simple-fields-field 
-            autovalidate
-            error-message="Invalid format."
-            label="Email" 
-            type="email" 
-            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-            placeholder="username@domain.com" >
-          </simple-fields-field>
-        </template>
-      </demo-snippet>
       <h2>Multiple Options</h2>
       <demo-snippet id="options">
         <script>
@@ -117,6 +91,63 @@
         <template>
           <simple-fields-field counter="character" maxlength="10" type="text" label="Nickname" value="Rumplestiltskin"></simple-fields-field>
           <simple-fields-field counter="word" maxlength="6" type="textarea" label="Bio" description="Six word bio." value="Once upon a time..."></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Validation</h2>
+      <demo-snippet>
+        <demo-snippet id="check">
+          <script>
+            window.onload = ()=> {
+              let options = {
+                "red": "Red",
+                "orange": "Orange",
+                "yellow": "Yellow",
+                "green": "Green",
+                "cyan": "Cyan",
+                "blue": "Blue",
+                "indigo": "Indigo",
+                "purple": "Purple",
+                "magenta": "Magenta"
+              };
+              document.querySelectorAll('#check').forEach(el=>el.options=options);
+            }
+          </script>
+          <style>
+            #check {
+              --simple-fields-radio-option-display: block;
+            }
+          </style>
+        <template>
+          <simple-fields-field 
+            autovalidate
+            required 
+            required-message="A name is required."
+            label="Name">
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            pattern-message="Invalid format."
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            label="Email" 
+            placeholder="username@domain.com" 
+            type="email" >
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            min="2" 
+            max="4"
+            id="check"
+            label="Checkbox Options" 
+            description="Pick 2-4" 
+            type="checkbox">
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            required 
+            required-message="You must agree to the terms."
+            label="I agree to the terms" 
+            type="checkbox">
+          </simple-fields-field>
         </template>
       </demo-snippet>
     </div>

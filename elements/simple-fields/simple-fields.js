@@ -58,17 +58,19 @@ type: {                                       //For properties in "this.schema",
     format: {                                 //Optional: define elements for "object" properties by "format"
       "tabs": {                               //Defines element used for object properties when "format" is "tabs"
         element: "a11y-tabs"                  //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
-        descriptionProperty: "description"    //Optional: element's property that sets its description, i.e. "description"
-        descriptionSlot: "description"        //Optional: element's slot that contains its description, i.e. "description"
-        errorProperty: "error"                //Optional: element's property that sets its error status, i.e. "error"
-        errorChangedProperty: "error"         //Optional: event element fires when error status changes, i.e. "error-changed"
-        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, i.e. "errorMessage"
-        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, i.e. "errorMessage"
-        labelProperty: "label"                //Optional: element's property that sets its label, i.e. "label"
-        labelSlot: "label"                    //Optional: element's slot that contains its label, i.e. "label"
-        valueProperty: "value"                //Optional: element's property that sets its value, e.g. "value" or "checked"
+        descriptionProperty: "description"    //Optional: element's property that sets its description, e.g. "description"
+        descriptionSlot: "description"        //Optional: element's slot that contains its description, e.g. "description"
+        errorProperty: "error"                //Optional: element's property that sets its error status, e.g. "error"
+        errorChangedProperty: "error"         //Optional: event element fires when error status changes, e.g. "error-changed"
+        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, e.g. "errorMessage"
+        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, e.g. "errorMessage"
+        labelProperty: "label"                //Optional: element's property that sets its label, e.g. "label"
+        labelSlot: "label"                    //Optional: element's slot that contains its label, e.g. "label"
+        valueProperty: "value"                //Optional: element's property that gets its value, e.g. "value" or "checked"
+        setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
         valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
-        description: ""                       //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
+        valueSlot: ""                         //Optional: element's slot that's used to set its value, e.g. ""
+        description: ""                       //Optional: element that contains description, e.g. "p", "span", "paper-tooltip", etc.
         child: {                              //Optional: child elements to be appended
           element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
           attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
@@ -156,7 +158,7 @@ class SimpleFields extends SimpleFieldsLite {
   ...super.properties,
   
   /**
-   * Fields to convert toJSON Schema.
+   * Fields to convert to JSON Schema.
    */
   "fields": {
     "type": Array
@@ -168,6 +170,9 @@ class SimpleFields extends SimpleFieldsLite {
   "fieldsConversion": {
     "type": Object
   },
+  /**
+   * Schema label
+   */
   "label": {
     "type": String
   }
@@ -199,6 +204,9 @@ class SimpleFields extends SimpleFieldsLite {
         array: {
           defaultSettings: {
             type: "array"
+          },
+          properties: {
+            label: "itemLabel"
           }
         },
         "code-editor": {
@@ -216,16 +224,16 @@ class SimpleFields extends SimpleFieldsLite {
             type: "boolean"
           }
         },
-        colorpicker: {
+        color: {
           defaultSettings: {
             type: "string",
             format: "color"
           }
         },
-        datepicker: {
+        colorpicker: {
           defaultSettings: {
             type: "string",
-            format: "date"
+            format: "colorpicker"
           }
         },
         "date-time": {
@@ -234,19 +242,35 @@ class SimpleFields extends SimpleFieldsLite {
             format: "date-time"
           }
         },
+        datepicker: {
+          defaultSettings: {
+            type: "string",
+            format: "date"
+          }
+        },
         fieldset: {
           defaultSettings: {
             type: "object"
           }
         },
-        flipboolean: {},
         haxupload: {
           defaultSettings: {
             type: "string",
-            format: "uri"
+            format: "haxupload"
           }
         },
-        iconpicker: {},
+        iconpicker: {
+          defaultSettings: {
+            type: "string",
+            format: "iconpicker"
+          }
+        },
+        monthpicker: {
+          defaultSettings: {
+            type: "string",
+            format: "month"
+          }
+        },
         number: {
           defaultSettings: {
             type: "number"
@@ -279,6 +303,18 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             type: "string",
             format: "textarea"
+          }
+        },
+        timepicker: {
+          defaultSettings: {
+            type: "string",
+            format: "time"
+          }
+        },
+        weekpicker: {
+          defaultSettings: {
+            type: "string",
+            format: "week"
           }
         }
       }
@@ -391,10 +427,13 @@ class SimpleFields extends SimpleFieldsLite {
         },
         markup: {
           defaultSettings: {
-            element: "simple-fields-field",
+            element: "code-editor",
+            setValueProperty: "editorValue",
             attributes: {
               autofocus: true,
-              type: "textarea"
+              theme: "vs",
+              mode: "html",
+              className: "hax-code-editor"
             }
           }
         },
@@ -446,6 +485,24 @@ class SimpleFields extends SimpleFieldsLite {
                 }
               }
             },
+            colorpicker: {
+              defaultSettings: {
+                element: "simple-colors-picker",
+                attributes: {
+                  autofocus: true
+                }
+              }
+            },
+            date: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "date"
+                }
+              }
+            },
             "date-time": {
               defaultSettings: {
                 element: "simple-fields-field",
@@ -453,16 +510,6 @@ class SimpleFields extends SimpleFieldsLite {
                 attributes: {
                   autofocus: true,
                   type: "datetime-local"
-                }
-              }
-            },
-            time: {
-              defaultSettings: {
-                element: "simple-fields-field",
-                noWrap: true,
-                attributes: {
-                  autofocus: true,
-                  type: "time"
                 }
               }
             },
@@ -486,13 +533,30 @@ class SimpleFields extends SimpleFieldsLite {
                 }
               }
             },
-            uri: {
+            haxupload: {
+              defaultSettings: {
+                element: "hax-upload-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true
+                }
+              }
+            },
+            iconpicker: {
+              defaultSettings: {
+                element: "simple-icon-picker",
+                attributes: {
+                  autofocus: true
+                }
+              }
+            },
+            month: {
               defaultSettings: {
                 element: "simple-fields-field",
                 noWrap: true,
                 attributes: {
                   autofocus: true,
-                  type: "file"
+                  type: "month"
                 }
               }
             },
@@ -505,6 +569,26 @@ class SimpleFields extends SimpleFieldsLite {
                   type: "textarea"
                 }
               }
+            },
+            time: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "time"
+                }
+              }
+            },
+            uri: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  type: "file"
+                }
+              }
             }
           }
         }
@@ -513,6 +597,10 @@ class SimpleFields extends SimpleFieldsLite {
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
+      import("@lrnwebcomponents/code-editor/code-editor.js");
+      import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+      import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+      //import("@lrnwebcomponents/simple-picker/simple-picker.js");
     }, 0);
   }
   /**
@@ -530,6 +618,7 @@ class SimpleFields extends SimpleFieldsLite {
       required: [],
       properties: this._fieldsToSchema(this.fields)
     };
+    console.log(this.fields,schema);
     return schema;
   }
 

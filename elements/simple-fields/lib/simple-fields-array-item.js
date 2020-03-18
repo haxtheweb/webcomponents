@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsFieldset } from "./simple-fields-fieldset.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**

@@ -163,17 +163,19 @@ type: {                                       //For properties in "this.schema",
     format: {                                 //Optional: define elements for "object" properties by "format"
       "tabs": {                               //Defines element used for object properties when "format" is "tabs"
         element: "a11y-tabs"                  //Element to create, eg. "paper-input", "select", "simple-fields-array", etc.
-        descriptionProperty: "description"    //Optional: element's property that sets its description, i.e. "description"
-        descriptionSlot: "description"        //Optional: element's slot that contains its description, i.e. "description"
-        errorProperty: "error"                //Optional: element's property that sets its error status, i.e. "error"
-        errorChangedProperty: "error"         //Optional: event element fires when error status changes, i.e. "error-changed"
-        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, i.e. "errorMessage"
-        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, i.e. "errorMessage"
-        labelProperty: "label"                //Optional: element's property that sets its label, i.e. "label"
-        labelSlot: "label"                    //Optional: element's slot that contains its label, i.e. "label"
-        valueProperty: "value"                //Optional: element's property that sets its value, e.g. "value" or "checked"
+        descriptionProperty: "description"    //Optional: element's property that sets its description, e.g. "description"
+        descriptionSlot: "description"        //Optional: element's slot that contains its description, e.g. "description"
+        errorProperty: "error"                //Optional: element's property that sets its error status, e.g. "error"
+        errorChangedProperty: "error"         //Optional: event element fires when error status changes, e.g. "error-changed"
+        errorMessageProperty: "errorMessage"  //Optional: element's property that sets its error message, e.g. "errorMessage"
+        errorMessageSlot: "errorMessage"      //Optional: element's slot that contains its error message, e.g. "errorMessage"
+        labelProperty: "label"                //Optional: element's property that sets its label, e.g. "label"
+        labelSlot: "label"                    //Optional: element's slot that contains its label, e.g. "label"
+        valueProperty: "value"                //Optional: element's property that gets its value, e.g. "value" or "checked"
+        setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
         valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
-        description: ""                       //Optional: element that contains description, i.e. "p", "span", "paper-tooltip", etc.
+        valueSlot: ""                         //Optional: element's slot that's used to set its value, e.g. ""
+        description: ""                       //Optional: element that contains description, e.g. "p", "span", "paper-tooltip", etc.
         child: {                              //Optional: child elements to be appended
           element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
           attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion
@@ -540,34 +542,38 @@ class SimpleFieldsLite extends LitElement {
             schemaProp.description && (schemaProp.label || schemaProp.title)
               ? schemaProp.description
               : undefined;
-        data.labelSlot = schema["labelSlot"] || data["labelSlot"];
+        data.labelSlot = schema.labelSlot || data.labelSlot;
         data.descriptionSlot =
-          schema["descriptionSlot"] || data["descriptionSlot"];
+          schema.descriptionSlot || data.descriptionSlot;
         data.errorMessageSlot =
-          schema["errorMessageSlot"] || data["errorMessageSlot"];
+          schema.errorMessageSlot || data.errorMessageSlot;
+        data.valueSlot =
+          schema.valueSlot || data.valueSlot;
         data.labelProperty =
-          schema["labelProperty"] || data["labelProperty"] || "label";
+          schema.labelProperty || data.labelProperty || "label";
         data.descriptionProperty =
-          schema["descriptionProperty"] ||
-          data["descriptionProperty"] ||
+          schema.descriptionProperty ||
+          data.descriptionProperty ||
           "description";
         data.valueProperty =
-          schema["valueProperty"] || data["valueProperty"] || "value";
+          schema.valueProperty || data.valueProperty || "value";
+        data.setValueProperty =
+          schema.setValueProperty || data.setValueProperty || data.valueProperty;
         data.valueChangedProperty =
-          schema["valueChangedProperty"] ||
-          data["valueChangedProperty"] ||
+          schema.valueChangedProperty ||
+          data.valueChangedProperty ||
           `${data.valueProperty}-changed`;
         data.errorProperty =
-          schema["errorProperty"] || data["errorProperty"] || "error";
+          schema.errorProperty || data.errorProperty || "error";
         data.errorChangedProperty =
-          schema["errorChangedProperty"] ||
-          data["errorChangedProperty"] ||
+          schema.errorChangedProperty ||
+          data.errorChangedProperty ||
           `${data.errorProperty}-changed`;
         data.errorMessageProperty =
-          schema["errorMessageProperty"] ||
-          data["errorMessageProperty"] ||
+          schema.errorMessageProperty ||
+          data.errorMessageProperty ||
           "errorMessage";
-
+        
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -587,17 +593,17 @@ class SimpleFieldsLite extends LitElement {
           wrapper.hidden = true;
         }
 
-        this._setPropertyOrSlot(
+        this._configElement(
+          wrapper,
           label,
           data.labelProperty,
-          data.labelSlot,
-          wrapper
+          data.labelSlot
         );
-        this._setPropertyOrSlot(
+        this._configElement(
+          wrapper,
           desc,
           data.descriptionProperty,
-          data.descriptionSlot,
-          wrapper
+          data.descriptionSlot
         );
 
         //handle data type attributes
@@ -646,15 +652,12 @@ class SimpleFieldsLite extends LitElement {
             typeof value !== typeof undefined ||
             schemaProp.type === "boolean"
           )
-            element[data.valueProperty] = value;
-          console.log(
-            id,
-            schemaProp.type,
-            value,
-            schemaProp.type,
-            element[data.valueProperty],
-            data.valueProperty
-          );
+            this._configElement(
+              element,
+              value,
+              data.setValueProperty,
+              data.valueSlot
+            );
           element.addEventListener(data.valueChangedProperty, e =>
             this._handleChange(element, data.valueProperty)
           );
@@ -682,7 +685,7 @@ class SimpleFieldsLite extends LitElement {
    * @param {*} value
    * @memberof SimpleFieldsLite
    */
-  _setPropertyOrSlot(value, propName, slotName, target) {
+  _configElement(target, value, propName, slotName = false) {
     if (slotName) {
       let span = document.createElement("span");
       span.slot = slotName;
@@ -817,11 +820,11 @@ class SimpleFieldsLite extends LitElement {
               return;
             }
           });
-        this._setPropertyOrSlot(
+        this._configElement(
+          field.field,
           message,
           data.errorMessageProperty,
-          data.errorMessageSlot,
-          field.field
+          data.errorMessageSlot
         );
         field.field[data.errorProperty] = error;
         field.field.setAttribute("aria-invalid", error);
@@ -834,7 +837,7 @@ class SimpleFieldsLite extends LitElement {
    * @event value-changed
    */
   _fireValueChanged() {
-    console.log(
+    /*console.log(
       "value-changed",
       this.value,
       new CustomEvent("value-changed", {
@@ -843,7 +846,7 @@ class SimpleFieldsLite extends LitElement {
         composed: true,
         detail: this
       })
-    );
+    );*/
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
@@ -895,8 +898,8 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} valueProperty
    */
   _handleChange(element, valueProperty) {
-    //console.log('_handleChange',element.name,element[valueProperty],element.value);
-    this._setValue(element.name, element[valueProperty]);
+    //console.log('_handleChange',element.id || element.getAttribute('id'),valueProperty);
+    this._setValue(element.id || element.getAttribute('id'), element[valueProperty]);
     this._fireValueChanged();
   }
 
@@ -930,7 +933,7 @@ class SimpleFieldsLite extends LitElement {
   _setValue(propName, propVal) {
     let oldValue = this._deepClone(this.value),
       newValue = this.value,
-      props = propName.split("."),
+      props = propName ? propName.split(".") : [],
       l = props.length;
     for (var i = 0; i < l - 1; i++) {
       let pointer = props[i];
@@ -948,6 +951,7 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} oldValue old value for schema
    */
   _valueChanged(newValue, oldValue) {
+    //console.log('_valueChanged',newValue, oldValue)
     if (newValue && newValue !== oldValue) this._fireValueChanged();
   }
 }

@@ -23,6 +23,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         :host {
           display: block;
           font-family: unset;
+          margin: var(--code-pen-margin, 16px 0);
         }
         :host([hidden]) {
           display: none !important;
@@ -81,11 +82,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     this.theme = "vs-dark";
     this.language = "javascript";
     this.fontSize = 16;
+    this.tabSize = 2;
     this.autofocus = false;
     this.hideLineNumbers = false;
     this.focused = false;
     this.__libPath =
-      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
+      decodeURIComponent(import.meta.url) + "/../../../node_modules/monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
     setTimeout(() => {
@@ -107,6 +109,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         ?hide-line-numbers="${this.hideLineNumbers}"
         lib-path="${this.__libPath}"
         language="${this.language}"
+        tab-size="${this.tabSize}"
         theme="${this.theme}"
         @value-changed="${this._editorDataChanged}"
         font-size="${this.fontSize}"
@@ -115,6 +118,7 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         @code-editor-blur="${this._handleBlur}"
       >
       </monaco-element>
+      <slot hidden></slot>
       <div class="code-pen-container" ?hidden="${!this.showCodePen}">
         <span>Check it out on code pen: </span
         ><code-pen-button .data="${this.codePenData}"></code-pen-button>
@@ -155,13 +159,15 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
        * Code pen data, computed based on the HTML editor
        */
       codePenData: {
-        type: Object
+        type: Object,
+        attribute: "code-pen-data"
       },
       /**
        * contents of the editor
        */
       editorValue: {
-        type: String
+        type: String,
+        attribute: "editor-value"
       },
       /**
        * value of the editor after the fact
@@ -214,6 +220,13 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
       focused: {
         type: Boolean,
         reflect: true
+      },
+      /**
+       * number of characters for tabs
+       */
+      tabSize: {
+        type: Number,
+        attribute: "tab-size"
       }
     };
   }
@@ -360,9 +373,6 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         }
       });
     });
-    this._observer.observe(this, {
-      childList: true
-    });
   }
   disconnectedCallback() {
     if (this._observer) {
@@ -374,7 +384,12 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
   editorReady(e) {
     if (this.editorValue) {
       this.shadowRoot.querySelector("#codeeditor").value = this.editorValue;
+    } else {
+      this.childNodes.forEach(node => this.updateEditorValue(node));
     }
+    this._observer.observe(this, {
+      childList: true
+    });
   }
 }
 window.customElements.define(CodeEditor.tag, CodeEditor);
