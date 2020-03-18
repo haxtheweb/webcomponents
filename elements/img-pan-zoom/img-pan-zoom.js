@@ -234,16 +234,17 @@ class ImgPanZoom extends LitElement {
     });
   }
   _openseadragonLoaded() {
-    if(OpenSeadragon){
+    if (OpenSeadragon) {
       this._initOpenSeadragon();
     } else {
-      let check = ()=>{
-        console.log('OpenSeadragon',OpenSeadragon);
-        if(OpenSeadragon){
-          this._initOpenSeadragon();
-          clearInterval(interval);
-        }
-      }, interval = setInterval(check, 1);   
+      let check = () => {
+          console.log("OpenSeadragon", OpenSeadragon);
+          if (OpenSeadragon) {
+            this._initOpenSeadragon();
+            clearInterval(interval);
+          }
+        },
+        interval = setInterval(check, 1);
     }
   }
   /**
