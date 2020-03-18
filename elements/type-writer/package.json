@@ -40,15 +40,15 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/intersection-element": "^2.6.0",
-    "lit-element": "2.2.1"
+    "lit-element": "2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.4.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.1",
-    "concurrently": "5.0.2",
-    "es-dev-server": "1.40.0",
+    "@webcomponents/webcomponentsjs": "2.4.3",
+    "concurrently": "5.1.0",
+    "es-dev-server": "1.45.1",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
     "lodash": "4.17.15",

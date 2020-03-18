@@ -47,18 +47,18 @@
     "@lrnwebcomponents/schema-behaviors": "^2.5.0",
     "@lrnwebcomponents/simple-colors": "^2.5.0",
     "@polymer/iron-ajax": "^3.0.0",
-    "lit-element": "2.2.1"
+    "lit-element": "2.3.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
     "@lrnwebcomponents/storybook-utilities": "^2.5.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
-    "@webcomponents/webcomponentsjs": "2.4.1",
+    "@webcomponents/webcomponentsjs": "2.4.3",
     "concurrently": "5.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
-    "lodash": "4.17.13",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
     "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },
