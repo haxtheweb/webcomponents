@@ -15,38 +15,43 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @customElement simple-pages
  */
 class SimplePages extends LitElement {
-  
   // render function
   render() {
     return html`
-<style>:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-iron-pages:not(:defined) {
-  display: none;
-}</style>
-<iron-pages selected="${this.selected}" selected-attribute="${this.selectedAttribute}" @selected-changed="${this._selectedChanged}">
-  <slot></slot>
-</iron-pages>`;
+        iron-pages:not(:defined) {
+          display: none;
+        }
+      </style>
+      <iron-pages
+        selected="${this.selected}"
+        selected-attribute="${this.selectedAttribute}"
+        @selected-changed="${this._selectedChanged}"
+      >
+        <slot></slot>
+      </iron-pages>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     let props = {
-  "selected": {
-    "type": Number
-  },
-  "selectedAttribute": {
-    "type": String,
-    "attribute": "selected-attribute"
-  }
-}
-;
+      selected: {
+        type: Number
+      },
+      selectedAttribute: {
+        type: String,
+        attribute: "selected-attribute"
+      }
+    };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -67,24 +72,29 @@ iron-pages:not(:defined) {
     super();
     this.selected = 0;
     setTimeout(() => {
-      import('@polymer/iron-pages/iron-pages.js');
+      import("@polymer/iron-pages/iron-pages.js");
     }, 0);
   }
   /**
    * Selected changed
    */
   _selectedChanged(e) {
-    if (this.children && this.children[e.detail.value] && this.children[e.detail.value].tagName && this.children[e.detail.value].getAttribute('data-dimport')) {
+    if (
+      this.children &&
+      this.children[e.detail.value] &&
+      this.children[e.detail.value].tagName &&
+      this.children[e.detail.value].getAttribute("data-dimport")
+    ) {
       let el = this.children[e.detail.value];
       if (!window.customElements.get(el.tagName.toLowerCase())) {
-        const basePath = this.pathFromUrl(
-          decodeURIComponent(import.meta.url)
+        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+        import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
+          response => {
+            setTimeout(() => {
+              window.dispatchEvent(new Event("resize"));
+            }, 0);
+          }
         );
-        import(`${basePath}../../${el.getAttribute('data-dimport')}`).then((response) => {
-          setTimeout(() => {
-            window.dispatchEvent(new Event("resize"));
-          }, 0);
-        });
       }
     }
   }

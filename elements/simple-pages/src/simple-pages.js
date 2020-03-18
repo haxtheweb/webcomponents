@@ -31,24 +31,29 @@ class SimplePages extends LitElement {
     super();
     this.selected = 0;
     setTimeout(() => {
-      import('@polymer/iron-pages/iron-pages.js');
+      import("@polymer/iron-pages/iron-pages.js");
     }, 0);
   }
   /**
    * Selected changed
    */
   _selectedChanged(e) {
-    if (this.children && this.children[e.detail.value] && this.children[e.detail.value].tagName && this.children[e.detail.value].getAttribute('data-dimport')) {
+    if (
+      this.children &&
+      this.children[e.detail.value] &&
+      this.children[e.detail.value].tagName &&
+      this.children[e.detail.value].getAttribute("data-dimport")
+    ) {
       let el = this.children[e.detail.value];
       if (!window.customElements.get(el.tagName.toLowerCase())) {
-        const basePath = this.pathFromUrl(
-          decodeURIComponent(import.meta.url)
+        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+        import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
+          response => {
+            setTimeout(() => {
+              window.dispatchEvent(new Event("resize"));
+            }, 0);
+          }
         );
-        import(`${basePath}../../${el.getAttribute('data-dimport')}`).then((response) => {
-          setTimeout(() => {
-            window.dispatchEvent(new Event("resize"));
-          }, 0);
-        });
       }
     }
   }
