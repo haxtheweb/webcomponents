@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@lrnwebcomponents/es-global-bridge": "^2.4.0",
     "@lrnwebcomponents/md-extra-icons": "^2.5.0",
     "@lrnwebcomponents/responsive-utility": "^2.5.0",
-    "@lrnwebcomponents/simple-fields": "^2.6.0",
+    "@lrnwebcomponents/simple-fields": "^2.6.1",
     "@lrnwebcomponents/simple-picker": "^2.5.0",
     "@lrnwebcomponents/simple-popover": "^2.5.0",
     "@lrnwebcomponents/simple-tooltip": "^2.5.0",
