@@ -365,20 +365,13 @@ class SimpleFields extends SimpleFieldsLite {
             properties: {
               minimum: "min",
               maximum: "max",
-              multipleOf: "step"
+              multiplef: "step"
             }
           }
         },
         markup: {
           defaultSettings: {
-            element: "code-editor",
-            setValueProperty: "editorValue",
-            attributes: {
-              autofocus: true,
-              theme: "vs",
-              mode: "html",
-              className: "hax-code-editor"
-            }
+            element: "simple-fields-markup"
           }
         },
         number: {
@@ -541,6 +534,7 @@ class SimpleFields extends SimpleFieldsLite {
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
+      import("./lib/simple-fields-markup.js");
       import("@lrnwebcomponents/code-editor/code-editor.js");
       import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
       import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
@@ -562,7 +556,7 @@ class SimpleFields extends SimpleFieldsLite {
       required: [],
       properties: this._fieldsToSchema(this.fields)
     };
-    console.log(this.fields,schema);
+    console.log(this.fields, schema);
     return schema;
   }
 

@@ -20,6 +20,7 @@ Custom property | Description | Default
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
 `--simple-fields-border-radus` | default border-radius | 2px
 `--simple-fields-color` | text color | black
+`--simple-fields-background-color` | background color | white
 `--simple-fields-error-color` | error text color | #dd2c00
 `--simple-fields-accent-color` | accent text/underline color | #3f51b5
 `--simple-fields-border-color` | border-/underline color | #999
@@ -543,12 +544,10 @@ class SimpleFieldsLite extends LitElement {
               ? schemaProp.description
               : undefined;
         data.labelSlot = schema.labelSlot || data.labelSlot;
-        data.descriptionSlot =
-          schema.descriptionSlot || data.descriptionSlot;
+        data.descriptionSlot = schema.descriptionSlot || data.descriptionSlot;
         data.errorMessageSlot =
           schema.errorMessageSlot || data.errorMessageSlot;
-        data.valueSlot =
-          schema.valueSlot || data.valueSlot;
+        data.valueSlot = schema.valueSlot || data.valueSlot;
         data.labelProperty =
           schema.labelProperty || data.labelProperty || "label";
         data.descriptionProperty =
@@ -558,7 +557,9 @@ class SimpleFieldsLite extends LitElement {
         data.valueProperty =
           schema.valueProperty || data.valueProperty || "value";
         data.setValueProperty =
-          schema.setValueProperty || data.setValueProperty || data.valueProperty;
+          schema.setValueProperty ||
+          data.setValueProperty ||
+          data.valueProperty;
         data.valueChangedProperty =
           schema.valueChangedProperty ||
           data.valueChangedProperty ||
@@ -573,7 +574,7 @@ class SimpleFieldsLite extends LitElement {
           schema.errorMessageProperty ||
           data.errorMessageProperty ||
           "errorMessage";
-        
+
         element.resources = this.resources;
         element.id = id;
         element.setAttribute("name", id);
@@ -593,12 +594,7 @@ class SimpleFieldsLite extends LitElement {
           wrapper.hidden = true;
         }
 
-        this._configElement(
-          wrapper,
-          label,
-          data.labelProperty,
-          data.labelSlot
-        );
+        this._configElement(wrapper, label, data.labelProperty, data.labelSlot);
         this._configElement(
           wrapper,
           desc,
@@ -899,7 +895,10 @@ class SimpleFieldsLite extends LitElement {
    */
   _handleChange(element, valueProperty) {
     //console.log('_handleChange',element.id || element.getAttribute('id'),valueProperty);
-    this._setValue(element.id || element.getAttribute('id'), element[valueProperty]);
+    this._setValue(
+      element.id || element.getAttribute("id"),
+      element[valueProperty]
+    );
     this._fireValueChanged();
   }
 

@@ -1,5 +1,5 @@
 :host {
-  display: inline-flex;
+  display: var(--simple-picker-display,inline-flex);
   align-items: center;
   color: var(--simple-picker-color, black);
   font-family: var(--simple-picker-font-family, inherit);
@@ -90,6 +90,15 @@ label:not([hidden]) {
   border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
   transition: all 0.5s;
+}
+:host(:focus-within) #listbox{
+  border-width: var(--simple-picker-listbox-border-width, var(--simple-picker-border-width, 1px));
+  border-style: var(--simple-picker-listbox-border-width, var(--simple-picker-border-style, solid));
+  border-color: var(--simple-picker-listbox-border-width, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
+}
+#listbox:focus-within,
+:host(:focus-within) #listbox{
+  outline: var(--simple-picker-listbox-outline,unset);
 }
 
 #icon {

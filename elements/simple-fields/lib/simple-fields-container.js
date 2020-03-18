@@ -288,11 +288,26 @@ class SimpleFieldsContainer extends LitElement {
       "week"
     ];
     this._observeAndListen();
+    this.addEventListener("click", e => this.focus());
+  }
+  disconnectedCallback() {
+    this.removeEventListener("click", e => this.focus());
+    super.disconnectedCallback();
   }
 
-  disconnectedCallback() {
-    this._observeAndListen(false);
-    super.disconnectedCallback();
+  /**
+   * makes a field autogrow
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  autoGrow(field) {
+    if (field) return;
+    this._updateCount();
+    if (field) {
+      field.style.height = "auto";
+      field.style.height = `${field.scrollHeight}px`;
+      field.style.overflowY = "hidden";
+    }
   }
   /**
    * updates slotted field
@@ -462,7 +477,7 @@ class SimpleFieldsContainer extends LitElement {
    *
    * @readonly
    * @returns {boolean}
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   get numeric() {
     return [
@@ -518,7 +533,7 @@ class SimpleFieldsContainer extends LitElement {
 
   /**
    * focuses on field
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   focus() {
     if (this.field) this.field.focus();
@@ -526,7 +541,7 @@ class SimpleFieldsContainer extends LitElement {
 
   /**
    * selects all text
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   select() {
     if (this.field && (this.type === "text" || this.type === "textarea"))
@@ -543,7 +558,7 @@ class SimpleFieldsContainer extends LitElement {
    * "start" moves the selection to just before the inserted text,
    * "end" moves the selection to just after the inserted text, and
    * "preserve" attempts to preserve the selection. This is the default.
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   setRangeText(replacement, start, end, selectMode) {
     if (this.field && (this.type === "text" || this.type === "textarea"))
@@ -556,7 +571,7 @@ class SimpleFieldsContainer extends LitElement {
    * @param {selectionStart} start 0-based index first character
    * @param {selectionEnd} end 0-based index after last character
    * @param {selectMode} selection direction: "forward", "backward", or default "none"
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   setSelectionRange(selectionStart, selectionEnd, selectionDirection) {
     if (this.field && (this.type === "text" || this.type === "textarea"))
@@ -570,7 +585,7 @@ class SimpleFieldsContainer extends LitElement {
    * decrements by a multiple of step
    *
    * @param {number} [n=1]
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   stepDown(n = 1) {
     if (this.field && this.numeric) this.field.stepDown();
@@ -580,7 +595,7 @@ class SimpleFieldsContainer extends LitElement {
    * increments by a multiple of step
    *
    * @param {number} [n=1]
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   stepUp(n = 1) {
     if (this.field && this.numeric) this.field.stepUp();
@@ -589,7 +604,7 @@ class SimpleFieldsContainer extends LitElement {
   /**
    * checks validation constraints and returns error data (for slotted field)
    * @returns {object}
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   validate() {
     let value = this.field.value,
@@ -678,7 +693,7 @@ class SimpleFieldsContainer extends LitElement {
   /**
    * updates field an type
    *
-   * @memberof SimpleFieldsInput
+   * @memberof SimpleFieldsContainer
    */
   _updateField() {
     this.field =

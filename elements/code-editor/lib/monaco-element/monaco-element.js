@@ -206,10 +206,7 @@ class MonacoElement extends LitElement {
           language: '${this.language}',
           scrollBeyondLastLine: false,
           automaticLayout: true,
-          ${this.hideLineNumbers 
-            ? `lineNumbers: 'false',`
-            : ``
-          }
+          ${this.hideLineNumbers ? `lineNumbers: 'false',` : ``}
           fontSize: ${this.fontSize},
           readOnly: ${this.readOnly},
           minimap: {
