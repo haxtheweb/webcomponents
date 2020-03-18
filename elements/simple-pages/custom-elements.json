@@ -1,0 +1,24 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "simple-pages",
+      "path": "./simple-pages.es6.js",
+      "description": "`simple-pages`\n`toggle between pages`"
+    },
+    {
+      "name": "simple-pages",
+      "path": "./simple-pages.js",
+      "description": "`simple-pages`\n`toggle between pages`"
+    },
+    {
+      "name": "tag",
+      "path": "./simple-pages.umd.js"
+    },
+    {
+      "name": "simple-pages",
+      "path": "./src/simple-pages.js",
+      "description": "`simple-pages`\n`toggle between pages`"
+    }
+  ]
+}
