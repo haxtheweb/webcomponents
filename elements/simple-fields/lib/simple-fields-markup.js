@@ -100,7 +100,8 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (propName === "value" && this.value !== oldValue) {
-        if(this.field) console.log(this.value,this.field.value,this.field.editorValue);
+        if (this.field)
+          console.log(this.value, this.field.value, this.field.editorValue);
         //this.field.editorValue = this.value;
         this._fireValueChanged();
       }
@@ -118,14 +119,15 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
     return html`
       <div class="field-main">
         ${this.labelTemplate}
-        <code-editor 
-          ?autofocus="${this.autofocus}"  
-          font-size="${this.fontSize}" 
-          theme="${this.theme}" 
+        <code-editor
+          ?autofocus="${this.autofocus}"
+          font-size="${this.fontSize}"
+          theme="${this.theme}"
           mode="${this.mode}"
-          @value-changed="${this._onChange}">
+          @value-changed="${this._onChange}"
+        >
         </code-editor>
-        <input name ="${this.id}" type="hidden" value="${this.value}">
+        <input name="${this.id}" type="hidden" value="${this.value}" />
       </div>
     `;
   }
@@ -201,8 +203,8 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
    */
   _updateField() {
     this.field =
-      this.shadowRoot && this.shadowRoot.querySelector('code-editor')
-        ? this.shadowRoot.querySelector('code-editor')
+      this.shadowRoot && this.shadowRoot.querySelector("code-editor")
+        ? this.shadowRoot.querySelector("code-editor")
         : undefined;
     this.value = this.field.value;
   }
