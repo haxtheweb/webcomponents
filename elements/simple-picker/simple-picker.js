@@ -56,375 +56,490 @@ Custom property | Description | Default
  * @customElement simple-picker
  */
 class SimplePicker extends LitElement {
-  
   //styles function
   static get styles() {
-    return  [
-      
+    return [
       css`
-:host {
-  display: var(--simple-picker-display,inline-flex);
-  align-items: center;
-  color: var(--simple-picker-color, black);
-  font-family: var(--simple-picker-font-family, inherit);
-  font-size: var(--simple-picker-font-size, inherit);
-  --simple-picker-height: calc(var(--simple-picker-option-size, 24px) + var(--simple-picker-sample-padding, 2px) * 2 + var(--simple-picker-border-width, 1px) * 2);
-  min-height: var(--simple-picker-height);
-  max-height: var(--simple-picker-height);
-}
+        :host {
+          display: var(--simple-picker-display, inline-flex);
+          align-items: center;
+          color: var(--simple-picker-color, black);
+          font-family: var(--simple-picker-font-family, inherit);
+          font-size: var(--simple-picker-font-size, inherit);
+          --simple-picker-height: calc(
+            var(--simple-picker-option-size, 24px) +
+              var(--simple-picker-sample-padding, 2px) * 2 +
+              var(--simple-picker-border-width, 1px) * 2
+          );
+          min-height: var(--simple-picker-height);
+          max-height: var(--simple-picker-height);
+        }
 
-:host([block-label]) {
-  display: block;
-  margin: 0 0 15px;
-  max-height: unset;
-}
+        :host([block-label]) {
+          display: block;
+          margin: 0 0 15px;
+          max-height: unset;
+        }
 
-:host([disabled]) {
-  --simple-picker-color: var(--simple-picker-color-disabled, #888);
-  --simple-picker-background-color: var(--simple-picker-background-color-disabled, #e8e8e8);
-  cursor: not-allowed;
-}
+        :host([disabled]) {
+          --simple-picker-color: var(--simple-picker-color-disabled, #888);
+          --simple-picker-background-color: var(
+            --simple-picker-background-color-disabled,
+            #e8e8e8
+          );
+          cursor: not-allowed;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-div {
-  margin: unset;
-  padding: unset;
-}
+        div {
+          margin: unset;
+          padding: unset;
+        }
 
-label:not([hidden]) {
-  display: flex;
-  align-items: center;
-  padding-right: 5px;
-  font-family: var(--simple-picker-font-family, inherit);
-  color: var(--simple-picker-label-color, var(--simple-picker-color, black));
-}
+        label:not([hidden]) {
+          display: flex;
+          align-items: center;
+          padding-right: 5px;
+          font-family: var(--simple-picker-font-family, inherit);
+          color: var(
+            --simple-picker-label-color,
+            var(--simple-picker-color, black)
+          );
+        }
 
-:host([block-label]) label:not([hidden]) {
-  display: block;
-  padding-right: 0px;
-  color: var(--simple-picker-float-label-color, var(--simple-picker-color-disabled, #888));
-  transition: all 0.5s;
-  max-height: unset;
-}
+        :host([block-label]) label:not([hidden]) {
+          display: block;
+          padding-right: 0px;
+          color: var(
+            --simple-picker-float-label-color,
+            var(--simple-picker-color-disabled, #888)
+          );
+          transition: all 0.5s;
+          max-height: unset;
+        }
 
-:host([block-label]:focus-within) label,
-:host([block-label]:hover) label {
-  color: var(--simple-picker-float-label-active-color, var(--simple-picker-color, black));
-  transition: all 0.5s;
-}
+        :host([block-label]:focus-within) label,
+        :host([block-label]:hover) label {
+          color: var(
+            --simple-picker-float-label-active-color,
+            var(--simple-picker-color, black)
+          );
+          transition: all 0.5s;
+        }
 
-#sample, 
-.rows {
-  margin: 0;
-  padding: 0;
-}
+        #sample,
+        .rows {
+          margin: 0;
+          padding: 0;
+        }
 
-#listbox {
-  cursor: pointer;
-  position: relative;
-  flex: 1 0 auto;
-  min-height: var(--simple-picker-height);
-  max-height: var(--simple-picker-height);
-}
+        #listbox {
+          cursor: pointer;
+          position: relative;
+          flex: 1 0 auto;
+          min-height: var(--simple-picker-height);
+          max-height: var(--simple-picker-height);
+        }
 
-#sample {
-  display: flex;
-  flex: 1 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--simple-picker-sample-padding, 2px);
-  border-radius: var(--simple-picker-border-radius, 2px);
-  color: var(--simple-picker-sample-color, black);
-  background-color: var(--simple-picker-background-color, #f0f0f0);
-  border-width: var(--simple-picker-border-width, 1px);
-  border-style: var(--simple-picker-border-style, solid);
-  border-color: var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888));  
-}
+        #sample {
+          display: flex;
+          flex: 1 0 auto;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(--simple-picker-sample-padding, 2px);
+          border-radius: var(--simple-picker-border-radius, 2px);
+          color: var(--simple-picker-sample-color, black);
+          background-color: var(--simple-picker-background-color, #f0f0f0);
+          border-width: var(--simple-picker-border-width, 1px);
+          border-style: var(--simple-picker-border-style, solid);
+          border-color: var(
+            --simple-picker-border-color,
+            var(--simple-picker-color-disabled, #888)
+          );
+        }
 
-:host([hide-sample]) #sample {
-  width: var(--simple-picker-option-size);
-  overflow: visible;
-}
+        :host([hide-sample]) #sample {
+          width: var(--simple-picker-option-size);
+          overflow: visible;
+        }
 
-:host(:focus-within) #sample {
-  border-width: var(--simple-picker-focus-border-width, var(--simple-picker-border-width, 1px));
-  border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
-  border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
-  transition: all 0.5s;
-}
-:host(:focus-within) #listbox{
-  border-width: var(--simple-picker-listbox-border-width, var(--simple-picker-border-width, 1px));
-  border-style: var(--simple-picker-listbox-border-width, var(--simple-picker-border-style, solid));
-  border-color: var(--simple-picker-listbox-border-width, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
-}
-#listbox:focus-within,
-:host(:focus-within) #listbox{
-  outline: var(--simple-picker-listbox-outline,unset);
-}
+        :host(:focus-within) #sample {
+          border-width: var(
+            --simple-picker-focus-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-focus-border-style,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-focus-border-color,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+          transition: all 0.5s;
+        }
+        :host(:focus-within) #listbox {
+          border-width: var(
+            --simple-picker-listbox-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-listbox-border-width,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-listbox-border-width,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+        }
+        #listbox:focus-within,
+        :host(:focus-within) #listbox {
+          outline: var(--simple-picker-listbox-outline, unset);
+        }
 
-#icon {
-  transform: var(--simple-picker-icon-transform, rotate(0deg));
-  transition: transform 0.25s;
-}
+        #icon {
+          transform: var(--simple-picker-icon-transform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-:host([expanded]) #icon {
-  transform: var(--simple-picker-expanded-icon-transform, rotate(0deg));
-  transition: transform 0.25s;
-}
+        :host([expanded]) #icon {
+          transform: var(--simple-picker-expanded-icon-transform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-#collapse {
-  display: none;
-  width: 100%;
-  position: absolute;  
-  padding: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
-  z-index: 2;
-}
+        #collapse {
+          display: none;
+          width: 100%;
+          position: absolute;
+          padding: var(
+            --simple-picker-options-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          z-index: 2;
+        }
 
-:host([expanded]:not([disabled])) #collapse {
-  display: block;
-} 
+        :host([expanded]:not([disabled])) #collapse {
+          display: block;
+        }
 
-.rows {
-  display: block;
-  position: absolute;
-  z-index: 1000;  
-  left: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));  
-  top: calc(0px - var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));
-  border-width: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
-  border-style: var(--simple-picker-options-border-style, var(--simple-picker-border-style, solid));
-  border-color: var(--simple-picker-options-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
-  background-color: var(--simple-picker-options-background-color, #fff);
-  max-height: var(--simple-picker-options-max-height, 250px);
-  overflow-y: auto; 
-}
-:host([align-right]) #collapse .rows {
-  left: unset;
-  right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
-}
+        .rows {
+          display: block;
+          position: absolute;
+          z-index: 1000;
+          left: calc(
+            var(
+              --simple-picker-options-border-width,
+              var(--simple-picker-border-width, 1px)
+            )
+          );
+          top: calc(
+            0px -
+              var(
+                --simple-picker-options-border-width,
+                var(--simple-picker-border-width, 1px)
+              )
+          );
+          border-width: var(
+            --simple-picker-options-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-options-border-style,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-options-border-color,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+          background-color: var(--simple-picker-options-background-color, #fff);
+          max-height: var(--simple-picker-options-max-height, 250px);
+          overflow-y: auto;
+        }
+        :host([align-right]) #collapse .rows {
+          left: unset;
+          right: calc(
+            var(
+                --simple-picker-options-border-width,
+                var(--simple-picker-border-width, 1px)
+              ) * 2
+          );
+        }
 
-.row {
-  display: flex; 
-  align-items: stretch;
-  justify-content: space-between;
-}
+        .row {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+        }
 
-simple-picker-option {
-  z-index: 1;
-  flex: 1 1 auto;
-  justify-content: flex-start;
-  max-height: unset;
-  min-height: var(--simple-picker-option-size, 24px);
-  min-width: var(--simple-picker-option-size, 24px);
-  line-height: var(--simple-picker-option-size, 24px);
-  color: var(--simple-picker-color, black);
-  background-color: var(--simple-picker-options-background-color, #fff);
-  transition: max-height 2s;
-}
+        simple-picker-option {
+          z-index: 1;
+          flex: 1 1 auto;
+          justify-content: flex-start;
+          max-height: unset;
+          min-height: var(--simple-picker-option-size, 24px);
+          min-width: var(--simple-picker-option-size, 24px);
+          line-height: var(--simple-picker-option-size, 24px);
+          color: var(--simple-picker-color, black);
+          background-color: var(--simple-picker-options-background-color, #fff);
+          transition: max-height 2s;
+        }
 
-simple-picker-option[selected] {
-  z-index: 50;
-  color: var(--simple-picker-color, black);
-  background-color: var(--simple-picker-option-selected-background-color, var(--simple-picker-options-background-color, #fff));
-}
+        simple-picker-option[selected] {
+          z-index: 50;
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-option-selected-background-color,
+            var(--simple-picker-options-background-color, #fff)
+          );
+        }
 
-simple-picker-option[active] {
-  z-index: 100;
-  cursor: pointer;
-  color: var(--simple-picker-color, black);
-  background-color: var(--simple-picker-option-active-background-color, #aaddff);
-}
+        simple-picker-option[active] {
+          z-index: 100;
+          cursor: pointer;
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-option-active-background-color,
+            #aaddff
+          );
+        }
 
-#sample simple-picker-option {
-  color: var(--simple-picker-color, black);
-  background-color: var(--simple-picker-sample-background-color, transparent);
-  --simple-picker-option-padding: var(--simple-picker-sample-padding, 2px) 0;
-  border: none;
-}
+        #sample simple-picker-option {
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-sample-background-color,
+            transparent
+          );
+          --simple-picker-option-padding: var(
+              --simple-picker-sample-padding,
+              2px
+            )
+            0;
+          border: none;
+        }
 
-:host([hide-sample]) #sample simple-picker-option {
-  position: absolute;
-  left: -9999px;
-  overflow: hidden;
-  width: 0;
-  height: 0;
-}
+        :host([hide-sample]) #sample simple-picker-option {
+          position: absolute;
+          left: -9999px;
+          overflow: hidden;
+          width: 0;
+          height: 0;
+        }
 
-:host(:focus-within) #sample simple-picker-option,
-:host(:hover) #sample simple-picker-option {
-  --simple-picker-color: var(--simple-picker-color-active, var(--simple-picker-color, black));
-}
+        :host(:focus-within) #sample simple-picker-option,
+        :host(:hover) #sample simple-picker-option {
+          --simple-picker-color: var(
+            --simple-picker-color-active,
+            var(--simple-picker-color, black)
+          );
+        }
 
-:host(:not([expanded])) #collapse simple-picker-option {
-  max-height: 0;
-  transition: max-height 1.5s;
-}
+        :host(:not([expanded])) #collapse simple-picker-option {
+          max-height: 0;
+          transition: max-height 1.5s;
+        }
 
-@media screen and (max-width: 600px) {
-  :host {
-    position: static;
-  }
-  #collapse {
-    top: 0;
-    margin-top: 0;
-    position: relative;
-  } 
-  .rows {
-    position: absolute;
-  }  
-}
+        @media screen and (max-width: 600px) {
+          :host {
+            position: static;
+          }
+          #collapse {
+            top: 0;
+            margin-top: 0;
+            position: relative;
+          }
+          .rows {
+            position: absolute;
+          }
+        }
       `
     ];
   }
 
-// render function
+  // render function
   render() {
     return html`
-
-<label id="listLabel" for="listbox" .hidden="${!this.label || this.label.trim() === ''}">
-  ${this.label && this.label.trim() !== "" ? this.label.trim()  : "" }
-</label>
-<div id="listbox"
-  .aria-activedescendant="${this.__activeDesc}" 
-  .aria-labelledby="${this.ariaLabelledby}" 
-  .disabled="${this.disabled}"
-  role="listbox" 
-  tabindex="0"
-  @click="${this._handleListboxClick}"
-  @mousedown="${this._handleListboxMousedown}"
-  @keydown="${this._handleListboxKeydown}">
-  <div id="sample">
-    <simple-picker-option 
-      ?hide-option-labels="${this.hideOptionLabels}"
-      ?title-as-html="${this.titleAsHtml}"
-      .icon="${this.__selectedOption ? this.__selectedOption.icon : false}"
-      .label="${this.__selectedOption ? this.__selectedOption.alt : false}"
-      .style=${this.__selectedOption ? this.__selectedOption.style : false}
-      aria-hidden="true">
-    </simple-picker-option>
-    <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
-  </div>
-  <div id="collapse">
-    <div class="rows">
-        ${this.__options ? this.__options.map((row,rownum) => html`
-          <div class="row">
-            ${row ? row.map((option,colnum) => html`
-              <simple-picker-option
-                @option-focus="${this._handleOptionFocus}"
-                @set-selected-option="${this._handleSetSelectedOption}"
-                ?active="${`${this.__activeDesc}` === `option-${rownum}-${colnum}`}"
-                ?hide-option-labels="${this.hideOptionLabels}"
-                ?hidden="${!this.allowNull && !option.value}"
-                ?selected="${this.value === option.value}"
-                ?title-as-html="${this.titleAsHtml}" 
-                .data="${this.data}"
-                .icon="${option.icon}"
-                .id="option-${rownum}-${colnum}"
-                .label="${option.alt}"
-                .style=${option.style}
-                aria-selected="${this.value === option.value ? 'true' : 'false'}"
-                role="option"
-                tabindex="-1"
-                value="${option.value}">
-              </simple-picker-option>
-            `) : ``}
+      <label
+        id="listLabel"
+        for="listbox"
+        .hidden="${!this.label || this.label.trim() === ""}"
+      >
+        ${this.label && this.label.trim() !== "" ? this.label.trim() : ""}
+      </label>
+      <div
+        id="listbox"
+        .aria-activedescendant="${this.__activeDesc}"
+        .aria-labelledby="${this.ariaLabelledby}"
+        .disabled="${this.disabled}"
+        role="listbox"
+        tabindex="0"
+        @click="${this._handleListboxClick}"
+        @mousedown="${this._handleListboxMousedown}"
+        @keydown="${this._handleListboxKeydown}"
+      >
+        <div id="sample">
+          <simple-picker-option
+            ?hide-option-labels="${this.hideOptionLabels}"
+            ?title-as-html="${this.titleAsHtml}"
+            .icon="${this.__selectedOption
+              ? this.__selectedOption.icon
+              : false}"
+            .label="${this.__selectedOption
+              ? this.__selectedOption.alt
+              : false}"
+            .style=${this.__selectedOption
+              ? this.__selectedOption.style
+              : false}
+            aria-hidden="true"
+          >
+          </simple-picker-option>
+          <span id="icon"
+            ><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon
+          ></span>
+        </div>
+        <div id="collapse">
+          <div class="rows">
+            ${this.__options
+              ? this.__options.map(
+                  (row, rownum) => html`
+                    <div class="row">
+                      ${row
+                        ? row.map(
+                            (option, colnum) => html`
+                              <simple-picker-option
+                                @option-focus="${this._handleOptionFocus}"
+                                @set-selected-option="${this
+                                  ._handleSetSelectedOption}"
+                                ?active="${`${this.__activeDesc}` ===
+                                  `option-${rownum}-${colnum}`}"
+                                ?hide-option-labels="${this.hideOptionLabels}"
+                                ?hidden="${!this.allowNull && !option.value}"
+                                ?selected="${this.value === option.value}"
+                                ?title-as-html="${this.titleAsHtml}"
+                                .data="${this.data}"
+                                .icon="${option.icon}"
+                                .id="option-${rownum}-${colnum}"
+                                .label="${option.alt}"
+                                .style=${option.style}
+                                aria-selected="${this.value === option.value
+                                  ? "true"
+                                  : "false"}"
+                                role="option"
+                                tabindex="-1"
+                                value="${option.value}"
+                              >
+                              </simple-picker-option>
+                            `
+                          )
+                        : ``}
+                    </div>
+                  `
+                )
+              : ``}
           </div>
-        `) : ``}
-    </div>
-  </div>
-</div>`;
+        </div>
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  
-  ...super.properties,
-  
-  /**
-   * llow a null value?
-   * Default behavior/false will select first option and set value accordingly.
-   */
-  "allowNull": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "allow-null"
-  },
+      ...super.properties,
 
-  /**
-   * Align right edges of listbox and button?
-   * Default behavior/false aligns to left edges.
-   */
-  "alignRight": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "align-right"
-  },
+      /**
+       * llow a null value?
+       * Default behavior/false will select first option and set value accordingly.
+       */
+      allowNull: {
+        type: Boolean,
+        reflect: true,
+        attribute: "allow-null"
+      },
 
-  /**
-   * Optional. Sets aria-labelledby attribute
-   */
-  "ariaLabelledby": {
-    "type": String,
-    "attribute": "aria-labelledby"
-  },
+      /**
+       * Align right edges of listbox and button?
+       * Default behavior/false aligns to left edges.
+       */
+      alignRight: {
+        type: Boolean,
+        reflect: true,
+        attribute: "align-right"
+      },
 
-  /**
-   * Position label above select dropdown?
-   */
-  "blockLabel": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "block-label"
-  },
+      /**
+       * Optional. Sets aria-labelledby attribute
+       */
+      ariaLabelledby: {
+        type: String,
+        attribute: "aria-labelledby"
+      },
 
-  /**
-   * Is picker disabled?
-   */
-  "disabled": {
-    "type": Boolean,
-    "reflect": true
-  },
+      /**
+       * Position label above select dropdown?
+       */
+      blockLabel: {
+        type: Boolean,
+        reflect: true,
+        attribute: "block-label"
+      },
 
-  /**
-   * Is it expanded?
-   */
-  "expanded": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "expanded"
-  },
+      /**
+       * Is picker disabled?
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true
+      },
 
-  /**
-   * Hide option labels? As color-picker or icon-picker, labels may be redundant.
-   * This option would move labels off-screen so that only screen-readers will have them.
-   */
-  "hideOptionLabels": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "hide-option-labels"
-  },
+      /**
+       * Is it expanded?
+       */
+      expanded: {
+        type: Boolean,
+        reflect: true,
+        attribute: "expanded"
+      },
 
-  /**
-   * Hide selected item sample?
-   * Default behavior/false shows a sample without expanding menu.
-   */
-  "hideSample": {
-    "type": Boolean,
-    "reflect": true,
-    "attribute": "hide-sample"
-  },
+      /**
+       * Hide option labels? As color-picker or icon-picker, labels may be redundant.
+       * This option would move labels off-screen so that only screen-readers will have them.
+       */
+      hideOptionLabels: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-option-labels"
+      },
 
-  /**
-   * Optional. Label for picker input
-   */
-  "label": {
-    "type": String
-  },
+      /**
+       * Hide selected item sample?
+       * Default behavior/false shows a sample without expanding menu.
+       */
+      hideSample: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-sample"
+      },
 
-  /**
+      /**
+       * Optional. Label for picker input
+       */
+      label: {
+        type: String
+      },
+
+      /**
    * An array of options for picker, eg.: 
 [
   [
@@ -437,34 +552,34 @@ simple-picker-option[active] {
   ]
 ]
    */
-  "options": {
-    "type": Array
-  },
+      options: {
+        type: Array
+      },
 
-  /**
-   * Renders html as title. (Good for titles with HTML in them.)
-   */
-  "titleAsHtml": {
-    "type": Boolean,
-    "attribute": "title-as-html"
-  },
+      /**
+       * Renders html as title. (Good for titles with HTML in them.)
+       */
+      titleAsHtml: {
+        type: Boolean,
+        attribute: "title-as-html"
+      },
 
-  /**
-   * An string that stores current value for picker
-   */
-  "value": {
-    "type": String,
-    "reflect": true
-  },
+      /**
+       * An string that stores current value for picker
+       */
+      value: {
+        type: String,
+        reflect: true
+      },
 
-  /**
-   * Aria-activedescendant attribute (active option's ID)
-   */
-  "__activeDesc": {
-    "type": String
-  },
+      /**
+       * Aria-activedescendant attribute (active option's ID)
+       */
+      __activeDesc: {
+        type: String
+      },
 
-  /**
+      /**
    * An array of options for picker, eg.: `
 [
   [
@@ -477,18 +592,17 @@ simple-picker-option[active] {
   ]
 ]`
    */
-  "__options": {
-    "type": Array
-  },
+      __options: {
+        type: Array
+      },
 
-  /**
-   * Selected option based on value of picker
-   */
-  "__selectedOption": {
-    "type": Object
-  }
-}
-;
+      /**
+       * Selected option based on value of picker
+       */
+      __selectedOption: {
+        type: Object
+      }
+    };
   }
 
   /**

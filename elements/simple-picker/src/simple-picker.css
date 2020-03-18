@@ -91,11 +91,13 @@ label:not([hidden]) {
   border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
   transition: all 0.5s;
 }
+
 :host(:focus-within) #listbox{
   border-width: var(--simple-picker-listbox-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-listbox-border-width, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-listbox-border-width, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
 }
+
 #listbox:focus-within,
 :host(:focus-within) #listbox{
   outline: var(--simple-picker-listbox-outline,unset);
@@ -136,6 +138,7 @@ label:not([hidden]) {
   max-height: var(--simple-picker-options-max-height, 250px);
   overflow-y: auto; 
 }
+
 :host([align-right]) #collapse .rows {
   left: unset;
   right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
@@ -202,11 +205,13 @@ simple-picker-option[active] {
   :host {
     position: static;
   }
+
   #collapse {
     top: 0;
     margin-top: 0;
     position: relative;
   } 
+
   .rows {
     position: absolute;
   }  
