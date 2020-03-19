@@ -181,6 +181,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
       this.errorMessage = this.requiredMessage || `required`;
     }
   }
+  
   /**
    * fires when value changes
    * @event value-changed

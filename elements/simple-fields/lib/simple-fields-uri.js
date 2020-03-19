@@ -336,6 +336,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
             required
             value="${this.option}"
             @value-changed="${this.optionChanged}"
+            @change="${this.changed}"
             .options="${this.options}"
           >
         </simple-picker>
@@ -356,8 +357,8 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
           @upload-before="${this._fileAboutToUpload}"
           @upload-response="${this._fileUploadResponse}"
         ></vaadin-upload>
-        <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
-        <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
+        <div id="camerahole" ?hidden="${this.option !== "selfie" || !navigator.mediaDevices || this.noCamera}"></div>
+        <div id="voicerecorder" ?hidden="${this.option !== "audio" || !navigator.mediaDevices || this.noVoiceRecord}"></div>
       </fieldset>
     `;
   }
@@ -372,12 +373,6 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * Hint for form autofill feature
-       */
-      autocomplete: {
-        type: String
-      },
-      /**
        * Automatically focus on field when the page is loaded
        */
       autofocus: {
@@ -387,12 +382,6 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
        * Media capture input method in file upload controls
        */
       capture: {
-        type: String
-      },
-      /**
-       * a counter text and textareas: "character", "word" or unset for none
-       */
-      counter: {
         type: String
       },
       /**
@@ -414,21 +403,9 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
         type: Number
       },
       /**
-       * Maximum length (number of characters) of `value`
-       */
-      maxlength: {
-        type: Number
-      },
-      /**
        * Minimum value for numeric field types
        */
       min: {
-        type: Number
-      },
-      /**
-       * Minimum length (number of characters) of `value`
-       */
-      minlength: {
         type: Number
       },
       /**
@@ -438,9 +415,20 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
         type: Boolean
       },
       /**
-       * error message when number of items selected is not between min and max
+       * Used when we want to ensure there is not a web cam option like video upload.
        */
-      numberMessage: {
+      noCamera: {
+        type: Boolean,
+        attribute: "no-camera"
+      },
+      /**
+       * No Voice Recording
+       */
+      noVoiceRecord: {
+        type: Boolean,
+        attribute: "no-voice-record"
+      },
+      option: {
         type: String
       },
       /**
@@ -463,49 +451,10 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * Content to be appear in the form control when the form control is empty
-       */
-      placeholder: {
-        type: String
-      },
-      /**
        * error message when field is required and has no value
        */
       requiredMessage: {
         type: String
-      },
-      /**
-       * Size of the control
-       */
-      size: {
-        type: Number
-      },
-      /*
-       * Whether input subject to spell checking by browser/OS as "true", "default", or "false"
-       */
-      spellcheck: {
-        type: String
-      },
-      /**
-       * Incremental values that are valid
-       */
-      step: {
-        type: Number
-      },
-      /**
-       * Type of input form control
-       */
-      type: {
-        type: String
-      },
-      /*
-       * text wrapping for textarea,
-       * "hard": automatically inserts line breaks (CR+LF)
-       * "soft": all line breaks as CR+LF pair
-       * "off" : no wrapping / <textarea> becomes horizontally scrollable
-       */
-      wrap: {
-        type: Boolean
       }
     };
   }
@@ -553,8 +502,238 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
       }
     });
   }
+  /**
+   * Respond to uploading a file
+   * /
+  _fileAboutToUpload(e) {
+    if (!this.__allowUpload) {
+      // cancel the event so we can jump in
+      e.preventDefault();
+      e.stopPropagation();
+      // look for a match as to what gizmo types it supports
+      let values = {
+        source: e.detail.file.name,
+        type: e.detail.file.type
+      };
+      // we have no clue what this is.. let's try and guess..
+      var type = window.HaxStore.guessGizmoType(values);
+      // find targets that support this type
+      let targets = window.HaxStore.getHaxAppStoreTargets(type);
+      // make sure we have targets
+      if (targets.length === 1) {
+        this._haxAppPickerSelection({ detail: targets[0] });
+      } else if (targets.length !== 0) {
+        window.HaxStore.instance.haxAppPicker.presentOptions(
+          targets,
+          type,
+          "Where would you like to upload this " + type + "?",
+          "app"
+        );
+      } else {
+        window.HaxStore.toast(
+          "Sorry, you don't have a storage location that can handle " +
+            type +
+            " uploads!",
+          5000
+        );
+      }
+    } else {
+      this.__allowUpload = false;
+    }
+  }
+  /**
+   * Respond to successful file upload, now inject url into url field and
+   * do a gizmo guess from there!
+   * /
+  _fileUploadResponse(e) {
+    // convert response to object
+    let response = JSON.parse(e.detail.xhr.response);
+    // access the app that did the upload
+    let map = this.__appUsed.connection.operations.add.resultMap;
+    let data = {};
+    let item = {};
+    // look for the items element to draw our data from at its root
+    if (
+      typeof this._resolveObjectPath(map.item, response) !== typeof undefined
+    ) {
+      data = this._resolveObjectPath(map.item, response);
+    }
+    item.type = map.defaultGizmoType;
+    // pull in prop matches
+    for (var prop in map.gizmo) {
+      item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
+    }
+    // another sanity check, if we don't have a url but have a source bind that too
+    if (
+      typeof item.url === typeof undefined &&
+      typeof item.source !== typeof undefined
+    ) {
+      item.url = item.source;
+    }
+    // gizmo type is also supported in the mapping element itself
+    // Think an asset management backend as opposed to a specific
+    // type of asset like video. If the item coming across can
+    // effectively check what kind of gizmo is required for it
+    // to work then we need to support that asset declaring the
+    // gizmo type needed
+    if (typeof map.gizmo.type !== typeof undefined) {
+      item.type = this._resolveObjectPath(map.gizmo.type, data);
+    }
+    // set the value of the url which will update our URL and notify
+    this.shadowRoot.querySelector("#url").value = item.url;
+  }
+  /**
+   * Event for an app being selected from a picker
+   * This happens when multiple upload targets support the given type
+   * /
+  _haxAppPickerSelection(e) {
+    // details for where to upload the file
+    let connection = e.detail.connection;
+    this.__appUsed = e.detail;
+    this.shadowRoot.querySelector("#fileupload").method =
+      connection.operations.add.method;
+    let requestEndPoint = connection.protocol + "://" + connection.url;
+    // ensure we build a url correctly
+    if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
+      requestEndPoint += "/";
+    }
+    // support local end point modification
+    if (typeof connection.operations.add.endPoint !== typeof undefined) {
+      requestEndPoint += connection.operations.add.endPoint;
+    }
+    // implementation specific tweaks to talk to things like HAXcms and other CMSs
+    // that have per load token based authentication
+    if (
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
+    ) {
+      requestEndPoint +=
+        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    }
+    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+      requestEndPoint +=
+        "&" +
+        window.HaxStore.instance.connectionRewrites.appendJwt +
+        "=" +
+        localStorage.getItem(
+          window.HaxStore.instance.connectionRewrites.appendJwt
+        );
+    }
+    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
+    // invoke file uploading...
+    this.__allowUpload = true;
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
+  }
+  /**
+   * Set the input options as far as url, upload, or webcam input
+   */
+  _setInputOptions() {
+    // hide the button if this environment can't support it anyway
+    let options = [
+      [
+        {
+          alt: "URL",
+          icon: "icons:link",
+          value: "url"
+        }
+      ],
+      [
+        {
+          alt: "Upload",
+          icon: "icons:file-upload",
+          value: "fileupload"
+        }
+      ]
+    ];
+    if (navigator.mediaDevices && !this.noCamera) {
+      options.push([
+        {
+          alt: "Camera",
+          icon: "image:photo-camera",
+          value: "selfie"
+        }
+      ]);
+    }
+    if (navigator.mediaDevices && !this.noVoiceRecord) {
+      /*options.push([
+        {
+          alt: "Audio",
+          icon: "hardware:keyboard-voice",
+          value: "audio"
+        }
+      ]);*/
+    }
+    return options;
+  }
+  /**
+   * LitElement
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    // test on load for if we have a media device
+    this.options = [...this._setInputOptions()];
+    // default to URL if we have a value of any kind
+    this.option = this.value ? "url" : "fileupload";
+  }
+  /**
+   * We got a new photo
+   */
+  __newPhotoShowedUp(e) {
+    let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+  }
+  /**
+   * We got a new photo
+   */
+  __newAudioShowedUp(e) {
+    let file = new File([e.detail.value], "voice-memo" + e.timeStamp + ".mp3");
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+  }
+  /**
+   * Invoke the camera to set itself up
+   */
+  _takeSelfie(e) {
+    if (!this.camera) {
+      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
+      this.camera = document.createElement("simple-camera-snap");
+      this.camera.autoplay = true;
+      this.camera.addEventListener(
+        "simple-camera-snap-image",
+        this.__newPhotoShowedUp.bind(this)
+      );
+      this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+    }
+  }
+  _voiceRecorder(e) {
+    if (!this.voice) {
+      import("@lrnwebcomponents/voice-recorder/voice-recorder.js");
+      this.voice = document.createElement("voice-recorder");
+      this.voice.addEventListener(
+        "voice-recorder-recording",
+        this.__newAudioShowedUp.bind(this)
+      );
+      this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+    }
+  }
+  /**
+   * Helper to take a multi-dimensional object and convert
+   * it's reference into the real value. This allows for variable input defined
+   * in a string to actually hit the deeper part of an object structure.
+   */
+  _resolveObjectPath(path, obj) {
+    return path.split(".").reduce(function(prev, curr) {
+      return prev ? prev[curr] : null;
+    }, obj || self);
+  }
+
   optionChanged(e) {
     this.option = e.detail.value;
+  }
+  changed(e) {
+    if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
+    if (e && e.detail && e.detail.value === "audio") this._voiceRecorder(e);
   }
   valueChanged(e) {
     this.value = e.detail.value;
