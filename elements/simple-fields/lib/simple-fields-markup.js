@@ -54,7 +54,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
        */
       editorValue: {
         type: String,
-        attribute: 'editor-value'
+        attribute: "editor-value"
       },
       /**
        * Font-size of editor
@@ -121,7 +121,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
       if (propName === "field" && !this.field) this._updateField();
-      if (propName === "value")this._fireValueChanged();
+      if (propName === "value") this._fireValueChanged();
     });
   }
 
@@ -139,7 +139,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
           ?autofocus="${this.autofocus}"
           ?disabled="${this.disabled}"
           font-size="${this.fontSize}"
-          editor-value="${this.__editorValue || ''}"
+          editor-value="${this.__editorValue || ""}"
           theme="${this.theme}"
           language="${this.language}"
           mode="${this.mode}"
@@ -159,7 +159,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
    */
   _onChange(e) {
     if (!e.path[0]) return;
-    if(this.value !== e.path[0].value) this.value = e.path[0].value;
+    if (this.value !== e.path[0].value) this.value = e.path[0].value;
     this.autoGrow(e.path[0]);
   }
 
@@ -181,7 +181,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
       this.errorMessage = this.requiredMessage || `required`;
     }
   }
-  
+
   /**
    * fires when value changes
    * @event value-changed

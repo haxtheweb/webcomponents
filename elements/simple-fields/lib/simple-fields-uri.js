@@ -331,14 +331,14 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
           ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
         <simple-picker
-            id="picker"
-            aria-label="Source..."
-            required
-            value="${this.option}"
-            @value-changed="${this.optionChanged}"
-            @change="${this.changed}"
-            .options="${this.options}"
-          >
+          id="picker"
+          aria-label="Source..."
+          required
+          value="${this.option}"
+          @value-changed="${this.optionChanged}"
+          @change="${this.changed}"
+          .options="${this.options}"
+        >
         </simple-picker>
         <simple-fields-field
           id="url"
@@ -357,8 +357,18 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
           @upload-before="${this._fileAboutToUpload}"
           @upload-response="${this._fileUploadResponse}"
         ></vaadin-upload>
-        <div id="camerahole" ?hidden="${this.option !== "selfie" || !navigator.mediaDevices || this.noCamera}"></div>
-        <div id="voicerecorder" ?hidden="${this.option !== "audio" || !navigator.mediaDevices || this.noVoiceRecord}"></div>
+        <div
+          id="camerahole"
+          ?hidden="${this.option !== "selfie" ||
+            !navigator.mediaDevices ||
+            this.noCamera}"
+        ></div>
+        <div
+          id="voicerecorder"
+          ?hidden="${this.option !== "audio" ||
+            !navigator.mediaDevices ||
+            this.noVoiceRecord}"
+        ></div>
       </fieldset>
     `;
   }
