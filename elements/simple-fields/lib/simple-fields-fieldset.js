@@ -25,14 +25,14 @@ class SimpleFieldsFieldset extends LitElement {
         :host(:last-of-type) {
           margin-bottom: 0;
         }
-        :host([error]) #label {
-          color: var(--simple-fields-error-color, #dd2c00);
-          transition: all 0.3s ease-in-out;
-        }
         #label {
           font-family: var(--simple-fields-font-family, sans-serif);
           font-size: var(--simple-fields-font-size, 16px);
           line-height: var(--simple-fields-line-height, 22px);
+        }
+        :host([error]) #label {
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.3s ease-in-out;
         }
         #description {
           font-family: var(--simple-fields-detail-font-family, sans-serif);

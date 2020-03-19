@@ -1,24 +1,117 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 /**
- *`simple-fields-field`
+ *`simple-fields-uri`
  * HTML inputs (excluding submit, reset, button, and image)
  * with label, description, error massage,
  * and aria-invalid functionality if needed.
  *
  * @group simple-fields
  * @extends simple-fields-container
- * @customElement simple-fields-field
+ * @customElement simple-fields-uri
  * @demo ./demo/field.html
  */
-class SimpleFieldsField extends SimpleFieldsContainer {
+class SimpleFieldsUri extends SimpleFieldsContainer {
   static get tag() {
-    return "simple-fields-field";
+    return "simple-fields-uri";
   }
   static get styles() {
     return [
       ...super.styles,
       css`
+        /*:host {
+          display: block;
+          visibility: visible;
+          transition: 0.3s all ease;
+          box-sizing: border-box;
+          pointer-events: all;
+          overflow: visible;
+          --simple-camera-snap-width: 300px;
+          --simple-camera-snap-height: calc(300px * 9 / 16);
+          --simple-camera-snap-color: var(--eco-json-form-color, #222);
+          --simple-camera-snap-background: var(--eco-json-form-bg, white);
+          --simple-camera-snap-border-radius: 2px;
+          --lumo-font-family: var(
+            --eco-json-form-font-family,
+            var(--paper-font-caption_-_font-family, unset)
+          );
+          --lumo-base-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-contrast-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --lumo-primary-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-body-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-header-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-secondary-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          --lumo-disabled-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          background-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+        }
+        :host #legend {
+          transition: all 0.5s;
+          color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+        }
+        :host(:focus-within) #legend {
+          color: var(--eco-json-form-active-color, var(--primary-color, #000));
+        }
+        :host #fieldset {
+          border-radius: 2px;
+          transition: all 0.5s;
+          border: 1px solid
+            var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
+        }
+        :host #fieldset > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        :host #fieldset > div > *:not(#picker) {
+          flex: 1 1 auto;
+        }
+        #picker {
+          margin-bottom: 0;
+          margin-right: 5px;
+        }
+        vaadin-upload {
+          padding: 0;
+          margin: 0;
+        }
+        simple-camera-snap {
+          position: relative;
+          --simple-camera-snap-button-container-position: absolute;
+          --simple-camera-snap-button-container-bottom: 2px;
+          --simple-camera-snap-button-container-z-index: 5;
+          --simple-camera-snap-button-border-radius: 100%;
+          --simple-camera-snap-button-opacity: 0.7;
+        }*/
         fieldset {
           margin: 0;
           padding: 0;
@@ -232,7 +325,41 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     ];
   }
   render() {
-    return !this.hasFieldSet ? super.render() : this.fieldsetTemplate;
+    return html`
+      <fieldset>
+        <legend class="label-main" ?hidden="${!this.label}">
+          ${this.label}${this.error || this.required ? "*" : ""}
+        </legend>
+        <simple-picker
+            id="picker"
+            aria-label="Source..."
+            required
+            value="${this.option}"
+            @value-changed="${this.optionChanged}"
+            .options="${this.options}"
+          >
+        </simple-picker>
+        <simple-fields-field
+          id="url"
+          ?hidden="${this.option !== "url"}"
+          value="${this.value}"
+          @value-changed="${this.valueChanged}"
+          label="URL"
+          type="url"
+          auto-validate=""
+        ></simple-fields-field>
+        <vaadin-upload
+          capture
+          form-data-name="file-upload"
+          ?hidden="${this.option !== "fileupload"}"
+          id="fileupload"
+          @upload-before="${this._fileAboutToUpload}"
+          @upload-response="${this._fileUploadResponse}"
+        ></vaadin-upload>
+        <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
+        <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
+      </fieldset>
+    `;
   }
 
   static get properties() {
@@ -392,6 +519,18 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.id = this._generateUUID();
     this.wrap = false;
     this.options = {};
+    this.__winEvents = {
+      "hax-app-picker-selection": "_haxAppPickerSelection"
+    };
+    this.label = null;
+    this.noCamera = false;
+    // @todo leave this off until we can do more testing
+    // the wiring is all there but the UI pattern is not
+    this.noVoiceRecord = true;
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@vaadin/vaadin-upload/vaadin-upload.js");
+    import("@lrnwebcomponents/simple-picker/lib/simple-picker-option.js");
   }
 
   updated(changedProperties) {
@@ -414,246 +553,26 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       }
     });
   }
-
-  get hasFieldSet() {
-    return (
-      Object.keys(this.options || {}).length > 0 &&
-      (this.type === "radio" || this.type === "checkbox")
-    );
+  optionChanged(e) {
+    this.option = e.detail.value;
   }
-
-  /**
-   * gets field element tag in shadow DOM
-   *
-   * @readonly
-   * @returns {string}
-   * @memberof SimpleFieldsField
-   */
-  get fieldElementTag() {
-    return this.type === "select"
-      ? "select"
-      : this.type === "textarea"
-      ? "textarea"
-      : this.hasFieldSet
-      ? "fieldset"
-      : "input";
-  }
-
-  /**
-   * template label and field
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get fieldMainTemplate() {
-    return html`
-      <div
-        class="${this.inline ||
-        ["checkbox", "color", "radio"].includes(this.type || "text")
-          ? "field-main inline"
-          : "field-main"}"
-      >
-        ${this.labelTemplate}
-        <div>
-          ${this.prefixTemplate}
-          ${this.fieldElementTag === "input"
-            ? this.inputTemplate
-            : this.fieldElementTag === "select"
-            ? this.selectTemplate
-            : this.fieldElementTag === "textarea"
-            ? this.textareaTemplate
-            : ``}
-          ${this.suffixTemplate}
-        </div>
-      </div>
-    `;
-  }
-  /**
-   *
-   * gets field metadata
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get fieldMeta() {
-    return html`
-      <div id="fieldmeta" aria-live="polite"></div>
-    `;
-  }
-
-  /**
-   * template for `fieldset` in shadow DOM
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get fieldsetTemplate() {
-    return html`
-      <fieldset>
-        <legend class="label-main" ?hidden="${!this.label}">
-          ${this.label}${this.error || this.required ? "*" : ""}
-        </legend>
-        <div id="options">
-          ${Object.keys(this.options || {}).map(
-            option => html`
-              <div class="option inline">
-                <label for="${this.id}.${option}" class="radio-label"
-                  >${this.options[option]}</label
-                >
-                <input
-                  .id="${option}"
-                  .name="${this.id}"
-                  ?autofocus="${this.autofocus}"
-                  aria-descrbedby="${this.describedBy}"
-                  .aria-invalid="${this.error ? "true" : "false"}"
-                  ?checked="${this.type === "radio"
-                    ? this.value === option
-                    : (this.value || []).includes(option)}"
-                  class="field"
-                  @click="${this._onMulticheckChange}"
-                  ?disabled="${this.disabled}"
-                  ?hidden="${this.hidden}"
-                  ?readonly="${this.readonly}"
-                  ?required="${this.required}"
-                  type="${this.type}"
-                  .value="${option}"
-                />
-              </div>
-            `
-          )}
-        </div>
-        ${this.fieldBottom}
-      </fieldset>
-    `;
-  }
-
-  /**
-   * template for `input` in shadow DOM
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get inputTemplate() {
-    return html`
-      <input
-        aria-descrbedby="${this.describedBy}"
-        aria-invalid="${this.error ? "true" : "false"}"
-        ?autofocus="${this.autofocus}"
-        @change="${this._onInputChange}"
-        ?checked="${this.value === true}"
-        class="field ${["checkbox", "color", "file", "radio", "range"].includes(
-          this.type
-        )
-          ? ""
-          : "box-input"}"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-        @input="${this._onInputChange}"
-        .name="${this.id}"
-        .placeholder="${this.placeholder || ""}"
-        ?readonly="${this.readonly}"
-        ?required="${this.required}"
-        .type="${this.type}"
-      />
-    `;
-  }
-  /**
-   * template for `select` in shadow DOM
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get selectTemplate() {
-    return html`
-      <select
-        ?autofocus="${this.autofocus}"
-        aria-descrbedby="${this.describedBy}"
-        aria-invalid="${this.error ? "true" : "false"}"
-        @change="${this._onSelectChange}"
-        class="field"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-        ?multiple="${this.multiple}"
-        .name="${this.id}"
-        ?readonly="${this.readonly}"
-        ?required="${this.required}"
-      >
-        ${Object.keys(this.options || {}).map(
-          option => html`
-            <option
-              .id="${this.id}.${option}"
-              ?selected="${this.multiple
-                ? this.value && this.value.includes(option)
-                : this.value === option}"
-              .value="${option}"
-            >
-              ${this.options[option]}
-            </option>
-          `
-        )}
-      </select>
-    `;
+  valueChanged(e) {
+    this.value = e.detail.value;
   }
 
   /**
    * overridden mutation observer
    *
    * @readonly
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsUri
    */
   get slottedFieldObserver() {}
-  /**
-   * template for `textarea` in shadow DOM
-   *
-   * @readonly
-   * @returns {object}
-   * @memberof SimpleFieldsField
-   */
-  get textareaTemplate() {
-    return html`
-      <textarea
-        aria-invalid="${this.error ? "true" : "false"}"
-        ?autofocus="${this.autofocus}"
-        class="field box-input"
-        @change="${this._onTextareaChange}"
-        @keydown="${e => e.stopPropagation()}"
-        ?disabled="${this.disabled}"
-        ?hidden="${this.hidden}"
-        @input="${this._onTextareaChange}"
-        .name="${this.id}"
-        ?readonly="${this.readonly}"
-        ?required="${this.required}"
-        rows="1"
-      >
-${this.value || ""}</textarea
-      >
-    `;
-  }
-  get valueIsArray() {
-    return this.multiple || (this.type === "checkbox" && this.options);
-  }
-  /**
-   * determines if number of items selected
-   * is not between min and max
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get numberError() {
-    let less = this.min ? this.value.length < this.min : false,
-      more = this.max ? this.value.length > this.max : false;
-    return this.valueIsArray && (less || more);
-  }
+
   /**
    * determines if value does not match regex pattern
    *
    * @readonly
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsUri
    */
   get patternError() {
     return (
@@ -665,36 +584,18 @@ ${this.value || ""}</textarea
         : this.value.filter(value => !value.match(this.pattern)))
     );
   }
-  /**
-   * determines if field is required and blank
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get requiredError() {
-    return !this.value && this.required;
-  }
 
   /**
    * checks validation constraints and returns error data
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsMarkup
    */
   validate() {
-    if (this.requiredError) {
+    if (!this.value && this.required) {
       this.error = true;
       this.errorMessage = this.requiredMessage || `required`;
-    } else if (this.numberError) {
-      let number = this.value ? this.value.length : 0;
-      this.error = true;
-      this.errorMessage =
-        this.numberMessage || number < this.min
-          ? `select ${this.min - number} more`
-          : `select ${number - this.max} fewer`;
-    } else if (this.patternError) {
-      this.error = true;
-      this.errorMessage = this.patternMessage || `invalid format`;
     }
   }
+
   /**
    * fires when value changes
    * @event value-changed
@@ -711,90 +612,11 @@ ${this.value || ""}</textarea
   }
 
   /**
-   * gets attributes that will only be set if they are defined
-   * @param {string} [type=text] input type
-   * @returns {array} list of attributes
-   */
-  _getAttributes(type) {
-    let attributes = {
-      checkbox: ["autocomplete", "form", "list"],
-      color: ["autocomplete", "form", "list"],
-      date: ["autocomplete", "form", "list", "max", "min", "step"],
-      "datetime-local": ["form", "list", "max", "min", "step"],
-      email: ["autocomplete", "form", "list", "placeholder"],
-      file: ["autocomplete", "accept", "capture", "form", "list"],
-      hidden: ["autocomplete", "form"],
-      month: ["autocomplete", "form", "list", "max", "min", "step"],
-      number: ["autocomplete", "form", "list", "max", "min", "step"],
-      password: [
-        "autocomplete",
-        "form",
-        "list",
-        "maxlength",
-        "maxlength",
-        "pattern",
-        "placeholder"
-      ],
-      radio: ["autocomplete", "form", "list"],
-      range: ["autocomplete", "form", "list", "max", "min", "step"],
-      search: [
-        "autocomplete",
-        "dirname",
-        "form",
-        "list",
-        "maxlength",
-        "maxlength",
-        "placeholder"
-      ],
-      select: ["autocomplete", "form", "list", "size"],
-      tel: [
-        "autocomplete",
-        "form",
-        "list",
-        "maxlength",
-        "maxlength",
-        "pattern",
-        "placeholder"
-      ],
-      text: [
-        "autocomplete",
-        "dirname",
-        "form",
-        "list",
-        "maxlength",
-        "maxlength",
-        "pattern",
-        "placeholder"
-      ],
-      textarea: [
-        "autocomplete",
-        "autocomplete",
-        "form",
-        "maxlength",
-        "maxlength",
-        "placeholder",
-        "spellcheck",
-        "wrap"
-      ],
-      time: ["autocomplete", "form", "list", "max", "min", "step"],
-      url: [
-        "autocomplete",
-        "form",
-        "list",
-        "maxlength",
-        "maxlength",
-        "placeholder"
-      ],
-      week: ["autocomplete", "form", "list", "max", "min", "step"]
-    };
-    return attributes[type];
-  }
-  /**
    * listens for focusout
    * overridden for fields in shadow DOM
    *
    * @param {boolean} [init=true] whether to start observing or disconnect observer
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsUri
    */
   _observeAndListen(init = true) {
     if (init) {
@@ -809,73 +631,10 @@ ${this.value || ""}</textarea
   }
 
   /**
-   * handles change for inputs
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onInputChange(e) {
-    if (!e.path[0]) return;
-    if (this.type === "radio" || this.type === "checkbox") {
-      this.value = e.path[0].checked;
-    } else {
-      this.value = e.path[0].value;
-      if (this.type === "text") this._updateCount();
-    }
-  }
-
-  /**
-   * handles change for multiple checkboxes and radios
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onMulticheckChange(e) {
-    if (!e.path[0]) return;
-    if (this.type === "radio") {
-      this.value = e.path[0].value;
-    } else {
-      this.value = this.value || [];
-      if (e.path[0].checked) {
-        this.value.push(e.path[0].value);
-      } else {
-        this.value = this.value.filter(val => val !== e.path[0].value);
-      }
-    }
-  }
-
-  /**
-   * handles change for textarea
-   *
-   * @memberof SimpleFieldsField
-   */
-  _onTextareaChange(e) {
-    if (!e.path[0]) return;
-    this.value = e.path[0].value;
-    this._updateCount();
-    this.autoGrow(e.path[0]);
-  }
-
-  /**
-   * handles change in select value
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onSelectChange(e) {
-    if (!e.path[0]) return;
-    this.value = this.multiple
-      ? Object.keys(e.path[0].selectedOptions).map(
-          option => e.path[0].selectedOptions[option].value
-        )
-      : e.path[0].selectedOptions[0].value;
-  }
-  
-  /**
    * updates field attributes based on field type
    *
    * @param {string} attribute
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsUri
    */
   _updateAttribute(attribute) {
     if (
@@ -892,53 +651,9 @@ ${this.value || ""}</textarea
   }
 
   /**
-   * updates counter and sets maximum word count
-   *
-   * @memberof SimpleFieldsField
-   */
-  _updateCount() {
-    let count = ``;
-    if (
-      (this.type === "textarea" || this.type === "text") &&
-      this.counter &&
-      this.field
-    ) {
-      let word = `[\\w\\-\\']+`,
-        counter = new RegExp(word, "gim"),
-        max = `{0,${this.maxlength || 1}}`,
-        maxword = `(${word}\\W*)${max}`,
-        length = !this.value
-          ? 0
-          : this.counter === "character"
-          ? this.field.value.length
-          : this.field.value.match(counter)
-          ? this.field.value.match(counter).length
-          : 0,
-        regex =
-          this.counter === "character"
-            ? new RegExp(`.${max}`, "g")
-            : new RegExp(maxword, "g");
-      if (
-        this.value &&
-        this.maxlength &&
-        this.maxlength < length &&
-        this.field.value.match(regex)
-      ) {
-        this.field.value = this.field.value.match(regex)[0];
-        length = this.maxlength;
-      }
-      count = length;
-    }
-    if (this.shadowRoot && this.shadowRoot.querySelector("#fieldmeta"))
-      this.shadowRoot.querySelector("#fieldmeta").innerHTML = this.maxlength
-        ? `${count}/${this.maxlength}`
-        : count;
-    this.value = this.field.value;
-  }
-  /**
    * updates field an type
    *
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsUri
    */
   _updateField() {
     this.type = this._getValidType(this.type);
@@ -949,6 +664,7 @@ ${this.value || ""}</textarea
     this._getAttributes(this.type).forEach(attr => this._updateAttribute(attr));
     if (this.type !== "select" && this.field) this._updateAttribute("value");
   }
+
   /**
    * generates a unique id
    * @returns {string } unique id
@@ -962,5 +678,5 @@ ${this.value || ""}</textarea
     );
   }
 }
-window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);
-export { SimpleFieldsField };
+window.customElements.define(SimpleFieldsUri.tag, SimpleFieldsUri);
+export { SimpleFieldsUri };

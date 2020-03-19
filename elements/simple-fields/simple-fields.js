@@ -122,68 +122,68 @@ inputMethod: {                //for fields in "this.fields", define elements bas
  * @demo ./demo/form.html Form
  */
 class SimpleFields extends SimpleFieldsLite {
+  
   //styles function
   static get styles() {
-    return [
+    return  [
       ...super.styles,
       css`
-        :host {
-          display: block;
-          --simple-picker-background-color: var(
-            --simple-fields-background-color,
-            white
-          );
-          --simple-picker-border-width: 0;
-          --simple-picker-focus-border-width: 0;
-          --simple-picker-display: block;
-          --simple-picker-listbox-border-width: 1px;
-          --simple-picker-listbox-outline: none;
-        }
+:host {
+  display: block;
+  --simple-picker-background-color: var(--simple-fields-background-color,white);
+  --simple-picker-border-width: 0;
+  --simple-picker-focus-border-width: 0;
+  --simple-picker-display: block;
+  --simple-picker-listbox-border-width: 1px;
+  --simple-picker-listbox-outline: none;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
       `
     ];
   }
   // render function
   render() {
     return html`
-      <div id="schema-fields" aria-live="polite">
-        <slot></slot>
-      </div>
-    `;
+<div id="schema-fields" aria-live="polite">
+  <slot></slot>
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {};
+    return {}
+;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     return {
-      ...super.properties,
-
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      fields: {
-        type: Array
-      },
-      /**
-       * Conversion from inputMethods to JSON schema types and formats.
-       * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
-       */
-      fieldsConversion: {
-        type: Object
-      },
-      /**
-       * Schema label
-       */
-      label: {
-        type: String
-      }
-    };
+  
+  ...super.properties,
+  
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "fields": {
+    "type": Array
+  },
+  /**
+   * Conversion from inputMethods to JSON schema types and formats.
+   * _See [Configuring fieldsConversion Property](configuring-the-fieldsconversion-property) above._
+   */
+  "fieldsConversion": {
+    "type": Object
+  },
+  /**
+   * Schema label
+   */
+  "label": {
+    "type": String
+  }
+}
+;
   }
 
   /**
@@ -204,7 +204,8 @@ class SimpleFields extends SimpleFieldsLite {
       inputMethod: {
         alt: {
           defaultSettings: {
-            type: "string"
+            type: "string",
+            format: "alt"
           }
         },
         array: {
@@ -217,7 +218,8 @@ class SimpleFields extends SimpleFieldsLite {
         },
         "code-editor": {
           defaultSettings: {
-            type: "markup"
+            type: "markup",
+            mode: "html"
           }
         },
         markup: {
@@ -433,7 +435,17 @@ class SimpleFields extends SimpleFieldsLite {
         },
         markup: {
           defaultSettings: {
-            element: "simple-fields-markup"
+            element: "marked-element",
+            valueProperty: "markdown"
+          },
+          mode: {
+            html: {
+              defaultSettings: {
+                element: "simple-fields-markup",
+                setValueProperty: "editorValue",
+                noWrap: true
+              }
+            }
           }
         },
         number: {
@@ -467,6 +479,9 @@ class SimpleFields extends SimpleFieldsLite {
                   noWrap: true,
                   labelSlot: "label",
                   descriptionSlot: ""
+                },
+                attributes: {
+                  "layout-breakpoint": 0
                 }
               }
             }
@@ -474,6 +489,16 @@ class SimpleFields extends SimpleFieldsLite {
         },
         string: {
           format: {
+            alt: {
+              defaultSettings: {
+                element: "simple-fields-field",
+                noWrap: true,
+                attributes: {
+                  autofocus: true,
+                  required: true
+                }
+              }
+            },
             color: {
               defaultSettings: {
                 element: "simple-fields-field",
@@ -597,10 +622,11 @@ class SimpleFields extends SimpleFieldsLite {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
       import("./lib/simple-fields-markup.js");
-      import("@lrnwebcomponents/code-editor/code-editor.js");
+      import("@polymer/marked-element/marked-element.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
+      import("@lrnwebcomponents/simple-picker/simple-picker.js");
       import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
       import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-      //import("@lrnwebcomponents/simple-picker/simple-picker.js");
     }, 0);
   }
   /**
@@ -651,6 +677,7 @@ class SimpleFields extends SimpleFieldsLite {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
+          console.log('convKeys',key,convData,convVal);
       if (convVal) settings = this._convertField(field, convVal, settings);
     });
     return settings;
@@ -682,6 +709,10 @@ class SimpleFields extends SimpleFieldsLite {
         } else {
           schema.properties = this._fieldsToSchema(field.properties);
         }
+      /*} else if (key === "slot") {
+        schema[key] = !field[key] || field[key] === "" 
+          ? "unnamed-slot-placeholder" 
+          : field[key];*/
       } else if (
         ![
           "items",
@@ -693,6 +724,7 @@ class SimpleFields extends SimpleFieldsLite {
           "validation"
         ].includes(key)
       ) {
+        console.log('schema[key]',key,schema[key],field[key]);
         schema[key] = field[key];
       }
     });
@@ -708,7 +740,11 @@ class SimpleFields extends SimpleFieldsLite {
   _fieldsToSchema(fields) {
     let schema = {};
     fields.forEach(
-      field => (schema[field.property] = this._fieldToSchema(field))
+      field => {
+        let prop = !field.property ? "" : field.property;
+        if(!prop || prop === "") console.log('fields.forEach',prop,schema[field.property]);
+        schema[prop] = this._fieldToSchema(field)
+      }
     );
     return schema;
   }

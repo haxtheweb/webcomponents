@@ -156,6 +156,15 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
       <div id="content">
         <div id="content-inner">
           <div><slot></slot></div>
+          <!--paper-icon-button
+            id="copy"
+            controls="${this.id}"
+            icon="content-copy"
+            label="Copy this item"
+            ?disabled="${this.disabled}"
+            @click="${e => this._handleCopy()}"
+  -->
+          </paper-icon-button>
           <paper-icon-button
             id="remove"
             controls="${this.id}"
@@ -270,6 +279,21 @@ class SimpleFieldsArrayItem extends SimpleFieldsFieldset {
     } else {
       this.setAttribute("aria-expanded", "true");
     }
+  }
+
+  /**
+   * Fires add event
+   * @event add
+   */
+  _handleCopy() {
+    this.dispatchEvent(
+      new CustomEvent("copy", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 
   /**

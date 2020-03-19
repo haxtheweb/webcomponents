@@ -185,6 +185,20 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   expand() {
     this.toggle(true);
   }
+  /**
+   * handles focus
+   *
+   * @memberof SimpleFieldsArray
+   */
+  focus(index){
+    if(this.childNodes && index){
+      if(this.childNodes.length < index) index = this.childNodes.length -1;
+      this.childNodes[index].focus();
+    } else if(this.shadowRoot){
+      let id = !this.childNodes ? 'add' : 'expand';
+      this.shadowRoot.getElementById(id).focus();
+    }
+  }
 
   /**
    * Toggles based on mode

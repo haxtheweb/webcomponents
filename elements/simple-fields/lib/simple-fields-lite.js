@@ -601,23 +601,26 @@ class SimpleFieldsLite extends LitElement {
           data.descriptionProperty,
           data.descriptionSlot
         );
-
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
-          if (data.attributes[attr]) {
+          if (typeof data.attributes[attr] !== undefined && data.attributes[attr] !== null) {
             element.setAttribute(attr, data.attributes[attr]);
+            //console.log('element',element);
           }
         });
 
         //handle schema properties
         Object.keys(data.properties || {}).forEach(prop => {
+          //console.log('prop',prop,schemaProp[prop],data.properties[prop]);
           if (data.properties[prop] && schemaProp[prop]) {
             element[data.properties[prop]] = schemaProp[prop];
           }
         });
 
         //handle data type slots
+        console.log('slot',data.slots,schemaProp);
         Object.keys(data.slots || {}).forEach(slot => {
+          console.log('slot',slot,data.slots,schemaProp);
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach(field => {
               let span = document.createElement("span");
@@ -682,6 +685,7 @@ class SimpleFieldsLite extends LitElement {
    * @memberof SimpleFieldsLite
    */
   _configElement(target, value, propName, slotName = false) {
+    console.log('_configElement',target, value, propName, slotName);
     if (slotName) {
       let span = document.createElement("span");
       span.slot = slotName;
@@ -698,45 +702,62 @@ class SimpleFieldsLite extends LitElement {
   /**
    *
    *
+   * @param {*} schema
+   * @param {*} previewBy
+   * @param {*} element
+   * @param {*} parent
+   * @param {*} [value={}]
+   * @memberof SimpleFieldsLite
+   */
+  _insertArrayItem(schema,previewBy,element,parent,value,index) {
+    let items = this._getValue(parent.name),
+      length = items ? items.length : 0;
+    if(!items) this._setValue(parent.name, []);
+    index = index || index === 0 
+      ? index 
+      : length;
+    let subschema = { properties: {} };
+    subschema.properties[index] = this._addArrayItem(
+      index,
+      schema,
+      previewBy
+    );
+    this._setValue(`${parent.name}.${index}`, value);
+    this._addToForm(subschema, parent, `${parent.id}.`, element);
+  }
+  /**
+   *
+   *
    * @param {*} value
    * @param {*} element
    * @param {*} schema
    * @param {*} parent
    */
   _addArrayItems(value, element, schema, parent) {
-    let counter = 0,
-      propNames = Object.keys(schema.items.properties || {}),
+    let propNames = Object.keys(schema.items.properties || {}),
       previewBy =
-        schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined),
-      subschema = { properties: {} };
-    if (value)
-      value.forEach(i => {
-        subschema.properties[counter] = this._addArrayItem(
-          counter,
-          schema,
-          previewBy
-        );
-        counter++;
-      });
-    this._addToForm(subschema, parent, `${parent.id}.`, element);
+        schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
+
+    value = value || [];
+    (value).forEach((item,i) => {
+      this._insertArrayItem(schema,previewBy,element,parent,item,i);
+    });
 
     parent.addEventListener("add", e => {
-      let newItem = { properties: {} };
-      newItem.properties[counter] = this._addArrayItem(
-        counter,
-        schema,
-        previewBy
-      );
-      counter++;
-      this._setValue(`${parent.name}.${value.length}`, {});
-      this._addToForm(newItem, parent, `${parent.id}.`, element);
+      this._insertArrayItem(schema,previewBy,element,parent,{});
     });
 
     parent.addEventListener("remove", e => {
-      let temp = this._deepClone(value);
-      temp.splice(parseInt(e.detail.id.replace(/item-/, "")), 1);
-      this._setValue(`${parent.name}`, temp);
-      e.detail.remove();
+      let id = e.detail.id,
+        //temp = [],
+        vals = this._getValue(parent.name) || [],
+        index = id.replace(`${parent.name}.`,'');
+      vals.splice(parseInt(index),1);
+      this.__fields = this.__fields.filter(field=>field.id.indexOf(parent.name)=== 0);
+      parent.innerHTML = '';
+      (vals).forEach((item,i)=>this._insertArrayItem(schema,previewBy,element,parent,item,i));
+      this._setValue(`${parent.name}`, vals);
+      parent.focus(parseInt(index)-1);
     });
   }
 
@@ -833,7 +854,7 @@ class SimpleFieldsLite extends LitElement {
    * @event value-changed
    */
   _fireValueChanged() {
-    /*console.log(
+    console.log(
       "value-changed",
       this.value,
       new CustomEvent("value-changed", {
@@ -842,7 +863,7 @@ class SimpleFieldsLite extends LitElement {
         composed: true,
         detail: this
       })
-    );*/
+    );
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
@@ -939,7 +960,6 @@ class SimpleFieldsLite extends LitElement {
       if (!newValue[pointer]) newValue[pointer] = {};
       newValue = newValue[pointer];
     }
-
     newValue[props[l - 1]] = propVal;
     this._valueChanged(this.value, oldValue);
   }

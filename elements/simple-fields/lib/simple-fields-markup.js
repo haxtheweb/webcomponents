@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
 /**
  *`simple-fields-markup`
  * HTML inputs (excluding submit, reset, button, and image)
@@ -49,11 +50,24 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
         type: Boolean
       },
       /**
+       * changes the value of the editor
+       */
+      editorValue: {
+        type: String,
+        attribute: 'editor-value'
+      },
+      /**
        * Font-size of editor
        */
       fontSize: {
         type: Number,
         attribute: "font-size"
+      },
+      /**
+       * language of code-editor
+       */
+      language: {
+        type: String
       },
       /**
        * mode of code-editor
@@ -79,6 +93,12 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
        */
       theme: {
         type: Number
+      },
+      /**
+       * Current value of the form control. Submitted with the form as part of a name/value pair.
+       */
+      value: {
+        reflect: true
       }
     };
   }
@@ -87,6 +107,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
     this.autofocus = false;
     this.fontSize = 14;
     this.id = this._generateUUID();
+    this.language = "html";
     this.mode = "html";
     this.readonly = false;
     this.theme = "vs";
@@ -99,12 +120,8 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id" && !this.id) this.id = this._generateUUID();
-      if (propName === "value" && this.value !== oldValue) {
-        if (this.field)
-          console.log(this.value, this.field.value, this.field.editorValue);
-        //this.field.editorValue = this.value;
-        this._fireValueChanged();
-      }
+      if (propName === "field" && !this.field) this._updateField();
+      if (propName === "value")this._fireValueChanged();
     });
   }
 
@@ -118,12 +135,15 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
   get fieldMainTemplate() {
     return html`
       <div class="field-main">
-        ${this.labelTemplate}
         <code-editor
           ?autofocus="${this.autofocus}"
+          ?disabled="${this.disabled}"
           font-size="${this.fontSize}"
+          editor-value="${this.__editorValue || ''}"
           theme="${this.theme}"
+          language="${this.language}"
           mode="${this.mode}"
+          ?read-only="${this.readonly || this.disabled}"
           @value-changed="${this._onChange}"
         >
         </code-editor>
@@ -138,10 +158,8 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
    * @memberof SimpleFieldsMarkup
    */
   _onChange(e) {
-    console.log(e);
     if (!e.path[0]) return;
-    console.log(e.path[0]);
-    this.value = e.path[0].value;
+    if(this.value !== e.path[0].value) this.value = e.path[0].value;
     this.autoGrow(e.path[0]);
   }
 
@@ -206,7 +224,6 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
       this.shadowRoot && this.shadowRoot.querySelector("code-editor")
         ? this.shadowRoot.querySelector("code-editor")
         : undefined;
-    this.value = this.field.value;
   }
   /**
    * generates a unique id
