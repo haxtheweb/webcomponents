@@ -656,7 +656,7 @@ class SimpleFields extends SimpleFieldsLite {
         } else {
           schema.properties = this._fieldsToSchema(field.properties);
         }
-      /*} else if (key === "slot") {
+        /*} else if (key === "slot") {
         schema[key] = !field[key] || field[key] === "" 
           ? "unnamed-slot-placeholder" 
           : field[key];*/
@@ -685,12 +685,10 @@ class SimpleFields extends SimpleFieldsLite {
    */
   _fieldsToSchema(fields) {
     let schema = {};
-    fields.forEach(
-      field => {
-        let prop = !field.property ? "" : field.property;
-        schema[prop] = this._fieldToSchema(field)
-      }
-    );
+    fields.forEach(field => {
+      let prop = !field.property ? "" : field.property;
+      schema[prop] = this._fieldToSchema(field);
+    });
     return schema;
   }
 }
