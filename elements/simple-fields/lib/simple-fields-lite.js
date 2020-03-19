@@ -524,7 +524,7 @@ class SimpleFieldsLite extends LitElement {
       let schemaProp = schemaProps[key],
         data = config || this._convertSchema(schemaProp, this.schemaConversion);
       if (data && data.element) {
-        console.log(key,data.element);
+        console.log(key, data.element);
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
@@ -604,7 +604,10 @@ class SimpleFieldsLite extends LitElement {
         );
         //handle data type attributes
         Object.keys(data.attributes || {}).forEach(attr => {
-          if (typeof data.attributes[attr] !== undefined && data.attributes[attr] !== null) {
+          if (
+            typeof data.attributes[attr] !== undefined &&
+            data.attributes[attr] !== null
+          ) {
             element.setAttribute(attr, data.attributes[attr]);
             //console.log('element',element);
           }
@@ -710,19 +713,13 @@ class SimpleFieldsLite extends LitElement {
    * @param {*} [value={}]
    * @memberof SimpleFieldsLite
    */
-  _insertArrayItem(schema,previewBy,element,parent,value,index) {
+  _insertArrayItem(schema, previewBy, element, parent, value, index) {
     let items = this._getValue(parent.name),
       length = items ? items.length : 0;
-    if(!items) this._setValue(parent.name, []);
-    index = index || index === 0 
-      ? index 
-      : length;
+    if (!items) this._setValue(parent.name, []);
+    index = index || index === 0 ? index : length;
     let subschema = { properties: {} };
-    subschema.properties[index] = this._addArrayItem(
-      index,
-      schema,
-      previewBy
-    );
+    subschema.properties[index] = this._addArrayItem(index, schema, previewBy);
     this._setValue(`${parent.name}.${index}`, value);
     this._addToForm(subschema, parent, `${parent.id}.`, element);
   }
@@ -740,25 +737,29 @@ class SimpleFieldsLite extends LitElement {
         schema.previewBy || (propNames.length > 0 ? [propNames[0]] : undefined);
 
     value = value || [];
-    (value).forEach((item,i) => {
-      this._insertArrayItem(schema,previewBy,element,parent,item,i);
+    value.forEach((item, i) => {
+      this._insertArrayItem(schema, previewBy, element, parent, item, i);
     });
 
     parent.addEventListener("add", e => {
-      this._insertArrayItem(schema,previewBy,element,parent,{});
+      this._insertArrayItem(schema, previewBy, element, parent, {});
     });
 
     parent.addEventListener("remove", e => {
       let id = e.detail.id,
         //temp = [],
         vals = this._getValue(parent.name) || [],
-        index = id.replace(`${parent.name}.`,'');
-      vals.splice(parseInt(index),1);
-      this.__fields = this.__fields.filter(field=>field.id.indexOf(parent.name)=== 0);
-      parent.innerHTML = '';
-      (vals).forEach((item,i)=>this._insertArrayItem(schema,previewBy,element,parent,item,i));
+        index = id.replace(`${parent.name}.`, "");
+      vals.splice(parseInt(index), 1);
+      this.__fields = this.__fields.filter(
+        field => field.id.indexOf(parent.name) === 0
+      );
+      parent.innerHTML = "";
+      vals.forEach((item, i) =>
+        this._insertArrayItem(schema, previewBy, element, parent, item, i)
+      );
       this._setValue(`${parent.name}`, vals);
-      parent.focus(parseInt(index)-1);
+      parent.focus(parseInt(index) - 1);
     });
   }
 

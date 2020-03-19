@@ -98,10 +98,7 @@ class HaxTray extends winEventsElement(LitElement) {
     return [
       css`
         :host {
-          font-family: var(
-            --simple-fields-font-family,
-            sans-serif
-          );
+          font-family: var(--simple-fields-font-family, sans-serif);
           display: block;
           z-index: 1000;
           position: absolute;
@@ -201,9 +198,7 @@ class HaxTray extends winEventsElement(LitElement) {
           position: fixed;
           font-size: 16px;
           margin: 0;
-          background-color: var(
-            --simple-colors-default-theme-grey-1
-          );
+          background-color: var(--simple-colors-default-theme-grey-1);
         }
         a11y-collapse {
           font-size: 12px;

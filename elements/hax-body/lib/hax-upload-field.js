@@ -18,31 +18,32 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           box-sizing: border-box;
           pointer-events: all;
           overflow: visible;
-          font-family: var(
-            --simple-fields-font-family,
-            sans-serif);
+          font-family: var(--simple-fields-font-family, sans-serif);
           --simple-camera-snap-width: 100px;
           --simple-camera-snap-height: calc(100px * 9 / 16);
-          --simple-camera-snap-color: var( --simple-fields-color, black);
-          --simple-camera-snap-background: var(--simple-fields-background-color, #fff);
-          --simple-camera-snap-border-radius: 2px;
-          --lumo-font-family: var(
-            --simple-fields-font-family,
-            sans-serif
+          --simple-camera-snap-color: var(--simple-fields-color, black);
+          --simple-camera-snap-background: var(
+            --simple-fields-background-color,
+            #fff
           );
+          --simple-camera-snap-border-radius: 2px;
+          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
           --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
-          --lumo-primary-font-color: var( --simple-fields-color, black);
+          --lumo-primary-font-color: var(--simple-fields-color, black);
           --lumo-base-color: var(--simple-fields-background-color, #fff);
-          --lumo-primary-contrast-color: var(--simple-fields-background-color, #fff);
-          --lumo-primary-color: var( --simple-fields-color, black);
-          --lumo-dark-primary-color: ar( --simple-fields-color, black);
-          --lumo-light-primary-color: var( --simple-fields-color, black);
-          --lumo-primary-text-color: var( --simple-fields-color, black);
-          --lumo-body-text-color: var( --simple-fields-color, black);
-          --lumo-header-text-color: var( --simple-fields-color, black);
-          --lumo-secondary-text-color: var( --simple-fields-color, black);
+          --lumo-primary-contrast-color: var(
+            --simple-fields-background-color,
+            #fff
+          );
+          --lumo-primary-color: var(--simple-fields-color, black);
+          --lumo-dark-primary-color: ar(--simple-fields-color, black);
+          --lumo-light-primary-color: var(--simple-fields-color, black);
+          --lumo-primary-text-color: var(--simple-fields-color, black);
+          --lumo-body-text-color: var(--simple-fields-color, black);
+          --lumo-header-text-color: var(--simple-fields-color, black);
+          --lumo-secondary-text-color: var(--simple-fields-color, black);
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
-          color: var( --simple-fields-color, black);
+          color: var(--simple-fields-color, black);
           background-color: var(--simple-fields-background-color, #fff);
         }
         vaadin-upload[dragover] {
@@ -158,7 +159,9 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           ></vaadin-upload>
           <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
           <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
-          <div id="description" ?hidden="${!this.description}">${this.description}</div>
+          <div id="description" ?hidden="${!this.description}">
+            ${this.description}
+          </div>
         </div>
       </fieldset>
     `;

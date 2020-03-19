@@ -9,33 +9,29 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     return [
       css`
         :host {
-          font-family: var(
-            --simple-fields-font-family,
-            sans-serif);
-          line-height: var(
-            --simple-fields-line-height,
-            22px);
-          color: var( --simple-fields-color, black);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          color: var(--simple-fields-color, black);
           background-color: var(--simple-fields-background-color, #fff);
         }
         vaadin-upload {
-          --lumo-font-family: var(
-            --simple-fields-font-family,
-            sans-serif
-          );
+          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
           --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
-          --lumo-primary-font-color: var( --simple-fields-color, black);
+          --lumo-primary-font-color: var(--simple-fields-color, black);
           --lumo-base-color: var(--simple-fields-background-color, #fff);
-          --lumo-primary-contrast-color: var(--simple-fields-background-color, #fff);
-          --lumo-primary-color: var( --simple-fields-color, black);
-          --lumo-dark-primary-color: ar( --simple-fields-color, black);
-          --lumo-light-primary-color: var( --simple-fields-color, black);
-          --lumo-primary-text-color: var( --simple-fields-color, black);
-          --lumo-body-text-color: var( --simple-fields-color, black);
-          --lumo-header-text-color: var( --simple-fields-color, black);
-          --lumo-secondary-text-color: var( --simple-fields-color, black);
+          --lumo-primary-contrast-color: var(
+            --simple-fields-background-color,
+            #fff
+          );
+          --lumo-primary-color: var(--simple-fields-color, black);
+          --lumo-dark-primary-color: ar(--simple-fields-color, black);
+          --lumo-light-primary-color: var(--simple-fields-color, black);
+          --lumo-primary-text-color: var(--simple-fields-color, black);
+          --lumo-body-text-color: var(--simple-fields-color, black);
+          --lumo-header-text-color: var(--simple-fields-color, black);
+          --lumo-secondary-text-color: var(--simple-fields-color, black);
           --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
-          color: var( --simple-fields-color, black);
+          color: var(--simple-fields-color, black);
           background-color: var(--simple-fields-background-color, #fff);
           padding: 16px !important;
         }

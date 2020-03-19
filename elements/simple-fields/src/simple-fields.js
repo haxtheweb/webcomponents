@@ -684,7 +684,7 @@ class SimpleFields extends SimpleFieldsLite {
       let prop = !field.property ? "" : field.property;
       schema[prop] = this._fieldToSchema(field);
     });
-    console.log('_fieldsToSchema',schema,fields);
+    console.log("_fieldsToSchema", schema, fields);
     return schema;
   }
 }
