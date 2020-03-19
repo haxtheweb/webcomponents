@@ -524,6 +524,7 @@ class SimpleFieldsLite extends LitElement {
       let schemaProp = schemaProps[key],
         data = config || this._convertSchema(schemaProp, this.schemaConversion);
       if (data && data.element) {
+        console.log(key,data.element);
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
@@ -618,9 +619,9 @@ class SimpleFieldsLite extends LitElement {
         });
 
         //handle data type slots
-        console.log('slot',data.slots,schemaProp);
+        //console.log('slot',data.slots,schemaProp);
         Object.keys(data.slots || {}).forEach(slot => {
-          console.log('slot',slot,data.slots,schemaProp);
+          //console.log('slot',slot,data.slots,schemaProp);
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach(field => {
               let span = document.createElement("span");
@@ -685,7 +686,7 @@ class SimpleFieldsLite extends LitElement {
    * @memberof SimpleFieldsLite
    */
   _configElement(target, value, propName, slotName = false) {
-    console.log('_configElement',target, value, propName, slotName);
+    //console.log('_configElement',target, value, propName, slotName);
     if (slotName) {
       let span = document.createElement("span");
       span.slot = slotName;

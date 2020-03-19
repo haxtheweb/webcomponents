@@ -18,51 +18,38 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           box-sizing: border-box;
           pointer-events: all;
           overflow: visible;
+          font-family: var(
+            --simple-fields-font-family,
+            sans-serif);
           --simple-camera-snap-width: 100px;
           --simple-camera-snap-height: calc(100px * 9 / 16);
-          --simple-camera-snap-color: var(--eco-json-form-color, #222);
-          --simple-camera-snap-background: var(--eco-json-form-bg, white);
+          --simple-camera-snap-color: var( --simple-fields-color, black);
+          --simple-camera-snap-background: var(--simple-fields-background-color, #fff);
           --simple-camera-snap-border-radius: 2px;
           --lumo-font-family: var(
-            --eco-json-form-font-family,
-            var(--paper-font-caption_-_font-family, unset)
+            --simple-fields-font-family,
+            sans-serif
           );
-          --lumo-base-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-          --lumo-primary-contrast-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-          --lumo-primary-color: var(
-            --eco-json-form-active-color,
-            var(--primary-color, #000)
-          );
-          --lumo-primary-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-body-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-header-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-secondary-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          --lumo-disabled-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          background-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
+          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
+          --lumo-primary-font-color: var( --simple-fields-color, black);
+          --lumo-base-color: var(--simple-fields-background-color, #fff);
+          --lumo-primary-contrast-color: var(--simple-fields-background-color, #fff);
+          --lumo-primary-color: var( --simple-fields-color, black);
+          --lumo-dark-primary-color: ar( --simple-fields-color, black);
+          --lumo-light-primary-color: var( --simple-fields-color, black);
+          --lumo-primary-text-color: var( --simple-fields-color, black);
+          --lumo-body-text-color: var( --simple-fields-color, black);
+          --lumo-header-text-color: var( --simple-fields-color, black);
+          --lumo-secondary-text-color: var( --simple-fields-color, black);
+          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
+          color: var( --simple-fields-color, black);
+          background-color: var(--simple-fields-background-color, #fff);
+        }
+        vaadin-upload[dragover] {
+          border-color: var(--simple-colors-default-theme-blue-grey-3);
+        }
+        vaadin-upload-file {
+          --disabled-text-color: #var(--simple-fields-border-color, #999);
         }
         :host(:last-of-type) {
           margin-bottom: 0;
@@ -104,7 +91,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           margin-right: 5px;
         }
         vaadin-upload {
-          padding: 0;
+          padding: 5px;
           margin: 0;
         }
         simple-camera-snap {

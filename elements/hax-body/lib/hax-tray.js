@@ -57,7 +57,6 @@ class HaxTray extends winEventsElement(LitElement) {
       import("@polymer/iron-icons/av-icons.js");
       import("@polymer/iron-icons/maps-icons.js");
       import("@polymer/iron-icons/places-icons.js");
-      import("@polymer/paper-slider/paper-slider.js");
       import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
       import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
       import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
@@ -99,10 +98,17 @@ class HaxTray extends winEventsElement(LitElement) {
     return [
       css`
         :host {
+          font-family: var(
+            --simple-fields-font-family,
+            sans-serif
+          );
           display: block;
           z-index: 1000;
           position: absolute;
           transition: 0.2s all ease-in-out;
+          --a11y-tabs-focus-color: var(
+            --simple-colors-default-theme-blue-grey-8
+          );
         }
         .wrapper {
           color: var(--hax-color-text, black);
@@ -193,16 +199,20 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         a11y-collapse-group {
           position: fixed;
-          font-size: 14px;
+          font-size: 16px;
           margin: 0;
-          background-color: white;
-          transition: 0.2s all ease-in-out;
+          background-color: var(
+            --simple-colors-default-theme-grey-1
+          );
         }
         a11y-collapse {
-          background-color: white;
-          font-size: 11px;
+          font-size: 12px;
+          font-weight: normal;
           --a11y-tabs-content-padding: 0;
           width: calc(var(---hax-tray-width, 300px) - 2px);
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-grey-7
+          );
           --a11y-collapse-heading-background-color: var(
             --simple-colors-default-theme-grey-1
           );
@@ -219,18 +229,28 @@ class HaxTray extends winEventsElement(LitElement) {
           font-size: 16px;
         }
         a11y-collapse:hover {
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-grey-12
+          );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-blue-grey-1
+            --simple-colors-default-theme-grey-2
           );
         }
-        a11y-collapse[expanded] {
+        a11y-collapse[expanded],
+        a11y-collapse[expanded]:hover {
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-grey-1
+          );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-blue-grey-2
+            --simple-colors-default-theme-blue-grey-8
           );
         }
         a11y-collapse[disabled] {
+          --a11y-collapse-heading-color: var(
+            --simple-colors-default-theme-grey-7
+          );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-5
+            --simple-colors-default-theme-grey-2
           );
           cursor: not-allowed;
         }

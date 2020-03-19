@@ -2,19 +2,19 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsContainer } from "./simple-fields-container.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 /**
- *`simple-fields-markup`
+ *`simple-fields-code`
  * HTML inputs (excluding submit, reset, button, and image)
  * with label, description, error massage,
  * and aria-invalid functionality if needed.
  *
  * @group simple-fields
  * @extends simple-fields-container
- * @customElement simple-fields-markup
+ * @customElement simple-fields-code
  * @demo ./demo/field.html
  */
-class SimpleFieldsMarkup extends SimpleFieldsContainer {
+class SimpleFieldsCode extends SimpleFieldsContainer {
   static get tag() {
-    return "simple-fields-markup";
+    return "simple-fields-code";
   }
   static get styles() {
     return [
@@ -155,7 +155,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
   /**
    * makes handles code-editor changes
    *
-   * @memberof SimpleFieldsMarkup
+   * @memberof SimpleFieldsCode
    */
   _onChange(e) {
     if (!e.path[0]) return;
@@ -173,7 +173,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
 
   /**
    * checks validation constraints and returns error data
-   * @memberof SimpleFieldsMarkup
+   * @memberof SimpleFieldsCode
    */
   validate() {
     if (!this.value && this.required) {
@@ -218,7 +218,7 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
   /**
    * updates field an type
    *
-   * @memberof SimpleFieldsMarkup
+   * @memberof SimpleFieldsCode
    */
   _updateField() {
     this.field =
@@ -239,5 +239,5 @@ class SimpleFieldsMarkup extends SimpleFieldsContainer {
     );
   }
 }
-window.customElements.define(SimpleFieldsMarkup.tag, SimpleFieldsMarkup);
-export { SimpleFieldsMarkup };
+window.customElements.define(SimpleFieldsCode.tag, SimpleFieldsCode);
+export { SimpleFieldsCode };

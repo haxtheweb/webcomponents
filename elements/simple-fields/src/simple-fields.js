@@ -154,20 +154,19 @@ class SimpleFields extends SimpleFieldsLite {
             label: "itemLabel"
           }
         },
-        "code-editor": {
+        boolean: {
           defaultSettings: {
-            type: "markup",
-            mode: "html"
+            type: "boolean"
           }
         },
-        markup: {
+        code: {
           defaultSettings: {
             type: "markup"
           }
         },
-        boolean: {
+        "code-editor": {
           defaultSettings: {
-            type: "boolean"
+            type: "markup"
           }
         },
         color: {
@@ -209,6 +208,11 @@ class SimpleFields extends SimpleFieldsLite {
           defaultSettings: {
             type: "string",
             format: "iconpicker"
+          }
+        },
+        markup: {
+          defaultSettings: {
+            type: "markup"
           }
         },
         monthpicker: {
@@ -384,17 +388,9 @@ class SimpleFields extends SimpleFieldsLite {
         },
         markup: {
           defaultSettings: {
-            element: "marked-element",
-            valueProperty: "markdown"
-          },
-          mode: {
-            html: {
-              defaultSettings: {
-                element: "simple-fields-markup",
-                setValueProperty: "editorValue",
-                noWrap: true
-              }
-            }
+            element: "simple-fields-code",
+            setValueProperty: "editorValue",
+            noWrap: true
           }
         },
         number: {
@@ -570,8 +566,7 @@ class SimpleFields extends SimpleFieldsLite {
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
-      import("./lib/simple-fields-markup.js");
-      import("@polymer/marked-element/marked-element.js");
+      import("./lib/simple-fields-code.js");
       import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
       import("@lrnwebcomponents/simple-picker/simple-picker.js");
       import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
@@ -689,6 +684,7 @@ class SimpleFields extends SimpleFieldsLite {
       let prop = !field.property ? "" : field.property;
       schema[prop] = this._fieldToSchema(field);
     });
+    console.log('_fieldsToSchema',schema,fields);
     return schema;
   }
 }
