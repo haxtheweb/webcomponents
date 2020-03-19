@@ -81,7 +81,6 @@ class A11yTabs extends LitElement {
     this.hidden = false;
     this.iconBreakpoint = 400;
     this.layoutBreakpoint = 600;
-    this.forceHorizontal = false;
     this.responsiveSize = "xs";
     this.vertical = false;
     this.__tabs = [];
