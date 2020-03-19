@@ -499,6 +499,9 @@ class LrnappStudioKanban extends PolymerElement {
         "assignment-created",
         this._handleAssignmentCreated.bind(this)
       );
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 500);
     });
   }
   disconnectedCallback() {

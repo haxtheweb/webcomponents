@@ -1,24 +1,31 @@
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-spinner/paper-spinner.js";
 /**
  * `cms-views`
  * @customElement cms-views
  * `Render and process a  / views from a content management system.`
  */
-class CMSViews extends LitElement {
-  /**
-   * LitElement constructable styles enhancement
-   */
-  static get styles() {
-    return [
-      css`
+class CMSViews extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           min-width: 112px;
           min-height: 112px;
           transition: 0.6s all ease;
           background-color: transparent;
+        }
+        paper-spinner {
+          visibility: hidden;
+          opacity: 0;
+          height: 80px;
+          width: 80px;
+          padding: 16px;
         }
         #replacementcontent {
           visibility: visible;
@@ -27,65 +34,29 @@ class CMSViews extends LitElement {
         :host([loading]) {
           text-align: center;
         }
+        :host([loading]) paper-spinner {
+          visibility: visible;
+          opacity: 1;
+        }
         :host([loading]) #replacementcontent {
           opacity: 0;
           visibility: hidden;
         }
-      `
-    ];
-  }
-  render() {
-    return html`
+      </style>
       <iron-ajax
         id="viewsrequest"
         method="GET"
-        url="${this.viewsEndPoint}"
+        params="[[bodyData]]"
+        url="[[viewsEndPoint]]"
         handle-as="json"
-        @last-response-changed="${this.viewsDataChanged}"
+        last-response="{{viewsData}}"
       ></iron-ajax>
-      ${this.loading
-        ? html`
-            <hexagon-loader
-              item-count="4"
-              loading
-              size="small"
-            ></hexagon-loader>
-          `
-        : html``}
+      <paper-spinner active="[[loading]]"></paper-spinner>
       <span id="replacementcontent"><slot></slot></span>
     `;
   }
-  viewsDataChanged(e) {
-    this.viewsData = e.detail.value;
-  }
   static get tag() {
     return "cms-views";
-  }
-  /**
-   * HTMLElement
-   */
-  constructor() {
-    super();
-    this.loading = false;
-    this.viewsPrefix = "[";
-    this.viewsSuffix = "]";
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      if (["viewsName", "viewsDisplay"].includes(propName)) {
-        this.bodyData = this._generateBodyData(
-          this.viewsName,
-          this.viewsDisplay
-        );
-      }
-      if (propName == "bodyData") {
-        this._viewsChanged(this[propName]);
-      }
-      if (propName == "viewsData") {
-        this._handleviewsResponse(this[propName]);
-      }
-    });
   }
   static get properties() {
     return {
@@ -94,57 +65,57 @@ class CMSViews extends LitElement {
        */
       loading: {
         type: Boolean,
-        reflect: true
+        reflectToAttribute: true,
+        value: false
       },
       /**
        * Name of the views to render
        */
       viewsName: {
         type: String,
-        reflect: true,
-        attribute: "views-name"
+        reflectToAttribute: true
       },
       /**
        * Display from the views
        */
       viewsDisplay: {
         type: String,
-        reflect: true,
-        attribute: "views-display"
+        reflectToAttribute: true
       },
       /**
        * views end point updated, change the way we do processing.
        */
       viewsEndPoint: {
-        type: String,
-        attribute: "views-end-point"
-      },
-      /**
-       * Prefix for the views to be processed
-       */
-      viewsPrefix: {
-        type: String,
-        attribute: "views-prefix"
-      },
-      /**
-       * Suffix for the views to be processed
-       */
-      viewsSuffix: {
-        type: String,
-        attribute: "views-suffix"
+        type: String
       },
       /**
        * Body data which is just views with some encapsulation.
        */
       bodyData: {
-        type: Object
+        type: Object,
+        computed: "_generateBodyData(viewsName, viewsDisplay)",
+        observer: "_viewsChanged"
       },
       /**
        * views data from the end point.
        */
       viewsData: {
         type: String,
-        attribute: "views-data"
+        observer: "_handleviewsResponse"
+      },
+      /**
+       * Prefix for the views to be processed
+       */
+      viewsPrefix: {
+        type: String,
+        observer: "["
+      },
+      /**
+       * Suffix for the views to be processed
+       */
+      viewsSuffix: {
+        type: String,
+        observer: "]"
       }
     };
   }
@@ -175,17 +146,21 @@ class CMSViews extends LitElement {
       // wipe our own slot here
       wipeSlot(this);
       // now inject the content we got
-      let frag = document.createElement("span");
-      frag.innerHTML = newValue.content;
-      let newNode = frag.cloneNode(true);
-      this.appendChild(newNode);
-      this.loading = false;
+      microTask.run(() => {
+        let frag = document.createElement("span");
+        frag.innerHTML = newValue.content;
+        let newNode = frag.cloneNode(true);
+        this.appendChild(newNode);
+        setTimeout(() => {
+          this.loading = false;
+        }, 600);
+      });
     }
   }
   /**
    * views end point changed
    */
-  _viewsChanged(newValue) {
+  _viewsChanged(newValue, oldValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -201,8 +176,40 @@ class CMSViews extends LitElement {
       }
       if (this.viewsEndPoint) {
         this.loading = true;
-        this.shadowRoot.querySelector("#viewsrequest").body = newValue;
-        this.shadowRoot.querySelector("#viewsrequest").generateRequest();
+        microTask.run(() => {
+          this.shadowRoot.querySelector("#viewsrequest").generateRequest();
+        });
+      }
+    }
+  }
+  /**
+   * Attached to the DOM, now fire.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (
+      typeof this.viewsName !== typeof undefined &&
+      this.viewsName !== null &&
+      this.viewsName !== ""
+    ) {
+      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
+      // only kick off request if there's nothing in it
+      // if it has something in it that means we did some
+      // remote rendering ahead of time
+      if (slot.length === 0 && !this.loading) {
+        // support for autoloading the views data needed for the request from globals
+        if (
+          typeof this.viewsEndPoint === typeof undefined &&
+          typeof window.cmsviewsEndPoint !== typeof undefined
+        ) {
+          this.viewsEndPoint = window.cmsviewsEndPoint;
+        }
+        if (this.viewsEndPoint) {
+          this.loading = true;
+          microTask.run(() => {
+            this.shadowRoot.querySelector("#viewsrequest").generateRequest();
+          });
+        }
       }
     }
   }

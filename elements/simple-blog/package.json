@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.6.0",
+    "@lrnwebcomponents/haxcms-elements": "^2.6.1",
     "@lrnwebcomponents/schema-behaviors": "^2.5.0",
     "@lrnwebcomponents/simple-colors": "^2.5.0",
     "@lrnwebcomponents/simple-datetime": "^2.5.0",

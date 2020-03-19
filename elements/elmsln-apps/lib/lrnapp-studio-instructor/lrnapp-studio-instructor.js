@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
@@ -529,16 +528,18 @@ class LrnappStudioInstructor extends PolymerElement {
    * Rebuild the chart whenever the select list is changed.
    */
   _chartChanged(e) {
-    this.set("activeChart.title", e.detail.value);
-    this.notifyPath("activeChart.title");
-    this.set(
-      "activeChart.description",
-      "Chart of values relative to " + e.detail.value
-    );
-    this.notifyPath("activeChart.description");
-    // calculate the valid charting options relative to selected chart style
-    this.set("activeChart.data", this._formatChartData(e.detail.value));
-    this.notifyPath("activeChart.data");
+    if (e.detail.value) {
+      this.set("activeChart.title", e.detail.value);
+      this.notifyPath("activeChart.title");
+      this.set(
+        "activeChart.description",
+        "Chart of values relative to " + e.detail.value
+      );
+      this.notifyPath("activeChart.description");
+      // calculate the valid charting options relative to selected chart style
+      this.set("activeChart.data", this._formatChartData(e.detail.value));
+      this.notifyPath("activeChart.data");
+    }
   }
   /**
    * Format data in a way that chartist likes and that matches
@@ -668,29 +669,27 @@ class LrnappStudioInstructor extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.$.statsdialogbutton.addEventListener(
-        "click",
-        this._openStatsDialog.bind(this)
-      );
-      // listen for focus event to have fired
-      this.$.statsdialog.addEventListener(
-        "opened-changed",
-        this._accessibleFocus.bind(this)
-      );
-      this.$.dialog.addEventListener(
-        "opened-changed",
-        this._accessibleFocus.bind(this)
-      );
-      this.$.selectedproject.addEventListener(
-        "change",
-        this._projectChanged.bind(this)
-      );
-      this.$.selectedchart.addEventListener(
-        "change",
-        this._chartChanged.bind(this)
-      );
-    });
+    this.$.statsdialogbutton.addEventListener(
+      "click",
+      this._openStatsDialog.bind(this)
+    );
+    // listen for focus event to have fired
+    this.$.statsdialog.addEventListener(
+      "opened-changed",
+      this._accessibleFocus.bind(this)
+    );
+    this.$.dialog.addEventListener(
+      "opened-changed",
+      this._accessibleFocus.bind(this)
+    );
+    this.$.selectedproject.addEventListener(
+      "dropdown-select-changed",
+      this._projectChanged.bind(this)
+    );
+    this.$.selectedchart.addEventListener(
+      "value-changed",
+      this._chartChanged.bind(this)
+    );
   }
   /**
    * detached life cycle
@@ -710,11 +709,11 @@ class LrnappStudioInstructor extends PolymerElement {
       this._accessibleFocus.bind(this)
     );
     this.$.selectedproject.removeEventListener(
-      "change",
+      "dropdown-select-changed",
       this._projectChanged.bind(this)
     );
     this.$.selectedchart.removeEventListener(
-      "change",
+      "value-changed",
       this._chartChanged.bind(this)
     );
     super.disconnectedCallback();
