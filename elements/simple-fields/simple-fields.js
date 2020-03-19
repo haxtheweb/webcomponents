@@ -375,6 +375,17 @@ class SimpleFields extends SimpleFieldsLite {
               options: "options"
             }
           }
+        },
+        "simple-picker": {
+          defaultSettings: {
+            element: "simple-picker",
+            attributes: {
+              autofocus: true
+            },
+            properties: {
+              options: "options"
+            }
+          }
         }
       },
       type: {
@@ -644,7 +655,6 @@ class SimpleFields extends SimpleFieldsLite {
       required: [],
       properties: this._fieldsToSchema(this.fields)
     };
-    console.log(this.fields, schema);
     return schema;
   }
 
@@ -677,7 +687,6 @@ class SimpleFields extends SimpleFieldsLite {
           : Array.isArray(val)
           ? convData[val[0]]
           : convData[val];
-          console.log('convKeys',key,convData,convVal);
       if (convVal) settings = this._convertField(field, convVal, settings);
     });
     return settings;
@@ -724,7 +733,6 @@ class SimpleFields extends SimpleFieldsLite {
           "validation"
         ].includes(key)
       ) {
-        console.log('schema[key]',key,schema[key],field[key]);
         schema[key] = field[key];
       }
     });
@@ -742,7 +750,6 @@ class SimpleFields extends SimpleFieldsLite {
     fields.forEach(
       field => {
         let prop = !field.property ? "" : field.property;
-        if(!prop || prop === "") console.log('fields.forEach',prop,schema[field.property]);
         schema[prop] = this._fieldToSchema(field)
       }
     );
