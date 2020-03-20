@@ -15,7 +15,8 @@ class DropdownSelect extends LitElement {
           display: block;
           --simple-picker-border-width: 0;
           --simple-picker-options-border-width: 1px;
-          --simple-picker-background-color: rgba(255,255,255,0);
+          --simple-picker-options-border-color: var(--simple-fields-accent-color);
+          --simple-picker-background-color: rgba(255, 255, 255, 0);
         }
         :host([hidden]) {
           display: none;
@@ -30,7 +31,8 @@ class DropdownSelect extends LitElement {
         .error-message="${this.errorMessage}"
         .label="${this.label}"
       >
-        <simple-picker id="picker"
+        <simple-picker
+          id="picker"
           slot="field"
           value="${this.value}"
           @expand="${this._onOpen}"
@@ -51,9 +53,6 @@ class DropdownSelect extends LitElement {
     this.label = "Select an option.";
     this.options = [[]];
     this.opened = false;
-    this.selectedItemIndex = null;
-    this.selectedItemLabel = null;
-    this.value = null;
     this.setOptions();
     this.observer.observe(this, {
       attributes: false,
@@ -64,14 +63,13 @@ class DropdownSelect extends LitElement {
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-container.js");
   }
 
-  disconnectedCallback(){
+  disconnectedCallback() {
     this.observer.disconnect();
     super.disconnectedCallback();
   }
 
   static get properties() {
     return {
-
       /**
        * The error message to display when invalid.
        */
@@ -141,42 +139,42 @@ class DropdownSelect extends LitElement {
     let callback = () => this.setOptions();
     return new MutationObserver(callback);
   }
-  setOptions(){
+  setOptions() {
     let options = [];
-    this.querySelectorAll('paper-item').forEach((option,index)=>{
-      console.log(option,{
-        alt: option.innerHTML,
-        style: option.getAttribute('style') || undefined,
-        icon: option.querySelector('[icon]') ? option.querySelector('[icon]').getAttribute('icon') : undefined,
-        value: option.getAttribute('value') || option.getAttribute('id') || index
-      });
-      options.push([{
-        alt: option.innerHTML,
-        style: option.getAttribute('style') || undefined,
-        icon: option.querySelector('[icon]') ? option.querySelector('[icon]').getAttribute('icon') : undefined,
-        value: option.getAttribute('value') || option.getAttribute('id') || index
-      }]);
+    this.querySelectorAll("paper-item").forEach((option, index) => {
+      options.push([
+        {
+          alt: option.innerHTML,
+          style: option.getAttribute("style") || undefined,
+          icon: option.querySelector("[icon]")
+            ? option.querySelector("[icon]").getAttribute("icon")
+            : undefined,
+          value:
+            option.getAttribute("value") || option.getAttribute("id") || index
+        }
+      ]);
     });
-    if(options === []) options = [[]];
-    console.log(this.querySelectorAll('paper-item'),options);
+    if (options === []) options = [[]];
     this.options = options;
   }
 
   updated(changedProperties) {
-    let picker = this.shadowRoot && this.shadowRoot.querySelector('#picker') 
-    ? this.shadowRoot.querySelector('#picker') 
-    : undefined;
-    console.log(picker,this.options);
+    let picker =
+      this.shadowRoot && this.shadowRoot.querySelector("#picker")
+        ? this.shadowRoot.querySelector("#picker")
+        : undefined;
     changedProperties.forEach((oldValue, propName) => {
+      console.log(propName,oldValue,this[propName]);
       if (propName === "value") this._valueChanged(this.value, oldValue);
-      if(propName =="options" && this.options !== oldValue) picker.options = this.options;
+      if (propName === "options" && this.options !== oldValue)
+        picker.options = this.options;
     });
     this.dispatchEvent(
       new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: { value: this.value }
+        detail: this
       })
     );
   }
@@ -215,9 +213,10 @@ class DropdownSelect extends LitElement {
    * @param {event} e change event
    */
   _dropDownChanged(e) {
-    let picker = this.shadowRoot && this.shadowRoot.querySelector('#picker') 
-    ? this.shadowRoot.querySelector('#picker') 
-    : undefined;
+    let picker =
+      this.shadowRoot && this.shadowRoot.querySelector("#picker")
+        ? this.shadowRoot.querySelector("#picker")
+        : undefined;
     this.value = picker.value;
   }
   /**
@@ -228,17 +227,23 @@ class DropdownSelect extends LitElement {
    * @fires value-changed
    */
   _valueChanged(newValue, oldValue) {
-    let label = null, index = null, ctr = -1;
+    let label = null,
+      index = null,
+      ctr = -1;
+      console.log("value-changed",{
+        value: newValue,
+        oldValue: oldValue
+      });
     this.selectedItem = this.value;
-    this.options.forEach(
-      row=>row.forEach(item=>{
-        if(this.value===item.value){ 
+    this.options.forEach(row =>
+      row.forEach(item => {
+        if (this.value === item.value) {
           label = item.alt || item.value;
           index = ctr++;
         }
       })
     );
-    selectedItemLabel = label;
+    this.selectedItemLabel = label;
     this.selectedItemIndex = index;
     if (typeof oldValue !== typeof undefined) {
       this.dispatchEvent(
