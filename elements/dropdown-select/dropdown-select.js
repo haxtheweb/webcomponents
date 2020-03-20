@@ -15,7 +15,9 @@ class DropdownSelect extends LitElement {
           display: block;
           --simple-picker-border-width: 0;
           --simple-picker-options-border-width: 1px;
-          --simple-picker-options-border-color: var(--simple-fields-accent-color);
+          --simple-picker-options-border-color: var(
+            --simple-fields-accent-color
+          );
           --simple-picker-background-color: rgba(255, 255, 255, 0);
         }
         :host([hidden]) {
@@ -164,7 +166,7 @@ class DropdownSelect extends LitElement {
         ? this.shadowRoot.querySelector("#picker")
         : undefined;
     changedProperties.forEach((oldValue, propName) => {
-      console.log(propName,oldValue,this[propName]);
+      console.log(propName, oldValue, this[propName]);
       if (propName === "value") this._valueChanged(this.value, oldValue);
       if (propName === "options" && this.options !== oldValue)
         picker.options = this.options;
@@ -230,10 +232,10 @@ class DropdownSelect extends LitElement {
     let label = null,
       index = null,
       ctr = -1;
-      console.log("value-changed",{
-        value: newValue,
-        oldValue: oldValue
-      });
+    console.log("value-changed", {
+      value: newValue,
+      oldValue: oldValue
+    });
     this.selectedItem = this.value;
     this.options.forEach(row =>
       row.forEach(item => {
