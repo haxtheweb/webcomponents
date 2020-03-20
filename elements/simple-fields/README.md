@@ -1,7 +1,7 @@
 # &lt;simple-fields&gt;
 
 Fields
-> Uses eco-json-form and HAX wiring to display a series of fields
+> Uses JSON Schema or an array of fieldsto display a series of fields
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

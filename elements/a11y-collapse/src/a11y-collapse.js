@@ -101,7 +101,7 @@ class A11yCollapse extends LitElement {
               --a11y-collapse-padding-left,
               var(--a11y-collapse-horizontal-padding, 16px)
             );
-          border-top: 0px solid rgba(255, 255, 255, 0);
+          border-top: 0px solid;
           max-height: 0;
           transition: all 0.75s ease;
           overflow-y: hidden;

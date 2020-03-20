@@ -55,8 +55,8 @@ class HaxAppSearchResult extends LitElement {
           height: 152px;
           width: 100%;
           background-color: var(
-            --simple-colors-default-theme-blue-grey-7,
-            #37474f
+            --simple-colors-default-theme-cyan-7,
+            #009dc7
           );
         }
         @media screen and (max-width: 1000px) {

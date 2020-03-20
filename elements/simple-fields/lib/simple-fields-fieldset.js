@@ -19,7 +19,7 @@ class SimpleFieldsFieldset extends LitElement {
           margin: var(--simple-fields-margin-small, 8px) 0
             var(--simple-fields-margin, 16px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
-          border-radius: var(--simple-fields-border-radus, 2px);
+          border-radius: var(--simple-fields-border-radius, 2px);
           transition: all 0.3s ease-in-out;
         }
         :host(:last-of-type) {

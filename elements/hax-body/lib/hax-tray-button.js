@@ -92,17 +92,15 @@ class HAXTrayButton extends SimpleColors {
           flex-direction: column;
           align-items: center;
           margin: 1px 0;
-          background-color: var(--simple-colors-default-theme-accent-8, #000);
+          transition: all 0.5ms ease-in-out;
         }
         iron-icon {
           width: 20px;
           height: 20px;
-          color: var(--simple-colors-default-theme-accent-1, #eeeeee);
           transform: var(--hax-tray-button-rotate);
         }
         .item-label {
           margin-top: 4px;
-          color: var(--simple-colors-default-theme-accent-1, #eeeeee);
           width: 60px;
           font-size: 10px;
           line-height: 10px;
@@ -126,23 +124,35 @@ class HAXTrayButton extends SimpleColors {
           transform: rotateY(180deg);
         }
         paper-button {
-          color: var(--hax-color-text);
           text-transform: none;
-          background-color: var(--hax-color-bg-accent);
+          color: var(--hax-quick-button-accent-text, var(--simple-colors-default-theme-grey-12, #000));
+          background-color: var(--hax-quick-button-accent, var(--simple-colors-default-theme-grey-2, #eee));
+          border: 1px solid var(--hax-quick-button-accent, var(--simple-colors-default-theme-grey-3, #dddddd));
           min-width: unset;
           cursor: pointer;
           height: 40px;
           display: flex;
           padding: 4px;
           margin: 0px;
-          color: #ffffff;
           border-radius: 0;
-          transition: box-shadow 0.3s;
+          transition: all 0.5ms ease-in-out;
+        }
+        paper-button:active,
+        paper-button:focus,
+        paper-button:hover {
+          color: var(--hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1, #fff));
+          background-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-color
+          ));
+          border-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-color
+          ));
+          transition: all 0.5ms ease-in-out;
         }
         paper-button iron-icon {
-          height: 20px;
-          width: 20px;
-          color: var(--simple-colors-default-theme-accent-1);
           display: inline-block;
         }
         :host([mini]) {
@@ -159,7 +169,7 @@ class HAXTrayButton extends SimpleColors {
         }
         .item-title {
           margin-top: 8px;
-          color: var(--hax-color-text);
+          color: var(--simple-colors-default-theme-grey-12, #000);
           width: 100%;
           white-space: nowrap;
           overflow: hidden;
@@ -174,9 +184,9 @@ class HAXTrayButton extends SimpleColors {
         }
         simple-tooltip {
           font-size: 16px;
-          --simple-tooltip-background: #000000;
+          --simple-tooltip-background: var(--simple-colors-default-theme-grey-12, #000);;
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
+          --simple-tooltip-text-color: var(--simple-colors-default-theme-grey-1, #dddddd);
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-duration-in: 100ms;
           --simple-tooltip-duration-out: 0;
@@ -188,7 +198,7 @@ class HAXTrayButton extends SimpleColors {
   }
   render() {
     return html`
-      <paper-button title="${this.label}" raised @click="${this._fireEvent}">
+      <paper-button title="${this.label}" @click="${this._fireEvent}">
         ${this.icon
           ? html`
               <div class="button-inner">

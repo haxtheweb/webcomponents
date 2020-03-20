@@ -34,12 +34,40 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           color: var(--simple-fields-color, black);
           background-color: var(--simple-fields-background-color, #fff);
           padding: 16px !important;
+          text-align: center;
         }
         vaadin-upload[dragover] {
-          border-color: var(--simple-colors-default-theme-blue-grey-3);
+          border-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color
+          ));
         }
         vaadin-upload-file {
-          --disabled-text-color: #var(--simple-fields-border-color, #999);
+          --disabled-text-color: var(--simple-fields-border-color, #999);
+        }
+        paper-button  {
+          text-transform: none;
+          margin: 8px 0;
+          color: var(--simple-colors-default-theme-grey-12, #000);
+          background-color: var(--simple-colors-default-theme-grey-2, #eee);
+          border: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
+          display: block;
+          text-align:center;
+        }
+        paper-button:active,
+        paper-button:focus,
+        paper-button:hover {
+          color: var(--hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1, #fff));
+          background-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color
+          ));
+          border-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color
+          ));
+          transition: all 0.5ms ease-in-out;
         }
         .add-area-content-wrapper {
           padding: 0 4px;
@@ -92,12 +120,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             }
           }
           vaadin-upload {
-            --vaadin-upload-button-add-wrapper: {
-              border: 2px solid #ffffff;
-              background-color: var(
-                --hax-color-accent1,
-                --simple-colors-default-theme-blue-grey-7
-              );
               color: #ffffff;
               display: block;
             }
@@ -156,7 +178,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         <paper-button
           @click="${this.newAssetConfigure}"
           id="newassetconfigure"
-          raised=""
           >Configure</paper-button
         >
       </div>

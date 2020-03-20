@@ -94,7 +94,7 @@ If you think you can use HAX, try one of the methods below of integration. HAX i
     "content": ""
 }
 ```
-- [JSON schema](http://json-schema.org/) - is a way of expressing the validation and input of properties in a JSON object, using a JSON object to express it (yeah.. I know..). What this affords us is a way of automatically generating form fields to modify the custom element fields that have been defined in the haxProperties object. This relationship can be seen in the hax-preview element which will map haxProperties to JSON Schema in order to generate an input form for the element. A fork `eco-json-schema-form` is providing all form capabilities to interface with the schema.
+- [JSON schema](http://json-schema.org/) - is a way of expressing the validation and input of properties in a JSON object, using a JSON object to express it (yeah.. I know..). What this affords us is a way of automatically generating form fields to modify the custom element fields that have been defined in the haxProperties object. This relationship can be seen in the hax-preview element which will map haxProperties to JSON Schema in order to generate an input form for the element. `simple-fields` is providing all form capabilities to interface with the schema.
 - *haxProperties* - an object that lives on a HAX capable element, expressing the way to build forms in HAX to modify it's options. This object expresses a default HAX Element, some minor booleans for UI areas, and the `settings` object which defines the field / property mapping for the `quick`, `configure` and `advanced` forms.
   - quick settings - these appear on the bar in place when an element has focus in hax-body
   - configure settings - these appear on the hax-preview form by default. Think of these as your primary means of modifying this "content type" so to speak, if the custom element were a unique piece of content to the system
@@ -143,7 +143,7 @@ If an gizmo source is selected (we'll say Youtube). It opens a collased area whi
 `<hax-source>` said "I have a HAX element" and bubbles up a hax-source-selected event to the app. The app saw the event and handled it (so it can do custom stuff if needed) and then told `<hax-manager>` "hey, here's your active thing" which then shifts it forward to the configure step of the operation. As part of this, it will then pass in an element in HAX Element format which `<hax-preview>` will unpack into the real thing.
 
 ### hax-preview
-This is our form / modification area. hax-preview takes a HAX Element, reads off it's haxProperties object, and then converts it into JSON Schema to generate a form for editing via `<eco-json-schema-form>`. Preview then converts the HAX Element into a DOM node to render a preview and data binds it to the form. Now as the user edits fields in the form, it'll update the preview.
+This is our form / modification area. hax-preview takes a HAX Element, reads off it's haxProperties object, and then converts it into JSON Schema to generate a form for editing via `<simple-fields>`. Preview then converts the HAX Element into a DOM node to render a preview and data binds it to the form. Now as the user edits fields in the form, it'll update the preview.
 
 Once the user likes what they see, they hit embed and it'll convert the preview DOM node into a HAX Element and bubble up an event to insert it into `<hax-body>` via the app. At this point, `<hax-manager>` is triggered to close and we've effectively gone end to end.
 

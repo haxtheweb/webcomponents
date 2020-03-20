@@ -19,99 +19,6 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
     return [
       ...super.styles,
       css`
-        /*:host {
-          display: block;
-          visibility: visible;
-          transition: 0.3s all ease;
-          box-sizing: border-box;
-          pointer-events: all;
-          overflow: visible;
-          --simple-camera-snap-width: 300px;
-          --simple-camera-snap-height: calc(300px * 9 / 16);
-          --simple-camera-snap-color: var(--eco-json-form-color, #222);
-          --simple-camera-snap-background: var(--eco-json-form-bg, white);
-          --simple-camera-snap-border-radius: 2px;
-          --lumo-font-family: var(
-            --eco-json-form-font-family,
-            var(--paper-font-caption_-_font-family, unset)
-          );
-          --lumo-base-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-          --lumo-primary-contrast-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-          --lumo-primary-color: var(
-            --eco-json-form-active-color,
-            var(--primary-color, #000)
-          );
-          --lumo-primary-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-body-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-header-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-secondary-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          --lumo-disabled-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          background-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-        }
-        :host #legend {
-          transition: all 0.5s;
-          color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-        }
-        :host(:focus-within) #legend {
-          color: var(--eco-json-form-active-color, var(--primary-color, #000));
-        }
-        :host #fieldset {
-          border-radius: 2px;
-          transition: all 0.5s;
-          border: 1px solid
-            var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
-        }
-        :host #fieldset > div {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        :host #fieldset > div > *:not(#picker) {
-          flex: 1 1 auto;
-        }
-        #picker {
-          margin-bottom: 0;
-          margin-right: 5px;
-        }
-        vaadin-upload {
-          padding: 0;
-          margin: 0;
-        }
-        simple-camera-snap {
-          position: relative;
-          --simple-camera-snap-button-container-position: absolute;
-          --simple-camera-snap-button-container-bottom: 2px;
-          --simple-camera-snap-button-container-z-index: 5;
-          --simple-camera-snap-button-border-radius: 100%;
-          --simple-camera-snap-button-opacity: 0.7;
-        }*/
         fieldset {
           margin: 0;
           padding: 0;
@@ -334,7 +241,7 @@ class SimpleFieldsUri extends SimpleFieldsContainer {
           id="picker"
           aria-label="Source..."
           required
-          value="${this.option}"
+          .value="${this.option}"
           @value-changed="${this.optionChanged}"
           @change="${this.changed}"
           .options="${this.options}"

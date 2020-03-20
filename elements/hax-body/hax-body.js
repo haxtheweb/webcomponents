@@ -13,11 +13,74 @@ const edgeSize = 100;
 
 /**
  * `hax-body`
- * `Manager of the body area that can be modified`
+ * Manager of the body area that can be modified
+ * 
+### Styling
+`<hax-bodys>` provides following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|--------
+--haxcms-base-styles-body-font-size |   | 16px
+--haxcms-base-styles-body-font-family, 'Noto Serif' |   | serif
+--haxcms-base-styles-body-line-height |   | 1.8
+--haxcms-base-styles-body-letter-spacing |   | .5px
+--hax-ui-headings |   | #d4ff77;
+--hax-color-text | default text color | #000
+--hax-contextual-action-text-color |  | --simple-colors-default-theme-grey-1
+--hax-contextual-action-color |  | --simple-colors-default-theme-cyan-7
+--hax-contextual-action-hover-color |  | 
+--hax-body-target-background-color: --simple-colors-default-theme-cyan-2
+--hax-body-possible-target-background-color: --simple-colors-default-theme-grey-2
+
+####Outlines
+Custom property | Description | Default
+----------------|-------------|--------
+--hax-body-editable-outline |   | 1px solid --simple-colors-default-theme-deep-orange
+--hax-body-active-outline-hover: 1px solid --hax-contextual-action-color
+--hax-body-active-outline: 3px solid  --hax-contextual-action-color
+
+####Headings
+Custom property | Description | Default
+----------------|-------------|--------
+--hax-base-styles-h1-font-size |   | 2.5em
+--hax-base-styles-h1-line-height |   | 2.5em
+--hax-base-styles-h2-font-size |   | 2em
+--hax-base-styles-h3-font-size |   | 1.75em
+--hax-base-styles-h4-font-size |   | 1.5em
+--hax-base-styles-h5-font-size |   | 1.25em
+--hax-base-styles-h6-font-size |   | 1.25em
+--hax-base-styles-p-min-height |   | 43px
+--hax-base-styles-p-font-size |   | 24px
+--hax-base-styles-p-line-height |   | 1.8
+--hax-base-styles-p-letter-spacing |   | 0.5px
+
+####Links
+Custom property | Description | Default
+----------------|-------------|--------
+--hax-base-styles-a-color |  | --simple-colors-default-theme-grey-12
+--hax-base-styles-a-font-size |   | 24px
+--hax-base-styles-a-font-weight |   | normal
+--hax-base-styles-a-color-visited |   | --simple-colors-default-theme-light-blue
+--hax-base-styles-a-color-active |   | --simple-colors-default-theme-light-blue
+--hax-base-styles-a-font-weight-active |   | normal
+
+####Lists
+Custom property | Description | Default
+----------------|-------------|--------
+--hax-base-styles-list-padding-bottom |   | 1.5em
+--hax-base-styles-list-line-height |   | 40px
+--hax-base-styles-list-font-size |   | 24px
+--hax-base-styles-list-max-width |   | 28em
+--hax-base-styles-list-last-child-padding-bottom |   | 1em
+--hax-base-styles-list-padding-left |   | 20px
+--hax-base-styles-list-margin-left |   | 20px
+ * 
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
  *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
  *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
+ * 
  * @demo demo/index.html
  * @LitElement
  * @customElement hax-body
@@ -55,20 +118,29 @@ class HaxBody extends SimpleColors {
           min-height: 32px;
           min-width: 32px;
           outline: none;
-          --hax-contextual-action-color: var(
-            --simple-colors-default-theme-blue-grey-7,
-            #3b97e3
+          --hax-contextual-action-text-color: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-contextual-action-hover-color: var(
+            --simple-colors-default-theme-cyan-7,
+            #009dc7
           );
-          --hax-body-editable-outline: 1px solid #e37e3b;
+          --hax-contextual-action-color: var(
+            --simple-colors-default-theme-cyan-8, #007999
+          );
+          --hax-body-editable-outline: 1px solid var(--simple-colors-default-theme-deep-orange, #ff8a64);
           --hax-body-active-outline-hover: 1px solid
-            var(--hax-contextual-action-color);
+            var(--hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7
+          )); 
           --hax-body-active-outline: 3px solid
-            var(--hax-contextual-action-color);
+            var(--hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7
+          )); 
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-green-3
+            --simple-colors-default-theme-cyan-2, #9beaff
           );
           --hax-body-possible-target-background-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-default-theme-grey-2, #dddddd;
           );
         }
         .hax-context-menu {
@@ -122,17 +194,20 @@ class HaxBody extends SimpleColors {
           letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);
         }
         :host #bodycontainer ::slotted(a) {
-          color: var(--hax-base-styles-a-color, #000);
+          color: var(--hax-base-styles-a-color, 
+            var(--simple-colors-default-theme-grey-12, #000));
           font-size: var(--hax-base-styles-a-font-size, 24px);
           font-weight: var(--hax-base-styles-a-font-weight, normal);
         }
         :host #bodycontainer ::slotted(a:visited) {
-          color: var(--hax-base-styles-a-color-visited, #2196f3);
+          color: var(--hax-base-styles-a-color-visited, 
+            var(--simple-colors-default-theme-light-blue, #007ffc));
         }
         :host #bodycontainer ::slotted(a:active),
         :host #bodycontainer ::slotted(a:focus),
         :host #bodycontainer ::slotted(a:hover) {
-          color: var(--hax-base-styles-a-color-active, #2196f3);
+          color: var(--hax-base-styles-a-color-active, 
+            var(--simple-colors-default-theme-light-blue, #007ffc));
           font-weight: var(--hax-base-styles-a-font-weight-active, normal);
         }
         :host #bodycontainer ::slotted(ol),
@@ -233,7 +308,7 @@ class HaxBody extends SimpleColors {
           right: unset;
           top: unset;
           background-color: var(
-            --simple-colors-default-theme-blue-grey-7,
+            --simple-colors-default-theme-cyan-7,
             #3b97e3
           );
           color: #ffffff;

@@ -47,7 +47,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           background-color: var(--simple-fields-background-color, #fff);
         }
         vaadin-upload[dragover] {
-          border-color: var(--simple-colors-default-theme-blue-grey-3);
+          border-color: var(--simple-colors-default-theme-accent-3, #77e2ff);
         }
         vaadin-upload-file {
           --disabled-text-color: #var(--simple-fields-border-color, #999);
@@ -66,7 +66,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           margin: var(--simple-fields-margin-small, 8px) 0
             var(--simple-fields-margin, 16px);
           border: 1px solid var(--simple-fields-border-color-light, #ccc);
-          border-radius: var(--simple-fields-border-radus, 2px);
+          border-radius: var(--simple-fields-border-radius, 2px);
           transition: all 0.3s ease-in-out;
         }
         fieldset > div {

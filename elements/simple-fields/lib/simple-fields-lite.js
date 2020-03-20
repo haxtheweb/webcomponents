@@ -8,7 +8,7 @@ import "./simple-fields-fieldset.js";
 import "./simple-fields-array.js";
 /**
  * `simple-fields-lite`
- * Uses eco-json-form and HAX wiring to display a series of fields
+ * Uses JSON Schema of fields to display a series of fields
  * 
 ### Styling
 `<simple-fields-lite>` provides following custom properties
@@ -18,7 +18,7 @@ Custom property | Description | Default
 ----------------|-------------|--------
 `--simple-fields-margin` | vertical margin around container | 16px
 `--simple-fields-margin-small` | smaller vertical margin above field itself | 8px
-`--simple-fields-border-radus` | default border-radius | 2px
+`--simple-fields-border-radius` | default border-radius | 2px
 `--simple-fields-color` | text color | black
 `--simple-fields-background-color` | background color | white
 `--simple-fields-error-color` | error text color | #dd2c00

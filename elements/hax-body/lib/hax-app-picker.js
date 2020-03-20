@@ -47,6 +47,11 @@ class HaxAppPicker extends LitElement {
           z-index: 1000000;
           border: 2px solid var(--hax-color-border-outline);
           background-color: #ffffff;
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-purple-8, #8a009b
+          );
         }
         .button-list {
           display: block;

@@ -15,8 +15,8 @@ class HaxSchemaForm extends PolymerElement {
     import("@polymer/paper-tabs/paper-tabs.js");
     import("@polymer/paper-tabs/paper-tab.js");
     import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
+    import("@lrnwebcomponents/simple-fields/simple-fields.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
     import("@polymer/paper-input/paper-textarea.js");
     import("app-datepicker/app-datepicker.js");
@@ -43,13 +43,8 @@ class HaxSchemaForm extends PolymerElement {
           height: 100%;
         }
 
-        eco-json-schema-object {
+        simple-fields {
           width: 50%;
-        }
-        #form {
-          --eco-json-schema-object-form: {
-            display: block !important;
-          }
         }
 
         #modetabs {
@@ -89,19 +84,12 @@ class HaxSchemaForm extends PolymerElement {
           background-color: var(--hax-color-menu-heading-bg, #eeeeee);
           color: var(--hax-color-menu-heading-color, black);
         }
-        eco-json-schema-object {
+        simple-fields {
           color: var(--hax-text-color);
           --paper-input-container-focus-color: var(
             --haxcms-site-listing-color-hover
           );
           --simple-colors-picker-preview-size: 20px;
-          --eco-json-schema-object-form: {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
         }
       </style>
       <paper-tabs
@@ -117,11 +105,11 @@ class HaxSchemaForm extends PolymerElement {
         >
       </paper-tabs>
       <paper-card class="form-wrapper">
-        <eco-json-schema-object
+        <simple-fields
           id="form"
           schema="[[schema]]"
           value="{{value}}"
-        ></eco-json-schema-object>
+        ></simple-fields>
       </paper-card>
     `;
   }

@@ -103,9 +103,17 @@ class HaxTray extends winEventsElement(LitElement) {
           z-index: 1000;
           position: absolute;
           transition: 0.2s all ease-in-out;
-          --a11y-tabs-focus-color: var(
-            --simple-colors-default-theme-blue-grey-8
+          --hax-contextual-action-text-color: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-contextual-action-color: var(
+            --simple-colors-default-theme-cyan-7, #009dc7);
+          --hax-contextual-action-hover-color: var(
+            --simple-colors-default-theme-cyan-8, #007999
           );
+          --a11y-tabs-focus-color: var(
+            --hax-contextual-action-hover-color, 
+            var(--simple-colors-default-theme-cyan-8, #007999
+          ));
         }
         .wrapper {
           color: var(--hax-color-text, black);
@@ -124,6 +132,34 @@ class HaxTray extends winEventsElement(LitElement) {
           visibility: visible;
           right: 0;
           pointer-events: all;
+        }
+        #addcollapse {
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-purple-8, #8a009b
+          );
+        }
+        #settingscollapse {
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-green-8, #00762e
+          );
+        }
+        #searchapps {
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-cyan-8, #007999
+          );
+        }
+        #templateslayouts {
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-pink-8, #b80042
+          );
         }
         :host([edit-mode][collapsed]) a11y-collapse-group {
           right: -100vw;
@@ -198,7 +234,7 @@ class HaxTray extends winEventsElement(LitElement) {
           position: fixed;
           font-size: 16px;
           margin: 0;
-          background-color: var(--simple-colors-default-theme-grey-1);
+          background-color: var(--simple-colors-default-theme-grey-1, #fff);
         }
         a11y-collapse {
           font-size: 12px;
@@ -206,15 +242,18 @@ class HaxTray extends winEventsElement(LitElement) {
           --a11y-tabs-content-padding: 0;
           width: calc(var(---hax-tray-width, 300px) - 2px);
           --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-7
+            --simple-colors-default-theme-grey-7, #666
           );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-1
+            --simple-colors-default-theme-grey-2, #eee
           );
           --a11y-collapse-padding-top: 0px;
           --a11y-collapse-padding-right: 0px;
           --a11y-collapse-padding-bottom: 0px;
           --a11y-collapse-padding-left: 0px;
+          --a11y-collapse-border: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
+          --a11y-collapse-border-between: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
+          transition: all 0.5ms ease-in-out;
         }
         a11y-collapse:not([expanded]) div[slot="content"] {
           display: none;
@@ -225,28 +264,31 @@ class HaxTray extends winEventsElement(LitElement) {
         }
         a11y-collapse:hover {
           --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-12
+            --hax-tray-panel-accent,
+            var(--simple-colors-default-theme-grey-12, #000)
           );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-2
-          );
+            --hax-tray-panel-accent-text, var(
+            --simple-colors-default-theme-grey-1, #fff));
         }
         a11y-collapse[expanded],
         a11y-collapse[expanded]:hover {
-          --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-1
+          --a11y-collapse-heading-color:  var(
+            --hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1)
           );
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-blue-grey-8
+            --hax-tray-panel-accent, 
+            var(--hax-contextual-action-hover-color)
           );
         }
         a11y-collapse[disabled] {
           --a11y-collapse-heading-color: var(
-            --simple-colors-default-theme-grey-7
-          );
+            --simple-colors-default-theme-grey-7, #666
+          ) !important;
           --a11y-collapse-heading-background-color: var(
-            --simple-colors-default-theme-grey-2
-          );
+            --simple-colors-default-theme-grey-2, #eee
+          ) !important;
           cursor: not-allowed;
         }
         a11y-collapse[disabled] div[slot="heading"] {
@@ -268,8 +310,37 @@ class HaxTray extends winEventsElement(LitElement) {
         .quick-buttons {
           width: var(---hax-tray-width, 300px);
           display: flex;
-          background-color: black;
+          color: var(--simple-colors-default-theme-grey-12, #000);
+          background-color: var(--simple-colors-default-theme-grey-4, #bbb);
           justify-content: space-between;
+          transition: all 0.5ms ease-in-out;
+        }
+        .quick-buttons hax-tray-button {
+          --hax-tray-panel-accent-text: 
+            var(--simple-colors-default-theme-cyan-8, #007999);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-grey-1, #fff);
+        }
+        #button,
+        .quick-buttons #haxsavebutton {
+          --hax-quick-button-accent:
+            var(--simple-colors-default-theme-cyan-8, #007999);
+          --hax-tray-panel-accent:
+            var(--simple-colors-default-theme-cyan-7, #009dc7);
+          --hax-quick-button-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+        }
+        .quick-buttons #haxcancelbutton {
+          --hax-quick-button-accent: var(
+            --simple-colors-default-theme-red-8, #ac0000);
+          --hax-tray-panel-accent: var(
+            --simple-colors-default-theme-red-7, #ee0000);
+          --hax-quick-button-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
+          --hax-tray-panel-accent-text: var(
+            --simple-colors-default-theme-grey-1, #fff);
         }
         .quick-buttons .ops {
           display: flex;
@@ -365,7 +436,6 @@ class HaxTray extends winEventsElement(LitElement) {
               @click="${this._clickEditButton}"
               icon="create"
               id="button"
-              color="black"
               label="${this.__tipText}"
             ></hax-tray-button>
           `}
@@ -381,7 +451,6 @@ class HaxTray extends winEventsElement(LitElement) {
                     icon="save"
                     id="haxsavebutton"
                     label="${this.__tipText}"
-                    color="green"
                     event-name="save"
                     voice-command="save (content)(page)"
                     color-meaning
@@ -392,7 +461,6 @@ class HaxTray extends winEventsElement(LitElement) {
                     id="haxcancelbutton"
                     label="Cancel"
                     event-name="cancel"
-                    color="red"
                     voice-command="cancel"
                     color-meaning
                   ></hax-tray-button>
@@ -551,8 +619,7 @@ class HaxTray extends winEventsElement(LitElement) {
     try {
       this.activeTab = this.shadowRoot
         .querySelector("#settingsform")
-        .shadowRoot.querySelector("eco-json-schema-tabs")
-        .shadowRoot.querySelector("a11y-tabs").activeTab;
+        .shadowRoot.querySelector("simple-fields").activeTab;
     } catch (e) {
       // in case it missed somehow like w/ an incredibly slow repaints
       this.activeTab = "item-0";
@@ -1271,14 +1338,14 @@ class HaxTray extends winEventsElement(LitElement) {
             disable.forEach(id => {
               this.shadowRoot
                 .querySelector("#settingsform")
-                .shadowRoot.querySelector("eco-json-schema-tabs")
+                .shadowRoot.querySelector("simple-fields")
                 .shadowRoot.querySelector("#" + id).disabled = true;
             });
             // check for active tab being disabled
             if (
               this.shadowRoot
                 .querySelector("#settingsform")
-                .shadowRoot.querySelector("eco-json-schema-tabs")
+                .shadowRoot.querySelector("simple-fields")
                 .shadowRoot.querySelector("#" + this.activeTab).disabled
             ) {
               // support active tab being disabled and having to move down
@@ -1289,7 +1356,7 @@ class HaxTray extends winEventsElement(LitElement) {
                   if (
                     this.shadowRoot
                       .querySelector("#settingsform")
-                      .shadowRoot.querySelector("eco-json-schema-tabs")
+                      .shadowRoot.querySelector("simple-fields")
                       .shadowRoot.querySelector("#" + this.activeTab).disabled
                   ) {
                     this.activeTab = "item-2";
@@ -1304,8 +1371,7 @@ class HaxTray extends winEventsElement(LitElement) {
             }
             this.shadowRoot
               .querySelector("#settingsform")
-              .shadowRoot.querySelector("eco-json-schema-tabs")
-              .shadowRoot.querySelector("a11y-tabs").activeTab = this.activeTab;
+              .shadowRoot.querySelector("simple-fields").activeTab = this.activeTab;
           } catch (e) {}
         }, 10);
       }

@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleFieldsLite } from "./lib/simple-fields-lite.js";
 /**
  * `simple-fields`
- * Uses eco-json-form and HAX wiring to display a series of fields
+ * Uses JSON Schema to display a series of fields
  * 
 ### Styling
 `<simple-fields>` provides following custom properties
