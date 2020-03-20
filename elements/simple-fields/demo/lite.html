@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>simple-fields-lite Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-fields-lite.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Basic simple-fields-lite demo</h1>
+      <demo-snippet>
+        <style>#submission {width: 100%;}</style>
+        <script>
+          window.onload = () => {
+            let schema = document.getElementById('schema');
+            schema.value = {
+              "settings": {
+              "basic-input": {
+                "name":"NikkiMK",
+                "besttime": "evening",
+                "contact": "email",
+                "closed": true
+              },
+              "arrays": {
+                "phoneNumbers": [
+                  {
+                    "type": "home",
+                    "phoneNumber": "1-555-867-5309"
+                  },
+                  {
+                    "type": "cell",
+                    "phoneNumber": "1-555-555-5555"
+                  },
+                  {
+                    "type": "work",
+                    "phoneNumber": "1-800-888-8888"
+                  }
+                ],
+                "positions": [
+                  {
+                    "title": "cashier",
+                    "salary": "20000"
+                  }
+                ]
+              }
+              }
+            }; 
+            data = {
+              $schema: "http://json-schema.org/schema#",
+              title: "Store",
+              type: "object",
+              format: "tabs",
+              required: [ "name", "email" ],
+              properties: {
+                settings: {
+                  title: "Settings",
+                  type: "object",
+                  format: "tabs",
+                  properties: {
+                    "basic-input": {
+                      title: "Basic input page",
+                      description: "Basic contact settings",
+                      type: "object",
+                      properties: {
+                        branch: {
+                          title: "Branch",
+                          type: "string",
+                          description: "This is a description."
+                        },
+                        name: {
+                          title: "Name",
+                          type: "string"
+                        },
+                        address: {
+                          title: "Address",
+                          type: "string",
+                          minLength: 3
+                        },
+                        city: {
+                          title: "City",
+                          type: "string",
+                          minLength: 3
+                        },
+                        province: {
+                          title: "Province",
+                          type: "string",
+                          minLength: 2
+                        },
+                        country: {
+                          title: "Country",
+                          type: "string",
+                          minLength: 2
+                        },
+                        postalCode: {
+                          title: "Postal/Zip Code",
+                          type: "string",
+                          pattern:
+                            "[a-zA-Z][0-9][a-zA-Z]\\s*[0-9][a-zA-Z][0-9]|[0-9]{5}(-[0-9]{4})?"
+                        },
+                        email: {
+                          title: "Email",
+                          type: "string",
+                          pattern:
+                            "(?:^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$)|(?:^$)"
+                        },
+                        website: {
+                          title: "Website",
+                          type: "string",
+                          format: "uri"
+                        },
+                        besttime: {
+                          title: "Best time to contact",
+                          type: "string",
+                          format: "radio",
+                          options: {
+                            day: "morning",
+                            evening: "evening"
+                          }
+                        },
+                        contact: {
+                          title: "Contact by",
+                          type: "string",
+                          format: "select",
+                          options: {
+                            "": "-- Select a contact --",
+                            email: "Email",
+                            mail: "Mail",
+                            phone: "Phone",
+                            website: "Website"
+                          }
+                        },
+                        establishedDate: {
+                          title: "Established Date",
+                          type: "string",
+                          format: "date"
+                        },
+                        closed: {
+                          title: "Closed",
+                          type: "boolean",
+                        },
+                        closedDate: {
+                          title: "Closed Date",
+                          type: ["string", "null"],
+                          format: "date"
+                        }
+                      }
+                    },
+                    arrays: {
+                    title: "Basic arrays page",
+                    description: "Demonstrates arrays",
+                    type: "object",
+                    properties: {
+                      phoneNumbers: {
+                        title: "Phone numbers",
+                        description: "List phone numbers and type of number.",
+                        type: "array",
+                        items: {
+                          type: "object",
+                          previewBy: ["phoneNumber"],
+                          properties: {
+                            type: {
+                              title: "Type",
+                              type: "string",
+                              format: "radio",
+                              options: {
+                                home: "Home Phone",
+                                cell: "Mobile Phone",
+                                work: "Work Phone"
+                              }
+                            },
+                            phoneNumber: {
+                              title: "Phone Number",
+                              type: "string"
+                            }
+                          }
+                        }
+                      },
+                      positions: {
+                        type: "array",
+                        title: "Positions",
+                        description: "List positions and salary.",
+                        items: {
+                          type: "object",
+                          title: "Positions",
+                          previewBy: ["title"],
+                          properties: {
+                            title: {
+                              title: "Title",
+                              type: "string"
+                            },
+                            salary: {
+                              title: "Salary",
+                              type: "number",
+                              multipleOf: 1000,
+                              minimum: 20000,
+                              maximum: 50000
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  }
+                }
+              }
+            };
+            schema.schema = data;
+            let schemaError = {
+              "settings.basic-input.name": "That's not your real name.",
+              "settings.arrays.phoneNumbers.0.phoneNumber": "That's not your real phone number.",
+            };
+            setErrors = () => {
+              schema.error = schemaError;
+              document.getElementById('getvals').disabled = true;
+            }
+            getValues =() => {
+              let val = schema.value;
+              console.log(`value`,val);
+              if(schema.valid) {
+                document.getElementById('submission').innerHTML = JSON.stringify(schema.value);
+                console.log('Value Submitted:',val);
+              };
+              document.getElementById('getvals').disabled = !schema.valid;
+            }
+          };
+        </script>
+        <template>
+          <form id="form">
+            <simple-fields-lite id="schema"></simple-fields-lite>
+            <p>
+              <input onclick="setErrors()" value="Add fake errors" type="button">
+              <input onclick="getValues()" value="Get Values" id="getvals" type="button">
+            </p>
+          </form>
+          <p><label for="submission">Values</label></p>
+          <textarea id="submission" rows="15"></textarea>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

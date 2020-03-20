@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>simple-fields-container Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-fields-container.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>simple-fields-container Demo</h1>
+      <demo-snippet>
+        <template>
+          <simple-fields-container label="Name">
+            <input slot="field" autocapitalize="words" required/>
+          </simple-fields-container>
+          <simple-fields-container label="Password">
+            <input slot="field" type="password"/>
+          </simple-fields-container>
+          <simple-fields-container label="Profile Image">
+            <input slot="field" type="file"/>
+          </simple-fields-container>
+          <simple-fields-container label="Bio" description="Write your bio.">
+            <textarea slot="field" placeholder="Once..."></textarea>
+          </simple-fields-container>
+          <simple-fields-container label="Birth Date">
+            <input slot="field" type="date"/>
+          </simple-fields-container>
+          <simple-fields-container label="Color">
+            <input slot="field" type="color" value="#ff00ff"/>
+          </simple-fields-container>
+          <simple-fields-container label="Satisfaction">
+            <input slot="field" type="range" min="0" step="10" max="100" value="50"/>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+      <h2>Inline Labeling</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-container inline label="Name">
+            <input slot="field" autocapitalize="words" required/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Password">
+            <input slot="field" type="password"/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Profile Image">
+            <input slot="field" type="file"/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Bio" description="Write your bio.">
+            <textarea slot="field" placeholder="Once..."></textarea>
+          </simple-fields-container>
+          <simple-fields-container inline label="Birth Date">
+            <input slot="field" type="date"/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Color">
+            <input slot="field" type="color" value="#ff00ff"/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Satisfaction">
+            <input slot="field" type="range" min="0" step="10" max="100" value="50"/>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+      <h2>Prefix and Suffix</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-container 
+            inline
+            label="Twitter Handle" 
+            prefix="@">
+            <input slot="field"/>
+          </simple-fields-container>
+          <simple-fields-container inline label="Estimated Cost">
+            <span slot="prefix">$</span>
+            <input slot="field" type="number"/>
+            <sup slot="suffix">.00</sup>
+          </simple-fields-container>
+          <simple-fields-container 
+            label="Order" 
+            suffix="red ballons">
+            <input slot="field" type="number"/>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+      <h2>Validation</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-container 
+            autovalidate
+            error-message="A name is required."
+            label="Name">
+            <input slot="field" required/>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
+            error-message="You must agree to the terms."
+            label="I agree to the terms">
+            <input slot="field" type="checkbox" required/>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
+            error-message="Invalid format."
+            label="Email">
+            <input 
+              slot="field" 
+              type="email"
+              pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+              placeholder="username@domain.com"/>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+      <h2>Multiple Options</h2>
+      <demo-snippet id="options">
+        <template>
+          <simple-fields-container label="Select Options" description="Select one">
+            <select slot="field">
+              <option value="breakfast">Breakfast</option>
+              <option value="brunch">Brunch</option>
+              <option value="lunch">Lunch</option>
+              <option value="snack">Snack</option>
+              <option value="dinner">Dinner</option>
+            </select>
+          </simple-fields-container>
+          <simple-fields-container label="Select Options" description="Select all">
+            <select slot="field" multiple>
+              <option value="breakfast">Breakfast</option>
+              <option value="brunch">Brunch</option>
+              <option value="lunch">Lunch</option>
+              <option value="snack">Snack</option>
+              <option value="dinner">Dinner</option>
+            </select>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+      <h2>Field Metadata</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-container maxlength="10" type="text" label="Nickname">
+            <span slot="field-meta">maximum length: 10</span>
+          </simple-fields-container>
+          <simple-fields-container type="textarea" label="Short Bio">
+            <span slot="field-meta">25 words or less</span>
+          </simple-fields-container>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

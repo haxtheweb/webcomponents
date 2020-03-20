@@ -1,38 +1,7 @@
 
-<ul id="tabs" .class="${this._showIcons(
-  this.__hasIcons, 
-  this.iconBreakpoint, 
-  this.layoutBreakpoint, 
-  this.responsiveSize
-)}">
+<ul id="tabs" .class="${this.iconClass}">
   ${this.tabs.map((tab,i) => html`
-    <li>
-      <paper-button 
-        id="${tab.id}-button" 
-        controls="${tab.id}" 
-        class="${tab.id === this.activeTab ? 'active': ''}"
-        @click="${(e) => this._handleTab(tab)}"
-        ?disabled="${tab.id === this.activeTab || tab.disabled}" 
-        .flag="${tab.flag}">
-        <iron-icon 
-          class="flag-icon" 
-          ?hidden="${!tab.flagIcon}" 
-          .icon="${tab.flagIcon}">
-        </iron-icon>
-        <span class="label">${tab.label}</span> 
-        <span 
-          class="flag-type" 
-          ?hidden="${!tab.flag}">
-          ${tab.flag}
-        </span>
-        <iron-icon 
-          class="icon" 
-          ?hidden="${!tab.icon}" 
-          .icon="${tab.icon}">
-        </iron-icon>
-      </paper-button>
-      <simple-tooltip for="${tab.id}-button">${tab.label}</simple-tooltip>
-    </li>
+    <li>${this._tabButton(tab)}</li>
   `)}
 </ul>
 <div id="content">

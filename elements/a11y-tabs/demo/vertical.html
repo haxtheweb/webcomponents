@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>A11yTabs: a11y-tabs Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/iron-icons/maps-icons.js';
+      import '@polymer/iron-icons/communication-icons.js';
+      import '../a11y-tabs.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Vertical a11y-tabs demo</h3>
+      <demo-snippet>
+        <template>
+          <a11y-tabs id="tabs" layout-breakpoint="-1">
+            <a11y-tab id="eat" icon="maps:restaurant" label="Nearby restaurants">
+              <ul>
+                <li>Tasty Burger</li>
+                <li>Subs &amp; More</li>
+                <li>Lobsterland</li>
+              </ul>
+            </a11y-tab>
+            <a11y-tab id="shop" icon="maps:store-mall-directory" label="Shopping">
+              <ul>
+                <li>Stuff and Things</li>
+                <li>Really Old Books</li>
+                <li>Fast Fashion</li>
+              </ul>
+            </a11y-tab>
+            <a11y-tab id="phone" disabled icon="communication:phone" label="Pay Telephones">
+              <p>Pay telephones are a thing of the past.</p>
+            </a11y-tab>
+          </a11y-tabs>
+        </template>
+      </demo-snippet>
+      <h3>Vertical sticky a11y-tabs demo</h3>
+      <demo-snippet>
+        <template>
+          <a11y-tabs id="tabs" layout-breakpoint="-1" sticky>
+            <a11y-tab id="lorem">
+              <p slot="label">Lorem ipsum</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore 
+                magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                consequat. Duis aute irure dolor in reprehenderit in 
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in 
+                culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Faucibus turpis in eu mi. Ultrices vitae auctor eu augue. 
+                Eu ultrices vitae auctor eu augue ut lectus arcu. Viverra 
+                mauris in aliquam sem. Auctor augue mauris augue neque. 
+                Euismod quis viverra nibh cras pulvinar. In ante metus dictum 
+                at tempor commodo ullamcorper a lacus. Lacinia quis vel eros 
+                donec ac. Dolor sed viverra ipsum nunc aliquet. Purus non enim 
+                praesent elementum facilisis leo vel fringilla est. Ultricies 
+                lacus sed turpis tincidunt id aliquet risus. Nunc non blandit 
+                massa enim nec dui nunc. Parturient montes nascetur ridiculus 
+                mus mauris vitae ultricies leo. Ultrices in iaculis nunc sed 
+                augue lacus viverra vitae. Aliquam sem et tortor consequat id 
+                porta nibh venenatis cras. Feugiat in ante metus dictum at tempor 
+                commodo. Enim nec dui nunc mattis enim.
+              </p>
+              <p>
+                Sed viverra tellus in hac habitasse platea dictumst vestibulum. 
+                Cras pulvinar mattis nunc sed blandit. Nec tincidunt praesent 
+                semper feugiat nibh sed. Diam maecenas sed enim ut sem viverra 
+                aliquet eget sit. Diam maecenas sed enim ut sem viverra aliquet. 
+                Risus quis varius quam quisque id diam vel quam elementum. Dictum 
+                non consectetur a erat nam at lectus urna duis. Et pharetra 
+                pharetra massa massa ultricies mi quis. Maecenas ultricies mi 
+                eget mauris pharetra et ultrices neque. A cras semper auctor neque 
+                vitae tempus. Eu scelerisque felis imperdiet proin fermentum leo 
+                vel orci.
+              </p>
+              <p>
+                Dictum sit amet justo donec enim diam vulputate. Leo a diam 
+                sollicitudin tempor id. Etiam dignissim diam quis enim lobortis 
+                scelerisque fermentum dui faucibus. Auctor eu augue ut lectus arcu 
+                bibendum at varius. Sodales ut etiam sit amet nisl purus in mollis 
+                nunc. Tortor pretium viverra suspendisse potenti nullam ac tortor. 
+                Leo urna molestie at elementum eu. Egestas quis ipsum suspendisse 
+                ultrices gravida dictum fusce ut placerat. Tempus imperdiet nulla 
+                malesuada pellentesque elit eget gravida. Neque gravida in fermentum 
+                et sollicitudin ac orci. In hac habitasse platea dictumst quisque 
+                sagittis. Diam in arcu cursus euismod quis viverra nibh cras. Pulvinar 
+                mattis nunc sed blandit. Mattis pellentesque id nibh tortor id aliquet 
+                lectus proin. Velit ut tortor pretium viverra suspendisse. Commodo 
+                nulla facilisi nullam vehicula.
+              </p>
+            </a11y-tab>
+            <a11y-tab id="faucibus">
+              <p slot="label">Faucibus</p>
+              <p>
+                Faucibus turpis in eu mi. Ultrices vitae auctor eu augue. 
+                Eu ultrices vitae auctor eu augue ut lectus arcu. Viverra 
+                mauris in aliquam sem. Auctor augue mauris augue neque. 
+                Euismod quis viverra nibh cras pulvinar. In ante metus dictum 
+                at tempor commodo ullamcorper a lacus. Lacinia quis vel eros 
+                donec ac. Dolor sed viverra ipsum nunc aliquet. Purus non enim 
+                praesent elementum facilisis leo vel fringilla est. Ultricies 
+                lacus sed turpis tincidunt id aliquet risus. Nunc non blandit 
+                massa enim nec dui nunc. Parturient montes nascetur ridiculus 
+                mus mauris vitae ultricies leo. Ultrices in iaculis nunc sed 
+                augue lacus viverra vitae. Aliquam sem et tortor consequat id 
+                porta nibh venenatis cras. Feugiat in ante metus dictum at tempor 
+                commodo. Enim nec dui nunc mattis enim.
+              </p>
+              <p>
+                Sociis natoque penatibus et magnis dis parturient montes. Massa 
+                placerat duis ultricies lacus sed. Facilisis mauris sit amet massa 
+                vitae tortor. Nam aliquam sem et tortor consequat. Ornare arcu odio 
+                ut sem nulla pharetra. At quis risus sed vulputate odio ut. 
+                Adipiscing vitae proin sagittis nisl. Commodo sed egestas egestas 
+                fringilla. Sed blandit libero volutpat sed cras ornare arcu dui 
+                vivamus. Quis ipsum suspendisse ultrices gravida dictum fusce ut 
+                placerat. Tempor orci eu lobortis elementum. Quam nulla porttitor 
+                massa id. Velit aliquet sagittis id consectetur purus ut faucibus. 
+                Ultricies tristique nulla aliquet enim tortor at auctor urna nunc.
+
+              </p>
+            </a11y-tab>
+          </a11y-tabs>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

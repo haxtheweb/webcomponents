@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `editable-table-styles`
- * @customElement editable-table-styles
- * `a shared set of styles common to editable-table and editable-table-display`
+ * a shared set of styles common to editable-table and editable-table-display
  *
 
  * @polymer
+ * @customElement editable-table-styles
  * @demo ./demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";

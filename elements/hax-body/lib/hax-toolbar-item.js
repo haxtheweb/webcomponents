@@ -46,11 +46,6 @@ class HaxToolbarItem extends LitElement {
         paper-button {
           display: flex;
           align-items: center;
-          background-color: var(
-            --hax-toolbar-item-bg,
-            var(--hax-color-bg-accent, white)
-          );
-          color: var(--hax-toolbar-item-color, --hax-color-text);
           min-width: 0;
           margin: 0;
           text-transform: none;
@@ -61,17 +56,35 @@ class HaxToolbarItem extends LitElement {
           height: 36px;
           width: 36px;
           min-width: unset;
+          background-color: var(
+            --hax-contextual-action-color,
+            var(--simple-colors-default-theme-cyan-8, #007999)
+          );
+          color: var(
+            --hax-contextual-action-text-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           --paper-button-ink-color: var(
-            --hax-toolbar-item-color,
-            var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7)
+            --simple-colors-default-theme-cyan-8,
+            #007999
           );
         }
         :host(:not([disabled])) paper-button:active,
         :host(:not([disabled])) paper-button:hover,
         :host(:not([disabled])) paper-button:focus {
-          color: var(--hax-color-text-active);
+          background-color: var(
+            --hax-contextual-action-hover-color,
+            var(--simple-colors-default-theme-cyan-7, #009dc7)
+          );
+          color: var(
+            --hax-contextual-action-text-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           outline: 1px solid
-            var(--hax-color-accent1, --simple-colors-default-theme-light-blue-7);
+            var(
+              --hax-contextual-action-color,
+              var(--simple-colors-default-theme-cyan-8, #007999)
+            );
           z-index: 2;
         }
         :host([default]) paper-button {
@@ -103,10 +116,6 @@ class HaxToolbarItem extends LitElement {
         }
         :host([light]) paper-button {
           background-color: #aaaaaa;
-          color: #ffffff;
-        }
-        :host([action]) paper-button {
-          background-color: var(--hax-contextual-action-color);
           color: #ffffff;
         }
         :host([large]) paper-button {

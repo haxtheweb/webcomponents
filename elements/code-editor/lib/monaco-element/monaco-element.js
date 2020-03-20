@@ -35,6 +35,7 @@ class MonacoElement extends LitElement {
     this.iframe = null;
     this.value = "";
     this.fontSize = 16;
+    this.tabSize = 2;
     this.readOnly = false;
     this.eventTypes = {
       ready: "ready",
@@ -114,6 +115,10 @@ class MonacoElement extends LitElement {
       hideLineNumbers: {
         type: Boolean,
         attribute: "hide-line-numbers"
+      },
+      tabSize: {
+        type: Number,
+        attribute: "tab-size"
       }
     };
   }
@@ -201,12 +206,13 @@ class MonacoElement extends LitElement {
           language: '${this.language}',
           scrollBeyondLastLine: false,
           automaticLayout: true,
-          lineNumbers: '${!this.hideLineNumbers}',
+          ${this.hideLineNumbers ? `lineNumbers: 'false',` : ``}
           fontSize: ${this.fontSize},
           readOnly: ${this.readOnly},
           minimap: {
             enabled: true
           },
+          tabSize: ${this.tabSize},
           autoIndent: true,
         });
         const model = this.editor.getModel();

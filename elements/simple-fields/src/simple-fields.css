@@ -1,27 +1,13 @@
 :host {
   display: block;
-  background-color: #ffffff;
-  overflow: visible;
+  --simple-picker-background-color: var(--simple-fields-background-color,white);
+  --simple-picker-border-width: 0;
+  --simple-picker-focus-border-width: 0;
+  --simple-picker-display: block;
+  --simple-picker-listbox-border-width: 1px;
+  --simple-picker-listbox-outline: none;
 }
 
 :host([hidden]) {
   display: none;
-}
-
-eco-json-schema-object {
-  width: 50%;
-}
-eco-json-schema-object {
-  color: var(--hax-text-color);
-  --eco-json-form-color: var(--hax-text-color);
-  --eco-json-schema-object-form : {
-    -ms-flex: unset;
-    -webkit-flex: unset;
-    flex: unset;
-    -webkit-flex-basis: unset;
-    flex-basis: unset;
-  }
-}
-eco-json-schema-object .hax-code-editor {
-  padding: 0;
 }

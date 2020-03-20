@@ -234,9 +234,17 @@ class ImgPanZoom extends LitElement {
     });
   }
   _openseadragonLoaded() {
-    this.__openseadragonLoaded = true;
-    if (this.dzi) {
+    if (OpenSeadragon) {
       this._initOpenSeadragon();
+    } else {
+      let check = () => {
+          console.log("OpenSeadragon", OpenSeadragon);
+          if (OpenSeadragon) {
+            this._initOpenSeadragon();
+            clearInterval(interval);
+          }
+        },
+        interval = setInterval(check, 1);
     }
   }
   /**
@@ -252,10 +260,7 @@ class ImgPanZoom extends LitElement {
     };
     setTimeout(() => {
       // Init openseadragon if we are using a deep zoom image
-      if (this.dzi && this.__openseadragonLoaded) {
-        // Add src changed observer
-        this._initOpenSeadragon();
-      }
+      if (this.dzi) this._initOpenSeadragon();
     }, 0);
   }
   /**
@@ -353,7 +358,7 @@ class ImgPanZoom extends LitElement {
   _loadedChanged() {
     if (this.loaded) {
       if (!this.init) {
-        this._initOpenSeadragon();
+        this._openseadragonLoaded();
       } else {
         this._addImage();
       }

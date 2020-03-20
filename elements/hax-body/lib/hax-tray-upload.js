@@ -8,27 +8,68 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
   static get styles() {
     return [
       css`
+        :host {
+          font-family: var(--simple-fields-font-family, sans-serif);
+          line-height: var(--simple-fields-line-height, 22px);
+          color: var(--simple-fields-color, black);
+          background-color: var(--simple-fields-background-color, #fff);
+        }
         vaadin-upload {
-          --lumo-primary-color: var(
-            --hax-color-accent1,
-            --simple-colors-default-theme-light-blue-7
+          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
+          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
+          --lumo-primary-font-color: var(--simple-fields-color, black);
+          --lumo-base-color: var(--simple-fields-background-color, #fff);
+          --lumo-primary-contrast-color: var(
+            --simple-fields-background-color,
+            #fff
           );
-          --lumo-primary-font-color: black;
-          --lumo-dark-primary-color: black;
-          --lumo-light-primary-color: var(
-            --hax-color-accent1,
-            --simple-colors-default-theme-light-blue-7
-          );
-          --lumo-error-color: darkred;
-          color: #ffffff;
-          display: block;
+          --lumo-primary-color: var(--simple-fields-color, black);
+          --lumo-dark-primary-color: ar(--simple-fields-color, black);
+          --lumo-light-primary-color: var(--simple-fields-color, black);
+          --lumo-primary-text-color: var(--simple-fields-color, black);
+          --lumo-body-text-color: var(--simple-fields-color, black);
+          --lumo-header-text-color: var(--simple-fields-color, black);
+          --lumo-secondary-text-color: var(--simple-fields-color, black);
+          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
+          color: var(--simple-fields-color, black);
+          background-color: var(--simple-fields-background-color, #fff);
           padding: 16px !important;
+          text-align: center;
         }
         vaadin-upload[dragover] {
-          border-color: var(--simple-colors-default-theme-green-3);
+          border-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color)
+          );
         }
         vaadin-upload-file {
-          --disabled-text-color: #222222;
+          --disabled-text-color: var(--simple-fields-border-color, #999);
+        }
+        paper-button {
+          text-transform: none;
+          margin: 8px 0;
+          color: var(--simple-colors-default-theme-grey-12, #000);
+          background-color: var(--simple-colors-default-theme-grey-2, #eee);
+          border: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
+          display: block;
+          text-align: center;
+        }
+        paper-button:active,
+        paper-button:focus,
+        paper-button:hover {
+          color: var(
+            --hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
+          background-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color)
+          );
+          border-color: var(
+            --hax-tray-panel-accent,
+            var(--hax-contextual-action-hover-color)
+          );
+          transition: all 0.5ms ease-in-out;
         }
         .add-area-content-wrapper {
           padding: 0 4px;
@@ -38,9 +79,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
           margin: 0;
         }
         .url-description {
-          color: #000000;
-          line-height: 22px;
-          font-family: sans-serif;
           letter-spacing: 1px;
         }
       `
@@ -84,12 +122,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             }
           }
           vaadin-upload {
-            --vaadin-upload-button-add-wrapper: {
-              border: 2px solid #ffffff;
-              background-color: var(
-                --hax-color-accent1,
-                --simple-colors-default-theme-light-blue-7
-              );
               color: #ffffff;
               display: block;
             }
@@ -145,10 +177,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             id="fileupload"
           ></vaadin-upload>
         </div>
-        <paper-button
-          @click="${this.newAssetConfigure}"
-          id="newassetconfigure"
-          raised=""
+        <paper-button @click="${this.newAssetConfigure}" id="newassetconfigure"
           >Configure</paper-button
         >
       </div>

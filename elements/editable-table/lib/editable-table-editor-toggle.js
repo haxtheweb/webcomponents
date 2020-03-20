@@ -11,13 +11,9 @@ import "./editable-table-iconset.js";
 
 /**
  * `editable-table-editor-toggle`
- * @customElement editable-table-editor-toggle
- * `A toggle button for an property in the editable-table interface (editable-table.html).`
+ * A toggle button for an property in the editable-table interface (editable-table.html).
  *
- * @microcopy - language worth noting:
- * ``
- * @customElement `
- <editable-table-editor-toggle
+ ```<editable-table-editor-toggle
   hidden                           //Hide and disable this toggle? Default is false.
   label="Condensed"                //The label for the toggle button
   prop="condensed"                 //The property controlled by this toggle
@@ -28,7 +24,7 @@ import "./editable-table-iconset.js";
  * @demo ./demo/editor.html
  * 
  * @polymer
-
+ * @customElement editable-table-editor-toggle
  */
 class EditableTableEditorToggle extends PolymerElement {
   static get template() {

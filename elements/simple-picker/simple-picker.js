@@ -14,6 +14,7 @@ for styling:
 
 Custom property | Description | Default
 ----------------|-------------|----------
+`--simple-picker-display` | default display for simple-picker | inline-flex
 `--simple-picker-font-family` | Main font-family. | inherit
 `--simple-picker-font-size` | Main font-size. | inherit
 `--simple-picker-color` | Main text color. | black
@@ -28,6 +29,9 @@ Custom property | Description | Default
 `--simple-picker-focus-border-width` | Border width when focused within or hovered. | --simple-picker-border-width
 `--simple-picker-focus-border-style` | Border style when focused within or hovered. | --simple-picker-border-style
 `--simple-picker-focus-border-color` | Border color when focused within or hovered. | --simple-picker-border-color
+`--simple-picker-listbox-border-width` | Border width of listbox. | --simple-picker-border-width
+`--simple-picker-listbox-border-style` | Border style of listbox. | --simple-picker-border-style
+`--simple-picker-listbox-border-color` | Border color of listbox. | --simple-picker-border-color
 `--simple-picker-label-color` | Label text color. | --simple-picker-color
 `--simple-picker-float-label-color` | Floating label text color. | --simple-picker-color-disabled
 `--simple-picker-float-label-active-color` | Floating label text color when picker is focused or hovered. | --simple-picker-color-disabled
@@ -57,7 +61,7 @@ class SimplePicker extends LitElement {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: var(--simple-picker-display, inline-flex);
           align-items: center;
           color: var(--simple-picker-color, black);
           font-family: var(--simple-picker-font-family, inherit);
@@ -179,6 +183,27 @@ class SimplePicker extends LitElement {
             )
           );
           transition: all 0.5s;
+        }
+        :host(:focus-within) #listbox {
+          border-width: var(
+            --simple-picker-listbox-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-listbox-border-width,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-listbox-border-width,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+        }
+        #listbox:focus-within,
+        :host(:focus-within) #listbox {
+          outline: var(--simple-picker-listbox-outline, unset);
         }
 
         #icon {

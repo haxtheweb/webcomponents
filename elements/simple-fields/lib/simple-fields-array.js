@@ -7,9 +7,10 @@ import "./simple-fields-array-item.js";
 /**
  * `simple-fields-array` takes in a JSON schema of type array and builds a form,
  * exposing a `value` property that represents an array described by the schema.
+ *
  * @group simple-fields
- * @demo demo/index.html
- * @customeElement simple-fields-array
+ * @extends simple-fields-fieldset
+ * @customElement simple-fields-array
  */
 class SimpleFieldsArray extends SimpleFieldsFieldset {
   static get tag() {
@@ -20,18 +21,44 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       ...super.styles,
       css`
         fieldset {
-          padding: 0 20px;
+          padding: 0 var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin-small, 8px);
         }
         #item-fields {
+          margin: var(--simple-fields-margin-small, 8px) 0;
           clear: both;
-          margin: 10px 0;
           z-index: 3;
         }
-        paper-button {
-          z-index: 1;
-          margin: 0;
+        #top {
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+        #description {
+          flex: 1 1 auto;
+          padding: var(--simple-fields-margin-small, 8px) 0;
+          margin-right: var(--simple-fields-margin, 16px);
+          min-height: 24px;
+        }
+        #add {
           float: right;
+        }
+        paper-button {
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
+          padding: var(--simple-fields-margin-small, 8px);
+          margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
+          z-index: 1;
           text-transform: unset;
+        }
+        .expanded {
+          transform: rotate(-90deg);
+          transition: transform 0.5s ease;
+        }
+        .collapsed {
+          transform: rotate(0deg);
+          transition: transform 0.5s ease;
         }
       `
     ];
@@ -42,12 +69,6 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       count: {
         type: Number
       },
-      label: {
-        type: String
-      },
-      description: {
-        type: String
-      },
       /*
        * icon when expanded
        */
@@ -56,19 +77,30 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
       }
     };
   }
+  render() {
+    return html`
+      <fieldset>
+        ${this.legend}${this.fields}
+      </fieldset>
+    `;
+  }
   get fields() {
     return html`
-      <paper-button
-        id="expand"
-        controls="item-fields"
-        @click="${e => this.toggle()}"
-      >
-        ${this.expanded ? "Collapse All" : "Expand All"}
-        <iron-icon
-          aria-hidden="true"
-          icon="${this.expanded ? "expand-less" : "expand-more"}"
-        ></iron-icon>
-      </paper-button>
+      <div id="top">
+        ${this.desc}
+        <paper-button
+          id="expand"
+          controls="item-fields"
+          @click="${e => this.toggle()}"
+        >
+          ${this.expanded ? "Collapse All" : "Expand All"}
+          <iron-icon
+            class="${this.expanded ? "expanded" : "collapsed"}"
+            aria-hidden="true"
+            icon="expand-more"
+          ></iron-icon>
+        </paper-button>
+      </div>
       <div id="item-fields" aria-live="polite">
         <slot></slot>
         <paper-button
@@ -99,7 +131,7 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
   buildItem(id) {
     let item = document.createElement("simple-fields-array-item");
     item.id = id;
-    item.setAttribute("aria-expanded", this.expanded);
+    item.expanded = this.expanded;
     item.innerHTML = `
       <slot name="sort"></slot>
       <slot name="preview"></slot>
@@ -152,6 +184,20 @@ class SimpleFieldsArray extends SimpleFieldsFieldset {
    */
   expand() {
     this.toggle(true);
+  }
+  /**
+   * handles focus
+   *
+   * @memberof SimpleFieldsArray
+   */
+  focus(index){
+    if(this.childNodes && index){
+      if(this.childNodes.length < index) index = this.childNodes.length -1;
+      this.childNodes[index].focus();
+    } else if(this.shadowRoot){
+      let id = !this.childNodes ? 'add' : 'expand';
+      this.shadowRoot.getElementById(id).focus();
+    }
   }
 
   /**

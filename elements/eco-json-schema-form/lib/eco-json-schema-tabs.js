@@ -61,7 +61,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           }
         </style>
       </custom-style>
-      <a11y-tabs id$="[[schema.property]]" force-horizontal>
+      <a11y-tabs id$="[[schema.property]]" layout-breakpoint="0">
         <template
           is="dom-repeat"
           items="[[schema.properties]]"

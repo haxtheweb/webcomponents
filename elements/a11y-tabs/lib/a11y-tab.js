@@ -20,6 +20,8 @@ Custom property | Description | Default
  *
  * @customElement a11y-tab
  * @demo ./demo/index.html
+ * @demo ./demo/vertical.html Always Vertical
+ * @demo ./demo/horizontal.html Always Horizontal
  * @see ../a11y-tabs.js
  */
 class A11yTab extends LitElement {
@@ -43,13 +45,21 @@ class A11yTab extends LitElement {
           height: 0;
           overflow: hidden;
         }
+        #content-inner {
+          max-width: 100%;
+          overflow: auto;
+        }
+        ::slotted(*[slot="label"]) {
+          display: none;
+        }
       `
     ];
   }
   render() {
     return html`
       <span class="sr-only">Tab ${this.xOfY}</span>
-      <slot></slot>
+      <slot name="label"></slot>
+      <div id="content-inner"><slot></slot></div>
       <span class="sr-only">
         End of tab ${this.xOfY}. Back to <a href="#${this.id}">tabs</a>.
       </span>
@@ -97,7 +107,9 @@ class A11yTab extends LitElement {
        * the unique identifier and anchor for the tab
        */
       id: {
-        type: String
+        type: String,
+        reflect: true,
+        attribute: "id"
       },
       /**
        * label for the tab
@@ -121,22 +133,39 @@ class A11yTab extends LitElement {
   }
   constructor() {
     super();
-    this.flag = null;
-    this.flagIcon = null;
     this.hidden = false;
-    this.icon = null;
-    this.id = null;
-    this.label = null;
     this.order = 1;
     this.total = 1;
     this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
   }
 
+  /**
+   * returns mutation observer
+   * @readonly
+   * @returns {object} MutationObserver to unwrap contents
+   */
+  get observer() {
+    let lc = e => this._labelChanged();
+    return new MutationObserver(lc);
+  }
+  /**
+   * gets x of y string
+   *
+   * @readonly
+   * @returns {string} eg., "1 of 2"
+   */
   get xOfY() {
     return `${this.order} of ${this.total}`;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this._labelChanged();
+    this.observer.observe(this, { childList: true });
+  }
+
   disconnectedCallback() {
+    this.observer.disconnect();
     this.removeEventListener("a11y-tab-flag", e => this.handleFlag(e));
     super.disconnectedCallback();
   }
@@ -148,12 +177,12 @@ class A11yTab extends LitElement {
       if (["id", "order"].includes(propName) && !this.id)
         this.id = `tab-${this.order}`;
       if (["label", "order"].includes(propName) && !this.label)
-        this.label = `Tab ${this.order}`;
-      if (propName === "flag") this._tabChanged();
-      if (propName === "flagIcon") this._tabChanged();
-      if (propName === "icon") this._tabChanged();
-      if (propName === "id") this._tabChanged();
-      if (propName === "label") this._tabChanged();
+        this._labelChanged();
+      if (propName === "flag") this._fireTabChanged();
+      if (propName === "flagIcon") this._fireTabChanged();
+      if (propName === "icon") this._fireTabChanged();
+      if (propName === "id") this._fireTabChanged();
+      if (propName === "label") this._fireTabChanged();
     });
   }
 
@@ -163,6 +192,7 @@ class A11yTab extends LitElement {
   static get tag() {
     return "a11y-tab";
   }
+
   /**
    * handles any change in flag
    * @param {event} e the tab change event
@@ -172,14 +202,19 @@ class A11yTab extends LitElement {
     this.flagIcon = e.detail.flagIcon;
   }
   /**
-   * handles any change in the tab attributes
+   * handles any change in the label
    */
-  _tabChanged() {
-    /**
-     * handles any change in the tab attributes
-     *
-     * @event a11y-tab-changed
-     */
+  _labelChanged() {
+    if (!this.label || this.label.trim() === "")
+      this.label = this.querySelector('*[slot="label"]')
+        ? this.querySelector('*[slot="label"]').innerHTML
+        : `Tab ${this.order}`;
+  }
+  /**
+   * handles any change in the tab attributes
+   * @event a11y-tab-changed
+   */
+  _fireTabChanged() {
     this.dispatchEvent(
       new CustomEvent("a11y-tab-changed", {
         bubbles: true,

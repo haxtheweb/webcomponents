@@ -18,82 +18,81 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           box-sizing: border-box;
           pointer-events: all;
           overflow: visible;
-          --simple-camera-snap-width: 300px;
-          --simple-camera-snap-height: calc(300px * 9 / 16);
-          --simple-camera-snap-color: var(--eco-json-form-color, #222);
-          --simple-camera-snap-background: var(--eco-json-form-bg, white);
+          font-family: var(--simple-fields-font-family, sans-serif);
+          --simple-camera-snap-width: 100px;
+          --simple-camera-snap-height: calc(100px * 9 / 16);
+          --simple-camera-snap-color: var(--simple-fields-color, black);
+          --simple-camera-snap-background: var(
+            --simple-fields-background-color,
+            #fff
+          );
           --simple-camera-snap-border-radius: 2px;
-          --lumo-font-family: var(
-            --eco-json-form-font-family,
-            var(--paper-font-caption_-_font-family, unset)
-          );
-          --lumo-base-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
+          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
+          --lumo-error-color: var(--simple-fields-error-color, #dd2c00);
+          --lumo-primary-font-color: var(--simple-fields-color, black);
+          --lumo-base-color: var(--simple-fields-background-color, #fff);
           --lumo-primary-contrast-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
+            --simple-fields-background-color,
+            #fff
           );
-          --lumo-primary-color: var(
-            --eco-json-form-active-color,
-            var(--primary-color, #000)
-          );
-          --lumo-primary-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-body-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-header-text-color: var(
-            --eco-json-form-color,
-            var(--primary-text-color, #222)
-          );
-          --lumo-secondary-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          --lumo-disabled-text-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          background-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
+          --lumo-primary-color: var(--simple-fields-color, black);
+          --lumo-dark-primary-color: ar(--simple-fields-color, black);
+          --lumo-light-primary-color: var(--simple-fields-color, black);
+          --lumo-primary-text-color: var(--simple-fields-color, black);
+          --lumo-body-text-color: var(--simple-fields-color, black);
+          --lumo-header-text-color: var(--simple-fields-color, black);
+          --lumo-secondary-text-color: var(--simple-fields-color, black);
+          --lumo-disabled-text-color: var(--simple-fields-border-color, #999);
+          color: var(--simple-fields-color, black);
+          background-color: var(--simple-fields-background-color, #fff);
         }
-        :host #legend {
-          transition: all 0.5s;
-          color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
+        vaadin-upload[dragover] {
+          border-color: var(--simple-colors-default-theme-accent-3, #77e2ff);
         }
-        :host(:focus-within) #legend {
-          color: var(--eco-json-form-active-color, var(--primary-color, #000));
+        vaadin-upload-file {
+          --disabled-text-color: #var(--simple-fields-border-color, #999);
         }
-        :host #fieldset {
-          border-radius: 2px;
-          transition: all 0.5s;
-          border: 1px solid
-            var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
+        :host(:last-of-type) {
+          margin-bottom: 0;
         }
-        :host #fieldset > div {
+        #description {
+          font-family: var(--simple-fields-detail-font-family, sans-serif);
+          font-size: var(--simple-fields-detail-font-size, 12px);
+          line-height: var(--simple-fields-detail-line-height, 22px);
+        }
+        fieldset {
+          padding: var(--simple-fields-margin-small, 8px)
+            var(--simple-fields-margin, 16px);
+          margin: var(--simple-fields-margin-small, 8px) 0
+            var(--simple-fields-margin, 16px);
+          border: 1px solid var(--simple-fields-border-color-light, #ccc);
+          border-radius: var(--simple-fields-border-radius, 2px);
+          transition: all 0.3s ease-in-out;
+        }
+        fieldset > div {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           justify-content: space-between;
         }
-        :host #fieldset > div > *:not(#picker) {
+        fieldset > div > *:not(#picker) {
           flex: 1 1 auto;
+        }
+        #label {
+          font-family: var(--simple-fields-font-family, sans-serif);
+          font-size: var(--simple-fields-font-size, 16px);
+          line-height: var(--simple-fields-line-height, 22px);
+        }
+        :host([error]) #label {
+          color: var(--simple-fields-error-color, #dd2c00);
+          transition: all 0.3s ease-in-out;
         }
         #picker {
           margin-bottom: 0;
           margin-right: 5px;
         }
         vaadin-upload {
-          padding: 0;
+          padding: 5px;
           margin: 0;
         }
         simple-camera-snap {
@@ -120,8 +119,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = true;
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
     import("@lrnwebcomponents/simple-picker/lib/simple-picker-option.js");
   }
@@ -131,7 +129,7 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
   render() {
     return html`
       <fieldset id="fieldset">
-        <legend id="legend" ?hidden="${!this.label}">${this.label}</legend>
+        <legend id="label" ?hidden="${!this.label}">${this.label}</legend>
         <div>
           <simple-picker
             id="picker"
@@ -142,15 +140,15 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
             .options="${this.options}"
           >
           </simple-picker>
-          <paper-input
+          <simple-fields-field
             id="url"
             ?hidden="${this.option !== "url"}"
-            value="${this.value}"
+            value="${this.value || ""}"
             @value-changed="${this.valueChanged}"
             label="URL"
             type="url"
             auto-validate=""
-          ></paper-input>
+          ></simple-fields-field>
           <vaadin-upload
             capture
             form-data-name="file-upload"
@@ -161,6 +159,9 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
           ></vaadin-upload>
           <div id="camerahole" ?hidden="${this.option !== "selfie"}"></div>
           <div id="voicerecorder" ?hidden="${this.option !== "audio"}"></div>
+          <div id="description" ?hidden="${!this.description}">
+            ${this.description}
+          </div>
         </div>
       </fieldset>
     `;
@@ -197,6 +198,9 @@ class HaxUploadField extends winEventsElement(SimpleColors) {
   static get properties() {
     return {
       label: {
+        type: String
+      },
+      description: {
         type: String
       },
       value: {

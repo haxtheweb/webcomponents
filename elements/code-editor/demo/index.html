@@ -69,25 +69,26 @@
         <option>xml</option>
         <option>yaml</option>
       </select>
-      <code-editor autofocus id="code" show-code-pen>
+      <paper-button id="update">update</paper-button>
+      <code-editor autofocus id="code" language="html" show-code-pen title="With template (recommended)">
         <template>
-
-        <code-editor>things and stuff</code-editor>
-        <p>
-          Things and stuff
-        </p>
+          <p>
+            Things and stuff
+          </p>
         </template>
       </code-editor>
-      <code-editor id="code2" show-code-pen editor-value="stuff" title="Code Example"></code-editor>
-    </div>
-        <paper-button id="update">update</paper-button>
+      <code-editor language="css" title="Without template (not recommended)">
+        p { margin: 16px 0; }
+      </code-editor>
+      <code-editor id="code2" show-code-pen editor-value="stuff" title="Code Pen Example"></code-editor>
+      </div>
         <script defer="defer">
           document.getElementById('picker').addEventListener('change', (e) => {
             console.log(e.target.value);
-            document.getElementById('code').language = e.target.value;
+            document.getElementById('code2').language = e.target.value;
           });
           document.getElementById('update').addEventListener('click', (e) => {
-              document.getElementById('code').editorValue = 'Updated content';
+              document.getElementById('code2').editorValue = 'Updated content';
             });
         </script>
   </body>

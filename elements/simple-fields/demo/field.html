@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>simple-fields-field Demo</title>
+    
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/simple-fields-field.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>simple-fields-field Demo</h1>
+      <demo-snippet>
+        <template>
+          <simple-fields-field type="text" label="First Name" autocapitalize="words" required></simple-fields-field>
+          <simple-fields-field type="text" label="Last Name" autocapitalize="words" disabled></simple-fields-field>
+          <simple-fields-field type="password" label="Password"></simple-fields-field>
+          <simple-fields-field type="file" label="Profile Image"></simple-fields-field>
+          <simple-fields-field type="textarea" label="Bio" description="Write your bio." placeholder="Once..."></simple-fields-field>
+          <simple-fields-field type="date" label="Birth Date"></simple-fields-field>
+          <simple-fields-field type="time" label="Event Time"></simple-fields-field>
+          <simple-fields-field type="month" label="Vacation Month"></simple-fields-field>
+          <simple-fields-field type="color" label="Color" value="#ff00ff"></simple-fields-field>
+          <simple-fields-field type="range" label="Satisfaction" min="0" step="10" max="100" value="50"></simple-fields-field>
+          <simple-fields-field type="hidden"></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Inline Labeling</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field inline type="text" label="Name" autocapitalize="words" required></simple-fields-field>
+          <simple-fields-field inline type="password" label="Password"></simple-fields-field>
+          <simple-fields-field inline type="file" label="Profile Image"></simple-fields-field>
+          <simple-fields-field inline type="textarea" label="Bio" description="Write your bio." placeholder="Once..."></simple-fields-field>
+          <simple-fields-field inline type="date" label="Birth Date"></simple-fields-field>
+          <simple-fields-field inline type="time" label="Event Time"></simple-fields-field>
+          <simple-fields-field inline type="month" label="Vacation Month"></simple-fields-field>
+          <simple-fields-field inline type="color" label="Color" value="#ff00ff"></simple-fields-field>
+          <simple-fields-field inline type="range" label="Satisfaction" min="0" step="10" max="100" value="50"></simple-fields-field>
+          <simple-fields-field inline type="hidden"></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Prefix and Suffix</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field 
+            label="Twitter Handle" 
+            prefix="@">
+          </simple-fields-field>
+          <simple-fields-field label="Estimated Cost" type="number">
+            <span slot="prefix">$</span>
+            <sup slot="suffix">.00</sup>
+          </simple-fields-field>
+          <simple-fields-field 
+            label="Order" 
+            type="number"
+            suffix="red ballons">
+          </simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Multiple Options</h2>
+      <demo-snippet id="options">
+        <script>
+          window.onload = ()=> {
+            let options = {
+              "breakfast": "Breakfast",
+              "brunch": "Brunch",
+              "lunch": "Lunch",
+              "snack": "Snack",
+              "dinner": "Dinner"
+            };
+            document.querySelectorAll('#options simple-fields-field').forEach(el=>el.options=options);
+          }
+        </script>
+        <template>
+          <simple-fields-field label="Radio Options" description="Check one" type="radio"></simple-fields-field>
+          <simple-fields-field label="Checkbox Options" description="Check all" type="checkbox"></simple-fields-field>
+          <simple-fields-field label="Select Options" description="Select one" type="select"></simple-fields-field>
+          <simple-fields-field label="Select Options" description="Select all" type="select" multiple></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Text Counters</h2>
+      <demo-snippet>
+        <template>
+          <simple-fields-field counter="character" maxlength="10" type="text" label="Nickname" value="Rumplestiltskin"></simple-fields-field>
+          <simple-fields-field counter="word" maxlength="6" type="textarea" label="Bio" description="Six word bio." value="Once upon a time..."></simple-fields-field>
+        </template>
+      </demo-snippet>
+      <h2>Validation</h2>
+      <demo-snippet>
+        <demo-snippet id="check">
+          <script>
+            window.onload = ()=> {
+              let options = {
+                "red": "Red",
+                "orange": "Orange",
+                "yellow": "Yellow",
+                "green": "Green",
+                "cyan": "Cyan",
+                "blue": "Blue",
+                "indigo": "Indigo",
+                "purple": "Purple",
+                "magenta": "Magenta"
+              };
+              document.querySelectorAll('#check').forEach(el=>el.options=options);
+            }
+          </script>
+          <style>
+            #check {
+              --simple-fields-radio-option-display: block;
+            }
+          </style>
+        <template>
+          <simple-fields-field 
+            autovalidate
+            required 
+            required-message="A name is required."
+            label="Name">
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            pattern-message="Invalid format."
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            label="Email" 
+            placeholder="username@domain.com" 
+            type="email" >
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            min="2" 
+            max="4"
+            id="check"
+            label="Checkbox Options" 
+            description="Pick 2-4" 
+            type="checkbox">
+          </simple-fields-field>
+          <simple-fields-field 
+            autovalidate
+            required 
+            required-message="You must agree to the terms."
+            label="I agree to the terms" 
+            type="checkbox">
+          </simple-fields-field>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
