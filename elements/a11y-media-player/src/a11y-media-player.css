@@ -273,6 +273,7 @@ a11y-media-youtube.hidden {
   right: 0;
   top: 0;
 }
+
 absolute-position-behavior {
   background-color: var(
   --a11y-media-settings-menu-bg-color
@@ -306,6 +307,7 @@ absolute-position-behavior simple-field-field {
   background-color: var(--a11y-media-settings-menu-bg-color);
   color: var(--a11y-media-settings-menu-color);
 }
+
 .setting-text {
   margin-right: 1em;
   font-family: var(--a11y-media-controls-font-family, var(--paper-font-subhead_-_font-family));

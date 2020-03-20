@@ -52,8 +52,7 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   }
   render() {
     return html`
-      <custom-style>
-      </custom-style>
+      <custom-style> </custom-style>
       <div class="toolbar-inner">
         <simple-fields-field
           label="Filter"

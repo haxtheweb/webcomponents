@@ -614,7 +614,7 @@ class SimpleFieldsLite extends LitElement {
         });
 
         //handle schema properties
-        console.log('id',id,schemaProp.properties,data.properties);
+        console.log("id", id, schemaProp.properties, data.properties);
         Object.keys(data.properties || {}).forEach(prop => {
           //console.log('prop',prop,schemaProp[prop],data.properties[prop]);
           if (data.properties[prop] && schemaProp[prop]) {

@@ -267,11 +267,13 @@ class A11yMediaPlayer extends SimpleColors {
    * @readonly
    * @memberof A11yMediaPlayer
    */
-  get captionsPicker(){
+  get captionsPicker() {
     let options = {};
-    options[-1] = this._getLocal(this.localization,'captions','off');
+    options[-1] = this._getLocal(this.localization, "captions", "off");
     Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
-      options[key] = this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks[key].language;
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
     });
     return options;
   }
@@ -732,18 +734,20 @@ class A11yMediaPlayer extends SimpleColors {
     let cues = !this.cues ? [] : this.cues.slice();
     return cues.filter(cue => cue.track === this.transcriptTrack);
   }
-  
+
   /**
    * gets options for transcript picker
    *
    * @readonly
    * @memberof A11yMediaPlayer
    */
-  get transcriptPicker(){
+  get transcriptPicker() {
     let options = {};
-    options[-1] = this._getLocal(this.localization,'transcript','off');
+    options[-1] = this._getLocal(this.localization, "transcript", "off");
     Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
-      options[key] = this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks[key].language;
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
     });
     return options;
   }
