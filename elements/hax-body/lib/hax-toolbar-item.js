@@ -56,26 +56,35 @@ class HaxToolbarItem extends LitElement {
           height: 36px;
           width: 36px;
           min-width: unset;
-          background-color: var(--hax-contextual-action-color,
-            var(--simple-colors-default-theme-cyan-8, #007999
-          ));
-          color: var(--hax-contextual-action-text-color, 
-            var(--simple-colors-default-theme-grey-1, #fff));
+          background-color: var(
+            --hax-contextual-action-color,
+            var(--simple-colors-default-theme-cyan-8, #007999)
+          );
+          color: var(
+            --hax-contextual-action-text-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           --paper-button-ink-color: var(
-            --simple-colors-default-theme-cyan-8, #007999
+            --simple-colors-default-theme-cyan-8,
+            #007999
           );
         }
         :host(:not([disabled])) paper-button:active,
         :host(:not([disabled])) paper-button:hover,
         :host(:not([disabled])) paper-button:focus {
-          background-color: var(--hax-contextual-action-hover-color, 
-            var(--simple-colors-default-theme-cyan-7, #009dc7
-          ));
-          color: var(--hax-contextual-action-text-color,
-            var(--simple-colors-default-theme-grey-1, #fff));
-          outline: 1px solid var(--hax-contextual-action-color,
-            var(--simple-colors-default-theme-cyan-8, #007999
-          ));
+          background-color: var(
+            --hax-contextual-action-hover-color,
+            var(--simple-colors-default-theme-cyan-7, #009dc7)
+          );
+          color: var(
+            --hax-contextual-action-text-color,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
+          outline: 1px solid
+            var(
+              --hax-contextual-action-color,
+              var(--simple-colors-default-theme-cyan-8, #007999)
+            );
           z-index: 2;
         }
         :host([default]) paper-button {

@@ -119,28 +119,36 @@ class HaxBody extends SimpleColors {
           min-width: 32px;
           outline: none;
           --hax-contextual-action-text-color: var(
-            --simple-colors-default-theme-grey-1, #fff);
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
           --hax-contextual-action-hover-color: var(
             --simple-colors-default-theme-cyan-7,
             #009dc7
           );
           --hax-contextual-action-color: var(
-            --simple-colors-default-theme-cyan-8, #007999
+            --simple-colors-default-theme-cyan-8,
+            #007999
           );
-          --hax-body-editable-outline: 1px solid var(--simple-colors-default-theme-deep-orange, #ff8a64);
+          --hax-body-editable-outline: 1px solid
+            var(--simple-colors-default-theme-deep-orange, #ff8a64);
           --hax-body-active-outline-hover: 1px solid
-            var(--hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7
-          )); 
+            var(
+              --hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7)
+            );
           --hax-body-active-outline: 3px solid
-            var(--hax-contextual-action-hover-color,
-              var(--simple-colors-default-theme-cyan-7, #009dc7
-          )); 
+            var(
+              --hax-contextual-action-hover-color,
+              var(--simple-colors-default-theme-cyan-7, #009dc7)
+            );
           --hax-body-target-background-color: var(
-            --simple-colors-default-theme-cyan-2, #9beaff
+            --simple-colors-default-theme-cyan-2,
+            #9beaff
           );
           --hax-body-possible-target-background-color: var(
-            --simple-colors-default-theme-grey-2, #dddddd;
+            --simple-colors-default-theme-grey-2,
+            #dddddd;
           );
         }
         .hax-context-menu {
@@ -194,20 +202,26 @@ class HaxBody extends SimpleColors {
           letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);
         }
         :host #bodycontainer ::slotted(a) {
-          color: var(--hax-base-styles-a-color, 
-            var(--simple-colors-default-theme-grey-12, #000));
+          color: var(
+            --hax-base-styles-a-color,
+            var(--simple-colors-default-theme-grey-12, #000)
+          );
           font-size: var(--hax-base-styles-a-font-size, 24px);
           font-weight: var(--hax-base-styles-a-font-weight, normal);
         }
         :host #bodycontainer ::slotted(a:visited) {
-          color: var(--hax-base-styles-a-color-visited, 
-            var(--simple-colors-default-theme-light-blue, #007ffc));
+          color: var(
+            --hax-base-styles-a-color-visited,
+            var(--simple-colors-default-theme-light-blue, #007ffc)
+          );
         }
         :host #bodycontainer ::slotted(a:active),
         :host #bodycontainer ::slotted(a:focus),
         :host #bodycontainer ::slotted(a:hover) {
-          color: var(--hax-base-styles-a-color-active, 
-            var(--simple-colors-default-theme-light-blue, #007ffc));
+          color: var(
+            --hax-base-styles-a-color-active,
+            var(--simple-colors-default-theme-light-blue, #007ffc)
+          );
           font-weight: var(--hax-base-styles-a-font-weight-active, normal);
         }
         :host #bodycontainer ::slotted(ol),
@@ -307,10 +321,7 @@ class HaxBody extends SimpleColors {
           left: unset;
           right: unset;
           top: unset;
-          background-color: var(
-            --simple-colors-default-theme-cyan-7,
-            #3b97e3
-          );
+          background-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
           color: #ffffff;
           bottom: unset;
           width: auto;

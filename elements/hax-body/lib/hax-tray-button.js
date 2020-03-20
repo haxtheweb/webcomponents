@@ -125,9 +125,19 @@ class HAXTrayButton extends SimpleColors {
         }
         paper-button {
           text-transform: none;
-          color: var(--hax-quick-button-accent-text, var(--simple-colors-default-theme-grey-12, #000));
-          background-color: var(--hax-quick-button-accent, var(--simple-colors-default-theme-grey-2, #eee));
-          border: 1px solid var(--hax-quick-button-accent, var(--simple-colors-default-theme-grey-3, #dddddd));
+          color: var(
+            --hax-quick-button-accent-text,
+            var(--simple-colors-default-theme-grey-12, #000)
+          );
+          background-color: var(
+            --hax-quick-button-accent,
+            var(--simple-colors-default-theme-grey-2, #eee)
+          );
+          border: 1px solid
+            var(
+              --hax-quick-button-accent,
+              var(--simple-colors-default-theme-grey-3, #dddddd)
+            );
           min-width: unset;
           cursor: pointer;
           height: 40px;
@@ -140,16 +150,18 @@ class HAXTrayButton extends SimpleColors {
         paper-button:active,
         paper-button:focus,
         paper-button:hover {
-          color: var(--hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1, #fff));
+          color: var(
+            --hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           background-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-color
-          ));
+            var(--hax-contextual-action-color)
+          );
           border-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-color
-          ));
+            var(--hax-contextual-action-color)
+          );
           transition: all 0.5ms ease-in-out;
         }
         paper-button iron-icon {
@@ -184,9 +196,15 @@ class HAXTrayButton extends SimpleColors {
         }
         simple-tooltip {
           font-size: 16px;
-          --simple-tooltip-background: var(--simple-colors-default-theme-grey-12, #000);;
+          --simple-tooltip-background: var(
+            --simple-colors-default-theme-grey-12,
+            #000
+          );
           --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(--simple-colors-default-theme-grey-1, #dddddd);
+          --simple-tooltip-text-color: var(
+            --simple-colors-default-theme-grey-1,
+            #dddddd
+          );
           --simple-tooltip-delay-in: 0;
           --simple-tooltip-duration-in: 100ms;
           --simple-tooltip-duration-out: 0;

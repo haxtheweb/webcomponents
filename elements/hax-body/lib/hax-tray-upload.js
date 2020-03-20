@@ -39,34 +39,36 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
         vaadin-upload[dragover] {
           border-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color
-          ));
+            var(--hax-contextual-action-hover-color)
+          );
         }
         vaadin-upload-file {
           --disabled-text-color: var(--simple-fields-border-color, #999);
         }
-        paper-button  {
+        paper-button {
           text-transform: none;
           margin: 8px 0;
           color: var(--simple-colors-default-theme-grey-12, #000);
           background-color: var(--simple-colors-default-theme-grey-2, #eee);
           border: 1px solid var(--simple-colors-default-theme-grey-3, #dddddd);
           display: block;
-          text-align:center;
+          text-align: center;
         }
         paper-button:active,
         paper-button:focus,
         paper-button:hover {
-          color: var(--hax-tray-panel-accent-text,
-            var(--simple-colors-default-theme-grey-1, #fff));
+          color: var(
+            --hax-tray-panel-accent-text,
+            var(--simple-colors-default-theme-grey-1, #fff)
+          );
           background-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color
-          ));
+            var(--hax-contextual-action-hover-color)
+          );
           border-color: var(
             --hax-tray-panel-accent,
-            var(--hax-contextual-action-hover-color
-          ));
+            var(--hax-contextual-action-hover-color)
+          );
           transition: all 0.5ms ease-in-out;
         }
         .add-area-content-wrapper {
@@ -175,9 +177,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
             id="fileupload"
           ></vaadin-upload>
         </div>
-        <paper-button
-          @click="${this.newAssetConfigure}"
-          id="newassetconfigure"
+        <paper-button @click="${this.newAssetConfigure}" id="newassetconfigure"
           >Configure</paper-button
         >
       </div>
