@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 import "./hax-tray-button";
-import "@polymer/paper-input/paper-input.js";
+import "@lrnwebcomponents/simple-fields/lib/simple-fields-field.js";
 
 /**
  * `hax-app-browser`
@@ -53,25 +53,15 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   render() {
     return html`
       <custom-style>
-        <style>
-          paper-input {
-            --paper-input-container-label: {
-              font-size: 11px;
-            }
-            --paper-input-container: {
-              padding: 2px;
-            }
-          }
-        </style>
       </custom-style>
       <div class="toolbar-inner">
-        <paper-input
+        <simple-fields-field
           label="Filter"
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
           value=""
-        ></paper-input>
+        ></simple-fields-field>
       </div>
       <grafitto-filter
         id="filter"

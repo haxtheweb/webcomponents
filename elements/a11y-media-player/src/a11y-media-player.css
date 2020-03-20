@@ -1,6 +1,7 @@
 :host {
   display: block;
   width: calc(100% - 2px);
+  font-family: var(--simple-fields-font-family,sans-serif);
   --a11y-media-player-height: unset;
   --a11y-media-color: var(--simple-colors-default-theme-grey-11, #111111);
   --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
@@ -29,6 +30,7 @@
   --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
   --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
   --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
+  --simple-fields-accent-color: var(--a11y-media-accent-color);
 
   /* buttons */
   --a11y-media-button-color: var(--a11y-media-color);
@@ -271,7 +273,6 @@ a11y-media-youtube.hidden {
   right: 0;
   top: 0;
 }
-
 absolute-position-behavior {
   background-color: var(
   --a11y-media-settings-menu-bg-color
@@ -299,13 +300,12 @@ absolute-position-behavior .setting {
   align-items: center;
 }
 
-absolute-position-behavior dropdown-select {
+absolute-position-behavior simple-field-field {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   background-color: var(--a11y-media-settings-menu-bg-color);
   color: var(--a11y-media-settings-menu-color);
 }
-
 .setting-text {
   margin-right: 1em;
   font-family: var(--a11y-media-controls-font-family, var(--paper-font-subhead_-_font-family));
@@ -433,7 +433,7 @@ absolute-position-behavior dropdown-select {
   --simple-search-button-disabled-border-color: var(
   --a11y-media-border-color
 );
-  --paper-input-container-input-color: var(--a11y-media-color);
+  --simple-fields-color: var(--a11y-media-color);
   --simple-search-padding: 0 15px;
 }
 

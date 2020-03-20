@@ -18,12 +18,11 @@ class HaxSchemaForm extends PolymerElement {
     import("@lrnwebcomponents/simple-fields/simple-fields.js");
     import("@lrnwebcomponents/simple-fields/lib/simple-fields-form.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@polymer/paper-input/paper-textarea.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("app-datepicker/app-datepicker.js");
     import("@lrnwebcomponents/simple-picker/simple-picker.js");
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
-    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
   }
   static get template() {
     return html`
@@ -86,9 +85,6 @@ class HaxSchemaForm extends PolymerElement {
         }
         simple-fields {
           color: var(--hax-text-color);
-          --paper-input-container-focus-color: var(
-            --haxcms-site-listing-color-hover
-          );
           --simple-colors-picker-preview-size: 20px;
         }
       </style>

@@ -1679,12 +1679,12 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
         setTimeout(() => {
           if (
             active.querySelector(
-              "paper-checkbox,paper-input,textarea,paper-button,hax-tray-button"
+              "paper-checkbox,simple-fields-field,textarea,paper-button,hax-tray-button"
             ) != null
           ) {
             active
               .querySelector(
-                "paper-checkbox,paper-input,textarea,paper-button,hax-tray-button"
+                "paper-checkbox,simple-fields-field,textarea,paper-button,hax-tray-button"
               )
               .focus();
           }
