@@ -37,7 +37,6 @@ class HaxAppSearchInputs extends LitElement {
   constructor() {
     super();
     this.label = "app";
-    import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-item/paper-item.js");
   }
   render() {

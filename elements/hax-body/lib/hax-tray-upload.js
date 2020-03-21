@@ -101,7 +101,7 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
     };
     setTimeout(() => {
       import("@polymer/paper-button/paper-button.js");
-      import("@polymer/paper-input/paper-input.js");
+      import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
       import("@vaadin/vaadin-upload/vaadin-upload.js");
     }, 0);
   }
@@ -113,14 +113,6 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       <custom-style>
         <style>
           @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
-          paper-input {
-            --paper-input-container-label: {
-              font-size: 11px;
-            }
-            --paper-input-container: {
-              padding: 0;
-            }
-          }
           vaadin-upload {
               color: #ffffff;
               display: block;
@@ -159,12 +151,12 @@ class HaxTrayUpload extends winEventsElement(LitElement) {
       </custom-style>
       <div class="add-area-content-wrapper">
         <div class="add-url-area">
-          <paper-input
+          <simple-fields-field
             id="url"
             label="URL"
             type="url"
             auto-validate=""
-          ></paper-input>
+          ></simple-fields-field>
           <div class="url-description">
             Add an existing resource / link
           </div>

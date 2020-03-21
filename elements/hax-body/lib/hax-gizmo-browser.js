@@ -4,7 +4,6 @@ import { winEventsElement } from "@lrnwebcomponents/utils/utils.js";
 
 /**
  * `hax-gizmo-browser`
- * @customElement hax-gizmo-browser
  * `Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.`
  * @microcopy - the mental model for this element
  * - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
@@ -37,30 +36,19 @@ class HaxGizmoBrowser extends winEventsElement(LitElement) {
     };
     this.__gizmoList = [];
     this.filtered = [];
-    import("@polymer/paper-input/paper-input.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
   }
   render() {
     return html`
-      <custom-style>
-        <style>
-          paper-input {
-            --paper-input-container-label: {
-              font-size: 11px;
-            }
-            --paper-input-container: {
-              padding: 2px;
-            }
-          }
-        </style>
-      </custom-style>
       <div class="toolbar-inner">
-        <paper-input
-          label="Filter"
+        <simple-fields-field
           id="inputfilter"
-          aria-controls="filter"
           @value-changed="${this.inputfilterChanged}"
-          value=""
-        ></paper-input>
+          aria-controls="filter"
+          label="Filter"
+          type="text"
+          auto-validate=""
+        ></simple-fields-field>
       </div>
       <grafitto-filter
         id="filter"
