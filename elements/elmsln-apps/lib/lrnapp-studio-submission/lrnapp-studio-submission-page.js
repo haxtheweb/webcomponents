@@ -524,7 +524,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
     if (data.detail.response.data) {
       this.set("submission", {});
       setTimeout(() => {
-        this.set("submission", data.detail.response.data);        
+        this.set("submission", data.detail.response.data);
         window.dispatchEvent(new Event("resize"));
       }, 0);
     }
