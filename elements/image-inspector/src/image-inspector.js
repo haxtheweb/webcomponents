@@ -40,6 +40,7 @@ class ImageInspector extends LitElement {
 
         .top-rotated {
           top: 150px;
+          pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
         }
         .showData {
           display: block;
