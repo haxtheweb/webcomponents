@@ -112,13 +112,13 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
           <div class="card-content">
             <lrndesign-avatar
               class="center"
-              label="{{submission.relationships.author.data.name}}"
-              src="{{submission.relationships.author.data.avatar}}"
+              label="[[submission.relationships.author.data.name]]"
+              src="[[submission.relationships.author.data.avatar]]"
             ></lrndesign-avatar>
             <div class="author center">
-              {{submission.relationships.author.data.display_name}}
+              [[submission.relationships.author.data.display_name]]
             </div>
-            <h2 class="title center">{{submission.attributes.title}}</h2>
+            <h2 class="title center">[[submission.attributes.title]]</h2>
             <div class="date center">
               Created: [[date(submission.meta.created)]]
             </div>
@@ -152,7 +152,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                     <div style="text-align: center;">
                       <div hidden$="[[_isGif(image.url)]]">
                         <image-inspector src$="[[image.url]]">
-                          <span slot="toolbar">
+                          <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
                               alt="Download all images"
                               icon="icons:file-download"

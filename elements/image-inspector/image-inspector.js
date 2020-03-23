@@ -38,8 +38,8 @@ class ImageInspector extends LitElement {
           display: inline-flex;
         }
 
-        .top {
-          top: 0px;
+        .top-rotated {
+          top: 150px;
         }
         .showData {
           display: block;
@@ -72,7 +72,7 @@ class ImageInspector extends LitElement {
   }
   render() {
     return html`
-      <div>
+      <div style="border-bottom: 1px solid black;">
         <lrnsys-button
           alt="Zoom in"
           icon="zoom-in"
@@ -185,10 +185,10 @@ class ImageInspector extends LitElement {
     // spin 90
     this.degrees += 90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    if (this.__img.classList.contains("top")) {
-      this.__img.classList.remove("top");
+    if (this.__img.classList.contains("top-rotated")) {
+      this.__img.classList.remove("top-rotated");
     } else {
-      this.__img.classList.add("top");
+      this.__img.classList.add("top-rotated");
     }
   }
 
@@ -199,10 +199,10 @@ class ImageInspector extends LitElement {
     // go back 90
     this.degrees += -90;
     this.__img.style.transform = "rotate(" + this.degrees + "deg)";
-    if (this.__img.classList.contains("top")) {
-      this.__img.classList.remove("top");
+    if (this.__img.classList.contains("top-rotated")) {
+      this.__img.classList.remove("top-rotated");
     } else {
-      this.__img.classList.add("top");
+      this.__img.classList.add("top-rotated");
     }
   }
 
