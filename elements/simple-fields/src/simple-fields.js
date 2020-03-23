@@ -315,7 +315,8 @@ class SimpleFields extends SimpleFieldsLite {
               type: "select"
             },
             properties: {
-              options: "options"
+              options: "options",
+              items: "items"
             }
           }
         },
@@ -598,7 +599,8 @@ class SimpleFields extends SimpleFieldsLite {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "fields") this.schema = this.convertedSchema;
-      if (propName === "__activeTabs" && this.activeTabs !== oldValue) this._handleActiveTabs();
+      if (propName === "__activeTabs" && this.activeTabs !== oldValue)
+        this._handleActiveTabs();
     });
   }
   /**
@@ -720,11 +722,11 @@ class SimpleFields extends SimpleFieldsLite {
   }
   /**
    * handles active tabs changes
-   * 
+   *
    * @event "active-tabs-changed"
    * @memberof SimpleFields
    */
-  _handleActiveTabs(){
+  _handleActiveTabs() {
     this.dispatchEvent(
       new CustomEvent("active-tabs-changed", {
         bubbles: true,

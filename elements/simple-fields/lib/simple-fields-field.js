@@ -40,13 +40,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           flex-wrap: wrap;
           align-items: stretch;
           justify-content: space-between;
-          margin: 0 var(--simple-fields-margin-small, 8px);
-        }
-        .option:first-of-type {
           margin: 0 var(--simple-fields-margin-small, 8px) 0 0;
         }
         .option:last-of-type {
-          margin: 0 0 0 var(--simple-fields-margin-small, 8px);
+          margin: 0;
         }
         .option:focus-within label {
           color: var(--simple-fields-accent, #003f7d);
@@ -275,6 +272,14 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: String
       },
       /**
+       * array of options [{value: "key", text: "Text"}] for select, radio options, and checkboxes, 
+       * so that they can appear in a prescribed order,
+       * eg. [{value: "b", text: "Option B"}, {value: "a", text: "Option A"}, {value: "c", text: "Option C"}]
+       */
+      items: {
+        type: Array
+      },
+      /**
        * Value of the id attribute of the `<datalist>` of autocomplete options
        */
       list: {
@@ -317,7 +322,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * options {value: "Text"} for select as object,
+       * options {value: "Text"}  for select, radio options, and checkboxes, 
+       * which are sorted by key,
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
       options: {
@@ -390,8 +396,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.readonly = false;
     this.spellcheck = false;
     this.id = this._generateUUID();
-    this.wrap = false;
+    this.items = [];
     this.options = {};
+    this.wrap = false;
   }
 
   updated(changedProperties) {
@@ -417,8 +424,8 @@ class SimpleFieldsField extends SimpleFieldsContainer {
 
   get hasFieldSet() {
     return (
-      Object.keys(this.options || {}).length > 0 &&
-      (this.type === "radio" || this.type === "checkbox")
+      (this.type === "radio" || this.type === "checkbox") && 
+      !this.noOptions
     );
   }
 
@@ -497,21 +504,21 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
         <div id="options">
-          ${Object.keys(this.options || {}).map(
+          ${this.sortedOptions.map(
             option => html`
               <div class="option inline">
-                <label for="${this.id}.${option}" class="radio-label"
-                  >${this.options[option]}</label
+                <label for="${this.id}.${option.value}" class="radio-label"
+                  >${option.text}</label
                 >
                 <input
-                  .id="${option}"
+                  .id="${option.value}"
                   .name="${this.id}"
                   ?autofocus="${this.autofocus}"
                   aria-descrbedby="${this.describedBy}"
                   .aria-invalid="${this.error ? "true" : "false"}"
                   ?checked="${this.type === "radio"
-                    ? this.value === option
-                    : (this.value || []).includes(option)}"
+                    ? this.value === option.value
+                    : (this.value || []).includes(option.value)}"
                   class="field"
                   @click="${this._onMulticheckChange}"
                   ?disabled="${this.disabled}"
@@ -519,7 +526,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                   ?readonly="${this.readonly}"
                   ?required="${this.required}"
                   type="${this.type}"
-                  .value="${option}"
+                  .value="${option.value}"
                 />
               </div>
             `
@@ -561,6 +568,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       />
     `;
   }
+  get sortedOptions(){
+    let sorted = (this.items || []).slice();
+    Object.keys(this.options || {}).sort((a,b)=>a>b?1:-1).forEach(key=>sorted.push({value: key, text: this.options[key]}));
+    return sorted;
+  }
   /**
    * template for `select` in shadow DOM
    *
@@ -583,16 +595,16 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
       >
-        ${Object.keys(this.options || {}).map(
+        ${this.sortedOptions.map(
           option => html`
             <option
-              .id="${this.id}.${option}"
+              .id="${this.id}.${option.value}"
               ?selected="${this.multiple
-                ? this.value && this.value.includes(option)
-                : this.value === option}"
-              .value="${option}"
+                ? this.value && this.value.includes(option.value)
+                : this.value === option.value}"
+              .value="${option.value}"
             >
-              ${this.options[option]}
+              ${option.text}
             </option>
           `
         )}
@@ -634,8 +646,11 @@ ${this.value || ""}</textarea
       >
     `;
   }
+  get noOptions() {
+    return (!this.items || this.items === []) &&  (!this.options || this.options === {});
+  }
   get valueIsArray() {
-    return this.multiple || (this.type === "checkbox" && this.options);
+    return this.multiple || (this.type === "checkbox" && !this.noOptions);
   }
   /**
    * determines if number of items selected
@@ -645,8 +660,8 @@ ${this.value || ""}</textarea
    * @memberof SimpleFieldsField
    */
   get numberError() {
-    let less = this.min ? this.value.length < this.min : false,
-      more = this.max ? this.value.length > this.max : false;
+    let less = this.min ? !this.value || this.value.length < this.min : false,
+      more = this.max ? this.value && this.value.length > this.max : false;
     return this.valueIsArray && (less || more);
   }
   /**
