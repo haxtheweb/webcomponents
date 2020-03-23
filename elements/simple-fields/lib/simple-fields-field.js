@@ -272,11 +272,11 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * array of options [{value: "key", text: "Text"}] for select, radio options, and checkboxes, 
+       * array of options [{value: "key", text: "Text"}] for select, radio options, and checkboxes,
        * so that they can appear in a prescribed order,
        * eg. [{value: "b", text: "Option B"}, {value: "a", text: "Option A"}, {value: "c", text: "Option C"}]
        */
-      items: {
+      itemsList: {
         type: Array
       },
       /**
@@ -322,7 +322,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: String
       },
       /**
-       * options {value: "Text"}  for select, radio options, and checkboxes, 
+       * options {value: "Text"}  for select, radio options, and checkboxes,
        * which are sorted by key,
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
        */
@@ -396,7 +396,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.readonly = false;
     this.spellcheck = false;
     this.id = this._generateUUID();
-    this.items = [];
+    this.List = [];
     this.options = {};
     this.wrap = false;
   }
@@ -424,8 +424,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
 
   get hasFieldSet() {
     return (
-      (this.type === "radio" || this.type === "checkbox") && 
-      !this.noOptions
+      (this.type === "radio" || this.type === "checkbox") && !this.noOptions
     );
   }
 
@@ -504,7 +503,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           ${this.label}${this.error || this.required ? "*" : ""}
         </legend>
         <div id="options">
-          ${this.sortedOptions.map(
+          ${(this.sortedOptions || []).map(
             option => html`
               <div class="option inline">
                 <label for="${this.id}.${option.value}" class="radio-label"
@@ -568,9 +567,13 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       />
     `;
   }
-  get sortedOptions(){
-    let sorted = (this.items || []).slice();
-    Object.keys(this.options || {}).sort((a,b)=>a>b?1:-1).forEach(key=>sorted.push({value: key, text: this.options[key]}));
+  get sortedOptions() {
+    let sorted = (this.itemsList || []).slice();
+    console.log('sorted',sorted);
+    Object.keys(this.options || {})
+      .sort((a, b) => (a > b ? 1 : -1))
+      .forEach(key => sorted.push({ value: key, text: this.options[key] }));
+      console.log('sorted2',sorted);
     return sorted;
   }
   /**
@@ -595,7 +598,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
       >
-        ${this.sortedOptions.map(
+        ${(this.sortedOptions|| []).map(
           option => html`
             <option
               .id="${this.id}.${option.value}"
@@ -646,8 +649,17 @@ ${this.value || ""}</textarea
       >
     `;
   }
+  /**
+   * gets whether or not the field has options
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
   get noOptions() {
-    return (!this.items || this.items === []) &&  (!this.options || this.options === {});
+    return (
+      (!this.List || this.itemsList === []) &&
+      (!this.options || this.options === {})
+    );
   }
   get valueIsArray() {
     return this.multiple || (this.type === "checkbox" && !this.noOptions);
@@ -885,7 +897,7 @@ ${this.value || ""}</textarea
         )
       : e.path[0].selectedOptions[0].value;
   }
-  
+
   /**
    * updates field attributes based on field type
    *

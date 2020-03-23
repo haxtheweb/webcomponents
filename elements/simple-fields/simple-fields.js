@@ -385,7 +385,7 @@ class SimpleFields extends SimpleFieldsLite {
             },
             properties: {
               options: "options",
-              items: "items"
+              items: "itemsList"
             }
           }
         },
@@ -453,7 +453,7 @@ class SimpleFields extends SimpleFieldsLite {
             properties: {
               minimum: "min",
               maximum: "max",
-              multiplef: "step"
+              multipleOf: "step"
             }
           }
         },

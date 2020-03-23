@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/beaker-broker": "^2.5.0",
-    "@lrnwebcomponents/dropdown-select": "^2.5.0",
+    "@lrnwebcomponents/simple-fields-container": "^2.5.0",
     "@lrnwebcomponents/hax-body": "^2.6.1",
     "@lrnwebcomponents/hax-body-behaviors": "^2.6.0",
     "@lrnwebcomponents/jwt-login": "^2.5.0",

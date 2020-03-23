@@ -40,7 +40,7 @@
     "@lrnwebcomponents/code-editor": "^2.6.0",
     "@lrnwebcomponents/code-sample": "^2.5.0",
     "@lrnwebcomponents/dl-behavior": "^2.5.0",
-    "@lrnwebcomponents/dropdown-select": "^2.5.0",
+    "@lrnwebcomponents/simple-fields": "^2.5.0",
     "@lrnwebcomponents/grafitto-filter": "^2.5.0",
     "@lrnwebcomponents/grid-plate": "^2.6.1",
     "@lrnwebcomponents/hal-9000": "^2.5.0",
