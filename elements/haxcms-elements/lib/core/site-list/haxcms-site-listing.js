@@ -259,7 +259,7 @@ class HAXCMSSiteListing extends PolymerElement {
         .selected-operations paper-button:hover,
         .selected-operations paper-button:focus {
           background-color: var(--haxcms-site-listing-color-hover);
-          color: var(--haxcms-site-listing-color-light); !important;
+          color: var(--haxcms-site-listing-color-light) !important;
         }
         .danger {
           color: var(--simple-colors-default-theme-red-7) !important;
@@ -267,19 +267,7 @@ class HAXCMSSiteListing extends PolymerElement {
         .danger:hover {
           color: var(--haxcms-site-listing-color-light) !important;
         }
-        eco-json-schema-object {
-          --eco-json-schema-object-form: {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
         #configform {
-          --eco-json-schema-object-form: {
-            display: block !important;
-          }
         }
         #userphoto {
           width: 40px;
@@ -797,7 +785,7 @@ class HAXCMSSiteListing extends PolymerElement {
       <paper-dialog id="settingsdialog">
         <h2 class="dialog-header">Edit HAXCMS configuration</h2>
         <paper-dialog-scrollable>
-          <eco-json-schema-object id="settingsform"></eco-json-schema-object>
+          <simple-fields id="settingsform"></simple-fields>
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button

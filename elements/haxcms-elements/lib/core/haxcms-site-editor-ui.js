@@ -541,7 +541,7 @@ class HAXCMSSiteEditorUI extends LitElement {
    * @todo simplify this to just what's needed; no crazy options
    */
   _addButtonTap(e) {
-    this.__newForm = document.createElement("eco-json-schema-object");
+    this.__newForm = document.createElement("simple-fields");
     let outline = window.JSONOutlineSchema.requestAvailability();
     // get a prototype schema for an item
     this.__newForm.schema = outline.getItemSchema("item");
