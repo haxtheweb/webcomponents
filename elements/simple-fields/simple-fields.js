@@ -166,9 +166,9 @@ class SimpleFields extends SimpleFieldsLite {
   /**
    * tracks activeTabs
    */
-   "activeTabs": {
-     "type": Object,
-     "attribute": "active-path"
+  "activeTabs": {
+    "type": Object,
+    "attribute": "active-path"
   },
   /**
    * Fields to convert to JSON Schema.
@@ -633,7 +633,7 @@ class SimpleFields extends SimpleFieldsLite {
         }
       }
     };
-    this.addEventListener("active-tab-changed",this._handleActiveTab);
+    this.addEventListener("active-tab-changed", this._handleActiveTab);
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
@@ -650,8 +650,9 @@ class SimpleFields extends SimpleFieldsLite {
    * @param {event} e
    * @memberof SimpleFields
    */
-  _handleActiveTab(e){
-    if(e && e.detail && e.detail.id) this.activeTabs[e.detail.id] = e.detail.activeTab;
+  _handleActiveTab(e) {
+    if (e && e.detail && e.detail.id)
+      this.activeTabs[e.detail.id] = e.detail.activeTab;
   }
   /**
    * updates the active tabs object
@@ -659,12 +660,12 @@ class SimpleFields extends SimpleFieldsLite {
    * @param {string} tabId, eg. 'settings.permisions.groups'
    * @memberof SimpleFields
    */
-  setActiveTab(tabId){
-    let tabsId = tabId.replace(/\.[0-9a-z]+$/,''),
-      tabs = this.querySelector(`#${tabsId}`), 
+  setActiveTab(tabId) {
+    let tabsId = tabId.replace(/\.[0-9a-z]+$/, ""),
+      tabs = this.querySelector(`#${tabsId}`),
       tab = tabs.querySelector(`#${tabId}`);
 
-    if(tabs && tab) tabs.activeTab = tabId;
+    if (tabs && tab) tabs.activeTab = tabId;
   }
 
   /**
@@ -673,10 +674,10 @@ class SimpleFields extends SimpleFieldsLite {
    * @param {string} path, eg. 'settings/permissions/groups'
    * @memberof SimpleFields
    */
-  setActivePath(path){
-    let parts = path.split('/'), 
-      tabId = '';
-    parts.forEach(part=>{
+  setActivePath(path) {
+    let parts = path.split("/"),
+      tabId = "";
+    parts.forEach(part => {
       this.setActiveTab(part);
       tabId += part;
     });

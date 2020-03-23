@@ -192,8 +192,11 @@ class A11yTabs extends LitElement {
   selectTab(id) {
     let tabs = this.querySelectorAll(this.tabQuery),
       enabled = Object.keys(tabs || []).filter(tab => !tab.disabled),
-      filtered = Object.keys(enabled || []).filter(tab => tabs[tab].id === id && !tab.disabled),
-      selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : enabled[0];
+      filtered = Object.keys(enabled || []).filter(
+        tab => tabs[tab].id === id && !tab.disabled
+      ),
+      selected =
+        filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : enabled[0];
     if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
