@@ -68,7 +68,7 @@ class ImageInspector extends LitElement {
     this.noLeft = false;
     this.degrees = 0;
     this.hoverClass = "blue white-text";
-    this.src=""
+    this.src = "";
   }
   render() {
     return html`
