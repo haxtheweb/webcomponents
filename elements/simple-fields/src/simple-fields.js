@@ -575,15 +575,31 @@ class SimpleFields extends SimpleFieldsLite {
       import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     }, 0);
   }
+
   /**
-   * updates the active tabs object
+   * fields converted to JSON schema =
    *
-   * @param {event} e
-   * @memberof SimpleFields
+   * @readonly
+   * @returns object
+   * @memberof SimpleFieldsLite
    */
-  _handleActiveTab(e) {
-    if (e && e.detail && e.detail.id)
-      this.activeTabs[e.detail.id] = e.detail.activeTab;
+  get convertedSchema() {
+    let schema = {
+      $schema: "http://json-schema.org/schema#",
+      title: this.label,
+      type: "object",
+      required: [],
+      properties: this._fieldsToSchema(this.fields)
+    };
+    return schema;
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "fields") this.schema = this.convertedSchema;
+      if (propName === "__activeTabs" && this.activeTabs !== oldValue) this._handleActiveTabs();
+    });
   }
   /**
    * updates the active tabs object
@@ -611,31 +627,6 @@ class SimpleFields extends SimpleFieldsLite {
     parts.forEach(part => {
       this.setActiveTab(part);
       tabId += part;
-    });
-  }
-
-  /**
-   * fields converted to JSON schema =
-   *
-   * @readonly
-   * @returns object
-   * @memberof SimpleFieldsLite
-   */
-  get convertedSchema() {
-    let schema = {
-      $schema: "http://json-schema.org/schema#",
-      title: this.label,
-      type: "object",
-      required: [],
-      properties: this._fieldsToSchema(this.fields)
-    };
-    return schema;
-  }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "fields") this.schema = this.convertedSchema;
     });
   }
 
@@ -668,7 +659,7 @@ class SimpleFields extends SimpleFieldsLite {
 
   /**
    * converts fields array to schema properties
-   * @param {*} field field object to convert
+   * @param {object} field field object to convert
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
@@ -725,8 +716,33 @@ class SimpleFields extends SimpleFieldsLite {
       let prop = !field.property ? "" : field.property;
       schema[prop] = this._fieldToSchema(field);
     });
-    console.log("_fieldsToSchema", schema, fields);
     return schema;
+  }
+  /**
+   * handles active tabs changes
+   * 
+   * @event "active-tabs-changed"
+   * @memberof SimpleFields
+   */
+  _handleActiveTabs(){
+    this.dispatchEvent(
+      new CustomEvent("active-tabs-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: false,
+        detail: this
+      })
+    );
+  }
+  /**
+   * updates the active tabs object
+   *
+   * @param {event} e
+   * @memberof SimpleFields
+   */
+  _handleActiveTab(e) {
+    if (e && e.detail && e.detail.id)
+      this.activeTabs[e.detail.id] = e.detail.activeTab;
   }
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);

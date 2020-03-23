@@ -1,12 +1,5 @@
 {
   /**
-   * tracks activeTabs
-   */
-  "activeTabs": {
-    "type": "Object",
-    "attribute": "active-path"
-  },
-  /**
    * Fields to convert to JSON Schema.
    */
   "fields": {
@@ -24,5 +17,12 @@
    */
   "label": {
     "type": "String"
+  },
+  /**
+   * tracks all activeTabs as an object
+   */
+  "__activeTabs": {
+    "type": "Object",
+    "attribute": "active-path"
   }
 }

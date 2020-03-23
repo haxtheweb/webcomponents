@@ -4,6 +4,7 @@
    */
   "activeTab": {
     "type": "String",
+    "reflect": true,
     "attribute": "active-tab"
   },
   /**
