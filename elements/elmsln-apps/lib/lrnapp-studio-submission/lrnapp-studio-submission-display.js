@@ -150,7 +150,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                       ></iron-image>
                     </span>
                     <div style="text-align: center;">
-                      <div hidden$="[[!_isGif(image.url)]]">
+                      <div hidden$="[[_isGif(image.url)]]">
                         <image-inspector src$="[[image.url]]">
                           <span slot="toolbar">
                             <lrnsys-button
@@ -162,7 +162,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           </span>
                         </image-inspector>
                       </div>
-                      <div hidden$="[[_isGif(image.url)]]">
+                      <div hidden$="[[!_isGif(image.url)]]">
                         <lrnsys-button
                           alt="Download all images"
                           icon="icons:file-download"

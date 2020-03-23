@@ -319,15 +319,15 @@ class LrnappStudioInstructor extends PolymerElement {
         </app-toolbar>
       </app-header>
       <paper-dialog-scrollable>
-        <template is="dom-if" if="[[activeData.submission]]">
-          <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" data="[[data]]" hide-menu-bar></lrnapp-studio-submission-page>
-        </template>
-        <template is="dom-if" if="[[!activeData.submission]]">
+        <div hidden$="[[!activeData.submission]]">
+          <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" hide-menu-bar></lrnapp-studio-submission-page>
+        </div>
+        <div hidden$="[[activeData.submission]]">
           <div>
-            <h3>No submission for this assignment</h3>
+            <h2>No submission for this assignment</h2>
             <p>This student has not submitted anything for this assignment at this time.</p>
           </div>
-        </template>
+        </div>
       </paper-dialog-scrollable>
     </paper-dialog>`;
   }
