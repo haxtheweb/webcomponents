@@ -52,14 +52,14 @@ class HaxAppBrowser extends winEventsElement(LitElement) {
   }
   render() {
     return html`
-      <custom-style> </custom-style>
       <div class="toolbar-inner">
         <simple-fields-field
-          label="Filter"
           id="inputfilter"
           @value-changed="${this.inputfilterChanged}"
           aria-controls="filter"
-          value=""
+          label="Filter"
+          type="text"
+          auto-validate=""
         ></simple-fields-field>
       </div>
       <grafitto-filter

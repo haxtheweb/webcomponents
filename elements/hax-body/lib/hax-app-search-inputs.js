@@ -37,7 +37,6 @@ class HaxAppSearchInputs extends LitElement {
   constructor() {
     super();
     this.label = "app";
-    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("@polymer/paper-item/paper-item.js");
   }
   render() {
