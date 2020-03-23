@@ -1683,7 +1683,9 @@ class HaxStore extends winEventsElement(HAXElement(LitElement)) {
             ) != null
           ) {
             active
-              .querySelector("simple-fields-field,textarea,paper-button,hax-tray-button")
+              .querySelector(
+                "simple-fields-field,textarea,paper-button,hax-tray-button"
+              )
               .focus();
           }
           var evt = document.createEvent("UIEvents");
