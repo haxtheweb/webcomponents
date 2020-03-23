@@ -164,14 +164,31 @@
                 "type": "string",
                 "value": "1",
                 "format": "select",
-                "items": [{"value":"value","text":"1"},{"value":"value","text":"2"},{"value":"value","text":"3"}]
+                "items": [
+                  { "value": "value", "text": "1" },
+                  { "value": "value", "text": "2" },
+                  { "value": "value", "text": "3" }
+                ]
               },
               "license": {
                 "title": "License type",
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "items": [{"value":"value","text":""},{"value":"value","text":"0"},{"value":"value","text":"4"},{"value":"value","text":"6"},{"value":"value","text":"3"},{"value":"value","text":"2"},{"value":"value","text":"1"},{"value":"value","text":"5"},{"value":"value","text":"7"},{"value":"value","text":"8"},{"value":"value","text":"9"},{"value":"value","text":"10"}]
+                "items": [
+                  { "value": "value", "text": "" },
+                  { "value": "value", "text": "0" },
+                  { "value": "value", "text": "4" },
+                  { "value": "value", "text": "6" },
+                  { "value": "value", "text": "3" },
+                  { "value": "value", "text": "2" },
+                  { "value": "value", "text": "1" },
+                  { "value": "value", "text": "5" },
+                  { "value": "value", "text": "7" },
+                  { "value": "value", "text": "8" },
+                  { "value": "value", "text": "9" },
+                  { "value": "value", "text": "10" }
+                ]
               }
             },
             "data": {
@@ -293,13 +310,52 @@
                 "title": "Rating",
                 "type": "string",
                 "format": "select",
-                "items": [{"value":"value","text":"Y"},{"value":"value","text":"G"},{"value":"value","text":"PG"},{"value":"value","text":"PG-13"},{"value":"value","text":"R"}]
+                "items": [
+                  { "value": "value", "text": "Y" },
+                  { "value": "value", "text": "G" },
+                  { "value": "value", "text": "PG" },
+                  { "value": "value", "text": "PG-13" },
+                  { "value": "value", "text": "R" }
+                ]
               },
               "lang": {
                 "title": "Language",
                 "type": "string",
                 "format": "select",
-                "items": [{"value":"value","text":"en"},{"value":"value","text":"es"},{"value":"value","text":"pt"},{"value":"value","text":"id"},{"value":"value","text":"fr"},{"value":"value","text":"ar"},{"value":"value","text":"tr"},{"value":"value","text":"th"},{"value":"value","text":"vi"},{"value":"value","text":"de"},{"value":"value","text":"it"},{"value":"value","text":"ja"},{"value":"value","text":"zh-CN"},{"value":"value","text":"zh-TW"},{"value":"value","text":"ru"},{"value":"value","text":"ko"},{"value":"value","text":"pl"},{"value":"value","text":"nl"},{"value":"value","text":"ro"},{"value":"value","text":"hu"},{"value":"value","text":"sv"},{"value":"value","text":"cs"},{"value":"value","text":"hi"},{"value":"value","text":"bn"},{"value":"value","text":"da"},{"value":"value","text":"fa"},{"value":"value","text":"tl"},{"value":"value","text":"fi"},{"value":"value","text":"iw"},{"value":"value","text":"ms"},{"value":"value","text":"no"},{"value":"value","text":"uk"}]
+                "items": [
+                  { "value": "value", "text": "en" },
+                  { "value": "value", "text": "es" },
+                  { "value": "value", "text": "pt" },
+                  { "value": "value", "text": "id" },
+                  { "value": "value", "text": "fr" },
+                  { "value": "value", "text": "ar" },
+                  { "value": "value", "text": "tr" },
+                  { "value": "value", "text": "th" },
+                  { "value": "value", "text": "vi" },
+                  { "value": "value", "text": "de" },
+                  { "value": "value", "text": "it" },
+                  { "value": "value", "text": "ja" },
+                  { "value": "value", "text": "zh-CN" },
+                  { "value": "value", "text": "zh-TW" },
+                  { "value": "value", "text": "ru" },
+                  { "value": "value", "text": "ko" },
+                  { "value": "value", "text": "pl" },
+                  { "value": "value", "text": "nl" },
+                  { "value": "value", "text": "ro" },
+                  { "value": "value", "text": "hu" },
+                  { "value": "value", "text": "sv" },
+                  { "value": "value", "text": "cs" },
+                  { "value": "value", "text": "hi" },
+                  { "value": "value", "text": "bn" },
+                  { "value": "value", "text": "da" },
+                  { "value": "value", "text": "fa" },
+                  { "value": "value", "text": "tl" },
+                  { "value": "value", "text": "fi" },
+                  { "value": "value", "text": "iw" },
+                  { "value": "value", "text": "ms" },
+                  { "value": "value", "text": "no" },
+                  { "value": "value", "text": "uk" }
+                ]
               }
             },
             "data": {
@@ -367,7 +423,19 @@
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "items": [{"value":"value","text":""},{"value":"value","text":"animals"},{"value":"value","text":"architecture"},{"value":"value","text":"art"},{"value":"value","text":"food"},{"value":"value","text":"nature"},{"value":"value","text":"objects"},{"value":"value","text":"people"},{"value":"value","text":"scenes"},{"value":"value","text":"technology"},{"value":"value","text":"transport"}]
+                "items": [
+                  { "value": "value", "text": "" },
+                  { "value": "value", "text": "animals" },
+                  { "value": "value", "text": "architecture" },
+                  { "value": "value", "text": "art" },
+                  { "value": "value", "text": "food" },
+                  { "value": "value", "text": "nature" },
+                  { "value": "value", "text": "objects" },
+                  { "value": "value", "text": "people" },
+                  { "value": "value", "text": "scenes" },
+                  { "value": "value", "text": "technology" },
+                  { "value": "value", "text": "transport" }
+                ]
               }
             },
             "data": {
@@ -441,7 +509,16 @@
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "items": [{"value":"value","text":""},{"value":"value","text":"by"},{"value":"value","text":"by-sa"},{"value":"value","text":"by-nd"},{"value":"value","text":"by-nc"},{"value":"value","text":"by-nc-sa"},{"value":"value","text":"by-nc-nd"},{"value":"value","text":"cc0"}]
+                "items": [
+                  { "value": "value", "text": "" },
+                  { "value": "value", "text": "by" },
+                  { "value": "value", "text": "by-sa" },
+                  { "value": "value", "text": "by-nd" },
+                  { "value": "value", "text": "by-nc" },
+                  { "value": "value", "text": "by-nc-sa" },
+                  { "value": "value", "text": "by-nc-nd" },
+                  { "value": "value", "text": "cc0" }
+                ]
               }
             },
             "resultMap": {

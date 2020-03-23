@@ -569,11 +569,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
   }
   get sortedOptions() {
     let sorted = (this.itemsList || []).slice();
-    console.log('sorted',sorted);
     Object.keys(this.options || {})
       .sort((a, b) => (a > b ? 1 : -1))
       .forEach(key => sorted.push({ value: key, text: this.options[key] }));
-      console.log('sorted2',sorted);
     return sorted;
   }
   /**
@@ -598,7 +596,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
       >
-        ${(this.sortedOptions|| []).map(
+        ${(this.sortedOptions || []).map(
           option => html`
             <option
               .id="${this.id}.${option.value}"

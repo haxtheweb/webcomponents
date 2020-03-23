@@ -101,11 +101,10 @@ class LrnsysCommentList extends PolymerElement {
           label="Filter Comments by"
           value="attributes.body"
         >
-        <select>
-          <option value="attributes.body">Body</option>
-          <option value="relationships.author.data.name"
-            >User Name</option>
-        </select>
+          <select>
+            <option value="attributes.body">Body</option>
+            <option value="relationships.author.data.name">User Name</option>
+          </select>
         </simple-fields-container>
         <paper-input
           label="Filter Text"

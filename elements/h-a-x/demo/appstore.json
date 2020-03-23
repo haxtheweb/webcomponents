@@ -164,14 +164,37 @@
                 "type": "string",
                 "value": "1",
                 "format": "select",
-                "slot": [{"value":"1","text":"Safe"},{"value":"2","text":"Moderate"},{"value":"3","text":"Restricted"}]
+                "slot": [
+                  { "value": "1", "text": "Safe" },
+                  { "value": "2", "text": "Moderate" },
+                  { "value": "3", "text": "Restricted" }
+                ]
               },
               "license": {
                 "title": "License type",
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "slot": [{"value":"","text":"Any"},{"value":"0","text":"All Rights Reserved"},{"value":"4","text":"Attribution License"},{"value":"6","text":"Attribution-NoDerivs License"},{"value":"3","text":"Attribution-NonCommercial-NoDerivs License"},{"value":"2","text":"Attribution-NonCommercial License"},{"value":"1","text":"Attribution-NonCommercial-ShareAlike License"},{"value":"5","text":"Attribution-ShareAlike License"},{"value":"7","text":"No known copyright restrictions"},{"value":"8","text":"United States Government Work"},{"value":"9","text":"Public Domain Dedication (CC0)"},{"value":"10","text":"Public Domain Mark"}]
+                "slot": [
+                  { "value": "", "text": "Any" },
+                  { "value": "0", "text": "All Rights Reserved" },
+                  { "value": "4", "text": "Attribution License" },
+                  { "value": "6", "text": "Attribution-NoDerivs License" },
+                  {
+                    "value": "3",
+                    "text": "Attribution-NonCommercial-NoDerivs License"
+                  },
+                  { "value": "2", "text": "Attribution-NonCommercial License" },
+                  {
+                    "value": "1",
+                    "text": "Attribution-NonCommercial-ShareAlike License"
+                  },
+                  { "value": "5", "text": "Attribution-ShareAlike License" },
+                  { "value": "7", "text": "No known copyright restrictions" },
+                  { "value": "8", "text": "United States Government Work" },
+                  { "value": "9", "text": "Public Domain Dedication (CC0)" },
+                  { "value": "10", "text": "Public Domain Mark" }
+                ]
               }
             },
             "data": {
@@ -293,13 +316,52 @@
                 "title": "Rating",
                 "type": "string",
                 "format": "select",
-                "slot": [{"value":"Y","text":"Y"},{"value":"G","text":"G"},{"value":"PG","text":"PG"},{"value":"PG-13","text":"PG-13"},{"value":"R","text":"R"}]
+                "slot": [
+                  { "value": "Y", "text": "Y" },
+                  { "value": "G", "text": "G" },
+                  { "value": "PG", "text": "PG" },
+                  { "value": "PG-13", "text": "PG-13" },
+                  { "value": "R", "text": "R" }
+                ]
               },
               "lang": {
                 "title": "Language",
                 "type": "string",
                 "format": "select",
-                "slot": [{"value":"en","text":"en"},{"value":"es","text":"es"},{"value":"pt","text":"pt"},{"value":"id","text":"id"},{"value":"fr","text":"fr"},{"value":"ar","text":"ar"},{"value":"tr","text":"tr"},{"value":"th","text":"th"},{"value":"vi","text":"vi"},{"value":"de","text":"de"},{"value":"it","text":"it"},{"value":"ja","text":"ja"},{"value":"zh-CN","text":"zh-CN"},{"value":"zh-TW","text":"zh-TW"},{"value":"ru","text":"ru"},{"value":"ko","text":"ko"},{"value":"pl","text":"pl"},{"value":"nl","text":"nl"},{"value":"ro","text":"ro"},{"value":"hu","text":"hu"},{"value":"sv","text":"sv"},{"value":"cs","text":"cs"},{"value":"hi","text":"hi"},{"value":"bn","text":"bn"},{"value":"da","text":"da"},{"value":"fa","text":"fa"},{"value":"tl","text":"tl"},{"value":"fi","text":"fi"},{"value":"iw","text":"iw"},{"value":"ms","text":"ms"},{"value":"no","text":"no"},{"value":"uk","text":"uk"}]
+                "slot": [
+                  { "value": "en", "text": "en" },
+                  { "value": "es", "text": "es" },
+                  { "value": "pt", "text": "pt" },
+                  { "value": "id", "text": "id" },
+                  { "value": "fr", "text": "fr" },
+                  { "value": "ar", "text": "ar" },
+                  { "value": "tr", "text": "tr" },
+                  { "value": "th", "text": "th" },
+                  { "value": "vi", "text": "vi" },
+                  { "value": "de", "text": "de" },
+                  { "value": "it", "text": "it" },
+                  { "value": "ja", "text": "ja" },
+                  { "value": "zh-CN", "text": "zh-CN" },
+                  { "value": "zh-TW", "text": "zh-TW" },
+                  { "value": "ru", "text": "ru" },
+                  { "value": "ko", "text": "ko" },
+                  { "value": "pl", "text": "pl" },
+                  { "value": "nl", "text": "nl" },
+                  { "value": "ro", "text": "ro" },
+                  { "value": "hu", "text": "hu" },
+                  { "value": "sv", "text": "sv" },
+                  { "value": "cs", "text": "cs" },
+                  { "value": "hi", "text": "hi" },
+                  { "value": "bn", "text": "bn" },
+                  { "value": "da", "text": "da" },
+                  { "value": "fa", "text": "fa" },
+                  { "value": "tl", "text": "tl" },
+                  { "value": "fi", "text": "fi" },
+                  { "value": "iw", "text": "iw" },
+                  { "value": "ms", "text": "ms" },
+                  { "value": "no", "text": "no" },
+                  { "value": "uk", "text": "uk" }
+                ]
               }
             },
             "data": {
@@ -367,7 +429,19 @@
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "slot": [{"value":"","text":"Any"},{"value":"animals","text":"Animals"},{"value":"architecture","text":"Architecture"},{"value":"art","text":"Art"},{"value":"food","text":"Food"},{"value":"nature","text":"Nature"},{"value":"objects","text":"Objects"},{"value":"people","text":"People"},{"value":"scenes","text":"Scenes"},{"value":"technology","text":"Technology"},{"value":"transport","text":"Transport"}]
+                "slot": [
+                  { "value": "", "text": "Any" },
+                  { "value": "animals", "text": "Animals" },
+                  { "value": "architecture", "text": "Architecture" },
+                  { "value": "art", "text": "Art" },
+                  { "value": "food", "text": "Food" },
+                  { "value": "nature", "text": "Nature" },
+                  { "value": "objects", "text": "Objects" },
+                  { "value": "people", "text": "People" },
+                  { "value": "scenes", "text": "Scenes" },
+                  { "value": "technology", "text": "Technology" },
+                  { "value": "transport", "text": "Transport" }
+                ]
               }
             },
             "data": {
@@ -441,7 +515,22 @@
                 "type": "string",
                 "value": "",
                 "format": "select",
-                "slot": [{"value":"","text":"Any"},{"value":"by","text":"Attribution"},{"value":"by-sa","text":"Attribution ShareAlike"},{"value":"by-nd","text":"Attribution NoDerivatives"},{"value":"by-nc","text":"Attribution-NonCommercial"},{"value":"by-nc-sa","text":"Attribution NonCommercial ShareAlike"},{"value":"by-nc-nd","text":"Attribution NonCommercial NoDerivatives"},{"value":"cc0","text":"Public Domain Dedication (CC0)"}]
+                "slot": [
+                  { "value": "", "text": "Any" },
+                  { "value": "by", "text": "Attribution" },
+                  { "value": "by-sa", "text": "Attribution ShareAlike" },
+                  { "value": "by-nd", "text": "Attribution NoDerivatives" },
+                  { "value": "by-nc", "text": "Attribution-NonCommercial" },
+                  {
+                    "value": "by-nc-sa",
+                    "text": "Attribution NonCommercial ShareAlike"
+                  },
+                  {
+                    "value": "by-nc-nd",
+                    "text": "Attribution NonCommercial NoDerivatives"
+                  },
+                  { "value": "cc0", "text": "Public Domain Dedication (CC0)" }
+                ]
               }
             },
             "resultMap": {
