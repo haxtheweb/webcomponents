@@ -10,6 +10,8 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-contentblock/lrndesign-contentblock.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappStudioSubmissionDisplay extends PolymerElement {
   static get template() {
     return html`
@@ -148,8 +150,8 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                       ></iron-image>
                     </span>
                     <div style="text-align: center;">
-                      <template is="dom-if" if="[[!_isGif(image.url)]]">
-                        <image-inspector src="[[image.url]]">
+                      <div hidden$="[[!_isGif(image.url)]]">
+                        <image-inspector src$="[[image.url]]">
                           <span slot="toolbar">
                             <lrnsys-button
                               alt="Download all images"
@@ -159,8 +161,8 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                             ></lrnsys-button>
                           </span>
                         </image-inspector>
-                      </template>
-                      <template is="dom-if" if="[[_isGif(image.url)]]">
+                      </div>
+                      <div hidden$="[[_isGif(image.url)]]">
                         <lrnsys-button
                           alt="Download all images"
                           icon="icons:file-download"
@@ -175,7 +177,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           preload=""
                           fade=""
                         ></iron-image>
-                      </template>
+                      </div>
                     </div>
                   </lrnsys-dialog>
                 </template>
@@ -268,15 +270,17 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
     };
   }
   _submissionLoaded(newValue) {
-    if (newValue) {
-      if (newValue.attributes && newValue.attributes.body) {
-        let mdscript = document.createElement("script");
-        mdscript.type = "text/markdown";
-        mdscript.innerHTML = newValue.attributes.body;
-        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
-        this.shadowRoot.querySelector("#markedarea").markdown =
-          newValue.attributes.body;
-      }
+    // wipe the slot of the marked area
+    if (this.shadowRoot && this.shadowRoot.querySelector("#markedarea")) {
+      wipeSlot(this.shadowRoot.querySelector("#markedarea"));
+    }
+    if (newValue && newValue.attributes && newValue.attributes.body) {
+      let mdscript = document.createElement("script");
+      mdscript.type = "text/markdown";
+      mdscript.innerHTML = newValue.attributes.body;
+      this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+      this.shadowRoot.querySelector("#markedarea").markdown =
+        newValue.attributes.body;
     }
   }
 

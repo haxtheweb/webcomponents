@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { materialCssStyles } from "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 /**
  * `lrnsys-button`
  * `A simple button for use in systems`
@@ -93,7 +94,6 @@ class LrnsysButton extends LitElement {
       this.addEventListener("focusin", this.tapEventOn.bind(this));
       this.addEventListener("focusout", this.tapEventOff.bind(this));
       this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      import("@polymer/iron-icons/iron-icons.js");
       import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
     }, 0);
   }

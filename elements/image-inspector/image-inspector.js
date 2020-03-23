@@ -1,6 +1,9 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/exif-data/exif-data.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
@@ -65,16 +68,11 @@ class ImageInspector extends LitElement {
     this.noLeft = false;
     this.degrees = 0;
     this.hoverClass = "blue white-text";
-    setTimeout(() => {
-      import("@polymer/app-layout/app-layout.js");
-      import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
-      import("@polymer/iron-icons/iron-icons.js");
-      import("@polymer/iron-icons/image-icons.js");
-    }, 0);
+    this.src=""
   }
   render() {
     return html`
-      <app-toolbar>
+      <div>
         <lrnsys-button
           alt="Zoom in"
           icon="zoom-in"
@@ -119,7 +117,7 @@ class ImageInspector extends LitElement {
           hover-class="${this.hoverClass}"
         ></lrnsys-button>
         <slot name="toolbar"></slot>
-      </app-toolbar>
+      </div>
       <exif-data
         id="exif"
         @click=${this.hideData}
