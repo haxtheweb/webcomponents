@@ -167,6 +167,7 @@ class A11yTab extends LitElement {
   disconnectedCallback() {
     this.observer.disconnect();
     this.removeEventListener("a11y-tab-flag", e => this.handleFlag(e));
+    this._fireTabChanged();
     super.disconnectedCallback();
   }
   /**
@@ -183,6 +184,7 @@ class A11yTab extends LitElement {
       if (propName === "icon") this._fireTabChanged();
       if (propName === "id") this._fireTabChanged();
       if (propName === "label") this._fireTabChanged();
+      if (propName === "disabled" && this.disabled) this._fireTabChanged();
     });
   }
 

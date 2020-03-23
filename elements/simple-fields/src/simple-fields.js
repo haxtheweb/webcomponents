@@ -133,6 +133,7 @@ class SimpleFields extends SimpleFieldsLite {
   }
   constructor() {
     super();
+    this.activeTabs = {};
     this.fieldsConversion = {
       defaultSettings: {
         defaultSettings: {
@@ -563,6 +564,7 @@ class SimpleFields extends SimpleFieldsLite {
         }
       }
     };
+    this.addEventListener("active-tab-changed",this._handleActiveTab);
     setTimeout(() => {
       import("./lib/simple-fields-field.js");
       import("./lib/simple-fields-tabs.js");
@@ -574,7 +576,45 @@ class SimpleFields extends SimpleFieldsLite {
     }, 0);
   }
   /**
-   * fields converted to JSON schema
+   * updates the active tabs object
+   *
+   * @param {event} e
+   * @memberof SimpleFields
+   */
+  _handleActiveTab(e){
+    if(e && e.detail && e.detail.id) this.activeTabs[e.detail.id] = e.detail.activeTab;
+  }
+  /**
+   * updates the active tabs object
+   *
+   * @param {string} tabId, eg. 'settings.permisions.groups'
+   * @memberof SimpleFields
+   */
+  setActiveTab(tabId){
+    let tabsId = tabId.replace(/\.[0-9a-z]+$/,''),
+      tabs = this.querySelector(`#${tabsId}`), 
+      tab = tabs.querySelector(`#${tabId}`);
+
+    if(tabs && tab) tabs.activeTab = tabId;
+  }
+
+  /**
+   * sets active tabs by path, eg. 'settings/permissions/groups'
+   *
+   * @param {string} path, eg. 'settings/permissions/groups'
+   * @memberof SimpleFields
+   */
+  setActivePath(path){
+    let parts = path.split('/'), 
+      tabId = '';
+    parts.forEach(part=>{
+      this.setActiveTab(part);
+      tabId += part;
+    });
+  }
+
+  /**
+   * fields converted to JSON schema =
    *
    * @readonly
    * @returns object

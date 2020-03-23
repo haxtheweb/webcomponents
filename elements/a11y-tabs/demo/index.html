@@ -18,10 +18,34 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic a11y-tabs demo</h3>
+      <h1>Basic a11y-tabs demo</h1>
       <demo-snippet>
         <template>
           <a11y-tabs id="tabs">
+            <a11y-tab id="eat" icon="maps:restaurant" label="Nearby restaurants">
+              <ul>
+                <li>Tasty Burger</li>
+                <li>Subs &amp; More</li>
+                <li>Lobsterland</li>
+              </ul>
+            </a11y-tab>
+            <a11y-tab id="shop" icon="maps:store-mall-directory" label="Shopping">
+              <ul>
+                <li>Stuff and Things</li>
+                <li>Really Old Books</li>
+                <li>Fast Fashion</li>
+              </ul>
+            </a11y-tab>
+            <a11y-tab id="phone" disabled icon="communication:phone" label="Pay Telephones">
+              <p>Pay telephones are a thing of the past.</p>
+            </a11y-tab>
+          </a11y-tabs>
+        </template>
+      </demo-snippet>
+      <h2>Set active tab in a11y-tabs</h2>
+      <demo-snippet>
+        <template>
+          <a11y-tabs id="activetabdemo" active-tab="shop">
             <a11y-tab id="eat" icon="maps:restaurant" label="Nearby restaurants">
               <ul>
                 <li>Tasty Burger</li>

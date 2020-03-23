@@ -178,7 +178,7 @@ class A11yTabs extends LitElement {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "id") this._idChanged(this.id, oldValue);
-      if (propName === "activeTab")
+      if (propName === "activeTab" && this.activeTab !== oldValue)
         this._activeTabChanged(this.activeTab, oldValue);
       if (propName === "iconBreakpoint") this._breakpointChanged();
       if (propName === "layoutBreakpoint") this._breakpointChanged();
@@ -191,8 +191,9 @@ class A11yTabs extends LitElement {
    */
   selectTab(id) {
     let tabs = this.querySelectorAll(this.tabQuery),
-      filtered = Object.keys(tabs || []).filter(tab => tabs[tab].id === id),
-      selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : tabs[0];
+      enabled = Object.keys(tabs || []).filter(tab => !tab.disabled),
+      filtered = Object.keys(enabled || []).filter(tab => tabs[tab].id === id && !tab.disabled),
+      selected = filtered[0] && tabs[filtered[0]] ? tabs[filtered[0]] : enabled[0];
     if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
@@ -215,6 +216,14 @@ class A11yTabs extends LitElement {
    */
   _activeTabChanged(newValue, oldValue) {
     if (newValue !== oldValue) this.selectTab(newValue);
+    window.dispatchEvent(
+      new CustomEvent("active-tab-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
   /**
    * handles any breakpoint changes

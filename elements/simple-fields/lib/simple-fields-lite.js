@@ -524,7 +524,6 @@ class SimpleFieldsLite extends LitElement {
       let schemaProp = schemaProps[key],
         data = config || this._convertSchema(schemaProp, this.schemaConversion);
       if (data && data.element) {
-        console.log(key, data.element);
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
@@ -609,23 +608,18 @@ class SimpleFieldsLite extends LitElement {
             data.attributes[attr] !== null
           ) {
             element.setAttribute(attr, data.attributes[attr]);
-            //console.log('element',element);
           }
         });
 
         //handle schema properties
-        console.log("id", id, schemaProp.properties, data.properties);
         Object.keys(data.properties || {}).forEach(prop => {
-          //console.log('prop',prop,schemaProp[prop],data.properties[prop]);
           if (data.properties[prop] && schemaProp[prop]) {
             element[data.properties[prop]] = schemaProp[prop];
           }
         });
 
         //handle data type slots
-        //console.log('slot',data.slots,schemaProp);
         Object.keys(data.slots || {}).forEach(slot => {
-          //console.log('slot',slot,data.slots,schemaProp);
           if (data.slots[slot] && schemaProp[data.slots[slot]]) {
             data.slots[slot].split(/[\s,]/).forEach(field => {
               let span = document.createElement("span");
@@ -675,7 +669,6 @@ class SimpleFieldsLite extends LitElement {
             this.error = error;
           });
         }
-        //console.log({ id: id, field: wrapper, data: data });
         this.__fields.push({ id: id, field: wrapper, data: data });
       }
     });
@@ -690,7 +683,6 @@ class SimpleFieldsLite extends LitElement {
    * @memberof SimpleFieldsLite
    */
   _configElement(target, value, propName, slotName = false) {
-    //console.log('_configElement',target, value, propName, slotName);
     if (slotName) {
       let span = document.createElement("span");
       span.slot = slotName;
@@ -772,7 +764,6 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} item array item element
    */
   _addArrayItem(counter, schema, previewBy) {
-    //console.log('_addArrayItem',i, schema, parent, item);
     let item = this._deepClone(schema.items);
     item.label = `${parseInt(counter) + 1}`;
     item.previewBy = previewBy;
@@ -825,7 +816,6 @@ class SimpleFieldsLite extends LitElement {
    * handles errors
    */
   _errorChanged() {
-    //console.log("error-changed", this.error);
     this.fields.forEach(field => {
       let data = field.data || {},
         el = field.field,
@@ -857,16 +847,6 @@ class SimpleFieldsLite extends LitElement {
    * @event value-changed
    */
   _fireValueChanged() {
-    console.log(
-      "value-changed",
-      this.value,
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
@@ -882,7 +862,6 @@ class SimpleFieldsLite extends LitElement {
    * @event fields-changed
    */
   _formFieldsChanged(e) {
-    //console.log("fields-changed",newValue, oldValue);
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
@@ -918,7 +897,6 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} valueProperty
    */
   _handleChange(element, valueProperty) {
-    //console.log('_handleChange',element.id || element.getAttribute('id'),valueProperty);
     this._setValue(
       element.id || element.getAttribute("id"),
       element[valueProperty]
@@ -933,7 +911,6 @@ class SimpleFieldsLite extends LitElement {
    * @event schema-changed
    */
   _schemaChanged(newValue, oldValue) {
-    //console.log('_schemaChanged',newValue, oldValue);
     if (newValue && newValue !== oldValue) {
       this.rebuildForm();
 
@@ -973,7 +950,6 @@ class SimpleFieldsLite extends LitElement {
    * @param {object} oldValue old value for schema
    */
   _valueChanged(newValue, oldValue) {
-    //console.log('_valueChanged',newValue, oldValue)
     if (newValue && newValue !== oldValue) this._fireValueChanged();
   }
 }
