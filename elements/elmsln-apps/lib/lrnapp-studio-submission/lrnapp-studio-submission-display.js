@@ -150,7 +150,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                       ></iron-image>
                     </span>
                     <div style="text-align: center;">
-                      <div hidden$="[[_isGif(_getImageUrl(image))]]">
+                      <div hidden$="[[_isGif(image)]]">
                         <image-inspector src$="[[_getImageUrl(image)]]">
                           <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
@@ -162,7 +162,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           </span>
                         </image-inspector>
                       </div>
-                      <div hidden$="[[!_isGif(_getImageUrl(image))]]">
+                      <div hidden$="[[!_isGif(image)]]">
                         <lrnsys-button
                           alt="Download all images"
                           icon="icons:file-download"
@@ -332,8 +332,10 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
    * See if this is a GIF, if it is then report back so we
    * know which player to display.
    */
-  _isGif(url) {
-    if (url && url.indexOf(".gif") != -1) {
+  _isGif(image) {
+    // get url from image normalizing for simplified data
+    let url = this._getImageUrl(image);
+    if (url != '' && url.indexOf(".gif") != -1) {
       return true;
     }
     return false;
