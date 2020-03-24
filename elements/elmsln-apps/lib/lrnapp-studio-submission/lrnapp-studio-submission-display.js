@@ -335,7 +335,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
   _isGif(image) {
     // get url from image normalizing for simplified data
     let url = this._getImageUrl(image);
-    if (url != '' && url.indexOf(".gif") != -1) {
+    if (url != "" && url.indexOf(".gif") != -1) {
       return true;
     }
     return false;
