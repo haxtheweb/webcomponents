@@ -76,8 +76,6 @@ body, html, :root {
   /** hax forms **/
   --primary-color: var(--simple-colors-default-theme-cyan-7, #3b97e3);
   --paper-input-container-focus-color: var(--haxcms-color, --haxcms-system-bg);
-  --eco-json-form-add-color: var(--haxcms-color, --haxcms-system-bg);
-  --eco-json-form-faded-color: var(--haxcms-color, --haxcms-system-bg);
   --lumo-primary-text-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-color: var(--haxcms-color, --haxcms-system-bg);
   --a11y-tabs-focus-color: var(--haxcms-color, --haxcms-system-bg);

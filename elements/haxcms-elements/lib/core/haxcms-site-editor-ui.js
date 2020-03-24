@@ -196,6 +196,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/paper-fab/paper-fab.js");
+      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     }, 0);
   }
@@ -541,7 +542,7 @@ class HAXCMSSiteEditorUI extends LitElement {
    * @todo simplify this to just what's needed; no crazy options
    */
   _addButtonTap(e) {
-    this.__newForm = document.createElement("eco-json-schema-object");
+    this.__newForm = document.createElement("simple-fields");
     let outline = window.JSONOutlineSchema.requestAvailability();
     // get a prototype schema for an item
     this.__newForm.schema = outline.getItemSchema("item");
