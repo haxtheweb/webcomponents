@@ -524,7 +524,7 @@ class SimpleFieldsLite extends LitElement {
       let schemaProp = schemaProps[key],
         data = config || this._convertSchema(schemaProp, this.schemaConversion);
       if (data && data.element) {
-        console.log(key, data.element);
+        //console.log(key, data.element);
         let id = `${prefix}${key}`,
           element = document.createElement(data.element),
           wrapper =
@@ -856,7 +856,7 @@ class SimpleFieldsLite extends LitElement {
    * @event value-changed
    */
   _fireValueChanged() {
-    console.log(
+    /*console.log(
       "value-changed",
       this.value,
       new CustomEvent("value-changed", {
@@ -865,7 +865,7 @@ class SimpleFieldsLite extends LitElement {
         composed: true,
         detail: this
       })
-    );
+    );*/
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
