@@ -144,14 +144,14 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                         style="width:200px; height:200px; background-color: lightgray;"
                         sizing="contain"
                         class="contain"
-                        src="[[image.thumbnail]]"
+                        src$="[[_getImageThumbnail(image)]]"
                         preload=""
                         fade=""
                       ></iron-image>
                     </span>
                     <div style="text-align: center;">
-                      <div hidden$="[[_isGif(image.url)]]">
-                        <image-inspector src$="[[image.url]]">
+                      <div hidden$="[[_isGif(_getImageUrl(image))]]">
+                        <image-inspector src$="[[_getImageUrl(image)]]">
                           <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
                               alt="Download all images"
@@ -162,7 +162,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           </span>
                         </image-inspector>
                       </div>
-                      <div hidden$="[[!_isGif(image.url)]]">
+                      <div hidden$="[[!_isGif(_getImageUrl(image))]]">
                         <lrnsys-button
                           alt="Download all images"
                           icon="icons:file-download"
@@ -173,7 +173,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           style="width:500px; height:500px; background-color: lightgray;"
                           sizing="contain"
                           class="contain"
-                          src$="[[image.url]]"
+                          src$="[[_getImageUrl(image)]]"
                           preload=""
                           fade=""
                         ></iron-image>
@@ -303,6 +303,30 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       });
     }
     return [];
+  }
+  /**
+   * get thumbnail or just the image data directly based on truncated data
+   */
+  _getImageThumbnail(image) {
+    if (image) {
+      if (image.thumbnail) {
+        return image.thumbnail;
+      }
+      return image;
+    }
+    return '';
+  }
+  /**
+   * get url or just the image data directly based on truncated data
+   */
+  _getImageUrl(image) {
+    if (image) {
+      if (image.url) {
+        return image.url;
+      }
+      return image;
+    }
+    return '';
   }
   /**
    * See if this is a GIF, if it is then report back so we
