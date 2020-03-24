@@ -84,7 +84,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
         </div>
         <template is="dom-repeat" items="[[submissions]]" as="submission">
           <lrnapp-studio-submission-display
-            id\$="submission-[[submission.id]]"
+            id$="submission-[[submission.id]]"
             submission="[[submission]]"
             class="ferpa-protect"
           ></lrnapp-studio-submission-display>
@@ -93,8 +93,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
               class="submission-title ferpa-protect"
               on-click="_loadSubmissionUrl"
               data-submission-id\$="[[submission.id]]"
-              >Tap to comment on[[submission.attributes.title]] by
-              [[submission.relationships.author.data.display_name]]</paper-button
+              >Tap to comment on [[submission.attributes.title]] by [[submission.relationships.author.data.display_name]]</paper-button
             ></a
           >
         </template>
