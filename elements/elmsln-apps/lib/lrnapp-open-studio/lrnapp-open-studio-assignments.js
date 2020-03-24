@@ -93,7 +93,8 @@ class LrnappOpenStudioAssignments extends PolymerElement {
               class="submission-title ferpa-protect"
               on-click="_loadSubmissionUrl"
               data-submission-id\$="[[submission.id]]"
-              >Tap to comment on [[submission.attributes.title]] by [[submission.relationships.author.data.display_name]]</paper-button
+              >Tap to comment on [[submission.attributes.title]] by
+              [[submission.relationships.author.data.display_name]]</paper-button
             ></a
           >
         </template>
