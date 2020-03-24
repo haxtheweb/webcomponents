@@ -314,7 +314,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       }
       return image;
     }
-    return '';
+    return "";
   }
   /**
    * get url or just the image data directly based on truncated data
@@ -326,7 +326,7 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       }
       return image;
     }
-    return '';
+    return "";
   }
   /**
    * See if this is a GIF, if it is then report back so we
