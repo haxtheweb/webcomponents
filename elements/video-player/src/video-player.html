@@ -1,39 +1,5 @@
-${!this.sourceData || this.sourceData.length < 1 
-  ? html`` 
-  : this.isA11yMedia 
+${!this.isA11yMedia
     ? html`
-      <a11y-media-player
-        accent-color="${this.accentColor}"
-        ?audio-only="${this.audioOnly}"
-        ?dark="${this.dark}"
-        ?dark-transcript="${this.darkTranscript}"
-        ?disable-interactive="${this.disableInteractive}"
-        ?hide-timestamps="${this.hideTimestamps}"
-        ?hide-transcript="${this.hideTiranscript}"
-        id="${this.playerId}"
-        lang="${this.lang || 'en'}"
-        ?linkable="${this.linkable}"
-        preload="${this.preload || 'metadata'}"
-        media-title="${this.mediaTitle || ''}"
-        .sources="${this.sourceData}"
-        ?stand-alone="${this.standAlone}"
-        sticky-corner="${this.stickyCorner || 'top-right'}"
-        .thumbnail-src="${this.thumbnailSrc}"
-        .tracks="${this.trackData}"
-        .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
-        .width="${this.width}"
-        .height="${this.height}"
-        >
-        ${this.youtubeId 
-          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
-          : html``
-        }
-        ${this.audioOnly 
-          ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
-          : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
-        }  
-      </a11y-media-player>` 
-    : html`
       <div class="responsive-video-container" .lang="${this.lang || undefined}">
         ${this.sandboxed ? html``: html`
           <webview
@@ -62,6 +28,56 @@ ${!this.sourceData || this.sourceData.length < 1
           <span class="media-type print-only">(embedded media)</span>
         </p>
         <slot name="caption"></slot>
-        <slot hidden></slot>
-      </div>`
+      </div>` 
+    : html`
+      <a11y-media-player
+        accent-color="${this.accentColor}"
+        ?dark="${this.dark}"
+        ?dark-transcript="${this.darkTranscript}"
+        ?disable-interactive="${this.disableInteractive}"
+        ?hide-timestamps="${this.hideTimestamps}"
+        ?hide-transcript="${this.hideTiranscript}"
+        id="${this.playerId}"
+        lang="${this.lang || 'en'}"
+        ?linkable="${this.linkable}"
+        preload="${this.preload || 'metadata'}"
+        media-title="${this.mediaTitle || ''}"
+        .sources="${this.sourceProperties || undefined}"
+        ?stand-alone="${this.standAlone}"
+        sticky-corner="${this.stickyCorner || 'top-right'}"
+        .thumbnail-src="${this.thumbnailSrc}"
+        .tracks="${this.trackProperties || undefined}"
+        .width="${this.width}"
+        .height="${this.height}"
+        .youtubeId="${this.youtubeId || undefined}"
+        >
+        ${this.youtubeId 
+          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
+          : html``
+        }
+        ${this.audioOnly 
+          ? html`
+            <audio
+              .crossorigin="${this.crossorigin || 'anonymous'}" 
+              preload="${this.preload || 'metadata'}">
+              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
+              ${this.trackProperties.map(track=>html`<track 
+                srclang="${track.srclang}" 
+                src="${track.src}"  
+                label="${track.label}"
+                kind="${track.kind}">`)}
+            </audio>` 
+          : html`
+            <video
+              .crossorigin="${this.crossorigin || 'anonymous'}" 
+              preload="${this.preload || 'metadata'}">
+              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
+                ${this.trackProperties.map(track=>html`<track 
+                  srclang="${track.srclang}" 
+                  src="${track.src}"  
+                  label="${track.label}"
+                  kind="${track.kind}">`)}
+            </video>`
+        }  
+      </a11y-media-player>`
 }

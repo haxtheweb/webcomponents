@@ -28,6 +28,7 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   }
   constructor() {
     super();
+    this.crossorigin = "anonymous";
     this.dark = false;
     this.darkTranscript = false;
     this.disableInteractive = false;
@@ -39,6 +40,18 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     this.sources = [];
     this.stickyCorner = "top-right";
     this.tracks = [];
+    this.setSourceData();
+    this.observer.observe(this, {
+      childList: true,
+      subtree: false
+    });
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    super.disconnectedCallback();
   }
   /**
    * gets the HTML5 `audio` or `video` children
@@ -94,13 +107,27 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
    * @returns {Boolean}
    */
   get isA11yMedia() {
+    console.log(this,
+      'sandboxed',this.sandboxed,
+      'sourceType',this.sourceType,
+      'sourceData',this.sourceData,
+      'isA11yMedia',!this.sandboxed && (this.sourceType == "youtube" || this.sourceType == "local" || this.sourceData.length < 1 ));
     if (
       !this.sandboxed &&
-      (this.sourceType == "youtube" || this.sourceType == "local")
+      (this.sourceType == "youtube" || this.sourceType == "local" || this.sourceData.length < 1 )
     ) {
       return true;
     }
     return false;
+  }
+  /**
+   * mutation observer for tabs
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.setSourceData();
+    return new MutationObserver(callback);
   }
 
   /**
@@ -134,21 +161,16 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   }
 
   /**
-   * Gets source and adds to sources list
+   * Gets cleaned source list from source and sources properties
    * @readonly
-   * @returns {Array} List of source objects
+   * @returns {Array} Eg. `[{ "src": "path/to/media.mp3", "type": "audio/mp3"}]`
    */
-  get sourceData() {
+  get sourceProperties(){
     let temp =
         typeof this.sources === "string"
           ? JSON.parse(this.sources)
-          : this.sources.slice(),
-      slotted = this.querySelectorAll("video source, audio source, iframe");
+          : this.sources.slice();
     if (this.source) temp.unshift({ src: this.source });
-    slotted.forEach(slot => {
-      this.sources.unshift({ src: slot.src });
-      slot.remove();
-    });
     if (temp && temp.length > 0)
       temp.forEach(item => {
         item.type = item.type || this._computeMediaType(item.src);
@@ -157,9 +179,46 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     return temp;
   }
 
+  /**
+   * Gets cleaned track list from track and tracks properties
+   * @readonly
+   * @returns {Array} Eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles"}]`
+   */
+  get trackProperties(){
+    let temp =
+        typeof this.tracks === "string"
+          ? JSON.parse(this.tracks)
+          : this.tracks.slice();
+    if (this.track) temp.unshift({ src: this.track });
+    if (temp && temp.length > 0)
+      temp.forEach(item => {
+        item.srclang = item.srclang  || this.lang;
+        item.kind = item.kind || "subtitles";
+        item.label = item.label || item.kind || item.lang;
+      });
+    return temp;
+  }
+
+  /**
+   * Source properties and slotted sources
+   * @readonly
+   * @returns {Array} List of source objects
+   */
+  get sourceData() {
+    let temp = this.sourceProperties.slice(),
+      slotted = this.querySelectorAll("video source, audio source, iframe");
+    slotted.forEach(slot => {
+      this.sources.unshift({ 
+        src: slot.src, 
+        type: slot.type || this._computeMediaType(slot.src)
+      });
+    });
+    return temp;
+  }
+
   get audioOnly() {
     let videos = this.sourceData.filter(
-      item => item.type.indexOf("audio") === -1
+      item => item.type.indexOf("audio") > -1
     );
     return videos.length > 1;
   }
@@ -313,6 +372,16 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
     content = content.replace(' sources="[]",', "");
     content = content.replace(' tracks="[]",', "");
     return content;
+  }
+  /**
+   * triggers an update of sourceData property when slot changes
+   *
+   * @memberof VideoPlayer
+   */
+  setSourceData(){
+    let temp = this.source;
+    this.source = '';
+    this.source = temp;
   }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);
