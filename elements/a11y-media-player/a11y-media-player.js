@@ -2329,8 +2329,6 @@ ${this.poster
       if (this.media !== null) {
         if (mediaChange("cc"))
           this._setAttribute("cc", this.cc, this.__loadedTracks);
-        if (mediaChange("crossorigin"))
-          this._setAttribute("crossorigin", this.crossorigin, media);
         if (mediaChange("isYoutube") && this.__loadedTracks)
           this.__loadedTracks.hidden === this.isYoutube;
         if (mediaChange("mediaLang"))
@@ -2701,13 +2699,16 @@ ${this.poster
    * @readonly
    */
   getloadedTracks() {
-    let media = this.querySelectorAll("audio,video"),
+    let media = this.querySelector("audio,video"),
+      crossorigin = media ? media.getAttribute('crossorigin') : undefined,
       primary = null;
-    media.forEach(medium => {
-      if(!medium.getAttribute('crossorigin')) medium.setAttribute('crossorigin',this.crossorigin);
-      medium.removeAttribute("autoplay");
-      medium.setAttribute("preload", "metadata");
-    });
+
+    if(media){
+      if(!crossorigin) media.setAttribute('crossorigin',this.crossorigin);
+      media.removeAttribute("autoplay");
+      media.setAttribute("preload", "metadata");
+    }
+
     if (!this.youtubeId) {
       let iframeSrc =
           this.querySelector("iframe") && this.querySelector("iframe")
@@ -2723,22 +2724,22 @@ ${this.poster
       }
     }
 
-    if (media.length > 0) {
-      primary = media[0];
-      this.audioOnly = primary.tagName === "AUDIO";
-    } else {
+    if (!media) {
       primary = document.createElement(
         this.querySelectorAll('source[type*="audio"]').length > 0
           ? "audio"
           : "video"
       );
-      if(!primary.getAttribute('crossorigin')) primary.setAttribute('crossorigin',this.crossorigin);
+      if(!crossorigin) primary.setAttribute('crossorigin',this.crossorigin);
       primary.setAttribute("preload", "metadata");
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) primary.appendChild(node);
       });
       this.appendChild(primary);
+    } else {
+      primary = media;
     }
+    this.audioOnly = primary.tagName === "AUDIO";
     primary.style.width = "100%";
     primary.style.maxWidth = "100%";
 

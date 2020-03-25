@@ -74,6 +74,7 @@ ${!this.isA11yMedia
     : html`
       <a11y-media-player
         accent-color="${this.accentColor}"
+        ?audio-only="${this.audioOnly}"
         ?dark="${this.dark}"
         ?dark-transcript="${this.darkTranscript}"
         ?disable-interactive="${this.disableInteractive}"
@@ -84,43 +85,17 @@ ${!this.isA11yMedia
         ?linkable="${this.linkable}"
         preload="${this.preload || 'metadata'}"
         media-title="${this.mediaTitle || ''}"
-        .sources="${this.sourceProperties || undefined}"
+        .sources="${this.sourceProperties}"
         ?stand-alone="${this.standAlone}"
         sticky-corner="${this.stickyCorner || 'top-right'}"
         .thumbnail-src="${this.thumbnailSrc}"
-        .tracks="${this.trackProperties || undefined}"
+        .tracks="${this.trackProperties}"
+        .crossorigin="${this.crossorigin || 'anonymous'}"
         .width="${this.width}"
         .height="${this.height}"
         .youtubeId="${this.youtubeId || undefined}"
         >
-        ${this.youtubeId 
-          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
-          : html``
-        }
-        ${this.audioOnly 
-          ? html`
-            <audio
-              .crossorigin="${this.crossorigin || 'anonymous'}" 
-              preload="${this.preload || 'metadata'}">
-              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
-              ${this.trackProperties.map(track=>html`<track 
-                srclang="${track.srclang}" 
-                src="${track.src}"  
-                label="${track.label}"
-                kind="${track.kind}">`)}
-            </audio>` 
-          : html`
-            <video
-              .crossorigin="${this.crossorigin || 'anonymous'}" 
-              preload="${this.preload || 'metadata'}">
-              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
-                ${this.trackProperties.map(track=>html`<track 
-                  srclang="${track.srclang}" 
-                  src="${track.src}"  
-                  label="${track.label}"
-                  kind="${track.kind}">`)}
-            </video>`
-        }  
+        <slot></slot>
       </a11y-media-player>`
 }`;
   }
@@ -630,14 +605,11 @@ ${!this.isA11yMedia
    * @returns {Boolean}
    */
   get isA11yMedia() {
-    console.log(this,
-      'sandboxed',this.sandboxed,
-      'sourceType',this.sourceType,
-      'sourceData',this.sourceData,
-      'isA11yMedia',!this.sandboxed && (this.sourceType == "youtube" || this.sourceType == "local" || this.sourceData.length < 1 ));
     if (
       !this.sandboxed &&
-      (this.sourceType == "youtube" || this.sourceType == "local" || this.sourceData.length < 1 )
+      (this.sourceType == "youtube" ||
+        this.sourceType == "local" ||
+        this.sourceData.length < 1)
     ) {
       return true;
     }
@@ -688,11 +660,11 @@ ${!this.isA11yMedia
    * @readonly
    * @returns {Array} Eg. `[{ "src": "path/to/media.mp3", "type": "audio/mp3"}]`
    */
-  get sourceProperties(){
+  get sourceProperties() {
     let temp =
-        typeof this.sources === "string"
-          ? JSON.parse(this.sources)
-          : this.sources.slice();
+      typeof this.sources === "string"
+        ? JSON.parse(this.sources)
+        : this.sources.slice();
     if (this.source) temp.unshift({ src: this.source });
     if (temp && temp.length > 0)
       temp.forEach(item => {
@@ -707,15 +679,15 @@ ${!this.isA11yMedia
    * @readonly
    * @returns {Array} Eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles"}]`
    */
-  get trackProperties(){
+  get trackProperties() {
     let temp =
-        typeof this.tracks === "string"
-          ? JSON.parse(this.tracks)
-          : this.tracks.slice();
+      typeof this.tracks === "string"
+        ? JSON.parse(this.tracks)
+        : this.tracks.slice();
     if (this.track) temp.unshift({ src: this.track });
     if (temp && temp.length > 0)
       temp.forEach(item => {
-        item.srclang = item.srclang  || this.lang;
+        item.srclang = item.srclang || this.lang;
         item.kind = item.kind || "subtitles";
         item.label = item.label || item.kind || item.lang;
       });
@@ -731,8 +703,8 @@ ${!this.isA11yMedia
     let temp = this.sourceProperties.slice(),
       slotted = this.querySelectorAll("video source, audio source, iframe");
     slotted.forEach(slot => {
-      this.sources.unshift({ 
-        src: slot.src, 
+      this.sources.unshift({
+        src: slot.src,
         type: slot.type || this._computeMediaType(slot.src)
       });
     });
@@ -901,9 +873,9 @@ ${!this.isA11yMedia
    *
    * @memberof VideoPlayer
    */
-  setSourceData(){
+  setSourceData() {
     let temp = this.source;
-    this.source = '';
+    this.source = "";
     this.source = temp;
   }
 }

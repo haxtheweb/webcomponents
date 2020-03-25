@@ -32,6 +32,7 @@ ${!this.isA11yMedia
     : html`
       <a11y-media-player
         accent-color="${this.accentColor}"
+        ?audio-only="${this.audioOnly}"
         ?dark="${this.dark}"
         ?dark-transcript="${this.darkTranscript}"
         ?disable-interactive="${this.disableInteractive}"
@@ -42,42 +43,16 @@ ${!this.isA11yMedia
         ?linkable="${this.linkable}"
         preload="${this.preload || 'metadata'}"
         media-title="${this.mediaTitle || ''}"
-        .sources="${this.sourceProperties || undefined}"
+        .sources="${this.sourceProperties}"
         ?stand-alone="${this.standAlone}"
         sticky-corner="${this.stickyCorner || 'top-right'}"
         .thumbnail-src="${this.thumbnailSrc}"
-        .tracks="${this.trackProperties || undefined}"
+        .tracks="${this.trackProperties}"
+        .crossorigin="${this.crossorigin || 'anonymous'}"
         .width="${this.width}"
         .height="${this.height}"
         .youtubeId="${this.youtubeId || undefined}"
         >
-        ${this.youtubeId 
-          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
-          : html``
-        }
-        ${this.audioOnly 
-          ? html`
-            <audio
-              .crossorigin="${this.crossorigin || 'anonymous'}" 
-              preload="${this.preload || 'metadata'}">
-              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
-              ${this.trackProperties.map(track=>html`<track 
-                srclang="${track.srclang}" 
-                src="${track.src}"  
-                label="${track.label}"
-                kind="${track.kind}">`)}
-            </audio>` 
-          : html`
-            <video
-              .crossorigin="${this.crossorigin || 'anonymous'}" 
-              preload="${this.preload || 'metadata'}">
-              ${this.sourceProperties.map(source=>html`<source src="${source.src}" type="${source.type}">`)}
-                ${this.trackProperties.map(track=>html`<track 
-                  srclang="${track.srclang}" 
-                  src="${track.src}"  
-                  label="${track.label}"
-                  kind="${track.kind}">`)}
-            </video>`
-        }  
+        <slot></slot>
       </a11y-media-player>`
 }
