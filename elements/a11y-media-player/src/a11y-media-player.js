@@ -1253,6 +1253,7 @@ class A11yMediaPlayer extends SimpleColors {
     let media = this.querySelectorAll("audio,video"),
       primary = null;
     media.forEach(medium => {
+      if(!medium.getAttribute('crossorigin')) medium.setAttribute('crossorigin',this.crossorigin);
       medium.removeAttribute("autoplay");
       medium.setAttribute("preload", "metadata");
     });
@@ -1280,6 +1281,7 @@ class A11yMediaPlayer extends SimpleColors {
           ? "audio"
           : "video"
       );
+      if(!primary.getAttribute('crossorigin')) primary.setAttribute('crossorigin',this.crossorigin);
       primary.setAttribute("preload", "metadata");
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) primary.appendChild(node);
