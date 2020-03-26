@@ -136,9 +136,7 @@ class SimpleFields extends SimpleFieldsLite {
     this.activeTabs = {};
     this.fieldsConversion = {
       defaultSettings: {
-        defaultSettings: {
-          type: "string"
-        }
+        type: "string"
       },
       inputMethod: {
         alt: {
@@ -590,7 +588,7 @@ class SimpleFields extends SimpleFieldsLite {
       title: this.label,
       type: "object",
       required: [],
-      properties: this._fieldsToSchema(this.fields)
+      properties: this.fieldsToSchema(this.fields)
     };
     return schema;
   }
@@ -678,12 +676,12 @@ class SimpleFields extends SimpleFieldsLite {
         if (conversion.type === "array" && Array.isArray(field.properties)) {
           schema.items = {
             type: "object",
-            properties: this._fieldsToSchema(field.properties)
+            properties: this.fieldsToSchema(field.properties)
           };
         } else if (conversion.type === "array") {
           schema.items = this._fieldToSchema(field.properties);
         } else {
-          schema.properties = this._fieldsToSchema(field.properties);
+          schema.properties = this.fieldsToSchema(field.properties);
         }
         /*} else if (key === "slot") {
         schema[key] = !field[key] || field[key] === "" 
@@ -712,9 +710,10 @@ class SimpleFields extends SimpleFieldsLite {
    * @returns object schema properties
    * @memberof SimpleFieldsLite
    */
-  _fieldsToSchema(fields) {
+  fieldsToSchema(fields) {
     let schema = {};
-    fields.forEach(field => {
+    console.log(fields);
+    if(fields) fields.forEach(field => {
       let prop = !field.property ? "" : field.property;
       schema[prop] = this._fieldToSchema(field);
     });

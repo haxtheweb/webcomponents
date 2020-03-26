@@ -89,33 +89,6 @@
           </simple-fields-container>
         </template>
       </demo-snippet>
-      <h2>Validation</h2>
-      <demo-snippet>
-        <template>
-          <simple-fields-container 
-            autovalidate
-            error-message="A name is required."
-            label="Name">
-            <input slot="field" required/>
-          </simple-fields-container>
-          <simple-fields-container 
-            autovalidate
-            error-message="You must agree to the terms."
-            label="I agree to the terms">
-            <input slot="field" type="checkbox" required/>
-          </simple-fields-container>
-          <simple-fields-container 
-            autovalidate
-            error-message="Invalid format."
-            label="Email">
-            <input 
-              slot="field" 
-              type="email"
-              pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-              placeholder="username@domain.com"/>
-          </simple-fields-container>
-        </template>
-      </demo-snippet>
       <h2>Multiple Options</h2>
       <demo-snippet id="options">
         <template>
@@ -137,19 +110,86 @@
               <option value="dinner">Dinner</option>
             </select>
           </simple-fields-container>
+          <simple-fields-container>
+            <fieldset slot="field">
+              <legend>Radio Options</legend>
+              <label>Breakfast <input name="checkone" type="radio" value="breakfast"/></label>
+              <label>Brunch <input name="checkone" type="radio" value="brunch"/></label>
+              <label>Lunch <input name="checkone" type="radio" value="lunch"/></label>
+              <label>Snack <input name="checkone" type="radio" value="snack"/></label>
+              <label>Dinner <input name="checkone" type="radio" value="dinner"/></label>
+            </fieldset>
+          </simple-fields-container>
+          <simple-fields-container>
+            <fieldset slot="field">
+              <legend>Checkbox Options</legend>
+              <label>Breakfast <input name="checkmultiple" type="checkbox" value="breakfast"/></label>
+              <label>Brunch <input name="checkmultiple" type="checkbox" value="brunch"/></label>
+              <label>Lunch <input name="checkmultiple" type="checkbox" value="lunch"/></label>
+              <label>Snack <input name="checkmultiple" type="checkbox" value="snack"/></label>
+              <label>Dinner <input name="checkmultiple" type="checkbox" value="dinner"/></label>
+            </fieldset>
+          </simple-fields-container>
         </template>
       </demo-snippet>
       <h2>Field Metadata</h2>
       <demo-snippet>
         <template>
-          <simple-fields-container maxlength="10" type="text" label="Nickname">
+          <simple-fields-container counter  type="text" label="Nickname">
+            <input slot="field" type="text" maxlength="10"/>
             <span slot="field-meta">maximum length: 10</span>
           </simple-fields-container>
-          <simple-fields-container type="textarea" label="Short Bio">
-            <span slot="field-meta">25 words or less</span>
+          <simple-fields-container counter="word" type="textarea" label="Short Bio" maxwords="6">
+            <textarea slot="field"></textarea>
+            <span slot="field-meta">6 words or less</span>
           </simple-fields-container>
         </template>
       </demo-snippet>
+      <h2>Validation</h2>
+      <demo-snippet>
+        <style>
+          #check {
+            --simple-fields-radio-option-display: block;
+          }
+        </style>
+        <template>
+          <simple-fields-container 
+            autovalidate 
+            required-message="A name is required."
+            label="Name">
+            <input slot="field" type="name" required/>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
+            pattern-message="Invalid format."
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            label="Email">
+            <input slot="field" type="email" placeholder="username@domain.com"/>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
+            minchecked="2" 
+            maxchecked="4"
+            description="Pick 2-4">
+            <fieldset slot="field">
+              <legend>Checkbox Options</legend>
+              <label>Red <input name="check" type="checkbox" value="red"/></label>
+              <label>Orange <input name="check" type="checkbox" value="orange"/></label>
+              <label>Yellow <input name="check" type="checkbox" value="yellow"/></label>
+              <label>Green <input name="check" type="checkbox" value="green"/></label>
+              <label>Cyan <input name="check" type="checkbox" value="cyan"/></label>
+              <label>Blue <input name="check" type="checkbox" value="blue"/></label>
+              <label>Indigo <input name="check" type="checkbox" value="indigo"/></label>
+              <label>Purple <input name="check" type="checkbox" value="purple"/></label>
+              <label>Magenta <input name="check" type="checkbox" value="magenta"/></label>
+            </fieldset>
+          </simple-fields-container>
+          <simple-fields-container 
+            autovalidate
+            required-message="You must agree to the terms."
+            label="I agree to the terms">
+            <input slot="field" type="checkbox" required/>
+          </simple-fields-container>
     </div>
   </body>
 </html>

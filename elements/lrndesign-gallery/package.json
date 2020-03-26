@@ -51,8 +51,7 @@
     "@polymer/iron-image": "^3.0.0",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-button": "^3.0.1",
-    "lit-element":"2.0.1",
-    "openseadragon": "^2.4.0"
+    "lit-element": "2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",

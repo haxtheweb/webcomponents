@@ -316,12 +316,6 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: Boolean
       },
       /**
-       * error message when number of items selected is not between min and max
-       */
-      numberMessage: {
-        type: String
-      },
-      /**
        * options {value: "Text"}  for select, radio options, and checkboxes,
        * which are sorted by key,
        * eg. {a: "Option A", b: "Option B", c: "Option C"}
@@ -330,27 +324,9 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: Object
       },
       /**
-       * regex pattern the value must match to be valid
-       */
-      pattern: {
-        type: String
-      },
-      /**
-       * error message when field does not match pattern
-       */
-      patternMessage: {
-        type: String
-      },
-      /**
        * Content to be appear in the form control when the form control is empty
        */
       placeholder: {
-        type: String
-      },
-      /**
-       * error message when field is required and has no value
-       */
-      requiredMessage: {
         type: String
       },
       /**
@@ -372,10 +348,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         type: Number
       },
       /**
-       * Type of input form control
+       * Current value of the form control. Submitted with the form as part of a name/value pair.
        */
-      type: {
-        type: String
+      value: {
+        reflect: true
       },
       /*
        * text wrapping for textarea,
@@ -395,8 +371,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
     this.multiple = false;
     this.readonly = false;
     this.spellcheck = false;
-    this.id = this._generateUUID();
-    this.List = [];
+    this.list = [];
     this.options = {};
     this.wrap = false;
   }
@@ -519,7 +494,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
                     ? this.value === option.value
                     : (this.value || []).includes(option.value)}"
                   class="field"
-                  @click="${this._onMulticheckChange}"
+                  @click="${e => this._handleFieldChange()}"
                   ?disabled="${this.disabled}"
                   ?hidden="${this.hidden}"
                   ?readonly="${this.readonly}"
@@ -549,7 +524,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
-        @change="${this._onInputChange}"
+        @change="${e => this._handleFieldChange()}"
         ?checked="${this.value === true}"
         class="field ${["checkbox", "color", "file", "radio", "range"].includes(
           this.type
@@ -558,7 +533,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
           : "box-input"}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
-        @input="${this._onInputChange}"
+        @input="${e => this._handleFieldChange()}"
         .name="${this.id}"
         .placeholder="${this.placeholder || ""}"
         ?readonly="${this.readonly}"
@@ -567,6 +542,24 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       />
     `;
   }
+  /**
+   * gets whether or not the field has options
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
+  get noOptions() {
+    return (
+      (!this.list || this.itemsList === []) &&
+      (!this.options || this.options === {})
+    );
+  }
+  /**
+   * gets a sorted list of options
+   *
+   * @readonly
+   * @memberof SimpleFieldsField
+   */
   get sortedOptions() {
     let sorted = (this.itemsList || []).slice();
     Object.keys(this.options || {})
@@ -587,7 +580,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?autofocus="${this.autofocus}"
         aria-descrbedby="${this.describedBy}"
         aria-invalid="${this.error ? "true" : "false"}"
-        @change="${this._onSelectChange}"
+        @change="${e => this._handleFieldChange()}"
         class="field"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
@@ -620,6 +613,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsField
    */
   get slottedFieldObserver() {}
+
   /**
    * template for `textarea` in shadow DOM
    *
@@ -633,92 +627,16 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         aria-invalid="${this.error ? "true" : "false"}"
         ?autofocus="${this.autofocus}"
         class="field box-input"
-        @change="${this._onTextareaChange}"
+        @change="${e => this._handleFieldChange()}"
         @keydown="${e => e.stopPropagation()}"
         ?disabled="${this.disabled}"
         ?hidden="${this.hidden}"
-        @input="${this._onTextareaChange}"
+        @input="${e => this._handleFieldChange()}"
         .name="${this.id}"
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         rows="1"
-      >
-${this.value || ""}</textarea
-      >
-    `;
-  }
-  /**
-   * gets whether or not the field has options
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get noOptions() {
-    return (
-      (!this.List || this.itemsList === []) &&
-      (!this.options || this.options === {})
-    );
-  }
-  get valueIsArray() {
-    return this.multiple || (this.type === "checkbox" && !this.noOptions);
-  }
-  /**
-   * determines if number of items selected
-   * is not between min and max
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get numberError() {
-    let less = this.min ? !this.value || this.value.length < this.min : false,
-      more = this.max ? this.value && this.value.length > this.max : false;
-    return this.valueIsArray && (less || more);
-  }
-  /**
-   * determines if value does not match regex pattern
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get patternError() {
-    return (
-      this.pattern &&
-      this.pattern !== "" &&
-      this.value &&
-      (!this.multiple
-        ? !this.value.match(this.pattern)
-        : this.value.filter(value => !value.match(this.pattern)))
-    );
-  }
-  /**
-   * determines if field is required and blank
-   *
-   * @readonly
-   * @memberof SimpleFieldsField
-   */
-  get requiredError() {
-    return !this.value && this.required;
-  }
-
-  /**
-   * checks validation constraints and returns error data
-   * @memberof SimpleFieldsField
-   */
-  validate() {
-    if (this.requiredError) {
-      this.error = true;
-      this.errorMessage = this.requiredMessage || `required`;
-    } else if (this.numberError) {
-      let number = this.value ? this.value.length : 0;
-      this.error = true;
-      this.errorMessage =
-        this.numberMessage || number < this.min
-          ? `select ${this.min - number} more`
-          : `select ${number - this.max} fewer`;
-    } else if (this.patternError) {
-      this.error = true;
-      this.errorMessage = this.patternMessage || `invalid format`;
-    }
+      >${this.value || ""}</textarea>`;
   }
   /**
    * fires when value changes
@@ -733,6 +651,15 @@ ${this.value || ""}</textarea
         detail: this
       })
     );
+  }
+  /**
+   * handles field changes by field type
+   *
+   * @memberof SimpleFieldsContainer
+   */
+  _handleFieldChange(){
+    super._handleFieldChange();
+    this.value = this._getFieldValue();
   }
 
   /**
@@ -834,78 +761,14 @@ ${this.value || ""}</textarea
   }
 
   /**
-   * handles change for inputs
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onInputChange(e) {
-    if (!e.path[0]) return;
-    if (this.type === "radio" || this.type === "checkbox") {
-      this.value = e.path[0].checked;
-    } else {
-      this.value = e.path[0].value;
-      if (this.type === "text") this._updateCount();
-    }
-  }
-
-  /**
-   * handles change for multiple checkboxes and radios
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onMulticheckChange(e) {
-    if (!e.path[0]) return;
-    if (this.type === "radio") {
-      this.value = e.path[0].value;
-    } else {
-      this.value = this.value || [];
-      if (e.path[0].checked) {
-        this.value.push(e.path[0].value);
-      } else {
-        this.value = this.value.filter(val => val !== e.path[0].value);
-      }
-    }
-  }
-
-  /**
-   * handles change for textarea
-   *
-   * @memberof SimpleFieldsField
-   */
-  _onTextareaChange(e) {
-    if (!e.path[0]) return;
-    this.value = e.path[0].value;
-    this._updateCount();
-    this.autoGrow(e.path[0]);
-  }
-
-  /**
-   * handles change in select value
-   *
-   * @param {event} e change event
-   * @memberof SimpleFieldsSelect
-   */
-  _onSelectChange(e) {
-    if (!e.path[0]) return;
-    this.value = this.multiple
-      ? Object.keys(e.path[0].selectedOptions).map(
-          option => e.path[0].selectedOptions[option].value
-        )
-      : e.path[0].selectedOptions[0].value;
-  }
-
-  /**
    * updates field attributes based on field type
    *
    * @param {string} attribute
-   * @memberof SimpleFieldsField
+   * @memberof SimpleFieldsContainer
    */
   _updateAttribute(attribute) {
     if (
       this.field &&
-      this.type &&
       this[attribute] !== this.field.getAttribute(attribute)
     ) {
       if (this[attribute]) {
@@ -914,51 +777,6 @@ ${this.value || ""}</textarea
         this.field.removeAttribute(attribute, this[attribute]);
       }
     }
-  }
-
-  /**
-   * updates counter and sets maximum word count
-   *
-   * @memberof SimpleFieldsField
-   */
-  _updateCount() {
-    let count = ``;
-    if (
-      (this.type === "textarea" || this.type === "text") &&
-      this.counter &&
-      this.field
-    ) {
-      let word = `[\\w\\-\\']+`,
-        counter = new RegExp(word, "gim"),
-        max = `{0,${this.maxlength || 1}}`,
-        maxword = `(${word}\\W*)${max}`,
-        length = !this.value
-          ? 0
-          : this.counter === "character"
-          ? this.field.value.length
-          : this.field.value.match(counter)
-          ? this.field.value.match(counter).length
-          : 0,
-        regex =
-          this.counter === "character"
-            ? new RegExp(`.${max}`, "g")
-            : new RegExp(maxword, "g");
-      if (
-        this.value &&
-        this.maxlength &&
-        this.maxlength < length &&
-        this.field.value.match(regex)
-      ) {
-        this.field.value = this.field.value.match(regex)[0];
-        length = this.maxlength;
-      }
-      count = length;
-    }
-    if (this.shadowRoot && this.shadowRoot.querySelector("#fieldmeta"))
-      this.shadowRoot.querySelector("#fieldmeta").innerHTML = this.maxlength
-        ? `${count}/${this.maxlength}`
-        : count;
-    this.value = this.field.value;
   }
   /**
    * updates field an type
@@ -973,18 +791,6 @@ ${this.value || ""}</textarea
         : undefined;
     this._getAttributes(this.type).forEach(attr => this._updateAttribute(attr));
     if (this.type !== "select" && this.field) this._updateAttribute("value");
-  }
-  /**
-   * generates a unique id
-   * @returns {string } unique id
-   */
-  _generateUUID() {
-    return "ss-s-s-s-sss".replace(
-      /s/g,
-      Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1)
-    );
   }
 }
 window.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);
