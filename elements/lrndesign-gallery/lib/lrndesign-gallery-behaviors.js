@@ -15,7 +15,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  *
  * @customElement lerndesign-gallery-behaviors
  * @extends SimpleColors
- * 
+ *
  * @microcopy - language worth noting:
  *  -
  *
@@ -28,7 +28,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     return "lrndesign-gallery-behaviors";
   }
 
-  static get styles(){
+  static get styles() {
     return [
       css`
         :host {
@@ -173,7 +173,8 @@ class LrndesignGalleryBehaviors extends SimpleColors {
             border: 1px solid #ddd;
             page-break-inside: avoid;
           }
-        }`
+        }
+      `
     ];
   }
 
@@ -191,7 +192,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        * aspect ratio of media
        */
       aspectRatio: {
-        type: Number,
+        type: Number
       },
       /**
        * size for responsive CSS
@@ -199,7 +200,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       extraWide: {
         type: Boolean,
         reflect: true,
-        attribute: 'extra-wide'
+        attribute: "extra-wide"
       },
       /**
        * gallery's unique id
@@ -240,7 +241,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
        * or with letterboxing (contain)
        */
       sizing: {
-        type: String,
+        type: String
       },
       /**
        * array of carousel/grid items
@@ -256,7 +257,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       }
     };
   }
-  constructor(){
+  constructor() {
     super();
     this.aspectRatio = 1.33333333;
     this.extraWide = false;
@@ -276,24 +277,26 @@ class LrndesignGalleryBehaviors extends SimpleColors {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-        /*TODO if (propName == "selected") this._selectedChanged(this.selected);*/
+      /*TODO if (propName == "selected") this._selectedChanged(this.selected);*/
     });
   }
 
-  get galleryPrint(){
+  get galleryPrint() {
     return html`
       <div id="galleryprint">
-        ${this.items.map(item=>
-          html`
-            <section>
-              <h2 ?hidden="${!item.title || item.title===""}">${this.item.title}</h2>
-              <lrndesign-gallery-details details="${this.item.details}"></lrndesign-gallery-details>
-              <img
-                class="print-image"
-                alt="${item.alt}"
-                src="${item.src}"
-              />
-            </section>`
+        ${this.items.map(
+          item =>
+            html`
+              <section>
+                <h2 ?hidden="${!item.title || item.title === ""}">
+                  ${this.item.title}
+                </h2>
+                <lrndesign-gallery-details
+                  details="${this.item.details}"
+                ></lrndesign-gallery-details>
+                <img class="print-image" alt="${item.alt}" src="${item.src}" />
+              </section>
+            `
         )}
       </div>
     `;
@@ -305,7 +308,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @readonly
    * @memberof LrndesignGalleryBehaviors
    */
-  get imageStyle(){
+  get imageStyle() {
     if (this.extraWide || this.responsiveSize === "xs") {
       return "padding-bottom: " + 100 / this.aspectRatio + "%;";
     } else {
@@ -326,11 +329,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @readonly
    * @memberof LrndesignGalleryBehaviors
    */
-  get items(){
-    let sources = typeof this.sources === "string" ? JSON.parse(this.sources) : this.sources;
+  get items() {
+    let sources =
+      typeof this.sources === "string"
+        ? JSON.parse(this.sources)
+        : this.sources;
     if (!this.galleryId) this.id = "gallery-" + this._generateUUID();
-    if(sources && sources[0])this._setAspectProperties(this.sources[0].src);
-    return (sources || []).map((source,i)=>this._getItemData(source, i, sources.length));
+    if (sources && sources[0]) this._setAspectProperties(this.sources[0].src);
+    return (sources || []).map((source, i) =>
+      this._getItemData(source, i, sources.length)
+    );
   }
 
   /**

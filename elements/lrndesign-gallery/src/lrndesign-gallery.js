@@ -50,7 +50,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery";
   }
-  static get styles(){
+  static get styles() {
     return [
       ...super.styles,
       css`
@@ -70,33 +70,33 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       <div id="gallery">
         ${this.grid
           ? html`
-            <lrndesign-gallery-grid
-              accent-color="${this.accentColor}"
-              .aspect-ratio="${this.aspectRatio}"
-              ?dark="${this.dark}"
-              .gallery-id="${this.id}"
-              responsive-size="${this.responsiveSize}"
-              sizing="${this.sizing}"
-              .sources="${this.sources}"
-              title="${this.title}"
-            >
-              <slot></slot>
-            </lrndesign-gallery-grid>
-          `
+              <lrndesign-gallery-grid
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspectRatio}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                responsive-size="${this.responsiveSize}"
+                sizing="${this.sizing}"
+                .sources="${this.sources}"
+                title="${this.title}"
+              >
+                <slot></slot>
+              </lrndesign-gallery-grid>
+            `
           : html`
-            <lrndesign-gallery-carousel
-              accent-color="${this.accentColor}"
-              .aspect-ratio="${this.aspectRatio}"
-              ?dark="${this.dark}"
-              .gallery-id="${this.id}"
-              responsive-size="${this.responsiveSize}"
-              sizing="${this.sizing}"
-              .sources="${this.sources}"
-              title="${this.title}">
-              <slot></slot>
-            </lrndesign-gallery-carousel>
-          `
-        }
+              <lrndesign-gallery-carousel
+                accent-color="${this.accentColor}"
+                .aspect-ratio="${this.aspectRatio}"
+                ?dark="${this.dark}"
+                .gallery-id="${this.id}"
+                responsive-size="${this.responsiveSize}"
+                sizing="${this.sizing}"
+                .sources="${this.sources}"
+                title="${this.title}"
+              >
+                <slot></slot>
+              </lrndesign-gallery-carousel>
+            `}
       </div>
     `;
   }
