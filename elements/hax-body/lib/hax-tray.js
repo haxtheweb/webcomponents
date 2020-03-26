@@ -1163,7 +1163,7 @@ class HaxTray extends winEventsElement(LitElement) {
         advanced: {}
       }
     };
-    this.shadowRoot.querySelector("#settingsform").fields = {};
+    this.shadowRoot.querySelector("#settingsform").fields = [];
     this.shadowRoot.querySelector("#settingsform").value = {};
     // see if we can get schema off of this.
     if (
