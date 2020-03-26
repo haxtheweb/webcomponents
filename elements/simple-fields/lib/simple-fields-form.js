@@ -55,7 +55,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
    */
   _applyLoadedData() {
     let sf = this.shadowRoot.querySelector("#sf");
-    console.log(this.loadResponse.data.schema, this.loadResponse.data.fields);
+    //console.log(this.loadResponse.data.schema, this.loadResponse.data.fields);
     if (this.loadResponse.data.schema) {
       sf.schema = this.loadResponse.data.schema;
     } else if (this.loadResponse.data.fields) {

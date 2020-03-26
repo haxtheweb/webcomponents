@@ -10,6 +10,8 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-contentblock/lrndesign-contentblock.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import { wipeSlot } from "@lrnwebcomponents/utils/utils.js";
+
 class LrnappStudioSubmissionDisplay extends PolymerElement {
   static get template() {
     return html`
@@ -110,13 +112,13 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
           <div class="card-content">
             <lrndesign-avatar
               class="center"
-              label="{{submission.relationships.author.data.name}}"
-              src="{{submission.relationships.author.data.avatar}}"
+              label="[[submission.relationships.author.data.name]]"
+              src="[[submission.relationships.author.data.avatar]]"
             ></lrndesign-avatar>
             <div class="author center">
-              {{submission.relationships.author.data.display_name}}
+              [[submission.relationships.author.data.display_name]]
             </div>
-            <h2 class="title center">{{submission.attributes.title}}</h2>
+            <h2 class="title center">[[submission.attributes.title]]</h2>
             <div class="date center">
               Created: [[date(submission.meta.created)]]
             </div>
@@ -142,15 +144,15 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                         style="width:200px; height:200px; background-color: lightgray;"
                         sizing="contain"
                         class="contain"
-                        src="[[image.thumbnail]]"
+                        src$="[[_getImageThumbnail(image)]]"
                         preload=""
                         fade=""
                       ></iron-image>
                     </span>
                     <div style="text-align: center;">
-                      <template is="dom-if" if="[[!_isGif(image.url)]]">
-                        <image-inspector src="[[image.url]]">
-                          <span slot="toolbar">
+                      <div hidden$="[[_isGif(image)]]">
+                        <image-inspector src$="[[_getImageUrl(image)]]">
+                          <span slot="toolbar" style="display: inline-flex;">
                             <lrnsys-button
                               alt="Download all images"
                               icon="icons:file-download"
@@ -159,8 +161,8 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                             ></lrnsys-button>
                           </span>
                         </image-inspector>
-                      </template>
-                      <template is="dom-if" if="[[_isGif(image.url)]]">
+                      </div>
+                      <div hidden$="[[!_isGif(image)]]">
                         <lrnsys-button
                           alt="Download all images"
                           icon="icons:file-download"
@@ -171,11 +173,11 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
                           style="width:500px; height:500px; background-color: lightgray;"
                           sizing="contain"
                           class="contain"
-                          src$="[[image.url]]"
+                          src$="[[_getImageUrl(image)]]"
                           preload=""
                           fade=""
                         ></iron-image>
-                      </template>
+                      </div>
                     </div>
                   </lrnsys-dialog>
                 </template>
@@ -268,15 +270,17 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
     };
   }
   _submissionLoaded(newValue) {
-    if (newValue) {
-      if (newValue.attributes && newValue.attributes.body) {
-        let mdscript = document.createElement("script");
-        mdscript.type = "text/markdown";
-        mdscript.innerHTML = newValue.attributes.body;
-        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
-        this.shadowRoot.querySelector("#markedarea").markdown =
-          newValue.attributes.body;
-      }
+    // wipe the slot of the marked area
+    if (this.shadowRoot && this.shadowRoot.querySelector("#markedarea")) {
+      wipeSlot(this.shadowRoot.querySelector("#markedarea"));
+    }
+    if (newValue && newValue.attributes && newValue.attributes.body) {
+      let mdscript = document.createElement("script");
+      mdscript.type = "text/markdown";
+      mdscript.innerHTML = newValue.attributes.body;
+      this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+      this.shadowRoot.querySelector("#markedarea").markdown =
+        newValue.attributes.body;
     }
   }
 
@@ -301,11 +305,37 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
     return [];
   }
   /**
+   * get thumbnail or just the image data directly based on truncated data
+   */
+  _getImageThumbnail(image) {
+    if (image) {
+      if (image.thumbnail) {
+        return image.thumbnail;
+      }
+      return image;
+    }
+    return "";
+  }
+  /**
+   * get url or just the image data directly based on truncated data
+   */
+  _getImageUrl(image) {
+    if (image) {
+      if (image.url) {
+        return image.url;
+      }
+      return image;
+    }
+    return "";
+  }
+  /**
    * See if this is a GIF, if it is then report back so we
    * know which player to display.
    */
-  _isGif(url) {
-    if (url.indexOf(".gif") != -1) {
+  _isGif(image) {
+    // get url from image normalizing for simplified data
+    let url = this._getImageUrl(image);
+    if (url != "" && url.indexOf(".gif") != -1) {
       return true;
     }
     return false;

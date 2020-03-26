@@ -192,18 +192,16 @@ class ImgPanZoom extends LitElement {
     this.maxZoomPixelRatio = 1.1;
     this.constrainDuringPan = false;
     this.visibilityRatio = 1;
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
+    window.addEventListener(
+      "es-bridge-openseadragon-loaded",
+      this._openseadragonLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("openseadragon", location);
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("./lib/img-loader.js");
-    setTimeout(() => {
-      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
-      let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
-      window.addEventListener(
-        "es-bridge-openseadragon-loaded",
-        this._openseadragonLoaded.bind(this)
-      );
-      window.ESGlobalBridge.requestAvailability();
-      window.ESGlobalBridge.instance.load("openseadragon", location);
-    }, 0);
   }
   /**
    * LitElement properties changed
@@ -234,17 +232,21 @@ class ImgPanZoom extends LitElement {
     });
   }
   _openseadragonLoaded() {
-    if (OpenSeadragon) {
-      this._initOpenSeadragon();
-    } else {
-      let check = () => {
-          console.log("OpenSeadragon", OpenSeadragon);
-          if (OpenSeadragon) {
-            this._initOpenSeadragon();
-            clearInterval(interval);
-          }
-        },
-        interval = setInterval(check, 1);
+    try {
+      if (OpenSeadragon) {
+        this._initOpenSeadragon();
+      } else {
+        let check = () => {
+            console.log("OpenSeadragon", OpenSeadragon);
+            if (OpenSeadragon) {
+              this._initOpenSeadragon();
+              clearInterval(interval);
+            }
+          },
+          interval = setInterval(check, 1);
+      }
+    } catch (e) {
+      console.warn(e);
     }
   }
   /**
@@ -358,7 +360,9 @@ class ImgPanZoom extends LitElement {
   _loadedChanged() {
     if (this.loaded) {
       if (!this.init) {
-        this._openseadragonLoaded();
+        setTimeout(() => {
+          this._openseadragonLoaded();
+        }, 100);
       } else {
         this._addImage();
       }

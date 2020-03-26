@@ -301,7 +301,7 @@ class LrnappOpenStudio extends PolymerElement {
        * The submissions to render; potentially filtered
        */
       submissions: {
-        type: Object,
+        type: Array,
         notify: true,
         computed: "_submissionsCompute(originalSubmissions, queryParams)"
       },
@@ -309,7 +309,7 @@ class LrnappOpenStudio extends PolymerElement {
        * The original submissions array; used to filter against
        */
       originalSubmissions: {
-        type: Object,
+        type: Array,
         notify: true
       },
       /**

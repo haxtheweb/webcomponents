@@ -273,8 +273,6 @@ class HAXCMSSiteListing extends PolymerElement {
         .danger:hover {
           color: var(--haxcms-site-listing-color-light) !important;
         }
-        #configform {
-        }
         #userphoto {
           width: 40px;
           height: 40px;
@@ -1804,12 +1802,12 @@ class HAXCMSSiteListing extends PolymerElement {
 
   handleConfigResponse(e) {
     window.HAXCMS.config = e.detail.response;
-    this.shadowRoot
-      .querySelector("#settingsform")
-      .set("schema", window.HAXCMS.config.schema);
-    this.shadowRoot
-      .querySelector("#settingsform")
-      .set("value", window.HAXCMS.config.values);
+    this.shadowRoot.querySelector("#settingsform").schema = {};
+    this.shadowRoot.querySelector("#settingsform").schema =
+      window.HAXCMS.config.schema;
+    this.shadowRoot.querySelector("#settingsform").value = {};
+    this.shadowRoot.querySelector("#settingsform").value =
+      window.HAXCMS.config.values;
     var evt = document.createEvent("UIEvents");
     evt.initUIEvent("resize", true, false, window, 0);
     window.dispatchEvent(evt);

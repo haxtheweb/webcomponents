@@ -378,7 +378,9 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         type: Object
       },
       submission: {
-        type: Object
+        type: Object,
+        notify: true,
+        value: null
       },
       commentsUrl: {
         type: String,
@@ -520,11 +522,11 @@ class LrnappStudioSubmissionPage extends PolymerElement {
   _handleResponse(data) {
     // empty response means no access or deleted item
     if (data.detail.response.data) {
-      this.set("submission", []);
-      this.set("submission", data.detail.response.data);
-      microTask.run(() => {
+      this.set("submission", {});
+      setTimeout(() => {
+        this.set("submission", data.detail.response.data);
         window.dispatchEvent(new Event("resize"));
-      });
+      }, 0);
     }
   }
 

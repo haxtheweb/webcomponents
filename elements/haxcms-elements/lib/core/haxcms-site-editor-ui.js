@@ -196,6 +196,7 @@ class HAXCMSSiteEditorUI extends LitElement {
       import("@lrnwebcomponents/simple-modal/simple-modal.js");
       import("@polymer/iron-icons/editor-icons.js");
       import("@polymer/paper-fab/paper-fab.js");
+      import("@lrnwebcomponents/simple-fields/simple-fields.js");
       import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     }, 0);
   }
