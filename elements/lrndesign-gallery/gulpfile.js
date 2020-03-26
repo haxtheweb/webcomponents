@@ -60,7 +60,6 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-
           cssResult = stripCssComments(cssResult).trim();
           let litResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
@@ -68,7 +67,7 @@ gulp.task("merge", () => {
                 : `
   //styles function
   static get styles() {
-    return  [
+    return [
       ${
         packageJson.wcfactory.sharedStyles &&
         packageJson.wcfactory.sharedStyles.length > 0
@@ -89,14 +88,15 @@ ${cssResult}
 
           return `${litResult}
   // render function
-  static get template() {
-    return html\`
+  render() {
+    return html\`
 ${styleResult}
 ${html}\`;
   }
 ${haxString}
   // properties available to the custom element for data binding
     static get properties() {
+    
     return ${props};
   }`;
         }

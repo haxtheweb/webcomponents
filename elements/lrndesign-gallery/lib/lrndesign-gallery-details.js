@@ -5,14 +5,15 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `lrndesign-gallery-details`
- * `An element that renders the print view of a gallery item.`
+ * An element that renders the print view of a gallery item.
  *
+ * @customElement lrndesign-gallery-details
+ * 
  * @microcopy - language worth noting:```
 <lrndesign-gallery-details 
   details="<strong>HTML MARKUP HERE</strong>"       //required, an array of item data
 </lrndesign-gallery-details>```
  *
- * @customElement lrndesign-gallery-details
  */
 class LrndesignGalleryDetails extends LitElement {
   /**
@@ -38,13 +39,10 @@ class LrndesignGalleryDetails extends LitElement {
   }
   // render function
   render() {
-    return html`
-      <div id="details"></div>
-    `;
+    return html`<div id="details"></div>`;
   }
   constructor() {
     super();
-    this.details = null;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {

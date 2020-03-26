@@ -2,18 +2,17 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import {} from "@polymer/polymer/lib/utils/render-status.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
-
-export { LrndesignGalleryGrid };
 /**
  * `lrndesign-gallery-grid`
- * @customElement lrndesign-gallery-grid
- * `An element that renders a collection of gallery items into a grid or a single media item into a layout.`
+ * An element that renders a collection of gallery items into a grid or a single media item into a layout.
  *
+ * @customElement lrndesign-gallery-grid
+ * @extends LrndesignGalleryBehaviors
+ * @demo ./demo/grid.html demo
+ * 
  * @microcopy - language worth noting:```
 <lrndesign-gallery-grid 
   accent-color="grey"               //optional, the accent color from simple-colors; default is grey
@@ -39,9 +38,6 @@ export { LrndesignGalleryGrid };
   "type": "image",                                  //required, "image", "video", "audio", etc.
 }]```
  *
-
- * @polymer
- * @demo ./demo/grid.html demo
  */
 class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   /**
@@ -50,15 +46,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery-grid";
   }
-
-  static get behaviors() {
-    return [LrndesignGalleryBehaviors];
-  }
-
-  // render function
-  static get template() {
-    return html`
-      <style is="custom-style" include="lrndesign-gallery-shared-styles">
+  static get styles(){
+    return [
+      ...super.styles,
+      css`
         :host {
           margin: 15px 0 0;
           padding: 0;
@@ -94,82 +85,68 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           bottom: 7px;
           left: 7px;
         }
-      </style>
+      `
+    ];
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      ...super.properties
+    };
+  }
+
+  /**
+   * life cycle, element is ready
+   */
+  constructor() {
+    super();
+    let target = this.shadowRoot.querySelector("#carouselitem");
+    if (this.selected.scroll && target) {
+      this._scrollIntoView([this._getParentOffset(target)]);
+      if (!this.selected.zoomed) target.focus();
+    }
+  }
+
+  // render function
+  render() {
+    return html`
       <article id="grid">
-        <template is="dom-if" if="[[_isAttrSet(title)]]">
-          <h1 id="gallery-title">[[title]]</h1>
-        </template>
+        <h1 id="gallerytitle" ?hidden="${this.title}">${this.title}</h1>
         <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
-          <template id="screenlist" is="dom-repeat" items="[[items]]" as="item">
+          ${this.items.map(item=>html`
             <lrndesign-gallery-zoom
-              anchored-item="[[__anchoredItem]]"
+              anchored-item="${this.__anchoredItem}"
               class="gallerythumb"
-              details$="[[item.details]]"
-              heading$="[[item.heading]]"
-              item-id="[[item.id]]"
-              on-gallery-scroll="_handleScroll"
-              scrolled$="[[item.scroll]]"
-              src$="[[item.large]]"
-              tooltip$="[[item.tooltip]]"
-              zoom-alt$="[[item.zoomAlt]]"
-              zoomed$="[[item.zoom]]"
+              details="${item.details}"
+              heading="${item.heading}"
+              item-id="${item.id}"
+              @gallery-scroll="${e=>this._handleScroll(item)}"
+              ?scrolled="${item.scroll}"
+              src="${item.large}"
+              tooltip="${item.tooltip}"
+              zoom-alt="${item.zoomAlt}"
+              ?zoomed="${item.zoom}"
             >
               <div>
                 <iron-image
-                  alt$="[[item.zoomAlt]]"
+                  alt="${item.zoomAlt}"
                   fade
                   sizing="cover"
-                  src$="[[item.thumbnail]]"
-                  style$="[[_getImageStyle(items)]]"
+                  src="${item.thumbnail}"
+                  style="${this.imageStyle}"
                 >
                 </iron-image>
               </div>
               <iron-icon icon="zoom-in"></iron-icon>
             </lrndesign-gallery-zoom>
-          </template>
+            `
+          )}
         </div>
-        <div id="galleryprint">
-          <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
-            <section>
-              <template is="dom-if" if="[[_isAttrSet(item.title)]]">
-                <h2>[[item.title]]</h2>
-              </template>
-              <lrndesign-gallery-details
-                details$="[[item.details]]"
-              ></lrndesign-gallery-details>
-              <img
-                class="print-image"
-                alt$="[[item.alt]]"
-                src$="[[item.src]]"
-              />
-            </section>
-          </template>
-        </div>
+        ${this.galleryPrint}
       </article>
     `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * aspect ratio of media
-       */
-      imageStyle: {
-        type: String,
-        computed: "_getImageStyle(items)",
-        reflectToAttribute: true
-      }
-    };
-  }
-
-  /**
-   * handles gallery-scroll event
-   */
-  _handleScroll(e) {
-    this._scrollIntoView([this._getParentOffset(this), e.path[0].offsetTop]);
   }
 
   /**
@@ -178,15 +155,23 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
    * @param {array} an array of items
    * @returns {string} the style based on the first item
    */
-  _getImageStyle(items = []) {
+  get imageStyle() {
     let img = new Image(),
       padding = 75;
-    if (items !== undefined && items.length > 0) {
-      img.src = items[0].src;
+    if (this.items !== undefined && this.items.length > 0) {
+      img.src = this.items[0].src;
       if (img.naturalWidth > 0 && img.naturalHeight > 0)
         padding = (100 * img.naturalHeight) / img.naturalWidth;
     }
-    return "padding-bottom: " + padding + "%;";
+    return `padding-bottom: ${padding}%;`;
+  }
+
+  /**
+   * handles gallery-scroll event
+   */
+  _handleScroll(item) {
+    this._scrollIntoView([this._getParentOffset(this), item.offsetTop]);
   }
 }
 window.customElements.define(LrndesignGalleryGrid.tag, LrndesignGalleryGrid);
+export { LrndesignGalleryGrid };

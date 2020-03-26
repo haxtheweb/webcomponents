@@ -2,17 +2,19 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
 
-export { LrndesignGallery };
 /**
  * `lrndesign-gallery`
+ * An element that renders a collection of gallery items into a carousel or a single media item into a layout.
+ * 
  * @customElement lrndesign-gallery
- * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
+ * @demo ./demo/index.html carousel demo
+ * @demo ./demo/grid.html grid demo
  *
  * @microcopy - language worth noting:```
  <lrndesign-gallery 
@@ -40,9 +42,6 @@ export { LrndesignGallery };
 }]```
  *
 
- * @polymer
- * @demo ./demo/index.html carousel demo
- * @demo ./demo/grid.html grid demo
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
   /**
@@ -52,52 +51,53 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery";
   }
-
-  static get behaviors() {
-    return [LrndesignGalleryBehaviors];
-  }
-
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+  static get styles(){
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+
+  // render function
+  render() {
+    return html`
       <div id="gallery">
-        <template is="dom-if" if="[[!grid]]" restamp>
-          <lrndesign-gallery-carousel
-            accent-color$="[[accentColor]]"
-            aspect-ratio$="[[aspectRatio]]"
-            title$="[[title]]"
-            dark$="[[dark]]"
-            gallery-id$="[[id]]"
-            responsive-size$="[[responsiveSize]]"
-            sizing$="[[sizing]]"
-            sources="[[sources]]"
-            title$="[[title]]"
-          >
-            <slot></slot>
-          </lrndesign-gallery-carousel>
-        </template>
-        <template is="dom-if" if="[[grid]]">
-          <lrndesign-gallery-grid
-            accent-color$="[[accentColor]]"
-            aspect-ratio$="[[aspectRatio]]"
-            dark$="[[dark]]"
-            gallery-id$="[[id]]"
-            responsive-size$="[[responsiveSize]]"
-            sizing$="[[sizing]]"
-            sources="[[sources]]"
-            title$="[[title]]"
-          >
-            <slot></slot>
-          </lrndesign-gallery-grid>
-        </template>
+        ${this.grid
+          ? html`
+            <lrndesign-gallery-grid
+              accent-color="${this.accentColor}"
+              .aspect-ratio="${this.aspectRatio}"
+              ?dark="${this.dark}"
+              .gallery-id="${this.id}"
+              responsive-size="${this.responsiveSize}"
+              sizing="${this.sizing}"
+              .sources="${this.sources}"
+              title="${this.title}"
+            >
+              <slot></slot>
+            </lrndesign-gallery-grid>
+          `
+          : html`
+            <lrndesign-gallery-carousel
+              accent-color="${this.accentColor}"
+              .aspect-ratio="${this.aspectRatio}"
+              ?dark="${this.dark}"
+              .gallery-id="${this.id}"
+              responsive-size="${this.responsiveSize}"
+              sizing="${this.sizing}"
+              .sources="${this.sources}"
+              title="${this.title}">
+              <slot></slot>
+            </lrndesign-gallery-carousel>
+          `
+        }
       </div>
     `;
   }
@@ -228,7 +228,9 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {
+      ...super.properties
+    };
   }
 
   /**
@@ -236,14 +238,13 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    root.__gallery = root.shadowRoot.querySelector("#gallery");
-    root.anchorData = root._getAnchorData();
+    this.__gallery = this.shadowRoot.querySelector("#gallery");
+    this.anchorData = this._getAnchorData();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
-          element: root,
+          element: this,
           attribute: "responsive-size",
           relativeToParent: true
         }
@@ -252,10 +253,25 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   }
 
   /**
-   * life cycle, element is ready
+   * calls responsive-utility to get parent's responsive size
+   *
+   * @param {object} a set of responsive for options, eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
    */
-  ready() {
-    super.ready();
+  _addResponsiveUtility(options) {
+    window.ResponsiveUtility.requestAvailability();
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail:
+          options !== undefined
+            ? options
+            : {
+                element: this,
+                attribute: "responsive-size",
+                relativeToParent: true
+              }
+      })
+    );
   }
 }
 window.customElements.define(LrndesignGallery.tag, LrndesignGallery);
+export { LrndesignGallery };

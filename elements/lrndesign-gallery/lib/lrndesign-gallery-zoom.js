@@ -2,24 +2,25 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrndesign-gallery-zoom`
+ * An element that renders the zoom feature for the gallery.
+ * 
  * @customElement lrndesign-gallery-zoom
- * `An element that renders the zoom feature for the gallery.`
  *
  * @microcopy - language worth noting:```
 <lrndesign-gallery-zoom 
   details="Text details about the image." //optional text about the image
-  heading$="Image title"                  //required, image dialog title
+  heading="Image title"                  //required, image dialog title
   item-id="0"                             //required, index of the item to view
-  src$="[[item.large]]"                   //required, full-sized image
-  tooltip$="[[item.tooltip]]"             //required, tooltip text
-  zoom-alt$="[[item.alt]]"                //required, alt text for the image
+  src="${this.item.large}"                   //required, full-sized image
+  tooltip="${this.item.tooltip}"             //required, tooltip text
+  zoom-alt="${this.item.alt}"                //required, alt text for the image
   tooltip="ZOOM"                       
 </lrndesign-gallery-zoom>```
  *
@@ -31,10 +32,8 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 --lrndesign-gallery-dialog-header-color                 //text color of dialog header
 --lrndesign-gallery-dialog-header-background-color      //background-color of dialog header```
  * 
-
- * @polymer
  */
-class LrndesignGalleryZoom extends PolymerElement {
+class LrndesignGalleryZoom extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -42,15 +41,10 @@ class LrndesignGalleryZoom extends PolymerElement {
     return "lrndesign-gallery-zoom";
   }
 
-  //get gallery behaviors
-  static get behaviors() {
-    return [LrndesignGalleryBehaviors];
-  }
-
   // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -86,34 +80,37 @@ class LrndesignGalleryZoom extends PolymerElement {
           padding: 0px;
           margin: 0;
           min-width: unset;
-        }
-      </style>
+        }`
+    ];
+  }
+  render(){
+    return html`
       <paper-button
         id="zoombtn"
-        label$="[[tooltip]]"
-        title=""
+        label="${this.tooltip}"
         controls="zoomdialog"
+        @click="${this.zoom}"
       >
         <slot></slot>
       </paper-button>
       <simple-tooltip for="zoombtn" position="right"
-        >[[tooltip]]</simple-tooltip
+        >${this.tooltip}</simple-tooltip
       >
       <simple-modal-template
         id="zoomtpl"
         modal-id="zoomdialog"
-        title$="[[heading]]"
+        title="${this.heading}"
       >
         <div
           id="details"
           slot="header"
-          hidden$="[[!_isAttrSet(details)]]"
+          ?hidden="${!this.details || this.details===""}"
         ></div>
-        <div slot="content" hidden$="[[!_isAttrSet(src)]]">
+        <div slot="content" ?hidden="${!this.src || this.src===""}">
           <img-pan-zoom
             id="img"
-            alt$="[[zoomAlt]]"
-            src$="[[src]]"
+            alt="${this.zoomAlt}"
+            src="${this.src}"
             max-zoom-pixel-ratio="1.5"
             min-zoom-image-ratio="0.5"
             zoom-per-click="1.2"
@@ -133,69 +130,55 @@ class LrndesignGalleryZoom extends PolymerElement {
   static get properties() {
     return {
       /**
-       * optional: details for zooming
-       */
-      details: {
-        type: String,
-        value: null,
-        observer: "_detailsChanged"
-      },
-      /**
        * heading for the zoom modal
        */
       heading: {
-        type: String,
-        value: "Image Zoom"
+        type: String
       },
       /**
        * heading for the zoom modal
        */
       itemId: {
-        type: String,
-        value: null
+        type: String
         //observer: "_itemChanged"
       },
       /**
        * The zoom modal
        */
       modal: {
-        type: Object,
-        value: null
+        type: Object
       },
       /**
        * scrolled to by default (for grid)?
        */
       scrolled: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Image source.
        */
       src: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "src"
       },
       /**
        * tooltip for the zoom button
        */
       tooltip: {
-        type: String,
-        value: "Zoom In"
+        type: String
       },
       /**
        * gallery item's alt text
        */
       zoomAlt: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * zoomed by default?
        */
       zoomed: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
@@ -203,9 +186,12 @@ class LrndesignGalleryZoom extends PolymerElement {
   /**
    * life cycle, element is ready
    */
-  ready() {
-    super.ready();
-    this._detailsChanged();
+  constructor() {
+    super();
+    this.heading = "Image Zoom";
+    this.scrolled = false;
+    this.tooltip = "Zoom In";
+    this.zoomed = false;
     this.shadowRoot
       .querySelector("#zoomtpl")
       .associateEvents(this.shadowRoot.querySelector("#zoombtn"));
@@ -213,36 +199,17 @@ class LrndesignGalleryZoom extends PolymerElement {
       this.dispatchEvent(new CustomEvent("gallery-scroll"));
       if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();
     }
-    if (this.zoomed) {
-      this.zoom();
-    }
+    if (this.zoomed) this.zoom();
   }
 
   /**
    * opens the modal
    */
   zoom() {
-    let root = this;
-    root.shadowRoot
+    let event = new CustomEvent("gallery-zoom", { detail: this });
+    this.shadowRoot
       .querySelector("#zoombtn")
-      .dispatchEvent(new CustomEvent("gallery-zoom", { detail: { root } }));
-  }
-
-  /**
-   * updates the details.
-   */
-  _detailsChanged(e) {
-    this.shadowRoot.querySelector("#details").innerHTML = this.details;
-  }
-
-  /**
-   * returns true if the given attribute is not null
-   *
-   * @param {string} the attribute to test
-   * @returns {boolean} if there is a non-null value for the attribute
-   */
-  _isAttrSet(attr = null) {
-    return attr !== null && attr !== undefined;
+      .dispatchEvent(event);
   }
 }
 window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
