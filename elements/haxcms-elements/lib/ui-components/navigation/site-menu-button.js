@@ -35,7 +35,7 @@ class SiteMenuButton extends LitElement {
         }
         a {
           color: var(--site-menu-button-link-color, black);
-          text-decoration: underline;
+          text-decoration: var(--site-menu-button-link-decoration, underline);
         }
         paper-button {
           transition: 0.3s all ease-in-out;
