@@ -48,7 +48,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery-carousel";
   }
-  static get styles(){
+  static get styles() {
     return [
       ...super.styles,
       css`
@@ -255,7 +255,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               >
                 <iron-icon
                   icon="zoom-in"
-                  ?hidden="${!this.icon || this.icon===""}"
+                  ?hidden="${!this.icon || this.icon === ""}"
                 ></iron-icon>
               </lrndesign-gallery-zoom>
               <div id="prevnextnav">
@@ -296,7 +296,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             <div id="details" class="item-info">
               <div id="details-inner">
                 <div id="itemdetails">
-                  <h2 id="itemtitle" ?hidden="${!this.selected.title || this.selected.title==""}">
+                  <h2
+                    id="itemtitle"
+                    ?hidden="${!this.selected.title ||
+                      this.selected.title == ""}"
+                  >
                     ${this.selected.title}
                   </h2>
                   <div id="itembody">
@@ -307,8 +311,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 </div>
                 <div id="xyend">
                   <p class="x-of-y" ?hidden="${this.hideNav}">
-                    (<span class="sr-only"> End of slide </span>
-                    ${this.selected.xofy}<span class="sr-only">.</span>)
+                    (<span class="sr-only"> End of slide </span> ${this.selected
+                      .xofy}<span class="sr-only">.</span>)
                   </p>
                 </div>
                 <div id="thumbnails" class="item-info">
@@ -317,34 +321,35 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                       <p class="sr-only" ?hidden="${this.hideNav}">
                         Slides list:
                       </p>
-                      ${this.items.map(item=>html`
-                        <paper-button
-                          id="${item.id}"
-                          aria-controls="${this.__gallery.id}"
-                          class="gallerythumb"
-                          ?hidden="${this.hideNav}"
-                          index="${item.index}"
-                          @click="${e=>this._onNavTapped(item)}"
-                          ?disabled="${this._isSelected(this.selected,item)}"
-                          .target="${item.target}"
-                        >
-                          <iron-image
-                            alt="${item.alt}"
-                            fade
-                            sizing="cover"
-                            src="${item.thumbnail}"
+                      ${this.items.map(
+                        item => html`
+                          <paper-button
+                            id="${item.id}"
+                            aria-controls="${this.__gallery.id}"
+                            class="gallerythumb"
+                            ?hidden="${this.hideNav}"
+                            index="${item.index}"
+                            @click="${e => this._onNavTapped(item)}"
+                            ?disabled="${this._isSelected(this.selected, item)}"
+                            .target="${item.target}"
                           >
-                          </iron-image>
-                        </paper-button>
-                        <simple-tooltip
-                          for="${item.id}"
-                          ?hidden="${this._isSelected(this.selected,item)}"
-                          position="top"
-                        >
-                          ${item.alt}
-                        </simple-tooltip>
-
-                      `)}
+                            <iron-image
+                              alt="${item.alt}"
+                              fade
+                              sizing="cover"
+                              src="${item.thumbnail}"
+                            >
+                            </iron-image>
+                          </paper-button>
+                          <simple-tooltip
+                            for="${item.id}"
+                            ?hidden="${this._isSelected(this.selected, item)}"
+                            position="top"
+                          >
+                            ${item.alt}
+                          </simple-tooltip>
+                        `
+                      )}
                     </div>
                   </div>
                 </div>
@@ -380,7 +385,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @readonly
    * @memberof LrndesignGalleryCarousel
    */
-  get hideNav(){
+  get hideNav() {
     return this.items !== undefined ? this.items.length < 2 : true;
   }
   /**
