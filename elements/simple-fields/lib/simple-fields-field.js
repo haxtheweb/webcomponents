@@ -382,8 +382,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       if (this._getAttributes(this.type).includes(propName))
         this._updateAttribute(propName);
       if (propName === "value" && this.value !== oldValue) {
-        if (this.type !== "select" && this.field)
-          this._updateAttribute("value");
+        if(this.field.value !== this.value) this.field.value = this.value;
         this._fireValueChanged();
       }
       if (
