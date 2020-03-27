@@ -800,18 +800,6 @@ class A11yMediaPlayer extends SimpleColors {
       root._handleTimeUpdate(e)
     );
     this._addResponsiveUtility();
-    /**
-     * Fires when a new player is ready for a11y-media-state-manager
-     * @event a11y-player
-     */
-    window.dispatchEvent(
-      new CustomEvent("a11y-player", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: this
-      })
-    );
     this.__playerReady = true;
   }
 
@@ -1404,10 +1392,14 @@ class A11yMediaPlayer extends SimpleColors {
    */
   toggleFullscreen(mode) {
     if (this.fullscreenButton) {
-      this.fullscreen = mode === undefined ? !this.fullscreen : mode;
-      //this.toggleTranscript(this.fullscreen);
-      if (screenfull)
-        screenfull.toggle(this.shadowRoot.querySelector("#player-section"));
+      let fullscreen = mode === undefined ? !this.fullscreen : mode;
+      if (screenfull){
+        if(fullscreen){
+          screenfull.request(this.shadowRoot.querySelector("#player-section"));
+        } else {
+          screenfull.exit(this.shadowRoot.querySelector("#player-section"));
+        }
+      }
 
       /**
        * Fires when fullscreen is toggled
@@ -1760,6 +1752,19 @@ class A11yMediaPlayer extends SimpleColors {
   firstUpdated() {
     setTimeout(() => {
       window.A11yMediaStateManager.requestAvailability();
+
+      /**
+       * Fires when a new player is ready for a11y-media-state-manager
+       * @event a11y-player
+       */
+      window.dispatchEvent(
+        new CustomEvent("a11y-player", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     }, 1000);
   }
   /**
