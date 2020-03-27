@@ -17,65 +17,73 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
  * @demo demo/index.html
  */
 class LrndesignGallery extends LrndesignGalleryBehaviors {
-  //styles function
-  static get styles() {
-    return [css``];
-  }
+  
+//styles function
+static get styles() {
+return  [
 
-  // render function
-  render() {
-    return html`
-      <div id="gallery">
-        ${this.grid
-          ? html`
-              <lrndesign-gallery-grid
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery-id="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-                title="${this.title}"
-              >
-                <slot></slot>
-              </lrndesign-gallery-grid>
-            `
-          : html`
-              <lrndesign-gallery-carousel
-                accent-color="${this.accentColor}"
-                .aspect-ratio="${this.aspect}"
-                .extra-wide="${this.extra}"
-                ?dark="${this.dark}"
-                .gallery="${this.id}"
-                @item-changed="${e => this.goToItem(e.detail)}"
-                responsive-size="${this.responsiveSize}"
-                .selected="${this.selected}"
-                sizing="${this.sizing}"
-                .sources="${this.items}"
-                title="${this.title}"
-              >
-                <slot></slot>
-              </lrndesign-gallery-carousel>
-            `}
-      </div>
-    `;
-  }
+css`
+
+`
+];
+}
+
+// render function
+render() {
+return html`
+
+<div id="gallery">
+  ${this.grid
+    ? html`
+        <lrndesign-gallery-grid
+          accent-color="${this.accentColor}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
+          ?dark="${this.dark}"
+          .gallery-id="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
+          responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
+          sizing="${this.sizing}"
+          .sources="${this.items}"
+          title="${this.title}"
+        >
+          <slot></slot>
+        </lrndesign-gallery-grid>
+      `
+    : html`
+        <lrndesign-gallery-carousel
+          accent-color="${this.accentColor}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
+          ?dark="${this.dark}"
+          .gallery="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
+          responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
+          sizing="${this.sizing}"
+          .sources="${this.items}"
+          title="${this.title}"
+        >
+          <slot></slot>
+        </lrndesign-gallery-carousel>`
+    }
+</div>`;
+}
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
-      id: {
-        type: String,
-        reflect: true,
-        attribute: "id"
-      }
-    };
+  
+  ...super.properties,
+  
+  "id": {
+    "type": String,
+    "reflect": true,
+    "attribute": "id"
+  }
+}
+;
   }
 
   /**
@@ -109,10 +117,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   firstUpdated() {
     super.firstUpdated();
     this.anchorData = this._getAnchorData();
-    if (this.anchorData.gallery === this.id) {
+    if(this.anchorData.gallery === this.id) {
       this.goToItem(this.anchorData.id);
     } else {
       this.goToItem();
+
     }
   }
 
@@ -122,8 +131,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   updated(changedProperties) {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "id" && !this.id)
-        this.id = `gallery-${this._generateUUID()}`;
+      if (propName === "id" && !this.id) this.id = `gallery-${this._generateUUID()}`;
     });
   }
   /**
@@ -133,10 +141,10 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGallery
    */
   get aspect() {
-    let items = (this.items || []).filter(item => item.src && item.src != ""),
-      src = items && items[0] ? items[0].src : false;
-    if (src) {
-      let img = new Image();
+    let items = (this.items || []).filter(item=>item.src && item.src !=""),
+    src = items && items[0] ? items[0].src : false;;
+    if(src) {
+      let img = new Image()
       img.src = src;
       return img.naturalWidth > 0 && img.naturalHeight > 0
         ? img.naturalWidth / img.naturalHeight
@@ -165,27 +173,28 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    */
   get items() {
     let sources = this.sources || [],
-      items = typeof sources === "string" ? JSON.parse(sources) : sources,
-      total = items.length,
-      itemData = (items || []).map((item, i) => {
-        return {
-          details: item.details,
-          index: i,
-          id: item.id || `gallery-${this.id}-item-${i}`,
-          src: item.src,
-          large: item.large && item.large !== "" ? item.large : item.src,
-          thumbnail:
-            item.thumbnail && item.thumbnail != "" ? item.thumbnail : item.src,
-          xofy: `${i + 1} of ${total}`,
-          next: i + 1 < total ? i + 1 : -1,
-          prev: i - 1 > -1 ? i - 1 : -1,
-          sizing: item.sizing && item.sizing != "" ? item.sizing : this.sizing,
-          title: item.title,
-          tooltip: `${item.title || `Image ${i}`} (Zoom In)`,
-          heading: `${item.title || `Image ${i}`} (Full-Sized)`
-        };
-      });
-    console.log("items", itemData);
+      items = typeof sources === "string"
+        ? JSON.parse(sources)
+        : sources,
+    total = items.length,
+    itemData = (items || []).map((item, i) => {
+      return {
+        details: item.details,
+        index: i,
+        id: item.id || `gallery-${this.id}-item-${i}`,
+        src: item.src,
+        large: item.large && item.large !== "" ? item.large : item.src,
+        thumbnail: item.thumbnail && item.thumbnail !="" ? item.thumbnail : item.src,
+        xofy: `${i + 1} of ${total}`,
+        next: i + 1 < total ? i + 1 : -1,
+        prev: i - 1 > -1 ? i - 1 : -1,
+        sizing: item.sizing && item.sizing !="" ? item.sizing : this.sizing,
+        title: item.title,
+        tooltip: `${item.title || `Image ${i}`} (Zoom In)`,
+        heading: `${item.title || `Image ${i}`} (Full-Sized)`
+      };
+    });
+    console.log("items",itemData);
     return itemData;
   }
 
@@ -196,14 +205,18 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    */
   goToItem(query) {
     let start = this.items[0] || {};
-    if (typeof query === "number" && query >= 0 && query < this.items.length) {
+    if (
+      typeof query === "number" &&
+      query >= 0 &&
+      query < this.items.length
+    ) {
       this.selected = this.items[query] || start;
     } else {
-      let matches = this.items.filter(item => item.id === query);
-      console.log("matches", query, matches);
+      let matches = this.items.filter(item=>item.id === query);
+      console.log('matches',query,matches);
       this.selected = matches.length > 0 ? matches[0] : start;
     }
-    console.log("goToItem", query, this.selected);
+    console.log('goToItem',query,this.selected);
   }
 
   /**
@@ -214,16 +227,15 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    */
   _getAnchorData() {
     let hash =
-        window.location.hash !== null && window.location.hash !== ""
-          ? window.location.hash.replace("#", "")
-          : false,
-      data = hash ? hash.split("---") : [];
-    console.log("anchor", data, hash);
+      window.location.hash !== null && window.location.hash !== ""
+        ? window.location.hash.replace("#", "") : false,
+      data = hash ? hash.split("---"): [];
+    console.log('anchor',data,hash);
     return {
       id: data.length > 1 ? data[1] : -1,
       gallery: data.length > 0 ? data[0] : -1,
       zoom: scroll && data.length > 2 && data[2] === "zoom"
-    };
+    };  
   }
 }
 customElements.define("lrndesign-gallery", LrndesignGallery);
