@@ -382,7 +382,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
       if (this._getAttributes(this.type).includes(propName))
         this._updateAttribute(propName);
       if (propName === "value" && this.value !== oldValue) {
-        if(this.field.value !== this.value) this.field.value = this.value;
+        if (this.field.value !== this.value) this.field.value = this.value;
         this._fireValueChanged();
       }
       if (
@@ -635,7 +635,10 @@ class SimpleFieldsField extends SimpleFieldsContainer {
         ?readonly="${this.readonly}"
         ?required="${this.required}"
         rows="1"
-      >${this.value || ""}</textarea>`;
+      >
+${this.value || ""}</textarea
+      >
+    `;
   }
   /**
    * fires when value changes
@@ -656,7 +659,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    *
    * @memberof SimpleFieldsContainer
    */
-  _handleFieldChange(){
+  _handleFieldChange() {
     super._handleFieldChange();
     this.value = this._getFieldValue();
   }
@@ -766,10 +769,7 @@ class SimpleFieldsField extends SimpleFieldsContainer {
    * @memberof SimpleFieldsContainer
    */
   _updateAttribute(attribute) {
-    if (
-      this.field &&
-      this[attribute] !== this.field.getAttribute(attribute)
-    ) {
+    if (this.field && this[attribute] !== this.field.getAttribute(attribute)) {
       if (this[attribute]) {
         this.field.setAttribute(attribute, this[attribute]);
       } else {
