@@ -2,8 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
-import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
 
@@ -231,13 +232,14 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       ...super.properties
     };
   }
-
+  firstUpdated() {
+    this.__gallery = this.shadowRoot.querySelector("#gallery");
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__gallery = this.shadowRoot.querySelector("#gallery");
     this.anchorData = this._getAnchorData();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
