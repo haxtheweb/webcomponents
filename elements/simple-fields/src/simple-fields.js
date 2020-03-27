@@ -680,11 +680,12 @@ class SimpleFields extends SimpleFieldsLite {
    */
   _fieldsToSchema(fields) {
     let schema = {};
-    fields.forEach(field => {
-      let prop = !field.property ? "" : field.property;
-      schema[prop] = this._fieldToSchema(field);
-    });
-    //console.log("_fieldsToSchema", schema, fields);
+    if (fields) {
+      fields.forEach(field => {
+        let prop = !field.property ? "" : field.property;
+        schema[prop] = this._fieldToSchema(field);
+      });
+    }
     return schema;
   }
 }
