@@ -15,8 +15,7 @@ import "./lib/editable-table-display.js";
 
 /**
  * `editable-table`
- * @customElement editable-table
- * `An editor interface for tables that toggles between view mode.`
+ * An editor interface for tables that toggles between view mode.
  *
 ### Styling
 
@@ -71,8 +70,8 @@ Custom property | Description | Default
  * @demo ./demo/exporting.html Exporting Data
  * @demo ./demo/advanced.html Advanced Features
  * 
-
  * @polymer
+ * @customElement editable-table
  * @appliesMixin displayBehaviors
  * @appliesMixin EditBehaviors
  */

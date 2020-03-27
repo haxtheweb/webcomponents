@@ -31,6 +31,7 @@ class SimpleBlogCard extends LitElement {
         :host *[hidden] {
           display: none;
         }
+
         simple-popover {
           position: absolute;
           display: flex;
@@ -39,33 +40,42 @@ class SimpleBlogCard extends LitElement {
         paper-card {
           height: auto !important;
         }
+
         .card-content a {
           display: block;
         }
+
         .card-micro {
           width: 100px;
           --simple-blog-card-heading-font-size: 16px;
           --simple-blog-card-content-font-size: 14px;
         }
+
         .card-small {
           width: 200px;
           --simple-blog-card-heading-font-size: 16px;
         }
+
         .card-medium {
           width: 300px;
         }
+
         .card-large {
           width: 400px;
         }
+
         .card-xlarge {
           width: 600px;
         }
+
         a {
           text-decoration: none;
         }
+
         .teaser {
           overflow: hidden;
         }
+
         .teaser,
         .teaser ::slotted(*) {
           font-size: var(--simple-blog-card-content-font-size, 18px);
@@ -73,41 +83,53 @@ class SimpleBlogCard extends LitElement {
           line-height: 1.2;
           text-overflow: ellipsis;
         }
+
         paper-card:not(:defined) {
           display: none;
         }
+
         paper-card {
           --iron-image-height: 250px;
         }
+
         .card-content {
           height: 120px;
           padding: 0;
           overflow: hidden;
         }
+
         .card-micro {
           --iron-image-height: 50px;
         }
+
         .card-small {
           --iron-image-height: 100px;
         }
+
         .card-medium {
           --iron-image-height: 150px;
         }
+
         .card-large {
           --iron-image-height: 200px;
         }
+
         .card-micro .card-content {
           height: 50px;
         }
+
         .card-small .card-content {
           height: 50px;
         }
+
         .card-medium .card-content {
           height: 125px;
         }
+
         .card-large .card-content {
           height: 150px;
         }
+
         paper-card h3 {
           font-size: var(--simple-blog-card-heading-font-size, 22px);
           color: var(--simple-blog-card-header, black);
@@ -124,6 +146,7 @@ class SimpleBlogCard extends LitElement {
           word-wrap: break-word;
           text-overflow: ellipsis;
         }
+
         paper-avatar {
           -webkit-box-flex: 0;
           -webkit-flex: 0 0 auto;
@@ -131,32 +154,40 @@ class SimpleBlogCard extends LitElement {
           flex: 0 0 auto;
           display: inline-block;
         }
+
         .reading-time:after {
           content: attr(title);
         }
+
         .author-block {
           display: flex;
           align-items: center;
         }
+
         .author-info {
           font-size: 14px;
           padding-left: 10px;
           text-rendering: auto;
         }
+
         .author-info a {
           color: var(--simple-blog-card-author-link);
         }
+
         .post-details {
           font-size: 14px;
           color: var(--simple-blog-card-text, rgba(0, 0, 0, 0.54));
         }
+
         .post-details .dot {
           padding-right: 0.3em;
           padding-left: 0.3em;
         }
+
         .box {
           outline: 1px solid black;
         }
+
         simple-popover:not([for]) {
           display: none;
         }

@@ -592,17 +592,19 @@ export class HAXWiring {
      * Internal helper for getHaxJSONSchema to buiild the properties object
      * correctly with support for recursive nesting thx to objects / arrays.
      */
-    this._getHaxJSONSchemaProperty = (settings) => {
+    this._getHaxJSONSchemaProperty = settings => {
       return SimpleFields.fieldsToSchema(settings);
     };
     /**
      * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = inputMethod => {
-      var method = SimpleFields.fieldsConversion.inputMethod[inputMethod] || SimpleFields.fieldsConversion;
-      return method && method.defaultSettings && method.defaultSettings.type 
-        ? method.defaultSettings.type 
-        : 'string';
+      var method =
+        SimpleFields.fieldsConversion.inputMethod[inputMethod] ||
+        SimpleFields.fieldsConversion;
+      return method && method.defaultSettings && method.defaultSettings.type
+        ? method.defaultSettings.type
+        : "string";
     };
     /**
      * List valid input methods.

@@ -6,7 +6,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
- * @customElement simple-popover
  * a popover alertdialog that is positioned next to a target element
  *
 ### Styling
@@ -23,7 +22,7 @@ Custom property | Description | Default
 `--simple-popover-border-color` | popover border-color | #bbb
 `--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
  *
-
+ * @customElement simple-popover
  * @demo ./demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {
@@ -31,7 +30,7 @@ class SimplePopover extends AbsolutePositionBehavior {
   //styles function
   static get styles() {
     return  [
-      
+      ...super.styles,
       css`
 :host([hidden]) {
   display: none;

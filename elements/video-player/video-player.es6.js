@@ -40,42 +40,8 @@ class VideoPlayer extends MediaBehaviorsVideo(SchemaBehaviors(SimpleColors)) {
   render() {
     return html`
 
-${!this.sourceData || this.sourceData.length < 1 
-  ? html`` 
-  : this.isA11yMedia 
+${!this.isA11yMedia
     ? html`
-      <a11y-media-player
-        accent-color="${this.accentColor}"
-        ?audio-only="${this.audioOnly}"
-        ?dark="${this.dark}"
-        ?dark-transcript="${this.darkTranscript}"
-        ?disable-interactive="${this.disableInteractive}"
-        ?hide-timestamps="${this.hideTimestamps}"
-        ?hide-transcript="${this.hideTiranscript}"
-        id="${this.playerId}"
-        lang="${this.lang || 'en'}"
-        ?linkable="${this.linkable}"
-        preload="${this.preload || 'metadata'}"
-        media-title="${this.mediaTitle || ''}"
-        .sources="${this.sourceData}"
-        ?stand-alone="${this.standAlone}"
-        sticky-corner="${this.stickyCorner || 'top-right'}"
-        .thumbnail-src="${this.thumbnailSrc}"
-        .tracks="${this.trackData}"
-        .crossorigin="${this.crossorigin ? this.crossorigin : undefined}"
-        .width="${this.width}"
-        .height="${this.height}"
-        >
-        ${this.youtubeId 
-          ? html`<iframe width="${this.width || '560'}" height="${this.height || '315'}" src="https://www.youtube.com/embed/${this.youtubeId}" allowfullscreen frameborder="0"></iframe>` 
-          : html``
-        }
-        ${this.audioOnly 
-          ? html`<audio preload="${this.preload || 'metadata'}">${this.html5}</audio>` 
-          : html`<video preload="${this.preload || 'metadata'}">${this.html5}</video>`
-        }  
-      </a11y-media-player>` 
-    : html`
       <div class="responsive-video-container" .lang="${this.lang || undefined}">
         ${this.sandboxed ? html``: html`
           <webview
@@ -104,8 +70,33 @@ ${!this.sourceData || this.sourceData.length < 1
           <span class="media-type print-only">(embedded media)</span>
         </p>
         <slot name="caption"></slot>
-        <slot hidden></slot>
-      </div>`
+      </div>` 
+    : html`
+      <a11y-media-player
+        accent-color="${this.accentColor}"
+        ?audio-only="${this.audioOnly}"
+        ?dark="${this.dark}"
+        ?dark-transcript="${this.darkTranscript}"
+        ?disable-interactive="${this.disableInteractive}"
+        ?hide-timestamps="${this.hideTimestamps}"
+        ?hide-transcript="${this.hideTiranscript}"
+        id="${this.playerId}"
+        lang="${this.lang || 'en'}"
+        ?linkable="${this.linkable}"
+        preload="${this.preload || 'metadata'}"
+        media-title="${this.mediaTitle || ''}"
+        .sources="${this.sourceProperties}"
+        ?stand-alone="${this.standAlone}"
+        sticky-corner="${this.stickyCorner || 'top-right'}"
+        .thumbnail-src="${this.thumbnailSrc}"
+        .tracks="${this.trackProperties}"
+        .crossorigin="${this.crossorigin || 'anonymous'}"
+        .width="${this.width}"
+        .height="${this.height}"
+        .youtubeId="${this.youtubeId || undefined}"
+        >
+        <slot></slot>
+      </a11y-media-player>`
 }`;
   }
 
@@ -366,6 +357,9 @@ ${!this.sourceData || this.sourceData.length < 1
         "validationType": "text"
       }
     ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["__utils", "__stand-alone", "colors"]
   }
 }
 ;
@@ -532,6 +526,7 @@ ${!this.sourceData || this.sourceData.length < 1
   }
   constructor() {
     super();
+    this.crossorigin = "anonymous";
     this.dark = false;
     this.darkTranscript = false;
     this.disableInteractive = false;
@@ -543,6 +538,18 @@ ${!this.sourceData || this.sourceData.length < 1
     this.sources = [];
     this.stickyCorner = "top-right";
     this.tracks = [];
+    this.setSourceData();
+    this.observer.observe(this, {
+      childList: true,
+      subtree: false
+    });
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    if (this.observer && this.observer.disconnect) this.observer.disconnect();
+    super.disconnectedCallback();
   }
   /**
    * gets the HTML5 `audio` or `video` children
@@ -600,11 +607,22 @@ ${!this.sourceData || this.sourceData.length < 1
   get isA11yMedia() {
     if (
       !this.sandboxed &&
-      (this.sourceType == "youtube" || this.sourceType == "local")
+      (this.sourceType == "youtube" ||
+        this.sourceType == "local" ||
+        this.sourceData.length < 1)
     ) {
       return true;
     }
     return false;
+  }
+  /**
+   * mutation observer for tabs
+   * @readonly
+   * @returns {object}
+   */
+  get observer() {
+    let callback = () => this.setSourceData();
+    return new MutationObserver(callback);
   }
 
   /**
@@ -638,21 +656,16 @@ ${!this.sourceData || this.sourceData.length < 1
   }
 
   /**
-   * Gets source and adds to sources list
+   * Gets cleaned source list from source and sources properties
    * @readonly
-   * @returns {Array} List of source objects
+   * @returns {Array} Eg. `[{ "src": "path/to/media.mp3", "type": "audio/mp3"}]`
    */
-  get sourceData() {
+  get sourceProperties() {
     let temp =
-        typeof this.sources === "string"
-          ? JSON.parse(this.sources)
-          : this.sources.slice(),
-      slotted = this.querySelectorAll("video source, audio source, iframe");
+      typeof this.sources === "string"
+        ? JSON.parse(this.sources)
+        : this.sources.slice();
     if (this.source) temp.unshift({ src: this.source });
-    slotted.forEach(slot => {
-      this.sources.unshift({ src: slot.src });
-      slot.remove();
-    });
     if (temp && temp.length > 0)
       temp.forEach(item => {
         item.type = item.type || this._computeMediaType(item.src);
@@ -661,9 +674,46 @@ ${!this.sourceData || this.sourceData.length < 1
     return temp;
   }
 
+  /**
+   * Gets cleaned track list from track and tracks properties
+   * @readonly
+   * @returns {Array} Eg. `[{ "src": "path/to/track.vtt", "label": "English", "srclang": "en", "kind": "subtitles"}]`
+   */
+  get trackProperties() {
+    let temp =
+      typeof this.tracks === "string"
+        ? JSON.parse(this.tracks)
+        : this.tracks.slice();
+    if (this.track) temp.unshift({ src: this.track });
+    if (temp && temp.length > 0)
+      temp.forEach(item => {
+        item.srclang = item.srclang || this.lang;
+        item.kind = item.kind || "subtitles";
+        item.label = item.label || item.kind || item.lang;
+      });
+    return temp;
+  }
+
+  /**
+   * Source properties and slotted sources
+   * @readonly
+   * @returns {Array} List of source objects
+   */
+  get sourceData() {
+    let temp = this.sourceProperties.slice(),
+      slotted = this.querySelectorAll("video source, audio source, iframe");
+    slotted.forEach(slot => {
+      this.sources.unshift({
+        src: slot.src,
+        type: slot.type || this._computeMediaType(slot.src)
+      });
+    });
+    return temp;
+  }
+
   get audioOnly() {
     let videos = this.sourceData.filter(
-      item => item.type.indexOf("audio") === -1
+      item => item.type.indexOf("audio") > -1
     );
     return videos.length > 1;
   }
@@ -817,6 +867,16 @@ ${!this.sourceData || this.sourceData.length < 1
     content = content.replace(' sources="[]",', "");
     content = content.replace(' tracks="[]",', "");
     return content;
+  }
+  /**
+   * triggers an update of sourceData property when slot changes
+   *
+   * @memberof VideoPlayer
+   */
+  setSourceData() {
+    let temp = this.source;
+    this.source = "";
+    this.source = temp;
   }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);

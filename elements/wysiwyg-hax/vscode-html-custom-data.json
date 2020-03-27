@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "wysiwyg-hax",
-      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
+      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `offset-margin` {`string`} - \n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `element-align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `offsetMargin` {`string`} - \n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `elementAlign` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
       "attributes": [
         {
           "name": "hide-panel-ops",
@@ -16,12 +16,20 @@
           "valueSet": "v"
         },
         {
+          "name": "offset-margin",
+          "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
+        },
+        {
           "name": "body-value",
           "description": "`body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\nProperty: bodyValue"
         },
         {
           "name": "app-store-connection",
           "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "saveButtonSelector",
+          "description": "`saveButtonSelector` - Object reference that will get clicked on\n\nProperty: saveButtonSelector"
         },
         {
           "name": "field-class",
@@ -38,10 +46,6 @@
           "valueSet": "v"
         },
         {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
-        },
-        {
           "name": "activeHaxBody",
           "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
         },
@@ -51,8 +55,8 @@
           "valueSet": "v"
         },
         {
-          "name": "align",
-          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+          "name": "element-align",
+          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
         },
         {
           "name": "field-id",
@@ -61,6 +65,10 @@
         {
           "name": "field-name",
           "description": "`field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\nProperty: fieldName\n\nDefault: data[content]"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint\n\nDefault: null"
         },
         {
           "name": "__imported",
@@ -79,7 +87,7 @@
     },
     {
       "name": "wysiwyg-hax",
-      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
+      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `offset-margin` {`string`} - \n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `element-align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `offsetMargin` {`string`} - \n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `elementAlign` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
       "attributes": [
         {
           "name": "hide-panel-ops",
@@ -92,12 +100,20 @@
           "valueSet": "v"
         },
         {
+          "name": "offset-margin",
+          "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
+        },
+        {
           "name": "body-value",
           "description": "`body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\nProperty: bodyValue"
         },
         {
           "name": "app-store-connection",
           "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "saveButtonSelector",
+          "description": "`saveButtonSelector` - Object reference that will get clicked on\n\nProperty: saveButtonSelector"
         },
         {
           "name": "field-class",
@@ -114,10 +130,6 @@
           "valueSet": "v"
         },
         {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
-        },
-        {
           "name": "activeHaxBody",
           "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
         },
@@ -127,8 +139,8 @@
           "valueSet": "v"
         },
         {
-          "name": "align",
-          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+          "name": "element-align",
+          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
         },
         {
           "name": "field-id",
@@ -137,6 +149,10 @@
         {
           "name": "field-name",
           "description": "`field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\nProperty: fieldName\n\nDefault: data[content]"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint\n\nDefault: null"
         },
         {
           "name": "__imported",
@@ -159,7 +175,7 @@
     },
     {
       "name": "wysiwyg-hax",
-      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `align` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
+      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hide-preferences-button` {`boolean`} - Hide preferences button\n\n  * `offset-margin` {`string`} - \n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `element-align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `hidePreferencesButton` {`boolean`} - Hide preferences button\n\n  * `offsetMargin` {`string`} - \n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `editMode` {`boolean`} - State of the panel\n\n  * `activeHaxBody` - Reference to activeBody.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `elementAlign` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `__imported` {`boolean`} - \n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
       "attributes": [
         {
           "name": "hide-panel-ops",
@@ -172,12 +188,20 @@
           "valueSet": "v"
         },
         {
+          "name": "offset-margin",
+          "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
+        },
+        {
           "name": "body-value",
           "description": "`body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\nProperty: bodyValue"
         },
         {
           "name": "app-store-connection",
           "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
+        },
+        {
+          "name": "saveButtonSelector",
+          "description": "`saveButtonSelector` - Object reference that will get clicked on\n\nProperty: saveButtonSelector"
         },
         {
           "name": "field-class",
@@ -194,10 +218,6 @@
           "valueSet": "v"
         },
         {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint"
-        },
-        {
           "name": "activeHaxBody",
           "description": "`activeHaxBody` - Reference to activeBody.\n\nProperty: activeHaxBody"
         },
@@ -207,8 +227,8 @@
           "valueSet": "v"
         },
         {
-          "name": "align",
-          "description": "`align` {`string`} - Direction to align the hax edit panel\n\nProperty: align\n\nDefault: right"
+          "name": "element-align",
+          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: right"
         },
         {
           "name": "field-id",
@@ -217,6 +237,10 @@
         {
           "name": "field-name",
           "description": "`field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\nProperty: fieldName\n\nDefault: data[content]"
+        },
+        {
+          "name": "end-point",
+          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint\n\nDefault: null"
         },
         {
           "name": "__imported",

@@ -152,9 +152,6 @@ iron-icon {
 <button @click="${this.buttonEvents}" id="duplicate" title="Duplicate active node tree">
   <iron-icon icon="icons:content-copy"></iron-icon><span>Duplicate</span>
 </button>
-<button @click="${this.buttonEvents}" id="delete" title="Delete active node">
-  <iron-icon icon="icons:delete"></iron-icon><span>Delete</span>
-</button>
 </div>
 <ul id="outline"></ul>`;
   }
@@ -277,19 +274,6 @@ iron-icon {
       i++;
     }
   }
-  /**
-   * delete active
-   */
-  _delete(e) {
-    let node = this.getSelectionNode();
-    if (node && node.tagName === "LI") {
-      const parent = node.parentNode;
-      node.remove();
-      if (parent.children.length === 0) {
-        parent.remove();
-      }
-    }
-  }
   firstUpdated() {
     this.__outlineNode = this.shadowRoot.querySelector("#outline");
     this.shadowRoot.querySelectorAll("iron-a11y-keys").forEach(el => {
@@ -397,9 +381,6 @@ iron-icon {
         break;
       case "duplicate":
         this._duplicate();
-        break;
-      case "delete":
-        this._delete();
         break;
     }
   }

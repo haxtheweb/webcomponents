@@ -4,12 +4,26 @@
     {
       "name": "simple-pages",
       "path": "./simple-pages.es6.js",
-      "description": "`simple-pages`\n`toggle between pages`"
+      "description": "`simple-pages`\n`toggle between pages`",
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        }
+      ]
     },
     {
       "name": "simple-pages",
       "path": "./simple-pages.js",
-      "description": "`simple-pages`\n`toggle between pages`"
+      "description": "`simple-pages`\n`toggle between pages`",
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        }
+      ]
     },
     {
       "name": "tag",
@@ -18,7 +32,14 @@
     {
       "name": "simple-pages",
       "path": "./src/simple-pages.js",
-      "description": "`simple-pages`\n`toggle between pages`"
+      "description": "`simple-pages`\n`toggle between pages`",
+      "properties": [
+        {
+          "name": "selected",
+          "type": "number",
+          "default": "0"
+        }
+      ]
     }
   ]
 }

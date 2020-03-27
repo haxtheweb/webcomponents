@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
-import("./lib/a11y-media-state-manager.js");
+import "./lib/a11y-media-state-manager.js";
 import("./lib/a11y-media-button.js");
 import("./lib/a11y-media-transcript-cue.js");
 import("./lib/a11y-media-youtube.js");
@@ -107,6 +107,7 @@ class A11yMediaPlayer extends SimpleColors {
 :host {
   display: block;
   width: calc(100% - 2px);
+  font-family: var(--simple-fields-font-family,sans-serif);
   --a11y-media-player-height: unset;
   --a11y-media-color: var(--simple-colors-default-theme-grey-11, #111111);
   --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
@@ -135,6 +136,7 @@ class A11yMediaPlayer extends SimpleColors {
   --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
   --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
   --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
+  --simple-fields-accent-color: var(--a11y-media-accent-color);
 
   
   --a11y-media-button-color: var(--a11y-media-color);
@@ -405,7 +407,7 @@ absolute-position-behavior .setting {
   align-items: center;
 }
 
-absolute-position-behavior dropdown-select {
+absolute-position-behavior simple-field-field {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   background-color: var(--a11y-media-settings-menu-bg-color);
@@ -539,7 +541,7 @@ absolute-position-behavior dropdown-select {
   --simple-search-button-disabled-border-color: var(
   --a11y-media-border-color
 );
-  --paper-input-container-input-color: var(--a11y-media-color);
+  --simple-fields-color: var(--a11y-media-color);
   --simple-search-padding: 0 15px;
 }
 
@@ -973,52 +975,33 @@ paper-toast:not(:defined) {
         <div class="setting-text">
           ${this._getLocal(this.localization,'captions','label')}
         </div>
-        <dropdown-select
+        <simple-fields-field
           id="cc_tracks"
           class="setting-control"
-          no-label-float
           value="${this.captionsTrackKey}"
+          .options="${this.captionsPicker}"
           ?hidden="${!this.hasCaptions}"
           ?disabled="${!this.hasCaptions}"
           @value-changed="${e => this.selectCaptionByKey(e.detail.value)}}"
+          type="select"
         >
-          <paper-item value="-1" aria-selected="${this.captionsTrackKey === -1}"
-            >${this._getLocal(this.localization,'captions','off')}</paper-item
-          >
-          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-            return html`
-              <paper-item value="${key}" aria-selected="${this.captionsTrackKey === key}">
-                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-              </paper-item>
-            `;
-          })}
-        </dropdown-select>
+        </simple-fields-field>
       </div>
       <div class="setting" ?hidden="${!this.hasCaptions}">                      
         <div class="setting-text">
           ${this._getLocal(this.localization,'transcript','label')}
         </div>
-        <dropdown-select
+        <simple-fields-field
           id="transcript_tracks"
           class="setting-control"
-          no-label-float
-          placeholder=""
           .value="${this.transcriptTrackKey}"
+          .options="${this.transcriptPicker}"
           ?hidden="${!this.hasCaptions}"
           ?disabled="${!this.hasCaptions}"
           @value-changed="${e => this.selectTranscriptByKey(e.detail.value)}"
+          type="select"
         >
-          <paper-item value="-1" aria-selected="${this.transcriptTrackKey === -1}"
-            >${this._getLocal(this.localization,'transcript','off')}</paper-item
-          >
-          ${!this.loadedTracks ? `` : Object.keys(this.loadedTracks.textTracks).map(key => {
-            return html`
-              <paper-item value="${key}" aria-selected="${this.transcriptTrackKey === key}">
-                ${this.loadedTracks.textTracks[key].label || this.loadedTracks.textTracks.language}
-              </paper-item>
-            `;
-          })}
-        </dropdown-select>
+        </simple-fields-field>
       </div>
       <div class="setting" ?hidden="${!this.hasCaptions}">                      
         <div id="print-label" class="setting-text">
@@ -1639,10 +1622,9 @@ ${this.poster
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
     import("@polymer/paper-toast/paper-toast.js");
-    import("@polymer/paper-input/paper-input.js");
+    import("@lrnwebcomponents/simple-fields/lib/simple-fields-field.js");
     import("@polymer/paper-toggle-button/paper-toggle-button.js");
     import("@lrnwebcomponents/simple-tooltip/simple-tooltip.js");
-    import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
     import("@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js");
     if (typeof screenfull === "object") this._onScreenfullLoaded.bind(this);
@@ -1728,6 +1710,23 @@ ${this.poster
           })
         : this.captionsTrack.activeCues;
     return cues;
+  }
+
+  /**
+   * gets options for captions picker
+   *
+   * @readonly
+   * @memberof A11yMediaPlayer
+   */
+  get captionsPicker() {
+    let options = {};
+    options[-1] = this._getLocal(this.localization, "captions", "off");
+    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
+    });
+    return options;
   }
 
   /**
@@ -2188,6 +2187,23 @@ ${this.poster
   }
 
   /**
+   * gets options for transcript picker
+   *
+   * @readonly
+   * @memberof A11yMediaPlayer
+   */
+  get transcriptPicker() {
+    let options = {};
+    options[-1] = this._getLocal(this.localization, "transcript", "off");
+    Object.keys(this.loadedTracks.textTracks || {}).forEach(key => {
+      options[key] =
+        this.loadedTracks.textTracks[key].label ||
+        this.loadedTracks.textTracks[key].language;
+    });
+    return options;
+  }
+
+  /**
    * `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values
    */
   get transcriptTrackKey() {
@@ -2313,8 +2329,6 @@ ${this.poster
       if (this.media !== null) {
         if (mediaChange("cc"))
           this._setAttribute("cc", this.cc, this.__loadedTracks);
-        if (mediaChange("crossorigin"))
-          this._setAttribute("crossorigin", this.crossorigin, media);
         if (mediaChange("isYoutube") && this.__loadedTracks)
           this.__loadedTracks.hidden === this.isYoutube;
         if (mediaChange("mediaLang"))
@@ -2685,12 +2699,16 @@ ${this.poster
    * @readonly
    */
   getloadedTracks() {
-    let media = this.querySelectorAll("audio,video"),
+    let media = this.querySelector("audio,video"),
+      crossorigin = media ? media.getAttribute("crossorigin") : undefined,
       primary = null;
-    media.forEach(medium => {
-      medium.removeAttribute("autoplay");
-      medium.setAttribute("preload", "metadata");
-    });
+
+    if (media) {
+      if (!crossorigin) media.setAttribute("crossorigin", this.crossorigin);
+      media.removeAttribute("autoplay");
+      media.setAttribute("preload", "metadata");
+    }
+
     if (!this.youtubeId) {
       let iframeSrc =
           this.querySelector("iframe") && this.querySelector("iframe")
@@ -2706,21 +2724,22 @@ ${this.poster
       }
     }
 
-    if (media.length > 0) {
-      primary = media[0];
-      this.audioOnly = primary.tagName === "AUDIO";
-    } else {
+    if (!media) {
       primary = document.createElement(
         this.querySelectorAll('source[type*="audio"]').length > 0
           ? "audio"
           : "video"
       );
+      if (!crossorigin) primary.setAttribute("crossorigin", this.crossorigin);
       primary.setAttribute("preload", "metadata");
       this.querySelectorAll("source,track").forEach(node => {
         if (node.parentNode === this) primary.appendChild(node);
       });
       this.appendChild(primary);
+    } else {
+      primary = media;
     }
+    this.audioOnly = primary.tagName === "AUDIO";
     primary.style.width = "100%";
     primary.style.maxWidth = "100%";
 

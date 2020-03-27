@@ -19,7 +19,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: inline;
           --lrn-vocab-border: 1px dashed #ccc;
         }
         button {

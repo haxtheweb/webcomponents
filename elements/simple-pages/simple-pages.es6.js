@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `simple-pages`
@@ -26,13 +26,27 @@ class SimplePages extends LitElement {
 :host([hidden]) {
   display: none;
 }
-</style>
-<slot></slot>`;
+
+iron-pages:not(:defined) {
+  display: none;
+}</style>
+<iron-pages selected="${this.selected}" selected-attribute="${this.selectedAttribute}" @selected-changed="${this._selectedChanged}">
+  <slot></slot>
+</iron-pages>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {};
+    let props = {
+  "selected": {
+    "type": Number
+  },
+  "selectedAttribute": {
+    "type": String,
+    "attribute": "selected-attribute"
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -51,14 +65,42 @@ class SimplePages extends LitElement {
    */
   constructor() {
     super();
-    
+    this.selected = 0;
+    setTimeout(() => {
+      import("@polymer/iron-pages/iron-pages.js");
+    }, 0);
+  }
+  /**
+   * Selected changed
+   */
+  _selectedChanged(e) {
+    if (
+      this.children &&
+      this.children[e.detail.value] &&
+      this.children[e.detail.value].tagName &&
+      this.children[e.detail.value].getAttribute("data-dimport")
+    ) {
+      let el = this.children[e.detail.value];
+      if (!window.customElements.get(el.tagName.toLowerCase())) {
+        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
+        import(`${basePath}../../${el.getAttribute("data-dimport")}`).then(
+          response => {
+            setTimeout(() => {
+              window.dispatchEvent(new Event("resize"));
+            }, 0);
+          }
+        );
+      }
+    }
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * LitElement ready
    */
-  firstUpdated(changedProperties) {
-    
-  }
+  firstUpdated(changedProperties) {}
   /**
    * LitElement life cycle - property changed
    */
@@ -88,7 +130,6 @@ class SimplePages extends LitElement {
       */
     });
   }
-  
 }
 customElements.define(SimplePages.tag, SimplePages);
 export { SimplePages };
