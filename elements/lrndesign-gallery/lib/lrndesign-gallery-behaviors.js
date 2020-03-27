@@ -26,14 +26,14 @@ class LrndesignGalleryBehaviors extends SimpleColors {
   static get tag() {
     return "lrndesign-gallery-behaviors";
   }
-  
+
   static get styles() {
     return [
       css`
         :host {
           display: block;
         }
-        
+
         :host([hidden]) {
           display: none;
         }
@@ -267,17 +267,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     this.sources = [];
   }
 
-  
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") console.log("selected",this.selected);
+      if (propName == "selected") console.log("selected", this.selected);
     });
   }
 
   get galleryPrint() {
     return html`
       <div id="galleryprint">
-        ${(this.sources|| []).map(
+        ${(this.sources || []).map(
           item =>
             html`
               <section>
@@ -302,10 +301,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @memberof LrndesignGalleryBehaviors
    */
   get imageStyle() {
-    console.log('imageStyle');
-    console.log('extraWide',this.extraWide);
-    console.log('responsiveSize',this.responsiveSize);
-    console.log('aspectRatio',this.aspectRatio);
     if (this.extraWide || this.responsiveSize === "xs") {
       return "padding-bottom: " + 100 / this.aspectRatio + "%;";
     } else {
@@ -325,8 +320,12 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * Generate a UUID
    */
   _generateUUID() {
-    return "ss-s-s-s-sss".replace(/s/g, 
-      Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
+    return "ss-s-s-s-sss".replace(
+      /s/g,
+      Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1)
+    );
   }
 
   /**
@@ -347,8 +346,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     return parent.offsetTop;
   }
 
-  _itemChanged(query){
-    console.log('_itemChanged',query);
+  _itemChanged(query) {
     /**
      * Handles changes in selected item by firing an event to the gallery
      *

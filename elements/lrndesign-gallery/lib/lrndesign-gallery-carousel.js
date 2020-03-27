@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
-//import "./lrndesign-gallery-zoom.js";
+import "./lrndesign-gallery-zoom.js";
 
 /**
  * `lrndesign-gallery-carousel`
@@ -255,18 +255,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 style="${this.imageStyle}"
               >
               </iron-image>
-              <!--lrndesign-gallery-zoom
+              <lrndesign-gallery-zoom
                 details="${this.selected.details}"
                 heading="${this.selected.heading}"
                 id="galleryzoom"
-                item-id="${this.selected.id}"
                 src="${this.selected.large}"
                 tooltip="${this.selected.tooltip}"
-                zoom-alt="${this.selected.alt}"
-                ?zoomed="${this.selected.zoom}"
-              >
+                zoom-alt="${this.selected.alt}">
                 <iron-icon icon="zoom-in"></iron-icon>
-              </lrndesign-gallery-zoom-->
+              </lrndesign-gallery-zoom>
               <div id="prevnextnav">
                 <button
                   id="carouselprev"
