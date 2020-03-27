@@ -2,6 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
