@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "./lib/lrndesign-gallery-carousel.js";
+//import "./lib/lrndesign-gallery-carousel.js";
 
 /**
  * `lrndesign-gallery`
