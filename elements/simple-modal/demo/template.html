@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@polymer/paper-button/paper-button.js';
+      
       import '../simple-modal.js';
       import "../lib/simple-modal-template.js";
     </script>
@@ -47,7 +48,6 @@
             <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>
           </simple-modal-template>
-
           <script>
             document.querySelector('[modal-id="smt1"]').associateEvents(document.querySelector('[controls="smt1"]'));
             document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt2"]'));
