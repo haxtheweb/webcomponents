@@ -17,7 +17,7 @@
     },
     "sharedStyles": []
   },
-  "version": "2.5.0",
+  "version": "2.6.2",
   "description": "Automated conversion of mtz-marked-editor",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.4.0",
-    "@lrnwebcomponents/storybook-utilities": "^2.5.0",
+    "@lrnwebcomponents/storybook-utilities": "^2.6.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.4.1",
