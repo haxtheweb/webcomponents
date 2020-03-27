@@ -393,7 +393,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @param {string} index
    */
   goToItem(index) {
-    if (typeof index === "number" && index >= 0 && index < this.sources.length) {
+    if (
+      typeof index === "number" &&
+      index >= 0 &&
+      index < this.sources.length
+    ) {
       this.selected = this.sources[index];
     }
   }
