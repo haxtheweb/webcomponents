@@ -47,7 +47,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   static get tag() {
     return "lrndesign-gallery-grid";
   }
-  static get styles(){
+  static get styles() {
     return [
       ...super.styles,
       css`
@@ -116,32 +116,33 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
-          ${this.items.map(item=>html`
-            <lrndesign-gallery-zoom
-              anchored-item="${this.__anchoredItem}"
-              class="gallerythumb"
-              details="${item.details}"
-              heading="${item.heading}"
-              item-id="${item.id}"
-              @gallery-scroll="${e=>this._handleScroll(item)}"
-              ?scrolled="${item.scroll}"
-              src="${item.large}"
-              tooltip="${item.tooltip}"
-              zoom-alt="${item.zoomAlt}"
-              ?zoomed="${item.zoom}"
-            >
-              <div>
-                <iron-image
-                  alt="${item.zoomAlt}"
-                  fade
-                  sizing="cover"
-                  src="${item.thumbnail}"
-                  style="${this.imageStyle}"
-                >
-                </iron-image>
-              </div>
-              <iron-icon icon="zoom-in"></iron-icon>
-            </lrndesign-gallery-zoom>
+          ${this.items.map(
+            item => html`
+              <lrndesign-gallery-zoom
+                anchored-item="${this.__anchoredItem}"
+                class="gallerythumb"
+                details="${item.details}"
+                heading="${item.heading}"
+                item-id="${item.id}"
+                @gallery-scroll="${e => this._handleScroll(item)}"
+                ?scrolled="${item.scroll}"
+                src="${item.large}"
+                tooltip="${item.tooltip}"
+                zoom-alt="${item.zoomAlt}"
+                ?zoomed="${item.zoom}"
+              >
+                <div>
+                  <iron-image
+                    alt="${item.zoomAlt}"
+                    fade
+                    sizing="cover"
+                    src="${item.thumbnail}"
+                    style="${this.imageStyle}"
+                  >
+                  </iron-image>
+                </div>
+                <iron-icon icon="zoom-in"></iron-icon>
+              </lrndesign-gallery-zoom>
             `
           )}
         </div>
