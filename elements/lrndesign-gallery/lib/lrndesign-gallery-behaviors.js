@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-//import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-/*import "@polymer/iron-image/iron-image.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";*/
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 
 /**
  * `lerndesign-gallery-behaviors`
@@ -19,15 +19,15 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";*/
  *  -
  *
  */
-class LrndesignGalleryBehaviors extends LitElement {
+class LrndesignGalleryBehaviors extends SimpleColors {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "lrndesign-gallery-behaviors";
   }
-
-  /*static get styles() {
+  
+  static get styles() {
     return [
       css`
         :host {
@@ -144,7 +144,7 @@ class LrndesignGalleryBehaviors extends LitElement {
         :host .gallerythumb:focus iron-image,
         :host .gallerythumb:hover iron-image {
           @apply --lrndesign-gallery-thumbnail-image-focus;
-        }* /
+        }*/
         lrndesign-gallery-zoom iron-icon {
           width: 24px;
           height: 24px;
@@ -182,27 +182,27 @@ class LrndesignGalleryBehaviors extends LitElement {
         }
       `
     ];
-  }*/
+  }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      //...super.properties,
+      ...super.properties,
       /**
        * a named anchor for the gallery
-       * /
+       */
       anchorData: {
         type: Object
       },
       /**
        * aspect ratio of media
-       * /
+       */
       aspectRatio: {
         type: Number
       },
       /**
        * size for responsive CSS
-       * /
+       */
       extraWide: {
         type: Boolean,
         reflect: true,
@@ -210,42 +210,40 @@ class LrndesignGalleryBehaviors extends LitElement {
       },
       /**
        * gallery's unique id
-       * /
+       */
       galleryId: {
         type: String
       },
       /**
        * size for responsive CSS
-       * /
+       */
       grid: {
         type: Boolean
       },
       /*
        * parent size for responsive styling
-       * /
+       */
       responsiveSize: {
         type: String,
         reflect: true,
         attribute: "responsive-size"
       },
       /*
-       * data for the selected item
-       * /
+       * id of item
+       */
       selected: {
-        type: Object,
-        reflect: true,
-        attribute: "selected"
+        type: Object
       },
       /*
        * array of gallery items
-       * /
+       */
       sources: {
         type: Array
       },
       /**
        * default sizing: fit screen by cropping (cover)
        * or with letterboxing (contain)
-       * /
+       */
       sizing: {
         type: String
       },
@@ -256,10 +254,6 @@ class LrndesignGalleryBehaviors extends LitElement {
         type: String
       }
     };
-  }
-  /*
-  render(){
-    return html``;
   }
 
   constructor() {
@@ -273,17 +267,17 @@ class LrndesignGalleryBehaviors extends LitElement {
     this.sources = [];
   }
 
-  /*TODO 
+  
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") this._selectedChanged(this.selected);
+      if (propName == "selected") console.log("selected",this.selected);
     });
-  }*/
-  /*
+  }
+
   get galleryPrint() {
     return html`
       <div id="galleryprint">
-        ${this.sources.map(
+        ${(this.sources|| []).map(
           item =>
             html`
               <section>
@@ -306,8 +300,12 @@ class LrndesignGalleryBehaviors extends LitElement {
    *
    * @readonly
    * @memberof LrndesignGalleryBehaviors
-   * /
+   */
   get imageStyle() {
+    console.log('imageStyle');
+    console.log('extraWide',this.extraWide);
+    console.log('responsiveSize',this.responsiveSize);
+    console.log('aspectRatio',this.aspectRatio);
     if (this.extraWide || this.responsiveSize === "xs") {
       return "padding-bottom: " + 100 / this.aspectRatio + "%;";
     } else {
@@ -324,11 +322,19 @@ class LrndesignGalleryBehaviors extends LitElement {
   }
 
   /**
+   * Generate a UUID
+   */
+  _generateUUID() {
+    return "ss-s-s-s-sss".replace(/s/g, 
+      Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
+  }
+
+  /**
    * gets parent node's offset in light DOM
    *
    * @param {object} the node
    * @returns {number} the parent node's offset in pixels
-   * /
+   */
   _getParentOffset(node) {
     let parent = node.parentNode;
     if (
@@ -341,11 +347,28 @@ class LrndesignGalleryBehaviors extends LitElement {
     return parent.offsetTop;
   }
 
+  _itemChanged(query){
+    console.log('_itemChanged',query);
+    /**
+     * Handles changes in selected item by firing an event to the gallery
+     *
+     * @event item-changed
+     */
+    this.dispatchEvent(
+      new CustomEvent("item-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: query
+      })
+    );
+  }
+
   /**
    * tallies the offsets (item and parent) and scrolls to the item
    *
    * @param {array} an array of offsets
-   * /
+   */
   _scrollIntoView(offsets = [0]) {
     window.scrollTo({
       top: offsets.reduce((total, num) => {
@@ -354,14 +377,6 @@ class LrndesignGalleryBehaviors extends LitElement {
       behavior: "smooth"
     });
   }
-
-  /**
-   * Generate a UUID
-   * /
-  _generateUUID() {
-    return "ss-s-s-s-sss".replace(/s/g, 
-      Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
-  }*/
 }
 window.customElements.define(
   LrndesignGalleryBehaviors.tag,

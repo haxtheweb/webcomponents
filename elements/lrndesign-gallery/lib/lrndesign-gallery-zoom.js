@@ -2,11 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element";
 //import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import "@polymer/paper-button/paper-button.js";
 //import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+//import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrndesign-gallery-zoom`
  * An element that renders the zoom feature for the gallery.
@@ -47,12 +46,17 @@ class LrndesignGalleryZoom extends LitElement {
       css`
         :host {
           display: block;
+          width: 40px;
+          height: 40px;
         }
         :host([hidden]) {
           display: none;
         }
-        :host paper-button {
+        #zoombtn {
           width: 100%;
+          padding: 0px;
+          margin: 0;
+          min-width: unset;
         }
         simple-modal-template[modal-id="zoomdialog"] {
           --simple-modal-width: 75vw;
@@ -76,28 +80,21 @@ class LrndesignGalleryZoom extends LitElement {
             --lrndesign-gallery-dialog-background-color
           );
         }
-        #zoombtn {
-          padding: 0px;
-          margin: 0;
-          min-width: unset;
-        }
       `
     ];
   }
   render() {
     return html`
-      <paper-button
+    HELLO
+      <!--s<button
         id="zoombtn"
         label="${this.tooltip}"
         controls="zoomdialog"
-        @click="${this.zoomed}"
       >
         <slot></slot>
-      </paper-button>
-      <simple-tooltip for="zoombtn" position="right"
-        >${this.tooltip}</simple-tooltip
-      >
-      <!--simple-modal-template
+      </button>
+      <simple-tooltip for="zoombtn" position="right">${this.tooltip}</simple-tooltip>
+      imple-modal-template
         id="zoomtpl" modal-id="zoomdialog" title="${this.heading}">
         <div
           id="details"

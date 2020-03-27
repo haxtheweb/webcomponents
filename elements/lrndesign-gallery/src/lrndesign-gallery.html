@@ -1,4 +1,4 @@
-<!--div id="gallery">
+<div id="gallery">
   ${this.grid
     ? html`
         <lrndesign-gallery-grid
@@ -7,7 +7,9 @@
           .extra-wide="${this.extra}"
           ?dark="${this.dark}"
           .gallery-id="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
           responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
           title="${this.title}"
@@ -22,7 +24,9 @@
           .extra-wide="${this.extra}"
           ?dark="${this.dark}"
           .gallery="${this.id}"
+          @item-changed="${e=>this.goToItem(e.detail)}"
           responsive-size="${this.responsiveSize}"
+          .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
           title="${this.title}"
@@ -30,4 +34,4 @@
           <slot></slot>
         </lrndesign-gallery-carousel>`
     }
-</div-->HELLO
+</div>

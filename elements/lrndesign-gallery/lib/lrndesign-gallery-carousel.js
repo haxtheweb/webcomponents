@@ -2,10 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
-//import "./lrndesign-gallery-details.js";
+import "@polymer/iron-image/iron-image.js";
+import "@polymer/iron-icons/iron-icons.js";
 //import "./lrndesign-gallery-zoom.js";
 
 /**
@@ -100,7 +100,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 100%;
           position: absolute;
         }
-        #prevnextnav paper-button {
+        #prevnextnav button {
           position: absolute;
           display: flex;
           align-items: center;
@@ -111,24 +111,30 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           height: 100%;
           opacity: 0;
           margin: 0;
+          border-width: 0;
           border-radius: 0;
           color: var(--lrndesign-gallery-color);
           background-color: var(--lrndesign-gallery-background-color);
-          --paper-button-ink-color: var(--lrndesign-gallery-background-color);
+          --button-ink-color: var(--lrndesign-gallery-background-color);
           background: var(--lrndesign-gallery-next-bg);
           transition: opacity 0.5s;
         }
-        #prevnextnav paper-button#carouselprev {
+        #prevnextnav button#carouselprev {
           left: 0;
           justify-content: flex-start;
           background: var(--lrndesign-gallery-prev-bg);
         }
-        #prevnextnav paper-button[item="-1"] {
+        #prevnextnav button[item="-1"] {
           display: none;
         }
-        #prevnextnav paper-button:focus,
-        #prevnextnav paper-button:hover {
+        #prevnextnav button:focus,
+        #prevnextnav button:hover {
+          outline: none;
           opacity: 0.8;
+        }
+        #prevnextnav button:focus iron-icon,
+        #prevnextnav button:hover iron-icon {
+          outline: 1px solid var(--lrndesign-gallery-color);
         }
         #prevnextnav iron-icon {
           margin: 10%;
@@ -175,9 +181,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         /*TODO .gallerythumb[disabled] {
           @apply --lrndesign-gallery-thumbnail-image-selected;
         }*/
+        .gallerythumb,
         .gallerythumb iron-image {
           width: 40px;
           height: 40px;
+          overflow: hidden;
+        }
+        .gallerythumb:hover,
+        .gallerythumb:focus {
+          outline: 1px solid var(--lrndesign-gallery-color);
         }
         :host([responsive-size="xs"]) .gallerythumb iron-image {
           display: none;
@@ -226,8 +238,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             aspect-ratio="${this.aspectRatio}"
             ?dark="${this.dark}"
             ?extra-wide="${this.extraWide}"
-            image-style="${this.__imageStyle}"
-            .item="${this.selected}"
+            image-style="${this.imageStyle}"
             responsive-size="${this.responsiveSize}"
           >
             <p id="xystart" class="sr-only" ?hidden="${this.hideNav}">
@@ -241,10 +252,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 placeholder="${this.selected.thumbnail}"
                 sizing="${this.selected.sizing}"
                 src="${this.selected.src}"
-                style="${this.__imageStyle}"
+                style="${this.imageStyle}"
               >
               </iron-image>
-              <lrndesign-gallery-zoom
+              <!--lrndesign-gallery-zoom
                 details="${this.selected.details}"
                 heading="${this.selected.heading}"
                 id="galleryzoom"
@@ -254,40 +265,35 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 zoom-alt="${this.selected.alt}"
                 ?zoomed="${this.selected.zoom}"
               >
-                <iron-icon
-                  icon="zoom-in"
-                  ?hidden="${!this.icon || this.icon === ""}"
-                ></iron-icon>
-              </lrndesign-gallery-zoom>
+                <iron-icon icon="zoom-in"></iron-icon>
+              </lrndesign-gallery-zoom-->
               <div id="prevnextnav">
-                <paper-button
+                <button
                   id="carouselprev"
                   aria-controls="carousel"
                   aria-label="prev"
                   ?hidden="${this.hideNav}"
-                  index="${this.selected.prev}"
-                  @click="${this._onPrev}"
+                  @click="${e => this._itemChanged(this.selected ? this.selected.prev : 0)}"
                   tabindex="-1"
                 >
                   <span class="sr-only">Previous</span>
                   <iron-icon icon="chevron-left"></iron-icon>
-                </paper-button>
+                </button>
                 <simple-tooltip for="carouselprev" position="top"
                   >previous</simple-tooltip
                 >
-                <paper-button
+                <button
                   id="carouselnext"
                   aria-controls="carousel"
                   aria-label="next"
                   ?hidden="${this.hideNav}"
-                  index="${this.selected.next}"
-                  @click="${this._onNext}"
+                  @click="${e => this._itemChanged(this.selected ? this.selected.next : 0)}"
                   tabindex="-1"
                   title=""
                 >
                   <span class="sr-only">Next</span>
                   <iron-icon icon="chevron-right"></iron-icon>
-                </paper-button>
+                </button>
                 <simple-tooltip for="carouselnext" position="top"
                   >next</simple-tooltip
                 >
@@ -303,10 +309,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   >
                     ${this.selected.title}
                   </h2>
-                  <div id="itembody">
-                    <lrndesign-gallery-details
-                      details="${this.selected.details}"
-                    ></lrndesign-gallery-details>
+                    <div id="itembody">
+                      <div id="details">
+                        ${this.selected.details || ''}
+                      </div>
                   </div>
                 </div>
                 <div id="xyend">
@@ -323,13 +329,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                       </p>
                       ${this.sources.map(
                         item => html`
-                          <paper-button
+                          <button
                             id="${item.id}"
                             aria-controls="carousel"
                             class="gallerythumb"
                             ?hidden="${this.hideNav}"
                             index="${item.index}"
-                            @click="${e => this._onNavTapped(item)}"
+                            @click="${e => this._itemChanged(item.id)}"
                             ?disabled="${this.selected.id === item.id}"
                           >
                             <iron-image
@@ -339,7 +345,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                               src="${item.thumbnail}"
                             >
                             </iron-image>
-                          </paper-button>
+                          </button>
                           <simple-tooltip
                             for="${item.id}"
                             ?hidden="${this.selected.id === item.id}"
@@ -372,11 +378,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    */
   constructor() {
     super();
-    let target = this.shadowRoot.querySelector("#carouselitem");
+    /*let target = this.shadowRoot.querySelector("#carouselitem");
     if (this.selected.scroll && target) {
       this._scrollIntoView([this._getParentOffset(target)]);
       if (!this.selected.zoomed) target.focus();
-    }
+    }*/
   }
   /**
    * gets whether navigation should be hidden
@@ -386,51 +392,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    */
   get hideNav() {
     return this.sources !== undefined ? this.sources.length < 2 : true;
-  }
-  /**
-   * go to item by id, or index
-   *
-   * @param {string} index
-   */
-  goToItem(index) {
-    if (
-      typeof index === "number" &&
-      index >= 0 &&
-      index < this.sources.length
-    ) {
-      this.selected = this.sources[index];
-    }
-  }
-
-  /**
-   * returns index of the previous or next item
-   * TODO
-   *
-   * /
-  _getIndex(index, step) {
-    return index + step;
-  }
-
-  /**
-   * when a prev is tapped, goes to the prev item
-   */
-  _onPrev() {
-    this.goToItem(
-      parseInt(
-        this.shadowRoot.querySelector("#carouselprev").getAttribute("index")
-      )
-    );
-  }
-
-  /**
-   * when a next is tapped, goes to the next item
-   */
-  _onNext() {
-    this.goToItem(
-      parseInt(
-        this.shadowRoot.querySelector("#carouselnext").getAttribute("index")
-      )
-    );
   }
 
   /**
