@@ -83,15 +83,13 @@
           {
             "property": "thumbnail",
             "title": "Image Thumbnail Source",
-            "description":
-              "The path of an optional thumbnail version of the image.",
+            "description": "The path of an optional thumbnail version of the image.",
             "inputMethod": "haxupload"
           },
           {
             "property": "large",
             "title": "Image Full Size Source",
-            "description":
-              "The path of an optional large version of the image for zooming.",
+            "description": "The path of an optional large version of the image for zooming.",
             "inputMethod": "haxupload"
           }
         ]
@@ -101,8 +99,7 @@
       {
         "property": "aspectRatio",
         "title": "Aspect Ratio",
-        "description":
-          "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
+        "description": "Custom aspect ratio, default is calculated based on the first image's aspect ratio",
         "inputMethod": "textfield"
       },
       {

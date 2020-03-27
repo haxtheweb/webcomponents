@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
+import "@polymer/paper-button/paper-button.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
 /**

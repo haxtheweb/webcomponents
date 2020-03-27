@@ -3,11 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-image/iron-image.js";
+//import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+/*import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";*/
 
 /**
  * `lerndesign-gallery-behaviors`
@@ -20,7 +19,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
  *  -
  *
  */
-class LrndesignGalleryBehaviors extends SimpleColors {
+class LrndesignGalleryBehaviors extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -28,9 +27,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     return "lrndesign-gallery-behaviors";
   }
 
-  static get styles() {
+  /*static get styles() {
     return [
       css`
+        :host {
+          display: block;
+        }
+        
+        :host([hidden]) {
+          display: none;
+        }
         :host {
           display: block;
           --lrndesign-gallery-color: var(--simple-colors-default-theme-grey-12);
@@ -114,14 +120,14 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         :host([hidden]) {
           display: none;
         }
-        :host .sr-only {
+        .sr-only {
           position: absolute;
           left: -999999;
           height: 0;
           width: 0;
           overflow: hidden;
         }
-        :host .gallerythumb {
+        .gallerythumb {
           min-width: unset;
           max-width: 100%;
           padding: 0;
@@ -138,8 +144,8 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         :host .gallerythumb:focus iron-image,
         :host .gallerythumb:hover iron-image {
           @apply --lrndesign-gallery-thumbnail-image-focus;
-        }*/
-        :host lrndesign-gallery-zoom iron-icon {
+        }* /
+        lrndesign-gallery-zoom iron-icon {
           width: 24px;
           height: 24px;
           opacity: 0.5;
@@ -148,25 +154,25 @@ class LrndesignGalleryBehaviors extends SimpleColors {
           background-color: var(--lrndesign-gallery-dialog-background-color);
           transition: opacity 0.5s;
         }
-        :host lrndesign-gallery-zoom:focus iron-icon,
-        :host lrndesign-gallery-zoom:hover iron-icon {
+        lrndesign-gallery-zoom:focus iron-icon,
+        lrndesign-gallery-zoom:hover iron-icon {
           opacity: 1;
         }
-        :host #galleryprint {
+        #galleryprint {
           display: none;
         }
         @media print {
-          :host #galleryscreen {
+          #galleryscreen {
             display: none;
           }
-          :host #galleryprint {
+          #galleryprint {
             display: block;
           }
-          :host #galleryprint section {
+          #galleryprint section {
             margin-top: 15px;
             margin-bottom: 15px;
           }
-          :host #galleryprint .print-image {
+          #galleryprint .print-image {
             max-width: 400px;
             max-height: 400px;
             display: block;
@@ -176,27 +182,27 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         }
       `
     ];
-  }
+  }*/
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
+      //...super.properties,
       /**
        * a named anchor for the gallery
-       */
+       * /
       anchorData: {
         type: Object
       },
       /**
        * aspect ratio of media
-       */
+       * /
       aspectRatio: {
         type: Number
       },
       /**
        * size for responsive CSS
-       */
+       * /
       extraWide: {
         type: Boolean,
         reflect: true,
@@ -204,25 +210,19 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       },
       /**
        * gallery's unique id
-       */
+       * /
       galleryId: {
         type: String
       },
       /**
        * size for responsive CSS
-       */
+       * /
       grid: {
         type: Boolean
       },
-      /**
-       * array of carousel/grid items
-       */
-      items: {
-        type: Array
-      },
       /*
        * parent size for responsive styling
-       */
+       * /
       responsiveSize: {
         type: String,
         reflect: true,
@@ -230,24 +230,24 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       },
       /*
        * data for the selected item
-       */
+       * /
       selected: {
         type: Object,
         reflect: true,
         attribute: "selected"
       },
+      /*
+       * array of gallery items
+       * /
+      sources: {
+        type: Array
+      },
       /**
        * default sizing: fit screen by cropping (cover)
        * or with letterboxing (contain)
-       */
+       * /
       sizing: {
         type: String
-      },
-      /**
-       * array of carousel/grid items
-       */
-      sources: {
-        type: Array
       },
       /**
        * gallery's title
@@ -257,6 +257,11 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       }
     };
   }
+  /*
+  render(){
+    return html``;
+  }
+
   constructor() {
     super();
     this.aspectRatio = 1.33333333;
@@ -268,31 +273,25 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     this.sources = [];
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
+  /*TODO 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      /*TODO if (propName == "selected") this._selectedChanged(this.selected);*/
+      if (propName == "selected") this._selectedChanged(this.selected);
     });
-  }
-
+  }*/
+  /*
   get galleryPrint() {
     return html`
       <div id="galleryprint">
-        ${this.items.map(
+        ${this.sources.map(
           item =>
             html`
               <section>
                 <h2 ?hidden="${!item.title || item.title === ""}">
-                  ${this.item.title}
+                  ${item.title}
                 </h2>
                 <lrndesign-gallery-details
-                  details="${this.item.details}"
+                  details="${item.details}"
                 ></lrndesign-gallery-details>
                 <img class="print-image" alt="${item.alt}" src="${item.src}" />
               </section>
@@ -307,7 +306,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    *
    * @readonly
    * @memberof LrndesignGalleryBehaviors
-   */
+   * /
   get imageStyle() {
     if (this.extraWide || this.responsiveSize === "xs") {
       return "padding-bottom: " + 100 / this.aspectRatio + "%;";
@@ -323,100 +322,13 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       }
     }
   }
-  /**
-   * gets the items array
-   *
-   * @readonly
-   * @memberof LrndesignGalleryBehaviors
-   */
-  get items() {
-    let sources =
-      typeof this.sources === "string"
-        ? JSON.parse(this.sources)
-        : this.sources;
-    if (!this.galleryId) this.id = "gallery-" + this._generateUUID();
-    if (sources && sources[0]) this._setAspectProperties(this.sources[0].src);
-    return (sources || []).map((source, i) =>
-      this._getItemData(source, i, sources.length)
-    );
-  }
-
-  /**
-   * gets aspect ratio of an image and
-   * determine if aspect ratio is extra wide
-   *
-   * @param {array}
-   */
-  _getAnchorData() {
-    let temp =
-        window.location.hash !== null && window.location.hash !== ""
-          ? window.location.hash.replace("#", "").split("---")
-          : [],
-      anchorGallery = temp.length > 0 ? temp[0] : -1,
-      selectedItemId = temp.length > 1 ? temp[1] : -1,
-      selectedItemIndex =
-        this.sources !== null
-          ? this.sources.findIndex(i => i.id === selectedItemId)
-          : 1,
-      selectedGallery = anchorGallery === this.galleryId,
-      zoom = scroll && temp.length > 2 && temp[2] === "zoom";
-    return {
-      selectedItemId: selectedItemId,
-      selectedItemIndex: selectedItemIndex > 0 ? selectedItemIndex : 0,
-      selectedGallery: selectedGallery,
-      zoom: zoom
-    };
-  }
-
-  /**
-   * get data for an item
-   *
-   * @param {object} a gallery item
-   * @param {number} the index of the item
-   * @returns {object} the reformatted gallery item
-   */
-  _getItemData(item, index, length) {
-    if (this.galleryId === null)
-      this.galleryId = "gallery-" + this._generateUUID();
-    let anchorData = this._getAnchorData(),
-      temp = {};
-    temp.details = item.details;
-    temp.index = index;
-    temp.id = this._selfOrDefault(item.id, this.galleryId + "-item-" + index);
-    temp.src = item.src;
-    temp.large = this._selfOrDefault(item.large, temp.src);
-    temp.thumbnail = this._selfOrDefault(item.thumbnail, temp.src);
-    temp.xofy = parseInt(index + 1) + " of " + length;
-    temp.next = index + 1 < length ? index + 1 : -1;
-    temp.prev = index - 1 > -1 ? index - 1 : -1;
-    temp.sizing = this._selfOrDefault(item.sizing, this.sizing);
-    temp.title = item.title;
-    temp.tooltip = this._selfOrDefault(
-      temp.title,
-      "Full-Sized Image",
-      " (Full-Sized)"
-    );
-    temp.heading = this._selfOrDefault(
-      temp.title,
-      "Full-Sized Image",
-      " (Full-Sized)"
-    );
-    temp.zoom = anchorData.zoom && anchorData.selectedItemId === temp.id;
-    temp.scroll =
-      anchorData.selectedGallery && anchorData.selectedItemId === temp.id;
-    temp.tooltip = this._selfOrDefault(item.title, "Zoom In", " Zoom");
-    if (anchorData.selectedItemIndex === index) {
-      this.set("selected", temp);
-    }
-    return temp;
-  }
 
   /**
    * gets parent node's offset in light DOM
    *
    * @param {object} the node
    * @returns {number} the parent node's offset in pixels
-   */
+   * /
   _getParentOffset(node) {
     let parent = node.parentNode;
     if (
@@ -433,7 +345,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * tallies the offsets (item and parent) and scrolls to the item
    *
    * @param {array} an array of offsets
-   */
+   * /
   _scrollIntoView(offsets = [0]) {
     window.scrollTo({
       top: offsets.reduce((total, num) => {
@@ -444,66 +356,12 @@ class LrndesignGalleryBehaviors extends SimpleColors {
   }
 
   /**
-   * sets selected attribute of thumbnail
-   *
-   * @param {object} the selected item
-   * @param {object} the current item
-   * @returns {boolean} whether current item is selected
-   */
-  _isSelected(selected = {}, item = {}) {
-    return selected.id === item.id;
-  }
-
-  /**
-   * replaces an undefined value
-   *
-   * @param {object} the value check
-   * @param {object} the default value
-   * @param {object} the default value
-   * @returns {object} the updated value
-   */
-  _selfOrDefault(val1 = null, val2 = false, append = null) {
-    let val3 = val2;
-    if (val1 !== undefined && val1 !== null) {
-      if (append !== null) {
-        val3 = val1 + append;
-      } else {
-        val3 = val1;
-      }
-    }
-    return val3;
-  }
-
-  /**
-   * gets aspect ratio of an image and
-   * determine if aspect ratio is extra wide
-   *
-   * @param {array}
-   */
-  _setAspectProperties(imgSrc) {
-    if (imgSrc !== undefined && imgSrc !== null) {
-      let img = new Image();
-      img.src = imgSrc;
-      this.aspectRatio =
-        img.naturalWidth > 0 && img.naturalHeight > 0
-          ? img.naturalWidth / img.naturalHeight
-          : 1.33333333;
-      this.extraWide = this.aspectRatio > 2;
-    }
-  }
-
-  /**
    * Generate a UUID
-   */
+   * /
   _generateUUID() {
-    return "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
-  }
-
-  _uuidPart() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
+    return "ss-s-s-s-sss".replace(/s/g, 
+      Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
+  }*/
 }
 window.customElements.define(
   LrndesignGalleryBehaviors.tag,

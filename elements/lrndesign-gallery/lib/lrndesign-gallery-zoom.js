@@ -2,10 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+//import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+//import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrndesign-gallery-zoom`
@@ -33,7 +33,7 @@ import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 --lrndesign-gallery-dialog-header-background-color      //background-color of dialog header```
  * 
  */
-class LrndesignGalleryZoom extends LitElement {
+class LrndesignGalleryZoom extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -80,33 +80,31 @@ class LrndesignGalleryZoom extends LitElement {
           padding: 0px;
           margin: 0;
           min-width: unset;
-        }`
+        }
+      `
     ];
   }
-  render(){
+  render() {
     return html`
       <paper-button
         id="zoombtn"
         label="${this.tooltip}"
         controls="zoomdialog"
-        @click="${this.zoom}"
+        @click="${this.zoomed}"
       >
         <slot></slot>
       </paper-button>
       <simple-tooltip for="zoombtn" position="right"
         >${this.tooltip}</simple-tooltip
       >
-      <simple-modal-template
-        id="zoomtpl"
-        modal-id="zoomdialog"
-        title="${this.heading}"
-      >
+      <!--simple-modal-template
+        id="zoomtpl" modal-id="zoomdialog" title="${this.heading}">
         <div
           id="details"
           slot="header"
-          ?hidden="${!this.details || this.details===""}"
-        ></div>
-        <div slot="content" ?hidden="${!this.src || this.src===""}">
+          ?hidden="${!this.details || this.details === ""}"
+        >${this.details}</div>
+        <div slot="content" ?hidden="${!this.src || this.src === ""}">
           <img-pan-zoom
             id="img"
             alt="${this.zoomAlt}"
@@ -122,7 +120,7 @@ class LrndesignGalleryZoom extends LitElement {
             image above.
           </div>
         </div>
-      </simple-modal-template>
+      </simple-modal-template-->
     `;
   }
 
@@ -130,17 +128,16 @@ class LrndesignGalleryZoom extends LitElement {
   static get properties() {
     return {
       /**
-       * heading for the zoom modal
+       * heading for zoom modal
        */
       heading: {
         type: String
       },
       /**
-       * heading for the zoom modal
+       * details for zoom modal
        */
-      itemId: {
+      details: {
         type: String
-        //observer: "_itemChanged"
       },
       /**
        * The zoom modal
@@ -188,29 +185,31 @@ class LrndesignGalleryZoom extends LitElement {
    */
   constructor() {
     super();
-    this.heading = "Image Zoom";
+    /*this.heading = "Image Zoom";
+    this.details = "";
     this.scrolled = false;
     this.tooltip = "Zoom In";
     this.zoomed = false;
-    this.shadowRoot
-      .querySelector("#zoomtpl")
-      .associateEvents(this.shadowRoot.querySelector("#zoombtn"));
-    if (this.scrolled) {
-      this.dispatchEvent(new CustomEvent("gallery-scroll"));
-      if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();
-    }
-    if (this.zoomed) this.zoom();
+    console.log(this.shadowRoot);
+    console.log(this.shadowRoot.querySelector("#zoomtpl"));
+    console.log(this.shadowRoot.querySelector("#zoombtn"));
+    if(this.shadowRoot && this.shadowRoot.querySelector("#zoomtpl")){
+      this.shadowRoot.querySelector("#zoomtpl").associateEvents(this.shadowRoot.querySelector("#zoombtn"));
+      if (this.scrolled) {
+        this.dispatchEvent(new CustomEvent("gallery-scroll"));
+        if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();
+      }
+      if (this.zoomed) this.zoom();
+    }*/
   }
 
   /**
    * opens the modal
-   */
+   * /
   zoom() {
     let event = new CustomEvent("gallery-zoom", { detail: this });
-    this.shadowRoot
-      .querySelector("#zoombtn")
-      .dispatchEvent(event);
-  }
+    this.shadowRoot.querySelector("#zoombtn").dispatchEvent(event);
+  }*/
 }
 window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
 export { LrndesignGalleryZoom };

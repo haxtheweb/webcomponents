@@ -4,8 +4,9 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
-import "./lrndesign-gallery-details.js";
-import "./lrndesign-gallery-zoom.js";
+import "@polymer/paper-button/paper-button.js";
+//import "./lrndesign-gallery-details.js";
+//import "./lrndesign-gallery-zoom.js";
 
 /**
  * `lrndesign-gallery-carousel`
@@ -56,7 +57,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin: 15px 0 0;
           padding: 0;
         }
-        :host #carouselitem {
+        #carouselitem {
           width: 100%;
           color: var(--lrndesign-gallery-color);
           background-color: var(--lrndesign-gallery-background-color);
@@ -85,21 +86,21 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           height: 400px;
           max-height: 400px;
         }
-        :host #carouselimage {
+        #carouselimage {
           position: relative;
         }
-        :host #carouselimage iron-image {
+        #carouselimage iron-image {
           width: 100%;
           height: 100%;
         }
-        :host #prevnextnav {
+        #prevnextnav {
           left: 0;
           top: 0;
           height: 100%;
           width: 100%;
           position: absolute;
         }
-        :host #prevnextnav paper-button {
+        #prevnextnav paper-button {
           position: absolute;
           display: flex;
           align-items: center;
@@ -117,28 +118,28 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           background: var(--lrndesign-gallery-next-bg);
           transition: opacity 0.5s;
         }
-        :host #prevnextnav paper-button#carouselprev {
+        #prevnextnav paper-button#carouselprev {
           left: 0;
           justify-content: flex-start;
           background: var(--lrndesign-gallery-prev-bg);
         }
-        :host #prevnextnav paper-button[item="-1"] {
+        #prevnextnav paper-button[item="-1"] {
           display: none;
         }
-        :host #prevnextnav paper-button:focus,
-        :host #prevnextnav paper-button:hover {
+        #prevnextnav paper-button:focus,
+        #prevnextnav paper-button:hover {
           opacity: 0.8;
         }
-        :host #prevnextnav iron-icon {
+        #prevnextnav iron-icon {
           margin: 10%;
         }
-        :host lrndesign-gallery-zoom {
+        lrndesign-gallery-zoom {
           left: 3px;
           bottom: 0;
           z-index: 2;
           position: absolute;
         }
-        :host #details {
+        #details {
           flex-grow: 1;
           flex-shrink: 1;
           overflow-y: auto;
@@ -148,7 +149,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin-top: -4px;
           border-top: 4px solid var(--lrndesign-gallery-focus-color);
         }
-        :host #details-inner {
+        #details-inner {
           height: 100%;
           display: flex;
           position: relative;
@@ -157,24 +158,24 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           align-items: stretch;
           align-content: stretch;
         }
-        :host #itemdetails,
-        :host #thumbnails {
+        #itemdetails,
+        #thumbnails {
           padding: 20px;
           flex-basis: 100%;
         }
-        :host #itemdetails {
+        #itemdetails {
           align-self: flex-start;
           flex-grow: 1;
           flex-shrink: 1;
           overflow-y: auto;
         }
-        :host #thumbnails {
+        #thumbnails {
           align-self: flex-end;
         }
-        /*TODO :host .gallerythumb[disabled] {
+        /*TODO .gallerythumb[disabled] {
           @apply --lrndesign-gallery-thumbnail-image-selected;
         }*/
-        :host .gallerythumb iron-image {
+        .gallerythumb iron-image {
           width: 40px;
           height: 40px;
         }
@@ -190,18 +191,18 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           width: 50px;
           height: 50px;
         }
-        :host #itemtitle {
+        #itemtitle {
           margin-top: 0;
         }
-        :host .x-of-y {
+        .x-of-y {
           font-size: 85%;
           font-style: italic;
           text-align: right;
           padding: 0;
           margin: 0;
         }
-        :host #xystart,
-        :host #xyend {
+        #xystart,
+        #xyend {
           position: absolute;
           right: 20px;
           top: 20px;
@@ -261,15 +262,14 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
               <div id="prevnextnav">
                 <paper-button
                   id="carouselprev"
-                  aria-controls="${this.__gallery.id}"
+                  aria-controls="carousel"
                   aria-label="prev"
                   ?hidden="${this.hideNav}"
                   index="${this.selected.prev}"
                   @click="${this._onPrev}"
-                  .target="${this.__gallery}"
                   tabindex="-1"
-                  title=""
                 >
+                  <span class="sr-only">Previous</span>
                   <iron-icon icon="chevron-left"></iron-icon>
                 </paper-button>
                 <simple-tooltip for="carouselprev" position="top"
@@ -277,15 +277,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 >
                 <paper-button
                   id="carouselnext"
-                  aria-controls="${this.__gallery.id}"
+                  aria-controls="carousel"
                   aria-label="next"
                   ?hidden="${this.hideNav}"
                   index="${this.selected.next}"
                   @click="${this._onNext}"
-                  .target="${this.__gallery}"
                   tabindex="-1"
                   title=""
                 >
+                  <span class="sr-only">Next</span>
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
                 <simple-tooltip for="carouselnext" position="top"
@@ -321,17 +321,16 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                       <p class="sr-only" ?hidden="${this.hideNav}">
                         Slides list:
                       </p>
-                      ${this.items.map(
+                      ${this.sources.map(
                         item => html`
                           <paper-button
                             id="${item.id}"
-                            aria-controls="${this.__gallery.id}"
+                            aria-controls="carousel"
                             class="gallerythumb"
                             ?hidden="${this.hideNav}"
                             index="${item.index}"
                             @click="${e => this._onNavTapped(item)}"
-                            ?disabled="${this._isSelected(this.selected, item)}"
-                            .target="${item.target}"
+                            ?disabled="${this.selected.id === item.id}"
                           >
                             <iron-image
                               alt="${item.alt}"
@@ -343,7 +342,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                           </paper-button>
                           <simple-tooltip
                             for="${item.id}"
-                            ?hidden="${this._isSelected(this.selected, item)}"
+                            ?hidden="${this.selected.id === item.id}"
                             position="top"
                           >
                             ${item.alt}
@@ -386,7 +385,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGalleryCarousel
    */
   get hideNav() {
-    return this.items !== undefined ? this.items.length < 2 : true;
+    return this.sources !== undefined ? this.sources.length < 2 : true;
   }
   /**
    * go to item by id, or index
@@ -394,8 +393,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @param {string} index
    */
   goToItem(index) {
-    if (typeof index === "number" && index >= 0 && index < this.items.length) {
-      this.selected = this.items[index];
+    if (typeof index === "number" && index >= 0 && index < this.sources.length) {
+      this.selected = this.sources[index];
     }
   }
 

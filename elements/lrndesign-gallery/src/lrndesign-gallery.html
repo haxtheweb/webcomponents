@@ -1,14 +1,15 @@
-<div id="gallery">
+<!--div id="gallery">
   ${this.grid
     ? html`
         <lrndesign-gallery-grid
           accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspectRatio}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
           ?dark="${this.dark}"
           .gallery-id="${this.id}"
           responsive-size="${this.responsiveSize}"
           sizing="${this.sizing}"
-          .sources="${this.sources}"
+          .sources="${this.items}"
           title="${this.title}"
         >
           <slot></slot>
@@ -17,15 +18,16 @@
     : html`
         <lrndesign-gallery-carousel
           accent-color="${this.accentColor}"
-          .aspect-ratio="${this.aspectRatio}"
+          .aspect-ratio="${this.aspect}"
+          .extra-wide="${this.extra}"
           ?dark="${this.dark}"
-          .gallery-id="${this.id}"
+          .gallery="${this.id}"
           responsive-size="${this.responsiveSize}"
           sizing="${this.sizing}"
-          .sources="${this.sources}"
+          .sources="${this.items}"
           title="${this.title}"
         >
           <slot></slot>
         </lrndesign-gallery-carousel>`
     }
-</div>
+</div-->HELLO

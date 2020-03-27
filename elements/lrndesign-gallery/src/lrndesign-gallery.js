@@ -2,11 +2,11 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-/*import "./lib/lrndesign-gallery-carousel.js";
-import "./lib/lrndesign-gallery-grid.js";*/
+//import "./lib/lrndesign-gallery-carousel.js";
+//import "./lib/lrndesign-gallery-grid.js";
 
 /**
  * `lrndesign-gallery`
@@ -31,31 +31,13 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // life cycle
   constructor() {
     super();
-    
-    this.tag = LrndesignGallery.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/lrndesign-gallery-properties.json
-    let obj = LrndesignGallery.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        }
-        else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__gallery = this.shadowRoot.querySelector("#gallery");
-    this.anchorData = this._getAnchorData();
+    /*this.anchorData = this._getAnchorData();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
@@ -65,8 +47,17 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           relativeToParent: true
         }
       })
-    );
-    
+    );*/
+  }
+
+  /**
+   * handle updates
+   * /
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "id" && !this.id) this.id = `gallery-${this._generateUUID()}`;
+    });
   }
   // static get observedAttributes() {
   //   return [];
@@ -76,27 +67,101 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // attributeChangedCallback(attr, oldValue, newValue) {}
 
   /**
-   * calls responsive-utility to get parent's responsive size
+   * gets aspect ratio of images
    *
-   * @param {object} a set of responsive for options, 
-   * eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
+   * @readonly
+   * @memberof LrndesignGallery
    */
-  _addResponsiveUtility(options) {
-    window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail:
-          options !== undefined
-            ? options
-            : {
-                element: this,
-                attribute: "responsive-size",
-                relativeToParent: true
-              }
-      })
-    );
+  get aspect() {
+    return 1.33333333;
+    /*
+    let items = (this.items || []).filter(item=>item.src && item.src !=""),
+    src = items && items[0] ? items[0].src : false;;
+    if(src) {
+      let img = new Image()
+      img.src = src;
+      return img.naturalWidth > 0 && img.naturalHeight > 0
+          ? img.naturalWidth / img.naturalHeight
+          : 1.33333333;
+    } else{
+      return 1.33333333;
+    }*/
   }
-  
+  /**
+   * gets aspect ratio of an image and
+   * determine if aspect ratio is extra wide
+   *
+   * @readonly
+   * @memberof LrndesignGallery
+   */
+  get extra() {
+    let ew = this.aspect > 2;
+    return ew;
+  }
+  /**
+   * gets the items array
+   *
+   * @readonly
+   * @memberof LrndesignGalleryBehaviors
+   */
+  get items() {
+    return [];
+    /*let sources = this.sopurces || [],
+      items = typeof this.sources === "string"
+        ? JSON.parse(this.sources)
+        : this.sources,
+    total = items.length;
+    return (items || []).map((item, i) => {
+      let itemid = item.id || `gallery-${this.id}-item-${i}`,
+      itemData = {
+        details: item.details,
+        index: i,
+        id: itemid,
+        src: item.src,
+        large: item.large && item.large !== "" ? item.large : item.src,
+        thumbnail: item.thumbnail && item.thumbnail !="" ? item.thumbnail : item.src,
+        xofy: `${i + 1} of ${total}`,
+        prev: i + 1 < total ? i + 1 : -1,
+        next: i - 1 > -1 ? i - 1 : -1,
+        sizing: item.sizing && item.sizing !="" ? item.sizing : this.sizing,
+        title: item.title,
+        tooltip: `${item.title || `Image ${i}`} (Zoom In)`,
+        heading: `${item.title || `Image ${i}`} (Full-Sized)`,
+        zoom: this.anchorData.zoom && this.anchorData.selectedItemId === itemid,
+        scroll: this.anchorData.selectedGallery && this.anchorData.selectedItemId === itemid
+      }
+      if (this.anchorData.selectedItemIndex === i) this.selected = itemData;
+      return itemData;
+    });*/
+  }
+
+  /**
+   * gets aspect ratio of an image and
+   * determine if aspect ratio is extra wide
+   *
+   * @param {array}
+   */
+  _getAnchorData() {
+    return null;
+    /*let temp =
+        window.location.hash !== null && window.location.hash !== ""
+          ? window.location.hash.replace("#", "").split("---")
+          : [],
+      anchorGallery = temp.length > 0 ? temp[0] : -1,
+      selectedItemId = temp.length > 1 ? temp[1] : -1,
+      selectedItemIndex =
+        this.sources !== null
+          ? this.sources.findIndex(i => i.id === selectedItemId)
+          : 1,
+      selectedGallery = anchorGallery === this.galleryId,
+      zoom = scroll && temp.length > 2 && temp[2] === "zoom";
+    return {
+      selectedItemId: selectedItemId,
+      selectedItemIndex: selectedItemIndex > 0 ? selectedItemIndex : 0,
+      selectedGallery: selectedGallery,
+      zoom: zoom
+    };*/
+  }
 }
 customElements.define("lrndesign-gallery", LrndesignGallery);
 export { LrndesignGallery };
