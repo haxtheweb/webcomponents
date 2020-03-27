@@ -140,7 +140,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin: 10%;
         }
         lrndesign-gallery-zoom {
-          left: 3px;
+          left: 5px;
           bottom: 0;
           z-index: 2;
           position: absolute;
@@ -261,7 +261,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 id="galleryzoom"
                 src="${this.selected.large}"
                 tooltip="${this.selected.tooltip}"
-                zoom-alt="${this.selected.alt}">
+                zoom-alt="${this.selected.alt}"
+              >
                 <iron-icon icon="zoom-in"></iron-icon>
               </lrndesign-gallery-zoom>
               <div id="prevnextnav">
@@ -270,7 +271,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   aria-controls="carousel"
                   aria-label="prev"
                   ?hidden="${this.hideNav}"
-                  @click="${e => this._itemChanged(this.selected ? this.selected.prev : 0)}"
+                  @click="${e =>
+                    this._itemChanged(this.selected ? this.selected.prev : 0)}"
                   tabindex="-1"
                 >
                   <span class="sr-only">Previous</span>
@@ -284,7 +286,8 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   aria-controls="carousel"
                   aria-label="next"
                   ?hidden="${this.hideNav}"
-                  @click="${e => this._itemChanged(this.selected ? this.selected.next : 0)}"
+                  @click="${e =>
+                    this._itemChanged(this.selected ? this.selected.next : 0)}"
                   tabindex="-1"
                   title=""
                 >
@@ -306,10 +309,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   >
                     ${this.selected.title}
                   </h2>
-                    <div id="itembody">
-                      <div id="details">
-                        ${this.selected.details || ''}
-                      </div>
+                  <div id="itembody">
+                    <div id="details">
+                      ${this.selected.details || ""}
+                    </div>
                   </div>
                 </div>
                 <div id="xyend">

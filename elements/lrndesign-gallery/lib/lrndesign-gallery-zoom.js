@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element";
-//import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-//import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-//import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
+import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@lrnwebcomponents/simple-tooltip/simple-tooltip.js";
 /**
  * `lrndesign-gallery-zoom`
  * An element that renders the zoom feature for the gallery.
@@ -40,23 +40,58 @@ class LrndesignGalleryZoom extends LitElement {
     return "lrndesign-gallery-zoom";
   }
 
-  // render function
-  static get styles() {
+  static get styles(){
     return [
       css`
         :host {
           display: block;
-          width: 40px;
-          height: 40px;
+          background-color: none;
         }
         :host([hidden]) {
           display: none;
         }
         #zoombtn {
-          width: 100%;
+          width: 24px;
+          height: 24px;
           padding: 0px;
           margin: 0;
-          min-width: unset;
+          border-width: 0;
+          position: relative;
+          background-color: transparent;
+          transition: all 0.5s ease-in-out;
+        }
+        #zoombtn:focus,
+        #zoombtn:hover {
+          outline: 1px solid var(--lrndesign-gallery-color); 
+          transition: all 0.5s ease-in-out;
+        }
+        #btnbg {
+          background-color: var(--lrndesign-gallery-dialog-background-color);
+          opacity: 0.25;
+        }
+        #btnbg, 
+        #zoombtn ::slotted(*){
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          top: 0;
+          left: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+        #zoombtn:focus #btnbg,
+        #zoombtn:hover #btnbg {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+        #zoombtn ::slotted(*){
+          opacity: 0.75;
+          color: var(--lrndesign-gallery-color);
+          background-color: transparent;
+        }
+        #zoombtn:focus ::slotted(*),
+        #zoombtn:hover ::slotted(*) {
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out;
         }
         simple-modal-template[modal-id="zoomdialog"] {
           --simple-modal-width: 75vw;
@@ -85,17 +120,15 @@ class LrndesignGalleryZoom extends LitElement {
   }
   render() {
     return html`
-    HELLO
-      <!--s<button
+      <button
         id="zoombtn"
-        label="${this.tooltip}"
-        controls="zoomdialog"
-      >
+        @click="${this.zoom}">
+        <div id="btnbg"></div>
         <slot></slot>
       </button>
-      <simple-tooltip for="zoombtn" position="right">${this.tooltip}</simple-tooltip>
-      imple-modal-template
-        id="zoomtpl" modal-id="zoomdialog" title="${this.heading}">
+      <simple-tooltip for="zoombtn" position="right" controls="zoomtpl">${this.tooltip}</simple-tooltip>
+      <simple-modal-template
+        id="zoomtpl" title="${this.heading}">
         <div
           id="details"
           slot="header"
@@ -117,7 +150,7 @@ class LrndesignGalleryZoom extends LitElement {
             image above.
           </div>
         </div>
-      </simple-modal-template-->
+      </simple-modal-template>
     `;
   }
 
@@ -130,23 +163,12 @@ class LrndesignGalleryZoom extends LitElement {
       heading: {
         type: String
       },
+      
       /**
        * details for zoom modal
        */
       details: {
         type: String
-      },
-      /**
-       * The zoom modal
-       */
-      modal: {
-        type: Object
-      },
-      /**
-       * scrolled to by default (for grid)?
-       */
-      scrolled: {
-        type: Boolean
       },
       /**
        * Image source.
@@ -167,13 +189,8 @@ class LrndesignGalleryZoom extends LitElement {
        */
       zoomAlt: {
         type: String
-      },
-      /**
-       * zoomed by default?
-       */
-      zoomed: {
-        type: Boolean
       }
+
     };
   }
 
@@ -182,31 +199,35 @@ class LrndesignGalleryZoom extends LitElement {
    */
   constructor() {
     super();
-    /*this.heading = "Image Zoom";
+    this.heading = "Image Zoom";
     this.details = "";
-    this.scrolled = false;
+    
+    this.src= "";
     this.tooltip = "Zoom In";
-    this.zoomed = false;
-    console.log(this.shadowRoot);
-    console.log(this.shadowRoot.querySelector("#zoomtpl"));
-    console.log(this.shadowRoot.querySelector("#zoombtn"));
-    if(this.shadowRoot && this.shadowRoot.querySelector("#zoomtpl")){
-      this.shadowRoot.querySelector("#zoomtpl").associateEvents(this.shadowRoot.querySelector("#zoombtn"));
-      if (this.scrolled) {
-        this.dispatchEvent(new CustomEvent("gallery-scroll"));
-        if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();
-      }
-      if (this.zoomed) this.zoom();
-    }*/
+    this.zoomAlt = "Full-sized Image";
+  }
+
+  get button(){
+    return this.shadowRoot && this.shadowRoot.querySelector("#zoombtn") 
+    ? this.shadowRoot.querySelector("#zoombtn") 
+    : false;
+  }
+  get modal(){
+    return this.shadowRoot && this.shadowRoot.querySelector("#zoomtpl") 
+    ? this.shadowRoot.querySelector("#zoomtpl") 
+    : false;
   }
 
   /**
    * opens the modal
-   * /
+   */
   zoom() {
-    let event = new CustomEvent("gallery-zoom", { detail: this });
-    this.shadowRoot.querySelector("#zoombtn").dispatchEvent(event);
-  }*/
+    if(this.button && this.modal){
+      this.modal.openModal(this.button);
+      let event = new CustomEvent("gallery-zoom", { detail: this });
+      this.button.dispatchEvent(event);
+    }
+  }
 }
 window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);
 export { LrndesignGalleryZoom };

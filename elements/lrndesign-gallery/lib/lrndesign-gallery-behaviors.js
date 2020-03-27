@@ -145,19 +145,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         :host .gallerythumb:hover iron-image {
           @apply --lrndesign-gallery-thumbnail-image-focus;
         }*/
-        lrndesign-gallery-zoom iron-icon {
-          width: 24px;
-          height: 24px;
-          opacity: 0.5;
-          border-radius: 3px;
-          color: var(--lrndesign-gallery-color);
-          background-color: var(--lrndesign-gallery-dialog-background-color);
-          transition: opacity 0.5s;
-        }
-        lrndesign-gallery-zoom:focus iron-icon,
-        lrndesign-gallery-zoom:hover iron-icon {
-          opacity: 1;
-        }
         #galleryprint {
           display: none;
         }
