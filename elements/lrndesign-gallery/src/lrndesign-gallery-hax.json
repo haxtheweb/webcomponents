@@ -19,15 +19,7 @@
     }
   },
   "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "title": "Gallery Title",
-        "description": "A title for the gallery.",
-        "inputMethod": "textfield",
-        "icon": "editor:title"
-      },
+    "quick": [
       {
         "property": "accentColor",
         "title": "Accent Color",
@@ -48,6 +40,39 @@
         "description": "Display as grid?",
         "inputMethod": "boolean",
         "icon": "icons:view-module"
+      },
+      {
+        "property": "grid",
+        "title": "Grid View",
+        "description": "Display as grid?",
+        "inputMethod": "boolean",
+        "icon": "icons:view-module"
+      }
+    ],
+    "configure": [
+      {
+        "property": "galleryTitle",
+        "title": "Gallery Title",
+        "description": "A title for the gallery.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "grid",
+        "title": "Grid View",
+        "description": "Display as grid?",
+        "inputMethod": "boolean"
       },
       {
         "slot": "description",
@@ -76,20 +101,20 @@
           },
           {
             "property": "src",
-            "title": "Image Source",
-            "description": "The path of the image.",
+            "title": "Image",
+            "description": "Default Image",
             "inputMethod": "haxupload"
           },
           {
             "property": "thumbnail",
-            "title": "Image Thumbnail Source",
-            "description": "The path of an optional thumbnail version of the image.",
+            "title": "Optional Thumbnail Image",
+            "description": "Optional smaller thumbnail version of the image.",
             "inputMethod": "haxupload"
           },
           {
             "property": "large",
-            "title": "Image Full Size Source",
-            "description": "The path of an optional large version of the image for zooming.",
+            "title": "Optional Full Image",
+            "description": "Optional larger full-sized version of the image for zooming.",
             "inputMethod": "haxupload"
           }
         ]

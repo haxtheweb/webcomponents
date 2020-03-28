@@ -15,31 +15,6 @@ import "./lrndesign-gallery-zoom.js";
  * @customElement lrndesign-gallery-carousel
  * @extends LrndesignGalleryBehaviors
  * @demo ./demo/index.html demo
- * 
- * @microcopy - language worth noting:```
- <lrndesign-gallery-carousel 
-  accent-color="grey"               //optional, the accent color from simple-colors; default is grey
-  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)
-  id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
-  sources="[]"                      //required, array of image sources
-  sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
-  title="My Gallery">               //optional, the title of the gallery
-  Optional description of the gallery.
-</lrndesign-gallery-carousel>```
- * where `sources` array is:```
-[{
-  "alt": "IMAGE ALT TEXT",                          //required
-  "details": "TEXT ABOUT IMAGE HERE",               //optional 
-  "heading": "IMAGE HEADING HERE",                  //required, the image heading when in zoom mode
-  "id": "123"                                       //required, unique id  
-  "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
-  "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
-  "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
-  "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
-  "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
-  "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
-  "type": "image",                                  //required, "image", "video", "audio", etc.
-}]```
  *
  */
 class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
@@ -140,10 +115,16 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           margin: 10%;
         }
         lrndesign-gallery-zoom {
+          width: 24px;
+          height: 24px;
           left: 5px;
-          bottom: 0;
-          z-index: 2;
+          bottom: 5px;
           position: absolute;
+        }
+        .zoombg, 
+        .zoomicon {
+          top: 0;
+          left: 0;
         }
         #details {
           flex-grow: 1;
@@ -227,7 +208,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   render() {
     return html`
       <article id="carousel">
-        <h1 id="gallerytitle" ?hidden="${this.title}">${this.title}</h1>
+        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">${this.galleryTitle}</h1>
         <div id="gallerydescription">
           <slot></slot>
         </div>
@@ -263,8 +244,10 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 tooltip="${this.selected.tooltip}"
                 zoom-alt="${this.selected.alt}"
               >
-                <iron-icon icon="zoom-in"></iron-icon>
+                <div class="zoombg"></div>
+                <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
+              <simple-tooltip for="galleryzoom" position="right" controls="zoomtpl">${this.selected.tooltip}</simple-tooltip>
               <div id="prevnextnav">
                 <button
                   id="carouselprev"
@@ -289,7 +272,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   @click="${e =>
                     this._itemChanged(this.selected ? this.selected.next : 0)}"
                   tabindex="-1"
-                  title=""
                 >
                   <span class="sr-only">Next</span>
                   <iron-icon icon="chevron-right"></iron-icon>

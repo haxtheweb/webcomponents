@@ -145,12 +145,51 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         :host .gallerythumb:hover iron-image {
           @apply --lrndesign-gallery-thumbnail-image-focus;
         }*/
+        lrndesign-gallery-zoom {
+          z-index: 2;
+          border: 1px solid transparent; 
+          transition: outline 0.5s ease-in-out;
+        }
+        lrndesign-gallery-zoom:focus-within,
+        lrndesign-gallery-zoom:hover {
+          border: 1px solid var(--lrndesign-gallery-color); 
+          transition: outline 0.5s ease-in-out;
+        }
+        simple-tooltip {
+          z-index: 2;
+        }
+        .zoombg {
+          background-color: var(--lrndesign-gallery-dialog-background-color);
+          opacity: 0.25;
+        }
+        .zoombg,
+        .zoomicon {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          transition: opacity 0.5s ease-in-out;
+        }
+        lrndesign-gallery-zoom:focus-within .zoombg,
+        lrndesign-gallery-zoom:hover .zoombg {
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+        }
+        .zoomicon {
+          opacity: 0.75;
+          color: var(--lrndesign-gallery-color);
+          background-color: transparent;
+        }
+        lrndesign-gallery-zoom:focus-within .zoomicon,
+        lrndesign-gallery-zoom:hover .zoomicon {
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out;
+        }
         #galleryprint {
           display: none;
         }
         @media print {
           #galleryscreen {
-            display: none;
+            display: none !important;
           }
           #galleryprint {
             display: block;
@@ -202,6 +241,13 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         type: String
       },
       /**
+       * gallery's title
+       */
+      galleryTitle: {
+        type: String,
+        attribute: "gallery-title"
+      },
+      /**
        * size for responsive CSS
        */
       grid: {
@@ -235,7 +281,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         type: String
       },
       /**
-       * gallery's title
+       * DEPRECATED gallery's title
        */
       title: {
         type: String

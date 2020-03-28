@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
 /**
@@ -14,31 +13,6 @@ import "./lrndesign-gallery-details.js";
  * @customElement lrndesign-gallery-grid
  * @extends LrndesignGalleryBehaviors
  * @demo ./demo/grid.html demo
- * 
- * @microcopy - language worth noting:```
-<lrndesign-gallery-grid 
-  accent-color="grey"               //optional, the accent color from simple-colors; default is grey
-  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)
-  id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
-  sources="[]"                      //required, array of image sources
-  sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
-  title="My Gallery">               //optional, the title of the gallery
-  Optional description of the gallery.
-</lrndesign-gallery-grid>```
- * where `sources` array is:```
-[{
-  "alt": "IMAGE ALT TEXT",                          //required
-  "details": "TEXT ABOUT IMAGE HERE",               //optional 
-  "heading": "IMAGE HEADING HERE",                  //required, the image heading when in zoom mode
-  "id": "123"                                       //required, unique id  
-  "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
-  "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
-  "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
-  "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
-  "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
-  "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
-  "type": "image",                                  //required, "image", "video", "audio", etc.
-}]```
  *
  */
 class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
@@ -58,34 +32,34 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
           max-width: 100%;
           display: block;
         }
-        :host .gallerythumb div {
-          position: relative;
+        #galleryscreen {
           display: flex;
-          align-items: stretch;
+          flex-wrap: wrap;
         }
-        :host .gallerythumb div,
-        :host .gallerythumb iron-image {
-          width: 100%;
-        }
-        :host .gallerythumb {
+        lrndesign-gallery-zoom {
+          position: relative;
           width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
         }
-        :host([responsive-size="sm"]) .gallerythumb {
+        :host([responsive-size="sm"]) lrndesign-gallery-zoom {
           width: var(--lrndesign-gallery-grid-thumbnail-sm, 150px);
         }
-        :host([responsive-size="md"]) .gallerythumb {
+        :host([responsive-size="md"]) lrndesign-gallery-zoom {
           width: var(--lrndesign-gallery-grid-thumbnail-md, 200px);
         }
-        :host([responsive-size="lg"]) .gallerythumb {
+        :host([responsive-size="lg"]) lrndesign-gallery-zoom {
           width: var(--lrndesign-gallery-grid-thumbnail-lg, 250px);
         }
-        :host([responsive-size="xl"]) .gallerythumb {
+        :host([responsive-size="xl"]) lrndesign-gallery-zoom {
           width: var(--lrndesign-gallery-grid-thumbnail-lg, 300px);
         }
-        :host .gallerythumb iron-icon {
-          position: absolute;
-          bottom: 7px;
-          left: 7px;
+        iron-image {
+          width: 100%;
+        }
+        .zoombg,
+        .zoomicon {
+          top: unset;
+          bottom: 5px;
+          left: 5px;
         }
       `
     ];
@@ -113,37 +87,32 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   render() {
     return html`
       <article id="grid">
-        <h1 id="gallerytitle" ?hidden="${this.title}">${this.title}</h1>
+        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">${this.galleryTitle}</h1>
         <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
-          ${this.items.map(
+          ${this.sources.map(
             item => html`
               <lrndesign-gallery-zoom
-                anchored-item="${this.__anchoredItem}"
-                class="gallerythumb"
+                id="${item.id}"
                 details="${item.details}"
                 heading="${item.heading}"
-                item-id="${item.id}"
-                @gallery-scroll="${e => this._handleScroll(item)}"
-                ?scrolled="${item.scroll}"
                 src="${item.large}"
                 tooltip="${item.tooltip}"
                 zoom-alt="${item.zoomAlt}"
-                ?zoomed="${item.zoom}"
               >
-                <div>
-                  <iron-image
-                    alt="${item.zoomAlt}"
-                    fade
-                    sizing="cover"
-                    src="${item.thumbnail}"
-                    style="${this.imageStyle}"
-                  >
-                  </iron-image>
-                </div>
-                <iron-icon icon="zoom-in"></iron-icon>
+                <iron-image
+                  alt="${item.zoomAlt}"
+                  fade
+                  sizing="cover"
+                  src="${item.thumbnail}"
+                  style="${this.imageStyle}"
+                >
+                </iron-image>
+                <div class="zoombg"></div>
+                <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
+              <simple-tooltip for="${item.id}" position="bottom" controls="zoomtpl">${item.tooltip}</simple-tooltip>
             `
           )}
         </div>
@@ -171,10 +140,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
 
   /**
    * handles gallery-scroll event
-   */
+   * /
   _handleScroll(item) {
     this._scrollIntoView([this._getParentOffset(this), item.offsetTop]);
-  }
+  }*/
 }
 window.customElements.define(LrndesignGalleryGrid.tag, LrndesignGalleryGrid);
 export { LrndesignGalleryGrid };

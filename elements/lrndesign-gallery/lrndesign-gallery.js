@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit-element";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
+import "./lib/lrndesign-gallery-grid.js";
 
 /**
  * `lrndesign-gallery`
@@ -46,7 +47,7 @@ return html`
           .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
-          title="${this.title}"
+          gallery-title="${this.galleryTitle}"
         >
           <slot></slot>
         </lrndesign-gallery-grid>
@@ -57,13 +58,13 @@ return html`
           .aspect-ratio="${this.aspect}"
           .extra-wide="${this.extra}"
           ?dark="${this.dark}"
-          .gallery="${this.id}"
+          .gallery-id="${this.id}"
           @item-changed="${e=>this.goToItem(e.detail)}"
           responsive-size="${this.responsiveSize}"
           .selected="${this.selected}"
           sizing="${this.sizing}"
           .sources="${this.items}"
-          title="${this.title}"
+          gallery-title="${this.galleryTitle}"
         >
           <slot></slot>
         </lrndesign-gallery-carousel>`

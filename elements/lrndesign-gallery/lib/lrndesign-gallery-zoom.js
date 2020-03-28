@@ -51,47 +51,12 @@ class LrndesignGalleryZoom extends LitElement {
           display: none;
         }
         #zoombtn {
-          width: 24px;
-          height: 24px;
-          padding: 0px;
+          display:block;
+          width: 100%;
+          padding: 0;
           margin: 0;
           border-width: 0;
-          position: relative;
           background-color: transparent;
-          transition: all 0.5s ease-in-out;
-        }
-        #zoombtn:focus,
-        #zoombtn:hover {
-          outline: 1px solid var(--lrndesign-gallery-color); 
-          transition: all 0.5s ease-in-out;
-        }
-        #btnbg {
-          background-color: var(--lrndesign-gallery-dialog-background-color);
-          opacity: 0.25;
-        }
-        #btnbg, 
-        #zoombtn ::slotted(*){
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          top: 0;
-          left: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-        #zoombtn:focus #btnbg,
-        #zoombtn:hover #btnbg {
-          opacity: 0;
-          transition: opacity 0.5s ease-in-out;
-        }
-        #zoombtn ::slotted(*){
-          opacity: 0.75;
-          color: var(--lrndesign-gallery-color);
-          background-color: transparent;
-        }
-        #zoombtn:focus ::slotted(*),
-        #zoombtn:hover ::slotted(*) {
-          opacity: 1;
-          transition: opacity 0.5s ease-in-out;
         }
         simple-modal-template[modal-id="zoomdialog"] {
           --simple-modal-width: 75vw;
@@ -123,10 +88,8 @@ class LrndesignGalleryZoom extends LitElement {
       <button
         id="zoombtn"
         @click="${this.zoom}">
-        <div id="btnbg"></div>
         <slot></slot>
       </button>
-      <simple-tooltip for="zoombtn" position="right" controls="zoomtpl">${this.tooltip}</simple-tooltip>
       <simple-modal-template
         id="zoomtpl" title="${this.heading}">
         <div
