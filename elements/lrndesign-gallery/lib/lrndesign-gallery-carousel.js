@@ -320,7 +320,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                       .xofy}<span class="sr-only">.</span>)
                   </p>
                 </div>
-                <div id="thumbnails" class="item-info" ?hidden="${this.hideNav}">
+                <div
+                  id="thumbnails"
+                  class="item-info"
+                  ?hidden="${this.hideNav}"
+                >
                   <div id="thumbnails-inner">
                     <div>
                       <p class="sr-only" ?hidden="${this.hideNav}">
@@ -389,7 +393,12 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGalleryCarousel
    */
   get hideNav() {
-    console.log('hideNav',this,this.sources,this.sources !== undefined ? this.sources.length < 2 : true)
+    console.log(
+      "hideNav",
+      this,
+      this.sources,
+      this.sources !== undefined ? this.sources.length < 2 : true
+    );
     return this.sources !== undefined ? this.sources.length < 2 : true;
   }
 

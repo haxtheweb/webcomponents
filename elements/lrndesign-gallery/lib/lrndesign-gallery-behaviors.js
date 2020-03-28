@@ -303,7 +303,11 @@ class LrndesignGalleryBehaviors extends SimpleColors {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if ((propName == "galleryTitle" || propName == "title") && !this.galleryTitle) this.galleryTitle = this.title;
+      if (
+        (propName == "galleryTitle" || propName == "title") &&
+        !this.galleryTitle
+      )
+        this.galleryTitle = this.title;
     });
   }
 
