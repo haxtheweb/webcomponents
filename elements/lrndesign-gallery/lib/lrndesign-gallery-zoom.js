@@ -40,7 +40,7 @@ class LrndesignGalleryZoom extends LitElement {
     return "lrndesign-gallery-zoom";
   }
 
-  static get styles(){
+  static get styles() {
     return [
       css`
         :host {
@@ -51,7 +51,7 @@ class LrndesignGalleryZoom extends LitElement {
           display: none;
         }
         #zoombtn {
-          display:block;
+          display: block;
           width: 100%;
           padding: 0;
           margin: 0;
@@ -85,18 +85,17 @@ class LrndesignGalleryZoom extends LitElement {
   }
   render() {
     return html`
-      <button
-        id="zoombtn"
-        @click="${this.zoom}">
+      <button id="zoombtn" @click="${this.zoom}">
         <slot></slot>
       </button>
-      <simple-modal-template
-        id="zoomtpl" title="${this.heading}">
+      <simple-modal-template id="zoomtpl" title="${this.heading}">
         <div
           id="details"
           slot="header"
           ?hidden="${!this.details || this.details === ""}"
-        >${this.details}</div>
+        >
+          ${this.details}
+        </div>
         <div slot="content" ?hidden="${!this.src || this.src === ""}">
           <img-pan-zoom
             id="img"
@@ -126,7 +125,7 @@ class LrndesignGalleryZoom extends LitElement {
       heading: {
         type: String
       },
-      
+
       /**
        * details for zoom modal
        */
@@ -153,7 +152,6 @@ class LrndesignGalleryZoom extends LitElement {
       zoomAlt: {
         type: String
       }
-
     };
   }
 
@@ -164,28 +162,27 @@ class LrndesignGalleryZoom extends LitElement {
     super();
     this.heading = "Image Zoom";
     this.details = "";
-    
-    this.src= "";
+    this.src = "";
     this.tooltip = "Zoom In";
     this.zoomAlt = "Full-sized Image";
   }
 
-  get button(){
-    return this.shadowRoot && this.shadowRoot.querySelector("#zoombtn") 
-    ? this.shadowRoot.querySelector("#zoombtn") 
-    : false;
+  get button() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#zoombtn")
+      ? this.shadowRoot.querySelector("#zoombtn")
+      : false;
   }
-  get modal(){
-    return this.shadowRoot && this.shadowRoot.querySelector("#zoomtpl") 
-    ? this.shadowRoot.querySelector("#zoomtpl") 
-    : false;
+  get modal() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#zoomtpl")
+      ? this.shadowRoot.querySelector("#zoomtpl")
+      : false;
   }
 
   /**
    * opens the modal
    */
   zoom() {
-    if(this.button && this.modal){
+    if (this.button && this.modal) {
       this.modal.openModal(this.button);
       let event = new CustomEvent("gallery-zoom", { detail: this });
       this.button.dispatchEvent(event);

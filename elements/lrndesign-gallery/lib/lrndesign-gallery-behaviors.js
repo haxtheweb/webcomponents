@@ -29,6 +29,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
 
   static get styles() {
     return [
+      ...super.styles,
       css`
         :host {
           display: block;
@@ -147,12 +148,12 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         }*/
         lrndesign-gallery-zoom {
           z-index: 2;
-          border: 1px solid transparent; 
+          border: 1px solid transparent;
           transition: outline 0.5s ease-in-out;
         }
         lrndesign-gallery-zoom:focus-within,
         lrndesign-gallery-zoom:hover {
-          border: 1px solid var(--lrndesign-gallery-color); 
+          border: 1px solid var(--lrndesign-gallery-color);
           transition: outline 0.5s ease-in-out;
         }
         simple-tooltip {
@@ -302,7 +303,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "selected") console.log("selected", this.selected);
+      if ((propName == "galleryTitle" || propName == "title") && !this.galleryTitle) this.galleryTitle = this.title;
     });
   }
 

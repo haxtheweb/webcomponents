@@ -94,6 +94,9 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           background: var(--lrndesign-gallery-next-bg);
           transition: opacity 0.5s;
         }
+        #prevnextnav button[hidden] {
+          display: none;
+        }
         #prevnextnav button#carouselprev {
           left: 0;
           justify-content: flex-start;
@@ -106,6 +109,11 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         #prevnextnav button:hover {
           outline: none;
           opacity: 0.8;
+        }
+        #prevnextnav button[disabled]:focus,
+        #prevnextnav button[disabled]:hover {
+          cursor: not-allowed;
+          opacity: 0.1;
         }
         #prevnextnav button:focus iron-icon,
         #prevnextnav button:hover iron-icon {
@@ -121,7 +129,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           bottom: 5px;
           position: absolute;
         }
-        .zoombg, 
+        .zoombg,
         .zoomicon {
           top: 0;
           left: 0;
@@ -208,7 +216,9 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   render() {
     return html`
       <article id="carousel">
-        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">${this.galleryTitle}</h1>
+        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">
+          ${this.galleryTitle}
+        </h1>
         <div id="gallerydescription">
           <slot></slot>
         </div>
@@ -247,13 +257,19 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
-              <simple-tooltip for="galleryzoom" position="right" controls="zoomtpl">${this.selected.tooltip}</simple-tooltip>
+              <simple-tooltip
+                for="galleryzoom"
+                position="right"
+                controls="zoomtpl"
+                >${this.selected.tooltip}</simple-tooltip
+              >
               <div id="prevnextnav">
                 <button
                   id="carouselprev"
                   aria-controls="carousel"
                   aria-label="prev"
                   ?hidden="${this.hideNav}"
+                  ?disabled="${!this.selected || this.selected.prev < 0}"
                   @click="${e =>
                     this._itemChanged(this.selected ? this.selected.prev : 0)}"
                   tabindex="-1"
@@ -269,6 +285,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   aria-controls="carousel"
                   aria-label="next"
                   ?hidden="${this.hideNav}"
+                  ?disabled="${!this.selected || this.selected.next < 0}"
                   @click="${e =>
                     this._itemChanged(this.selected ? this.selected.next : 0)}"
                   tabindex="-1"
@@ -297,13 +314,13 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                     </div>
                   </div>
                 </div>
-                <div id="xyend">
-                  <p class="x-of-y" ?hidden="${this.hideNav}">
+                <div id="xyend" ?hidden="${this.hideNav}">
+                  <p class="x-of-y">
                     (<span class="sr-only"> End of slide </span> ${this.selected
                       .xofy}<span class="sr-only">.</span>)
                   </p>
                 </div>
-                <div id="thumbnails" class="item-info">
+                <div id="thumbnails" class="item-info" ?hidden="${this.hideNav}">
                   <div id="thumbnails-inner">
                     <div>
                       <p class="sr-only" ?hidden="${this.hideNav}">
@@ -315,7 +332,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                             id="${item.id}"
                             aria-controls="carousel"
                             class="gallerythumb"
-                            ?hidden="${this.hideNav}"
                             index="${item.index}"
                             @click="${e => this._itemChanged(item.id)}"
                             ?disabled="${this.selected.id === item.id}"
@@ -373,6 +389,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * @memberof LrndesignGalleryCarousel
    */
   get hideNav() {
+    console.log('hideNav',this,this.sources,this.sources !== undefined ? this.sources.length < 2 : true)
     return this.sources !== undefined ? this.sources.length < 2 : true;
   }
 

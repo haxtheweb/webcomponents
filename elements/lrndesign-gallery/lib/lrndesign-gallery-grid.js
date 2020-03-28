@@ -87,7 +87,9 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   render() {
     return html`
       <article id="grid">
-        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">${this.galleryTitle}</h1>
+        <h1 id="gallerytitle" ?hidden="${this.galleryTitle}">
+          ${this.galleryTitle}
+        </h1>
         <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
@@ -112,7 +114,12 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
                 <div class="zoombg"></div>
                 <iron-icon icon="zoom-in" class="zoomicon"></iron-icon>
               </lrndesign-gallery-zoom>
-              <simple-tooltip for="${item.id}" position="bottom" controls="zoomtpl">${item.tooltip}</simple-tooltip>
+              <simple-tooltip
+                for="${item.id}"
+                position="bottom"
+                controls="zoomtpl"
+                >${item.tooltip}</simple-tooltip
+              >
             `
           )}
         </div>
